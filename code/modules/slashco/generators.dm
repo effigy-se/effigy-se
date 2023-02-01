@@ -60,13 +60,13 @@
 	if(fuel_count >= GLOB.required_fuel && loaded_battery)
 		active = 1
 		GLOB.active_generators += 1
-		update_appearance()
+		icon_state = "portgen0_1"
 		soundloop.start()
 
 /obj/machinery/slashco_generator/proc/insertfuel(mob/living/user)
 	if(loaded_fuel)
 		balloon_alert_to_viewers("Inserting Fuel...")
-		if(do_after(user, 10, src))
+		if(do_after(user, 10 SECONDS, src))
 			loaded_fuel = 0
 			balloon_alert_to_viewers("Fuel Inserted")
 			fuel_count += 1
