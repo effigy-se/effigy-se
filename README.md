@@ -1,22 +1,6 @@
-## /tg/station codebase
+## SlashCo 13
 
-[![Build Status](https://github.com/tgstation/tgstation/workflows/CI%20Suite/badge.svg)](https://github.com/tgstation/tgstation/actions?query=workflow%3A%22CI+Suite%22)
-[![Percentage of issues still open](https://isitmaintained.com/badge/open/tgstation/tgstation.svg)](https://isitmaintained.com/project/tgstation/tgstation "Percentage of issues still open")
-[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/tgstation/tgstation.svg)](https://isitmaintained.com/project/tgstation/tgstation "Average time to resolve an issue")
-![Coverage](https://img.shields.io/badge/coverage---3%25-red.svg)
-
-[![resentment](https://forthebadge.com/images/badges/built-with-resentment.svg)](https://www.monkeyuser.com/assets/images/2019/131-bug-free.png) [![resentment](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://user-images.githubusercontent.com/8171642/50290880-ffef5500-043a-11e9-8270-a2e5b697c86c.png) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
-
-* **Website:** https://www.tgstation13.org
-* **Code:** https://github.com/tgstation/tgstation
-* **Wiki:** https://tgstation13.org/wiki/Main_Page
-* **Codedocs:** https://codedocs.tgstation13.org/
-* **/tg/station Discord:** https://tgstation13.org/phpBB/viewforum.php?f=60
-* **Coderbus Discord:** https://discord.gg/Vh8TJp9
-
-This is the codebase for the /tg/station flavoured fork of SpaceStation 13.
-
-Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
+An unofficial demake of [SlashCo](https://github.com/Mantibro/SlashCo) in BYOND, based on the round-based, paranoia-laden deathtrap that is Space Station 13. Everything here is in a conceptual phase at the moment, with our current goal being getting the basic gameplay mechanics working along with three of the original slashers. (The Imposter, Male07, and Sid respectively.) - Information about progress is best visualized in the Projects tab.
 
 ## DOWNLOADING
 [Downloading](.github/guides/DOWNLOADING.md)
