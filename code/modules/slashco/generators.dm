@@ -62,10 +62,10 @@
 		GLOB.active_generators += 1
 		icon_state = "portgen0_1"
 		soundloop.start()
-	if(GLOB.required_generators <= GLOB.active_generators)
+	if(GLOB.required_generators <= GLOB.active_generators && SSshuttle.canEvac())
 		SSshuttle.emergency_no_recall = TRUE
 		SSshuttle.emergency.mode = SHUTTLE_IDLE
-		SSshuttle.emergency.request(reason = "SlashCo's Employees have re-engaged power to the facility. Routing shuttle...", set_coefficient=0.10)
+		SSshuttle.emergency.request(set_coefficient=0.10)
 
 /obj/machinery/slashco_generator/proc/insertfuel(mob/living/user)
 	if(loaded_fuel)

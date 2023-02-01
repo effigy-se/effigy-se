@@ -358,7 +358,7 @@
 
 	if(istype(pda))
 		pda.saved_identification = equipped.real_name
-		pda.saved_job = equipped_job.title
+		pda.saved_job = equipped_job.title // This throws runtimes at the moment because there's /datum/outfit/job/s for jobs that're disabled still. Needs touchup but's harmless
 		pda.update_ringtone(equipped_job.job_tone)
 		pda.UpdateDisplay()
 

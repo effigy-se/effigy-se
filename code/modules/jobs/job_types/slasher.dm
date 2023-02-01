@@ -19,5 +19,4 @@
 /datum/job/slasher/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
 	var/datum/antagonist/slasher/our_slasher = pick(subtypesof(/datum/antagonist/slasher))
-	log_game("Game has picked [our_slasher.name] as the Slasher!")
 	spawned.mind.add_antag_datum(our_slasher) // Most of the slasher code is on the antag datum rather than here.

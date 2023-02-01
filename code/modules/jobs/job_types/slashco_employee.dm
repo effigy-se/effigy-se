@@ -28,7 +28,6 @@
 	id = /obj/item/card/id/advanced/black
 	id_trim = /datum/id_trim/job/slashco_employee
 	uniform = /obj/item/clothing/under/color/black
-	belt = /obj/item/modular_computer/pda/clear
 	ears = null
 	shoes = /obj/item/clothing/shoes/workboots
 	l_pocket = /obj/item/flashlight

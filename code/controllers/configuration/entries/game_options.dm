@@ -319,7 +319,7 @@
 	min_val = -1
 
 /datum/config_entry/string/overflow_job
-	default = JOB_ASSISTANT
+	default = /datum/job/slashco_employee
 
 /datum/config_entry/flag/starlight
 /datum/config_entry/flag/grey_assistants
