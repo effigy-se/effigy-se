@@ -61,7 +61,7 @@
 		update_appearance()
 		soundloop.start()
 
-/obj/machinery/slashco_generator/var/insertfuel(mob/living/user)
+/obj/machinery/slashco_generator/proc/insertfuel(mob/living/user)
 	if(loaded_fuel)
 		balloon_alert_to_viewers("Inserting Fuel...")
 		if(do_after(user, 10, src))
