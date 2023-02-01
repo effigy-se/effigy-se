@@ -42,6 +42,8 @@
 		award_score -= award_status
 	winner.give_award(/datum/award/score/bartender_tourist_score, winner.mob, award_score)
 
+/datum/job/bartender/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/bartender
 	name = "Bartender"

@@ -40,6 +40,8 @@
 
 /datum/config_entry/flag/humans_need_surnames
 
+/datum/config_entry/flag/allow_station_jobs // allow station jobs along with slashco 13's
+
 /datum/config_entry/flag/allow_ai // allow ai job
 
 /datum/config_entry/flag/allow_ai_multicam // allow ai multicamera mode

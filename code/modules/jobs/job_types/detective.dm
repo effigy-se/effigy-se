@@ -44,6 +44,9 @@
 
 	job_tone = "objection"
 
+/datum/job/detective/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 
 /datum/outfit/job/detective
 	name = "Detective"

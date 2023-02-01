@@ -79,6 +79,9 @@
 #define JOB_LAWYER "Lawyer"
 #define JOB_CHAPLAIN "Chaplain"
 #define JOB_PSYCHOLOGIST "Psychologist"
+//SlashCo13
+#define JOB_SLASHCO_EMPLOYEE "SlashCo Employee"
+#define JOB_SLASHER "Slasher"
 //ERTs
 #define JOB_ERT_DEATHSQUAD "Death Commando"
 #define JOB_ERT_COMMANDER "Emergency Response Team Commander"

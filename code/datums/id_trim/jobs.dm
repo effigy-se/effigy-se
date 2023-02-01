@@ -1054,6 +1054,22 @@
 	extra_access = list()
 	template_access = null
 
+/datum/id_trim/job/slashco_employee
+	assignment = "SlashCo Employee"
+	trim_state = "trim_deathcommando"
+	department_color = COLOR_PRISONER_BLACK
+	subdepartment_color = COLOR_PRISONER_BLACK
+	sechud_icon_state = SECHUD_DEATH_COMMANDO
+	job = /datum/job/slashco_employee
+
+/datum/id_trim/job/slashco_employee/New() // Basically required for the gamemode
+	extra_access |= (SSid_access.get_flag_access_list(ACCESS_FLAG_COMMON) + SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND))
+	extra_wildcard_access |= (SSid_access.get_flag_access_list(ACCESS_FLAG_PRV_COMMAND) + SSid_access.get_flag_access_list(ACCESS_FLAG_CAPTAIN))
+	minimal_access |= (SSid_access.get_flag_access_list(ACCESS_FLAG_COMMON) + SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND))
+	minimal_wildcard_access |= (SSid_access.get_flag_access_list(ACCESS_FLAG_PRV_COMMAND) + SSid_access.get_flag_access_list(ACCESS_FLAG_CAPTAIN))
+
+	return ..()
+
 /datum/id_trim/job/station_engineer
 	assignment = "Station Engineer"
 	trim_state = "trim_stationengineer"

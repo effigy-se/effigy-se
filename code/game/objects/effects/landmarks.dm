@@ -244,6 +244,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "science_sec"
 	department = SEC_DEPT_SCIENCE
 
+/obj/effect/landmark/start/slashco_employee
+	name = "SlashCo Employee"
+	icon_state = "Assistant"
+
 //Antagonist spawns
 
 /obj/effect/landmark/start/wizard

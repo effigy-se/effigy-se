@@ -37,6 +37,9 @@
 
 	job_tone = "boom"
 
+/datum/job/scientist/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 
 /datum/outfit/job/scientist
 	name = "Scientist"

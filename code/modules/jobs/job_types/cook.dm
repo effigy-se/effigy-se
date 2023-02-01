@@ -88,3 +88,6 @@
 	. = ..()
 	. += /obj/item/clothing/suit/apron/chef
 	. += /obj/item/clothing/head/soft/mime
+
+/datum/job/cook/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
