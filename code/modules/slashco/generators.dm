@@ -8,7 +8,9 @@
 
 /// Generator ///
 /obj/machinery/slashco_generator
-	name = "Generator"
+	name = "generator"
+	desc = "Generators like these give SlashCo control over more derelicts and access to their slashers. All in all, they should require 4 sheets of plasma and \
+	one bluespace power cell."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "portgen0_0"
 	base_icon_state = "portgen0"
@@ -55,7 +57,7 @@
 	if(!user)
 		return
 	insertfuel(user)
-	if(fuel_count >= GLOB.required_fuel)
+	if(fuel_count >= GLOB.required_fuel && loaded_battery)
 		active = 1
 		GLOB.active_generators += 1
 		update_appearance()
