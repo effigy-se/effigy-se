@@ -6,6 +6,15 @@
 	GLOB.genstart += loc
 	return INITIALIZE_HINT_QDEL
 
+/obj/effect/landmark/sheet_spawn
+	name = "sheet spawn"
+	icon_state = "x4"
+
+/obj/effect/landmark/sheet_spawn/Initialize(mapload)
+	..()
+	GLOB.sheetstart += loc
+	return INITIALIZE_HINT_QDEL
+
 /// Generator ///
 /obj/machinery/slashco_generator
 	name = "generator"

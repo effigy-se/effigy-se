@@ -247,6 +247,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/slashco_employee
 	name = "SlashCo Employee"
 	icon_state = "Assistant"
+/obj/effect/landmark/start/slasher
+	name = "Slasher"
+	icon_state = "Assistant"
 
 //Antagonist spawns
 
