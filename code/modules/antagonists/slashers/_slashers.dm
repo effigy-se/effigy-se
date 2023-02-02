@@ -6,6 +6,7 @@
 	suicide_cry = "GAME SUCK I GO BED!!"
 	antagpanel_category = "Slashers"
 	show_to_ghosts = TRUE
+	var/mob_type = /mob/living/carbon/human
 
 /// TODO: Preview Icon Here
 
@@ -15,6 +16,7 @@
 		spawn_slashco_generators()
 		spawn_slashco_sheets()
 		spawn_slashco_batteries()
+	equip_slasher()
 
 /proc/spawn_slashco_generators()
 	for(var/integer=1 to 3)
@@ -34,5 +36,10 @@
 		GLOB.batterystart -= OurBattery
 		new /obj/item/stock_parts/cell/lead(OurBattery)
 
-/datum/antagonist/slasher/test_slasher
-	name = "Testy The Test Slasher"
+/datum/antagonist/slasher/proc/equip_slasher(var/OurSlasher = owner.current)
+	if(mob_type != /mob/living/carbon/human)
+		var/mob/SlasherToBe = OurSlasher
+		SlasherToBe.change_mob_type(mob_type, null, null, TRUE)
+	give_slasher_abilities(OurSlasher)
+
+/datum/antagonist/slasher/proc/give_slasher_abilities()
