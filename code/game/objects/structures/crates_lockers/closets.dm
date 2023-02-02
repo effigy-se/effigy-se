@@ -363,6 +363,8 @@
 			return TRUE
 		else if(!allow_objects && !istype(AM, /obj/effect/dummy/chameleon))
 			return FALSE
+		else if(istype(AM, /obj/item/stack/fuel) || istype(AM, /obj/item/stock_parts/cell/lead)) // No cheesing the no pull rule.
+			return FALSE
 	else
 		return FALSE
 

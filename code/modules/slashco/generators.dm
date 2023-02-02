@@ -6,13 +6,22 @@
 	GLOB.genstart += loc
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/sheet_spawn
-	name = "sheet spawn"
+/obj/effect/landmark/fuel_spawn
+	name = "fuel spawn"
 	icon_state = "x4"
 
-/obj/effect/landmark/sheet_spawn/Initialize(mapload)
+/obj/effect/landmark/fuel_spawn/Initialize(mapload)
 	..()
-	GLOB.sheetstart += loc
+	GLOB.fuelstart += loc
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/battery_spawn
+	name = "battery spawn"
+	icon_state = "x3" // x3
+
+/obj/effect/landmark/battery_spawn/Initialize(mapload)
+	..()
+	GLOB.batterystart += loc
 	return INITIALIZE_HINT_QDEL
 
 /// Generator ///
@@ -35,9 +44,9 @@
 	/// The amount of fuel in this generator.
 	var/fuel_count
 	/// Path to the fuel type for this generator. Generally not changed in gameplay.
-	var/fuel_path = /obj/item/stack/sheet/mineral/plasma
+	var/fuel_path = /obj/item/stack/fuel
 	/// Path to the battery type for this generator. Generally not changed in gameplay.
-	var/battery_path = /obj/item/stock_parts/cell/bluespace
+	var/battery_path = /obj/item/stock_parts/cell/lead
 	/// Soundloop for this generator
 	var/datum/looping_sound/generator/soundloop
 

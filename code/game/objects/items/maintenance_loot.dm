@@ -34,11 +34,14 @@
 	charge_light_type = null
 	connector_type = "leadacid"
 	rating = 2 //Kind of a mid-tier battery
-	w_class = WEIGHT_CLASS_NORMAL
-	grind_results = list(/datum/reagent/lead = 15, /datum/reagent/toxin/acid = 15, /datum/reagent/water = 20)
+	w_class = WEIGHT_CLASS_HUGE
+	grind_results = null // Let's not allow people to grind this fucker up considering it's important for the mode
 
 //starts partially discharged
 /obj/item/stock_parts/cell/lead/Initialize(mapload)
 	AddElement(/datum/element/update_icon_blocker)
 	. = ..()
 	charge = rand(0.2,0.8) * maxcharge
+
+/obj/item/stock_parts/cell/lead/can_be_pulled()
+	return FALSE
