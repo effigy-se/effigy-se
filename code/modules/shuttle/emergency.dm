@@ -459,6 +459,9 @@
 				setTimer(SSshuttle.emergency_dock_time)
 				send2adminchat("Server", "The Emergency Shuttle has docked with the station.")
 				priority_announce("[SSshuttle.emergency] has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, ANNOUNCER_SHUTTLEDOCK, "Priority")
+				for(var/mob/target in GLOB.player_list)
+					if(!isnewplayer(target))
+						SEND_SOUND(target, 'sound/slashco/music/helicopter.ogg')
 				ShuttleDBStuff()
 
 
