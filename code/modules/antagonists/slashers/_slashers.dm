@@ -17,6 +17,7 @@
 		spawn_slashco_sheets()
 		spawn_slashco_batteries()
 	equip_slasher()
+	forge_objectives()
 
 /proc/spawn_slashco_generators()
 	for(var/integer=1 to 3)
@@ -42,4 +43,15 @@
 		SlasherToBe.change_mob_type(mob_type, null, null, TRUE)
 	give_slasher_abilities(OurSlasher)
 
+/// Exists for subtypes to override.
 /datum/antagonist/slasher/proc/give_slasher_abilities()
+
+/datum/antagonist/slasher/forge_objectives()
+	. = ..()
+	for(var/mob/PotentialTarget in GLOB.player_list)
+		if(PotentialTarget.mind.assigned_role == JOB_SLASHCO_EMPLOYEE)
+			var/datum/objective/assassinate/new_objective = new /datum/objective/assassinate
+			new_objective.owner = owner
+			new_objective.target = PotentialTarget
+			new_objective.explanation_text = "Kill [PotentialTarget.name]."
+			objectives += new_objective
