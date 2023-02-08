@@ -11,3 +11,7 @@
 
 /obj/item/stack/fuel/can_be_pulled() // Coping hard, or hardly coping?
 	return FALSE
+
+/obj/item/stack/fuel/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE)

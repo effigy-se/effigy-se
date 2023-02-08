@@ -25,7 +25,7 @@
 //Add lead material to this once implemented.
 /obj/item/stock_parts/cell/lead
 	name = "lead-acid battery"
-	desc = "A type of primitive battery. It is quite large feels unexpectedly heavy."
+	desc = "A type of primitive battery. It's absurdly large, and absurdly heavy."
 	icon = 'icons/obj/maintenance_loot.dmi'
 	icon_state = "lead_battery"
 	throwforce = 10
@@ -42,6 +42,7 @@
 	AddElement(/datum/element/update_icon_blocker)
 	. = ..()
 	charge = rand(0.2,0.8) * maxcharge
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
 
 /obj/item/stock_parts/cell/lead/can_be_pulled()
 	return FALSE
