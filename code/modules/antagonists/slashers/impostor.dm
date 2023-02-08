@@ -11,7 +11,7 @@
 /datum/action/cooldown/spell/shapeshift/impostor
 	name = "Assume True Form"
 	desc = "Exit our disguise and return to our natural form."
-	cooldown_time = 0 SECONDS
+	cooldown_time = 5 SECONDS
 
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
@@ -19,11 +19,13 @@
 	possible_shapes = list(/mob/living/simple_animal/slime/transformed_slime) // TEMP
 
 /datum/action/cooldown/spell/shapeshift/imposter/do_unshapeshift(mob/living/caster)
+	var/lazy_coder_spot = get_turf(caster)
 	. = ..()
 	caster.Paralyze(3 SECONDS)
-	playsound(caster.loc, 'sound/slashco/slasher/imposter/disguise.ogg')
+	playsound(lazy_coder_spot, 'sound/slashco/slasher/imposter/disguise.ogg', 75)
 
 /datum/action/cooldown/spell/shapeshift/imposter/do_shapeshift(mob/living/caster)
+	var/lazy_coder_spot = get_turf(caster)
 	. = ..()
 	caster.Paralyze(3 SECONDS)
-	playsound(caster.loc, 'sound/slashco/slasher/imposter/undisguise.ogg')
+	playsound(lazy_coder_spot, 'sound/slashco/slasher/imposter/undisguise.ogg', 75)
