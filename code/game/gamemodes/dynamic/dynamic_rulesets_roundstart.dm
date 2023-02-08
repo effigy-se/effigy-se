@@ -711,6 +711,7 @@
 	required_candidates = 1
 	weight = 9
 	requirements = list(0,0,0,0,0,0,0,0,0,0)
+	cost = 1
 	var/datum/antagonist/slasher/our_slasher
 
 /datum/dynamic_ruleset/roundstart/slashco/execute()
