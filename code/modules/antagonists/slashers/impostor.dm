@@ -2,9 +2,10 @@
 	name = "The Impostor"
 	var/datum/action/cooldown/spell/shapeshift/impostor/shapeshift_true_form
 
-/datum/antagonist/slasher/impostor/proc/give_slasher_abilities()
+/datum/antagonist/slasher/impostor/give_slasher_abilities()
 	shapeshift_true_form = new
 	shapeshift_true_form.Grant(owner.current)
+	. = ..()
 
 /// Impostor Spells ///
 /datum/action/cooldown/spell/shapeshift/impostor
@@ -19,10 +20,10 @@
 
 /datum/action/cooldown/spell/shapeshift/imposter/do_unshapeshift(mob/living/caster)
 	. = ..()
-	caster.sleep(3 SECONDS)
-	playsound(caster, 'sound/slashco/slasher/imposter/disguise.ogg')
+	caster.Paralyze(3 SECONDS)
+	playsound(caster.loc, 'sound/slashco/slasher/imposter/disguise.ogg')
 
 /datum/action/cooldown/spell/shapeshift/imposter/do_shapeshift(mob/living/caster)
 	. = ..()
-	caster.sleep(3 SECONDS)
-	playsound(caster, 'sound/slashco/slasher/imposter/undisguise.ogg')
+	caster.Paralyze(3 SECONDS)
+	playsound(caster.loc, 'sound/slashco/slasher/imposter/undisguise.ogg')

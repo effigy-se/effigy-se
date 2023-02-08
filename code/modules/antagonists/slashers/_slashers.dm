@@ -51,6 +51,7 @@
 
 /// Exists for subtypes to override.
 /datum/antagonist/slasher/proc/give_slasher_abilities()
+	return
 
 /datum/antagonist/slasher/forge_objectives()
 	. = ..()

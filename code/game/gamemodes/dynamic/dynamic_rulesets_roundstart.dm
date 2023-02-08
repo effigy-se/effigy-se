@@ -728,5 +728,3 @@
 		SSticker.force_ending = 1 // Winnar!
 		return RULESET_STOP_PROCESSING
 
-/datum/dynamic_ruleset/roundstart/slashco/acceptable()
-	return TRUE // IT'S ALWAYS TIME FOR SLASHING
