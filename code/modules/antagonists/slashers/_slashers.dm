@@ -8,7 +8,10 @@
 	show_to_ghosts = TRUE
 	var/mob_type = /mob/living/carbon/human
 
-/// TODO: Preview Icon Here
+/datum/antagonist/slasher/get_preview_icon()
+	var/icon/icon = icon('icons/mob/nonhuman-player/spacedragon.dmi', "spacedragon")
+	icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
+	return icon
 
 /datum/antagonist/slasher/on_gain()
 	. = ..()
@@ -55,3 +58,9 @@
 			new_objective.target = PotentialTarget
 			new_objective.explanation_text = "Kill [PotentialTarget.name]."
 			objectives += new_objective
+
+/datum/antagonist/slasher/proc/process_victory()
+	for(var/datum/objective/assassinate/objective in objectives)
+		if(!(objective.check_completion()))
+			return FALSE
+	return TRUE

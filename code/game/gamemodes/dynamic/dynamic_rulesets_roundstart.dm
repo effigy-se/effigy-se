@@ -23,7 +23,7 @@
 		JOB_CYBORG,
 	)
 	required_candidates = 1
-	weight = 5
+	weight = 0
 	cost = 8 // Avoid raising traitor threat above this, as it is the default low cost ruleset.
 	scaling_cost = 9
 	requirements = list(8,8,8,8,8,8,8,8,8,8)
@@ -56,7 +56,7 @@
 	minimum_required_age = 14
 	exclusive_roles = list(JOB_AI)
 	required_candidates = 1
-	weight = 3
+	weight = 0
 	cost = 18
 	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	antag_cap = 1
@@ -112,7 +112,7 @@
 		JOB_CYBORG,
 	)
 	required_candidates = 2
-	weight = 2
+	weight = 0
 	cost = 12
 	scaling_cost = 15
 	requirements = list(40,30,30,20,20,15,15,15,10,10)
@@ -171,7 +171,7 @@
 		JOB_CYBORG,
 	)
 	required_candidates = 1
-	weight = 3
+	weight = 0
 	cost = 16
 	scaling_cost = 10
 	requirements = list(70,70,60,50,40,20,20,10,10,10)
@@ -220,7 +220,7 @@
 		JOB_CYBORG,
 	)
 	required_candidates = 1
-	weight = 3
+	weight = 0
 	cost = 10
 	scaling_cost = 9
 	requirements = list(101,101,60,30,30,25,20,15,10,10)
@@ -270,7 +270,7 @@
 		JOB_HEAD_OF_SECURITY,
 	) // Just to be sure that a wizard getting picked won't ever imply a Captain or HoS not getting drafted
 	required_candidates = 1
-	weight = 2
+	weight = 0
 	cost = 20
 	requirements = list(90,90,90,80,60,40,30,20,10,10)
 	ruleset_lazy_templates = list(LAZY_TEMPLATE_KEY_WIZARDDEN)
@@ -339,7 +339,7 @@
 		JOB_WARDEN,
 	)
 	required_candidates = 2
-	weight = 3
+	weight = 0
 	cost = 20
 	requirements = list(100,90,80,60,40,30,10,10,10,10)
 	flags = HIGH_IMPACT_RULESET
@@ -412,7 +412,7 @@
 		JOB_HEAD_OF_SECURITY,
 	) // Just to be sure that a nukie getting picked won't ever imply a Captain or HoS not getting drafted
 	required_candidates = 5
-	weight = 3
+	weight = 0
 	cost = 20
 	requirements = list(90,90,90,80,60,40,30,20,10,10)
 	flags = HIGH_IMPACT_RULESET
@@ -514,7 +514,7 @@
 		JOB_WARDEN,
 	)
 	required_candidates = 3
-	weight = 3
+	weight = 0
 	delay = 7 MINUTES
 	cost = 20
 	requirements = list(101,101,70,40,30,20,10,10,10,10)
@@ -596,7 +596,7 @@
 	antag_datum = null
 	restricted_roles = list()
 	required_candidates = 0
-	weight = 3
+	weight = 0
 	cost = 0
 	requirements = list(101,101,101,101,101,101,101,101,101,101)
 	flags = LONE_RULESET
@@ -648,7 +648,7 @@
 	name = "Meteor"
 	persistent = TRUE
 	required_candidates = 0
-	weight = 3
+	weight = 0
 	cost = 0
 	requirements = list(101,101,101,101,101,101,101,101,101,101)
 	flags = LONE_RULESET
@@ -696,3 +696,33 @@
 
 	for(var/department_type in department_types)
 		create_separatist_nation(department_type, announcement = FALSE, dangerous = FALSE, message_admins = FALSE)
+
+//////////////////////////////////////////////
+//                                          //
+//               SLASHCO                    //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/roundstart/slashco
+	name = "SlashCo - Regular" // Leaving it open to have modifier rounds in the future as well.
+	persistent = TRUE // We need to keep checking if everyone is dead or off-station.
+	antag_flag = ROLE_SLASHER
+	antag_datum = /datum/antagonist/slasher // IMPORTANT: Needs to be overridden to be a subtype
+	required_candidates = 1
+	weight = 9
+	requirements = list(0,0,0,0,0,0,0,0,0,0)
+	var/datum/antagonist/slasher/our_slasher
+
+/datum/dynamic_ruleset/roundstart/slashco/execute()
+	if (assigned == null)
+		SSticker.force_ending = 1 // No slasher, no gameplay. Reboot the world.
+	for(var/datum/mind/our_player in assigned)
+		our_slasher = pick(subtypesof(/datum/antagonist/slasher))
+		our_slasher = new antag_datum()
+		our_player.add_antag_datum(our_slasher)
+
+
+/datum/dynamic_ruleset/roundstart/slashco/rule_process()
+	if(our_slasher.process_victory())
+		SSticker.force_ending = 1 // Winnar!
+		return RULESET_STOP_PROCESSING
