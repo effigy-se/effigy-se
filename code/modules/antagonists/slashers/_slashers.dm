@@ -13,6 +13,9 @@
 	icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
 	return icon
 
+/datum/antagonist/slasher/roundend_report_header()
+	return "<span class='header'>SlashCo's Taken Note Of The Slasher's Activity:</span><br>"
+
 /datum/antagonist/slasher/on_gain()
 	. = ..()
 	if(!GLOB.generators_spawned)

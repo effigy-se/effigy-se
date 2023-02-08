@@ -115,6 +115,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_REV_HEAD = 14,
 	ROLE_TRAITOR = 0,
 	ROLE_WIZARD = 14,
+	ROLE_SLASHER = 0,
 
 	// Midround
 	ROLE_ABDUCTOR = 0,
