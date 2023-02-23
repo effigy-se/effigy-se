@@ -177,7 +177,6 @@
 #define ui_ai_add_multicam "BOTTOM+1:6,LEFT"
 #define ui_ai_take_picture "BOTTOM+2:6,LEFT"
 
-
 //pAI
 #define ui_pai_software "BOTTOM:6,LEFT"
 #define ui_pai_shell "BOTTOM:6,LEFT+1"
@@ -208,6 +207,8 @@
 //Blobbernauts
 #define ui_blobbernaut_overmind_health "RIGHT-1:28,CENTER+0:19"
 
+//Families
+#define ui_wanted_lvl "TOP,11"
 
 // Defines relating to action button positions
 
