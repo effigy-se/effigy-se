@@ -137,27 +137,27 @@
 
 /atom/movable/screen/fullscreen/flash
 	icon = 'icons/hud/screen_gen.dmi'
-	screen_loc = "LEFT,BOTTOM to RIGHT,TOP"
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 
 /atom/movable/screen/fullscreen/flash/black
 	icon = 'icons/hud/screen_gen.dmi'
-	screen_loc = "LEFT,BOTTOM to RIGHT,TOP"
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "black"
 
 /atom/movable/screen/fullscreen/flash/static
 	icon = 'icons/hud/screen_gen.dmi'
-	screen_loc = "LEFT,BOTTOM to RIGHT,TOP"
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "noise"
 
 /atom/movable/screen/fullscreen/high
 	icon = 'icons/hud/screen_gen.dmi'
-	screen_loc = "LEFT,BOTTOM to RIGHT,TOP"
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "druggy"
 
 /atom/movable/screen/fullscreen/color_vision
 	icon = 'icons/hud/screen_gen.dmi'
-	screen_loc = "LEFT,BOTTOM to RIGHT,TOP"
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 	alpha = 80
 
@@ -180,7 +180,7 @@
 
 /atom/movable/screen/fullscreen/cinematic_backdrop
 	icon = 'icons/hud/screen_gen.dmi'
-	screen_loc = "LEFT,BOTTOM to RIGHT,TOP"
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 	plane = SPLASHSCREEN_PLANE
 	layer = CINEMATIC_LAYER
