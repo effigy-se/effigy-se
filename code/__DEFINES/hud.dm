@@ -206,8 +206,6 @@
 //Blobbernauts
 #define ui_blobbernaut_overmind_health "RIGHT-1:28,CENTER+0:19"
 
-//Families
-#define ui_wanted_lvl "TOP,11"
 
 // Defines relating to action button positions
 
