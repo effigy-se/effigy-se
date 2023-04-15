@@ -46,3 +46,6 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 96, 128))
 
 	// We do this aswell because things tend to be buggy with the click catcher if not.
 	change_view(getScreenSize(prefs.read_preference(/datum/preference/toggle/widescreen)))
+
+/datum/client_interface/SetWindowIconSize()
+	return
