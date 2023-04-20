@@ -421,7 +421,7 @@
 /datum/config_entry/flag/give_tutorials_without_db
 
 /datum/config_entry/number/max_client_view_x
-	default = 21
+	default = 19
 	min_val = 15
 	max_val = 50 // Byond (the) limits
 
