@@ -3,7 +3,7 @@
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	stat = DEAD
-	hud_type = /datum/hud/new_player
+	//hud_type = /datum/hud/new_player // EFFIGY EDIT REMOVE
 	hud_possible = list()
 
 	var/ready = FALSE
@@ -41,7 +41,8 @@
 
 /mob/dead/new_player/prepare_huds()
 	return
-
+// EFFIGY EDIT REMOVE START - SPLASH
+/*
 /mob/dead/new_player/Topic(href, href_list)
 	if (usr != src)
 		return
@@ -59,7 +60,8 @@
 	if (href_list["votepollref"])
 		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
 		vote_on_poll_handler(poll, href_list)
-
+*/
+// EFFIGY EDIT REMOVE END - SPLASH
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
 	if(QDELETED(src) || !src.client)
@@ -73,8 +75,10 @@
 	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]", "Observe", "Yes", "No")
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
+		show_title_screen() // EFFIGY EDIT ADD - SPLASH
 		return FALSE
 
+	hide_title_screen() // EFFIGY EDIT ADD - SPLASH
 	var/mob/dead/observer/observer = new()
 	spawning = TRUE
 
@@ -165,6 +169,7 @@
 		tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
 		return FALSE
 
+	hide_title_screen() // EFFIGY EDIT ADD - SPLASH
 	mind.late_joiner = TRUE
 	var/atom/destination = mind.assigned_role.get_latejoin_spawn_point()
 	if(!destination)
@@ -242,6 +247,8 @@
 /// Creates, assigns and returns the new_character to spawn as. Assumes a valid mind.assigned_role exists.
 /mob/dead/new_player/proc/create_character(atom/destination)
 	spawning = TRUE
+
+	hide_title_screen() // EFFIGY EDIT ADD - SPLASH
 
 	mind.active = FALSE //we wish to transfer the key manually
 	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
