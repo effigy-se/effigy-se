@@ -158,6 +158,8 @@ SUBSYSTEM_DEF(ticker)
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
 			send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_announce_new_game))
 			current_state = GAME_STATE_PREGAME
+			SStitle.change_title_screen() // EFFIGY EDIT ADD - SPLASH
+			addtimer(CALLBACK(SStitle, TYPE_PROC_REF(/datum/controller/subsystem/title, change_title_screen)), 1 SECONDS) // EFFIGY EDIT ADD - SPLASH
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 
 			fire()
@@ -347,8 +349,11 @@ SUBSYSTEM_DEF(ticker)
 			GLOB.joined_player_list += player.ckey
 			var/atom/destination = player.mind.assigned_role.get_roundstart_spawn_point()
 			if(!destination) // Failed to fetch a proper roundstart location, won't be going anywhere.
+				player.show_title_screen() // EFFIGY EDIT ADD - SPLASH
 				continue
 			player.create_character(destination)
+		else 							// EFFIGY EDIT ADD - SPLASH
+			player.show_title_screen() // EFFIGY EDIT ADD - SPLASH
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()

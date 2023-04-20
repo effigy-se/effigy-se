@@ -627,6 +627,8 @@
 
 INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 
+// EFFIGY EDIT REMOVE START - SPLASH
+/*
 /atom/movable/screen/splash/Initialize(mapload, client/C, visible, use_previous_title)
 	. = ..()
 	if(!istype(C))
@@ -646,7 +648,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 		icon = SStitle.previous_icon
 
 	holder.screen += src
-
+*/
+// EFFIGY EDIT REMOVE END - SPLASH
 /atom/movable/screen/splash/proc/Fade(out, qdel_after = TRUE)
 	if(QDELETED(src))
 		return
