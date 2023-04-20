@@ -85,7 +85,7 @@
 		var/y = FLOOR(pos_idx / switch_width, 1)
 		var/atom/movable/screen/buildmode/B = new buttontype(src, thing)
 		// extra .5 for a nice offset look
-		B.screen_loc = "NORTH-[(1 + 0.5 + y*1.5)],WEST+[0.5 + x*1.5]"
+		B.screen_loc = "TOP-[(1 + 0.5 + y*1.5)],LEFT+[0.5 + x*1.5]"
 		buttonslist += B
 		pos_idx++
 
