@@ -85,6 +85,8 @@
 
 INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 
+// EFFIGY EDIT REMOVE START - SPLASH
+/*
 /turf/closed/indestructible/splashscreen/Initialize(mapload)
 	. = ..()
 	SStitle.splash_turf = src
@@ -112,7 +114,8 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 /turf/closed/indestructible/splashscreen/examine()
 	desc = pick(strings(SPLASH_FILE, "splashes"))
 	return ..()
-
+*/
+// EFFIGY EDIT REMOVE END - SPLASH
 /turf/closed/indestructible/start_area
 	name = null
 	desc = null

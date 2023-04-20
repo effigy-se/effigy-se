@@ -210,7 +210,8 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	init_stage_completed = 0
 	var/mc_started = FALSE
 
-	to_chat(world, span_boldannounce("Initializing subsystems..."))
+	//to_chat(world, span_boldannounce("Initializing subsystems..."))
+	add_startup_message("Initializing subsystems...") // EFFIGY EDIT CHANGE - SPLASH
 
 	var/list/stage_sorted_subsystems = new(INITSTAGE_MAX)
 	for (var/i in 1 to INITSTAGE_MAX)

@@ -857,6 +857,7 @@ SUBSYSTEM_DEF(job)
 	to_chat(player, "<span class='infoplain'><b>You have failed to qualify for any job you desired.</b></span>")
 	unassigned -= player
 	player.ready = PLAYER_NOT_READY
+	player.client << output(player.ready, "lobby_browser:imgsrc") // EFFIGY EDIT ADD - SPLASH
 
 
 /datum/controller/subsystem/job/Recover()
