@@ -1,3 +1,4 @@
+/*
 /proc/generate_lizard_side_shots(list/sprite_accessories, key, include_snout = TRUE)
 	var/list/values = list()
 
@@ -142,3 +143,4 @@
 /datum/preference/choiced/lizard_tail/create_default_value()
 	var/datum/sprite_accessory/tails/lizard/smooth/tail = /datum/sprite_accessory/tails/lizard/smooth
 	return initial(tail.name)
+*/
