@@ -39,6 +39,8 @@
 #define DNA_SKIN_TONE_BLOCK 3
 #define DNA_UNI_IDENTITY_BLOCKS 7
 
+// EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+/*
 /// This number needs to equal the total number of DNA blocks
 #define DNA_FEATURE_BLOCKS 15
 
@@ -56,6 +58,9 @@
 #define DNA_MOTH_ANTENNAE_BLOCK 12
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
+*/
+// EFFIGY EDIT REMOVAL END - CUSTOMIZATION
+
 #define DNA_POD_HAIR_BLOCK 15
 
 #define DNA_SEQUENCE_LENGTH 4
@@ -123,6 +128,7 @@
 #define ORGAN_SLOT_EXTERNAL_ANTENNAE "antennae"
 #define ORGAN_SLOT_EXTERNAL_BODYMARKINGS "bodymarkings"
 #define ORGAN_SLOT_EXTERNAL_POD_HAIR "pod_hair"
+
 
 /// Xenomorph organ slots
 #define ORGAN_SLOT_XENO_ACIDGLAND "acid_gland"
