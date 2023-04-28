@@ -54,6 +54,14 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		if(initial(quirk_type.abstract_parent_type) == type)
 			continue
 
+		// EFFIGY EDIT ADD START - CUSTOMIZATION
+		if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
+			continue
+		// Hidden quirks aren't visible to TGUI or the player
+		if (initial(quirk_type.hidden_quirk))
+			continue
+		// EFFIGY EDIT ADD END - CUSTOMIZATION
+
 		quirks[initial(quirk_type.name)] = quirk_type
 		quirk_points[initial(quirk_type.name)] = initial(quirk_type.value)
 

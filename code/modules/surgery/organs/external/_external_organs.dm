@@ -39,6 +39,10 @@
 
 	bodypart_overlay = new bodypart_overlay()
 
+	// cache_key = jointext(generate_icon_cache(), "_") // EFFIGY EDIT CHANGE - Species stuff that Goofball ported from /tg/, apparently. Commented for now, to see if I can make it work without it.
+	// we have like 145+ fucking dna blocks lmao
+	dna_block = GLOB.dna_mutant_bodypart_blocks[preference]
+
 	accessory_type = accessory_type ? accessory_type : sprite_accessory_override
 	var/update_overlays = TRUE
 	if(accessory_type)
@@ -57,7 +61,7 @@
 
 /obj/item/organ/external/Destroy()
 	if(owner)
-		Remove(owner, special=TRUE)
+		Remove(owner, special = TRUE)
 	else if(ownerlimb)
 		remove_from_limb()
 
@@ -76,7 +80,13 @@
 
 	if(bodypart_overlay.imprint_on_next_insertion) //We only want this set *once*
 
-		bodypart_overlay.set_appearance_from_name(receiver.dna.features[bodypart_overlay.feature_key])
+		// EFFIGY EDIT ADD START - CUSTOMIZATION - ORIGINAL: bodypart_overlay.set_appearance_from_name(receiver.dna.features[bodypart_overlay.feature_key])
+		if(receiver.dna.features[bodypart_overlay.feature_key])
+			bodypart_overlay.set_appearance_from_name(receiver.dna.features[bodypart_overlay.feature_key])
+
+		else
+			bodypart_overlay.set_appearance_from_dna(receiver.dna)
+		// EFFIGY EDIT ADD END - CUSTOMIZATION
 		bodypart_overlay.imprint_on_next_insertion = FALSE
 
 	ownerlimb = limb
@@ -170,7 +180,7 @@
 	slot = ORGAN_SLOT_EXTERNAL_HORNS
 
 	preference = "feature_lizard_horns"
-	dna_block = DNA_HORNS_BLOCK
+	//dna_block = DNA_HORNS_BLOCK // EFFIGY EDIT REMOVE - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_ENAMEL
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/horns
@@ -186,7 +196,7 @@
 	return TRUE
 
 /datum/bodypart_overlay/mutant/horns/get_global_feature_list()
-	return GLOB.horns_list
+	return GLOB.sprite_accessories["horns"] // EFFIGY EDIT CHANGE - Customization - ORIGINAL: return GLOB.horns_list
 
 ///The frills of a lizard (like weird fin ears)
 /obj/item/organ/external/frills
@@ -198,7 +208,7 @@
 	slot = ORGAN_SLOT_EXTERNAL_FRILLS
 
 	preference = "feature_lizard_frills"
-	dna_block = DNA_FRILLS_BLOCK
+	//dna_block = DNA_FRILLS_BLOCK // EFFIGY EDIT REMOVE - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/frills
@@ -213,11 +223,11 @@
 	return FALSE
 
 /datum/bodypart_overlay/mutant/frills/get_global_feature_list()
-	return GLOB.frills_list
+	return GLOB.sprite_accessories["frills"] // EFFIGY EDIT CHANGE - Customization - ORIGINAL: return GLOB.frills_list
 
 ///Guess what part of the lizard this is?
 /obj/item/organ/external/snout
-	name = "lizard snout"
+	name = "snout" // EFFIGY EDIT CHANGE - ORIGINAL: name = "lizard snout"
 	desc = "Take a closer look at that snout!"
 	icon_state = "snout"
 
@@ -227,7 +237,7 @@
 	preference = "feature_lizard_snout"
 	external_bodytypes = BODYTYPE_SNOUTED
 
-	dna_block = DNA_SNOUT_BLOCK
+	//dna_block = DNA_SNOUT_BLOCK // EFFIGY EDIT REMOVE - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/snout
@@ -242,7 +252,7 @@
 	return FALSE
 
 /datum/bodypart_overlay/mutant/snout/get_global_feature_list()
-	return GLOB.snouts_list
+	return GLOB.sprite_accessories["snout"] // EFFIGY EDIT CHANGE - Customization - ORIGINAL : return GLOB.snouts_list
 
 ///A moth's antennae
 /obj/item/organ/external/antennae
@@ -254,7 +264,7 @@
 	slot = ORGAN_SLOT_EXTERNAL_ANTENNAE
 
 	preference = "feature_moth_antennae"
-	dna_block = DNA_MOTH_ANTENNAE_BLOCK
+	//dna_block = DNA_MOTH_ANTENNAE_BLOCK // EFFIGY EDIT REMOVE - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/antennae
@@ -318,7 +328,7 @@
 	burn_datum = fetch_sprite_datum(burn_datum) //turn the path into the singleton instance
 
 /datum/bodypart_overlay/mutant/antennae/get_global_feature_list()
-	return GLOB.moth_antennae_list
+	return GLOB.sprite_accessories["moth_antennae"] // EFFIGY EDIT CHANGE - Customization - ORIGINAL: return GLOB.moth_antennae_list
 
 /datum/bodypart_overlay/mutant/antennae/get_base_icon_state()
 	return burnt ? burn_datum.icon_state : sprite_datum.icon_state

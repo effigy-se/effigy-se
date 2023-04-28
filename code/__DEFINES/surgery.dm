@@ -42,3 +42,5 @@
 #define SURGERY_REQUIRE_LIMB (1<<3)
 ///Will allow the surgery to work only if there's a real (eg. not pseudopart) limb.
 #define SURGERY_REQUIRES_REAL_LIMB (1<<4)
+
+#define LIVER_DEFAULT_TOX_RESISTANCE 1 //lower values lower how harmful toxins are to the liver

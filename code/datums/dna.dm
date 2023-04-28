@@ -1,5 +1,32 @@
+//EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+/*
+/**
+ * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
+ * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
+ * for these non-standard blocks to work, as well as the entire unique identity string.
+ * Should you add a new ui block which size differ from the standard (again, 3 ASCII characters), like for example, a color,
+ * please do not forget to also include it in this list in the following format:
+ *  "[dna block number]" = dna block size,
+ * Failure to do that may result in bugs. Thanks.
+ */
+GLOBAL_LIST_INIT(identity_block_lengths, list(
+		"[DNA_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_FACIAL_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_EYE_COLOR_LEFT_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_EYE_COLOR_RIGHT_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+	))
 
 /**
+ * The same rules of the above also apply here, with the exception that this is for the unique_features string variable
+ * (commonly abbreviated with uf) and its blocks. Both ui and uf have a standard block length of 3 ASCII characters.
+ */
+GLOBAL_LIST_INIT(features_block_lengths, list(
+		"[DNA_MUTANT_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+	))
+
+/**
+
  * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
  * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
  * for these non-standard blocks to work, as well as the entire unique identity string.
@@ -46,7 +73,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	for(var/blocknumber in 1 to DNA_FEATURE_BLOCKS)
 		. += total_block_len
 		total_block_len += GET_UF_BLOCK_LEN(blocknumber)
-
+*/
+//EFFIGY EDIT REMOVAL END
 /////////////////////////// DNA DATUM
 /datum/dna
 	///An md5 hash of the dna holder's real name
@@ -111,7 +139,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		destination.dna.mutation_index = mutation_index
 		destination.dna.default_mutation_genes = default_mutation_genes
 	if(transfer_species)
-		destination.set_species(species.type, icon_update=0)
+		//destination.set_species(species.type, icon_update=0) - ORIGINAL
+		destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) // EFFIGY EDIT CHANGE - CUSTOMIZATION
 
 /datum/dna/proc/copy_dna(datum/dna/new_dna)
 	new_dna.unique_enzymes = unique_enzymes
@@ -121,6 +150,13 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	new_dna.unique_features = unique_features
 	new_dna.blood_type = blood_type
 	new_dna.features = features.Copy()
+	// EFFIGY EDIT ADD START - CUSTOMIZATION
+	new_dna.mutant_bodyparts = mutant_bodyparts.Copy()
+	new_dna.body_markings = body_markings.Copy()
+	new_dna.update_body_size()
+	// EFFIGY EDIT ADD END - CUSTOMIZATION
+	new_dna.species = new species.type
+	new_dna.species.species_traits = species.species_traits
 	//if the new DNA has a holder, transform them immediately, otherwise save it
 	if(new_dna.holder)
 		new_dna.holder.set_species(species.type, icon_update = 0)
@@ -189,6 +225,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	for(var/blocknum in 1 to DNA_UNI_IDENTITY_BLOCKS)
 		. += L[blocknum] || random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters)
 
+//EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+/*
 /datum/dna/proc/generate_unique_features()
 	. = ""
 	var/list/L = new /list(DNA_FEATURE_BLOCKS)
@@ -226,6 +264,10 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 	for(var/blocknum in 1 to DNA_FEATURE_BLOCKS)
 		. += L[blocknum] || random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters)
+
+	return data.Join()
+*/
+//EFFIGY EDIT REMOVAL END
 
 /datum/dna/proc/generate_dna_blocks()
 	var/bonus
@@ -321,6 +363,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(DNA_HAIRSTYLE_BLOCK)
 			set_uni_identity_block(blocknumber, construct_block(GLOB.hairstyles_list.Find(H.hairstyle), GLOB.hairstyles_list.len))
 
+//EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+/*
 /datum/dna/proc/update_uf_block(blocknumber)
 	if(!blocknumber)
 		CRASH("UF block index is null")
@@ -353,6 +397,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			set_uni_feature_block(blocknumber, construct_block(GLOB.moth_markings_list.Find(features["moth_markings"]), GLOB.moth_markings_list.len))
 		if(DNA_MUSHROOM_CAPS_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.caps_list.Find(features["caps"]), GLOB.caps_list.len))
+*/
+//EFFIGY EDIT REMOVAL END
 		if(DNA_POD_HAIR_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.pod_hair_list.Find(features["pod_hair"]), GLOB.pod_hair_list.len))
 
@@ -425,6 +471,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	unique_enzymes = generate_unique_enzymes()
 	unique_features = generate_unique_features()
 
+//EFFIGY EDIT REMOVAL START - CUSTOMIZATION (moved to modular)
+/*
 /datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
 	if(newblood_type)
 		blood_type = newblood_type
@@ -434,7 +482,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		generate_dna_blocks()
 	features = random_features()
 	unique_features = generate_unique_features()
-
+*/
+//EFFIGY EDIT REMOVAL END
 
 /datum/dna/stored //subtype used by brain mob's stored_dna
 
@@ -467,6 +516,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
 
+//EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+/*
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
@@ -493,6 +544,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			language_holder = new species_holder(src)
 		update_atom_languages()
 		log_mob_tag("SPECIES: [key_name(src)] \[[mrace]\]")
+
+*/
+//EFFIGY EDIT REMOVAL END
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
@@ -576,6 +630,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		else
 			gender = PLURAL
 
+//EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+/*
 /mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0)
 	..()
 	var/structure = dna.unique_identity
@@ -610,7 +666,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(dna.features["tail_cat"])
 		dna.features["tail_cat"] = GLOB.tails_list_human[deconstruct_block(get_uni_feature_block(features, DNA_TAIL_BLOCK), GLOB.tails_list_human.len)]
 	if(dna.features["tail_lizard"])
-		dna.features["tail_lizard"] = GLOB.tails_list_lizard[deconstruct_block(get_uni_feature_block(features, DNA_LIZARD_TAIL_BLOCK), GLOB.tails_list_lizard.len)]
+		dna.features["tail_cat"] = GLOB.tails_list_lizard[deconstruct_block(get_uni_feature_block(features, DNA_LIZARD_TAIL_BLOCK), GLOB.tails_list_lizard.len)]
 	if(dna.features["ears"])
 		dna.features["ears"] = GLOB.ears_list[deconstruct_block(get_uni_feature_block(features, DNA_EARS_BLOCK), GLOB.ears_list.len)]
 	if(dna.features["moth_wings"])
@@ -620,13 +676,15 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(dna.features["moth_antennae"])
 		var/genetic_value = GLOB.moth_antennae_list[deconstruct_block(get_uni_feature_block(features, DNA_MOTH_ANTENNAE_BLOCK), GLOB.moth_antennae_list.len)]
 		dna.features["original_moth_antennae"] = genetic_value
-		dna.features["moth_antennae"] = genetic_value
+		if(dna.features["moth_antennae"] != "Burnt Off")
+			dna.features["moth_antennae"] = genetic_value
 	if(dna.features["moth_markings"])
 		dna.features["moth_markings"] = GLOB.moth_markings_list[deconstruct_block(get_uni_feature_block(features, DNA_MOTH_MARKINGS_BLOCK), GLOB.moth_markings_list.len)]
 	if(dna.features["caps"])
 		dna.features["caps"] = GLOB.caps_list[deconstruct_block(get_uni_feature_block(features, DNA_MUSHROOM_CAPS_BLOCK), GLOB.caps_list.len)]
 	if(dna.features["pod_hair"])
 		dna.features["pod_hair"] = GLOB.pod_hair_list[deconstruct_block(get_uni_feature_block(features, DNA_POD_HAIR_BLOCK), GLOB.pod_hair_list.len)]
+
 
 	for(var/obj/item/organ/external/external_organ in organs)
 		external_organ.mutate_feature(features, src)
@@ -638,7 +696,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			update_body_parts(update_limb_data = TRUE)
 		if(mutations_overlay_update)
 			update_mutations_overlay()
-
+*/
+//EFFIGY EDIT REMOVAL END
 
 /mob/proc/domutcheck()
 	return
@@ -748,7 +807,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(!has_dna())
 		CRASH("[src] does not have DNA")
 	var/num = rand(1, DNA_UNI_IDENTITY_BLOCKS)
-	dna.set_uni_feature_block(num, random_string(GET_UI_BLOCK_LEN(num), GLOB.hex_characters))
+	dna.set_uni_identity_block(num, random_string(GET_UI_BLOCK_LEN(num), GLOB.hex_characters))
 	updateappearance(mutations_overlay_update=1)
 
 /mob/living/carbon/proc/random_mutate_unique_features()
@@ -778,7 +837,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(ui)
 		for(var/blocknum in 1 to DNA_UNI_IDENTITY_BLOCKS)
 			if(prob(probability))
-				M.dna.set_uni_feature_block(blocknum, random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters))
+				M.dna.set_uni_identity_block(blocknum, random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters))
 	if(uf)
 		for(var/blocknum in 1 to DNA_FEATURE_BLOCKS)
 			if(prob(probability))
