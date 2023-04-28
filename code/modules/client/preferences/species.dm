@@ -24,15 +24,30 @@
 	for (var/species_id in get_selectable_species())
 		values += GLOB.species_list[species_id]
 
+	// EFFIGY EDIT ADD START - CUSTOMIZATION
+	for (var/species_id in get_customizable_races())
+		values += GLOB.species_list[species_id]
+	// EFFIGY EDIT ADD END - CUSTOMIZATION
+
 	return values
 
-/datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value)
-	target.set_species(value, icon_update = FALSE, pref_load = TRUE)
+/datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/prefs)
+	target.set_species(value, FALSE, FALSE, prefs?.features.Copy(), prefs?.mutant_bodyparts.Copy(), prefs?.body_markings.Copy()) // EFFIGY EDIT CHANGE - CUSTOMIZATION
+
+	// EFFIGY EDIT ADD START - CUSTOMIZATION
+	target.dna.update_body_size()
+
+	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
+		var/obj/item/organ/external/genital/gent = target.get_organ_slot(organ_key)
+		if(gent)
+			gent.aroused = prefs.arousal_preview
+			gent.update_sprite_suffix()
+	// EFFIGY EDIT ADD END - CUSTOMIZATION
 
 /datum/preference/choiced/species/compile_constant_data()
 	var/list/data = list()
 
-	for (var/species_id in get_selectable_species())
+	for (var/species_id in (get_selectable_species() + get_customizable_races())) // EFFIGY EDIT CHANGE - CUSTOMIZATION
 		var/species_type = GLOB.species_list[species_id]
 		var/datum/species/species = new species_type()
 

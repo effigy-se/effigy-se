@@ -58,6 +58,8 @@
 /proc/random_backpack()
 	return pick(GLOB.backpacklist)
 
+// EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+/*
 /proc/random_features()
 	if(!GLOB.tails_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/, GLOB.tails_list,  add_blank = TRUE)
@@ -111,6 +113,8 @@
 		"tail_monkey" = "None",
 		"pod_hair" = pick(GLOB.pod_hair_list),
 	))
+*/
+// EFFIGY EDIT REMOVAL END - CUSTOMIZATION
 
 /proc/random_hairstyle(gender)
 	switch(gender)

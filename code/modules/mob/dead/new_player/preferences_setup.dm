@@ -90,7 +90,8 @@
 			highest_pref = job_preferences[job]
 
 	return preview_job
-
+// EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+/*
 /datum/preferences/proc/render_new_preview_appearance(mob/living/carbon/human/dummy/mannequin)
 	var/datum/job/preview_job = get_highest_priority_job()
 
@@ -120,3 +121,5 @@
 			mannequin.add_quirk(quirk_type, parent)
 
 	return mannequin.appearance
+*/
+// EFFIGY EDIT REMOVAL END - CUSTOMIZATION

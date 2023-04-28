@@ -14,7 +14,6 @@
 	species_traits = list(
 		DYNCOLORS,
 		AGENDER,
-		NO_UNDERWEAR,
 		HAIR,
 		FACEHAIR,
 	)
