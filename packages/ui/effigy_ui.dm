@@ -1,10 +1,9 @@
-/datum/asset/simple/effigy_ui
-	keep_local_name = TRUE
+/datum/asset/simple/namespaced/effigy_ui
 	assets = list(
-		"ChakraPetch-Medium.ttf" = file("packages/ui/ChakraPetch-Medium.ttf"),
-		"ChakraPetch-MediumItalic.ttf" = file("packages/ui/ChakraPetch-MediumItalic.ttf"),
-		"ChakraPetch-Bold.ttf" = file("packages/ui/ChakraPetch-Bold.ttf"),
-		"ChakraPetch-BoldItalic.ttf" = file("packages/ui/ChakraPetch-BoldItalic.ttf"),
-		"ChakraPetch-Semibold.ttf" = file("packages/ui/ChakraPetch-Semibold.ttf"),
-		"ChakraPetch-SemiboldItalic.ttf" = file("packages/ui/ChakraPetch-SemiboldItalic.ttf"),
+		"ChakraPetch-Medium.ttf" = 'packages/ui/ChakraPetch-Medium.ttf',
+		"ChakraPetch-MediumItalic.ttf" = 'packages/ui/ChakraPetch-MediumItalic.ttf',
+		"ChakraPetch-Bold.ttf" = 'packages/ui/ChakraPetch-Bold.ttf',
+		"ChakraPetch-BoldItalic.ttf" = 'packages/ui/ChakraPetch-BoldItalic.ttf',
+		"ChakraPetch-Semibold.ttf" = 'packages/ui/ChakraPetch-Semibold.ttf',
+		"ChakraPetch-SemiboldItalic.ttf" = 'packages/ui/ChakraPetch-SemiboldItalic.ttf',
 	)
