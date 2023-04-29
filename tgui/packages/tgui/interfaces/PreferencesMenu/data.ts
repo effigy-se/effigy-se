@@ -124,6 +124,9 @@ export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
+  preview_options: string; // EFFIGY EDIT ADD - CUSTOMIZATION
+  preview_selection: string; // EFFIGY EDIT ADD - CUSTOMIZATION
+
   character_preferences: {
     clothing: Record<string, string>;
     features: Record<string, string>;
@@ -158,7 +161,21 @@ export type PreferencesMenuData = {
     }
   >;
   job_preferences: Record<string, JobPriority>;
+  // EFFIGY EDIT ADD START - CUSTOMIZATION
+  job_alt_titles: Record<string, string>;
 
+  robotic_styles: string[];
+  limbs_data: Limb[];
+  organs_data: Organ[];
+  marking_presets: string[];
+
+  selected_languages: Language[];
+  unselected_languages: Language[];
+  total_language_points: number;
+  quirks_balance: number;
+  positive_quirk_count: number;
+  species_restricted_jobs?: string[];
+  // EFFIGY EDIT ADD END - CUSTOMIZATION
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];
