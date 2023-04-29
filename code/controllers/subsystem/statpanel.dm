@@ -37,6 +37,7 @@ SUBSYSTEM_DEF(statpanels)
 		*/
 		//var/real_round_time = world.timeofday - SSticker.real_round_start_time
 		var/server_rev = copytext(GLOB.revdata.commit, 1, 8)
+		var/round_real_time = world.timeofday - SSticker.round_start_real_time
 		global_data = list(
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% (Average: [round(SStime_track.time_dilation_avg_fast,1)]% / [round(SStime_track.time_dilation_avg,1)]% / [round(SStime_track.time_dilation_avg_slow,1)]%)",
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
@@ -46,7 +47,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			" ",
 			"[SSticker.HasRoundStarted() ? "Round Time: [ROUND_TIME()]" : ""]",
-			//"[SSticker.HasRoundStarted() ? "Adj. Round Time: [time2text(real_round_time, "hh:mm:ss", 0)]" : ""]",
+			"[SSticker.HasRoundStarted() ? "Adj. Round Time: [time2text(round_real_time, "hh:mm:ss", 0)]" : ""]",
 			"[SSticker.HasRoundStarted() ? "Station Time: [station_time_timestamp()]" : ""]"
 		)
 		// EFFIGY EDIT CHANGE END - STATPANEL
