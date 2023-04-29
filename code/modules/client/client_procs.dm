@@ -364,7 +364,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		inline_html = file("html/statbrowser.html"),
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),
-	)
+		assets = list(
+			get_asset_datum(/datum/asset/simple/effigy_ui),
+		))
 	addtimer(CALLBACK(src, PROC_REF(check_panel_loaded)), 30 SECONDS)
 
 	// Initialize tgui panel
