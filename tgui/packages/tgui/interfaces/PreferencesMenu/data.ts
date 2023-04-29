@@ -75,7 +75,43 @@ export type Job = {
   description: string;
   department: string;
 };
+// EFFIGY EDIT ADD START - CUSTOMIZATION
+export type Language = {
+  description: string;
+  name: string;
+  icon: string;
+};
 
+export type Marking = {
+  name: string;
+  color: string;
+  marking_id: string;
+};
+
+export type MarkingData = {
+  marking_choices: string[];
+  markings_list: Marking[];
+};
+
+export type Limb = {
+  slot: string;
+  name: string;
+  can_augment: boolean;
+  chosen_aug: string;
+  chosen_style: string;
+  aug_choices: Record<string, string>;
+  costs: Record<string, number>;
+  markings: MarkingData;
+};
+
+export type Organ = {
+  slot: string;
+  name: string;
+  chosen_organ: string;
+  organ_choices: Record<string, string>;
+  costs: Record<string, number>;
+};
+// EFFIGY EDIT ADD END - CUSTOMIZATION
 export type Quirk = {
   description: string;
   icon: string;
