@@ -21,16 +21,14 @@
 		play_lobby_button_sound()
 		ViewManifest()
 		return
-// EFFIGY EDIT REMOVE START - SPLASH
-/*
+
 	if(href_list["toggle_antag"])
 		play_lobby_button_sound()
 		var/datum/preferences/preferences = client.prefs
 		preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], !preferences.read_preference(/datum/preference/toggle/be_antag))
 		client << output(preferences.read_preference(/datum/preference/toggle/be_antag), "title_browser:toggle_antag")
 		return
-*/
-// EFFIGY EDIT REMOVE END - SPLASH
+
 	if(href_list["character_setup"])
 		play_lobby_button_sound()
 		var/datum/preferences/preferences = client.prefs
@@ -49,13 +47,11 @@
 
 	if(href_list["toggle_ready"])
 		play_lobby_button_sound()
-		// EFFIGY EDIT REMOVE START - SPLASH
-		/*
+
 		if(!is_admin(client) && length_char(client?.prefs?.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
 			to_chat(src, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 			return
-		*/
-		// EFFIGY EDIT REMOVE END - SPLASH
+
 		ready = !ready
 		client << output(ready, "title_browser:toggle_ready")
 		return
@@ -96,11 +92,6 @@
 
 	src << browse(SStitle.current_title_screen, "file=loading.gif;display=0")
 	src << browse(dat, "window=title_browser")
-
-/datum/asset/simple/lobby
-	assets = list(
-		"VCR_OSD_Mono.ttf" = 'interface/VCR_OSD_Mono.ttf',
-	)
 
 /**
  * Removes the titlescreen entirely from a mob.

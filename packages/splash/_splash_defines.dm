@@ -1,4 +1,4 @@
-#define DEFAULT_TITLE_MAP_LOADTIME (120 SECONDS)
+#define DEFAULT_TITLE_MAP_LOADTIME (40 SECONDS)
 
 #define DEFAULT_TITLE_SCREEN_IMAGE 'packages/splash/assets/title.png'
 #define DEFAULT_TITLE_LOADING_SCREEN 'packages/splash/assets/loading.gif'
@@ -13,9 +13,12 @@
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 			<style type='text/css'>
 				@font-face {
-					font-family: "Fixedsys";
-					src: url("FixedsysExcelsior3.01Regular.ttf");
-				}
+					font-family: 'Chakra Petch';
+					font-style: normal;
+					font-weight: 600;
+					font-display: block;
+					src: url("ChakraPetch-Semibold.ttf");
+					}
 				body,
 				html {
 					margin: 0;
@@ -109,7 +112,6 @@
 					transform: translate(-50%, -50%);
 					z-index: 1;
 					border: 2px solid white;
-					border-radius: 4px;
 					box-shadow: 2px 2px #333, inset 1px 1px #333;
 					background: linear-gradient(to bottom, rgba(68, 68, 204, 0.9), rgba(0, 0, 102, 0.9));
 					opacity: 75%;
