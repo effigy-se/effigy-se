@@ -40,7 +40,7 @@
 
 	client.playtitlemusic()
 
-	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/effigy_ui)
+	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/namespaced/effigy_ui)
 	asset_datum.send(client)
 	if(!client) // client disconnected during asset transit
 		return FALSE
