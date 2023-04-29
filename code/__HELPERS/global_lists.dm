@@ -65,6 +65,7 @@
 	init_hair_gradients()
 	init_keybindings()
 	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
+	make_extra_datum_references()
 	init_crafting_recipes()
 	init_crafting_recipes_atoms()
 
