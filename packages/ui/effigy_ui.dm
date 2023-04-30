@@ -23,3 +23,27 @@
 		"UbuntuMono-Bold.ttf" = 'packages/ui/UbuntuMono-Bold.ttf',
 		"UbuntuMono-BoldItalic.ttf" = 'packages/ui/UbuntuMono-BoldItalic.ttf',
 	)
+
+var/list/extra_resources = list(\
+	'packages/ui/ChakraPetch-Medium.ttf',
+	'packages/ui/ChakraPetch-MediumItalic.ttf',
+	'packages/ui/ChakraPetch-SemiBold.ttf',
+	'packages/ui/ChakraPetch-SemiBoldItalic.ttf',
+	'packages/ui/ChakraPetch-Bold.ttf',
+	'packages/ui/ChakraPetch-BoldItalic.ttf',
+	'packages/ui/IBMPlexSans-Medium.ttf',
+	'packages/ui/IBMPlexSans-MediumItalic.ttf',
+	'packages/ui/IBMPlexSans-SemiBold.ttf',
+	'packages/ui/IBMPlexSans-SemiBoldItalic.ttf',
+	'packages/ui/IBMPlexSans-Bold.ttf',
+	'packages/ui/IBMPlexSans-BoldItalic.ttf',
+	'packages/ui/TitilliumWeb-Regular.ttf',
+	'packages/ui/TitilliumWeb-Italic.ttf',
+	'packages/ui/TitilliumWeb-SemiBoldItalic.ttf',
+	'packages/ui/TitilliumWeb-Bold.ttf',
+	'packages/ui/TitilliumWeb-BoldItalic.ttf',
+	'packages/ui/UbuntuMono-Regular.ttf',
+	'packages/ui/UbuntuMono-Italic.ttf',
+	'packages/ui/UbuntuMono-Bold.ttf',
+	'packages/ui/UbuntuMono-BoldItalic.ttf'
+)
