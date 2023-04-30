@@ -10,7 +10,7 @@
 	throwforce = 1
 	firing_effect_type = null
 	caliber = CALIBER_ARROW
-	is_cased_ammo = FALSE
+	heavy_metal = FALSE
 
 /obj/item/ammo_casing/caseless/arrow/Initialize(mapload)
 	. = ..()
