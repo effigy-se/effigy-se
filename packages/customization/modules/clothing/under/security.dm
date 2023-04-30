@@ -4,8 +4,8 @@
 /obj/item/clothing/under/rank/security/detective/cowboy
 	name = "blonde cowboy uniform"
 	desc = "A blue shirt and dark jeans, with a pair of spurred cowboy boots to boot."
-	icon = 'packages/_overrides/icons/donator/obj/clothing/uniform.dmi'	//Donator item-ish? See the /armorless one below it
-	worn_icon = 'packages/_overrides/icons/donator/mob/clothing/uniform.dmi'
+	icon = 'overrides/icons/donator/obj/clothing/uniform.dmi'	//Donator item-ish? See the /armorless one below it
+	worn_icon = 'overrides/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "cowboy_uniform"
 	supports_variations_flags = NONE
 	can_adjust = FALSE
@@ -16,8 +16,8 @@
 /obj/item/clothing/suit/cowboyvest
 	name = "blonde cowboy vest"
 	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	icon_state = "cowboy_vest"
 	body_parts_covered = CHEST|ARMS
 	cold_protection = CHEST|ARMS
@@ -27,8 +27,8 @@
 /obj/item/clothing/suit/jacket/det_suit/cowboyvest
 	name = "blonde cowboy vest"
 	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	icon_state = "cowboy_vest"
 	body_parts_covered = CHEST|ARMS
 	cold_protection = CHEST|ARMS
@@ -38,8 +38,8 @@
 /obj/item/clothing/under/rank/security/detective/runner
 	name = "runner sweater"
 	desc = "<i>\"You look lonely.\"</i>"
-	icon = 'packages/_overrides/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/under/security.dmi'
+	icon = 'overrides/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/under/security.dmi'
 	icon_state = "runner"
 	supports_variations_flags = NONE
 	can_adjust = FALSE
@@ -54,8 +54,8 @@
 /obj/item/clothing/under/rank/security/peacekeeper/sol
 	name = "sol police uniform"
 	desc = "A light blue shirt with navy pants, and a golden insignia on the shoulder. Perfect for standing around idly during emergencies."
-	icon = 'packages/_overrides/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/under/security.dmi'
+	icon = 'overrides/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/under/security.dmi'
 	icon_state = "policealt"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
@@ -69,8 +69,8 @@
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
 	name = "sol chief of police uniform"
 	desc = "A white satin shirt with golden pauldrons and a leather belt, which has a large \"NT\" for a buckle. Nice to see where the budget went."
-	icon = 'packages/_overrides/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/under/security.dmi'
+	icon = 'overrides/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/under/security.dmi'
 	icon_state = "policechiefalt"
 
 // End Police Uniforms
@@ -137,9 +137,9 @@
 /obj/item/clothing/under/rank/prisoner/classic
 	name = "classic prisoner jumpsuit"
 	desc = "A black and white striped jumpsuit, like something out of a movie."
-	icon = 'packages/_overrides/icons/obj/clothing/under/costume.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/under/costume.dmi'
-	worn_icon_digi = 'packages/_overrides/icons/mob/clothing/under/costume_digi.dmi'
+	icon = 'overrides/icons/obj/clothing/under/costume.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/under/costume.dmi'
+	worn_icon_digi = 'overrides/icons/mob/clothing/under/costume_digi.dmi'
 	icon_state = "prisonerclassic"
 	greyscale_colors = null
 	greyscale_config = null

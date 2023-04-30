@@ -1,7 +1,7 @@
 // Hairstyles
 
 /datum/sprite_accessory/hair/skyrat
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/hair.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/hair.dmi'
 
 /datum/sprite_accessory/hair/skyrat/pigtails4
 	name = "Pigtails 4"
@@ -365,22 +365,22 @@
 
 /datum/sprite_accessory/hair/skyrat/halfshavedlong
 	name = "Half-shaved long"
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/more_hair.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_long"
 
 /datum/sprite_accessory/hair/skyrat/halfshavedmessy
 	name = "Half-shaved messy"
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/more_hair.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_messy"
 
 /datum/sprite_accessory/hair/skyrat/halfshavedmessylong
 	name = "Half-shave long messy"
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/more_hair.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_messylong"
 
 /datum/sprite_accessory/hair/skyrat/halfshavedglamorous
 	name = "Half-shave glamorous"
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/more_hair.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_glamorous"
 
 /datum/sprite_accessory/hair/skyrat/emoshort
@@ -478,7 +478,7 @@
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/facialhair.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/facialhair.dmi'
 
 /datum/sprite_accessory/facial_hair/skyrat/sideburns
 	name = "Sideburns"

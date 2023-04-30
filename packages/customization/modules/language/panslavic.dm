@@ -19,5 +19,5 @@
 		"zem", "lya", "kan", "ce", "la", "ri", "јa", "snezh", "ne", "pa", "da", "vi", "ne"
 	)
 	icon_state = "panslavic"
-	icon = 'packages/_overrides/icons/misc/language.dmi'
+	icon = 'overrides/icons/misc/language.dmi'
 	default_priority = 95

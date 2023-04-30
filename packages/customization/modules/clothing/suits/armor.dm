@@ -3,8 +3,8 @@
 // SECURITY OFFICER
 
 /obj/item/clothing/suit/armor/navyblue
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	name = "security officer's jacket"
 	desc = "This jacket is for those special occasions when a security officer isn't required to wear their armor."
 	icon_state = "officerbluejacket"
@@ -14,8 +14,8 @@
 // HEAD OF SECURITY
 
 /obj/item/clothing/suit/armor/hos/navyblue
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	name = "head of security's jacket"
 	desc = "This piece of clothing was specifically designed for asserting superior authority."
 	icon_state = "hosbluejacket"
@@ -26,8 +26,8 @@
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/cloak
 	name = "armored trenchcloak"
 	desc = "A trenchcoat enchanced with a special lightweight kevlar. This one appears to be designed to be draped over one's shoulders rather than worn normally.."
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	icon_state = "trenchcloak"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	body_parts_covered = CHEST|ARMS|LEGS
@@ -35,16 +35,16 @@
 // WARDEN
 
 /obj/item/clothing/suit/armor/vest/warden/navyblue
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	name = "warden's jacket"
 	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
 	icon_state = "wardenbluejacket"
 	body_parts_covered = CHEST|ARMS
 
 /obj/item/clothing/suit/armor/vest/warden/syndicate
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	name = "master at arms' vest"
 	desc = "Stunning. Menacing. Perfect for the man who gets bullied for leaving the brig."
 	icon_state = "warden_syndie"
@@ -54,8 +54,8 @@
 /obj/item/clothing/suit/toggle/hop_parade
 	name = "head of personnel's parade jacket"
 	desc = "A luxurious deep blue jacket for the Head of Personnel, woven with a red trim. It smells of bureaucracy."
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	icon_state = "hopformal"
 	inhand_icon_state = "coatcaptain"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -64,8 +64,8 @@
 
 // CAPTAIN
 /obj/item/clothing/suit/armor/vest/capcarapace/jacket
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	name = "captain's jacket"
 	desc = "A lightweight armored jacket in the Captain's colors. For when you want something sleeker."
 	icon_state = "capjacket"

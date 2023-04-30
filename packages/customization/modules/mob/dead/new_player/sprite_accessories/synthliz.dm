@@ -1,7 +1,7 @@
 //Synth snouts (This is the most important part)
 /datum/sprite_accessory/snouts/synthliz
 	recommended_species = list()
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/synthliz_snouts.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/synthliz_snouts.dmi'
 	color_src = USE_ONE_COLOR
 	default_color = null
 	name = "Synthetic Lizard - Snout"
@@ -73,7 +73,7 @@
 //Synth tails
 /datum/sprite_accessory/tails/synthliz
 	recommended_species = list()
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/synthliz_tails.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/synthliz_tails.dmi'
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard"
 	icon_state = "synthliz"
@@ -81,7 +81,7 @@
 
 //Synth Antennae
 /datum/sprite_accessory/antenna/synthliz
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/synthliz_antennas.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/synthliz_antennas.dmi'
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard - Antennae"
 	icon_state = "synth_antennae"
