@@ -128,9 +128,9 @@ h1.alert, h2.alert		{color: #000000;}
 
 .blob					{color: #556B2F;	font-weight: bold;	font-size: 3;}
 
-.sans					{font-family: "Comic Sans MS", cursive, sans-serif;}
-.papyrus				{font-family: "Papyrus", cursive, sans-serif;}
-.robot					{font-family: "Courier New", cursive, sans-serif;}
+.sans					{font-family: "Comic Sans MS", sans-serif;}
+.papyrus				{font-family: "Papyrus", sans-serif;}
+.robot					{font-family: "Ubuntu Mono", sans-serif;}
 
 .command_headset		{font-weight: bold;	font-size: 3;}
 .small					{font-size: 1;}
@@ -140,8 +140,8 @@ h1.alert, h2.alert		{color: #000000;}
 .greentext				{color: #00FF00;	font-size: 3;}
 .redtext				{color: #FF0000;	font-size: 3;}
 .clown					{color: #FF69Bf;	font-size: 3;	font-family: "Comic Sans MS", cursive, sans-serif;	font-weight: bold;}
-.singing				{font-family: "Trebuchet MS", cursive, sans-serif; font-style: italic;}
-.his_grace				{color: #15D512;	font-family: "Courier New", cursive, sans-serif;	font-style: italic;}
+.singing				{font-family: "Chakra Petch", sans-serif; font-style: italic;}
+.his_grace				{color: #15D512;	font-family: "Ubuntu Monow", sans-serif;	font-style: italic;}
 .hypnophrase			{color: #3bb5d3;	font-weight: bold;	animation: hypnocolor 1500ms infinite; animation-direction: alternate;}
 	@keyframes hypnocolor {
 		0%		{color: #0d0d0d;}
