@@ -7,7 +7,7 @@
 	worn_icon_state = "ballgag"
 	icon = 'packages/lewd/assets/obj/lewd_clothing/lewd_masks.dmi'
 	worn_icon = 'packages/lewd/assets/mob/lewd_clothing/lewd_masks.dmi'
-	worn_icon_muzzled = 'packages/_overrides/icons/mob/clothing/mask_muzzled.dmi'
+	worn_icon_muzzled = 'overrides/icons/mob/clothing/mask_muzzled.dmi'
 	lefthand_file = 'packages/lewd/assets/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'packages/lewd/assets/mob/lewd_inhands/lewd_inhand_right.dmi'
 	greyscale_config = /datum/greyscale_config/ballgag

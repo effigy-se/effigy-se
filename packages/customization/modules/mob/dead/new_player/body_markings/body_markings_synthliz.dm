@@ -1,5 +1,5 @@
 /datum/body_marking/secondary/synthliz
-	icon = 'packages/_overrides/icons/mob/body_markings/synthliz_secondary.dmi'
+	icon = 'overrides/icons/mob/body_markings/synthliz_secondary.dmi'
 	recommended_species = list()
 
 /datum/body_marking/secondary/synthliz/scutes
@@ -18,7 +18,7 @@
 	affected_bodyparts = CHEST
 
 /datum/body_marking/tertiary/synthliz
-	icon = 'packages/_overrides/icons/mob/body_markings/synthliz_tertiary.dmi'
+	icon = 'overrides/icons/mob/body_markings/synthliz_tertiary.dmi'
 	recommended_species = list()
 
 /datum/body_marking/tertiary/synthliz/plates

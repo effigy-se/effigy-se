@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// Apply this preference onto the given human.
 /// Must be overriden by subtypes.
 /// Called when the savefile_identifier == PREFERENCE_CHARACTER.
-/* EFFIGY REMOVAL - See packages\_overrides\code\modules\client\preferences\_preference.dm
+/* EFFIGY REMOVAL - See overrides\code\modules\client\preferences\_preference.dm
 /datum/preference/proc/apply_to_human(mob/living/carbon/human/target, value)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(FALSE)

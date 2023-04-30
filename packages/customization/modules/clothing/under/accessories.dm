@@ -1,8 +1,8 @@
 /obj/item/clothing/accessory/badge
 	name = "detective's badge"
 	desc = "Security Department detective's badge, made from gold."
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/accessories.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/accessories.dmi'
 	icon_state = "badge"
 	slot_flags = ITEM_SLOT_NECK
 	attachment_slot = CHEST
@@ -10,13 +10,13 @@
 	var/stored_name
 	var/badge_string = "Corporate Security"
 
-	drop_sound = 'packages/_overrides/sound/items/drop/ring.ogg'
-	pickup_sound = 'packages/_overrides/sound/items/pickup/ring.ogg'
+	drop_sound = 'overrides/sound/items/drop/ring.ogg'
+	pickup_sound = 'overrides/sound/items/pickup/ring.ogg'
 
 /obj/item/clothing/accessory/badge/old
 	name = "faded badge"
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/accessories.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/accessories.dmi'
 	desc = "A faded badge, backed with leather. It bears the emblem of the Forensic division."
 	icon_state = "goldbadge"
 
@@ -48,8 +48,8 @@
 /obj/item/clothing/accessory/badge/sheriff
 	name = "sheriff badge"
 	desc = "This town ain't big enough for the two of us, pardner."
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/accessories.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/accessories.dmi'
 	icon_state = "sheriff"
 
 /obj/item/clothing/accessory/badge/sheriff/attack_self(mob/user as mob)
@@ -66,14 +66,14 @@
 	name = "holobadge"
 	desc = "This glowing blue badge marks the holder as THE LAW."
 	icon_state = "holobadge"
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/accessories.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/accessories.dmi'
 	var/emagged //Emagging removes Sec check.
 
 /obj/item/clothing/accessory/badge/holo/cord
 	icon_state = "holobadge-cord"
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/accessories.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/accessories.dmi'
 
 /obj/item/clothing/accessory/badge/holo/attack_self(mob/user as mob)
 	if(!stored_name)
@@ -124,24 +124,24 @@
 /obj/item/clothing/accessory/badge/holo/warden
 	name = "warden's holobadge"
 	desc = "A silver corporate security badge. Stamped with the words 'Warden.'"
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/accessories.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/accessories.dmi'
 	icon_state = "silverbadge"
 	slot_flags = ITEM_SLOT_NECK
 
 /obj/item/clothing/accessory/badge/holo/hos
 	name = "head of security's holobadge"
 	desc = "An immaculately polished gold security badge. Labeled 'Head of Security.'"
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/accessories.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/accessories.dmi'
 	icon_state = "goldbadge"
 	slot_flags = ITEM_SLOT_NECK
 
 /obj/item/clothing/accessory/badge/holo/detective
 	name = "detective's holobadge"
 	desc = "An immaculately polished gold security badge on leather. Labeled 'Detective.'"
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/accessories.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/accessories.dmi'
 	icon_state = "marshalbadge"
 	slot_flags = ITEM_SLOT_NECK
 
@@ -165,8 +165,8 @@
 	name = "green pin"
 	desc = "A pin given to newly hired personnel on deck."
 	icon_state = "green"
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/accessories.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/accessories.dmi'
 
 /obj/item/clothing/accessory/green_pin/examine(mob/user)
 	. = ..()

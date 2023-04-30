@@ -44,7 +44,7 @@
 
 //Use this one for things with pre-set default colors, I guess
 /datum/body_marking/other
-	icon = 'packages/_overrides/icons/mob/body_markings/other_markings.dmi'
+	icon = 'overrides/icons/mob/body_markings/other_markings.dmi'
 	recommended_species = null
 
 /datum/body_marking/other/drake_bone
@@ -136,7 +136,7 @@
 	affected_bodyparts = LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/secondary
-	icon = 'packages/_overrides/icons/mob/body_markings/secondary_markings.dmi'
+	icon = 'overrides/icons/mob/body_markings/secondary_markings.dmi'
 	default_color = DEFAULT_SECONDARY
 
 /datum/body_marking/secondary/teshari
@@ -423,7 +423,7 @@
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/tertiary
-	icon = 'packages/_overrides/icons/mob/body_markings/tertiary_markings.dmi'
+	icon = 'overrides/icons/mob/body_markings/tertiary_markings.dmi'
 	default_color = DEFAULT_TERTIARY
 
 /datum/body_marking/tertiary/redpanda
@@ -559,7 +559,7 @@
 
 
 /datum/body_marking/tattoo
-	icon = 'packages/_overrides/icons/mob/body_markings/tattoo_markings.dmi'
+	icon = 'overrides/icons/mob/body_markings/tattoo_markings.dmi'
 	recommended_species = null
 	default_color = "#112222" //slightly faded ink.
 	always_color_customizable = TRUE

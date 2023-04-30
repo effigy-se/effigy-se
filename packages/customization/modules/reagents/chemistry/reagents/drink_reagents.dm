@@ -9,7 +9,7 @@
 
 /datum/glass_style/drinking_glass/pinkmilk
 	required_drink_type = /datum/reagent/consumable/pinkmilk
-	icon = 'packages/_overrides/icons/obj/drinks.dmi'
+	icon = 'overrides/icons/obj/drinks.dmi'
 	icon_state = "pinkmilk"
 	name = "tall glass of strawberry milk"
 	desc = "Delicious flavored strawberry syrup mixed with milk."
@@ -29,7 +29,7 @@
 
 /datum/glass_style/drinking_glass/pinktea
 	required_drink_type = /datum/reagent/consumable/pinktea
-	icon = 'packages/_overrides/icons/obj/drinks.dmi'
+	icon = 'overrides/icons/obj/drinks.dmi'
 	icon_state = "pinktea"
 	name = "mug of strawberry tea"
 	desc = "Delicious traditional tea flavored with strawberries."
@@ -48,7 +48,7 @@
 
 /datum/glass_style/drinking_glass/catnip_tea
 	required_drink_type = /datum/reagent/consumable/catnip_tea
-	icon = 'packages/_overrides/icons/obj/drinks.dmi'
+	icon = 'overrides/icons/obj/drinks.dmi'
 	icon_state = "catnip_tea"
 	name = "glass of catnip tea"
 	desc = "A purrfect drink for a cat."
