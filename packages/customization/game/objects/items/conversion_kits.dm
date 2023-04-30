@@ -1,7 +1,7 @@
 /obj/item/device/custom_kit
 	name = "modification kit"
 	desc = "A box of parts for modifying a certain object."
-	icon = 'packages/_overrides/icons/donator/obj/kits.dmi'
+	icon = 'overrides/icons/donator/obj/kits.dmi'
 	icon_state = "partskit"
 	/// The base object to be converted.
 	var/obj/item/from_obj

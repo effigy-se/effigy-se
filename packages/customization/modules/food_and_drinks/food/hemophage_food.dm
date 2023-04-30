@@ -1,7 +1,7 @@
 /obj/item/food/hemophage
 	name = "bloody food"
 	desc = "If you see this, then something's gone very wrong and you should report it whenever you get the chance."
-	icon = 'packages/_overrides/icons/obj/food/hemophage_food.dmi'
+	icon = 'overrides/icons/obj/food/hemophage_food.dmi'
 	foodtypes = GORE | BLOODY
 
 
@@ -106,7 +106,7 @@
 /obj/item/food/soup/hemophage/blood_soup
 	name = "dinuguan"
 	desc = "A savory stew normally made of offal or freshly-simmered meat. This version features blood curds instead, while also featuring a rich, spicy and dark gravy made of fresh blood and vinegar. Chili and garlic were also added to enhance the savory flavor of the broth."
-	icon = 'packages/_overrides/icons/obj/food/hemophage_food.dmi'
+	icon = 'overrides/icons/obj/food/hemophage_food.dmi'
 	icon_state = "blood_soup"
 	max_volume = 90
 	food_reagents = list(

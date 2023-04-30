@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/wraps
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	name = "gilded leg wraps"
 	desc = "Ankle coverings. These ones have a golden design."
 	icon_state = "gildedcuffs"
@@ -22,8 +22,8 @@
 	icon_state = "bluecuffs"
 
 /obj/item/clothing/shoes/cowboyboots
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	name = "cowboy boots"
 	desc = "A standard pair of brown cowboy boots."
 	icon_state = "cowboyboots"
@@ -34,8 +34,8 @@
 	icon_state = "cowboyboots_black"
 
 /obj/item/clothing/shoes/high_heels
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	name = "high heels"
 	desc = "A fancy pair of high heels. Won't compensate for your below average height that much."
 	icon_state = "heels"
@@ -49,8 +49,8 @@
 	name = "fancy heels"
 	desc = "A pair of fancy high heels that are much smaller on your feet."
 	icon_state = "fancyheels"
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	greyscale_colors = "#FFFFFF"
 	greyscale_config = /datum/greyscale_config/fancyheels
 	greyscale_config_worn = /datum/greyscale_config/fancyheels/worn
@@ -60,13 +60,13 @@
 /obj/item/clothing/shoes/discoshoes
 	name = "green snakeskin shoes"
 	desc = "They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly."
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	icon_state = "lizardskin_shoes"
 
 /obj/item/clothing/shoes/kimshoes
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	name = "aerostatic boots"
 	desc = "A brown pair of boots, prim and proper, ready to set off and get a body out of a tree."
 	icon_state = "aerostatic_boots"
@@ -75,8 +75,8 @@
 /obj/item/clothing/shoes/jungleboots
 	name = "jungle boots"
 	desc = "Take me to your paradise, I want to see the Jungle. A brown pair of boots."
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	icon_state = "jungle"
 	inhand_icon_state = "jackboots"
 	strip_delay = 30
@@ -91,8 +91,8 @@
 /obj/item/clothing/shoes/jackboots/black
 	name = "dark jackboots"
 	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time. These are fully black."
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	icon_state = "blackjack"
 
 /obj/item/clothing/shoes/wraps/colourable
@@ -109,43 +109,43 @@
 /obj/item/clothing/shoes/sports
 	name = "sport shoes"
 	desc = "Shoes for the sporty individual. The giants of Charlton play host to the titans of Ipswich - making them both seem normal sized."
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	icon_state = "sportshoe"
 
 /obj/item/clothing/shoes/jackboots/knee
 	name = "knee boots"
 	desc = "Black leather boots that go up to the knee."
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	icon_state = "kneeboots"
 
 /obj/item/clothing/shoes/jackboots/timbs
 	name = "fashionable boots"
 	desc = "Fresh from Luna, deadass good for rappers."
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	icon_state = "timbs"
 
 /obj/item/clothing/shoes/winterboots/christmas
 	name = "red christmas boots"
 	desc = "A pair of fluffy red christmas boots!"
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	icon_state = "christmasbootsr"
 
 /obj/item/clothing/shoes/winterboots/christmas/green
 	name = "green christmas boots"
 	desc = "A pair of fluffy green christmas boots!"
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	icon_state = "christmasbootsg"
 
 /obj/item/clothing/shoes/clown_shoes/pink
 	name = "pink clown shoes"
 	desc = "A particularly pink pair of punny shoes."
-	icon = 'packages/_overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/feet.dmi'
+	icon = 'overrides/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
 	icon_state = "pink_clown_shoes"
 
 //Modular overide to give jackboots laces
