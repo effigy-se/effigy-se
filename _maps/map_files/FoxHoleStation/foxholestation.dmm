@@ -566,10 +566,6 @@
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/storage)
 "aKW" = (
-/obj/machinery/door/poddoor/preopen{
-	elevator_linked_id = "cargo_vator";
-	elevator_mode = 1
-	},
 /obj/machinery/lift_indicator/directional/south{
 	linked_elevator_id = "cargo_vator"
 	},
@@ -580,6 +576,10 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/poddoor{
+	elevator_linked_id = "cargo_vator";
+	elevator_mode = 1
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/warehouse)
 "aLm" = (
@@ -1655,10 +1655,6 @@
 /turf/open/floor/iron/edge,
 /area/station/hallway/primary/central)
 "bPD" = (
-/obj/machinery/door/poddoor/preopen{
-	elevator_linked_id = "cargo_vator";
-	elevator_mode = 1
-	},
 /obj/machinery/elevator_control_panel/directional/north{
 	linked_elevator_id = "cargo_vator";
 	preset_destination_names = list("2"="Deck One","3"="Deck Two")
@@ -1670,6 +1666,10 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/poddoor{
+	elevator_linked_id = "cargo_vator";
+	elevator_mode = 1
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/warehouse)
 "bQo" = (
@@ -3191,10 +3191,6 @@
 /turf/closed/wall,
 /area/station/cargo/storage)
 "dxw" = (
-/obj/machinery/door/poddoor/preopen{
-	elevator_linked_id = "cargo_vator";
-	elevator_mode = 1
-	},
 /obj/effect/turf_decal/siding/thinplating_new{
 	dir = 4
 	},
@@ -3203,6 +3199,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/machinery/door/poddoor{
+	elevator_linked_id = "cargo_vator";
+	elevator_mode = 1
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/warehouse)
@@ -4795,6 +4795,7 @@
 /turf/open/floor/iron/white/textured_large,
 /area/station/science/xenobiology)
 "foz" = (
+/obj/machinery/light/dim/directional/south,
 /turf/open/floor/catwalk_floor,
 /area/station/cargo/warehouse)
 "fpB" = (
@@ -14653,6 +14654,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"qWG" = (
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/catwalk_floor,
+/area/station/cargo/storage)
 "qWJ" = (
 /obj/effect/turf_decal/bot_white,
 /obj/effect/decal/cleanable/oil,
@@ -55634,7 +55639,7 @@ xKb
 eaf
 eaf
 eaf
-xKb
+qWG
 dxu
 lRz
 qWD
