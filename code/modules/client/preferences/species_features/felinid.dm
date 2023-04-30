@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVAL - CUSTOMIZATION
+// EFFIGY EDIT REMOVE - CUSTOMIZATION
 /*
 /datum/preference/choiced/tail_human
 	savefile_key = "feature_human_tail"
