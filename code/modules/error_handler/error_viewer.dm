@@ -33,7 +33,7 @@ GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
 	{
 		background-color: #171717;
 		border: solid 1px #202020;
-		font-family: "Courier New";
+		font-family: "Ubuntu Mono";
 		padding-left: 10px;
 		color: #CCCCCC;
 	}
