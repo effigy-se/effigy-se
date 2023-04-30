@@ -13,6 +13,9 @@
 		#include "map_files\NorthStar\north_star.dmm"
 		#include "map_files\IceBoxStation\IceBoxStation.dmm"
 		#include "map_files\tramstation\tramstation.dmm"
+		// EFFIGY EDIT START
+		#include "map_files\FoxHoleStation\foxholestation.dmm"
+		// EFFIGY EDIT END
 
 		#ifdef CIBUILDING
 			#include "templates.dm"
