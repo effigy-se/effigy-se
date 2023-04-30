@@ -75,9 +75,9 @@
 /obj/item/clothing/neck/mantle/recolorable
 	name = "mantle"
 	desc = "A simple drape over the shoulders."
-	icon = 'packages/GAGS/assets/neck/neck.dmi'
-	worn_icon = 'packages/GAGS/assets/neck/neck.dmi'
-	worn_icon_teshari = 'packages/GAGS/assets/neck/neck_teshari.dmi'
+	icon = 'packages/greyscale/assets/neck/neck.dmi'
+	worn_icon = 'packages/greyscale/assets/neck/neck.dmi'
+	worn_icon_teshari = 'packages/greyscale/assets/neck/neck_teshari.dmi'
 	icon_state = "mantle"
 	greyscale_colors = "#ffffff"
 	greyscale_config = /datum/greyscale_config/mantle
