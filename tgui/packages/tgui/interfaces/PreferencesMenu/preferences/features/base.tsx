@@ -3,7 +3,7 @@ import { BooleanLike, classes } from 'common/react';
 import { ComponentType, createComponentVNode, InfernoNode } from 'inferno';
 import { VNodeFlags } from 'inferno-vnode-flags';
 import { sendAct, useBackend, useLocalState } from '../../../../backend';
-import { Box, Button, Dropdown, Input, NumberInput, Stack } from '../../../../components';
+import { Box, Button, Dropdown, Input, NumberInput, Stack, TextArea } from '../../../../components'; // EFFIGY EDIT CHANGE - CUSTOMIZATION (add TextArea)
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
@@ -363,5 +363,94 @@ export const FeatureShortTextInput = (
       maxLength={props.serverData.maximum_length}
       onChange={(_, value) => props.handleSetValue(value)}
     />
+  );
+};
+
+// EFFIGY EDIT ADD START - CUSTOMIZATION
+
+export const FeatureTextInput = (
+  props: FeatureValueProps<string, string, FeatureShortTextData>
+) => {
+  if (!props.serverData) {
+    return <Box>Loading...</Box>;
+  }
+
+  return (
+    <TextArea
+      height="100px"
+      value={props.value}
+      maxLength={props.serverData.maximum_length}
+      onChange={(_, value) => props.handleSetValue(value)}
+    />
+  );
+};
+
+export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
+  const buttonFromValue = (index) => {
+    return (
+      <Stack.Item>
+        <Button
+          onClick={() => {
+            props.act('set_tricolor_preference', {
+              preference: props.featureId,
+              value: index + 1,
+            });
+          }}>
+          <Stack align="center" fill>
+            <Stack.Item>
+              <Box
+                style={{
+                  background: props.value[index].startsWith('#')
+                    ? props.value[index]
+                    : `#${props.value[index]}`,
+                  border: '2px solid white',
+                  'box-sizing': 'content-box',
+                  height: '11px',
+                  width: '11px',
+                  ...(props.shrink
+                    ? {
+                      'margin': '1px',
+                    }
+                    : {}),
+                }}
+              />
+            </Stack.Item>
+
+            {!props.shrink && <Stack.Item>Change</Stack.Item>}
+          </Stack>
+        </Button>
+      </Stack.Item>
+    );
+  };
+  return (
+    <Stack align="center" fill>
+      {buttonFromValue(0)}
+      {buttonFromValue(1)}
+      {buttonFromValue(2)}
+    </Stack>
+  );
+};
+
+export const FeatureTriBoolInput = (props: FeatureValueProps<boolean[]>) => {
+  const buttonFromValue = (index) => {
+    return (
+      <Stack.Item align="center" fill>
+        <Button.Checkbox
+          checked={!!props.value[index]}
+          onClick={() => {
+            const currentValue = [...props.value];
+            currentValue[index] = !currentValue[index];
+            props.handleSetValue(currentValue);
+          }}
+        />
+      </Stack.Item>
+    );
+  };
+  return (
+    <Stack align="center" fill>
+      {buttonFromValue(0)}
+      {buttonFromValue(1)}
+      {buttonFromValue(2)}
+    </Stack>
   );
 };

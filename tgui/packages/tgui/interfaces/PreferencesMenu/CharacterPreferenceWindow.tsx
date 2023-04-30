@@ -9,11 +9,15 @@ import { JobsPage } from './JobsPage';
 import { MainPage } from './MainPage';
 import { SpeciesPage } from './SpeciesPage';
 import { QuirksPage } from './QuirksPage';
+import { LanguagesPage } from './LanguagesMenu'; // EFFIGY EDIT ADD
+import { LimbsPage } from './LimbsPage'; // EFFIGY EDIT ADD
 
 enum Page {
   Antags,
   Main,
   Jobs,
+  Limbs, // EFFIGY EDIT ADD
+  Languages, // EFFIGY EDIT ADD
   Species,
   Quirks,
 }
@@ -61,6 +65,14 @@ export const CharacterPreferenceWindow = (props, context) => {
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
+    // EFFIGY EDIT ADD START - CUSTOMIZATION
+    case Page.Limbs:
+      pageContents = <LimbsPage />;
+      break;
+    case Page.Languages:
+      pageContents = <LanguagesPage />;
+      break;
+    // EFFIGY EDIT ADD END - CUSTOMIZATION
     case Page.Main:
       pageContents = (
         <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
@@ -81,7 +93,7 @@ export const CharacterPreferenceWindow = (props, context) => {
   }
 
   return (
-    <Window title="Character Preferences" width={920} height={770}>
+    <Window title="Character Preferences" width={1070} height={640}>
       <Window.Content scrollable>
         <Stack vertical fill>
           <Stack.Item>
@@ -128,7 +140,29 @@ export const CharacterPreferenceWindow = (props, context) => {
                   Occupations
                 </PageButton>
               </Stack.Item>
+              {
+                // EFFIGY EDIT ADD START - CUSTOMIZATION
+              }
+              <Stack.Item grow>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Limbs}
+                  setPage={setCurrentPage}>
+                  Augments+
+                </PageButton>
+              </Stack.Item>
 
+              <Stack.Item grow>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Languages}
+                  setPage={setCurrentPage}>
+                  Languages
+                </PageButton>
+              </Stack.Item>
+              {
+                // EFFIGY EDIT ADD END - CUSTOMIZATION
+              }
               <Stack.Item grow>
                 <PageButton
                   currentPage={currentPage}

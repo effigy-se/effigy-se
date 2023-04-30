@@ -75,7 +75,43 @@ export type Job = {
   description: string;
   department: string;
 };
+// EFFIGY EDIT ADD START - CUSTOMIZATION
+export type Language = {
+  description: string;
+  name: string;
+  icon: string;
+};
 
+export type Marking = {
+  name: string;
+  color: string;
+  marking_id: string;
+};
+
+export type MarkingData = {
+  marking_choices: string[];
+  markings_list: Marking[];
+};
+
+export type Limb = {
+  slot: string;
+  name: string;
+  can_augment: boolean;
+  chosen_aug: string;
+  chosen_style: string;
+  aug_choices: Record<string, string>;
+  costs: Record<string, number>;
+  markings: MarkingData;
+};
+
+export type Organ = {
+  slot: string;
+  name: string;
+  chosen_organ: string;
+  organ_choices: Record<string, string>;
+  costs: Record<string, number>;
+};
+// EFFIGY EDIT ADD END - CUSTOMIZATION
 export type Quirk = {
   description: string;
   icon: string;
@@ -124,6 +160,9 @@ export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
+  preview_options: string; // EFFIGY EDIT ADD - CUSTOMIZATION
+  preview_selection: string; // EFFIGY EDIT ADD - CUSTOMIZATION
+
   character_preferences: {
     clothing: Record<string, string>;
     features: Record<string, string>;
@@ -158,7 +197,21 @@ export type PreferencesMenuData = {
     }
   >;
   job_preferences: Record<string, JobPriority>;
+  // EFFIGY EDIT ADD START - CUSTOMIZATION
+  job_alt_titles: Record<string, string>;
 
+  robotic_styles: string[];
+  limbs_data: Limb[];
+  organs_data: Organ[];
+  marking_presets: string[];
+
+  selected_languages: Language[];
+  unselected_languages: Language[];
+  total_language_points: number;
+  quirks_balance: number;
+  positive_quirk_count: number;
+  species_restricted_jobs?: string[];
+  // EFFIGY EDIT ADD END - CUSTOMIZATION
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];

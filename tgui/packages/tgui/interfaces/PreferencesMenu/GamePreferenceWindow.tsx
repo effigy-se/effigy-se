@@ -35,7 +35,7 @@ export const GamePreferenceWindow = (
   }
 
   return (
-    <Window title="Game Preferences" width={920} height={770}>
+    <Window title="Game Preferences" width={1070} height={778}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>

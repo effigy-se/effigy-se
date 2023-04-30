@@ -1,3 +1,5 @@
+// EFFIGY EDIT REMOVAL - CUSTOMIZATION
+/*
 /datum/preference/choiced/moth_antennae
 	savefile_key = "feature_moth_antennae"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -98,3 +100,4 @@
 
 /datum/preference/choiced/moth_wings/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["moth_wings"] = value
+*/

@@ -55,6 +55,7 @@ SUBSYSTEM_DEF(ticker)
 	var/roundend_check_paused = FALSE
 
 	var/round_start_time = 0
+	var/round_start_real_time = 0 // EFFIGY EDIT ADD - STATPANEL
 	var/list/round_start_events
 	var/list/round_end_events
 	var/mode_result = "undefined"
@@ -269,6 +270,7 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
+	round_start_real_time = world.timeofday // EFFIGY EDIT ADD - STATPANEL
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
