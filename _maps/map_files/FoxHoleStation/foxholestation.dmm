@@ -2039,7 +2039,7 @@
 /area/station/security/processing)
 "cjn" = (
 /obj/machinery/door/window/survival_pod{
-	req_access_txt = "65"
+	req_access = list("ai_upload")
 	},
 /obj/machinery/ai_slipper,
 /obj/effect/turf_decal/stripes/line,
@@ -6181,8 +6181,8 @@
 /area/station/science)
 "gWF" = (
 /obj/machinery/door/window/survival_pod{
-	req_access_txt = "65";
-	dir = 8
+	dir = 8;
+	req_access = list("ai_upload")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -11534,8 +11534,8 @@
 /area/station/engineering/supermatter/room)
 "njP" = (
 /obj/machinery/door/window/survival_pod{
-	req_access_txt = "65";
-	dir = 4
+	dir = 4;
+	req_access = list("ai_upload")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -14742,9 +14742,9 @@
 /obj/machinery/computer/security/qm{
 	dir = 1
 	},
-/obj/machinery/light/dim/directional/south,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/directional/south,
 /turf/open/floor/carpet/orange,
 /area/station/command/heads_quarters/qm)
 "rea" = (
