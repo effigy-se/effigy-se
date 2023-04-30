@@ -54,7 +54,7 @@
  */
 /datum/security_level/blue
 	name = "blue"
-	sound = 'sound/misc/notice1.ogg' // Angry alarm
+	sound = 'sound/misc/notice2.ogg' // EFFIGY EDIT CHANGE
 	number_level = SEC_LEVEL_BLUE
 	lowering_to_configuration_key = /datum/config_entry/string/alert_blue_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_blue_upto
