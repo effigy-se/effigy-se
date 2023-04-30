@@ -204,9 +204,9 @@
 /obj/item/clothing/head/standalone_hood
 	name = "hood"
 	desc = "A hood with a bit of support around the neck so it actually stays in place, for all those times you want a hood without the coat."
-	icon = 'packages/GAGS/assets/head/head.dmi'
-	worn_icon = 'packages/GAGS/assets/head/head.dmi'
-	worn_icon_teshari = 'packages/GAGS/assets/head/head_teshari.dmi'
+	icon = 'packages/greyscale/assets/head/head.dmi'
+	worn_icon = 'packages/greyscale/assets/head/head.dmi'
+	worn_icon_teshari = 'packages/greyscale/assets/head/head_teshari.dmi'
 	icon_state = "hood"
 	body_parts_covered = HEAD
 	cold_protection = HEAD

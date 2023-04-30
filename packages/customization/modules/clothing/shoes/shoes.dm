@@ -155,9 +155,9 @@
 /obj/item/clothing/shoes/colorable_laceups
 	name = "laceup shoes"
 	desc = "These don't seem to come pre-polished, how saddening."
-	icon = 'packages/GAGS/assets/shoes/shoes.dmi'
-	worn_icon = 'packages/GAGS/assets/shoes/shoes.dmi'
-	worn_icon_teshari = 'packages/GAGS/assets/shoes/shoes_teshari.dmi'
+	icon = 'packages/greyscale/assets/shoes/shoes.dmi'
+	worn_icon = 'packages/greyscale/assets/shoes/shoes.dmi'
+	worn_icon_teshari = 'packages/greyscale/assets/shoes/shoes_teshari.dmi'
 	icon_state = "laceups"
 	greyscale_colors = "#383631"
 	greyscale_config = /datum/greyscale_config/laceup
@@ -170,9 +170,9 @@
 /obj/item/clothing/shoes/colorable_sandals
 	name = "sandals"
 	desc = "Rumor has it that wearing these with socks puts you on a no entry list in several sectors."
-	icon = 'packages/GAGS/assets/shoes/shoes.dmi'
-	worn_icon = 'packages/GAGS/assets/shoes/shoes.dmi'
-	worn_icon_teshari = 'packages/GAGS/assets/shoes/shoes_teshari.dmi'
+	icon = 'packages/greyscale/assets/shoes/shoes.dmi'
+	worn_icon = 'packages/greyscale/assets/shoes/shoes.dmi'
+	worn_icon_teshari = 'packages/greyscale/assets/shoes/shoes_teshari.dmi'
 	icon_state = "sandals"
 	greyscale_colors = "#383631"
 	greyscale_config = /datum/greyscale_config/sandals
@@ -184,9 +184,9 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/jackboots/recolorable
-	icon = 'packages/GAGS/assets/shoes/shoes.dmi'
-	worn_icon = 'packages/GAGS/assets/shoes/shoes.dmi'
-	worn_icon_teshari = 'packages/GAGS/assets/shoes/shoes_teshari.dmi'
+	icon = 'packages/greyscale/assets/shoes/shoes.dmi'
+	worn_icon = 'packages/greyscale/assets/shoes/shoes.dmi'
+	worn_icon_teshari = 'packages/greyscale/assets/shoes/shoes_teshari.dmi'
 	icon_state = "boots"
 	greyscale_colors = "#383631"
 	greyscale_config = /datum/greyscale_config/boots
