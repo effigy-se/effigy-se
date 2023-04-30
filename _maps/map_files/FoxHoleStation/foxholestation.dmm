@@ -581,9 +581,6 @@
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/storage)
 "aKW" = (
-/obj/machinery/lift_indicator/directional/south{
-	linked_elevator_id = "cargo_vator"
-	},
 /obj/effect/turf_decal/siding/thinplating_new{
 	dir = 4
 	},
@@ -1001,6 +998,16 @@
 	},
 /turf/open/floor/iron,
 /area/station/science/ordnance/testlab)
+"biK" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/red/line,
+/obj/machinery/door/window/elevator/right/directional/south{
+	pixel_y = -6;
+	elevator_linked_id = "PermaElevator";
+	elevator_mode = 1
+	},
+/turf/open/floor/iron/smooth_large,
+/area/station/security/prison)
 "biY" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -1684,23 +1691,12 @@
 /turf/open/floor/iron/edge,
 /area/station/hallway/primary/central)
 "bPD" = (
-/obj/machinery/elevator_control_panel/directional/north{
-	linked_elevator_id = "cargo_vator";
-	preset_destination_names = list("2"="Deck One","3"="Deck Two")
+/obj/structure/industrial_lift,
+/obj/machinery/elevator_control_panel/directional/east{
+	linked_elevator_id = "SciLift"
 	},
-/obj/effect/turf_decal/siding/thinplating_new{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/door/poddoor{
-	elevator_linked_id = "cargo_vator";
-	elevator_mode = 1
-	},
-/turf/open/floor/iron/smooth_large,
-/area/station/cargo/warehouse)
+/turf/open/floor/plating/elevatorshaft,
+/area/station/science/lower)
 "bQo" = (
 /obj/machinery/computer/scan_consolenew,
 /obj/effect/turf_decal/bot_red,
@@ -2339,6 +2335,7 @@
 /turf/open/floor/mineral/plastitanium/airless,
 /area/space/nearstation)
 "cwg" = (
+/obj/structure/industrial_lift,
 /turf/open/floor/plating/elevatorshaft,
 /area/station/science/lower)
 "cwr" = (
@@ -3389,6 +3386,11 @@
 "dGN" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/red/line,
+/obj/machinery/door/window/elevator/left/directional/south{
+	pixel_y = -6;
+	elevator_linked_id = "PermaElevator";
+	elevator_mode = 1
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/security/prison)
 "dGT" = (
@@ -3557,6 +3559,14 @@
 	},
 /obj/machinery/button/elevator/directional/south{
 	id = "PermaElevator"
+	},
+/obj/machinery/lift_indicator/directional/south{
+	linked_elevator_id = "PermaElevator"
+	},
+/obj/machinery/door/window/elevator/right/directional/east{
+	elevator_linked_id = "PermaElevator";
+	elevator_mode = 1;
+	pixel_x = 7
 	},
 /turf/open/floor/catwalk_floor,
 /area/station/security/prison/upper)
@@ -4971,6 +4981,11 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 4
 	},
+/obj/machinery/door/window/elevator/left/directional/east{
+	elevator_linked_id = "SciLift";
+	elevator_mode = 1;
+	pixel_x = 6
+	},
 /turf/open/floor/iron/white,
 /area/station/science/lower)
 "fxl" = (
@@ -5895,9 +5910,6 @@
 /obj/machinery/door/poddoor/preopen{
 	elevator_linked_id = "cargo_vator";
 	elevator_mode = 1
-	},
-/obj/machinery/lift_indicator/directional/south{
-	linked_elevator_id = "cargo_vator"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -8129,8 +8141,11 @@
 /area/station/hallway/secondary/service)
 "iQr" = (
 /obj/structure/industrial_lift,
-/turf/open/openspace,
-/area/station/science)
+/obj/machinery/elevator_control_panel/directional/south{
+	linked_elevator_id = "PermaElevator"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/security/prison)
 "iQI" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/rack,
@@ -9267,6 +9282,12 @@
 	},
 /obj/machinery/light/dim/directional/east,
 /obj/structure/table,
+/obj/machinery/button/elevator/directional/east{
+	id = "cargo_vator"
+	},
+/obj/machinery/lift_indicator/directional/east{
+	linked_elevator_id = "cargo_vator"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/cargo/storage)
 "klv" = (
@@ -9283,6 +9304,13 @@
 /obj/effect/turf_decal/siding/white,
 /obj/machinery/button/elevator/directional/east{
 	id = "SciLift"
+	},
+/obj/machinery/lift_indicator/directional/east{
+	linked_elevator_id = "SciLift"
+	},
+/obj/machinery/door/window/elevator/right/directional/south{
+	elevator_linked_id = "SciLift";
+	elevator_mode = 1
 	},
 /turf/open/floor/iron/white/smooth_half,
 /area/station/science)
@@ -10964,6 +10992,9 @@
 /obj/machinery/button/elevator/directional/east{
 	id = "SciLift"
 	},
+/obj/machinery/lift_indicator/directional/east{
+	linked_elevator_id = "SciLift"
+	},
 /turf/open/floor/iron/white/smooth_half,
 /area/station/science/lower)
 "mlG" = (
@@ -11551,10 +11582,6 @@
 	elevator_linked_id = "cargo_vator";
 	elevator_mode = 1
 	},
-/obj/machinery/elevator_control_panel/directional/north{
-	linked_elevator_id = "cargo_vator";
-	preset_destination_names = list("2"="Deck One","3"="Deck Two")
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -11765,8 +11792,11 @@
 /area/station/service/library/upper)
 "nnH" = (
 /obj/structure/industrial_lift,
-/turf/open/openspace,
-/area/station/security/prison/upper)
+/obj/effect/landmark/lift_id{
+	specific_lift_id = "PermaElevator"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/security/prison)
 "nnU" = (
 /obj/effect/mapping_helpers/airlock/abandoned,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
@@ -12132,6 +12162,7 @@
 /turf/open/floor/iron/checker,
 /area/station/service/bar)
 "nQh" = (
+/obj/structure/industrial_lift,
 /turf/open/floor/plating/elevatorshaft,
 /area/station/security/prison)
 "nQT" = (
@@ -13055,6 +13086,12 @@
 /area/station/science/ordnance)
 "oKZ" = (
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/button/elevator/directional/east{
+	id = "cargo_vator"
+	},
+/obj/machinery/lift_indicator/directional/east{
+	linked_elevator_id = "cargo_vator"
+	},
 /turf/open/floor/iron/smooth_edge,
 /area/station/cargo/warehouse)
 "oLe" = (
@@ -13580,6 +13617,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/button/elevator/directional/south{
 	id = "PermaElevator"
+	},
+/obj/machinery/lift_indicator/directional/south{
+	linked_elevator_id = "PermaElevator"
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/security/prison)
@@ -14746,6 +14786,11 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
+/obj/machinery/door/window/elevator/left/directional/east{
+	elevator_mode = 1;
+	elevator_linked_id = "PermaElevator";
+	pixel_x = 7
+	},
 /turf/open/floor/catwalk_floor,
 /area/station/security/prison/upper)
 "qPV" = (
@@ -15063,8 +15108,8 @@
 /obj/effect/landmark/lift_id{
 	specific_lift_id = "SciLift"
 	},
-/turf/open/openspace,
-/area/station/science)
+/turf/open/floor/plating/elevatorshaft,
+/area/station/science/lower)
 "rkv" = (
 /turf/open/floor/iron/dark/side{
 	dir = 8
@@ -15558,6 +15603,20 @@
 "rTl" = (
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"rTw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 4
+	},
+/obj/machinery/door/window/elevator/right/directional/east{
+	elevator_linked_id = "SciLift";
+	elevator_mode = 1;
+	pixel_x = 6
+	},
+/turf/open/floor/iron/white,
+/area/station/science/lower)
 "rTE" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south,
@@ -15572,7 +15631,7 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "rVA" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/external/glass,
 /turf/open/floor/iron/textured,
 /area/station/hallway/secondary/entry)
 "rVE" = (
@@ -20892,6 +20951,10 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/white,
+/obj/machinery/door/window/elevator/left/directional/south{
+	elevator_linked_id = "SciLift";
+	elevator_mode = 1
+	},
 /turf/open/floor/iron/white/smooth_half,
 /area/station/science)
 "xoG" = (
@@ -21273,12 +21336,12 @@
 /turf/open/floor/engine/hull,
 /area/space)
 "xHz" = (
-/obj/structure/industrial_lift,
-/obj/effect/landmark/lift_id{
-	specific_lift_id = "PermaElevator"
+/obj/structure/industrial_lift/public,
+/obj/machinery/elevator_control_panel/directional/east{
+	linked_elevator_id = "cargo_vator"
 	},
-/turf/open/openspace,
-/area/station/security/prison/upper)
+/turf/open/floor/plating/elevatorshaft,
+/area/station/cargo/storage)
 "xHV" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -47432,7 +47495,7 @@ hgt
 vho
 bVx
 dGN
-nQh
+nnH
 nQh
 tcI
 oec
@@ -47688,9 +47751,9 @@ xUu
 oDA
 uvr
 ucA
-dGN
+biK
 nQh
-nQh
+iQr
 tGh
 hIO
 sYf
@@ -49462,7 +49525,7 @@ cXx
 eXU
 mls
 fxk
-fxk
+rTw
 rXX
 sOi
 jGI
@@ -49718,7 +49781,7 @@ qdV
 qdV
 ycB
 ycB
-cwg
+rko
 cwg
 eXU
 eXU
@@ -49976,7 +50039,7 @@ fDD
 iIP
 gsN
 cwg
-cwg
+bPD
 eXU
 gfM
 qdQ
@@ -55890,7 +55953,7 @@ dxu
 xKb
 eaf
 eaf
-eaf
+xHz
 qWG
 dxu
 lRz
@@ -112968,8 +113031,8 @@ eiQ
 eiQ
 eiQ
 iqU
-xHz
-nnH
+eiQ
+eiQ
 xFE
 sYf
 sYf
@@ -113225,8 +113288,8 @@ qZn
 qZn
 qwg
 iqU
-nnH
-nnH
+eiQ
+eiQ
 xFE
 sYf
 mtT
@@ -115254,8 +115317,8 @@ lHW
 lHW
 sTx
 xoc
-rko
-iQr
+eGE
+eGE
 bwm
 vGU
 ivh
@@ -115511,8 +115574,8 @@ oGi
 lHW
 rDa
 klC
-iQr
-iQr
+eGE
+eGE
 bwm
 hVK
 oLe
@@ -120910,7 +120973,7 @@ ewJ
 xxs
 rBp
 iAF
-bPD
+aKW
 dxw
 aKW
 iAF
