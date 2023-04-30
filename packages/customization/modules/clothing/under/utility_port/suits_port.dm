@@ -1,7 +1,7 @@
 //Base Jacket - same stats as /obj/item/clothing/suit/jacket, just toggleable and serving as the base for all the departmental jackets and flannels
 /obj/item/clothing/suit/toggle/jacket
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	name = "bomber jacket"
 	desc = "A warm bomber jacket, with synthetic-wool lining to keep you nice and warm in the depths of space. Aviators not included."
 	icon_state = "bomberalt"
@@ -54,8 +54,8 @@
 	icon_state = "off_dep_jacket"
 
 /obj/item/clothing/suit/gorka	//THIS WILL BE MOVED IN THE NEXT PR ADDING PROPER GORKAS (not cargo related so not in this PR), BUT FOR NOW ITS HERE FOR THE SUBTYPE'S FILE LINKS
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/gorka/supply	//Put here for sorting purposes, considering the cargo gorkas are in the utility file too. The base Gorka and Jacket (to be added later) will most likely be elsewhere
@@ -92,8 +92,8 @@
 
 //Flannels
 /obj/item/clothing/suit/toggle/jacket/flannel
-	icon = 'packages/_overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/suit.dmi'
+	icon = 'overrides/icons/obj/clothing/suits.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
 	name = "flannel jacket"
 	desc = "A cozy and warm plaid flannel jacket. Praised by Lumberjacks and Truckers alike."
 	icon_state = "flannel"

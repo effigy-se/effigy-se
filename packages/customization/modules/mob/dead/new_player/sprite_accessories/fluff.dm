@@ -1,5 +1,5 @@
 /datum/sprite_accessory/fluff/moth
-	icon = 'packages/_overrides/icons/mob/sprite_accessory/moth_fluff.dmi'
+	icon = 'overrides/icons/mob/sprite_accessory/moth_fluff.dmi'
 	default_color = "#FFFFFF"
 	key = "fluff"
 	generic = "Fluff"

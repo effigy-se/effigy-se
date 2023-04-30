@@ -1,8 +1,8 @@
 /obj/item/clothing/glasses/hud/eyepatch
 	name = "eyepatch HUD"
 	desc = "A simple HUD designed to interface with optical nerves of a lost eye. This one seems busted."
-	icon = 'packages/_overrides/icons/obj/clothing/glasses.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/eyes.dmi'
+	icon = 'overrides/icons/obj/clothing/glasses.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/eyes.dmi'
 	icon_state = "hudpatch"
 	base_icon_state = "hudpatch"
 	inhand_icon_state = "sunhudmed"
@@ -119,8 +119,8 @@
 /obj/item/clothing/glasses/trickblindfold/obsolete
 	name = "obsolete fake blindfold"
 	desc = "An ornate fake blindfold, devoid of any electronics. It's belived to be originally worn by members of bygone military force that sought to protect humanity."
-	icon = 'packages/_overrides/icons/obj/clothing/glasses.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/eyes.dmi'
+	icon = 'overrides/icons/obj/clothing/glasses.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/eyes.dmi'
 	icon_state = "obsoletefold"
 	base_icon_state = "obsoletefold"
 	can_switch_eye = TRUE
