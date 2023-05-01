@@ -1939,8 +1939,7 @@
 /area/station/cargo/storage)
 "eF" = (
 /obj/machinery/door/airlock/research/glass{
-	name = "Testing Labs";
-	req_one_access_txt = "7"
+	name = "Testing Labs"
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2231,8 +2230,7 @@
 /area/station/science/xenobiology)
 "fk" = (
 /obj/machinery/door/airlock/mining{
-	name = "Mining Office";
-	req_access_txt = "48"
+	name = "Mining Office"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/mining,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4745,9 +4743,6 @@
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "kk" = (
-/obj/machinery/vending/autodrobe{
-	req_access_txt = ""
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -4755,6 +4750,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/machinery/vending/autodrobe/all_access,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "kl" = (
@@ -12413,8 +12409,7 @@
 	id = "roboticsprivacy";
 	name = "Robotics Privacy Control";
 	pixel_x = -24;
-	pixel_y = -24;
-	req_access_txt = "29"
+	pixel_y = -24
 	},
 /obj/structure/chair/office{
 	dir = 8
@@ -12544,9 +12539,7 @@
 /turf/open/floor/iron/dark,
 /area/station/science/research)
 "BX" = (
-/obj/machinery/modular_computer/console/preset/id{
-	req_access_txt = "40"
-	},
+/obj/machinery/modular_computer/console/preset/id,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -12749,9 +12742,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Medbay Office"
 	},
-/obj/machinery/modular_computer/console/preset/id{
-	req_access_txt = "30"
-	},
+/obj/machinery/modular_computer/console/preset/id,
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -13179,8 +13170,7 @@
 /area/station/command/heads_quarters/cmo)
 "Dw" = (
 /obj/machinery/door/airlock/research/glass{
-	name = "Chemistry Lab";
-	req_access_txt = "33"
+	name = "Chemistry Lab"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/medical/chemistry,
@@ -13263,8 +13253,7 @@
 "DE" = (
 /obj/structure/closet/crate/secure{
 	desc = "A secure crate containing various materials for building a customised test-site.";
-	name = "Test Site Materials Crate";
-	req_access_txt = "8"
+	name = "Test Site Materials Crate"
 	},
 /obj/item/target/clown,
 /obj/item/target/alien,
@@ -13805,8 +13794,7 @@
 /area/station/medical/chemistry)
 "ER" = (
 /obj/machinery/door/airlock/research/glass{
-	name = "Pharmacy";
-	req_access_txt = "5; 69"
+	name = "Pharmacy"
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -15845,7 +15833,7 @@
 /obj/machinery/portable_atmospherics/canister/plasma,
 /obj/machinery/door/window/right/directional/east{
 	dir = 8;
-	req_one_access_txt = list("engineering","atmos")
+	req_one_access = list("engineering","atmos")
 	},
 /turf/open/floor/engine,
 /area/station/engineering/main)
@@ -17280,7 +17268,7 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/door/window/right/directional/east{
 	dir = 8;
-	req_one_access_txt = list("engineering","atmos")
+	req_one_access = list("engineering","atmos")
 	},
 /turf/open/floor/engine,
 /area/station/engineering/main)
@@ -18221,7 +18209,7 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/machinery/door/window/right/directional/east{
 	dir = 8;
-	req_one_access_txt = list("engineering","atmos")
+	req_one_access = list("engineering","atmos")
 	},
 /turf/open/floor/engine,
 /area/station/engineering/main)
@@ -19662,7 +19650,7 @@
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/machinery/door/window/right/directional/east{
 	dir = 8;
-	req_one_access_txt = list("engineering","atmos")
+	req_one_access = list("engineering","atmos")
 	},
 /turf/open/floor/engine,
 /area/station/engineering/main)
@@ -19732,9 +19720,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "ZJ" = (
-/obj/structure/closet/secure_closet/bar{
-	req_access_txt = "25"
-	},
+/obj/structure/closet/secure_closet/bar,
 /obj/item/gun/ballistic/shotgun/doublebarrel,
 /turf/open/floor/wood,
 /area/station/service/cafeteria)
