@@ -341,9 +341,13 @@ GLOBAL_REAL(Master, /datum/controller/master)
 			chat_warning = TRUE
 
 	var/message = "[message_prefix] [seconds] second[seconds == 1 ? "" : "s"]!"
+	// EFFIGY EDIT REMOVE START (#2 Splash)
+	/*
 	var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
+	*/
+	// EFFIGY EDIT REMOVE END (#2 Splash)
 
-	to_chat(world, chat_message)
+	add_startup_message(message, chat_warning) // EFFIGY EDIT ADD (#2 Splash)
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
