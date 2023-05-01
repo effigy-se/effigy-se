@@ -115,6 +115,9 @@
 /// log attack messages
 /datum/config_entry/flag/log_attack
 
+/// log subtler emotes
+/datum/config_entry/flag/log_subtler // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+
 /// log emotes
 /datum/config_entry/flag/log_emote
 

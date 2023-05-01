@@ -4,6 +4,7 @@
 GLOBAL_LIST_INIT(nearsighted_glasses, list(
 	"Circle",
 	"Hipster",
+	"Modern", // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 	"Regular",
 	"Thin",
 ))

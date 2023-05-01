@@ -20,6 +20,21 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 /proc/ui_style2icon(ui_style)
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
 
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+GLOBAL_LIST_INIT(available_erp_ui_styles, list(
+	"Glass" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/glass.dmi',
+	"Midnight" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/midnight.dmi',
+	"Retro" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/retro.dmi',
+	"Plasmafire" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/plasmafire.dmi',
+	"Slimecore" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/slimecore.dmi',
+	"Operative" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/operative.dmi',
+	"Clockwork" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/clockwork.dmi'
+))
+
+/proc/erp_ui_style2icon(ui_style)
+	return GLOB.available_erp_ui_styles[ui_style] || GLOB.available_erp_ui_styles[GLOB.available_erp_ui_styles[1]]
+// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 /datum/hud
 	var/mob/mymob
 
@@ -27,6 +42,8 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/hud_version = HUD_STYLE_STANDARD //Current displayed version of the HUD
 	var/inventory_shown = FALSE //Equipped item inventory
 	var/hotkey_ui_hidden = FALSE //This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
+
+	var/atom/movable/screen/ammo_counter // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
 	var/atom/movable/screen/blobpwrdisplay
 
@@ -94,6 +111,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
+	var/erp_ui_style // EFFIGY EDIT ADD(#3 Customization - Ported from Skyrat)
 
 /datum/hud/New(mob/owner)
 	mymob = owner
