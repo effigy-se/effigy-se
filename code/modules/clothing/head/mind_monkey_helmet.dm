@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
 /*
 //monkey sentience caps
 
@@ -109,4 +109,4 @@
 		magnification.dropItemToGround(src)
 
 */
-// EFFIGY EDIT REMOVAL END - CUSTOMIZATION
+// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
