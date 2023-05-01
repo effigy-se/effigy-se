@@ -993,6 +993,7 @@
 	pixel_x = -4;
 	pixel_y = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "cx" = (
@@ -3073,7 +3074,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -3475,6 +3475,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "hW" = (
@@ -7272,6 +7273,11 @@
 "pA" = (
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
+"pB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/aft/lesser)
 "pC" = (
 /obj/machinery/computer/atmos_control/plasma_tank{
 	dir = 8
@@ -13436,10 +13442,6 @@
 /area/station/security/detectives_office)
 "Ec" = (
 /obj/structure/table/wood,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 8;
-	on = 1
-	},
 /obj/item/folder/yellow,
 /obj/item/taperecorder,
 /obj/item/camera/detective,
@@ -14363,10 +14365,13 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "Gl" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/carpet,
-/area/station/command/heads_quarters/hop)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "Gm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet,
@@ -16024,7 +16029,6 @@
 /area/station/hallway/primary/starboard)
 "LQ" = (
 /obj/structure/table/wood,
-/obj/structure/cable,
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/folder/red,
 /obj/item/hand_labeler,
@@ -17332,8 +17336,14 @@
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
 "QC" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "QI" = (
@@ -49020,7 +49030,7 @@ mN
 Ex
 aJ
 cw
-Gl
+WA
 WA
 LZ
 Gp
@@ -50044,7 +50054,7 @@ lL
 FR
 NJ
 Jc
-Jc
+QC
 aG
 aV
 cA
@@ -50301,7 +50311,7 @@ CJ
 CA
 Mg
 dA
-Rd
+Gl
 mZ
 aW
 cB
@@ -50558,7 +50568,7 @@ LR
 CA
 mf
 dA
-Rd
+Gl
 ax
 ax
 ax
@@ -51841,7 +51851,7 @@ QO
 IJ
 Ls
 mi
-QC
+RC
 mw
 mI
 ne
@@ -58281,8 +58291,8 @@ QS
 Gx
 KF
 kK
-Fy
-Fy
+pB
+pB
 UP
 Of
 Ib
