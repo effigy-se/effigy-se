@@ -220,6 +220,7 @@
 	emag_only = TRUE
 	credit_cost = EMAG_LOCKED_SHUTTLE_COST * 1.8
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
+	who_can_purchase = null
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"

@@ -67,6 +67,9 @@
 	/// Should we give feedback messages?
 	var/show_visible_message = TRUE
 
+	/// Can it be silent?
+	var/can_be_silent = FALSE // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+
 /// Gets the item from the given source.
 /datum/strippable_item/proc/get_item(atom/source)
 
@@ -125,19 +128,23 @@
 	if (HAS_TRAIT(item, TRAIT_NO_STRIP))
 		return FALSE
 
-	source.visible_message(
-		span_warning("[user] tries to remove [source]'s [item.name]."),
-		span_userdanger("[user] tries to remove your [item.name]."),
-		blind_message = span_hear("You hear rustling."),
-		ignored_mobs = user,
-	)
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	var/is_silent = can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS)
+	if (!is_silent)
+		source.visible_message(
+			span_warning("[user] tries to remove [source]'s [item.name]."),
+			span_userdanger("[user] tries to remove your [item.name]."),
+			blind_message = span_hear("You hear rustling."),
+			ignored_mobs = user,
+		)
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 	to_chat(user, span_danger("You try to remove [source]'s [item.name]..."))
 	user.log_message("is stripping [key_name(source)] of [item].", LOG_ATTACK, color="red")
 	source.log_message("is being stripped of [item] by [key_name(user)].", LOG_VICTIM, color="orange", log_globally=FALSE)
 	item.add_fingerprint(src)
 
-	if(ishuman(source))
+	if(ishuman(source) && !is_silent) // EFFIGY EDIT ADD (Silent)
 		var/mob/living/carbon/human/victim_human = source
 		if(victim_human.key && !victim_human.client) // AKA braindead
 			if(victim_human.stat <= SOFT_CRIT && LAZYLEN(victim_human.afk_thefts) <= AFK_THEFT_MAX_MESSAGES)
@@ -267,8 +274,11 @@
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
 /proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
-	if (!do_after(user, strip_delay || item.strip_delay, source, interaction_key = REF(item)))
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	//if (!do_after(user, strip_delay || item.strip_delay, source, interaction_key = REF(item)))
+	if (!do_after(user, (strip_delay || item.strip_delay) * (HAS_TRAIT(user, TRAIT_STICKY_FINGERS) ? THIEVING_GLOVES_STRIP_SLOWDOWN : NORMAL_STRIP_SLOWDOWN), source, interaction_key = REF(item)))
 		return FALSE
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 	return TRUE
 
