@@ -58,7 +58,7 @@
 /proc/random_backpack()
 	return pick(GLOB.backpacklist)
 
-// EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
 /*
 /proc/random_features()
 	if(!GLOB.tails_list.len)
@@ -114,7 +114,7 @@
 		"pod_hair" = pick(GLOB.pod_hair_list),
 	))
 */
-// EFFIGY EDIT REMOVAL END - CUSTOMIZATION
+// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
 
 /proc/random_hairstyle(gender)
 	switch(gender)

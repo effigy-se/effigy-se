@@ -3,7 +3,7 @@
 /// Apply this preference onto the given human.
 /// Must be overriden by subtypes.
 /// Called when the savefile_identifier == PREFERENCE_CHARACTER.
-/datum/preference/proc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences) // EFFIGY EDIT CHANGE
+/datum/preference/proc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("`apply_to_human()` was not implemented for [type]!")

@@ -75,7 +75,7 @@ export type Job = {
   description: string;
   department: string;
 };
-// EFFIGY EDIT ADD START - CUSTOMIZATION
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 export type Language = {
   description: string;
   name: string;
@@ -111,7 +111,7 @@ export type Organ = {
   organ_choices: Record<string, string>;
   costs: Record<string, number>;
 };
-// EFFIGY EDIT ADD END - CUSTOMIZATION
+// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 export type Quirk = {
   description: string;
   icon: string;
@@ -160,8 +160,8 @@ export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
-  preview_options: string; // EFFIGY EDIT ADD - CUSTOMIZATION
-  preview_selection: string; // EFFIGY EDIT ADD - CUSTOMIZATION
+  preview_options: string; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+  preview_selection: string; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
   character_preferences: {
     clothing: Record<string, string>;
@@ -197,7 +197,7 @@ export type PreferencesMenuData = {
     }
   >;
   job_preferences: Record<string, JobPriority>;
-  // EFFIGY EDIT ADD START - CUSTOMIZATION
+  // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
   job_alt_titles: Record<string, string>;
 
   robotic_styles: string[];
@@ -211,7 +211,7 @@ export type PreferencesMenuData = {
   quirks_balance: number;
   positive_quirk_count: number;
   species_restricted_jobs?: string[];
-  // EFFIGY EDIT ADD END - CUSTOMIZATION
+  // EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];
