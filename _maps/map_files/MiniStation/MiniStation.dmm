@@ -3487,10 +3487,6 @@
 /obj/machinery/light,
 /turf/open/floor/iron/white,
 /area/station/science/research)
-"hY" = (
-/obj/effect/landmark/atmospheric_sanity/mark_all_station_areas_as_goal,
-/turf/open/space,
-/area/space)
 "hZ" = (
 /obj/machinery/door/poddoor/massdriver_ordnance,
 /obj/structure/fans/tiny,
@@ -12916,6 +12912,9 @@
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
 	dir = 8
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/station/commons/storage/tools)
 "CP" = (
@@ -13873,7 +13872,7 @@
 "Fd" = (
 /obj/effect/landmark/atmospheric_sanity/ignore_area,
 /turf/closed/wall/r_wall,
-/area/station/tcommsat/computer)
+/area/station/command/gateway)
 "Fe" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "plumbing_shutters";
@@ -16493,6 +16492,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
+"Nu" = (
+/obj/effect/landmark/atmospheric_sanity/ignore_area,
+/turf/closed/wall/r_wall,
+/area/station/command/heads_quarters/rd)
 "Nw" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/techstorage/ai_all,
@@ -16604,6 +16607,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/plating/airless,
 /area/station/engineering/main)
+"NU" = (
+/obj/effect/landmark/atmospheric_sanity/ignore_area,
+/turf/closed/wall/r_wall,
+/area/station/engineering/gravity_generator)
 "NV" = (
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted{
 	dir = 8
@@ -16728,6 +16735,9 @@
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/station/commons/storage/tools)
 "Or" = (
@@ -16794,6 +16804,11 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
+"OC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/poster/official/random/directional/east,
+/turf/open/floor/iron,
+/area/station/hallway/primary/aft)
 "OD" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral{
@@ -17047,6 +17062,10 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"PE" = (
+/obj/effect/landmark/atmospheric_sanity/mark_all_station_areas_as_goal,
+/turf/open/space,
+/area/space)
 "PF" = (
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -17984,6 +18003,10 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"Tg" = (
+/obj/effect/landmark/atmospheric_sanity/ignore_area,
+/turf/closed/wall/r_wall,
+/area/station/ai_monitored/turret_protected/ai_upload)
 "Th" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -17997,10 +18020,6 @@
 /obj/item/reagent_containers/cup/bucket,
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
-"Tk" = (
-/obj/effect/landmark/atmospheric_sanity/ignore_area,
-/turf/closed/wall/r_wall,
-/area/station/ai_monitored/turret_protected/ai_upload)
 "Tl" = (
 /obj/structure/cable,
 /obj/machinery/light/directional/north,
@@ -18283,6 +18302,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/carpet,
 /area/station/command/bridge)
+"Ur" = (
+/obj/effect/landmark/atmospheric_sanity/ignore_area,
+/turf/closed/wall/r_wall,
+/area/station/tcommsat/server)
 "Us" = (
 /obj/structure/cable,
 /obj/machinery/button/door/directional/north{
@@ -18342,12 +18365,13 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
 "Uz" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/sign/poster/official/random{
-	pixel_x = -32
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "rdrnd";
+	name = "Research and Development Shutters"
 	},
-/turf/open/floor/iron,
-/area/station/hallway/primary/aft)
+/turf/open/floor/plating,
+/area/station/command/heads_quarters/rd)
 "UC" = (
 /turf/open/floor/iron,
 /area/station/engineering/storage_shared)
@@ -18416,10 +18440,6 @@
 	},
 /turf/open/floor/iron/white/corner,
 /area/station/hallway/secondary/exit)
-"UO" = (
-/obj/effect/landmark/atmospheric_sanity/ignore_area,
-/turf/closed/wall/r_wall,
-/area/station/command/gateway)
 "UP" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -18504,6 +18524,10 @@
 /obj/item/restraints/handcuffs/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/fore/lesser)
+"Ve" = (
+/obj/effect/landmark/atmospheric_sanity/ignore_area,
+/turf/closed/wall/r_wall,
+/area/station/ai_monitored/command/nuke_storage)
 "Vf" = (
 /turf/closed/wall/r_wall,
 /area/station/command/heads_quarters/ce)
@@ -18672,17 +18696,9 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
-"VQ" = (
-/obj/effect/landmark/atmospheric_sanity/ignore_area,
-/turf/closed/wall/r_wall,
-/area/station/engineering/gravity_generator)
 "VS" = (
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
-"VT" = (
-/obj/effect/landmark/atmospheric_sanity/ignore_area,
-/turf/closed/wall/r_wall,
-/area/station/tcommsat/server)
 "VU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -19170,6 +19186,10 @@
 /obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"XJ" = (
+/obj/effect/landmark/atmospheric_sanity/ignore_area,
+/turf/closed/wall/r_wall,
+/area/station/tcommsat/computer)
 "XK" = (
 /obj/structure/rack,
 /obj/item/tank/internals/emergency_oxygen,
@@ -19765,6 +19785,9 @@
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/open/floor/engine,
 /area/station/engineering/main)
+"ZO" = (
+/turf/closed/wall,
+/area/station/command/heads_quarters/rd)
 "ZP" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -20065,7 +20088,7 @@ aa
 "}
 (2,1,1) = {"
 aa
-hY
+PE
 aa
 aa
 aa
@@ -51575,7 +51598,7 @@ nb
 ax
 VK
 rv
-VK
+Ve
 ax
 QR
 nb
@@ -51832,7 +51855,7 @@ Ro
 pH
 Om
 GB
-Uz
+MQ
 qf
 GX
 qE
@@ -52346,7 +52369,7 @@ WB
 Xs
 dd
 qg
-ix
+OC
 qy
 TI
 qF
@@ -56684,7 +56707,7 @@ Ih
 dV
 jl
 jl
-UO
+Fd
 jl
 jl
 Yo
@@ -60283,11 +60306,11 @@ bo
 bo
 bo
 ol
-bo
-Ca
-Ca
-fb
-fb
+ZO
+Uz
+Uz
+Wd
+Nu
 fb
 fb
 fb
@@ -63689,7 +63712,7 @@ bL
 Oy
 uI
 Wf
-VT
+Ur
 PG
 PG
 PG
@@ -64972,7 +64995,7 @@ aa
 bh
 uI
 PN
-Tk
+Tg
 vJ
 vJ
 vJ
@@ -64982,7 +65005,7 @@ PG
 PG
 PG
 vh
-Fd
+XJ
 Gy
 uI
 bh
@@ -66772,7 +66795,7 @@ uI
 uP
 Te
 Py
-VQ
+NU
 vq
 vq
 vq
