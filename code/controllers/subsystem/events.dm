@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(events)
 	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
-/datum/controller/subsystem/events/proc/spawnEvent()
+/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) // EFFIGY EDIT ADD (#3 Events - Ported from Skyrat)
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
@@ -67,6 +67,10 @@ SUBSYSTEM_DEF(events)
 	for(var/datum/round_event_control/E in control)
 		if(!E.can_spawn_event(players_amt))
 			continue
+		// EFFIGY EDIT ADD START (#3 Events - Ported from Skyrat)
+		if(threat_override && !E.alert_observers)
+			continue
+		// EFFIGY EDIT ADD END (#3 Events - Ported from Skyrat)
 		if(E.weight < 0) //for round-start events etc.
 			var/res = TriggerEvent(E)
 			if(res == EVENT_INTERRUPTED)
