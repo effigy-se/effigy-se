@@ -1,4 +1,5 @@
-
+// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
+/*
 /*
 	Blunt/Bone wounds
 */
@@ -490,3 +491,6 @@
 	else if(limb.body_zone == BODY_ZONE_CHEST && victim.blood_volume)
 		. += "Ribcage Trauma Detected: Further trauma to chest is likely to worsen internal bleeding until bone is repaired."
 	. += "</div>"
+
+*/
+// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)
