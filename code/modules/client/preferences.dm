@@ -454,10 +454,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 		preference.apply_to_human(character, read_preference(preference.type))
 
-	// EFFIGY EDIT ADD START - CUSTOMIZATION
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.apply_to_human(character, src, visuals_only = visuals_only)
-	// EFFIGY EDIT ADD END - CUSTOMIZATION
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 	character.dna.real_name = character.real_name
 
