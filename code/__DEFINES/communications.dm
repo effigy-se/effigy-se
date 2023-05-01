@@ -3,7 +3,8 @@
 
 /// The extended time an admin has to cancel a cross-sector message if they pass the filter, for instance
 #define EXTENDED_CROSS_SECTOR_CANCEL_TIME (30 SECONDS)
-/* // EFFIGY REMOVAL - see code\_DEFINES\_effigy\security_alerts.dm
+// EFFIGY REMOVE START - see code\_DEFINES\_effigy\security_alerts.dm
+/*
 //Security levels affect the escape shuttle timer
 /// Security level is green. (no threats)
 #define SEC_LEVEL_GREEN 0
@@ -14,3 +15,4 @@
 /// Security level is delta. (station destruction immiment)
 #define SEC_LEVEL_DELTA 3
 */
+// EFFIGY REMOVE END

@@ -90,6 +90,17 @@
 ///hides mutant/moth wings, does not apply to functional wings
 #define HIDEMUTWINGS (1<<13)
 
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+/// Manually set this on items you want anthro ears to show on!
+#define SHOWSPRITEEARS (1<<14)
+/// Does this sprite hide the tail?
+#define HIDETAIL (1<<15)
+/// Does this sprite also hide the spine on tails? Realistically only useful for the clothes that have a special tail overlay, like MODsuits
+#define HIDESPINE (1<<16)
+/// Does this sprite hide devious devices?
+#define HIDESEXTOY (1<<17)
+// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
 #define CHEST (1<<1)
@@ -137,6 +148,21 @@
 #define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
 ///has a sprite for monkeys
 #define CLOTHING_MONKEY_VARIATION (1<<3)
+
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+/// The sprite works fine for snouts.
+#define CLOTHING_SNOUTED_VARIATION (1<<4)
+/// The sprite works fine for snouts as-is.
+#define CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON (1<<5)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_SNOUTED_VOX_VARIATION (1<<6)
+/// The sprite works fine for vox snouts as is.
+#define CLOTHING_SNOUTED_VOX_VARIATION_NO_NEW_ICON (1<<7)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<8)
+/// The sprite works fine for vox snouts as is.
+#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
+// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)
