@@ -519,7 +519,11 @@ SUBSYSTEM_DEF(job)
 
 //Gives the player the stuff he should have with his rank
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/equipping, datum/job/job, client/player_client)
+	// EFFIGY EDIT ADD START (#3 Job Titles - Ported from Skyrat)
+	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
+	var/default_title = job.title
 	equipping.job = job.title
+	// EFFIGY EDIT ADD END (#3 Job Titles - Ported from Skyrat)
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
@@ -536,9 +540,11 @@ SUBSYSTEM_DEF(job)
 			handle_auto_deadmin_roles(player_client, job.title)
 
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>")
+		to_chat(player_client, "<span class='infoplain'><b>As the [chosen_title] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>") // EFFIGY EDIT CHANGE (#3 Job Titles - Ported from Skyrat)
 
-	job.radio_help_message(equipping)
+	equipping.on_job_equipping(job, player_client?.prefs) // EFFIGY EDIT CHANGE (#3 Job Titles - Ported from Skyrat)
+
+	job.radio_help_message(equipping, chosen_title) // EFFIGY EDIT CHANGE (#3 Job Titles - Ported from Skyrat)
 
 	if(player_client)
 		if(job.req_admin_notify)
@@ -548,6 +554,11 @@ SUBSYSTEM_DEF(job)
 			to_chat(player_client, span_boldnotice("As this station was initially staffed with a \
 				[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
 				have been added to your ID card."))
+		// EFFIGY EDIT ADD START (#3 Job Titles - Ported from Skyrat)
+		if(chosen_title != default_title)
+			to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
+			to_chat(player_client, span_infoplain(span_doyourjobidiot("Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].")))
+		// EFFIGY EDIT ADD START (#3 Job Titles - Ported from Skyrat)
 
 	if(ishuman(equipping))
 		var/mob/living/carbon/human/wageslave = equipping
@@ -557,7 +568,6 @@ SUBSYSTEM_DEF(job)
 			equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
 
 	job.after_spawn(equipping, player_client)
-
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
 	if(!C?.holder)
@@ -587,7 +597,7 @@ SUBSYSTEM_DEF(job)
 	var/ssc = CONFIG_GET(number/security_scaling_coeff)
 	if(ssc > 0)
 		if(J.spawn_positions > 0)
-			var/officer_positions = min(12, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 12 officers
+			var/officer_positions = min(7, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 7 officers // EFFIGY EDIT CHANGE
 			JobDebug("Setting open security officer positions to [officer_positions]")
 			J.total_positions = officer_positions
 			J.spawn_positions = officer_positions
