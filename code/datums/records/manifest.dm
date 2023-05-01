@@ -38,6 +38,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			misc_list[++misc_list.len] = list(
 				"name" = name,
 				"rank" = rank,
+				"trim" = trim, // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
@@ -48,6 +49,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			var/list/entry = list(
 				"name" = name,
 				"rank" = rank,
+				"trim" = trim, // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 				)
 			var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
@@ -94,7 +96,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 
 /// Injects a record into the manifest.
-/datum/manifest/proc/inject(mob/living/carbon/human/person)
+/datum/manifest/proc/inject(mob/living/carbon/human/person, client/person_client) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -107,6 +109,11 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	if(person.gender == "female")
 		person_gender = "Female"
 
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// The alt job title, if user picked one, or the default
+	var/chosen_assignment = person_client?.prefs.alt_job_titles[assignment] || assignment
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 	var/datum/record/locked/lockfile = new(
 		age = person.age,
 		blood_type = person.dna.blood_type,
@@ -116,7 +123,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = assignment,
+		rank = chosen_assignment, // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 		species = person.dna.species.name,
 		trim = assignment,
 		// Locked specifics
@@ -133,7 +140,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = assignment,
+		rank = chosen_assignment, // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 		species = person.dna.species.name,
 		trim = assignment,
 		// Crew specific
@@ -143,6 +150,13 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY),
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
+		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		background_information = person_client?.prefs.read_preference(/datum/preference/text/background) || "",
+		exploitable_information = person_client?.prefs.read_preference(/datum/preference/text/exploitable) || "",
+		past_general_records = person_client?.prefs.read_preference(/datum/preference/text/general) || "",
+		past_medical_records = person_client?.prefs.read_preference(/datum/preference/text/medical) || "",
+		past_security_records = person_client?.prefs.read_preference(/datum/preference/text/security) || "",
+		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 	)
 
 	return
