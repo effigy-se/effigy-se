@@ -28,7 +28,9 @@
 	var/datum/wound/operated_wound
 	///Types of wounds this surgery can target.
 	var/datum/wound/targetable_wound
-
+	/// Whether this surgery aims to remove or replace the target bodypart, with the goal of being used
+	/// with a bodypart's `can_be_surgically_removed` variable. Defaults to FALSE.
+	var/removes_target_bodypart = FALSE // EFFIGY EDIT ADD (#3 Medical - Ported from Skyrat)
 	///The types of bodyparts that this surgery can have performed on it. Used for augmented surgeries.
 	var/requires_bodypart_type = BODYTYPE_ORGANIC
 	///The speed modifier given to the surgery through external means.
