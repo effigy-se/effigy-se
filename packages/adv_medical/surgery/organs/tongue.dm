@@ -143,17 +143,6 @@
 		*/
 		message = lizard_ecks.Replace(message, "ecks$1")
 		message = lizard_eckS.Replace(message, "ECKS$1")
-		//SKYRAT EDIT START: Adding russian version to autohiss
-		if(CONFIG_GET(flag/russian_text_formation))
-			var/static/regex/lizard_hiss_ru = new("с+", "g")
-			var/static/regex/lizard_hiSS_ru = new("С+", "g")
-			message = replacetext(message, "з", "с")
-			message = replacetext(message, "З", "С")
-			message = replacetext(message, "ж", "ш")
-			message = replacetext(message, "Ж", "Ш")
-			message = lizard_hiss_ru.Replace(message, "ссс")
-			message = lizard_hiSS_ru.Replace(message, "ССС")
-		//SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/internal/tongue/lizard/silver

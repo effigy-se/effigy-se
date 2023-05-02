@@ -387,7 +387,7 @@
 
 /obj/item/organ/internal/eyes/robotic/glow/Initialize(mapload)
 	. = ..()
-	mob_overlay = image('modular_skyrat/master_files/icons/mob/human_face.dmi', "eyes_glow_gs") //SKURAT EDIT CHANGE
+	mob_overlay = image('overrides/icons/mob/human_face.dmi', "eyes_glow_gs") //SKURAT EDIT CHANGE
 
 /obj/item/organ/internal/eyes/robotic/glow/Destroy()
 	terminate_effects()

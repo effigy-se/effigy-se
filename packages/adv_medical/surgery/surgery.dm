@@ -28,7 +28,9 @@
 	var/datum/wound/operated_wound
 	///Types of wounds this surgery can target.
 	var/datum/wound/targetable_wound
-
+	/// Whether this surgery aims to remove or replace the target bodypart, with the goal of being used
+	/// with a bodypart's `can_be_surgically_removed` variable. Defaults to FALSE.
+	var/removes_target_bodypart = FALSE
 	///The types of bodyparts that this surgery can have performed on it. Used for augmented surgeries.
 	var/requires_bodypart_type = BODYTYPE_ORGANIC
 	///The speed modifier given to the surgery through external means.
@@ -124,7 +126,7 @@
 	if(tool && tool.item_flags & SURGICAL_TOOL) //Just because you used the wrong tool it doesn't mean you meant to whack the patient with it
 		to_chat(user, span_warning("This step requires a different tool!"))
 		return TRUE
-		
+
 	return FALSE
 
 /datum/surgery/proc/get_surgery_step()
@@ -182,6 +184,21 @@
 	for(var/datum/surgery/beep as anything in req_tech_surgeries)
 		if(initial(beep.requires_tech))
 			surgeries += beep
+
+/datum/mood_event/mild_surgery
+	description = "<span class='warning'>Even if I couldn't feel most of it, it feels wrong being awake while somebody works on your body. Ugh!</span>\n"
+	mood_change = -1
+	timeout = 5 MINUTES
+
+/datum/mood_event/severe_surgery
+	description = "<span class='boldwarning'>Wait, THEY CUT ME OPEN - AND I FELT EVERY SECOND OF IT!</span>\n"
+	mood_change = -4
+	timeout = 15 MINUTES
+
+/datum/mood_event/robot_surgery
+	description = "<span class='warning'>Having my robotic parts messed with while I was conscious felt wrong... if only I had a sleep mode!</span>\n"
+	mood_change = -4
+	timeout = 10 MINUTES
 
 //INFO
 //Check /mob/living/carbon/attackby for how surgery progresses, and also /mob/living/carbon/attack_hand.
