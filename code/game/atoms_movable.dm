@@ -758,7 +758,7 @@
 
 	last_move = direct
 
-	if(set_dir_on_move && dir != direct && update_dir && !face_mouse) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+	if(set_dir_on_move && dir != direct && update_dir) // EFFIGY EDIT TODO (#3 Customization - Ported from Skyrat)
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE
