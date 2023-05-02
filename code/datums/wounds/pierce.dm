@@ -1,5 +1,4 @@
-// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
-/*
+
 /*
 	Piercing wounds
 */
@@ -201,5 +200,3 @@
 	status_effect_type = /datum/status_effect/wound/pierce/critical
 	scar_keyword = "piercecritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
-*/
-// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)

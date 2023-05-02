@@ -287,9 +287,9 @@ SUBSYSTEM_DEF(dbcore)
 	if(!Connect())
 		return
 	// EFFIGY EDIT CHANGE START (#3 Logging - Ported from Skyrat)
-	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */
+	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
 		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
-		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]") // SKYRAT EDIT CHANGE - MULTISERVER
+		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]")
 	)
 	// EFFIGY EDIT CHANGE START (#3 Logging - Ported from Skyrat)
 	query_round_initialize.Execute(async = FALSE)
