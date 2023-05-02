@@ -43,6 +43,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "N/A"]",
+			"Connected Players: [GLOB.clients.len]",
 			"Server Rev: [server_rev ? server_rev : "N/A"]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			" ",
