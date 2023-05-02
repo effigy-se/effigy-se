@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(dbcore)
 	name = "Database"
 	flags = SS_TICKER
 	wait = 10 // Not seconds because we're running on SS_TICKER
-	runlevels = RUNLEVEL_INIT|RUNLEVEL_LOBBY|RUNLEVELS_DEFAULT
+	runlevels = RUNLEVEL_LOBBY|RUNLEVELS_DEFAULT
 	init_order = INIT_ORDER_DBCORE
 	priority = FIRE_PRIORITY_DATABASE
 
@@ -175,6 +175,11 @@ SUBSYSTEM_DEF(dbcore)
 		for(var/datum/db_query/query in queries_standby)
 			run_query(query)
 
+		// EFFIGY EDIT ADD START (#3 Logging - Ported from Skyrat)
+		for(var/table in queued_log_entries_by_table)
+			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
+		// EFFIGY EDIT ADD END (#3 Logging - Ported from Skyrat)
+
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("round")] SET shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
 			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id)
@@ -281,10 +286,12 @@ SUBSYSTEM_DEF(dbcore)
 
 	if(!Connect())
 		return
+	// EFFIGY EDIT CHANGE START (#3 Logging - Ported from Skyrat)
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_ip, server_port) VALUES (Now(), INET_ATON(:internet_address), :port)",
-		list("internet_address" = world.internet_address || "0", "port" = "[world.port]")
+		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
+		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]")
 	)
+	// EFFIGY EDIT CHANGE START (#3 Logging - Ported from Skyrat)
 	query_round_initialize.Execute(async = FALSE)
 	GLOB.round_id = "[query_round_initialize.last_insert_id]"
 	qdel(query_round_initialize)

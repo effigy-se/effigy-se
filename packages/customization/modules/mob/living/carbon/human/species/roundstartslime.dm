@@ -276,7 +276,7 @@
  * Alter DNA is an intermediary proc for the most part
  * It lets you pick between a few options for DNA specifics
  */
-// EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
 /datum/action/innate/alter_form/proc/alter_dna(mob/living/carbon/human/alterer)
 	var/list/key_list = list("Genitals", "Mutant Parts")
 	if(CONFIG_GET(flag/disable_erp_preferences))

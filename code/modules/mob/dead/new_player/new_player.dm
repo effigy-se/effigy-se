@@ -3,7 +3,7 @@
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	stat = DEAD
-	//hud_type = /datum/hud/new_player // EFFIGY EDIT REMOVE
+	//hud_type = /datum/hud/new_player // EFFIGY EDIT REMOVE - SPLASH
 	hud_possible = list()
 
 	var/ready = FALSE

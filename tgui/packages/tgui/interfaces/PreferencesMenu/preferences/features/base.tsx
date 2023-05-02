@@ -3,7 +3,7 @@ import { BooleanLike, classes } from 'common/react';
 import { ComponentType, createComponentVNode, InfernoNode } from 'inferno';
 import { VNodeFlags } from 'inferno-vnode-flags';
 import { sendAct, useBackend, useLocalState } from '../../../../backend';
-import { Box, Button, Dropdown, Input, NumberInput, Stack, TextArea } from '../../../../components'; // EFFIGY EDIT CHANGE - CUSTOMIZATION (add TextArea)
+import { Box, Button, Dropdown, Input, NumberInput, Stack, TextArea } from '../../../../components'; // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) (add TextArea)
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
@@ -366,7 +366,7 @@ export const FeatureShortTextInput = (
   );
 };
 
-// EFFIGY EDIT ADD START - CUSTOMIZATION
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 
 export const FeatureTextInput = (
   props: FeatureValueProps<string, string, FeatureShortTextData>

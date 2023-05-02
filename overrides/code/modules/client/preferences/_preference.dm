@@ -1,13 +1,5 @@
 #define REQUIRED_CROP_LIST_SIZE 4
 
-/// Apply this preference onto the given human.
-/// Must be overriden by subtypes.
-/// Called when the savefile_identifier == PREFERENCE_CHARACTER.
-/datum/preference/proc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences) // EFFIGY EDIT CHANGE
-	SHOULD_NOT_SLEEP(TRUE)
-	SHOULD_CALL_PARENT(FALSE)
-	CRASH("`apply_to_human()` was not implemented for [type]!")
-
 /datum/preference/tri_color
 	abstract_type = /datum/preference/tri_color
 	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts

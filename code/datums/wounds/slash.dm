@@ -1,4 +1,5 @@
-
+// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
+/*
 /*
 	Slashing wounds
 */
@@ -338,3 +339,5 @@
 /datum/wound/slash/critical/cleave/update_descriptions()
 	if(no_bleeding)
 		occur_text = "is ruptured"
+*/
+// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)

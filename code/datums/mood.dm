@@ -264,6 +264,12 @@
 			mood_screen_object.color = "#f15d36"
 
 	if (!conflicting_moodies.len) // theres no special icons, use the normal icon states
+		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		if(HAS_TRAIT(mob_parent, TRAIT_MOOD_NOEXAMINE))
+			mood_screen_object.icon_state = "mood5"
+			mood_screen_object.color = "#4b96c4"
+			return
+		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 		mood_screen_object.icon_state = "mood[mood_level]"
 		return
 
@@ -306,43 +312,53 @@
 /datum/mood/proc/print_mood(mob/user)
 	var/msg = "[span_info("<EM>My current mental status:</EM>")]\n"
 	msg += span_notice("My current sanity: ") //Long term
-	switch(sanity)
-		if(SANITY_GREAT to INFINITY)
-			msg += "[span_boldnicegreen("My mind feels like a temple!")]\n"
-		if(SANITY_NEUTRAL to SANITY_GREAT)
-			msg += "[span_nicegreen("I have been feeling great lately!")]\n"
-		if(SANITY_DISTURBED to SANITY_NEUTRAL)
-			msg += "[span_nicegreen("I have felt quite decent lately.")]\n"
-		if(SANITY_UNSTABLE to SANITY_DISTURBED)
-			msg += "[span_warning("I'm feeling a little bit unhinged...")]\n"
-		if(SANITY_CRAZY to SANITY_UNSTABLE)
-			msg += "[span_warning("I'm freaking out!!")]\n"
-		if(SANITY_INSANE to SANITY_CRAZY)
-			msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]\n"
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
+		switch(sanity)
+			if(SANITY_GREAT to INFINITY)
+				msg += "[span_nicegreen("My mind feels like a temple!")]\n"
+			if(SANITY_NEUTRAL to SANITY_GREAT)
+				msg += "[span_nicegreen("I have been feeling great lately!")]\n"
+			if(SANITY_DISTURBED to SANITY_NEUTRAL)
+				msg += "[span_nicegreen("I have felt quite decent lately.")]\n"
+			if(SANITY_UNSTABLE to SANITY_DISTURBED)
+				msg += "[span_warning("I'm feeling a little bit unhinged...")]\n"
+			if(SANITY_CRAZY to SANITY_UNSTABLE)
+				msg += "[span_boldwarning("I'm freaking out!!")]\n"
+			if(SANITY_INSANE to SANITY_CRAZY)
+				msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]\n"
+	else
+		msg += span_notice("I don't really know.")
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 	msg += span_notice("My current mood: ") //Short term
-	switch(mood_level)
-		if(MOOD_LEVEL_SAD4)
-			msg += "[span_boldwarning("I wish I was dead!")]\n"
-		if(MOOD_LEVEL_SAD3)
-			msg += "[span_boldwarning("I feel terrible...")]\n"
-		if(MOOD_LEVEL_SAD2)
-			msg += "[span_boldwarning("I feel very upset.")]\n"
-		if(MOOD_LEVEL_SAD1)
-			msg += "[span_warning("I'm a bit sad.")]\n"
-		if(MOOD_LEVEL_NEUTRAL)
-			msg += "[span_grey("I'm alright.")]\n"
-		if(MOOD_LEVEL_HAPPY1)
-			msg += "[span_nicegreen("I feel pretty okay.")]\n"
-		if(MOOD_LEVEL_HAPPY2)
-			msg += "[span_boldnicegreen("I feel pretty good.")]\n"
-		if(MOOD_LEVEL_HAPPY3)
-			msg += "[span_boldnicegreen("I feel amazing!")]\n"
-		if(MOOD_LEVEL_HAPPY4)
-			msg += "[span_boldnicegreen("I love life!")]\n"
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
+		switch(mood_level)
+			if(MOOD_LEVEL_SAD4)
+				msg += "[span_boldwarning("I wish I was dead!")]\n"
+			if(MOOD_LEVEL_SAD3)
+				msg += "[span_boldwarning("I feel terrible...")]\n"
+			if(MOOD_LEVEL_SAD2)
+				msg += "[span_boldwarning("I feel very upset.")]\n"
+			if(MOOD_LEVEL_SAD1)
+				msg += "[span_warning("I'm a bit sad.")]\n"
+			if(MOOD_LEVEL_NEUTRAL)
+				msg += "[span_grey("I'm alright.")]\n"
+			if(MOOD_LEVEL_HAPPY1)
+				msg += "[span_nicegreen("I feel pretty okay.")]\n"
+			if(MOOD_LEVEL_HAPPY2)
+				msg += "[span_boldnicegreen("I feel pretty good.")]\n"
+			if(MOOD_LEVEL_HAPPY3)
+				msg += "[span_boldnicegreen("I feel amazing!")]\n"
+			if(MOOD_LEVEL_HAPPY4)
+				msg += "[span_boldnicegreen("I love life!")]\n"
+	else
+		msg += "[span_notice("No clue.")]\n"
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 	msg += "[span_notice("Moodlets:")]\n"//All moodlets
-	if(mood_events.len)
+	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 		for(var/category in mood_events)
 			var/datum/mood_event/event = mood_events[category]
 			switch(event.mood_change)

@@ -758,7 +758,7 @@
 
 	last_move = direct
 
-	if(set_dir_on_move && dir != direct && update_dir)
+	if(set_dir_on_move && dir != direct && update_dir) // EFFIGY EDIT TODO (#3 Customization - Ported from Skyrat)
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE
@@ -1194,6 +1194,9 @@
 		return TRUE
 
 	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
+		return TRUE
+
+	if(locate(/obj/structure/spacevine) in range(1, get_turf(src))) //EFFIGY EDIT CHANGE (Allow walking when vines are around)
 		return TRUE
 
 	return FALSE

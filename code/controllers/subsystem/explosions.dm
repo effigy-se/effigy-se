@@ -434,6 +434,11 @@ SUBSYSTEM_DEF(explosions)
 			if(EXPLODE_LIGHT)
 				SSexplosions.lowturf += explode
 
+		// EFFIGY EDIT ADD START (#3 Events - Ported from Skyrat)
+		// for(var/obj/machinery/light/iterating_light in explode)
+		// iterating_light.start_flickering()
+		// EFFIGY EDIT ADD END (#3 Events - Ported from Skyrat)
+
 		if(prob(40) && dist < flame_range && !isspaceturf(explode) && !explode.density)
 			flameturf += explode
 

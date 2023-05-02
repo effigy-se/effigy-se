@@ -242,7 +242,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		if (!mc_started)
 			mc_started = TRUE
 			if (!current_runlevel)
-				SetRunLevel(1)
+				SetRunLevel(1) // Intentionally not using the defines here because the MC doesn't care about them
 			// Loop.
 			Master.StartProcessing(0)
 
@@ -341,19 +341,22 @@ GLOBAL_REAL(Master, /datum/controller/master)
 			chat_warning = TRUE
 
 	var/message = "[message_prefix] [seconds] second[seconds == 1 ? "" : "s"]!"
+	// EFFIGY EDIT REMOVE START (#2 Splash)
+	/*
 	var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
+	*/
+	// EFFIGY EDIT REMOVE END (#2 Splash)
 
-	to_chat(world, chat_message)
+	add_startup_message(message, chat_warning) // EFFIGY EDIT ADD (#2 Splash)
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
 	var/old_runlevel = current_runlevel
-	if(isnull(old_runlevel))
-		old_runlevel = "NULL"
 
-	testing("MC: Runlevel changed from [old_runlevel] to [new_runlevel]")
+	testing("MC: Runlevel changed from [isnull(old_runlevel) ? "NULL" : old_runlevel] to [new_runlevel]")
 	current_runlevel = log(2, new_runlevel) + 1
 	if(current_runlevel < 1)
+		current_runlevel = old_runlevel
 		CRASH("Attempted to set invalid runlevel: [new_runlevel]")
 
 // Starts the mc, and sticks around to restart it if the loop ever ends.

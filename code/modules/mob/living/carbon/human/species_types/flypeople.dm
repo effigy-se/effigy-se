@@ -1,7 +1,12 @@
+// EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
 /datum/species/fly
 	name = "Flyperson"
 	plural_form = "Flypeople"
 	id = SPECIES_FLYPERSON
+	species_traits = list(
+		HAIR,
+		FACEHAIR
+	)
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_TACKLING_FRAIL_ATTACKER,
@@ -15,7 +20,6 @@
 	toxic_food = NONE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/fly
-	wing_types = list(/obj/item/organ/external/wings/functional/fly)
 	payday_modifier = 0.75
 
 	mutanttongue = /obj/item/organ/internal/tongue/fly
@@ -34,6 +38,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/fly,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/fly,
 	)
+// EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
 
 /datum/species/fly/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	if(chem.type == /datum/reagent/toxin/pestkiller)
