@@ -92,6 +92,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
 	value_cache = null
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	if(pref_species)
+		QDEL_NULL(pref_species)
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 	return ..()
 
 /datum/preferences/New(client/parent)
@@ -544,7 +548,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
 
-		preference.apply_to_human(character, read_preference(preference.type))
+		preference.apply_to_human(character, read_preference(preference.type), src)
 
 	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
