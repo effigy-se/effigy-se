@@ -150,13 +150,6 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY),
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
-		background_information = person_client?.prefs.read_preference(/datum/preference/text/background) || "",
-		exploitable_information = person_client?.prefs.read_preference(/datum/preference/text/exploitable) || "",
-		past_general_records = person_client?.prefs.read_preference(/datum/preference/text/general) || "",
-		past_medical_records = person_client?.prefs.read_preference(/datum/preference/text/medical) || "",
-		past_security_records = person_client?.prefs.read_preference(/datum/preference/text/security) || "",
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 	)
 
 	return

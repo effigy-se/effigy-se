@@ -2,9 +2,6 @@
 
 #define PULL_OVERSIZED_SLOWDOWN 2
 
-/// This layer is used for things that shouldn't be over clothes, but should be over mutations
-#define BODY_FRONT_UNDER_CLOTHES 31
-
 ///The limb fits a modular custom shape
 #define BODYTYPE_CUSTOM (1<<8)
 ///The limb fits a taur body
@@ -20,11 +17,6 @@
 #define UNDERWEAR_HIDE_SOCKS (1<<0)
 #define UNDERWEAR_HIDE_SHIRT (1<<1)
 #define UNDERWEAR_HIDE_UNDIES (1<<2)
-
-/// Draws organ on the BODY_FRONT_UNDER_CLOTHES
-#define EXTERNAL_FRONT_UNDER_CLOTHES (1 << 4)
-/// Draws organ on the ABOVE_BODY_FRONT_HEAD_LAYER
-#define EXTERNAL_FRONT_OVER (1 << 5)
 
 //Appends to the bottom of Defib fails - DNR TRAIT
 #define DEFIB_FAIL_DNR (1<<11)
@@ -46,12 +38,3 @@
 #define BODYPART_ICON_SYNTHMAMMAL 'packages/bodyparts/assets/synthmammal_parts_greyscale.dmi'
 #define BODYPART_ICON_IPC 'packages/bodyparts/assets/ipc_parts.dmi'
 #define BODYPART_ICON_SYNTHLIZARD 'packages/bodyparts/assets/synthliz_parts_greyscale.dmi'
-
-#define ANUS_LAYER 29
-#define VAGINA_LAYER 28
-#define PENIS_LAYER 27
-#define NIPPLES_LAYER 26
-#define BANDAGE_LAYER 25
-
-#define OFFSET_ACCESSORY "accessory"
-
