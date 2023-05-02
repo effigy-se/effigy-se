@@ -95,8 +95,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (current_version < 41)
 		migrate_character_to_tgui_prefs_menu()
 
-	if (current_version < 42)
-		migrate_body_types(save_data)
+	// if (current_version < 42)
+	//	 migrate_body_types(save_data) // EFFIGY EDIT REMOVE (#3 Customization - Ported from Skyrat)
 
 	if (current_version < 43)
 		migrate_legacy_sound_toggles(savefile)
@@ -294,6 +294,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 
+	load_character_effigy(save_data) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
 	if(needs_update >= 0)
@@ -309,7 +311,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
 			job_preferences -= j
 
-	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
+	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks), augments)  // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 	validate_quirks()
 
 	return TRUE
@@ -351,6 +353,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks
+
+	save_character_effigy(save_data) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
 	return TRUE
 

@@ -273,14 +273,14 @@
 	level = 6
 	passive_message = span_notice("You feel tingling on your skin as light passes over it.")
 	threshold_descs = list(
-		"Stage Speed 8" = "Doubles healing speed.",
+		"Stage Speed 7" = "Doubles healing speed.",
 	)
 
 /datum/symptom/heal/darkness/Start(datum/disease/advance/A)
 	. = ..()
 	if(!.)
 		return
-	if(A.totalStageSpeed() >= 8)
+	if(A.totalStageSpeed() >= 7)
 		power = 2
 
 /datum/symptom/heal/darkness/CanHeal(datum/disease/advance/A)
@@ -377,7 +377,7 @@
 			return power * 0.9
 		if(SOFT_CRIT)
 			return power * 0.5
-	if(M.getBruteLoss() + M.getFireLoss() >= 70 && !active_coma)
+	if(M.getBruteLoss() + M.getFireLoss() >= 103 && !active_coma) // EFFIGY EDIT CHANGE - Original 70
 		to_chat(M, span_warning("You feel yourself slip into a regenerative coma..."))
 		active_coma = TRUE
 		addtimer(CALLBACK(src, PROC_REF(coma), M), 60)
