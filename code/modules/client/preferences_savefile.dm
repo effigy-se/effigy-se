@@ -294,6 +294,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 
+	load_character_effigy(save_data) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
 	if(needs_update >= 0)

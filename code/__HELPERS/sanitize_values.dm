@@ -53,11 +53,11 @@
 
 /proc/sanitize_hexcolor(color, desired_format = DEFAULT_HEX_COLOR_LEN, include_crunch = TRUE, default)
 	var/crunch = include_crunch ? "#" : ""
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 	if(islist(color))
 		var/list/color_list = color
 		color = color_list.Join()
-	//SKYRAT EDIT ADDITION END
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 	if(!istext(color))
 		color = ""
 

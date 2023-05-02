@@ -92,6 +92,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
 	value_cache = null
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	if(pref_species)
+		QDEL_NULL(pref_species)
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 	return ..()
 
 /datum/preferences/New(client/parent)
@@ -120,6 +124,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
+			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+			sanitize_languages()
+			sanitize_quirks()
+			// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 			return
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
@@ -166,6 +174,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		data["character_profiles"] = create_character_profiles()
 		tainted_character_profiles = FALSE
 
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	data["preview_selection"] = preview_pref
+	data["quirks_balance"] = GetQuirkBalance()
+	data["positive_quirk_count"] = GetPositiveQuirkCount()
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 	data["character_preferences"] = compile_character_preferences(user)
 
 	data["active_slot"] = default_slot
@@ -177,6 +191,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences/ui_static_data(mob/user)
 	var/list/data = list()
+
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED)
+	else
+		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED, PREVIEW_PREF_NAKED_AROUSED)
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 	data["character_profiles"] = create_character_profiles()
 
@@ -218,14 +239,25 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				randomise_appearance_prefs()
 				save_character()
 
+			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+			if(sanitize_languages())
+				save_character()
+			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+
 			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 				preference_middleware.on_new_character(usr)
 
 			character_preview_view.update_body()
 
 			return TRUE
+
+
 		if ("rotate")
-			character_preview_view.dir = turn(character_preview_view.dir, -90)
+			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+			var/backwards = params["backwards"]
+			character_preview_view.dir = turn(character_preview_view.dir, backwards ? 90 : -90)
+			// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 
 			return TRUE
 		if ("set_preference")
@@ -246,6 +278,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			if (istype(requested_preference, /datum/preference/name))
 				tainted_character_profiles = TRUE
+
+			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+			update_mutant_bodyparts(requested_preference)
+			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
+				if (preference_middleware.post_set_preference(usr, requested_preference_key, value))
+					return TRUE
+			// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 			return TRUE
 		if ("set_color_preference")
@@ -275,6 +314,58 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				return FALSE
 
 			return TRUE
+
+		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		if("update_preview")
+			preview_pref = params["updated_preview"]
+			character_preview_view.update_body()
+			return TRUE
+
+		if ("open_loadout")
+			if(parent.open_loadout_ui)
+				parent.open_loadout_ui.ui_interact(usr)
+			else
+				var/datum/loadout_manager/tgui = new(usr)
+				tgui.ui_interact(usr)
+			return TRUE
+		if ("set_tricolor_preference")
+			var/requested_preference_key = params["preference"]
+			var/index_key = params["value"]
+
+			var/datum/preference/requested_preference = GLOB.preference_entries_by_key[requested_preference_key]
+			if (isnull(requested_preference))
+				return FALSE
+
+			if (!istype(requested_preference, /datum/preference/tri_color))
+				return FALSE
+
+			var/default_value_list = read_preference(requested_preference.type)
+			if (!islist(default_value_list))
+				return FALSE
+			var/default_value = default_value_list[index_key]
+
+			// Yielding
+			var/new_color = input(
+				usr,
+				"Select new color",
+				null,
+				default_value || COLOR_WHITE,
+			) as color | null
+
+			if (!new_color)
+				return FALSE
+
+			default_value_list[index_key] = new_color
+
+			if (!update_preference(requested_preference, default_value_list))
+				return FALSE
+
+			return TRUE
+
+		// For the quirks in the prefs menu.
+		if ("get_quirks_balance")
+			return TRUE
+		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		var/delegation = preference_middleware.action_delegations[action]
@@ -376,7 +467,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	body = new
 
 	// Without this, it doesn't show up in the menu
-	body.appearance_flags &= ~KEEP_TOGETHER
+	body.appearance_flags |= KEEP_TOGETHER // EFFIGY EDIT CHANGE - Original: &= ~KEEP_TOGETHER
 
 /datum/preferences/proc/create_character_profiles()
 	var/list/profiles = list()
@@ -427,6 +518,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	for(var/key in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
+		bal -= aug.cost
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 	return bal
 
 /datum/preferences/proc/GetPositiveQuirkCount()
@@ -452,7 +548,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
 
-		preference.apply_to_human(character, read_preference(preference.type))
+		preference.apply_to_human(character, read_preference(preference.type), src)
 
 	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)

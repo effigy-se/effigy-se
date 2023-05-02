@@ -661,10 +661,8 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 #define FRONT_MUTATIONS_LAYER 33 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 27
 /// Damage indicators (cuts and burns)
 #define DAMAGE_LAYER 32 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 26
-// SKYRAT EDIT ADDITION BEGIN.
 /// This layer is used for things that shouldn't be over clothes, but should be over mutations
 #define BODY_FRONT_UNDER_CLOTHES 31
-// SKYRAT EDIT ADDITION END
 /// Jumpsuit clothing layer
 #define UNIFORM_LAYER 30 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 25
 // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)

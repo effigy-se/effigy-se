@@ -145,8 +145,20 @@
 	var/cached_bleed_rate = 0
 	/// How much generic bleedstacks we have on this bodypart
 	var/generic_bleedstacks
+	// EFFIGY EDIT ADD START (#3 Medical - Ported from Skyrat)
+	/*
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
+	*/
+	/// If we have a gauze wrapping currently applied
+	var/datum/bodypart_aid/gauze/current_gauze
+	/// If we have a splint currently applied
+	var/datum/bodypart_aid/splint/current_splint
+	/// What icon do we use to render this limb? Ususally used by robotic limb augments.
+	var/rendered_bp_icon
+	/// Do we use an organic render for this robotic limb?
+	var/organic_render = TRUE
+	// EFFIGY EDIT ADD END (#3 Medical - Ported from Skyrat)
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/hand_item/self_grasp])
 	var/obj/item/hand_item/self_grasp/grasped_by
 
@@ -370,7 +382,7 @@
 	var/atom/drop_loc = drop_location()
 	if(IS_ORGANIC_LIMB(src))
 		playsound(drop_loc, 'sound/misc/splort.ogg', 50, TRUE, -1)
-	seep_gauze(9999) // destroy any existing gauze if any exists
+	// seep_gauze(9999) // destroy any existing gauze if any exists // EFFIGY EDIT REMOVE
 	for(var/obj/item/organ/bodypart_organ in get_organs())
 		bodypart_organ.transfer_to_limb(src, owner)
 	for(var/obj/item/organ/external/external in external_organs)
@@ -1049,6 +1061,8 @@
 #undef BLEED_OVERLAY_MED
 #undef BLEED_OVERLAY_GUSH
 
+// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
+/*
 /**
  * apply_gauze() is used to- well, apply gauze to a bodypart
  *
@@ -1088,6 +1102,8 @@
 		owner.visible_message(span_danger("\The [current_gauze.name] on [owner]'s [name] falls away in rags."), span_warning("\The [current_gauze.name] on your [name] falls away in rags."), vision_distance=COMBAT_MESSAGE_RANGE)
 		QDEL_NULL(current_gauze)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
+*/
+// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)
 
 ///Loops through all of the bodypart's external organs and update's their color.
 /obj/item/bodypart/proc/recolor_external_organs()
