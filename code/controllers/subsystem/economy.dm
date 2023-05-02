@@ -13,6 +13,7 @@ SUBSYSTEM_DEF(economy)
 										ACCOUNT_MED = ACCOUNT_MED_NAME,
 										ACCOUNT_SRV = ACCOUNT_SRV_NAME,
 										ACCOUNT_CAR = ACCOUNT_CAR_NAME,
+										ACCOUNT_CMD = ACCOUNT_CMD_NAME, // EFFIGY EDIT ADD (#3 Ported from Skyrat)
 										ACCOUNT_SEC = ACCOUNT_SEC_NAME)
 	var/list/generated_accounts = list()
 	/**

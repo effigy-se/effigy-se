@@ -33,6 +33,7 @@ SUBSYSTEM_DEF(persistence)
 	load_randomized_recipes()
 	load_custom_outfits()
 	load_delamination_counter()
+	//load_panic_bunker() // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 
 	load_adventures()
 	return SS_INIT_SUCCESS
@@ -48,6 +49,7 @@ SUBSYSTEM_DEF(persistence)
 	save_scars()
 	save_custom_outfits()
 	save_delamination_counter()
+	//save_panic_bunker() // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 
 ///Loads up Poly's speech buffer.
 /datum/controller/subsystem/persistence/proc/load_poly()

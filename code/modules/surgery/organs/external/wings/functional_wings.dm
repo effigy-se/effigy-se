@@ -135,10 +135,18 @@
 	var/open_feature_key = "wingsopen"
 
 /datum/bodypart_overlay/mutant/wings/functional/get_global_feature_list()
+	// EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
+	/* ORIGINAL
 	if(wings_open)
 		return GLOB.wings_open_list
 	else
 		return GLOB.wings_list
+	*/ // ORIGINAL END
+	if(wings_open)
+		return GLOB.sprite_accessories["wings_open"]
+
+	return GLOB.sprite_accessories["wings"]
+	// EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
 
 ///Update our wingsprite to the open wings variant
 /datum/bodypart_overlay/mutant/wings/functional/proc/open_wings()

@@ -234,6 +234,17 @@
 
 			if (surgery_needs_exposure(surgery, surgery_target))
 				surgery_info["blocked"] = TRUE
+				surgery_info["blocked_reason"] = "Their body is covered!"
+
+			// EFFIGY EDIT ADD START (#3 Medical - Ported from Skyrat)
+			if (surgery.removes_target_bodypart)
+				if (iscarbon(surgery_target))
+					var/mob/living/carbon/carbon_target = surgery_target
+					var/obj/item/bodypart/affecting_limb = carbon_target.get_bodypart(check_zone(user.zone_selected))
+					if(!affecting_limb.can_be_surgically_removed)
+						surgery_info["blocked"] = TRUE
+						surgery_info["blocked_reason"] = "That limb cannot be surgically removed!"
+			// EFFIGY EDIT ADD END (#3 Medical - Ported from Skyrat)
 
 			surgeries += list(surgery_info)
 
@@ -303,6 +314,12 @@
 	if (!isnull(affecting_limb) && surgery.requires_bodypart_type && !(affecting_limb.bodytype & surgery.requires_bodypart_type))
 		target.balloon_alert(user, "not the right type of limb!")
 		return
+
+	// EFFIGY EDIT ADD START (#3 Medical - Ported from Skyrat)
+	if (surgery.removes_target_bodypart && !isnull(affecting_limb) && !affecting_limb.can_be_surgically_removed)
+		target.balloon_alert(user, "limb can't be surgically removed!")
+		return
+	// EFFIGY EDIT ADD END (#3 Medical - Ported from Skyrat)
 
 	if ((surgery.surgery_flags & SURGERY_REQUIRE_RESTING) && target.body_position != LYING_DOWN)
 		target.balloon_alert(user, "patient is not lying down!")

@@ -185,7 +185,7 @@ SUBSYSTEM_DEF(ticker)
 				return
 			timeLeft -= wait
 
-			if(timeLeft <= 300 && !tipped)
+			if(timeLeft <= 450 && !tipped) // EFFIGY EDIT CHANGE
 				send_tip_of_the_round(world, selected_tip)
 				tipped = TRUE
 
@@ -193,6 +193,7 @@ SUBSYSTEM_DEF(ticker)
 				SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
+				SSevents.reschedule() // EFFIGY EDIT CHANGE
 				if(start_immediately)
 					fire()
 
@@ -425,6 +426,14 @@ SUBSYSTEM_DEF(ticker)
 			if(new_player_mob.client?.prefs?.should_be_random_hardcore(player_assigned_role, new_player_living.mind))
 				new_player_mob.client.prefs.hardcore_random_setup(new_player_living)
 			SSquirks.AssignQuirks(new_player_living, new_player_mob.client)
+
+		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		if(ishuman(new_player_living))
+			for(var/datum/loadout_item/item as anything in loadout_list_to_datums(new_player_mob.client?.prefs?.loadout_list))
+				if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
+					continue
+				item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
+		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 		CHECK_TICK
 
 	if(captainless)
