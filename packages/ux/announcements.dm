@@ -1,5 +1,3 @@
-// EFFIGY EDIT REMOVE START (Moved to packages/ux)
-/*
 /**
  * Make a big red text announcement to
  *
@@ -38,6 +36,8 @@
 		sound = SSstation.announcer.get_rand_alert_sound()
 	else if(SSstation.announcer.event_sounds[sound])
 		sound = SSstation.announcer.event_sounds[sound]
+
+	announcement += "<h1 class='alert'>Priority Announcement</h1>"
 
 	if(type == "Priority")
 		announcement += "<h1 class='alert'>Priority Announcement</h1>"
@@ -122,9 +122,25 @@
 		if(!target.can_hear())
 			continue
 
-		to_chat(target, "<div class='alertbox'>[span_minorannouncetitle(title)]<br>[span_minorannouncemessage(message)]</div>")
+		to_chat(target, "<div class='chatalert' >[span_minannouncetitle(title)]<br>[span_minannouncemessage(message)]</div>")
 		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
-*/
-// EFFIGY EDIT REMOVE END (Moved to packages/ux)
+
+/proc/level_announce(message, title, alert, html_encode = TRUE, list/players, sound_override, divcolor = SEC_LEVEL_GREEN)
+	if(!message)
+		return
+
+	title = html_encode(title)
+	message = html_encode(message)
+
+	for(var/mob/target in GLOB.player_list)
+		if(isnewplayer(target))
+			continue
+		if(!target.can_hear())
+			continue
+
+		to_chat(target, "<div class='chatalert_[divcolor]' >[span_minannouncetitle(title)]<br>[span_minannouncemessage(message)]</div>")
+		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
+			SEND_SOUND(target, sound(sound_to_play))
