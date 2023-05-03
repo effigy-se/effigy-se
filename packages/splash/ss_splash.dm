@@ -25,11 +25,11 @@ SUBSYSTEM_DEF(title)
 
 /datum/controller/subsystem/title/Initialize()
 	var/splash_data
-	if(!fexists("[global.config.directory]/effigy/splash_html.txt"))
+	if(!fexists("[global.config.directory]/splash_html.txt"))
 		to_chat(world, span_boldwarning("CRITICAL ERROR: Unable to read splash_html.txt, reverting to backup title html, please check your server config and ensure this file exists."))
 		splash_data = DEFAULT_TITLE_HTML
 	else
-		splash_data = file2text("[global.config.directory]/effigy/splash_html.txt")
+		splash_data = file2text("[global.config.directory]/splash_html.txt")
 
 	title_html = splash_data
 
