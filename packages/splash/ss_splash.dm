@@ -24,14 +24,14 @@ SUBSYSTEM_DEF(title)
 	var/progress_reference_time = 0
 
 /datum/controller/subsystem/title/Initialize()
-	var/dat
+	var/splash_data
 	if(!fexists("[global.config.directory]/effigy/splash_html.txt"))
 		to_chat(world, span_boldwarning("CRITICAL ERROR: Unable to read splash_html.txt, reverting to backup title html, please check your server config and ensure this file exists."))
-		dat = DEFAULT_TITLE_HTML
+		splash_data = DEFAULT_TITLE_HTML
 	else
-		dat = file2text("[global.config.directory]/effigy/splash_html.txt")
+		splash_data = file2text("[global.config.directory]/effigy/splash_html.txt")
 
-	title_html = dat
+	title_html = splash_data
 
 	var/list/provisional_title_screens = flist("[global.config.directory]/title_screens/images/")
 	var/list/local_title_screens = list()

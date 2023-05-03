@@ -3,22 +3,22 @@ GLOBAL_LIST_EMPTY(startup_messages)
 #define MAX_STARTUP_MESSAGES 27
 
 /mob/dead/new_player/proc/get_title_html()
-	var/dat = SStitle.title_html
+	var/splash_data = SStitle.title_html
 	if(SSticker.current_state == GAME_STATE_STARTUP)
-		dat += {"<img src="loading.gif" class="bg" alt="">"}
-		dat += {"<div class="container_terminal" id="terminal"></div>"}
-		dat += {"<div class="container_progress" id="progress_container"><div class="progress_bar" id="progress"><div class="sub_progress_bar" id="sub_progress"></div></div></div>"}
+		splash_data += {"<img src="loading.gif" class="bg" alt="">"}
+		splash_data += {"<div class="container_terminal" id="terminal"></div>"}
+		splash_data += {"<div class="container_progress" id="progress_container"><div class="progress_bar" id="progress"><div class="sub_progress_bar" id="sub_progress"></div></div></div>"}
 
-		dat += {"
+		splash_data += {"
 		<script language="JavaScript">
 			var terminal = document.getElementById("terminal");
 			var terminal_lines = \[
 		"}
 
 		for(var/message in GLOB.startup_messages)
-			dat += {""[replacetext(message, "\"", "\\\"")]","}
+			splash_data += {""[replacetext(message, "\"", "\\\"")]","}
 
-		dat += {"
+		splash_data += {"
 			\];
 
 			function append_terminal_text(text) {
@@ -86,38 +86,38 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		"}
 
 	else
-		dat += {"<img src="loading.gif" class="bg" alt="">"}
+		splash_data += {"<img src="loading.gif" class="bg" alt="">"}
 
 		if(SStitle.current_notice)
-			dat += {"
+			splash_data += {"
 			<div class="container_notice">
 				<p class="menu_notice">[SStitle.current_notice]</p>
 			</div>
 		"}
 
-		dat += {"<div class="container_nav">"}
+		splash_data += {"<div class="container_nav">"}
 
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
-			dat += {"
+			splash_data += {"
 				<a id="ready" class="menu_button" href='?src=[text_ref(src)];toggle_ready=1'>[ready == PLAYER_READY_TO_PLAY ? "<span class='checked'>☑</span> READY" : "<span class='unchecked'>☒</span> READY"]</a>
 			"}
 		else
-			dat += {"
+			splash_data += {"
 				<a class="menu_button" href='?src=[text_ref(src)];late_join=1'>JOIN GAME</a>
 				<a class="menu_button" href='?src=[text_ref(src)];view_manifest=1'>CREW MANIFEST</a>
 			"}
 
-		dat += {"<a class="menu_button" href='?src=[text_ref(src)];observe=1'>OBSERVE</a>"}
+		splash_data += {"<a class="menu_button" href='?src=[text_ref(src)];observe=1'>OBSERVE</a>"}
 
-		dat += {"
+		splash_data += {"
 			<hr>
 			<a id="be_antag" class="menu_button" href='?src=[text_ref(src)];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='checked'>☑</span> BE ANTAGONIST" : "<span class='unchecked'>☒</span> BE ANTAGONIST"]</a>
 			<a class="menu_button" href='?src=[text_ref(src)];character_setup=1'>SETUP CHARACTER (<span id="character_slot">[uppertext(client.prefs.read_preference(/datum/preference/name/real_name))]</span>)</a>
 			<a class="menu_button" href='?src=[text_ref(src)];game_options=1'>GAME OPTIONS</a>
 		"}
 
-		dat += "</div>"
-		dat += {"
+		splash_data += "</div>"
+		splash_data += {"
 		<script language="JavaScript">
 			var ready_int = 0;
 			var ready_mark = document.getElementById("ready");
@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		"}
 
 	// Tell the server this page loaded.
-	dat += {"
+	splash_data += {"
 		<script>
 			var ready_request = new XMLHttpRequest();
 			ready_request.open("GET", "?src=[text_ref(src)];title_is_ready=1", true);
@@ -169,6 +169,6 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		</script>
 	"}
 
-	dat += "</body></html>"
+	splash_data += "</body></html>"
 
-	return dat
+	return splash_data
