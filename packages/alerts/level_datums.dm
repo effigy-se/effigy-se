@@ -32,7 +32,7 @@
 /datum/security_level/amber
 	name = "amber"
 	number_level = SEC_LEVEL_AMBER
-	sound = 'sound/misc/notice2.ogg'
+	sound = 'sound/misc/notice1.ogg'
 	lowering_to_configuration_key = /datum/config_entry/string/alert_amber_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_amber_upto
 	shuttle_call_time_mod = 0.5
