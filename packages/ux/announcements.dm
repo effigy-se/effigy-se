@@ -37,25 +37,25 @@
 	else if(SSstation.announcer.event_sounds[sound])
 		sound = SSstation.announcer.event_sounds[sound]
 
-	announcement += "<h1 class='alert'>Priority Announcement</h1>"
+	announcement += "<div class='chatalert'>"
 
 	if(type == "Priority")
-		announcement += "<h1 class='alert'>Priority Announcement</h1>"
+		announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE("Priority Announcement")]<br>"
 		if (title && length(title) > 0)
 			announcement += "<br><h2 class='alert'>[title]</h2>"
 	else if(type == "Captain")
-		announcement += "<h1 class='alert'>Captain Announces</h1>"
+		announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE("Captain's Announcement")]<br>"
 		GLOB.news_network.submit_article(text, "Captain's Announcement", "Station Announcements", null)
 	else if(type == "Syndicate Captain")
-		announcement += "<h1 class='alert'>Syndicate Captain Announces</h1>"
+		announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE("Syndicate Captain's Announcement")]<br>"
 
 	else
 		if(!sender_override)
-			announcement += "<h1 class='alert'>[command_name()] Update</h1>"
+			announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE("[command_name()] Update")]<br>"
 		else
-			announcement += "<h1 class='alert'>[sender_override]</h1>"
-		if (title && length(title) > 0)
-			announcement += "<br><h2 class='alert'>[title]</h2>"
+			announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE(sender_override)]<br>"
+		if(title && length(title) > 0)
+			announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE(title)]<br>"
 
 		if(!sender_override)
 			if(title == "")
@@ -67,8 +67,8 @@
 	if(SSstation.announcer.custom_alert_message && !has_important_message)
 		announcement += SSstation.announcer.custom_alert_message
 	else
-		announcement += "[span_alert(text)]"
-	announcement += "<br>"
+		announcement += "[EFSPAN_ANNOUNCE_MAJ_TEXT(text)]"
+	announcement += "</div>"
 
 	if(!players)
 		players = GLOB.player_list
@@ -109,7 +109,7 @@
 	if(!message)
 		return
 
-	if (html_encode)
+	if(html_encode)
 		title = html_encode(title)
 		message = html_encode(message)
 
@@ -122,7 +122,7 @@
 		if(!target.can_hear())
 			continue
 
-		to_chat(target, "<div class='chatalert' >[span_minannouncetitle(title)]<br>[span_minannouncemessage(message)]</div>")
+		to_chat(target, "<div class='chatalert'>[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>[EFSPAN_ANNOUNCE_MIN_TEXT(message)]</div>")
 		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
@@ -140,7 +140,7 @@
 		if(!target.can_hear())
 			continue
 
-		to_chat(target, "<div class='chatalert_[divcolor]' >[span_minannouncetitle(title)]<br>[span_minannouncemessage(message)]</div>")
+		to_chat(target, "<div class='chatalert_[divcolor]' >[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>[EFSPAN_ANNOUNCE_MIN_TEXT(message)]</div>")
 		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
-			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
+			var/sound_to_play = sound_override || 'sound/misc/notice2.ogg'
 			SEND_SOUND(target, sound(sound_to_play))
