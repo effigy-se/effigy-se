@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/ring
-	icon = 'packages/_overrides/icons/obj/ring.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/hands.dmi'
+	icon = 'overrides/icons/obj/ring.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/hands.dmi'
 	name = "gold ring"
 	desc = "A tiny gold ring, sized to wrap around a finger."
 	gender = NEUTER

@@ -1,3 +1,5 @@
+// EFFIGY EDIT REMOVE START (Moved to packages/ux)
+/*
 /**
  * Make a big red text announcement to
  *
@@ -65,7 +67,7 @@
 	if(SSstation.announcer.custom_alert_message && !has_important_message)
 		announcement += SSstation.announcer.custom_alert_message
 	else
-		announcement += "<br>[span_alert(text)]<br>"
+		announcement += "[span_alert(text)]"
 	announcement += "<br>"
 
 	if(!players)
@@ -120,7 +122,9 @@
 		if(!target.can_hear())
 			continue
 
-		to_chat(target, "[span_minorannounce("<font color = red>[title]</font color><BR>[message]")]<BR>")
+		to_chat(target, "<div class='alertbox'>[span_minorannouncetitle(title)]<br>[span_minorannouncemessage(message)]</div>")
 		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
+*/
+// EFFIGY EDIT REMOVE END (Moved to packages/ux)

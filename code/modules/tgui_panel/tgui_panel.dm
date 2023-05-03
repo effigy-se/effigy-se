@@ -44,7 +44,7 @@
 	// Perform a clean initialization
 	window.initialize(
 		strict_mode = TRUE,
-		inline_css = file('packages/ui/effigy.css'),
+		inline_css = file('packages/ux/effigy.css'),
 		assets = list(
 			get_asset_datum(/datum/asset/simple/tgui_panel),
 		))

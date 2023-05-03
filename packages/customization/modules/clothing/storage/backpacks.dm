@@ -1,6 +1,6 @@
 /obj/item/storage/backpack/satchel/crusader	//Not very special, really just a satchel texture
-	icon = 'packages/_overrides/icons/obj/clothing/backpacks.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/back.dmi'
+	icon = 'overrides/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/back.dmi'
 	name = "crusader bandolier"
 	desc = "A bandolier-satchel combination for holding all your dungeon loot."
 	icon_state = "crusader_bandolier"
@@ -10,20 +10,20 @@
 /obj/item/storage/backpack/science/robo
 	name = "robotics backpack"
 	desc = "A sleek, industrial-strength backpack issued to robotics personnel. Smells faintly of oil."
-	icon = 'packages/_overrides/icons/obj/clothing/backpacks.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/back.dmi'
+	icon = 'overrides/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/back.dmi'
 	icon_state = "backpack_robo"
 
 /obj/item/storage/backpack/satchel/science/robo
 	name = "robotics satchel"
 	desc = "A sleek, industrial-strength satchel issued to robotics personnel. Smells faintly of oil."
-	icon = 'packages/_overrides/icons/obj/clothing/backpacks.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/back.dmi'
+	icon = 'overrides/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/back.dmi'
 	icon_state = "satchel_robo"
 
 /obj/item/storage/backpack/duffelbag/science/robo
 	name = "robotics duffelbag"
 	desc = "A sleek, industrial-strength duffelbag issued to robotics personnel. Smells faintly of oil."
-	icon = 'packages/_overrides/icons/obj/clothing/backpacks.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/back.dmi'
+	icon = 'overrides/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/back.dmi'
 	icon_state = "duffel_robo"

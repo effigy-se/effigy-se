@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE - CUSTOMIZATION
+// EFFIGY EDIT REMOVE (#3 Customization - Ported from Skyrat)
 /*
 /datum/preference/choiced/tail_human
 	savefile_key = "feature_human_tail"

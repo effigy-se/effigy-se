@@ -15,5 +15,5 @@
 		"mak","lich","gen","or","ag","eck","gec","stag","onn","bin","ket","einech","cresthz","azunein","ghzth"
 	)
 	icon_state = "canilunzt"
-	icon = 'packages/_overrides/icons/misc/language.dmi'
+	icon = 'overrides/icons/misc/language.dmi'
 	default_priority = 90

@@ -30,8 +30,8 @@ To show items in vendors:
 ### Master file additions
 
 To add digitigrade variants:
-- effigy-se/packages/_overrides/icons/mob/clothing/uniform_digi.dmi
-- effigy-se/packages/_overrides/icons/mob/clothing/under/uniform_digi.dmi
+- effigy-se/overrides/icons/mob/clothing/uniform_digi.dmi
+- effigy-se/overrides/icons/mob/clothing/under/uniform_digi.dmi
 
 ### Included files that are not contained in this module:
 

@@ -1,8 +1,8 @@
 /obj/item/clothing/ears/headphones
 	name = "headphones"
 	desc = "Unce unce unce unce. Boop!"
-	icon = 'packages/_overrides/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/ears.dmi'
+	icon = 'overrides/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/ears.dmi'
 	icon_state = "headphones"
 	inhand_icon_state = "headphones"
 	slot_flags = ITEM_SLOT_EARS | ITEM_SLOT_HEAD | ITEM_SLOT_NECK		//Fluff item, put it whereever you want!

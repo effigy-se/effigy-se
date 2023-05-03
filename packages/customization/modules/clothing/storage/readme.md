@@ -20,8 +20,8 @@ A seperate folder under customization for adding new (WORN) storage items, such 
 
 ### Included files that are not contained in this module:
 (Both the new sprite files, which are in the normal clothing icon locations)
-- packages/_overrides/icons/mob/clothing/storage.dmi
-- packages/_overrides/icons/obj/clothing/storage.dmi
+- overrides/icons/mob/clothing/storage.dmi
+- overrides/icons/obj/clothing/storage.dmi
 
 ### Credits:
 Orion_the_Fox

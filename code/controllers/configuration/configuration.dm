@@ -99,6 +99,9 @@
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
 
+	// populate_interaction_instances() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+	remove_erp_things() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+
 	loaded = TRUE
 
 	if (Master)

@@ -56,7 +56,7 @@
 	name = "Alter Form"
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "alter_form"
-	button_icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi'
+	button_icon = 'overrides/icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
 	/// Do you need to be a slime-person to use this ability?
 	var/slime_restricted = TRUE
@@ -102,10 +102,10 @@
 		alterer,
 		alterer,
 		list(
-			"Body Colours" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_rainbow"),
-			"DNA" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "dna"),
-			"Hair" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "scissors"),
-			"Markings" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "rainbow_spraycan"),
+			"Body Colours" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_rainbow"),
+			"DNA" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "dna"),
+			"Hair" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "scissors"),
+			"Markings" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "rainbow_spraycan"),
 		),
 		tooltips = TRUE,
 	)
@@ -130,10 +130,10 @@
 		alterer,
 		alterer,
 		list(
-			"Primary" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_red"),
-			"Secondary" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_green"),
-			"Tertiary" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_blue"),
-			"All" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_rainbow"),
+			"Primary" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_red"),
+			"Secondary" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_green"),
+			"Tertiary" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_blue"),
+			"All" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "slime_rainbow"),
 		),
 		tooltips = TRUE,
 	)
@@ -232,9 +232,9 @@
 		alterer,
 		alterer,
 		list(
-			"Hair" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "scissors"),
-			"Facial Hair" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "straight_razor"),
-			"Hair Color" = image(icon = 'packages/_overrides/icons/mob/actions/actions_slime.dmi', icon_state = "rainbow_spraycan")
+			"Hair" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "scissors"),
+			"Facial Hair" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "straight_razor"),
+			"Hair Color" = image(icon = 'overrides/icons/mob/actions/actions_slime.dmi', icon_state = "rainbow_spraycan")
 		),
 		tooltips = TRUE,
 	)
@@ -276,7 +276,7 @@
  * Alter DNA is an intermediary proc for the most part
  * It lets you pick between a few options for DNA specifics
  */
-// EFFIGY EDIT REMOVAL START - CUSTOMIZATION
+// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
 /datum/action/innate/alter_form/proc/alter_dna(mob/living/carbon/human/alterer)
 	var/list/key_list = list("Genitals", "Mutant Parts")
 	if(CONFIG_GET(flag/disable_erp_preferences))

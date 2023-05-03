@@ -249,7 +249,7 @@
 				var/obj/item/tank/internals/internals = H.is_holding_item_of_type(/obj/item/tank/internals)
 				if(internals)
 					H.open_internals(internals)
-			else 
+			else
 				H.open_internals(H.get_item_by_slot(internals_slot))
 		if(implants)
 			for(var/implant_type in implants)
@@ -324,6 +324,40 @@
 		I.add_fingerprint(H, ignoregloves = TRUE)
 	return TRUE
 
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+/**
+ * Copies the outfit from a human to itself.
+ **/
+/datum/outfit/proc/copy_outfit_from_target(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+	if(H.back)
+		back = H.back.type
+	if(H.wear_id)
+		id = H.wear_id.type
+	if(H.w_uniform)
+		uniform = H.w_uniform.type
+	if(H.wear_suit)
+		suit = H.wear_suit.type
+	if(H.wear_mask)
+		mask = H.wear_mask.type
+	if(H.wear_neck)
+		neck = H.wear_neck.type
+	if(H.head)
+		head = H.head.type
+	if(H.shoes)
+		shoes = H.shoes.type
+	if(H.gloves)
+		gloves = H.gloves.type
+	if(H.ears)
+		ears = H.ears.type
+	if(H.glasses)
+		glasses = H.glasses.type
+	if(H.belt)
+		belt = H.belt.type
+	return TRUE
+// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 /// Return a list of all the types that are required to disguise as this outfit type
 /datum/outfit/proc/get_chameleon_disguise_info()
 	var/list/types = list(uniform, suit, back, belt, gloves, shoes, head, mask, neck, ears, glasses, id, l_pocket, r_pocket, suit_store, r_hand, l_hand)
@@ -363,6 +397,8 @@
 		preload += implant_type
 	for(var/skillpath in skillchips)
 		preload += skillpath
+
+	preload -= typesof(/obj/item/clothing/under/color/random)
 
 	return preload
 

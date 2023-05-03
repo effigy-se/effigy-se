@@ -4,8 +4,8 @@
 	desc = "An officer's cap that demands discipline from the one who wears it."
 	icon_state = "fedcapofficer"
 	armor_type = /datum/armor/none
-	icon = 'packages/_overrides/icons/obj/clothing/hats.dmi'
-	worn_icon = 'packages/_overrides/icons/mob/clothing/head.dmi'
+	icon = 'overrides/icons/obj/clothing/hats.dmi'
+	worn_icon = 'overrides/icons/mob/clothing/head.dmi'
 
 //Variants
 /obj/item/clothing/head/hats/caphat/parade/fedcap/medsci

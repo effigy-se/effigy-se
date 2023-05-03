@@ -3,7 +3,7 @@
 
 // // MODULAR PLUSHES
 /obj/item/toy/plush/skyrat
-	icon = 'packages/_overrides/icons/obj/plushes.dmi'
+	icon = 'overrides/icons/obj/plushes.dmi'
 	inhand_icon_state = null
 
 /obj/item/toy/plush/skyrat/borbplushie

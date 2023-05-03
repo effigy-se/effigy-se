@@ -24,11 +24,11 @@
 		/*
 		if(!tabled)
 			new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
-			playsound(src, 'packages/_overrides/sound/effects/robot_sit.ogg', 25, TRUE)
+			playsound(src, 'overrides/sound/effects/robot_sit.ogg', 25, TRUE)
 			return
 		else
 			new /obj/effect/temp_visual/mook_dust/robot/table(get_turf(src))
-			playsound(src, 'packages/_overrides/sound/effects/robot_bump.ogg', 50, TRUE)
+			playsound(src, 'overrides/sound/effects/robot_bump.ogg', 50, TRUE)
 		*/
 		var/list/items_to_move = list()
 

@@ -9,5 +9,5 @@
 		"o", "oh", "boh", "loh", "tho", "sho", "so", "cho", "zo", "ya", "yi", "yo",
 	)
 	icon_state = "xerxian"
-	icon = 'packages/_overrides/icons/misc/language.dmi'
+	icon = 'overrides/icons/misc/language.dmi'
 	default_priority = 95

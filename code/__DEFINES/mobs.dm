@@ -420,9 +420,10 @@
 #define OFFSET_BACK "back"
 #define OFFSET_SUIT "suit"
 #define OFFSET_NECK "neck"
+#define OFFSET_ACCESSORY "accessory" // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
 //MINOR TWEAKS/MISC
-#define AGE_MIN 17 //youngest a character can be
+#define AGE_MIN 18 //youngest a character can be // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 #define AGE_MAX 85 //oldest a character can be
 #define AGE_MINOR 20 //legal age of space drinking and smoking
 #define WIZARD_AGE_MIN 30 //youngest a wizard can be
@@ -642,25 +643,35 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Total number of layers for mob overlays
 /// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
 /// Also consider updating layers_to_offset
-#define TOTAL_LAYERS 33
+#define TOTAL_LAYERS 39 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: #define TOTAL_LAYERS 33
+
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 33
+#define MUTATIONS_LAYER 39 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 32
+#define BODY_BEHIND_LAYER 38 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 32
 /// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
-#define BODYPARTS_LOW_LAYER 31
+#define BODYPARTS_LOW_LAYER 37 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 31
 /// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
-#define BODYPARTS_LAYER 30
+#define BODYPARTS_LAYER 36 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 30
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 29
+#define BODY_ADJ_LAYER 35 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 29
 /// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 28
+#define BODY_LAYER 34 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 28
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 27
+#define FRONT_MUTATIONS_LAYER 33 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 27
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 26
+#define DAMAGE_LAYER 32 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 26
+/// This layer is used for things that shouldn't be over clothes, but should be over mutations
+#define BODY_FRONT_UNDER_CLOTHES 31
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 25
+#define UNIFORM_LAYER 30 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 25
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+#define ANUS_LAYER 29
+#define VAGINA_LAYER 28
+#define PENIS_LAYER 27
+#define NIPPLES_LAYER 26
+#define BANDAGE_LAYER 25
+// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 /// ID card layer
 #define ID_LAYER 24
 /// ID card layer (might be deprecated)
@@ -760,6 +771,14 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define EXTERNAL_ADJACENT (1 << 1)
 /// Draws overlay on the BODY_BEHIND_LAYER
 #define EXTERNAL_BEHIND (1 << 2)
+
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+/// Draws organ on the BODY_FRONT_UNDER_CLOTHES
+#define EXTERNAL_FRONT_UNDER_CLOTHES (1 << 4)
+/// Draws organ on the ABOVE_BODY_FRONT_HEAD_LAYER
+#define EXTERNAL_FRONT_OVER (1 << 5)
+// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 

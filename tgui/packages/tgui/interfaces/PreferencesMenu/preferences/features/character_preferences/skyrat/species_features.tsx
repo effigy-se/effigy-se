@@ -45,7 +45,7 @@ export const custom_species_lore: Feature<string> = {
     "Add some lore for your species! Won't show up if there's no custom species.",
   component: FeatureTextInput,
 };
-// EFFIGY EDIT ADD START - RECORDS REJUVINATION
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 export const general_record: Feature<string> = {
   name: 'Records - General',
   description:
@@ -86,7 +86,7 @@ export const background_info: Feature<string> = {
   description: 'nobody uses this lmao',
   component: FeatureTextInput,
 };
-// EFFIGY EDIT ADD END
+// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 export const allow_mismatched_parts_toggle: FeatureToggle = {
   name: 'Allow Mismatched Parts',
   description:
