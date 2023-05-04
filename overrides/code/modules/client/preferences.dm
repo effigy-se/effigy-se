@@ -39,13 +39,9 @@
 	var/medical_record = ""
 
 	var/background_info = ""
-	var/exploitable_info = ""
 
 	/// Whether the user wants to see body size being shown in the preview
 	var/show_body_size = FALSE
-
-	/// Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
-	var/list/alt_job_titles = list()
 
 	// Determines if the player has undergone TGUI preferences migration, if so, this will prevent constant loading.
 	var/tgui_prefs_migration = TRUE

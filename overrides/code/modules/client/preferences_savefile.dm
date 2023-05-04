@@ -47,13 +47,10 @@
 	mismatched_customization = save_data["mismatched_customization"]
 	allow_advanced_colors = save_data["allow_advanced_colors"]
 
-	alt_job_titles = save_data["alt_job_titles"]
-
 	general_record = sanitize_text(general_record)
 	security_record = sanitize_text(security_record)
 	medical_record = sanitize_text(medical_record)
 	background_info = sanitize_text(background_info)
-	exploitable_info = sanitize_text(exploitable_info)
 
 	var/list/save_loadout = SANITIZE_LIST(save_data["loadout_list"])
 	for(var/loadout in save_loadout)
@@ -171,7 +168,6 @@
 	save_data["body_markings"] = body_markings
 	save_data["mismatched_customization"] = mismatched_customization
 	save_data["allow_advanced_colors"] = allow_advanced_colors
-	save_data["alt_job_titles"] = alt_job_titles
 	save_data["languages"] = languages
 	save_data["headshot"] = headshot
 	save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
