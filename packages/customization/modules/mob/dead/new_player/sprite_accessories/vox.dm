@@ -1,6 +1,6 @@
 //The snouts
 /datum/sprite_accessory/snouts/vox
-	icon = 'overrides/icons/mob/sprite_accessory/vox_snouts.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/vox_snouts.dmi'
 	default_color = DEFAULT_SECONDARY
 	name = "Vox Snout"
 	icon_state = "vox"
@@ -8,7 +8,7 @@
 
 //The hairstyles
 /datum/sprite_accessory/hair/vox
-	icon = 'overrides/icons/mob/sprite_accessory/vox_hair.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/vox_hair.dmi'
 	recommended_species = list(SPECIES_VOX)
 
 /datum/sprite_accessory/hair/vox/vox_afro
@@ -93,7 +93,7 @@
 
 //The facial hairstyles
 /datum/sprite_accessory/facial_hair/vox
-	icon = 'overrides/icons/mob/sprite_accessory/vox_facial_hair.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/vox_facial_hair.dmi'
 	recommended_species = list(SPECIES_VOX)
 
 /datum/sprite_accessory/facial_hair/vox/vox_beard
@@ -118,14 +118,14 @@
 
 //The tail
 /datum/sprite_accessory/tails/vox
-	icon = 'overrides/icons/mob/sprite_accessory/vox_tails.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/vox_tails.dmi'
 	name = "Vox Tail"
 	icon_state = "vox"
 	recommended_species = list(SPECIES_VOX)
 
 //The tail markings
 /datum/sprite_accessory/spines/vox
-	icon = 'overrides/icons/mob/sprite_accessory/vox_spines.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/vox_spines.dmi'
 	default_color = DEFAULT_TERTIARY
 	recommended_species = list(SPECIES_VOX)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)

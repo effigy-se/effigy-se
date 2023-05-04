@@ -1,5 +1,5 @@
 /datum/sprite_accessory/neck_accessory
-	icon = 'overrides/icons/mob/sprite_accessory/neck_accessory.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/neck_accessory.dmi'
 	key = "neck_acc"
 	generic = "Neck Accessory"
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)

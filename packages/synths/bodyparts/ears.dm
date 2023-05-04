@@ -5,7 +5,7 @@
 
 /obj/item/organ/internal/ears/synth
 	name = "auditory sensors"
-	icon = 'overrides/icons/obj/surgery.dmi'
+	icon = 'packages/adv_medical/assets/surgery.dmi'
 	icon_state = "ears-ipc"
 	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
 	zone = BODY_ZONE_HEAD

@@ -1,9 +1,9 @@
 /obj/item/clothing/glasses/nerve_staple
 	name = "\proper a nerve staple"
 	desc = "A horrific looking device that is stapled into your face"
-	icon = 'overrides/icons/obj/clothing/glasses.dmi'
+	icon = 'packages/clothing/assets/obj/glasses.dmi'
 	icon_state = "nerve_staple"
-	worn_icon = 'overrides/icons/mob/clothing/eyes.dmi'
+	worn_icon = 'packages/clothing/assets/mob/eyes.dmi'
 	worn_icon_state = "nerve_staple"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	clothing_traits = list(TRAIT_PACIFISM)

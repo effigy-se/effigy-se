@@ -24,6 +24,6 @@
 		"brut","vaahk","nah'za","diierk","piut","vuurk","cs'eer","jeirk","qiruvk",
 	)
 	icon_state = "ashtongue"
-	icon = 'overrides/icons/misc/language.dmi'
+	icon = 'packages/customization/assets/language.dmi'
 	default_priority = 90
 	secret = TRUE

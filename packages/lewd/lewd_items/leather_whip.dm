@@ -9,7 +9,7 @@
 	inhand_icon_state = null
 	icon = 'packages/lewd/assets/obj/lewd_items/lewd_items.dmi'
 	worn_icon = 'packages/lewd/assets/mob/lewd_clothing/lewd_masks.dmi'
-	worn_icon_muzzled = 'overrides/icons/mob/clothing/mask_muzzled.dmi'
+	worn_icon_muzzled = 'packages/clothing/assets/mob/mask_muzzled.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/whip.ogg'
 	clothing_flags = INEDIBLE_CLOTHING

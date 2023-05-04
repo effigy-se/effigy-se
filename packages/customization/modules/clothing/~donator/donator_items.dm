@@ -4,8 +4,8 @@
 //Donator reward for UltramariFox
 /obj/item/clothing/mask/cigarette/khi
 	name = "\improper Kitsuhana Singularity cigarette"
-	icon = 'overrides/icons/obj/clothing/masks.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/mask.dmi'
+	icon = 'packages/clothing/assets/obj/masks.dmi'
+	worn_icon = 'packages/clothing/assets/mob/mask.dmi'
 	icon_state = "khioff"
 	icon_on = "khion"
 	icon_off = "khioff"

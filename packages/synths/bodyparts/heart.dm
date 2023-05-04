@@ -3,6 +3,6 @@
 	desc = "An electronic device that handles the hydraulic pumps, powering one's robotic limbs. Without this, synthetics are unable to move."
 	organ_flags = ORGAN_SYNTHETIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	status = ORGAN_ROBOTIC
-	icon = 'overrides/icons/obj/surgery.dmi'
+	icon = 'packages/adv_medical/assets/surgery.dmi'
 	icon_state = "heart-ipc-on"
 	base_icon_state = "heart-ipc"

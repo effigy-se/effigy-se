@@ -1,5 +1,5 @@
 /datum/emote
-	var/overlay_emote = 'overrides/icons/effects/overlay_effects.dmi'
+	var/overlay_emote = 'packages/effects/assets/overlay_effects.dmi'
 
 /datum/emote/proc/get_toggle(mob/living/user)
 	if(user.client)

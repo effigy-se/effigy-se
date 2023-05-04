@@ -1,5 +1,5 @@
 /datum/sprite_accessory/head_accessory
-	icon = 'overrides/icons/mob/sprite_accessory/head_accessory.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/head_accessory.dmi'
 	key = "head_acc"
 	generic = "Head Accessory"
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)

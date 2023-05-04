@@ -1,12 +1,12 @@
 /obj/item/clothing/under/rank/civilian
-	worn_icon_digi = 'overrides/icons/mob/clothing/under/civilian_digi.dmi' //Anything that was in TG's civilian.dmi, should be in our civilian_digi.dmi
+	worn_icon_digi = 'packages/clothing/assets/mob/under/civilian_digi.dmi' //Anything that was in TG's civilian.dmi, should be in our civilian_digi.dmi
 
 /obj/item/clothing/under/rank/civilian/lawyer/beige	//Some FOOL upstream has this item's worn and object icons seperate. This sucks.
-	worn_icon_digi = 'overrides/icons/mob/clothing/under/suits_digi.dmi'
+	worn_icon_digi = 'packages/clothing/assets/mob/under/suits_digi.dmi'
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat
-	icon = 'overrides/icons/obj/clothing/under/civilian.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/civilian.dmi'
+	icon = 'packages/clothing/assets/obj/under/civilian.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/civilian.dmi'
 	can_adjust = FALSE //Just gonna set it to default for ease
 
 //TG's files separate this into Civilian, Clown/Mime, and Curator. We wont have as many, so all Service goes into this file.

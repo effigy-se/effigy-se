@@ -84,16 +84,16 @@ GLOBAL_LIST_INIT(robotic_styles_list, list(
 	"Engineering" = 'icons/mob/augmentation/augments_engineer.dmi',
 	"Mining" = 'icons/mob/augmentation/augments_mining.dmi',
 	"Security" = 'icons/mob/augmentation/augments_security.dmi',
-	"Morpheus Cyberkinetics" = 'overrides/icons/mob/augmentation/mcgipc.dmi',
-	"Bishop Cyberkinetics" = 'overrides/icons/mob/augmentation/bshipc.dmi',
-	"Bishop Cyberkinetics 2.0" = 'overrides/icons/mob/augmentation/bs2ipc.dmi',
-	"Hephaestus Industries" = 'overrides/icons/mob/augmentation/hsiipc.dmi',
-	"Hephaestus Industries 2.0" = 'overrides/icons/mob/augmentation/hi2ipc.dmi',
-	"Shellguard Munitions Standard Series" = 'overrides/icons/mob/augmentation/sgmipc.dmi',
-	"Ward-Takahashi Manufacturing" = 'overrides/icons/mob/augmentation/wtmipc.dmi',
-	"Xion Manufacturing Group" = 'overrides/icons/mob/augmentation/xmgipc.dmi',
-	"Xion Manufacturing Group 2.0" = 'overrides/icons/mob/augmentation/xm2ipc.dmi',
-	"Zeng-Hu Pharmaceuticals" = 'overrides/icons/mob/augmentation/zhpipc.dmi'
+	"Morpheus Cyberkinetics" = 'packages/bodyparts/assets/mcgipc.dmi',
+	"Bishop Cyberkinetics" = 'packages/bodyparts/assets/bshipc.dmi',
+	"Bishop Cyberkinetics 2.0" = 'packages/bodyparts/assets/bs2ipc.dmi',
+	"Hephaestus Industries" = 'packages/bodyparts/assets/hsiipc.dmi',
+	"Hephaestus Industries 2.0" = 'packages/bodyparts/assets/hi2ipc.dmi',
+	"Shellguard Munitions Standard Series" = 'packages/bodyparts/assets/sgmipc.dmi',
+	"Ward-Takahashi Manufacturing" = 'packages/bodyparts/assets/wtmipc.dmi',
+	"Xion Manufacturing Group" = 'packages/bodyparts/assets/xmgipc.dmi',
+	"Xion Manufacturing Group 2.0" = 'packages/bodyparts/assets/xm2ipc.dmi',
+	"Zeng-Hu Pharmaceuticals" = 'packages/bodyparts/assets/zhpipc.dmi'
 	))
 
 //ghoul colors
