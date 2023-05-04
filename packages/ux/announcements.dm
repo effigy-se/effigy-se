@@ -55,7 +55,7 @@
 		else
 			announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE(sender_override)]<br>"
 		if(title && length(title) > 0)
-			announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE(title)]<br>"
+			announcement += "[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>"
 
 		if(!sender_override)
 			if(title == "")
