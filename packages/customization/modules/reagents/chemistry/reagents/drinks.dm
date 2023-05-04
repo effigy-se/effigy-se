@@ -22,7 +22,7 @@
 //CODING SIN BYOND HERE
 
 /obj/item/trash/can/skyrat
-	icon = 'overrides/icons/obj/janitor.dmi'
+	icon = 'packages/misc/assets/janitor.dmi'
 	icon_state = "lemonade"
 
 /*
@@ -35,7 +35,7 @@
 #define SODA_FIZZINESS_SHAKE 5
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/attack(mob/M, mob/living/user)
 	if(istype(M, /mob/living/carbon) && !reagents.total_volume && user.combat_mode && user.zone_selected == BODY_ZONE_HEAD)

@@ -1,13 +1,13 @@
 /obj/item/clothing/under/rank/security
-	worn_icon_digi = 'overrides/icons/mob/clothing/under/security_digi.dmi' // Anything that was in the security.dmi, should be in the security_digi.dmi
+	worn_icon_digi = 'packages/clothing/assets/mob/under/security_digi.dmi' // Anything that was in the security.dmi, should be in the security_digi.dmi
 
 /obj/item/clothing/under/rank/security/skyrat
-	icon = 'overrides/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/security.dmi'
+	icon = 'packages/clothing/assets/obj/under/security.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/security.dmi'
 
 /obj/item/clothing/under/rank/security/head_of_security/skyrat
-	icon = 'overrides/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/security.dmi'
+	icon = 'packages/clothing/assets/obj/under/security.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/security.dmi'
 
 //DEBATE MOVING *ALL* SECURITY STUFF HERE? Even overrides, at least as a like, sub-file?
 
@@ -35,8 +35,8 @@
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "security trousers"
 	desc = "Some Peacekeeper-blue combat trousers. Probably should pair it with a vest for safety."
-	icon = 'overrides/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/security.dmi'
+	icon = 'packages/clothing/assets/obj/under/security.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/security.dmi'
 	icon_state = "workpants_blue"
 	body_parts_covered = GROIN|LEGS
 	can_adjust = FALSE

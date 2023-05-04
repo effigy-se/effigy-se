@@ -2,11 +2,11 @@
 //Try to keep them all a subtype of centcom/skyrat, for file sorting and balance - all faction representatives should have the same/similarly armored uniforms
 
 /obj/item/clothing/under/rank/centcom
-	worn_icon_digi = 'overrides/icons/mob/clothing/under/centcom_digi.dmi'	// Anything that was in the rnd.dmi, should be in the rnd_digi.dmi
+	worn_icon_digi = 'packages/clothing/assets/mob/under/centcom_digi.dmi'	// Anything that was in the rnd.dmi, should be in the rnd_digi.dmi
 
 /obj/item/clothing/under/rank/centcom/skyrat
-	icon = 'overrides/icons/obj/clothing/under/centcom.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/centcom.dmi'
+	icon = 'packages/clothing/assets/obj/under/centcom.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/centcom.dmi'
 
 /*
 *	LOPLAND

@@ -16,7 +16,7 @@
 	return taur.taur_mode
 
 /datum/sprite_accessory/taur
-	icon = 'overrides/icons/mob/sprite_accessory/taur.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/taur.dmi'
 	key = "taur"
 	generic = "Taur Type"
 	color_src = USE_MATRIXED_COLORS

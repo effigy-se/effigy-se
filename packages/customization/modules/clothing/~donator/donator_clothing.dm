@@ -754,9 +754,9 @@
 /obj/item/clothing/shoes/combat/rax
 	name = "tactical boots"
 	desc = "Tactical and sleek. This model seems to resemble Armadyne's."
-	icon = 'overrides/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/feet.dmi'
-	worn_icon_digi = 'overrides/icons/mob/clothing/feet_digi.dmi'
+	icon = 'packages/clothing/assets/obj/shoes.dmi'
+	worn_icon = 'packages/clothing/assets/mob/feet.dmi'
+	worn_icon_digi = 'packages/clothing/assets/mob/feet_digi.dmi'
 	icon_state = "armadyne_boots"
 	worn_icon_state = "armadyne_boots"
 
@@ -769,8 +769,8 @@
 /obj/item/clothing/under/rank/security/rax
 	name = "banded uniform"
 	desc = "Personalized and tailored to fit, this uniform is designed to protect without compromising its stylishness."
-	icon = 'overrides/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/security.dmi'
+	icon = 'packages/clothing/assets/obj/under/security.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/security.dmi'
 	worn_icon_digi = 'overrides/icons/donator/mob/clothing/uniform_digi.dmi'
 	icon_state = "hos_black"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
@@ -779,9 +779,9 @@
 /obj/item/clothing/under/rax_turtleneck_gray
 	name = "gray turtleneck"
 	desc = "A stylish gray turtleneck."
-	icon = 'overrides/icons/obj/clothing/under/command.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/command.dmi'
-	worn_icon_digi = 'overrides/icons/mob/clothing/under/command_digi.dmi'
+	icon = 'packages/clothing/assets/obj/under/command.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/command.dmi'
+	worn_icon_digi = 'packages/clothing/assets/mob/under/command_digi.dmi'
 	icon_state = "bs_turtleneck"
 	can_adjust = FALSE
 
@@ -789,8 +789,8 @@
 /obj/item/clothing/suit/jacket/rax
 	name = "navy aerostatic jacket"
 	desc = "An expensive jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
-	icon = 'overrides/icons/obj/clothing/suits.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/suit.dmi'
+	icon = 'packages/clothing/assets/obj/suits.dmi'
+	worn_icon = 'packages/clothing/assets/mob/suit.dmi'
 	icon_state = "blueshield"
 
 // Donation reward for DeltaTri
@@ -1388,7 +1388,7 @@
 /obj/item/clothing/gloves/ring/hypno/nuke
 	name = "suspiciously glossy ring"
 	desc = "This ring oozes with an assertive edge as sharp light bends along the smooth, black bronze. Like the finger that wears it, an exceptional amount of polish repels nearly all the light that glances along its surface. If you look closer, a slight golden hue indicates the precious metals inside the alloy."
-	icon = 'overrides/icons/obj/ring.dmi'
+	icon = 'packages/clothing/assets/obj/ring.dmi'
 	icon_state = "ringblack"
 	spans = list("glossy")
 

@@ -18,10 +18,10 @@
 	air_contents.gases[/datum/gas/nitrogen][MOLES] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 
 /obj/item/tank/internals/nitrogen/belt
-	icon = 'overrides/icons/obj/tank.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/species/vox/belt.dmi'
-	lefthand_file = 'overrides/icons/mob/inhands/equipment/tanks_lefthand.dmi'
-	righthand_file = 'overrides/icons/mob/inhands/equipment/tanks_righthand.dmi'
+	icon = 'packages/customization/assets/tank.dmi'
+	worn_icon = 'packages/clothing/assets/mob/species/vox/belt.dmi'
+	lefthand_file = 'packages/customization/assets/inhands/equipment/tanks_lefthand.dmi'
+	righthand_file = 'packages/customization/assets/inhands/equipment/tanks_righthand.dmi'
 	icon_state = "nitrogen_extended"
 	inhand_icon_state = "nitrogen"
 	slot_flags = ITEM_SLOT_BELT

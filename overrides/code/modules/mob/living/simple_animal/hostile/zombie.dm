@@ -7,7 +7,7 @@
 /mob/living/simple_animal/hostile/zombie/cheesezombie
 	name = "Cheese Zombie"
 	desc = "Oh God it stinks!!"
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "cheesezomb"
 	icon_living = "cheesezomb"
 	maxHealth = 100

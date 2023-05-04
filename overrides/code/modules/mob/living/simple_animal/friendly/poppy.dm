@@ -1,7 +1,7 @@
 /mob/living/simple_animal/pet/poppy
 	name = "Poppy the Safety Inspector"
 	desc = "Safety first!"
-	icon = 'overrides/icons/mob/pets.dmi'
+	icon = 'packages/mobs/assets/pets.dmi'
 	icon_state = "poppypossum"
 	icon_living = "poppypossum"
 	icon_dead = "poppypossum_dead"
