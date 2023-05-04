@@ -109,11 +109,6 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	if(person.gender == "female")
 		person_gender = "Female"
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
-	// The alt job title, if user picked one, or the default
-	var/chosen_assignment = person_client?.prefs.alt_job_titles[assignment] || assignment
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
-
 	var/datum/record/locked/lockfile = new(
 		age = person.age,
 		blood_type = person.dna.blood_type,
@@ -123,7 +118,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = chosen_assignment, // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+		rank = assignment,
 		species = person.dna.species.name,
 		trim = assignment,
 		// Locked specifics
@@ -140,7 +135,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = chosen_assignment, // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+		rank = assignment,
 		species = person.dna.species.name,
 		trim = assignment,
 		// Crew specific
