@@ -15,6 +15,4 @@
 #define ORGAN_PREF_MMI_BRAIN "Man-Machine Interface"
 #define ORGAN_PREF_CIRCUIT_BRAIN "Circuitboard"
 
-// Playtime is tracked in minutes
-/// Have any less hours than listed below and you get access to a pin indicating you're new
-#define PLAYTIME_GREEN 6000 // 100 hours
+#define PLAYTIME_GREEN 1000
