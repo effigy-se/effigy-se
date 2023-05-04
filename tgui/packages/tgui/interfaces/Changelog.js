@@ -186,7 +186,7 @@ export class Changelog extends Component {
           wiki over the years.
         </p>
         <p>
-          {', recent GitHub contributors can be found '}
+          {'Recent GitHub contributors can be found '}
           <a href="https://github.com/effigy-se/effigy-se/pulse/monthly">
             here
           </a>
