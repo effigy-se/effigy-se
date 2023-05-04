@@ -1,29 +1,29 @@
 /obj/item/clothing/under/rank/medical
-	worn_icon_digi = 'overrides/icons/mob/clothing/under/medical_digi.dmi'	// Anything that was in the medical.dmi, should be in the medical_digi.dmi
+	worn_icon_digi = 'packages/clothing/assets/mob/under/medical_digi.dmi'	// Anything that was in the medical.dmi, should be in the medical_digi.dmi
 
 /obj/item/clothing/under/rank/medical/doctor/skyrat
-	icon = 'overrides/icons/obj/clothing/under/medical.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/medical.dmi'
+	icon = 'packages/clothing/assets/obj/under/medical.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/medical.dmi'
 
 
 /obj/item/clothing/under/rank/medical/scrubs/skyrat
-	icon = 'overrides/icons/obj/clothing/under/medical.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/medical.dmi'
+	icon = 'packages/clothing/assets/obj/under/medical.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/medical.dmi'
 	icon_state = "scrubswhite" // Because for some reason TG's scrubs dont have an icon on their basetype
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one seems to be the original Scrub."
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 /obj/item/clothing/under/rank/medical/chemist/skyrat
-	icon = 'overrides/icons/obj/clothing/under/medical.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/medical.dmi'
+	icon = 'packages/clothing/assets/obj/under/medical.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/medical.dmi'
 
 /obj/item/clothing/under/rank/medical/paramedic/skyrat
-	icon = 'overrides/icons/obj/clothing/under/medical.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/medical.dmi'
+	icon = 'packages/clothing/assets/obj/under/medical.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/medical.dmi'
 
 /obj/item/clothing/under/rank/medical/chief_medical_officer/skyrat
-	icon = 'overrides/icons/obj/clothing/under/medical.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/medical.dmi'
+	icon = 'packages/clothing/assets/obj/under/medical.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/medical.dmi'
 
 /*
 *	DOCTOR

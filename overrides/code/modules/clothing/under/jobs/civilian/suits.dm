@@ -1,10 +1,10 @@
 
 /obj/item/clothing/under/suit
-	worn_icon_digi = 'overrides/icons/mob/clothing/under/suits_digi.dmi' //Anything that was in TG's suits.dmi, should be in our suits_digi.dmi
+	worn_icon_digi = 'packages/clothing/assets/mob/under/suits_digi.dmi' //Anything that was in TG's suits.dmi, should be in our suits_digi.dmi
 
 /obj/item/clothing/under/suit/skyrat
-	icon = 'overrides/icons/obj/clothing/under/suits.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/suits.dmi'
+	icon = 'packages/clothing/assets/obj/under/suits.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/suits.dmi'
 
 //DO NOT ADD A /obj/item/clothing/under/rank/civilian/lawyer/skyrat. USE /obj/item/clothing/under/suit/skyrat FOR MODULAR SUITS
 

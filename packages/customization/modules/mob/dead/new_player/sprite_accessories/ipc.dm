@@ -3,7 +3,7 @@
 ************** IPC SCREENS ****************
 *******************************************/
 /datum/sprite_accessory/screen
-	icon = 'overrides/icons/mob/sprite_accessory/ipc_screens.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/ipc_screens.dmi'
 	color_src = null
 	key = MUTANT_SYNTH_SCREEN
 	generic = "Screen"
@@ -139,7 +139,7 @@
 *******************************************/
 
 /datum/sprite_accessory/antenna
-	icon = 'overrides/icons/mob/sprite_accessory/ipc_antennas.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/ipc_antennas.dmi'
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list(SPECIES_SYNTH)

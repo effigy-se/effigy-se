@@ -17,5 +17,5 @@
 		"län","ny","kor","stå","vär","nning","mmen","ärr","det","vil"
 	)
 	icon_state = "siiktajr"
-	icon = 'overrides/icons/misc/language.dmi'
+	icon = 'packages/customization/assets/language.dmi'
 	default_priority = 90

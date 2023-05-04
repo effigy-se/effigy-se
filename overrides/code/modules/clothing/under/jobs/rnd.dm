@@ -1,17 +1,17 @@
 /obj/item/clothing/under/rank/rnd
-	worn_icon_digi = 'overrides/icons/mob/clothing/under/rnd_digi.dmi'	// Anything that was in the rnd.dmi, should be in the rnd_digi.dmi
+	worn_icon_digi = 'packages/clothing/assets/mob/under/rnd_digi.dmi'	// Anything that was in the rnd.dmi, should be in the rnd_digi.dmi
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat
-	icon = 'overrides/icons/obj/clothing/under/rnd.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/rnd.dmi'
+	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
 
 /obj/item/clothing/under/rank/rnd/roboticist/skyrat
-	icon = 'overrides/icons/obj/clothing/under/rnd.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/rnd.dmi'
+	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
 
 /obj/item/clothing/under/rank/rnd/research_director/skyrat
-	icon = 'overrides/icons/obj/clothing/under/rnd.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/rnd.dmi'
+	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
 
 /*
 *	SCIENTIST
@@ -75,24 +75,24 @@
 */
 
 /obj/item/clothing/under/rank/rnd/scientist
-	icon = 'overrides/icons/obj/clothing/under/rnd.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/rnd.dmi'
+	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
 	icon_state = "science_new"
 
 /obj/item/clothing/under/rank/rnd/scientist/skirt
 	icon_state = "sciwhite_skirt_new"
 
 /obj/item/clothing/under/rank/rnd/roboticist
-	icon = 'overrides/icons/obj/clothing/under/rnd.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/rnd.dmi'
+	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
 	icon_state = "robotics_new"
 
 /obj/item/clothing/under/rank/rnd/roboticist/skirt
 	icon_state = "robotics_skirt_new"
 
 /obj/item/clothing/under/rank/rnd/geneticist
-	icon = 'overrides/icons/obj/clothing/under/rnd.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/rnd.dmi'
+	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
 	icon_state = "genetics_new"
 
 /obj/item/clothing/under/rank/rnd/geneticist/skirt
