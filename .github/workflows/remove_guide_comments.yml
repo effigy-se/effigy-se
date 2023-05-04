@@ -13,6 +13,8 @@ jobs:
     - name: Remove guide comments
       uses: actions/github-script@v6
       with:
+
         script: |
           const { removeGuideComments } = await import('${{ github.workspace }}/tools/pull_request_hooks/removeGuideComments.js')
           await removeGuideComments({ github, context })
+        github-token: ${{ secrets.GITHUB_TOKEN }}
