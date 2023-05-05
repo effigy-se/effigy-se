@@ -228,6 +228,10 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/validate_cards,
 	/client/proc/validate_puzzgrids,
 	/client/proc/view_runtimes,
+	// EFFIGY EDIT ADD START
+	/client/proc/reload_interactions, // Interactions
+	/client/proc/test_area_spawner,	// Automapper
+	/client/proc/toggle_liquid_debug, // Customization
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
 GLOBAL_PROTECT(admin_verbs_possess)

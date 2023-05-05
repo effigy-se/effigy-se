@@ -415,6 +415,7 @@
 	name = "Privacy Shutters Control";
 	req_access = list("hop")
 	},
+/obj/item/stamp/head/hop,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "aX" = (
@@ -936,10 +937,6 @@
 /obj/structure/table/wood,
 /obj/item/paper_bin/carbon{
 	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/item/stamp/hop{
-	pixel_x = -4;
 	pixel_y = 4
 	},
 /obj/structure/cable,
@@ -4400,11 +4397,8 @@
 	pixel_x = 7;
 	pixel_y = 4
 	},
-/obj/item/stamp/qm{
-	pixel_x = 7;
-	pixel_y = -2
-	},
 /obj/machinery/airalarm/directional/west,
+/obj/item/stamp/head/qm,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/qm)
 "kw" = (
@@ -4672,29 +4666,17 @@
 /area/station/hallway/secondary/exit)
 "kY" = (
 /obj/structure/chair/comfy/beige,
-/obj/machinery/newscaster{
-	pixel_y = 32
-	},
+/obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron/grimy,
 /area/station/hallway/secondary/exit)
 "kZ" = (
 /turf/open/floor/iron/grimy,
 /area/station/hallway/secondary/exit)
 "la" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green{
-	pixel_x = 6;
-	pixel_y = 10
-	},
-/obj/item/reagent_containers/cup/glass/mug/coco{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/newspaper{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/sign/warning/yes_smoking/circle/directional/east,
+/obj/machinery/cryopod{
+	dir = 8
+	},
 /turf/open/floor/iron/grimy,
 /area/station/hallway/secondary/exit)
 "lb" = (
@@ -4766,6 +4748,7 @@
 	},
 /obj/structure/closet/secure_closet/chief_medical,
 /obj/machinery/airalarm/directional/south,
+/obj/item/stamp/head/cmo,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
 "li" = (
@@ -4882,12 +4865,6 @@
 /obj/item/paper_bin,
 /obj/item/pen/fourcolor,
 /turf/open/floor/carpet,
-/area/station/hallway/secondary/exit)
-"lv" = (
-/obj/structure/chair/comfy/beige{
-	dir = 8
-	},
-/turf/open/floor/iron/grimy,
 /area/station/hallway/secondary/exit)
 "lw" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -5052,7 +5029,9 @@
 /turf/open/floor/iron/grimy,
 /area/station/hallway/secondary/exit)
 "lR" = (
-/obj/structure/closet/crate/bin,
+/obj/machinery/cryopod{
+	dir = 8
+	},
 /turf/open/floor/iron/grimy,
 /area/station/hallway/secondary/exit)
 "lS" = (
@@ -14874,7 +14853,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "Ne" = (
-/obj/item/radio/intercom/directional/north,
+/obj/machinery/computer/cryopod/directional/north,
 /turf/open/floor/iron/grimy,
 /area/station/hallway/secondary/exit)
 "Nh" = (
@@ -15636,7 +15615,6 @@
 /obj/structure/sign/poster/official/random{
 	pixel_x = 32
 	},
-/obj/item/stamp/captain,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "Qg" = (
@@ -16700,11 +16678,11 @@
 "Uw" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
-/obj/item/stamp/hos,
 /obj/item/radio/intercom/directional/west,
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 8
 	},
+/obj/item/stamp/head/hos,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
 "Ux" = (
@@ -46290,7 +46268,7 @@ FI
 CJ
 CA
 la
-lv
+lR
 lR
 PL
 iw
