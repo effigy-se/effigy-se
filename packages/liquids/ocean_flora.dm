@@ -82,6 +82,9 @@
 
 /obj/effect/spawner/liquids_spawner
 	name = "Liquids Spawner"
+	icon = 'packages/liquids/assets/obj/effects/liquid.dmi'
+	icon_state = "spawner"
+	color = "#AAAAAA77"
 	var/reagent_list = list(/datum/reagent/water = ONE_LIQUIDS_HEIGHT*LIQUID_WAIST_LEVEL_HEIGHT)
 	var/temp = T20C
 
@@ -93,11 +96,12 @@
 	var/turf/T = loc
 	T.add_liquid_list(reagent_list, FALSE, temp)
 
-/obj/effect/spawner/liquids_spawner/acid_puddle
-	reagent_list = list(/datum/reagent/toxin/acid = ONE_LIQUIDS_HEIGHT)
-
-/obj/effect/spawner/liquids_spawner/acid_waist
+/obj/effect/spawner/liquids_spawner/acid
+	color = "#00FF32"
 	reagent_list = list(/datum/reagent/toxin/acid = ONE_LIQUIDS_HEIGHT*LIQUID_WAIST_LEVEL_HEIGHT)
+
+/obj/effect/spawner/liquids_spawner/acid/puddle
+	reagent_list = list(/datum/reagent/toxin/acid = ONE_LIQUIDS_HEIGHT)
 
 /obj/effect/spawner/ocean_curio
 	name = "Ocean Curio Spawner"
