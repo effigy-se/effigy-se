@@ -166,7 +166,7 @@
 
 /atom/movable/screen/fullscreen/bluespace_sparkle
 	icon = 'icons/effects/effects.dmi'
-	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	screen_loc = "LEFT,BOTTOM to RIGHT,TOP"
 	icon_state = "shieldsparkles"
 	layer = FLASH_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
