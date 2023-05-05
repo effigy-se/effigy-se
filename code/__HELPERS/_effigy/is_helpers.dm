@@ -17,16 +17,9 @@
 #define ishemophage(A) (is_species(A, /datum/species/hemophage))
 #define issnail(A) (is_species(A, /datum/species/snail))
 #define isluminescent(A) (is_species(A, /datum/species/jelly/luminescent))
-//Antags
-#define ishorrorling(A) (istype(A, /mob/living/simple_animal/hostile/true_changeling))
-#define iscorticalborer(A) (istype(A, /mob/living/basic/cortical_borer))
-#define ismutant(A) (is_species(A, /datum/species/mutant))
-//Customisation bases
+//Customization bases
 #define isaquatic(A) (is_species(A,/datum/species/aquatic))
 #define ishumanoid(A) (is_species(A,/datum/species/humanoid))
 #define ismammal(A) (is_species(A,/datum/species/mammal))
 #define isinsect(A) (is_species(A,/datum/species/insect))
 #define isfeline(A) (isfelinid(A) || istajaran(A) || HAS_TRAIT(A, TRAIT_FELINE))
-
-// Xen mobs
-#define isxenmob(A) (istype(A, /mob/living/simple_animal/hostile/blackmesa/xen))

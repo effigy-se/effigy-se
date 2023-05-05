@@ -10549,10 +10549,6 @@
 /area/station/science/ordnance)
 "Ag" = (
 /obj/machinery/door/firedoor/heavy,
-/obj/machinery/airalarm/mixingchamber{
-	dir = 1;
-	pixel_y = -24
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/science/ordnance)
@@ -17606,6 +17602,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
+"XY" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airalarm/mixingchamber_access{
+	dir = 1
+	},
+/turf/closed/wall/r_wall,
+/area/station/science/ordnance/burnchamber)
 "XZ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south,
@@ -61189,7 +61192,7 @@ Ar
 Ar
 AH
 Ag
-cs
+XY
 cs
 qH
 qH

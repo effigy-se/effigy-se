@@ -1,3 +1,5 @@
+#define VERY_LATE_ARRIVAL_TOAST_PROB 20
+
 SUBSYSTEM_DEF(job)
 	name = "Jobs"
 	init_order = INIT_ORDER_JOBS
@@ -517,12 +519,6 @@ SUBSYSTEM_DEF(job)
 
 //Gives the player the stuff he should have with his rank
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/equipping, datum/job/job, client/player_client)
-	// EFFIGY EDIT ADD START (#3 Job Titles - Ported from Skyrat)
-	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
-	var/default_title = job.title
-	equipping.job = job.title
-	// EFFIGY EDIT ADD END (#3 Job Titles - Ported from Skyrat)
-
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
@@ -538,11 +534,8 @@ SUBSYSTEM_DEF(job)
 			handle_auto_deadmin_roles(player_client, job.title)
 
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>As the [chosen_title] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>") // EFFIGY EDIT CHANGE (#3 Job Titles - Ported from Skyrat)
+		to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>")
 
-	equipping.on_job_equipping(job, player_client?.prefs) // EFFIGY EDIT CHANGE (#3 Job Titles - Ported from Skyrat)
-
-	job.radio_help_message(equipping, chosen_title) // EFFIGY EDIT CHANGE (#3 Job Titles - Ported from Skyrat)
 
 	if(player_client)
 		if(job.req_admin_notify)
@@ -552,17 +545,13 @@ SUBSYSTEM_DEF(job)
 			to_chat(player_client, span_boldnotice("As this station was initially staffed with a \
 				[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
 				have been added to your ID card."))
-		// EFFIGY EDIT ADD START (#3 Job Titles - Ported from Skyrat)
-		if(chosen_title != default_title)
-			to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
-			to_chat(player_client, span_infoplain(span_doyourjobidiot("Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].")))
-		// EFFIGY EDIT ADD START (#3 Job Titles - Ported from Skyrat)
 
 	if(ishuman(equipping))
 		var/mob/living/carbon/human/wageslave = equipping
 		wageslave.add_mob_memory(/datum/memory/key/account, remembered_id = wageslave.account_id)
 
-		setup_alt_job_items(wageslave, job, player_client) // EFFIGY EDIT ADD (#3 Job Titles - Ported from Skyrat)
+		if(EMERGENCY_PAST_POINT_OF_NO_RETURN && prob(VERY_LATE_ARRIVAL_TOAST_PROB))
+			equipping.equip_to_slot_or_del(new /obj/item/food/griddle_toast(equipping), ITEM_SLOT_MASK)
 
 	job.after_spawn(equipping, player_client)
 
@@ -1103,3 +1092,5 @@ SUBSYSTEM_DEF(job)
 		return JOB_UNAVAILABLE_GENERIC
 
 	return JOB_AVAILABLE
+
+#undef VERY_LATE_ARRIVAL_TOAST_PROB

@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(nightshift)
 	check_nightshift()
 
 /datum/controller/subsystem/nightshift/proc/announce(message)
-	priority_announce(message, sound='sound/misc/notice2.ogg', sender_override="Automated Lighting System Announcement")
+	minor_announce(message, title="Automated Lighting System Announcement", sound_override='sound/misc/notice2.ogg') // EFFIGY EDIT CHANGE (Make it minor)
 
 /datum/controller/subsystem/nightshift/proc/check_nightshift()
 	var/emergency = SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED
@@ -35,10 +35,15 @@ SUBSYSTEM_DEF(nightshift)
 		high_security_mode = emergency
 		if(night_time)
 			announcing = FALSE
+			// EFFIGY EDIT REMOVE START
+			/*
 			if(!emergency)
 				announce("Restoring night lighting configuration to normal operation.")
 			else
 				announce("Disabling night lighting: Station is in a state of emergency.")
+			*/
+			// EFFIGY EDIT REMOVE END
+
 	if(emergency)
 		night_time = FALSE
 	if(nightshift_active != night_time)
@@ -52,7 +57,7 @@ SUBSYSTEM_DEF(nightshift)
 			if (active)
 				announce("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the lights aboard the station have been dimmed for the night.")
 			else
-				announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
+				announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their full brightness.") // EFFIGY EDIT CHANGE
 	for(var/obj/machinery/power/apc/APC as anything in currentrun)
 		currentrun -= APC
 		if (APC.area && (APC.area.type in GLOB.the_station_areas))

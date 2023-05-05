@@ -100,16 +100,18 @@
 #define ui_spacesuit "RIGHT-1:28,CENTER-4:10"
 #define ui_stamina "RIGHT-1:28,CENTER-3:10"
 
+// EFFIGY EDIT CHANGE START (Variable Sized UI)
 //Pop-up inventory
-#define ui_shoes "LEFT+1:8,BOTTOM:5"
+#define ui_ears "LEFT+2:10,BOTTOM+3:11"
 #define ui_iclothing "LEFT:6,BOTTOM+1:7"
 #define ui_oclothing "LEFT+1:8,BOTTOM+1:7"
-#define ui_gloves "LEFT+2:10,BOTTOM+1:7"
+#define ui_shoes "LEFT+2:10,BOTTOM+1:7"
 #define ui_glasses "LEFT:6,BOTTOM+3:11"
 #define ui_mask "LEFT+1:8,BOTTOM+2:9"
-#define ui_ears "LEFT+2:10,BOTTOM+2:9"
+#define ui_gloves "LEFT+2:10,BOTTOM+2:9"
 #define ui_neck "LEFT:6,BOTTOM+2:9"
 #define ui_head "LEFT+1:8,BOTTOM+3:11"
+// EFFIGY EDIT CHANGE END (Variable Sized UI)
 
 //Generic living
 #define ui_living_pull "RIGHT-1:28,CENTER-3:15"

@@ -120,7 +120,7 @@
 */
 
 /datum/sprite_accessory/wings/mammal
-	icon = 'overrides/icons/mob/sprite_accessory/wings.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY
 	recommended_species = list(SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_INSECT)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
@@ -246,7 +246,7 @@
 */
 
 /datum/sprite_accessory/wings/low_wings
-	icon = 'overrides/icons/mob/sprite_accessory/wings.dmi'
+	icon = 'packages/customization/assets/sprite_accessory/wings.dmi'
 	name = "Low wings"
 	icon_state = "low"
 	dimension_x = 46
@@ -280,7 +280,7 @@
 */
 
 /datum/sprite_accessory/wings/moth
-	icon = 'overrides/icons/mob/sprite_accessory/moth_wings.dmi' // Needs new icon to suit new naming convention
+	icon = 'packages/customization/assets/sprite_accessory/moth_wings.dmi' // Needs new icon to suit new naming convention
 	default_color = "#FFFFFF"
 	recommended_species = list(SPECIES_MOTH, SPECIES_MAMMAL, SPECIES_INSECT) // Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/external/wings/moth

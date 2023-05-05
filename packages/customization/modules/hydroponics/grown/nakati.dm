@@ -2,12 +2,12 @@
 /obj/item/seeds/nakati
 	name = "pack of nakati starters"
 	desc = "This bacterial colony forms into bioluminescent nakati growths."
-	icon = 'overrides/icons/obj/hydroponics/seeds.dmi'
+	icon = 'packages/hydro/assets/seeds.dmi'
 	icon_state = "seed-nakati"
 	species = "nakati"
 	plantname = "Nakati Colony"
 	product = /obj/item/food/grown/nakati
-	growing_icon = 'overrides/icons/obj/hydroponics/growing.dmi'
+	growing_icon = 'packages/hydro/assets/growing.dmi'
 	icon_grow = "nakati-grow"
 	icon_dead = "nakati-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
@@ -20,7 +20,7 @@
 	seed = /obj/item/seeds/nakati
 	name = "nakati bark"
 	desc = "A segment of fragrant brown 'bark' from a nakati growth, grinds into a zesty spice widely used in teshari cooking."
-	icon = 'overrides/icons/obj/hydroponics/harvest.dmi'
+	icon = 'packages/hydro/assets/harvest.dmi'
 	icon_state = "nakati"
 	foodtypes = VEGETABLES
 	grind_results = list(/datum/reagent/consumable/nakati_spice = 0)

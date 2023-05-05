@@ -3,47 +3,47 @@
 /mob/living/basic/syndicate/melee/anthro
 	name = "Syndicate Shanker"
 	desc = "An anthromorphic red panda member of the Syndicate, wielding a knife."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "syndiredpan"
 	icon_living = "syndiredpan"
 
 /mob/living/basic/syndicate/melee/sword/anthro
 	name = "Syndicate Sword Beast"
 	desc = "An anthromorphic fennec member of the Syndicate, wielding an energy sword and shield."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "syndifennec"
 	icon_living = "syndifennec"
 
 /mob/living/basic/syndicate/ranged/anthro
 	name = "Syndicate Pistoleer"
 	desc = "An anthromorphic member of the Syndicate, wielding a pistol."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "syndisquirrel"
 	icon_living = "syndisquirrel"
 
 /mob/living/basic/syndicate/ranged/smg/anthro
 	name = "Syndicate Rapid Gunnder"
 	desc = "A moth-person member of the Syndicate, wielding an SMG."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "syndimoth"
 	icon_living = "syndimoth"
 
 /mob/living/basic/syndicate/melee/space/anthro/lizard
 	name = "Syndicate Commando Lizard"
 	desc = "A reptilian member of the Syndicate!"
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "syndilizard"
 	icon_living = "syndilizard"
 
 /mob/living/basic/syndicate/ranged/space/anthro/cat
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "syndicat"
 	icon_living = "syndicat"
 	name = "Syndicate Commando Feline"
 	desc = "An anthromorphic feline member of the Syndicate."
 
 /mob/living/basic/syndicate/ranged/shotgun/space/stormtrooper/anthro/fox
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "syndifox"
 	icon_living = "syndifox"
 	name = "Syndicate Stormtrooper Fox"
@@ -53,7 +53,7 @@
 /mob/living/simple_animal/hostile/cult
 	name = "Blood Cultist"
 	desc = "A follower of the Blood Mother."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "cult"
 	icon_living = "cult"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
@@ -169,7 +169,7 @@
 /mob/living/simple_animal/hostile/cult/magic
 	name = "Cult Blood Mage"
 	desc = "A cultist with command over blood magic."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "cultmage"
 	icon_living = "cultmage"
 	move_to_delay = 10
@@ -219,7 +219,7 @@
 /mob/living/simple_animal/hostile/looter
 	name = "Looter"
 	desc = "One of the many random looters or bandits of the frontiers. This one is carrying a pipe."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "scavpipe"
 	icon_living = "scavpipe"
 	loot = list(/obj/effect/spawner/random/maintenance/three)
@@ -243,7 +243,7 @@
 /mob/living/simple_animal/hostile/looter/big
 	name = "Big Looter"
 	desc = "One of the many random looters of the frontiers. This guy is big, fat, and angry."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "fatscav"
 	icon_living = "fatscav"
 	loot = list(/obj/effect/spawner/random/maintenance/six)
@@ -276,7 +276,7 @@
 	ranged = 1
 	retreat_distance = 5
 	minimum_distance = 5
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "scavshotgun"
 	icon_living = "scavshotgun"
 	maxHealth = 90
@@ -317,7 +317,7 @@
 /mob/living/simple_animal/hostile/evilborg
 	name = "Malfunctioning Cyborg"
 	desc = "A small cyborg unit, hacked or malfunctioning. It is likely hostile."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "evilbotold"
 	icon_living = "evilbotold"
 	gender = NEUTER
@@ -349,7 +349,7 @@
 /mob/living/simple_animal/hostile/evilborg/heavy
 	name = "Malfunctioning Heavy Cyborg"
 	desc = "A large cyborg unit, hacked or malfunctioning. It- oh my god is that a chainsaw?!"
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "evilbotheavy"
 	icon_living = "evilbotheavy"
 	health = 125
@@ -363,7 +363,7 @@
 /mob/living/simple_animal/hostile/evilborg/peace
 	name = "Malfunctioning Peacekeeper Cyborg"
 	desc = "A cyborg unit, hacked or malfunctioning. This is a Peacekeeper model."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "evilbotpeace"
 	icon_living = "evilbotpeace"
 	health = 90
@@ -377,7 +377,7 @@
 /mob/living/simple_animal/hostile/evilborg/engi
 	name = "Malfunctioning Engineering Cyborg"
 	desc = "An engineering cyborg unit, hacked or malfunctioning- Oh shit that's a plasma bar."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "evilbotengi"
 	icon_living = "evilbotengi"
 	health = 100
@@ -392,7 +392,7 @@
 /mob/living/simple_animal/hostile/evilborg/sec
 	name = "Malfunctioning Security Cyborg"
 	desc = "A security cyborg unit, hacked or malfunctioning. There are two guns attached to it."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "evilbotsec"
 	icon_living = "evilbotsec"
 	casingtype = /obj/item/ammo_casing/c45
@@ -409,7 +409,7 @@
 /mob/living/simple_animal/hostile/evilborg/roomba
 	name = "Malfunctioning Roomba Cyborg"
 	desc = "A roomba, hacked or malfunctioning- OW MY FOOT!"
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "evilbotroomba"
 	icon_living = "evilbotroomba"
 	health = 80
@@ -423,7 +423,7 @@
 /mob/living/simple_animal/hostile/evilborg/dog
 	name = "Malfunctioning Canine Cyborg"
 	desc = "A canine-borg, hacked or malfunctioning. This one appears to be a mining variant."
-	icon = 'overrides/icons/mob/newmobs64x32.dmi'
+	icon = 'packages/mobs/assets/newmobs64x32.dmi'
 	icon_state = "evilbotmine"
 	icon_living = "evilbotmine"
 	health = 115
@@ -437,7 +437,7 @@
 /mob/living/simple_animal/hostile/evilborg/dogstrong
 	name = "Corrupt Hound"
 	desc = "A canine-borg, hacked or malfunctioning. This one is large, imposing, and can pack a big punch."
-	icon = 'overrides/icons/mob/newmobs64x32.dmi'
+	icon = 'packages/mobs/assets/newmobs64x32.dmi'
 	icon_state = "evilbotelite" // ported from VORE
 	icon_living = "evilbotelite"
 	health = 130
@@ -451,7 +451,7 @@
 /mob/living/simple_animal/hostile/evilborg/bigguy
 	name = "Malfunctioning Military robot"
 	desc = "A military robot unit, hacked or malfunctioning. This one looks really tough.."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "sentrybot"
 	icon_living = "sentrybot"
 	casingtype = /obj/item/ammo_casing/c45
@@ -468,7 +468,7 @@
 /mob/living/simple_animal/hostile/evilborg/protect
 	name = "Malfunctioning Standard Robot"
 	desc = "A civlian model robot, hacked or malfunctioning with mechanical claw arms."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "protectbot"
 	icon_living = "protectbot"
 	health = 100
@@ -484,7 +484,7 @@
 /mob/living/simple_animal/hostile/bigcrab
 	name = "giant crab"
 	desc = "Clickity Clack!"
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "giantcrab"
 	icon_living = "giantcrab"
 	icon_dead = "giantcrab_d"
@@ -520,7 +520,7 @@
 /mob/living/simple_animal/hostile/trog
 	name = "mutated human"
 	desc = "Either some kind of experiment gone wrong, or the result of mutations from plasma exposure."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "trog"
 	icon_living = "trog"
 	icon_dead = "trog_dead"
@@ -559,7 +559,7 @@
 /mob/living/simple_animal/hostile/plantmutant
 	name = "plant mutant"
 	desc = "Some sort of humanoid mutated by plants or fungus spores into a horrific monster."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "plantmonster"
 	icon_living = "plantmonster"
 	icon_dead = "plantmonster_dead"
@@ -597,7 +597,7 @@
 /mob/living/simple_animal/hostile/cazador
 	name = "cazador"
 	desc = "You feel a little whoozy..."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "cazador"
 	icon_living = "cazador"
 	icon_dead = "cazador_dead"
@@ -636,7 +636,7 @@
 /mob/living/simple_animal/hostile/mutantliz
 	name = "mutant lizard"
 	desc = "A large, mutated lizard-creature with jagged teeth and sharp claws."
-	icon = 'overrides/icons/mob/newmobs64x64.dmi'
+	icon = 'packages/mobs/assets/newmobs64x64.dmi'
 	icon_state = "mutantliz"
 	icon_living = "mutantliz"
 	icon_dead = "mutantliz_d"
@@ -671,7 +671,7 @@
 /mob/living/simple_animal/hostile/scorpion
 	name = "big scorpion"
 	desc = "An abnormally large scorpion. Watch that stinger!"
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "scorpion"
 	icon_living = "scorpion"
 	icon_dead = "scorpion_d"
@@ -703,7 +703,7 @@
 /mob/living/simple_animal/hostile/syndimouse
 	name = "Syndicate Mousepretive"
 	desc = "A mouse in a Syndicate combat MODsuit, built for mice!"
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "mouse_operative"
 	icon_living = "mouse_operative"
 	icon_dead = "mouse_operative_dead"
@@ -743,7 +743,7 @@
 /mob/living/simple_animal/hostile/mannequin
 	name = "living mannequin"
 	desc = "A strange, living, wooden mannequin. Spooky!"
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "mannequin"
 	icon_living = "mannequin"
 	mob_biotypes = MOB_UNDEAD
@@ -774,7 +774,7 @@
 /mob/living/simple_animal/hostile/engorge
 	name = "Talon Demon"
 	desc = "A demonic creature that moves relatively fast, but doesn't do a lot of damage."
-	icon = 'overrides/icons/mob/newmobs32x64.dmi'
+	icon = 'packages/mobs/assets/newmobs32x64.dmi'
 	icon_state = "engorgedemon"
 	icon_living = "engorgedemon"
 	icon_dead = "demondead"
@@ -809,7 +809,7 @@
 /mob/living/simple_animal/hostile/devourdem
 	name = "Devour Lord"
 	desc = "This creature is terror itself, a manifestation of the raw hunger and avarice of mortals."
-	icon = 'overrides/icons/mob/newmobs32x64.dmi'
+	icon = 'packages/mobs/assets/newmobs32x64.dmi'
 	icon_state = "devourdemon"
 	icon_living = "devourdemon"
 	icon_dead = "demondead"
@@ -846,7 +846,7 @@
 /mob/living/simple_animal/hostile/vox
 	name = "Vox Raider"
 	desc = "Vox are typically one of two things. Shady traders or hostile raiders. This one seems to be pretty hostile."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "vox"
 	icon_living = "vox"
 	icon_dead = "voxdead"

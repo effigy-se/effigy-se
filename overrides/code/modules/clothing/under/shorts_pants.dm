@@ -1,4 +1,4 @@
-#define SHORTS_PANTS_SHIRTS_DIGIFILE 'overrides/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+#define SHORTS_PANTS_SHIRTS_DIGIFILE 'packages/clothing/assets/mob/under/shorts_pants_shirts_digi.dmi'
 
 /obj/item/clothing/under/pants
 	worn_icon_digi = SHORTS_PANTS_SHIRTS_DIGIFILE
@@ -8,12 +8,12 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION //That's right, TG, I have icons for ALL of these!! Mwahahaha!!!!
 
 /obj/item/clothing/under/pants/skyrat
-	icon = 'overrides/icons/obj/clothing/under/shorts_pants_shirts.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+	icon = 'packages/clothing/assets/obj/under/shorts_pants_shirts.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/shorts_pants_shirts.dmi'
 
 /obj/item/clothing/under/shorts/skyrat
-	icon = 'overrides/icons/obj/clothing/under/shorts_pants_shirts.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+	icon = 'packages/clothing/assets/obj/under/shorts_pants_shirts.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/shorts_pants_shirts.dmi'
 	//Need to reset all these so our custom stuff can choose independently to be greyscale or not. TG putting these on the basetype was kinda gross.
 	greyscale_config = null
 	greyscale_config_worn = null

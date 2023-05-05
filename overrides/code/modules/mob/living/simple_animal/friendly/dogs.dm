@@ -3,7 +3,7 @@
 	real_name = "Markus"
 	gender = MALE
 	desc = "It's the Cargo's overfed, yet still beloved dog."
-	icon = 'overrides/icons/mob/pets.dmi'
+	icon = 'packages/mobs/assets/pets.dmi'
 	icon_state = "markus"
 	icon_dead = "markus_dead"
 	icon_living = "markus"
@@ -46,7 +46,7 @@
 	real_name = "E-N" // Intended to hold the name without altering it.
 	gender = NEUTER
 	desc = "It's a borgi."
-	icon = 'overrides/icons/mob/pets.dmi'
+	icon = 'packages/mobs/assets/pets.dmi'
 	icon_state = "borgi"
 	icon_living = "borgi"
 	icon_dead = "borgi_dead"
@@ -305,7 +305,7 @@
 	name = "\proper Dobermann"
 	gender = MALE
 	desc = "A larger breed of dog."
-	icon = 'overrides/icons/mob/newmobs.dmi'
+	icon = 'packages/mobs/assets/newmobs.dmi'
 	icon_state = "dobber"
 	icon_dead = "dobbydead"
 	icon_living = "dobber"

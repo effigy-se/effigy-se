@@ -1,3 +1,5 @@
+// EFFIGY EDIT REMOVE
+/*
 /obj/item/bodypart/head/moth
 	icon = 'icons/mob/species/moth/bodyparts.dmi'
 	icon_state = "moth_head"
@@ -49,3 +51,4 @@
 	icon_static = 'icons/mob/species/moth/bodyparts.dmi'
 	limb_id = SPECIES_MOTH
 	should_draw_greyscale = FALSE
+*/

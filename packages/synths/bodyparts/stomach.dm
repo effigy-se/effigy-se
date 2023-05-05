@@ -3,7 +3,7 @@
 
 /obj/item/organ/internal/stomach/synth
 	name = "synth power cell"
-	icon = 'overrides/icons/obj/surgery.dmi'
+	icon = 'packages/adv_medical/assets/surgery.dmi'
 	icon_state = "stomach-ipc"
 	w_class = WEIGHT_CLASS_NORMAL
 	zone = "chest"

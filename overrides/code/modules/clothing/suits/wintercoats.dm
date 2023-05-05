@@ -5,15 +5,15 @@
 /obj/item/clothing/suit/hooded/wintercoat/skyrat
 	name = "assistant's formal winter coat"
 	desc = "A dark gray winter coat with bronze-gold detailing, and a zipper in the shape of a toolbox."
-	icon = 'overrides/icons/obj/clothing/suits/wintercoat.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/suits/wintercoat.dmi'
+	icon = 'packages/clothing/assets/obj/suits/wintercoat.dmi'
+	worn_icon = 'packages/clothing/assets/mob/suits/wintercoat.dmi'
 	icon_state = "coataformal"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/skyrat
 
 //Hood Basetype (The Assistant's Formal Coat Hood)
 /obj/item/clothing/head/hooded/winterhood/skyrat
-	icon = 'overrides/icons/obj/clothing/head/winterhood.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/head/winterhood.dmi'
+	icon = 'packages/clothing/assets/obj/head/winterhood.dmi'
+	worn_icon = 'packages/clothing/assets/mob/head/winterhood.dmi'
 	icon_state = "hood_aformal"
 
 //Bartender

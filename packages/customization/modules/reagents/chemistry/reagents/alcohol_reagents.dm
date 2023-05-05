@@ -22,7 +22,7 @@
 
 /datum/glass_style/drinking_glass/synthanol
 	required_drink_type = /datum/reagent/consumable/ethanol/synthanol
-	icon = 'overrides/icons/obj/drinks.dmi' // This should cover anything synthanol related. Will have to individually tag others unless we make an object path for skyrat drinks.
+	icon = 'packages/customization/assets/drinks.dmi' // This should cover anything synthanol related. Will have to individually tag others unless we make an object path for skyrat drinks.
 	icon_state = "synthanolglass"
 	name = "glass of synthanol"
 	desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."
@@ -137,7 +137,7 @@
 
 /datum/glass_style/drinking_glass/gunfire
 	required_drink_type = /datum/reagent/consumable/ethanol/gunfire
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "gunfire"
 	name = "glass of gunfire"
 	desc = "It pops constantly as you look at it, giving off tiny sparks."
@@ -157,7 +157,7 @@
 
 /datum/glass_style/drinking_glass/hellfire
 	required_drink_type = /datum/reagent/consumable/ethanol/hellfire
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "hellfire"
 	name = "glass of hellfire"
 	desc = "An amber colored drink that isn't quite as hot as it looks."
@@ -176,7 +176,7 @@
 
 /datum/glass_style/drinking_glass/sins_delight
 	required_drink_type = /datum/reagent/consumable/ethanol/sins_delight
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "sins_delight"
 	name = "glass of sin's delight"
 	desc = "You can smell the seven sins rolling off the top of the glass."
@@ -191,7 +191,7 @@
 
 /datum/glass_style/drinking_glass/strawberry_daiquiri
 	required_drink_type = /datum/reagent/consumable/ethanol/strawberry_daiquiri
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "strawberry_daiquiri"
 	name = "glass of strawberry daiquiri"
 	desc = "Pink looking drink with flowers and a big straw to sip it. Looks sweet and refreshing, perfect for warm days."
@@ -206,7 +206,7 @@
 
 /datum/glass_style/drinking_glass/liz_fizz
 	required_drink_type = /datum/reagent/consumable/ethanol/liz_fizz
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "liz_fizz"
 	name = "glass of liz fizz"
 	desc = "Looks like a citrus sherbet seperated in layers? Why would anyone want that is beyond you."
@@ -221,7 +221,7 @@
 
 /datum/glass_style/drinking_glass/miami_vice
 	required_drink_type = /datum/reagent/consumable/ethanol/miami_vice
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "miami_vice"
 	name = "glass of miami vice"
 	desc = "Strawberries and coconut, like yin and yang."
@@ -236,7 +236,7 @@
 
 /datum/glass_style/drinking_glass/malibu_sunset
 	required_drink_type = /datum/reagent/consumable/ethanol/malibu_sunset
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "malibu_sunset"
 	name = "glass of malibu sunset"
 	desc = "Tropical looking drinks, with ice cubes hovering on the surface and grenadine coloring the bottom."
@@ -251,7 +251,7 @@
 
 /datum/glass_style/drinking_glass/hotlime_miami
 	required_drink_type = /datum/reagent/consumable/ethanol/hotlime_miami
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "hotlime_miami"
 	name = "glass of hotlime miami"
 	desc = "This looks very aesthetically pleasing."
@@ -271,7 +271,7 @@
 
 /datum/glass_style/drinking_glass/coggrog
 	required_drink_type = /datum/reagent/consumable/ethanol/coggrog
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "coggrog"
 	name = "glass of cog grog"
 	desc = "Not even Ratvar's Four Generals could withstand this!  Qevax Jryy!"
@@ -286,7 +286,7 @@
 
 /datum/glass_style/drinking_glass/badtouch
 	required_drink_type = /datum/reagent/consumable/ethanol/badtouch
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "badtouch"
 	name = "glass of bad touch"
 	desc = "We're nothing but mammals after all."
@@ -301,7 +301,7 @@
 
 /datum/glass_style/drinking_glass/marsblast
 	required_drink_type = /datum/reagent/consumable/ethanol/marsblast
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "marsblast"
 	name = "glass of marsblast"
 	desc = "One of these is enough to leave your face as red as the planet."
@@ -316,7 +316,7 @@
 
 /datum/glass_style/drinking_glass/mercuryblast
 	required_drink_type = /datum/reagent/consumable/ethanol/mercuryblast
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "mercuryblast"
 	name = "glass of mercuryblast"
 	desc = "No thermometers were harmed in the creation of this drink"
@@ -335,7 +335,7 @@
 
 /datum/glass_style/drinking_glass/piledriver
 	required_drink_type = /datum/reagent/consumable/ethanol/piledriver
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "piledriver"
 	name = "glass of piledriver"
 	desc = "Not the only thing to leave your throat sore."
@@ -350,7 +350,7 @@
 
 /datum/glass_style/drinking_glass/zenstar
 	required_drink_type = /datum/reagent/consumable/ethanol/zenstar
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "zenstar"
 	name = "glass of zen star"
 	desc = "You'd think something so balanced would actually taste nice... you'd be dead wrong."
@@ -367,7 +367,7 @@
 
 /datum/glass_style/drinking_glass/coldscales
 	required_drink_type = /datum/reagent/consumable/ethanol/coldscales
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "coldscales"
 	name = "glass of coldscales"
 	desc = "A soft green drink that looks inviting!"
@@ -388,7 +388,7 @@
 
 /datum/glass_style/drinking_glass/oil_drum
 	required_drink_type = /datum/reagent/consumable/ethanol/oil_drum
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "oil_drum"
 	name = "drum of oil"
 	desc = "A gray can of booze and oil..."
@@ -409,7 +409,7 @@
 
 /datum/glass_style/drinking_glass/nord_king
 	required_drink_type = /datum/reagent/consumable/ethanol/nord_king
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "nord_king"
 	name = "keg of nord king"
 	desc = "A dripping keg of red mead."
@@ -430,7 +430,7 @@
 
 /datum/glass_style/drinking_glass/velvet_kiss
 	required_drink_type = /datum/reagent/consumable/ethanol/velvet_kiss
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "velvet_kiss"
 	name = "glass of velvet kiss"
 	desc = "Red and white drink for the upper classes or undead."
@@ -451,7 +451,7 @@
 
 /datum/glass_style/drinking_glass/abduction_fruit
 	required_drink_type = /datum/reagent/consumable/ethanol/abduction_fruit
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "abduction_fruit"
 	name = "glass of abduction fruit"
 	desc = "Mixed fruits that were never meant to be mixed..."
@@ -472,7 +472,7 @@
 
 /datum/glass_style/drinking_glass/bug_zapper
 	required_drink_type = /datum/reagent/consumable/ethanol/bug_zapper
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "bug_zapper"
 	name = "glass of bug zapper"
 	desc = "An odd mix of copper, lemon juice and power meant for non-human consumption."
@@ -493,7 +493,7 @@
 
 /datum/glass_style/drinking_glass/mush_crush
 	required_drink_type = /datum/reagent/consumable/ethanol/mush_crush
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "mush_crush"
 	name = "glass of mush crush"
 	desc = "Popular among people that want to grow their own food rather than drink the soil."
@@ -514,7 +514,7 @@
 
 /datum/glass_style/drinking_glass/hollow_bone
 	required_drink_type = /datum/reagent/consumable/ethanol/hollow_bone
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "hollow_bone"
 	name = "skull of hollow bone"
 	desc = "Mixing of milk and bone hurting juice for enjoyment for rather skinny people."
@@ -535,7 +535,7 @@
 
 /datum/glass_style/drinking_glass/jell_wyrm
 	required_drink_type = /datum/reagent/consumable/ethanol/jell_wyrm
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "jell_wyrm"
 	name = "glass of jell wyrm"
 	desc = "A bubbly drink that is rather inviting to those that don't know who it's meant for."
@@ -565,7 +565,7 @@
 
 /datum/glass_style/drinking_glass/laval_spit
 	required_drink_type = /datum/reagent/consumable/ethanol/laval_spit
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "laval_spit"
 	name = "glass of laval spit"
 	desc = "Piping hot drink for those who can stomach the heat of lava."
@@ -586,7 +586,7 @@
 
 /datum/glass_style/drinking_glass/frisky_kitty
 	required_drink_type = /datum/reagent/consumable/ethanol/frisky_kitty
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "frisky_kitty"
 	name = "cup of frisky kitty"
 	desc = "Warm milk and some catnip."
@@ -611,7 +611,7 @@
 
 /datum/glass_style/drinking_glass/bloodshot
 	required_drink_type = /datum/reagent/consumable/ethanol/bloodshot
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "bloodshot"
 	name = "glass of bloodshot"
 	desc = "The history of the 'Bloodshot' is based in a mix of flavor-neutral chems devised to help deliver nutrients to a Hemophage's tumorous organs. Due to the expense of the real thing and the clinical nature of it, this liquor has been designed as a 'improvised' alternative; though, still tasting like a hangover cure. It smells like iron, giving a clue to the key ingredient."
@@ -653,7 +653,7 @@
 
 /datum/glass_style/drinking_glass/blizzard_brew
 	required_drink_type = /datum/reagent/consumable/ethanol/blizzard_brew
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "blizzard_brew"
 	name = "glass of Blizzard Brew"
 	desc = "An ancient recipe. Served best chilled as much as dwarvenly possible."
@@ -690,7 +690,7 @@
 
 /datum/glass_style/drinking_glass/molten_mead
 	required_drink_type = /datum/reagent/consumable/ethanol/molten_mead
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "molten_mead"
 	name = "glass of Molten Mead"
 	desc = "Famously known to set beards aflame. Ingest at your own risk!"
@@ -722,7 +722,7 @@
 
 /datum/glass_style/drinking_glass/hippie_hooch
 	required_drink_type = /datum/reagent/consumable/ethanol/hippie_hooch
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "hippie_hooch"
 	name = "glass of Hippie Hooch"
 	desc = "Peace and love! Under request of the HR department, this drink is sure to sober you up quickly."
@@ -752,7 +752,7 @@
 
 /datum/glass_style/drinking_glass/research_rum
 	required_drink_type = /datum/reagent/consumable/ethanol/research_rum
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "research_rum"
 	name = "glass of Research Rum"
 	desc = "Cooked up by dwarven scientists, this glowing pink brew is sure to supercharge your thinking. How? Science!"
@@ -779,7 +779,7 @@
 
 /datum/glass_style/drinking_glass/golden_grog
 	required_drink_type = /datum/reagent/consumable/ethanol/golden_grog
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "golden_grog"
 	name = "glass of Golden Grog"
 	desc = "A drink concocted by a dwarven Quartermaster who had too much time and money on his hands. Commonly ordered by influencers looking to flaunt their wealth."
@@ -803,7 +803,7 @@
 
 /datum/glass_style/drinking_glass/appletini
 	required_drink_type = /datum/reagent/consumable/ethanol/appletini
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "appletini"
 	name = "glass of appletini"
 	desc = "An appley beverage in a martini glass"
@@ -819,7 +819,7 @@
 
 /datum/glass_style/drinking_glass/cityofsin
 	required_drink_type = /datum/reagent/consumable/ethanol/quadruple_sec/cityofsin
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "cityofsin"
 	name = "glass of city of sin"
 	desc = "Looking at it makes you recall every mistake you've made."
@@ -835,7 +835,7 @@
 
 /datum/glass_style/drinking_glass/shakiri
 	required_drink_type = /datum/reagent/consumable/ethanol/shakiri
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "shakiri"
 	name = "glass of shakiri"
 	desc = "A sweet, fragrant red drink made from fermented kiri fruits. It seems to gently sparkle when exposed to light."
@@ -850,7 +850,7 @@
 
 /datum/glass_style/drinking_glass/shakiri_spritz
 	required_drink_type = /datum/reagent/consumable/ethanol/shakiri_spritz
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "shakiri_spritz"
 	name = "glass of shakiri spritz"
 	desc = "A carbonated cocktail made from shakiri and orange juice with soda water."
@@ -865,7 +865,7 @@
 
 /datum/glass_style/drinking_glass/crimson_hurricane
 	required_drink_type = /datum/reagent/consumable/ethanol/crimson_hurricane
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "crimson_hurricane"
 	name = "glass of crimson hurricane"
 	desc = "A strong, citrusy cocktail of human origin, now with shakiri and kiri jelly for a delightfully sweet drink."
@@ -880,7 +880,7 @@
 
 /datum/glass_style/drinking_glass/shakiri_rogers
 	required_drink_type = /datum/reagent/consumable/ethanol/shakiri_rogers
-	icon = 'overrides/icons/obj/drinks.dmi'
+	icon = 'packages/customization/assets/drinks.dmi'
 	icon_state = "shakiri_rogers"
 	name = "glass of shakiri rogers"
 	desc = "A take on the classic Roy Rogers, with shakiri instead of grenadine. Sweet and refreshing."

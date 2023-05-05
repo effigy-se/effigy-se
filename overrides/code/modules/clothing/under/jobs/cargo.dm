@@ -1,13 +1,13 @@
 /obj/item/clothing/under/rank/cargo
-	worn_icon_digi = 'overrides/icons/mob/clothing/under/cargo_digi.dmi' // Anything that was in the cargo.dmi, should be in the cargo_digi.dmi
+	worn_icon_digi = 'packages/clothing/assets/mob/under/cargo_digi.dmi' // Anything that was in the cargo.dmi, should be in the cargo_digi.dmi
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat
-	icon = 'overrides/icons/obj/clothing/under/cargo.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/cargo.dmi'
+	icon = 'packages/clothing/assets/obj/under/cargo.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/cargo.dmi'
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat
-	icon = 'overrides/icons/obj/clothing/under/cargo.dmi'
-	worn_icon = 'overrides/icons/mob/clothing/under/cargo.dmi'
+	icon = 'packages/clothing/assets/obj/under/cargo.dmi'
+	worn_icon = 'packages/clothing/assets/mob/under/cargo.dmi'
 
 // Add a /obj/item/clothing/under/rank/cargo/miner/skyrat if you add miner uniforms
 

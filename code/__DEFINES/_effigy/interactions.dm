@@ -1,4 +1,4 @@
-#define INTERACTION_JSON_FOLDER "config/effigy/interactions/"
+#define INTERACTION_JSON_FOLDER "config/interactions/"
 
 // Special values
 #define INTERACTION_MAX_CHAR 255

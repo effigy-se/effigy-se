@@ -1,7 +1,3 @@
-#define BLOOD_VOLUME_OVERSIZED 1120
-
-#define PULL_OVERSIZED_SLOWDOWN 2
-
 ///The limb fits a modular custom shape
 #define BODYTYPE_CUSTOM (1<<8)
 ///The limb fits a taur body
