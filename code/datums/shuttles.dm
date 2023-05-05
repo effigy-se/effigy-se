@@ -784,10 +784,6 @@
 	suffix = "dutchman"
 	name = "pirate ship (Flying Dutchman)"
 
-/datum/map_template/shuttle/pirate/psykers
-	suffix = "psyker"
-	name = "pirate ship (Psyker-gang)"
-
 /datum/map_template/shuttle/hunter/space_cop
 	suffix = "space_cop"
 	name = "Police Spacevan"
@@ -799,6 +795,10 @@
 /datum/map_template/shuttle/hunter/bounty
 	suffix = "bounty"
 	name = "Bounty Hunter Ship"
+
+/datum/map_template/shuttle/hunter/psyker
+	suffix = "psyker"
+	name = "Psyker Fortune-Telling Ship"
 
 /datum/map_template/shuttle/starfury
 	port_id = "starfury"
