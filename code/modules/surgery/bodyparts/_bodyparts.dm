@@ -67,7 +67,7 @@
 	///Controls if the limb is disabled. TRUE means it is disabled (similar to being removed, but still present for the sake of targeted interactions).
 	var/bodypart_disabled = FALSE
 	///Handles limb disabling by damage. If 0 (0%), a limb can't be disabled via damage. If 1 (100%), it is disabled at max limb damage. Anything between is the percentage of damage against maximum limb damage needed to disable the limb.
-	var/disabling_threshold_percentage = 0
+	var/disabling_threshold_percentage = 1 // EFFIGY EDIT CHANGE - COMBAT
 	///Whether it is possible for the limb to be disabled whatsoever. TRUE means that it is possible.
 	var/can_be_disabled = FALSE //Defaults to FALSE, as only human limbs can be disabled, and only the appendages.
 
@@ -215,6 +215,12 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
+	// EFFIGY EDIT ADD START (#3 Medical)
+	if(current_gauze)
+		qdel(current_gauze)
+	if(current_splint)
+		qdel(current_splint)
+	// EFFIGY EDIT ADD END (#3 Medical)
 
 	if(length(external_organs))
 		for(var/obj/item/organ/external/external_organ as anything in external_organs)
@@ -310,14 +316,20 @@
 
 	for(var/datum/wound/wound as anything in wounds)
 		switch(wound.severity)
+			// EFFIGY EDIT CHANGE START (#3 Medical)
 			if(WOUND_SEVERITY_TRIVIAL)
-				check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)].")]"
+				// check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)].")]"
+				check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)].")]"
 			if(WOUND_SEVERITY_MODERATE)
-				check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]"
+				// check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]"
+				check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!")]"
 			if(WOUND_SEVERITY_SEVERE)
-				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]"
+				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]"
+				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!")]"
 			if(WOUND_SEVERITY_CRITICAL)
-				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!!")]"
+				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!!")]"
+				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!!")]"
+			// EFFIGY EDIT CHANGE END (#3 Medical)
 
 	for(var/obj/item/embedded_thing in embedded_objects)
 		var/stuck_word = embedded_thing.isEmbedHarmless() ? "stuck" : "embedded"
@@ -474,6 +486,11 @@
 			// note that there's no handling for BIO_FLESH since we don't have any that are that right now (slimepeople maybe someday)
 			// standard humanoids
 			if(BIO_FLESH_BONE)
+				// EFFIGY EDIT CHANGE START (#3 Medical)
+				//We do a body zone check here because muscles dont have any variants for head or chest, and rolling a muscle wound on them wound end up on a wasted wound roll
+				if(body_zone != BODY_ZONE_CHEST && body_zone != BODY_ZONE_HEAD && prob(35))
+					wounding_type = WOUND_MUSCLE
+				// EFFIGY EDIT CHANGE END (#3 Medical)
 				// if we've already mangled the skin (critical slash or piercing wound), then the bone is exposed, and we can damage it with sharp weapons at a reduced rate
 				// So a big sharp weapon is still all you need to destroy a limb
 				if((mangled_state & BODYPART_MANGLED_FLESH) && !(mangled_state & BODYPART_MANGLED_BONE) && sharpness)
@@ -488,6 +505,20 @@
 
 		// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 		if(wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
+			// EFFIGY EDIT CHANGE START (#3 Medical)
+			//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
+			//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
+			if(wounding_dmg < DAMAGED_BODYPART_BONUS_WOUNDING_BONUS)
+				var/damaged_percent = (brute_dam + burn_dam) / max_damage
+				if(damaged_percent > DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD)
+					damaged_percent = DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD
+				wounding_dmg = min(DAMAGED_BODYPART_BONUS_WOUNDING_BONUS, wounding_dmg + (damaged_percent * DAMAGED_BODYPART_BONUS_WOUNDING_COEFF))
+
+			if(current_gauze)
+				current_gauze.take_damage()
+			if(current_splint)
+				current_splint.take_damage()
+			// EFFIGY EDIT CHANGE START (#3 Medical)
 			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction)
 
 	for(var/datum/wound/iter_wound as anything in wounds)
@@ -537,6 +568,12 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
+		// EFFIGY EDIT CHANGE START (#3 Medical)
+		//Consider moving this to a new species proc "spec_heal" maybe?
+		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
+			if(owner.health > 50)
+				owner.revive(FALSE)
+		// EFFIGY EDIT CHANGE END (#3 Medical)
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
@@ -791,6 +828,13 @@
 	if(should_draw_greyscale) //Should the limb be colored?
 		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	markings = LAZYCOPY(owner_species.body_markings[body_zone])
+	if(aux_zone)
+		aux_zone_markings = LAZYCOPY(owner_species.body_markings[aux_zone])
+	markings_alpha = owner_species.markings_alpha
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 	recolor_external_organs()
 	return TRUE
 
@@ -871,9 +915,13 @@
 			draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
 		if(draw_color)
-			limb.color = "[draw_color]"
+			// EFFIGY EDIT CHANGE START (#3 Customization)
+			var/limb_color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
+
+			limb.color = limb_color
 			if(aux_zone)
-				aux.color = "[draw_color]"
+				aux.color = limb_color
+			// EFFIGY EDIT CHANGE START (#3 Customization)
 
 		//EMISSIVE CODE START
 		// For some reason this was applied as an overlay on the aux image and limb image before.
@@ -910,6 +958,63 @@
 			for(var/external_layer in overlay.all_layers)
 				if(overlay.layers & external_layer)
 					. += overlay.get_overlay(external_layer, src)
+
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat) Body Markings
+	var/override_color
+	var/atom/offset_spokesman = owner || src
+	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
+	if(is_husked)
+		override_color = "#888888"
+	// We need to check that the owner exists(could be a placed bodypart) and that it's not a chainsawhand and that they're a human with usable DNA.
+	if(!(bodypart_flags & BODYPART_PSEUDOPART))
+		for(var/key in markings) // Cycle through all of our currently selected markings.
+			var/datum/body_marking/body_marking = GLOB.body_markings[key]
+			if (!body_marking) // Edge case prevention.
+				continue
+
+			var/render_limb_string = limb_id == "digitigrade" ? ("digitigrade_1_" + body_zone) : body_zone // I am not sure why there are _1 and _2 versions of digi, so, it's staying like this.
+
+			var/gender_modifier = ""
+			if(body_zone == BODY_ZONE_CHEST) // Chest markings have male and female versions.
+				if(body_marking.gendered)
+					gender_modifier = is_dimorphic ? "_[limb_gender]" : "_m"
+
+			var/mutable_appearance/accessory_overlay
+			var/mutable_appearance/emissive
+			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string][gender_modifier]", -BODYPARTS_LAYER)
+			accessory_overlay.alpha = markings_alpha
+			if(markings[key][2])
+				emissive = emissive_appearance_copy(accessory_overlay, offset_spokesman)
+			if(override_color)
+				accessory_overlay.color = override_color
+			else
+				accessory_overlay.color = markings[key][1]
+			. += accessory_overlay
+			if (emissive)
+				. += emissive
+
+		if(aux_zone)
+			for(var/key in aux_zone_markings)
+				var/datum/body_marking/body_marking = GLOB.body_markings[key]
+				if (!body_marking) // Edge case prevention.
+					continue
+
+				var/render_limb_string = aux_zone
+
+				var/mutable_appearance/emissive
+				var/mutable_appearance/accessory_overlay
+				accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string]", -aux_layer)
+				accessory_overlay.alpha = markings_alpha
+				if (aux_zone_markings[key][2])
+					emissive = emissive_appearance_copy(accessory_overlay, offset_spokesman)
+				if(override_color)
+					accessory_overlay.color = override_color
+				else
+					accessory_overlay.color = aux_zone_markings[key][1]
+				. += accessory_overlay
+				if (emissive)
+					. += emissive
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 	return .
 
