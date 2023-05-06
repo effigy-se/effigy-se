@@ -44,7 +44,7 @@ em						{font-style: normal;	font-weight: bold;}
 .sciradio				{color: #993399;}
 .comradio				{color: #948f02;}
 .secradio				{color: #a30000;}
-.medradio				{color: #337296;}
+.medradio				{color: #3859b3;}
 .engradio				{color: #fb5613;}
 .suppradio				{color: #a8732b;}
 .servradio				{color: #6eaa2c;}
