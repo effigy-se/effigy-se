@@ -21,9 +21,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	else
 		outfit.neck = item_path
 
-// EFFIGY TODO
-/*
-
 /*
 *	SCARVES
 */
@@ -236,11 +233,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	item_path = /obj/item/clothing/neck/mantle/hosmantle
 	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
-/datum/loadout_item/neck/mantle_bs
-	name = "Blueshield's Mantle"
-	item_path = /obj/item/clothing/neck/mantle/bsmantle
-	restricted_roles = list(JOB_BLUESHIELD)
-
 /datum/loadout_item/neck/mantle_cap
 	name = "Captain's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/capmantle
@@ -253,21 +245,8 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"
 	item_path = /obj/item/clothing/neck/stethoscope
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER,JOB_SECURITY_MEDIC)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER)
 
 /datum/loadout_item/neck/maid
 	name = "Maid Neck Cover"
 	item_path = /obj/item/clothing/neck/maid
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/neck/donator
-	donator_only = TRUE
-
-/datum/loadout_item/neck/donator/mantle/regal
-	name = "Regal Mantle"
-	item_path = /obj/item/clothing/neck/mantle/regal
-
-*/

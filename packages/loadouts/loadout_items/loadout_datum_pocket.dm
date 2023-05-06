@@ -45,8 +45,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	else
 		if(!equipper.equip_to_slot_if_possible(wallet, slot = ITEM_SLOT_BACKPACK, initial = TRUE))
 			wallet.forceMove(equipper.drop_location())
-// EFFIGY TODO
-/*
 
 /*
 *	GUM
@@ -216,25 +214,3 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/fragrance_amber
 	name = "Amber Perfume"
 	item_path = /obj/item/perfume/amber
-
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/pocket_items/donator
-	donator_only = TRUE
-
-/datum/loadout_item/pocket_items/donator/coin
-	name = "Iron Coin"
-	item_path = /obj/item/coin/iron
-
-/datum/loadout_item/pocket_items/donator/havana_cigar_case
-	name = "Havanian Cigars"
-	item_path = /obj/item/storage/fancy/cigarettes/cigars/havana
-
-/datum/loadout_item/pocket_items/donator/vape
-	name = "E-Cigarette"
-	item_path = /obj/item/clothing/mask/vape
-
-*/

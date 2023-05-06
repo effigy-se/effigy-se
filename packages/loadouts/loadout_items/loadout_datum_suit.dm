@@ -20,9 +20,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	else
 		outfit.suit = item_path
 
-// EFFIGY TODO
-/*
-
 /*
 *	WINTER COATS
 */
@@ -617,7 +614,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/labcoat_highvis
 	name = "High-Vis Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_ATMOSPHERIC_TECHNICIAN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CHEMIST, ) // And now chemist and orderly get it too.
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_ATMOSPHERIC_TECHNICIAN, JOB_ENGINEER, JOB_CHEMIST)
 
 /*
 *	FAMILIES
@@ -642,40 +639,3 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/yuri
 	name = "Yuri Coat"
 	item_path = /obj/item/clothing/suit/costume/yuri
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/suit/donator
-	donator_only = TRUE
-
-/datum/loadout_item/suit/donator/furredjacket
-	name = "Furred Jacket"
-	item_path = /obj/item/clothing/suit/brownfurrich/public
-
-/datum/loadout_item/suit/donator/whitefurredjacket
-	name = "White Furred Jacket"
-	item_path = /obj/item/clothing/suit/brownfurrich/white
-
-/datum/loadout_item/suit/donator/creamfurredjacket
-	name = "Cream Furred Jacket"
-	item_path = /obj/item/clothing/suit/brownfurrich/cream
-
-/datum/loadout_item/suit/donator/modern_winter
-	name = "Modern Winter Coat"
-	item_path = /obj/item/clothing/suit/modern_winter
-
-/datum/loadout_item/suit/donator/blondie
-	name = "Cowboy Vest"
-	item_path = /obj/item/clothing/suit/cowboyvest
-
-/datum/loadout_item/suit/donator/digicoat/nanotrasen
-	name = "nanotrasen digicoat"
-	item_path = /obj/item/clothing/suit/toggle/digicoat/nanotrasen
-
-/datum/loadout_item/suit/donator/digicoat/interdyne
-	name = "Interdyne Digicoat"
-	item_path = /obj/item/clothing/suit/toggle/digicoat/interdyne
-
-*/

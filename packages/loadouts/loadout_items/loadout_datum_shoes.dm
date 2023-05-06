@@ -21,9 +21,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	else
 		outfit.shoes = item_path
 
-// EFFIGY TODO
-/*
-
 /*
 *	JACKBOOTS
 */
@@ -237,20 +234,3 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Pink Clown Shoes"
 	item_path = /obj/item/clothing/shoes/clown_shoes/pink
 	restricted_roles = list(JOB_CLOWN)
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/shoes/donator
-	donator_only = TRUE
-
-/datum/loadout_item/shoes/donator/blackjackboots
-	name = "Black Jackboots"
-	item_path = /obj/item/clothing/shoes/jackboots/black
-
-/datum/loadout_item/shoes/donator/rainbow
-	name = "Rainbow Converse"
-	item_path = /obj/item/clothing/shoes/sneakers/rainbow
-
-*/
