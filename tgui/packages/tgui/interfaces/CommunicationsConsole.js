@@ -339,6 +339,26 @@ const PageMain = (props, context) => {
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
+
+              <AlertButton
+                // EFFIGY EDIT ADD START (Alert Levels)
+                alertLevel="violet"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <AlertButton
+                alertLevel="orange"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <AlertButton
+                alertLevel="amber"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+                // EFFIGY EDIT ADD END (Alert Levels)
+              />
             </Flex.Item>
           </Flex>
         </Section>
@@ -353,7 +373,6 @@ const PageMain = (props, context) => {
               onClick={() => act('makePriorityAnnouncement')}
             />
           )}
-
           {!!canToggleEmergencyAccess && (
             <Button.Confirm
               icon="id-card-o"
@@ -417,6 +436,40 @@ const PageMain = (props, context) => {
               onClick={() => act('restoreBackupRoutingData')}
             />
           )}
+          {
+            // SKYRAT EDIT BEGIN
+          }
+          {!!canMakeAnnouncement && (
+            <Button
+              icon="bullhorn"
+              content="Call Sol Federation 911: Marshals Response"
+              onClick={() => act('callThePolice')}
+            />
+          )}
+          {!!canMakeAnnouncement && (
+            <Button
+              icon="bullhorn"
+              content="Call Sol Federation 811: Advanced Atmospherics Response"
+              onClick={() => act('callTheCatmos')}
+            />
+          )}
+          {!!canMakeAnnouncement && (
+            <Button
+              icon="bullhorn"
+              content="Call Sol Federation 911: Medical Response"
+              onClick={() => act('callTheParameds')}
+            />
+          )}
+          {!!emagged && (
+            <Button
+              icon="bullhorn"
+              content="Place an Order with Dogginos Pizza"
+              onClick={() => act('callThePizza')}
+            />
+          )}
+          {
+            // SKYRAT EDIT END
+          }
         </Flex>
       </Section>
 
