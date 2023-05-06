@@ -1,4 +1,4 @@
-/proc/generate_values_for_underwear(list/accessory_list, list/icons, color)
+/proc/generate_values_for_underwear(list/accessory_list, list/icons, color, icon_offset) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 	var/icon/lower_half = icon('icons/blanks/32x32.dmi', "nothing")
 
 	for (var/icon in icons)
@@ -8,16 +8,16 @@
 
 	for (var/accessory_name in accessory_list)
 		var/icon/icon_with_socks = new(lower_half)
-
-		if (accessory_name != "Nude")
-			var/datum/sprite_accessory/accessory = accessory_list[accessory_name]
-
-			var/icon/accessory_icon = icon('icons/mob/clothing/underwear.dmi', accessory.icon_state)
+		var/datum/sprite_accessory/accessory = accessory_list[accessory_name]
+		// EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
+		if (accessory_name != "Nude" && accessory)
+			var/icon/accessory_icon = icon(accessory.icon, accessory.icon_state)
+		// EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
 			if (color && !accessory.use_static)
 				accessory_icon.Blend(color, ICON_MULTIPLY)
 			icon_with_socks.Blend(accessory_icon, ICON_OVERLAY)
+		icon_with_socks.Crop(10, 1+icon_offset, 22, 13+icon_offset)	// EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 
-		icon_with_socks.Crop(10, 1, 22, 13)
 		icon_with_socks.Scale(32, 32)
 
 		values[accessory_name] = icon_with_socks
