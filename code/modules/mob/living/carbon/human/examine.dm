@@ -9,6 +9,11 @@
 	var/obscure_name
 	var/obscure_examine
 
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	var/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 	if(isliving(user))
 		var/mob/living/L = user
 		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA) || HAS_TRAIT(L, TRAIT_INVISIBLE_MAN))
@@ -17,12 +22,51 @@
 			obscure_name = TRUE
 			obscure_examine = TRUE
 
-	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
+	//EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
+
+	var/species_visible
+	var/species_name_string
+	if(skipface || get_visible_name() == "Unknown")
+		species_visible = FALSE
+	else
+		species_visible = TRUE
+
+	if(obscure_examine)
+		return list("<span class='warning'>You're struggling to make out any details...")
+
+	if(!species_visible)
+		species_name_string = "!"
+	else if (dna.features["custom_species"])
+		species_name_string = ", [prefix_a_or_an(dna.features["custom_species"])] <EM>[dna.features["custom_species"]]</EM>!"
+	else
+		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
+
+	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
+	if(species_visible) //If they have a custom species shown, show the real one too
+		if(dna.features["custom_species"])
+			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
+	else
+		. += "You can't make out what species they are."
+	// EFFIGY EDIT CHANGE END
+
+
+	// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+	/*
+	var/apparent_species
+	if(dna?.species && !skipface)
+		apparent_species = ", \an [dna.species.name]"
+	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"][apparent_species]</EM>!")
+
+	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
 
 	if(obscure_examine)
 		return list("<span class='warning'>You're struggling to make out any details...")
 
 	var/obscured = check_obscured_slots()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	*/
+	// EFFIGY EDIT REMOVE END
+
 
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING) && !(w_uniform.item_flags & EXAMINE_SKIP))
@@ -100,6 +144,8 @@
 		. += "[t_He] [t_is] wearing [wear_id.get_examine_string(user)]."
 
 		. += wear_id.get_id_examine_strings(user)
+
+	. += EXAMINE_SECTION_BREAK // EFFIGY EDIT ADD
 
 	//Status effects
 	var/list/status_examines = get_status_effect_examinations()
@@ -388,6 +434,10 @@
 			if(target_record)
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1;examine_time=[world.time]'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1;examine_time=[world.time]'>\[See quirks\]</a>"
+			// EFFIGY EDIT ADD START - RECORDS
+			if(target_record && length(target_record.past_medical_records) > RECORDS_INVISIBLE_THRESHOLD)
+				. += "<a href='?src=[REF(src)];hud=m;medrecords=1;examine_time=[world.time]'>\[View medical records\]</a>"
+			// EFFIGY EDIT ADD END - RECORDS
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			if(!user.stat && user != src)
@@ -407,10 +457,45 @@
 					"<a href='?src=[REF(src)];hud=s;add_citation=1;examine_time=[world.time]'>\[Add citation\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_crime=1;examine_time=[world.time]'>\[Add crime\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_note=1;examine_time=[world.time]'>\[Add note\]</a>"), "")
+
 	else if(isobserver(user))
 		. += span_info("<b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
 	. += "</span>"
 
+	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	for(var/genital in possible_genitals)
+		if(dna.species.mutant_bodyparts[genital])
+			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+			if(G)
+				if(!(G.is_hidden(src)))
+					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
+					break
+
+	var/flavor_text_link
+	/// The first 1-FLAVOR_PREVIEW_LIMIT characters in the mob's "flavor_text" DNA feature. FLAVOR_PREVIEW_LIMIT is defined in flavor_defines.dm.
+	var/preview_text = copytext_char((dna.features["flavor_text"]), 1, FLAVOR_PREVIEW_LIMIT)
+	// What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
+	var/face_obscured = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+
+	if (!(face_obscured))
+		flavor_text_link = span_notice("[preview_text]... <a href='?src=[REF(src)];lookup_info=open_examine_panel'>Look closer?</a>")
+	else
+		flavor_text_link = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
+	if (flavor_text_link)
+		. += flavor_text_link
+
+	if(client)
+		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
+		if(erp_status_pref && !CONFIG_GET(flag/disable_erp_preferences))
+			. += span_notice("ERP STATUS: [erp_status_pref]")
+
+	//Temporary flavor text addition:
+	if(temporary_flavor_text)
+		if(length_char(temporary_flavor_text) <= 40)
+			. += span_notice("<b>They look different than usual:</b> [temporary_flavor_text]")
+		else
+			. += span_notice("<b>They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
+	. += "</span>"
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /**
@@ -437,8 +522,10 @@
 		return
 	var/age_text
 	switch(age)
-		if(-INFINITY to 25)
-			age_text = "a young adult"
+		if(-INFINITY to 17) // EFFIGY EDIT CHANGE
+			age_text = "too young to be here" // EFFIGY EDIT CHANGE
+		if(18 to 25)
+			age_text = "a young adult" // EFFIGY EDIT CHANGE
 		if(26 to 35)
 			age_text = "of adult age"
 		if(36 to 55)
