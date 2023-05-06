@@ -438,7 +438,7 @@
 	var/age_text
 	switch(age)
 		if(-INFINITY to 25)
-			age_text = "very young"
+			age_text = "a young adult"
 		if(26 to 35)
 			age_text = "of adult age"
 		if(36 to 55)

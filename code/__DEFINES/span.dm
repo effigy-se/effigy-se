@@ -20,7 +20,6 @@
 #define span_blue(str) ("<span class='blue'>" + str + "</span>")
 #define span_blueteamradio(str) ("<span class='blueteamradio'>" + str + "</span>")
 #define span_bold(str) ("<span class='bold'>" + str + "</span>")
-// #define span_boldannounce(str) ("<span class='boldannounce'>" + str + "</span>") // EFFIGY EDIT CHANGE
 #define span_bolddanger(str) ("<span class='bolddanger'>" + str + "</span>")
 #define span_boldnicegreen(str) ("<span class='boldnicegreen'>" + str + "</span>")
 #define span_boldnotice(str) ("<span class='boldnotice'>" + str + "</span>")
