@@ -3,7 +3,7 @@
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	stat = DEAD
-	//hud_type = /datum/hud/new_player // EFFIGY EDIT REMOVE - SPLASH
+	//hud_type = /datum/hud/new_player // EFFIGY EDIT REMOVE
 	hud_possible = list()
 
 	var/ready = FALSE
@@ -72,7 +72,7 @@
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
 		less_input_message = " - Notice: Observer freelook is currently disabled."
 	// Don't convert this to tgui please, it's way too important
-	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]", "Observe", "Yes", "No")
+	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No") // EFFIGY EDIT CHANGE - SPLASH
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
 		show_title_screen() // EFFIGY EDIT ADD - SPLASH
@@ -118,6 +118,14 @@
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
+		if(JOB_UNAVAILABLE_QUIRK)
+			return "[jobtitle] is restricted from your quirks."
+		if(JOB_UNAVAILABLE_LANGUAGE)
+			return "[jobtitle] is restricted from your languages."
+		if(JOB_UNAVAILABLE_SPECIES)
+			return "[jobtitle] is restricted from your species."
+		if(JOB_UNAVAILABLE_FLAVOUR)
+			return "[jobtitle] requires you to have flavour text for your character."
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."
 
@@ -143,7 +151,14 @@
 
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
+	if(!job.has_required_languages(client.prefs))
+		return JOB_UNAVAILABLE_LANGUAGE
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_QUIRK
+	if(job.has_banned_species(client.prefs))
+		return JOB_UNAVAILABLE_SPECIES
 	return JOB_AVAILABLE
+
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
 	var/error = IsJobUnavailable(rank)
@@ -206,11 +221,14 @@
 		humanc = character //Let's retypecast the var to be human,
 
 	if(humanc) //These procs all expect humans
-		GLOB.manifest.inject(humanc)
+		// EFFIGY EDIT CHANGE START - CUSTOMIZATION
+		var/chosen_rank = rank // put alt job here
+		GLOB.manifest.inject(humanc, humanc.client)
 		if(SSshuttle.arrivals)
-			SSshuttle.arrivals.QueueAnnounce(humanc, rank)
+			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
-			announce_arrival(humanc, rank)
+			announce_arrival(humanc, chosen_rank)
+		// EFFIGY EDIT CHANGE END - CUSTOMIZATION
 		AddEmploymentContract(humanc)
 
 		humanc.increment_scar_slot()
@@ -237,6 +255,14 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CREWMEMBER_JOINED, character, rank)
 
+	// EFFIGY EDIT ADD START
+	if(humanc)
+		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(humanc?.client?.prefs?.loadout_list))
+			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))
+				continue
+			item.post_equip_item(humanc.client?.prefs, humanc)
+	// EFFGIY EDIT ADD END
+
 /mob/dead/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
 	//TODO:  figure out a way to exclude wizards/nukeops/demons from this.
 	for(var/C in GLOB.employmentCabinets)
@@ -254,6 +280,9 @@
 	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
 	if(QDELETED(src) || !client)
 		return // Disconnected while checking for the appearance ban.
+
+
+
 	if(!isAI(spawning_mob)) // Unfortunately there's still snowflake AI code out there.
 		mind.original_character_slot_index = client.prefs.default_slot
 		mind.transfer_to(spawning_mob) //won't transfer key since the mind is not active
@@ -285,6 +314,7 @@
 
 	if(!GLOB.crew_manifest_tgui)
 		GLOB.crew_manifest_tgui = new /datum/crew_manifest(src)
+
 
 	GLOB.crew_manifest_tgui.ui_interact(src)
 

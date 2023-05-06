@@ -1,9 +1,6 @@
-// EFFIGY TODO
-/*
-
 // // MODULAR PLUSHES
 /obj/item/toy/plush/skyrat
-	icon = 'overrides/icons/obj/plushes.dmi'
+	icon = 'packages/customization/assets/plushes.dmi'
 	inhand_icon_state = null
 
 /obj/item/toy/plush/skyrat/borbplushie
@@ -623,6 +620,3 @@
 	attack_verb_simple = list("bark at", "bork at", "woof at")
 	squeak_override = list('packages/emotes/assets/sound/voice/bark1.ogg' = 1, 'packages/emotes/assets/sound/voice/bark2.ogg' = 1)
 	gender = MALE
-
-
-*/

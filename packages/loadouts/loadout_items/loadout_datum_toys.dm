@@ -4,9 +4,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	category = LOADOUT_ITEM_TOYS
 	can_be_named = TRUE
 
-// EFFIGY TODO
-/*
-
 /*
 *	PLUSHIES
 */
@@ -100,6 +97,34 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Borb Plushie"
 	item_path = /obj/item/toy/plush/skyrat/borbplushie
 
+/datum/loadout_item/toys/blue_cat
+	name = "Blue Cat Plushie"
+	item_path = /obj/item/toy/plush/skyrat/blue_cat
+
+/datum/loadout_item/toys/igneous_synth
+	name = "Igneous Synth Plushie"
+	item_path = /obj/item/toy/plush/skyrat/igneous_synth
+
+/datum/loadout_item/toys/edgy_bird
+	name = "Edgy Bird Plushie"
+	item_path = /obj/item/toy/plush/skyrat/edgy_bird
+
+/datum/loadout_item/toys/tree_ferret
+	name = "Tree Ferret Plushie"
+	item_path = /obj/item/toy/plush/skyrat/tree_ferret
+
+/datum/loadout_item/toys/mechanic_fox
+	name = "Mechanist Fox Plushie"
+	item_path = /obj/item/toy/plush/skyrat/mechanic_fox
+
+/datum/loadout_item/toys/tribal_salamander
+	name = "Tribal Salamander Plushie"
+	item_path = /obj/item/toy/plush/skyrat/tribal_salamander
+
+/datum/loadout_item/toys/sarmie
+	name = "Cosplayer Plushie"
+	item_path = /obj/item/toy/plush/skyrat/sarmieplush
+
 /datum/loadout_item/toys/deer
 	name = "Deer Plushie"
 	item_path = /obj/item/toy/plush/skyrat/deer
@@ -127,10 +152,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/leaplush
 	name = "Suspicious Deer Plushie"
 	item_path = /obj/item/toy/plush/skyrat/leaplush
-
-/datum/loadout_item/toys/sarmie
-	name = "Cosplayer Plushie"
-	item_path = /obj/item/toy/plush/skyrat/sarmieplush
 
 /datum/loadout_item/toys/sharknet
 	name = "Gluttonous Shark Plushie"
@@ -180,14 +201,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Odd Yoga lizzy Plushie"
 	item_path = /obj/item/toy/plush/skyrat/lizzyplush
 
-/datum/loadout_item/toys/mechanic_fox
-	name = "Mechanist Fox Plushie"
-	item_path = /obj/item/toy/plush/skyrat/mechanic_fox
-
-/datum/loadout_item/toys/tribal_salamander
-	name = "Tribal Salamander Plushie"
-	item_path = /obj/item/toy/plush/skyrat/tribal_salamander
-
 /datum/loadout_item/toys/commanding_teshari
 	name = "Commanding Teshari Plushy"
 	item_path = /obj/item/toy/plush/skyrat/commanding_teshari
@@ -219,22 +232,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/boom_bird
 	name = "Boom Bird Plushie"
 	item_path = /obj/item/toy/plush/skyrat/boom_bird
-
-/datum/loadout_item/toys/blue_cat
-	name = "Blue Cat Plushie"
-	item_path = /obj/item/toy/plush/skyrat/blue_cat
-
-/datum/loadout_item/toys/igneous_synth
-	name = "Igneous Synth Plushie"
-	item_path = /obj/item/toy/plush/skyrat/igneous_synth
-
-/datum/loadout_item/toys/edgy_bird
-	name = "Edgy Bird Plushie"
-	item_path = /obj/item/toy/plush/skyrat/edgy_bird
-
-/datum/loadout_item/toys/tree_ferret
-	name = "Tree Ferret Plushie"
-	item_path = /obj/item/toy/plush/skyrat/tree_ferret
 
 /datum/loadout_item/toys/xixi
 	name = "Familiar Harpy Plushie"
@@ -387,5 +384,3 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/toykatana
 	name = "Toy Katana"
 	item_path = /obj/item/toy/katana
-
-*/

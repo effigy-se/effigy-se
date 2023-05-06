@@ -20,9 +20,6 @@ GLOBAL_LIST_INIT(loadout_belts, generate_loadout_items(/datum/loadout_item/belts
 	else
 		outfit.belt = item_path
 
-// EFFIGY TODO
-/*
-
 /datum/loadout_item/belts/fanny_pack_black
 	name = "Black Fannypack"
 	item_path = /obj/item/storage/belt/fannypack/black
@@ -74,5 +71,3 @@ GLOBAL_LIST_INIT(loadout_belts, generate_loadout_items(/datum/loadout_item/belts
 /datum/loadout_item/belts/candle_box
 	name = "Candle Box"
 	item_path = /obj/item/storage/fancy/candle_box
-
-*/

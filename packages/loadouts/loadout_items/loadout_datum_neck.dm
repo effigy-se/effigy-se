@@ -21,9 +21,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	else
 		outfit.neck = item_path
 
-// EFFIGY TODO
-/*
-
 /*
 *	SCARVES
 */
@@ -178,22 +175,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 *	GAGS
 */
 
-/datum/loadout_item/neck/gags_cloak
-	name = "Colourable Cloak"
-	item_path = /obj/item/clothing/neck/cloak/colourable
-
-/datum/loadout_item/neck/gags_veil
-	name = "Colourable Veil"
-	item_path = /obj/item/clothing/neck/cloak/colourable/veil
-
-/datum/loadout_item/neck/gags_shroud
-	name = "Colourable Shroud"
-	item_path = /obj/item/clothing/neck/cloak/colourable/shroud
-
-/datum/loadout_item/neck/gags_boat
-	name = "Colourable Boatcloak"
-	item_path = /obj/item/clothing/neck/cloak/colourable/boat
-
 /datum/loadout_item/neck/gags_mantle
 	name = "Colourable Mantle"
 	item_path = /obj/item/clothing/neck/mantle/recolorable
@@ -236,11 +217,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	item_path = /obj/item/clothing/neck/mantle/hosmantle
 	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
-/datum/loadout_item/neck/mantle_bs
-	name = "Blueshield's Mantle"
-	item_path = /obj/item/clothing/neck/mantle/bsmantle
-	restricted_roles = list(JOB_BLUESHIELD)
-
 /datum/loadout_item/neck/mantle_cap
 	name = "Captain's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/capmantle
@@ -253,21 +229,8 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"
 	item_path = /obj/item/clothing/neck/stethoscope
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER,JOB_SECURITY_MEDIC)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER)
 
 /datum/loadout_item/neck/maid
 	name = "Maid Neck Cover"
 	item_path = /obj/item/clothing/neck/maid
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/neck/donator
-	donator_only = TRUE
-
-/datum/loadout_item/neck/donator/mantle/regal
-	name = "Regal Mantle"
-	item_path = /obj/item/clothing/neck/mantle/regal
-
-*/

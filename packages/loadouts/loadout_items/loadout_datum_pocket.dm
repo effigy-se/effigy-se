@@ -45,8 +45,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	else
 		if(!equipper.equip_to_slot_if_possible(wallet, slot = ITEM_SLOT_BACKPACK, initial = TRUE))
 			wallet.forceMove(equipper.drop_location())
-// EFFIGY TODO
-/*
 
 /*
 *	GUM
@@ -138,7 +136,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 
 /datum/loadout_item/pocket_items/modular_laptop
 	name = "Modular Laptop"
-	item_path = /obj/item/modular_computer/laptop/preset/civilian/closed
+	item_path = /obj/item/modular_computer/laptop/preset/civilian
 
 /datum/loadout_item/pocket_items/ringbox_gold
 	name = "Gold Ring Box"
@@ -163,78 +161,3 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/newspaper
 	name = "Newspaper"
 	item_path = /obj/item/newspaper
-
-/datum/loadout_item/pocket_items/hhmirror
-	name = "Handheld Mirror"
-	item_path = /obj/item/hhmirror
-
-/datum/loadout_item/pocket_items/cross
-	name = "Ornate Cross"
-	item_path = /obj/item/crucifix
-	restricted_roles = list(JOB_CHAPLAIN)
-
-/*
-*	FRAGRANCES
-*/
-
-/datum/loadout_item/pocket_items/fragrance_cologne
-	name = "Cologne Bottle"
-	item_path = /obj/item/perfume/cologne
-
-/datum/loadout_item/pocket_items/fragrance_wood
-	name = "Wood Perfume"
-	item_path = /obj/item/perfume/wood
-
-/datum/loadout_item/pocket_items/fragrance_rose
-	name = "Rose Perfume"
-	item_path = /obj/item/perfume/rose
-
-/datum/loadout_item/pocket_items/fragrance_jasmine
-	name = "Jasmine Perfume"
-	item_path = /obj/item/perfume/jasmine
-
-/datum/loadout_item/pocket_items/fragrance_mint
-	name = "Mint Perfume"
-	item_path = /obj/item/perfume/mint
-
-/datum/loadout_item/pocket_items/fragrance_vanilla
-	name = "Vanilla Perfume"
-	item_path = /obj/item/perfume/vanilla
-
-/datum/loadout_item/pocket_items/fragrance_pear
-	name = "Pear Perfume"
-	item_path = /obj/item/perfume/pear
-
-/datum/loadout_item/pocket_items/fragrance_strawberry
-	name = "Strawberry Perfume"
-	item_path = /obj/item/perfume/strawberry
-
-/datum/loadout_item/pocket_items/fragrance_cherry
-	name = "Cherry Perfume"
-	item_path = /obj/item/perfume/cherry
-
-/datum/loadout_item/pocket_items/fragrance_amber
-	name = "Amber Perfume"
-	item_path = /obj/item/perfume/amber
-
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/pocket_items/donator
-	donator_only = TRUE
-
-/datum/loadout_item/pocket_items/donator/coin
-	name = "Iron Coin"
-	item_path = /obj/item/coin/iron
-
-/datum/loadout_item/pocket_items/donator/havana_cigar_case
-	name = "Havanian Cigars"
-	item_path = /obj/item/storage/fancy/cigarettes/cigars/havana
-
-/datum/loadout_item/pocket_items/donator/vape
-	name = "E-Cigarette"
-	item_path = /obj/item/clothing/mask/vape
-
-*/

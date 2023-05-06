@@ -21,9 +21,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	else
 		outfit.head = item_path
 
-// EFFIGY TODO
-/*
-
 /*
 *	BEANIES
 */
@@ -424,17 +421,17 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/trekcapmedisci
 	name = "MedSci Officer's Cap (Blue)"
 	item_path = /obj/item/clothing/head/hats/caphat/parade/fedcap/medsci
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER,JOB_MEDICAL_DOCTOR,JOB_SECURITY_MEDIC,JOB_PARAMEDIC,JOB_CHEMIST,JOB_VIROLOGIST,JOB_PSYCHOLOGIST,JOB_GENETICIST,JOB_RESEARCH_DIRECTOR,JOB_SCIENTIST,JOB_ROBOTICIST,JOB_ORDERLY)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_PSYCHOLOGIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
 
 /datum/loadout_item/head/trekcapeng
 	name = "Eng Officer's Cap (Yellow)"
 	item_path = /obj/item/clothing/head/hats/caphat/parade/fedcap/eng
-	restricted_roles = list(JOB_CHIEF_ENGINEER,JOB_ATMOSPHERIC_TECHNICIAN,JOB_STATION_ENGINEER,JOB_SECURITY_MEDIC,JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER,JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER, JOB_ENGINEERING_GUARD, JOB_CUSTOMS_AGENT)
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER)
 
 /datum/loadout_item/head/trekcapsec
 	name = "Officer's Cap (Red)"
 	item_path = /obj/item/clothing/head/hats/caphat/parade/fedcap/sec
-	restricted_roles = list(JOB_CHIEF_ENGINEER,JOB_ATMOSPHERIC_TECHNICIAN,JOB_STATION_ENGINEER,JOB_SECURITY_MEDIC,JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER,JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER, JOB_CUSTOMS_AGENT)
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER)
 
 /*
 *	JOB-LOCKED
@@ -443,12 +440,12 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/imperial_cap
 	name = "Captain's Naval Cap"
 	item_path = /obj/item/clothing/head/hats/imperial/cap
-	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_roles = list(JOB_CAPTAIN)
 
 /datum/loadout_item/head/imperial_hop
 	name = "Head of Personnel's Naval Cap"
 	item_path = /obj/item/clothing/head/hats/imperial/hop
-	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_NT_REP)
+	restricted_roles = list(JOB_HEAD_OF_PERSONNEL)
 
 
 /datum/loadout_item/head/imperial_cmo
@@ -464,22 +461,22 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/cowboyhat_sec
 	name = "Cattleman Hat, Security"
 	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/sec
-	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/head/cowboyhat_secwide
 	name = "Wide-Brimmed Cattleman Hat, Security"
 	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/wide/sec
-	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/head/ushanka/sec
 	name = "Security Ushanka"
 	item_path = /obj/item/clothing/head/costume/ushanka/sec
-	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/head/blasthelmet
 	name = "General's Helmet"
 	item_path = /obj/item/clothing/head/hats/imperial/helmet
-	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_CORRECTIONS_OFFICER,JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
+	restricted_roles = list(JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/head/navybluehoscap
 	name = "Head of Security's Naval Cap"
@@ -489,17 +486,17 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/navyblueofficerberet
 	name = "Security Officer's Navy Blue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navyofficer
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_SECURITY_MEDIC, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
 
 /datum/loadout_item/head/solofficercap
 	name = "Security Officer's Sol Cap"
 	item_path = /obj/item/clothing/head/hats/sec/peacekeeper/sol
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_SECURITY_MEDIC, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
 
 /datum/loadout_item/head/soltrafficoff
 	name = "Traffic Officer Cap"
 	item_path = /obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_SECURITY_MEDIC, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_WARDEN)
 
 /datum/loadout_item/head/navybluewardenberet
 	name = "Warden's Navy Blue beret"
@@ -514,27 +511,27 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/nursehat
 	name = "Nurse Hat"
 	item_path = /obj/item/clothing/head/costume/nursehat
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST,JOB_SECURITY_MEDIC)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST)
 
 /datum/loadout_item/head/imperial_generic
 	name = "Grey Naval Officer Cap"
 	item_path = /obj/item/clothing/head/hats/imperial
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/head/imperial_grey
 	name = "Dark Grey Naval Officer Cap"
 	item_path = /obj/item/clothing/head/hats/imperial/grey
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/head/imperial_red
 	name = "Red Naval Officer Cap"
 	item_path = /obj/item/clothing/head/hats/imperial/red
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/head/imperial_white
 	name = "White Naval Officer Cap"
 	item_path = /obj/item/clothing/head/hats/imperial/white
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /*
 *	JOB BERETS
@@ -551,17 +548,17 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/engi_beret
 	name = "Engineering Beret"
 	item_path = /obj/item/clothing/head/beret/engi
-	restricted_roles = list(JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_CHIEF_ENGINEER, JOB_ENGINEERING_GUARD)
+	restricted_roles = list(JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_CHIEF_ENGINEER, )
 
 /datum/loadout_item/head/cargo_beret
 	name = "Supply Beret"
 	item_path = /obj/item/clothing/head/beret/cargo
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER)
 
 /datum/loadout_item/head/beret_med
 	name = "Medical Beret"
 	item_path = /obj/item/clothing/head/beret/medical
-	restricted_roles = list(JOB_MEDICAL_DOCTOR,JOB_VIROLOGIST, JOB_CHEMIST, JOB_CHIEF_MEDICAL_OFFICER, JOB_SECURITY_MEDIC, JOB_ORDERLY)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_VIROLOGIST, JOB_CHEMIST, JOB_CHIEF_MEDICAL_OFFICER)
 
 /datum/loadout_item/head/beret_paramedic
 	name = "Paramedic Beret"
@@ -581,7 +578,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/beret_sci
 	name = "Scientist Beret"
 	item_path = /obj/item/clothing/head/beret/science
-	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_SCIENCE_GUARD)
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, )
 
 /datum/loadout_item/head/beret_robo
 	name = "Roboticist Beret"
@@ -603,70 +600,3 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/saints
 	name = "Fancy Hat"
 	item_path = /obj/item/clothing/head/costume/fancy
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/head/donator
-	donator_only = TRUE
-
-/*
-*	FLOWERS
-*/
-
-/datum/loadout_item/head/donator/poppy
-	name = "Poppy Flower"
-	item_path = /obj/item/food/grown/poppy
-
-/datum/loadout_item/head/donator/lily
-	name = "Lily Flower"
-	item_path = /obj/item/food/grown/poppy/lily
-
-/datum/loadout_item/head/donator/geranium
-	name = "Geranium Flower"
-	item_path = /obj/item/food/grown/poppy/geranium
-
-/datum/loadout_item/head/donator/fraxinella
-	name = "Fraxinella Flower"
-	item_path = /obj/item/food/grown/poppy/geranium/fraxinella
-
-/datum/loadout_item/head/donator/harebell
-	name = "Harebell Flower"
-	item_path = /obj/item/food/grown/harebell
-
-/datum/loadout_item/head/donator/rose
-	name = "Rose Flower"
-	item_path = /obj/item/food/grown/rose
-
-/datum/loadout_item/head/donator/carbon_rose
-	name = "Carbon Rose Flower"
-	item_path = /obj/item/grown/carbon_rose
-
-/datum/loadout_item/head/donator/sunflower
-	name = "Sunflower"
-	item_path = /obj/item/food/grown/sunflower
-
-/datum/loadout_item/head/donator/rainbow_bunch
-	name = "Rainbow Bunch"
-	item_path = /obj/item/food/grown/rainbow_flower
-	additional_tooltip_contents = list(TOOLTIP_RANDOM_COLOR)
-
-/*
-*	ENCLAVE
-*/
-
-/datum/loadout_item/head/donator/enclave
-	name = "Enclave Cap"
-	item_path = /obj/item/clothing/head/soft/enclave
-
-/datum/loadout_item/head/donator/enclaveo
-	name = "Enclave Cap - Officer"
-	item_path = /obj/item/clothing/head/soft/enclaveo
-
-// Legacy unpaintable cowboy hat because it fits a character better
-/datum/loadout_item/head/cowboyhat_legacy
-	name = "Cowboy Hat (Legacy)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat_old
-
-*/
