@@ -21,9 +21,6 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 	else
 		outfit.accessory = item_path
 
-// EFFIGY TODO
-/*
-
 /datum/loadout_item/accessory/maid_apron
 	name = "Maid Apron"
 	item_path = /obj/item/clothing/accessory/maidapron
@@ -56,37 +53,27 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 /datum/loadout_item/accessory/armband_medblue
 	name = "Medical Armband (blue stripe)"
 	item_path = /obj/item/clothing/accessory/armband/medblue
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_ORDERLY)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST)
 
 /datum/loadout_item/accessory/armband_med
 	name = "Medical Armband (white)"
 	item_path = /obj/item/clothing/accessory/armband/med
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_ORDERLY)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST)
 
 /datum/loadout_item/accessory/armband_cargo
 	name = "Cargo Armband"
 	item_path = /obj/item/clothing/accessory/armband/cargo
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER)
 
 /datum/loadout_item/accessory/armband_engineering
 	name = "Engineering Armband"
 	item_path = /obj/item/clothing/accessory/armband/engine
-	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_ENGINEERING_GUARD)
-
-/datum/loadout_item/accessory/armband_security
-	name = "Security Armband"
-	item_path = /obj/item/clothing/accessory/armband/deputy/lopland
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC)
-
-/datum/loadout_item/accessory/armband_security_deputy
-	name = "Security Deputy Armband"
-	item_path = /obj/item/clothing/accessory/armband/deputy
-	restricted_roles = list(JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN)
 
 /datum/loadout_item/accessory/armband_science
 	name = "Science Armband"
 	item_path = /obj/item/clothing/accessory/armband/science
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_SCIENCE_GUARD)
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST)
 
 /*
 *	ARMOURLESS
@@ -106,5 +93,3 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 	name = "Heirloom Sinew Skirt"
 	item_path = /obj/item/clothing/accessory/skilt/armourless
 	additional_tooltip_contents = list(TOOLTIP_NO_ARMOR)
-
-*/
