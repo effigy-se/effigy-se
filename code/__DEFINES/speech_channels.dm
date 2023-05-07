@@ -3,7 +3,7 @@
 #define RADIO_CHANNEL "Radio"
 #define ME_CHANNEL "Me"
 #define OOC_CHANNEL "OOC"
-#define ADMIN_CHANNEL "Admin"
+#define ADMIN_CHANNEL "aERP" // EFFIGY EDIT CHANGE
 //EFFIGY ADDITION START
 #define LOOC_CHANNEL "LOOC"
 #define WHISPER_CHANNEL "Whisper"
