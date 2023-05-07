@@ -1,5 +1,5 @@
 // // MODULAR PLUSHES
-/obj/item/toy/plush/skyrat
+/obj/item/toy/plush/effigy
 	icon = 'packages/donators/assets/plushes.dmi'
 	inhand_icon_state = null
 
