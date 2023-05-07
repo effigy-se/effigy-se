@@ -1,4 +1,6 @@
 #define SHAKE_ANIMATION_OFFSET 4
+#define PERSONAL_SPACE_DAMAGE 2
+#define ASS_SLAP_EXTRA_RANGE -1
 
 /mob/living/carbon/get_eye_protection()
 	. = ..()
@@ -849,3 +851,5 @@
 	GLOB.bioscrambler_valid_organs = organs
 
 #undef SHAKE_ANIMATION_OFFSET
+#undef PERSONAL_SPACE_DAMAGE
+#undef ASS_SLAP_EXTRA_RANGE
