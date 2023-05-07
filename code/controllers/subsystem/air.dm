@@ -604,7 +604,7 @@ SUBSYSTEM_DEF(air)
 
 		log_active_turfs() // invoke this here so we can count the time it takes to run this proc as "wasted time", quite simple honestly.
 
-		var/msg = "HEY! LISTEN! Atmos Alert! [SSmapping.config?.map_name] has [starting_ats] active turfs connected to [ending_ats - starting_ats] other turfs! You should fix that!"
+		var/msg = "HEY! LISTEN! [SSmapping.config?.map_name] has [starting_ats] active turfs connected to [ending_ats - starting_ats] other turfs! You should fix that!"
 		to_chat(world, span_boxannounceorange("[msg]"))
 		warning(msg)
 
