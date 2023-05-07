@@ -1111,9 +1111,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 					movement_keys[key] = SOUTH
 				//EFFIGY ADDITION START
 				if(LOOC_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=looc")
-				if(WHISPER_CHANNEL)
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=whisper")
+					var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
+					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[looc]")
+				if(WHIS_CHANNEL)
+					var/whis = tgui_say_create_open_command(WHIS_CHANNEL)
+					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[whis]")
 				//EFFIGY ADDITION END
 				if(SAY_CHANNEL)
 					var/say = tgui_say_create_open_command(SAY_CHANNEL)
