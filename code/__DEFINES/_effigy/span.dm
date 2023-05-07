@@ -3,3 +3,8 @@
 #define span_smalldanger(str) ("<span class='smalldanger'>" + str + "</span>")
 #define span_userlove(str) ("<span class='userlove'>" + str + "</span>")
 #define span_boldannounce(str) ("<div class='efchatalert_5'><span class='boldannounce'>" + str + "</span></div>")
+#define span_boxannounceblue(str) ("<div class='efchatalert_1'><span class='boldannounce'>" + str + "</span></div>")
+#define span_boxannounceyellow(str) ("<div class='efchatalert_4'><span class='boldannounce'>" + str + "</span></div>")
+#define span_boxannouncered(str) ("<div class='efchatalert_5'><span class='boldannounce'>" + str + "</span></div>")
+#define span_boxannouncegreen(str) ("<div class='efchatalert_0'><span class='boldannounce'>" + str + "</span></div>")
+#define span_boxannouncepurple(str) ("<div class='efchatalert_2'><span class='boldannounce'>" + str + "</span></div>")
