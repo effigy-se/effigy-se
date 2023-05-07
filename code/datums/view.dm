@@ -45,16 +45,12 @@
 	winset(chief, "mapwindow.map", "zoom=0")
 	zoom = 0
 
-/datum/view_data/proc/resetFormat()
-	if(chief.prefs.read_preference(/datum/preference/toggle/widescreen))
-		return
+/datum/view_data/proc/resetFormat()//Cuck
 	zoom = chief?.prefs.read_preference(/datum/preference/numeric/pixel_size)
 	winset(chief, "mapwindow.map", "zoom=[zoom]")
 	chief?.attempt_auto_fit_viewport() // If you change zoom mode, fit the viewport
 
 /datum/view_data/proc/setZoomMode()
-	if(chief.prefs.read_preference(/datum/preference/toggle/widescreen))
-		return
 	winset(chief, "mapwindow.map", "zoom-mode=[chief?.prefs.read_preference(/datum/preference/choiced/scaling_method)]")
 
 /datum/view_data/proc/isZooming()
@@ -80,7 +76,7 @@
 	var/list/shitcode = getviewsize(toAdd)  //Backward compatability to account
 	width = shitcode[1] //for a change in how sizes get calculated. we used to include world.view in
 	height = shitcode[2] //this, but it was jank, so I had to move it
-	apply(toAdd)
+	apply()
 
 /datum/view_data/proc/setBoth(wid, hei)
 	width = wid
@@ -103,10 +99,8 @@
 	height += toAdd
 	apply()
 
-/datum/view_data/proc/apply(forced)
-	if(chief.prefs.read_preference(/datum/preference/toggle/widescreen) && !forced)
-		return
-	chief?.change_view(getView(), forced)
+/datum/view_data/proc/apply()
+	chief?.change_view(getView())
 	afterViewChange()
 
 /datum/view_data/proc/supress()
@@ -124,7 +118,6 @@
 	return "[width + temp[1]]x[height + temp[2]]"
 
 /datum/view_data/proc/zoomIn()
-	chief.SetWindowIconSize(chief.prefs?.read_preference(/datum/preference/numeric/icon_size))
 	resetToDefault()
 	animate(chief, pixel_x = 0, pixel_y = 0, 0, FALSE, LINEAR_EASING, ANIMATION_END_NOW)
 

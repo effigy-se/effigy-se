@@ -16,7 +16,7 @@
 /datum/keybinding/client/communication/ooc
 	hotkey_keys = list("O")
 	name = OOC_CHANNEL
-	full_name = "Out Of Character Say (OOC)"
+	full_name = "Out Of Character (OOC)"
 	keybind_signal = COMSIG_KB_CLIENT_OOC_DOWN
 
 /datum/keybinding/client/communication/me

@@ -383,7 +383,7 @@
 /atom/movable/screen/storage
 	name = "storage"
 	icon_state = "block"
-	screen_loc = "LEFT,BOTTOM to RIGHT,TOP"
+	screen_loc = "7,7 to 10,8"
 	plane = HUD_PLANE
 
 /atom/movable/screen/storage/Initialize(mapload, new_master)
@@ -621,7 +621,7 @@
 /atom/movable/screen/splash
 	icon = 'icons/blanks/blank_title.png'
 	icon_state = ""
-	screen_loc = "CENTER-7,CENTER-7" // Why here? The old is 1,1 - which makes it at the bottom left corner. Jank! This will avoid alignment issues altogether.
+	screen_loc = "1,1"
 	plane = SPLASHSCREEN_PLANE
 	var/client/holder
 

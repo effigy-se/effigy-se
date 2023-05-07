@@ -65,11 +65,11 @@
 /datum/mutation/human/hulk/proc/break_an_arm(obj/item/bodypart/arm)
 	switch(arm.brute_dam)
 		if(45 to 50)
-			arm.force_wound_upwards(/datum/wound/blunt/critical)
+			arm.force_wound_upwards(/datum/wound/blunt/critical, wound_source = "hulk smashing")
 		if(41 to 45)
-			arm.force_wound_upwards(/datum/wound/blunt/severe)
+			arm.force_wound_upwards(/datum/wound/blunt/severe, wound_source = "hulk smashing")
 		if(35 to 41)
-			arm.force_wound_upwards(/datum/wound/blunt/moderate)
+			arm.force_wound_upwards(/datum/wound/blunt/moderate, wound_source = "hulk smashing")
 
 /datum/mutation/human/hulk/on_life(seconds_per_tick, times_fired)
 	if(owner.health < owner.crit_threshold)
@@ -121,7 +121,7 @@
 
 	if(ishuman(possible_throwable))
 		var/mob/living/carbon/human/human_throwable = possible_throwable
-		if(human_throwable.wear_suit && (human_throwable.wear_suit.flags_inv & HIDEJUMPSUIT))
+		if(human_throwable.wear_suit && (human_throwable.wear_suit.flags_inv & HIDETAIL)) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 			to_chat(user, span_warning("You can't reach [human_throwable]'s tail through [human_throwable.p_their()] [human_throwable.wear_suit.name]!"))
 			return
 

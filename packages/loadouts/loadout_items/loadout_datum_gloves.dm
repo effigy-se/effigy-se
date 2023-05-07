@@ -21,9 +21,6 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 	else
 		outfit.gloves = item_path
 
-// EFFIGY TODO
-/*
-
 /datum/loadout_item/gloves/fingerless
 	name = "Fingerless Gloves"
 	item_path = /obj/item/clothing/gloves/fingerless
@@ -64,11 +61,6 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 	name = "Red Gloves"
 	item_path = /obj/item/clothing/gloves/color/red
 
-/datum/loadout_item/gloves/yellow
-	name = "Yellow Gloves"
-	item_path = /obj/item/clothing/gloves/color/ffyellow
-	additional_tooltip_contents = list("NON-INSULATING - This item is purely cosmetic and provide no shock insulation.")
-
 /datum/loadout_item/gloves/white
 	name = "White Gloves"
 	item_path = /obj/item/clothing/gloves/color/white
@@ -100,16 +92,3 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 /datum/loadout_item/gloves/diamondring
 	name = "Diamond Ring"
 	item_path = /obj/item/clothing/gloves/ring/diamond
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/gloves/donator
-	donator_only = TRUE
-
-/datum/loadout_item/gloves/donator/military
-	name = "Military Gloves"
-	item_path = /obj/item/clothing/gloves/military
-
-*/

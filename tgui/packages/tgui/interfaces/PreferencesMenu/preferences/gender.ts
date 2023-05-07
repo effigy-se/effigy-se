@@ -16,7 +16,7 @@ export const GENDERS = {
   },
 
   [Gender.Other]: {
-    icon: 'tg-non-binary',
+    icon: 'question', // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
     text: 'Other',
   },
 };

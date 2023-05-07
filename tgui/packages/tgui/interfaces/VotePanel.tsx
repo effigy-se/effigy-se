@@ -196,7 +196,11 @@ const ChoicesPanel = (props, context) => {
                         name="vote-yea"
                       />
                     )}
-                  {choice.votes} Votes
+                  {
+                    user.isLowerAdmin
+                      ? `${choice.votes} Votes`
+                      : '' /* EFFIGY EDIT CHANGE */
+                  }
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>
@@ -232,7 +236,11 @@ const ChoicesPanel = (props, context) => {
                       name="vote-yea"
                     />
                   ) : null}
-                  {choice.votes} Votes
+                  {
+                    user.isLowerAdmin
+                      ? `${choice.votes} Votes`
+                      : '' /* EFFIGY EDIT CHANGE */
+                  }
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>

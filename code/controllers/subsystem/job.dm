@@ -523,7 +523,7 @@ SUBSYSTEM_DEF(job)
 
 	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
 
-	equipping.on_job_equipping(job)
+	equipping.on_job_equipping(job, player_client?.prefs)
 
 	job.announce_job(equipping)
 
@@ -535,7 +535,6 @@ SUBSYSTEM_DEF(job)
 
 	if(player_client)
 		to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>")
-
 
 	if(player_client)
 		if(job.req_admin_notify)

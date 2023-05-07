@@ -20,9 +20,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	else
 		outfit.suit = item_path
 
-// EFFIGY TODO
-/*
-
 /*
 *	WINTER COATS
 */
@@ -368,10 +365,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Falls Parka"
 	item_path = /obj/item/clothing/suit/fallsparka
 
-/datum/loadout_item/suit/gags_wintercoat
-	name = "Recolorable Winter Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/colourable
-
 /datum/loadout_item/suit/urban
 	name = "Urban Coat"
 	item_path = /obj/item/clothing/suit/urban
@@ -506,7 +499,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/coat_med
 	name = "Medical Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/medical
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_ORDERLY) // Reserved for Medical Doctors, Orderlies, and their boss, the Chief Medical Officer
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, ) // Reserved for Medical Doctors, Orderlies, and their boss, the Chief Medical Officer
 
 /datum/loadout_item/suit/coat_paramedic
 	name = "Paramedic Winter Coat"
@@ -521,12 +514,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/coat_sci
 	name = "Science Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/science
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_SCIENCE_GUARD) // Reserved for the Science Departement
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, ) // Reserved for the Science Departement
 
 /datum/loadout_item/suit/coat_eng
 	name = "Engineering Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/engineering
-	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ENGINEERING_GUARD) // Reserved for Station Engineers, Engineering Guards, and their boss, the Chief Engineer
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, ) // Reserved for Station Engineers, Engineering Guards, and their boss, the Chief Engineer
 
 /datum/loadout_item/suit/coat_atmos
 	name = "Atmospherics Winter Coat"
@@ -546,7 +539,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/coat_cargo
 	name = "Cargo Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/cargo
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_CUSTOMS_AGENT) // Reserved for Cargo Techs, Customs Agents, and their boss, the Quartermaster
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, ) // Reserved for Cargo Techs, Customs Agents, and their boss, the Quartermaster
 
 /datum/loadout_item/suit/coat_miner
 	name = "Mining Winter Coat"
@@ -557,7 +550,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/navybluejacketofficer
 	name = "Security Officer's Navy Blue Jacket"
 	item_path = /obj/item/clothing/suit/armor/navyblue
-	restricted_roles = list(JOB_SECURITY_OFFICER,JOB_SECURITY_MEDIC ,JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
+	restricted_roles = list(JOB_SECURITY_OFFICER, ,JOB_HEAD_OF_SECURITY, JOB_WARDEN) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/navybluejacketwarden
 	name = "Warden's Navy Blue Jacket"
@@ -567,17 +560,13 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/security_jacket
 	name = "Security Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC) //Not giving this one to COs because it's actually better than the one they spawn with
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, ) //Not giving this one to COs because it's actually better than the one they spawn with
 
 /datum/loadout_item/suit/cossak/sec
 	name = "Ukrainian Security Jacket"
 	item_path = /obj/item/clothing/suit/armor/cossack/sec
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE)
 
-/datum/loadout_item/suit/brit
-	name = "High Vis Armored Vest"
-	item_path = /obj/item/clothing/suit/armor/vest/peacekeeper/brit
-	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/suit/british_jacket
 	name = "Peacekeeper Officer Coat"
@@ -591,33 +580,33 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/engi_jacket
 	name = "Engineering Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/engi
-	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_ENGINEERING_GUARD)
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, )
 
 /datum/loadout_item/suit/sci_jacket
 	name = "Science Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sci
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_SCIENCE_GUARD)
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, )
 
 /datum/loadout_item/suit/med_jacket
 	name = "Medbay Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/med
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_ORDERLY)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, )
 
 /datum/loadout_item/suit/supply_jacket
 	name = "Supply Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/supply
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, )
 
 /datum/loadout_item/suit/supply_gorka_jacket
 	name = "Supply Gorka Jacket"
 	item_path = /obj/item/clothing/suit/gorka/supply
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, )
 
 // LABCOATS
 /datum/loadout_item/suit/labcoat_highvis
 	name = "High-Vis Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_ATMOSPHERIC_TECHNICIAN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CHEMIST, JOB_ORDERLY) // And now chemist and orderly get it too.
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_CHEMIST)
 
 /*
 *	FAMILIES
@@ -642,40 +631,3 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/yuri
 	name = "Yuri Coat"
 	item_path = /obj/item/clothing/suit/costume/yuri
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/suit/donator
-	donator_only = TRUE
-
-/datum/loadout_item/suit/donator/furredjacket
-	name = "Furred Jacket"
-	item_path = /obj/item/clothing/suit/brownfurrich/public
-
-/datum/loadout_item/suit/donator/whitefurredjacket
-	name = "White Furred Jacket"
-	item_path = /obj/item/clothing/suit/brownfurrich/white
-
-/datum/loadout_item/suit/donator/creamfurredjacket
-	name = "Cream Furred Jacket"
-	item_path = /obj/item/clothing/suit/brownfurrich/cream
-
-/datum/loadout_item/suit/donator/modern_winter
-	name = "Modern Winter Coat"
-	item_path = /obj/item/clothing/suit/modern_winter
-
-/datum/loadout_item/suit/donator/blondie
-	name = "Cowboy Vest"
-	item_path = /obj/item/clothing/suit/cowboyvest
-
-/datum/loadout_item/suit/donator/digicoat/nanotrasen
-	name = "nanotrasen digicoat"
-	item_path = /obj/item/clothing/suit/toggle/digicoat/nanotrasen
-
-/datum/loadout_item/suit/donator/digicoat/interdyne
-	name = "Interdyne Digicoat"
-	item_path = /obj/item/clothing/suit/toggle/digicoat/interdyne
-
-*/

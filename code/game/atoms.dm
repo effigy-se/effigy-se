@@ -715,14 +715,14 @@
 
 	. += get_name_chaser(user)
 	if(desc)
-		. += desc
+		. += "<span class='info'>[desc]" // EFFIGY EDIT CHANGE
 
 	if(custom_materials)
 		var/list/materials_list = list()
 		for(var/custom_material in custom_materials)
 			var/datum/material/current_material = GET_MATERIAL_REF(custom_material)
 			materials_list += "[current_material.name]"
-		. += "<u>It is made out of [english_list(materials_list)]</u>."
+		. += span_info("<u>It is made out of [english_list(materials_list)]</u>.") // EFFIGY EDIT CHANGE
 
 	if(reagents)
 		var/user_sees_reagents = user.can_see_reagents()
@@ -739,7 +739,7 @@
 						. += span_notice("The solution's pH is [round(reagents.ph, 0.01)] and has a temperature of [reagents.chem_temp]K.")
 
 				else
-					. += "It contains:<br>Nothing."
+					. += span_info("It contains:<br>Nothing.") // EFFIGY EDIT CHANGE
 			else if(reagents.flags & AMOUNT_VISIBLE)
 				if(reagents.total_volume)
 					. += span_notice("It has [reagents.total_volume] unit\s left.")
@@ -915,9 +915,16 @@
  * Should be called through the [EX_ACT] wrapper macro.
  * The wrapper takes care of the [COMSIG_ATOM_EX_ACT] signal.
  * as well as calling [/atom/proc/contents_explosion].
+ *
+ * Returns TRUE by default, and behavior should be implemented on children procs on a per-atom basis. Should only return FALSE if we resist the explosion for any reason.
+ * We assume that the default is TRUE because all atoms should be considered destructible in some manner unless they explicitly opt out (in our current framework).
+ * However, the return value itself doesn't have any external consumers, it's only so children procs can listen to the value from their parent procs (due to the nature of the [EX_ACT] macro).
+ * Thus, the return value only matters on overrides of this proc, and the only thing that truly matters is the code that is executed (applying damage, calling damage procs, etc.)
+ *
  */
 /atom/proc/ex_act(severity, target)
 	set waitfor = FALSE
+	return TRUE
 
 /**
  * React to a hit by a blob objecd

@@ -21,9 +21,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	else
 		outfit.shoes = item_path
 
-// EFFIGY TODO
-/*
-
 /*
 *	JACKBOOTS
 */
@@ -31,11 +28,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/jackboots
 	name = "Jackboots"
 	item_path = /obj/item/clothing/shoes/jackboots
-
-// Thedragmeme's donator reward, they've decided to make them available to everybody.
-/datum/loadout_item/shoes/jackboots/heel
-	name = "High-Heel Jackboots"
-	item_path = /obj/item/clothing/shoes/jackboots/heel
 
 /datum/loadout_item/shoes/kneeboot
 	name = "Knee Boots"
@@ -65,9 +57,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Work Boots"
 	item_path = /obj/item/clothing/shoes/workboots
 
-/datum/loadout_item/shoes/work_boots/old
-	name = "Old Work Boots"
-	item_path = /obj/item/clothing/shoes/workboots/old
 
 /datum/loadout_item/shoes/mining_boots
 	name = "Mining Boots"
@@ -237,20 +226,3 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Pink Clown Shoes"
 	item_path = /obj/item/clothing/shoes/clown_shoes/pink
 	restricted_roles = list(JOB_CLOWN)
-
-/*
-*	DONATOR
-*/
-
-/datum/loadout_item/shoes/donator
-	donator_only = TRUE
-
-/datum/loadout_item/shoes/donator/blackjackboots
-	name = "Black Jackboots"
-	item_path = /obj/item/clothing/shoes/jackboots/black
-
-/datum/loadout_item/shoes/donator/rainbow
-	name = "Rainbow Converse"
-	item_path = /obj/item/clothing/shoes/sneakers/rainbow
-
-*/
