@@ -206,6 +206,7 @@
 		return tgui_alert(usr, "Too late... The game has already started!")
 	if(newtime)
 		newtime = newtime*10
+		CONFIG_SET(flag/setup_bypass_player_check, TRUE)
 		SSticker.SetTimeLeft(newtime)
 		SSticker.start_immediately = FALSE
 		if(newtime < 0)
