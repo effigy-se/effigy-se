@@ -16,3 +16,10 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/number/sql_game_log_min_bundle_size
 	default = 100
 	min_val = 1
+
+/// Upper value for random events at highpop.
+/datum/config_entry/number/event_frequency_upper
+	default = 14 MINUTES
+/// Lower value for random events at highpop.
+/datum/config_entry/number/event_frequency_lower
+	default = 7 MINUTES
