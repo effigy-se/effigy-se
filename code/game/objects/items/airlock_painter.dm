@@ -158,6 +158,7 @@
 	inhand_icon_state = "paint_sprayer"
 	worn_icon_state = "painter"
 
+
 /obj/item/airlock_painter/decal
 	name = "decal painter"
 	desc = "An airlock painter, reprogramed to use a different style of paint in order to apply decals for floor tiles as well, in addition to repainting doors. Decals break when the floor tiles are removed."
@@ -376,6 +377,23 @@
 				insert_state(decal[2], dir[2], "custom")
 
 	qdel(painter)
+
+//EFFIGY ADDITION - START
+/obj/item/airlock_painter/decal/cyborg
+	name = "cyborg decal painter"
+	desc = "A mechnically installed painter with molecular printer to supply any and all of a painter's needs!"
+	desc_controls = ""
+
+/obj/item/airlock_painter/decal/cyborg/use_paint(mob/user)
+	if(can_use(user))
+		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
+		return TRUE
+	else
+		return FALSE
+
+/obj/item/airlock_painter/decal/cyborg/AltClick(mob/user)
+	return
+//EFFIGY ADDITION - END
 
 /obj/item/airlock_painter/decal/debug
 	name = "extreme decal painter"
