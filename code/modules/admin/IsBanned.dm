@@ -43,12 +43,12 @@
 
 		var/client_is_in_db = query_client_in_db.NextRow()
 		if(!client_is_in_db)
-			
+
 			var/reject_message = "Failed Login: [ckey] [address]-[computer_id] - New Account attempting to connect during panic bunker, but was rejected due to no prior connections to game servers (no database entry)"
 			log_access(reject_message)
 			if (message)
 				message_admins(span_adminnotice("[reject_message]"))
-			return list("reason"="panicbunker", "desc" = "Sorry but the server is currently not accepting connections from never before seen players")
+			return list("reason"="panicbunker", "desc" = "Sorry, your BYOND account was not found on the whitelist. If you have played on this server with a BYOND account before, please log in to the BYOND account you have played from. If you think this is in error, contact the server staff.")
 
 	//Whitelist
 	if(!real_bans_only && !C && CONFIG_GET(flag/usewhitelist))
@@ -60,16 +60,15 @@
 					addclientmessage(ckey,span_adminnotice("You have been allowed to bypass the whitelist"))
 			else
 				log_access("Failed Login: [ckey] - Not on whitelist")
-				return list("reason"="whitelist", "desc" = "\nReason: You are not on the white list for this server")
-
+				return list("reason"="whitelist", "desc" = "\nSorry, the server has a whitelist and your BYOND key was not found. If you think this is in error, contact the server staff.")
 	//Guest Checking
 	if(!real_bans_only && !C && is_guest_key(key))
 		if (CONFIG_GET(flag/guest_ban))
 			log_access("Failed Login: [ckey] - Guests not allowed")
-			return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
+			return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a BYOND account.")
 		if (CONFIG_GET(flag/panic_bunker) && SSdbcore.Connect())
 			log_access("Failed Login: [ckey] - Guests not allowed during panic bunker")
-			return list("reason"="guest", "desc"="\nReason: Sorry but the server is currently not accepting connections from never before seen players or guests. If you have played on this server with a byond account before, please log in to the byond account you have played from.")
+			return list("reason"="guest", "desc"="\nReason: Sorry, the server has a whitelist and your BYOND key was not found. If you have played on this server with a BYOND account before, please log in to the byond account you have played from.")
 
 	//Population Cap Checking
 	var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
