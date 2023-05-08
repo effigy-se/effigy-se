@@ -1135,7 +1135,7 @@
 	sleep(0.1 SECONDS)
 	set_opacity(0)
 	update_freelook_sight()
-	sleep(0.4 SECONDS)
+	sleep(0.9 SECONDS) // EFFIGY EDIT CHANGE
 	set_density(FALSE)
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	air_update_turf(TRUE, FALSE)
@@ -1210,7 +1210,7 @@
 		set_density(TRUE)
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.4 SECONDS)
+	sleep(0.9 SECONDS) // EFFIGY EDIT CHANGE
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)
