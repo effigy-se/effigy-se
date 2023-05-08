@@ -1,3 +1,6 @@
+#define LIGHT_ON_DELAY_UPPER (4 SECONDS)
+#define LIGHT_ON_DELAY_LOWER (1 SECONDS)
+
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
@@ -136,10 +139,20 @@
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			var/area/local_area =get_room_area(src)
+			//EFFIGY EDIT CHANGE START (#73 Lighting)
+			/*
 			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
+			*/
+			if(low_power_mode)
+				icon_state = "[base_state]_lpower"
+			else if(major_emergency || (local_area?.fire))
+				icon_state = "[base_state]_emergency"
+			else
+				icon_state = "[base_state]"
+			// EFFIGY EDIT CHANGE END (#73 Lighting)
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 		if(LIGHT_BURNED)
@@ -185,12 +198,15 @@
 	update()
 
 // update the icon_state and luminosity of the light depending on its state
-/obj/machinery/light/proc/update(trigger = TRUE)
+/obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE)
 	switch(status)
 		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
 			on = FALSE
 	low_power_mode = FALSE
+	var/my_delay = 0
 	if(on)
+	// EFFIGY EDIT CHANGE START (#73 Lighting)
+	/* SKYRAT EDIT ORIGINAL
 		var/brightness_set = brightness
 		var/power_set = bulb_power
 		var/color_set = bulb_colour
@@ -223,6 +239,26 @@
 					l_power = power_set,
 					l_color = color_set
 					)
+		*/
+		if(instant)
+			turn_on(trigger)
+		else if(maploaded)
+			turn_on(trigger)
+			maploaded = FALSE
+		else if(!turning_on)
+			turning_on = TRUE
+			switch(dir)
+				if(NORTH)
+					my_delay = 1.25 SECONDS
+				if(SOUTH)
+					my_delay = 0.75 SECONDS
+				if(EAST)
+					my_delay = 1 SECONDS
+				if(WEST)
+					my_delay = 0.50 SECONDS
+			addtimer(CALLBACK(src, PROC_REF(switch_mode), trigger, play_sound), my_delay)
+		// EFFIGY EDIT CHANGE END (#73 Lighting)
+
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		low_power_mode = TRUE
@@ -230,9 +266,12 @@
 	else
 		use_power = IDLE_POWER_USE
 		set_light(l_range = 0)
-	update_appearance()
 	update_current_power_usage()
 	broken_sparks(start_only=TRUE)
+
+/obj/machinery/light/proc/switch_mode(trigger = TRUE, play_sound = TRUE)
+	turn_on(trigger, play_sound)
+	update_appearance()
 
 /obj/machinery/light/update_current_power_usage()
 	if(!on && static_power_used > 0) //Light is off but still powered
@@ -307,7 +346,10 @@
 			. += "The [fitting] has been smashed."
 	if(cell || has_mock_cell)
 		. += "Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
-
+	// EFFIGY EDIT ADD START (#73 Lighting)
+	if(constant_flickering)
+		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
+	// EFFIGY EDIT ADD END (#73 Lighting)
 
 
 // attack with item - insert light (if right type), otherwise try to break the light
