@@ -150,15 +150,6 @@
 		to_chat(user, span_notice("You remove [ink] from [src]."))
 		ink = null
 
-/obj/item/airlock_painter/cyborg
-	name = "industrial airlock painter"
-	desc = "An industry standard mechanized airlock painter"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "paint_sprayer"
-	inhand_icon_state = "paint_sprayer"
-	worn_icon_state = "painter"
-
-
 /obj/item/airlock_painter/decal
 	name = "decal painter"
 	desc = "An airlock painter, reprogramed to use a different style of paint in order to apply decals for floor tiles as well, in addition to repainting doors. Decals break when the floor tiles are removed."
