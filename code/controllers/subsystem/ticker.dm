@@ -16,6 +16,8 @@ SUBSYSTEM_DEF(ticker)
 	var/start_immediately = FALSE
 	/// Boolean to track and check if our subsystem setup is done.
 	var/setup_done = FALSE
+	/// Did we broadcast at players to hurry up?
+	var/delay_notified = FALSE
 
 	var/datum/game_mode/mode = null
 
@@ -179,15 +181,25 @@ SUBSYSTEM_DEF(ticker)
 
 			if(start_immediately)
 				timeLeft = 0
+				CONFIG_SET(flag/setup_bypass_player_check, TRUE)
 
 			//countdown
-			if(timeLeft < 0)
-				return
+			if(timeLeft < 0 && CONFIG_GET(flag/setup_bypass_player_check))
+				return // 'DELAYED' delayed by an admin
 			timeLeft -= wait
 
 			if(timeLeft <= 450 && !tipped) // EFFIGY EDIT CHANGE
 				send_tip_of_the_round(world, selected_tip)
 				tipped = TRUE
+
+			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && !totalPlayersReady)
+				if(!delay_notified)
+					to_chat(world, "[span_boxannounceorange("Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
+					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
+					message_admins("Game setup delayed due to lack of players.")
+					log_game("Game setup delayed due to lack of players.")
+					delay_notified = TRUE
+				return // 'SOON' waiting for players
 
 			if(timeLeft <= 0)
 				SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
@@ -220,7 +232,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, span_boldannounce("Starting game..."))
+	to_chat(world, span_boxannounceblue("Starting game..."))
 	var/init_start = world.timeofday
 
 	mode = new /datum/game_mode/dynamic
@@ -255,6 +267,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!CONFIG_GET(flag/ooc_during_round))
 		toggle_ooc(FALSE) // Turn it off
 
+	SSnightshift.check_nightshift() // EFFIGY EDIT ADD (Reset the lights)
 	CHECK_TICK
 	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
 	create_characters() //Create player characters

@@ -2,7 +2,7 @@
 	//SECURITY//
 	////////////
 #define UPLOAD_LIMIT 524288 //Restricts client uploads to the server to 0.5MB
-#define UPLOAD_LIMIT_ADMIN 2621440 //Restricts admin client uploads to the server to 2.5MB
+#define UPLOAD_LIMIT_ADMIN 4721440 //Restricts admin client uploads to the server to 2.5MB
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -586,6 +586,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	QDEL_NULL(view_size)
 	QDEL_NULL(void)
 	QDEL_NULL(tooltips)
+	QDEL_NULL(open_loadout_ui) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 	seen_messages = null
 	Master.UpdateTickRate()
 	..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
@@ -630,6 +631,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		qdel(query_client_in_db)
 		return
 
+// EFFIGY EDIT REMOVE START
+/*
 	var/client_is_in_db = query_client_in_db.NextRow()
 	// If we aren't an admin, and the flag is set (the panic bunker is enabled).
 	if(CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey])
@@ -661,8 +664,28 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				qdel(query_client_in_db)
 				qdel(src)
 				return
+*/
+// EFFIGY EDIT REMOVE END
+
+	var/client_is_in_db = query_client_in_db.NextRow()
 
 	if(!client_is_in_db)
+		// EFFIGY EDIT ADD START - PANICBUNKER
+		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
+			log_access("Failed Login: [key] - [address] - New account attempting to connect during panic bunker")
+			message_admins("<span class='adminnotice'>Failed Login: [key] - [address] - New account attempting to connect during panic bunker</span>")
+			to_chat_immediate(src, {"<div class='efchatalert'>[EFSPAN_ANNOUNCE_MIN_TITLE("Not Authorised")]<br>[EFSPAN_ANNOUNCE_MIN_TEXT("Sorry, the server has a whitelist and your BYOND key was not found. If you think this is in error, contact the server staff.")]</div>"})
+			var/list/connectiontopic_a = params2list(connectiontopic)
+			var/list/panic_addr = CONFIG_GET(string/panic_server_address)
+			if(panic_addr && !connectiontopic_a["redirect"])
+				var/panic_name = CONFIG_GET(string/panic_server_name)
+				to_chat(src, "<span class='notice'>Sending you to [panic_name ? panic_name : panic_addr].</span>")
+				winset(src, null, "command=.options")
+				src << link("[panic_addr]?redirect=1")
+			qdel(query_client_in_db)
+			qdel(src)
+			return
+		// EFFIGY EDIT ADD END - PANICBUNKER
 		new_player = 1
 		account_join_date = findJoinDate()
 		var/datum/db_query/query_add_player = SSdbcore.NewQuery({"
@@ -677,6 +700,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if(!account_join_date)
 			account_join_date = "Error"
 			account_age = -1
+		// EFFIGY EDIT ADD START - PANICBUNKER
+		else if(ckey in GLOB.bunker_passthrough)
+			GLOB.bunker_passthrough -= ckey
+		// EFFIGY EDIT ADD END - PANICBUNKER
 	qdel(query_client_in_db)
 	var/datum/db_query/query_get_client_age = SSdbcore.NewQuery(
 		"SELECT firstseen, DATEDIFF(Now(),firstseen), accountjoindate, DATEDIFF(Now(),accountjoindate) FROM [format_table_name("player")] WHERE ckey = :ckey",
@@ -1082,6 +1109,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 					movement_keys[key] = WEST
 				if("South")
 					movement_keys[key] = SOUTH
+				//EFFIGY ADDITION START
+				if(LOOC_CHANNEL)
+					var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
+					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[looc]")
+				if(WHIS_CHANNEL)
+					var/whis = tgui_say_create_open_command(WHIS_CHANNEL)
+					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[whis]")
+				//EFFIGY ADDITION END
 				if(SAY_CHANNEL)
 					var/say = tgui_say_create_open_command(SAY_CHANNEL)
 					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[say]")
@@ -1101,22 +1136,19 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 					else
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=")
 
-/client/proc/change_view(new_size, forced)
-	if((!prefs?.read_preference(/datum/preference/toggle/widescreen)))
-		if (isnull(new_size))
-			CRASH("change_view called without argument.")
-		view = new_size
-		apply_clickcatcher()
-		mob?.reload_fullscreen()
-		if (isliving(mob))
-			var/mob/living/M = mob
-			M.update_damage_hud()
-		attempt_auto_fit_viewport()
-	else
-		apply_clickcatcher()
-		mob?.reload_fullscreen()
-		if(forced)
-			view = new_size
+/client/proc/change_view(new_size)
+	if (isnull(new_size))
+		CRASH("change_view called without argument.")
+
+	view = new_size
+	SEND_SIGNAL(src, COMSIG_VIEW_SET, new_size)
+	mob.hud_used.screentip_text.update_view()
+	apply_clickcatcher()
+	mob.reload_fullscreen()
+	if (isliving(mob))
+		var/mob/living/M = mob
+		M.update_damage_hud()
+	attempt_auto_fit_viewport()
 
 /client/proc/generate_clickcatcher()
 	if(!void)
@@ -1283,12 +1315,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	SEND_SOUND(usr, sound(null))
 	tgui_panel?.stop_music()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Stop Self Sounds"))
-
-/// Used in skin.dmf to scale on hotkeys.
-/client/verb/ScaleHotkey(number as num)
-	var/lastsize = text2num(winget(src, "mapwindow.map", "icon-size"))
-	var/newpref = lastsize + number
-	SetWindowIconSize(newpref)
 
 /client/verb/toggle_fullscreen()
 	set name = "Toggle Fullscreen"

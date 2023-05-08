@@ -37,7 +37,7 @@
 	else if(SSstation.announcer.event_sounds[sound])
 		sound = SSstation.announcer.event_sounds[sound]
 
-	announcement += "<div class='chatalert'>"
+	announcement += "<div class='efchatalert'>"
 
 	if(type == "Priority")
 		announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE("Priority Announcement")]<br>"
@@ -122,7 +122,7 @@
 		if(!target.can_hear())
 			continue
 
-		to_chat(target, "<div class='chatalert'>[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>[EFSPAN_ANNOUNCE_MIN_TEXT(message)]</div>")
+		to_chat(target, "<div class='efchatalert'>[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>[EFSPAN_ANNOUNCE_MIN_TEXT(message)]</div>")
 		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
@@ -140,7 +140,7 @@
 		if(!target.can_hear())
 			continue
 
-		to_chat(target, "<div class='chatalert_[divcolor]' >[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>[EFSPAN_ANNOUNCE_MIN_TEXT(message)]</div>")
+		to_chat(target, "<div class='efchatalert_[divcolor]' >[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>[EFSPAN_ANNOUNCE_MIN_TEXT(message)]</div>")
 		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || 'sound/misc/notice2.ogg'
 			SEND_SOUND(target, sound(sound_to_play))

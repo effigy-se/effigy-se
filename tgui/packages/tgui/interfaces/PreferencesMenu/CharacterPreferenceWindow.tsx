@@ -1,6 +1,6 @@
 import { exhaustiveCheck } from 'common/exhaustive';
 import { useBackend, useLocalState } from '../../backend';
-import { Button, Stack } from '../../components';
+import { Stack, Dropdown, Flex } from '../../components';
 import { Window } from '../../layouts';
 import { PreferencesMenuData } from './data';
 import { PageButton } from './PageButton';
@@ -11,7 +11,6 @@ import { SpeciesPage } from './SpeciesPage';
 import { QuirksPage } from './QuirksPage';
 import { LanguagesPage } from './LanguagesMenu'; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 import { LimbsPage } from './LimbsPage'; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-
 enum Page {
   Antags,
   Main,
@@ -23,27 +22,29 @@ enum Page {
 }
 
 const CharacterProfiles = (props: {
-  activeSlot: number;
+  activeSlot: number; // EFFIGY EDIT CHANGE
   onClick: (index: number) => void;
   profiles: (string | null)[];
 }) => {
-  const { profiles } = props;
-
+  const { profiles, activeSlot, onClick } = props;
+  // EFFIGY EDIT CHANGE
   return (
-    <Stack justify="center" wrap>
-      {profiles.map((profile, slot) => (
-        <Stack.Item key={slot}>
-          <Button
-            selected={slot === props.activeSlot}
-            onClick={() => {
-              props.onClick(slot);
-            }}
-            fluid>
-            {profile ?? 'New Character'}
-          </Button>
-        </Stack.Item>
-      ))}
-    </Stack>
+    <Flex align="center" justify="center">
+      <Flex.Item width="25%">
+        <Dropdown
+          width="100%"
+          selected={activeSlot}
+          displayText={profiles[activeSlot]}
+          options={profiles.map((profile, slot) => ({
+            value: slot,
+            displayText: profile ?? 'New Character',
+          }))}
+          onSelected={(slot) => {
+            onClick(slot);
+          }}
+        />
+      </Flex.Item>
+    </Flex>
   );
 };
 
@@ -93,7 +94,7 @@ export const CharacterPreferenceWindow = (props, context) => {
   }
 
   return (
-    <Window title="Character Preferences" width={1070} height={640}>
+    <Window title="Character Preferences" width={920} height={770}>
       <Window.Content scrollable>
         <Stack vertical fill>
           <Stack.Item>
@@ -141,7 +142,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
               {
-                // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+                // EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
               }
               <Stack.Item grow>
                 <PageButton
@@ -161,7 +162,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
               {
-                // EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+                // // EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
               }
               <Stack.Item grow>
                 <PageButton

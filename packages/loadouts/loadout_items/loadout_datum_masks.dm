@@ -21,9 +21,6 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	else
 		outfit.mask = item_path
 
-// EFFIGY TODO
-/*
-
 /*
 *	BANDANAS
 */
@@ -140,5 +137,3 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 /datum/loadout_item/mask/balaclava
 	name = "Balaclava"
 	item_path = /obj/item/clothing/mask/balaclava
-
-*/
