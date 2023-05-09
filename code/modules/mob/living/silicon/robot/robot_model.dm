@@ -372,6 +372,8 @@
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil,
+		//EFFIGY ADDITION - Adds cyborg painter
+		/obj/item/airlock_painter/decal/cyborg,
 	)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(
