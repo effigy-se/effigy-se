@@ -53,12 +53,33 @@
 		TIMER_STOPPABLE, \
 	)
 
+	// EFFIGY EDIT REMOVE START - Event notification
+	/**
 	log_dynamic("[rule] ruleset executing...")
 	message_admins("DYNAMIC: Executing midround ruleset [rule] in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME)]. \
 		<a href='?src=[REF(src)];cancelmidround=[midround_injection_timer_id]'>CANCEL</a> | \
 		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>")
 
 	return rule
+	*/
+	// EFFIGY EDIT REMOVE END - Event notification
+
+	// EFFIGY EDIT ADD START - Event notification
+	message_admins("<font color='[COLOR_ADMIN_PINK]'>Dynamic Event triggering in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME)]: [rule]. (\
+		<a href='?src=[REF(src)];cancelmidround=[midround_injection_timer_id]'>CANCEL</a> | \
+		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>)</font>")
+	for(var/client/staff as anything in GLOB.admins)
+		if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
+			SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
+	sleep(ADMIN_CANCEL_MIDROUND_TIME * 0.5)
+
+	if(!midround_injection_timer_id == null)
+		message_admins("<font color='[COLOR_ADMIN_PINK]'>Dynamic Event triggering in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME * 0.5)]: [rule]. (\
+		<a href='?src=[REF(src)];cancelmidround=[midround_injection_timer_id]'>CANCEL</a> | \
+		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>)</font>")
+
+	return rule
+	// EFFIGY EDIT ADD END - Event notification
 
 /// Fired after admins do not cancel a midround injection.
 /datum/game_mode/dynamic/proc/execute_midround_rule(datum/dynamic_ruleset/rule)

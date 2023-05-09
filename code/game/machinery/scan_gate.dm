@@ -17,6 +17,22 @@
 #define SCANGATE_GOLEM "golem"
 #define SCANGATE_ZOMBIE "zombie"
 
+// EFFIGY EDIT ADD START
+#define SCANGATE_MAMMAL "mammal"
+#define SCANGATE_VOX "vox"
+#define SCANGATE_AQUATIC "aquatic"
+#define SCANGATE_INSECT "insect"
+#define SCANGATE_XENO "xeno"
+#define SCANGATE_UNATHI "unathi"
+#define SCANGATE_TAJARAN "tajaran"
+#define SCANGATE_VULPKANIN "vulpkanin"
+#define SCANGATE_SYNTH "synth"
+#define SCANGATE_TESHARI "teshari"
+#define SCANGATE_HEMOPHAGE "hemophage"
+#define SCANGATE_SNAIL "snail"
+#define SCANGATE_GENDER "Gender"
+// EFFIGY EDIT ADD END
+
 /obj/machinery/scanner_gate
 	name = "scanner gate"
 	desc = "A gate able to perform mid-depth scans on any organisms who pass under it."
@@ -45,7 +61,8 @@
 	var/light_fail = FALSE
 	///Does the scanner ignore light_pass and light_fail for sending signals?
 	var/ignore_signals = FALSE
-
+	///Detects gender
+	var/detect_gender = "male" // EFFIGY EDIT ADD
 
 /obj/machinery/scanner_gate/Initialize(mapload)
 	. = ..()
@@ -157,6 +174,32 @@
 						scan_species = /datum/species/golem
 					if(SCANGATE_ZOMBIE)
 						scan_species = /datum/species/zombie
+					// EFFIGY EDIT ADD START (Medical)
+					if(SCANGATE_MAMMAL)
+						scan_species = /datum/species/mammal
+					if(SCANGATE_VOX)
+						scan_species = /datum/species/vox
+					if(SCANGATE_AQUATIC)
+						scan_species = /datum/species/aquatic
+					if(SCANGATE_INSECT)
+						scan_species = /datum/species/insect
+					if(SCANGATE_XENO)
+						scan_species = /datum/species/xeno
+					if(SCANGATE_UNATHI)
+						scan_species = /datum/species/unathi
+					if(SCANGATE_TAJARAN)
+						scan_species = /datum/species/tajaran
+					if(SCANGATE_VULPKANIN)
+						scan_species = /datum/species/vulpkanin
+					if(SCANGATE_SYNTH)
+						scan_species = /datum/species/synthetic
+					if(SCANGATE_TESHARI)
+						scan_species = /datum/species/teshari
+					if(SCANGATE_HEMOPHAGE)
+						scan_species = /datum/species/hemophage
+					if(SCANGATE_SNAIL)
+						scan_species = /datum/species/snail
+					// EFFIGY EDIT ADD END (Medical)
 				if(is_species(H, scan_species))
 					beep = TRUE
 				if(detect_species == SCANGATE_ZOMBIE) //Can detect dormant zombies
@@ -174,6 +217,14 @@
 					beep = TRUE
 				if(H.nutrition >= detect_nutrition && detect_nutrition == NUTRITION_LEVEL_FAT)
 					beep = TRUE
+		// EFFIGY EDIT ADD START (Medical)
+		if(SCANGATE_GENDER)
+			if(ishuman(M))
+				var/mob/living/carbon/human/scanned_human = M
+				if((scanned_human.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
+					if(scanned_human.gender == detect_gender)
+						beep = TRUE
+		// EFFIGY EDIT ADD END (Medical)
 
 	if(reverse)
 		beep = !beep
@@ -221,6 +272,8 @@
 	data["disease_threshold"] = disease_threshold
 	data["target_species"] = detect_species
 	data["target_nutrition"] = detect_nutrition
+	data["target_gender"] = detect_gender // EFFIGY EDIT ADD (Medical)
+
 	return data
 
 /obj/machinery/scanner_gate/ui_act(action, params)
@@ -262,6 +315,21 @@
 					if("Obese")
 						detect_nutrition = NUTRITION_LEVEL_FAT
 			. = TRUE
+		// EFFIGY EDIT ADD START (Medical)
+		if("set_target_gender")
+			var/new_gender = params["new_gender"]
+			var/gender_list = list(
+				"Male",
+				"Female"
+			)
+			if(new_gender && (new_gender in gender_list))
+				switch(new_gender)
+					if("Male")
+						detect_gender = "male"
+					if("Female")
+						detect_gender = "female"
+			. = TRUE
+		// EFFIGY EDIT ADD END (Medical)
 
 #undef SCANGATE_NONE
 #undef SCANGATE_MINDSHIELD
@@ -281,3 +349,20 @@
 #undef SCANGATE_POD
 #undef SCANGATE_GOLEM
 #undef SCANGATE_ZOMBIE
+
+// EFFIGY EDIT ADD START (Medical)
+#undef SCANGATE_MAMMAL
+#undef SCANGATE_VOX
+#undef SCANGATE_AQUATIC
+#undef SCANGATE_INSECT
+#undef SCANGATE_XENO
+#undef SCANGATE_UNATHI
+#undef SCANGATE_TAJARAN
+#undef SCANGATE_VULPKANIN
+#undef SCANGATE_SYNTH
+#undef SCANGATE_TESHARI
+#undef SCANGATE_HEMOPHAGE
+#undef SCANGATE_SNAIL
+
+#undef SCANGATE_GENDER
+// EFFIGY EDIT ADD END (Medical)

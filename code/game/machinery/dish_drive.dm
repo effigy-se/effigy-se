@@ -24,6 +24,8 @@
 	var/suction_enabled = TRUE
 	var/transmit_enabled = TRUE
 	var/list/dish_drive_contents
+	var/succrange = 4 // EFFIGY EDIT ADD
+	var/binrange = 7 // EFFIGY EDIT ADD
 
 /obj/machinery/dish_drive/Initialize(mapload)
 	. = ..()
@@ -86,7 +88,7 @@
 		do_the_dishes()
 	if(!suction_enabled)
 		return
-	for(var/obj/item/I in view(4, src))
+	for(var/obj/item/I in view(succrange, src)) // EFFIGY EDIT CHANGE
 		if(is_type_in_list(I, collectable_items) && I.loc != src && (!I.reagents || !I.reagents.total_volume))
 			if(I.Adjacent(src))
 				LAZYADD(dish_drive_contents, I)
@@ -112,7 +114,7 @@
 		if(manual)
 			visible_message(span_notice("[src] is empty!"))
 		return
-	var/obj/machinery/disposal/bin/bin = locate() in view(7, src)
+	var/obj/machinery/disposal/bin/bin = locate() in view(binrange, src) // EFFIGY EDIT CHANGE
 	if(!bin)
 		if(manual)
 			visible_message(span_warning("[src] buzzes. There are no disposal bins in range!"))
