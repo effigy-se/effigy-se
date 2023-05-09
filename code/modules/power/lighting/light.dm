@@ -1,6 +1,3 @@
-#define LIGHT_ON_DELAY_UPPER (4 SECONDS)
-#define LIGHT_ON_DELAY_LOWER (1 SECONDS)
-
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
