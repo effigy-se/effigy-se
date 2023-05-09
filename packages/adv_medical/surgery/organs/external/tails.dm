@@ -9,7 +9,7 @@
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail
 
-	//dna_block = DNA_TAIL_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
+	//dna_block = DNA_TAIL_BLOCK // EFFIGY EDIT REMOVAL - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
 	///Does this tail have a wagging sprite, and is it currently wagging?
@@ -51,7 +51,7 @@
 			addtimer(CALLBACK(src, PROC_REF(wag), FALSE), stop_after, TIMER_STOPPABLE|TIMER_DELETE_ME)
 	else
 		stop_wag()
-	owner.update_body() // SKYRAT EDIT - Golden update this in your upcoming tail refactor please :) - Original: owner.update_body_parts()
+	owner.update_body() // EFFIGY EDIT - Golden update this in your upcoming tail refactor please :) - Original: owner.update_body_parts()
 
 ///We need some special behaviour for accessories, wrapped here so we can easily add more interactions later
 /obj/item/organ/external/tail/proc/start_wag()
@@ -68,14 +68,14 @@
 ///Tail parent type (which is MONKEEEEEEEEEEE by default), with wagging functionality
 /datum/bodypart_overlay/mutant/tail
 	layers = EXTERNAL_FRONT|EXTERNAL_BEHIND
-	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
+	feature_key = "tail" // EFFIGY EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
 	var/wagging = FALSE
 
 /datum/bodypart_overlay/mutant/tail/get_base_icon_state()
 	return (wagging ? "wagging_" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging
 
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
-	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list
+	return GLOB.sprite_accessories["tail"] // EFFIGY EDIT - Customization - ORIGINAL: return GLOB.tails_list
 
 /datum/bodypart_overlay/mutant/tail/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(human.wear_suit && (human.wear_suit.flags_inv & HIDEJUMPSUIT))
@@ -92,11 +92,11 @@
 
 ///Cat tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/cat
-	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_cat"
-	// color_source = ORGAN_COLOR_HAIR // SKYRAT EDIT REMOVAL
+	feature_key = "tail" // EFFIGY EDIT - Customization - ORIGINAL: feature_key = "tail_cat"
+	// color_source = ORGAN_COLOR_HAIR // EFFIGY EDIT REMOVAL
 
 /datum/bodypart_overlay/mutant/tail/cat/get_global_feature_list()
-	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list_human
+	return GLOB.sprite_accessories["tail"] // EFFIGY EDIT - Customization - ORIGINAL: return GLOB.tails_list_human
 
 /obj/item/organ/external/tail/monkey
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/monkey
@@ -104,7 +104,7 @@
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey
 	color_source = NONE
-	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
+	feature_key = "tail" // EFFIGY EDIT - Customization - ORIGINAL: feature_key = "tail_monkey"
 
 /obj/item/organ/external/tail/lizard
 	name = "lizard tail"
@@ -145,10 +145,10 @@
 
 ///Lizard tail bodypart overlay datum
 /datum/bodypart_overlay/mutant/tail/lizard
-	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_lizard"
+	feature_key = "tail" // EFFIGY EDIT - Customization - ORIGINAL: feature_key = "tail_lizard"
 
 /datum/bodypart_overlay/mutant/tail/lizard/get_global_feature_list()
-	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list_lizard
+	return GLOB.sprite_accessories["tail"] // EFFIGY EDIT - Customization - ORIGINAL: return GLOB.tails_list_lizard
 
 /obj/item/organ/external/tail/lizard/fake
 	name = "fabricated lizard tail"

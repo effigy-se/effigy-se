@@ -64,7 +64,7 @@
 	return FALSE
 
 #define SURGERY_SLOWDOWN_CAP_MULTIPLIER 2 //increase to make surgery slower but fail less, and decrease to make surgery faster but fail more
-#define SURGERY_SPEEDUP_AREA 0.5 // Skyrat Edit Addition - reward for doing surgery in surgery
+#define SURGERY_SPEEDUP_AREA 0.5 // EFFIGY EDIT Addition - reward for doing surgery in surgery
 
 /datum/surgery_step/proc/initiate(mob/living/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	// Only followers of Asclepius have the ability to use Healing Touch and perform miracle feats of surgery.
@@ -97,7 +97,7 @@
 
 	var/was_sleeping = (target.stat != DEAD && target.IsSleeping())
 
-	// Skyrat Edit Addition - reward for doing surgery on calm patients, and for using surgery rooms(ie. surgerying alone)
+	// EFFIGY EDIT Addition - reward for doing surgery on calm patients, and for using surgery rooms(ie. surgerying alone)
 	if(was_sleeping || HAS_TRAIT(target, TRAIT_NUMBED) || target.stat == DEAD)
 		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, span_notice("You are able to work faster due to the patient's calm attitude!"))
@@ -109,11 +109,11 @@
 	if(quiet_enviromnent)
 		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, span_notice("You are able to work faster due to the quiet environment!"))
-	// Skyrat Edit End
-	// Skyrat Edit: Cyborgs are no longer immune to surgery speedups.
+	// EFFIGY EDIT End
+	// EFFIGY EDIT: Cyborgs are no longer immune to surgery speedups.
 	//if(iscyborg(user))//any immunities to surgery slowdown should go in this check.
 		//modded_time = time
-	// Skyrat Edit End
+	// EFFIGY EDIT End
 
 	if(do_after(user, modded_time, target = target, interaction_key = user.has_status_effect(/datum/status_effect/hippocratic_oath) ? target : DOAFTER_SOURCE_SURGERY)) //If we have the hippocratic oath, we can perform one surgery on each target, otherwise we can only do one surgery in total.
 
@@ -140,7 +140,7 @@
 	surgery.step_in_progress = FALSE
 	return advance
 
-#undef SURGERY_SPEEDUP_AREA // SKYRAT EDIT ADDITION
+#undef SURGERY_SPEEDUP_AREA // EFFIGY EDIT ADDITION
 
 /datum/surgery_step/proc/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
@@ -254,7 +254,7 @@
  * * pain_message - The message to be displayed
  * * mechanical_surgery - Boolean flag that represents if a surgery step is done on a mechanical limb (therefore does not force scream)
  */
-//SKYRAT EDIT START: Fixes painkillers not actually stopping pain. Adds mood effects to painful surgeries.
+//EFFIGY EDIT START: Fixes painkillers not actually stopping pain. Adds mood effects to painful surgeries.
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
 	if(target.stat >= UNCONSCIOUS) //the unconscious do not worry about pain
 		return
@@ -268,6 +268,6 @@
 	target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery)
 	if(prob(30))
 		target.emote("scream")
-//SKYRAT EDIT END
+//EFFIGY EDIT END
 
 #undef SURGERY_SLOWDOWN_CAP_MULTIPLIER

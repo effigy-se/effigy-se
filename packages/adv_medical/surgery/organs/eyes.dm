@@ -48,7 +48,7 @@
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
 	/// Native FOV that will be applied if a config is enabled
-	var/native_fov = FOV_180_DEGREES //SKYRAT EDIT CHANGE
+	var/native_fov = FOV_180_DEGREES //EFFIGY EDIT CHANGE
 
 /obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
@@ -83,10 +83,10 @@
 	if(CONFIG_GET(flag/native_fov) && native_fov)
 		owner.add_fov_trait(type, native_fov)
 
-	// SKYRAT EDIT ADDITION - EMISSIVES
+	// EFFIGY EDIT ADDITION - EMISSIVES
 	if (affected_human.emissive_eyes)
 		is_emissive = TRUE
-	// SKYRAT EDIT END
+	// EFFIGY EDIT END
 
 	if(call_update)
 		owner.dna?.species?.handle_body(affected_human) //updates eye icon
@@ -115,7 +115,7 @@
 
 	eye_owner.update_tint()
 	eye_owner.update_sight()
-	is_emissive = FALSE // SKYRAT EDIT ADDITION
+	is_emissive = FALSE // EFFIGY EDIT ADDITION
 
 #define OFFSET_X 1
 #define OFFSET_Y 2
@@ -125,10 +125,10 @@
 	if(!istype(parent) || parent.get_organ_by_type(/obj/item/organ/internal/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
-	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/species/human/human_face.dmi' // SKYRAT EDIT ADDITION
+	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/species/human/human_face.dmi' // EFFIGY EDIT ADDITION
 
-	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
-	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
+	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // EFFIGY EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
+	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // EFFIGY EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
 	var/list/overlays = list(eye_left, eye_right)
 
 	if(EYECOLOR in parent.dna?.species.species_traits)
@@ -146,11 +146,11 @@
 			overlay.pixel_x += offset[OFFSET_X]
 			overlay.pixel_y += offset[OFFSET_Y]
 
-	// SKYRAT EDIT START - Customization (darn synths I swear)
+	// EFFIGY EDIT START - Customization (darn synths I swear)
 	if(eye_icon_state == "None")
 		eye_left.alpha = 0
 		eye_right.alpha = 0
-	// SKYRAT EDIT END
+	// EFFIGY EDIT END
 
 	return overlays
 
@@ -400,7 +400,7 @@
 /obj/item/organ/internal/eyes/robotic/glow/proc/terminate_effects()
 	if(owner && active)
 		deactivate()
-	remove_mob_overlay() //SKYRAT EDIT ADDITION
+	remove_mob_overlay() //EFFIGY EDIT ADDITION
 	active = FALSE
 	clear_visuals(TRUE)
 	STOP_PROCESSING(SSfastprocess, src)
@@ -418,7 +418,7 @@
 		activate()
 
 /obj/item/organ/internal/eyes/robotic/glow/proc/prompt_for_controls(mob/user)
-	var/color = input(owner, "Select Color", "Select color", current_color_string) as color|null // SKYRAT EDIT CHANGE
+	var/color = input(owner, "Select Color", "Select color", current_color_string) as color|null // EFFIGY EDIT CHANGE
 	if(!color || QDELETED(src) || QDELETED(user) || QDELETED(owner) || owner != user)
 		return
 	var/range = input(user, "Enter range (0 - [max_light_beam_distance])", "Range Select", 0) as null|num
@@ -458,12 +458,12 @@
 /obj/item/organ/internal/eyes/robotic/glow/on_insert(mob/living/carbon/eye_owner)
 	. = ..()
 	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, PROC_REF(update_visuals))
-	//SKYRAT EDIT ADDITION
+	//EFFIGY EDIT ADDITION
 	var/eye_color = owner.client?.prefs?.read_preference(/datum/preference/color/eye_color)
 	mob_overlay.color = eye_color
 	current_color_string = eye_color
 	add_mob_overlay()
-	//SKYRAT EDIT END
+	//EFFIGY EDIT END
 
 /obj/item/organ/internal/eyes/robotic/glow/on_remove(mob/living/carbon/eye_owner)
 	. = ..()
@@ -483,7 +483,7 @@
 	clear_visuals()
 	if(!silent)
 		to_chat(owner, span_warning("Your [src] shuts off!"))
-	//remove_mob_overlay() SKYRAT EDIT REMOVAL
+	//remove_mob_overlay() EFFIGY EDIT REMOVAL
 
 /obj/item/organ/internal/eyes/robotic/glow/proc/update_visuals(datum/source, olddir, newdir)
 	SIGNAL_HANDLER
@@ -584,7 +584,7 @@
 	desc = "These eyes seem to have a large range, but might be cumbersome with glasses."
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
-	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //SKYRAT EDIT - Roundstart Snails
+	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //EFFIGY EDIT - Roundstart Snails
 
 /obj/item/organ/internal/eyes/jelly
 	name = "jelly eyes"
