@@ -240,20 +240,21 @@ There are several things that need to be remembered:
 			return
 
 		var/icon_file = 'icons/mob/clothing/eyes.dmi'
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+
+		// EFFIGY EDIT ADD START (#3 Customization)
 		var/mutant_override = FALSE
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLASSES, glasses)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLASSES, glasses, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+		// EFFIGY EDIT ADD END (#3 Customization)
+
+		var/mutable_appearance/glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
 		my_head.worn_glasses_offset?.apply_offset(glasses_overlay)
-			glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
 		overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
-
 
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
@@ -509,7 +510,6 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null, mutant_styles = mutant_styles) // EFFIGY EDIT CHANGE - Mutant bodytypes and Taur-friendly suits!
 
-		var/mutable_appearance/suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file)
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
 		my_chest?.worn_suit_offset?.apply_offset(suit_overlay)
 		overlays_standing[SUIT_LAYER] = suit_overlay
@@ -935,9 +935,7 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // EFFIGY E
 			if (parent_eyes && parent_eyes.is_emissive)
 				var/mutable_appearance/emissive_appearance = emissive_appearance('icons/mob/species/human/human_face.dmi', parent_eyes ? parent_eyes.eye_icon_state : "eyes_missing", -BODY_LAYER)
 				emissive_appearance.appearance_flags &= ~RESET_TRANSFORM
-				if(OFFSET_FACE in dna.species.offset_features)
-					emissive_appearance.pixel_x += dna.species.offset_features[OFFSET_FACE][1]
-					emissive_appearance.pixel_y += dna.species.offset_features[OFFSET_FACE][2]
+				my_head.worn_face_offset?.apply_offset(emissive_appearance)
 				add_overlay(emissive_appearance)
 			// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
