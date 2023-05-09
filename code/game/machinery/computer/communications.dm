@@ -111,6 +111,14 @@
 		return TRUE
 	return authenticated
 
+// EFFIGY EDIT ADD START - AI CHECK
+/// Are we the AI?
+/obj/machinery/computer/communications/proc/authenticated_as_ai_or_captain(mob/user)
+	if (isAI(user))
+		return TRUE
+	return ACCESS_CAPTAIN in authorize_access
+// EFFIGY EDIT ADD END - AI CHECK
+
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
 	if(isidcard(I))
 		attack_hand(user)

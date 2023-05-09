@@ -44,6 +44,7 @@
 	. += create_table_notices(list(
 		"name",
 		"job",
+		"is_robot", // EFFIGY EDIT ADD (Medical)
 		"life_status",
 		"suffocation",
 		"toxin",
@@ -64,6 +65,7 @@
 		var/list/entry = list()
 		entry["name"] = player_record["name"]
 		entry["job"] = player_record["assignment"]
+		entry["is_robot"] = player_record["is_robot"] // EFFIGY EDIT ADD (Medical)
 		entry["life_status"] = player_record["life_status"]
 		entry["suffocation"] = player_record["oxydam"]
 		entry["toxin"] = player_record["toxdam"]
@@ -242,6 +244,9 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			var/trim_assignment = id_card.get_trim_assignment()
 			if (jobs[trim_assignment] != null)
 				entry["ijob"] = jobs[trim_assignment]
+
+		if (issynthetic(tracked_human)) // EFFIGY EDIT ADD (Medical)
+			entry["is_robot"] = TRUE // EFFIGY EDIT ADD (Medical)
 
 		// Binary living/dead status
 		if (sensor_mode >= SENSOR_LIVING)
