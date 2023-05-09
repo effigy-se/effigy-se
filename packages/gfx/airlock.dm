@@ -1,12 +1,13 @@
 #define AIRLOCK_LIGHT_POWER 0.5
 #define AIRLOCK_LIGHT_RANGE 2
 #define AIRLOCK_LIGHT_ENGINEERING "engineering"
-#define AIRLOCK_POWERON_LIGHT_COLOR "#3aa7c2"
-#define AIRLOCK_BOLTS_LIGHT_COLOR "#c22323"
-#define AIRLOCK_ACCESS_LIGHT_COLOR "#57e69c"
-#define AIRLOCK_EMERGENCY_LIGHT_COLOR "#d1d11d"
-#define AIRLOCK_ENGINEERING_LIGHT_COLOR "#fd8719"
-#define AIRLOCK_DENY_LIGHT_COLOR "#c22323"
+#define AIRLOCK_POWERON_LIGHT_COLOR LIGHT_COLOR_LIGHT_CYAN
+#define AIRLOCK_BOLTS_LIGHT_COLOR LIGHT_COLOR_FLARE
+#define AIRLOCK_EMERGENCY_LIGHT_COLOR LIGHT_COLOR_DIM_YELLOW
+#define AIRLOCK_ENGINEERING_LIGHT_COLOR COLOR_ENGINEERING_ORANGE
+#define AIRLOCK_PERMIT_LIGHT_COLOR LIGHT_COLOR_VIVID_GREEN
+#define AIRLOCK_DENY_LIGHT_COLOR LIGHT_COLOR_FLARE
+#define AIRLOCK_WARN_LIGHT_COLOR CIRCUIT_COLOR_SCIENCE
 
 #define AIRLOCK_CLOSED	1
 #define AIRLOCK_CLOSING	2
@@ -32,10 +33,11 @@
 	var/has_environment_lights = TRUE //Does this airlock emit a light?
 	var/light_color_poweron = AIRLOCK_POWERON_LIGHT_COLOR
 	var/light_color_bolts = AIRLOCK_BOLTS_LIGHT_COLOR
-	var/light_color_access = AIRLOCK_ACCESS_LIGHT_COLOR
 	var/light_color_emergency = AIRLOCK_EMERGENCY_LIGHT_COLOR
 	var/light_color_engineering = AIRLOCK_ENGINEERING_LIGHT_COLOR
+	var/light_color_permit = AIRLOCK_PERMIT_LIGHT_COLOR
 	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
+	var/light_color_warn = AIRLOCK_WARN_LIGHT_COLOR
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
 	///Is this door external? E.g. does it lead to space? Shuttle docking systems bolt doors with this flag.
@@ -89,7 +91,7 @@
 			frame_state = AIRLOCK_FRAME_CLOSING
 			light_state = AIRLOCK_LIGHT_CLOSING
 			lights_overlay = "lights_closing"
-			pre_light_color = light_color_access
+			pre_light_color = light_color_warn
 		if(AIRLOCK_OPEN)
 			frame_state = AIRLOCK_FRAME_OPEN
 			if(locked)
@@ -105,7 +107,6 @@
 			frame_state = AIRLOCK_FRAME_OPENING
 			light_state = AIRLOCK_LIGHT_OPENING
 			lights_overlay = "lights_opening"
-			pre_light_color = light_color_access
 
 	. += get_airlock_overlay(frame_state, icon, src, em_block = TRUE)
 	if(airlock_material)
@@ -164,7 +165,7 @@
 	if(frame_state == AIRLOCK_FRAME_CLOSED && seal)
 		. += get_airlock_overlay("sealed", overlays_file, src, em_block = TRUE)
 
-	if(hasPower() && unres_sides)
+	if(hasPower() && unres_sides && frame_state == AIRLOCK_FRAME_CLOSED && light_state != AIRLOCK_LIGHT_DENIED)
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
 			if(!(unres_sides & heading))
 				continue
@@ -214,7 +215,7 @@
 #undef AIRLOCK_ENGINEERING_LIGHT_COLOR
 #undef AIRLOCK_POWERON_LIGHT_COLOR
 #undef AIRLOCK_BOLTS_LIGHT_COLOR
-#undef AIRLOCK_ACCESS_LIGHT_COLOR
+#undef AIRLOCK_PERMIT_LIGHT_COLOR
 #undef AIRLOCK_EMERGENCY_LIGHT_COLOR
 #undef AIRLOCK_DENY_LIGHT_COLOR
 

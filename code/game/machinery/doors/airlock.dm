@@ -1209,12 +1209,12 @@
 		set_density(TRUE)
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.1 SECONDS)
+	sleep(0.8 SECONDS) // EFFIGY EDIT CHANGE
 	if(!air_tight)
 		set_density(TRUE)
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.9 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.7 SECONDS) // EFFIGY EDIT CHANGE
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)
