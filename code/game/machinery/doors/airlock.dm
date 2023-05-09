@@ -128,7 +128,7 @@
 	var/noPower = 'sound/machines/doorclick.ogg'
 	var/previous_airlock = /obj/structure/door_assembly //what airlock assembly mineral plating was applied to
 	var/airlock_material //material of inner filling; if its an airlock with glass, this should be set to "glass"
-	var/overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
+	var/overlays_file = 'packages/gfx/assets/obj/airlock/station/overlays.dmi' // EFFIGY EDIT CHANGE (#74 Airlocks)
 	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //Used for papers and photos pinned to the airlock
 
 	var/cyclelinkeddir = 0
@@ -416,6 +416,8 @@
 		if(AIRLOCK_DENY, AIRLOCK_OPENING, AIRLOCK_CLOSING, AIRLOCK_EMAG)
 			icon_state = "nonexistenticonstate" //MADNESS
 
+// EFFIGY EDIT CHANGE START (#74 Airlocks)
+/*
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
 
@@ -494,6 +496,9 @@
 					floorlight.pixel_x = -32
 					floorlight.pixel_y = 0
 			. += floorlight
+
+*/
+// EFFIGY EDIT CHANGE END (#74 Airlocks)
 
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)

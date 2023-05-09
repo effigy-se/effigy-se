@@ -168,10 +168,13 @@
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
 			if(!(unres_sides & heading))
 				continue
-			var/mutable_appearance/floorlight = mutable_appearance('icons/obj/doors/airlocks/station/overlays.dmi', "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
+			var/mutable_appearance/floorlight = mutable_appearance('packages/gfx/assets/obj/airlock/station/overlays.dmi', "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 			. += floorlight
 
 //STATION AIRLOCKS
+/obj/machinery/door/airlock/engineering
+	icon = 'packages/gfx/assets/obj/airlock/station/engineering.dmi'
+
 /obj/machinery/door/airlock/medical
 	icon = 'packages/gfx/assets/obj/airlock/station/medical.dmi'
 
