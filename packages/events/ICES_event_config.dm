@@ -134,7 +134,7 @@
  */
 /datum/round_event_control/camera_failure
 	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /**
  * Carp Migration
@@ -184,9 +184,9 @@
 	intensity_restriction = TRUE
 
 /datum/round_event_control/disease_outbreak/advanced
-	max_occurrences = 2
+	max_occurrences = 1
 	min_players = 45
-	weight = HIGH_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
 /datum/round_event_control/fake_virus
@@ -195,7 +195,7 @@
 
 /datum/round_event_control/heart_attack
 	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/sentient_disease
 	max_occurrences = 0
@@ -219,7 +219,7 @@
  */
 /datum/round_event_control/falsealarm
 	max_occurrences = 4
-	weight = LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /**
  * Fugitives
@@ -233,7 +233,7 @@
  */
 /datum/round_event_control/gravity_generator_blackout
 	max_occurrences = 1
-	weight = LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /**
  * Grey Tide
@@ -254,7 +254,7 @@
  */
 /datum/round_event_control/immovable_rod
 	max_occurrences = 2
-	weight = HIGH_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
 /**
@@ -372,6 +372,7 @@
  */
 /datum/round_event_control/radiation_leak
 	max_occurrences = 2
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/radiation_storm
 	max_occurrences = 0
@@ -390,14 +391,15 @@
  * Combined weight: 32
  */
 /datum/round_event_control/scrubber_clog
-	max_occurrences = 0
-
-/datum/round_event_control/scrubber_clog/major
 	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
+/datum/round_event_control/scrubber_clog/major
+	max_occurrences = 0
+	weight = LOW_EVENT_FREQ
+
 /datum/round_event_control/scrubber_clog/critical
-	max_occurrences = 1
+	max_occurrences = 0
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/scrubber_clog/strange
@@ -411,13 +413,14 @@
  */
 
 /datum/round_event_control/scrubber_overflow
-	max_occurrences = 0
+	max_occurrences = 1
+	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/scrubber_overflow/threatening
 	max_occurrences = 0
 
 /datum/round_event_control/scrubber_overflow/catastrophic
-	max_occurrences = 1
+	max_occurrences = 0
 	weight = MED_EVENT_FREQ
 
 /**

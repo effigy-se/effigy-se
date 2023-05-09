@@ -369,6 +369,23 @@
 
 	qdel(painter)
 
+//EFFIGY ADDITION - START
+/obj/item/airlock_painter/decal/cyborg
+	name = "cyborg decal painter"
+	desc = "A mechnically installed painter with molecular printer to supply any and all of a painter's needs!"
+	desc_controls = ""
+
+/obj/item/airlock_painter/decal/cyborg/use_paint(mob/user)
+	if(can_use(user))
+		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
+		return TRUE
+	else
+		return FALSE
+
+/obj/item/airlock_painter/decal/cyborg/AltClick(mob/user)
+	return
+//EFFIGY ADDITION - END
+
 /obj/item/airlock_painter/decal/debug
 	name = "extreme decal painter"
 	icon_state = "decal_sprayer_ex"

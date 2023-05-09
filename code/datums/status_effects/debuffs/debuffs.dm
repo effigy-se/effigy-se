@@ -270,7 +270,7 @@
 
 /datum/status_effect/grouped/stasis/on_remove()
 	// EFFIGY EDIT CHANGE START
-	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id)) //SKYRAT EDIT START - STASIS END REMOVES NUMBING
+	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id))
 	owner.clear_alert("stasis numbed")
 	//EFFIGY EDIT CHANGE END
 	update_time_of_death()
@@ -679,7 +679,7 @@
 		owner.gib() //fuck you in particular
 		return
 	var/mob/living/carbon/human/H = owner
-	H.something_horrible(kill_either_way)
+	INVOKE_ASYNC(H, TYPE_PROC_REF(/mob/living/carbon/human, something_horrible), kill_either_way)
 
 /atom/movable/screen/alert/status_effect/dna_melt
 	name = "Genetic Breakdown"

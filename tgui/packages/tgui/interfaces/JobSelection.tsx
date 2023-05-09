@@ -30,7 +30,7 @@ type Data = {
   disable_jobs_for_non_observers: BooleanLike;
   priority: BooleanLike;
   round_duration: string;
-  alert_level: { name: string; color: string }; // SKYRAT EDIT ADDITION - Alert level on jobs menu
+  alert_level: { name: string; color: string }; // EFFIGY EDIT ADDITION - Alert level on jobs menu
 };
 
 export const JobEntry: SFC<{

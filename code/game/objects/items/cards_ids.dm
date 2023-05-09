@@ -83,7 +83,7 @@
 	var/holopay_name = "holographic pay stand"
 
 	/// Registered owner's age.
-	var/registered_age = 30
+	var/registered_age = 21 // EFFIGY EDIT CHANGE
 
 	/// The job name registered on the card (for example: Assistant).
 	var/assignment
@@ -413,7 +413,7 @@
 	if(Adjacent(user))
 		var/minor
 		if(registered_name && registered_age && registered_age < AGE_MINOR)
-			minor = " <b>(MINOR)</b>"
+			minor = " <b>[registered_age]</b>"
 		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [src.name][minor]."), span_notice("You show \the [src.name][minor]."))
 	add_fingerprint(user)
 

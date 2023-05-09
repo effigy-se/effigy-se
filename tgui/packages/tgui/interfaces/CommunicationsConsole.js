@@ -437,7 +437,7 @@ const PageMain = (props, context) => {
             />
           )}
           {
-            // SKYRAT EDIT BEGIN
+            // EFFIGY EDIT BEGIN
           }
           {!!canMakeAnnouncement && (
             <Button
@@ -468,7 +468,7 @@ const PageMain = (props, context) => {
             />
           )}
           {
-            // SKYRAT EDIT END
+            // EFFIGY EDIT END
           }
         </Flex>
       </Section>

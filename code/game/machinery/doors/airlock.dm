@@ -496,7 +496,6 @@
 					floorlight.pixel_x = -32
 					floorlight.pixel_y = 0
 			. += floorlight
-
 */
 // EFFIGY EDIT CHANGE END (#74 Airlocks)
 

@@ -32,6 +32,8 @@
 	if(GLOB.admin_datums[ckey] || GLOB.deadmins[ckey])
 		admin = TRUE
 
+	// EFFIGY EDIT REMOVE START (Panic Bunker)
+	/*
 	if(!real_bans_only && !admin && CONFIG_GET(flag/panic_bunker) && !CONFIG_GET(flag/panic_bunker_interview))
 		var/datum/db_query/query_client_in_db = SSdbcore.NewQuery(
 			"SELECT 1 FROM [format_table_name("player")] WHERE ckey = :ckey",
@@ -49,6 +51,8 @@
 			if (message)
 				message_admins(span_adminnotice("[reject_message]"))
 			return list("reason"="panicbunker", "desc" = "Sorry, your BYOND account was not found on the whitelist. If you have played on this server with a BYOND account before, please log in to the BYOND account you have played from. If you think this is in error, contact the server staff.")
+	*/
+	// EFFIGY EDIT REMOVE END (Panic Bunker)
 
 	//Whitelist
 	if(!real_bans_only && !C && CONFIG_GET(flag/usewhitelist))
