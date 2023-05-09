@@ -279,7 +279,7 @@
 
 	if(environment.temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
 		return FIRELOCK_ALARM_TYPE_HOT
-	if(environment.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT)
+	if(environment.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || || pressure > WARNING_HIGH_PRESSURE || pressure < WARNING_LOW_PRESSURE) // EFFIGY EDIT CHANGE (Add pressure)
 		return FIRELOCK_ALARM_TYPE_COLD
 	return
 
