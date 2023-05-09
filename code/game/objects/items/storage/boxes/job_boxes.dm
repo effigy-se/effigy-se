@@ -29,11 +29,15 @@
 		return
 	if(!isnull(mask_type))
 		new mask_type(src)
-
+	// EFFIGY EDIT ADD START (Vox)
 	if(!isplasmaman(loc))
-		new internal_type(src)
+		if(isvox(loc))
+			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+		else
+			new internal_type(src)
 	else
 		new /obj/item/tank/internals/plasmaman/belt(src)
+	// EFFIGY EDIT ADD END (Vox)
 
 	if(!isnull(medipen_type))
 		new medipen_type(src)
@@ -47,11 +51,16 @@
 	new /obj/item/radio/off(src)
 
 /obj/item/storage/box/survival/proc/wardrobe_removal()
-	if(!isplasmaman(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one
+	if(!isplasmaman(loc) && !isvox(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one // EFFIGY EDIT CHANGE
 		return
 	var/obj/item/mask = locate(mask_type) in src
 	var/obj/item/internals = locate(internal_type) in src
-	new /obj/item/tank/internals/plasmaman/belt(src)
+	// EFFIGY EDIT ADD START (Vox) - Vox mimic the above and below behavior, removing the redundant mask/internals; they dont mimic the plasma breathing though
+	if(!isvox(loc))
+		new /obj/item/tank/internals/plasmaman/belt(src)
+	else
+		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+	// EFFIGY EDIT ADD END (Vox)
 	qdel(mask) // Get rid of the items that shouldn't be
 	qdel(internals)
 

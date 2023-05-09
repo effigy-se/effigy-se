@@ -235,6 +235,8 @@
 		var/list/trauma_text = list()
 		for(var/t in patient.get_traumas())
 			var/datum/brain_trauma/trauma = t
+			if(!trauma.display_scanner) // EFFIGY EDIT ADD
+				continue
 			var/trauma_desc = ""
 			switch(trauma.resilience)
 				if(TRAUMA_RESILIENCE_SURGERY)
