@@ -171,12 +171,42 @@
 			var/mutable_appearance/floorlight = mutable_appearance('packages/gfx/assets/obj/airlock/station/overlays.dmi', "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 			. += floorlight
 
-//STATION AIRLOCKS
+/obj/machinery/door/airlock
+	icon = 'packages/gfx/assets/obj/airlock/station/generic.dmi'
+	overlays_file = 'packages/gfx/assets/obj/airlock/station/overlays.dmi'
+
+/obj/machinery/door/airlock/atmos
+	icon = 'packages/gfx/assets/obj/airlock/station/atmos.dmi'
+
+/obj/machinery/door/airlock/command
+	icon = 'packages/gfx/assets/obj/airlock/station/com.dmi'
+
 /obj/machinery/door/airlock/engineering
-	icon = 'packages/gfx/assets/obj/airlock/station/engineering.dmi'
+	icon = 'packages/gfx/assets/obj/airlock/station/engi.dmi'
+
+/obj/machinery/door/airlock/maintenance
+	icon = 'packages/gfx/assets/obj/airlock/station/maint-int.dmi'
+
+/obj/machinery/door/airlock/maintenance/external
+	icon = 'packages/gfx/assets/obj/airlock/station/maint-ext.dmi'
 
 /obj/machinery/door/airlock/medical
-	icon = 'packages/gfx/assets/obj/airlock/station/medical.dmi'
+	icon = 'packages/gfx/assets/obj/airlock/station/med.dmi'
+
+/obj/machinery/door/airlock/mining
+	icon = 'packages/gfx/assets/obj/airlock/station/cargo.dmi'
+
+/obj/machinery/door/airlock/research
+	icon = 'packages/gfx/assets/obj/airlock/station/rnd.dmi'
+
+/obj/machinery/door/airlock/science
+	icon = 'packages/gfx/assets/obj/airlock/station/sci.dmi'
+
+/obj/machinery/door/airlock/security
+	icon = 'packages/gfx/assets/obj/airlock/station/sec.dmi'
+
+/obj/machinery/door/airlock/virology
+	icon = 'packages/gfx/assets/obj/airlock/station/viro.dmi'
 
 #undef AIRLOCK_LIGHT_POWER
 #undef AIRLOCK_LIGHT_RANGE
