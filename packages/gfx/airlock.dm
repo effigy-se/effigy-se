@@ -107,6 +107,7 @@
 			frame_state = AIRLOCK_FRAME_OPENING
 			light_state = AIRLOCK_LIGHT_OPENING
 			lights_overlay = "lights_opening"
+			pre_light_color = light_color_permit
 
 	. += get_airlock_overlay(frame_state, icon, src, em_block = TRUE)
 	if(airlock_material)
@@ -123,8 +124,6 @@
 		pre_light_power = door_light_power
 		if(has_environment_lights)
 			set_light(pre_light_range, pre_light_power, pre_light_color, TRUE)
-		//	if(multi_tile)
-		//		filler.set_light(pre_light_range, pre_light_power, pre_light_color)
 	else
 		lights_overlay = ""
 
@@ -133,13 +132,7 @@
 	if(greyscale_lights_color && !light_state)
 		lights_appearance.color = greyscale_lights_color
 
-//	if(multi_tile)
-//		lights_appearance.dir = dir
-
 	. += lights_appearance
-
-	if(greyscale_accent_color)
-		. += get_airlock_overlay("[frame_state]_accent", overlays_file, src, em_block = TRUE, state_color = greyscale_accent_color)
 
 	if(panel_open)
 		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, src, em_block = TRUE)
@@ -215,10 +208,10 @@
 #undef AIRLOCK_ENGINEERING_LIGHT_COLOR
 #undef AIRLOCK_POWERON_LIGHT_COLOR
 #undef AIRLOCK_BOLTS_LIGHT_COLOR
-#undef AIRLOCK_PERMIT_LIGHT_COLOR
 #undef AIRLOCK_EMERGENCY_LIGHT_COLOR
+#undef AIRLOCK_PERMIT_LIGHT_COLOR
 #undef AIRLOCK_DENY_LIGHT_COLOR
-
+#undef AIRLOCK_WARN_LIGHT_COLOR
 #undef AIRLOCK_CLOSED
 #undef AIRLOCK_CLOSING
 #undef AIRLOCK_OPEN
