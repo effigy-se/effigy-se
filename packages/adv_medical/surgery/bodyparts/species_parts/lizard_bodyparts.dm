@@ -38,7 +38,7 @@
 	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
 	limb_id = SPECIES_LIZARD
 
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR MUTANT_BODYPARTS.DM
+/* EFFIGY EDIT REMOVAL - MOVED TO MODULAR MUTANT_BODYPARTS.DM
 /obj/item/bodypart/leg/left/digitigrade
 	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
 	limb_id = BODYPART_ID_DIGITIGRADE

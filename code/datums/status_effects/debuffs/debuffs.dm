@@ -270,7 +270,7 @@
 
 /datum/status_effect/grouped/stasis/on_remove()
 	// EFFIGY EDIT CHANGE START
-	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id)) //SKYRAT EDIT START - STASIS END REMOVES NUMBING
+	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id))
 	owner.clear_alert("stasis numbed")
 	//EFFIGY EDIT CHANGE END
 	update_time_of_death()

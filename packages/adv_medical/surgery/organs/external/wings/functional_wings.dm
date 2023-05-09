@@ -26,10 +26,10 @@
 	///Are our wings open or closed?
 	var/wings_open = FALSE
 
-// SKYRAT EDIT START - No free fall softening for everyone
+// EFFIGY EDIT START - No free fall softening for everyone
 /obj/item/organ/external/wings/functional/can_soften_fall()
 	return TRUE
-// SKYRAT EDIT END
+// EFFIGY EDIT END
 
 /obj/item/organ/external/wings/functional/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
 	. = ..()
@@ -140,17 +140,17 @@
 	var/open_feature_key = "wingsopen"
 
 /datum/bodypart_overlay/mutant/wings/functional/get_global_feature_list()
-	/* SKYRAT EDIT - CUSTOMIZATION - ORIGINAL:
+	/* EFFIGY EDIT - CUSTOMIZATION - ORIGINAL:
 	if(wings_open)
 		return GLOB.wings_open_list
 	else
 		return GLOB.wings_list
-	*/ // ORIGINAL END - SKYRAT EDIT START - CUSTOMIZATION - TODO: Add support for wings_open
+	*/ // ORIGINAL END - EFFIGY EDIT START - CUSTOMIZATION - TODO: Add support for wings_open
 	if(wings_open)
 		return GLOB.sprite_accessories["wings_open"]
 
 	return GLOB.sprite_accessories["wings"]
-	// SKYRAT EDIT END
+	// EFFIGY EDIT END
 
 ///Update our wingsprite to the open wings variant
 /datum/bodypart_overlay/mutant/wings/functional/proc/open_wings()
