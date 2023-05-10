@@ -161,7 +161,7 @@ export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
-  preview_options: string; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+  preview_options: string[]; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
   preview_selection: string; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
   character_preferences: {
