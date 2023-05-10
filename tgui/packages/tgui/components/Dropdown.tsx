@@ -12,7 +12,7 @@ export interface DropdownEntry {
 }
 
 type DropdownUniqueProps = {
-  options: string[] | DropdownEntry[];
+  options: string | DropdownEntry[];
   icon?: string;
   iconRotation?: number;
   clipSelectedText?: boolean;
