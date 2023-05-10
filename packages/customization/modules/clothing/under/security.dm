@@ -51,12 +51,6 @@
 	icon_state = "policealt"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
-///WARDEN
-/obj/item/clothing/under/rank/security/warden/peacekeeper/sol
-	name = "sol warden uniform"
-	desc = "A light blue shirt with navy pants. This one bears the insignia of a Warden, as well as the stretch marks."
-	icon_state = "policewardenalt"
-
 ///HEAD OF SECURITY
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
 	name = "sol chief of police uniform"
