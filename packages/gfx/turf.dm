@@ -1,7 +1,3 @@
-/turf/closed/wall
-	icon = 'packages/gfx/assets/turf/walls/wall.dmi'
-	canSmoothWith = SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS
-
 /turf/closed/wall/r_wall
 	icon = 'packages/gfx/assets/turf/walls/reinforced_wall.dmi'
 
