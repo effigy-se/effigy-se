@@ -1,6 +1,6 @@
 /obj/item/disk/surgery/brainwashing
-	name = "Surgery Disk" // EFFIGY EDIT: Formerly "Brainwashing Surgery Disk" //Finally I can upload the funny surgery disk without letting everyone in the room know about it!
-	desc = "The disk provides instructions on some kind of surgery, but the label has been scratched off..." // EFFIGY EDIT: Moved to Special Desc.
+	name = "Surgery Disk" //EFFIGY EDIT: Formerly "Brainwashing Surgery Disk" //Finally I can upload the funny surgery disk without letting everyone in the room know about it!
+	desc = "The disk provides instructions on some kind of surgery, but the label has been scratched off..." //EFFIGY EDIT: Moved to Special Desc.
 	surgeries = list(/datum/surgery/advanced/brainwashing)
 	special_desc_requirement = EXAMINE_CHECK_JOB // EFFIGY EDIT
 	special_desc_jobs = list("Medical Doctor, Chief Medical Officer, Roboticist") //SKYRAT CHANGE //You mean to tell me the roles that get this role-exclusive item know what it does?

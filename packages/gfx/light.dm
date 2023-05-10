@@ -70,8 +70,8 @@
 		else
 			use_power = ACTIVE_POWER_USE
 			set_light(new_brightness, new_power, new_color)
-			// if(play_sound)
-			//	playsound(src.loc, 'packages/gfx/assets/obj/light_on.ogg', 65, 1)
+		//if(play_sound)
+		//	playsound(src.loc, 'packages/gfx/assets/obj/light_on.ogg', 65, 1)
 
 /obj/machinery/light/proc/start_flickering()
 	on = FALSE
@@ -130,6 +130,27 @@
 		balloon_alert(user, "ballast repaired!")
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	return ..()
+
+// Kneecapping light values every light at a time.
+/obj/machinery/light/dim
+	brightness = 4
+	nightshift_brightness = 4
+	bulb_colour = "#f8faff"
+	bulb_power = 0.4
+
+/obj/machinery/light/small
+	brightness = 5
+	nightshift_brightness = 4.5
+	bulb_colour = "#f8faff"
+	bulb_power = 0.9
+
+/obj/machinery/light/cold
+	nightshift_light_color = null
+
+/obj/machinery/light/warm
+	bulb_colour = "#f8faff"
+	nightshift_light_color = null
+
 
 #undef NIGHTSHIFT_LIGHT_MODIFIER
 #undef NIGHTSHIFT_COLOR_MODIFIER

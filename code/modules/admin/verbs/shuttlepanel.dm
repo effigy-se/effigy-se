@@ -11,13 +11,22 @@
 
 /obj/docking_port/mobile/proc/admin_fly_shuttle(mob/user)
 	var/list/options = list()
-
+	options += ">>> VALID DOCKS:" // EFFIGY EDIT ADD
 	for(var/port in SSshuttle.stationary_docking_ports)
 		if (istype(port, /obj/docking_port/stationary/transit))
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
 		if (canDock(S) == SHUTTLE_CAN_DOCK)
 			options[S.name || S.shuttle_id] = S
+	// EFFIGY EDIT ADD START
+	options += ">>> INVALID DOCKS:" //I WILL CRASH THIS SHIP WITH NO SURVIVORS!
+	for(var/port in SSshuttle.stationary_docking_ports)
+		if (istype(port, /obj/docking_port/stationary/transit))
+			continue  // please don't do this
+		var/obj/docking_port/stationary/S = port
+		if(!(canDock(S) == SHUTTLE_CAN_DOCK))
+			options[S.name || S.shuttle_id] = S
+	// EFFIGY EDIT ADD END
 
 	options += "--------"
 	options += "Infinite Transit"
@@ -46,7 +55,8 @@
 
 		else
 			if(options[selection])
-				request(options[selection])
+				request(options[selection], TRUE) // EFFIGY EDIT CHANGE
+				message_admins("[user.ckey] has admin FORCED [name || shuttle_id] to dock at [options[selection]], this is ignoring all safety measures.") // EFFIGY EDIT ADD
 
 /obj/docking_port/mobile/emergency/admin_fly_shuttle(mob/user)
 	return  // use the existing verbs for this

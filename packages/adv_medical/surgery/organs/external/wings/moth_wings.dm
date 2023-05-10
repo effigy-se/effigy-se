@@ -6,6 +6,7 @@
 	preference = "feature_moth_wings"
 
 	//dna_block = DNA_MOTH_WINGS_BLOCK // EFFIGY EDIT REMOVAL
+	//dna_block = DNA_MOTH_WINGS_BLOCK // EFFIGY EDIT REMOVAL
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/moth
 
