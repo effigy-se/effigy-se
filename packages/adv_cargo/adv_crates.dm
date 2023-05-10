@@ -190,9 +190,7 @@
 	crate_name = "bulk vinegar pack"
 	crate_type = /obj/structure/closet/crate/freezer
 
-/*
-*	MEDICAL
-*/
+// MEDICAL
 
 /datum/supply_pack/medical/anesthetics
 	name = "Anesthetics Crate"
@@ -255,9 +253,7 @@
 	for(var/i in 1 to 19)
 		new /obj/item/grown/log(.)
 
-/*
-*	MISC
-*/
+// MISC
 
 /datum/supply_pack/misc/painting
 	name = "Advanced Art Supplies"
@@ -313,9 +309,7 @@
 	)
 	crate_name = "candle crate"
 
-/*
-*	SECURITY
-*/
+// SECURITY
 
 /datum/supply_pack/security/MODsuit_security
 	name = "Security MODsuit Crate"
@@ -325,9 +319,7 @@
 	contains = list(/obj/item/mod/control/pre_equipped/security)
 	crate_name = "security MODsuit crate"
 
-/*
-*	SERVICE
-*/
+// SERVICE
 
 /datum/supply_pack/service/buildabar
 	name = "Build a Bar Crate"
@@ -414,22 +406,6 @@
 	access_view = ACCESS_CARGO
 	contains = list(/obj/item/mod/control/pre_equipped/loader)
 	crate_name = "cargo MODsuit crate"
-
-/*
-*	TOYS
-*/
-
-/datum/supply_pack/service/snowmobile
-	name = "Snowmobile kit"
-	desc = "Trapped on a frigid wasteland? Need to get around fast? Purchase a refurbished snowmobile with a FREE 10 microsecond warranty!"
-	cost = CARGO_CRATE_VALUE * 7.5
-	contains = list(
-		/obj/vehicle/ridden/atv/snowmobile = 1,
-		/obj/item/key/atv = 1,
-		/obj/item/clothing/mask/gas/explorer = 1,
-	)
-	crate_name = "snowmobile kit"
-	crate_type = /obj/structure/closet/crate/large
 
 // VENDING RESTOCKS
 
