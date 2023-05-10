@@ -93,7 +93,7 @@
 	var/contents_thermal_insulation = 0
 	/// The degree of pressure protection that mobs in list/contents have from the external environment, between 0 and 1
 	var/contents_pressure_protection = 0
-	/// Whether a user will face atoms on entering them with a mouse. Despite being a mob variable, it is here for performances //SKYRAT EDIT ADDITION
+	/// Whether a user will face atoms on entering them with a mouse. Despite being a mob variable, it is here for performances // EFFIGY EDIT ADDITION
 	var/face_mouse = FALSE // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 	/// Value used to increment ex_act() if reactionary_explosions is on
 	/// How much we as a source block explosions by

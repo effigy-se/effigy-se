@@ -122,13 +122,13 @@
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
-	languages_native = list(/datum/language/draconic, /datum/language/ashtongue) //SKYRAT EDIT: Ashtongue for Ashwalkers
+	languages_native = list(/datum/language/draconic, /datum/language/ashtongue) // EFFIGY EDIT: Ashtongue for Ashwalkers
 
 /obj/item/organ/internal/tongue/lizard/modify_speech(datum/source, list/speech_args)
 	var/static/regex/lizard_hiss = new("s+", "g")
 	var/static/regex/lizard_hiSS = new("S+", "g")
 	var/static/regex/lizard_kss = new(@"(\w)x", "g")
-	/* // SKYRAT EDIT: REMOVAL
+	/* // EFFIGY EDIT: REMOVAL
 	var/static/regex/lizard_kSS = new(@"(\w)X", "g")
 	*/
 	var/static/regex/lizard_ecks = new(@"\bx([\-|r|R]|\b)", "g")
@@ -138,7 +138,7 @@
 		message = lizard_hiss.Replace(message, "sss")
 		message = lizard_hiSS.Replace(message, "SSS")
 		message = lizard_kss.Replace(message, "$1kss")
-		/* // SKYRAT EDIT: REMOVAL
+		/* // EFFIGY EDIT: REMOVAL
 		message = lizard_kSS.Replace(message, "$1KSS")
 		*/
 		message = lizard_ecks.Replace(message, "ecks$1")
@@ -428,7 +428,7 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	desc = "A minutely toothed, chitious ribbon, which as a side effect, makes all snails talk IINNCCRREEDDIIBBLLYY SSLLOOWWLLYY."
 	modifies_speech = TRUE
 
-/* SKYRAT EDIT START - Roundstart Snails: Less annoying speech.
+/* EFFIGY EDIT START - Roundstart Snails: Less annoying speech.
 /obj/item/organ/internal/tongue/snail/modify_speech(datum/source, list/speech_args)
 	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -438,7 +438,7 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 		else
 			new_message += message[i]
 	speech_args[SPEECH_MESSAGE] = new_message
-*/ // SKYRAT EDIT END
+*/ // EFFIGY EDIT END
 
 /obj/item/organ/internal/tongue/ethereal
 	name = "electric discharger"
