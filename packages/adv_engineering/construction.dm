@@ -20,7 +20,7 @@
 /obj/item/storage/box/rcd_ammo/mkii
 	name = "RCD Mk II matter box"
 	desc = "A durable box with refill cartridges for an RCD Mk II."
-	icon_state = "engibox"
+	icon_state = "plasticbox"
 	illustration = "swab"
 	custom_materials = list(/datum/material/plastic = 1000)
 
