@@ -48,7 +48,7 @@
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
 	/// Native FOV that will be applied if a config is enabled
-	var/native_fov = FOV_180_DEGREES //EFFIGY EDIT CHANGE
+	var/native_fov = FOV_180_DEGREES // EFFIGY EDIT CHANGE
 
 /obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
@@ -400,7 +400,7 @@
 /obj/item/organ/internal/eyes/robotic/glow/proc/terminate_effects()
 	if(owner && active)
 		deactivate()
-	remove_mob_overlay() //EFFIGY EDIT ADDITION
+	remove_mob_overlay() // EFFIGY EDIT ADDITION
 	active = FALSE
 	clear_visuals(TRUE)
 	STOP_PROCESSING(SSfastprocess, src)
@@ -458,12 +458,12 @@
 /obj/item/organ/internal/eyes/robotic/glow/on_insert(mob/living/carbon/eye_owner)
 	. = ..()
 	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, PROC_REF(update_visuals))
-	//EFFIGY EDIT ADDITION
+	// EFFIGY EDIT ADDITION
 	var/eye_color = owner.client?.prefs?.read_preference(/datum/preference/color/eye_color)
 	mob_overlay.color = eye_color
 	current_color_string = eye_color
 	add_mob_overlay()
-	//EFFIGY EDIT END
+	// EFFIGY EDIT END
 
 /obj/item/organ/internal/eyes/robotic/glow/on_remove(mob/living/carbon/eye_owner)
 	. = ..()
@@ -584,7 +584,7 @@
 	desc = "These eyes seem to have a large range, but might be cumbersome with glasses."
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
-	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //EFFIGY EDIT - Roundstart Snails
+	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER // EFFIGY EDIT - Roundstart Snails
 
 /obj/item/organ/internal/eyes/jelly
 	name = "jelly eyes"

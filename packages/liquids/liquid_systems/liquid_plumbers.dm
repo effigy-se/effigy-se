@@ -300,7 +300,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply,
 /obj/item/construction/plumbing/engineering
 	name = "engineering plumbing constructor"
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed for logistics regarding fluids."
-	icon_state = "plumberer_engi"
+	icon_state = "plumberer2"
 
 /obj/item/construction/plumbing/engineering/set_plumbing_designs()
 	plumbing_design_types = list(

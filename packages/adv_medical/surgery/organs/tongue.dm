@@ -122,7 +122,7 @@
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
-	languages_native = list(/datum/language/draconic, /datum/language/ashtongue) //EFFIGY EDIT: Ashtongue for Ashwalkers
+	languages_native = list(/datum/language/draconic, /datum/language/ashtongue) // EFFIGY EDIT: Ashtongue for Ashwalkers
 
 /obj/item/organ/internal/tongue/lizard/modify_speech(datum/source, list/speech_args)
 	var/static/regex/lizard_hiss = new("s+", "g")

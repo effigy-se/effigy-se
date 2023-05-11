@@ -109,18 +109,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Girly Corgi Plushie"
 	item_path = /obj/item/toy/plush/effigy/ian/lisa
 
-/datum/loadout_item/toys/cat
-	name = "Cat Plushie"
-	item_path = /obj/item/toy/plush/effigy/cat
-
-/datum/loadout_item/toys/tuxcat
-	name = "Tux Cat Plushie"
-	item_path = /obj/item/toy/plush/effigy/cat/tux
-
-/datum/loadout_item/toys/whitecat
-	name = "White Cat Plushie"
-	item_path = /obj/item/toy/plush/effigy/cat/white
-
 /datum/loadout_item/toys/commanding_teshari
 	name = "Commanding Teshari Plushy"
 	item_path = /obj/item/toy/plush/effigy/commanding_teshari

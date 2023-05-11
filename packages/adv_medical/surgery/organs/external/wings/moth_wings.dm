@@ -6,6 +6,7 @@
 	preference = "feature_moth_wings"
 
 	//dna_block = DNA_MOTH_WINGS_BLOCK // EFFIGY EDIT REMOVAL
+	//dna_block = DNA_MOTH_WINGS_BLOCK // EFFIGY EDIT REMOVAL
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/moth
 
@@ -84,7 +85,7 @@
 	burn_datum = fetch_sprite_datum(burn_datum)
 
 /datum/bodypart_overlay/mutant/wings/moth/get_global_feature_list()
-	return GLOB.sprite_accessories["wings"] //EFFIGY EDIT - Customization - ORIGINAL: return GLOB.moth_wings_list
+	return GLOB.sprite_accessories["wings"] // EFFIGY EDIT - Customization - ORIGINAL: return GLOB.moth_wings_list
 
 /datum/bodypart_overlay/mutant/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))
