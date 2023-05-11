@@ -53,5 +53,6 @@ SUBSYSTEM_DEF(autotransfer)
 	starttime = REALTIMEOFDAY
 	targettime = starttime + init_vote
 	log_game("Autotransfer enabled, first vote in [time2text(targettime - REALTIMEOFDAY)]")
+	message_admins("Autotransfer enabled, first vote in [time2text(targettime - REALTIMEOFDAY)]")
 
 #undef NO_MAXVOTES_CAP
