@@ -24,7 +24,7 @@
 		return
 
 	// Use the fancy fallback sprites.
-	. = generate_custom_worn_icon_fallback(item_slot, item)
+	. = generate_custom_worn_icon_fallback(item_slot, item, human_owner)
 	if(.)
 		return
 
@@ -54,7 +54,7 @@
 
 		// Generate muzzled icon, but offset
 		var/icon/new_icon = icon('icons/blanks/32x32.dmi', "nothing")
-		new_icon.Blend( icon(human_icon, human_icon_state), ICON_OVERLAY)
+		new_icon.Blend(icon(human_icon, human_icon_state), ICON_OVERLAY)
 		new_icon.Insert(new_icon, human_icon_state)
 		set_custom_worn_icon_cached(human_icon, human_icon_state, "m", new_icon)
 		return new_icon
