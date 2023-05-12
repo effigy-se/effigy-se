@@ -93,7 +93,7 @@
 		do_the_dishes()
 	if(!suction_enabled)
 		return
-	for(var/obj/item/I in (succrange, src))
+	for(var/obj/item/I in view(succrange, src))
 		if(is_type_in_list(I, collectable_items) && I.loc != src && (!I.reagents || !I.reagents.total_volume) && (I.contents.len < 1))
 			if(I.Adjacent(src))
 				LAZYADD(dish_drive_contents, I)
