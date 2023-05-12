@@ -68,7 +68,7 @@
 	var/bodypart_disabled = FALSE
 	///Handles limb disabling by damage. If 0 (0%), a limb can't be disabled via damage. If 1 (100%), it is disabled at max limb damage. Anything between is the percentage of damage against maximum limb damage needed to disable the limb.
 	//var/disabling_threshold_percentage = 0 //ORIGINAL
-	var/disabling_threshold_percentage = 1 //EFFIGY EDIT CHANGE - COMBAT
+	var/disabling_threshold_percentage = 1 // EFFIGY EDIT CHANGE - COMBAT
 	///Whether it is possible for the limb to be disabled whatsoever. TRUE means that it is possible.
 	var/can_be_disabled = FALSE //Defaults to FALSE, as only human limbs can be disabled, and only the appendages.
 
@@ -146,7 +146,7 @@
 	var/cached_bleed_rate = 0
 	/// How much generic bleedstacks we have on this bodypart
 	var/generic_bleedstacks
-	//EFFIGY EDIT CHANGE BEGIN - MEDICAL
+	// EFFIGY EDIT CHANGE BEGIN - MEDICAL
 	/*
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
@@ -159,7 +159,7 @@
 	var/rendered_bp_icon
 	/// Do we use an organic render for this robotic limb?
 	var/organic_render = TRUE
-	//EFFIGY EDIT CHANGE END
+	// EFFIGY EDIT CHANGE END
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/hand_item/self_grasp])
 	var/obj/item/hand_item/self_grasp/grasped_by
 
@@ -216,12 +216,12 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
-	//EFFIGY EDIT ADDITION BEGIN - MEDICAL
+	// EFFIGY EDIT ADDITION BEGIN - MEDICAL
 	if(current_gauze)
 		qdel(current_gauze)
 	if(current_splint)
 		qdel(current_splint)
-	//EFFIGY EDIT ADDITION END
+	// EFFIGY EDIT ADDITION END
 
 	if(length(external_organs))
 		for(var/obj/item/organ/external/external_organ as anything in external_organs)
@@ -489,11 +489,11 @@
 			// note that there's no handling for BIO_FLESH since we don't have any that are that right now (slimepeople maybe someday)
 			// standard humanoids
 			if(BIO_FLESH_BONE)
-				//EFFIGY EDIT ADDITION BEGIN - MEDICAL
+				// EFFIGY EDIT ADDITION BEGIN - MEDICAL
 				//We do a body zone check here because muscles dont have any variants for head or chest, and rolling a muscle wound on them wound end up on a wasted wound roll
 				if(body_zone != BODY_ZONE_CHEST && body_zone != BODY_ZONE_HEAD && prob(35))
 					wounding_type = WOUND_MUSCLE
-				//EFFIGY EDIT ADDITION END
+				// EFFIGY EDIT ADDITION END
 				// if we've already mangled the skin (critical slash or piercing wound), then the bone is exposed, and we can damage it with sharp weapons at a reduced rate
 				// So a big sharp weapon is still all you need to destroy a limb
 				if((mangled_state & BODYPART_MANGLED_FLESH) && !(mangled_state & BODYPART_MANGLED_BONE) && sharpness)
@@ -508,7 +508,7 @@
 
 		// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 		if(wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
-			//EFFIGY EDIT ADDITION - MEDICAL
+			// EFFIGY EDIT ADDITION - MEDICAL
 			//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
 			//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
 			if(wounding_dmg < DAMAGED_BODYPART_BONUS_WOUNDING_BONUS)
@@ -521,7 +521,7 @@
 				current_gauze.take_damage()
 			if(current_splint)
 				current_splint.take_damage()
-			//EFFIGY EDIT ADDITION END - MEDICAL
+			// EFFIGY EDIT ADDITION END - MEDICAL
 			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction)
 
 	for(var/datum/wound/iter_wound as anything in wounds)
@@ -571,12 +571,12 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
-		//EFFIGY EDIT ADDITION BEGIN - CUSTOMIZATION
+		// EFFIGY EDIT ADDITION BEGIN - CUSTOMIZATION
 		//Consider moving this to a new species proc "spec_heal" maybe?
 		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
 			if(owner.health > 50)
 				owner.revive(FALSE)
-		//EFFIGY EDIT ADDITION END
+		// EFFIGY EDIT ADDITION END
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
@@ -918,13 +918,13 @@
 			draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
 		if(draw_color)
-			//EFFIGY EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
+			// EFFIGY EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
 			var/limb_color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 
 			limb.color = limb_color
 			if(aux_zone)
 				aux.color = limb_color
-			//EFFIGY EDIT END
+			// EFFIGY EDIT END
 
 		//EMISSIVE CODE START
 		// For some reason this was applied as an overlay on the aux image and limb image before.

@@ -17,7 +17,7 @@
 	hub_password = "kMZy3U5jJHSiBQjr"
 	name = "/tg/ Station 13"
 	fps = 20
-	map_format = SIDE_MAP
+	// map_format = SIDE_MAP // EFFIGY EDIT REMOVE - fuck we have to deal with this. meanwhile, can, kick, etc.
 #ifdef FIND_REF_NO_CHECK_TICK
 	loop_checks = FALSE
 #endif

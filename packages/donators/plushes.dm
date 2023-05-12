@@ -32,22 +32,6 @@
 	attack_verb_continuous = list("barks", "woofs", "wags her tail at")
 	gender = FEMALE
 
-/obj/item/toy/plush/effigy/cat
-	name = "cat plushie"
-	desc = "A small cat plushie with black beady eyes."
-	icon_state = "blackcat"
-	attack_verb_continuous = list("cuddles", "meows", "hisses")
-	attack_verb_simple = list("cuddle", "meow", "hiss")
-	squeak_override = list('packages/customization/game/objects/items/sound/merowr.ogg' = 1)
-
-/obj/item/toy/plush/effigy/cat/tux
-	name = "tux cat plushie"
-	icon_state = "tuxedocat"
-
-/obj/item/toy/plush/effigy/cat/white
-	name = "white cat plushie"
-	icon_state = "whitecat"
-
 /obj/item/toy/plush/effigy/mechanic_fox
 	name = "mechanist fox plushie"
 	desc = "A fox with fabulous hair! It has a tendency to make synth plushies look good as new when placed next to them."

@@ -3,7 +3,7 @@
 	name = "RCD Mk II"
 	desc = "A device used to rapidly build and deconstruct. Upgraded from the standard model with improved material storage. Reload with iron, plasteel, glass or compressed matter cartridges."
 	icon = 'packages/adv_engineering/assets/tools.dmi'
-	icon_state = "rcd-mkii"
+	icon_state = "ircd"
 	inhand_icon_state = "ircd"
 	max_matter = 320
 	matter = 320
@@ -20,8 +20,8 @@
 /obj/item/storage/box/rcd_ammo/mkii
 	name = "RCD Mk II matter box"
 	desc = "A durable box with refill cartridges for an RCD Mk II."
-	icon_state = "engibox"
-	illustration = "rcd"
+	icon_state = "plasticbox"
+	illustration = "swab"
 	custom_materials = list(/datum/material/plastic = 1000)
 
 /obj/item/storage/box/rcd_ammo/PopulateContents()
