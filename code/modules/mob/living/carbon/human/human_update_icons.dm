@@ -111,7 +111,7 @@ There are several things that need to be remembered:
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat) birbs
 		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
-			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src)
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 		//Female sprites have lower priority than digitigrade sprites
@@ -202,13 +202,13 @@ There are several things that need to be remembered:
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
-		var/mutable_appearance/gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file)
+		var/mutable_appearance/gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 
 		var/feature_y_offset = 0
 		for (var/obj/item/bodypart/arm/my_hand as anything in hand_bodyparts)
@@ -279,13 +279,13 @@ There are several things that need to be remembered:
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_EARS, ears)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_EARS, ears, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
-		var/mutable_appearance/ears_overlay = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = icon_file)
+		var/mutable_appearance/ears_overlay = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		my_head.worn_ears_offset?.apply_offset(ears_overlay)
 		overlays_standing[EARS_LAYER] = ears_overlay
 	apply_overlay(EARS_LAYER)
@@ -309,13 +309,13 @@ There are several things that need to be remembered:
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_NECK, wear_neck)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_NECK, wear_neck, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
-		var/mutable_appearance/neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file)
+		var/mutable_appearance/neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
 		my_chest?.worn_belt_offset?.apply_offset(neck_overlay)
 		overlays_standing[NECK_LAYER] = neck_overlay
@@ -350,7 +350,7 @@ There are several things that need to be remembered:
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // EFFIGY EDIT CHANGE
 				mutant_override = TRUE // EFFIGY EDIT ADDITION
 		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -358,7 +358,7 @@ There are several things that need to be remembered:
 			return // We just don't want shoes that float if we're not displaying legs (useful for taurs, for now)
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
-		var/mutable_appearance/shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file)
+		var/mutable_appearance/shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		if(!shoes_overlay)
 			return
 
@@ -417,7 +417,7 @@ There are several things that need to be remembered:
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
@@ -428,7 +428,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
-		var/mutable_appearance/head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file)
+		var/mutable_appearance/head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 		my_head?.worn_head_offset?.apply_offset(head_overlay)
 		overlays_standing[HEAD_LAYER] = head_overlay
@@ -461,8 +461,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
-		var/mutable_appearance/belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file)
-
+		var/mutable_appearance/belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
 		my_chest?.worn_belt_offset?.apply_offset(belt_overlay)
 		overlays_standing[BELT_LAYER] = belt_overlay
@@ -570,7 +569,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
-		var/mutable_appearance/mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file)
+		var/mutable_appearance/mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		my_head.worn_mask_offset?.apply_offset(mask_overlay)
 		overlays_standing[FACEMASK_LAYER] = mask_overlay
 
