@@ -455,14 +455,9 @@ There are several things that need to be remembered:
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
 		if(dna.species.bodytype & BODYTYPE_CUSTOM)
-			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head, src)
+			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_BELT, belt, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
-				mutant_override = TRUE
-		if((icon_file == 'icons/mob/clothing/head/default.dmi') && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
-			var/snout_icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
-			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
-				icon_file = snout_icon_file
 				mutant_override = TRUE
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
