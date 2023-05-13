@@ -229,7 +229,6 @@
 
 	// EFFIGY EDIT ADD START (Borgs)
 	new_model.update_dogborg()
-	new_model.update_tallborg()
 	// EFFIGY EDIT ADD END (Borgs)
 
 	INVOKE_ASYNC(new_model, PROC_REF(do_transform_animation))
@@ -819,21 +818,15 @@
 		/obj/item/razor,
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
-		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc, //edit
+		/obj/item/reagent_containers/dropper,//edit
 		/obj/item/reagent_containers/dropper,
 		/obj/item/lighter,
 		/obj/item/storage/bag/tray,
 		//obj/item/reagent_containers/borghypo/borgshaker, //edit
 		/obj/item/reagent_containers/syringe, //edit
-		/obj/item/cooking/cyborg/power, //edit
 		// EFFIGY EDIT CHANGE END (Borgs)
 		/obj/item/lighter,
 		/obj/item/borg/lollipop,
-		/obj/item/stack/pipe_cleaner_coil/cyborg,
 		/obj/item/chisel,
 		/obj/item/reagent_containers/cup/rag,
 		/obj/item/storage/bag/money,
