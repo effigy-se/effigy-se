@@ -228,6 +228,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if (.)
 		return
 
+	if(SSlag_switch.measures[DISABLE_CREATOR] && action != "change_slot")
+		to_chat(usr, "Character creation is temporarily paused. Please do not aHelp, staff have been notified.")
+		return
+
+	log_creator("[key_name(usr)] ACTED [action] | PREFERENCE: [params["preference"]] | VALUE: [params["value"]]")
+
 	switch (action)
 		if ("change_slot")
 			// Save existing character

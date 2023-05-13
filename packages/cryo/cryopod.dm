@@ -28,8 +28,9 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 /obj/machinery/computer/cryopod
 	name = "cryogenic oversight console"
 	desc = "An interface between crew and the cryogenic storage oversight systems."
-	icon = 'icons/obj/terminals.dmi'
-	icon_screen = "gulag_on"
+	icon = 'packages/cryo/assets/cryo.dmi'
+	icon_state = "cryocomp"
+	icon_screen = "cryo"
 	icon_keyboard = null
 	use_power = FALSE
 	density = FALSE
@@ -63,12 +64,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 /obj/machinery/computer/cryopod/update_icon_state()
 	if(machine_stat & BROKEN)
-		icon_state = "gulag_off"
+		icon_state = "cryocomp_broken"
 		return ..()
 	if(machine_stat & NOPOWER)
-		icon_state = "gulag_off"
+		icon_state = "cryocomp"
 		return ..()
-	icon_state = "gulag_off"
+	icon_state = "cryocomp"
 	return ..()
 
 /obj/machinery/computer/cryopod/ui_interact(mob/user, datum/tgui/ui)

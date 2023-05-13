@@ -444,7 +444,7 @@ GLOBAL_VAR(round_default_lawset)
 	var/list/data = list()
 
 	if (include_zeroth && zeroth)
-		data += "[show_numbers ? "0:" : ""] [render_html ? "<font color='#ff0000'><b>[zeroth]</b></font>" : zeroth]"
+		data += "[show_numbers ? "0:" : ""] [render_html ? "<font color='#ff0066'><b>[zeroth]</b></font>" : zeroth]"
 
 	for(var/law in hacked)
 		if (length(law) > 0)

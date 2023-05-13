@@ -59,21 +59,21 @@ em						{font-style: normal;	font-weight: bold;}
 
 .yell					{					font-weight: bold;}
 
-.alert					{color: #ff0000;}
+.alert					{color: #ff0066;}
 h1.alert, h2.alert		{color: #000000;}
 
 .emote					{}
 .infoplain				{}
 
-.userdanger				{color: #ff0000;	font-weight: bold;	font-size: 3;}
-.danger					{color: #ff0000;	font-weight: bold;}
-.danger					{color: #ff0000;}
-.tinydanger				{color: #ff0000; font-size: 85%;}
-.smalldanger			{color: #ff0000; font-size: 90%;}
-.warning				{color: #ff0000;	font-style: italic;}
-.boldwarning			{color: #ff0000;	font-style: italic;	font-weight: bold}
+.userdanger				{color: #ff0066;	font-weight: bold;	font-size: 3;}
+.danger					{color: #ff0066;	font-weight: bold;}
+.danger					{color: #ff0066;}
+.tinydanger				{color: #ff0066; font-size: 85%;}
+.smalldanger			{color: #ff0066; font-size: 90%;}
+.warning				{color: #ff0066;	font-style: italic;}
+.boldwarning			{color: #ff0066;	font-style: italic;	font-weight: bold}
 .announce				{color: #228b22;	font-weight: bold;}
-.boldannounce			{color: #ff0000;	font-weight: bold;}
+.boldannounce			{color: #ff0066;	font-weight: bold;}
 .minorannounce			{					font-weight: bold;  font-size: 3;}
 .greenannounce			{color: #00ff00;	font-weight: bold;}
 .rose					{color: #ff5050;}
@@ -86,7 +86,7 @@ h1.alert, h2.alert		{color: #000000;}
 .boldnotice				{color: #000099;	font-weight: bold;}
 .hear					{color: #000099;	font-style: italic;}
 .adminnotice			{color: #0000ff;}
-.adminhelp				{color: #ff0000;	font-weight: bold;}
+.adminhelp				{color: #ff0066;	font-weight: bold;}
 .unconscious			{color: #0000ff;	font-weight: bold;}
 .suicide				{color: #ff5050;	font-style: italic;}
 .green					{color: #03ff39;}
@@ -138,7 +138,7 @@ h1.alert, h2.alert		{color: #000000;}
 .reallybig				{font-size: 4;}
 .extremelybig			{font-size: 5;}
 .greentext				{color: #00FF00;	font-size: 3;}
-.redtext				{color: #FF0000;	font-size: 3;}
+.redtext				{color: #ff0066;	font-size: 3;}
 .clown					{color: #FF69Bf;	font-size: 3;	font-family: "Comic Sans MS", cursive, sans-serif;	font-weight: bold;}
 .singing				{font-family: "Chakra Petch", sans-serif; font-style: italic;}
 .his_grace				{color: #15D512;	font-family: "Ubuntu Monow", sans-serif;	font-style: italic;}
