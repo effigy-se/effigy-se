@@ -101,6 +101,21 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	ignore += subtypesof(/obj/machinery/airlock_controller)
 	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
 	ignore += subtypesof(/atom/movable/screen/escape_menu)
+	// EFFIGY EDIT ADD START (Unit Tests)
+	//Not designed to be spawned without a turf.
+	ignore += typesof(/obj/effect/abstract/liquid_turf)
+	//Not designed to be spawned individually.
+	ignore += typesof(/obj/structure/biohazard_blob)
+	//Unused - not supposed to be spawned without SSliquids
+	ignore += typesof(/turf/open/openspace/ocean)
+	//Baseturf editors can only go up to ten, stop this.
+	ignore += typesof(/obj/effect/baseturf_helper)
+	// It's the abstract base type, it shouldn't be spawned.
+	ignore += /obj/item/organ/external/genital
+	// These two are locked to one type only, and shouldn't be widely available, hence why they runtime otherwise.
+	// Can't be bothered adding more to them.
+	ignore += list(/obj/item/organ/external/neck_accessory, /obj/item/organ/external/head_accessory)
+	// EFFIGY EDIT ADD END (Unit Tests)
 
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/original_turf_type = spawn_at.type
