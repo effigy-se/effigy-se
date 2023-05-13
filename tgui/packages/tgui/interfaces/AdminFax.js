@@ -53,7 +53,7 @@ export const FaxMainPanel = (props, context) => {
             </Button>
           </Box>
         }>
-        <Box fontSize="13px">
+        <Box fontSize="14px">
           <Dropdown
             textAlign="center"
             selected="Choose fax machine..."

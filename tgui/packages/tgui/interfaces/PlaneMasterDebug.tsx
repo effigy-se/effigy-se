@@ -937,7 +937,7 @@ const AddModal = (props, context) => {
 
   return (
     <Modal>
-      <Section fill title={'Add relay from ' + currentPlane.name} pr="13px">
+      <Section fill title={'Add relay from ' + currentPlane.name} pr="14px">
         <Dropdown
           options={plane_options}
           selected={currentTarget?.name || 'planes'}

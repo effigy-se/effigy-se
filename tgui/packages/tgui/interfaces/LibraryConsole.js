@@ -38,7 +38,7 @@ export const PopoutMenu = (props, context) => {
         <Stack.Item>
           <Button
             fluid
-            fontSize="13px"
+            fontSize="14px"
             onClick={() => act('toggle_dropdown')}
             icon={show_dropdown === 1 ? 'chevron-left' : 'chevron-right'}
             tooltip={!show_dropdown && 'Expand'}
@@ -840,7 +840,7 @@ export const PopoutEntry = (props, context) => {
     <Stack.Item>
       <Button
         fluid
-        fontSize="13px"
+        fontSize="14px"
         onClick={() =>
           act('set_screen', {
             screen_index: id,
