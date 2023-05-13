@@ -227,6 +227,11 @@
 	cyborg.diag_hud_set_aishell()
 	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
+	// EFFIGY EDIT ADD START (Borgs)
+	new_model.update_dogborg()
+	new_model.update_tallborg()
+	// EFFIGY EDIT ADD END (Borgs)
+
 	INVOKE_ASYNC(new_model, PROC_REF(do_transform_animation))
 	qdel(src)
 	return new_model
@@ -238,10 +243,21 @@
 		for(var/skin in borg_skins)
 			var/list/details = borg_skins[skin]
 			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
+			// EFFIGY EDIT ADD START (Borgs)
+			if (!isnull(details[SKIN_FEATURES]))
+				if (R_TRAIT_WIDE in details[SKIN_FEATURES])
+					var/image/reskin = reskin_icons[skin]
+					reskin.pixel_x -= 16
+			// EFFIGY EDIT ADD END (Borgs)
 		var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), cyborg, old_model), radius = 38, require_near = TRUE)
 		if(!borg_skin)
 			return FALSE
 		var/list/details = borg_skins[borg_skin]
+		// EFFIGY EDIT ADD START (Borgs)
+		if(cyborg.hasExpanded && (((R_TRAIT_WIDE in details[SKIN_FEATURES]) && (R_TRAIT_WIDE in model_features)) || ((R_TRAIT_TALL in details[SKIN_FEATURES]) && (R_TRAIT_TALL in model_features))))
+			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
+			return FALSE
+		// EFFIGY EDIT ADD END (Borgs)
 		if(!isnull(details[SKIN_ICON_STATE]))
 			cyborg_base_icon = details[SKIN_ICON_STATE]
 		if(!isnull(details[SKIN_ICON]))
@@ -256,6 +272,10 @@
 			hat_offset = details[SKIN_HAT_OFFSET]
 		if(!isnull(details[SKIN_TRAITS]))
 			model_traits += details[SKIN_TRAITS]
+		// EFFIGY EDIT ADD START (Borgs)
+		if(!isnull(details[SKIN_FEATURES]))
+			model_features += details[SKIN_FEATURES]
+		// EFFIGY EDIT ADD END (Borgs)
 	for(var/i in old_model.added_modules)
 		added_modules += i
 		old_model.added_modules -= i
@@ -356,13 +376,12 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg,
-		/obj/item/wrench/cyborg,
-		/obj/item/crowbar/cyborg,
-		/obj/item/wirecutters/cyborg,
+		/obj/item/screwdriver/cyborg/power, // EFFIGY EDIT CHANGE (Borgs)
+		/obj/item/crowbar/cyborg/power, // EFFIGY EDIT CHANGE (Borgs)
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
+		/obj/item/holosign_creator/atmos, // EFFIGY EDIT CHANGE (Borgs)
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -374,6 +393,7 @@
 		/obj/item/stack/cable_coil,
 		//EFFIGY ADDITION - Adds cyborg painter
 		/obj/item/airlock_painter/decal/cyborg,
+		/obj/item/lightreplacer/cyborg,
 	)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(
@@ -785,10 +805,9 @@
 /obj/item/robot_model/service
 	name = "Service"
 	basic_modules = list(
-		/obj/item/assembly/flash/cyborg,
-		/obj/item/reagent_containers/borghypo/borgshaker,
-		/obj/item/borg/apparatus/beaker/service,
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
+		// EFFIGY EDIT CHANGE START (Borgs)
+		//obj/item/reagent_containers/condiment/enzyme, //edit
 		/obj/item/reagent_containers/condiment/enzyme,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/rsf,
@@ -800,6 +819,18 @@
 		/obj/item/razor,
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc, //edit
+		/obj/item/reagent_containers/dropper,
+		/obj/item/lighter,
+		/obj/item/storage/bag/tray,
+		//obj/item/reagent_containers/borghypo/borgshaker, //edit
+		/obj/item/reagent_containers/syringe, //edit
+		/obj/item/cooking/cyborg/power, //edit
+		// EFFIGY EDIT CHANGE END (Borgs)
 		/obj/item/lighter,
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,

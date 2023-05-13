@@ -6,23 +6,6 @@
 	/// Traits unique to this model, i.e. having a unique dead sprite, being wide or being small enough to reject shrinker modules. Leverages defines in code\__DEFINES\~skyrat_defines\robot_defines.dm
 	var/list/model_features = list()
 
-/obj/item/robot_model/proc/update_tallborg()
-	var/mob/living/silicon/robot/cyborg = robot || loc
-	if (!istype(robot))
-		return
-	if (model_features && (R_TRAIT_TALL in model_features))
-		cyborg.maptext_height = 48 //Runechat blabla
-		cyborg.AddElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
-		add_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
-	else
-		cyborg.maptext_height = initial(cyborg.maptext_height)
-		cyborg.RemoveElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE, 2, -6, sound_vary = TRUE)
-		remove_verb(cyborg, /mob/living/silicon/robot/proc/robot_lay_down)
-		if(cyborg.GetComponent(/datum/component/robot_smoke))
-			qdel(cyborg.GetComponent(/datum/component/robot_smoke))
-			QDEL_NULL(cyborg.particles)	// Removing left over particles
-
-
 /obj/item/robot_model/proc/update_dogborg()
 	var/mob/living/silicon/robot/cyborg = robot || loc
 	if (!istype(robot))
