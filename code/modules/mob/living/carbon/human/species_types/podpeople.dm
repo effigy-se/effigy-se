@@ -11,7 +11,7 @@
 		TRAIT_PLANT_SAFE,
 	)
 	external_organs = list(
-		/obj/item/organ/external/pod_hair = "None",
+		// /obj/item/organ/external/pod_hair = "None", // EFFIGY EDIT REMOVAL (Unit test not required)
 	)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_PLANT
 	inherent_factions = list(FACTION_PLANTS, FACTION_VINES)
