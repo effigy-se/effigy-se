@@ -82,17 +82,3 @@
 	scale = 0.5
 	grow = 0.1
 	spin = generator("num", -20, 20)
-
-// EFFIGY TODO
-/*
-// Another smoke effect
-/obj/effect/temp_visual/mook_dust/robot
-	icon = 'packages/altborgs/assets/tallborg/misc/tallrobot_effects.dmi'
-	icon_state = "impact_cloud"
-	color = "#a9a9a93c"
-
-/obj/effect/temp_visual/mook_dust/robot/table
-	color = "#ffffffc2"
-	pixel_y = -8
-	layer = ABOVE_MOB_LAYER
-*/
