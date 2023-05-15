@@ -40,8 +40,8 @@
 	attack_verb_simple = list("fix", "update", "hug")
 	squeak_override = list('packages/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
-/obj/item/toy/plush/effigy/blue_tajaran
-	name = "blue tajaran plushie"
+/obj/item/toy/plush/effigy/blue_cat
+	name = "blue cat plushie"
 	desc = "A bright blue feline plush with neon pink hair, here to hand out kisses wherever kisses need be. Usually found near its home habitat, the tram."
 	icon_state = "plushie_skyy"
 	attack_verb_continuous = list("kisses", "nuzzles", "cuddles", "purrs against")
