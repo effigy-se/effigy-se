@@ -26,7 +26,7 @@ export const ChemHeater = (props, context) => {
     activeReactions = [],
   } = data;
   return (
-    <Window width={330} height={tutorialMessage ? 680 : 350}>
+    <Window width={370} height={tutorialMessage ? 720 : 370}>
       <Window.Content scrollable>
         <Section
           title="Controls"
