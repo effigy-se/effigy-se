@@ -49,7 +49,7 @@ export const Fax = (props, context) => {
     )
     : [];
   return (
-    <Window width={340} height={540}>
+    <Window width={460} height={640}>
       <Window.Content scrollable>
         <Section title="About Fax">
           <LabeledList.Item label="Network name">
