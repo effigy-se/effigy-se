@@ -44,7 +44,7 @@
 	var/mob/living/carbon/human/user = quirk_holder
 	user?.cure_trauma_type(/datum/brain_trauma/severe/monophobia, TRAUMA_RESILIENCE_ABSOLUTE)
 
-/datum/quirk/ashwalkertalons
+/datum/quirk/chunkyfingers
 	name = "Chunky Fingers"
 	desc = "Your digits are thick and tough and unable to use modular computers including tablets, certain devices like laser pointers, and non-adapted firearms."
 	gain_text = span_notice("Your fingers feel thicker and slightly less dextrous. You expect you'll have a difficult time using computers, certain small devices and firearms.")
