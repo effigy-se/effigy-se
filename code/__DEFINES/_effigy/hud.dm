@@ -19,3 +19,5 @@
 
 //Families
 #define ui_wanted_lvl "NORTH,11"
+
+#define GENERAL_SCREEN_ICONS 'packages/ux/assets/screen_gen.dmi'
