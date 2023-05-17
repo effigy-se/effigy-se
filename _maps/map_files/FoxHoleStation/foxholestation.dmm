@@ -1163,6 +1163,10 @@
 /obj/structure/ladder,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
+"aYs" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/ai_monitored/turret_protected/aisat_interior)
 "aYx" = (
 /obj/machinery/nuclearbomb/selfdestruct,
 /obj/effect/turf_decal/bot_white,
@@ -2626,6 +2630,16 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/white/smooth_edge,
 /area/station/science/lower)
+"cdX" = (
+/obj/machinery/button/door/directional/west{
+	name = "AI Chamber Lockdown";
+	req_access = list("ai_upload");
+	id = "AI Chamber entrance shutters"
+	},
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
+/area/station/ai_monitored/turret_protected/ai)
 "ceo" = (
 /obj/effect/turf_decal/siding/yellow{
 	dir = 1
@@ -3132,6 +3146,12 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"cyQ" = (
+/obj/machinery/status_display/evac/directional/south,
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
+/area/station/ai_monitored/turret_protected/ai)
 "cyZ" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/structure/sign/poster/official/cleanliness{
@@ -4681,6 +4701,12 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
+"dPr" = (
+/obj/machinery/flasher/directional/north{
+	id = "AI"
+	},
+/turf/open/floor/iron/dark/side,
+/area/station/ai_monitored/turret_protected/ai)
 "dPI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/catwalk_floor/flat_white,
@@ -6458,6 +6484,11 @@
 /obj/machinery/light/dim/directional/south,
 /turf/open/floor/catwalk_floor,
 /area/station/cargo/warehouse)
+"foG" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/spawner/random/structure/girder,
+/turf/open/floor/plating,
+/area/station/maintenance/port/greater)
 "fpe" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/machinery/computer/operating{
@@ -8440,8 +8471,7 @@
 /area/station/hallway/secondary/entry)
 "hiF" = (
 /obj/machinery/holopad,
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/ai)
 "hiM" = (
 /obj/structure/table/wood/fancy/black,
@@ -8790,6 +8820,9 @@
 /obj/structure/cable,
 /turf/open/floor/iron/smooth_half,
 /area/station/security/execution/education)
+"hxP" = (
+/turf/open/floor/iron/chapel,
+/area/station/ai_monitored/turret_protected/ai)
 "hxT" = (
 /obj/structure/railing{
 	dir = 1
@@ -9026,7 +9059,7 @@
 	uses = 10
 	},
 /obj/machinery/light/small/directional/east,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/ai)
 "hGf" = (
 /obj/structure/cable,
@@ -9916,6 +9949,13 @@
 	},
 /turf/open/floor/iron/dark/diagonal,
 /area/station/command/heads_quarters/rd)
+"inO" = (
+/obj/structure/cable,
+/obj/machinery/requests_console/auto_name/directional/south,
+/turf/open/floor/iron/chapel{
+	dir = 1
+	},
+/area/station/ai_monitored/turret_protected/ai)
 "ioE" = (
 /obj/structure/flora/bush/style_random,
 /obj/machinery/airalarm/directional/south,
@@ -13014,8 +13054,10 @@
 /obj/machinery/door/airlock/hatch,
 /obj/effect/mapping_helpers/airlock/access/any/command/ai_upload,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	id = "AI Chamber entrance shutters";
+	name = "AI Chamber Entrance Shutters"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/ai)
@@ -13929,9 +13971,10 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/security/execution/education)
 "lPc" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/east,
-/turf/open/floor/iron/dark,
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/iron/chapel{
+	dir = 8
+	},
 /area/station/ai_monitored/turret_protected/ai)
 "lPp" = (
 /obj/machinery/elevator_control_panel/directional/east{
@@ -14374,6 +14417,14 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/interrogation)
+"mjO" = (
+/obj/machinery/light/directional/east,
+/obj/structure/cable,
+/obj/machinery/power/smes{
+	charge = 5e+006
+	},
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/ai_monitored/turret_protected/ai)
 "mkf" = (
 /obj/structure/chair/office/light,
 /obj/effect/landmark/start/chemist,
@@ -15917,6 +15968,12 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/pod,
 /area/station/maintenance/port/aft)
+"nJD" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
+/area/station/ai_monitored/turret_protected/ai)
 "nJO" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -18825,6 +18882,10 @@
 	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
+"qjM" = (
+/obj/machinery/status_display/ai/directional/north,
+/turf/open/floor/iron/dark/side,
+/area/station/ai_monitored/turret_protected/ai)
 "qkc" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark/corner{
 	dir = 8
@@ -18993,10 +19054,10 @@
 /obj/machinery/door/airlock/hatch,
 /obj/effect/mapping_helpers/airlock/access/any/command/minisat,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sillypartoftheaisat"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "qtK" = (
@@ -19254,6 +19315,12 @@
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "qFJ" = (
+/obj/machinery/turretid{
+	icon_state = "control_stun";
+	name = "AI Chamber turret control";
+	pixel_x = -28;
+	pixel_y = -4
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 6
 	},
@@ -19620,6 +19687,14 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/aft)
+"qVB" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal,
+/obj/machinery/flasher/directional/east{
+	id = "AI"
+	},
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/ai_monitored/turret_protected/ai)
 "qVQ" = (
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/iron/dark/smooth_half,
@@ -19758,6 +19833,9 @@
 /obj/machinery/door/airlock/hatch,
 /obj/effect/mapping_helpers/airlock/access/any/command/minisat,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sillypartoftheaisat"
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/ai_monitored/turret_protected/aisat/service)
 "rcN" = (
@@ -20477,7 +20555,10 @@
 /obj/machinery/computer/teleporter{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/textured_large,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating/reinforced,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "rOO" = (
 /obj/structure/cable,
@@ -22046,7 +22127,10 @@
 /area/station/command/heads_quarters/hop)
 "sWZ" = (
 /obj/machinery/teleport/hub,
-/turf/open/floor/iron/dark/textured_large,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating/reinforced,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "sXa" = (
 /obj/structure/chair/pew/right,
@@ -22489,7 +22573,10 @@
 "tpd" = (
 /obj/machinery/teleport/station,
 /obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark/textured_large,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating/reinforced,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "tpq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -23097,6 +23184,11 @@
 	},
 /turf/open/floor/iron/smooth_edge,
 /area/station/cargo/warehouse)
+"tQX" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/ai_monitored/turret_protected/ai)
 "tRa" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -23727,6 +23819,11 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
+"ury" = (
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
+/area/station/ai_monitored/turret_protected/ai)
 "urJ" = (
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
@@ -23947,8 +24044,10 @@
 /turf/open/floor/plating,
 /area/station/medical/office)
 "uzD" = (
-/obj/machinery/airalarm/directional/east,
-/turf/open/floor/iron/dark,
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/iron/dark/smooth_half{
+	dir = 1
+	},
 /area/station/ai_monitored/turret_protected/ai)
 "uzZ" = (
 /obj/effect/turf_decal/trimline/green/filled/warning,
@@ -25183,12 +25282,13 @@
 /turf/closed/wall/r_wall,
 /area/station/security/interrogation)
 "vAE" = (
-/obj/machinery/door/airlock/hatch,
-/obj/effect/mapping_helpers/airlock/access/any/command/minisat,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/textured_large,
-/area/station/ai_monitored/turret_protected/aisat_interior)
+/obj/machinery/flasher/directional/south{
+	id = "AI"
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
+/area/station/ai_monitored/turret_protected/ai)
 "vAY" = (
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/plating,
@@ -26930,6 +27030,12 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/surgery)
+"wOY" = (
+/obj/structure/cable,
+/turf/open/floor/iron/chapel{
+	dir = 4
+	},
+/area/station/ai_monitored/turret_protected/ai)
 "wPb" = (
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
 	dir = 4
@@ -27606,6 +27712,11 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/mapping_helpers/airlock/access/any/command/ai_upload,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	id = "AI Chamber entrance shutters";
+	name = "AI Chamber Entrance Shutters"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/ai)
 "xoG" = (
@@ -27919,6 +28030,9 @@
 /obj/machinery/door/airlock/hatch,
 /obj/effect/mapping_helpers/airlock/access/any/command/minisat,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sillypartoftheaisat"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "xEX" = (
@@ -28668,6 +28782,11 @@
 /obj/effect/mapping_helpers/airlock/access/any/command/ai_upload,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	id = "AI Chamber entrance shutters";
+	name = "AI Chamber Entrance Shutters"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/ai)
 "yhk" = (
@@ -124501,7 +124620,7 @@ jJv
 uQc
 uQc
 rLR
-sYf
+rLR
 sYf
 sYf
 sYf
@@ -124759,15 +124878,15 @@ uZY
 uQc
 rLR
 rLR
+rLR
 sYf
 sYf
 sYf
 sYf
 sYf
-sYf
-sYf
-sYf
-sYf
+rLR
+rLR
+rLR
 sYf
 nDp
 ten
@@ -125283,7 +125402,7 @@ ugJ
 gUf
 rLR
 isM
-pww
+foG
 ten
 ten
 ten
@@ -125776,7 +125895,7 @@ bCq
 cmL
 iYc
 ylf
-ciJ
+aYs
 vgr
 vyc
 mkq
@@ -126037,7 +126156,7 @@ snb
 paw
 paw
 wRQ
-vAE
+qtv
 oTU
 oTU
 qfh
@@ -127579,11 +127698,11 @@ lCI
 xDq
 xDq
 hro
-gVo
-loW
+nJD
+cdX
 hFS
-loW
-loW
+uzD
+ury
 mqT
 xDq
 xDq
@@ -127836,11 +127955,11 @@ lCI
 xDq
 tfW
 dFn
-gVo
+inO
 xDq
 xDq
 xDq
-loW
+lPc
 cJd
 lCB
 xDq
@@ -128092,13 +128211,13 @@ whu
 lCI
 xDq
 xDq
-dFn
-gVo
+dPr
+wOY
 xDq
 mCX
 xDq
-loW
-cJd
+hxP
+vAE
 xDq
 xDq
 lCI
@@ -128349,13 +128468,13 @@ whu
 lCI
 lCI
 xDq
-dFn
+qjM
 gVo
 bYM
 vXp
 qFJ
 loW
-cJd
+cyQ
 xDq
 lCI
 lCI
@@ -128608,9 +128727,9 @@ lCI
 xDq
 xDq
 tfC
-lPc
+gVo
 hiF
-uzD
+loW
 sox
 xDq
 xDq
@@ -128865,9 +128984,9 @@ lCI
 lCI
 xDq
 xDq
-xDq
-xDq
-xDq
+qVB
+mjO
+tQX
 xDq
 xDq
 lCI
@@ -129121,11 +129240,11 @@ sYf
 sYf
 lCI
 lCI
-lCI
-lCI
-lCI
-lCI
-lCI
+xDq
+xDq
+xDq
+xDq
+xDq
 lCI
 lCI
 sYf
@@ -129377,13 +129496,13 @@ sYf
 sYf
 sYf
 sYf
-sYf
-sYf
-sYf
-sYf
-sYf
-sYf
-sYf
+lCI
+lCI
+lCI
+lCI
+lCI
+lCI
+lCI
 sYf
 sYf
 sYf
