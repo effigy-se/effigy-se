@@ -6,7 +6,10 @@
 
 // The default UI style is the first one in the list
 GLOBAL_LIST_INIT(available_ui_styles, list(
-	"Effigy Blue" = 'packages/ux/assets/screen_efblue.dmi',
+	"Effigy Cyan" = 'packages/ux/assets/screen_efcyan.dmi',
+	"Effigy Magenta" = 'packages/ux/assets/screen_efmagenta.dmi',
+	"Effigy Yellow" = 'packages/ux/assets/screen_efyellow.dmi',
+	"Effigy Green" = 'packages/ux/assets/screen_efgreen.dmi',
 	"Glass" = 'packages/ux/assets/screen_glass.dmi',
 	"Midnight" = 'packages/ux/assets/screen_midnight.dmi',
 	"Retro" = 'packages/ux/assets/screen_retro.dmi',
