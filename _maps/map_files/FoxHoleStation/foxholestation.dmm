@@ -6840,6 +6840,10 @@
 	},
 /area/station/science/ordnance/storage)
 "fuU" = (
+/obj/machinery/door/poddoor{
+	elevator_linked_id = "PortLift";
+	elevator_mode = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/hallway/primary/port)
 "fve" = (
@@ -8169,6 +8173,12 @@
 "gzh" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
+	},
+/obj/machinery/lift_indicator/directional/south{
+	linked_elevator_id = "PortLift"
+	},
+/obj/machinery/button/elevator/directional/south{
+	id = "PortLift"
 	},
 /turf/open/floor/iron/dark/side,
 /area/station/hallway/primary/port)
@@ -12099,6 +12109,13 @@
 /obj/item/key/security,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/warden)
+"jGg" = (
+/obj/structure/industrial_lift/public,
+/obj/effect/landmark/lift_id{
+	specific_lift_id = "PortLift"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/hallway/primary/port)
 "jGD" = (
 /turf/closed/wall,
 /area/station/service/library)
@@ -17360,6 +17377,27 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"onQ" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/button/elevator/directional/south{
+	id = "PortLift"
+	},
+/obj/machinery/lift_indicator/directional/south{
+	linked_elevator_id = "PortLift"
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/port)
 "onX" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -19837,6 +19875,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/lesser)
 "qlH" = (
@@ -20564,6 +20605,10 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
 "qRh" = (
+/obj/machinery/door/poddoor{
+	elevator_linked_id = "PortLift";
+	elevator_mode = 1
+	},
 /turf/open/floor/iron/textured_large,
 /area/station/hallway/primary/port)
 "qRp" = (
@@ -22241,6 +22286,13 @@
 	dir = 4
 	},
 /area/station/medical/chemistry)
+"skU" = (
+/obj/structure/industrial_lift/public,
+/obj/machinery/elevator_control_panel/directional/east{
+	linked_elevator_id = "PortLift"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/hallway/primary/port)
 "slk" = (
 /obj/effect/turf_decal/stripes/asteroid/corner{
 	dir = 8
@@ -22535,6 +22587,7 @@
 	},
 /area/station/hallway/primary/fore)
 "sup" = (
+/obj/structure/industrial_lift/public,
 /turf/open/floor/plating/elevatorshaft,
 /area/station/hallway/primary/port)
 "suF" = (
@@ -23779,6 +23832,16 @@
 	},
 /turf/open/floor/plating/reinforced,
 /area/station/ai_monitored/turret_protected/aisat_interior)
+"tpo" = (
+/obj/machinery/door/firedoor/border_only,
+/obj/structure/railing,
+/obj/effect/turf_decal/siding/white,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/station/hallway/primary/port)
 "tpq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -56328,7 +56391,7 @@ gBp
 oqd
 hLJ
 fuU
-sup
+jGg
 sup
 arR
 kbr
@@ -56585,7 +56648,7 @@ fKd
 oHq
 hLJ
 fuU
-sup
+skU
 sup
 arR
 kbr
@@ -121602,7 +121665,7 @@ oHa
 sYf
 sYf
 aug
-wno
+tpo
 hNI
 hNI
 oAD
@@ -122376,7 +122439,7 @@ vZM
 wno
 hNI
 hNI
-oAD
+onQ
 aug
 aug
 aug
