@@ -50,7 +50,7 @@
 	thought_bubble.alpha = 200
 
 	var/mutable_appearance/point_visual = mutable_appearance(
-		'icons/hud/screen_gen.dmi',
+		GENERAL_SCREEN_ICONS,
 		"arrow"
 	)
 
@@ -66,7 +66,7 @@
 
 /obj/effect/temp_visual/point
 	name = "pointer"
-	icon = 'icons/hud/screen_gen.dmi'
+	icon = GENERAL_SCREEN_ICONS
 	icon_state = "arrow"
 	plane = POINT_PLANE
 	duration = POINT_TIME

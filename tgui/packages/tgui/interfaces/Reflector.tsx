@@ -10,7 +10,7 @@ export const Reflector = (props, context) => {
   const { act, data } = useBackend<Data>(context);
   const { reflector_name, rotation_angle } = data;
   return (
-    <Window title={reflector_name} height={200} width={219}>
+    <Window title={reflector_name} height={244} width={227}>
       <Window.Content>
         <Stack>
           <Stack.Item>

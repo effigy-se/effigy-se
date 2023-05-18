@@ -128,7 +128,7 @@ export const TramControl = (props, context) => {
     );
   };
   return (
-    <Window title="Tram Controls" width={600} height={300}>
+    <Window title="Tram Controls" width={620} height={325}>
       <Window.Content>
         {(!!broken && <BrokenTramDimmer />) || (
           <Section fill>
