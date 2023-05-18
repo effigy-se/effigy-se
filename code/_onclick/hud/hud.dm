@@ -6,15 +6,19 @@
 
 // The default UI style is the first one in the list
 GLOBAL_LIST_INIT(available_ui_styles, list(
-	"Glass" = 'icons/hud/screen_glass.dmi',
-	"Midnight" = 'icons/hud/screen_midnight.dmi',
-	"Retro" = 'icons/hud/screen_retro.dmi',
-	"Plasmafire" = 'icons/hud/screen_plasmafire.dmi',
-	"Slimecore" = 'icons/hud/screen_slimecore.dmi',
-	"Operative" = 'icons/hud/screen_operative.dmi',
-	"Clockwork" = 'icons/hud/screen_clockwork.dmi',
-	"Trasen-Knox" = 'icons/hud/screen_trasenknox.dmi',
-	"Detective" = 'icons/hud/screen_detective.dmi',
+	"Effigy Cyan" = 'packages/ux/assets/screen_efcyan.dmi',
+	"Effigy Magenta" = 'packages/ux/assets/screen_efmagenta.dmi',
+	"Effigy Yellow" = 'packages/ux/assets/screen_efyellow.dmi',
+	"Effigy Green" = 'packages/ux/assets/screen_efgreen.dmi',
+	"Glass" = 'packages/ux/assets/screen_glass.dmi',
+	"Midnight" = 'packages/ux/assets/screen_midnight.dmi',
+	"Retro" = 'packages/ux/assets/screen_retro.dmi',
+	"Plasmafire" = 'packages/ux/assets/screen_plasmafire.dmi',
+	"Slimecore" = 'packages/ux/assets/screen_slimecore.dmi',
+	"Operative" = 'packages/ux/assets/screen_operative.dmi',
+	"Clockwork" = 'packages/ux/assets/screen_clockwork.dmi',
+	"Trasen-Knox" = 'packages/ux/assets/screen_trasenknox.dmi',
+	"Detective" = 'packages/ux/assets/screen_detective.dmi',
 ))
 
 /proc/ui_style2icon(ui_style)
@@ -111,7 +115,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
-	var/erp_ui_style // EFFIGY EDIT ADD(#3 Customization - Ported from Skyrat)
+	var/erp_ui_style // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
 /datum/hud/New(mob/owner)
 	mymob = owner
