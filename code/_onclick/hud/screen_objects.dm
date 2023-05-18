@@ -8,7 +8,7 @@
 */
 /atom/movable/screen
 	name = ""
-	icon = 'icons/hud/screen_gen.dmi'
+	icon = GENERAL_SCREEN_ICONS
 	// NOTE: screen objects do NOT change their plane to match the z layer of their owner
 	// You shouldn't need this, but if you ever do and it's widespread, reconsider what you're doing.
 	plane = HUD_PLANE
@@ -193,7 +193,7 @@
 
 /atom/movable/screen/inventory/hand
 	var/mutable_appearance/handcuff_overlay
-	var/static/mutable_appearance/blocked_overlay = mutable_appearance('icons/hud/screen_gen.dmi', "blocked")
+	var/static/mutable_appearance/blocked_overlay = mutable_appearance(GENERAL_SCREEN_ICONS, "blocked")
 	var/held_index = 0
 
 /atom/movable/screen/inventory/hand/update_overlays()
@@ -201,7 +201,7 @@
 
 	if(!handcuff_overlay)
 		var/state = (!(held_index % 2)) ? "markus" : "gabrielle"
-		handcuff_overlay = mutable_appearance('icons/hud/screen_gen.dmi', state)
+		handcuff_overlay = mutable_appearance(GENERAL_SCREEN_ICONS, state)
 
 	if(!hud?.mymob)
 		return
@@ -301,7 +301,7 @@
 		return
 
 	if(!flashy)
-		flashy = mutable_appearance('icons/hud/screen_gen.dmi', "togglefull_flash")
+		flashy = mutable_appearance(GENERAL_SCREEN_ICONS, "togglefull_flash")
 		flashy.color = "#C62727"
 	. += flashy
 
@@ -422,7 +422,7 @@
 	name = "damage zone"
 	icon_state = "zone_sel"
 	screen_loc = ui_zonesel
-	var/overlay_icon = 'icons/hud/screen_gen.dmi'
+	var/overlay_icon = GENERAL_SCREEN_ICONS
 	var/static/list/hover_overlays_cache = list()
 	var/hovering
 
@@ -466,7 +466,7 @@
 	vis_contents += overlay_object
 
 /obj/effect/overlay/zone_sel
-	icon = 'icons/hud/screen_gen.dmi'
+	icon = GENERAL_SCREEN_ICONS
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 128
 	anchored = TRUE

@@ -9,7 +9,7 @@ export const MedicalKiosk = (props, context) => {
   const { active_status_1, active_status_2, active_status_3, active_status_4 } =
     data;
   return (
-    <Window width={575} height={420}>
+    <Window width={680} height={420}>
       <Window.Content scrollable>
         <Flex mb={1}>
           <Flex.Item mr={1}>

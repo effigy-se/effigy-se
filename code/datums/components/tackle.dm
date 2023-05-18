@@ -157,7 +157,7 @@
 	var/mob/living/carbon/target = hit
 	var/mob/living/carbon/human/T = target
 	var/mob/living/carbon/human/S = user
-	var/tackle_word = isfelinid(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle".
+	var/tackle_word = isfeline(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle". // EFFIGY EDIT CHANGE (felinid to feline)
 
 	var/roll = rollTackle(target)
 	tackling = FALSE

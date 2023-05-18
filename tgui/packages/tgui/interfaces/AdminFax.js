@@ -4,7 +4,7 @@ import { Window } from '../layouts';
 
 export const AdminFax = (props, context) => {
   return (
-    <Window title="Admin Fax Panel" width={400} height={675} theme="admin">
+    <Window title="Admin Fax Panel" width={500} height={757} theme="admin">
       <Window.Content>
         <FaxMainPanel />
       </Window.Content>

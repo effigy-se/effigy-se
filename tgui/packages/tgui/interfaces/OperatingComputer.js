@@ -26,7 +26,7 @@ export const OperatingComputer = (props, context) => {
   const [tab, setTab] = useSharedState(context, 'tab', 1);
 
   return (
-    <Window width={350} height={470}>
+    <Window width={470} height={470}>
       <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab selected={tab === 1} onClick={() => setTab(1)}>

@@ -71,6 +71,8 @@
  * model_features is defined in packages\altborgs\code\modules\mob\living\silicon\robot\robot_model.dm.
  */
 /mob/living/silicon/robot/proc/can_rest()
-	if(TRAIT_IMMOBILIZED in status_traits)
-		return FALSE
-	return TRUE
+	if(model && model.model_features && (R_TRAIT_WIDE in model.model_features))
+		if(TRAIT_IMMOBILIZED in status_traits)
+			return FALSE
+		return TRUE
+	return FALSE

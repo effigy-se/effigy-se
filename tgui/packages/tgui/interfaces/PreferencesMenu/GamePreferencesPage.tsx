@@ -70,7 +70,7 @@ export const GamePreferencesPage = (props, context) => {
             />
           )) || (
             <Box as="b" color="red">
-              ...is not filled out properly!!!
+              Error: If you see this, yell at a coder!
             </Box>
           )}
         </Flex.Item>

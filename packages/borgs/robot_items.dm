@@ -40,7 +40,7 @@
 /obj/item/crowbar/cyborg/power
 	name = "modular crowbar"
 	desc = "A cyborg fitted module resembling the jaws of life."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'packages/borgs/assets/items_cyborg.dmi'
 	icon_state = "jaws_pry_cyborg"
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 10
@@ -66,7 +66,7 @@
 /obj/item/screwdriver/cyborg/power
 	name =	"automated drill"
 	desc = "A cyborg fitted module resembling the hand drill"
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'packages/borgs/assets/items_cyborg.dmi'
 	icon_state = "drill_screw_cyborg"
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'

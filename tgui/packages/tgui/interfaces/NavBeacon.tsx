@@ -32,7 +32,7 @@ export type NavBeaconStaticControl = {
 export const NavBeacon = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Window title="Nagivational Beacon" width={400} height={350}>
+    <Window title="Nagivational Beacon" width={415} height={415}>
       <Window.Content>
         <NavBeaconContent />
       </Window.Content>
