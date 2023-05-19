@@ -11,6 +11,8 @@ describe('ChannelIterator', () => {
     expect(channelIterator.current()).toBe('Say');
     expect(channelIterator.next()).toBe('Radio');
     expect(channelIterator.next()).toBe('Me');
+    expect(channelIterator.next()).toBe('Whis');
+    expect(channelIterator.next()).toBe('LOOC');
     expect(channelIterator.next()).toBe('OOC');
     expect(channelIterator.next()).toBe('Say'); // Admin is blacklisted so it should be skipped
   });
@@ -41,7 +43,7 @@ describe('ChannelIterator', () => {
   });
 
   it('should not leak a message from a blacklisted channel', () => {
-    channelIterator.set('Admin');
-    expect(channelIterator.next()).toBe('Admin');
+    channelIterator.set('aERP');
+    expect(channelIterator.next()).toBe('aERP');
   });
 });
