@@ -203,10 +203,6 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		var/datum/bank_account/buying_account = briefcase_order
 		var/buyer = buying_account.account_holder
 		var/buying_acc_order_num = length(buying_account_orders)
-		for(var/datum/supply_order/company_import/the_order in buying_account_orders)
-			if(!the_order.item_amount || (the_order.item_amount == 1))
-				continue
-			buying_acc_order_num += the_order.item_amount - 1
 
 		if(buying_acc_order_num > 2) // no free shipping, send a crate
 			var/obj/structure/closet/crate/secure/owned/our_crate = new /obj/structure/closet/crate/secure/owned(pick_n_take(empty_turfs))

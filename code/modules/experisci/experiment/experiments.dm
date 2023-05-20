@@ -129,10 +129,10 @@
 
 // EFFIGY EDIT CHANGE START
 // datum/experiment/scanning/random/material/meat
-/datum/experiment/scanning/random/material/silver
+/datum/experiment/scanning/random/material/plastic
 	name = "Material Scanning Experiment"
 	description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
-	possible_material_types = list(/datum/material/silver)
+	possible_material_types = list(/datum/material/plastic)
 // EFFIGY EDIT CHANGE END
 
 /datum/experiment/scanning/random/material/easy

@@ -172,7 +172,6 @@
 			tie_time *= 0.5
 		if(do_after(user, tie_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
 		// EFFIGY EDIT ADD END
-		if(do_after(user, lace_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
 			to_chat(user, span_notice("You [tied ? "unknot" : "tie"] the laces of your [src.name]."))
 			if(tied == SHOES_UNTIED)
 				adjust_laces(SHOES_TIED, user)
@@ -293,6 +292,5 @@
 		tie_time *= 0.5
 	if(do_after(user, lace_time, target = src,extra_checks = CALLBACK(src, PROC_REF(still_shoed), user)))
 	// EFFIGY EDIT ADD END
-	if(do_after(user, lace_time, target = src,extra_checks = CALLBACK(src, PROC_REF(still_shoed), user)))
 		to_chat(user, span_notice("You [tied ? "untie" : "tie"] the laces on [src]."))
 		adjust_laces(tied ? SHOES_UNTIED : SHOES_TIED, user)
