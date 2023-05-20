@@ -731,9 +731,16 @@
 		hud_used.update_robot_modules_display()
 
 	if (hasExpanded)
-		resize = 0.5
+		resize = 0.8 // EFFIGY EDIT CHANGE (Was 0.5)
 		hasExpanded = FALSE
 		update_transform()
+	// EFFIGY EDIT ADD START
+	if (hasShrunk)
+		hasShrunk = FALSE
+		resize = (4/3)
+		update_transform()
+	hasAffection = FALSE
+	// EFFIGY EDIT ADD END
 	logevent("Chassis model has been reset.")
 	log_silicon("CYBORG: [key_name(src)] has reset their cyborg model.")
 	model.transform_to(/obj/item/robot_model)

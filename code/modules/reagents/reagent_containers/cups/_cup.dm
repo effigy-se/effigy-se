@@ -215,15 +215,17 @@
 
 /obj/item/reagent_containers/cup/beaker
 	name = "beaker"
-	desc = "A beaker. It can hold up to 50 units."
+	desc = "A beaker. It can hold up to 60 units."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "beaker"
 	inhand_icon_state = "beaker"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
+	volume = 60 // EFFIGY EDIT ADD
 	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT*5)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
+	possible_transfer_amounts = list(5,10,15,20,30,60) // EFFIGY EDIT ADD
 
 /obj/item/reagent_containers/cup/beaker/Initialize(mapload)
 	. = ..()
@@ -240,43 +242,44 @@
 
 /obj/item/reagent_containers/cup/beaker/large
 	name = "large beaker"
-	desc = "A large beaker. Can hold up to 100 units."
+	desc = "A large beaker. Can hold up to 120 units."
 	icon_state = "beakerlarge"
 	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT*1.25)
-	volume = 100
+	volume = 120 // EFFIGY EDIT CHANGE
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,120) // EFFIGY EDIT CHANGE
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/plastic
 	name = "x-large beaker"
-	desc = "An extra-large beaker. Can hold up to 120 units."
+	desc = "An extra-large beaker. Can hold up to 150 units."
 	icon_state = "beakerwhite"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5)
-	volume = 120
+	volume = 150 // EFFIGY EDIT CHANGE
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,60,120)
+	possible_transfer_amounts = list(5,10,15,20,30,50,60,75,150) // EFFIGY EDIT CHANGE
 	fill_icon_thresholds = list(0, 1, 10, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/meta
 	name = "metamaterial beaker"
-	desc = "A large beaker. Can hold up to 180 units."
+	desc = "A large beaker. Can hold up to 240 units."
 	icon_state = "beakergold"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/gold=HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium=HALF_SHEET_MATERIAL_AMOUNT)
-	volume = 180
+	volume = 240 // EFFIGY EDIT CHANGE
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,60,120,180)
+	possible_transfer_amounts = list(5,10,15,20,30,60,80,100,120,160,200,240) // EFFIGY EDIT CHANGE
 	fill_icon_thresholds = list(0, 1, 10, 25, 35, 50, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/noreact
 	name = "cryostasis beaker"
 	desc = "A cryostasis beaker that allows for chemical storage without \
-		reactions. Can hold up to 50 units."
+		reactions. Can hold up to 60 units."
 	icon_state = "beakernoreact"
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 1.5)
 	reagent_flags = OPENCONTAINER | NO_REACT
-	volume = 50
+	volume = 60 // EFFIGY EDIT CHANGE
 	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(5,10,15,20,30,60) // EFFIGY EDIT ADD
 
 /obj/item/reagent_containers/cup/beaker/bluespace
 	name = "bluespace beaker"
@@ -287,56 +290,58 @@
 	custom_materials = list(/datum/material/glass =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/plasma =SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/diamond =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/bluespace =HALF_SHEET_MATERIAL_AMOUNT)
 	volume = 300
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,50,100,300)
+	possible_transfer_amounts = list(5,10,15,20,30,60,80,100,120,160,200,240,300) // EFFIGY EDIT CHANGE
 
+// EFFIGY EDIT CHANGE START
 /obj/item/reagent_containers/cup/beaker/meta/omnizine
-	list_reagents = list(/datum/reagent/medicine/omnizine = 180)
+	list_reagents = list(/datum/reagent/medicine/omnizine = 240)
 
 /obj/item/reagent_containers/cup/beaker/meta/sal_acid
-	list_reagents = list(/datum/reagent/medicine/sal_acid = 180)
+	list_reagents = list(/datum/reagent/medicine/sal_acid = 240)
 
 /obj/item/reagent_containers/cup/beaker/meta/oxandrolone
-	list_reagents = list(/datum/reagent/medicine/oxandrolone = 180)
+	list_reagents = list(/datum/reagent/medicine/oxandrolone = 240)
 
 /obj/item/reagent_containers/cup/beaker/meta/pen_acid
-	list_reagents = list(/datum/reagent/medicine/pen_acid = 180)
+	list_reagents = list(/datum/reagent/medicine/pen_acid = 240)
 
 /obj/item/reagent_containers/cup/beaker/meta/atropine
-	list_reagents = list(/datum/reagent/medicine/atropine = 180)
+	list_reagents = list(/datum/reagent/medicine/atropine = 240)
 
 /obj/item/reagent_containers/cup/beaker/meta/salbutamol
-	list_reagents = list(/datum/reagent/medicine/salbutamol = 180)
+	list_reagents = list(/datum/reagent/medicine/salbutamol = 240)
 
 /obj/item/reagent_containers/cup/beaker/meta/rezadone
-	list_reagents = list(/datum/reagent/medicine/rezadone = 180)
+	list_reagents = list(/datum/reagent/medicine/rezadone = 240)
 
 /obj/item/reagent_containers/cup/beaker/cryoxadone
 	list_reagents = list(/datum/reagent/medicine/cryoxadone = 30)
 
 /obj/item/reagent_containers/cup/beaker/sulfuric
-	list_reagents = list(/datum/reagent/toxin/acid = 50)
+	list_reagents = list(/datum/reagent/toxin/acid = 60)
 
 /obj/item/reagent_containers/cup/beaker/slime
-	list_reagents = list(/datum/reagent/toxin/slimejelly = 50)
+	list_reagents = list(/datum/reagent/toxin/slimejelly = 60)
 
 /obj/item/reagent_containers/cup/beaker/large/libital
 	name = "libital reserve tank (diluted)"
-	list_reagents = list(/datum/reagent/medicine/c2/libital = 10,/datum/reagent/medicine/granibitaluri = 40)
+	list_reagents = list(/datum/reagent/medicine/c2/libital = 15,/datum/reagent/medicine/granibitaluri = 45)
 
 /obj/item/reagent_containers/cup/beaker/large/aiuri
 	name = "aiuri reserve tank (diluted)"
-	list_reagents = list(/datum/reagent/medicine/c2/aiuri = 10, /datum/reagent/medicine/granibitaluri = 40)
+	list_reagents = list(/datum/reagent/medicine/c2/aiuri = 15, /datum/reagent/medicine/granibitaluri = 45)
 
 /obj/item/reagent_containers/cup/beaker/large/multiver
 	name = "multiver reserve tank (diluted)"
-	list_reagents = list(/datum/reagent/medicine/c2/multiver = 10, /datum/reagent/medicine/granibitaluri = 40)
+	list_reagents = list(/datum/reagent/medicine/c2/multiver = 15, /datum/reagent/medicine/granibitaluri = 45)
 
 /obj/item/reagent_containers/cup/beaker/large/epinephrine
 	name = "epinephrine reserve tank (diluted)"
-	list_reagents = list(/datum/reagent/medicine/epinephrine = 50)
+	list_reagents = list(/datum/reagent/medicine/epinephrine = 60)
 
 /obj/item/reagent_containers/cup/beaker/synthflesh
-	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 50)
+	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 60)
+// EFFIGY EDIT CHANGE END
 
 /obj/item/reagent_containers/cup/bucket
 	name = "bucket"
@@ -355,8 +360,8 @@
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 2)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,25,30,50,70)
-	volume = 70
+	possible_transfer_amounts = list(5,10,15,20,25,30,45,90) // EFFIGY EDIT CHANGE
+	volume = 90 // EFFIGY EDIT CHANGE
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_HEAD
 	resistance_flags = NONE
@@ -399,23 +404,34 @@
 	melee = 10
 	acid = 50
 
-/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/user, params)
+// EFFIGY EDIT CHANGE START (TODO move to overrides)
+/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) // EFFIGY EDIT CHANGE
 	if(istype(O, /obj/item/mop))
-		if(reagents.total_volume < 1)
-			to_chat(user, span_warning("[src] is out of water!"))
+		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
+		if(is_right_clicking)
+			if(O.reagents.total_volume == 0)
+				to_chat(user, "<span class='warning'>[O] is dry, you can't squeeze anything out!</span>")
+				return
+			if(reagents.total_volume == reagents.maximum_volume)
+				to_chat(user, "<span class='warning'>[src] is full!</span>")
+				return
+			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
+			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
+			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
 		else
-			reagents.trans_to(O, 5, transfered_by = user)
-			to_chat(user, span_notice("You wet [O] in [src]."))
-			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
-		return
+			if(reagents.total_volume < 1)
+				to_chat(user, "<span class='warning'>[src] is out of water!</span>")
+			else
+				reagents.trans_to(O, 5, transfered_by = user)
+				to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
+				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
 		to_chat(user, span_notice("You add [O] to [src]."))
 		qdel(O)
 		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
 		user.put_in_hands(new_cleanbot_ass)
 		return
-
-	return ..()
+// EFFIGY EDIT CHANGE END
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()

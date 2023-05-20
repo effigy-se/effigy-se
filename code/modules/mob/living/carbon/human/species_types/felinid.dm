@@ -135,10 +135,12 @@
 	human_for_preview.hair_color = "#ffcccc" // pink
 	human_for_preview.update_body_parts()
 
-	var/obj/item/organ/internal/ears/cat/cat_ears = human_for_preview.get_organ_by_type(/obj/item/organ/internal/ears/cat)
-	if (cat_ears)
-		cat_ears.color = human_for_preview.hair_color
-		human_for_preview.update_body()
+	// EFFIGY EDIT CHANGE START
+	human_for_preview.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
+	human_for_preview.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
+	regenerate_organs(human_for_preview, src, visual_only = TRUE)
+	human_for_preview.update_body(TRUE)
+	// EFFIGY EDIT CHANGE END
 
 /datum/species/human/felinid/get_species_description()
 	return "Felinids are one of the many types of bespoke genetic \

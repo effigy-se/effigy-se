@@ -146,7 +146,7 @@
 	if(carbon_user.dna.species.mutant_bodyparts["snout"])
 		visor_sprite_path = 'packages/clothing/assets/mob/head_muzzled.dmi'
 	else
-		visor_sprite_path = 'icons/mob/clothing/head/utility.dmi'	//END SKYRAT EDIT
+		visor_sprite_path = 'icons/mob/clothing/head/utility.dmi'	// EFFIGY EDIT CHANGE
 	update_appearance()
 
 /obj/item/clothing/head/utility/hardhat/welding/worn_overlays(mutable_appearance/standing, isinhands)

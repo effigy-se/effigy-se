@@ -181,8 +181,8 @@ Lizard subspecies: SILVER SCALED
 		TRAIT_WINE_TASTER,
 	)
 	mutantlungs = null
-	species_language_holder = /datum/language_holder/lizard/silver
-	mutanttongue = /obj/item/organ/internal/tongue/lizard/silver
+	species_language_holder = /datum/language_holder/lizard // EFFIGY EDIT CHANGE
+	mutanttongue = /obj/item/organ/internal/tongue/lizard // EFFIGY EDIT CHANGE
 	armor = 10 //very light silvery scales soften blows
 	changesource_flags = MIRROR_BADMIN | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	examine_limb_id = SPECIES_LIZARD

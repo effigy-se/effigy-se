@@ -64,6 +64,8 @@
 		/datum/reagent/water,
 		/datum/reagent/fuel
 	)
+	// EFFIGY EDIT CHANGE START
+	/*
 	//these become available once the manipulator has been upgraded to tier 4 (femto)
 	var/list/upgrade_reagents = list(
 		/datum/reagent/acetone,
@@ -80,10 +82,41 @@
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin
 	)
+	*/
+	var/list/upgrade_reagents = list(
+		/datum/reagent/fuel/oil,
+		/datum/reagent/ammonia,
+		/datum/reagent/ash,
+		/datum/reagent/phenol
+	)
+
+	var/list/upgrade_reagents2 = list(
+		/datum/reagent/acetone,
+		/datum/reagent/diethylamine
+	)
+
+	var/list/upgrade_reagents3 = list(
+		/datum/reagent/medicine/mine_salve,
+		/datum/reagent/toxin
+	)
+
+	var/list/emagged_reagents = list(
+		/datum/reagent/drug/space_drugs,
+		/datum/reagent/toxin/plasma,
+		/datum/reagent/consumable/frostoil,
+		/datum/reagent/toxin/carpotoxin,
+		/datum/reagent/toxin/histamine,
+		/datum/reagent/medicine/morphine
+	)
+	// EFFIGY EDIT CHANGE END
 
 	var/list/recording_recipe
 
 	var/list/saved_recipes = list()
+	// EFFIGY EDIT ADD START
+	var/list/transferAmounts = list()
+	var/customTransferAmount
+	// EFFIGY EDIT ADD END
 
 /obj/machinery/chem_dispenser/Initialize(mapload)
 	. = ..()
@@ -92,6 +125,12 @@
 		emagged_reagents = sort_list(emagged_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(upgrade_reagents)
 		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+	// EFFIGY EDIT ADD START
+	if(upgrade_reagents2)
+		upgrade_reagents2 = sort_list(upgrade_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade_reagents3)
+		upgrade_reagents3 = sort_list(upgrade_reagents3, GLOBAL_PROC_REF(cmp_reagents_asc))
+	// EFFIGY EDIT ADD START
 	if(is_operational)
 		begin_processing()
 	update_appearance()
@@ -358,6 +397,16 @@
 				return
 			recording_recipe = null
 			. = TRUE
+		// EFFIGY EDIT ADD START
+		if("custom_amount")
+			if(!beaker)
+				to_chat(usr, span_warning("Insert a container first!"))
+				return
+			if(customTransferAmount)
+				transferAmounts -= customTransferAmount
+			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
+			transferAmounts += customTransferAmount
+		// EFFIGY EDIT ADD END
 		if("reaction_lookup")
 			if(beaker)
 				beaker.reagents.ui_interact(usr)
@@ -375,6 +424,11 @@
 		return
 	if(is_reagent_container(I) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		var/obj/item/reagent_containers/B = I
+		// EFFIGY EDIT ADD START
+		if(customTransferAmount)
+			transferAmounts -= customTransferAmount
+		transferAmounts = B.possible_transfer_amounts
+		// EFFIGY EDIT ADD END
 		. = TRUE //no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return
@@ -424,10 +478,28 @@
 		recharge_amount *= capacitor.tier
 		parts_rating += capacitor.tier
 	for(var/datum/stock_part/servo/servo in component_parts)
+		// EFFIGY EDIT CHANGE START
+		/*
 		if (servo.tier > 3)
 			dispensable_reagents |= upgrade_reagents
 		else
 			dispensable_reagents -= upgrade_reagents
+		*/
+		if (servo.tier > 1)
+			dispensable_reagents |= upgrade_reagents
+		else
+			dispensable_reagents -= upgrade_reagents
+
+		if (servo.tier > 2)
+			dispensable_reagents |= upgrade_reagents2
+		else
+			dispensable_reagents -= upgrade_reagents2
+
+		if (servo.tier > 3)
+			dispensable_reagents |= upgrade_reagents3
+		else
+			dispensable_reagents -= upgrade_reagents3
+		// EFFIGY EDIT CHANGE END
 		parts_rating += servo.tier
 	powerefficiency = round(newpowereff, 0.01)
 
@@ -507,7 +579,23 @@
 		/datum/reagent/consumable/tonic,
 		/datum/reagent/water,
 	)
-	upgrade_reagents = null
+	// EFFIGY EDIT ADD START
+	upgrade_reagents = list(
+		/datum/reagent/consumable/applejuice,
+		/datum/reagent/consumable/pumpkinjuice,
+		/datum/reagent/consumable/vanilla
+	)
+	upgrade_reagents2 = list(
+		/datum/reagent/consumable/banana,
+		/datum/reagent/consumable/berryjuice,
+		/datum/reagent/consumable/blumpkinjuice
+	)
+	upgrade_reagents3 = list(
+		/datum/reagent/consumable/watermelonjuice,
+		/datum/reagent/consumable/peachjuice,
+		/datum/reagent/consumable/sol_dry
+	)
+	// EFFIGY EDIT ADD END
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol/thirteenloko,
 		/datum/reagent/consumable/ethanol/whiskey_cola,
@@ -577,6 +665,7 @@
 		/datum/reagent/consumable/ethanol/navy_rum,
 		/datum/reagent/consumable/ethanol/rum,
 		/datum/reagent/consumable/ethanol/sake,
+		/datum/reagent/consumable/ethanol/synthanol, // EFFIGY EDIT ADD
 		/datum/reagent/consumable/ethanol/tequila,
 		/datum/reagent/consumable/ethanol/triple_sec,
 		/datum/reagent/consumable/ethanol/vermouth,
@@ -585,6 +674,8 @@
 		/datum/reagent/consumable/ethanol/wine,
 	)
 	upgrade_reagents = null
+	upgrade_reagents2 = null // EFFIGY EDIT ADD
+	upgrade_reagents3 = null // EFFIGY EDIT ADD
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,

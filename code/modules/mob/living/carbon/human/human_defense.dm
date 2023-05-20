@@ -704,7 +704,7 @@
 		if(body_part.current_splint)
 			var/datum/bodypart_aid/current_splint = body_part.current_splint
 			combined_msg += "\t [span_notice("Your [body_part.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.")]"
-		//SKYRAT EDIT END
+		// EFFIGY EDIT ADD END
 
 	for(var/t in missing)
 		combined_msg += span_boldannounce("Your [parse_zone(t)] is missing!")

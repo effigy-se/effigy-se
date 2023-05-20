@@ -35,8 +35,8 @@ GLOBAL_LIST_EMPTY(cyborg_all_models_icon_list)
 #define CYBORG_ICON_MED 'packages/borgs/assets/robots_med.dmi'
 #define CYBORG_ICON_MED_WIDE 'packages/borgs/assets/widerobot_med.dmi'
 
-#define CYBORG_ICON_CARGO 'modular_skyrat/modules/cargoborg/icons/robots_cargo.dmi'
-#define CYBORG_ICON_CARGO_WIDE 'modular_skyrat/modules/cargoborg/icons/widerobots_cargo.dmi'
+#define CYBORG_ICON_CARGO 'packages/borgs/assets/robots_cargo.dmi'
+#define CYBORG_ICON_CARGO_WIDE 'packages/borgs/assets/widerobot_cargo.dmi'
 
 #define CYBORG_ICON_SEC 'packages/borgs/assets/robots_sec.dmi'
 #define CYBORG_ICON_SEC_WIDE 'packages/borgs/assets/widerobot_sec.dmi'

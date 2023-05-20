@@ -1,4 +1,4 @@
-/* EFFIGY EDIT REMOVAL - Moved to modular_skyrat\master_files\code\modules\surgery\bodyparts\species_parts\moth_bodyparts.dm
+/* EFFIGY EDIT REMOVAL
 /obj/item/bodypart/head/moth
 	icon = 'icons/mob/species/moth/bodyparts.dmi'
 	icon_state = "moth_head"

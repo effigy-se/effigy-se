@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 						paying_for_this.bank_card_talk("Cargo order #[spawning_order.id] rejected due to lack of funds. Credits required: [price]")
 					continue
 
-		if(spawning_order.paying_account)
+		if(spawning_order.paying_account && spawning_order.charge_on_purchase) // EFFIGY EDIT CHANGE
 			paying_for_this = spawning_order.paying_account
 			if(spawning_order.pack.goody)
 				LAZYADD(goodies_by_buyer[spawning_order.paying_account], spawning_order)
@@ -159,7 +159,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		SSshuttle.order_history += spawning_order
 		QDEL_NULL(spawning_order.applied_coupon)
 
-		if(!spawning_order.pack.goody) //we handle goody crates below
+		spawning_order.on_spawn() // EFFIGY EDIT ADD
+		if(!spawning_order.pack.goody && !(spawning_order?.paying_account in forced_briefcases)) // EFFIGY EDIT CHANGE
 			spawning_order.generate(pick_n_take(empty_turfs))
 
 		SSblackbox.record_feedback("nested tally", "cargo_imports", 1, list("[spawning_order.pack.get_cost()]", "[spawning_order.pack.name]"))
@@ -195,6 +196,39 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 				misc_contents[buyer] += item
 			misc_costs[buyer] += our_order.pack.cost
 			misc_order_num[buyer] = "[misc_order_num[buyer]]#[our_order.id] "
+
+	// EFFIGY EDIT ADD START
+	for(var/briefcase_order in forced_briefcases)
+		var/list/buying_account_orders = forced_briefcases[briefcase_order]
+		var/datum/bank_account/buying_account = briefcase_order
+		var/buyer = buying_account.account_holder
+		var/buying_acc_order_num = length(buying_account_orders)
+		for(var/datum/supply_order/company_import/the_order in buying_account_orders)
+			if(!the_order.item_amount || (the_order.item_amount == 1))
+				continue
+			buying_acc_order_num += the_order.item_amount - 1
+
+		if(buying_acc_order_num > 2) // no free shipping, send a crate
+			var/obj/structure/closet/crate/secure/owned/our_crate = new /obj/structure/closet/crate/secure/owned(pick_n_take(empty_turfs))
+			our_crate.buyer_account = buying_account
+			our_crate.name = "special import crate - purchased by [buyer]"
+			miscboxes[buyer] = our_crate
+		else //free shipping in a case
+			miscboxes[buyer] = new /obj/item/storage/lockbox/order(pick_n_take(empty_turfs))
+			var/obj/item/storage/lockbox/order/our_case = miscboxes[buyer]
+			our_case.buyer_account = buying_account
+			if(istype(our_case.buyer_account, /datum/bank_account/department))
+				our_case.department_purchase = TRUE
+				our_case.department_account = our_case.buyer_account
+			miscboxes[buyer].name = "special import case - purchased by [buyer]"
+		misc_contents[buyer] = list()
+
+		for(var/datum/supply_order/order in buying_account_orders)
+			for (var/item in order.pack.contains)
+				misc_contents[buyer] += item
+			misc_costs[buyer] += order.pack.cost
+			misc_order_num[buyer] = "[misc_order_num[buyer]]#[order.id]  "
+	// EFFIGY EDIT ADD END
 
 	for(var/miscbox in miscboxes)
 		var/datum/supply_order/order = new/datum/supply_order()
