@@ -128,6 +128,18 @@
 	var/message_verb_continuous = length(I.attack_verb_continuous) ? "[pick(I.attack_verb_continuous)]" : "attacks"
 	var/message_verb_simple = length(I.attack_verb_simple) ? "[pick(I.attack_verb_simple)]" : "attack"
 
+	// EFFIGY EDIT ADD START
+	if(I.force && !user.combat_mode && !length(I.attack_verb_simple) && !length(I.attack_verb_continuous))
+		var/random = rand(1,2)
+		switch(random)
+			if(1)
+				message_verb_continuous = "<font color='#ee00ff'>glances</font>"
+				message_verb_simple = "<font color='#ee00ff'>glance</font>"
+			if(2)
+				message_verb_continuous = "<font color='#ee00ff'>maims</font>"
+				message_verb_simple = "<font color='#ee00ff'>maim</font>"
+	// EFFIGY EDIT ADD END
+
 	var/extra_wound_details = ""
 	if(I.damtype == BRUTE && hit_bodypart.can_dismember())
 		var/mangled_state = hit_bodypart.get_mangled_state()
@@ -458,6 +470,7 @@
 		Paralyze(60)
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/helper)
+	var/nosound = FALSE // effigy edit add
 	if(on_fire)
 		to_chat(helper, span_warning("You can't put [p_them()] out with just your bare hands!"))
 		return
@@ -477,6 +490,18 @@
 						null, span_hear("You hear the rustling of clothes."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 		to_chat(helper, span_notice("You shake [src] trying to pick [p_them()] up!"))
 		to_chat(src, span_notice("[helper] shakes you to get you up!"))
+
+	// EFFIGY EDIT ADD START (Emotes)
+	else if(helper.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		nosound = TRUE
+		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
+		if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
+			to_chat(src, span_warning("[helper] boops you on your sensitive nose, sending you to the ground!"))
+			src.Knockdown(20)
+			src.apply_damage(30, STAMINA)
+		helper.visible_message(span_notice("[helper] boops [src]'s nose."), span_notice("You boop [src] on the nose."))
+	// EFFIGY EDIT ADD END (Emotes)
+
 	else if(check_zone(helper.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
 		helper.visible_message(span_notice("[helper] gives [src] a pat on the head to make [p_them()] feel better!"), \
 					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(helper, src))
@@ -495,6 +520,12 @@
 			to_chat(helper, span_warning("[src] makes a grumbling noise as you pull on [p_their()] tail."))
 		else
 			add_mood_event("tailpulled", /datum/mood_event/tailpulled)
+		// EFFIGY EDIT ADD START (Emotes)
+		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
+			var/obj/item/organ/external/tail/src_tail = get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
+			if(src_tail && !(src_tail.wag_flags & WAG_WAGGING))
+				emote("wag")
+		// EFFIGY EDIT ADD END (Emotes)
 
 	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && (istype(head, /obj/item/clothing/head/costume/kitty) || istype(head, /obj/item/clothing/head/collectable/kitty)))
 		var/obj/item/clothing/head/faketail = head
@@ -566,7 +597,8 @@
 	if(body_position != STANDING_UP && !resting && !buckled && !HAS_TRAIT(src, TRAIT_FLOORED))
 		get_up(TRUE)
 
-	playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+	if(!nosound) // EFFIGY EDIT CHANGE (Emotes)
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 
 	// Shake animation
 	if (incapacitated())
@@ -734,6 +766,8 @@
 	if(user != src)
 		return ..()
 
+	// EFFIGY EDIT REMOVE START (Medical)
+	/*
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
 	if(!grasped_part?.get_modified_bleed_rate())
 		return
@@ -753,6 +787,9 @@
 		QDEL_NULL(grasp)
 		return
 	grasp.grasp_limb(grasped_part)
+	*/
+	self_grasp_bleeding_limb(grasped_part, supress_message)
+	// EFFIGY EDIT REMOVE END
 
 /// an abstract item representing you holding your own limb to staunch the bleeding, see [/mob/living/carbon/proc/grabbedby] will probably need to find somewhere else to put this.
 /obj/item/hand_item/self_grasp
