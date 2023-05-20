@@ -494,7 +494,7 @@
 	// EFFIGY EDIT ADD START (Emotes)
 	else if(helper.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
-		playsound(src, 'packages/emotes/assets/Nose_boop.ogg', 50, 0)
+		playsound(src, 'packages/emotes/assets/generic/nose_boop.ogg', 50, 0)
 		if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
 			to_chat(src, span_warning("[helper] boops you on your sensitive nose, sending you to the ground!"))
 			src.Knockdown(20)
@@ -766,9 +766,10 @@
 	if(user != src)
 		return ..()
 
+
+	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
 	// EFFIGY EDIT REMOVE START (Medical)
 	/*
-	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
 	if(!grasped_part?.get_modified_bleed_rate())
 		return
 	var/starting_hand_index = active_hand_index

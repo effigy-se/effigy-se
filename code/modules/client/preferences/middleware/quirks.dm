@@ -52,11 +52,6 @@
 /datum/preference_middleware/quirks/proc/give_quirk(list/params, mob/user)
 	var/quirk_name = params["quirk"]
 
-	// EFFIGY EDIT ADD START
-	var/list/quirks = SSquirks.get_quirks()
-	var/datum/quirk/quirk = quirks[quirk_name]
-	// EFFIGY EDIT ADD END
-
 	var/list/new_quirks = preferences.all_quirks | quirk_name
 	if (SSquirks.filter_invalid_quirks(new_quirks, preferences.augments) != new_quirks) // EFFIGY EDIT CHANGE
 		// If the client is sending an invalid give_quirk, that means that

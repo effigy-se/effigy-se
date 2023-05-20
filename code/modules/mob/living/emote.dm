@@ -654,7 +654,7 @@
 
 // EFFIGY EDIT REMOVE START (Synths)
 /*
-/datum/emote/living/beep
+/datum/emote/living/human/beep
 	key = "beep"
 	key_third_person = "beeps"
 	message = "beeps."

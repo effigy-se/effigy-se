@@ -616,7 +616,7 @@ There are several things that need to be remembered:
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
 		my_chest?.worn_back_offset?.apply_offset(back_overlay)
 		if(!mutant_override) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-			my_head.worn_mask_offset?.apply_offset(mask_overlay)
+			my_chest?.worn_back_offset?.apply_offset(back_overlay)
 		overlays_standing[BACK_LAYER] = back_overlay
 	apply_overlay(BACK_LAYER)
 

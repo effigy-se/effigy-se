@@ -9,7 +9,7 @@
 	key_third_person = "boops"
 	message = "boops."
 
-/datum/emote/silicon/buzz
+/datum/emote/living/human/buzz
 	key = "buzz"
 	key_third_person = "buzzes"
 	message = "buzzes."
@@ -18,7 +18,7 @@
 	sound = 'sound/machines/buzz-sigh.ogg'
 
 
-/datum/emote/silicon/buzz2
+/datum/emote/living/human/buzz2
 	key = "buzz2"
 	message = "buzzes twice."
 	emote_type = EMOTE_AUDIBLE

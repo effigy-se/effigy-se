@@ -29,6 +29,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	var/cable_color = CABLE_COLOR_YELLOW
 	var/is_fully_initialized = FALSE
 
+
 /obj/structure/cable/layer1
 	color = CABLE_HEX_COLOR_RED
 	cable_color = CABLE_COLOR_RED
@@ -44,6 +45,12 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	machinery_layer = null
 	layer = WIRE_LAYER + 0.01
 	icon_state = "l4-1-2-4-8-node"
+
+/obj/item/stack/cable_coil
+	/// How long it takes to apply cable to your own robotic limbs to heal their burns.
+	var/self_delay = 5 SECONDS // EFFIGY EDIT ADD
+	/// How long it takes to apply cable to someone else's robotic limbs to heal their burns.
+	var/other_delay = 1 SECONDS // EFFIGY EDIT ADD
 
 /obj/structure/cable/Initialize(mapload)
 	. = ..()

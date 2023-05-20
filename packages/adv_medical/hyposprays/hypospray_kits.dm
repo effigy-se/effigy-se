@@ -1,7 +1,7 @@
 /obj/item/storage/hypospraykit
 	name = "hypospray kit"
 	desc = "It's a kit containing a hypospray and specific treatment chemical-filled vials."
-	icon = 'packages/adv_medical/assets/hypospray/hypokits.dmi'
+	icon = 'packages/adv_medical/assets/obj/hypokits.dmi'
 	icon_state = "firstaid-mini"
 	worn_icon_state = "healthanalyzer" // Get a better sprite later
 	inhand_icon_state = "medkit"
@@ -103,7 +103,7 @@
 /obj/item/storage/hypospraykit/cmo/PopulateContents()
 	if(empty)
 		return
-	new /obj/item/hypospray/mkii/cmo(src)
+	new /obj/item/hypospray/mkii(src)
 	new /obj/item/reagent_containers/cup/vial/multiver(src)
 	new /obj/item/reagent_containers/cup/vial/salglu(src)
 	new /obj/item/reagent_containers/cup/vial/synthflesh(src)

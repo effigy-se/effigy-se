@@ -23,7 +23,7 @@
 
 
 /datum/emote/living/blush
-	sound = 'packages/emotes/assets/sound/emotes/blush.ogg'
+	sound = 'packages/emotes/assets/generic/blush.ogg'
 
 /datum/emote/living/quill
 	key = "quill"
@@ -33,20 +33,20 @@
 	muzzle_ignore = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/voxrustle.ogg'
+	sound = 'packages/emotes/assets/generic/voxrustle.ogg'
 
 
 /datum/emote/living/cough/get_sound(mob/living/user)
 	if(isvox(user))
-		return 'packages/emotes/assets/sound/emotes/voxcough.ogg'
+		return 'packages/emotes/assets/generic/voxcough.ogg'
 	if(iscarbon(user))
 		if(user.gender == MALE)
-			return pick('packages/emotes/assets/sound/emotes/male/male_cough_1.ogg',
-						'packages/emotes/assets/sound/emotes/male/male_cough_2.ogg',
-						'packages/emotes/assets/sound/emotes/male/male_cough_3.ogg')
-		return pick('packages/emotes/assets/sound/emotes/female/female_cough_1.ogg',
-					'packages/emotes/assets/sound/emotes/female/female_cough_2.ogg',
-					'packages/emotes/assets/sound/emotes/female/female_cough_3.ogg')
+			return pick('packages/emotes/assets/generic/male/male_cough_1.ogg',
+						'packages/emotes/assets/generic/male/male_cough_2.ogg',
+						'packages/emotes/assets/generic/male/male_cough_3.ogg')
+		return pick('packages/emotes/assets/generic/female/female_cough_1.ogg',
+					'packages/emotes/assets/generic/female/female_cough_2.ogg',
+					'packages/emotes/assets/generic/female/female_cough_3.ogg')
 	return
 
 /datum/emote/living/sneeze
@@ -54,11 +54,11 @@
 
 /datum/emote/living/sneeze/get_sound(mob/living/user)
 	if(isvox(user))
-		return 'packages/emotes/assets/sound/emotes/voxsneeze.ogg'
+		return 'packages/emotes/assets/generic/voxsneeze.ogg'
 	if(iscarbon(user))
 		if(user.gender == MALE)
-			return 'packages/emotes/assets/sound/emotes/male/male_sneeze.ogg'
-		return 'packages/emotes/assets/sound/emotes/female/female_sneeze.ogg'
+			return 'packages/emotes/assets/generic/male/male_sneeze.ogg'
+		return 'packages/emotes/assets/generic/female/female_sneeze.ogg'
 	return
 
 /datum/emote/flip/can_run_emote(mob/user, status_check, intentional)
@@ -73,7 +73,7 @@
 	message = "peeps like a bird!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/peep_once.ogg'
+	sound = 'packages/emotes/assets/voice/peep_once.ogg'
 
 /datum/emote/living/peep2
 	key = "peep2"
@@ -81,7 +81,7 @@
 	message = "peeps twice like a bird!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/peep.ogg'
+	sound = 'packages/emotes/assets/voice/peep.ogg'
 
 /datum/emote/living/snap2
 	key = "snap2"
@@ -92,7 +92,7 @@
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/snap2.ogg'
+	sound = 'packages/emotes/assets/voice/snap2.ogg'
 
 /datum/emote/living/snap3
 	key = "snap3"
@@ -103,7 +103,7 @@
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/snap3.ogg'
+	sound = 'packages/emotes/assets/voice/snap3.ogg'
 
 /datum/emote/living/awoo
 	key = "awoo"
@@ -111,7 +111,7 @@
 	message = "lets out an awoo!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/awoo.ogg'
+	sound = 'packages/emotes/assets/voice/awoo.ogg'
 
 /datum/emote/living/nya
 	key = "nya"
@@ -119,7 +119,7 @@
 	message = "lets out a nya!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/nya.ogg'
+	sound = 'packages/emotes/assets/voice/nya.ogg'
 
 /datum/emote/living/weh
 	key = "weh"
@@ -127,7 +127,7 @@
 	message = "lets out a weh!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/weh.ogg'
+	sound = 'packages/emotes/assets/voice/weh.ogg'
 
 /datum/emote/living/mothsqueak
 	key = "msqueak"
@@ -135,7 +135,7 @@
 	message = "lets out a tiny squeak!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/mothsqueak.ogg'
+	sound = 'packages/emotes/assets/voice/mothsqueak.ogg'
 
 /datum/emote/living/mousesqueak
 	key = "squeak"
@@ -151,7 +151,7 @@
 	message = "merps!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/merp.ogg'
+	sound = 'packages/emotes/assets/voice/merp.ogg'
 
 /datum/emote/living/bark
 	key = "bark"
@@ -159,7 +159,7 @@
 	message = "barks!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/bark2.ogg'
+	sound = 'packages/emotes/assets/voice/bark2.ogg'
 
 /datum/emote/living/squish
 	key = "squish"
@@ -167,7 +167,7 @@
 	message = "squishes!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/slime_squish.ogg'
+	sound = 'packages/emotes/assets/voice/slime_squish.ogg'
 
 /datum/emote/living/meow
 	key = "meow"
@@ -175,7 +175,7 @@
 	message = "meows!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/meow.ogg'
+	sound = 'packages/emotes/assets/generic/meow.ogg'
 
 /datum/emote/living/hiss
 	key = "hiss1"
@@ -184,7 +184,7 @@
 	emote_type = EMOTE_AUDIBLE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/hiss.ogg'
+	sound = 'packages/emotes/assets/generic/hiss.ogg'
 
 /datum/emote/living/chitter
 	key = "chitter"
@@ -193,13 +193,13 @@
 	emote_type = EMOTE_AUDIBLE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/mothchitter.ogg'
+	sound = 'packages/emotes/assets/generic/mothchitter.ogg'
 
 /datum/emote/living/sigh/get_sound(mob/living/user)
 	if(iscarbon(user))
 		if(user.gender == MALE)
-			return 'packages/emotes/assets/sound/emotes/male/male_sigh.ogg'
-		return 'packages/emotes/assets/sound/emotes/female/female_sigh.ogg'
+			return 'packages/emotes/assets/generic/male/male_sigh.ogg'
+		return 'packages/emotes/assets/generic/female/female_sigh.ogg'
 	return
 
 /datum/emote/living/sniff
@@ -208,30 +208,30 @@
 /datum/emote/living/sniff/get_sound(mob/living/user)
 	if(iscarbon(user))
 		if(user.gender == MALE)
-			return 'packages/emotes/assets/sound/emotes/male/male_sniff.ogg'
-		return 'packages/emotes/assets/sound/emotes/female/female_sniff.ogg'
+			return 'packages/emotes/assets/generic/male/male_sniff.ogg'
+		return 'packages/emotes/assets/generic/female/female_sniff.ogg'
 	return
 
 /datum/emote/living/gasp/get_sound(mob/living/user)
 	if(iscarbon(user))
 		if(user.gender == MALE)
-			return pick('packages/emotes/assets/sound/emotes/male/gasp_m1.ogg',
-						'packages/emotes/assets/sound/emotes/male/gasp_m2.ogg',
-						'packages/emotes/assets/sound/emotes/male/gasp_m3.ogg',
-						'packages/emotes/assets/sound/emotes/male/gasp_m4.ogg',
-						'packages/emotes/assets/sound/emotes/male/gasp_m5.ogg',
-						'packages/emotes/assets/sound/emotes/male/gasp_m6.ogg')
-		return pick('packages/emotes/assets/sound/emotes/female/gasp_f1.ogg',
-					'packages/emotes/assets/sound/emotes/female/gasp_f2.ogg',
-					'packages/emotes/assets/sound/emotes/female/gasp_f3.ogg',
-					'packages/emotes/assets/sound/emotes/female/gasp_f4.ogg',
-					'packages/emotes/assets/sound/emotes/female/gasp_f5.ogg',
-					'packages/emotes/assets/sound/emotes/female/gasp_f6.ogg')
+			return pick('packages/emotes/assets/generic/male/gasp_m1.ogg',
+						'packages/emotes/assets/generic/male/gasp_m2.ogg',
+						'packages/emotes/assets/generic/male/gasp_m3.ogg',
+						'packages/emotes/assets/generic/male/gasp_m4.ogg',
+						'packages/emotes/assets/generic/male/gasp_m5.ogg',
+						'packages/emotes/assets/generic/male/gasp_m6.ogg')
+		return pick('packages/emotes/assets/generic/female/gasp_f1.ogg',
+					'packages/emotes/assets/generic/female/gasp_f2.ogg',
+					'packages/emotes/assets/generic/female/gasp_f3.ogg',
+					'packages/emotes/assets/generic/female/gasp_f4.ogg',
+					'packages/emotes/assets/generic/female/gasp_f5.ogg',
+					'packages/emotes/assets/generic/female/gasp_f6.ogg')
 	return
 
 /datum/emote/living/snore
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/snore.ogg'
+	sound = 'packages/emotes/assets/generic/snore.ogg'
 
 /datum/emote/living/burp
 	vary = TRUE
@@ -239,8 +239,8 @@
 /datum/emote/living/burp/get_sound(mob/living/user)
 	if(iscarbon(user))
 		if(user.gender == MALE)
-			return 'packages/emotes/assets/sound/emotes/male/burp_m.ogg'
-		return 'packages/emotes/assets/sound/emotes/female/burp_f.ogg'
+			return 'packages/emotes/assets/generic/male/burp_m.ogg'
+		return 'packages/emotes/assets/generic/female/burp_f.ogg'
 	return
 
 /datum/emote/living/clap
@@ -255,10 +255,10 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/clap/get_sound(mob/living/user)
-	return pick('packages/emotes/assets/sound/emotes/clap1.ogg',
-				'packages/emotes/assets/sound/emotes/clap2.ogg',
-				'packages/emotes/assets/sound/emotes/clap3.ogg',
-				'packages/emotes/assets/sound/emotes/clap4.ogg')
+	return pick('packages/emotes/assets/generic/clap1.ogg',
+				'packages/emotes/assets/generic/clap2.ogg',
+				'packages/emotes/assets/generic/clap3.ogg',
+				'packages/emotes/assets/generic/clap4.ogg')
 
 /datum/emote/living/clap/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
 	if(user.usable_hands < 2)
@@ -276,8 +276,8 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/clap1/get_sound(mob/living/user)
-	return pick('packages/emotes/assets/sound/emotes/claponce1.ogg',
-				'packages/emotes/assets/sound/emotes/claponce2.ogg')
+	return pick('packages/emotes/assets/generic/claponce1.ogg',
+				'packages/emotes/assets/generic/claponce2.ogg')
 
 /datum/emote/living/clap1/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
 	if(user.usable_hands < 2)
@@ -293,7 +293,7 @@
 /datum/emote/beep
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/twobeep.ogg'
+	sound = 'packages/emotes/assets/generic/twobeep.ogg'
 	mob_type_allowed_typecache = list(/mob/living) //Beep already exists on brains and silicons
 
 /datum/emote/living/blink2
@@ -346,7 +346,7 @@
 	message = "bawks like a chicken."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/bawk.ogg'
+	sound = 'packages/emotes/assets/voice/bawk.ogg'
 
 /datum/emote/living/caw
 	key = "caw"
@@ -354,7 +354,7 @@
 	message = "caws!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/caw.ogg'
+	sound = 'packages/emotes/assets/voice/caw.ogg'
 
 /datum/emote/living/caw2
 	key = "caw2"
@@ -362,7 +362,7 @@
 	message = "caws twice!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/caw2.ogg'
+	sound = 'packages/emotes/assets/voice/caw2.ogg'
 
 /datum/emote/living/whistle
 	key = "whistle"
@@ -383,7 +383,7 @@
 	message = "lets out a bork."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/bork.ogg'
+	sound = 'packages/emotes/assets/voice/bork.ogg'
 
 /datum/emote/living/hoot
 	key = "hoot"
@@ -391,7 +391,7 @@
 	message = "hoots!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/hoot.ogg'
+	sound = 'packages/emotes/assets/voice/hoot.ogg'
 
 /datum/emote/living/growl
 	key = "growl"
@@ -400,7 +400,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/growl.ogg'
+	sound = 'packages/emotes/assets/voice/growl.ogg'
 
 /datum/emote/living/woof
 	key = "woof"
@@ -408,7 +408,7 @@
 	message = "lets out a woof."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/woof.ogg'
+	sound = 'packages/emotes/assets/voice/woof.ogg'
 
 /datum/emote/living/baa
 	key = "baa"
@@ -416,7 +416,7 @@
 	message = "lets out a baa."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/baa.ogg'
+	sound = 'packages/emotes/assets/voice/baa.ogg'
 
 /datum/emote/living/baa2
 	key = "baa2"
@@ -424,7 +424,7 @@
 	message = "bleats."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/baa2.ogg'
+	sound = 'packages/emotes/assets/voice/baa2.ogg'
 
 /datum/emote/living/wurble
 	key = "wurble"
@@ -432,7 +432,7 @@
 	message = "lets out a wurble."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/wurble.ogg'
+	sound = 'packages/emotes/assets/voice/wurble.ogg'
 
 /datum/emote/living/rattle
 	key = "rattle"
@@ -441,7 +441,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/rattle.ogg'
+	sound = 'packages/emotes/assets/voice/rattle.ogg'
 
 /datum/emote/living/cackle
 	key = "cackle"
@@ -449,7 +449,7 @@
 	message = "cackles hysterically!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/cackle_yeen.ogg'
+	sound = 'packages/emotes/assets/voice/cackle_yeen.ogg'
 
 /mob/living/proc/do_ass_slap_animation(atom/slapped)
 	do_attack_animation(slapped, no_effect=TRUE)
@@ -470,7 +470,7 @@
 	message = "warbles!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/warbles.ogg'
+	sound = 'packages/emotes/assets/voice/warbles.ogg'
 
 /datum/emote/living/trills
 	key = "trills"
@@ -478,7 +478,7 @@
 	message = "trills!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/trills.ogg'
+	sound = 'packages/emotes/assets/voice/trills.ogg'
 
 /datum/emote/living/rpurr
 	key = "rpurr"
@@ -486,7 +486,7 @@
 	message = "purrs!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/raptor_purr.ogg'
+	sound = 'packages/emotes/assets/voice/raptor_purr.ogg'
 
 /datum/emote/living/purr //Ported from CitRP originally by buffyuwu.
 	key = "purr"
@@ -494,7 +494,7 @@
 	message = "purrs!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/feline_purr.ogg'
+	sound = 'packages/emotes/assets/voice/feline_purr.ogg'
 
 /datum/emote/living/moo
 	key = "moo"
@@ -502,7 +502,7 @@
 	message = "moos!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/moo.ogg'
+	sound = 'packages/emotes/assets/voice/moo.ogg'
 
 /datum/emote/living/honk
 	key = "honk1"
@@ -510,7 +510,7 @@
 	message = "honks loudly like a goose!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/voice/goose_honk.ogg'
+	sound = 'packages/emotes/assets/voice/goose_honk.ogg'
 
 /datum/emote/living/gnash
 	key = "gnash"

@@ -122,7 +122,7 @@
 			var/mutable_appearance/overlay = mutable_appearance('packages/effects/assets/turf_effects_64.dmi', "naga_top", EXTRA_ABOVE_MOB_LAYER, src, GAME_PLANE_UPPER)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 			src.add_overlay(overlay)
-			playsound(get_turf(src), 'packages/emotes/assets/sound/emotes/hiss.ogg', 25, TRUE)
+			playsound(get_turf(src), 'packages/emotes/assets/generic/hiss.ogg', 25, TRUE)
 
 		//prints
 		if("pawprint")

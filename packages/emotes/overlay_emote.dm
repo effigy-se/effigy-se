@@ -19,7 +19,7 @@
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
 		user.flick_overlay_static(overlay, 50)
-		playsound(get_turf(user), 'packages/emotes/assets/sound/emotes/sweatdrop.ogg', 25, TRUE)
+		playsound(get_turf(user), 'packages/emotes/assets/generic/sweatdrop.ogg', 25, TRUE)
 
 /datum/emote/living/exclaim
 	key = "exclaim"
@@ -45,7 +45,7 @@
 		overlay.pixel_x = 10
 		overlay.pixel_y = 28
 		user.flick_overlay_static(overlay, 50)
-		playsound(get_turf(user), 'packages/emotes/assets/sound/emotes/question.ogg', 25, TRUE)
+		playsound(get_turf(user), 'packages/emotes/assets/generic/question.ogg', 25, TRUE)
 
 
 /datum/emote/living/realize
@@ -61,7 +61,7 @@
 		else
 			overlay.pixel_y = 15
 		user.flick_overlay_static(overlay, 50)
-		playsound(get_turf(user), 'packages/emotes/assets/sound/emotes/realize.ogg', 25, TRUE)
+		playsound(get_turf(user), 'packages/emotes/assets/generic/realize.ogg', 25, TRUE)
 
 /datum/emote/living/annoyed
 	key = "annoyed"
@@ -74,7 +74,7 @@
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
 		user.flick_overlay_static(overlay, 50)
-		playsound(get_turf(user), 'packages/emotes/assets/sound/emotes/annoyed.ogg', 25, TRUE)
+		playsound(get_turf(user), 'packages/emotes/assets/generic/annoyed.ogg', 25, TRUE)
 
 
 /datum/emote/living/glasses

@@ -169,7 +169,7 @@
 			hud_list[hud] = list()
 
 		else
-			var/image/I = image('packages/ux/assets/hud.dmi', src, "")
+			var/image/I = image('packages/ux/assets/mob/hud.dmi', src, "")
 			I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 			hud_list[hud] = I
 		set_hud_image_active(hud, update_huds = FALSE) //by default everything is active. but dont add it to huds to keep control.
@@ -500,6 +500,7 @@
 		slot_priority -= blacklist
 	for(var/slot in slot_priority)
 		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, initial)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
+			return TRUE
 	// EFFIGY EDIT CHANGE END
 
 	if(qdel_on_fail)

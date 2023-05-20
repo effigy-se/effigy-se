@@ -250,11 +250,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else if(GLOB.deadmins[ckey])
 		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
-	// EFFIGY EDIT ADD START //We will check the population here, because we need to know if the client is an admin or not.
-	if(!check_population(connecting_admin))
-		qdel(src)
-		return
-	// EFFIGY EDIT ADD END
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
 			var/list/autoadmin_ranks = ranks_from_rank_name(CONFIG_GET(string/autoadmin_rank))
