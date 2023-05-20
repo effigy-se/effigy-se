@@ -68,6 +68,6 @@
 		return TRUE
 	return ..()
 
-/datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
+/datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE) // EFFIGY EDIT ADD
 	forced_colour = FALSE
 	..()
