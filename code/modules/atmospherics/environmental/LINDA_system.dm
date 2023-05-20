@@ -193,6 +193,7 @@
 		SSair.remove_from_active(src)
 	else
 		SSair.add_to_active(src)
+	liquid_update_turf() // EFFIGY EDIT ADD
 
 /atom/movable/proc/move_update_air(turf/target_turf)
 	if(isturf(target_turf))

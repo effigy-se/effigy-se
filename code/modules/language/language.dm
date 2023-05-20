@@ -20,6 +20,7 @@
 	// if you are seeing someone speak popcorn language, then something is wrong.
 	var/icon = 'icons/misc/language.dmi'
 	var/icon_state = "popcorn"
+	var/secret = FALSE // EFFIGY EDIT ADD
 
 /datum/language/proc/display_icon(atom/movable/hearer)
 	var/understands = hearer.has_language(src.type)

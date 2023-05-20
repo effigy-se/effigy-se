@@ -284,8 +284,12 @@ Key procs
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/draconic = list(LANGUAGE_ATOM))
 
+// EFFIGY EDIT CHANGE START
 /datum/language_holder/lizard/ash
-	selected_language = /datum/language/draconic
+	understood_languages = list(/datum/language/ashtongue = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/ashtongue = list(LANGUAGE_ATOM))
+	selected_language = /datum/language/ashtongue
+// EFFIGY EDIT CHANGE END
 
 /datum/language_holder/lizard/silver
 	understood_languages = list(/datum/language/uncommon = list(LANGUAGE_ATOM),
@@ -320,6 +324,8 @@ Key procs
 	spoken_languages = list(/datum/language/buzzwords = list(LANGUAGE_ATOM))
 	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
 
+// EFFIGY EDIT REMOVE START (moved to overrides)
+/*
 /datum/language_holder/synthetic
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 								/datum/language/uncommon = list(LANGUAGE_ATOM),
@@ -337,6 +343,8 @@ Key procs
 							/datum/language/calcic = list(LANGUAGE_ATOM),
 							/datum/language/voltaic = list(LANGUAGE_ATOM),
 							/datum/language/nekomimetic = list(LANGUAGE_ATOM))
+*/
+// EFFIGY EDIT REMOVE END (moved to overrides)
 
 /datum/language_holder/moth
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),

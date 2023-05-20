@@ -121,6 +121,7 @@
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	///Icon state of the welding visor.
 	var/visor_state = "weldvisor"
+	var/visor_sprite_path // EFFIGY EDIT ADD
 
 /obj/item/clothing/head/utility/hardhat/welding/Initialize(mapload)
 	. = ..()
@@ -140,6 +141,12 @@
 /obj/item/clothing/head/utility/hardhat/welding/proc/toggle_welding_screen(mob/living/user)
 	if(weldingvisortoggle(user))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 50, TRUE) //Visors don't just come from nothing
+	// EFFIGY EDIT ADD START
+	var/mob/living/carbon/carbon_user = user
+	if(carbon_user.dna.species.mutant_bodyparts["snout"])
+		visor_sprite_path = 'packages/clothing/assets/mob/head_muzzled.dmi'
+	else
+		visor_sprite_path = 'icons/mob/clothing/head/utility.dmi'	//END SKYRAT EDIT
 	update_appearance()
 
 /obj/item/clothing/head/utility/hardhat/welding/worn_overlays(mutable_appearance/standing, isinhands)
@@ -153,7 +160,7 @@
 /obj/item/clothing/head/utility/hardhat/welding/update_overlays()
 	. = ..()
 	if(!up)
-		. += visor_state
+		. += mutable_appearance(visor_sprite_path, visor_state) // EFFIGY EDIT CHANGE
 
 /obj/item/clothing/head/utility/hardhat/welding/orange
 	icon_state = "hardhat0_orange"

@@ -69,7 +69,7 @@
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
 		. += mutable_appearance('icons/effects/blood.dmi', "uniformblood")
 	if(accessory_overlay)
-		. += accessory_overlay
+		. += modify_accessory_overlay() // EFFIGY EDIT CHANGE - ORIGINAL: . += accessory_overlay
 
 /obj/item/clothing/under/attackby(obj/item/I, mob/user, params)
 	if((has_sensor == BROKEN_SENSORS) && istype(I, /obj/item/stack/cable_coil))
@@ -127,11 +127,15 @@
 		if(!alt_covers_chest)
 			body_parts_covered |= CHEST
 
+	// EFFIGY EDIT REMOVE START
+	/*
 	if((supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.dna.species.bodytype & BODYTYPE_DIGITIGRADE)
 			adjusted = DIGITIGRADE_STYLE
 		H.update_worn_undersuit()
+	*/
+	// EFFIGY EDIT REMOVE END
 
 	if(attached_accessory && !(slot & ITEM_SLOT_HANDS) && ishuman(user))
 		var/mob/living/carbon/human/H = user

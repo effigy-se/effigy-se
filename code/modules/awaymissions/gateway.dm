@@ -25,8 +25,11 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		. = "Connection desynchronized. Recalibration in progress."
 
 /* Check if the movable is allowed to arrive at this destination (exile implants mostly) */
+// EFFIGY EDIT ADD START
+// Just a reminder that the home gateway overrides this proc so if a borg someone finds themself in an away mission they can still leave
 /datum/gateway_destination/proc/incoming_pass_check(atom/movable/AM)
-	return TRUE
+	return !iscyborg(AM)
+// EFFIGY EDIT ADD END
 
 /* Get the actual turf we'll arrive at */
 /datum/gateway_destination/proc/get_target_turf()
@@ -133,6 +136,19 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	invisibility = INVISIBILITY_ABSTRACT
 
 /obj/effect/gateway_portal_bumper/Bumped(atom/movable/AM)
+	// EFFIGY EDIT ADD START
+	var/list/type_blacklist = list(
+		/obj/item/mmi,
+		/mob/living/silicon,
+	)
+	if(is_type_in_list(AM, type_blacklist))
+		return
+	for(var/atom/movable/content_item as anything in AM.get_all_contents())
+		if(!is_type_in_list(content_item, type_blacklist))
+			continue
+		to_chat(AM, span_warning("[content_item] seems to be blocking you from entering the gateway!"))
+		return
+	// EFFIGY EDIT ADD END
 	if(get_dir(src,AM) == SOUTH)
 		gateway.Transfer(AM)
 

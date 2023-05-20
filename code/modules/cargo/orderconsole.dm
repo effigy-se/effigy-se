@@ -238,7 +238,7 @@
 				applied_coupon = coupon_check
 				break
 
-		var/datum/supply_order/SO = new(pack = pack ,orderer = name, orderer_rank = rank, orderer_ckey = ckey, reason = reason, paying_account = account, coupon = applied_coupon)
+		var/datum/supply_order/SO = new(pack = pack ,orderer = name, orderer_rank = rank, orderer_ckey = ckey, reason = reason, paying_account = account, coupon = applied_coupon, charge_on_purchase = TRUE) // EFFIGY EDIT CHANGE
 		if(requestonly && !self_paid)
 			SSshuttle.request_list += SO
 		else

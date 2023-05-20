@@ -127,10 +127,13 @@
 	experiment_proper = TRUE
 	required_gas = /datum/gas/hypernoblium
 
-/datum/experiment/scanning/random/material/meat
-	name = "Biological Material Scanning Experiment"
+// EFFIGY EDIT CHANGE START
+// datum/experiment/scanning/random/material/meat
+/datum/experiment/scanning/random/material/silver
+	name = "Material Scanning Experiment"
 	description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
-	possible_material_types = list(/datum/material/meat)
+	possible_material_types = list(/datum/material/silver)
+// EFFIGY EDIT CHANGE END
 
 /datum/experiment/scanning/random/material/easy
 	name = "Low Grade Material Scanning Experiment"

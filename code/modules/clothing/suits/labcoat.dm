@@ -46,7 +46,16 @@
 	. = ..()
 	allowed += list(
 		/obj/item/melee/baton/telescopic,
+		/obj/item/storage/medkit, // EFFIGY EDIT ADD
 	)
+
+// EFFIGY EDIT ADD START
+/obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize(mapload)
+	. = ..()
+	allowed += list(
+		/obj/item/storage/medkit,
+	)
+// EFFIGY EDIT ADD END
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	name = "paramedic's jacket"

@@ -6,7 +6,12 @@
 	mutant_bodyparts = list("ears" = "Cat", "wings" = "None")
 
 	mutanttongue = /obj/item/organ/internal/tongue/cat
+	/* EFFIGY EDIT REMOVE START - CUSTOMIZATION
 	mutantears = /obj/item/organ/internal/ears/cat
+	external_organs = list(
+		/obj/item/organ/external/tail/cat = "Cat",
+	)
+	*/ // EFFIGY EDIT REMOVE END
 	external_organs = list(
 		/obj/item/organ/external/tail/cat = "Cat",
 	)
