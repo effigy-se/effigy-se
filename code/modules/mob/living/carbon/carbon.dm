@@ -193,6 +193,8 @@
 		power_throw++
 	if(neckgrab_throw)
 		power_throw++
+	do_attack_animation(target, no_effect = 1) // EFFIGY EDIT ADD
+	playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) // EFFIGY EDIT ADD
 	visible_message(span_danger("[src] throws [thrown_thing][power_throw ? " really hard!" : "."]"), \
 					span_danger("You throw [thrown_thing][power_throw ? " really hard!" : "."]"))
 	log_message("has thrown [thrown_thing] [power_throw > 0 ? "really hard" : ""]", LOG_ATTACK)
@@ -913,9 +915,14 @@
 /mob/living/carbon/can_be_revived()
 	if(!get_organ_by_type(/obj/item/organ/internal/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)) || HAS_TRAIT(src, TRAIT_HUSK))
 		return FALSE
+	if(HAS_TRAIT(src, TRAIT_DNR)) // EFFIGY EDIT ADD
+		return FALSE // EFFIGY EDIT ADD
 	return ..()
 
 /mob/living/carbon/proc/can_defib()
+	if(HAS_TRAIT(src, TRAIT_DNR)) // EFFIGY EDIT ADD - This is also added when a ghost DNR's!
+		return DEFIB_FAIL_DNR // EFFIGY EDIT ADD
+
 	if (HAS_TRAIT(src, TRAIT_SUICIDED))
 		return DEFIB_FAIL_SUICIDE
 
@@ -1314,6 +1321,14 @@
 /// Special carbon interaction on lying down, to transform its sprite by a rotation.
 /mob/living/carbon/proc/lying_angle_on_lying_down(new_lying_angle)
 	if(!new_lying_angle)
+		// EFFIGY EDIT ADD START
+		if(dir == WEST)
+			set_lying_angle(270)
+			return
+		else if(dir == EAST)
+			set_lying_angle(90)
+			return
+		// EFFIGY EDIT ADD END
 		set_lying_angle(pick(90, 270))
 	else
 		set_lying_angle(new_lying_angle)

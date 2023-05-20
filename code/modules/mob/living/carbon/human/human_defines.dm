@@ -13,6 +13,9 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	can_be_shoved_into = TRUE
 
+	maxHealth = 120 // EFFIGY EDIT CHANGE
+	health = 120 // EFFIGY EDIT CHANGE
+
 	//Hair colour and style
 	var/hair_color = "#000000"
 	var/hairstyle = "Bald"
@@ -46,6 +49,8 @@
 	var/socks = "Nude" //Which socks the player wants
 	var/backpack = DBACKPACK //Which backpack type the player has chosen.
 	var/jumpsuit_style = PREF_SUIT //suit/skirt
+	var/datum/scream_type/selected_scream // EFFIGY EDIT ADD
+	var/datum/laugh_type/selected_laugh // EFFIGY EDIT ADD
 
 	//Equipment slots
 	var/obj/item/clothing/wear_suit = null

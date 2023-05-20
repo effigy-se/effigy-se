@@ -491,6 +491,14 @@
 	//Don't go further if the shock was blocked/too weak.
 	if(!.)
 		return
+	// EFFIGY EDIT ADD START (Electrifying!)
+	if(can_heartattack() && !(flags & SHOCK_ILLUSION) && shock_damage >= 70)
+		if(shock_damage * siemens_coeff >= 1 && prob(30))//Higher chance to disrupt the pacemaker cells
+			var/obj/item/organ/internal/heart/heart = get_organ_slot(ORGAN_SLOT_HEART)
+			heart.Stop()
+			visible_message("<span class='danger'>[src.name] briefly twitches; before falling limp - their breathing irratic and chest spasming violently!</span>", \
+								"<span class='danger'>You feel your heart thump eratically; before ceasing to beat, a violent twitch overcoming your form!</span>", ignored_mobs=src)
+	// EFFIGY EDIT ADD END (Electrifying!)
 	if(!(flags & SHOCK_ILLUSION))
 		if(shock_damage * siemens_coeff >= 5)
 			force_say()
@@ -688,6 +696,15 @@
 			continue
 
 		body_part.check_for_injuries(src, combined_msg)
+
+		// EFFIGY EDIT ADD START (Medical)
+		if(body_part.current_gauze)
+			var/datum/bodypart_aid/current_gauze = body_part.current_gauze
+			combined_msg += "\t [span_notice("Your [body_part.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.")]"
+		if(body_part.current_splint)
+			var/datum/bodypart_aid/current_splint = body_part.current_splint
+			combined_msg += "\t [span_notice("Your [body_part.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.")]"
+		//SKYRAT EDIT END
 
 	for(var/t in missing)
 		combined_msg += span_boldannounce("Your [parse_zone(t)] is missing!")
