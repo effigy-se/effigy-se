@@ -15,7 +15,8 @@
 	data["selected_module"] = selected_module?.name
 	data["wearer_name"] = wearer ? (wearer.get_authentification_name("Unknown") || "Unknown") : "No Occupant"
 	data["wearer_job"] = wearer ? wearer.get_assignment("Unknown", "Unknown", FALSE) : "No Job"
-	data["AI"] = ai?.name
+	data["pAI"] = mod_pai?.name // EFFIGY EDIT CHANGE
+	data["ispAI"] = mod_pai ? mod_pai == user : FALSE // EFFIGY EDIT CHANGE
 	data["core"] = core?.name
 	data["charge"] = get_charge_percent()
 	data["modules"] = list()
@@ -55,7 +56,7 @@
 	. = ..()
 	if(.)
 		return
-	if(locked && !allowed(usr))
+	if((!allowed(usr) || !ispAI(usr)) && locked) // EFFIGY EDIT CHANGE
 		balloon_alert(usr, "insufficient access!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
@@ -83,4 +84,10 @@
 			if(!module)
 				return
 			module.pin(usr)
+		// EFFIGY EDIT ADD START
+		if("remove_pai")
+			if(ishuman(usr)) // Only the MODsuit's wearer should be removing the pAI.
+				var/mob/user = usr
+				extract_pai(user)
+		// EFFIGY EDIT ADD END
 	return TRUE

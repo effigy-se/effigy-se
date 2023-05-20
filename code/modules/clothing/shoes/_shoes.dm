@@ -44,6 +44,8 @@
 			playsound(user, 'sound/weapons/genhit2.ogg', 50, TRUE)
 		return BRUTELOSS
 
+// EFFIGY EDIT REMOVE START (Digi)
+/*
 /obj/item/clothing/shoes/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
 	. = ..()
 	if(isinhands)
@@ -56,6 +58,8 @@
 			. += mutable_appearance('icons/effects/64x64.dmi', "shoeblood_large")
 		else
 			. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
+*/
+// EFFIGY EDIT REMOVE END
 
 /obj/item/clothing/shoes/examine(mob/user)
 	. = ..()
@@ -162,8 +166,12 @@
 			to_chat(user, span_warning("You're already interacting with [src]!"))
 			return
 		user.visible_message(span_notice("[user] begins [tied ? "unknotting" : "tying"] the laces of [user.p_their()] [src.name]."), span_notice("You begin [tied ? "unknotting" : "tying"] the laces of your [src.name]..."))
-
-		if(do_after(user, lace_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
+		// EFFIGY EDIT ADD START
+		var/tie_time = lace_time
+		if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
+			tie_time *= 0.5
+		if(do_after(user, tie_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
+		// EFFIGY EDIT ADD END
 			to_chat(user, span_notice("You [tied ? "unknot" : "tie"] the laces of your [src.name]."))
 			if(tied == SHOES_UNTIED)
 				adjust_laces(SHOES_TIED, user)
@@ -186,6 +194,10 @@
 		to_chat(user, span_notice("You quietly set to work [tied ? "untying" : "knotting"] [loc]'s [src.name]..."))
 		if(HAS_TRAIT(user, TRAIT_CLUMSY)) // based clowns trained their whole lives for this
 			mod_time *= 0.75
+		// EFFIGY EDIT ADD START
+		if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS)) // Clowns with thieving gloves will be a menace
+			mod_time *= 0.5
+		// EFFIGY EDIT ADD END
 
 		if(do_after(user, mod_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
 			to_chat(user, span_notice("You [tied ? "untie" : "knot"] the laces on [loc]'s [src.name]."))
@@ -274,7 +286,11 @@
 		return
 
 	to_chat(user, span_notice("You begin [tied ? "untying" : "tying"] the laces on [src]..."))
-
+	// EFFIGY EDIT ADD START
+	var/tie_time = lace_time
+	if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
+		tie_time *= 0.5
 	if(do_after(user, lace_time, target = src,extra_checks = CALLBACK(src, PROC_REF(still_shoed), user)))
+	// EFFIGY EDIT ADD END
 		to_chat(user, span_notice("You [tied ? "untie" : "tie"] the laces on [src]."))
 		adjust_laces(tied ? SHOES_UNTIED : SHOES_TIED, user)

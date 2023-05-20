@@ -126,6 +126,7 @@
 		"turret_control",
 		"universal_scanner",
 		"voice_analyzer",
+		"vox_gas_filter",
 		"watering_can",
 	)
 
@@ -157,6 +158,7 @@
 		"cyborgrecharger",
 		"robocontrol",
 		"sflash",
+		"affection_module", // EFFIGY EDIT ADD
 	)
 
 /datum/techweb_node/mech
@@ -252,6 +254,9 @@
 		"wirecutters",
 		"wrench",
 		"pickaxe",
+		"bowl", // EFFIGY EDIT ADD
+		"drinking_glass", // EFFIGY EDIT ADD
+		"shot_glass", // EFFIGY EDIT ADD
 	)
 
 /datum/techweb_node/basic_medical
@@ -425,7 +430,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	required_experiments = list(/datum/experiment/dissection/nonhuman)
-	discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
+	discount_experiments = list(/datum/experiment/scanning/random/material/plastic = 4000) // EFFIGY EDIT CHANGE
 
 /datum/techweb_node/xenoorgan_biotech
 	id = "xenoorgan_bio"
@@ -937,6 +942,8 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
+		"borg_upgrade_clamp", // EFFIGY EDIT ADD
+		"borg_upgrade_brush", // EFFIGY EDIT ADD
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -970,6 +977,8 @@
 		"borg_upgrade_lavaproof",
 		"borg_upgrade_rped",
 		"borg_upgrade_hypermod",
+		"advanced_materials", // EFFIGY EDIT ADD
+		"inducer_module", // EFFIGY EDIT ADD
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -985,6 +994,7 @@
 		"borg_upgrade_piercinghypospray",
 		"borg_upgrade_pinpointer",
 		"borg_upgrade_surgicalprocessor",
+		"borg_upgrade_surgicaltools", // EFFIGY EDIT ADD
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1292,6 +1302,7 @@
 		"cybernetic_liver_tier2",
 		"cybernetic_lungs_tier2",
 		"cybernetic_stomach_tier2",
+		"cybernetic_tongue", // EFFIGY EDIT ADD
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
@@ -1363,12 +1374,11 @@
 	display_name = "Combat Cybernetic Implants"
 	description = "Military grade combat implants to improve performance."
 	prereq_ids = list("adv_cyber_implants","weaponry","NVGtech","high_efficiency")
+	// EFFIGY EDIT REMOVE (Thermals, x-ray)
 	design_ids = list(
 		"ci-antidrop",
 		"ci-antistun",
-		"ci-thermals",
 		"ci-thrusters",
-		"ci-xray",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

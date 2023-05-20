@@ -6,6 +6,7 @@ SUBSYSTEM_DEF(events)
 	var/list/control = list() //list of all datum/round_event_control. Used for selecting events based on weight and occurrences.
 	var/list/running = list() //list of all existing /datum/round_event
 	var/list/currentrun = list()
+	var/list/previously_run = list() // EFFIGY EDIT ADD
 
 	var/scheduled = 0 //The next world.time that a naturally occuring random event can be selected.
 	var/frequency_lower = 1800 //3 minutes lower bound.

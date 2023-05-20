@@ -22,3 +22,5 @@
 #define ismammal(A) (is_species(A,/datum/species/mammal))
 #define isinsect(A) (is_species(A,/datum/species/insect))
 #define isfeline(A) (isfelinid(A) || istajaran(A) || HAS_TRAIT(A, TRAIT_FELINE))
+
+#define is_spaceruins_level(z) SSmapping.level_trait(z, ZTRAIT_SPACE_RUINS) //Detects when a z-level has space ruins. This is different from empty space z-levels.

@@ -20,15 +20,24 @@
 	. = ..()
 	setup_shielding()
 
-/obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
+// EFFIGY EDIT CHANGE START (Customization)
+// /obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE) // ORIGINAL
+/obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use = null, mutant_styles = NONE)
+// EFFIGY EDIT CHANGE END
 	. = ..()
 	if(isinhands)
 		return
 
 	if(damaged_clothes)
-		. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]")
+		// EFFIGY EDIT CHANGE START (Customization)
+		//. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]") //ORIGINAL
+		var/damagefile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'packages/customization/assets/mob/64x32_item_damage.dmi' : 'icons/effects/item_damage.dmi'
+		. += mutable_appearance(damagefile2use, "damaged[blood_overlay_type]")
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
-		. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood")
+		//. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood") //ORIGINAL
+		var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'packages/customization/assets/mob/64x32_blood.dmi' : 'icons/effects/blood.dmi'
+		. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
+		// EFFIGY EDIT CHANGE END
 
 	var/mob/living/carbon/human/M = loc
 	if(!ishuman(M) || !M.w_uniform)
@@ -37,7 +46,7 @@
 	if(istype(U) && U.attached_accessory)
 		var/obj/item/clothing/accessory/A = U.attached_accessory
 		if(A.above_suit)
-			. += U.accessory_overlay
+			. += U.modify_accessory_overlay() // EFFIGY EDIT CHANGE - ORIGINAL: . += U.accessory_overlay
 
 /obj/item/clothing/suit/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()

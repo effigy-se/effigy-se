@@ -6,7 +6,7 @@
 	key_third_person = "dwoops"
 	message = "chirps happily!"
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/dwoop.ogg'
+	sound = 'packages/emotes/assets/generic/dwoop.ogg'
 	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/synthetic)
 	cooldown = 2 SECONDS
@@ -15,7 +15,7 @@
 	key = "yes"
 	message = "emits an affirmative blip."
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/synth_yes.ogg'
+	sound = 'packages/emotes/assets/generic/synth_yes.ogg'
 	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/synthetic)
 	cooldown = 2 SECONDS
@@ -24,7 +24,7 @@
 	key = "no"
 	message = "emits a negative blip."
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/synth_no.ogg'
+	sound = 'packages/emotes/assets/generic/synth_no.ogg'
 	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/synthetic)
 	cooldown = 2 SECONDS
@@ -66,7 +66,7 @@
 	message_param = "beeps sharply at %t."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/sound/emotes/twobeep.ogg'
+	sound = 'packages/emotes/assets/generic/twobeep.ogg'
 	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/synthetic)
 	cooldown = 2 SECONDS

@@ -16,25 +16,25 @@ GLOBAL_LIST_EMPTY(laugh_types)
 	name = "Human Laugh"
 	male_laughsounds = list('sound/voice/human/manlaugh1.ogg',
 						'sound/voice/human/manlaugh2.ogg')
-	female_laughsounds = list('packages/emotes/assets/sound/emotes/female/female_giggle_1.ogg',
-					'packages/emotes/assets/sound/emotes/female/female_giggle_2.ogg')
+	female_laughsounds = list('packages/emotes/assets/generic/female/female_giggle_1.ogg',
+					'packages/emotes/assets/generic/female/female_giggle_2.ogg')
 
 /datum/laugh_type/felinid
 	name = "Felinid Laugh"
-	male_laughsounds = list('packages/emotes/assets/sound/emotes/nyahaha1.ogg',
-			'packages/emotes/assets/sound/emotes/nyahaha2.ogg',
-			'packages/emotes/assets/sound/emotes/nyaha.ogg',
-			'packages/emotes/assets/sound/emotes/nyahehe.ogg')
+	male_laughsounds = list('packages/emotes/assets/generic/nyahaha1.ogg',
+			'packages/emotes/assets/generic/nyahaha2.ogg',
+			'packages/emotes/assets/generic/nyaha.ogg',
+			'packages/emotes/assets/generic/nyahehe.ogg')
 	female_laughsounds = null
 
 /datum/laugh_type/moth
 	name = "Moth Laugh"
-	male_laughsounds = list('packages/emotes/assets/sound/emotes/mothlaugh.ogg')
+	male_laughsounds = list('packages/emotes/assets/generic/mothlaugh.ogg')
 	female_laughsounds = null
 	restricted_species_type = /datum/species/moth
 
 /datum/laugh_type/insect
 	name = "Insect Laugh"
-	male_laughsounds = list('packages/emotes/assets/sound/emotes/mothlaugh.ogg')
+	male_laughsounds = list('packages/emotes/assets/generic/mothlaugh.ogg')
 	female_laughsounds = null
 	restricted_species_type = /datum/species/insect

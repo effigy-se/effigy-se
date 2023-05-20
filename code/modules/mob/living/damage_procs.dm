@@ -164,6 +164,7 @@
 	return bruteloss
 
 /mob/living/proc/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_BRUTE, amount) // EFFIGY EDIT ADD
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	bruteloss = clamp((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
@@ -183,6 +184,7 @@
 	return oxyloss
 
 /mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype, required_respiration_type = ALL)
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) // EFFIGY EDIT ADD
 	if(!forced)
 		if(status_flags & GODMODE)
 			return
@@ -222,6 +224,7 @@
 	return toxloss
 
 /mob/living/proc/adjustToxLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_TOX, amount) // EFFIGY EDIT ADD
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(!forced && !(mob_biotypes & required_biotype))
@@ -245,6 +248,7 @@
 	return fireloss
 
 /mob/living/proc/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_FIRE, amount) // EFFIGY EDIT ADD
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	fireloss = clamp((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
@@ -264,6 +268,7 @@
 	return cloneloss
 
 /mob/living/proc/adjustCloneLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_CLONE, amount) // EFFIGY EDIT ADD
 	if(!forced && ( (status_flags & GODMODE) || HAS_TRAIT(src, TRAIT_NOCLONELOSS)) )
 		return FALSE
 	cloneloss = clamp((cloneloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
@@ -280,6 +285,7 @@
 	return amount
 
 /mob/living/proc/adjustOrganLoss(slot, amount, maximum, required_organtype)
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_ORGAN, slot, amount) // EFFIGY EDIT ADD
 	return
 
 /mob/living/proc/setOrganLoss(slot, amount, maximum, required_organtype)
@@ -299,6 +305,7 @@
 	staminaloss = clamp((staminaloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, max_stamina)
 	if(updating_stamina)
 		updatehealth()
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) // EFFIGY EDIT ADD
 	return
 
 /mob/living/proc/setStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE, required_biotype)

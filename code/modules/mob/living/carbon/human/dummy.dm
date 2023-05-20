@@ -18,7 +18,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 /mob/living/carbon/human/dummy/attach_rot(mapload)
 	return
 
-/mob/living/carbon/human/dummy/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
+/mob/living/carbon/human/dummy/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // EFFIGY EDIT CHANGE
 	harvest_organs()
 	return ..()
 
@@ -84,6 +84,8 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 
 /proc/create_consistent_human_dna(mob/living/carbon/human/target)
 	target.dna.initialize_dna(skip_index = TRUE)
+	// EFFIGY EDIT CHANGE START
+	/*
 	target.dna.features["body_markings"] = "None"
 	target.dna.features["ears"] = "None"
 	target.dna.features["ethcolor"] = COLOR_WHITE
@@ -98,6 +100,11 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["tail_cat"] = "None"
 	target.dna.features["tail_lizard"] = "Smooth"
 	target.dna.features["pod_hair"] = "Ivy"
+	*/
+	target.dna.features["ethcolor"] = COLOR_WHITE
+	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
+	target.dna.features["pod_hair"] = "Ivy"
+	// EFFIGY EDIT CHANGE END
 
 /// Provides a dummy that is consistently bald, white, naked, etc.
 /mob/living/carbon/human/dummy/consistent
@@ -153,6 +160,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 		if(ishuman(target))
 			var/mob/living/carbon/human/human_target = target
 			human_target.copy_clothing_prefs(copycat)
+			target?.client?.prefs?.apply_prefs_to(copycat, TRUE) // EFFIGY EDIT ADD
 
 		copycat.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
 	else

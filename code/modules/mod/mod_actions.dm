@@ -16,17 +16,17 @@
 
 /datum/action/item_action/mod/Grant(mob/user)
 	var/obj/item/mod/control/mod = target
-	if(ai_action && user != mod.ai)
+	if(pai_action && user != mod.mod_pai) // EFFIGY EDIT CHANGE
 		return
-	else if(!ai_action && user == mod.ai)
+	else if(!pai_action && user == mod.mod_pai)  // EFFIGY EDIT CHANGE
 		return
 	return ..()
 
 /datum/action/item_action/mod/Remove(mob/user)
 	var/obj/item/mod/control/mod = target
-	if(ai_action && user != mod.ai)
+	if(pai_action && user != mod.mod_pai) // EFFIGY EDIT CHANGE
 		return
-	else if(!ai_action && user == mod.ai)
+	else if(!pai_action && user == mod.mod_pai) // EFFIGY EDIT CHANGE
 		return
 	return ..()
 
@@ -127,6 +127,11 @@
 	var/pinner_ref
 
 /datum/action/item_action/mod/pinned_module/New(Target, obj/item/mod/module/linked_module, mob/user)
+	// EFFIGY EDIT ADD START
+	var/obj/item/mod/control/mod = Target // We have to do this otherwise it's going to runtime
+	if(user == mod.mod_pai)
+		pai_action = TRUE
+	// EFFIGY EDIT ADD END
 	if(isAI(user))
 		ai_action = TRUE
 	button_icon = linked_module.icon

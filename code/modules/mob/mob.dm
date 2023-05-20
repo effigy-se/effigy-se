@@ -169,7 +169,7 @@
 			hud_list[hud] = list()
 
 		else
-			var/image/I = image('icons/mob/huds/hud.dmi', src, "")
+			var/image/I = image('packages/ux/assets/mob/hud.dmi', src, "")
 			I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 			hud_list[hud] = I
 		set_hud_image_active(hud, update_huds = FALSE) //by default everything is active. but dont add it to huds to keep control.
@@ -250,7 +250,7 @@
  * * vision_distance (optional) define how many tiles away the message can be seen.
  * * ignored_mob (optional) doesn't show any message to a given mob if TRUE.
  */
-/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE)
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ") // EFFIGY EDIT CHANGE (Separation)
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
@@ -260,12 +260,23 @@
 	var/list/hearers = get_hearers_in_view(vision_distance, src) //caches the hearers and then removes ignored mobs.
 	hearers -= ignored_mobs
 
+	// EFFIGY EDIT ADD START
+	for(var/mob/camera/ai_eye/ai_eye in hearers)
+		if(ai_eye.ai?.client && !(ai_eye.ai.stat == DEAD))
+			hearers -= ai_eye
+			hearers |= ai_eye.ai
+
+	for(var/obj/effect/overlay/holo_pad_hologram/holo in hearers)
+		if(holo.Impersonation?.client)
+			hearers |= holo.Impersonation
+	// EFFIGY EDIT ADD END
+
 	if(self_message)
 		hearers -= src
 
 	var/raw_msg = message
 	if(visible_message_flags & EMOTE_MESSAGE)
-		message = "<span class='emote'><b>[src]</b> [message]</span>"
+		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" // EFFIGY EDIT ADD (Separation)
 
 	for(var/mob/M in hearers)
 		if(!M.client)
@@ -295,7 +306,7 @@
 
 
 ///Adds the functionality to self_message.
-/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE)
+/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, visible_message_flags = NONE, separation = " ") // EFFIGY EDIT CHANGE (Separation)
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)
@@ -310,13 +321,25 @@
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE)
+/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // EFFIGY EDIT CHANGE (Separation)
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
+
+	// EFFIGY EDIT ADD START
+	for(var/mob/camera/ai_eye/ai_eye in hearers)
+		if(ai_eye.ai?.client && !(ai_eye.ai.stat == DEAD))
+			hearers -= ai_eye
+			hearers |= ai_eye.ai
+
+	for(var/obj/effect/overlay/holo_pad_hologram/holo in hearers)
+		if(holo.Impersonation?.client)
+			hearers |= holo.Impersonation
+	// EFFIGY EDIT ADD END
+
 	if(self_message)
 		hearers -= src
 	var/raw_msg = message
 	if(audible_message_flags & EMOTE_MESSAGE)
-		message = "<span class='emote'><b>[src]</b> [message]</span>"
+		message = "<span class='emote'><b>[src]</b>[separation][message]</span>" // EFFIGY EDIT CHANGE (Separation)
 	for(var/mob/M in hearers)
 		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
 			M.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
@@ -333,7 +356,7 @@
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE)
+/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // EFFIGY EDIT CHANGE (Separation)
 	. = ..()
 	if(self_message)
 		show_message(self_message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
@@ -451,7 +474,7 @@
  *
  * returns 0 if it cannot, 1 if successful
  */
-/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE)
+/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE, blacklist, initial) // EFFIGY EDIT CHANGE
 	if(!istype(W))
 		return FALSE
 	var/slot_priority = W.slot_equipment_priority
@@ -468,9 +491,17 @@
 			ITEM_SLOT_DEX_STORAGE\
 		)
 
+	// EFFIGY EDIT CHANGE START
+	/*
 	for(var/slot in slot_priority)
 		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, FALSE)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
+	*/
+	if (blacklist)
+		slot_priority -= blacklist
+	for(var/slot in slot_priority)
+		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, initial)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
 			return TRUE
+	// EFFIGY EDIT CHANGE END
 
 	if(qdel_on_fail)
 		qdel(W)
@@ -564,9 +595,17 @@
 	else
 		result = examinify.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
+	// EFFIGY EDIT CHANGE START
 	if(result.len)
-		for(var/i in 1 to (length(result) - 1))
-			result[i] += "\n"
+		for(var/i = 1; i <= length(result); i++)
+			if(result[i] != EXAMINE_SECTION_BREAK)
+				result[i] += "\n"
+			else
+				// remove repeated <hr's> and ones on the ends.
+				if((i == 1) || (i == length(result)) || (result[i - 1] == EXAMINE_SECTION_BREAK))
+					result.Cut(i, i + 1)
+					i--
+	// EFFIGY EDIT CHANGE END
 
 	to_chat(src, examine_block("<span class='infoplain'>[result.Join()]</span>"))
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, examinify)
@@ -765,6 +804,13 @@
 	if (stat != DEAD)
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
+
+	// EFFIGY EDIT ADD START
+	if(ckey)
+		if(is_banned_from(ckey, BAN_RESPAWN))
+			to_chat(usr, "<span class='boldnotice'>You are respawn banned, you can't respawn!</span>")
+			return
+	// EFFIGY EDIT ADD END
 
 	usr.log_message("used the respawn button.", LOG_GAME)
 

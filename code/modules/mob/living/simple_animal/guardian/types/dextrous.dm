@@ -22,7 +22,7 @@
 
 /mob/living/simple_animal/hostile/guardian/dextrous/examine(mob/user)
 	if(dextrous)
-		. = list("<span class='info'>This is [icon2html(src)] \a <b>[src]</b>!\n[desc]")
+		. = list("<span class='info'>This is [icon2html(src)] \a <b>[src]</b>!\n[desc]", EXAMINE_SECTION_BREAK) // EFFIGY EDIT CHANGE
 		for(var/obj/item/held_item in held_items)
 			if(held_item.item_flags & (ABSTRACT|EXAMINE_SKIP|HAND_ITEM))
 				continue
