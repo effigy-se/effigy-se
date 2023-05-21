@@ -1,30 +1,45 @@
 ///SNAIL
 /obj/item/bodypart/head/snail
+	biological_state = BIO_FLESH // EFFIGY EDIT CHANGE
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 
 /obj/item/bodypart/chest/snail
+	biological_state = BIO_FLESH // EFFIGY EDIT CHANGE
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 
 /obj/item/bodypart/arm/left/snail
+	biological_state = BIO_FLESH // EFFIGY EDIT CHANGE
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	unarmed_damage_high = 0.5 //snails are soft and squishy
+	unarmed_damage_low = 1 // EFFIGY EDIT CHANGE
+	unarmed_damage_high = 5 // EFFIGY EDIT CHANGE
+	// unarmed_damage_high = 0.5 //snails are soft and squishy
 
 /obj/item/bodypart/arm/right/snail
+	biological_state = BIO_FLESH // EFFIGY EDIT CHANGE
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	unarmed_damage_high = 0.5
+	unarmed_damage_low = 1 // EFFIGY EDIT CHANGE
+	unarmed_damage_high = 5 // EFFIGY EDIT CHANGE
+	// unarmed_damage_high = 0.5 //snails are soft and squishy
 
 /obj/item/bodypart/leg/left/snail
+	biological_state = BIO_FLESH // EFFIGY EDIT CHANGE
 	limb_id = SPECIES_SNAIL
-	unarmed_damage_high = 0.5
+	unarmed_damage_low = 1 // EFFIGY EDIT CHANGE
+	unarmed_damage_high = 5 // EFFIGY EDIT CHANGE
+	// unarmed_damage_high = 0.5 //snails are soft and squishy
+
 /obj/item/bodypart/leg/right/snail
+	biological_state = BIO_FLESH // EFFIGY EDIT CHANGE
 	limb_id = SPECIES_SNAIL
-	unarmed_damage_high = 0.5
+	unarmed_damage_low = 1 // EFFIGY EDIT CHANGE
+	unarmed_damage_high = 5 // EFFIGY EDIT CHANGE
+	// unarmed_damage_high = 0.5 //snails are soft and squishy
 
 ///ABDUCTOR
 /obj/item/bodypart/head/abductor

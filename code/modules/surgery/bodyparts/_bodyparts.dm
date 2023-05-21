@@ -540,7 +540,7 @@
 				current_gauze.take_damage()
 			if(current_splint)
 				current_splint.take_damage()
-			// EFFIGY EDIT CHANGE START (#3 Medical)
+			// EFFIGY EDIT CHANGE END (#3 Medical)
 			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction)
 
 	for(var/datum/wound/iter_wound as anything in wounds)
@@ -948,7 +948,7 @@
 			limb.color = limb_color
 			if(aux_zone)
 				aux.color = limb_color
-			// EFFIGY EDIT CHANGE START (#3 Customization)
+			// EFFIGY EDIT CHANGE END (#3 Customization)
 
 		//EMISSIVE CODE START
 		// For some reason this was applied as an overlay on the aux image and limb image before.

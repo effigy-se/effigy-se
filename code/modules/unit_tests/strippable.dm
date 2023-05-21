@@ -8,6 +8,8 @@
 
 	var/datum/strip_menu/strip_menu = allocate(/datum/strip_menu, target, strippable)
 
+	run_loc_floor_bottom_left.luminosity = 6 // EFFIGY EDIT ADD
+
 	var/ui_state = strip_menu.ui_state(user)
 
 	TEST_ASSERT_EQUAL(strip_menu.ui_status(user, ui_state), UI_INTERACTIVE, "Perfect conditions were not interactive.")

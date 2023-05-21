@@ -59,6 +59,7 @@
 		/datum/surgery_step/clamp_bleeders,
 		/datum/surgery_step/replace_limb,
 	)
+	removes_target_bodypart = TRUE // EFFIGY EDIT ADD
 
 //SURGERY STEP SUCCESSES
 

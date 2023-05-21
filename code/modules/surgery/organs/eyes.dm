@@ -48,7 +48,7 @@
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
 	/// Native FOV that will be applied if a config is enabled
-	var/native_fov = FOV_90_DEGREES
+	var/native_fov = FOV_180_DEGREES // EFFIGY EDIT CHANGE (Was 90)
 
 /obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_recipient, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
@@ -83,7 +83,10 @@
 		lighting_cutoff = LIGHTING_CUTOFF_REAL_LOW
 	if(CONFIG_GET(flag/native_fov) && native_fov)
 		affected_human.add_fov_trait(type, native_fov)
-
+	// EFFIGY EDIT ADD START (Emissives)
+	if (affected_human.emissive_eyes)
+		is_emissive = TRUE
+	// EFFIGY EDIT ADD END (Emissives)
 	if(call_update)
 		affected_human.dna?.species?.handle_body(affected_human) //updates eye icon
 
@@ -111,6 +114,7 @@
 
 	eye_owner.update_tint()
 	eye_owner.update_sight()
+	is_emissive = FALSE // EFFIGY EDIT ADD (Emissives)
 
 #define OFFSET_X 1
 #define OFFSET_Y 2
@@ -122,9 +126,10 @@
 
 	if(isnull(eye_icon_state))
 		return list()
+	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/species/human/human_face.dmi' // EFFIGY EDIT ADD
 
-	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/species/human/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
-	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/species/human/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
+	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // EFFIGY EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
+	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // EFFIGY EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
 	var/list/overlays = list(eye_left, eye_right)
 
 	if(EYECOLOR in parent.dna?.species.species_traits)
@@ -140,6 +145,12 @@
 	if(my_head?.worn_face_offset)
 		for(var/mutable_appearance/overlay in overlays)
 			my_head.worn_face_offset.apply_offset(overlay)
+
+	// EFFIGY EDIT ADD START (Customization) (darn synths I swear)
+	if(eye_icon_state == "None")
+		eye_left.alpha = 0
+		eye_right.alpha = 0
+	// EFFIGY EDIT ADD STENDART (Customization) (darn synths I swear)
 
 	return overlays
 
@@ -688,6 +699,7 @@
 	desc = "These eyes seem to have a large range, but might be cumbersome with glasses."
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
+	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER // EFFIGY EDIT ADD
 
 /obj/item/organ/internal/eyes/jelly
 	name = "jelly eyes"

@@ -33,7 +33,8 @@ offset = total - len(lines)
 print(f"{offset} lines were ignored in output")
 fail_no_include = False
 
-for code_file in glob.glob("code/**/*.dm", recursive=True):
+code_files = glob.glob("code/**/*.dm", recursive=True) + glob.glob("packages/**/*.dm", recursive=True) + glob.glob("overrides/**/*.dm", recursive=True) # EFFIGY EDIT CHANGE
+for code_file in code_files: # EFFIGY EDIT CHANGE
     dm_path = code_file.replace('/', '\\')
 
     included = f"#include \"{dm_path}\"" in lines

@@ -110,7 +110,8 @@
 	ADD_TRAIT(tongue_owner, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
 
 /obj/item/organ/internal/tongue/could_speak_language(datum/language/language_path)
-	return (language_path in languages_possible)
+	// return (language_path in languages_possible)
+	return TRUE // EFFIGY EDIT CHANGE
 
 /obj/item/organ/internal/tongue/get_availability(datum/species/owner_species, mob/living/owner_mob)
 	return owner_species.mutanttongue
@@ -122,7 +123,7 @@
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
-	languages_native = list(/datum/language/draconic)
+	languages_native = list(/datum/language/draconic, /datum/language/ashtongue) // EFFIGY EDIT CHANGE
 
 /obj/item/organ/internal/tongue/lizard/modify_speech(datum/source, list/speech_args)
 	var/static/regex/lizard_hiss = new("s+", "g")
@@ -424,6 +425,8 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	desc = "A minutely toothed, chitious ribbon, which as a side effect, makes all snails talk IINNCCRREEDDIIBBLLYY SSLLOOWWLLYY."
 	modifies_speech = TRUE
 
+// EFFIGY EDIT REMOVE START
+/*
 /obj/item/organ/internal/tongue/snail/modify_speech(datum/source, list/speech_args)
 	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -433,6 +436,8 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 		else
 			new_message += message[i]
 	speech_args[SPEECH_MESSAGE] = new_message
+*/
+// EFFIGY EDIT REMOVE END
 
 /obj/item/organ/internal/tongue/ethereal
 	name = "electric discharger"

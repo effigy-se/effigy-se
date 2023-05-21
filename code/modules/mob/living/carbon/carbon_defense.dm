@@ -768,8 +768,9 @@
 
 
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
-	// EFFIGY EDIT REMOVE START (Medical)
-	/*
+	self_grasp_bleeding_limb(grasped_part, supress_message)
+
+/mob/living/carbon/proc/self_grasp_bleeding_limb(obj/item/bodypart/grasped_part, supress_message = FALSE)
 	if(!grasped_part?.get_modified_bleed_rate())
 		return
 	var/starting_hand_index = active_hand_index
@@ -788,9 +789,6 @@
 		QDEL_NULL(grasp)
 		return
 	grasp.grasp_limb(grasped_part)
-	*/
-	self_grasp_bleeding_limb(grasped_part, supress_message)
-	// EFFIGY EDIT REMOVE END
 
 /// an abstract item representing you holding your own limb to staunch the bleeding, see [/mob/living/carbon/proc/grabbedby] will probably need to find somewhere else to put this.
 /obj/item/hand_item/self_grasp
