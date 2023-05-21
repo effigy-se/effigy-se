@@ -1182,6 +1182,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	prefs.hearted_until = new_duration
 	prefs.hearted = TRUE
 	prefs.save_preferences()
+	give_award(/datum/award/score/hearted, src)
 
 /// compiles a full list of verbs and sends it to the browser
 /client/proc/init_verbs()
