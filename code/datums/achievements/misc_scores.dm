@@ -25,5 +25,5 @@
 /// How many people have hearted you?
 /datum/award/score/hearted
 	name = "Commendations Received"
-	desc = "Is life really just a popularity contest?"
+	desc = "Nobody Loves Me."
 	database_id = HEARTED_SCORE
