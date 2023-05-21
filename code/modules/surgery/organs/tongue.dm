@@ -110,7 +110,8 @@
 	ADD_TRAIT(tongue_owner, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
 
 /obj/item/organ/internal/tongue/could_speak_language(datum/language/language_path)
-	return (language_path in languages_possible)
+	// return (language_path in languages_possible)
+	return TRUE // EFFIGY EDIT CHANGE
 
 /obj/item/organ/internal/tongue/get_availability(datum/species/owner_species, mob/living/owner_mob)
 	return owner_species.mutanttongue
