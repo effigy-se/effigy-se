@@ -1,4 +1,3 @@
-
 /datum/surgery/amputation
 	name = "Amputation"
 	requires_bodypart_type = NONE
@@ -17,6 +16,7 @@
 		/datum/surgery_step/clamp_bleeders,
 		/datum/surgery_step/sever_limb,
 	)
+	removes_target_bodypart = TRUE // EFFIGY EDIT ADD
 
 
 /datum/surgery_step/sever_limb
