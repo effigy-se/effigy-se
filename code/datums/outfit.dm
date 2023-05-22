@@ -340,33 +340,45 @@
 /**
  * Copies the outfit from a human to itself.
  **/
-/datum/outfit/proc/copy_outfit_from_target(mob/living/carbon/human/H)
-	if(!istype(H))
+/datum/outfit/proc/copy_outfit_from_target(mob/living/carbon/human/user)
+	if(!istype(user))
 		return
-	if(H.back)
-		back = H.back.type
-	if(H.wear_id)
-		id = H.wear_id.type
-	if(H.w_uniform)
-		uniform = H.w_uniform.type
-	if(H.wear_suit)
-		suit = H.wear_suit.type
-	if(H.wear_mask)
-		mask = H.wear_mask.type
-	if(H.wear_neck)
-		neck = H.wear_neck.type
-	if(H.head)
-		head = H.head.type
-	if(H.shoes)
-		shoes = H.shoes.type
-	if(H.gloves)
-		gloves = H.gloves.type
-	if(H.ears)
-		ears = H.ears.type
-	if(H.glasses)
-		glasses = H.glasses.type
-	if(H.belt)
-		belt = H.belt.type
+	if(user.back)
+		user.back.add_fingerprint(user, ignoregloves = TRUE)
+		for(var/obj/item/item in user.back.contents)
+			item.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.wear_id)
+		user.wear_id.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.w_uniform)
+		user.w_uniform.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.wear_suit)
+		user.wear_suit.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.wear_mask)
+		user.wear_mask.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.wear_neck)
+		user.wear_neck.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.head)
+		user.head.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.shoes)
+		user.shoes.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.gloves)
+		user.gloves.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.ears)
+		user.ears.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.glasses)
+		user.glasses.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.belt)
+		user.belt.add_fingerprint(user, ignoregloves = TRUE)
+		for(var/obj/item/item in user.belt.contents)
+			item.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.s_store)
+		user.s_store.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.l_store)
+		user.l_store.add_fingerprint(user, ignoregloves = TRUE)
+	if(user.r_store)
+		user.r_store.add_fingerprint(user, ignoregloves = TRUE)
+	for(var/obj/item/item in user.held_items)
+		item.add_fingerprint(user, ignoregloves = TRUE)
 	return TRUE
 // EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 

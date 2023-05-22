@@ -141,7 +141,3 @@
 
 /obj/machinery/camera
 	icon = 'packages/gfx/assets/obj/machine/camera.dmi'
-
-/obj/machinery/button
-	icon = 'packages/gfx/assets/obj/button.dmi'
-	light_mask = "button-light-mask"
