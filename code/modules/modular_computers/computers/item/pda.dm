@@ -36,6 +36,7 @@
 		/datum/computer_file/program/messenger,
 		/datum/computer_file/program/nt_pay,
 		/datum/computer_file/program/notepad,
+		/datum/computer_file/program/crew_manifest, // EFFIGY EDIT ADD
 	)
 	///List of items that can be stored in a PDA
 	var/static/list/contained_item = list(
@@ -302,6 +303,8 @@
 	starting_programs = list(
 		/datum/computer_file/program/filemanager,
 		/datum/computer_file/program/robotact,
+		/datum/computer_file/program/crew_manifest, // EFFIGY EDIT ADD
+		/datum/computer_file/program/messenger, // EFFIGY EDIT ADD
 	)
 
 /obj/item/modular_computer/pda/silicon/Initialize(mapload)

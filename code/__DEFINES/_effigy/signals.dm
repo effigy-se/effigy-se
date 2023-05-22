@@ -1,6 +1,8 @@
 //Movable signals
 ///When someone talks into a radio
-#define COMSIG_MOVABLE_RADIO_TALK_INTO "movable_radio_talk_into"				//from radio talk_into(): (obj/item/radio/radio, message, channel, list/spans, datum/language/language, direct)
+#define COMSIG_MOVABLE_RADIO_TALK_INTO "movable_radio_talk_into" //from radio talk_into(): (obj/item/radio/radio, message, channel, list/spans, datum/language/language, direct)
+/// When a hostile simple mob loses it's target.
+#define COMSIG_HOSTILE_MOB_LOST_TARGET "hostile_mob_lost_target"
 
 // Power signals
 /// Sent when an obj/item calls item_use_power: (use_amount, user, check_only)
@@ -33,3 +35,6 @@
 #define COMSIG_TURF_LIQUIDS_CREATION "turf_liquids_creation"
 /// Engineering Override Access manual toggle
 #define COMSIG_GLOB_FORCE_ENG_OVERRIDE "force_engineering_override"
+/// From mob/living/*/set_combat_mode(): (new_state)
+#define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"
+

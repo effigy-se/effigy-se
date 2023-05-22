@@ -252,7 +252,10 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 
-		my_head.worn_glasses_offset?.apply_offset(glasses_overlay)
+		// EFFIGY EDIT ADD START (#3 Customization)
+		if(!mutant_override)
+			my_head.worn_glasses_offset?.apply_offset(glasses_overlay)
+		// EFFIGY EDIT ADD END (#3 Customization)
 		overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
 
@@ -285,8 +288,10 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
-		var/mutable_appearance/ears_overlay = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
-		my_head.worn_ears_offset?.apply_offset(ears_overlay)
+		var/mutable_appearance/ears_overlay = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null)
+		if(!mutant_override) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+			my_head.worn_ears_offset?.apply_offset(ears_overlay)
+
 		overlays_standing[EARS_LAYER] = ears_overlay
 	apply_overlay(EARS_LAYER)
 
@@ -317,7 +322,8 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
-		my_chest?.worn_belt_offset?.apply_offset(neck_overlay)
+		if(!mutant_override) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+			my_chest?.worn_belt_offset?.apply_offset(neck_overlay)
 		overlays_standing[NECK_LAYER] = neck_overlay
 
 	apply_overlay(NECK_LAYER)
@@ -430,7 +436,8 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
-		my_head?.worn_head_offset?.apply_offset(head_overlay)
+		if(!mutant_override) // EFFIGY EDIT ADD(#3 Customization - Ported from Skyrat)
+			my_head?.worn_head_offset?.apply_offset(head_overlay)
 		overlays_standing[HEAD_LAYER] = head_overlay
 
 	update_mutant_bodyparts()
@@ -463,7 +470,8 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
-		my_chest?.worn_belt_offset?.apply_offset(belt_overlay)
+		if(!mutant_override) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+			my_chest?.worn_belt_offset?.apply_offset(belt_overlay)
 		overlays_standing[BELT_LAYER] = belt_overlay
 
 	apply_overlay(BELT_LAYER)
@@ -506,7 +514,8 @@ There are several things that need to be remembered:
 		var/mutable_appearance/suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null, mutant_styles = mutant_styles) // EFFIGY EDIT CHANGE - Mutant bodytypes and Taur-friendly suits!
 
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
-		my_chest?.worn_suit_offset?.apply_offset(suit_overlay)
+		if(!mutant_override) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+			my_chest?.worn_suit_offset?.apply_offset(suit_overlay)
 		overlays_standing[SUIT_LAYER] = suit_overlay
 	update_body_parts()
 	update_mutant_bodyparts()
@@ -571,6 +580,8 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EFFIGY EDIT CHANGE
 		my_head.worn_mask_offset?.apply_offset(mask_overlay)
+		if(!mutant_override) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+			my_head.worn_mask_offset?.apply_offset(mask_overlay)
 		overlays_standing[FACEMASK_LAYER] = mask_overlay
 
 	apply_overlay(FACEMASK_LAYER)
@@ -604,6 +615,8 @@ There are several things that need to be remembered:
 			return
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
 		my_chest?.worn_back_offset?.apply_offset(back_overlay)
+		if(!mutant_override) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+			my_chest?.worn_back_offset?.apply_offset(back_overlay)
 		overlays_standing[BACK_LAYER] = back_overlay
 	apply_overlay(BACK_LAYER)
 

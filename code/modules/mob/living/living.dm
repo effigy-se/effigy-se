@@ -52,6 +52,12 @@
 /mob/living/proc/ZImpactDamage(turf/T, levels)
 	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, T) & NO_Z_IMPACT_DAMAGE)
 		return
+
+	// EFFIGY EDIT ADD START
+	if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_WAIST)
+		Knockdown(20)
+		return
+	// EFFIGY EDIT ADD END
 	visible_message(span_danger("[src] crashes into [T] with a sickening noise!"), \
 					span_userdanger("You crash into [T] with a sickening noise!"))
 	adjustBruteLoss((levels * 5) ** 1.5)
@@ -326,12 +332,18 @@
 
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
+			// EFFIGY EDIT CHANGE START (Tails)
 			if(ishuman(M))
-				var/mob/living/carbon/human/grabbed_human = M
-				var/grabbed_by_hands = (zone_selected == "l_arm" || zone_selected == "r_arm") && grabbed_human.usable_hands > 0
-				M.visible_message(span_warning("[src] grabs [M] [grabbed_by_hands ? "by their hands":"passively"]!"), \
-								span_warning("[src] grabs you [grabbed_by_hands ? "by your hands":"passively"]!"), null, null, src)
-				to_chat(src, span_notice("You grab [M] [grabbed_by_hands ? "by their hands":"passively"]!"))
+				if(zone_selected == BODY_ZONE_PRECISE_GROIN && M.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL) && src.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL))
+					M.visible_message(span_warning("[src] coils their tail with [AM], wow is that okay in public?!"), "[src] has entwined their tail with yours!")
+					to_chat(src, "You entwine your tail with [AM]")
+				else
+					var/mob/living/carbon/human/grabbed_human = M
+					var/grabbed_by_hands = (zone_selected == "l_arm" || zone_selected == "r_arm") && grabbed_human.usable_hands > 0
+					M.visible_message(span_warning("[src] grabs [M] [grabbed_by_hands ? "by their hands":"passively"]!"), \
+									span_warning("[src] grabs you [grabbed_by_hands ? "by your hands":"passively"]!"), null, null, src)
+					to_chat(src, span_notice("You grab [M] [grabbed_by_hands ? "by their hands":"passively"]!"))
+			// EFFIGY EDIT CHANGE END (Tails)
 			else
 				M.visible_message(span_warning("[src] grabs [M] passively!"), \
 								span_warning("[src] grabs you passively!"), null, null, src)
@@ -586,8 +598,8 @@
 			if(!silent)
 				to_chat(src, span_notice("You will now stand up as soon as you are able to."))
 		else
-			if(!silent)
-				to_chat(src, span_notice("You stand up."))
+			// if(!silent) // EFFIGY EDIT REMOVE
+			//	to_chat(src, span_notice("You stand up.")) // EFFIGY EDIT REMOVE
 			get_up(instant)
 
 	SEND_SIGNAL(src, COMSIG_LIVING_RESTING, new_resting, silent, instant)
@@ -598,15 +610,35 @@
 /mob/living/proc/update_resting()
 	update_rest_hud_icon()
 
-
+// EFFIGY EDIT CHANGE START
 /mob/living/proc/get_up(instant = FALSE)
 	set waitfor = FALSE
-	if(!instant && !do_after(src, 1 SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, TYPE_PROC_REF(/mob/living, rest_checks_callback)), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+	var/get_up_speed = GET_UP_FAST
+	var/stam = getStaminaLoss()
+	switch(FLOOR(stam,1))
+		if(STAMINA_THRESHOLD_MEDIUM_GET_UP to STAMINA_THRESHOLD_SLOW_GET_UP)
+			get_up_speed = GET_UP_MEDIUM
+		if(STAMINA_THRESHOLD_SLOW_GET_UP+1 to INFINITY)
+			get_up_speed = GET_UP_SLOW
+	if(!instant)
+		if(get_up_speed == GET_UP_SLOW) //Slow getups are easily noticable
+			visible_message(span_notice("[src] weakily attempts to stand up."), span_notice("You weakily attempt to stand up."))
+			if(!do_after(src, get_up_speed SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+				if(!body_position == STANDING_UP)
+					visible_message(span_warning("[src] fails to stand up."), span_warning("You fail to stand up."))
+				return
+		else
+			if(!do_after(src, get_up_speed SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+				return
+	if(pulledby && pulledby.grab_state)
+		to_chat(src, span_warning("You fail to stand up, you're restrained!"))
 		return
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
+	to_chat(src, span_notice("You stand up."))
 	set_lying_angle(0)
 	set_body_position(STANDING_UP)
+	// EFFIGY EDIT CHANGE END
 
 
 /mob/living/proc/rest_checks_callback()
@@ -751,7 +783,7 @@
 	if(full_heal_flags)
 		fully_heal(full_heal_flags)
 
-	if(stat == DEAD && can_be_revived()) //in some cases you can't revive (e.g. no brain)
+	if(stat == DEAD && can_be_revived() || (full_heal_flags & HEAL_ADMIN)) //in some cases you can't revive (e.g. no brain) // EFFIGY EDIT CHANGE
 		set_suicide(FALSE)
 		set_stat(UNCONSCIOUS) //the mob starts unconscious,
 		updatehealth() //then we check if the mob should wake up.
@@ -1068,10 +1100,19 @@
 
 /mob/living/resist_grab(moving_resist)
 	. = TRUE
-	if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS))
+	// EFFIGY EDIT CHANGE START
+	if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) || staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
 		var/altered_grab_state = pulledby.grab_state
-		if((body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If prone, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
+		if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) && pulledby.grab_state < GRAB_KILL) //If prone, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
 			altered_grab_state++
+		if(staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
+			altered_grab_state++
+		if(body_position == LYING_DOWN)
+			altered_grab_state++
+		var/mob/living/M = pulledby
+		if(M.staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
+			altered_grab_state--
+	// EFFIGY EDIT CHANGE END
 		var/resist_chance = BASE_GRAB_RESIST_CHANCE /// see defines/combat.dm, this should be baseline 60%
 		resist_chance = (resist_chance/altered_grab_state) ///Resist chance divided by the value imparted by your grab state. It isn't until you reach neckgrab that you gain a penalty to escaping a grab.
 		if(prob(resist_chance))
@@ -1381,7 +1422,7 @@
 				/mob/living/basic/statue,
 				/mob/living/basic/bat,
 				/mob/living/simple_animal/hostile/retaliate/goat,
-				/mob/living/simple_animal/hostile/killertomato,
+				/mob/living/basic/killer_tomato,
 				/mob/living/basic/giant_spider,
 				/mob/living/basic/giant_spider/hunter,
 				/mob/living/simple_animal/hostile/blob/blobbernaut/independent,
@@ -1403,7 +1444,7 @@
 				/mob/living/basic/mouse,
 				/mob/living/simple_animal/chicken,
 				/mob/living/basic/cow,
-				/mob/living/simple_animal/hostile/lizard,
+				/mob/living/basic/lizard,
 				/mob/living/simple_animal/pet/fox,
 				/mob/living/simple_animal/butterfly,
 				/mob/living/simple_animal/pet/cat/cak,
@@ -1700,8 +1741,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(isliving(dropping))
 		var/mob/living/M = dropping
 		if(M.can_be_held && U.pulling == M)
-			M.mob_try_pickup(U)//blame kevinz
-			return//dont open the mobs inventory if you are picking them up
+			return M.mob_try_pickup(U) // EFFIGY EDIT CHANGE
 	. = ..()
 
 /mob/living/proc/mob_pickup(mob/living/L)
@@ -2253,6 +2293,10 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	body_position = new_value
 	SEND_SIGNAL(src, COMSIG_LIVING_SET_BODY_POSITION, new_value, .)
 	if(new_value == LYING_DOWN) // From standing to lying down.
+		// EFFIGY EDIT ADD START
+		if(has_gravity())
+			playsound(src, "bodyfall", 50, TRUE)
+		// EFFIGY EDIT ADD END
 		on_lying_down()
 	else // From lying down to standing up.
 		on_standing_up()

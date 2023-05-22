@@ -1,3 +1,5 @@
+// EFFIGY EDIT REMOVE START (pAI modsuits)
+/*
 /obj/item/mod/control/transfer_ai(interaction, mob/user, mob/living/silicon/ai/intAI, obj/item/aicard/card)
 	. = ..()
 	if(!.)
@@ -149,3 +151,5 @@
 	stored_ai = null
 
 #undef AI_FALL_TIME
+*/
+// EFFIGY EDIT REMOVE END

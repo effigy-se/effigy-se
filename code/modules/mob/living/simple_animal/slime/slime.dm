@@ -465,7 +465,7 @@
 	return
 
 /mob/living/simple_animal/slime/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) // EFFIGY EDIT CHANGE
 	if (stat == DEAD)
 		. += span_deadsay("It is limp and unresponsive.")
 	else

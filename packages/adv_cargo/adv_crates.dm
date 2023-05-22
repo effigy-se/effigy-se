@@ -1,3 +1,9 @@
+/obj/item/storage/lockbox/order
+	/// Bool if this was departmentally ordered or not
+	var/department_purchase
+	/// Department of the person buying the crate if buying via the NIRN app.
+	var/datum/bank_account/department/department_account
+
 // ANIMALS
 
 /datum/supply_pack/critter/doublecrab

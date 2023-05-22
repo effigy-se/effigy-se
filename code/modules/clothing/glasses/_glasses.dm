@@ -52,7 +52,7 @@
 
 /obj/item/clothing/glasses/weldingvisortoggle(mob/user)
 	. = ..()
-	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : null
+	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : initial(alternate_worn_layer) // EFFIGY EDIT CHANGE
 	if(. && user)
 		user.update_sight()
 		if(iscarbon(user))
@@ -73,6 +73,7 @@
 				eyes.apply_organ_damage(5)
 
 /obj/item/clothing/glasses/AltClick(mob/user)
+	. = ..() // EFFIGY EDIT ADD
 	if(glass_colour_type && !forced_glass_color && ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 
@@ -409,6 +410,7 @@
 	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	flags_cover = GLASSESCOVERSEYES
 	glass_colour_type = /datum/client_colour/glass_colour/gray
+	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER // EFFIGY EDIT CHANGE
 
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
 	weldingvisortoggle(user)

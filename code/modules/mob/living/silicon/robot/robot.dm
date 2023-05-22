@@ -3,7 +3,7 @@
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-	ADD_TRAIT(src, TRAIT_CAN_STRIP, INNATE_TRAIT)
+	add_traits(list(TRAIT_CAN_STRIP, TRAIT_FORCED_STANDING), INNATE_TRAIT)
 	AddComponent(/datum/component/tippable, \
 		tip_time = 3 SECONDS, \
 		untip_time = 2 SECONDS, \
@@ -11,7 +11,7 @@
 		post_tipped_callback = CALLBACK(src, PROC_REF(after_tip_over)), \
 		post_untipped_callback = CALLBACK(src, PROC_REF(after_righted)), \
 		roleplay_friendly = TRUE, \
-		roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/living/beep), \
+		roleplay_emotes = list(/datum/emote/living/human/buzz, /datum/emote/living/human/buzz2, /datum/emote/living/human/beep), \
 		roleplay_callback = CALLBACK(src, PROC_REF(untip_roleplay)))
 
 	wires = new /datum/wires/robot(src)
@@ -186,30 +186,38 @@
 		to_chat(src,span_userdanger("ERROR: Lockdown is engaged. Please disengage lockdown to pick module."))
 		return
 
-	var/list/model_list = list(
-		"Engineering" = /obj/item/robot_model/engineering,
-		"Medical" = /obj/item/robot_model/medical,
-		"Miner" = /obj/item/robot_model/miner,
-		"Janitor" = /obj/item/robot_model/janitor,
-		"Service" = /obj/item/robot_model/service,
-	)
-	if(!CONFIG_GET(flag/disable_peaceborg))
-		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
-	if(!CONFIG_GET(flag/disable_secborg))
-		model_list["Security"] = /obj/item/robot_model/security
+	// EFFIGY EDIT ADD START (Borgs)
+	if(!length(GLOB.cyborg_model_list))
+		GLOB.cyborg_model_list = list(
+			"Engineering" = /obj/item/robot_model/engineering,
+			"Medical" = /obj/item/robot_model/medical,
+		//	"Cargo" = /obj/item/robot_model/cargo,
+			"Miner" = /obj/item/robot_model/miner,
+			"Janitor" = /obj/item/robot_model/janitor,
+			"Service" = /obj/item/robot_model/service,
+		)
+		if(!CONFIG_GET(flag/disable_peaceborg))
+			GLOB.cyborg_model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
+		if(!CONFIG_GET(flag/disable_secborg))
+			GLOB.cyborg_model_list["Security"] = /obj/item/robot_model/security
+
+		for(var/model in GLOB.cyborg_model_list)
+			// Creating the lists here since we know all the model icons will need them right after.
+			GLOB.cyborg_all_models_icon_list[model] = list()
 
 	// Create radial menu for choosing borg model
-	var/list/model_icons = list()
-	for(var/option in model_list)
-		var/obj/item/robot_model/model = model_list[option]
-		var/model_icon = initial(model.cyborg_base_icon)
-		model_icons[option] = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = model_icon)
+	if(!length(GLOB.cyborg_base_models_icon_list))
+		for(var/option in GLOB.cyborg_model_list)
+			var/obj/item/robot_model/model = GLOB.cyborg_model_list[option]
+			var/model_icon = initial(model.cyborg_base_icon)
+			GLOB.cyborg_base_models_icon_list[option] = image(icon = 'packages/borgs/assets/robots.dmi', icon_state = model_icon) // EFFIGY EDIT CHANGE - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
+	// EFFIGY EDIT ADD END (Borgs)
 
-	var/input_model = show_radial_menu(src, src, model_icons, radius = 42)
+	var/input_model = show_radial_menu(src, src, GLOB.cyborg_base_models_icon_list, radius = 42)
 	if(!input_model || model.type != /obj/item/robot_model)
 		return
 
-	model.transform_to(model_list[input_model])
+	model.transform_to(GLOB.cyborg_model_list[input_model])
 
 
 /// Used to setup the a basic and (somewhat) unique name for the robot.
@@ -723,9 +731,16 @@
 		hud_used.update_robot_modules_display()
 
 	if (hasExpanded)
-		resize = 0.5
+		resize = 0.8 // EFFIGY EDIT CHANGE (Was 0.5)
 		hasExpanded = FALSE
 		update_transform()
+	// EFFIGY EDIT ADD START
+	if (hasShrunk)
+		hasShrunk = FALSE
+		resize = (4/3)
+		update_transform()
+	hasAffection = FALSE
+	// EFFIGY EDIT ADD END
 	logevent("Chassis model has been reset.")
 	log_silicon("CYBORG: [key_name(src)] has reset their cyborg model.")
 	model.transform_to(/obj/item/robot_model)

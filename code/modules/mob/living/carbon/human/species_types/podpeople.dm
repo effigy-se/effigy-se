@@ -77,5 +77,13 @@
 		return TRUE
 	return ..()
 
+// EFFIGY EDIT ADD START
+/datum/species/pod/get_species_description()
+	return "Plant lore!"
+
+/datum/species/pod/get_species_lore()
+	return list("You're a plant!")
+// EFFIGY EDIT ADD END
+
 /datum/species/pod/randomize_features(mob/living/carbon/human_mob)
 	randomize_external_organs(human_mob)

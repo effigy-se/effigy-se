@@ -60,7 +60,7 @@
 	hair_overlay = null
 	hair_gradient_overlay = null
 
-	hair_alpha = owner_species.hair_alpha
+	hair_alpha = human_head_owner.hair_alpha ? human_head_owner.hair_alpha : owner_species.hair_alpha // EFFIGY EDIT CHANGE
 	hair_color = human_head_owner.hair_color
 	facial_hair_color = human_head_owner.facial_hair_color
 	fixed_hair_color = owner_species.fixed_mut_color //Can be null

@@ -548,7 +548,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /// Applies the given preferences to a human mob.
 /datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, visuals_only = FALSE)
-	character.dna.features = MANDATORY_FEATURE_LIST
+	character.dna.features = MANDATORY_FEATURE_LIST // EFFIGY EDIT ADD
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)

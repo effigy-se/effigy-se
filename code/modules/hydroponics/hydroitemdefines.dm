@@ -504,6 +504,8 @@
 	resistance_flags = FLAMMABLE
 	flags_1 = NONE
 
+// EFFIGY EDIT REMOVE START
+/*
 /obj/item/scythe
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
@@ -563,6 +565,8 @@
 				melee_attack_chain(user, flower)
 	swiping = FALSE
 	return TRUE
+*/
+// EFFIGY EDIT REMOVE END
 
 /obj/item/secateurs
 	name = "secateurs"

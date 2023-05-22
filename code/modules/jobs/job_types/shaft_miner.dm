@@ -39,8 +39,9 @@
 		/obj/item/flashlight/seclite = 1,
 		/obj/item/knife/combat/survival = 1,
 		/obj/item/mining_voucher = 1,
+		/obj/item/suit_voucher = 1,
 		/obj/item/stack/marker_beacon/ten = 1,
-	)
+	) // EFFIGY EDIT ADD (Suit voucher)
 	belt = /obj/item/modular_computer/pda/shaftminer
 	ears = /obj/item/radio/headset/headset_cargo/mining
 	gloves = /obj/item/clothing/gloves/color/black

@@ -203,7 +203,7 @@
 	var/my_delay = 0
 	if(on)
 	// EFFIGY EDIT CHANGE START (#73 Lighting)
-	/* SKYRAT EDIT ORIGINAL
+	/*
 		var/brightness_set = brightness
 		var/power_set = bulb_power
 		var/color_set = bulb_colour

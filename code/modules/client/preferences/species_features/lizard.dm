@@ -1,3 +1,4 @@
+// EFFIGY EDIT REMOVE START
 /*
 /proc/generate_lizard_side_shots(list/sprite_accessories, key, include_snout = TRUE)
 	var/list/values = list()
@@ -144,3 +145,4 @@
 	var/datum/sprite_accessory/tails/lizard/smooth/tail = /datum/sprite_accessory/tails/lizard/smooth
 	return initial(tail.name)
 */
+// EFFIGY EDIT REMOVE END

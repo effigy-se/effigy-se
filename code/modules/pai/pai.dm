@@ -181,6 +181,7 @@
 /mob/living/silicon/pai/examine(mob/user)
 	. = ..()
 	. += "Its master ID string seems to be [(!master_name || emagged) ? "empty" : master_name]."
+	. += get_silicon_flavortext() // EFFIGY EDIT ADD
 
 /mob/living/silicon/pai/get_status_tab_items()
 	. += ..()

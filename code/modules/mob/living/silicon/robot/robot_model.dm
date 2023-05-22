@@ -259,10 +259,12 @@
 		// EFFIGY EDIT ADD END (Borgs)
 		if(!isnull(details[SKIN_ICON_STATE]))
 			cyborg_base_icon = details[SKIN_ICON_STATE]
+		// EFFIGY EDIT CHANGE START (Borgs)
 		if(!isnull(details[SKIN_ICON]))
 			cyborg.icon = details[SKIN_ICON]
-		if(!isnull(details[SKIN_PIXEL_X]))
+			cyborg_icon_override = details[SKIN_ICON]
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
+		// EFFIGY EDIT CHANGE END (Borgs)
 		if(!isnull(details[SKIN_PIXEL_Y]))
 			cyborg.base_pixel_y = details[SKIN_PIXEL_Y]
 		if(!isnull(details[SKIN_LIGHT_KEY]))

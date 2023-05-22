@@ -1,5 +1,6 @@
 
 /mob/living/proc/run_armor_check(def_zone = null, attack_flag = MELEE, absorb_text = null, soften_text = null, armour_penetration, penetrated_text, silent=FALSE, weak_against_armour = FALSE)
+	SEND_SIGNAL(src, COMSIG_MOB_RUN_ARMOR) // EFFIGY EDIT ADD
 	var/our_armor = getarmor(def_zone, attack_flag)
 
 	if(our_armor <= 0)
@@ -122,6 +123,7 @@
 		return
 	. = combat_mode
 	combat_mode = new_mode
+	SEND_SIGNAL(src, COMSIG_LIVING_COMBAT_MODE_TOGGLE, new_mode) // EFFIGY EDIT ADD
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
 	if(silent || !(client?.prefs.read_preference(/datum/preference/toggle/sound_combatmode)))

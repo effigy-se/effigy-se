@@ -268,8 +268,10 @@
 		if(!alert)
 			continue
 		var/ui_style = ghost.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)
+		var/erp_ui_style = ghost.client?.prefs?.read_preference(/datum/preference/choiced/ui_style) // EFFIGY EDIT ADD
 		if(ui_style)
 			alert.icon = ui_style2icon(ui_style)
+			alert.icon = erp_ui_style2icon(erp_ui_style) // EFFIGY EDIT ADD
 		if (header)
 			alert.name = header
 		alert.desc = message
@@ -513,7 +515,7 @@
 			"name" = offhand.name,
 		)
 
-	GLOB.logger.Log(
+	logger.Log(
 		LOG_CATEGORY_TARGET_ZONE_SWITCH,
 		"[key_name(src)] manually changed selected zone",
 		data,

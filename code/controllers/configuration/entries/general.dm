@@ -115,6 +115,9 @@
 /// log attack messages
 /datum/config_entry/flag/log_attack
 
+/// log subtle emotes
+/datum/config_entry/flag/log_subtle
+
 /// log subtler emotes
 /datum/config_entry/flag/log_subtler // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
@@ -160,6 +163,10 @@
 
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
+
+/// Log human readable versions of json log entries
+/datum/config_entry/flag/log_as_human_readable
+	default = TRUE
 
 /// allows admins with relevant permissions to have their own ooc colour
 /datum/config_entry/flag/allow_admin_ooccolor

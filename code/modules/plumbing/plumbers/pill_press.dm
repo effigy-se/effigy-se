@@ -13,6 +13,8 @@
 	var/max_patch_volume = 40
 	///maximum size of a bottle
 	var/max_bottle_volume = 30
+	///maximum size of a vial
+	var/max_vial_volume = 60 // EFFIGY EDIT ADD
 	///current operating product (pills or patches)
 	var/product = "pill"
 	///the minimum size a pill or patch can be
@@ -71,10 +73,17 @@
 			reagents.trans_to(P, current_volume)
 			P.name = trim("[product_name] bottle")
 			stored_products += P
+		// EFFIGY EDIT ADD START (Medical)
+		else if (product == "vial")
+			var/obj/item/reagent_containers/cup/hypovial/P = new(src)
+			reagents.trans_to(P, current_volume)
+			P.name = trim("[product_name] vial")
+			stored_products += P
+		// EFFIGY EDIT ADD END (Medical)
 	if(stored_products.len)
 		var/pill_amount = 0
 		for(var/thing in loc)
-			if(!istype(thing, /obj/item/reagent_containers/cup/bottle) && !istype(thing, /obj/item/reagent_containers/pill))
+			if(!istype(thing, /obj/item/reagent_containers/cup/bottle) && !istype(thing, /obj/item/reagent_containers/pill) && !istype(thing, /obj/item/reagent_containers/cup/hypovial)) // EFFIGY EDIT CHANGE (Medical)
 				continue
 			pill_amount++
 			if(pill_amount >= max_floor_products) //too much so just stop
@@ -155,6 +164,10 @@
 				max_volume = max_patch_volume
 			else if (product == "bottle")
 				max_volume = max_bottle_volume
+			// EFFIGY EDIT ADD START (Medical)
+			else if (product == "vial")
+				max_volume = max_vial_volume
+			// EFFIGY EDIT ADD END (Medical)
 			current_volume = clamp(current_volume, min_volume, max_volume)
 		if("change_patch_style")
 			patch_style = params["patch_style"]
