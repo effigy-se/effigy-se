@@ -121,8 +121,6 @@
 	var/datum/sprite_accessory/undershirt = null
 	var/datum/sprite_accessory/underwear = null
 	var/datum/sprite_accessory/socks = null
-	var/datum/sprite_accessory/underwear = null
-	var/datum/sprite_accessory/socks = null
 
 /**
  * Called at the start of the equip proc
@@ -342,8 +340,8 @@
 /**
  * Copies the outfit from a human to itself.
  **/
-/datum/outfit/proc/copy_outfit_from_target(mob/living/carbon/human/H)
-	if(!istype(H))
+/datum/outfit/proc/copy_outfit_from_target(mob/living/carbon/human/user)
+	if(!istype(user))
 		return
 	if(user.back)
 		user.back.add_fingerprint(user, ignoregloves = TRUE)
