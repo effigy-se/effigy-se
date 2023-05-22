@@ -17,12 +17,10 @@
 	icon = 'packages/adv_medical/assets/obj/hyposprays.dmi'
 	desc = "A new development from DeForest Medical, this hypospray takes 60-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
-	var/list/allowed_containers = list(/obj/item/reagent_containers/cup/vial/small)
-	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
-	var/small_only = TRUE
+	var/list/allowed_containers = list(/obj/item/reagent_containers/cup/hypovial)
 	/// Inject or spray?
 	var/mode = HYPO_INJECT
-	var/obj/item/reagent_containers/cup/vial/vial
+	var/obj/item/reagent_containers/cup/hypovial/vial
 	/// If the Hypospray starts with a vial, which vial does it start with?
 	var/start_vial
 	/// Does the Hypospray start with a vial?
@@ -59,11 +57,7 @@
 		return
 	if(!vial.reagents.total_volume)
 		return
-	var/vial_spritetype = "chem-color"
-	if(!small_only)
-		vial_spritetype += "[vial.type_suffix]"
-	else
-		vial_spritetype += "-s"
+	var/vial_spritetype = "chem-color-s"
 	var/mutable_appearance/chem_loaded = mutable_appearance('packages/adv_medical/assets/obj/hyposprays.dmi', vial_spritetype)
 	chem_loaded.color = vial.chem_color
 	. += chem_loaded
@@ -71,8 +65,6 @@
 /obj/item/hypospray/mkii/update_icon_state()
 	. = ..()
 	var/icon_suffix = "-s"
-	if(!small_only && vial)
-		icon_suffix = vial.type_suffix //Sets the suffix used to the correspoding vial.
 	icon_state = "[initial(icon_state)][vial ? "[icon_suffix]" : ""]"
 
 /obj/item/hypospray/mkii/examine(mob/user)
@@ -83,8 +75,8 @@
 		. += "It has no vial loaded in."
 
 /obj/item/hypospray/mkii/proc/unload_hypo(obj/item/hypo, mob/user)
-	if((istype(hypo, /obj/item/reagent_containers/cup/vial)))
-		var/obj/item/reagent_containers/cup/vial/container = hypo
+	if((istype(hypo, /obj/item/reagent_containers/cup/hypovial)))
+		var/obj/item/reagent_containers/cup/hypovial/container = hypo
 		container.forceMove(user.loc)
 		user.put_in_hands(container)
 		to_chat(user, span_notice("You remove [vial] from [src]."))
@@ -96,14 +88,14 @@
 		return
 
 /obj/item/hypospray/mkii/proc/insert_vial(obj/item/new_vial, mob/living/user, obj/item/current_vial)
-	var/obj/item/reagent_containers/cup/vial/container = new_vial
+	var/obj/item/reagent_containers/cup/hypovial/container = new_vial
 	var/old_loc //The location of and old vial.
 	if(!is_type_in_list(container, allowed_containers))
 		to_chat(user, span_notice("[src] doesn't accept this type of vial."))
 		return FALSE
 	if(current_vial)
 		old_loc = container.loc
-		var/obj/item/reagent_containers/cup/vial/old_container = current_vial
+		var/obj/item/reagent_containers/cup/hypovial/old_container = current_vial
 		old_container.forceMove(drop_location())
 	if(!user.transferItemToLoc(container, src))
 		return FALSE
@@ -118,7 +110,7 @@
 			current_vial.forceMove(old_loc)
 
 /obj/item/hypospray/mkii/attackby(obj/item/used_item, mob/living/user)
-	if((istype(used_item, /obj/item/reagent_containers/cup/vial) && vial != null))
+	if((istype(used_item, /obj/item/reagent_containers/cup/hypovial) && vial != null))
 		if(!quickload)
 			to_chat(user, span_warning("[src] can not hold more than one vial!"))
 			return FALSE
@@ -126,7 +118,7 @@
 			insert_vial(used_item, user, vial)
 			return TRUE
 
-	if((istype(used_item, /obj/item/reagent_containers/cup/vial)))
+	if((istype(used_item, /obj/item/reagent_containers/cup/hypovial)))
 		insert_vial(used_item, user)
 		return TRUE
 
@@ -166,7 +158,7 @@
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
 /obj/item/hypospray/mkii/afterattack(atom/target, mob/living/user, proximity)
-	if(istype(target, /obj/item/reagent_containers/cup/vial))
+	if(istype(target, /obj/item/reagent_containers/cup/hypovial))
 		insert_vial(target, user, vial)
 		return TRUE
 

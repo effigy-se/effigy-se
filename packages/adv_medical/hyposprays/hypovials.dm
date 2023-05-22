@@ -1,17 +1,17 @@
-/obj/item/reagent_containers/cup/vial
-	name = "broken hypovial"
-	desc = "You probably shouldn't be seeing this. Shout at a coder."
+/obj/item/reagent_containers/cup/hypovial
+	name = "hypovial"
+	desc = "A small, 60u capacity vial compatible with hyposprays."
 	icon = 'packages/adv_medical/assets/obj/vials.dmi'
 	icon_state = "hypovial"
 	spillable = FALSE
-	volume = 10
+	volume = 60
 	/// The suffix of the overlay texture that the hypovial uses when loading textures.
 	var/type_suffix = "-s"
-	possible_transfer_amounts = list(1,2,5,10)
+	possible_transfer_amounts = list(1,2,5,10,14,20,30,45,60)
 	fill_icon_thresholds = list(10, 25, 50, 75, 100)
 	var/chem_color //Used for hypospray overlay
 
-/obj/item/reagent_containers/cup/vial/update_overlays()
+/obj/item/reagent_containers/cup/hypovial/update_overlays()
 	. = ..()
 	if(!fill_icon_thresholds)
 		return
@@ -35,33 +35,34 @@
 		chem_color = filling.color
 		. += filling
 
-/obj/item/reagent_containers/cup/vial/Initialize(mapload)
+/obj/item/reagent_containers/cup/hypovial/Initialize(mapload)
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/cup/vial/on_reagent_change()
+/obj/item/reagent_containers/cup/hypovial/on_reagent_change()
 	update_icon()
 
-//Fit in all hypos
-/obj/item/reagent_containers/cup/vial/small
-	name = "hypovial"
-	desc = "A small, 60u capacity vial compatible with most hyposprays."
-	volume = 60
-	possible_transfer_amounts = list(1,2,5,15,20,30,45,60)
-
 //Hypos that are in the CMO's kit round start
-/obj/item/reagent_containers/cup/vial/deluxe
-	name = "deluxe hypovial"
-	list_reagents = list(/datum/reagent/medicine/omnizine = 20, /datum/reagent/medicine/leporazine = 20, /datum/reagent/medicine/atropine = 20)
+/obj/item/reagent_containers/cup/hypovial/crit
+	name = "crit hypovial"
+	list_reagents = list(/datum/reagent/medicine/omnizine/protozine = 30, /datum/reagent/medicine/atropine = 30)
 
-/obj/item/reagent_containers/cup/vial/salglu
-	name = "green hypovial (salglu)"
-	list_reagents = list(/datum/reagent/medicine/salglu_solution = 60)
+/obj/item/reagent_containers/cup/hypovial/lenturi
+	name = "burn hypovial"
+	list_reagents = list(/datum/reagent/medicine/c2/lenturi = 60)
 
-/obj/item/reagent_containers/cup/vial/synthflesh
-	name = "orange hypovial (synthflesh)"
+/obj/item/reagent_containers/cup/hypovial/syriniver
+	name = "toxins hypovial"
+	list_reagents = list(/datum/reagent/medicine/c2/syriniver = 60)
+
+/obj/item/reagent_containers/cup/hypovial/synthflesh
+	name = "synthflesh hypovial"
 	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 60)
 
-/obj/item/reagent_containers/cup/vial/multiver
-	name = "black hypovial (multiver)"
-	list_reagents = list(/datum/reagent/medicine/c2/multiver = 60)
+/obj/item/reagent_containers/cup/hypovial/libital
+	name = "brute hypovial"
+	list_reagents = list(/datum/reagent/medicine/c2/libital = 60)
+
+/obj/item/reagent_containers/cup/hypovial/convermol
+	name = "oxyloss hypovial"
+	list_reagents = list(/datum/reagent/medicine/c2/convermol = 60)
