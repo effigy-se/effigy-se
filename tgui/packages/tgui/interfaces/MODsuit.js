@@ -470,7 +470,8 @@ const ParametersSection = (props, context) => {
     complexity_max,
     wearer_name,
     wearer_job,
-    AI,
+    pAI, // EFFIGY EDIT ADD - pAIs in MODsuits
+    ispAI, // EFFIGY EDIT ADD - pAIs in MODsuits
   } = data;
   const status = malfunctioning
     ? 'Malfunctioning'
@@ -514,7 +515,22 @@ const ParametersSection = (props, context) => {
         <LabeledList.Item label="Occupant">
           {wearer_name}, {wearer_job}
         </LabeledList.Item>
-        <LabeledList.Item label="Onboard AI">{AI || 'None'}</LabeledList.Item>
+        <LabeledList.Item
+          label="Onboard pAI"
+          buttons={
+            // EFFIGY EDIT ADD START - pAIs in MODsuits
+            pAI && !ispAI ? (
+              <Button
+                icon="eject"
+                content="Eject pAI"
+                onClick={() => act('remove_pai')}
+              />
+            ) : (
+              <> </>
+            )
+          }>
+          {pAI || 'None' /* EFFIGY EDIT ADD END */}
+        </LabeledList.Item>
       </LabeledList>
     </Section>
   );

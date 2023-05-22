@@ -293,6 +293,8 @@
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
 	surplus = 15
 
+// EFFIGY EDIT REMOVE START
+/*
 /datum/uplink_item/role_restricted/spider_injector
 	name = "Australicus Slime Mutator"
 	desc = "Crikey mate, it's been a wild travel from the Australicus sector but we've managed to get \
@@ -304,6 +306,8 @@
 	cost = 10
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
 	surplus = 10
+*/
+// EFFIGY EDIT REMOVE END
 
 /datum/uplink_item/role_restricted/blastcannon
 	name = "Blast Cannon"

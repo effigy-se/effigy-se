@@ -38,6 +38,8 @@
 	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
 	limb_id = SPECIES_LIZARD
 
+// EFFIGY EDIT REMOVE
+/*
 /obj/item/bodypart/leg/left/digitigrade
 	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
 	limb_id = BODYPART_ID_DIGITIGRADE
@@ -89,3 +91,5 @@
 
 		else
 			limb_id = SPECIES_LIZARD
+*/
+// EFFIGY EDIT REMOVE END

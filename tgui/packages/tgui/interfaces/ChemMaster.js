@@ -236,6 +236,9 @@ const PackagingControls = (props, context) => {
     'bottleAmount',
     1
   );
+  // EFFIGY EDIT ADD START
+  const [vialAmount, setVialAmount] = useSharedState(context, 'vialAmount', 1);
+  // EFFIGY EDIT ADD END
   const [packAmount, setPackAmount] = useSharedState(context, 'packAmount', 1);
   const {
     condi,
@@ -324,6 +327,22 @@ const PackagingControls = (props, context) => {
             act('create', {
               type: 'bottle',
               amount: bottleAmount,
+              volume: 'auto',
+            })
+          }
+        />
+      )}
+      {!condi && ( // EFFIGY EDIT ADD
+        <PackagingControlsItem
+          label="Hypovials"
+          amount={vialAmount}
+          amountUnit="vials"
+          sideNote="max 60u"
+          onChangeAmount={(e, value) => setVialAmount(value)}
+          onCreate={() =>
+            act('create', {
+              type: 'vial',
+              amount: vialAmount,
               volume: 'auto',
             })
           }

@@ -38,6 +38,8 @@
 	cost = 4
 	cant_discount = TRUE
 
+// EFFIGY EDIT REMOVE START
+/*
 /datum/uplink_item/explosives/detomatix
 	name = "Detomatix disk"
 	desc = "When inserted into a tablet, this cartridge gives you four opportunities to \
@@ -47,6 +49,8 @@
 	item = /obj/item/computer_disk/virus/detomatix
 	cost = 6
 	restricted = TRUE
+*/
+// EFFIGY EDIT REMOVE END
 
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and Implanter Kit"
