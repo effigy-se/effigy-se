@@ -157,7 +157,7 @@
 		/obj/item/reagent_containers/medigel,
 		/obj/item/storage/pill_bottle,
 		/obj/item/implanter,
-// EFFIGY TODO		/obj/item/hypospray/mkii,
-// EFFIGY TODO		/obj/item/reagent_containers/cup/vial,
-// EFFIGY TODO		/obj/item/weaponcell/medical
+		/obj/item/hypospray/mkii,
+		/obj/item/reagent_containers/cup/hypovial,
+		// EFFIGY TODO		/obj/item/weaponcell/medical
 		))

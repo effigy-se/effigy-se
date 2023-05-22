@@ -75,7 +75,7 @@
 			stored_products += P
 		// EFFIGY EDIT ADD START (Medical)
 		else if (product == "vial")
-			var/obj/item/reagent_containers/cup/vial/small/P = new(src)
+			var/obj/item/reagent_containers/cup/hypovial/P = new(src)
 			reagents.trans_to(P, current_volume)
 			P.name = trim("[product_name] vial")
 			stored_products += P
@@ -83,7 +83,7 @@
 	if(stored_products.len)
 		var/pill_amount = 0
 		for(var/thing in loc)
-			if(!istype(thing, /obj/item/reagent_containers/cup/bottle) && !istype(thing, /obj/item/reagent_containers/pill) && !istype(thing, /obj/item/reagent_containers/cup/vial/small)) // EFFIGY EDIT CHANGE (Medical)
+			if(!istype(thing, /obj/item/reagent_containers/cup/bottle) && !istype(thing, /obj/item/reagent_containers/pill) && !istype(thing, /obj/item/reagent_containers/cup/hypovial)) // EFFIGY EDIT CHANGE (Medical)
 				continue
 			pill_amount++
 			if(pill_amount >= max_floor_products) //too much so just stop
