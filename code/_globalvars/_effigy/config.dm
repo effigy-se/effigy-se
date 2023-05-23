@@ -48,3 +48,18 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /// Determines if the transfer vote can be started by anyone or not.
 /datum/config_entry/flag/allow_vote_transfer
+
+// EFFIGY API STUFF
+/// Use the Effigy API
+/datum/config_entry/flag/use_effigy_api
+	default = FALSE
+/// API configuration
+/datum/config_entry/string/effigy_api_url
+	abstract_type = /datum/config_entry/string
+/// API auth method
+/datum/config_entry/string/effigy_api_auth
+	abstract_type = /datum/config_entry/string
+	default = "Bearer"
+/// API key
+/datum/config_entry/string/effigy_api_key
+	abstract_type = /datum/config_entry/string
