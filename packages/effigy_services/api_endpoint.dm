@@ -18,7 +18,6 @@
 /// Generates the request body
 /datum/effigy_api_endpoint/proc/build_api_message_body(list/raw_content)
 	var/list/processed_content = list(
-		EFFIGY_MESSAGE_NEW_TICKET,
 		"forum" = "[raw_content["box"]]",
 		"title" = "new ticket",
 		"post" = "[raw_content["peep_message"]]",
