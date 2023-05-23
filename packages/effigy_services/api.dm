@@ -7,8 +7,6 @@ SUBSYSTEM_DEF(effigy)
 	var/efapi_auth
 	/// Our API key
 	var/efapi_key
-	/// API endpoints available
-	var/list/api_endpoints = list()
 
 /datum/controller/subsystem/effigy/Initialize()
 	// Check for enable
@@ -22,10 +20,6 @@ SUBSYSTEM_DEF(effigy)
 
 	if(!efapi_key || !efapi_key)
 		return SS_INIT_NO_NEED
-
-	for(var/api_endpoint_type in typesof(/datum/effigy_api_endpoint))
-		var/datum/effigy_api_endpoint/new_api_endpoint = new(api_endpoint_type)
-		api_endpoints[new_api_endpoint.message_type] = new_api_endpoint
 
 /datum/controller/subsystem/effigy/Destroy()
 	return ..()
@@ -52,25 +46,25 @@ SUBSYSTEM_DEF(effigy)
 		return
 
 	var/datum/effigy_message/effigy_request = new(
-		req_message_type = api_endpoints[message_type],
+		req_message_type = new message_type,
 		req_box = box,
 		req_peep_id = peep_id,
 		req_peep_title = peep_title,
 		req_peep_message = peep_message,
 	)
 
-	effigy_request.start_request()
+	start_request(effigy_request)
 
 /datum/effigy_message
 	/// The endpoint we're using
-	var/datum/effigy_api_endpoint/api_endpoint
+	var/datum/effigy_message_type/endpoint
 	/// API message content
 	var/list/message_content
 	/// HTTP message request
 	var/datum/http_request/message_request
 
 /datum/effigy_message/New(req_message_type, req_box, req_peep_id, req_peep_title, req_peep_message)
-	api_endpoint = req_message_type
+	endpoint = req_message_type
 	message_content = list(
 		"box" = req_box,
 		"peep_id" = req_peep_id,
@@ -78,14 +72,17 @@ SUBSYSTEM_DEF(effigy)
 		"peep_message" = req_peep_message,
 	)
 
-/datum/effigy_message/proc/start_request()
-	message_request = api_endpoint.create_http_request(message_content)
-	message_request.execute_blocking()
-	message_admins("[message_request._raw_response]")
+/datum/controller/subsystem/effigy/proc/start_request(datum/effigy_message/message)
+	var/datum/http_request/request = message.endpoint.create_http_request(message.message_content)
+	request.begin_async()
+	UNTIL(request.is_complete())
+	var/datum/http_response/response = request.into_response()
+	if(response.errored || response.status_code != 200)
+		stack_trace(response.error)
 
 // Cleans up the request object when it is destroyed.
 /datum/effigy_message/Destroy(force, ...)
-	api_endpoint = null
+	endpoint = null
 	QDEL_NULL(message_request)
 	return ..()
 

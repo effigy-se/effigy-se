@@ -1,47 +1,53 @@
 /// Effigy API Endpoint Config
-/datum/effigy_api_endpoint
-	/// Path of the API endpoint
-	var/message_type = EFFIGY_MESSAGE_NEW_TICKET
-	// API URL of the endpoint
+/datum/effigy_message_type
+	/// Message type of request
+	var/endpoint
+	/// API URL of the endpoint
 	var/url
 	/// The HTTP method of this endpoint
-	var/method = RUSTG_HTTP_METHOD_POST
+	var/method
+
+/datum/effigy_message_type/new_ticket
+	endpoint = EFFIGY_ENDPOINT_NEW_TICKET
+	method = RUSTG_HTTP_METHOD_POST
+
+/datum/effigy_message_type/get
+	method = RUSTG_HTTP_METHOD_GET
 
 /// Generates the request header
-/datum/effigy_api_endpoint/proc/build_api_message_header(efapi_auth, efapi_key)
+/datum/effigy_message_type/proc/construct_api_message_header(efapi_auth, efapi_key)
 	var/list/processed_content = list(
 		"Authorization" = "[efapi_auth] [efapi_key]",
-		"Content-Type" = "application/json"
+		"content-type" = "application/x-www-form-urlencoded"
 		)
 	return processed_content
 
 /// Generates the request body
-/datum/effigy_api_endpoint/proc/build_api_message_body(list/raw_content)
+/datum/effigy_message_type/proc/construct_api_message_body(list/raw_content)
 	var/list/processed_content = list(
-		"forum" = "[raw_content["box"]]",
-		"title" = "new ticket",
-		"post" = "[raw_content["peep_message"]]",
-		"author" = "[raw_content["peep_id"]]"
+		"forum=[raw_content["box"]]",
+		"author=[raw_content["peep_id"]]",
+		"title=\[[GLOB.round_id]] [raw_content["peep_title"]]",
+		"post=[raw_content["peep_message"]]"
 	)
-	return processed_content
 
-/datum/effigy_api_endpoint/proc/create_http_request(content)
+	var/joined = jointext(processed_content, "&")
+	return joined
+
+/datum/effigy_message_type/proc/create_http_request(content)
 	// Set up the required headers for the Effigy API
-	var/list/headers = build_api_message_header(SSeffigy.efapi_auth, SSeffigy.efapi_key)
+	var/list/headers = construct_api_message_header(SSeffigy.efapi_auth, SSeffigy.efapi_key)
 
 	// Create the JSON body for the request
-	var/list/body = build_api_message_body(content)
-
-	// Encode the json for export
-	var/body_json = json_encode(body)
+	var/body = construct_api_message_body(content)
 
 	// Make the API URL
-	url = "[SSeffigy.efapi_url]?[message_type]"
+	url = "[SSeffigy.efapi_url]?[endpoint]"
 
 	// Create a new HTTP request
 	var/datum/http_request/request = new()
 
 	// Set up the HTTP request
-	request.prepare(method, url, body_json, headers)
+	request.prepare(method, url, body, headers)
 
 	return request
