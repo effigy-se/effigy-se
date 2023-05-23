@@ -342,7 +342,7 @@ GLOBAL_VAR(restart_counter)
 	auxcleanup()
 	. = ..()
 
-// EFFIGY EDIT REMOVE (moved to packages/admin)
+// EFFIGY EDIT REMOVE START (moved to packages/admin)
 /*
 /world/proc/update_status()
 
