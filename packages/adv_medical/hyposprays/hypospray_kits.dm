@@ -95,7 +95,7 @@
 	cmo_case = TRUE
 
 /obj/item/storage/hypospraykit/cmo/PopulateContents()
-	new /obj/item/hypospray/mkii(src)
+	new /obj/item/hypospray/mkii/cmo(src)
 	new /obj/item/reagent_containers/cup/hypovial/syriniver(src)
 	new /obj/item/reagent_containers/cup/hypovial/lenturi(src)
 	new /obj/item/reagent_containers/cup/hypovial/libital(src)
