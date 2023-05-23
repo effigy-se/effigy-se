@@ -40,6 +40,11 @@
 	/// Does it penetrate clothing?
 	var/penetrates = null
 
+/obj/item/hypospray/mkii/cmo
+	name = "hypospray mk.II SE"
+	icon_state = "combat2"
+	desc = "A special edition DeForest Medical Hypospray. Functionally identical but has a dazzling metallic finish."
+
 /obj/item/hypospray/mkii/Initialize(mapload)
 	. = ..()
 	if(!spawnwithvial)
