@@ -15,16 +15,10 @@
 				/obj/item/melee/baton,
 				/obj/item/restraints/handcuffs,
 				/obj/item/reagent_containers/hypospray,
-				// EFFIGY TODO
-				/*
-				/obj/item/hypospray,
-				*/
+				/obj/item/hypospray/mkii,
 				/obj/item/healthanalyzer,
 				/obj/item/reagent_containers/syringe,
-				// EFFIGY TODO
-				/*
-				/obj/item/reagent_containers/cup/vial,
-				*/
+				/obj/item/reagent_containers/cup/hypovial,
 				/obj/item/reagent_containers/cup/beaker,
 				/obj/item/storage/pill_bottle,
 				/obj/item/taperecorder)

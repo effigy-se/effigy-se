@@ -1,6 +1,6 @@
 /obj/item/storage/hypospraykit
 	name = "hypospray kit"
-	desc = "It's a kit containing a hypospray and specific treatment chemical-filled vials."
+	desc = "It's a portable kit containing a hypospray and purpose-built storage for chemical-filled vials."
 	icon = 'packages/adv_medical/assets/obj/hypokits.dmi'
 	icon_state = "firstaid-mini"
 	worn_icon_state = "healthanalyzer" // Get a better sprite later
@@ -10,7 +10,6 @@
 	slot_flags = ITEM_SLOT_BELT
 	throw_speed = 3
 	throw_range = 7
-	var/empty = FALSE
 	var/current_case = "firstaid"
 	var/static/list/case_designs
 	var/static/list/cmo_case_designs
@@ -28,7 +27,7 @@
 	atom_storage.max_slots = 12
 	atom_storage.can_hold = typecacheof(list(
 		/obj/item/hypospray/mkii,
-		/obj/item/reagent_containers/cup/vial
+		/obj/item/reagent_containers/cup/hypovial
 	))
 	update_icon_state()
 	update_icon()
@@ -84,40 +83,36 @@
 
 //END OF HYPOSPRAY CASE MENU CODE
 
-/obj/item/storage/hypospraykit/empty
-	desc = "A hypospray kit with general use vials."
-
-/obj/item/storage/hypospraykit/empty/PopulateContents()
-	if(empty)
-		return
+/obj/item/storage/hypospraykit/PopulateContents()
 	new /obj/item/hypospray/mkii(src)
 
 /obj/item/storage/hypospraykit/cmo
 	name = "deluxe hypospray kit"
-	desc = "A kit containing a deluxe hypospray and vials."
+	desc = "A kit containing a hypospray and prefilled vials."
 	icon_state = "tactical-mini"
 	inhand_icon_state = "medkit-tactical"
 	current_case = "tactical"
 	cmo_case = TRUE
 
 /obj/item/storage/hypospraykit/cmo/PopulateContents()
-	if(empty)
-		return
-	new /obj/item/hypospray/mkii(src)
-	new /obj/item/reagent_containers/cup/vial/multiver(src)
-	new /obj/item/reagent_containers/cup/vial/salglu(src)
-	new /obj/item/reagent_containers/cup/vial/synthflesh(src)
+	new /obj/item/hypospray/mkii/cmo(src)
+	new /obj/item/reagent_containers/cup/hypovial/syriniver(src)
+	new /obj/item/reagent_containers/cup/hypovial/lenturi(src)
+	new /obj/item/reagent_containers/cup/hypovial/libital(src)
+	new /obj/item/reagent_containers/cup/hypovial/convermol(src)
+	new /obj/item/reagent_containers/cup/hypovial/synthflesh(src)
+	new /obj/item/reagent_containers/cup/hypovial/crit(src)
 
 /obj/item/storage/box/vials
 	name = "box of hypovials"
 
 /obj/item/storage/box/vials/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/cup/vial/small( src )
+		new /obj/item/reagent_containers/cup/hypovial(src)
 
 /obj/item/storage/box/hypospray
 	name = "box of hypospray kits"
 
 /obj/item/storage/box/hypospray/PopulateContents()
 	for(var/i in 1 to 4)
-		new /obj/item/storage/hypospraykit/empty(src)
+		new /obj/item/storage/hypospraykit(src)
