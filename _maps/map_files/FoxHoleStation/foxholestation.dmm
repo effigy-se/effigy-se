@@ -615,6 +615,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/security/brig/upper)
 "axr" = (
@@ -4183,6 +4184,7 @@
 /obj/machinery/modular_computer/console/preset/civilian{
 	dir = 8
 	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/carpet/cyan,
 /area/station/service/chapel/office)
 "cMG" = (
@@ -10432,6 +10434,14 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door_buttons/airlock_controller{
+	idExterior = "virology_airlock_exterior";
+	idInterior = "virology_airlock_interior";
+	idSelf = "virology_airlock_control";
+	name = "Virology Access Console";
+	pixel_x = 24;
+	req_access = list("virology")
+	},
 /turf/open/floor/iron/white/textured_large,
 /area/station/medical/virology)
 "hdh" = (
@@ -11946,6 +11956,19 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/station/science/robotics)
+"icF" = (
+/obj/machinery/door/poddoor{
+	elevator_mode = 1;
+	linked_elevator_id = "HoloLift"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/textured_large,
+/area/station/commons)
 "icJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -13492,6 +13515,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/white/small,
 /area/station/medical/treatment_center)
 "jcQ" = (
@@ -20912,6 +20936,7 @@
 /obj/structure/disposalpipe/trunk/multiz{
 	dir = 1
 	},
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/plating,
 /area/station/hallway/primary/fore)
 "oud" = (
@@ -21374,6 +21399,7 @@
 /area/station/hallway/primary/port)
 "oHv" = (
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/command)
 "oHx" = (
@@ -21776,6 +21802,7 @@
 /obj/structure/chair/sofa/bench/tram/right{
 	dir = 1
 	},
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/fore)
 "oVE" = (
@@ -25480,6 +25507,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/commons)
 "rtH" = (
@@ -25938,6 +25966,7 @@
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted{
 	dir = 1
 	},
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/command)
 "rLJ" = (
@@ -27403,6 +27432,25 @@
 	dir = 1
 	},
 /area/station/medical/chemistry)
+"sGj" = (
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/station/hallway/primary/port)
 "sGp" = (
 /obj/machinery/door/airlock/command,
 /obj/effect/mapping_helpers/airlock/access/any/command/eva,
@@ -27755,6 +27803,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/station/commons)
 "sQP" = (
@@ -28390,6 +28439,19 @@
 	},
 /turf/open/floor/iron/white/textured_large,
 /area/station/command/heads_quarters/rd)
+"thK" = (
+/obj/effect/turf_decal/trimline/blue/warning{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/mid_joiner{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/white/herringbone,
+/area/station/medical/medbay/central)
 "thX" = (
 /obj/structure/sign/poster/official/random/directional/south,
 /obj/structure/disposalpipe/trunk{
@@ -28592,18 +28654,12 @@
 /turf/open/floor/plating/reinforced,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "tpo" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/railing,
-/obj/effect/turf_decal/siding/white,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/light/directional/north,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/hallway/primary/port)
+/obj/effect/turf_decal/bot_red,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/landmark/secequipment,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/dark/herringbone,
+/area/station/security/office)
 "tpq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -34712,14 +34768,15 @@
 /turf/open/floor/iron/showroomfloor,
 /area/station/service/kitchen/coldroom)
 "xdX" = (
-/obj/machinery/door/poddoor{
-	id = "HoloLift"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/machinery/door/poddoor{
+	elevator_mode = 1;
+	linked_elevator_id = "HoloLift"
 	},
 /turf/open/floor/iron/textured_large,
 /area/station/commons)
@@ -35139,6 +35196,11 @@
 /obj/effect/landmark/start/janitor,
 /turf/open/floor/iron,
 /area/station/service/janitor)
+"xrh" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/light/cold/directional/west,
+/turf/open/floor/plating,
+/area/station/maintenance/disposal)
 "xrn" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/landmark/start/assistant,
@@ -73506,7 +73568,7 @@ bsK
 kZa
 kZa
 kZa
-gcH
+thK
 mEt
 rzd
 rzd
@@ -121024,7 +121086,7 @@ pVu
 dZh
 pVu
 xdX
-xdX
+icF
 sfO
 qCQ
 sfO
@@ -121268,7 +121330,7 @@ nod
 nod
 hdh
 bmp
-lnh
+xrh
 lnh
 tpc
 iNe
@@ -127704,10 +127766,10 @@ oHa
 sYf
 sYf
 aug
-tpo
+wno
 hNI
 hNI
-oAD
+sGj
 fdb
 fdb
 fdb
@@ -129549,7 +129611,7 @@ eht
 lHW
 uze
 lHW
-leE
+tpo
 ipf
 hnX
 rFP
@@ -138543,7 +138605,7 @@ quT
 ino
 qen
 ino
-xHP
+ino
 dgD
 vDw
 bFC
