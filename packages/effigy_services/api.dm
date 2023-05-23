@@ -43,7 +43,7 @@ SUBSYSTEM_DEF(effigy)
 	var/message_to_send = "Nya nya nya, cattes!"
 	var/message_type = EFFIGY_MESSAGE_NEW_TICKET
 	var/message_target = SOCIAL_DISTRICT_AHELP
-	var/player_id = 1
+	var/player_id = SSeffigy.get_player_id_from_ckey(ckey(user.key))
 
 	SSeffigy.create_message_request(message_type, box = message_target, peep_id = player_id, peep_message = message_to_send)
 
@@ -88,3 +88,6 @@ SUBSYSTEM_DEF(effigy)
 	api_endpoint = null
 	QDEL_NULL(message_request)
 	return ..()
+
+/datum/controller/subsystem/effigy/proc/get_player_id_from_ckey(ckey)
+	return 7
