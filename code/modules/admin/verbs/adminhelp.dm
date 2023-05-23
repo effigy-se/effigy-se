@@ -1,6 +1,3 @@
-// EFFIGY EDIT REMOVE START (Moved to packages/effigy_services/)
-/*
-
 /// Client var used for returning the ahelp verb
 /client/var/adminhelptimerid = 0
 /// Client var used for tracking the ticket the (usually) not-admin client is dealing with
@@ -1136,6 +1133,3 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 #undef WEBHOOK_URGENT
 #undef WEBHOOK_NONE
 #undef WEBHOOK_NON_URGENT
-
-*/
-// EFFIGY EDIT REMOVE END
