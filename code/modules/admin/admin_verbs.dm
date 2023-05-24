@@ -24,6 +24,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/addbunkerbypass, // EFFIGY EDIT ADD
 	/client/proc/revokebunkerbypass, // EFFIGY EDIT ADD
 	/client/proc/remove_liquid, // EFFIGY EDIT ADD
+	/client/proc/find_effigy_id, // EFFIGY EDIT ADD
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)

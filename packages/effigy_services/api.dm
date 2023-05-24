@@ -1,12 +1,22 @@
 SUBSYSTEM_DEF(effigy)
 	name = "Effigy Game Services"
 	wait = 0.1 SECONDS
+	flags = SS_NO_FIRE
+
 	/// The URL of the Effigy API
 	var/efapi_url
 	/// API authentication method
 	var/efapi_auth
 	/// Our API key
 	var/efapi_key
+
+/datum/effigy_account_link
+	var/ckey
+	var/effigy_id
+
+/datum/effigy_account_link/New(ckey, effigy_id)
+	src.ckey = ckey
+	src.effigy_id = effigy_id
 
 /datum/controller/subsystem/effigy/Initialize()
 	// Check for enable
@@ -21,6 +31,8 @@ SUBSYSTEM_DEF(effigy)
 	if(!efapi_key || !efapi_key)
 		return SS_INIT_NO_NEED
 
+	return SS_INIT_SUCCESS
+
 /datum/controller/subsystem/effigy/Destroy()
 	return ..()
 
@@ -34,23 +46,24 @@ SUBSYSTEM_DEF(effigy)
 
 /obj/item/toy/plush/effigy/adminhelp/attack_self(mob/user)
 	. = ..()
-	var/message_to_send = "Nya nya nya, cattes!"
-	var/message_type = EFFIGY_MESSAGE_NEW_TICKET
-	var/message_target = SOCIAL_DISTRICT_AHELP
-	var/player_id = SSeffigy.get_player_id_from_ckey(ckey(user.key))
+	var/message = tgui_input_text(usr, "Some say speaking to this plushie, you speak to the Gods.", "Heavenly Nya")
+	var/title = copytext_char(message, 1, 64)
+	var/msg_type = EFFIGY_MESSAGE_NEW_TICKET
+	var/box = SOCIAL_DISTRICT_AHELP
+	var/link_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
 
-	SSeffigy.create_message_request(message_type, box = message_target, peep_id = player_id, peep_message = message_to_send)
+	SSeffigy.create_message_request(msg_type, link_id, box, title, message)
 
-/datum/controller/subsystem/effigy/proc/create_message_request(message_type, box, peep_id, peep_title, peep_message)
+/datum/controller/subsystem/effigy/proc/create_message_request(msg_type, link_id, box, title, message)
 	if(!efapi_key)
 		return
 
 	var/datum/effigy_message/effigy_request = new(
-		req_message_type = new message_type,
-		req_box = box,
-		req_peep_id = peep_id,
-		req_peep_title = peep_title,
-		req_peep_message = peep_message,
+		msg_type = new msg_type,
+		box = box,
+		link_id = link_id,
+		title = title,
+		message = message,
 	)
 
 	start_request(effigy_request)
@@ -63,13 +76,13 @@ SUBSYSTEM_DEF(effigy)
 	/// HTTP message request
 	var/datum/http_request/message_request
 
-/datum/effigy_message/New(req_message_type, req_box, req_peep_id, req_peep_title, req_peep_message)
-	endpoint = req_message_type
+/datum/effigy_message/New(msg_type, box, link_id, title, message)
+	endpoint = msg_type
 	message_content = list(
-		"box" = req_box,
-		"peep_id" = req_peep_id,
-		"peep_title" = req_peep_title,
-		"peep_message" = req_peep_message,
+		"box" = box,
+		"link_id" = link_id,
+		"title" = title,
+		"message" = message,
 	)
 
 /datum/controller/subsystem/effigy/proc/start_request(datum/effigy_message/message)
@@ -86,5 +99,47 @@ SUBSYSTEM_DEF(effigy)
 	QDEL_NULL(message_request)
 	return ..()
 
-/datum/controller/subsystem/effigy/proc/get_player_id_from_ckey(ckey)
-	return 7
+/**
+ * Find Effigy link entry by the passed in user ckey
+ *
+ * This will look into the discord link table and return the entry that matches the given ckey
+ *
+ * Arguments:
+ * * ckey the users ckey as a string
+ *
+ * Returns a [/datum/effigy_account_link]
+ */
+/datum/controller/subsystem/effigy/proc/find_effigy_link_by_ckey(ckey)
+	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("effigy_links")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
+	var/datum/db_query/query_get_effigy_link_record = SSdbcore.NewQuery(
+		query,
+		list("ckey" = ckey)
+	)
+	if(!query_get_effigy_link_record.Execute())
+		qdel(query_get_effigy_link_record)
+		return
+
+	if(query_get_effigy_link_record.NextRow())
+		var/result = query_get_effigy_link_record.item
+		. = new /datum/effigy_account_link(result[2], result[1])
+
+/datum/controller/subsystem/effigy/proc/ckey_to_effigy_id(lookup_ckey)
+	var/datum/effigy_account_link/link = find_effigy_link_by_ckey(lookup_ckey)
+	if(!link)
+		stack_trace("Request came back invalid!")
+		return
+	return link.effigy_id
+
+/client/proc/find_effigy_id(ckeytomatch as text)
+	set category = "Admin"
+	set name = "Find Effigy ID"
+	set desc = "Find the Effigy account linked to a ckey."
+
+	var/requested_link = 0
+	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
+	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
+	if(!requested_link)
+		to_chat(usr, span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
+	else
+		to_chat(usr, span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
+
