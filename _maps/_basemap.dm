@@ -12,6 +12,7 @@
 		#include "map_files\MetaStation\MetaStation.dmm"
 		#include "map_files\Mining\Lavaland.dmm"
 		#include "map_files\NorthStar\north_star.dmm"
+		#include "map_files\Sokoban\Sokoban.dmm"
 		#include "map_files\tramstation\tramstation.dmm"
 		#include "map_files\MiniStation\MiniStation.dmm"
 		#include "map_files\Birdshot\birdshot.dmm"
