@@ -66,7 +66,7 @@ SUBSYSTEM_DEF(effigy)
 		message = message,
 	)
 
-	start_request(effigy_request)
+	return effigy_request
 
 /datum/effigy_message
 	/// The endpoint we're using
@@ -92,6 +92,7 @@ SUBSYSTEM_DEF(effigy)
 	var/datum/http_response/response = request.into_response()
 	if(response.errored || response.status_code != 200)
 		stack_trace(response.error)
+	return response.body
 
 // Cleans up the request object when it is destroyed.
 /datum/effigy_message/Destroy(force, ...)

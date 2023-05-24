@@ -229,15 +229,18 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(!effigy_player_id)
 		effigy_linked = LINK_FAIL
 		stack_trace("Unable to find an Effigy account link for ckey [initiator_ckey]")
+		id = ++ticket_counter
 	else
 		var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
 		var/linkid = effigy_player_id
 		var/box = SOCIAL_DISTRICT_AHELP
-		var/title = copytext_char(msg, 1, 64)
+		var/title = name
 		var/message = msg
-		SSeffigy.create_message_request(ef_type, linkid, box, title, message)
+		//var/request = SSeffigy.create_message_request(ef_type, linkid, box, title, message)
+		//var/list/response = SSeffigy.start_request(request)
+		//message_admins("[response["id"]]")
+		id = ++ticket_counter
 
-	id = ++ticket_counter
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket) //This is a bug
 		stack_trace("Multiple ahelp current_tickets")
