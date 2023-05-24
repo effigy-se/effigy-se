@@ -49,9 +49,9 @@ SUBSYSTEM_DEF(effigy)
 	var/message_to_send = "Nya nya nya, cattes!"
 	var/message_type = EFFIGY_MESSAGE_NEW_TICKET
 	var/message_target = SOCIAL_DISTRICT_AHELP
-	var/effigy_link = SSeffigy.find_effigy_link_by_ckey(ckey(user.key))
+	var/effigy_id = SSeffigy.find_effigy_id(usr.ckey)
 
-	SSeffigy.create_message_request(message_type, box = message_target, peep_id = effigy_link, peep_message = message_to_send)
+	SSeffigy.create_message_request(message_type, box = message_target, peep_id = effigy_id, peep_message = message_to_send)
 
 /datum/controller/subsystem/effigy/proc/create_message_request(message_type, box, peep_id, peep_title, peep_message)
 	if(!efapi_key)
@@ -110,6 +110,7 @@ SUBSYSTEM_DEF(effigy)
  */
 /datum/controller/subsystem/effigy/proc/find_effigy_link_by_ckey(ckey)
 	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey, FROM [format_table_name("effigy_links")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
+	message_admins("[query]")
 	var/datum/db_query/query_get_effigy_link_record = SSdbcore.NewQuery(
 		query,
 		list("ckey" = ckey)
@@ -125,8 +126,10 @@ SUBSYSTEM_DEF(effigy)
 
 /datum/controller/subsystem/effigy/proc/find_effigy_id(lookup_ckey)
 	var/datum/effigy_account_link/link = find_effigy_link_by_ckey(lookup_ckey)
-	if(link)
-		return link.effigy_id
+	if(!link)
+		stack_trace("Request came back invalid!")
+	message_admins("effigy_id link [link.effigy_id]")
+	return link.effigy_id
 
 /client/proc/find_effigy_link(ckeytolink as text)
 	set category = "Admin"
