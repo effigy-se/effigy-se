@@ -763,7 +763,11 @@
 
 	if(potential_patient.body_position == LYING_DOWN && potential_patient.loc == loc)
 		patient = potential_patient
+		chill_out(patient) // EFFIGY EDIT ADD (Medical)
 		return
+
+	if(!isnull(patient)) // EFFIGY EDIT ADD (Medical)
+		thaw_them(patient) // EFFIGY EDIT ADD (Medical)
 
 	// Find another lying mob as a replacement.
 	for (var/mob/living/carbon/replacement_patient in loc.contents)
