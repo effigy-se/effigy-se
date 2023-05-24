@@ -115,6 +115,7 @@ SUBSYSTEM_DEF(effigy)
 		list("ckey" = ckey)
 	)
 	if(!query_get_effigy_link_record.Execute())
+		stack_trace("Query execution failed!")
 		qdel(query_get_effigy_link_record)
 		return
 
@@ -122,12 +123,20 @@ SUBSYSTEM_DEF(effigy)
 		var/result = query_get_effigy_link_record.item
 		. = new /datum/effigy_account_link(result[2], result[1])
 
-/client/proc/findeffigylink(ckeytolink as text)
+/datum/controller/subsystem/effigy/proc/find_effigy_id(lookup_ckey)
+	var/datum/effigy_account_link/link = find_effigy_link_by_ckey(lookup_ckey)
+	if(link)
+		return link.effigy_id
+
+/client/proc/find_effigy_link(ckeytolink as text)
 	set category = "Admin"
 	set name = "Find Effigy Link"
 	set desc = "Find the Effigy account link for a ckey."
 
 	message_admins("Searching for [ckeytolink]")
-	var/datum/effigy_account_link/player
-	player = SSeffigy.find_effigy_link_by_ckey(ckeytolink)
-	message_admins("Found [player.ckey] [player.effigy_id]")
+	var/requested_link = SSeffigy.find_effigy_id(ckeytolink)
+	if(!requested_link)
+		stack_trace("Request came back invalid!")
+	message_admins("Found Effigy ID [requested_link] for ckey [ckeytolink]!")
+	return requested_link
+
