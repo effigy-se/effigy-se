@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(effigy)
 
 /obj/item/toy/plush/effigy/adminhelp/attack_self(mob/user)
 	. = ..()
-	var/message_to_send = "Nya nya nya, cattes!"
+	var/message_to_send = tgui_input_text(usr, "Some say speaking to this plushie, you speak to the Gods.", "Heavenly Nya")
 	var/message_type = EFFIGY_MESSAGE_NEW_TICKET
 	var/message_target = SOCIAL_DISTRICT_AHELP
 	var/effigy_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
