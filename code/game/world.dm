@@ -342,6 +342,8 @@ GLOBAL_VAR(restart_counter)
 	auxcleanup()
 	. = ..()
 
+// EFFIGY EDIT REMOVE START (moved to packages/admin)
+/*
 /world/proc/update_status()
 
 	var/list/features = list()
@@ -382,6 +384,8 @@ GLOBAL_VAR(restart_counter)
 		new_status += "<br>Alert: <b>[capitalize(alert_text)]</b>"
 
 	status = new_status
+*/
+// EFFIGY EDIT REMOVE END
 
 /world/proc/update_hub_visibility(new_visibility)
 	if(new_visibility == GLOB.hub_visibility)

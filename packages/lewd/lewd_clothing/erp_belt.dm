@@ -31,7 +31,7 @@
 						/obj/item/clothing/sextoy/fleshlight,
 						/obj/item/kinky_shocker,
 						/obj/item/clothing/mask/leatherwhip,
-						/obj/item/clothing/sextoy/magic_wand,
+					//	/obj/item/clothing/sextoy/magic_wand,
 						/obj/item/bdsm_candle,
 						/obj/item/spanking_pad,
 						/obj/item/clothing/sextoy/vibrator,

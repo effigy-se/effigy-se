@@ -27,7 +27,7 @@
 					/obj/item/clothing/sextoy/fleshlight = 8,
 					/obj/item/kinky_shocker = 4,
 					/obj/item/clothing/mask/leatherwhip = 4,
-					/obj/item/clothing/sextoy/magic_wand = 4,
+				//	/obj/item/clothing/sextoy/magic_wand = 4,
 					/obj/item/bdsm_candle = 4,
 					/obj/item/spanking_pad = 4,
 					/obj/item/clothing/sextoy/vibrator = 4,

@@ -25,7 +25,6 @@
 	var/start_vial
 	/// Does the Hypospray start with a vial?
 	var/spawnwithvial = FALSE
-
 	/// Time taken to inject others
 	var/inject_wait = WAIT_INJECT
 	/// Time taken to spray others
@@ -39,6 +38,11 @@
 	var/quickload = TRUE
 	/// Does it penetrate clothing?
 	var/penetrates = null
+
+/obj/item/hypospray/mkii/cmo
+	name = "hypospray mk.II SE"
+	icon_state = "cmo2"
+	desc = "A special edition DeForest Medical Hypospray. Functionally identical but has a dazzling metallic finish."
 
 /obj/item/hypospray/mkii/Initialize(mapload)
 	. = ..()
