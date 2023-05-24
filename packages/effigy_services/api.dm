@@ -109,7 +109,7 @@ SUBSYSTEM_DEF(effigy)
  * Returns a [/datum/effigy_account_link]
  */
 /datum/controller/subsystem/effigy/proc/find_effigy_link_by_ckey(ckey)
-	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey, FROM [format_table_name("effigy_links")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
+	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("effigy_links")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
 	message_admins("[query]")
 	var/datum/db_query/query_get_effigy_link_record = SSdbcore.NewQuery(
 		query,
