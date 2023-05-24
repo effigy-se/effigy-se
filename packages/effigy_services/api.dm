@@ -135,7 +135,7 @@ SUBSYSTEM_DEF(effigy)
 	set desc = "Find the Effigy account linked to a ckey."
 
 	var/requested_link = 0
-	message_admins("Searching for [ckeytomatch]")
+	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
 	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
 	if(!requested_link)
 		to_chat(usr, span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
