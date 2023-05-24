@@ -371,11 +371,6 @@
 	timeout = 30 SECONDS
 
 // EFFIGY EDIT ADD START
-/datum/mood_event/mild_surgery
-	description = "<span class='warning'>Even if I couldn't feel most of it, it feels wrong being awake while somebody works on your body. Ugh!</span>\n"
-	mood_change = -1
-	timeout = 5 MINUTES
-
 /datum/mood_event/severe_surgery
 	description = "<span class='boldwarning'>Wait, THEY CUT ME OPEN - AND I FELT EVERY SECOND OF IT!</span>\n"
 	mood_change = -4
