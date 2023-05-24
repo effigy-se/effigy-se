@@ -36,6 +36,16 @@
 	/// Is the attached mask currently out?
 	var/mask_out = FALSE
 
+/obj/structure/closet/secure_closet/medical2/Initialize(mapload)
+	. = ..()
+	new /obj/machinery/anesthetic_machine(loc)
+	qdel(src)
+
+/obj/item/clothing/mask/breath/medical/Initialize(mapload)
+	. = ..()
+	new /obj/item/anesthetic_machine_kit(loc)
+	qdel(src)
+
 /obj/machinery/anesthetic_machine/examine(mob/user)
 	. = ..()
 
