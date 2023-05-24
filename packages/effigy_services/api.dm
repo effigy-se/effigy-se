@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(effigy)
 	var/message_to_send = "Nya nya nya, cattes!"
 	var/message_type = EFFIGY_MESSAGE_NEW_TICKET
 	var/message_target = SOCIAL_DISTRICT_AHELP
-	var/effigy_id = SSeffigy.find_effigy_id(usr.ckey)
+	var/effigy_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
 
 	SSeffigy.create_message_request(message_type, box = message_target, peep_id = effigy_id, peep_message = message_to_send)
 
@@ -110,13 +110,11 @@ SUBSYSTEM_DEF(effigy)
  */
 /datum/controller/subsystem/effigy/proc/find_effigy_link_by_ckey(ckey)
 	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("effigy_links")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
-	message_admins("[query]")
 	var/datum/db_query/query_get_effigy_link_record = SSdbcore.NewQuery(
 		query,
 		list("ckey" = ckey)
 	)
 	if(!query_get_effigy_link_record.Execute())
-		stack_trace("Query execution failed!")
 		qdel(query_get_effigy_link_record)
 		return
 
@@ -124,22 +122,23 @@ SUBSYSTEM_DEF(effigy)
 		var/result = query_get_effigy_link_record.item
 		. = new /datum/effigy_account_link(result[2], result[1])
 
-/datum/controller/subsystem/effigy/proc/find_effigy_id(lookup_ckey)
+/datum/controller/subsystem/effigy/proc/ckey_to_effigy_id(lookup_ckey)
 	var/datum/effigy_account_link/link = find_effigy_link_by_ckey(lookup_ckey)
 	if(!link)
 		stack_trace("Request came back invalid!")
-	message_admins("effigy_id link [link.effigy_id]")
+		return
 	return link.effigy_id
 
-/client/proc/find_effigy_link(ckeytolink as text)
+/client/proc/find_effigy_id(ckeytomatch as text)
 	set category = "Admin"
-	set name = "Find Effigy Link"
-	set desc = "Find the Effigy account link for a ckey."
+	set name = "Find Effigy ID"
+	set desc = "Find the Effigy account linked to a ckey."
 
-	message_admins("Searching for [ckeytolink]")
-	var/requested_link = SSeffigy.find_effigy_id(ckeytolink)
+	var/requested_link = 0
+	message_admins("Searching for [ckeytomatch]")
+	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
 	if(!requested_link)
-		stack_trace("Request came back invalid!")
-	message_admins("Found Effigy ID [requested_link] for ckey [ckeytolink]!")
-	return requested_link
+		to_chat(usr, span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
+	else
+		to_chat(usr, span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
 
