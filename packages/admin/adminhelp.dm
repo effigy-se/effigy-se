@@ -1,6 +1,3 @@
-// EFFIGY EDIT REMOVE START (moved to packages/admin)
-/*
-
 /// Client var used for returning the ahelp verb
 /client/var/adminhelptimerid = 0
 /// Client var used for tracking the ticket the (usually) not-admin client is dealing with
@@ -204,6 +201,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/list/admins_involved = list()
 	/// Has the player replied to this ticket yet?
 	var/player_replied = FALSE
+	var/effigy_player_id
+	var/effigy_ticket_id
+	var/effigy_linked = NO_LINK
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -219,13 +219,25 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		qdel(src)
 		return
 
-	id = ++ticket_counter
 	opened_at = world.time
-
 	name = copytext_char(msg, 1, 100)
 
 	initiator = C
 	initiator_ckey = initiator.ckey
+
+	effigy_player_id = SSeffigy.ckey_to_effigy_id(initiator_ckey)
+	if(!effigy_player_id)
+		effigy_linked = LINK_FAIL
+		stack_trace("Unable to find an Effigy account link for ckey [initiator_ckey]")
+	else
+		var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
+		var/linkid = effigy_player_id
+		var/box = SOCIAL_DISTRICT_AHELP
+		var/title = copytext_char(msg, 1, 64)
+		var/message = msg
+		SSeffigy.create_message_request(ef_type, linkid, box, title, message)
+
+	id = ++ticket_counter
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket) //This is a bug
 		stack_trace("Multiple ahelp current_tickets")
@@ -1136,6 +1148,3 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 #undef WEBHOOK_URGENT
 #undef WEBHOOK_NONE
 #undef WEBHOOK_NON_URGENT
-
-*/
-// EFFIGY EDIT REMOVE END (moved to packages/admin)

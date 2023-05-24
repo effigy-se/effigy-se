@@ -46,23 +46,24 @@ SUBSYSTEM_DEF(effigy)
 
 /obj/item/toy/plush/effigy/adminhelp/attack_self(mob/user)
 	. = ..()
-	var/message_to_send = tgui_input_text(usr, "Some say speaking to this plushie, you speak to the Gods.", "Heavenly Nya")
-	var/message_type = EFFIGY_MESSAGE_NEW_TICKET
-	var/message_target = SOCIAL_DISTRICT_AHELP
-	var/effigy_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
+	var/message = tgui_input_text(usr, "Some say speaking to this plushie, you speak to the Gods.", "Heavenly Nya")
+	var/title = copytext_char(message, 1, 64)
+	var/msg_type = EFFIGY_MESSAGE_NEW_TICKET
+	var/box = SOCIAL_DISTRICT_AHELP
+	var/link_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
 
-	SSeffigy.create_message_request(message_type, box = message_target, peep_id = effigy_id, peep_message = message_to_send)
+	SSeffigy.create_message_request(msg_type, link_id, box, title, message)
 
-/datum/controller/subsystem/effigy/proc/create_message_request(message_type, box, peep_id, peep_title, peep_message)
+/datum/controller/subsystem/effigy/proc/create_message_request(msg_type, link_id, box, title, message)
 	if(!efapi_key)
 		return
 
 	var/datum/effigy_message/effigy_request = new(
-		req_message_type = new message_type,
-		req_box = box,
-		req_peep_id = peep_id,
-		req_peep_title = peep_title,
-		req_peep_message = peep_message,
+		msg_type = new msg_type,
+		box = box,
+		link_id = link_id,
+		title = title,
+		message = message,
 	)
 
 	start_request(effigy_request)
@@ -75,13 +76,13 @@ SUBSYSTEM_DEF(effigy)
 	/// HTTP message request
 	var/datum/http_request/message_request
 
-/datum/effigy_message/New(req_message_type, req_box, req_peep_id, req_peep_title, req_peep_message)
-	endpoint = req_message_type
+/datum/effigy_message/New(msg_type, box, link_id, title, message)
+	endpoint = msg_type
 	message_content = list(
-		"box" = req_box,
-		"peep_id" = req_peep_id,
-		"peep_title" = req_peep_title,
-		"peep_message" = req_peep_message,
+		"box" = box,
+		"link_id" = link_id,
+		"title" = title,
+		"message" = message,
 	)
 
 /datum/controller/subsystem/effigy/proc/start_request(datum/effigy_message/message)

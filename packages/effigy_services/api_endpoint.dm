@@ -26,9 +26,9 @@
 /datum/effigy_message_type/proc/construct_api_message_body(list/raw_content)
 	var/list/processed_content = list(
 		"forum=[raw_content["box"]]",
-		"author=[raw_content["peep_id"]]",
-		"title=\[[GLOB.round_id]] [raw_content["peep_title"]]",
-		"post=[raw_content["peep_message"]]"
+		"author=[raw_content["link_id"]]",
+		"title=\[[GLOB.round_id]] [raw_content["title"]]",
+		"post=[raw_content["message"]]"
 	)
 
 	var/joined = jointext(processed_content, "&")
