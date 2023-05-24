@@ -44,11 +44,6 @@
 	new /obj/machinery/breath_machine/n2o(loc)
 	qdel(src)
 
-/obj/item/clothing/mask/breath/medical/Initialize(mapload)
-	. = ..()
-	new /obj/item/breath_machine_kit(loc)
-	qdel(src)
-
 /obj/machinery/breath_machine/examine(mob/user)
 	. = ..()
 
