@@ -243,10 +243,7 @@
  */
 // EFFIGY EDIT CHANGE START: Fixes painkillers not actually stopping pain. Adds mood effects to painful surgeries.
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
-	if(target.stat >= UNCONSCIOUS) //the unconscious do not worry about pain
-		return
-	if(HAS_TRAIT(target, TRAIT_NUMBED)) //numbing helps but is not perfect - this is the tradeoff for being awake
-		target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery)
+	if(target.stat >= UNCONSCIOUS || HAS_TRAIT(target, TRAIT_NUMBED)) //the unconscious do not worry about pain
 		return
 	if(mechanical_surgery == TRUE) //robots can't benefit from numbing agents like most but have no reason not to sleep - their debuff falls in-between
 		target.add_mood_event("robot_surgery", /datum/mood_event/robot_surgery)
