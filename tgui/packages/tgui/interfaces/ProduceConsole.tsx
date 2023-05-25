@@ -328,7 +328,7 @@ export const ProduceConsole = (props, context) => {
   const [condensed, setCondensed] = useLocalState(context, 'condensed', false);
   const TabComponent = TAB2NAME[tabIndex - 1].component();
   return (
-    <Window width={Math.max(order_categories.length * 125, 500)} height={400}>
+    <Window width={Math.max(order_categories.length * 175, 600)} height={525}>
       <Window.Content>
         {!off_cooldown && <OrderSent />}
         <Stack vertical fill>
