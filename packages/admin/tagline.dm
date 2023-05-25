@@ -1,7 +1,7 @@
 /world/proc/update_status()
 
 	var/features
-	var/new_status = "<b>Effigy Station] &#8212; Style Over Substance</b><br>\[18+] <b>\[Anthro Mixed RP/Action]</b> \[Whitelist]<br>"
+	var/new_status = "<b>Effigy Station] &#8212; Style Over Substance</b><br>\[18+] <b>\[Anthro Mixed RP/Action]</b> \[Whitelist] (<a href=\"https://socialdistrict.effigy.se\">Site/Discord</a>)<br>"
 	var/round_real_time = REALTIMEOFDAY - SSticker.round_start_real_time
 
 	if(SSmapping.config)
