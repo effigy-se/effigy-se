@@ -150,3 +150,13 @@
 	attack_verb_continuous = list("snuggles", "nibbles", "awoos", "tail whaps")
 	attack_verb_simple = list("snuggle", "nibble", "awoo", "tail whap")
 	squeak_override = list('packages/customization/game/objects/items/sound/merowr.ogg' = 1)
+
+//Donation reward for Kitsun
+/obj/item/toy/plush/effigy/jecca
+	name = "sexy snoodle plushie"
+	desc = "For some reason, this plushie is rather shiny, with glistening, glittering scales, and its ruby colored eyes seem to be rather enticing and full of mischievous, lewd thoughts behind them."
+	icon_state = "plushie_jecca"
+	attack_verb_continuous = list("sighs")
+	attack_verb_simple = list("sigh")
+	squeak_override = list('packages/emotes/assets/generic/female/female_sigh.ogg' = 1)
+	gender = FEMALE
