@@ -178,6 +178,9 @@
 /obj/machinery/door/airlock/engineering
 	icon = 'packages/gfx/assets/obj/airlock/station/engi.dmi'
 
+/obj/machinery/door/airlock/hydroponics
+	icon = 'packages/gfx/assets/obj/airlock/station/hydro.dmi'
+
 /obj/machinery/door/airlock/maintenance
 	icon = 'packages/gfx/assets/obj/airlock/station/maint-int.dmi'
 
@@ -201,6 +204,12 @@
 
 /obj/machinery/door/airlock/virology
 	icon = 'packages/gfx/assets/obj/airlock/station/viro.dmi'
+
+// Station2
+
+/obj/machinery/door/airlock/public
+	icon = 'packages/gfx/assets/obj/airlock/station2/glass.dmi'
+	overlays_file = 'packages/gfx/assets/obj/airlock/station2/overlays.dmi'
 
 #undef AIRLOCK_LIGHT_POWER
 #undef AIRLOCK_LIGHT_RANGE
