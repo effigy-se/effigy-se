@@ -5800,17 +5800,16 @@
 /turf/open/floor/iron/dark/small,
 /area/station/medical/morgue)
 "dAw" = (
-/obj/machinery/door/poddoor/preopen{
+/obj/machinery/door/window/elevator/left/directional/east{
 	elevator_linked_id = "HoloLift";
 	elevator_mode = 1
 	},
-/obj/effect/turf_decal/stripes/line{
+/obj/effect/turf_decal/trimline/white/warning{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/turf/open/floor/iron/smooth_edge{
+	dir = 4
 	},
-/turf/open/floor/iron/textured_large,
 /area/station/commons/fitness/recreation)
 "dAA" = (
 /turf/closed/wall,
@@ -6647,7 +6646,8 @@
 	},
 /obj/machinery/door/poddoor/preopen{
 	elevator_linked_id = "cargo_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	name = "Elevator Door"
 	},
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 8
@@ -7774,7 +7774,9 @@
 "ePJ" = (
 /obj/machinery/door/morgue{
 	elevator_linked_id = "medivator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	req_access = list("tcomms");
+	name = "Elevator Door"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -8712,15 +8714,12 @@
 	},
 /area/station/science/ordnance/storage)
 "fuU" = (
-/obj/machinery/door/poddoor/preopen{
+/obj/machinery/door/window/elevator/right/directional/south{
 	elevator_linked_id = "PortLift";
 	elevator_mode = 1
 	},
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/textured_large,
+/obj/effect/turf_decal/trimline/white/warning,
+/turf/open/floor/iron/smooth_edge,
 /area/station/hallway/primary/port)
 "fuW" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -10423,7 +10422,8 @@
 	},
 /obj/machinery/door/poddoor/preopen{
 	elevator_linked_id = "cargo_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	name = "Elevator Door"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -10836,6 +10836,18 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery)
+"gMk" = (
+/obj/machinery/door/window/elevator/right/directional/west{
+	elevator_linked_id = "HoloLift";
+	elevator_mode = 1
+	},
+/obj/effect/turf_decal/trimline/white/warning{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth_edge{
+	dir = 8
+	},
+/area/station/commons)
 "gMl" = (
 /obj/docking_port/stationary{
 	dwidth = 1;
@@ -12939,17 +12951,16 @@
 /turf/open/floor/plating,
 /area/station/science/robotics)
 "icF" = (
-/obj/machinery/door/poddoor{
-	elevator_mode = 1;
-	elevator_linked_id = "HoloLift"
+/obj/machinery/door/window/elevator/left/directional/west{
+	elevator_linked_id = "HoloLift";
+	elevator_mode = 1
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
+/obj/effect/turf_decal/trimline/white/warning{
 	dir = 8
 	},
-/turf/open/floor/iron/textured_large,
+/turf/open/floor/iron/smooth_edge{
+	dir = 8
+	},
 /area/station/commons)
 "icJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -17319,6 +17330,18 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
+"kSj" = (
+/obj/machinery/door/window/elevator/left/directional/east{
+	elevator_linked_id = "HoloLift";
+	elevator_mode = 1
+	},
+/obj/effect/turf_decal/trimline/white/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_edge{
+	dir = 4
+	},
+/area/station/commons)
 "kSp" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
@@ -20599,7 +20622,8 @@
 	},
 /obj/machinery/door/poddoor/preopen{
 	elevator_linked_id = "cargo_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	name = "Elevator Door"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -23238,9 +23262,9 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/red/line,
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/window/right/directional/south{
-	elevator_mode = 1;
-	elevator_linked_id = "MunchLift"
+/obj/machinery/door/window/elevator/right/directional/south{
+	elevator_linked_id = "MunchLift";
+	elevator_mode = 1
 	},
 /obj/machinery/lift_indicator/directional/east{
 	linked_elevator_id = "MunchLift"
@@ -25631,6 +25655,18 @@
 "qmF" = (
 /turf/closed/wall/rock/porous,
 /area/station/maintenance/fore)
+"qnV" = (
+/obj/machinery/door/window/elevator/right/directional/east{
+	elevator_linked_id = "HoloLift";
+	elevator_mode = 1
+	},
+/obj/effect/turf_decal/trimline/white/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_edge{
+	dir = 4
+	},
+/area/station/commons/fitness/recreation)
 "qnW" = (
 /obj/structure/closet/secure_closet/captains,
 /obj/effect/turf_decal/siding/wood{
@@ -26603,11 +26639,12 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
 "qRh" = (
-/obj/machinery/door/poddoor{
+/obj/machinery/door/window/elevator/left/directional/south{
 	elevator_linked_id = "PortLift";
 	elevator_mode = 1
 	},
-/turf/open/floor/iron/textured_large,
+/obj/effect/turf_decal/trimline/white/warning,
+/turf/open/floor/iron/smooth_edge,
 /area/station/hallway/primary/port)
 "qRn" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -29154,7 +29191,9 @@
 	},
 /obj/machinery/door/morgue{
 	elevator_linked_id = "medivator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	req_access = list("tcomms");
+	name = "Elevator Door"
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
@@ -37397,17 +37436,16 @@
 /turf/open/floor/iron/showroomfloor,
 /area/station/service/kitchen/coldroom)
 "xdX" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/door/window/elevator/right/directional/east{
+	elevator_linked_id = "HoloLift";
+	elevator_mode = 1
+	},
+/obj/effect/turf_decal/trimline/white/warning{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/turf/open/floor/iron/smooth_edge{
+	dir = 4
 	},
-/obj/machinery/door/poddoor{
-	elevator_mode = 1;
-	elevator_linked_id = "HoloLift"
-	},
-/turf/open/floor/iron/textured_large,
 /area/station/commons)
 "xet" = (
 /obj/effect/turf_decal/tile/blue{
@@ -57499,7 +57537,7 @@ atZ
 wFN
 pVu
 dAw
-dAw
+qnV
 uuZ
 qNW
 fnt
@@ -65211,7 +65249,7 @@ qPs
 gBp
 oqd
 wsM
-fuU
+qRh
 jGg
 sup
 arR
@@ -123034,7 +123072,7 @@ pVu
 pVu
 pVu
 pVu
-xdX
+kSj
 xdX
 sfO
 sfO
@@ -123805,7 +123843,7 @@ pVu
 pVu
 dZh
 pVu
-xdX
+gMk
 icF
 sfO
 qCQ
@@ -131004,7 +131042,7 @@ wno
 hNI
 hNI
 oAD
-qRh
+fuU
 hNI
 hNI
 fdb
