@@ -935,7 +935,7 @@ TREK
 /datum/greyscale_config/sneakers_worn/teshari
 	name = "Worn Sneakers - Teshari"
 	icon_file = 'packages/greyscale/assets/sneakers_teshari.dmi'
-digi
+
 /datum/greyscale_config/sneakers_orange_worn/teshari
 	name = "Worn Orange Sneakers - Teshari"
 	icon_file = 'packages/greyscale/assets/sneakers_teshari.dmi'
