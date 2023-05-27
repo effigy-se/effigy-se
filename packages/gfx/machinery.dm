@@ -1,3 +1,6 @@
+/obj/machinery/button
+	icon = 'packages/gfx/assets/obj/buttons.dmi'
+
 /obj/machinery/power/apc
 	icon = 'packages/gfx/assets/obj/power.dmi'
 
