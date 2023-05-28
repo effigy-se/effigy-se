@@ -8,7 +8,9 @@
 	if(panel_open)
 		. = ..()
 	else
-		src.device.multitool_act(user, I)
+		if(src.device == /obj/item/assembly/control/showtime/broadcast_team)
+			var/obj/item/assembly/control/showtime/broadcast_team/our_assembly = src.device
+			our_assembly.show_rename(user, I)
 		return TRUE
 
 /obj/item/assembly/control/showtime/broadcast_team
@@ -21,9 +23,11 @@
 		"We'll be back after the break!", \
 		)
 
-/obj/item/assembly/control/showtime/broadcast_team/multitool_act(mob/living/user, obj/item/multitool/I)
-	. = ..()
+/obj/item/assembly/control/showtime/broadcast_team/proc/show_rename(mob/living/user, obj/item/multitool/I)
 	tv_show_name = tgui_input_text(usr, "Enter the new show name...", "Show Name", tv_show_name, MAX_PLAQUE_LEN)
+	tv_starters = list( \
+	"Live Now: [tv_show_name]!", \
+	)
 	return TRUE
 
 /obj/machinery/computer/security/telescreen/broadcast_team

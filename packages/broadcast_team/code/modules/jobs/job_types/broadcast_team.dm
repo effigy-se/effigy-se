@@ -11,7 +11,7 @@
 	config_tag = "BROADCAST_TEAM"
 
 	outfit = /datum/outfit/job/broadcast_team
-	plasmaman_outfit = /datum/outfit/plasmaman/atmospherics
+	plasmaman_outfit = /datum/outfit/plasmaman
 
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_ENG
