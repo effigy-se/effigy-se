@@ -583,7 +583,7 @@
 			"server_ip" = world.internet_address || 0,
 			"server_port" = world.port,
 			"round_id" = GLOB.round_id,
-			"effigy_roundid" = GLOB.round_hex,
+			"effigy_rid" = GLOB.round_hex,
 			"effigy_evid" = generate_effigy_event_id(),
 			"role" = role,
 			"expiration_time" = duration,
