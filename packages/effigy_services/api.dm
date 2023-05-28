@@ -144,3 +144,13 @@ SUBSYSTEM_DEF(effigy)
 	else
 		to_chat(usr, span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
 
+/proc/generate_effigy_event_id()
+	var/evid = null
+	if(!GLOB.round_id)
+		evid = text2num("[rand(0,999)][rand(0,9999)]")
+		evid = num2text(evid, 7, 16)
+		return evid
+	evid = text2num("[GLOB.round_id][num2text(GLOB.current_effigy_evid, 3, 10)]")
+	evid = num2text(evid, 7, 16)
+	GLOB.current_effigy_evid++
+	return evid
