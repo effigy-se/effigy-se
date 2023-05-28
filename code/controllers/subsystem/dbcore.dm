@@ -581,8 +581,6 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	. = (status != DB_QUERY_BROKEN)
 	var/timed_out = !. && findtext(last_error, "Operation timed out")
 	if(!. && log_error)
-		log_game("SQL: [sql] [last_error]")
-		message_admins("SQL:[sql] [last_error] [arguments]")
 		logger.Log(LOG_CATEGORY_DEBUG_SQL, "sql query failed", list(
 			"query" = sql,
 			"arguments" = json_encode(arguments),
