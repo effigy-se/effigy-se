@@ -18,7 +18,6 @@
 
 /obj/machinery/computer/security/telescreen/entertainment/update_shows(is_show_active, tv_show_id, announcement)
 	. = ..()
-	radio.forceMove(src.loc)
 	if(!network.len || !is_show_active)
 		radio.set_listening(FALSE)
 	else if(is_show_active)
