@@ -38,4 +38,4 @@
 	id_trim = /datum/id_trim/job/broadcast_team
 	belt = /obj/item/modular_computer/pda/broadcast
 	uniform = /obj/item/clothing/under/suit/black_really
-	ears = /obj/item/radio/headset/headset_srv
+	ears = /obj/item/radio/headset/headset_bro
