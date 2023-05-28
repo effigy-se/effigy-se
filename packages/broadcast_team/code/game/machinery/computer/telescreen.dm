@@ -3,13 +3,13 @@
 
 /obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)
 	. = ..()
-	radio = new /obj/item/radio(src.loc)
-	radio.invisibility = 100
-	radio.anchored = TRUE
+	radio = new /obj/item/radio(src)
+	radio.keyslot = new /obj/item/encryptionkey/broadcast_only
 	radio.set_broadcasting(FALSE)
 	radio.set_frequency(FREQ_BROADCAST)
 	if(!network.len)
 		radio.set_listening(FALSE)
+	radio.recalculateChannels()
 
 /obj/machinery/computer/security/telescreen/entertainment/Destroy()
 	if(radio)
