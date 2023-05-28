@@ -181,8 +181,8 @@ SUBSYSTEM_DEF(dbcore)
 		// EFFIGY EDIT ADD END (#3 Logging - Ported from Skyrat)
 
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
-			"UPDATE [format_table_name("round")] SET shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
-			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id)
+			"UPDATE [format_table_name("round")] SET effigy_rid = :effigy_rid, shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
+			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id, "effigy_rid" = GLOB.round_hex)
 		)
 		query_round_shutdown.Execute()
 		qdel(query_round_shutdown)
