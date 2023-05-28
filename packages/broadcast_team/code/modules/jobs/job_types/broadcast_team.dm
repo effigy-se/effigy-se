@@ -35,7 +35,7 @@
 	name = "Broadcast Team"
 	jobtype = /datum/job/broadcast_team
 
-	id_trim = /datum/id_trim/job/broadcast_Team
+	id_trim = /datum/id_trim/job/broadcast_team
 	uniform = /obj/item/clothing/under/suit/black_really
 	ears = /obj/item/radio/headset/headset_srv
 	l_pocket = /obj/item/modular_computer/pda/broadcast

@@ -32,6 +32,6 @@
 	network = list("broadcast")
 	frame_type = /obj/item/wallframe/telescreen/broadcast_team
 
-/obj/item/wallframe/telescreen/broadcast_Team
+/obj/item/wallframe/telescreen/broadcast_team
 	name = "\improper Broadcast Teams' telescreen frame"
 	result_path = /obj/machinery/computer/security/telescreen/broadcast_team
