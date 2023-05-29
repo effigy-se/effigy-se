@@ -285,7 +285,7 @@
 	weight = MIN_EVENT_FREQ
 	intensity_restriction = TRUE
 
-/datum/round_event_control/meteor_wave/ices
+/datum/round_event_control/meteor_wave/custom
 	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 

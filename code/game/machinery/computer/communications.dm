@@ -428,6 +428,21 @@
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
 				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
+		// EFFIGY EDIT ADD START (Airlock Override)
+		if("toggleEngOverride")
+			if(emergency_access_cooldown(usr)) //if were in cooldown, dont allow the following code
+				return
+			if (!authenticated_as_silicon_or_captain(usr))
+				return
+			if (GLOB.force_eng_override)
+				toggle_eng_override()
+				usr.log_message("disabled airlock engineering override.", LOG_GAME)
+				deadchat_broadcast(" disabled airlock engineering override at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+			else
+				toggle_eng_override()
+				usr.log_message("enabled airlock engineering override.", LOG_GAME)
+				deadchat_broadcast(" enabled airlock engineering override at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+		// EFFIGY EDIT ADD END
 		if("requestSafeCodes")
 			if(SSjob.assigned_captain)
 				to_chat(usr, span_warning("There is already an assigned Captain or Acting Captain on deck!"))
@@ -531,6 +546,7 @@
 				data["canSendToSectors"] = FALSE
 				data["canSetAlertLevel"] = FALSE
 				data["canToggleEmergencyAccess"] = FALSE
+				data["canToggleEngineeringOverride"] = FALSE // EFFIGY EDIT ADD (Airlock Override)
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
@@ -562,7 +578,8 @@
 				if (authenticated_as_silicon_or_captain(user))
 					data["canToggleEmergencyAccess"] = TRUE
 					data["emergencyAccess"] = GLOB.emergency_access
-
+					data["canToggleEngineeringOverride"] = TRUE // EFFIGY EDIT ADD (Airlock Override)
+					data["engineeringOverride"] = GLOB.force_eng_override // EFFIGY EDIT ADD (Airlock Override)
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
 					data["canSetAlertLevel"] = issilicon(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"

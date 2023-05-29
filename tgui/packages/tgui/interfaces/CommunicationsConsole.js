@@ -235,9 +235,11 @@ const PageMain = (props, context) => {
     canSendToSectors,
     canSetAlertLevel,
     canToggleEmergencyAccess,
+    canToggleEngineeringOverride, // EFFIGY EDIT ADD (Airlock Override)
     emagged,
     syndicate,
     emergencyAccess,
+    engineeringOverride, // EFFIGY EDIT ADD (Airlock Override)
     importantActionReady,
     sectors,
     shuttleCalled,
@@ -383,6 +385,19 @@ const PageMain = (props, context) => {
               onClick={() => act('toggleEmergencyAccess')}
             />
           )}
+
+          {/* EFFIGY EDIT ADD START (Airlock Override) */}
+          {!!canToggleEngineeringOverride && (
+            <Button.Confirm
+              icon="wrench"
+              content={`${
+                engineeringOverride ? 'Disable' : 'Enable'
+              } Engineering Override Access`}
+              color={engineeringOverride ? 'bad' : undefined}
+              onClick={() => act('toggleEngOverride')}
+            />
+          )}
+          {/* EFFIGY EDIT ADD END (Airlock Override) */}
 
           {!syndicate && (
             <Button
