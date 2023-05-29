@@ -9,4 +9,5 @@
 #define span_boxannouncered(str) ("<div class='efchatalert_5'><span class='boldannounce'>" + str + "</span></div>")
 #define span_boxannouncegreen(str) ("<div class='efchatalert_0'><span class='boldannounce'>" + str + "</span></div>")
 #define span_boxannouncepurple(str) ("<div class='efchatalert_2'><span class='boldannounce'>" + str + "</span></div>")
+#define span_boxannouncepink(str) ("<div class='efchatalert_6'><span class='boldannounce'>" + str + "</span></div>")
 #define span_boxannouncegrey(str) ("<div class='efchatalert'><span class='boldannounce'>" + str + "</span></div>")
