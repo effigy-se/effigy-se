@@ -40,6 +40,9 @@
 /area/station/engineering/storage/tcomms
 	engineering_override_eligible = TRUE
 
+/area/station/hallway/secondary/command
+	engineering_override_eligible = TRUE
+
 /area/station/hallway/secondary/service
 	engineering_override_eligible = TRUE
 
