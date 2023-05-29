@@ -76,8 +76,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	  */
 	//var/list/mutant_bodyparts = list() //ORIGINAL
 	var/list/list/mutant_bodyparts = list() // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) (typed list)
-	///Internal organs that are unique to this race, like a tail.
-	var/list/mutant_organs = list()
 	///The bodyparts this species uses. assoc of bodypart string - bodypart type. Make sure all the fucking entries are in or I'll skin you alive.
 	var/list/bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left,
