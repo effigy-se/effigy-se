@@ -10,7 +10,7 @@
 	name = "Meteor Wave: Custom"
 	typepath = /datum/round_event/meteor_wave/custom
 	weight = 16
-	min_players = 40
+	min_players = 10
 	max_occurrences = 1
 	earliest_start = 75 MINUTES
 	category = EVENT_CATEGORY_SPACE
@@ -25,12 +25,14 @@
 
 /datum/round_event/meteor_wave/custom/determine_wave_type()
 	var/filter_threshold = get_active_player_count(alive_check = FALSE, afk_check = TRUE, human_check = FALSE)
-	if(filter_threshold < 75)
-		wave_name = "normal"
 	if(check_holidays(HALLOWEEN))
 		wave_name = "spooky"
 		log_game("EVENT: Meteor Wave is spookier than usual!")
 		deadchat_broadcast("Something feels awfully spooky today!", message_type=DEADCHAT_ANNOUNCEMENT)
+
+	else if(filter_threshold < 40)
+		wave_name = "normal"
+
 	if(!wave_name)
 		wave_name = pick_weight(list(
 			"normal" = METEOR_WAVE_NORMAL_WEIGHT,

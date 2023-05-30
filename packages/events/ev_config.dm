@@ -67,7 +67,8 @@
 
 // We have other intensities
 /datum/round_event_control/anomaly/anomaly_grav
-	max_occurrences = 0
+	max_occurrences = 1
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_grav/high
 	max_occurrences = 1
@@ -85,6 +86,7 @@
 
 /datum/round_event_control/anomaly/anomaly_vortex
 	max_occurrences = 1
+	min_players = 10
 	weight = MED_EVENT_FREQ
 
 /**
@@ -159,6 +161,7 @@
  */
 /datum/round_event_control/communications_blackout
 	max_occurrences = 2
+	min_players = 15
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/processor_overload
@@ -185,7 +188,7 @@
 
 /datum/round_event_control/disease_outbreak/advanced
 	max_occurrences = 1
-	min_players = 45
+	min_players = 10
 	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
@@ -208,6 +211,7 @@
  */
 /datum/round_event_control/electrical_storm
 	max_occurrences = 2
+	min_players = 0
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/grid_check
@@ -254,6 +258,7 @@
  */
 /datum/round_event_control/immovable_rod
 	max_occurrences = 2
+	min_players = 7
 	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
@@ -313,12 +318,11 @@
 
 /datum/round_event_control/space_dust/major_dust
 	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
-	intensity_restriction = TRUE
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/sandstorm
 	max_occurrences = 1
-	min_players = 45
+	min_players = 10
 	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
@@ -474,7 +478,7 @@
  * Disabled: Needs rebalancing
  */
 /datum/round_event_control/spacevine
-	max_occurrences = 0
+	max_occurrences = 1
 	intensity_restriction = TRUE
 /**
  * Spiders
