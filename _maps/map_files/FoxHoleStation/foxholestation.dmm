@@ -1359,19 +1359,12 @@
 /turf/open/misc/asteroid,
 /area/station/commons/locker)
 "aSQ" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 4;
 	name = "Cold Loop to Gas"
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/poddoor/shutters/radiation/preopen,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "aTi" = (
@@ -2304,6 +2297,7 @@
 /obj/effect/turf_decal/siding/red{
 	dir = 1
 	},
+/obj/machinery/light/floor,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "bvj" = (
@@ -4673,14 +4667,11 @@
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "cOV" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold/orange/visible{
 	dir = 4
 	},
+/obj/machinery/door/poddoor/shutters/radiation/preopen,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "cPc" = (
@@ -7160,6 +7151,7 @@
 /obj/effect/turf_decal/siding/red{
 	dir = 1
 	},
+/obj/machinery/light/floor,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "eqS" = (
@@ -11695,6 +11687,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/reflector/box/anchored,
 /obj/effect/turf_decal/box/red,
+/obj/machinery/light/floor,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "hnk" = (
@@ -12524,6 +12517,13 @@
 "hKB" = (
 /turf/closed/wall,
 /area/station/security/brig/upper)
+"hKC" = (
+/obj/structure/cable/layer1,
+/obj/machinery/shower/directional/east,
+/obj/machinery/airalarm/directional/west,
+/obj/effect/mapping_helpers/airalarm/engine_access,
+/turf/open/floor/engine,
+/area/station/engineering/supermatter/room)
 "hKR" = (
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
@@ -15189,7 +15189,12 @@
 /area/station/maintenance/starboard/aft)
 "jqt" = (
 /obj/structure/cable/layer1,
-/obj/machinery/airalarm/directional/west,
+/obj/machinery/button/ignition{
+	id = "engsm";
+	pixel_y = -1;
+	pixel_x = -32;
+	name = "Radiation Shutters"
+	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "jqE" = (
@@ -15481,6 +15486,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
+"jAs" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
 "jAu" = (
 /obj/machinery/computer/security{
 	dir = 8
@@ -15604,6 +15619,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -16754,6 +16770,7 @@
 	},
 /obj/machinery/airalarm/directional/north,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airalarm/engine_access,
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -18828,7 +18845,6 @@
 /area/station/maintenance/port/greater)
 "lIS" = (
 /obj/machinery/camera/autoname/directional/east,
-/obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -20393,6 +20409,10 @@
 /obj/effect/turf_decal/trimline/red/corner,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/security/brig/upper)
+"mFq" = (
+/obj/machinery/light/floor,
+/turf/open/floor/engine,
+/area/station/engineering/supermatter/room)
 "mFS" = (
 /turf/closed/wall/r_wall,
 /area/station/command/heads_quarters/captain)
@@ -21375,12 +21395,12 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/station/hallway/primary/fore)
 "noG" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/effect/turf_decal/siding/red{
+	dir = 1
 	},
-/turf/closed/wall,
-/area/station/maintenance/department/science)
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
 "noO" = (
 /obj/machinery/atmospherics/components/trinary/filter{
 	dir = 4
@@ -22163,6 +22183,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/neon/simple/pink,
 /area/station/command/heads_quarters/rd)
+"nWS" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
 "nWV" = (
 /obj/structure/table/reinforced/plastitaniumglass,
 /turf/open/floor/iron/white/textured_half,
@@ -23345,6 +23370,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
 	dir = 4
 	},
+/obj/machinery/light/floor,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "oGx" = (
@@ -23473,14 +23499,11 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/commons/locker)
 "oKI" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
 /obj/structure/cable/layer1,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/machinery/door/poddoor/shutters/radiation/preopen,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "oKO" = (
@@ -23672,10 +23695,6 @@
 /turf/open/floor/iron/textured_large,
 /area/station/tcommsat/computer)
 "oQe" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
 /obj/structure/cable/layer1,
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 1
@@ -23683,6 +23702,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+/obj/machinery/door/poddoor/shutters/radiation/preopen,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "oQD" = (
@@ -23736,11 +23756,8 @@
 /turf/open/floor/wood/tile,
 /area/station/service/bar/backroom)
 "oRE" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/poddoor/shutters/radiation/preopen,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "oRF" = (
@@ -25657,6 +25674,7 @@
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
 	},
+/obj/machinery/light/floor,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "qcR" = (
@@ -37622,6 +37640,11 @@
 	dir = 1
 	},
 /area/station/science/circuits)
+"wQx" = (
+/obj/effect/turf_decal/stripes/red/full,
+/obj/machinery/light/floor,
+/turf/open/floor/engine,
+/area/station/engineering/supermatter/room)
 "wQE" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
@@ -39195,7 +39218,12 @@
 /turf/open/floor/iron/dark/herringbone,
 /area/station/security/prison/mess)
 "xJu" = (
-/obj/machinery/airalarm/directional/east,
+/obj/machinery/button/ignition{
+	id = "engsm";
+	pixel_y = -1;
+	pixel_x = 32;
+	name = "Radiation Shutters"
+	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "xJP" = (
@@ -39485,6 +39513,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
+"xRS" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/engine_access,
+/turf/open/floor/engine,
+/area/station/engineering/supermatter/room)
 "xRZ" = (
 /obj/structure/chair{
 	dir = 1
@@ -68571,7 +68607,7 @@ cse
 qdV
 qdV
 seX
-noG
+qdV
 ycB
 eXU
 eXU
@@ -70405,7 +70441,7 @@ wqn
 uAo
 clm
 gbX
-clm
+hKC
 jqt
 aSQ
 xGR
@@ -70669,7 +70705,7 @@ cgS
 qAl
 cgS
 xdQ
-fzs
+mFq
 bNN
 bNN
 xcD
@@ -71427,10 +71463,10 @@ iZX
 wGu
 qRp
 jCz
-qLk
+noG
 iUl
 bHV
-hnC
+nWS
 cpA
 tZT
 oGs
@@ -71947,7 +71983,7 @@ cbf
 hni
 xIw
 xsP
-xsP
+wQx
 qwB
 uMF
 tKY
@@ -72458,10 +72494,10 @@ xuD
 bvh
 pLo
 mdW
-hnC
+nWS
 kjI
 kRX
-rSF
+jAs
 qgJ
 prS
 xuu
@@ -73239,7 +73275,7 @@ fzs
 fzs
 kjI
 fzs
-fzs
+mFq
 bNN
 bNN
 xcD
@@ -73489,7 +73525,7 @@ tWC
 pEr
 arg
 arg
-arg
+xRS
 xJu
 oRE
 gAL
