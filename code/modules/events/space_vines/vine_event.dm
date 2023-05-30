@@ -53,9 +53,9 @@
 		else
 			selected_mutations = override_mutations
 		if(isnull(potency))
-			potency = rand(50,100)
+			potency = rand(20,40) // EFFIGY EDIT CHANGE
 		if(isnull(production))
-			production = rand(1, 4)
+			production = rand(2, 8) // EFFIGY EDIT CHANGE
 
 		new /datum/spacevine_controller(floor, selected_mutations, potency, production, src) //spawn a controller at turf with randomized stats and a single random mutation
 
@@ -64,7 +64,7 @@
 
 /datum/event_admin_setup/set_location/spacevine/apply_to_event(datum/round_event/spacevine/event)
 	event.override_turf = chosen_turf
-	
+
 /datum/event_admin_setup/multiple_choice/spacevine
 	input_text = "Select starting mutations."
 	min_choices = 0
@@ -88,13 +88,13 @@
 		type_choices += text2path(choice)
 	event.mutations_overridden = TRUE
 	event.override_mutations = type_choices
-	
+
 /datum/event_admin_setup/input_number/spacevine_potency
 	input_text = "Set vine's potency (effects mutation frequency + max severity)"
 	max_value = 100
 
 /datum/event_admin_setup/input_number/spacevine_potency/prompt_admins()
-	default_value = rand(50, 100)
+	default_value = rand(20, 40) // EFFIGY EDIT CHANGE
 	return ..()
 
 /datum/event_admin_setup/input_number/spacevine_potency/apply_to_event(datum/round_event/spacevine/event)
@@ -106,7 +106,7 @@
 	max_value = 10
 
 /datum/event_admin_setup/input_number/spacevine_production/prompt_admins()
-	default_value = rand(1, 4)
+	default_value = rand(2, 8) // EFFIGY EDIT CHANGE
 	return ..()
 
 /datum/event_admin_setup/input_number/spacevine_production/apply_to_event(datum/round_event/spacevine/event)
