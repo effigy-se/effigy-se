@@ -30,7 +30,7 @@
 /client/proc/remove_liquid(turf/epicenter in world)
 	set name = "Remove Liquids"
 	set category = "Admin.Game"
-	set desc = "Fixes air in specified radius."
+	set desc = "Remove liquids in a range."
 
 	var/range = tgui_input_number(usr, "Enter range:", "Range selection", 2)
 

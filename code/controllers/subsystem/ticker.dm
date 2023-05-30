@@ -285,7 +285,7 @@ SUBSYSTEM_DEF(ticker)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
 	round_start_real_time = REALTIMEOFDAY // EFFIGY EDIT ADD - STATPANEL
-	SSautotransfer.new_shift()
+	SSautotransfer.new_shift(round_start_real_time)
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
@@ -716,7 +716,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldannounce("An admin has delayed the round end."))
+		to_chat(world, span_boxannounceorange("An admin has delayed the round end."))
 		return
 
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
@@ -726,7 +726,7 @@ SUBSYSTEM_DEF(ticker)
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldannounce("Reboot was cancelled by an admin."))
+		to_chat(world, span_boxannounceorange("Reboot was cancelled by an admin."))
 		return
 	if(end_string)
 		end_state = end_string

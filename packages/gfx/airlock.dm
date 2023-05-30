@@ -73,10 +73,10 @@
 				light_state = AIRLOCK_LIGHT_EMERGENCY
 				lights_overlay = "lights_emergency"
 				pre_light_color = light_color_emergency
-		//	else if(engineering_override)
-		//		light_state = AIRLOCK_LIGHT_ENGINEERING
-		//		lights_overlay = "lights_engineering"
-		//		pre_light_color = light_color_engineering
+			else if(engineering_override)
+				light_state = AIRLOCK_LIGHT_ENGINEERING
+				lights_overlay = "lights_engineering"
+				pre_light_color = light_color_engineering
 			else
 				lights_overlay = "lights_poweron"
 				pre_light_color = light_color_poweron
@@ -158,7 +158,7 @@
 	if(frame_state == AIRLOCK_FRAME_CLOSED && seal)
 		. += get_airlock_overlay("sealed", overlays_file, src, em_block = TRUE)
 
-	if(hasPower() && unres_sides && frame_state == AIRLOCK_FRAME_CLOSED && light_state != AIRLOCK_LIGHT_DENIED)
+	if(hasPower() && unres_sides && frame_state == AIRLOCK_FRAME_CLOSED && !light_state)
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
 			if(!(unres_sides & heading))
 				continue

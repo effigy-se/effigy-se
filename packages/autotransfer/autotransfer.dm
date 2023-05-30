@@ -48,11 +48,11 @@ SUBSYSTEM_DEF(autotransfer)
 	else
 		SSshuttle.autoEnd()
 
-/datum/controller/subsystem/autotransfer/proc/new_shift()
+/datum/controller/subsystem/autotransfer/proc/new_shift(round_start_real_time)
 	var/init_vote = CONFIG_GET(number/vote_autotransfer_initial)
-	starttime = REALTIMEOFDAY
+	starttime = round_start_real_time
 	targettime = starttime + init_vote
-	log_game("Autotransfer enabled, first vote in [time2text(targettime - REALTIMEOFDAY)]")
-	message_admins("Autotransfer enabled, first vote in [time2text(targettime - REALTIMEOFDAY)]")
+	log_game("Autotransfer enabled, first vote in [DisplayTimeText(targettime - starttime)]")
+	message_admins("Autotransfer enabled, first vote in [DisplayTimeText(targettime - starttime)]")
 
 #undef NO_MAXVOTES_CAP

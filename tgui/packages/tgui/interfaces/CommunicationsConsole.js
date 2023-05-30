@@ -235,9 +235,11 @@ const PageMain = (props, context) => {
     canSendToSectors,
     canSetAlertLevel,
     canToggleEmergencyAccess,
+    canToggleEngineeringOverride, // EFFIGY EDIT ADD (Airlock Override)
     emagged,
     syndicate,
     emergencyAccess,
+    engineeringOverride, // EFFIGY EDIT ADD (Airlock Override)
     importantActionReady,
     sectors,
     shuttleCalled,
@@ -384,6 +386,19 @@ const PageMain = (props, context) => {
             />
           )}
 
+          {/* EFFIGY EDIT ADD START (Airlock Override) */}
+          {!!canToggleEngineeringOverride && (
+            <Button.Confirm
+              icon="wrench"
+              content={`${
+                engineeringOverride ? 'Disable' : 'Enable'
+              } Engineering Override Access`}
+              color={engineeringOverride ? 'bad' : undefined}
+              onClick={() => act('toggleEngOverride')}
+            />
+          )}
+          {/* EFFIGY EDIT ADD END (Airlock Override) */}
+
           {!syndicate && (
             <Button
               icon="desktop"
@@ -436,40 +451,6 @@ const PageMain = (props, context) => {
               onClick={() => act('restoreBackupRoutingData')}
             />
           )}
-          {
-            // EFFIGY EDIT BEGIN
-          }
-          {!!canMakeAnnouncement && (
-            <Button
-              icon="bullhorn"
-              content="Call Sol Federation 911: Marshals Response"
-              onClick={() => act('callThePolice')}
-            />
-          )}
-          {!!canMakeAnnouncement && (
-            <Button
-              icon="bullhorn"
-              content="Call Sol Federation 811: Advanced Atmospherics Response"
-              onClick={() => act('callTheCatmos')}
-            />
-          )}
-          {!!canMakeAnnouncement && (
-            <Button
-              icon="bullhorn"
-              content="Call Sol Federation 911: Medical Response"
-              onClick={() => act('callTheParameds')}
-            />
-          )}
-          {!!emagged && (
-            <Button
-              icon="bullhorn"
-              content="Place an Order with Dogginos Pizza"
-              onClick={() => act('callThePizza')}
-            />
-          )}
-          {
-            // EFFIGY EDIT END
-          }
         </Flex>
       </Section>
 
