@@ -16628,6 +16628,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
 "kgc" = (
@@ -22269,6 +22272,7 @@
 "nSH" = (
 /obj/structure/railing,
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/firedoor/border_only,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "nSL" = (
@@ -23708,6 +23712,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/machinery/button/door/directional/west{
+	id = "engsm";
+	name = "Radiation Shutters Control";
+	req_access = list("engineering")
+	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "oKO" = (
@@ -23909,6 +23918,11 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
+	},
+/obj/machinery/button/door/directional/east{
+	id = "engsm";
+	name = "Radiation Shutters Control";
+	req_access = list("engineering")
 	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
@@ -35721,6 +35735,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
 "vEE" = (
@@ -39099,7 +39116,6 @@
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/canister,
-/obj/machinery/status_display/evac/directional/south,
 /obj/structure/cable/layer1,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
@@ -39760,6 +39776,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
+"xLZ" = (
+/obj/machinery/status_display/evac/directional/north,
+/turf/open/floor/engine,
+/area/station/engineering/supermatter/room)
 "xMe" = (
 /obj/machinery/computer/accounting,
 /obj/effect/turf_decal/siding/wood,
@@ -73173,7 +73193,7 @@ lYo
 uMF
 mXF
 xcJ
-fzs
+xLZ
 fzs
 bNN
 xcD
