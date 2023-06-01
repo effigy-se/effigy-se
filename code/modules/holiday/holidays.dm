@@ -327,12 +327,12 @@
 	name = "Summer Solstice"
 	begin_day = 21
 	begin_month = JUNE
+
 /datum/holiday/pride_week
 	name = PRIDE_WEEK
 	begin_month = JUNE
-	// Stonewall was June 28th, this captures its week.
-	begin_day = 23
-	end_day = 29
+	begin_day = 1
+	end_day = 30
 
 	var/static/list/rainbow_colors = list(
 		COLOR_PRIDE_PURPLE,
