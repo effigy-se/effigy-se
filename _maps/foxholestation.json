@@ -3,8 +3,6 @@
 	"map_name": "FoxHoleStation",
 	"map_path": "map_files/FoxHoleStation",
 	"map_file": "foxholestation.dmm",
-	"space_ruin_levels": 0,
-	"space_empty_levels": 0,
     "shuttles": {
 		"cargo": "cargo_foxhole",
 		"ferry": "ferry_kilo",
@@ -14,15 +12,21 @@
 	"traits": [
 		{
 			"Up": 1,
-			"Linkage": null,
-			"Gravity": true,
-			"Baseturf": "/turf/open/space/basic"
+			"Baseturf": "/turf/open/space/basic",
+			"Linkage": "Cross"
 		},
 		{
-			"Linkage": null,
+			"Linkage": "Cross",
 			"Down": -1,
-			"Gravity": true,
 			"Baseturf": "/turf/open/space/openspace"
 		}
-	]
+	],
+	"job_changes": {
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/service/cafeteria"]
+		},
+		"Captain": {
+			"special_charter": "asteroid"
+		}
+	}
 }

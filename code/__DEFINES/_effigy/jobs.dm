@@ -12,3 +12,8 @@
 #define RESTRICTED_QUIRKS_EXCEPTIONS list("Mute" = "Signer")
 
 #define FLAVOR_TEXT_CHAR_REQUIREMENT 0
+
+// Service
+#define JOB_BROADCAST_TEAM "Broadcast Team"
+
+#define JOB_DISPLAY_ORDER_BROADCAST_TEAM 37 // Keep un-conflicting with any base jobs.dm display order defines!!
