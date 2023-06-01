@@ -205,6 +205,9 @@
 /obj/machinery/door/airlock/virology
 	icon = 'packages/gfx/assets/obj/airlock/station/viro.dmi'
 
+/obj/machinery/door/airlock/silver
+	icon = 'packages/gfx/assets/obj/airlock/station/silver.dmi'
+
 // Station2
 
 /obj/machinery/door/airlock/public
