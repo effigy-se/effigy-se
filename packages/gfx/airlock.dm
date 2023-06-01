@@ -211,6 +211,36 @@
 	icon = 'packages/gfx/assets/obj/airlock/station2/glass.dmi'
 	overlays_file = 'packages/gfx/assets/obj/airlock/station2/overlays.dmi'
 
+// Effigy
+
+/obj/machinery/door/airlock/service
+	icon = 'packages/gfx/assets/obj/airlock/station/service.dmi'
+
+/obj/machinery/door/airlock/service/glass
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/door_assembly/door_assembly_svc
+	name = "service airlock assembly"
+	icon = 'packages/gfx/assets/obj/airlock/station/service.dmi'
+	base_name = "service airlock"
+	glass_type = /obj/machinery/door/airlock/service/glass
+	airlock_type = /obj/machinery/door/airlock/service
+
+/obj/machinery/door/airlock/service/studio
+	icon = 'packages/gfx/assets/obj/airlock/station/studio.dmi'
+
+/obj/machinery/door/airlock/service/studio/glass
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/door_assembly/door_assembly_sto
+	name = "studio airlock assembly"
+	icon = 'packages/gfx/assets/obj/airlock/station/studio.dmi'
+	base_name = "service airlock"
+	glass_type = /obj/machinery/door/airlock/service/studio/glass
+	airlock_type = /obj/machinery/door/airlock/service/studio
+
 #undef AIRLOCK_LIGHT_POWER
 #undef AIRLOCK_LIGHT_RANGE
 #undef AIRLOCK_LIGHT_ENGINEERING
