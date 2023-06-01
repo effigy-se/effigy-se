@@ -678,7 +678,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
 			log_access("Failed Login: [key] - [address] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - [address] - New account attempting to connect during panic bunker</span>")
-			to_chat_immediate(src, {"<div class='efchatalert'>[EFSPAN_ANNOUNCE_MIN_TITLE("Not Authorised")]<br>[EFSPAN_ANNOUNCE_MIN_TEXT("Sorry, the server has a whitelist and your BYOND key was not found. If you think this is in error, contact the server staff.")]</div>"})
+			to_chat_immediate(src, {"<div class='efchatalert_6'>[EFSPAN_ANNOUNCE_MIN_TITLE("Not Authorised \[2S290/2]")]<br>[EFSPAN_ANNOUNCE_MIN_TEXT("Effigy uses a player whitelist and your account was not found! Please visit <a href=\"https://socialdistrict.effigy.se\">https://socialdistrict.effigy.se</a> for details and to submit an application for the server.")]</div>"})
 			var/list/connectiontopic_a = params2list(connectiontopic)
 			var/list/panic_addr = CONFIG_GET(string/panic_server_address)
 			if(panic_addr && !connectiontopic_a["redirect"])
@@ -687,6 +687,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				winset(src, null, "command=.options")
 				src << link("[panic_addr]?redirect=1")
 			qdel(query_client_in_db)
+			sleep(1 SECONDS)
 			qdel(src)
 			return
 		// EFFIGY EDIT ADD END - PANICBUNKER
