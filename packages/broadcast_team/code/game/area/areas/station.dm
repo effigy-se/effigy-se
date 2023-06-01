@@ -1,6 +1,6 @@
-/area/station/service/broadcast_centre
-	name = "\improper Broadcast Centre"
+/area/station/service/studio
+	name = "\improper Studio Control Room"
 	icon_state = "theatre"
 
-/area/station/service/broadcast_centre/stage
-	name = "\improper Broadcast Set"
+/area/station/service/studio/stage
+	name = "\improper Studio Floor"

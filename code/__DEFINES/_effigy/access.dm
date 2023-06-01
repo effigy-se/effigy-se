@@ -1,2 +1,2 @@
-/// Access to the broadcast centre and related consoles.
-#define ACCESS_BROADCAST_CENTRE "broadcast_centre"
+/// Access to the broadcast studio and related consoles.
+#define ACCESS_STUDIO_CONTROL "studio_control"

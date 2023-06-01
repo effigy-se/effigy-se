@@ -281,7 +281,6 @@
 	ACCESS_BAR, \
 	ACCESS_BRIG, \
 	ACCESS_BRIG_ENTRANCE, \
-	ACCESS_BROADCAST_CENTRE, \
 	ACCESS_CARGO, \
 	ACCESS_CHAPEL_OFFICE, \
 	ACCESS_CONSTRUCTION, \
@@ -322,12 +321,13 @@
 	ACCESS_SECURITY, \
 	ACCESS_SERVICE, \
 	ACCESS_SHIPPING, \
+	ACCESS_STUDIO_CONTROL, \
 	ACCESS_SURGERY, \
 	ACCESS_THEATRE, \
 	ACCESS_VIROLOGY, \
 	ACCESS_WEAPONS, \
 	ACCESS_XENOBIOLOGY, \
-) /// EFFIGY EDIT - Added ACCESS_BROADCAST_CENTRE. Yes I have to put the comment here. Yes repeatedly. Yes it sucks.
+) /// EFFIGY EDIT - Added ACCESS_STUDIO_CONTROL. Yes I have to put the comment here. Yes repeatedly. Yes it sucks.
 
 /// Command staff/secure accesses, think bridge/armoury, ai_upload, notably access to modify ID cards themselves. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND)
 #define COMMAND_ACCESS list( \
@@ -412,7 +412,6 @@
 /// Used to seed the accesses_by_region list in SSid_access. A list of general service accesses that are overseen by the HoP.
 #define REGION_ACCESS_GENERAL list( \
 	ACCESS_BAR, \
-	ACCESS_BROADCAST_CENTRE, \
 	ACCESS_CHAPEL_OFFICE, \
 	ACCESS_CREMATORIUM, \
 	ACCESS_HYDROPONICS, \
@@ -421,8 +420,9 @@
 	ACCESS_LAWYER, \
 	ACCESS_LIBRARY, \
 	ACCESS_SERVICE, \
+	ACCESS_STUDIO_CONTROL, \
 	ACCESS_THEATRE, \
-) /// EFFIGY EDIT - Added ACCESS_BROADCAST_CENTRE. Yes I have to put the comment here. Yes repeatedly. Yes it sucks.
+) /// EFFIGY EDIT - Added ACCESS_STUDIO_CONTROL. Yes I have to put the comment here. Yes repeatedly. Yes it sucks.
 /// Name for the Security region.
 #define REGION_SECURITY "Security"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all security regional accesses that are overseen by the HoS.
