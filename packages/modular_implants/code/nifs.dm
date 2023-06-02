@@ -165,6 +165,8 @@
 	if(linked_mob)
 		UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
+	QDEL_LIST(loaded_nifsofts)
+
 ///Installs preinstalled NIFSofts
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_preinstalled_nifsofts()
 	if(!preinstalled_nifsofts)
@@ -175,7 +177,7 @@
 
 	return TRUE
 
-/obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
+/obj/item/organ/internal/cyberimp/brain/nif/process(seconds_per_tick)
 	. = ..()
 
 	if(!linked_mob || broken || IS_IN_STASIS(linked_mob))

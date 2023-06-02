@@ -29,3 +29,4 @@
 		return
 
 	target_nif.ui_interact(usr)
+

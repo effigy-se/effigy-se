@@ -27,3 +27,4 @@
 	materials = list(/datum/material/iron = 6000, /datum/material/silver = 2000, /datum/material/bluespace = 2000)
 	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+

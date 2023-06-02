@@ -4,7 +4,7 @@
 	desc = "'Standard-Type' is a classification for high-quality Nanite Implant Frameworks. This category primarily includes Framework patterns with high reliability, seamless bonding with a user, and a combination of storage space and processing power to run a wide array of programs."
 	manufacturer_notes = "While countless manufacturers produce their own implementation of NIFs, open-source or not, there's less than a thousand Standard-Type models out there in the galaxy. These are the results of almost five years of improvements on older models of Frameworks, and are rather coveted due to being extremely difficult to 'homebrew."
 
-/obj/item/organ/internal/cyberimp/brain/nif/roleplay_model /// EFFIGY TODO: This path means fuck all. Repath this shit.
+/obj/item/organ/internal/cyberimp/brain/nif/roleplay_model
 	name = "Econo-Deck Type NIF"
 	desc = "'Econo-Deck' is a classification for lower-quality Nanite Implant Frameworks. Typically, these are off-brand 'economical' bootlegs of higher-quality Frameworks featuring lower-grade power cells, outdated and risky construction patterns, and far rougher calibration with a user."
 	manufacturer_notes = "Most webspaces for hobbyists or hardcore users, Corpo neurologists, and developers of 'softs such as the Altspace Coven recommend against their purchase. Despite their affordability by the layman, it's a common notion in Framework user circles that a device directly hooked into a user's nervous system is never something which should be skimped on; hence, Econo-Decks typically find themselves in the hands of the truly desperate, criminals, or coming out of workshops as 'homebrews.'"
