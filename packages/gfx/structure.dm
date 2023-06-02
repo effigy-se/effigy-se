@@ -1,8 +1,3 @@
-/obj/structure/falsewall/material
-	icon = 'packages/gfx/assets/turf/walls/material_wall.dmi'
-	icon_state = "wall-0"
-	base_icon_state = "wall"
-
 /obj/structure/window/fulltile
 	icon = 'packages/gfx/assets/obj/smooth_structures/window.dmi'
 	canSmoothWith = SMOOTH_GROUP_WINDOW_FULLTILE
