@@ -323,6 +323,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 	SSjob.FreeRole(stored_rank)
 
+	/// EFFIGY TODO - Figure out where this part of the code actually is placed now since I'm going on the OG PR
+	if(ishuman(occupant))
+		var/mob/living/carbon/human/human = occupant
+		human.save_individual_persistence()
+
 	// Handle holy successor removal
 	var/list/holy_successors = list_holy_successors()
 	if(mob_occupant in holy_successors) // if this mob was a holy successor then remove them from the pool

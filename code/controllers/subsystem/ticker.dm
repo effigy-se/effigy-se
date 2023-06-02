@@ -333,6 +333,7 @@ SUBSYSTEM_DEF(ticker)
 
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
+		SSpersistence.load_modular_persistence(iter_human.getorganslot(ORGAN_SLOT_BRAIN)) // EFFIGY EDIT ADDITION - (#???16 Modular Persistence - Ported From Skyrat)
 
 		if(!iter_human.hardcore_survival_score)
 			continue

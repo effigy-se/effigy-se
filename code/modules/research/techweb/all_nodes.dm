@@ -1236,6 +1236,9 @@
 		"health_hud",
 		"scigoggles",
 		"security_hud",
+		//EFFIGY EDIT START - NIFS
+		"nifsoft_money_sense",
+		//EFFIGY EDIT END - NIFS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 
@@ -1499,6 +1502,7 @@
 		"seclite",
 		"zipties",
 		"inspector",
+		"nifsoft_remover", //EFFIGY EDIT ADDITION - NIFs
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
