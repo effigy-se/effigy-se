@@ -123,10 +123,6 @@
 	set hidden = TRUE
 	return FALSE
 
-/mob/living/soulcatcher_soul/container_emote()
-	set hidden = TRUE
-	return FALSE
-
 /mob/living/soulcatcher_soul/resist()
 	set hidden = TRUE
 	return FALSE
