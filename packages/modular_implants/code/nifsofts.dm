@@ -164,7 +164,7 @@
 	var/nifsoft_desc = initial(loaded_nifsoft.program_desc)
 
 	if(nifsoft_desc)
-		. += span_cyan("Program description: [nifsoft_desc]")
+		. += span_blue("Program description: [nifsoft_desc]")
 
 
 /// Attempts to install the NIFSoft on the disk to the target

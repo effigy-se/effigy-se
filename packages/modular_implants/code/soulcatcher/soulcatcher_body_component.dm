@@ -34,7 +34,7 @@
 	if(!target_soul || !target_soul.body_scan_needed)
 		return FALSE
 
-	to_chat(target_soul, span_cyan("Your body has scanned, revealing your true identity."))
+	to_chat(target_soul, span_blue("Your body has scanned, revealing your true identity."))
 	target_soul.name = source_mob.real_name
 	target_soul.body_scan_needed = FALSE
 
