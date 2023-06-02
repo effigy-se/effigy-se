@@ -3,6 +3,8 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	/datum/nifsoft/summoner,
 	/datum/nifsoft/shapeshifter,
 	/datum/nifsoft/summoner/dorms,
+	/datum/nifsoft/soul_poem,
+	/datum/nifsoft/soulcatcher,
 ))
 
 /datum/computer_file/program/nifsoft_downloader
@@ -73,7 +75,8 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 			"rewards_points_rate" = initial(buyable_nifsoft.rewards_points_rate),
 			"points_purchasable" = initial(buyable_nifsoft.rewards_points_eligible),
 			"category" = initial(buyable_nifsoft.buying_category),
-			"reference" = buyable_nifsoft
+			"ui_icon" = initial(buyable_nifsoft.ui_icon),
+			"reference" = buyable_nifsoft,
 		)
 		var/category = nifsoft_details["category"]
 		if(!(category in product_list))

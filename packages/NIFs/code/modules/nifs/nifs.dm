@@ -9,7 +9,7 @@
 #define NIF_MINIMUM_POWER_LEVEL 0
 
 #define NIF_SETUP_BLINDNESS "nif_setup"
-#define MAX_NIF_REWARDS_POINTS 2500
+#define MAX_NIF_REWARDS_POINTS 2000
 
 // This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
@@ -501,6 +501,7 @@
 	new /obj/item/disk/nifsoft_uploader/summoner(src)
 	new /obj/item/disk/nifsoft_uploader/money_sense(src)
 	new /obj/item/disk/nifsoft_uploader/dorms(src)
+	new /obj/item/disk/nifsoft_uploader/soulcatcher(src)
 
 #undef NIF_CALIBRATION_STAGE_1
 #undef NIF_CALIBRATION_STAGE_1_END

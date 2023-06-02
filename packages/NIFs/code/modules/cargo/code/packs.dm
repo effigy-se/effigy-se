@@ -26,7 +26,7 @@
 /datum/supply_pack/goody/money_sense_nifsoft
 	name = "Automatic Appraisal NIFSoft"
 	desc = "Contains a single Automatic Appraisal NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/money_sense,
 	)
@@ -34,7 +34,7 @@
 /datum/supply_pack/goody/shapeshifter_nifsoft
 	name = "Polymorph NIFSoft"
 	desc = "Contains a single Polymorph NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/shapeshifter,
 	)
@@ -42,7 +42,7 @@
 /datum/supply_pack/goody/hivemind_nifsoft
 	name = "Hivemind NIFSoft"
 	desc = "Contains a single Hivemind NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/hivemind,
 	)
@@ -50,7 +50,7 @@
 /datum/supply_pack/goody/summoner_nifsoft
 	name = "Grimoire Caeruleam NIFSoft"
 	desc = "Contains a single Grimoire Caeruleam NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 1
+	cost = CARGO_CRATE_VALUE * 0.75
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/summoner,
 	)

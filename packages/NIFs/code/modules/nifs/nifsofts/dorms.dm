@@ -8,6 +8,7 @@
 	holographic_filter = FALSE //No RGB toys
 	name_tag = "purpura "
 
+
 	//This uses a stripped down selection from the dorms vendor.
 	summonable_items  = list(
 					// Normal items
@@ -57,7 +58,7 @@
 					/obj/item/clothing/shoes/latex_socks,
 					/obj/item/clothing/shoes/latex_heels,
 	)
-	purchase_price = 200
+	purchase_price = 150
 
 /obj/item/disk/nifsoft_uploader/dorms/contract
 	name = "\improper Purpura Contract"
