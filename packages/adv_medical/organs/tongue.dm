@@ -27,7 +27,7 @@
 
 /obj/item/organ/internal/tongue/cybernetic
 	name = "cybernetic tongue"
-	icon = 'packages/adv_medical/organs/assets/cyber_tongue.dmi'
+	icon = 'packages/adv_medical/assets/organs/cyber_tongue.dmi'
 	icon_state = "cybertongue"
 	desc =  "A fully-functional synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
 	status = ORGAN_ROBOTIC
