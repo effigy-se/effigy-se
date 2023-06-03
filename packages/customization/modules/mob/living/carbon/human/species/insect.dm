@@ -31,7 +31,7 @@
 	liked_food = GROSS | RAW | TOXIC | GORE
 	disliked_food = CLOTH | GRAIN | FRIED
 	toxic_food = DAIRY
-	payday_modifier = 0.75
+	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_INSECT
 	bodypart_overrides = list(

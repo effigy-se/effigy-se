@@ -1,5 +1,5 @@
 /// Number of paychecks jobs start with at the creation of a new bank account for a player (So at shift-start or game join, but not a blank new account.)
-#define STARTING_PAYCHECKS 5
+#define STARTING_PAYCHECKS 4
 /// How much mail the Economy SS will create per minute, regardless of firing time.
 #define MAX_MAIL_PER_MINUTE 3
 /// Probability of using letters of envelope sprites on all letters.
@@ -9,14 +9,14 @@
 ///Default paygrade for the Unassigned Job/Unpaid job assignments.
 #define PAYCHECK_ZERO 0
 ///Paygrade for Prisoners and Assistants.
-#define PAYCHECK_LOWER 25
+#define PAYCHECK_LOWER 30 // EFFIGY EDIT CHANGE
 ///Paygrade for all regular crew not belonging to PAYGRADE_LOWER or PAYGRADE_COMMAND.
-#define PAYCHECK_CREW 50
+#define PAYCHECK_CREW 40 // EFFIGY EDIT CHANGE
 ///Paygrade for Heads of Staff.
-#define PAYCHECK_COMMAND 100
+#define PAYCHECK_COMMAND 60 // EFFIGY EDIT CHANGE
 
 //How many credits a player is charged if they print something from a departmental lathe they shouldn't have access to.
-#define LATHE_TAX 10
+#define LATHE_TAX 5 // EFFIGY EDIT CHANGE
 //How much POWER a borg's cell is taxed if they print something from a departmental lathe.
 #define SILICON_LATHE_TAX 2000
 
@@ -27,7 +27,7 @@
 #define MAX_GRANT_DPT 500
 
 //What should vending machines charge when you buy something in-department.
-#define DEPARTMENT_DISCOUNT 0.2
+#define DEPARTMENT_DISCOUNT 0.3 // EFFIGY EDIT CHANGE
 
 #define ACCOUNT_CIV "CIV"
 #define ACCOUNT_CIV_NAME "Civil Budget"
