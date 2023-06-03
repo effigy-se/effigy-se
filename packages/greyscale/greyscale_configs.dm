@@ -37,10 +37,6 @@
 	name = "Beret With Badge Worn - Teshari"
 	icon_file = 'packages/greyscale/assets/beret_teshari.dmi'
 
-/datum/greyscale_config/beret_badge_fancy/worn/vox
-	name = "Beret With Fancy Badge Worn - Vox"
-	icon_file = 'packages/greyscale/assets/beret_vox.dmi'
-
 //COWBOY
 /datum/greyscale_config/cowboy_wide
 	name = "Wide Brimmed Hat"
