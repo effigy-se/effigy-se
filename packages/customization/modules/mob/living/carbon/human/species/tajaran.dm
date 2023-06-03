@@ -25,7 +25,7 @@
 	)
 	disliked_food = CLOTH
 	liked_food = GRAIN | MEAT
-	payday_modifier = 0.75
+	payday_modifier = 1
 	species_language_holder = /datum/language_holder/tajaran
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_MAMMAL

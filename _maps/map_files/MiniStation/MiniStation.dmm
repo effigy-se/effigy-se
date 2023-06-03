@@ -5425,7 +5425,7 @@
 /turf/closed/wall/r_wall,
 /area/station/command/heads_quarters/hop)
 "na" = (
-/obj/structure/statue/petrified,
+/obj/machinery/drone_dispenser,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard)
 "nb" = (
@@ -10405,8 +10405,12 @@
 /turf/open/floor/iron,
 /area/station/science/ordnance)
 "Ag" = (
-/obj/machinery/door/firedoor/heavy,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/airalarm/directional/south,
+/obj/effect/mapping_helpers/airalarm/mixingchamber_access,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/station/science/ordnance)
 "Ah" = (
@@ -10564,7 +10568,6 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central)
 "AA" = (
-/obj/structure/closet/emcloset,
 /obj/machinery/light/small{
 	dir = 1;
 	light_color = "#ffc1c1"
@@ -10603,9 +10606,11 @@
 /turf/open/floor/iron,
 /area/station/science/ordnance)
 "AH" = (
-/obj/machinery/door/firedoor/heavy,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/station/science/ordnance)
 "AI" = (
@@ -11616,7 +11621,6 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/machinery/door/firedoor,
 /obj/machinery/door/firedoor/heavy,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -17484,13 +17488,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
-"XY" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airalarm/mixingchamber_access{
-	dir = 1
-	},
-/turf/closed/wall/r_wall,
-/area/station/science/ordnance/burnchamber)
 "XZ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south,
@@ -60552,7 +60549,7 @@ jA
 gJ
 xE
 zY
-is
+yO
 is
 AW
 zY
@@ -61083,7 +61080,7 @@ Ar
 Ar
 AH
 Ag
-XY
+cs
 cs
 qH
 qH

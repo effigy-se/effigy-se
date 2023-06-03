@@ -31,7 +31,7 @@
 	liked_food = GROSS | RAW | TOXIC | GORE
 	disliked_food = CLOTH | GRAIN | FRIED
 	toxic_food = DAIRY
-	payday_modifier = 0.75
+	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_INSECT
 	bodypart_overrides = list(
@@ -42,7 +42,7 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/insect,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/insect,
 	)
-	eyes_icon = 'packages/organs/assets/insect_eyes.dmi'
+	eyes_icon = 'packages/adv_medical/assets/organs/insect_eyes.dmi'
 
 /datum/species/insect/get_species_description()
 	return placeholder_description

@@ -7,7 +7,7 @@
 /datum/species/teshari
 	name = "Teshari"
 	id = SPECIES_TESHARI
-	eyes_icon = 'packages/organs/assets/teshari_eyes.dmi'
+	eyes_icon = 'packages/adv_medical/assets/organs/teshari_eyes.dmi'
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,
 		NO_UNDERWEAR,
@@ -27,7 +27,7 @@
 	disliked_food = GROSS | GRAIN | GORE
 	liked_food = MEAT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	payday_modifier = 0.75
+	payday_modifier = 1
 	custom_worn_icons = list(
 		LOADOUT_ITEM_HEAD = TESHARI_HEAD_ICON,
 		LOADOUT_ITEM_MASK = TESHARI_MASK_ICON,

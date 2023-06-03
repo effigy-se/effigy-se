@@ -2,7 +2,7 @@
 	// Bird-like humanoids
 	name = "Vox"
 	id = SPECIES_VOX
-	eyes_icon = 'packages/organs/assets/vox_eyes.dmi'
+	eyes_icon = 'packages/adv_medical/assets/organs/vox_eyes.dmi'
 	can_augment = FALSE
 	species_traits = list(
 		MUTCOLORS,
@@ -30,7 +30,7 @@
 		"spines" = ACC_RANDOM
 	)
 	liked_food = MEAT | FRIED
-	payday_modifier = 0.75
+	payday_modifier = 1
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

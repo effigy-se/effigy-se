@@ -27,7 +27,7 @@
 	toxic_food = DAIRY | PINEAPPLE
 	disliked_food = VEGETABLES | FRUIT | CLOTH
 	liked_food = RAW | MEAT
-	payday_modifier = 0.75 //-- "Equality"
+	payday_modifier = 1 //-- "Equality"
 	//armor = -100 //2x more damage
 	brutemod = 2
 	burnmod = 2
