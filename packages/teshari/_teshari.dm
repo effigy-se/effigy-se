@@ -7,7 +7,7 @@
 /datum/species/teshari
 	name = "Teshari"
 	id = SPECIES_TESHARI
-	eyes_icon = 'packages/organs/assets/teshari_eyes.dmi'
+	eyes_icon = 'packages/adv_medical/assets/organs/teshari_eyes.dmi'
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,
 		NO_UNDERWEAR,

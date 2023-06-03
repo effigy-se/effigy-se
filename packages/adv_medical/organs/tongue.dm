@@ -27,7 +27,7 @@
 
 /obj/item/organ/internal/tongue/cybernetic
 	name = "cybernetic tongue"
-	icon = 'packages/organs/assets/cyber_tongue.dmi'
+	icon = 'packages/adv_medical/organs/assets/cyber_tongue.dmi'
 	icon_state = "cybertongue"
 	desc =  "A fully-functional synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
 	status = ORGAN_ROBOTIC
@@ -65,3 +65,16 @@
 	name = "skrell tongue"
 	desc = "A fleshy muscle mostly used for warbling."
 	say_mod = "warbles"
+
+/datum/design/cybernetic_tongue
+	name = "Cybernetic Tongue"
+	desc = "A cybernetic tongue."
+	id = "cybernetic_tongue"
+	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
+	construction_time = 4 SECONDS
+	materials = list(/datum/material/iron = 250, /datum/material/glass = 300, /datum/material/silver = 250)
+	build_path = /obj/item/organ/internal/tongue/cybernetic
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_ORGANS_1
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
