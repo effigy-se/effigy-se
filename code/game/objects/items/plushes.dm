@@ -1,3 +1,4 @@
+// EFFIGY LOCAL FILE - local/code/game/objects/items/plushes.dm
 /obj/item/toy/plush
 	name = "plush"
 	desc = "This is the special coder plush, do not steal."
