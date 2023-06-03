@@ -1,6 +1,5 @@
-// // MODULAR PLUSHES
 /obj/item/toy/plush/effigy
-	icon = 'packages/donators/assets/plushes.dmi'
+	icon = 'local/icons/obj/toys/plushes.dmi'
 	inhand_icon_state = null
 
 /obj/item/toy/plush/effigy/borbplushie
