@@ -63,12 +63,9 @@
 		robot_resting = FALSE
 		update_icons()
 
-// EFFIGY TODO
-
 /**
  * Safe check of the cyborg's model_features list.
  *
- * model_features is defined in packages\altborgs\code\modules\mob\living\silicon\robot\robot_model.dm.
  */
 /mob/living/silicon/robot/proc/can_rest()
 	if(model && model.model_features && (R_TRAIT_WIDE in model.model_features))
