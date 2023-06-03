@@ -25,7 +25,7 @@
 		"legs" = "Normal Legs",
 		"wings" = "None"
 	)
-	payday_modifier = 0.75
+	payday_modifier = 1
 	liked_food = SEAFOOD | MEAT | FRUIT | GORE
 	disliked_food = CLOTH | GROSS
 	toxic_food = TOXIC

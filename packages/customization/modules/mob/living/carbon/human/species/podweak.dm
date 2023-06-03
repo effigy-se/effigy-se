@@ -10,7 +10,7 @@
 		"pod_hair" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	payday_modifier = 0.75
+	payday_modifier = 1
 
 /datum/species/pod/podweak
 	name = "Podperson"
