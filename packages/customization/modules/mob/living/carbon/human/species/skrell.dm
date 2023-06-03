@@ -31,7 +31,7 @@
 	payday_modifier = 1
 	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	eyes_icon = 'packages/organs/assets/skrell_eyes.dmi'
+	eyes_icon = 'packages/adv_medical/assets/organs/skrell_eyes.dmi'
 	mutantbrain = /obj/item/organ/internal/brain/skrell
 	mutanteyes = /obj/item/organ/internal/eyes/skrell
 	mutantlungs = /obj/item/organ/internal/lungs/skrell
@@ -87,7 +87,7 @@
 /obj/item/organ/internal/tongue/skrell
 	name = "internal vocal sacs"
 	desc = "An Strange looking sac."
-	icon = 'packages/organs/assets/skrell_organ.dmi'
+	icon = 'packages/adv_medical/assets/organs/skrell_organ.dmi'
 	icon_state = "tongue"
 	taste_sensitivity = 5
 	var/static/list/languages_possible_skrell = typecacheof(list(
@@ -113,24 +113,24 @@
 
 /obj/item/organ/internal/heart/skrell
 	name = "skrellian heart"
-	icon = 'packages/organs/assets/skrell_organ.dmi'
+	icon = 'packages/adv_medical/assets/organs/skrell_organ.dmi'
 	icon_state = "heart"
 
 /obj/item/organ/internal/brain/skrell
 	name = "spongy brain"
-	icon = 'packages/organs/assets/skrell_organ.dmi'
+	icon = 'packages/adv_medical/assets/organs/skrell_organ.dmi'
 	icon_state = "brain2"
 
 /obj/item/organ/internal/eyes/skrell
 	name = "amphibian eyes"
 	desc = "Large black orbs."
-	icon = 'packages/organs/assets/skrell_organ.dmi'
+	icon = 'packages/adv_medical/assets/organs/skrell_organ.dmi'
 	icon_state = "eyes"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 
 /obj/item/organ/internal/lungs/skrell
 	name = "skrell lungs"
-	icon = 'packages/organs/assets/skrell_organ.dmi'
+	icon = 'packages/adv_medical/assets/organs/skrell_organ.dmi'
 	icon_state = "lungs"
 	safe_plasma_max = 40
 	safe_co2_max = 40
@@ -157,7 +157,7 @@
 /obj/item/organ/internal/liver/skrell
 	name = "skrell liver"
 	icon_state = "liver"
-	icon = 'packages/organs/assets/skrell_organ.dmi'
+	icon = 'packages/adv_medical/assets/organs/skrell_organ.dmi'
 	alcohol_tolerance = 5
 	toxTolerance = 10 //can shrug off up to 10u of toxins.
 	liver_resistance = 1.2 * LIVER_DEFAULT_TOX_RESISTANCE // +20%
