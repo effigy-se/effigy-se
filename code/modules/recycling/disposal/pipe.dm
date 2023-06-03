@@ -1,3 +1,4 @@
+// EFFIGY LOCAL FILE - local/code/modules/recycling/disposal/pipe.dm
 // Disposal pipes
 
 /obj/structure/disposalpipe
@@ -18,6 +19,9 @@
 	var/flip_type // If set, the pipe is flippable and becomes this type when flipped
 	var/obj/structure/disposalconstruct/stored
 
+	// EFFIGY VARIABLES
+	/// Whether a disposal pipe will hurt if a person changes direction. `FALSE` for hurting, `TRUE` to prevent making them hurt.
+	var/padded_corners = FALSE
 
 /datum/armor/structure_disposalpipe
 	melee = 25
