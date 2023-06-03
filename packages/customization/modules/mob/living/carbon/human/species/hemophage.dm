@@ -355,7 +355,7 @@
 
 /obj/item/organ/internal/heart/hemophage
 	name = "pulsating tumor"
-	icon = 'packages/organs/assets/hemophage_organs.dmi'
+	icon = 'packages/adv_medical/assets/organs/hemophage_organs.dmi'
 	icon_state = "tumor-on"
 	base_icon_state = "tumor"
 	desc = "This pulsating organ nearly resembles a normal heart, but it's been twisted beyond any human appearance, having turned to the color of coal. The way it barely fits where the original organ was sends shivers down your spine... <i>The fact that it's what keeps them alive makes it all the more terrifying.</i>"
@@ -406,7 +406,7 @@
 /obj/item/organ/internal/liver/hemophage
 	name = "corrupted liver"
 	desc = GENERIC_CORRUPTED_ORGAN_DESC
-	icon = 'packages/organs/assets/hemophage_organs.dmi'
+	icon = 'packages/adv_medical/assets/organs/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 
 
@@ -448,7 +448,7 @@
 /obj/item/organ/internal/stomach/hemophage
 	name = "corrupted stomach"
 	desc = GENERIC_CORRUPTED_ORGAN_DESC
-	icon = 'packages/organs/assets/hemophage_organs.dmi'
+	icon = 'packages/adv_medical/assets/organs/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 
 
@@ -484,7 +484,7 @@
 /obj/item/organ/internal/tongue/hemophage
 	name = "corrupted tongue"
 	desc = GENERIC_CORRUPTED_ORGAN_DESC
-	icon = 'packages/organs/assets/hemophage_organs.dmi'
+	icon = 'packages/adv_medical/assets/organs/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 	actions_types = list(/datum/action/cooldown/hemophage/drain_victim)
 
