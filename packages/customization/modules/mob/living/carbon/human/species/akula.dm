@@ -22,7 +22,7 @@
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	payday_modifier = 0.75
+	payday_modifier = 1
 	liked_food = SEAFOOD | RAW
 	disliked_food = CLOTH | DAIRY
 	toxic_food = TOXIC

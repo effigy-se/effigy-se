@@ -10,7 +10,7 @@
 	exotic_bloodtype = "LE"
 	siemens_coeff = 0.5 //They thrive on energy
 	brutemod = 1.25 //They're weak to punches
-	payday_modifier = 0.75
+	payday_modifier = 1
 	species_traits = list(
 		DYNCOLORS,
 		AGENDER,
