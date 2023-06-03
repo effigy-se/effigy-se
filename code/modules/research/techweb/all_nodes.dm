@@ -947,7 +947,6 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
-		"borg_upgrade_clamp", // EFFIGY EDIT ADD
 		"borg_upgrade_brush", // EFFIGY EDIT ADD
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
