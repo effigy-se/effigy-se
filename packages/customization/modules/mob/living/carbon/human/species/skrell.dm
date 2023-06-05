@@ -111,6 +111,9 @@
 		/datum/language/skrell,
 	))
 
+/obj/item/organ/internal/tongue/skrell/get_possible_languages()
+	return languages_possible_skrell
+
 /obj/item/organ/internal/heart/skrell
 	name = "skrellian heart"
 	icon = 'packages/adv_medical/assets/organs/skrell_organ.dmi'
