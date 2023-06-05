@@ -56,16 +56,8 @@
 	if(post_unlink_callback)
 		src.post_unlink_callback = post_unlink_callback
 
-	/* ORIGINAL CODE
 	master_speech = new(src)
 	master_speech.Grant(owner)
-	*/ //ORIGINAL CODE END
-
-	//EFFIGY EDIT - #184 NIFs
-	if(speech_action)
-		master_speech = new(src)
-		master_speech.Grant(owner)
-	//EFFIGY EDIT END
 
 /datum/component/mind_linker/Destroy(force, silent)
 	for(var/mob/living/remaining_mob as anything in linked_mobs)
@@ -192,18 +184,10 @@
 	return ..()
 
 /datum/component/mind_linker/active_linking/link_mob(mob/living/to_link)
-	/* ORIGINAL CODE
 	if(HAS_TRAIT(to_link, TRAIT_MINDSHIELD)) // Mindshield implant - no dice
 		return FALSE
 	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
 		return FALSE
-	*/ //ORIGINAL CODE END
-	//EFFIGY EDIT START - #184 NIFS
-	if(HAS_TRAIT(to_link, TRAIT_MINDSHIELD) && linking_protection) // Mindshield implant - no dice
-		return FALSE
-	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0) && linking_protection)
-		return FALSE
-	//EFFIGY EDIT END
 
 	. = ..()
 	if(!.)
