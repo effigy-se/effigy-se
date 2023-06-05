@@ -59,7 +59,7 @@
 	master_speech = new(src)
 	master_speech.Grant(owner)
 	*/ //ORIGINAL CODE END
-	//EFFIGY EDIT - NIFs
+	//EFFIGY EDIT - #184 NIFs
 	if(speech_action)
 		master_speech = new(src)
 		master_speech.Grant(owner)
