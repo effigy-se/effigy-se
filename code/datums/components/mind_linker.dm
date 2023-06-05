@@ -61,7 +61,7 @@
 	master_speech.Grant(owner)
 	*/ //ORIGINAL CODE END
 
-	//EFFIGY EDIT - #???16 NIFs
+	//EFFIGY EDIT - #184 NIFs
 	if(speech_action)
 		master_speech = new(src)
 		master_speech.Grant(owner)
@@ -198,7 +198,7 @@
 	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
 		return FALSE
 	*/ //ORIGINAL CODE END
-	//EFFIGY EDIT START - #???16 NIFS
+	//EFFIGY EDIT START - #184 NIFS
 	if(HAS_TRAIT(to_link, TRAIT_MINDSHIELD) && linking_protection) // Mindshield implant - no dice
 		return FALSE
 	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0) && linking_protection)
