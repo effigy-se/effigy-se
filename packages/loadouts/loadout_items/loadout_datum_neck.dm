@@ -175,6 +175,22 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 *	GAGS
 */
 
+/datum/loadout_item/neck/gags_cloak
+	name = "Colourable Cloak"
+	item_path = /obj/item/clothing/neck/cloak/colourable
+
+/datum/loadout_item/neck/gags_veil
+	name = "Colourable Veil"
+	item_path = /obj/item/clothing/neck/cloak/colourable/veil
+
+/datum/loadout_item/neck/gags_shroud
+	name = "Colourable Shroud"
+	item_path = /obj/item/clothing/neck/cloak/colourable/shroud
+
+/datum/loadout_item/neck/gags_boat
+	name = "Colourable Boatcloak"
+	item_path = /obj/item/clothing/neck/cloak/colourable/boat
+
 /datum/loadout_item/neck/gags_mantle
 	name = "Colourable Mantle"
 	item_path = /obj/item/clothing/neck/mantle/recolorable
