@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/_effigy/signals.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/_effigy/signals.dm 
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_MOVABLE_RADIO_TALK_INTO">COMSIG_MOVABLE_RADIO_TALK_INTO</a></th><td>When someone talks into a radio</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_HOSTILE_MOB_LOST_TARGET">COMSIG_HOSTILE_MOB_LOST_TARGET</a></th><td>When a hostile simple mob loses it's target.</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_ITEM_POWER_USE">COMSIG_ITEM_POWER_USE</a></th><td>Sent when an obj/item calls item_use_power: (use_amount, user, check_only)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_MOB_RUN_ARMOR">COMSIG_MOB_RUN_ARMOR</a></th><td>mob/living/proc/updatehealth()</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_MOB_LOSS_BRUTE">COMSIG_MOB_LOSS_BRUTE</a></th><td>mob/living/proc/adjustBruteLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_MOB_LOSS_FIRE">COMSIG_MOB_LOSS_FIRE</a></th><td>mob/living/proc/adjustBurnLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_MOB_LOSS_CLONE">COMSIG_MOB_LOSS_CLONE</a></th><td>mob/living/proc/adjustCloneLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_MOB_LOSS_TOX">COMSIG_MOB_LOSS_TOX</a></th><td>mob/living/proc/adjustToxLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_MOB_LOSS_OXY">COMSIG_MOB_LOSS_OXY</a></th><td>mob/living/proc/adjustOyxLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_MOB_LOSS_STAMINA">COMSIG_MOB_LOSS_STAMINA</a></th><td>mob/living/proc/adjustStaminaLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_MOB_LOSS_ORGAN">COMSIG_MOB_LOSS_ORGAN</a></th><td>mob/living/proc/adjustOrganLoss (slot, amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_TURF_MOB_FALL">COMSIG_TURF_MOB_FALL</a></th><td>from base of /turf/handle_fall(): (mob/faller)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_TURF_LIQUIDS_CREATION">COMSIG_TURF_LIQUIDS_CREATION</a></th><td>from base of /obj/effect/abstract/liquid_turf/Initialize() (/obj/effect/abstract/liquid_turf/liquids)</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_GLOB_FORCE_ENG_OVERRIDE">COMSIG_GLOB_FORCE_ENG_OVERRIDE</a></th><td>Engineering Override Access manual toggle</td></tr>
+        <tr><th><a href="code/__DEFINES/_effigy/signals.html#define/COMSIG_LIVING_COMBAT_MODE_TOGGLE">COMSIG_LIVING_COMBAT_MODE_TOGGLE</a></th><td>From mob/living/*/set_combat_mode(): (new_state)</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/COMSIG_GLOB_FORCE_ENG_OVERRIDE"><aside class="declaration">#define </aside>COMSIG_GLOB_FORCE_ENG_OVERRIDE
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 37"/></a>
+    </h3>
+    <p>Engineering Override Access manual toggle</p><h3 id="define/COMSIG_HOSTILE_MOB_LOST_TARGET"><aside class="declaration">#define </aside>COMSIG_HOSTILE_MOB_LOST_TARGET
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 5"/></a>
+    </h3>
+    <p>When a hostile simple mob loses it's target.</p><h3 id="define/COMSIG_ITEM_POWER_USE"><aside class="declaration">#define </aside>COMSIG_ITEM_POWER_USE
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 9"/></a>
+    </h3>
+    <p>Sent when an obj/item calls item_use_power: (use_amount, user, check_only)</p><h3 id="define/COMSIG_LIVING_COMBAT_MODE_TOGGLE"><aside class="declaration">#define </aside>COMSIG_LIVING_COMBAT_MODE_TOGGLE
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 39"/></a>
+    </h3>
+    <p>From mob/living/*/set_combat_mode(): (new_state)</p><h3 id="define/COMSIG_MOB_LOSS_BRUTE"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_BRUTE
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 19"/></a>
+    </h3>
+    <p>mob/living/proc/adjustBruteLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_CLONE"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_CLONE
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 23"/></a>
+    </h3>
+    <p>mob/living/proc/adjustCloneLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_FIRE"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_FIRE
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 21"/></a>
+    </h3>
+    <p>mob/living/proc/adjustBurnLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_ORGAN"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_ORGAN
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 31"/></a>
+    </h3>
+    <p>mob/living/proc/adjustOrganLoss (slot, amount)</p><h3 id="define/COMSIG_MOB_LOSS_OXY"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_OXY
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 27"/></a>
+    </h3>
+    <p>mob/living/proc/adjustOyxLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_STAMINA"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_STAMINA
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 29"/></a>
+    </h3>
+    <p>mob/living/proc/adjustStaminaLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_TOX"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_TOX
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 25"/></a>
+    </h3>
+    <p>mob/living/proc/adjustToxLoss (amount)</p><h3 id="define/COMSIG_MOB_RUN_ARMOR"><aside class="declaration">#define </aside>COMSIG_MOB_RUN_ARMOR
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 17"/></a>
+    </h3>
+    <p>mob/living/proc/updatehealth()</p><h3 id="define/COMSIG_MOVABLE_RADIO_TALK_INTO"><aside class="declaration">#define </aside>COMSIG_MOVABLE_RADIO_TALK_INTO
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 3"/></a>
+    </h3>
+    <p>When someone talks into a radio</p><h3 id="define/COMSIG_TURF_LIQUIDS_CREATION"><aside class="declaration">#define </aside>COMSIG_TURF_LIQUIDS_CREATION
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 35"/></a>
+    </h3>
+    <p>from base of /obj/effect/abstract/liquid_turf/Initialize() (/obj/effect/abstract/liquid_turf/liquids)</p><h3 id="define/COMSIG_TURF_MOB_FALL"><aside class="declaration">#define </aside>COMSIG_TURF_MOB_FALL
+            <a href="https://github.com/effigy-se/effigy-se/blob/57d31f7af60c05105c34b5cdd8222e7cec26eb70/code/__DEFINES/_effigy/signals.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_effigy&#x2F;signals.dm 33"/></a>
+    </h3>
+    <p>from base of /turf/handle_fall(): (mob/faller)</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/effigy-se/effigy-se/tree/57d31f7af60c05105c34b5cdd8222e7cec26eb70">57d31f7</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.7.3</a></footer>
+</body>
+</html>
