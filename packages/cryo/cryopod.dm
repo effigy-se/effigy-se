@@ -235,6 +235,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 				if(isnull(stored_ckey))
 					stored_ckey = mob_occupant.mind.key // if mob does not have a ckey and was placed in cryo by someone else, we can get the key this way
 
+		var/mob/living/carbon/human/human_occupant = occupant
+		if(human_occupant && human_occupant.mind)
+			human_occupant.save_individual_persistence(stored_ckey)
+
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 
 /obj/machinery/cryopod/open_machine(drop = TRUE, density_to_set = FALSE)
@@ -322,11 +326,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	var/mob/living/mob_occupant = occupant
 
 	SSjob.FreeRole(stored_rank)
-
-	/// EFFIGY TODO - Figure out where this part of the code actually is placed now since I'm going on the OG PR
-	if(ishuman(occupant))
-		var/mob/living/carbon/human/human = occupant
-		human.save_individual_persistence()
 
 	// Handle holy successor removal
 	var/list/holy_successors = list_holy_successors()
