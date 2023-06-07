@@ -9,7 +9,7 @@
 // EFFIGY EDIT START - Alters nicotine Withdrawal
 /datum/addiction/nicotine/proc/trigger_random_side_effect(mob/living/carbon/affected_carbon, seconds_per_tick, strength)
 	switch(rand(1, 10))
-		if(1 to 4)
+		if(1 to 3)
 			if(!HAS_TRAIT(affected_carbon, TRAIT_NOHUNGER))
 				affected_carbon.adjust_nutrition(-seconds_per_tick * 10 * strength)
 //		if(3 to 5)
