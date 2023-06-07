@@ -155,8 +155,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	state_open = TRUE
 
 	var/open_icon_state = "sleeper-open"
-	var/on_store_message = "has entered long-term storage."
-	var/on_store_name = "Cryogenic Oversight"
 	/// Whether the cryopod respects the minimum time someone has to be disconnected before they can be put into cryo by another player
 	var/allow_timer_override = FALSE
 	/// Minimum time for someone to be SSD before another player can cryo them.
@@ -309,12 +307,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 					to_chat(objective.owner.current, "<BR>[span_userdanger("You get the feeling your target is no longer within reach. Time for Plan [pick("A","B","C","D","X","Y","Z")]. Objectives updated!")]")
 					update_objective.owner.announce_objectives()
 			qdel(objective)
-
-/obj/machinery/cryopod/proc/should_preserve_item(obj/item/item)
-	for(var/datum/objective_item/steal/possible_item in GLOB.possible_items)
-		if(istype(item, possible_item.targetitem))
-			return TRUE
-	return FALSE
 
 /// This function can not be undone; do not call this unless you are sure.
 /// Handles despawning the player.
