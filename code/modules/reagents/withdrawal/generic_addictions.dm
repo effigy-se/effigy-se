@@ -262,7 +262,7 @@
 	QDEL_NULL(fake_alert_ref)
 	QDEL_NULL(health_doll_ref)
 
-/*EFFIGY EDIT START - Removes Shakes and Cough emotes from nicotine withdrawal.
+/*EFFIGY CHANGE - Moved to overrides
 ///Nicotine
 /datum/addiction/nicotine
 	name = "nicotine"
