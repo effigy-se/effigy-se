@@ -30,6 +30,8 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Quadruple Amputee", "Paraplegic"),
 		list("Quadruple Amputee", "Frail"),
 		list("Social Anxiety", "Mute"),
+		list("Mute", "Soft-Spoken"),
+		list("Stormtrooper Aim", "Big Hands"),
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
