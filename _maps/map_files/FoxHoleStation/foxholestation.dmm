@@ -1364,6 +1364,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor/iron,
 /area/station/security/processing)
+"aQF" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth_large,
+/area/station/cargo/storage)
 "aQL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
@@ -7968,16 +7974,16 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "eLj" = (
-/obj/machinery/door/window/left/directional/west{
-	dir = 2;
-	name = "Crate Security Door";
-	req_access = list("cargo")
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/door/window/left/directional/north{
+	req_access = list("cargo");
+	name = "Crate Security Door"
+	},
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "packageExternal"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/cargo/storage)
@@ -17184,6 +17190,13 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/structure/window/spawner/directional/west,
+/obj/machinery/conveyor_switch/oneway{
+	dir = 8;
+	id = "packageExternal";
+	name = "Crate Returns";
+	pixel_x = -5
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/cargo/storage)
@@ -74395,7 +74408,7 @@ nKT
 brO
 taV
 cMb
-taV
+aQF
 eLj
 naV
 rTl
