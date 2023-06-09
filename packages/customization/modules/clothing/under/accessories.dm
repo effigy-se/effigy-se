@@ -177,8 +177,8 @@
 
 // Pride Pin Over-ride
 /obj/item/clothing/accessory/pride
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
+	icon = 'packages/clothing/assets/obj/accessories.dmi'
+	worn_icon = 'packages/clothing/assets/mob/accessories.dmi'
 
 GLOBAL_LIST_INIT(pride_pin_reskins, list(
 	"Rainbow Pride" = "pride",
