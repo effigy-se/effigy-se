@@ -33,6 +33,7 @@
 	var/glass_colour_type
 	/// Whether or not vision coloring is forcing
 	var/forced_glass_color = FALSE
+	supports_variations_flags = CLOTHING_SNOUTED_VOX_VARIATION // EFFIGY EDIT ADD
 
 /obj/item/clothing/glasses/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] is stabbing \the [src] into [user.p_their()] eyes! It looks like [user.p_theyre()] trying to commit suicide!"))
