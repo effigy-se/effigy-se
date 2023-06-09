@@ -653,8 +653,8 @@
 	smoothing_flags = NONE
 	icon_state = "ocean"
 	base_icon_state = "ocean"
-	plane = DEFAULT_PLANE //Same as weather, etc.
-	layer = ABOVE_MOB_LAYER
+	plane = WALL_PLANE //Same as weather, etc.
+	layer = OBJ_LAYER
 	starting_temp = T20C-150
 	no_effects = TRUE
 	vis_flags = NONE

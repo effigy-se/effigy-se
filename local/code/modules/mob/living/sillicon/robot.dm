@@ -47,7 +47,7 @@
 		dissipate()
 	else if (!stat && !robot_resting)
 		do_jitter_animation(10)
-		playsound(src, 'overrides/sound/effects/robot_smoke.ogg', 50)
+		playsound(src, 'local/sound/effects/robot_smoke.ogg', 50)
 		particles = new /particles/smoke/robot()
 
 /mob/living/silicon/robot/proc/dissipate()

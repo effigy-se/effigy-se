@@ -122,6 +122,9 @@
 	var/datum/sprite_accessory/underwear = null
 	var/datum/sprite_accessory/socks = null
 
+	/// Bitflag-based variable to store which parts of the uniform have been modified by the loadout, to avoid them being overriden again.
+	var/modified_outfit_slots = NONE // EFFIGY EDIT ADD
+
 /**
  * Called at the start of the equip proc
  *
