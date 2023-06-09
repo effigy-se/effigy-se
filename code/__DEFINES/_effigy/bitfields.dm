@@ -1,0 +1,7 @@
+DEFINE_BITFIELD(expanded_obj_flags, list(
+	"ANVIL_REPAIR" = ANVIL_REPAIR,
+))
+
+DEFINE_BITFIELD(expanded_chemical_flags, list(
+	"REAGENT_BLOOD_REGENERATING" = REAGENT_BLOOD_REGENERATING,
+))
