@@ -10,8 +10,8 @@
 	var/stored_name
 	var/badge_string = "Corporate Security"
 
-	drop_sound = 'overrides/sound/items/drop/ring.ogg'
-	pickup_sound = 'overrides/sound/items/pickup/ring.ogg'
+	drop_sound = 'local/sound/items/drop/ring.ogg'
+	pickup_sound = 'local/sound/items/pickup/ring.ogg'
 
 /obj/item/clothing/accessory/badge/old
 	name = "faded badge"
