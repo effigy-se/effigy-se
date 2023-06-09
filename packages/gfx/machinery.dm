@@ -74,6 +74,7 @@
 	var/door_sound = 'packages/gfx/assets/obj/door/blast_door.ogg'
 
 /obj/machinery/door/poddoor/shutters
+	icon = 'packages/gfx/assets/obj/door/shutters.dmi'
 	var/door_open_sound = 'packages/gfx/assets/obj/door/shutters_open.ogg'
 	var/door_close_sound = 'packages/gfx/assets/obj/door/shutters_close.ogg'
 
