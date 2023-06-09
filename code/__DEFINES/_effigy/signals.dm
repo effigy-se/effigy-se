@@ -38,3 +38,8 @@
 /// From mob/living/*/set_combat_mode(): (new_state)
 #define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"
 
+/// Whenever we need to check if a mob is currently inside of soulcatcher.
+#define COMSIG_SOULCATCHER_CHECK_SOUL "soulcatcher_check_soul"
+
+/// Whenever we need to get the soul of the mob inside of the soulcatcher.
+#define COMSIG_SOULCATCHER_SCAN_BODY "soulcatcher_scan_body"

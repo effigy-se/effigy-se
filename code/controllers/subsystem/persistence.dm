@@ -48,6 +48,7 @@ SUBSYSTEM_DEF(persistence)
 	save_photo_persistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
 	save_randomized_recipes()
 	save_scars()
+	save_modular_persistence() // EFFIGY EDIT ADDITION - (#184 Modular Persistence - Ported From Skyrat)
 	save_custom_outfits()
 	save_delamination_counter()
 	save_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
