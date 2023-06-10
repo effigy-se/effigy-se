@@ -295,6 +295,9 @@
 
 /// A value of /datum/preference/numeric/multiz_performance that disables the option
 #define MULTIZ_PERFORMANCE_DISABLE -1
+#define MULTIZ_PERFORMANCE_FAST 0 // EFFIGY EDIT ADD
+#define MULTIZ_PERFORMANCE_NICE (MAX_EXPECTED_Z_DEPTH - 1) // EFFIGY EDIT ADD
+
 /// We expect at most 3 layers of multiz
 /// Increment this define if you make a huge map. We unit test for it too just to make it easy for you
 /// If you modify this, you'll need to modify the tsx file too
