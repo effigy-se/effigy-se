@@ -6859,6 +6859,7 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/north,
+/obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "qP" = (
@@ -6872,12 +6873,12 @@
 	dir = 4
 	},
 /obj/machinery/camera/autoname/directional/north,
+/obj/machinery/incident_display/delam/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "qQ" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/color/yellow,
-/obj/item/radio/intercom/directional/north,
 /obj/item/storage/toolbox/electrical,
 /obj/item/clothing/gloves/color/yellow,
 /obj/item/storage/toolbox/mechanical,
@@ -7476,7 +7477,6 @@
 /obj/item/rcl/pre_loaded,
 /obj/item/paper/monitorkey,
 /obj/machinery/light/directional/east,
-/obj/structure/sign/delamination_counter/directional/east,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
 "sy" = (
@@ -8306,18 +8306,18 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "uY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "uZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/meter/layer2,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "va" = (
@@ -8370,7 +8370,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "vj" = (
@@ -12417,7 +12417,7 @@
 /obj/machinery/atmospherics/components/tank/air{
 	piping_layer = 4
 	},
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "Fm" = (
@@ -12976,7 +12976,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
@@ -13308,7 +13308,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/small/directional/east,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "HX" = (
@@ -13528,7 +13528,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "IL" = (
@@ -13865,7 +13865,7 @@
 /turf/open/floor/iron,
 /area/station/security/brig)
 "Kb" = (
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
@@ -15004,9 +15004,10 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
 "Op" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/sign/delamination_counter/directional/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/incident_display/delam/directional/north,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "Oq" = (
@@ -15305,7 +15306,7 @@
 /obj/machinery/atmospherics/components/binary/pump/on/layer4{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "PA" = (
@@ -15368,7 +15369,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
 "PN" = (
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "PO" = (
@@ -15612,7 +15613,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/navigate_destination/tcomms,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
@@ -15795,7 +15796,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "Rv" = (
@@ -16230,7 +16231,7 @@
 /obj/machinery/atmospherics/components/binary/pump/on/layer2{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "Tf" = (
@@ -16482,10 +16483,11 @@
 /turf/open/space,
 /area/space/nearstation)
 "Um" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/sign/warning/radiation/directional/south,
-/turf/open/floor/iron,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/incident_display/delam/directional/north,
+/turf/open/floor/engine,
 /area/station/engineering/main)
 "Un" = (
 /obj/machinery/air_sensor/plasma_tank,
@@ -16761,7 +16763,7 @@
 /area/station/engineering/main)
 "Vj" = (
 /obj/structure/cable,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "Vk" = (
@@ -17176,6 +17178,14 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
+/area/station/engineering/main)
+"WJ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/incident_display/delam/directional/north,
+/turf/open/floor/engine,
 /area/station/engineering/main)
 "WK" = (
 /obj/effect/spawner/random/maintenance,
@@ -49042,7 +49052,7 @@ sO
 rA
 VU
 qB
-tq
+Um
 ty
 tM
 ty
@@ -49297,7 +49307,7 @@ sG
 Ms
 sO
 rA
-Um
+VU
 qB
 aA
 tz
@@ -49565,7 +49575,7 @@ un
 uv
 un
 tP
-uF
+Op
 uL
 tk
 bh
@@ -50842,7 +50852,7 @@ Kd
 VU
 LI
 tr
-Op
+tF
 tP
 tP
 tS
@@ -50850,7 +50860,7 @@ uq
 uy
 uq
 tP
-uF
+Op
 YU
 qB
 qB
@@ -51353,9 +51363,9 @@ ZF
 KB
 VZ
 rA
-Um
+VU
 qB
-tr
+WJ
 tG
 tU
 ud
