@@ -22,6 +22,9 @@ SUBSYSTEM_DEF(persistence)
 	var/list/obj/structure/sign/picture_frame/photo_frames
 	var/list/obj/item/storage/photo_album/photo_albums
 	var/rounds_since_engine_exploded = 0
+	var/highscore_since_engine_exploded = 0
+	var/tram_hits_this_round = 0
+	var/tram_hits_last_round = 0
 
 /datum/controller/subsystem/persistence/Initialize()
 	load_poly()
@@ -36,6 +39,7 @@ SUBSYSTEM_DEF(persistence)
 	load_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 	load_tagline() // EFFIGY EDIT ADD (Tagline)
 
+	load_tram_counter()
 	load_adventures()
 	return SS_INIT_SUCCESS
 
@@ -51,6 +55,7 @@ SUBSYSTEM_DEF(persistence)
 	save_modular_persistence() // EFFIGY EDIT ADDITION - (#184 Modular Persistence - Ported From Skyrat)
 	save_custom_outfits()
 	save_delamination_counter()
+	save_tram_counter()
 	save_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 	save_tagline() // EFFIGY EDIT ADD (Tagline)
 
@@ -536,18 +541,34 @@ SUBSYSTEM_DEF(persistence)
 
 	WRITE_FILE(file, json_encode(data))
 
-/// Location where we save the information about how many rounds it has been since the engine blew up
+/// Location where we save the information about how many rounds it has been since the engine blew up/tram hits
 #define DELAMINATION_COUNT_FILEPATH "data/rounds_since_delamination.txt"
+#define DELAMINATION_HIGHSCORE_FILEPATH "data/highscore_since_delamination.txt"
+#define TRAM_COUNT_FILEPATH "data/tram_hits_last_round.txt"
 
 /datum/controller/subsystem/persistence/proc/load_delamination_counter()
 	if (!fexists(DELAMINATION_COUNT_FILEPATH))
 		return
 	rounds_since_engine_exploded = text2num(file2text(DELAMINATION_COUNT_FILEPATH))
-	for (var/obj/structure/sign/delamination_counter/sign as anything in GLOB.map_delamination_counters)
-		sign.update_count(rounds_since_engine_exploded)
+	highscore_since_engine_exploded = text2num(file2text(DELAMINATION_HIGHSCORE_FILEPATH))
+	if (fexists(DELAMINATION_HIGHSCORE_FILEPATH))
+		highscore_since_engine_exploded = text2num(file2text(DELAMINATION_HIGHSCORE_FILEPATH))
+	for (var/obj/machinery/incident_display/sign as anything in GLOB.map_delamination_counters)
+		sign.update_delam_count(rounds_since_engine_exploded, highscore_since_engine_exploded)
 
 /datum/controller/subsystem/persistence/proc/save_delamination_counter()
 	rustg_file_write("[rounds_since_engine_exploded + 1]", DELAMINATION_COUNT_FILEPATH)
+	if((rounds_since_engine_exploded + 1) > highscore_since_engine_exploded)
+		rustg_file_write("[rounds_since_engine_exploded + 1]", DELAMINATION_HIGHSCORE_FILEPATH)
+
+/datum/controller/subsystem/persistence/proc/load_tram_counter()
+	if(!fexists(TRAM_COUNT_FILEPATH))
+		return
+	tram_hits_last_round = text2num(file2text(TRAM_COUNT_FILEPATH))
+
+/datum/controller/subsystem/persistence/proc/save_tram_counter()
+	if(SSmapping.config?.map_name == "Tramstation" || SSmapping.config?.map_name == "Birdshot Station")
+		rustg_file_write("[tram_hits_this_round]", TRAM_COUNT_FILEPATH)
 
 // EFFIGY EDIT ADD START (Tagline)
 /// Location where we save the server tagline
@@ -567,5 +588,7 @@ SUBSYSTEM_DEF(persistence)
 // EFFIGY EDIT ADD END (Tagline)
 
 #undef DELAMINATION_COUNT_FILEPATH
+#undef DELAMINATION_HIGHSCORE_FILEPATH
+#undef TRAM_COUNT_FILEPATH
 #undef FILE_RECENT_MAPS
 #undef KEEP_ROUNDS_MAP
