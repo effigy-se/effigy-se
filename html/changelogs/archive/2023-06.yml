@@ -275,14 +275,12 @@
       the time, and examining will let you know what type. Should probably still smash
       them before they suddenly gain sapience...
 2023-06-08:
-  Deek-Za:
-  - image: added digi sprites for HoS jumpsuit.
-  - code_imp: updated HoS coat digi variation flag
-  unit0016:
-  - qol: Foxhole has received navigational signs.
   Archimus12:
   - bugfix: fixed admin custom job slot cancel button
   - spellcheck: fixed a typo that spelled "jobs" as "jebs"
+  Deek-Za:
+  - image: added digi sprites for HoS jumpsuit.
+  - code_imp: updated HoS coat digi variation flag
   Diegoflores31:
   - image: modified crate sprites
   Helg2:
@@ -309,21 +307,21 @@
   - bugfix: Fixes AIize not working
   mc-oofert:
   - bugfix: xeno resin floor layer
+  unit0016:
+  - qol: Foxhole has received navigational signs.
   zeroisthebiggay:
   - image: energy katana on belt
 2023-06-09:
-  LT3:
-  - bugfix: Public glass airlocks use correct (new) icons
-  - admin: Coder has been yelled at
-  - bugfix: 'Game options menu should no longer have invalid options with ''Error:
-      If you see this, yell at a coder!'''
-  unit0016:
-  - bugfix: The Foxhole SM shutters work. Oops.
   Ghommie:
   - bugfix: pixel offsets from grabbing other mobs now respect the body offset variables.
   - refactor: Changed some code so that resized mobs no longer look like they're poking
       over the below tile with their legs or not even reaching the bottom edge of
       the tile they're on.
+  LT3:
+  - bugfix: Public glass airlocks use correct (new) icons
+  - admin: Coder has been yelled at
+  - bugfix: 'Game options menu should no longer have invalid options with ''Error:
+      If you see this, yell at a coder!'''
   MTandi, Borbop:
   - bugfix: Dust now has dust icon, instead of dirt icon. Dust on all maps replaced
       with dirt
@@ -340,34 +338,9 @@
   - image: Added shiny new belts and detective/syndicate holsters (`onmob` sprites
       included)
   - image: Removed old, unused red military belt sprite
+  unit0016:
+  - bugfix: The Foxhole SM shutters work. Oops.
 2023-06-10:
-  softcerv, RimiNosha, DuffCreeper, Hatterhat, larentoun for Skyrat:
-  - rscadd: 'Adds in NIFs, see Skyrat-tg # 16865 for more details'
-  - qol: replaces the NIFSoft vendor with a PDA app.
-  - bugfix: Fixed NIFs not saving properly in certain cases like cryo and round-end
-      if SSD.
-  - bugfix: Fixed the Hivemind NIF crate at cargo giving the Grimoire instead
-  - rscadd: Adds in the Grimoire Purpura, a NIFSoft that lets the user summon items
-      for adult activities.
-  - qol: 'Adds the PDA themes from tgstation # 73070 to NIFs'
-  - rscadd: 'Adds in the Poem of Communal Souls NIFSoft, see ((Skyrat-tg # 19884))
-      for more details'
-  - rscadd: added reward points to NIFs, an alternative currency given from buying
-      NIFSofts that can be used to buy more NIFSofts.
-  - code_imp: NIF flavor text now uses onChange rather than onInput, hopefully preventing
-      high volumes of messages being sent to admins whenever someone changes their
-      NIF flavor text.
-  - rscadd: Adds in the Purpura Contract NIFSoft, a roleplay NIFSoft that gives the
-      user fake rules to follow.
-  - balance: reduces the prices of NIFSofts.
-  - qol: NIFs can now be manually removed from a player file.
-  - bugfix: NIFs now delete when broken for two shifts
-  - rscadd: 'Adds soulcatchers to the game, see (Skyrat-tg # 20576)'
-  - qol: NIFSofts now have associated Font Awesome icons that show up in UI.
-  - bugfix: NIF action icons no longer persist after a NIF is removed.
-  - code_imp: NIF goodies are now in the proper goodies.dm file.
-  - bugfix: Removes lewd nifsoft if config is set to remove lewd
-  - bugfix: 'NIFs shouldn''t hard delete as much now. (SR # 21354)'
   Ghommie:
   - bugfix: waddling, squeaky shoes and swivel chair sound effects no longer run when
       moved by conveyor belt.
@@ -405,3 +378,64 @@
       accurately post to list_bombers with the name of the person who shot the projectile
       from the gun. If you don't know how to list-bombers, it will also be present
       in game.log for your viewing pleasure.
+  softcerv, RimiNosha, DuffCreeper, Hatterhat, larentoun for Skyrat:
+  - rscadd: 'Adds in NIFs, see Skyrat-tg # 16865 for more details'
+  - qol: replaces the NIFSoft vendor with a PDA app.
+  - bugfix: Fixed NIFs not saving properly in certain cases like cryo and round-end
+      if SSD.
+  - bugfix: Fixed the Hivemind NIF crate at cargo giving the Grimoire instead
+  - rscadd: Adds in the Grimoire Purpura, a NIFSoft that lets the user summon items
+      for adult activities.
+  - qol: 'Adds the PDA themes from tgstation # 73070 to NIFs'
+  - rscadd: 'Adds in the Poem of Communal Souls NIFSoft, see ((Skyrat-tg # 19884))
+      for more details'
+  - rscadd: added reward points to NIFs, an alternative currency given from buying
+      NIFSofts that can be used to buy more NIFSofts.
+  - code_imp: NIF flavor text now uses onChange rather than onInput, hopefully preventing
+      high volumes of messages being sent to admins whenever someone changes their
+      NIF flavor text.
+  - rscadd: Adds in the Purpura Contract NIFSoft, a roleplay NIFSoft that gives the
+      user fake rules to follow.
+  - balance: reduces the prices of NIFSofts.
+  - qol: NIFs can now be manually removed from a player file.
+  - bugfix: NIFs now delete when broken for two shifts
+  - rscadd: 'Adds soulcatchers to the game, see (Skyrat-tg # 20576)'
+  - qol: NIFSofts now have associated Font Awesome icons that show up in UI.
+  - bugfix: NIF action icons no longer persist after a NIF is removed.
+  - code_imp: NIF goodies are now in the proper goodies.dm file.
+  - bugfix: Removes lewd nifsoft if config is set to remove lewd
+  - bugfix: 'NIFs shouldn''t hard delete as much now. (SR # 21354)'
+2023-06-11:
+  Ghommie:
+  - qol: Basketball (the mini-game) player mobs have a chance to be taller than the
+      usual spaceman.
+  Licks-The-Crystal:
+  - qol: Makes transparent kudzu transparent (and won't block sight)
+  Licks-the-Crystal:
+  - bugfix: Removes the infinite hypernoblium from the holodeck's Winter Wonderland
+      setting.
+  MTandi:
+  - qol: 'RPD UI: Devices split in two categories, options are aligned to the left'
+  MrStonedOne:
+  - server: fix logging infoleak from the lack of continuation markets on new lines.
+  Rhials:
+  - code_imp: Spaceman simple mobs have been converted to basic mobs.
+  - qol: Ventcrawling mobs have a 1 second delay/warning before exiting the ventilation.
+  Roryl-c:
+  - bugfix: fixed TTS tripping over stuttered text when other speech modifiers are
+      in effect
+  - bugfix: fixed tedious TTS "ess-ess-speech" for lizards and other species with
+      repeated consonants
+  ShizCalev:
+  - bugfix: The RD's plant will no longer say that it's not very healthy after being
+      restored with seeds.
+  - bugfix: Potted plants no longer randomly swap icons after being thrown.
+  - bugfix: Plants that started the round dead are no longer all the same kind once
+      revived.
+  - bugfix: Admins can now varedit plants to be alive / dead!
+  Singul0:
+  - spellcheck: the H.E.C.K helmet is now typo-free
+  unit0016:
+  - rscadd: Cargo has been handily refit on Foxhole, for usability.
+  - qol: Several Foxhole Offices have been extended.
+  - code_imp: More types of liquid spawner prefabs are now available.
