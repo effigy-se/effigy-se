@@ -220,7 +220,7 @@
 	objectives += ending_objective
 
 /datum/antagonist/traitor/proc/forge_single_generic_objective()
-	if(prob(0)) // EFFIGY EDIT #???16 - Disables Krilling until we sort out how to best handle it. Original - KILL_PROB
+	if(prob(0)) // EFFIGY EDIT #228 - Disables Krilling until we sort out how to best handle it. Original - KILL_PROB
 		var/list/active_ais = active_ais()
 		if(active_ais.len && prob(DESTROY_AI_PROB(GLOB.joined_player_list.len)))
 			var/datum/objective/destroy/destroy_objective = new()

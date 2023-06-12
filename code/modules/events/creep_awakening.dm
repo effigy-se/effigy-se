@@ -1,4 +1,4 @@
-/* /// EFFIGY EDIT REMOVAL - #???16 - Obsession kinda lame tbh
+/* /// EFFIGY EDIT REMOVAL - #228 - Obsession kinda lame tbh
 /datum/round_event_control/obsessed
 	name = "Obsession Awakening"
 	typepath = /datum/round_event/obsessed
