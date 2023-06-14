@@ -3601,6 +3601,13 @@
 /area/station/commons/dorms)
 "iU" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new,
+/obj/machinery/button/showtime/broadcast_team{
+	pixel_x = -26
+	},
+/obj/structure/safe/floor,
+/obj/item/vending_refill/lustwish,
+/obj/item/stack/cable_coil,
 /turf/open/floor/plating,
 /area/station/maintenance/central)
 "iV" = (
@@ -6705,6 +6712,9 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/central)
 "qs" = (
@@ -11548,8 +11558,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/contraband/random/directional/west,
 /obj/effect/spawner/random/trash/garbage,
-/turf/open/floor/plating,
-/area/station/maintenance/central)
+/obj/effect/landmark/atmospheric_sanity/ignore_area,
+/turf/open/floor/iron,
+/area/station/service/studio/stage)
 "CQ" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -11918,8 +11929,9 @@
 "DS" = (
 /obj/structure/closet/firecloset,
 /obj/effect/spawner/random/maintenance,
-/turf/open/floor/plating,
-/area/station/maintenance/central)
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/iron,
+/area/station/service/studio/stage)
 "DT" = (
 /obj/structure/closet,
 /obj/effect/spawner/random/maintenance,
@@ -11956,8 +11968,8 @@
 "DZ" = (
 /obj/effect/spawner/random/maintenance,
 /obj/structure/rack,
-/turf/open/floor/plating,
-/area/station/maintenance/central)
+/turf/open/floor/iron,
+/area/station/service/studio/stage)
 "Ea" = (
 /obj/item/toy/plush/lizard_plushie/space/green{
 	name = "Spices-the-Air"
@@ -13434,6 +13446,14 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
+"Io" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/landmark/start/broadcast_team,
+/obj/machinery/camera/broadcast/directional/south{
+	view_range = 1
+	},
+/turf/open/floor/iron,
+/area/station/service/studio/stage)
 "Ip" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -14391,6 +14411,9 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/central)
 "LT" = (
@@ -15306,6 +15329,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
+"Ps" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/effect/landmark/start/broadcast_team,
+/turf/open/floor/plating,
+/area/station/maintenance/central)
 "Pt" = (
 /obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/plating,
@@ -16355,6 +16384,7 @@
 "TA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/event_spawn,
+/obj/effect/turf_decal/siding/thinplating_new,
 /turf/open/floor/plating,
 /area/station/maintenance/central)
 "TB" = (
@@ -17882,6 +17912,19 @@
 /obj/machinery/atmospherics/components/binary/pump,
 /turf/open/floor/iron,
 /area/station/engineering/main)
+"Zr" = (
+/obj/machinery/computer/camera_advanced/base_construction/broadcast{
+	dir = 1
+	},
+/obj/machinery/computer/security/telescreen/broadcast_team{
+	dir = 1;
+	pixel_y = -26
+	},
+/obj/effect/turf_decal/siding/thinplating_new/corner{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/central)
 "Zs" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/public/glass{
@@ -51096,7 +51139,7 @@ gQ
 Ac
 iU
 CP
-ku
+Io
 fT
 Ri
 mF
@@ -51607,8 +51650,8 @@ kt
 jD
 ka
 gQ
-Ay
-lF
+Ps
+Zr
 fT
 fT
 fT
