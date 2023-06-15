@@ -31,6 +31,7 @@
 	icon_state = "waiter"
 	inhand_icon_state = "waiter"
 	supports_variations_flags = CLOTHING_MONKEY_VARIATION
+	random_sensor = FALSE // EFFIGY EDIT CHANGE
 
 /obj/item/clothing/under/suit/blacktwopiece
 	name = "black two piece suit"
