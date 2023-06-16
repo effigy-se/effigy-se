@@ -244,7 +244,7 @@
 	glass_type = /obj/machinery/door/airlock/service/studio/glass
 	airlock_type = /obj/machinery/door/airlock/service/studio
 
-// EFFIGY DOOR ASSEMBLYS
+// EFFIGY DOOR ASSEMBLIES
 
 /obj/structure/door_assembly
 	icon = 'packages/gfx/assets/obj/airlock/station/generic.dmi'
