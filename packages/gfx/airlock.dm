@@ -244,6 +244,55 @@
 	glass_type = /obj/machinery/door/airlock/service/studio/glass
 	airlock_type = /obj/machinery/door/airlock/service/studio
 
+// EFFIGY DOOR ASSEMBLYS
+
+/obj/structure/door_assembly
+	icon = 'packages/gfx/assets/obj/airlock/station/generic.dmi'
+	overlays_file = 'packages/gfx/assets/obj/airlock/station/overlays.dmi'
+
+/obj/structure/door_assembly/door_assembly_public
+	icon = 'packages/gfx/assets/obj/airlock/station2/glass.dmi'
+	overlays_file = 'packages/gfx/assets/obj/airlock/station/overlays.dmi'
+
+/obj/structure/door_assembly/door_assembly_com
+	icon = 'packages/gfx/assets/obj/airlock/station/com.dmi'
+
+/obj/structure/door_assembly/door_assembly_sec
+	icon = 'packages/gfx/assets/obj/airlock/station/sec.dmi'
+
+/obj/structure/door_assembly/door_assembly_eng
+	icon = 'packages/gfx/assets/obj/airlock/station/engi.dmi'
+
+/obj/structure/door_assembly/door_assembly_min
+	icon = 'packages/gfx/assets/obj/airlock/station/cargo.dmi'
+
+/obj/structure/door_assembly/door_assembly_atmo
+	icon = 'packages/gfx/assets/obj/airlock/station/atmos.dmi'
+
+/obj/structure/door_assembly/door_assembly_research
+	icon = 'packages/gfx/assets/obj/airlock/station/rnd.dmi'
+
+/obj/structure/door_assembly/door_assembly_science
+	icon = 'packages/gfx/assets/obj/airlock/station/sci.dmi'
+
+/obj/structure/door_assembly/door_assembly_med
+	icon = 'packages/gfx/assets/obj/airlock/station/med.dmi'
+
+/obj/structure/door_assembly/door_assembly_hydro
+	icon = 'packages/gfx/assets/obj/airlock/station/hydro.dmi'
+
+/obj/structure/door_assembly/door_assembly_viro
+	icon = 'packages/gfx/assets/obj/airlock/station/viro.dmi'
+
+/obj/structure/door_assembly/door_assembly_silver
+	icon = 'packages/gfx/assets/obj/airlock/station/silver.dmi'
+
+/obj/structure/door_assembly/door_assembly_mai
+	icon = 'packages/gfx/assets/obj/airlock/station/maint-int.dmi'
+
+/obj/structure/door_assembly/door_assembly_extmai
+	icon = 'packages/gfx/assets/obj/airlock/station/maint-ext.dmi'
+
 #undef AIRLOCK_LIGHT_POWER
 #undef AIRLOCK_LIGHT_RANGE
 #undef AIRLOCK_LIGHT_ENGINEERING

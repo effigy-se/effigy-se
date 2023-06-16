@@ -27,24 +27,26 @@
 			Insert(sprite_name = sanitize_css_class_name(icon_state), I = icon)
 
 	//for each airlock type we create its overlayed version with the suffix Glass in the sprite name
+	//EFFIGY EDIT START - Updated airlock sprites for RCD
 	var/list/airlocks = list(
-		"Standard" = 'icons/obj/doors/airlocks/station/public.dmi',
-		"Public" = 'icons/obj/doors/airlocks/station2/glass.dmi',
-		"Engineering" = 'icons/obj/doors/airlocks/station/engineering.dmi',
-		"Atmospherics" = 'icons/obj/doors/airlocks/station/atmos.dmi',
-		"Security" = 'icons/obj/doors/airlocks/station/security.dmi',
-		"Command" = 'icons/obj/doors/airlocks/station/command.dmi',
-		"Medical" = 'icons/obj/doors/airlocks/station/medical.dmi',
-		"Research" = 'icons/obj/doors/airlocks/station/research.dmi',
+		"Standard" = 'packages/gfx/assets/obj/airlock/station/generic.dmi',
+		"Public" = 'packages/gfx/assets/obj/airlock/station2/glass.dmi',
+		"Engineering" = 'packages/gfx/assets/obj/airlock/station/engi.dmi',
+		"Atmospherics" = 'packages/gfx/assets/obj/airlock/station/atmos.dmi',
+		"Security" = 'packages/gfx/assets/obj/airlock/station/sec.dmi',
+		"Command" = 'packages/gfx/assets/obj/airlock/station/com.dmi',
+		"Medical" = 'packages/gfx/assets/obj/airlock/station/med.dmi',
+		"Research" = 'packages/gfx/assets/obj/airlock/station/rnd.dmi',
 		"Freezer" = 'icons/obj/doors/airlocks/station/freezer.dmi',
-		"Virology" = 'icons/obj/doors/airlocks/station/virology.dmi',
-		"Mining" = 'icons/obj/doors/airlocks/station/mining.dmi',
-		"Maintenance" = 'icons/obj/doors/airlocks/station/maintenance.dmi',
+		"Virology" = 'packages/gfx/assets/obj/airlock/station/viro.dmi',
+		"Mining" = 'packages/gfx/assets/obj/airlock/station/cargo.dmi',
+		"Maintenance" = 'packages/gfx/assets/obj/airlock/station/maint-int.dmi',
 		"External" = 'icons/obj/doors/airlocks/external/external.dmi',
-		"External Maintenance" = 'icons/obj/doors/airlocks/station/maintenanceexternal.dmi',
+		"External Maintenance" = 'packages/gfx/assets/obj/airlock/station/maint-ext.dmi',
 		"Airtight Hatch" = 'icons/obj/doors/airlocks/hatch/centcom.dmi',
 		"Maintenance Hatch" = 'icons/obj/doors/airlocks/hatch/maintenance.dmi'
 	)
+	//EFFIGY EDIT END
 	//these 3 types dont have glass doors
 	var/list/exclusion = list("Freezer", "Airtight Hatch", "Maintenance Hatch")
 
