@@ -177,12 +177,16 @@
 /mob/living/silicon/robot/RangedAttack(atom/A)
 	A.attack_robot(src)
 
+// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat) - overrides/code/_onclick/cyborg.dm
+/*
 /atom/proc/attack_robot(mob/user)
 	if (SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ROBOT, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return
-	if(effigy_proc(src, "attack_robot_se", list(src, user))) return // EffigyLocal Add - Borgs
+
 	attack_ai(user)
 	return
+*/
+// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
 
 /**
  * What happens when the cyborg without active module holds right-click on an item. Returns a SECONDARY_ATTACK_* value.
