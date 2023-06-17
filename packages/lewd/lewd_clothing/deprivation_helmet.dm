@@ -1,3 +1,13 @@
+/// Gag-Related Text
+#define DEPHELMET_GAGGED_TEXT span_purple("Something is gagging your mouth! You can barely make a sound...")
+#define DEPHELMET_UNGAGGED_TEXT span_purple("Your mouth is free. You breathe out with relief.")
+/// Hearing-Related Text
+#define DEPHELMET_DEAF_TEXT span_purple("You can barely hear anything! Your other senses have become more apparent...")
+#define DEPHELMET_HEARING_TEXT span_purple("Finally you can hear the world around you once more.")
+/// Sight-Related Text
+#define DEPHELMET_BLIND_TEXT span_purple("The helmet is blocking your vision! You can't make out anything on the other side...")
+#define DEPHELMET_SIGHT_TEXT span_purple("The helmet no longer restricts your vision.")
+
 /obj/item/clothing/head/deprivation_helmet
 	name = "deprivation helmet"
 	desc = "Completely cuts off the wearer from the outside world."
@@ -29,16 +39,16 @@
 
 //Declare action types
 /datum/action/item_action/toggle_vision
-	name = "Vision switch"
-	desc = "Makes it impossible to see anything"
+	name = "Vision Switch"
+	desc = "Makes it impossible to see anything."
 
 /datum/action/item_action/toggle_hearing
-	name = "Hearing switch"
-	desc = "Makes it impossible to hear anything"
+	name = "Hearing Switch"
+	desc = "Makes it impossible to hear anything."
 
 /datum/action/item_action/toggle_speech
-	name = "Speech switch"
-	desc = "Makes it impossible to say anything"
+	name = "Speech Switch"
+	desc = "Makes it impossible to say anything."
 
 //Vision switcher
 /datum/action/item_action/toggle_vision/Trigger(trigger_flags)
@@ -77,48 +87,45 @@
 		if(muzzle == TRUE)
 			muzzle = FALSE
 			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
-			to_chat(usr, span_notice("Speech switch off"))
+			to_chat(usr, span_notice("Speech switch off."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
-				//to_chat(U, span_purple("Your mouth is free. you breathe out with relief."))
 		else
 			muzzle = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
-			to_chat(usr, span_notice("Speech switch on"))
+			to_chat(usr, span_notice("Speech switch on."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
-				to_chat(usr, span_purple("Something is gagging your mouth! You can barely make a sound..."))
+				to_chat(usr, DEPHELMET_GAGGED_TEXT)
 	if(user_client == "hearing")
 		if(earmuffs == TRUE)
 			earmuffs = FALSE
 			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
-			to_chat(usr, span_notice("Hearing switch off"))
+			to_chat(usr, span_notice("Hearing switch off."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
-				//to_chat(U, span_purple("Finally you can hear the world around again."))
 		else
 			earmuffs = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
-			to_chat(usr, span_notice("Hearing switch on"))
+			to_chat(usr, span_notice("Hearing switch on."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
-				to_chat(usr, span_purple("You can barely hear anything! Your other senses have become more apparent..."))
+				to_chat(usr, DEPHELMET_DEAF_TEXT)
 	if(user_client == "vision")
 		var/mob/living/carbon/human/user = usr
 		if(prevent_vision == TRUE)
 			prevent_vision = FALSE
 			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
-			to_chat(usr, span_notice("Vision switch off"))
+			to_chat(usr, span_notice("Vision switch off."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.cure_blind("deprivation_helmet_[REF(src)]")
-				//to_chat(U, span_purple("Helmet no longer restricts your vision."))
 		else
 			prevent_vision = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
-			to_chat(usr, span_notice("Vision switch on"))
+			to_chat(usr, span_notice("Vision switch on."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.become_blind("deprivation_helmet_[REF(src)]")
-				to_chat(usr, span_purple("The helmet is blocking your vision! You can't make out anything on the other side..."))
+				to_chat(usr, DEPHELMET_BLIND_TEXT)
 
 // Create radial menu
 /obj/item/clothing/head/deprivation_helmet/proc/populate_helmet_designs()
@@ -188,13 +195,13 @@
 		return
 	if(muzzle == TRUE)
 		ADD_TRAIT(user, TRAIT_MUTE, CLOTHING_TRAIT)
-		to_chat(usr, span_purple("Something is gagging your mouth! You can barely make a sound..."))
+		to_chat(usr, DEPHELMET_GAGGED_TEXT)
 	if(earmuffs == TRUE)
 		ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
-		to_chat(usr, span_purple("You can barely hear anything! Your other senses have become more apparent..."))
+		to_chat(usr, DEPHELMET_DEAF_TEXT)
 	if(prevent_vision == TRUE)
 		user.become_blind("deprivation_helmet_[REF(src)]")
-		to_chat(usr, span_purple("The helmet is blocking your vision! You can't make out anything on the other side..."))
+		to_chat(usr, DEPHELMET_BLIND_TEXT)
 
 
 // Here goes code that heals the wearer after unequipping helmet
@@ -211,9 +218,16 @@
 
 	// Some stuff for unequip messages
 	if(src == user.head)
-		if(muzzle == TRUE)
-			to_chat(user, span_purple("Your mouth is free. You breathe out with relief."))
-		if(earmuffs == TRUE)
-			to_chat(user, span_purple("Finally you can hear the world around you once more."))
-		if(prevent_vision == TRUE)
-			to_chat(user, span_purple("The helmet no longer restricts your vision."))
+		if(muzzle == TRUE) // This text works for the mute as well, so no additional check.
+			to_chat(user, DEPHELMET_UNGAGGED_TEXT)
+		if(earmuffs == TRUE && !HAS_TRAIT(user,TRAIT_DEAF))
+			to_chat(user, DEPHELMET_HEARING_TEXT)
+		if(prevent_vision == TRUE && !user.is_blind())
+			to_chat(user, DEPHELMET_SIGHT_TEXT)
+
+#undef DEPHELMET_GAGGED_TEXT
+#undef DEPHELMET_UNGAGGED_TEXT
+#undef DEPHELMET_DEAF_TEXT
+#undef DEPHELMET_HEARING_TEXT
+#undef DEPHELMET_BLIND_TEXT
+#undef DEPHELMET_SIGHT_TEXT
