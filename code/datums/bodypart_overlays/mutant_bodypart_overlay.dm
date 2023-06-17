@@ -99,6 +99,7 @@
 
 ///Generate a unique key based on our sprites. So that if we've aleady drawn these sprites, they can be found in the cache and wont have to be drawn again (blessing and curse, but mostly curse)
 /datum/bodypart_overlay/mutant/generate_icon_cache()
+	if (!isnull(effigy_proc(src, "generate_icon_cache_se", list()))) return // EffigyLocal Add - Customisation
 	. = list()
 	. += "[get_base_icon_state()]"
 	. += "[feature_key]"

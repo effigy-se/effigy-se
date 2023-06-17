@@ -155,18 +155,14 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 /// be valid.
 /// If no changes need to be made, will return the same list.
 /// Expects all quirk names to be unique, but makes no other expectations.
-/datum/controller/subsystem/processing/quirks/proc/filter_invalid_quirks(list/quirks, list/augments) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+/datum/controller/subsystem/processing/quirks/proc/filter_invalid_quirks(list/quirks, list/augments)
 	var/list/new_quirks = list()
 	var/list/positive_quirks = list()
 	var/balance = 0
 
 	var/list/all_quirks = get_quirks()
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
-	for(var/key in augments)
-		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
-		balance += aug.cost
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	balance = effigy_proc(src, "filter_augments_se", list(balance, augments)) // EffigyLocal Add - Filter augments
 
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = all_quirks[quirk_name]

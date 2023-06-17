@@ -7,3 +7,10 @@
 		return TRUE
 
 	return FALSE
+
+/datum/controller/subsystem/processing/quirks/proc/filter_augments_se(balance, list/augments)
+	for(var/key in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
+		balance += aug.cost
+
+	return balance
