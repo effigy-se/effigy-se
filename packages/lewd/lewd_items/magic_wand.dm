@@ -1,6 +1,6 @@
 /obj/item/clothing/sextoy/magic_wand
 	name = "magic wand"
-	desc = "Not sure where is magic in this thing, but if you press button - it makes funny vibrations"
+	desc = "Not sure where is magic in this thing, but if you press button - it makes funny vibrations."
 	icon_state = "magicwand_off"
 	base_icon_state = "magicwand"
 	worn_icon_state = "magicwand"

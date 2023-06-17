@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		"Orange"	= "#ff9a00", //orange
 		"Purple"	= "#e300ff", //purple
 		"White"		= "#c0c0c0", //white
-		))
+		)) /// TODO - WHY IS THIS A GLOB. WHY IS THIS A GLOB. WHY IS THIS A GLOB.
 
 /obj/item/clothing/sextoy/dildo/custom_dildo
 	name = "custom dildo"
