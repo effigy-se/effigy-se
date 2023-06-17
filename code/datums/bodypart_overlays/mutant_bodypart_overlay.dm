@@ -30,6 +30,7 @@
 	// EFFIGY EDIT ADD END
 
 /datum/bodypart_overlay/mutant/get_overlay(layer, obj/item/bodypart/limb)
+	if(effigy_proc(src,"get_overlay_se",list(layer, limb))) return ..() // EFFIGY EDIT CHANGE
 	inherit_color(limb) // If draw_color is not set yet, go ahead and do that
 	return ..()
 
