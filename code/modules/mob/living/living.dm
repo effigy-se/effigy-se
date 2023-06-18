@@ -640,8 +640,8 @@
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
 	to_chat(src, span_notice("You stand up."))
-	set_lying_angle(0)
 	set_body_position(STANDING_UP)
+	set_lying_angle(0)
 	// EFFIGY EDIT CHANGE END
 
 
