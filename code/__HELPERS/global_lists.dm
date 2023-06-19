@@ -68,7 +68,7 @@
 
 	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
 
-	make_extra_datum_references() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+	make_extra_datum_references() // EffigyEdit Add - All our extra datums n' shit
 	init_crafting_recipes()
 	init_crafting_recipes_atoms()
 
