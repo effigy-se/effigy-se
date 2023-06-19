@@ -672,13 +672,6 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 #define BODY_FRONT_UNDER_CLOTHES 31
 /// Jumpsuit clothing layer
 #define UNIFORM_LAYER 30 // EffigyLocal Edit - Customization - Original: 25
-// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
-#define ANUS_LAYER 29
-#define VAGINA_LAYER 28
-#define PENIS_LAYER 27
-#define NIPPLES_LAYER 26
-#define BANDAGE_LAYER 25
-// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 /// ID card layer
 #define ID_LAYER 24
 /// ID card layer (might be deprecated)
@@ -778,14 +771,6 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define EXTERNAL_ADJACENT (1 << 1)
 /// Draws overlay on the BODY_BEHIND_LAYER
 #define EXTERNAL_BEHIND (1 << 2)
-
-// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
-/// Draws organ on the BODY_FRONT_UNDER_CLOTHES
-#define EXTERNAL_FRONT_UNDER_CLOTHES (1 << 4)
-/// Draws organ on the ABOVE_BODY_FRONT_HEAD_LAYER
-#define EXTERNAL_FRONT_OVER (1 << 5)
-// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
-
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 

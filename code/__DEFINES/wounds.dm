@@ -132,8 +132,7 @@ GLOBAL_LIST_INIT(global_all_wound_types, list(
 #define MANGLES_BONE (1<<3)
 /// If this wound marks the limb as being allowed to have gauze applied
 #define ACCEPTS_GAUZE (1<<4)
-/// If this wound marks the limb as being allowed to have splints applied
-#define ACCEPTS_SPLINT (1<<5) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+
 
 
 // ~scar persistence defines

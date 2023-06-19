@@ -17,6 +17,11 @@
 //Appends to the bottom of Defib fails - DNR TRAIT
 #define DEFIB_FAIL_DNR (1<<11)
 
+/// Draws organ on the BODY_FRONT_UNDER_CLOTHES
+#define EXTERNAL_FRONT_UNDER_CLOTHES (1 << 4)
+/// Draws organ on the ABOVE_BODY_FRONT_HEAD_LAYER
+#define EXTERNAL_FRONT_OVER (1 << 5)
+
 ///Defines for icons used for modular bodyparts, created to make it easier to relocate the module or files if necessary.
 #define BODYPART_ICON_HUMAN 'packages/bodyparts/assets/human_parts_greyscale.dmi'
 #define BODYPART_ICON_MAMMAL 'packages/bodyparts/assets/mammal_parts_greyscale.dmi'
@@ -34,3 +39,10 @@
 #define BODYPART_ICON_SYNTHMAMMAL 'packages/bodyparts/assets/synthmammal_parts_greyscale.dmi'
 #define BODYPART_ICON_IPC 'packages/bodyparts/assets/ipc_parts.dmi'
 #define BODYPART_ICON_SYNTHLIZARD 'packages/bodyparts/assets/synthliz_parts_greyscale.dmi'
+
+// Go back while you can!
+#define ANUS_LAYER 29
+#define VAGINA_LAYER 28
+#define PENIS_LAYER 27
+#define NIPPLES_LAYER 26
+#define BANDAGE_LAYER 25
