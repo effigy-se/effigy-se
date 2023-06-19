@@ -8,6 +8,7 @@
 	make_body_marking_references()
 	make_body_marking_set_references()
 	make_body_marking_dna_block_references()
+	init_emote_list_se()
 	populate_total_ui_len_by_block()
 	populate_total_uf_len_by_block()
 	make_augment_references()

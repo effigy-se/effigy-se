@@ -34,20 +34,6 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
-	//Scream types
-	for(var/spath in subtypesof(/datum/scream_type))
-		var/datum/scream_type/S = new spath()
-		GLOB.scream_types[S.name] = spath
-	sort_list(GLOB.scream_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
-
-	//Laugh types
-	for(var/spath in subtypesof(/datum/laugh_type))
-		var/datum/laugh_type/L = new spath()
-		GLOB.laugh_types[L.name] = spath
-	sort_list(GLOB.laugh_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
-
 /// Inits GLOB.species_list. Not using GLOBAL_LIST_INIT b/c it depends on GLOB.string_lists
 /proc/init_species_list()
 	for(var/spath in subtypesof(/datum/species))
