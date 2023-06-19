@@ -18,13 +18,11 @@
 
 
 // We do this here like this so that we handle matrixed color bodypart overlays and emissives.
-/datum/bodypart_overlay/mutant/proc/get_overlay_se(layer, obj/item/bodypart/limb)
+/datum/bodypart_overlay/mutant/get_overlay(layer, obj/item/bodypart/limb)
 	layer = bitflag_to_layer(layer)
 	. = get_images(layer, limb)
 	color_images(., layer, limb)
 	. = add_emissives(., limb)
-	return .
-
 
 /// Generate a unique key based on our sprites. So that if we've aleady drawn these sprites,
 /// they can be found in the cache and wont have to be drawn again (blessing and curse, but mostly curse)
