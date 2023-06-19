@@ -14,8 +14,7 @@
 	//socks
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, GLOB.socks_list)
 	//bodypart accessories (blizzard intensifies)
-	// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
-	/*
+	if(effigy_proc(src, "init_sprite_accessories_se", list())) return // EffigyEdit Add - Customization
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails, GLOB.tails_list, add_blank = TRUE)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human, add_blank = TRUE)
@@ -33,11 +32,7 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings, GLOB.moth_wings_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae, GLOB.moth_antennae_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
-	*/
-	// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings/moth, GLOB.moth_wings_list) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list, add_blank = TRUE) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
-		//ORIGINAL: init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
 
 	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 	//Scream types
