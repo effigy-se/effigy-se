@@ -14,7 +14,7 @@
 	//socks
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, GLOB.socks_list)
 	//bodypart accessories (blizzard intensifies)
-	if(effigy_proc(src, "init_sprite_accessories_se", list())) return // EffigyEdit Add - Customization
+	init_sprite_accessories_se() // EffigyEdit Add - Customization
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails, GLOB.tails_list, add_blank = TRUE)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human, add_blank = TRUE)

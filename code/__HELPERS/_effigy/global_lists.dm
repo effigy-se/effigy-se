@@ -1,7 +1,6 @@
 /proc/init_sprite_accessories_se()
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings/moth, GLOB.moth_wings_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list, add_blank = TRUE)
-	return TRUE
 
 /proc/make_extra_datum_references()
 	make_sprite_accessory_references()

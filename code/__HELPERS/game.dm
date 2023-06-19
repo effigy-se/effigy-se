@@ -249,7 +249,7 @@
 		if(!candidate_mob.key || !candidate_mob.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (candidate_mob.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
 
-		if(effigy_proc(src, "is_banned_from_antag_se", list(question, candidate_mob))) continue // EffigyEdit Add - Ghost takeover ban
+		if(is_banned_from_antag_se(question, candidate_mob)) continue // EffigyEdit Add - Ghost takeover ban
 
 		if(be_special_flag)
 			if(!(candidate_mob.client.prefs) || !(be_special_flag in candidate_mob.client.prefs.be_special))
