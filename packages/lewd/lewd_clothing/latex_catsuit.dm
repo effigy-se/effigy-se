@@ -13,7 +13,6 @@
 	righthand_file = 'packages/lewd/assets/mob/lewd_inhands/lewd_inhand_right.dmi'
 	equip_sound = 'packages/lewd/assets/sounds/latex.ogg'
 	can_adjust = FALSE
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION|STYLE_TAUR_ALL
 	var/mutable_appearance/breasts_overlay

@@ -1,7 +1,7 @@
 ///The item used as the basis for construction kits for organic interface
 /obj/item/construction_kit
 	name = "construction kit"
-	desc = "Used for constructing various things"
+	desc = "Used for constructing various things."
 	w_class = WEIGHT_CLASS_BULKY
 	flags_1 = NODECONSTRUCT_1
 	throwforce = 0

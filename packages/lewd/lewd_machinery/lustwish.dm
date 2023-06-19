@@ -27,7 +27,7 @@
 					/obj/item/clothing/sextoy/fleshlight = 8,
 					/obj/item/kinky_shocker = 4,
 					/obj/item/clothing/mask/leatherwhip = 4,
-				//	/obj/item/clothing/sextoy/magic_wand = 4,
+					/obj/item/clothing/sextoy/magic_wand = 4,
 					/obj/item/bdsm_candle = 4,
 					/obj/item/spanking_pad = 4,
 					/obj/item/clothing/sextoy/vibrator = 4,
@@ -146,17 +146,6 @@
 
 	default_price = initial(default_price)
 	extra_price = initial(extra_price)
-
-///Performs checks to see if the user can change the color on the vending machine.
-/obj/machinery/vending/dorms/proc/check_menu(mob/living/user, obj/item/multitool)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	if(!multitool || !user.is_holding(multitool))
-		return FALSE
-
-	return TRUE
 
 /obj/machinery/vending/dorms/Initialize(mapload)
 	. = ..()

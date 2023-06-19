@@ -48,7 +48,7 @@
 
 /obj/item/clothing/sextoy/condom
 	name = "condom"
-	desc = "I wonder if I can put this over my head..."
+	desc = "Don't flubber, use a rubber."
 	icon_state = "condom_pink_unused"
 	base_icon_state = "condom"
 	icon = 'packages/lewd/assets/obj/lewd_items/lewd_items.dmi'

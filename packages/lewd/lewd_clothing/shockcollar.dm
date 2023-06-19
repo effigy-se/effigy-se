@@ -24,7 +24,7 @@
 	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC)
 
 /obj/item/electropack/shockcollar/attack_hand(mob/user)
-	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK))
+	if(user.get_item_by_slot(ITEM_SLOT_NECK) == src)
 		to_chat(user, span_warning("The collar is fastened tight! You'll need help if you want to take it off!"))
 		return
 	return ..()
@@ -81,6 +81,7 @@
 		name = initial(name) + " - freq: [frequency/10] code: [code]"
 	. = ..()
 
+/// Considering the propensity to avoid ERP mechanics weighing on the game, I'm not sure why this object exists. At all.
 /obj/item/electropack/shockcollar/pacify
 	name = "pacifying collar"
 	desc = "A reinforced metal collar that latches onto the wearer and prevents harmful thoughts."

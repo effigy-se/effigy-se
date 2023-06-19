@@ -279,6 +279,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/glass = 1500, /datum/material/plastic = 2000)
 	volume = 50
+	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(1, 2, 3, 4, 5)
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 50)
 

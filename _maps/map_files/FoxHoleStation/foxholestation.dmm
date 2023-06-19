@@ -358,7 +358,7 @@
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/wrench,
-/turf/open/floor/engine/cult,
+/turf/open/floor/cult,
 /area/station/service/library/private)
 "amT" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -1121,12 +1121,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/security/prison)
-"aJV" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/turf/closed/wall,
-/area/station/medical/psychology)
 "aKn" = (
 /obj/effect/turf_decal/tile/yellow/full,
 /obj/structure/cable,
@@ -17518,7 +17512,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/turf/open/floor/engine/cult,
+/turf/open/floor/cult,
 /area/station/service/library/private)
 "knj" = (
 /obj/machinery/seed_extractor,
@@ -18151,7 +18145,7 @@
 	dir = 1
 	},
 /obj/structure/dresser,
-/turf/open/floor/engine/cult,
+/turf/open/floor/cult,
 /area/station/service/library/private)
 "kIO" = (
 /obj/machinery/door/airlock/security,
@@ -20053,6 +20047,12 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/button/elevator/directional/south{
+	id = "Bridgelift"
+	},
+/obj/machinery/lift_indicator/directional/south{
+	linked_elevator_id = "Bridgelift"
+	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/command)
 "lRv" = (
@@ -20544,10 +20544,6 @@
 	},
 /turf/open/floor/circuit/telecomms,
 /area/station/tcommsat/server)
-"mgf" = (
-/obj/effect/turf_decal/tile/bar/diagonal_edge,
-/turf/closed/wall,
-/area/station/service/cafeteria)
 "mgg" = (
 /obj/machinery/porta_turret/lasertag/blue,
 /turf/open/floor/iron/dark/textured_large,
@@ -22297,6 +22293,12 @@
 /obj/machinery/light/directional/north,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/button/elevator/directional/north{
+	id = "Bridgelift"
+	},
+/obj/machinery/lift_indicator/directional/north{
+	linked_elevator_id = "Bridgelift"
+	},
 /turf/open/floor/iron/dark/textured_half,
 /area/station/hallway/secondary/command)
 "nnU" = (
@@ -24343,7 +24345,6 @@
 /obj/machinery/door/airlock/security/glass,
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/turf_decal/siding/white/corner,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/security/office)
 "oDh" = (
@@ -25837,10 +25838,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
-"puW" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/r_wall,
-/area/station/maintenance/starboard/aft)
 "pvi" = (
 /obj/structure/toilet{
 	dir = 8
@@ -40282,10 +40279,6 @@
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
-"xtx" = (
-/obj/machinery/camera/autoname/directional/west,
-/turf/closed/mineral/random/stationside/asteroid/porus,
-/area/centcom/asteroid/nearstation)
 "xtL" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
@@ -68253,7 +68246,7 @@ lZU
 chl
 sam
 boj
-mgf
+liW
 bPm
 bPm
 iao
@@ -76994,12 +76987,12 @@ qss
 mVW
 wVv
 wVQ
-aJV
-aJV
 nxH
-aJV
 nxH
-aJV
+nxH
+nxH
+nxH
+nxH
 sCb
 sCb
 sCb
@@ -77024,7 +77017,7 @@ owi
 aMk
 eVW
 qRG
-puW
+uKg
 mSk
 kwv
 kaM
@@ -122959,7 +122952,7 @@ sYf
 sYf
 sYf
 sYf
-xtx
+sYf
 sYf
 sYf
 mqh
