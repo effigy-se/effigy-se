@@ -184,10 +184,10 @@
 	var/obj/item/organ/internal/tongue/old_tongue = human_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
 	var/obj/item/organ/internal/tongue/dog/new_tongue = new(get_turf(human_holder))
 
-	// make sure the new tongue gets the actions from any species specific things (like hemophage blood drain, etc)
+	// make sure the new tongue gets the actions from any species specific things
 	for(var/datum/action/action as anything in old_tongue.actions)
 		new_tongue.add_item_action(action.type)
-	// as well as the flags from the old tongue (like corruption from hemophage)
+	// as well as the flags from the old tongue
 	new_tongue.organ_flags |= old_tongue.organ_flags
 	old_tongue.Remove(human_holder)
 	qdel(old_tongue)

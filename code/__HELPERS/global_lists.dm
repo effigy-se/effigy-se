@@ -78,7 +78,7 @@
 		if(ispath(path, /datum/crafting_recipe/stack))
 			continue
 		var/datum/crafting_recipe/recipe = new path()
-		var/is_cooking = ((recipe.category in GLOB.crafting_category_food) || (recipe.category in GLOB.crafting_category_food_extra)) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+		var/is_cooking = ((recipe.category in GLOB.crafting_category_food) || (recipe.category in GLOB.crafting_category_food_extra)) // EffigyEdit Add - category_food_extra
 		recipe.reqs = sort_list(recipe.reqs, GLOBAL_PROC_REF(cmp_crafting_req_priority))
 		if(recipe.name != "" && recipe.result)
 			if(is_cooking)

@@ -28,7 +28,6 @@
 #define SCANGATE_VULPKANIN "vulpkanin"
 #define SCANGATE_SYNTH "synth"
 #define SCANGATE_TESHARI "teshari"
-#define SCANGATE_HEMOPHAGE "hemophage"
 #define SCANGATE_SNAIL "snail"
 #define SCANGATE_GENDER "Gender"
 // EFFIGY EDIT ADD END
@@ -195,8 +194,6 @@
 						scan_species = /datum/species/synthetic
 					if(SCANGATE_TESHARI)
 						scan_species = /datum/species/teshari
-					if(SCANGATE_HEMOPHAGE)
-						scan_species = /datum/species/hemophage
 					if(SCANGATE_SNAIL)
 						scan_species = /datum/species/snail
 					// EFFIGY EDIT ADD END (Medical)
@@ -361,7 +358,6 @@
 #undef SCANGATE_VULPKANIN
 #undef SCANGATE_SYNTH
 #undef SCANGATE_TESHARI
-#undef SCANGATE_HEMOPHAGE
 #undef SCANGATE_SNAIL
 
 #undef SCANGATE_GENDER

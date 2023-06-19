@@ -22,12 +22,6 @@
 /datum/reagent/carbondioxide
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
-/datum/reagent/iron
-	expanded_chemical_flags = REAGENT_BLOOD_REGENERATING
-
-/datum/reagent/blood
-	expanded_chemical_flags = REAGENT_BLOOD_REGENERATING // For Hemophages to be able to drink it without any issue.
-
 /datum/reagent/blood/on_new(list/data)
 	. = ..()
 
