@@ -32,8 +32,6 @@
 #define WOUND_PIERCE 3
 /// any concentrated burn attack (lasers really). rolls for burning wounds
 #define WOUND_BURN 4
-/// any brute attacks, rolled on a chance
-#define WOUND_MUSCLE 5 // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
 
 // ~determination second wind defines

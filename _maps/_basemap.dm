@@ -14,10 +14,9 @@
 		#include "map_files\NorthStar\north_star.dmm"
 		#include "map_files\tramstation\tramstation.dmm"
 		#include "map_files\Birdshot\birdshot.dmm"
-		// EFFIGY EDIT START
+		// EffigyLocal Maps Below
 		#include "map_files\FoxHoleStation\foxholestation.dmm"
 		#include "map_files\MiniStation\MiniStation.dmm"
-		// EFFIGY EDIT END
 		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif
