@@ -133,7 +133,7 @@
 	set desc = "Prevent the server from restarting"
 	set name = "Delay Round End"
 
-	if(!check_rights(R_ADMIN)) // EFFIGY EDIT CHANGE
+	if(!check_rights(R_ADMIN)) // EffigyEdit Change
 		return
 
 	if(SSticker.delay_end)

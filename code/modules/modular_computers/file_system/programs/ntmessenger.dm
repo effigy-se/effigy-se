@@ -293,7 +293,7 @@
 		sent_prob = old_person.age >= 30 ? 25 : sent_prob
 	if (prob(sent_prob))
 		message += " Sent from my PDA"
-	user.visible_message(span_notice("[user]'s PDA rings out with the soft sound of keypresses."), vision_distance = COMBAT_MESSAGE_RANGE) // EFFIGY EDIT ADD
+	user.visible_message(span_notice("[user]'s PDA rings out with the soft sound of keypresses."), vision_distance = COMBAT_MESSAGE_RANGE) // EffigyEdit Add
 
 	var/datum/signal/subspace/messaging/tablet_msg/signal = new(computer, list(
 		"name" = fake_name || computer.saved_identification,

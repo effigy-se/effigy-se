@@ -30,7 +30,7 @@ type Data = {
   disable_jobs_for_non_observers: BooleanLike;
   priority: BooleanLike;
   round_duration: string;
-  alert_level: { name: string; color: string }; // EFFIGY EDIT ADDITION - Alert level on jobs menu
+  alert_level: { name: string; color: string }; // EffigyEdit AddITION - Alert level on jobs menu
 };
 
 export const JobEntry: SFC<{
@@ -121,7 +121,7 @@ export const JobSelection = (props, context) => {
                 <NoticeBox info>{data.shuttle_status}</NoticeBox>
               )}
               {
-                // EFFIGY EDIT ADD (Alert Levels)
+                // EffigyEdit Add (Alert Levels)
                 <NoticeBox color={data.alert_level.color}>
                   The current alert level is: {data.alert_level.name}
                 </NoticeBox>

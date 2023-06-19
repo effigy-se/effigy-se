@@ -14,7 +14,7 @@
 	if(!prev_lying)
 		gib_animation()
 
-	spill_organs(no_brain, no_organs, no_bodyparts, TRUE) // EFFIGY EDIT ADD
+	spill_organs(no_brain, no_organs, no_bodyparts, TRUE) // EffigyEdit Add
 
 	if(!no_bodyparts)
 		spread_bodyparts(no_brain, no_organs)

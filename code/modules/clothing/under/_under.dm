@@ -4,7 +4,7 @@
 	worn_icon = 'icons/mob/clothing/under/default.dmi'
 	lefthand_file = 'icons/mob/inhands/clothing/suits_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION // EFFIGY EDIT ADD
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION // EffigyEdit Add
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	slot_flags = ITEM_SLOT_ICLOTHING
 	armor_type = /datum/armor/clothing_under
@@ -70,7 +70,7 @@
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
 		. += mutable_appearance('icons/effects/blood.dmi', "uniformblood")
 	if(accessory_overlay)
-		. += modify_accessory_overlay() // EFFIGY EDIT CHANGE - ORIGINAL: . += accessory_overlay
+		. += modify_accessory_overlay() // EffigyEdit Change - ORIGINAL: . += accessory_overlay
 
 /obj/item/clothing/under/attackby(obj/item/I, mob/user, params)
 	if((has_sensor == BROKEN_SENSORS) && istype(I, /obj/item/stack/cable_coil))
@@ -128,7 +128,7 @@
 		if(!alt_covers_chest)
 			body_parts_covered |= CHEST
 
-	// EFFIGY EDIT REMOVE START
+	// EffigyEdit Remove -
 	/*
 	if((supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -136,7 +136,7 @@
 			adjusted = DIGITIGRADE_STYLE
 		H.update_worn_undersuit()
 	*/
-	// EFFIGY EDIT REMOVE END
+	// EffigyEdit Remove End
 
 	if(attached_accessory && !(slot & ITEM_SLOT_HANDS) && ishuman(user))
 		var/mob/living/carbon/human/H = user

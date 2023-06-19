@@ -259,7 +259,7 @@
 	dust()
 
 /mob/living/simple_animal/drone/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!", EXAMINE_SECTION_BREAK) // EFFIGY EDIT CHANGE
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!", EXAMINE_SECTION_BREAK) // EffigyEdit Change
 
 	//Hands
 	for(var/obj/item/held_thing in held_items)

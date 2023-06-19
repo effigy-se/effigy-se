@@ -91,12 +91,12 @@
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 50, 199) //MAD SCIENCE
 		return TRUE
 	else
-		// EFFIGY EDIT ADD START (DNR) - need this so that people dont just keep spamming the revival surgery; it runs success just bc the surgery steps are done
+		// EffigyEdit Add -  (DNR) - need this so that people dont just keep spamming the revival surgery; it runs success just bc the surgery steps are done
 		if(HAS_TRAIT(target, TRAIT_DNR))
 			target.visible_message(span_warning("...[target.p_they()] lies still, unaffected. Further attempts are futile, they're gone."))
 		else
 			target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
-		// EFFIGY EDIT ADD END (DNR) - ORIGINAL: target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
+		// EffigyEdit Add End (DNR) - ORIGINAL: target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
 		return FALSE
 
 /datum/surgery_step/revive/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)

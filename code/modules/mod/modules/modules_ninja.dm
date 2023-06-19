@@ -257,7 +257,7 @@
 	. = ..()
 	if(. != MOD_CANCEL_ACTIVATE || !isliving(user))
 		return
-	if(mod.mod_pai == user) // EFFIGY EDIT CHANGE
+	if(mod.mod_pai == user) // EffigyEdit Change
 		to_chat(mod.mod_pai, span_danger("<B>fATaL EERRoR</B>: 381200-*#00CODE <B>BLUE</B>\nAI INTErFERenCE DEtECted\nACTi0N DISrEGArdED"))
 		return
 	var/mob/living/living_user = user

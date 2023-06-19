@@ -27,7 +27,7 @@
 			Insert(sprite_name = sanitize_css_class_name(icon_state), I = icon)
 
 	//for each airlock type we create its overlayed version with the suffix Glass in the sprite name
-	//EFFIGY EDIT START - Updated airlock sprites for RCD
+	//EffigyEdit Change - Updated airlock sprites for RCD
 	var/list/airlocks = list(
 		"Standard" = 'packages/gfx/assets/obj/airlock/station/generic.dmi',
 		"Public" = 'packages/gfx/assets/obj/airlock/station2/glass.dmi',
@@ -46,7 +46,7 @@
 		"Airtight Hatch" = 'icons/obj/doors/airlocks/hatch/centcom.dmi',
 		"Maintenance Hatch" = 'icons/obj/doors/airlocks/hatch/maintenance.dmi'
 	)
-	//EFFIGY EDIT END
+	//EffigyEdit Change End
 	//these 3 types dont have glass doors
 	var/list/exclusion = list("Freezer", "Airtight Hatch", "Maintenance Hatch")
 

@@ -49,8 +49,8 @@ GLOBAL_VAR(restart_counter)
  * - Dominion/Cyberboss
  *
  * Where to put init shit quick guide:
- * If you need it to happen before the mc is created: world/Genesis. 
- * If you need it to happen last: world/New(), 
+ * If you need it to happen before the mc is created: world/Genesis.
+ * If you need it to happen last: world/New(),
  * Otherwise, in a subsystem preinit or init. Subsystems can set an init priority.
  */
 
@@ -347,7 +347,7 @@ GLOBAL_VAR(restart_counter)
 	auxcleanup()
 	. = ..()
 
-// EFFIGY EDIT REMOVE START (moved to packages/admin)
+// EffigyEdit Remove -  (moved to packages/admin)
 /*
 /world/proc/update_status()
 
@@ -390,7 +390,7 @@ GLOBAL_VAR(restart_counter)
 
 	status = new_status
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove End
 
 /world/proc/update_hub_visibility(new_visibility)
 	if(new_visibility == GLOB.hub_visibility)

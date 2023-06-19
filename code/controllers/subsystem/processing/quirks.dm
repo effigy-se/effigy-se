@@ -32,13 +32,13 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Social Anxiety", "Mute"),
 		list("Mute", "Soft-Spoken"),
 		list("Stormtrooper Aim", "Big Hands"),
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
 		list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
 		list("Mute", "Social Anxiety"),
 		list("No Guns", "Pacifist")
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
@@ -63,13 +63,13 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		if(initial(quirk_type.abstract_parent_type) == type)
 			continue
 
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 		if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
 			continue
 		// Hidden quirks aren't visible to TGUI or the player
 		if (initial(quirk_type.hidden_quirk))
 			continue
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 
 
 		quirks[initial(quirk_type.name)] = quirk_type
@@ -169,11 +169,11 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 	var/list/all_quirks = get_quirks()
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 	for(var/key in augments)
 		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
 		balance += aug.cost
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = all_quirks[quirk_name]

@@ -158,7 +158,7 @@
 		"cyborgrecharger",
 		"robocontrol",
 		"sflash",
-		"affection_module", // EFFIGY EDIT ADD
+		"affection_module", // EffigyEdit Add
 	)
 
 /datum/techweb_node/mech
@@ -254,9 +254,9 @@
 		"wirecutters",
 		"wrench",
 		"pickaxe",
-		"bowl", // EFFIGY EDIT ADD
-		"drinking_glass", // EFFIGY EDIT ADD
-		"shot_glass", // EFFIGY EDIT ADD
+		"bowl", // EffigyEdit Add
+		"drinking_glass", // EffigyEdit Add
+		"shot_glass", // EffigyEdit Add
 	)
 
 /datum/techweb_node/basic_medical
@@ -430,7 +430,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	required_experiments = list(/datum/experiment/dissection/nonhuman)
-	discount_experiments = list(/datum/experiment/scanning/random/material/plastic = 4000) // EFFIGY EDIT CHANGE
+	discount_experiments = list(/datum/experiment/scanning/random/material/plastic = 4000) // EffigyEdit Change
 
 /datum/techweb_node/xenoorgan_biotech
 	id = "xenoorgan_bio"
@@ -931,7 +931,7 @@
 	prereq_ids = list("biotech", "datatheory")
 	design_ids = list(
 		"skill_station",
-		"soulcatcher_device", //EFFIGY EDIT - #184 SOULCATCHERS
+		"soulcatcher_device", //EffigyEdit Change - #184 SOULCATCHERS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -948,7 +948,7 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
-		"borg_upgrade_brush", // EFFIGY EDIT ADD
+		"borg_upgrade_brush", // EffigyEdit Add
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -982,8 +982,8 @@
 		"borg_upgrade_lavaproof",
 		"borg_upgrade_rped",
 		"borg_upgrade_hypermod",
-		"advanced_materials", // EFFIGY EDIT ADD
-		"inducer_module", // EFFIGY EDIT ADD
+		"advanced_materials", // EffigyEdit Add
+		"inducer_module", // EffigyEdit Add
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -999,7 +999,7 @@
 		"borg_upgrade_piercinghypospray",
 		"borg_upgrade_pinpointer",
 		"borg_upgrade_surgicalprocessor",
-		"borg_upgrade_surgicaltools", // EFFIGY EDIT ADD
+		"borg_upgrade_surgicaltools", // EffigyEdit Add
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1236,9 +1236,9 @@
 		"health_hud",
 		"scigoggles",
 		"security_hud",
-		//EFFIGY EDIT START - #184 NIFS
+		//EffigyEdit Change - #184 NIFS
 		"nifsoft_money_sense",
-		//EFFIGY EDIT END - #184 NIFS
+		//EffigyEdit Change End - #184 NIFS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 
@@ -1310,7 +1310,7 @@
 		"cybernetic_liver_tier2",
 		"cybernetic_lungs_tier2",
 		"cybernetic_stomach_tier2",
-		"cybernetic_tongue", // EFFIGY EDIT ADD
+		"cybernetic_tongue", // EffigyEdit Add
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
@@ -1382,7 +1382,7 @@
 	display_name = "Combat Cybernetic Implants"
 	description = "Military grade combat implants to improve performance."
 	prereq_ids = list("adv_cyber_implants","weaponry","NVGtech","high_efficiency")
-	// EFFIGY EDIT REMOVE (Thermals, x-ray)
+	// EffigyEdit Remove (Thermals, x-ray)
 	design_ids = list(
 		"ci-antidrop",
 		"ci-antistun",
@@ -1502,7 +1502,7 @@
 		"seclite",
 		"zipties",
 		"inspector",
-		"nifsoft_remover", //EFFIGY EDIT ADDITION - #184 NIFs
+		"nifsoft_remover", //EffigyEdit AddITION - #184 NIFs
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 

@@ -169,7 +169,7 @@
 	var/cooling_temperature = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
 	default_container = /obj/item/reagent_containers/cup/glass/waterbottle
-	evaporates = TRUE // EFFIGY EDIT ADD
+	evaporates = TRUE // EffigyEdit Add
 
 /datum/glass_style/shot_glass/water
 	required_drink_type = /datum/reagent/water
@@ -611,7 +611,7 @@
 	if(current_cycle >= cycles_to_turn)
 		var/datum/species/species_type = race
 		//affected_mob.set_species(species_type) //ORIGINAL
-		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE) // EFFIGY EDIT CHANGE (Customization)
+		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE) // EffigyEdit Change (Customization)
 		holder.del_reagent(type)
 		to_chat(affected_mob, span_warning("You've become \a [lowertext(initial(species_type.name))]!"))
 		return
@@ -676,13 +676,13 @@
 		to_chat(affected_mob, span_warning("Your jelly shifts and morphs, turning you into another subspecies!"))
 		var/species_type = pick(subtypesof(/datum/species/jelly))
 		//affected_mob.set_species(species_type) //ORIGINAL
-		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE) // EFFIGY EDIT CHANGE (Customization)
+		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE) // EffigyEdit Change (Customization)
 		holder.del_reagent(type)
 		return TRUE
 	if(current_cycle >= cycles_to_turn) //overwrite since we want subtypes of jelly
 		var/datum/species/species_type = pick(subtypesof(race))
 		//affected_mob.set_species(species_type) //ORIGINAL
-		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE) // EFFIGY EDIT CHANGE (Customization)
+		affected_mob.set_species(species_type, TRUE, FALSE, null, null, null, null, TRUE) // EffigyEdit Change (Customization)
 		holder.del_reagent(type)
 		to_chat(affected_mob, span_warning("You've become \a [initial(species_type.name)]!"))
 		return TRUE
@@ -2419,7 +2419,7 @@
 	if(target.mind)
 		var/datum/antagonist/changeling/changeling = target.mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
-			changeling.adjust_chemicals(-4 * REM * seconds_per_tick) // EFFIGY EDIT CHANGE (was -2)
+			changeling.adjust_chemicals(-4 * REM * seconds_per_tick) // EffigyEdit Change (was -2)
 	return ..()
 
 /datum/reagent/pax/peaceborg

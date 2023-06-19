@@ -563,7 +563,7 @@
 	var/list/name2type = list()
 	for(var/obj/item/organ/external/wings/functional/possible_type as anything in wing_types)
 		var/datum/sprite_accessory/accessory = initial(possible_type.sprite_accessory_override) //get the type
-		accessory = GLOB.sprite_accessories[initial(accessory.key)][initial(accessory.name)] // EFFIGY EDIT CHANGE - ORIGINAL: accessory = GLOB.wings_list[initial(accessory.name)] //get the singleton instance
+		accessory = GLOB.sprite_accessories[initial(accessory.key)][initial(accessory.name)] // EffigyEdit Change - ORIGINAL: accessory = GLOB.wings_list[initial(accessory.name)] //get the singleton instance
 		var/image/img = image(icon = accessory.icon, icon_state = "m_wingsopen_[accessory.icon_state]_BEHIND") //Process the HUD elements
 		img.transform *= 0.5
 		img.pixel_x = -32
@@ -591,7 +591,7 @@
 	to_chat(user, span_notice("You unfold the ladder. It extends much farther than you were expecting."))
 	var/last_ladder = null
 	for(var/i in 1 to world.maxz)
-		if(is_centcom_level(i) || is_reserved_level(i) || is_away_level(i) || is_spaceruins_level(i)) // EFFIGY EDIT CHANGE
+		if(is_centcom_level(i) || is_reserved_level(i) || is_away_level(i) || is_spaceruins_level(i)) // EffigyEdit Change
 			continue
 		var/turf/T2 = locate(ladder_x, ladder_y, i)
 		last_ladder = new /obj/structure/ladder/unbreakable/jacob(T2, null, last_ladder)

@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START (pAI modsuits)
+// EffigyEdit Remove -  (pAI modsuits)
 /*
 /obj/item/mod/control/transfer_ai(interaction, mob/user, mob/living/silicon/ai/intAI, obj/item/aicard/card)
 	. = ..()
@@ -152,4 +152,4 @@
 
 #undef AI_FALL_TIME
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove End

@@ -38,7 +38,7 @@
 	cost = 4
 	cant_discount = TRUE
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove -
 /*
 /datum/uplink_item/explosives/detomatix
 	name = "Detomatix disk"
@@ -50,7 +50,7 @@
 	cost = 6
 	restricted = TRUE
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove End
 
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and Implanter Kit"

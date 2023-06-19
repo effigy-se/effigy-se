@@ -370,7 +370,7 @@
 
 /datum/reagent/medicine/mine_salve/on_mob_end_metabolize(mob/living/metabolizer)
 	. = ..()
-	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, REF(src)) // EFFIGY EDIT ADD
+	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, REF(src)) // EffigyEdit Add
 	metabolizer.clear_alert("numbed")
 	metabolizer.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
@@ -641,13 +641,13 @@
 /datum/reagent/medicine/morphine/on_mob_metabolize(mob/living/affected_mob)
 	..()
 	affected_mob.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	ADD_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EFFIGY EDIT ADD (Medical)
-	affected_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed) // EFFIGY EDIT ADD (Medical)
+	ADD_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EffigyEdit Add (Medical)
+	affected_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed) // EffigyEdit Add (Medical)
 
 /datum/reagent/medicine/morphine/on_mob_end_metabolize(mob/living/affected_mob)
 	affected_mob.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EFFIGY EDIT ADD (Medical)
-	affected_mob.clear_alert("numbed") // EFFIGY EDIT ADD (Medical)
+	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EffigyEdit Add (Medical)
+	affected_mob.clear_alert("numbed") // EffigyEdit Add (Medical)
 	..()
 
 /datum/reagent/medicine/morphine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
@@ -1196,7 +1196,7 @@
 	exposed_human.hair_color = "#CC22FF"
 	exposed_human.facial_hair_color = "#CC22FF"
 	exposed_human.update_body_parts()
-	exposed_human.update_mutant_bodyparts(force_update=TRUE) // EFFIGY EDIT ADD
+	exposed_human.update_mutant_bodyparts(force_update=TRUE) // EffigyEdit Add
 
 /datum/reagent/medicine/regen_jelly/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	affected_mob.adjustBruteLoss(-1.5 * REM * seconds_per_tick, FALSE, required_bodytype = affected_bodytype)

@@ -10,7 +10,7 @@ import { Window } from '../layouts';
 type Surgery = {
   name: string;
   blocked?: BooleanLike;
-  blocked_reason?: string; // EFFIGY EDIT ADD (#3 Medical) - Surgically unremovable limb
+  blocked_reason?: string; // EffigyEdit Add (#3 Medical) - Surgically unremovable limb
 };
 
 type SurgeryInitiatorData = {
@@ -99,7 +99,7 @@ class SurgeryInitiatorInner extends Component<
                         ? surgery.blocked_reason ??
                         'That surgery is unavailable!'
                         : undefined
-                    } // EFFIGY EDIT CHANGE (#3 Medical - Ported from Skyrat) Original tooltip={surgery.blocked ? "Their body is covered!" : undefined}
+                    } // EffigyEdit Change (#3 Medical - Ported from Skyrat) Original tooltip={surgery.blocked ? "Their body is covered!" : undefined}
                     key={surgery.name}
                     fluid>
                     {surgery.name}

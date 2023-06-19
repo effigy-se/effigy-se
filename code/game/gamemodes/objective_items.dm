@@ -258,13 +258,13 @@
 
 /datum/objective_item/steal/hypo
 	name = "the hypospray"
-	targetitem = /obj/item/hypospray/mkii/cmo // EFFIGY EDIT CHANGE
+	targetitem = /obj/item/hypospray/mkii/cmo // EffigyEdit Change
 	excludefromjob = list(JOB_CHIEF_MEDICAL_OFFICER)
 	item_owner = list(JOB_CHIEF_MEDICAL_OFFICER)
 	exists_on_map = TRUE
 
-/obj/item/hypospray/mkii/cmo/add_stealing_item_objective()  // EFFIGY EDIT CHANGE
-	return add_item_to_steal(src, /obj/item/hypospray/mkii/cmo)  // EFFIGY EDIT CHANGE
+/obj/item/hypospray/mkii/cmo/add_stealing_item_objective()  // EffigyEdit Change
+	return add_item_to_steal(src, /obj/item/hypospray/mkii/cmo)  // EffigyEdit Change
 
 /datum/objective_item/steal/nukedisc
 	name = "the nuclear authentication disk"
@@ -360,13 +360,13 @@
 	if(istype(potential_storage, /obj/item/aicard))
 		var/obj/item/aicard/card = potential_storage
 		being = card.AI // why is this one capitalized and the other one not? i wish i knew.
-	// EFFIGY EDIT REMOVE START
+	// EffigyEdit Remove -
 	/*
 	else if(istype(potential_storage, /obj/item/mod/control))
 		var/obj/item/mod/control/suit = potential_storage
 		being = suit.ai
 	*/
-	// EFFIGY EDIT REMOVE END
+	// EffigyEdit Remove End
 	else
 		stack_trace("check_special_completion() called on [src] with [potential_storage] ([potential_storage.type])! That's not supposed to happen!")
 		return FALSE

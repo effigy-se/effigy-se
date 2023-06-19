@@ -264,7 +264,7 @@
 		/obj/item/surgicaldrill,
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/wrench/medical,
-		/obj/item/handheld_soulcatcher, // EFFIGY EDIT SOULCATCHERS
+		/obj/item/handheld_soulcatcher, // EffigyEdit Change SOULCATCHERS
 	))
 
 /obj/item/storage/belt/medical/paramedic

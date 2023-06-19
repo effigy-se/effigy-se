@@ -73,7 +73,7 @@
 #define AIRLOCK_DAMAGE_DEFLECTION_N  21  // Normal airlock damage deflection
 #define AIRLOCK_DAMAGE_DEFLECTION_R  30  // Reinforced airlock damage deflection
 
-#define AIRLOCK_DENY_ANIMATION_TIME (0.8 SECONDS) /// The amount of time for the airlock deny animation to show // EFFIGY EDIT CHANGE
+#define AIRLOCK_DENY_ANIMATION_TIME (0.8 SECONDS) /// The amount of time for the airlock deny animation to show // EffigyEdit Change
 
 #define DOOR_CLOSE_WAIT 60 /// Time before a door closes, if not overridden
 
@@ -128,7 +128,7 @@
 	var/noPower = 'sound/machines/doorclick.ogg'
 	var/previous_airlock = /obj/structure/door_assembly //what airlock assembly mineral plating was applied to
 	var/airlock_material //material of inner filling; if its an airlock with glass, this should be set to "glass"
-	var/overlays_file = 'packages/gfx/assets/obj/airlock/station/overlays.dmi' // EFFIGY EDIT CHANGE (#74 Airlocks)
+	var/overlays_file = 'packages/gfx/assets/obj/airlock/station/overlays.dmi' // EffigyEdit Change (#74 Airlocks)
 	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //Used for papers and photos pinned to the airlock
 
 	var/cyclelinkeddir = 0
@@ -416,7 +416,7 @@
 		if(AIRLOCK_DENY, AIRLOCK_OPENING, AIRLOCK_CLOSING, AIRLOCK_EMAG)
 			icon_state = "nonexistenticonstate" //MADNESS
 
-// EFFIGY EDIT CHANGE START (#74 Airlocks)
+// EffigyEdit Change -  (#74 Airlocks)
 /*
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
@@ -497,7 +497,7 @@
 					floorlight.pixel_y = 0
 			. += floorlight
 */
-// EFFIGY EDIT CHANGE END (#74 Airlocks)
+// EffigyEdit Change End (#74 Airlocks)
 
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)
@@ -1139,11 +1139,11 @@
 	sleep(0.1 SECONDS)
 	set_opacity(0)
 	update_freelook_sight()
-	sleep(0.7 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.7 SECONDS) // EffigyEdit Change
 	set_density(FALSE)
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	air_update_turf(TRUE, FALSE)
-	sleep(0.3 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.3 SECONDS) // EffigyEdit Change
 	layer = OPEN_DOOR_LAYER
 	update_icon(ALL, AIRLOCK_OPEN, TRUE)
 	operating = FALSE
@@ -1209,12 +1209,12 @@
 		set_density(TRUE)
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.8 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.8 SECONDS) // EffigyEdit Change
 	if(!air_tight)
 		set_density(TRUE)
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.7 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.7 SECONDS) // EffigyEdit Change
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)

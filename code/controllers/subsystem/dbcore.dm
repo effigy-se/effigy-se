@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(dbcore)
 	/// An associative list of list of rows to add to a database table with the name of the target table as a key.
 	/// Used to queue up log entries for bigger queries that happen less often, to reduce the strain on the server caused by
 	/// hundreds of additional queries constantly trying to run.
-	var/list/queued_log_entries_by_table = list() // EFFIGY EDIT ADD
+	var/list/queued_log_entries_by_table = list() // EffigyEdit Add
 
 /datum/controller/subsystem/dbcore/Initialize()
 	//We send warnings to the admins during subsystem init, as the clients will be New'd and messages
@@ -180,10 +180,10 @@ SUBSYSTEM_DEF(dbcore)
 		for(var/datum/db_query/query in queries_standby)
 			run_query(query)
 
-		// EFFIGY EDIT ADD START (#3 Logging - Ported from Skyrat)
+		// EffigyEdit Add -  (#3 Logging - Ported from Skyrat)
 		for(var/table in queued_log_entries_by_table)
 			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
-		// EFFIGY EDIT ADD END (#3 Logging - Ported from Skyrat)
+		// EffigyEdit Add End (#3 Logging - Ported from Skyrat)
 
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("round")] SET effigy_rid = :effigy_rid, shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
@@ -294,7 +294,7 @@ SUBSYSTEM_DEF(dbcore)
 
 	if(!Connect())
 		return
-	// EFFIGY EDIT CHANGE START (Logging)
+	// EffigyEdit Change -  (Logging)
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
 		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
 		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]")
@@ -306,7 +306,7 @@ SUBSYSTEM_DEF(dbcore)
 	ev_round_id = text2num("[GLOB.round_id]999")
 	ev_round_id = num2text(ev_round_id, 6, 16)
 	GLOB.round_hex = ev_round_id
-	// EFFIGY EDIT CHANGE END (Logging)
+	// EffigyEdit Change End (Logging)
 	qdel(query_round_initialize)
 
 /datum/controller/subsystem/dbcore/proc/SetRoundStart()
@@ -655,7 +655,7 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	rows = null
 	item = null
 
-// EFFIGY EDIT ADD START
+// EffigyEdit Add -
 /**
  * This is a proc to hopefully mitigate the effect of a large influx of queries needing to be created
  * for something like SQL-based game logs. The goal here is to bundle a certain amount of those log
@@ -691,4 +691,4 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 
 	INVOKE_ASYNC(src, PROC_REF(MassInsert), table, /*rows =*/ queued_log_entries_by_table[table], /*duplicate_key =*/ FALSE, /*ignore_errors =*/ FALSE, /*delayed =*/ FALSE, /*warn =*/ FALSE, /*async =*/ TRUE, /*special_columns =*/ null)
 	queued_log_entries_by_table -= table
-// EFFIGY EDIT ADD END
+// EffigyEdit Add End

@@ -188,11 +188,11 @@
 	generateManifest(miscbox, misc_own, "", misc_cost)
 	return
 
-// EFFIGY EDIT ADD START
+// EffigyEdit Add -
 /// A proc to be overriden if you want custom code to happen when SSshuttle spawns the order
 /datum/supply_order/proc/on_spawn()
 	return
-// EFFIGY EDIT ADD END
+// EffigyEdit Add End
 
 #undef MANIFEST_ERROR_CHANCE
 #undef MANIFEST_ERROR_NAME

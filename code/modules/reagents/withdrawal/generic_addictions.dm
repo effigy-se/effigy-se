@@ -288,4 +288,4 @@
 	affected_carbon.set_jitter_if_lower(30 SECONDS * seconds_per_tick)
 	if(SPT_PROB(15, seconds_per_tick))
 		affected_carbon.emote("cough")
-EFFIGY EDIT END */
+EffigyEdit Change End */

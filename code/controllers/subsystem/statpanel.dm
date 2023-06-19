@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(statpanels)
 	if (!resumed)
 		num_fires++
 		var/datum/map_config/cached = SSmapping.next_map_config
-		// EFFIGY EDIT CHANGE START - STATPANEL
+		// EffigyEdit Change -  - STATPANEL
 		/*
 		global_data = list(
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(statpanels)
 			"[SSticker.HasRoundStarted() ? "Adj. Round Time: [time2text(round_real_time, "hh:mm:ss", 0)]" : ""]",
 			"[SSticker.HasRoundStarted() ? "Station Time: [station_time_timestamp()]" : ""]"
 		)
-		// EFFIGY EDIT CHANGE END - STATPANEL
+		// EffigyEdit Change End - STATPANEL
 
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()

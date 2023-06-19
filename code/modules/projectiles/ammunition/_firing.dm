@@ -17,7 +17,7 @@
 		SEND_SIGNAL(src, COMSIG_PELLET_CLOUD_INIT, target, user, fired_from, randomspread, spread, zone_override, params, distro)
 
 	// var/next_delay = click_cooldown_override || CLICK_CD_RANGE
-	var/next_delay = click_cooldown_override || ((user.staminaloss <= STAMINA_THRESHOLD_TIRED_CLICK_CD) ? CLICK_CD_RANGE : CLICK_CD_RANGE_TIRED) // EFFIGY EDIT CHANGE
+	var/next_delay = click_cooldown_override || ((user.staminaloss <= STAMINA_THRESHOLD_TIRED_CLICK_CD) ? CLICK_CD_RANGE : CLICK_CD_RANGE_TIRED) // EffigyEdit Change
 	if(HAS_TRAIT(user, TRAIT_DOUBLE_TAP))
 		next_delay = round(next_delay * 0.5)
 

@@ -763,7 +763,7 @@
 	if(!owner)
 		owner = reagent.holder.my_atom
 
-	// EFFIGY EDIT ADD START (Customization)
+	// EffigyEdit Add -  (Customization)
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		//Check if this mob's species is set and can process this type of reagent
@@ -785,7 +785,7 @@
 		if(reagent.process_flags == REAGENT_SYNTHETIC)
 			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
 			return
-	// EFFIGY EDIT ADD END (Customization)
+	// EffigyEdit Add End (Customization)
 
 	if(owner && reagent && (!dead || (reagent.chemical_flags & REAGENT_DEAD_PROCESS)))
 		if(owner.reagent_check(reagent, seconds_per_tick, times_fired))

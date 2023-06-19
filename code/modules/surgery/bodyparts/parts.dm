@@ -3,7 +3,7 @@
 	name = BODY_ZONE_CHEST
 	desc = "It's impolite to stare at a person's chest."
 	icon_state = "default_human_chest"
-	max_damage = 215 // EFFIGY EDIT CHANGE (Was 200)
+	max_damage = 215 // EffigyEdit Change (Was 200)
 	body_zone = BODY_ZONE_CHEST
 	body_part = CHEST
 	plaintext_zone = "chest"
@@ -100,7 +100,7 @@
 	desc = "Hey buddy give me a HAND and report this to the github because you shouldn't be seeing this."
 	attack_verb_continuous = list("slaps", "punches")
 	attack_verb_simple = list("slap", "punch")
-	max_damage = 60 // EFFIGY EDIT CHANGE (Was 50)
+	max_damage = 60 // EffigyEdit Change (Was 50)
 	aux_layer = BODYPARTS_HIGH_LAYER
 	body_damage_coeff = 0.75
 	can_be_disabled = TRUE

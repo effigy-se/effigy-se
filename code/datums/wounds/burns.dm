@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Medical - Ported from Skyrat)
 /*
 /*
 	Burn wounds
@@ -312,4 +312,4 @@
 	examine_desc = "appears to have holy symbols painfully branded into their flesh, leaving severe burns."
 	occur_text = "chars rapidly into a strange pattern of holy symbols, burned into the flesh."
 */
-// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Medical - Ported from Skyrat)

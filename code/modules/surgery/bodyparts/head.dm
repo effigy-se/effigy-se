@@ -3,7 +3,7 @@
 	desc = "Didn't make sense not to live for fun, your brain gets smart but your head gets dumb."
 	icon = 'icons/mob/species/human/bodyparts.dmi'
 	icon_state = "default_human_head"
-	max_damage = 215 // EFFIGY EDIT CHANGE (Was 200)
+	max_damage = 215 // EffigyEdit Change (Was 200)
 	body_zone = BODY_ZONE_HEAD
 	body_part = HEAD
 	plaintext_zone = "head"
@@ -248,11 +248,11 @@
 			if(eyes.eye_color_right)
 				eye_right.color = eyes.eye_color_right
 
-			// EFFIGY EDIT ADD START (Customization) (darn synths I swear)
+			// EffigyEdit Add -  (Customization) (darn synths I swear)
 			if(eyes.eye_icon_state == "None")
 				eye_left.alpha = 0
 				eye_right.alpha = 0
-			// EFFIGY EDIT ADD END
+			// EffigyEdit Add End
 
 			. += eye_left
 			. += eye_right

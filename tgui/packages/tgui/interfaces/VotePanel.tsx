@@ -235,7 +235,7 @@ const ChoicesPanel = (props, context) => {
                   {
                     user.isLowerAdmin
                       ? `${choice.votes} Votes`
-                      : '' /* EFFIGY EDIT CHANGE */
+                      : '' /* EffigyEdit Change */
                   }
                 </LabeledList.Item>
                 <LabeledList.Divider />

@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START (Moved to packages/ux)
+// EffigyEdit Remove -  (Moved to packages/ux)
 /*
 /**
  * Make a big red text announcement to
@@ -127,4 +127,4 @@
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
 */
-// EFFIGY EDIT REMOVE END (Moved to packages/ux)
+// EffigyEdit Remove End (Moved to packages/ux)
