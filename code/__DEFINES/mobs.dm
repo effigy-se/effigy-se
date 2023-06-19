@@ -428,15 +428,15 @@
 #define OFFSET_HELD "held"
 
 //MINOR TWEAKS/MISC
-#define AGE_MIN 18  // EffigyLocal Change - Age tweaks
+#define AGE_MIN 18  // EffigyEdit Change - Age tweaks
 #define AGE_MAX 85 //oldest a character can be
-#define AGE_MINOR 18  // EffigyLocal Change - Age tweaks
-#define WIZARD_AGE_MIN 18  // EffigyLocal Change - Age tweaks
+#define AGE_MINOR 18  // EffigyEdit Change - Age tweaks
+#define WIZARD_AGE_MIN 18  // EffigyEdit Change - Age tweaks
 #define APPRENTICE_AGE_MIN 18 //youngest an apprentice can be
 #define SHOES_SLOWDOWN 0 //How much shoes slow you down by default. Negative values speed you up
 #define SHOES_SPEED_SLIGHT SHOES_SLOWDOWN - 1 // slightest speed boost to movement
 #define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
-#define DOOR_CRUSH_DAMAGE 40 //the amount of damage that airlocks deal when they crush you  // EffigyLocal Change - Increased health
+#define DOOR_CRUSH_DAMAGE 40 //the amount of damage that airlocks deal when they crush you  // EffigyEdit Change - Increased health
 
 #define HUNGER_FACTOR 0.05 //factor at which mob nutrition decreases
 #define ETHEREAL_CHARGE_FACTOR 0.8 //factor at which ethereal's charge decreases per second
@@ -650,28 +650,28 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Total number of layers for mob overlays
 /// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
 /// Also consider updating layers_to_offset
-#define TOTAL_LAYERS 39 // EffigyLocal Edit - Customization - Original: #define TOTAL_LAYERS 33
+#define TOTAL_LAYERS 39 // EffigyEdit Change - Customization - Original: #define TOTAL_LAYERS 33
 
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 39 // EffigyLocal Edit - Customization - Original: 33
+#define MUTATIONS_LAYER 39 // EffigyEdit Change - Customization - Original: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 38 // EffigyLocal Edit - Customization - Original: 32
+#define BODY_BEHIND_LAYER 38 // EffigyEdit Change - Customization - Original: 32
 /// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
-#define BODYPARTS_LOW_LAYER 37 // EffigyLocal Edit - Customization - Original: 31
+#define BODYPARTS_LOW_LAYER 37 // EffigyEdit Change - Customization - Original: 31
 /// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
-#define BODYPARTS_LAYER 36 // EffigyLocal Edit - Customization - Original: 30
+#define BODYPARTS_LAYER 36 // EffigyEdit Change - Customization - Original: 30
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 35 // EffigyLocal Edit - Customization - Original: 29
+#define BODY_ADJ_LAYER 35 // EffigyEdit Change - Customization - Original: 29
 /// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 34 // EffigyLocal Edit - Customization - Original: 28
+#define BODY_LAYER 34 // EffigyEdit Change - Customization - Original: 28
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 33 // EffigyLocal Edit - Customization - Original: 27
+#define FRONT_MUTATIONS_LAYER 33 // EffigyEdit Change - Customization - Original: 27
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 32 // EffigyLocal Edit - Customization - Original: 26
+#define DAMAGE_LAYER 32 // EffigyEdit Change - Customization - Original: 26
 /// This layer is used for things that shouldn't be over clothes, but should be over mutations
 #define BODY_FRONT_UNDER_CLOTHES 31
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 30 // EffigyLocal Edit - Customization - Original: 25
+#define UNIFORM_LAYER 30 // EffigyEdit Change - Customization - Original: 25
 /// ID card layer
 #define ID_LAYER 24
 /// ID card layer (might be deprecated)

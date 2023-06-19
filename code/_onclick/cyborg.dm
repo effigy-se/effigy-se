@@ -180,7 +180,7 @@
 /atom/proc/attack_robot(mob/user)
 	if (SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ROBOT, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return
-	if(effigy_proc(src, "attack_robot_se", list(src, user))) return // EffigyLocal Add - Borgs
+	if(effigy_proc(src, "attack_robot_se", list(src, user))) return // EffigyEdit Add - Borgs
 	attack_ai(user)
 	return
 

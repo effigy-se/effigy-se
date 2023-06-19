@@ -28,7 +28,7 @@
 	disliked_food = VEGETABLES | FRUIT | CLOTH
 	liked_food = RAW | MEAT
 	payday_modifier = 1 //-- "Equality"
-	damage_modifier = 75 // EffigyLocal Edit - god I hope this works
+	damage_modifier = 75 // EffigyEdit Change - god I hope this works
 	stunmod = 1.25 //multiplier for stun durations
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
