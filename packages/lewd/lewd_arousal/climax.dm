@@ -38,11 +38,11 @@
 		if(MALE)
 			playsound(get_turf(src), pick('packages/lewd/assets/sounds/final_m1.ogg',
 										'packages/lewd/assets/sounds/final_m2.ogg',
-										'packages/lewd/assets/sounds/final_m3.ogg'), 50, TRUE, ignore_walls = FALSE)
+										'packages/lewd/assets/sounds/final_m3.ogg'), 50, TRUE, ignore_walls = FALSE, tag = "climax")
 		if(FEMALE)
 			playsound(get_turf(src), pick('packages/lewd/assets/sounds/final_f1.ogg',
 										'packages/lewd/assets/sounds/final_f2.ogg',
-										'packages/lewd/assets/sounds/final_f3.ogg'), 50, TRUE, ignore_walls = FALSE)
+										'packages/lewd/assets/sounds/final_f3.ogg'), 50, TRUE, ignore_walls = FALSE, tag = "climax")
 
 	var/self_orgasm = FALSE
 	var/self_their = p_their()

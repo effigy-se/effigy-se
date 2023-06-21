@@ -123,3 +123,11 @@ export const new_genitalia_growth_pref: FeatureToggle = {
     'If checked, allows drugs to grow new genitalia on your character.',
   component: CheckboxInput,
 };
+
+export const climax_sound_perf: FeatureToggle = {
+  name: 'Toggle climax sound',
+  category: 'ERP',
+  description:
+    'Toggles climax sound.',
+  component: CheckboxInput,
+};
