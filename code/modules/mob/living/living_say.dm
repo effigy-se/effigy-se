@@ -336,7 +336,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/whisper_range = 0
 	var/is_speaker_whispering = FALSE
 	if(message_mods[WHISPER_MODE]) //If we're whispering
-		whisper_range = EAVESDROP_EXTRA_RANGE
+		if(!message_mods[MODE_HEADSET]) // EffigyEdit Add - Radio whispers don't carry range
+			whisper_range = EAVESDROP_EXTRA_RANGE
 		is_speaker_whispering = TRUE
 
 	var/list/listening = get_hearers_in_view(message_range + whisper_range, source)
