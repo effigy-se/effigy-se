@@ -127,7 +127,6 @@ export const new_genitalia_growth_pref: FeatureToggle = {
 export const climax_sound_perf: FeatureToggle = {
   name: 'Toggle climax sound',
   category: 'ERP',
-  description:
-    'Toggles climax sound.',
+  description: 'Toggles the climax sound.',
   component: CheckboxInput,
 };

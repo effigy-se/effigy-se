@@ -5,6 +5,18 @@
 #define CLIMAX_ON_FLOOR "On the floor"
 #define CLIMAX_IN_OR_ON "Climax in or on someone"
 
+// Plays the climax sound in a 5 tile radius IF someone has it enabled in their prefs
+/proc/playsound_climax(atom/source, soundin, vol as num)
+
+	var/maxdistance = 5
+	var/turf/turf_source = get_turf(source)
+	var/list/listeners = get_hearers_in_view(5, turf_source)
+
+	for(var/mob/listening_mob in listeners)
+
+		if(get_dist(listening_mob, turf_source) <= maxdistance && listening_mob?.client?.prefs?.read_preference(/datum/preference/toggle/erp/climax_sound))
+			listening_mob.playsound_local(turf_source, soundin, vol)
+
 /mob/living/carbon/human/proc/climax(manual = TRUE)
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
@@ -36,13 +48,13 @@
 
 	switch(gender)
 		if(MALE)
-			playsound(get_turf(src), pick('packages/lewd/assets/sounds/final_m1.ogg',
+			playsound_climax(get_turf(src), pick('packages/lewd/assets/sounds/final_m1.ogg',
 										'packages/lewd/assets/sounds/final_m2.ogg',
-										'packages/lewd/assets/sounds/final_m3.ogg'), 50, TRUE, ignore_walls = FALSE, tag = "climax")
+										'packages/lewd/assets/sounds/final_m3.ogg'), 50)
 		if(FEMALE)
-			playsound(get_turf(src), pick('packages/lewd/assets/sounds/final_f1.ogg',
+			playsound_climax(get_turf(src), pick('packages/lewd/assets/sounds/final_f1.ogg',
 										'packages/lewd/assets/sounds/final_f2.ogg',
-										'packages/lewd/assets/sounds/final_f3.ogg'), 50, TRUE, ignore_walls = FALSE, tag = "climax")
+										'packages/lewd/assets/sounds/final_f3.ogg'), 50)
 
 	var/self_orgasm = FALSE
 	var/self_their = p_their()
