@@ -5,17 +5,14 @@
 #define CLIMAX_ON_FLOOR "On the floor"
 #define CLIMAX_IN_OR_ON "Climax in or on someone"
 
+#define CLIMAX_SOUND_MAX_DISTANCE 5
+
 // Plays the climax sound in a 5 tile radius IF someone has it enabled in their prefs
-/proc/playsound_climax(atom/source, soundin, vol as num)
-
-	var/maxdistance = 5
-	var/turf/turf_source = get_turf(source)
-	var/list/listeners = get_hearers_in_view(5, turf_source)
-
-	for(var/mob/listening_mob in listeners)
-
-		if(get_dist(listening_mob, turf_source) <= maxdistance && listening_mob?.client?.prefs?.read_preference(/datum/preference/toggle/erp/climax_sound))
-			listening_mob.playsound_local(turf_source, soundin, vol)
+/mob/living/carbon/human/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/sound_to_use, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE, sound_preference)
+	var/datum/preference/toggle/client_sound_preference = client?.prefs?.read_preference(sound_preference)
+	if(!isnull(sound_preference) && !sound_preference)
+		return
+	. = ..()
 
 /mob/living/carbon/human/proc/climax(manual = TRUE)
 	if (CONFIG_GET(flag/disable_erp_preferences))
@@ -48,13 +45,14 @@
 
 	switch(gender)
 		if(MALE)
-			playsound_climax(get_turf(src), pick('packages/lewd/assets/sounds/final_m1.ogg',
+			playsound_local(get_turf(src), pick('packages/lewd/assets/sounds/final_m1.ogg',
 										'packages/lewd/assets/sounds/final_m2.ogg',
-										'packages/lewd/assets/sounds/final_m3.ogg'), 50)
-		if(FEMALE)
-			playsound_climax(get_turf(src), pick('packages/lewd/assets/sounds/final_f1.ogg',
-										'packages/lewd/assets/sounds/final_f2.ogg',
-										'packages/lewd/assets/sounds/final_f3.ogg'), 50)
+										'packages/lewd/assets/sounds/final_m3.ogg'), vol = 50, max_distance = CLIMAX_SOUND_MAX_DISTANCE, sound_preference = /datum/preference/toggle/erp/climax_sound)
+
+		else
+			playsound_local(get_turf(src), pick('packages/lewd/assets/sounds/final_f1.ogg',
+									'packages/lewd/assets/sounds/final_f2.ogg',
+									'packages/lewd/assets/sounds/final_f3.ogg'), 50, max_distance = CLIMAX_SOUND_MAX_DISTANCE, sound_preference = /datum/preference/toggle/erp/climax_sound)
 
 	var/self_orgasm = FALSE
 	var/self_their = p_their()
