@@ -746,16 +746,6 @@
   - bugfix: jetpack signals now pass a user argument.  This fixes an error when automatically
       stowing a captain jetpack into your modsuit.
 2023-06-18:
-  unit0016:
-  - image: HUD should be unfucked.
-  - rscadd: Foxhole has been minorly tweaked again, with a space hut being tacked
-      on since that's standard.
-  - bugfix: There is no longer an indestructible grille on foxhole. I know.
-  - spellcheck: A lot of the SPOOKY items have been spellchecked,
-  - code_imp: Some SPOOKY stuff has been improved, if only slightly, code-wise.
-  - rscdel: Unused Ghost Cafe Vendors.
-  - bugfix: The turf decals on foxhole should be marginally less scuffed. As in inside
-      walls. I know.
   ChungusGamer666:
   - refactor: Species brute and burn damage modifiers are now handled by bodyparts,
       instead of being universal. Go ham at the surgical bay.
@@ -792,11 +782,17 @@
   ZephyrTFA:
   - bugfix: Deconstructing a papercutter will now spit out its internals if present.
   - qol: Papercutters now have contextual tips
-2023-06-19:
-  Deek-Za:
-  - bugfix: Fixed retaining lay down pixel shift upon standing.
   unit0016:
-  - bugfix: They are in the walls they are in the walls they are-
+  - image: HUD should be unfucked.
+  - rscadd: Foxhole has been minorly tweaked again, with a space hut being tacked
+      on since that's standard.
+  - bugfix: There is no longer an indestructible grille on foxhole. I know.
+  - spellcheck: A lot of the SPOOKY items have been spellchecked,
+  - code_imp: Some SPOOKY stuff has been improved, if only slightly, code-wise.
+  - rscdel: Unused Ghost Cafe Vendors.
+  - bugfix: The turf decals on foxhole should be marginally less scuffed. As in inside
+      walls. I know.
+2023-06-19:
   ATH1909:
   - bugfix: In addition to the beakers and bottles they could already hold, mediborg
       beaker apparatuses can now hold test tubes.
@@ -805,6 +801,8 @@
   ChungusGamer666:
   - bugfix: Exotic blood types no longer persist through species change if the new
       species does not have an exotic blood type
+  Deek-Za:
+  - bugfix: Fixed retaining lay down pixel shift upon standing.
   Melbert:
   - bugfix: Fix Hard Delete from the captain's spare ID code paper
   - bugfix: Fixed a maint loot spawner located inside a wall in North Star Chemistry
@@ -825,6 +823,8 @@
   - admin: 'Adds an admin panel to interact with shuttle events, under the Events
       tab: Change Shuttle Events'
   - bugfix: Objects spawned in hyperspace will properly catch hyperspace drift
+  unit0016:
+  - bugfix: They are in the walls they are in the walls they are-
 2023-06-20:
   ChungusGamer666:
   - rscadd: Food now gets stink lines when going bad. Uh oh, stinky.
@@ -858,16 +858,72 @@
   - bugfix: somehow, somewhere, a ship's engine has been changed.
   Couls:
   - qol: Welders now have a more consistent fuel usage
+  Ghommie:
+  - bugfix: Fixed the honourbound trauma not reacting to attacks from basic mobs
+  - bugfix: Fixed the "Declare Evil" spell not working against the medical department.
+  Guillaume Prata:
+  - balance: The Atmospheric MODsuit now comes pre equipped with the quick carry module.
+      Go save some lives!
+  Helg2:
+  - bugfix: autolathe, protolathe, mech fabricator and component printers material
+      capacity are now in 20 times less, as intended.
+  - bugfix: protolathe material menu now should display material ejecting correctly.
   JohnFulpWillard:
   - bugfix: Maintenance data disks now properly transfer from PC to disk
   - bugfix: Disks can no longer be flooded with the same app repeatedly.
+  Jolly:
+  - qol: The potted plants have been changed slightly behind the scenes. Mappers may
+      enjoy being able to pick a wider selection of plants to put in maps now, because
+      they've all been made into their own items.
   LT3:
   - spellcheck: Fixed a few typos
+  - code_imp: Headset messages won't carry distance obstructed with asterisks
+  LemonInTheDark:
+  - bugfix: Maps loaded post init will no longer randomly enter a failed state. Hopefully.
+  Melbert:
+  - bugfix: Fix shooting guns without a magazine loaded making no fire sound effect
+  - bugfix: Fixed EMP'd / signaled microwaves not running as they should
+  - bugfix: Fix runtimes from Bileworms targeting mechas (or other objects people
+      are hiding in)
+  - bugfix: The colossus's finale attack is now 100x more lethal, because it was firing
+      100x fewer projectiles than intended
+  Peliex:
+  - bugfix: changed station floor tiles to be worth 25 instead of 50, one quarter
+      of an iron sheet.
   Rhials:
   - bugfix: The walls adjacent to the Infiltrator docking port will no longer bend
       diagonally into walls.
+  - bugfix: attacking non-carbon mobs with a cuffsnapping object will no longer runtime.
+  Sealed101:
+  - bugfix: fixed mecha generators using way too much fuel due to using the old values
+      of material units per sheet
+  - bugfix: fixed Godwoken Syndrome VoG commands triggering the spam filter
+  - bugfix: fixed sechailers/SWAT masks not using the installed air filter
+  - sound: explosive implant's beeps get louder as it gets closer to exploding
   SyncIt21:
   - bugfix: Modular machinery computer UI opens again
+  - bugfix: ' material container[and hence autolathe] now won''t touch the content''s
+      of abstract/hologram item''s like the tentacle gun'
+  - bugfix: material container[and hence autolathe] consuming indestructible items
+  - bugfix: material container[and hence autolathe] cosuming half the content's of
+      an object and leaving out the rest if there isn't space producing broken behaviour
+      in those item's
+  - qol: material container[and hence autolathe] display's the item name consumed
+      and it's material worth to let player's fully know the content's of the item
+      being recycled
+  - rscadd: air sensor's are craftable
+  - refactor: air sensor's can now be turned off by hand and can only be deconstructed
+      by a welding tool
+  - refactor: removed `Params()` proc
+  - qol: unwrenched air sensors can be picked up & recycled like regular item's
+  - rscdel: air sensor are removed from the RPD UI
+  - qol: air sensor's are no longer restricted by their unique ID's which mean you
+      can craft as many air sensors as you want.
+  TheVekter:
+  - qol: Embedding an object inside a cake or loaf of bread now requires a right-click
+      instead of a left-click. No more accidentally putting your knife inside it!
+  - qol: Added context tips for slicing, embedding, and removing embedded items from
+      cake, bread, and cheese wheels.
   ZephyrTFA:
   - bugfix: Cat Butcherer can no longer remove a tail you don't have.
   - bugfix: You can no longer manipulate "None" organs
@@ -877,3 +933,28 @@
   - refactor: Turned TC reimbursement into a bespoke element.
   - spellcheck: Tuned demon's blood message when there's no ghosts to pick to be a
       little more understandable and sensible.
+  - bugfix: Adds wound armor to ALL jumpsuits that were missing it
+  cnleth:
+  - bugfix: Rockets can no longer embed in people and cause blunt wounds instead of
+      piercing
+  kawoppi:
+  - image: added lizard inhand- and onhead sprites
+  - image: added space lizard inhand- and onhead sprites
+  - bugfix: changed held weight class of lizards from normal to tiny
+  necromanceranne:
+  - rscadd: The Vorpal Scythe, a special null rod variant that gains power from beheading
+      people! But it is fickle about when and how you use its power. Replaces the
+      Reaper Scythe.
+  - rscadd: Beheading via the special death knell attack empowers the scythe, but
+      only on humans with a mind, and requires you to use the right-click button to
+      wind up the slice. If you succeed, you empower your scythe for a bit!
+  - rscadd: If they don't have a mind, you cause the heads to float around. OoooOOOooo!
+      Spooky!
+  - rscadd: With the sinister crystal that holds the Vorpal Scythe within bound to
+      your arm, you are Morbid! You love to do pretty unsettling things, like dissections
+      for fun! But helping the living stay alive is abhorrent to you!
+  - rscadd: '...unless you get to do it while screaming ''IT LIVES!'' via Revival
+      surgery. Screw conventional medicine and science, you know the true way to bring
+      back the dead!'
+  unit0016:
+  - bugfix: Foxhole has display cases for the curator now. Oops.
