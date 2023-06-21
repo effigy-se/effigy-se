@@ -428,15 +428,15 @@
 #define OFFSET_HELD "held"
 
 //MINOR TWEAKS/MISC
-#define AGE_MIN 18  // EffigyEdit Change - Age tweaks
+#define AGE_MIN 18 //youngest a character can be // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
 #define AGE_MAX 85 //oldest a character can be
-#define AGE_MINOR 18  // EffigyEdit Change - Age tweaks
-#define WIZARD_AGE_MIN 18  // EffigyEdit Change - Age tweaks
-#define APPRENTICE_AGE_MIN 18 //youngest an apprentice can be
+#define AGE_MINOR 20 //legal age of space drinking and smoking
+#define WIZARD_AGE_MIN 30 //youngest a wizard can be
+#define APPRENTICE_AGE_MIN 29 //youngest an apprentice can be
 #define SHOES_SLOWDOWN 0 //How much shoes slow you down by default. Negative values speed you up
 #define SHOES_SPEED_SLIGHT SHOES_SLOWDOWN - 1 // slightest speed boost to movement
 #define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
-#define DOOR_CRUSH_DAMAGE 40 //the amount of damage that airlocks deal when they crush you  // EffigyEdit Change - Increased health
+#define DOOR_CRUSH_DAMAGE 15 //the amount of damage that airlocks deal when they crush you
 
 #define HUNGER_FACTOR 0.05 //factor at which mob nutrition decreases
 #define ETHEREAL_CHARGE_FACTOR 0.8 //factor at which ethereal's charge decreases per second
@@ -650,38 +650,48 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Total number of layers for mob overlays
 /// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
 /// Also consider updating layers_to_offset
-#define TOTAL_LAYERS 39 // EffigyEdit Change - Customization - Original: #define TOTAL_LAYERS 33
+// EffigyEdit Change -- Effigy customization layers
+#define TOTAL_LAYERS 40 // ORIGINAL: #define TOTAL_LAYERS 33
 
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 39 // EffigyEdit Change - Customization - Original: 33
+#define MUTATIONS_LAYER 40 // ORIGINAL: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 38 // EffigyEdit Change - Customization - Original: 32
+#define BODY_BEHIND_LAYER 39 // ORIGINAL: 32
 /// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
-#define BODYPARTS_LOW_LAYER 37 // EffigyEdit Change - Customization - Original: 31
+#define BODYPARTS_LOW_LAYER 38 // ORIGINAL: 31
 /// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
-#define BODYPARTS_LAYER 36 // EffigyEdit Change - Customization - Original: 30
+#define BODYPARTS_LAYER 37 // ORIGINAL: 30
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 35 // EffigyEdit Change - Customization - Original: 29
+#define BODY_ADJ_LAYER 36 // ORIGINAL: 29
 /// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 34 // EffigyEdit Change - Customization - Original: 28
+#define BODY_LAYER 35 // ORIGINAL: 28
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 33 // EffigyEdit Change - Customization - Original: 27
+#define FRONT_MUTATIONS_LAYER 34 // ORIGINAL: 27
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 32 // EffigyEdit Change - Customization - Original: 26
+#define DAMAGE_LAYER 33 // ORIGINAL: 26
 /// This layer is used for things that shouldn't be over clothes, but should be over mutations
-#define BODY_FRONT_UNDER_CLOTHES 31
+#define BODY_FRONT_UNDER_CLOTHES 32
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 30 // EffigyEdit Change - Customization - Original: 25
+#define UNIFORM_LAYER 31 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 25
+// If you need a comment to tell you what these layers are, I can't help you
+#define ANUS_LAYER 30
+#define VAGINA_LAYER 29
+#define PENIS_LAYER 28
+#define NIPPLES_LAYER 27
+#define BANDAGE_LAYER 26
+// EffigyEdit Change End
 /// ID card layer
-#define ID_LAYER 24
+#define ID_LAYER 25
 /// ID card layer (might be deprecated)
-#define ID_CARD_LAYER 23
+#define ID_CARD_LAYER 24
 /// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
-#define BODYPARTS_HIGH_LAYER 22
+#define BODYPARTS_HIGH_LAYER 23
 /// Gloves layer
-#define GLOVES_LAYER 21
+#define GLOVES_LAYER 22
 /// Shoes layer
-#define SHOES_LAYER 20
+#define SHOES_LAYER 21
+/// Layer for masks that are worn below ears and eyes (like Balaclavas) (layers below hair, use flagsinv=HIDEHAIR as needed)
+#define LOW_FACEMASK_LAYER 20
 /// Ears layer (Spessmen have ears? Wow)
 #define EARS_LAYER 19
 /// Suit layer (armor, coats, etc.)
@@ -748,6 +758,7 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 	"[ID_CARD_LAYER]" = UPPER_BODY, // unused
 	"[ID_LAYER]" = UPPER_BODY,
 	"[FACEMASK_LAYER]" = UPPER_BODY,
+	"[LOW_FACEMASK_LAYER]" = UPPER_BODY,
 	// These two are cached, and have their appearance shared(?), so it's safer to just not touch it
 	"[MUTATIONS_LAYER]" = NO_MODIFY,
 	"[FRONT_MUTATIONS_LAYER]" = NO_MODIFY,
@@ -771,6 +782,14 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define EXTERNAL_ADJACENT (1 << 1)
 /// Draws overlay on the BODY_BEHIND_LAYER
 #define EXTERNAL_BEHIND (1 << 2)
+
+// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+/// Draws organ on the BODY_FRONT_UNDER_CLOTHES
+#define EXTERNAL_FRONT_UNDER_CLOTHES (1 << 4)
+/// Draws organ on the ABOVE_BODY_FRONT_HEAD_LAYER
+#define EXTERNAL_FRONT_OVER (1 << 5)
+// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 
