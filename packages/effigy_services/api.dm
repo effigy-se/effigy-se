@@ -90,7 +90,8 @@ SUBSYSTEM_DEF(effigy)
 	request.begin_async()
 	UNTIL(request.is_complete())
 	var/datum/http_response/response = request.into_response()
-	if(response.errored || response.status_code != 200)
+	if(response.errored)
+		message_admins("[response.error]")
 		stack_trace(response.error)
 	return response.body
 

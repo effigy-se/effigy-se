@@ -225,23 +225,23 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	initiator = C
 	initiator_ckey = initiator.ckey
 
-	effigy_player_id = SSeffigy.ckey_to_effigy_id(initiator_ckey)
-	/*
+	// effigy_player_id = SSeffigy.ckey_to_effigy_id(initiator_ckey)
+	effigy_player_id = 7
+
 	if(!effigy_player_id)
 		effigy_linked = LINK_FAIL
 		stack_trace("Unable to find an Effigy account link for ckey [initiator_ckey]")
 		id = ++ticket_counter
 	else
-		//var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
-		//var/linkid = effigy_player_id
-		//var/box = SOCIAL_DISTRICT_AHELP
-		//var/title = name
-		//var/message = msg
-		//var/request = SSeffigy.create_message_request(ef_type, linkid, box, title, message)
-		//var/list/response = SSeffigy.start_request(request)
-		//message_admins("[response["id"]]")
-		id = ++ticket_counter
-	*/
+		var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
+		var/linkid = effigy_player_id
+		var/box = SOCIAL_DISTRICT_AHELP
+		var/title = name
+		var/message = msg
+		var/request = SSeffigy.create_message_request(ef_type, linkid, box, title, message)
+		var/list/response = SSeffigy.start_request(request)
+		message_admins("[response["id"]]")
+
 	id = generate_effigy_event_id()
 
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
