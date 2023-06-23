@@ -36,32 +36,16 @@ SUBSYSTEM_DEF(effigy)
 /datum/controller/subsystem/effigy/Destroy()
 	return ..()
 
-/obj/item/toy/plush/effigy/adminhelp
-	name = "admin plushie"
-	desc = "Some say speaking to this plushie, you speak to the Gods."
-	icon_state = "plushie_skyy"
-	attack_verb_continuous = list("kisses", "nuzzles", "cuddles", "purrs against")
-	attack_verb_simple = list("kiss", "nuzzle", "cuddle", "purr against")
-	squeak_override = list('packages/emotes/assets/voice/nya.ogg' = 1)
-
-/obj/item/toy/plush/effigy/adminhelp/attack_self(mob/user)
-	. = ..()
-	var/message = tgui_input_text(usr, "Some say speaking to this plushie, you speak to the Gods.", "Heavenly Nya")
-	var/title = copytext_char(message, 1, 64)
-	var/msg_type = EFFIGY_MESSAGE_NEW_TICKET
-	var/box = SOCIAL_DISTRICT_AHELP
-	var/link_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
-
-	SSeffigy.create_message_request(msg_type, link_id, box, title, message)
-
-/datum/controller/subsystem/effigy/proc/create_message_request(msg_type, link_id, box, title, message)
+/datum/controller/subsystem/effigy/proc/create_message_request(msg_type, int_id, link_id, ticket_id, box, title, message)
 	if(!efapi_key)
 		return
 
 	var/datum/effigy_message/effigy_request = new(
 		msg_type = new msg_type,
-		box = box,
+		int_id = int_id,
 		link_id = link_id,
+		ticket_id = ticket_id,
+		box = box,
 		title = title,
 		message = message,
 	)
@@ -76,24 +60,25 @@ SUBSYSTEM_DEF(effigy)
 	/// HTTP message request
 	var/datum/http_request/message_request
 
-/datum/effigy_message/New(msg_type, box, link_id, title, message)
+/datum/effigy_message/New(msg_type, box, int_id, ticket_id, link_id, title, message)
 	endpoint = msg_type
 	message_content = list(
 		"box" = box,
+		"int_id" = int_id,
 		"link_id" = link_id,
+		"ticket_id" = ticket_id,
 		"title" = title,
 		"message" = message,
 	)
 
-/datum/controller/subsystem/effigy/proc/start_request(datum/effigy_message/message)
+/datum/controller/subsystem/effigy/proc/send_message_request(datum/effigy_message/message)
 	var/datum/http_request/request = message.endpoint.create_http_request(message.message_content)
 	request.begin_async()
 	UNTIL(request.is_complete())
 	var/datum/http_response/response = request.into_response()
 	if(response.errored)
-		message_admins("[response.error]")
 		stack_trace(response.error)
-	return response.body
+	return json_decode(response.body)
 
 // Cleans up the request object when it is destroyed.
 /datum/effigy_message/Destroy(force, ...)

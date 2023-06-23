@@ -204,6 +204,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/effigy_player_id
 	var/effigy_ticket_id
 	var/effigy_linked = NO_LINK
+	var/list/effigy_response
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -225,24 +226,24 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	initiator = C
 	initiator_ckey = initiator.ckey
 
-	// effigy_player_id = SSeffigy.ckey_to_effigy_id(initiator_ckey)
-	effigy_player_id = 7
+	effigy_player_id = SSeffigy.ckey_to_effigy_id(initiator_ckey)
+	id = generate_effigy_event_id()
 
 	if(!effigy_player_id)
 		effigy_linked = LINK_FAIL
 		stack_trace("Unable to find an Effigy account link for ckey [initiator_ckey]")
-		id = ++ticket_counter
-	else
-		var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
-		var/linkid = effigy_player_id
-		var/box = SOCIAL_DISTRICT_AHELP
-		var/title = name
-		var/message = msg
-		var/request = SSeffigy.create_message_request(ef_type, linkid, box, title, message)
-		var/list/response = SSeffigy.start_request(request)
-		message_admins("[response["id"]]")
-
-	id = generate_effigy_event_id()
+		effigy_player_id = EFFIGY_UNKNOWN_PLAYER
+	var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
+	var/int_id = id
+	var/link_id = effigy_player_id
+	var/ticket_id = 0
+	var/box = SOCIAL_DISTRICT_AHELP
+	var/title = copytext_char(msg, 1, 64)
+	var/message = msg
+	var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
+	effigy_response = SSeffigy.send_message_request(request)
+	effigy_linked = LINK_SUCCESS
+	effigy_ticket_id = effigy_response["id"]
 
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket) //This is a bug
@@ -380,6 +381,19 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	ticket_interactions += "[time_stamp()]: [formatted_message]"
 	if (!isnull(player_message))
 		player_interactions += "[time_stamp()]: [player_message]"
+		var/ef_type = EFFIGY_MESSAGE_TICKET_INTERACTION
+		var/int_id = id
+		var/link_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
+		if(!link_id)
+			effigy_linked = LINK_FAIL
+			stack_trace("Unable to find an Effigy account link for ckey [usr.ckey]")
+			link_id = EFFIGY_UNKNOWN_PLAYER
+		var/box = SOCIAL_DISTRICT_AHELP
+		var/ticket_id = effigy_ticket_id
+		var/message = player_message
+		var/title = name
+		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
+		SSeffigy.send_message_request(request)
 
 //Removes the ahelp verb and returns it after 2 minutes
 /datum/admin_help/proc/TimeoutVerb()
@@ -524,7 +538,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 50)
 
 	AddInteraction("<font color='green'>Resolved by [key_name].</font>", player_message = "<font color='green'>Ticket resolved!</font>")
-	to_chat(initiator, span_adminhelp("Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly."), confidential = TRUE)
+	to_chat(initiator, span_adminhelp("Your ticket has been resolved by an admin. The adminhelp verb will be returned to you shortly."), confidential = TRUE)
+	send_ticket_url(initiator)
 	if(!silent)
 		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "resolved")
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"
@@ -572,6 +587,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	AddInteraction("Marked as IC issue by [key_name]", player_message = "Marked as IC issue!")
 	SSblackbox.LogAhelp(id, "IC Issue", "Marked as IC issue by [usr.key]", null,  usr.ckey)
 	Resolve(silent = TRUE)
+
+/datum/admin_help/proc/send_ticket_url(initiator)
+	var/ticket_url = LAZYACCESS(effigy_response, "url")
+	to_chat(initiator, span_boxannouncegreen("You can view this ticket in Social District at: <a href=\"[ticket_url]\">[ticket_url]</a>"), confidential = TRUE)
 
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
