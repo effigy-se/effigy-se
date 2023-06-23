@@ -98,6 +98,9 @@ SUBSYSTEM_DEF(effigy)
  */
 /datum/controller/subsystem/effigy/proc/find_effigy_link_by_ckey(ckey)
 	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("player")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
+	if(!SSdbcore.Connect())
+		to_chat(usr, span_warning("Database connectivity failed!"))
+		return
 	var/datum/db_query/query_get_effigy_link_record = SSdbcore.NewQuery(
 		query,
 		list("ckey" = ckey)
@@ -109,9 +112,13 @@ SUBSYSTEM_DEF(effigy)
 	if(query_get_effigy_link_record.NextRow())
 		var/result = query_get_effigy_link_record.item
 		. = new /datum/effigy_account_link(result[2], result[1])
+	qdel(query_get_effigy_link_record)
 
 /datum/controller/subsystem/effigy/proc/create_effigy_link_by_ckey(ckey, effigyid)
 	var/query = "UPDATE [format_table_name("player")] SET effigy_id = :effigyid WHERE ckey = :ckey"
+	if(!SSdbcore.Connect())
+		to_chat(usr, span_warning("Database connectivity failed!"))
+		return FALSE
 	var/datum/db_query/query_set_effigy_link_record = SSdbcore.NewQuery(
 		query,
 		list(
@@ -122,6 +129,7 @@ SUBSYSTEM_DEF(effigy)
 		qdel(query_set_effigy_link_record)
 		return FALSE
 
+	qdel(query_set_effigy_link_record)
 	return TRUE
 
 /datum/controller/subsystem/effigy/proc/ckey_to_effigy_id(lookup_ckey)
@@ -183,15 +191,24 @@ SUBSYSTEM_DEF(effigy)
 
 	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
 	var/effigyid = tgui_input_number(src, "What is their Effigy ID?", "Someone wants to play here, apparently.", max_value = 99999999, min_value = 1, default = 0)
+	var/requested_link = 0
 
-	GLOB.bunker_passthrough |= ckey(ckeytomatch)
-	GLOB.bunker_passthrough[ckey(ckeytomatch)] = world.realtime
-	SSpersistence.save_panic_bunker()
+	var/datum/db_query/query_add_player = SSdbcore.NewQuery({"
+		INSERT INTO [format_table_name("player")] (`ckey`, `effigy_id`, `firstseen`, `firstseen_round_id`, `lastseen`, `lastseen_round_id`, `ip`, `computerid`, `lastadminrank`)
+		VALUES (:ckey, :effigyid, Now(), :round_id, Now(), :round_id, "0", "0", "Player")
+	"}, list("ckey" = ckeytomatch, "effigyid" = effigyid, "round_id" = GLOB.round_id || null))
+	if(!query_add_player.Execute())
+		qdel(query_add_player)
+		to_chat(usr, span_adminnotice("Add player [ckeytomatch] to DB whitelist failed!"))
+		return
+	qdel(query_add_player)
 
-	to_chat(usr, span_info("[ckeytomatch] added to panic bunker bypass."))
-	log_admin("[usr] added [ckeytomatch] to panic bunker bypass")
-	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
-	SSeffigy.link_effigy_id_to_ckey(ckeytomatch, effigyid)
+	to_chat(usr, span_info("Add player [ckeytomatch] to DB complete! Verifying link..."))
+	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
+	if(!requested_link)
+		to_chat(usr, span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
+	else
+		to_chat(usr, span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
 
 /proc/generate_effigy_event_id()
 	var/evid = null
@@ -203,3 +220,16 @@ SUBSYSTEM_DEF(effigy)
 	evid = num2text(evid, 7, 16)
 	GLOB.current_effigy_evid++
 	return evid
+
+/proc/find_byond_age(ckey)
+	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
+	if(!http)
+		log_world("Failed to connect to byond member page to age check [ckey]")
+		return
+	var/F = file2text(http["CONTENT"])
+	if(F)
+		var/regex/R = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
+		if(R.Find(F))
+			. = R.group[1]
+		else
+			CRASH("Age check regex failed for [ckey]")
