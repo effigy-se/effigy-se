@@ -135,13 +135,16 @@ SUBSYSTEM_DEF(effigy)
 	var/datum/effigy_account_link/existing_link = find_effigy_link_by_ckey(lookup_ckey)
 	if(existing_link)
 		if(existing_link.effigy_id != "0")
-			to_chat(usr, span_info("Link for [lookup_ckey] already exists! Found [existing_link.effigy_id]."))
+			log_admin_private("[usr] attempted to link Effigy ID [effigyid] to ckey [lookup_ckey], but it failed")
+			to_chat(usr, span_notice("Link for [lookup_ckey] already exists! Found [existing_link.effigy_id]."))
 			return
 	if(create_effigy_link_by_ckey(lookup_ckey, effigyid))
 		var/new_link = ckey_to_effigy_id(lookup_ckey)
+		log_admin_private("[usr] linked Effigy ID [new_link] to ckey [lookup_ckey]")
 		to_chat(usr, span_notice("Linked Effigy ID [new_link] for ckey [lookup_ckey]!"))
 	else
-		to_chat(usr, span_notice("Effigy link for ckey [lookup_ckey] failed!"))
+		log_admin_private("[usr] attempted to link Effigy ID [effigyid] to ckey [lookup_ckey], but it failed")
+		to_chat(usr, span_notice("Effigy link attempt for ckey [lookup_ckey] failed!"))
 
 /client/proc/find_effigy_id()
 	set category = "Admin"
@@ -184,8 +187,9 @@ SUBSYSTEM_DEF(effigy)
 	GLOB.bunker_passthrough |= ckey(ckeytomatch)
 	GLOB.bunker_passthrough[ckey(ckeytomatch)] = world.realtime
 	SSpersistence.save_panic_bunker()
-	to_chat(usr, span_info("[ckeytomatch] added to panic bunker bypass."))
 
+	to_chat(usr, span_info("[ckeytomatch] added to panic bunker bypass."))
+	log_admin("[usr] added [ckeytomatch] to panic bunker bypass")
 	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
 	SSeffigy.link_effigy_id_to_ckey(ckeytomatch, effigyid)
 
