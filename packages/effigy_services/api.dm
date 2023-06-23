@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(effigy)
  * Returns a [/datum/effigy_account_link]
  */
 /datum/controller/subsystem/effigy/proc/find_effigy_link_by_ckey(ckey)
-	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("effigy_links")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
+	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("player")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
 	var/datum/db_query/query_get_effigy_link_record = SSdbcore.NewQuery(
 		query,
 		list("ckey" = ckey)
@@ -110,6 +110,20 @@ SUBSYSTEM_DEF(effigy)
 		var/result = query_get_effigy_link_record.item
 		. = new /datum/effigy_account_link(result[2], result[1])
 
+/datum/controller/subsystem/effigy/proc/create_effigy_link_by_ckey(ckey, effigyid)
+	var/query = "UPDATE [format_table_name("player")] SET effigy_id = :effigyid WHERE ckey = :ckey"
+	var/datum/db_query/query_set_effigy_link_record = SSdbcore.NewQuery(
+		query,
+		list(
+		"effigyid" = effigyid,
+		"ckey" = ckey)
+		)
+	if(!query_set_effigy_link_record.Execute())
+		qdel(query_set_effigy_link_record)
+		return FALSE
+
+	return TRUE
+
 /datum/controller/subsystem/effigy/proc/ckey_to_effigy_id(lookup_ckey)
 	var/datum/effigy_account_link/link = find_effigy_link_by_ckey(lookup_ckey)
 	if(!link)
@@ -117,11 +131,23 @@ SUBSYSTEM_DEF(effigy)
 		return
 	return link.effigy_id
 
-/client/proc/find_effigy_id(ckeytomatch as text)
-	set category = "Admin"
-	set name = "Find Effigy ID"
-	set desc = "Find the Effigy account linked to a ckey."
+/datum/controller/subsystem/effigy/proc/link_effigy_id_to_ckey(lookup_ckey, effigyid)
+	var/datum/effigy_account_link/existing_link = find_effigy_link_by_ckey(lookup_ckey)
+	if(existing_link)
+		if(existing_link.effigy_id != "0")
+			to_chat(usr, span_info("Link for [lookup_ckey] already exists! Found [existing_link.effigy_id]."))
+			return
+	if(create_effigy_link_by_ckey(lookup_ckey, effigyid))
+		var/new_link = ckey_to_effigy_id(lookup_ckey)
+		to_chat(usr, span_notice("Linked Effigy ID [new_link] for ckey [lookup_ckey]!"))
+	else
+		to_chat(usr, span_notice("Effigy link for ckey [lookup_ckey] failed!"))
 
+/client/proc/find_effigy_id()
+	set category = "Admin"
+	set name = "Effigy ID Search"
+	set desc = "Find the Effigy account linked to a ckey."
+	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Who could it be now?~")
 	var/requested_link = 0
 	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
 	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
@@ -129,6 +155,39 @@ SUBSYSTEM_DEF(effigy)
 		to_chat(usr, span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
 	else
 		to_chat(usr, span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
+
+/client/proc/link_effigy_id()
+	set category = "Admin"
+	set name = "Effigy ID Link"
+	set desc = "Link an Effigy account to a ckey"
+	if(!CONFIG_GET(flag/sql_enabled))
+		to_chat(usr, span_adminnotice("The Database is not enabled!"))
+		return
+
+	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
+	var/effigyid = tgui_input_number(src, "What is their Effigy ID?", "Someone wants to play here, apparently.", max_value = 99999999, min_value = 1, default = 0)
+
+	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
+	SSeffigy.link_effigy_id_to_ckey(ckeytomatch, effigyid)
+
+/client/proc/effigy_whitelist()
+	set category = "Admin"
+	set name = "Whitelist Player"
+	set desc = "Link an Effigy account to a ckey and add to whitelist"
+	if(!CONFIG_GET(flag/sql_enabled))
+		to_chat(usr, span_adminnotice("The Database is not enabled!"))
+		return
+
+	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
+	var/effigyid = tgui_input_number(src, "What is their Effigy ID?", "Someone wants to play here, apparently.", max_value = 99999999, min_value = 1, default = 0)
+
+	GLOB.bunker_passthrough |= ckey(ckeytomatch)
+	GLOB.bunker_passthrough[ckey(ckeytomatch)] = world.realtime
+	SSpersistence.save_panic_bunker()
+	to_chat(usr, span_info("[ckeytomatch] added to panic bunker bypass."))
+
+	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
+	SSeffigy.link_effigy_id_to_ckey(ckeytomatch, effigyid)
 
 /proc/generate_effigy_event_id()
 	var/evid = null
