@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(effigy)
  * Returns a [/datum/effigy_account_link]
  */
 /datum/controller/subsystem/effigy/proc/find_effigy_link_by_ckey(ckey)
-	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("player")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
+	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("player")] WHERE byond_key = :ckey GROUP BY ckey, effigy_id LIMIT 1"
 	var/datum/db_query/query_get_effigy_link_record = SSdbcore.NewQuery(
 		query,
 		list("ckey" = ckey)
@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(effigy)
 		. = new /datum/effigy_account_link(result[2], result[1])
 
 /datum/controller/subsystem/effigy/proc/create_effigy_link_by_ckey(ckey, effigyid)
-	var/query = "UPDATE [format_table_name("player")] SET effigy_id = :effigyid WHERE ckey = :ckey"
+	var/query = "UPDATE [format_table_name("player")] SET effigy_id = :effigyid WHERE byond_key = :ckey"
 	var/datum/db_query/query_set_effigy_link_record = SSdbcore.NewQuery(
 		query,
 		list(
