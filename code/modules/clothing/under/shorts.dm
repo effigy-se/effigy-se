@@ -4,7 +4,7 @@
 	icon_state = "shorts"
 	greyscale_config = /datum/greyscale_config/shorts
 	greyscale_config_worn = /datum/greyscale_config/shorts_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/shorts_worn/digi // EFFIGY EDIT ADD
+	greyscale_config_worn_digi = /datum/greyscale_config/shorts_worn/digi // EffigyEdit Add
 	greyscale_colors = "#575757#3E3E3E#75634F"
 	gender = PLURAL
 	body_parts_covered = GROIN
@@ -20,7 +20,7 @@
 	icon_state = "jeanshorts"
 	greyscale_config = /datum/greyscale_config/jeanshorts
 	greyscale_config_worn = /datum/greyscale_config/jeanshorts_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jeanshorts_worn/digi // EFFIGY EDIT ADD
+	greyscale_config_worn_digi = /datum/greyscale_config/jeanshorts_worn/digi // EffigyEdit Add
 	greyscale_colors = "#787878#723E0E#4D7EAC"
 
 /obj/item/clothing/under/shorts/red

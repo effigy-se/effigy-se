@@ -57,14 +57,14 @@
 	if(!json_config)
 		stack_trace("Greyscale config object [DebugName()] is missing a json configuration, make sure `json_config` has been assigned a value.")
 	string_json_config = "[json_config]"
-	/* EFFIGY EDIT CHANGE START - GREYSCALE - Original:
+	/* EffigyEdit Change -  - GREYSCALE - Original:
 	if(findtext(string_json_config, "greyscale/json_configs/") == 0)
 		stack_trace("All greyscale json configuration files should be located within '/greyscale/json_configs/'")
 	*/
 	var/static/regex/greyscale_regex = regex("(packages/greyscale/.*json_configs/)")
 	if(findtext(string_json_config, "greyscale/json_configs/") == 0 && greyscale_regex.Find(string_json_config) == 0)
 		stack_trace("All greyscale json configuration files should be located within '/greyscale/json_configs/' or '/packages/greyscale/json_configs/'.")
-	// EFFIGY EDIT CHANGE END - GREYSCALE
+	// EffigyEdit Change End - GREYSCALE
 	if(!icon_file)
 		stack_trace("Greyscale config object [DebugName()] is missing an icon file, make sure `icon_file` has been assigned a value.")
 	string_icon_file = "[icon_file]"

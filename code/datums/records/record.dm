@@ -81,7 +81,7 @@
 	/// Current arrest status
 	var/wanted_status = WANTED_NONE
 
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	/// Contains their background information.
 	var/background_information
 	/// Contains their exploitable information.
@@ -92,7 +92,7 @@
 	var/past_medical_records
 	/// Contains their own custom past security records.
 	var/past_security_records
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 
 /datum/record/crew/New(
 	age = 21,
@@ -115,13 +115,13 @@
 	physical_status = PHYSICAL_ACTIVE,
 	mental_status = MENTAL_STABLE,
 	quirk_notes,
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 	background_information = "",
 	exploitable_information = "",
 	past_general_records = "",
 	past_medical_records = "",
 	past_security_records = "",
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 )
 	. = ..()
 	src.lock_ref = lock_ref
@@ -132,13 +132,13 @@
 	src.physical_status = physical_status
 	src.mental_status = mental_status
 	src.quirk_notes = quirk_notes
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 	src.background_information = background_information
 	src.exploitable_information = exploitable_information
 	src.past_general_records = past_general_records
 	src.past_medical_records = past_medical_records
 	src.past_security_records = past_security_records
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 
 	GLOB.manifest.general += src
 
@@ -249,17 +249,17 @@
 
 	final_paper_text += "Species: [species]<br>Fingerprint: [fingerprint]<br>Wanted Status: [wanted_status]<br><br>"
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 	if(past_general_records != "")
 		final_paper_text += "\nGeneral Records:\n[past_general_records]\n"
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 
 	final_paper_text += text("<center><B>Security Data</B></center><br><br>")
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 	if(past_security_records != "")
 		final_paper_text += "<br>Security Records:<br>[past_security_records]<br>"
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 
 	final_paper_text += "Crimes:<br>"
 	final_paper_text += {"<table style="text-align:center;" border="1" cellspacing="0" width="100%">

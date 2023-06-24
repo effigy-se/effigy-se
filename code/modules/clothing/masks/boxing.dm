@@ -3,7 +3,7 @@
 	desc = "LOADSAMONEY"
 	icon_state = "balaclava"
 	inhand_icon_state = "balaclava"
-	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT|SHOWSPRITEEARS // EFFIGY EDIT CHANGE
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT|SHOWSPRITEEARS // EffigyEdit Change
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	alternate_worn_layer = LOW_FACEMASK_LAYER //This lets it layer below glasses and headsets; yes, that's below hair, but it already has HIDEHAIR
 	w_class = WEIGHT_CLASS_SMALL
@@ -17,7 +17,7 @@
 	desc = "Worn by robust fighters, flying high to defeat their foes!"
 	icon_state = "luchag"
 	inhand_icon_state = null
-	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|SHOWSPRITEEARS // EFFIGY EDIT CHANGE
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|SHOWSPRITEEARS // EffigyEdit Change
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
 

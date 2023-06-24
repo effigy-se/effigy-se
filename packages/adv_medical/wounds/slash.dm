@@ -152,7 +152,7 @@
 		suture(treatment_item, user)
 
 /datum/wound/slash/try_handling(mob/living/carbon/human/user)
-	if(user.pulling != victim || user.zone_selected != limb.body_zone || !user.combat_mode || !isfeline(user) || !victim.can_inject(user, TRUE)) // EFFIGY EDIT CHANGE (felinid to feline)
+	if(user.pulling != victim || user.zone_selected != limb.body_zone || !user.combat_mode || !isfeline(user) || !victim.can_inject(user, TRUE)) // EffigyEdit Change (felinid to feline)
 		return FALSE
 	if(DOING_INTERACTION_WITH_TARGET(user, victim))
 		to_chat(user, span_warning("You're already interacting with [victim]!"))

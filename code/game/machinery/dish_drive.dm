@@ -29,8 +29,8 @@
 	var/suction_enabled = TRUE
 	var/transmit_enabled = TRUE
 	var/list/dish_drive_contents
-	var/succrange = 4 // EFFIGY EDIT ADD
-	var/binrange = 7 // EFFIGY EDIT ADD
+	var/succrange = 4 // EffigyEdit Add
+	var/binrange = 7 // EffigyEdit Add
 
 /obj/machinery/dish_drive/Initialize(mapload)
 	. = ..()
@@ -119,7 +119,7 @@
 		if(manual)
 			visible_message(span_notice("[src] is empty!"))
 		return
-	var/obj/machinery/disposal/bin/bin = locate() in view(binrange, src) // EFFIGY EDIT CHANGE
+	var/obj/machinery/disposal/bin/bin = locate() in view(binrange, src) // EffigyEdit Change
 	if(!bin)
 		if(manual)
 			visible_message(span_warning("[src] buzzes. There are no disposal bins in range!"))

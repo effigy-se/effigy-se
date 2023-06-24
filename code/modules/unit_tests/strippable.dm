@@ -8,7 +8,7 @@
 
 	var/datum/strip_menu/strip_menu = allocate(/datum/strip_menu, target, strippable)
 
-	run_loc_floor_bottom_left.luminosity = 6 // EFFIGY EDIT ADD
+	run_loc_floor_bottom_left.luminosity = 6 // EffigyEdit Add
 
 	var/ui_state = strip_menu.ui_state(user)
 

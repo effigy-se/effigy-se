@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Medical - Ported from Skyrat)
 /*
 /*
 	Blunt/Bone wounds
@@ -492,4 +492,4 @@
 		. += "Ribcage Trauma Detected: Further trauma to chest is likely to worsen internal bleeding until bone is repaired."
 	. += "</div>"
 */
-// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Medical - Ported from Skyrat)

@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Medical - Ported from Skyrat)
 /*
 /*
 	Slashing wounds
@@ -340,4 +340,4 @@
 	if(no_bleeding)
 		occur_text = "is ruptured"
 */
-// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Medical - Ported from Skyrat)

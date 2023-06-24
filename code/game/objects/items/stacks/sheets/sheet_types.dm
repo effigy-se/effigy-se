@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 /obj/item/stack/sheet/iron/get_main_recipes()
 	. = ..()
 	. += GLOB.metal_recipes
-	. += GLOB.effigy_metal_recipes // EFFIGY EDIT ADD
+	. += GLOB.effigy_metal_recipes // EffigyEdit Add
 
 /obj/item/stack/sheet/iron/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins whacking [user.p_them()]self over the head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 /obj/item/stack/sheet/mineral/wood/get_main_recipes()
 	. = ..()
 	. += GLOB.wood_recipes
-	. += GLOB.effigy_wood_recipes // EFFIGY EDIT ADD
+	. += GLOB.effigy_wood_recipes // EffigyEdit Add
 
 /obj/item/stack/sheet/mineral/wood/fifty
 	amount = 50

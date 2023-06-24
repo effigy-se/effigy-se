@@ -1,7 +1,7 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
-	// EFFIGY EDIT CHANGE START
+	// EffigyEdit Change -
 	species_traits = list(
 		MUTCOLORS
 	)
@@ -9,20 +9,20 @@
 		TRAIT_NO_SLIP_ALL,
 		TRAIT_WATER_BREATHING,
 	)
-	// EFFIGY EDIT CHANGE END
+	// EffigyEdit Change End
 
 	coldmod = 0.5 //snails only come out when its cold and wet
 	speedmod = 6
 	siemens_coeff = 2 //snails are mostly water
-	liked_food = VEGETABLES | FRUIT | GROSS | RAW // EFFIGY EDIT ADD
-	disliked_food = DAIRY | ORANGES | SUGAR // EFFIGY EDIT ADD
+	liked_food = VEGETABLES | FRUIT | GROSS | RAW // EffigyEdit Add
+	disliked_food = DAIRY | ORANGES | SUGAR // EffigyEdit Add
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
-	eyes_icon = 'packages/adv_medical/assets/organs/snail_eyes.dmi' // EFFIGY EDIT ADD
+	eyes_icon = 'packages/adv_medical/assets/organs/snail_eyes.dmi' // EffigyEdit Add
 	mutanteyes = /obj/item/organ/internal/eyes/snail
 	mutanttongue = /obj/item/organ/internal/tongue/snail
-	mutantliver = /obj/item/organ/internal/liver/snail // EFFIGY EDIT ADD
-	// exotic_blood = /datum/reagent/lube // EFFIGY EDIT REMOVE
+	mutantliver = /obj/item/organ/internal/liver/snail // EffigyEdit Add
+	// exotic_blood = /datum/reagent/lube // EffigyEdit Remove
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/snail,
@@ -48,9 +48,9 @@
 		if(new_snailperson.dropItemToGround(bag)) //returns TRUE even if its null
 			new_snailperson.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(new_snailperson), ITEM_SLOT_BACK)
 	new_snailperson.AddElement(/datum/element/snailcrawl)
-	new_snailperson.update_icons() // EFFIGY EDIT ADD
-	// if(ishuman(new_snailperson)) // EFFIGY EDIT REMOVE
-	//	update_mail_goodies(new_snailperson) // EFFIGY EDIT REMOVE
+	new_snailperson.update_icons() // EffigyEdit Add
+	// if(ishuman(new_snailperson)) // EffigyEdit Remove
+	//	update_mail_goodies(new_snailperson) // EffigyEdit Remove
 
 /datum/species/snail/on_species_loss(mob/living/carbon/former_snailperson, datum/species/new_species, pref_load)
 	. = ..()
@@ -61,7 +61,7 @@
 		former_snailperson.temporarilyRemoveItemFromInventory(bag, TRUE)
 		qdel(bag)
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove -
 /*
 /datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
 	if(istype(quirk, /datum/quirk/blooddeficiency))
@@ -70,7 +70,7 @@
 		)
 	return ..()
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove End
 
 /obj/item/storage/backpack/snail
 	name = "snail shell"
@@ -82,7 +82,7 @@
 	armor_type = /datum/armor/backpack_snail
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER //This makes them layer over tails like the cult backpack; some tails really shouldn't appear over them!
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -153,7 +153,7 @@
 			RESKIN_WORN_ICON_STATE = "rockshellwhite"
 		),
 	)
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 
 /datum/armor/backpack_snail
 	melee = 40

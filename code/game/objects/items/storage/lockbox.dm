@@ -226,6 +226,10 @@
 	w_class = WEIGHT_CLASS_HUGE
 	var/datum/bank_account/buyer_account
 	var/privacy_lock = TRUE
+	/// Bool if this was departmentally ordered or not
+	var/department_purchase // EffigyEdit Add - Cargo packs
+	/// Department of the person buying the crate if buying via the NIRN app.
+	var/datum/bank_account/department/department_account // EffigyEdit Add - Cargo packs
 
 /obj/item/storage/lockbox/order/Initialize(mapload, datum/bank_account/_buyer_account)
 	. = ..()

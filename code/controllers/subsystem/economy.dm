@@ -4,16 +4,16 @@ SUBSYSTEM_DEF(economy)
 	init_order = INIT_ORDER_ECONOMY
 	runlevels = RUNLEVEL_GAME
 	///How many paychecks should players start out the round with?
-	var/roundstart_paychecks = 4 // EFFIGY EDIT CHANGE
+	var/roundstart_paychecks = 4 // EffigyEdit Change
 	///How many credits does the in-game economy have in circulation at round start? Divided up by 6 of the 7 department budgets evenly, where cargo starts with nothing.
-	var/budget_pool = 40000 // EFFIGY EDIT CHANGE
+	var/budget_pool = 40000 // EffigyEdit Change
 	var/list/department_accounts = list(ACCOUNT_CIV = ACCOUNT_CIV_NAME,
 										ACCOUNT_ENG = ACCOUNT_ENG_NAME,
 										ACCOUNT_SCI = ACCOUNT_SCI_NAME,
 										ACCOUNT_MED = ACCOUNT_MED_NAME,
 										ACCOUNT_SRV = ACCOUNT_SRV_NAME,
 										ACCOUNT_CAR = ACCOUNT_CAR_NAME,
-										ACCOUNT_CMD = ACCOUNT_CMD_NAME, // EFFIGY EDIT ADD (#3 Ported from Skyrat)
+										ACCOUNT_CMD = ACCOUNT_CMD_NAME, // EffigyEdit Add (#3 Ported from Skyrat)
 										ACCOUNT_SEC = ACCOUNT_SEC_NAME)
 	var/list/departmental_accounts = list()
 	/**

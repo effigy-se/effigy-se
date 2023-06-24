@@ -43,7 +43,7 @@
 		/obj/item/screwdriver,
 		/obj/item/spess_knife,
 		/obj/item/stamp,
-		/obj/item/condom_pack), // EFFIGY EDIT ADD (Lewd)
+		/obj/item/condom_pack), // EffigyEdit Add (Lewd)
 		list(/obj/item/screwdriver/power))
 
 /obj/item/storage/wallet/Exited(atom/movable/gone, direction)

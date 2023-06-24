@@ -170,5 +170,5 @@
 
 	var/message = "[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"
 //	to_chat(world, span_boldannounce("[message]"))
-	add_startup_message(message) // EFFIGY EDIT CHANGE - SPLASH
+	add_startup_message(message) // EffigyEdit Change - SPLASH
 	log_world(message)

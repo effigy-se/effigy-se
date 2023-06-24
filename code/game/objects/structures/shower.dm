@@ -120,12 +120,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 
 	return TRUE
 
-// EFFIGY EDIT ADD START
+// EffigyEdit Add -
 /obj/machinery/shower/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	if(do_after(user, 3 SECONDS, src))
 		reagents.remove_any(reagents.total_volume)
 		balloon_alert(user, "reservoir emptied")
-// EFFIGY EDIT ADD END
+// EffigyEdit Add End
 
 /obj/machinery/shower/analyzer_act(mob/living/user, obj/item/tool)
 	. = ..()

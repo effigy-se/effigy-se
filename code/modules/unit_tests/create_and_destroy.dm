@@ -102,7 +102,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
 	ignore += subtypesof(/atom/movable/screen/escape_menu)
 
-	// EFFIGY EDIT ADD START (Unit Tests)
+	// EffigyEdit Add -  (Unit Tests)
 
 	//Not designed to be spawned without a turf.
 	ignore += typesof(/obj/effect/abstract/liquid_turf)
@@ -116,7 +116,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	// Can't be bothered adding more to them.
 	ignore += list(/obj/item/organ/external/neck_accessory, /obj/item/organ/external/head_accessory)
 
-	// EFFIGY EDIT ADD END (Unit Tests)
+	// EffigyEdit Add End (Unit Tests)
 
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/original_turf_type = spawn_at.type

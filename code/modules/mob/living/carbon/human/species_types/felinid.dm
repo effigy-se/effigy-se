@@ -6,12 +6,12 @@
 	mutant_bodyparts = list("ears" = "Cat", "wings" = "None")
 
 	mutanttongue = /obj/item/organ/internal/tongue/cat
-	/* EFFIGY EDIT REMOVE START - CUSTOMIZATION
+	/* EffigyEdit Remove -  - CUSTOMIZATION
 	mutantears = /obj/item/organ/internal/ears/cat
 	external_organs = list(
 		/obj/item/organ/external/tail/cat = "Cat",
 	)
-	*/ // EFFIGY EDIT REMOVE END
+	*/ // EffigyEdit Remove End
 	external_organs = list(
 		/obj/item/organ/external/tail/cat = "Cat",
 	)
@@ -135,12 +135,12 @@
 	human_for_preview.hair_color = "#ffcccc" // pink
 	human_for_preview.update_body_parts()
 
-	// EFFIGY EDIT CHANGE START
+	// EffigyEdit Change -
 	human_for_preview.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
 	human_for_preview.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
 	regenerate_organs(human_for_preview, src, visual_only = TRUE)
 	human_for_preview.update_body(TRUE)
-	// EFFIGY EDIT CHANGE END
+	// EffigyEdit Change End
 
 /datum/species/human/felinid/get_species_description()
 	return "Felinids are one of the many types of bespoke genetic \

@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(events)
 	var/list/control = list() //list of all datum/round_event_control. Used for selecting events based on weight and occurrences.
 	var/list/running = list() //list of all existing /datum/round_event
 	var/list/currentrun = list()
-	var/list/previously_run = list() // EFFIGY EDIT ADD
+	var/list/previously_run = list() // EffigyEdit Add
 
 	var/scheduled = 0 //The next world.time that a naturally occuring random event can be selected.
 	var/frequency_lower = 1800 //3 minutes lower bound.
@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(events)
 	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
-/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) // EFFIGY EDIT ADD (#3 Events - Ported from Skyrat)
+/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) // EffigyEdit Add (#3 Events - Ported from Skyrat)
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
@@ -68,10 +68,10 @@ SUBSYSTEM_DEF(events)
 	for(var/datum/round_event_control/E in control)
 		if(!E.can_spawn_event(players_amt))
 			continue
-		// EFFIGY EDIT ADD START (#3 Events - Ported from Skyrat)
+		// EffigyEdit Add -  (#3 Events - Ported from Skyrat)
 		if(threat_override && !E.alert_observers)
 			continue
-		// EFFIGY EDIT ADD END (#3 Events - Ported from Skyrat)
+		// EffigyEdit Add End (#3 Events - Ported from Skyrat)
 		if(E.weight < 0) //for round-start events etc.
 			var/res = TriggerEvent(E)
 			if(res == EVENT_INTERRUPTED)

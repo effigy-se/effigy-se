@@ -119,7 +119,7 @@
 /datum/config_entry/flag/log_subtle
 
 /// log subtler emotes
-/datum/config_entry/flag/log_subtler // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+/datum/config_entry/flag/log_subtler // EffigyEdit Add (#3 Customization - Ported from Skyrat)
 
 /// log emotes
 /datum/config_entry/flag/log_emote

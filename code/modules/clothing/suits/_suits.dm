@@ -3,7 +3,7 @@
 	icon = 'icons/obj/clothing/suits/default.dmi'
 	lefthand_file = 'icons/mob/inhands/clothing/suits_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION // EFFIGY EDIT ADD
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION // EffigyEdit Add
 	var/fire_resist = T0C+100
 	allowed = list(
 		/obj/item/tank/internals/emergency_oxygen,
@@ -21,16 +21,16 @@
 	. = ..()
 	setup_shielding()
 
-// EFFIGY EDIT CHANGE START (Customization)
+// EffigyEdit Change -  (Customization)
 // /obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE) // ORIGINAL
 /obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use = null, mutant_styles = NONE)
-// EFFIGY EDIT CHANGE END
+// EffigyEdit Change End
 	. = ..()
 	if(isinhands)
 		return
 
 	if(damaged_clothes)
-		// EFFIGY EDIT CHANGE START (Customization)
+		// EffigyEdit Change -  (Customization)
 		//. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]") //ORIGINAL
 		var/damagefile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'packages/customization/assets/mob/64x32_item_damage.dmi' : 'icons/effects/item_damage.dmi'
 		. += mutable_appearance(damagefile2use, "damaged[blood_overlay_type]")
@@ -38,7 +38,7 @@
 		//. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood") //ORIGINAL
 		var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'packages/customization/assets/mob/64x32_blood.dmi' : 'icons/effects/blood.dmi'
 		. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
-		// EFFIGY EDIT CHANGE END
+		// EffigyEdit Change End
 
 	var/mob/living/carbon/human/M = loc
 	if(!ishuman(M) || !M.w_uniform)
@@ -47,7 +47,7 @@
 	if(istype(U) && U.attached_accessory)
 		var/obj/item/clothing/accessory/A = U.attached_accessory
 		if(A.above_suit)
-			. += U.modify_accessory_overlay() // EFFIGY EDIT CHANGE - ORIGINAL: . += U.accessory_overlay
+			. += U.modify_accessory_overlay() // EffigyEdit Change - ORIGINAL: . += U.accessory_overlay
 
 /obj/item/clothing/suit/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()

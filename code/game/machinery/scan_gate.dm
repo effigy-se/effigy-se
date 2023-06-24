@@ -17,7 +17,7 @@
 #define SCANGATE_GOLEM "golem"
 #define SCANGATE_ZOMBIE "zombie"
 
-// EFFIGY EDIT ADD START
+// EffigyEdit Add -
 #define SCANGATE_MAMMAL "mammal"
 #define SCANGATE_VOX "vox"
 #define SCANGATE_AQUATIC "aquatic"
@@ -28,10 +28,9 @@
 #define SCANGATE_VULPKANIN "vulpkanin"
 #define SCANGATE_SYNTH "synth"
 #define SCANGATE_TESHARI "teshari"
-#define SCANGATE_HEMOPHAGE "hemophage"
 #define SCANGATE_SNAIL "snail"
 #define SCANGATE_GENDER "Gender"
-// EFFIGY EDIT ADD END
+// EffigyEdit Add End
 
 /obj/machinery/scanner_gate
 	name = "scanner gate"
@@ -62,7 +61,7 @@
 	///Does the scanner ignore light_pass and light_fail for sending signals?
 	var/ignore_signals = FALSE
 	///Detects gender
-	var/detect_gender = "male" // EFFIGY EDIT ADD
+	var/detect_gender = "male" // EffigyEdit Add
 
 /obj/machinery/scanner_gate/Initialize(mapload)
 	. = ..()
@@ -174,7 +173,7 @@
 						scan_species = /datum/species/golem
 					if(SCANGATE_ZOMBIE)
 						scan_species = /datum/species/zombie
-					// EFFIGY EDIT ADD START (Medical)
+					// EffigyEdit Add -  (Medical)
 					if(SCANGATE_MAMMAL)
 						scan_species = /datum/species/mammal
 					if(SCANGATE_VOX)
@@ -197,7 +196,7 @@
 						scan_species = /datum/species/teshari
 					if(SCANGATE_SNAIL)
 						scan_species = /datum/species/snail
-					// EFFIGY EDIT ADD END (Medical)
+					// EffigyEdit Add End (Medical)
 				if(is_species(H, scan_species))
 					beep = TRUE
 				if(detect_species == SCANGATE_ZOMBIE) //Can detect dormant zombies
@@ -215,14 +214,14 @@
 					beep = TRUE
 				if(H.nutrition >= detect_nutrition && detect_nutrition == NUTRITION_LEVEL_FAT)
 					beep = TRUE
-		// EFFIGY EDIT ADD START (Medical)
+		// EffigyEdit Add -  (Medical)
 		if(SCANGATE_GENDER)
 			if(ishuman(M))
 				var/mob/living/carbon/human/scanned_human = M
 				if((scanned_human.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
 					if(scanned_human.gender == detect_gender)
 						beep = TRUE
-		// EFFIGY EDIT ADD END (Medical)
+		// EffigyEdit Add End (Medical)
 
 	if(reverse)
 		beep = !beep
@@ -270,7 +269,7 @@
 	data["disease_threshold"] = disease_threshold
 	data["target_species"] = detect_species
 	data["target_nutrition"] = detect_nutrition
-	data["target_gender"] = detect_gender // EFFIGY EDIT ADD (Medical)
+	data["target_gender"] = detect_gender // EffigyEdit Add (Medical)
 
 	return data
 
@@ -313,7 +312,7 @@
 					if("Obese")
 						detect_nutrition = NUTRITION_LEVEL_FAT
 			. = TRUE
-		// EFFIGY EDIT ADD START (Medical)
+		// EffigyEdit Add -  (Medical)
 		if("set_target_gender")
 			var/new_gender = params["new_gender"]
 			var/gender_list = list(
@@ -327,7 +326,7 @@
 					if("Female")
 						detect_gender = "female"
 			. = TRUE
-		// EFFIGY EDIT ADD END (Medical)
+		// EffigyEdit Add End (Medical)
 
 #undef SCANGATE_NONE
 #undef SCANGATE_MINDSHIELD
@@ -348,7 +347,7 @@
 #undef SCANGATE_GOLEM
 #undef SCANGATE_ZOMBIE
 
-// EFFIGY EDIT ADD START (Medical)
+// EffigyEdit Add -  (Medical)
 #undef SCANGATE_MAMMAL
 #undef SCANGATE_VOX
 #undef SCANGATE_AQUATIC
@@ -359,8 +358,7 @@
 #undef SCANGATE_VULPKANIN
 #undef SCANGATE_SYNTH
 #undef SCANGATE_TESHARI
-#undef SCANGATE_HEMOPHAGE
 #undef SCANGATE_SNAIL
 
 #undef SCANGATE_GENDER
-// EFFIGY EDIT ADD END (Medical)
+// EffigyEdit Add End (Medical)

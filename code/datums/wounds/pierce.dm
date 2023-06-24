@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Medical - Ported from Skyrat)
 /*
 /*
 	Piercing wounds
@@ -202,4 +202,4 @@
 	scar_keyword = "piercecritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
 */
-// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Medical - Ported from Skyrat)

@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(language)
 	flags = SS_NO_FIRE
 
 /datum/controller/subsystem/language/Initialize()
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 	if(!GLOB.all_languages.len)
 		for(var/L in subtypesof(/datum/language))
 			var/datum/language/language = L
@@ -16,5 +16,5 @@ SUBSYSTEM_DEF(language)
 			var/datum/language/instance = new language
 
 			GLOB.language_datum_instances[language] = instance
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 	return SS_INIT_SUCCESS

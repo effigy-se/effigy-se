@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /atom/proc/log_message(message, message_type, color = null, log_globally = TRUE)
 	if(!log_globally)
 		return
-	// EFFIGY EDIT ADD START (#3 Logging - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Logging - Ported from Skyrat)
 	#ifndef SPACEMAN_DMM
 	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
 		SSdbcore.add_log_to_mass_insert_queue(
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		if(!CONFIG_GET(flag/file_game_log))
 			return
 	#endif
-	// EFFIGY EDIT ADD END (#3 Logging - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Logging - Ported from Skyrat)
 	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
 	switch(message_type)
 		/// ship both attack logs and victim logs to the end of round attack.log just to ensure we don't lose information
@@ -127,12 +127,12 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			log_whisper(log_text)
 		if(LOG_EMOTE)
 			log_emote(log_text)
-		// EFFIGY EDIT ADD START (Subtler)
+		// EffigyEdit Add -  (Subtler)
 		if(LOG_SUBTLE)
 			log_subtle(log_text)
 		if(LOG_SUBTLER)
 			log_subtler(log_text)
-		// EFFIGY EDIT ADD END (Subtler)
+		// EffigyEdit Add End (Subtler)
 		if(LOG_RADIO_EMOTE)
 			log_radio_emote(log_text)
 		if(LOG_DSAY)

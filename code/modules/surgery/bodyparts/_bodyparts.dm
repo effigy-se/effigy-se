@@ -67,7 +67,7 @@
 	///Controls if the limb is disabled. TRUE means it is disabled (similar to being removed, but still present for the sake of targeted interactions).
 	var/bodypart_disabled = FALSE
 	///Handles limb disabling by damage. If 0 (0%), a limb can't be disabled via damage. If 1 (100%), it is disabled at max limb damage. Anything between is the percentage of damage against maximum limb damage needed to disable the limb.
-	var/disabling_threshold_percentage = 1 // EFFIGY EDIT CHANGE - COMBAT
+	var/disabling_threshold_percentage = 1 // EffigyEdit Change - COMBAT
 	///Whether it is possible for the limb to be disabled whatsoever. TRUE means that it is possible.
 	var/can_be_disabled = FALSE //Defaults to FALSE, as only human limbs can be disabled, and only the appendages.
 
@@ -158,7 +158,7 @@
 	var/cached_bleed_rate = 0
 	/// How much generic bleedstacks we have on this bodypart
 	var/generic_bleedstacks
-	// EFFIGY EDIT ADD START (#3 Medical - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Medical - Ported from Skyrat)
 	/*
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
@@ -171,7 +171,7 @@
 	var/rendered_bp_icon
 	/// Do we use an organic render for this robotic limb?
 	var/organic_render = TRUE
-	// EFFIGY EDIT ADD END (#3 Medical - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Medical - Ported from Skyrat)
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/hand_item/self_grasp])
 	var/obj/item/hand_item/self_grasp/grasped_by
 
@@ -230,12 +230,12 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
-	// EFFIGY EDIT ADD START (#3 Medical)
+	// EffigyEdit Add -  (#3 Medical)
 	if(current_gauze)
 		qdel(current_gauze)
 	if(current_splint)
 		qdel(current_splint)
-	// EFFIGY EDIT ADD END (#3 Medical)
+	// EffigyEdit Add End (#3 Medical)
 
 	if(length(external_organs))
 		for(var/obj/item/organ/external/external_organ as anything in external_organs)
@@ -332,7 +332,7 @@
 
 	for(var/datum/wound/wound as anything in wounds)
 		switch(wound.severity)
-			// EFFIGY EDIT CHANGE START (#3 Medical)
+			// EffigyEdit Change -  (#3 Medical)
 			if(WOUND_SEVERITY_TRIVIAL)
 				// check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)].")]"
 				check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)].")]"
@@ -345,7 +345,7 @@
 			if(WOUND_SEVERITY_CRITICAL)
 				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!!")]"
 				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!!")]"
-			// EFFIGY EDIT CHANGE END (#3 Medical)
+			// EffigyEdit Change End (#3 Medical)
 
 	for(var/obj/item/embedded_thing in embedded_objects)
 		var/stuck_word = embedded_thing.isEmbedHarmless() ? "stuck" : "embedded"
@@ -410,7 +410,7 @@
 	var/atom/drop_loc = drop_location()
 	if(IS_ORGANIC_LIMB(src))
 		playsound(drop_loc, 'sound/misc/splort.ogg', 50, TRUE, -1)
-	// seep_gauze(9999) // destroy any existing gauze if any exists // EFFIGY EDIT REMOVE
+	// seep_gauze(9999) // destroy any existing gauze if any exists // EffigyEdit Remove
 	for(var/obj/item/organ/bodypart_organ in get_organs())
 		bodypart_organ.transfer_to_limb(src, owner)
 	for(var/obj/item/organ/external/external in external_organs)
@@ -517,11 +517,11 @@
 			// note that there's no handling for BIO_FLESH since we don't have any that are that right now (slimepeople maybe someday)
 			// standard humanoids
 			if(BIO_FLESH_BONE)
-				// EFFIGY EDIT CHANGE START (#3 Medical)
+				// EffigyEdit Change -  (#3 Medical)
 				//We do a body zone check here because muscles dont have any variants for head or chest, and rolling a muscle wound on them wound end up on a wasted wound roll
 				if(body_zone != BODY_ZONE_CHEST && body_zone != BODY_ZONE_HEAD && prob(35))
 					wounding_type = WOUND_MUSCLE
-				// EFFIGY EDIT CHANGE END (#3 Medical)
+				// EffigyEdit Change End (#3 Medical)
 				// if we've already mangled the skin (critical slash or piercing wound), then the bone is exposed, and we can damage it with sharp weapons at a reduced rate
 				// So a big sharp weapon is still all you need to destroy a limb
 				if((mangled_state & BODYPART_MANGLED_FLESH) && !(mangled_state & BODYPART_MANGLED_BONE) && sharpness)
@@ -536,7 +536,7 @@
 
 		// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 		if(wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
-			// EFFIGY EDIT CHANGE START (#3 Medical)
+			// EffigyEdit Change -  (#3 Medical)
 			//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
 			//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
 			if(wounding_dmg < DAMAGED_BODYPART_BONUS_WOUNDING_BONUS)
@@ -549,7 +549,7 @@
 				current_gauze.take_damage()
 			if(current_splint)
 				current_splint.take_damage()
-			// EFFIGY EDIT CHANGE END (#3 Medical)
+			// EffigyEdit Change End (#3 Medical)
 			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction)
 
 	for(var/datum/wound/iter_wound as anything in wounds)
@@ -599,12 +599,12 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
-		// EFFIGY EDIT CHANGE START (#3 Medical)
+		// EffigyEdit Change -  (#3 Medical)
 		//Consider moving this to a new species proc "spec_heal" maybe?
 		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
 			if(owner.health > 50)
 				owner.revive(FALSE)
-		// EFFIGY EDIT CHANGE END (#3 Medical)
+		// EffigyEdit Change End (#3 Medical)
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
@@ -864,12 +864,12 @@
 	if(should_draw_greyscale) //Should the limb be colored?
 		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 	markings = LAZYCOPY(owner_species.body_markings[body_zone])
 	if(aux_zone)
 		aux_zone_markings = LAZYCOPY(owner_species.body_markings[aux_zone])
 	markings_alpha = owner_species.markings_alpha
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 
 	recolor_external_organs()
 	return TRUE
@@ -951,13 +951,13 @@
 			draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
 		if(draw_color)
-			// EFFIGY EDIT CHANGE START (#3 Customization)
+			// EffigyEdit Change -  (#3 Customization)
 			var/limb_color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 
 			limb.color = limb_color
 			if(aux_zone)
 				aux.color = limb_color
-			// EFFIGY EDIT CHANGE END (#3 Customization)
+			// EffigyEdit Change End (#3 Customization)
 
 		//EMISSIVE CODE START
 		// For some reason this was applied as an overlay on the aux image and limb image before.
@@ -996,7 +996,7 @@
 				if(overlay.layers & external_layer)
 					. += overlay.get_overlay(external_layer, src)
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat) Body Markings
+	// EffigyEdit Add -  (#3 Customization - Ported from Skyrat) Body Markings
 	var/override_color
 	var/atom/offset_spokesman = owner || src
 	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
@@ -1051,7 +1051,7 @@
 				. += accessory_overlay
 				if (emissive)
 					. += emissive
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 
 	return .
 
@@ -1203,7 +1203,7 @@
 #undef BLEED_OVERLAY_MED
 #undef BLEED_OVERLAY_GUSH
 
-// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Medical - Ported from Skyrat)
 /*
 /**
  * apply_gauze() is used to- well, apply gauze to a bodypart
@@ -1245,7 +1245,7 @@
 		QDEL_NULL(current_gauze)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
 */
-// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Medical - Ported from Skyrat)
 
 ///Loops through all of the bodypart's external organs and update's their color.
 /obj/item/bodypart/proc/recolor_external_organs()

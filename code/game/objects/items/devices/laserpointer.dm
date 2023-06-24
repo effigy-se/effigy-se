@@ -139,7 +139,7 @@
 
 	//catpeople
 	for(var/mob/living/carbon/human/H in view(1,targloc))
-		if(!isfeline(H) || H.incapacitated() || H.is_blind()) // EFFIGY EDIT CHANGE (Feline Traits)
+		if(!isfeline(H) || H.incapacitated() || H.is_blind()) // EffigyEdit Change (Feline Traits)
 			continue
 		if(user.body_position == STANDING_UP)
 			H.setDir(get_dir(H,targloc)) // kitty always looks at the light

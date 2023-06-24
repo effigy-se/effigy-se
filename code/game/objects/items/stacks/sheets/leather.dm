@@ -207,7 +207,7 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 /obj/item/stack/sheet/leather/get_main_recipes()
 	. = ..()
 	. += GLOB.leather_recipes
-	add_recipes_to_sublist(., "belts", GLOB.effigy_leather_belt_recipes) // EFFIGY EDIT ADD
+	add_recipes_to_sublist(., "belts", GLOB.effigy_leather_belt_recipes) // EffigyEdit Add
 /*
  * Sinew
  */

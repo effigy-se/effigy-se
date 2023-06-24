@@ -138,7 +138,6 @@
 #define SPECIES_XENO "xeno"
 #define SPECIES_GHOUL "ghoul"
 #define SPECIES_TESHARI "teshari"
-#define SPECIES_HEMOPHAGE "hemophage"
 #define SPECIES_FELINE_PRIMITIVE "primitive_felinid"
 
 #define SPECIES_MUTANT "mutant"

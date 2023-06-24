@@ -72,7 +72,7 @@
 	density = TRUE
 	max_integrity = 350
 	armor_type = /datum/armor/unary_cryo_cell
-	layer = MOB_LAYER - 0.2 // EFFIGY EDIT CHANGE Fixing the opacity of cryo cells - ORIGINAL: layer = MOB_LAYER
+	layer = MOB_LAYER - 0.2 // EffigyEdit Change Fixing the opacity of cryo cells - ORIGINAL: layer = MOB_LAYER
 	state_open = FALSE
 	circuit = /obj/item/circuitboard/machine/cryo_tube
 	pipe_flags = PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY

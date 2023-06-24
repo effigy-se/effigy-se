@@ -332,7 +332,7 @@
 
 	. = ..()
 
-/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, set_coefficient=null, silent=FALSE) // EFFIGY EDIT CHANGE
+/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, set_coefficient=null, silent=FALSE) // EffigyEdit Change
 	var/security_num = SSsecurity_level.get_current_level_as_number()
 	switch(security_num)
 		if(SEC_LEVEL_GREEN)
@@ -358,7 +358,7 @@
 	else
 		SSshuttle.emergency_last_call_loc = null
 
-	if(!silent) // EFFIGY EDIT ADD
+	if(!silent) // EffigyEdit Add
 		priority_announce("The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority")
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)

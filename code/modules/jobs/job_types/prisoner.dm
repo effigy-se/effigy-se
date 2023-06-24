@@ -14,7 +14,7 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/prisoner
 
 	display_order = JOB_DISPLAY_ORDER_PRISONER
-	department_for_prefs = /datum/job_department/assistant // EFFIGY EDIT CHANGE
+	department_for_prefs = /datum/job_department/assistant // EffigyEdit Change
 
 	exclusive_mail_goodies = TRUE
 	mail_goodies = list (

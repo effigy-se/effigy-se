@@ -36,8 +36,8 @@ SUBSYSTEM_DEF(persistence)
 	load_randomized_recipes()
 	load_custom_outfits()
 	load_delamination_counter()
-	load_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-	load_tagline() // EFFIGY EDIT ADD (Tagline)
+	load_panic_bunker() // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+	load_tagline() // EffigyEdit Add (Tagline)
 
 	load_tram_counter()
 	load_adventures()
@@ -52,13 +52,13 @@ SUBSYSTEM_DEF(persistence)
 	save_photo_persistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
 	save_randomized_recipes()
 	save_scars()
-	save_modular_persistence() // EFFIGY EDIT ADDITION - (#184 Modular Persistence - Ported From Skyrat)
+	save_modular_persistence() // EffigyEdit AddITION - (#184 Modular Persistence - Ported From Skyrat)
 	save_custom_outfits()
 	save_delamination_counter()
 	if(SStramprocess.can_fire)
 		save_tram_counter()
-	save_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-	save_tagline() // EFFIGY EDIT ADD (Tagline)
+	save_panic_bunker() // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+	save_tagline() // EffigyEdit Add (Tagline)
 
 ///Loads up Poly's speech buffer.
 /datum/controller/subsystem/persistence/proc/load_poly()
@@ -569,7 +569,7 @@ SUBSYSTEM_DEF(persistence)
 /datum/controller/subsystem/persistence/proc/save_tram_counter()
 		rustg_file_write("[tram_hits_this_round]", TRAM_COUNT_FILEPATH)
 
-// EFFIGY EDIT ADD START (Tagline)
+// EffigyEdit Add -  (Tagline)
 /// Location where we save the server tagline
 #define SERVER_TAGLINE_FILEPATH "data/tagline.txt"
 
@@ -584,7 +584,7 @@ SUBSYSTEM_DEF(persistence)
 	rustg_file_write("[GLOB.tagline]", SERVER_TAGLINE_FILEPATH)
 
 #undef SERVER_TAGLINE_FILEPATH
-// EFFIGY EDIT ADD END (Tagline)
+// EffigyEdit Add End (Tagline)
 
 #undef DELAMINATION_COUNT_FILEPATH
 #undef DELAMINATION_HIGHSCORE_FILEPATH

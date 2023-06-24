@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Customization - Ported from Skyrat)
 /*
 /**
  * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		. += total_block_len
 		total_block_len += GET_UF_BLOCK_LEN(blocknumber)
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Customization - Ported from Skyrat)
 /////////////////////////// DNA DATUM
 /datum/dna
 	///An md5 hash of the dna holder's real name
@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		destination.dna.default_mutation_genes = default_mutation_genes
 	if(transfer_species)
 		//destination.set_species(species.type, icon_update=0) - ORIGINAL
-		destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+		destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) // EffigyEdit Change (#3 Customization - Ported from Skyrat)
 
 /datum/dna/proc/copy_dna(datum/dna/new_dna)
 	new_dna.unique_enzymes = unique_enzymes
@@ -150,11 +150,11 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	new_dna.unique_features = unique_features
 	new_dna.blood_type = blood_type
 	new_dna.features = features.Copy()
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
 	new_dna.mutant_bodyparts = mutant_bodyparts.Copy()
 	new_dna.body_markings = body_markings.Copy()
 	new_dna.update_body_size()
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
 	new_dna.species = new species.type
 	new_dna.species.species_traits = species.species_traits
 	//if the new DNA has a holder, transform them immediately, otherwise save it
@@ -225,7 +225,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	for(var/blocknum in 1 to DNA_UNI_IDENTITY_BLOCKS)
 		. += L[blocknum] || random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters)
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Customization - Ported from Skyrat)
 /*
 /datum/dna/proc/generate_unique_features()
 	. = ""
@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 	return data.Join()
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Customization - Ported from Skyrat)
 
 /datum/dna/proc/generate_dna_blocks()
 	var/bonus
@@ -363,7 +363,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(DNA_HAIRSTYLE_BLOCK)
 			set_uni_identity_block(blocknumber, construct_block(GLOB.hairstyles_list.Find(H.hairstyle), GLOB.hairstyles_list.len))
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Customization - Ported from Skyrat)
 /*
 /datum/dna/proc/update_uf_block(blocknumber)
 	if(!blocknumber)
@@ -398,7 +398,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(DNA_MUSHROOM_CAPS_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.caps_list.Find(features["caps"]), GLOB.caps_list.len))
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Customization - Ported from Skyrat)
 		if(DNA_POD_HAIR_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.pod_hair_list.Find(features["pod_hair"]), GLOB.pod_hair_list.len))
 
@@ -471,7 +471,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	unique_enzymes = generate_unique_enzymes()
 	unique_features = generate_unique_features()
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Customization - Ported from Skyrat)
 /*
 /datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
 	if(newblood_type)
@@ -483,7 +483,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	features = random_features()
 	unique_features = generate_unique_features()
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Customization - Ported from Skyrat)
 
 /datum/dna/stored //subtype used by brain mob's stored_dna
 
@@ -516,7 +516,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Customization - Ported from Skyrat)
 /*
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	if(QDELETED(src))
@@ -546,7 +546,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
 
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Customization - Ported from Skyrat)
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
@@ -630,7 +630,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		else
 			gender = PLURAL
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove -  (#3 Customization - Ported from Skyrat)
 /*
 /mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0)
 	..()
@@ -697,7 +697,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(mutations_overlay_update)
 			update_mutations_overlay()
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove End (#3 Customization - Ported from Skyrat)
 
 /mob/proc/domutcheck()
 	return

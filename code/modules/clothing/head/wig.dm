@@ -10,7 +10,7 @@
 	color = "#000000"
 	var/hairstyle = "Very Long Hair"
 	var/adjustablecolor = TRUE //can color be changed manually?
-	flags_inv = HIDEHAIR | SHOWSPRITEEARS // EFFIGY EDIT ADD
+	flags_inv = HIDEHAIR | SHOWSPRITEEARS // EffigyEdit Add
 
 /obj/item/clothing/head/wig/Initialize(mapload)
 	. = ..()

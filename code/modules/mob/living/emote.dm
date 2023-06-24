@@ -2,7 +2,7 @@
 /* EMOTE DATUMS */
 /datum/emote/living
 	mob_type_allowed_typecache = /mob/living
-	mob_type_blacklist_typecache = list(/mob/living/brain) //EFFIGY EDIT - OVERWRITTEN BY `packages\modular_implants\code\soulcatcher\soulcatcher_mob.dm`
+	mob_type_blacklist_typecache = list(/mob/living/brain) //EffigyEdit Change - OVERWRITTEN BY `packages\modular_implants\code\soulcatcher\soulcatcher_mob.dm`
 
 /datum/emote/living/blush
 	key = "blush"
@@ -135,7 +135,7 @@
 	hands_use_check = TRUE
 	var/wing_time = 20
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove -
 /*
 /datum/emote/living/flap/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -151,7 +151,7 @@
 				wings.open_wings()
 			addtimer(CALLBACK(wings,  open ? TYPE_PROC_REF(/obj/item/organ/external/wings/functional, open_wings) : TYPE_PROC_REF(/obj/item/organ/external/wings/functional, close_wings)), wing_time)
 */
-// EFFIGY EDIT ADD END
+// EffigyEdit Add End
 
 /datum/emote/living/flap/aflap
 	key = "aflap"
@@ -265,7 +265,7 @@
 		qdel(kiss_blower)
 		to_chat(user, span_warning("You're incapable of blowing a kiss in your current state."))
 
-// EFFIGY EDIT REMOVE START - (Moved to packages)
+// EffigyEdit Remove -  - (Moved to packages)
 /*
 /datum/emote/living/laugh
 	key = "laugh"
@@ -290,7 +290,7 @@
 		else
 			return pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove End
 
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
 	return ..() && user.can_speak(allow_mimes = TRUE)
@@ -626,7 +626,7 @@
 		to_chat(user, span_boldwarning("You cannot send IC messages (muted)."))
 		return FALSE
 	else if(!params)
-		// EFFIGY EDIT CHANGE
+		// EffigyEdit Change
 		//custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
 		custom_emote = stripped_multiline_input(user, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN)
 		if(custom_emote && !check_invalid(user, custom_emote))
@@ -643,7 +643,7 @@
 		custom_emote = params
 		if(type_override)
 			custom_emote_type = type_override
-	message = user.say_emphasis(custom_emote) // EFFIGY EDIT CHANGE
+	message = user.say_emphasis(custom_emote) // EffigyEdit Change
 	emote_type = custom_emote_type
 	. = ..()
 	message = null
@@ -652,7 +652,7 @@
 /datum/emote/living/custom/replace_pronoun(mob/user, message)
 	return message
 
-// EFFIGY EDIT REMOVE START (Synths)
+// EffigyEdit Remove -  (Synths)
 /*
 /datum/emote/living/human/beep
 	key = "beep"
@@ -663,7 +663,7 @@
 	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon)
 	emote_type = EMOTE_AUDIBLE
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove End
 
 /datum/emote/living/inhale
 	key = "inhale"

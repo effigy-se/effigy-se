@@ -39,7 +39,7 @@
 #define DNA_SKIN_TONE_BLOCK 3
 #define DNA_UNI_IDENTITY_BLOCKS 7
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove - Customization
 /*
 /// This number needs to equal the total number of DNA blocks
 #define DNA_FEATURE_BLOCKS 15
@@ -59,7 +59,7 @@
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove End
 
 #define DNA_FEATURE_BLOCKS GLOB.dna_total_feature_blocks
 

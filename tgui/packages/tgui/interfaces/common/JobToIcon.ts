@@ -5,7 +5,7 @@ export const JOB2ICON = {
   'Atmospheric Technician': 'fan',
   'Bartender': 'cocktail',
   'Botanist': 'seedling',
-  'Broadcast Team': 'video-camera', // EFFIGY EDIT ADD (Broadcast Team)
+  'Broadcast Team': 'video-camera', // EffigyEdit Add (Broadcast Team)
   'Captain': 'crown',
   'Cargo Technician': 'box',
   'CentCom Commander': 'star',

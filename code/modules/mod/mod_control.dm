@@ -18,13 +18,13 @@
 	actions_types = list(
 		/datum/action/item_action/mod/deploy,
 		/datum/action/item_action/mod/activate,
-		/datum/action/item_action/mod/sprite_accessories, // EFFIGY EDIT ADD
+		/datum/action/item_action/mod/sprite_accessories, // EffigyEdit Add
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
-		/datum/action/item_action/mod/deploy/pai, // EFFIGY EDIT ADD
-		/datum/action/item_action/mod/activate/pai, // EFFIGY EDIT ADD
-		/datum/action/item_action/mod/panel/pai, // EFFIGY EDIT ADD
-		/datum/action/item_action/mod/module/pai, // EFFIGY EDIT ADD
+		/datum/action/item_action/mod/deploy/pai, // EffigyEdit Add
+		/datum/action/item_action/mod/activate/pai, // EffigyEdit Add
+		/datum/action/item_action/mod/panel/pai, // EffigyEdit Add
+		/datum/action/item_action/mod/module/pai, // EffigyEdit Add
 	)
 	resistance_flags = NONE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
@@ -84,7 +84,7 @@
 	/// Currently used module.
 	var/obj/item/mod/module/selected_module
 	/// AI mob inhabiting the MOD.
-	// var/mob/living/silicon/ai/ai // EFFIGY EDIT REMOVE
+	// var/mob/living/silicon/ai/ai // EffigyEdit Remove
 	/// Delay between moves as AI.
 	var/static/movedelay = 0
 	/// Cooldown for AI moves.
@@ -184,7 +184,7 @@
 		var/obj/item/overslot = overslotting_parts[part]
 		overslot.forceMove(drop_location())
 		overslotting_parts[part] = null
-	remove_pai() // EFFIGY EDIT CHANGE
+	remove_pai() // EffigyEdit Change
 	return ..()
 
 /obj/item/mod/control/examine(mob/user)
@@ -206,7 +206,7 @@
 			. += span_notice("You could remove [core] with a <b>wrench</b>.")
 		else
 			. += span_notice("You could use a <b>MOD core</b> on it to install one.")
-		if(!mod_pai) // EFFIGY EDIT CHANGE
+		if(!mod_pai) // EffigyEdit Change
 			. += span_notice("You could install a pAI with a <b>pAI card</b>.")
 	. += span_notice("<i>You could examine it more thoroughly...</i>")
 
@@ -271,14 +271,14 @@
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 			return
 
-	// EFFIGY EDIT ADD START (Fix runtime)
+	// EffigyEdit Add -  (Fix runtime)
 	if(active)
 		if(!wearer.incapacitated())
 			balloon_alert(wearer, "deactivate first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 
 		return
-	// EFFIGY EDIT ADD END (Fix runtime)
+	// EffigyEdit Add End (Fix runtime)
 
 	if(!wearer.incapacitated())
 		var/atom/movable/screen/inventory/hand/ui_hand = over_object
@@ -308,10 +308,10 @@
 	return ..()
 
 /obj/item/mod/control/screwdriver_act(mob/living/user, obj/item/screwdriver)
-	// EFFIGY EDIT CHANGE START
+	// EffigyEdit Change -
 	. = ..()
 	if(.)
-	// EFFIGY EDIT CHANGE END
+	// EffigyEdit Change End
 		return TRUE
 	if(active || activating || ai_controller)
 		balloon_alert(user, "deactivate suit first!")
@@ -361,14 +361,14 @@
 	return FALSE
 
 /obj/item/mod/control/attackby(obj/item/attacking_item, mob/living/user, params)
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	if(istype(attacking_item, /obj/item/pai_card))
 		if(!open) //mod must be open
 			balloon_alert(user, "suit must be open to transfer!")
 			return FALSE
 		insert_pai(user, attacking_item)
 		return TRUE
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 	if(istype(attacking_item, /obj/item/mod/module))
 		if(!open)
 			balloon_alert(user, "open the cover first!")
@@ -565,12 +565,12 @@
 		new_module.on_equip()
 	if(active)
 		new_module.on_suit_activation()
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	if(mod_pai)
 		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[ref(mod_pai)]
 		if(action)
 			action.Grant(mod_pai)
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 	if(user)
 		balloon_alert(user, "[new_module] added")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
@@ -674,7 +674,7 @@
 		part.visor_flags_cover = category[SEALED_COVER] || NONE
 		part.alternate_worn_layer = category[UNSEALED_LAYER]
 		mod_parts[part] = part.alternate_worn_layer
-		// EFFIGY EDIT REMOVE START
+		// EffigyEdit Remove -
 		/*
 		if(!category[CAN_OVERSLOT])
 			if(overslotting_parts[part])
@@ -683,7 +683,7 @@
 			overslotting_parts -= part
 			continue
 		*/
-		// EFFIGY EDIT REMOVE END
+		// EffigyEdit Remove End
 		overslotting_parts |= part
 	wearer?.regenerate_icons()
 

@@ -128,7 +128,7 @@
 	var/message_verb_continuous = length(I.attack_verb_continuous) ? "[pick(I.attack_verb_continuous)]" : "attacks"
 	var/message_verb_simple = length(I.attack_verb_simple) ? "[pick(I.attack_verb_simple)]" : "attack"
 
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	if(I.force && !user.combat_mode && !length(I.attack_verb_simple) && !length(I.attack_verb_continuous))
 		var/random = rand(1,2)
 		switch(random)
@@ -138,7 +138,7 @@
 			if(2)
 				message_verb_continuous = "<font color='#ee00ff'>maims</font>"
 				message_verb_simple = "<font color='#ee00ff'>maim</font>"
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 
 	var/extra_wound_details = ""
 	if(I.damtype == BRUTE && hit_bodypart.can_dismember())
@@ -279,7 +279,7 @@
  * or another carbon.
 */
 /mob/living/carbon/proc/disarm(mob/living/carbon/target)
-	// EFFIGY EDIT ADD START - EMOTES (SLAP THAT ASS)
+	// EffigyEdit Add -  - EMOTES (SLAP THAT ASS)
 	if(zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		var/target_on_help_and_unarmed = !target.combat_mode && !target.get_active_held_item()
 		if(target_on_help_and_unarmed || HAS_TRAIT(target, TRAIT_RESTRAINED))
@@ -318,7 +318,7 @@
 				"You hear a slap.", ignored_mobs = list(target))
 			to_chat(target, "<span class='danger'>[src] slaps your ass!")
 			return
-	// EFFIGY EDIT ADD END - EMOTES (SLAP THAT ASS)
+	// EffigyEdit Add End - EMOTES (SLAP THAT ASS)
 	do_attack_animation(target, ATTACK_EFFECT_DISARM)
 	playsound(target, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	if (ishuman(target))
@@ -470,7 +470,7 @@
 		Paralyze(60)
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/helper)
-	var/nosound = FALSE // effigy edit add
+	var/nosound = FALSE // EffigyEdit Add
 	if(on_fire)
 		to_chat(helper, span_warning("You can't put [p_them()] out with just your bare hands!"))
 		return
@@ -491,7 +491,7 @@
 		to_chat(helper, span_notice("You shake [src] trying to pick [p_them()] up!"))
 		to_chat(src, span_notice("[helper] shakes you to get you up!"))
 
-	// EFFIGY EDIT ADD START (Emotes)
+	// EffigyEdit Add -  (Emotes)
 	else if(helper.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
 		playsound(src, 'packages/emotes/assets/generic/nose_boop.ogg', 50, 0)
@@ -500,7 +500,7 @@
 			src.Knockdown(20)
 			src.apply_damage(30, STAMINA)
 		helper.visible_message(span_notice("[helper] boops [src]'s nose."), span_notice("You boop [src] on the nose."))
-	// EFFIGY EDIT ADD END (Emotes)
+	// EffigyEdit Add End (Emotes)
 
 	else if(check_zone(helper.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
 		helper.visible_message(span_notice("[helper] gives [src] a pat on the head to make [p_them()] feel better!"), \
@@ -520,12 +520,12 @@
 			to_chat(helper, span_warning("[src] makes a grumbling noise as you pull on [p_their()] tail."))
 		else
 			add_mood_event("tailpulled", /datum/mood_event/tailpulled)
-		// EFFIGY EDIT ADD START (Emotes)
+		// EffigyEdit Add -  (Emotes)
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
 			var/obj/item/organ/external/tail/src_tail = get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 			if(src_tail && !(src_tail.wag_flags & WAG_WAGGING))
 				emote("wag")
-		// EFFIGY EDIT ADD END (Emotes)
+		// EffigyEdit Add End (Emotes)
 
 	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && (istype(head, /obj/item/clothing/head/costume/kitty) || istype(head, /obj/item/clothing/head/collectable/kitty)))
 		var/obj/item/clothing/head/faketail = head
@@ -597,7 +597,7 @@
 	if(body_position != STANDING_UP && !resting && !buckled && !HAS_TRAIT(src, TRAIT_FLOORED))
 		get_up(TRUE)
 
-	if(!nosound) // EFFIGY EDIT CHANGE (Emotes)
+	if(!nosound) // EffigyEdit Change (Emotes)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 
 	// Shake animation

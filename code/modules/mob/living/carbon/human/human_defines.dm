@@ -13,8 +13,8 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	can_be_shoved_into = TRUE
 
-	maxHealth = 120 // EFFIGY EDIT CHANGE
-	health = 120 // EFFIGY EDIT CHANGE
+	maxHealth = 120 // EffigyEdit Change
+	health = 120 // EffigyEdit Change
 
 	//Hair colour and style
 	var/hair_color = "#000000"

@@ -5,7 +5,7 @@
 	savefile_identifier = PREFERENCE_PLAYER
 
 	minimum = MULTIZ_PERFORMANCE_DISABLE
-	maximum = MULTIZ_PERFORMANCE_NICE // EFFIGY EDIT CHANGE
+	maximum = MULTIZ_PERFORMANCE_NICE // EffigyEdit Change
 
 /datum/preference/numeric/multiz_performance/create_default_value()
 	return MULTIZ_PERFORMANCE_DISABLE

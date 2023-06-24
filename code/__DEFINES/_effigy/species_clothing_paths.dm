@@ -17,3 +17,15 @@
 #define VOX_EARS_ICON 'packages/clothing/assets/mob/species/vox/ears.dmi'
 
 #define IPC_AUGMENTS_LOC 'packages/bodyparts/assets/'
+
+//MONKEY PATHS
+///The dmi for monkey uniforms
+#define MONKEY_UNIFORM_FILE 'packages/clothing/assets/mob/species/monkey/uniform.dmi'
+
+//DIGITIGRADE PATHS
+///The dmi containing digitigrade uniforms
+#define DIGITIGRADE_UNIFORM_FILE 'packages/clothing/assets/mob/uniform_digi.dmi'
+///The dmi containing digitigrade shoes
+#define DIGITIGRADE_SHOES_FILE 'packages/clothing/assets/mob/feet_digi.dmi'
+///The dmi containing digitigrade oversuits
+#define DIGITIGRADE_SUIT_FILE 'packages/clothing/assets/mob/suit_digi.dmi'

@@ -583,7 +583,7 @@ SUBSYSTEM_DEF(job)
 	var/ssc = CONFIG_GET(number/security_scaling_coeff)
 	if(ssc > 0)
 		if(J.spawn_positions > 0)
-			var/officer_positions = min(7, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 7 officers // EFFIGY EDIT CHANGE
+			var/officer_positions = min(7, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 7 officers // EffigyEdit Change
 			JobDebug("Setting open security officer positions to [officer_positions]")
 			J.total_positions = officer_positions
 			J.spawn_positions = officer_positions
@@ -870,7 +870,7 @@ SUBSYSTEM_DEF(job)
 	to_chat(player, "<span class='infoplain'><b>You have failed to qualify for any job you desired.</b></span>")
 	unassigned -= player
 	player.ready = PLAYER_NOT_READY
-	player.client << output(player.ready, "lobby_browser:imgsrc") // EFFIGY EDIT ADD - SPLASH
+	player.client << output(player.ready, "lobby_browser:imgsrc") // EffigyEdit Add - SPLASH
 
 
 /datum/controller/subsystem/job/Recover()
@@ -1102,7 +1102,7 @@ SUBSYSTEM_DEF(job)
 	if(is_banned_from(player.ckey, possible_job.title))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED
-		
+
 	// Check for character age
 	if(possible_job.required_character_age > player.client.prefs.read_preference(/datum/preference/numeric/age) && possible_job.required_character_age != null)
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_AGE)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")

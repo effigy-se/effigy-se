@@ -1,5 +1,7 @@
 /// LOOC Module
 GLOBAL_VAR_INIT(looc_allowed, TRUE)
+/// dchat
+GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 
 /// Whether or not we log game logs to the SQL database. Requires the SQL database to function, as well as our Skyrat-only table, `game_log`.
 /datum/config_entry/flag/sql_game_log

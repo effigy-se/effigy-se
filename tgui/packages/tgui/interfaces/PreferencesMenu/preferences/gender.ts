@@ -16,7 +16,7 @@ export const GENDERS = {
   },
 
   [Gender.Other]: {
-    icon: 'question', // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+    icon: 'question', // EffigyEdit Change (#3 Customization - Ported from Skyrat)
     text: 'Other',
   },
 };

@@ -1,8 +1,13 @@
+/proc/init_sprite_accessories_se()
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings/moth, GLOB.moth_wings_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list, add_blank = TRUE)
+
 /proc/make_extra_datum_references()
 	make_sprite_accessory_references()
 	make_body_marking_references()
 	make_body_marking_set_references()
 	make_body_marking_dna_block_references()
+	init_emote_list_se()
 	populate_total_ui_len_by_block()
 	populate_total_uf_len_by_block()
 	make_augment_references()

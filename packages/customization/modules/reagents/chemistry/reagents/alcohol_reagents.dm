@@ -3,11 +3,6 @@
 /datum/reagent/consumable/ethanol/whiskey
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC //let's not force the detective to change his alcohol brand
 
-
-/datum/reagent/consumable/ethanol/bloody_mary
-	expanded_chemical_flags = REAGENT_BLOOD_REGENERATING
-
-
 // ROBOT ALCOHOL PAST THIS POINT
 // WOOO!
 

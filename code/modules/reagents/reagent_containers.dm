@@ -228,7 +228,7 @@
 		return
 
 	else
-		// EFFIGY EDIT CHANGE START
+		// EffigyEdit Change -
 		if(isturf(target))
 			var/turf/T = target
 			T.add_liquid_from_reagents(reagents)
@@ -238,7 +238,7 @@
 				message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
 		else
 			reagents.expose(target, TOUCH)
-		// EFFIGY EDIT CHANGE END
+		// EffigyEdit Change End
 		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
 		if(QDELETED(src))
 			return

@@ -25,7 +25,7 @@
 	exotic_blood = /datum/reagent/toxin/slimejelly
 	blood_deficiency_drain_rate = JELLY_REGEN_RATE + BLOOD_DEFICIENCY_MODIFIER
 	var/datum/action/innate/regenerate_limbs/regenerate_limbs
-	var/datum/action/innate/alter_form/alter_form // EFFIGY EDIT ADD
+	var/datum/action/innate/alter_form/alter_form // EffigyEdit Add
 	liked_food = MEAT | BUGS
 	toxic_food = NONE
 	coldmod = 6   // = 3x cold damage
@@ -51,19 +51,19 @@
 		regenerate_limbs = new
 		regenerate_limbs.Grant(new_jellyperson)
 		update_mail_goodies(new_jellyperson)
-		// EFFIGY EDIT ADD START (Customization)
+		// EffigyEdit Add -  (Customization)
 		alter_form = new
 		alter_form.Grant(new_jellyperson)
-		// EFFIGY EDIT ADD END (Customization)
+		// EffigyEdit Add End (Customization)
 	new_jellyperson.AddElement(/datum/element/soft_landing)
 
 /datum/species/jelly/on_species_loss(mob/living/carbon/former_jellyperson, datum/species/new_species, pref_load)
 	if(regenerate_limbs)
 		regenerate_limbs.Remove(former_jellyperson)
-	// EFFIGY EDIT ADD START (Customization)
+	// EffigyEdit Add -  (Customization)
 	if(alter_form)
 		alter_form.Remove(former_jellyperson)
-	// EFFIGY EDIT ADD END (Customization)
+	// EffigyEdit Add End (Customization)
 	former_jellyperson.RemoveElement(/datum/element/soft_landing)
 
 	return ..()

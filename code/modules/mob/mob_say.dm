@@ -100,11 +100,11 @@
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	if(!GLOB.dchat_allowed && !check_rights(R_ADMIN, FALSE))
 		to_chat(src, "<span class='danger'>Dead chat is currently muted.</span>")
 		return
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 
 	var/jb = is_banned_from(ckey, "Deadchat")
 	if(QDELETED(src))
