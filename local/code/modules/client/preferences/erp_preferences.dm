@@ -115,6 +115,10 @@
 /datum/preference/toggle/erp/new_genitalia_growth
 	savefile_key = "new_genitalia_growth_pref"
 
+/datum/preference/toggle/erp/climax_sound
+	savefile_key = "climax_sound_perf"
+	default_value = TRUE
+
 /datum/preference/choiced/erp_status
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER

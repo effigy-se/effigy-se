@@ -5,6 +5,8 @@
 #define CLIMAX_ON_FLOOR "On the floor"
 #define CLIMAX_IN_OR_ON "Climax in or on someone"
 
+#define CLIMAX_NO_ESCAPE_ZONE 5
+
 /mob/living/carbon/human/proc/climax(manual = TRUE)
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
@@ -34,15 +36,26 @@
 			genitals.Add(CLIMAX_PENIS)
 		climax_choice = tgui_alert(src, "You are climaxing, choose which genitalia to climax with.", "Genitalia Preference!", genitals)
 
+	var/sound/cumsound
 	switch(gender)
 		if(MALE)
-			playsound(get_turf(src), pick('packages/lewd/assets/sounds/final_m1.ogg',
-										'packages/lewd/assets/sounds/final_m2.ogg',
-										'packages/lewd/assets/sounds/final_m3.ogg'), 50, TRUE, ignore_walls = FALSE)
-		if(FEMALE)
-			playsound(get_turf(src), pick('packages/lewd/assets/sounds/final_f1.ogg',
-										'packages/lewd/assets/sounds/final_f2.ogg',
-										'packages/lewd/assets/sounds/final_f3.ogg'), 50, TRUE, ignore_walls = FALSE)
+			cumsound = sound(pick(
+				'packages/lewd/assets/sounds/final_m1.ogg',
+				'packages/lewd/assets/sounds/final_m2.ogg',
+				'packages/lewd/assets/sounds/final_m3.ogg',
+			))
+
+		else
+			cumsound = (pick(
+				'packages/lewd/assets/sounds/final_f1.ogg',
+				'packages/lewd/assets/sounds/final_f2.ogg',
+				'packages/lewd/assets/sounds/final_f3.ogg',
+			))
+
+	var/list/cumheads = get_hearers_in_view(CLIMAX_NO_ESCAPE_ZONE, get_turf(src))
+	for(var/mob/horrified in cumheads)
+		if(horrified.client.prefs.read_preference(/datum/preference/toggle/erp/climax_sound))
+			SEND_SOUND(horrified.client, cumsound)
 
 	var/self_orgasm = FALSE
 	var/self_their = p_their()
