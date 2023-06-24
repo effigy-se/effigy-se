@@ -195,8 +195,6 @@
 						scan_species = /datum/species/synthetic
 					if(SCANGATE_TESHARI)
 						scan_species = /datum/species/teshari
-					if(SCANGATE_HEMOPHAGE)
-						scan_species = /datum/species/hemophage
 					if(SCANGATE_SNAIL)
 						scan_species = /datum/species/snail
 					// EFFIGY EDIT ADD END (Medical)

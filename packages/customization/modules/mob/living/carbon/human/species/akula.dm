@@ -2,10 +2,7 @@
 	name = "Akula"
 	id = SPECIES_AKULA
 	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR
+		MUTCOLORS
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
