@@ -102,7 +102,7 @@
 		winset(client, "status_bar", "is-visible=true")
 
 /mob/dead/new_player/proc/play_lobby_button_sound()
-//	SEND_SOUND(src, sound('packages/splash/assets/save.ogg')) // EffigyTODO
+//	SEND_SOUND(src, sound('local/interface/splash/assets/save.ogg')) // EffigyTODO
 
 /**
  * Shows the player a list of current polls, if any.
