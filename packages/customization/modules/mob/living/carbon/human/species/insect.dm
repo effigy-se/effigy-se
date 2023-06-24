@@ -3,10 +3,7 @@
 	id = SPECIES_INSECT
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
+		HAIR
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

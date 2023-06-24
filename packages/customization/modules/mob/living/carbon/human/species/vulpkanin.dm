@@ -2,11 +2,7 @@
 	name = "Vulpkanin"
 	id = SPECIES_VULP
 	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR,
+		MUTCOLORS
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

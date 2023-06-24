@@ -6,10 +6,9 @@
 		"moth_antennae" = ACC_RANDOM,
 	)
 	species_traits = list(
-		LIPS,
 		HAS_MARKINGS,
 		TRAIT_ANTENNAE,
-		MUTCOLORS,
+		MUTCOLORS
 	)
 
 /datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)

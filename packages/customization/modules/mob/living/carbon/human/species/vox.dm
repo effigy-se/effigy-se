@@ -5,11 +5,7 @@
 	eyes_icon = 'packages/adv_medical/assets/organs/vox_eyes.dmi'
 	can_augment = FALSE
 	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
+		MUTCOLORS
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
