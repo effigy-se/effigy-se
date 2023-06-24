@@ -234,16 +234,19 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		effigy_linked = LINK_FAIL
 		stack_trace("Unable to find an Effigy account link for ckey [initiator_ckey]")
 		effigy_player_id = EFFIGY_UNKNOWN_PLAYER
-	var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
-	var/int_id = id
-	var/link_id = effigy_player_id
-	var/ticket_id = 0
-	var/box = SOCIAL_DISTRICT_AHELP
-	var/title = copytext_char(msg, 1, 64)
-	var/message = msg
-	var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
-	GLOB.ahelp_tickets.active_tickets += src
-	INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
+		GLOB.ahelp_tickets.active_tickets += src
+	else
+		var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
+		var/int_id = id
+		var/link_id = effigy_player_id
+		var/ticket_id = 0
+		var/box = SOCIAL_DISTRICT_AHELP
+		var/title = copytext_char(msg, 1, 64)
+		var/message = msg
+		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
+		GLOB.ahelp_tickets.active_tickets += src
+		effigy_linked = LINK_PENDING
+		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket) //This is a bug
@@ -381,8 +384,20 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	GLOB.ahelp_tickets.resolved_tickets -= src
 	return ..()
 
-/datum/admin_help/proc/AddInteraction(formatted_message, player_message)
-	if (!isnull(usr) && usr.ckey != initiator_ckey)
+/datum/admin_help/proc/AddInteraction(formatted_message, player_message, cattempt)
+	var/attempt
+	if(cattempt)
+		attempt = cattempt
+	else
+		attempt = 1
+	if(effigy_linked == LINK_PENDING)
+		if(attempt <= 3)
+			addtimer(CALLBACK(src, PROC_REF(AddInteraction), formatted_message, player_message, attempt), 1.5 SECONDS)
+			attempt++
+			return
+		else
+			effigy_linked = LINK_FAIL
+	if(!isnull(usr) && usr.ckey != initiator_ckey)
 		admins_involved |= usr.ckey
 		if(heard_by_no_admins)
 			heard_by_no_admins = FALSE
@@ -391,7 +406,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	ticket_interactions += "[time_stamp()]: [formatted_message]"
 	if (!isnull(player_message))
 		player_interactions += "[time_stamp()]: [player_message]"
-		UNTIL(!isnull(effigy_response))
 		var/ef_type = EFFIGY_MESSAGE_TICKET_INTERACTION
 		var/int_id = id
 		var/link_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
