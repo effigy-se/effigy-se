@@ -931,6 +931,7 @@
 	prereq_ids = list("biotech", "datatheory")
 	design_ids = list(
 		"skill_station",
+		"soulcatcher_device", //EFFIGY EDIT - #184 SOULCATCHERS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1235,6 +1236,9 @@
 		"health_hud",
 		"scigoggles",
 		"security_hud",
+		//EFFIGY EDIT START - #184 NIFS
+		"nifsoft_money_sense",
+		//EFFIGY EDIT END - #184 NIFS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 
@@ -1498,6 +1502,7 @@
 		"seclite",
 		"zipties",
 		"inspector",
+		"nifsoft_remover", //EFFIGY EDIT ADDITION - #184 NIFs
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
@@ -2310,10 +2315,13 @@
 /datum/techweb_node/mod_experimental
 	id = "mod_experimental"
 	display_name = "Experimental Modular Suits"
-	description = "Applications of experimentality when creating MODsuits has created these..."
+	description = "Applications of experimentality when creating MODsuits have created these..."
 	prereq_ids = list("base")
 	design_ids = list(
 		"mod_disposal",
+		"mod_joint_torsion",
+		"mod_recycler",
+		"mod_shooting",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	hidden = TRUE

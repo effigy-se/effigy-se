@@ -172,7 +172,7 @@
  * Obsessed
  */
 /datum/round_event_control/obsessed
-	max_occurrences = 1
+	max_occurrences = 0
 	weight = VERY_LOW_EVENT_FREQ
 
 /**

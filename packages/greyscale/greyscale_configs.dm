@@ -570,17 +570,6 @@
 	name = "Peacoat (Worn)"
 	json_config = 'packages/greyscale/json_configs/peacoat/peacoat_worn.json'
 
-// HAWAIIAN SHIRT
-
-/datum/greyscale_config/hawaiian_shirt
-	name = "Hawaiian Shirt"
-	icon_file = 'packages/greyscale/assets/hawaiianshirt.dmi'
-	json_config = 'packages/greyscale/json_configs/suits/hawaiianshirt/hawaiianshirt.json'
-
-/datum/greyscale_config/hawaiian_shirt/worn
-	name = "Hawaiian Shirt (Worn)"
-	json_config = 'packages/greyscale/json_configs/suits/hawaiianshirt/hawaiianshirt_worn.json'
-
 // VARSITY JACKET
 
 /datum/greyscale_config/varsity

@@ -1,7 +1,3 @@
-/proc/random_features()
-	//For now we will always return none for tail_human and ears.
-	return MANDATORY_FEATURE_LIST
-
 /proc/accessory_list_of_key_for_species(key, datum/species/S, mismatched, ckey)
 	var/list/accessory_list = list()
 	for(var/name in GLOB.sprite_accessories[key])

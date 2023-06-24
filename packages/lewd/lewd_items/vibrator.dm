@@ -1,7 +1,8 @@
 #define DEFAULT_AROUSAL_INCREASE 4
 #define DEFAULT_PLEASURE_INCREASE 2
 
-//This code huge and blocky, but we're working on update for... my god, 4 months. If you can upgrade it - do it, but don't remove or break something, test carefully. This item is insertable.
+// TODO - This needs a refactor. The nerds who originally made this left a comment that they were gonna.
+// Considering how long that comment has BEEN there. I doubt it.
 /obj/item/clothing/sextoy/vibrator
 	name = "vibrator"
 	desc = "Woah. What an... Interesting item. I wonder what this red button does..."

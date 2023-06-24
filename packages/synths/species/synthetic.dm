@@ -62,8 +62,6 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/synth,
 	)
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
-	burnmod = 1.3 // Every 0.1 is 10% above the base.
-	brutemod = 1.3
 	coldmod = 1.2
 	heatmod = 2 // TWO TIMES DAMAGE FROM BEING TOO HOT?! WHAT?! No wonder lava is literal instant death for us.
 	siemens_coeff = 1.4 // Not more because some shocks will outright crit you, which is very unfun
@@ -164,12 +162,18 @@
  * * transformer - The human that will be affected by the screen change (read: IPC).
  * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to.
  */
-/datum/species/synthetic/proc/switch_to_screen(mob/living/carbon/human/tranformer, screen_name)
+/datum/species/synthetic/proc/switch_to_screen(mob/living/carbon/human/transformer, screen_name)
 	if(!screen)
 		return
 
-	tranformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
-	tranformer.update_body()
+	// This is awful. Please find a better way to do this.
+	var/obj/item/organ/external/synth_screen/screen_organ = transformer.get_organ_slot(ORGAN_SLOT_EXTERNAL_SYNTH_SCREEN)
+	if(!istype(screen_organ))
+		return
+
+	transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
+	screen_organ.bodypart_overlay.set_appearance_from_dna(transformer.dna)
+	transformer.update_body()
 
 /datum/species/synthetic/random_name(gender, unique, lastname)
 	var/randname = pick(GLOB.posibrain_names)
