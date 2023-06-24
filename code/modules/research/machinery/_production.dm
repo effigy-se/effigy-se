@@ -121,12 +121,7 @@
 		ui.open()
 
 /obj/machinery/rnd/production/ui_static_data(mob/user)
-	var/list/data
-	if(isnull(materials.mat_container))
-		data = list()
-	else
-		data = materials.mat_container.ui_static_data()
-
+	var/list/data = list()
 	var/list/designs = list()
 
 	var/datum/asset/spritesheet/research_designs/spritesheet = get_asset_datum(/datum/asset/spritesheet/research_designs)
@@ -206,7 +201,7 @@
 		var/total_storage = 0
 
 		for(var/datum/stock_part/matter_bin/bin in component_parts)
-			total_storage += bin.tier * (37.5*SHEET_MATERIAL_AMOUNT)
+			total_storage += bin.tier * 75000
 
 		materials.set_local_size(total_storage)
 

@@ -91,7 +91,7 @@
 	VAR_PRIVATE/should_update_icon = FALSE
 
 /obj/item/radio/Initialize(mapload)
-	set_wires(new /datum/wires/radio(src))
+	wires = new /datum/wires/radio(src)
 	secure_radio_connections = list()
 	. = ..()
 

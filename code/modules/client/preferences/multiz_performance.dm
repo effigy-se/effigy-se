@@ -5,10 +5,10 @@
 	savefile_identifier = PREFERENCE_PLAYER
 
 	minimum = MULTIZ_PERFORMANCE_DISABLE
-	maximum = MULTIZ_PERFORMANCE_NICE // EFFIGY EDIT CHANGE
+	maximum = MAX_EXPECTED_Z_DEPTH - 1
 
 /datum/preference/numeric/multiz_performance/create_default_value()
-	return MULTIZ_PERFORMANCE_DISABLE
+	return -1
 
 /datum/preference/numeric/multiz_performance/apply_to_client(client/client, value)
 	// Update the plane master group's layering

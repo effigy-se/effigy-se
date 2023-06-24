@@ -1,5 +1,4 @@
-// Makes the next item purchased from the LustWish vendor free.
-
+//Debug item, but plz leave it alone. It's unobtainable and could be used by me for some events. Or as reward from some weird god, who knows.
 /obj/item/lustwish_discount
 	name = "LustWish elite card"
 	desc = "A strange card with a blue lamia on the back." //yes, this is card with my character on the back. Cameo.

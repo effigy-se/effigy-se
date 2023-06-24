@@ -473,13 +473,12 @@
 /obj/item/slime_extract/adamantine/activate(mob/living/carbon/human/user, datum/species/jelly/luminescent/species, activation_type)
 	switch(activation_type)
 		if(SLIME_ACTIVATE_MINOR)
-			if(HAS_TRAIT(user, TRAIT_ADAMANTINE_EXTRACT_ARMOR))
+			if(species.armor > 0)
 				to_chat(user, span_warning("Your skin is already hardened!"))
 				return
-			ADD_TRAIT(user, TRAIT_ADAMANTINE_EXTRACT_ARMOR, ADAMANTINE_EXTRACT_TRAIT)
 			to_chat(user, span_notice("You feel your skin harden and become more resistant."))
-			user.physiology.damage_resistance += 25
-			addtimer(CALLBACK(src, PROC_REF(reset_armor), user), 120 SECONDS)
+			species.armor += 25
+			addtimer(CALLBACK(src, PROC_REF(reset_armor), species), 1200)
 			return 450
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -490,9 +489,9 @@
 				return
 			to_chat(user, span_notice("You stop feeding [src], and your body returns to its slimelike state."))
 
-/obj/item/slime_extract/adamantine/proc/reset_armor(mob/living/carbon/human/user)
-	REMOVE_TRAIT(user, TRAIT_ADAMANTINE_EXTRACT_ARMOR, ADAMANTINE_EXTRACT_TRAIT)
-	user.physiology.damage_resistance -= 25
+/obj/item/slime_extract/adamantine/proc/reset_armor(datum/species/jelly/luminescent/species)
+	if(istype(species))
+		species.armor -= 25
 
 /obj/item/slime_extract/bluespace
 	name = "bluespace slime extract"

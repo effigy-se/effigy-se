@@ -16,9 +16,6 @@
 	desc = "Boom."
 	icon_state= "missile"
 	damage = 50
-	sharpness = NONE
-	embedding = null
-	shrapnel_type = null
 	ricochets_max = 0
 	/// Whether we do extra damage when hitting a mech or silicon
 	var/anti_armour_damage = 0

@@ -133,7 +133,7 @@
 	brainmob = new(src)
 	brainmob.name = L.real_name
 	brainmob.real_name = L.real_name
-	brainmob.timeofdeath = L.timeofdeath
+	brainmob.timeofhostdeath = L.timeofdeath
 
 	if(suicided)
 		ADD_TRAIT(brainmob, TRAIT_SUICIDED, REF(src))

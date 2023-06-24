@@ -7,7 +7,7 @@
 		return FALSE
 	if(!istype(target))
 		return FALSE
-	for(var/datum/bioware/bioware as anything in target.biowares)
+	for(var/datum/bioware/bioware as anything in target.bioware)
 		if(bioware.mod_type == bioware_target)
 			return FALSE
 	return TRUE

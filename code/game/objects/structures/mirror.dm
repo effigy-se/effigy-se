@@ -3,7 +3,6 @@
 	desc = "Mirror mirror on the wall, who's the most robust of them all?"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
-	movement_type = FLOATING
 	density = FALSE
 	anchored = TRUE
 	max_integrity = 200
@@ -11,14 +10,10 @@
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
-/obj/structure/mirror/broken
-	icon_state = "mirror_broke"
-
-/obj/structure/mirror/broken/Initialize(mapload)
+/obj/structure/mirror/Initialize(mapload)
 	. = ..()
-	atom_break(null, mapload)
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
+	if(icon_state == "mirror_broke" && !broken)
+		atom_break(null, mapload)
 
 /obj/structure/mirror/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -108,7 +103,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
 	if(!broken)
 		return TRUE
 
-	if(!I.tool_start_check(user, amount=1))
+	if(!I.tool_start_check(user, amount=0))
 		return TRUE
 
 	balloon_alert(user, "repairing...")

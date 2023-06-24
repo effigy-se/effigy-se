@@ -21,7 +21,7 @@
 	var/secret = FALSE
 
 	/// Whether the readable version of the log message is formatted internally instead of by rustg
-	var/internal_formatting = FALSE
+	var/internal_formatting = TRUE
 
 	/// List of log entries for this category
 	var/list/entries = list()

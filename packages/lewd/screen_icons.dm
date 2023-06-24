@@ -2,7 +2,7 @@
 
 /atom/movable/screen/alert/aroused
 	name = "Aroused"
-	desc = "It's a little hot in here..."
+	desc = "It's a little hot in here"
 	icon = 'packages/lewd/assets/obj/lewd_items/lewd_icons.dmi'
 	icon_state = "arousal_small"
 	var/mutable_appearance/pain_overlay

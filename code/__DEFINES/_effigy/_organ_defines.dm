@@ -1,5 +1,4 @@
 #define ORGAN_SLOT_SCANNER "scanner"
-#define ORGAN_SLOT_BRAIN_NIF "nif"
 
 #define ORGAN_SLOT_PENIS "penis"
 #define ORGAN_SLOT_WOMB "womb"

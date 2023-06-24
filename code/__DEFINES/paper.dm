@@ -13,6 +13,3 @@
 #define MODE_WRITING 1
 /// Should be able to stamp paper.
 #define MODE_STAMPING 2
-
-#define BARCODE_SCANNER_CHECKIN "check_in"
-#define BARCODE_SCANNER_INVENTORY "inventory"

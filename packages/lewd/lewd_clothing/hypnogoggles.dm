@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/hypno
 	name = "hypnotic goggles"
-	desc = "An all-in-one mnemonic impression repeater and vision tinter, used to entrance the wearer with a programmed phrase. Foam inserts, to boot."
+	desc = "Woaa-a-ah... This is lewd."
 	icon_state = "hypnogoggles_pink"
 	base_icon_state = "hypnogoggles"
 	inhand_icon_state = "hypnogoggles_pink"
@@ -49,7 +49,7 @@
 
 /obj/item/clothing/glasses/hypno/attack_self(mob/user)//Setting up hypnotising phrase
 	. = ..()
-	codephrase = tgui_input_text(user, "Change The Hypnotic Phrase", max_length = MAX_MESSAGE_LEN)
+	codephrase = tgui_input_text(user, "Change the hypnotic phrase", max_length = MAX_MESSAGE_LEN)
 
 /// Populates the list of hypnogoggle designs to pick from, called on init
 /obj/item/clothing/glasses/hypno/proc/populate_hypnogoggles_designs()
@@ -71,7 +71,7 @@
 	update_icon()
 	color_changed = TRUE
 
-//to check if we can change goggles' model
+//to check if we can change kinkphones's model
 /obj/item/clothing/glasses/hypno/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
@@ -116,13 +116,13 @@
 	return ..()
 
 /datum/brain_trauma/very_special/induced_hypnosis/on_gain()
-	log_game("[key_name(owner)] was hypnogoggled.")
+	log_game("[key_name(owner)] was hypnogoggled'.")
 	to_chat(owner, "<span class = 'reallybig hypnophrase'>[hypnotic_phrase]</span>")
 	to_chat(owner, span_notice(pick("You feel your thoughts focusing on this phrase... you can't seem to get it out of your head.",
 									"Your head hurts, but this is all you can think of. It must be vitally important.",
 									"You feel a part of your mind repeating this over and over. You need to follow these words.",
 									"Something about this sounds... right, for some reason. You feel like you should follow these words.",
-									"These words keep echoing in your mind. You find yourself completely fascinated by them."))) /// TODO, Whatever poor soul joins me in these dregs - Move this shit to a string .txt
+									"These words keep echoing in your mind. You find yourself completely fascinated by them.")))
 	to_chat(owner, span_boldwarning("You've been hypnotized by this sentence. You must follow these words. If it isn't a clear order, you can freely interpret how to do so, as long as you act like the words are your highest priority."))
 	var/atom/movable/screen/alert/hypnosis/hypno_alert = owner.throw_alert("hypnosis", /atom/movable/screen/alert/hypnosis)
 	hypno_alert.desc = "\"[hypnotic_phrase]\"... your mind seems to be fixated on this concept."

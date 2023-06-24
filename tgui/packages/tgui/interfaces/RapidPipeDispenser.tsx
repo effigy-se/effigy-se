@@ -2,7 +2,7 @@ import { BooleanLike, classes } from 'common/react';
 import { multiline } from 'common/string';
 import { capitalizeAll } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, ColorBox, LabeledList, Section, Stack, Tabs, Table } from '../components';
+import { Divider, Box, Button, ColorBox, LabeledList, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 const ROOT_CATEGORIES = ['Atmospherics', 'Disposals', 'Transit Tubes'];
@@ -12,7 +12,6 @@ export const ICON_BY_CATEGORY_NAME = {
   'Disposals': 'trash-alt',
   'Transit Tubes': 'bus',
   'Pipes': 'grip-lines',
-  'Binary': 'arrows-left-right',
   'Disposal Pipes': 'grip-lines',
   'Devices': 'microchip',
   'Heat Exchange': 'thermometer-half',
@@ -170,7 +169,7 @@ const SelectionSection = (props, context) => {
   const { act, data } = useBackend<Data>(context);
   const { category: rootCategoryIndex } = data;
   return (
-    <Section fill>
+    <Section>
       <LabeledList>
         <CategoryItem />
         <ModeItem />
@@ -254,7 +253,7 @@ const PipeTypeSection = (props, context) => {
     categories.find((category) => category.cat_name === categoryName) ||
     categories[0];
   return (
-    <Section>
+    <Section fill scrollable>
       <Tabs>
         {categories.map((category, i) => (
           <Tabs.Tab
@@ -267,25 +266,21 @@ const PipeTypeSection = (props, context) => {
           </Tabs.Tab>
         ))}
       </Tabs>
-      <Table>
-        {shownCategory?.recipes.map((recipe) => (
-          <Table.Row
-            key={recipe.pipe_index}
-            style={{ 'border-bottom': '1px solid #333' }}>
-            <Table.Cell collapsing py="2px" pb="1px">
-              <PreviewSelect
-                previews={recipe.previews}
-                pipe_type={recipe.pipe_index}
-                category={shownCategory.cat_name}
-              />
-            </Table.Cell>
-            <Table.Cell />
-            <Table.Cell style={{ 'vertical-align': 'middle' }}>
-              {recipe.pipe_name}
-            </Table.Cell>
-          </Table.Row>
-        ))}
-      </Table>
+      {shownCategory?.recipes.map((recipe) => (
+        <Stack key={recipe.pipe_index}>
+          <Stack.Item grow lineHeight={2.1} mt={1}>
+            {recipe.pipe_name}
+            <Divider />
+          </Stack.Item>
+          <Stack.Item>
+            <PreviewSelect
+              previews={recipe.previews}
+              pipe_type={recipe.pipe_index}
+              category={shownCategory.cat_name}
+            />
+          </Stack.Item>
+        </Stack>
+      ))}
     </Section>
   );
 };
@@ -294,9 +289,9 @@ export const SmartPipeBlockSection = (props, context) => {
   const { act, data } = useBackend<Data>(context);
   const { init_directions = [] } = data;
   return (
-    <Section fill>
-      <Stack vertical textAlign="center">
-        <Stack.Item>
+    <Section height={7.5}>
+      <Stack fill vertical textAlign="center">
+        <Stack.Item basis={1.5}>
           <Stack>
             <Stack.Item>
               <Button
@@ -323,8 +318,8 @@ export const SmartPipeBlockSection = (props, context) => {
             </Stack.Item>
           </Stack>
         </Stack.Item>
-        <Stack.Item>
-          <Stack>
+        <Stack.Item basis={1.5}>
+          <Stack fill>
             <Stack.Item>
               <Button
                 icon="arrow-left"
@@ -336,7 +331,7 @@ export const SmartPipeBlockSection = (props, context) => {
                 }
               />
             </Stack.Item>
-            <Stack.Item>
+            <Stack.Item grow>
               <Button icon="circle" onClick={() => act('init_reset', {})} />
             </Stack.Item>
             <Stack.Item>
@@ -352,7 +347,7 @@ export const SmartPipeBlockSection = (props, context) => {
             </Stack.Item>
           </Stack>
         </Stack.Item>
-        <Stack.Item>
+        <Stack.Item grow>
           <Button
             icon="arrow-down"
             selected={init_directions['south']}
@@ -372,8 +367,8 @@ export const RapidPipeDispenser = (props, context) => {
   const { act, data } = useBackend<Data>(context);
   const { category: rootCategoryIndex } = data;
   return (
-    <Window width={550} height={580}>
-      <Window.Content scrollable>
+    <Window width={530} height={530}>
+      <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
             <Stack fill>

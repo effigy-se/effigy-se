@@ -81,10 +81,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Igneous Synth Plushie"
 	item_path = /obj/item/toy/plush/effigy/igneous_synth
 
-/datum/loadout_item/toys/courier_synth
-	name = "Courier Synth Plushie"
-	item_path = /obj/item/toy/plush/effigy/courier_synth
-
 /datum/loadout_item/toys/edgy_bird
 	name = "Edgy Bird Plushie"
 	item_path = /obj/item/toy/plush/effigy/edgy_bird

@@ -292,11 +292,3 @@
  */
 /obj/item/transfer_valve/proc/ready()
 	return tank_one && tank_two
-
-/obj/item/transfer_valve/fake/Initialize(mapload)
-	. = ..()
-
-	tank_one = new /obj/item/tank/internals/plasma (src)
-	tank_two = new /obj/item/tank/internals/oxygen (src)
-
-	update_appearance()

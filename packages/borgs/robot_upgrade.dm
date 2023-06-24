@@ -99,14 +99,16 @@
 			borg.SetLockdown(0)
 		borg.set_anchored(FALSE)
 		borg.notransform = FALSE
-		borg.update_transform(0.75)
+		borg.resize = 0.75
+		borg.update_transform()
 
 /obj/item/borg/upgrade/shrink/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()
 	if (.)
 		if (borg.hasShrunk)
 			borg.hasShrunk = FALSE
-			borg.update_transform(4/3)
+			borg.resize = (4/3)
+			borg.update_transform()
 
 /obj/item/dogborg_tongue
 	name = "synthetic tongue"

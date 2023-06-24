@@ -19,15 +19,15 @@
 	dir = 4;
 	dwidth = 3;
 	height = 12;
-	name = "Deep Space";
 	shuttle_id = "huntership_home";
+	name = "Deep Space";
 	width = 7
 	},
 /obj/docking_port/mobile{
 	dir = 4;
+	shuttle_id = "huntership";
 	name = "hunter shuttle";
-	rechargeTime = 1800;
-	shuttle_id = "huntership"
+	rechargeTime = 1800
 	},
 /obj/machinery/door/poddoor/shutters{
 	id = "Interpolship"
@@ -39,8 +39,7 @@
 	dir = 8
 	},
 /obj/machinery/button/door/directional/north{
-	id = "Interpolship";
-	req_access = list("hunter")
+	id = "Interpolship"
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/hunter)
@@ -66,6 +65,9 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/hunter)
 "ak" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
 /obj/effect/mob_spawn/ghost_role/human/fugitive/spacepol{
 	dir = 1
 	},
@@ -85,12 +87,6 @@
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/hunter)
-"eE" = (
-/obj/structure/closet/crate/eva,
-/obj/effect/turf_decal/box,
-/obj/item/pinpointer/shuttle,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/hunter)
 "hB" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 8
@@ -106,8 +102,6 @@
 /area/shuttle/hunter)
 "rR" = (
 /obj/machinery/door/airlock/titanium,
-/obj/effect/mapping_helpers/airlock/access/all/hunter,
-/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/hunter)
 "te" = (
@@ -209,7 +203,7 @@ Pq
 ku
 lp
 RO
-eE
+aj
 ku
 Pq
 "}

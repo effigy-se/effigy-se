@@ -40,10 +40,8 @@ GLOBAL_LIST_INIT(gaslist_cache, init_gaslist_cache())
 
 /datum/gas_mixture/New(volume)
 	gases = new
-	if(!isnull(volume))
+	if (!isnull(volume))
 		src.volume = volume
-	if(src.volume <= 0)
-		stack_trace("Created a gas mixture with zero volume!")
 	reaction_results = new
 
 //listmos procs
@@ -695,7 +693,7 @@ GLOBAL_LIST_INIT(gaslist_cache, init_gaslist_cache())
 		return FALSE
 
 	output_air.merge(removed)
-	return removed
+	return TRUE
 
 /// Releases gas from src to output air. This means that it can not transfer air to gas mixture with higher pressure.
 /datum/gas_mixture/proc/release_gas_to(datum/gas_mixture/output_air, target_pressure, rate=1)

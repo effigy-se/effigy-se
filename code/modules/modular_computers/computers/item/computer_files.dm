@@ -14,9 +14,11 @@
 	if(file_storing in stored_files)
 		return FALSE
 
+	SEND_SIGNAL(file_storing, COMSIG_MODULAR_COMPUTER_FILE_ADDING)
 	file_storing.computer = src
+	stored_files.Add(file_storing)
 	used_capacity += file_storing.size
-	SEND_SIGNAL(file_storing, COMSIG_MODULAR_COMPUTER_FILE_STORE, src)
+	SEND_SIGNAL(file_storing, COMSIG_MODULAR_COMPUTER_FILE_ADDED)
 	return TRUE
 
 /**
@@ -33,12 +35,15 @@
 		return FALSE
 	if(istype(file_removing, /datum/computer_file/program))
 		var/datum/computer_file/program/program_file = file_removing
-		program_file.kill_program()
+		if(program_file == active_program)
+			active_program.kill_program()
+		for(var/datum/computer_file/program/programs as anything in idle_threads)
+			programs.kill_program()
 
+	SEND_SIGNAL(file_removing, COMSIG_MODULAR_COMPUTER_FILE_DELETING)
 	stored_files.Remove(file_removing)
 	used_capacity -= file_removing.size
 	SEND_SIGNAL(file_removing, COMSIG_MODULAR_COMPUTER_FILE_DELETED)
-	qdel(file_removing)
 	return TRUE
 
 /**

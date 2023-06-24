@@ -13,6 +13,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FIRE_PROOF
 	force = 0
+	var/start_extended = FALSE
+	/// Whether or not the boxcutter has been readied
+	var/on = FALSE
+	var/on_sound = 'sound/items/boxcutter_activate.ogg'
 	/// Used on Initialize, how much time to cut cable restraints and zipties.
 	var/snap_time_weak_handcuffs = 0 SECONDS
 	/// Used on Initialize, how much time to cut real handcuffs. Null means it can't.
@@ -26,8 +30,8 @@
 		effectiveness = 100, \
 	)
 
-	AddComponent( \
-		/datum/component/transforming, \
+	AddComponent(/datum/component/transforming, \
+		start_transformed = start_extended, \
 		force_on = 10, \
 		throwforce_on = 4, \
 		throw_speed_on = throw_speed, \
@@ -43,7 +47,8 @@
 /obj/item/boxcutter/proc/on_transform(obj/item/source, mob/user, active)
 	SIGNAL_HANDLER
 
-	playsound(src, 'sound/items/boxcutter_activate.ogg', 50)
+	on = active
+	playsound(src, on_sound, 50)
 	tool_behaviour = (active ? TOOL_KNIFE : NONE)
 	if(active)
 		AddElement(/datum/element/cuffsnapping, snap_time_weak_handcuffs, snap_time_strong_handcuffs)

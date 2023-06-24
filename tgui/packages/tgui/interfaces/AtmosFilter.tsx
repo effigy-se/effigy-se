@@ -15,6 +15,7 @@ type Data = {
 type Filter = {
   enabled: BooleanLike;
   gas_id: string;
+  name: string;
 };
 
 export const AtmosFilter = (props, context) => {

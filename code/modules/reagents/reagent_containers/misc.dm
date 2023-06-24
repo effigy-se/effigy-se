@@ -125,7 +125,7 @@
 	item_flags = NOBLUDGEON
 	reagent_flags = OPENCONTAINER
 	amount_per_transfer_from_this = 5
-	has_variable_transfer_amount = FALSE
+	possible_transfer_amounts = list()
 	volume = 5
 	spillable = FALSE
 

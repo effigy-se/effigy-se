@@ -19,12 +19,17 @@
 /datum/computer_file/New()
 	..()
 	uid = file_uid++
-	RegisterSignal(src, COMSIG_MODULAR_COMPUTER_FILE_STORE, PROC_REF(on_install))
+	RegisterSignal(src, COMSIG_MODULAR_COMPUTER_FILE_ADDED, PROC_REF(on_install))
 
 /datum/computer_file/Destroy(force)
 	if(computer)
+		if(src == computer.active_program)
+			computer.active_program = null
+		if(src in computer.idle_threads)
+			computer.idle_threads.Remove(src)
 		computer = null
 	if(disk_host)
+		disk_host.remove_file(src)
 		disk_host = null
 	return ..()
 
@@ -50,9 +55,9 @@
 	return temp
 
 ///Called post-installation of an application in a computer, after 'computer' var is set.
-/datum/computer_file/proc/on_install(datum/computer_file/source, obj/item/modular_computer/computer_installing)
+/datum/computer_file/proc/on_install()
 	SIGNAL_HANDLER
-	computer_installing.stored_files.Add(src)
+	return
 
 /**
  * Called when examining a modular computer

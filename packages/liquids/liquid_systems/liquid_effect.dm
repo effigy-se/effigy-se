@@ -478,7 +478,7 @@
 		my_turf = loc
 		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
 		RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
-		RegisterSignal(my_turf, COMSIG_ATOM_EXAMINE, PROC_REF(examine_turf))
+		RegisterSignal(my_turf, COMSIG_PARENT_EXAMINE, PROC_REF(examine_turf))
 		SSliquids.add_active_turf(my_turf)
 
 		SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
@@ -495,7 +495,7 @@
 
 /obj/effect/abstract/liquid_turf/Destroy(force)
 	if(force)
-		UnregisterSignal(my_turf, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_MOB_FALL, COMSIG_ATOM_EXAMINE))
+		UnregisterSignal(my_turf, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_MOB_FALL, COMSIG_PARENT_EXAMINE))
 		if(my_turf.lgroup)
 			my_turf.lgroup.remove_from_group(my_turf)
 		if(SSliquids.evaporation_queue[my_turf])
@@ -544,7 +544,7 @@
 	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
 
 /**
- * Handles COMSIG_ATOM_EXAMINE for the turf.
+ * Handles COMSIG_PARENT_EXAMINE for the turf.
  *
  * Adds reagent info to examine text.
  * Arguments:
@@ -653,8 +653,8 @@
 	smoothing_flags = NONE
 	icon_state = "ocean"
 	base_icon_state = "ocean"
-	plane = WALL_PLANE //Same as weather, etc.
-	layer = OBJ_LAYER
+	plane = DEFAULT_PLANE //Same as weather, etc.
+	layer = ABOVE_MOB_LAYER
 	starting_temp = T20C-150
 	no_effects = TRUE
 	vis_flags = NONE

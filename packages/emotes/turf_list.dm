@@ -17,7 +17,7 @@
 			name = "hand-sewn web"
 			desc = "It's a sticky web."
 			icon_state = pick("stickyweb1", "stickyweb2")
-			playsound(get_turf(src), 'local/sound/effects/weave.ogg', 25, TRUE)
+			playsound(get_turf(src), 'overrides/sound/effects/weave.ogg', 25, TRUE)
 
 		if("vines")
 			name = "sprouted vines"
@@ -32,7 +32,7 @@
 			icon_state = "water"
 			src.add_overlay(image('packages/effects/assets/turf_effects.dmi', "water_top", EXTRA_ABOVE_MOB_LAYER))
 			flick_overlay_static(image('packages/liquids/assets/obj/effects/splash.dmi', "splash", EXTRA_ABOVE_MOB_LAYER), 20)
-			playsound(get_turf(src), 'local/sound/effects/watersplash.ogg', 25, TRUE)
+			playsound(get_turf(src), 'overrides/sound/effects/watersplash.ogg', 25, TRUE)
 
 		if("smoke")
 			name = "blazing mist"
@@ -90,7 +90,7 @@
 			icon_state = "dust"
 			pixel_x = -16
 			src.add_overlay(image('packages/effects/assets/turf_effects_64.dmi', "dust_top", EXTRA_ABOVE_MOB_LAYER))
-			playsound(get_turf(src), 'local/sound/effects/wing_flap.ogg', 25, TRUE)
+			playsound(get_turf(src), 'overrides/sound/effects/wing_flap.ogg', 25, TRUE)
 
 		if("borgmat")
 			name = "soft-foam mat"

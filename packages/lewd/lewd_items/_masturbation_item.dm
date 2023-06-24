@@ -1,7 +1,5 @@
 #define CUM_VOLUME_MULTIPLIER 10
 
-/// TODO - This is entirely unused. Why do we have this??? Is excising it going to cause problems???
-
 /obj/item/hand_item/coom
 	name = "cum"
 	desc = "C-can I watch...?"

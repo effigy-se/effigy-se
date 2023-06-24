@@ -1,5 +1,4 @@
 //Yes, whip is mask item, because character can take it in mouth. For some BDSM scenarios it would be cool, but if you make it better with same functionality - go ahead, make me proud.
-/// TODO - YOU DO NOT HAVE TO MAKE THIS A MASK SUBTYPE TO LET YOU PUT IT IN YOUR MOUTH. WHY. WHYYYYYYYYYYYYYYYYYYY.
 
 /obj/item/clothing/mask/leatherwhip
 	name = "leather whip"

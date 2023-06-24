@@ -75,7 +75,7 @@
 
 /obj/structure/bed/bdsm_bed/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click.")
+	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
 
 /*
 *	X-STAND

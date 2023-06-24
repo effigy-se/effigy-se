@@ -613,10 +613,6 @@ GLOBAL_LIST_EMPTY(species_list)
 		moblist += mob_to_sort
 	for(var/mob/living/basic/mob_to_sort in sortmob)
 		moblist += mob_to_sort
-	// EFFIGY EDIT START - SOULCATCHERS
-	for(var/mob/living/soulcatcher_soul/mob_to_sort in sortmob)
-		moblist += mob_to_sort
-	// EFFIGY EDIT END - SOULCATCHERS
 	return moblist
 
 ///returns a mob type controlled by a specified ckey

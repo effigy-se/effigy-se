@@ -115,7 +115,10 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	if(user.ckey in ckeys_entered)
 		to_chat(user, span_warning("You cannot re-enter [src] a second time!"))
 		return
-	if(is_occupied() || is_banned_from(user.ckey, ROLE_POSIBRAIN) || QDELETED(src) || QDELETED(user))
+	if(is_occupied() || is_banned_from(user.ckey, ROLE_POSIBRAIN) || QDELETED(brainmob) || QDELETED(src) || QDELETED(user))
+		return
+	if(HAS_TRAIT(src, TRAIT_SUICIDED)) //if they suicided, they're out forever.
+		to_chat(user, span_warning("[src] fizzles slightly. Sadly it doesn't take those who suicided!"))
 		return
 	var/posi_ask = tgui_alert(user, "Become a [name]? (Warning, You can no longer be revived, and all past lives will be forgotten!)", "Confirm", list("Yes","No"))
 	if(posi_ask != "Yes" || QDELETED(src))
@@ -132,7 +135,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 		if(!brainmob.stored_dna)
 			brainmob.stored_dna = new /datum/dna/stored(brainmob)
 		transfered_user.dna.copy_dna(brainmob.stored_dna)
-	brainmob.timeofdeath = transfered_user.timeofdeath
+	brainmob.timeofhostdeath = transfered_user.timeofdeath
 	brainmob.set_stat(CONSCIOUS)
 	if(brainmob.mind)
 		brainmob.mind.set_assigned_role(SSjob.GetJobType(posibrain_job_path))

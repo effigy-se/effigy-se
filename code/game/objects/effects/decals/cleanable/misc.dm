@@ -64,7 +64,7 @@
 	name = "dirt"
 	desc = "Someone should clean that up."
 	icon = 'icons/effects/dirt.dmi'
-	icon_state = "dirt-flat-0"
+	icon_state = "dirt"
 	base_icon_state = "dirt"
 	smoothing_flags = NONE
 	smoothing_groups = SMOOTH_GROUP_CLEANABLE_DIRT
@@ -74,10 +74,6 @@
 
 /obj/effect/decal/cleanable/dirt/Initialize(mapload)
 	. = ..()
-	icon_state = pick("dirt-flat-0","dirt-flat-1","dirt-flat-2","dirt-flat-3")
-	var/obj/structure/broken_flooring/broken_flooring = locate(/obj/structure/broken_flooring) in loc
-	if(!isnull(broken_flooring))
-		return
 	var/turf/T = get_turf(src)
 	if(T.tiled_dirt)
 		smoothing_flags = SMOOTH_BITMASK
@@ -93,12 +89,6 @@
 /obj/effect/decal/cleanable/dirt/dust
 	name = "dust"
 	desc = "A thin layer of dust coating the floor."
-	icon_state = "dust"
-	base_icon_state = "dust"
-
-/obj/effect/decal/cleanable/dirt/dust/Initialize(mapload)
-	. = ..()
-	icon_state = base_icon_state
 
 /obj/effect/decal/cleanable/greenglow
 	name = "glowing goo"
@@ -436,7 +426,7 @@
 		qdel(src)
 		return
 
-	RegisterSignal(hotspot, COMSIG_QDELETING, PROC_REF(burn_process))
+	RegisterSignal(hotspot, COMSIG_PARENT_QDELETING, PROC_REF(burn_process))
 
 /**
  * Ignites other oil pools around itself.

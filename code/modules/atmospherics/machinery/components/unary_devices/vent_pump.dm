@@ -52,17 +52,23 @@
 
 /obj/machinery/atmospherics/components/unary/vent_pump/multitool_act(mob/living/user, obj/item/multitool/multi_tool)
 	. = ..()
-
-	if(istype(multi_tool.buffer, /obj/machinery/air_sensor))
-		var/obj/machinery/air_sensor/sensor = multi_tool.buffer
-		sensor.outlet_id = id_tag
-		multi_tool.buffer = null
-		balloon_alert(user, "output linked to sensor")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+	if (!istype(multi_tool))
+		return .
 
 	balloon_alert(user, "saved in buffer")
 	multi_tool.buffer = src
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return TRUE
+
+/obj/machinery/atmospherics/components/unary/vent_pump/wrench_act(mob/living/user, obj/item/wrench)
+	. = ..()
+	if(.)
+		disconnect_chamber()
+
+///called when its either unwrenched or destroyed
+/obj/machinery/atmospherics/components/unary/vent_pump/proc/disconnect_chamber()
+	if(chamber_id != null)
+		GLOB.objects_by_id_tag -= CHAMBER_OUTPUT_FROM_ID(chamber_id)
+		chamber_id = null
 
 /obj/machinery/atmospherics/components/unary/vent_pump/Destroy()
 	disconnect_from_area()
@@ -70,6 +76,8 @@
 	var/area/vent_area = get_area(src)
 	if(vent_area)
 		vent_area.air_vents -= src
+
+	disconnect_chamber()
 
 	return ..()
 
@@ -204,7 +212,7 @@
 
 /obj/machinery/atmospherics/components/unary/vent_pump/welder_act(mob/living/user, obj/item/welder)
 	..()
-	if(!welder.tool_start_check(user, amount=1))
+	if(!welder.tool_start_check(user, amount=0))
 		return TRUE
 	to_chat(user, span_notice("You begin welding the vent..."))
 	if(welder.use_tool(src, user, 20, volume=50))

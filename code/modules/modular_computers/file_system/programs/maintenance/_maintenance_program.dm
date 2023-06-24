@@ -10,7 +10,4 @@
 
 /datum/computer_file/program/maintenance/clone(rename = FALSE)
 	. = ..()
-	if(computer)
-		computer.remove_file(src)
-	if(disk_host)
-		disk_host.remove_file(src)
+	qdel(src)

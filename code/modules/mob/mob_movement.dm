@@ -352,7 +352,7 @@
 			continue
 		return rebound
 
-/mob/has_gravity(turf/gravity_turf)
+/mob/has_gravity()
 	return mob_negates_gravity() || ..()
 
 /**

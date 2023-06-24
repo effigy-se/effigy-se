@@ -1,20 +1,20 @@
 ///The item used as the basis for construction kits for organic interface
 /obj/item/construction_kit
-	name = "construction kit"
-	desc = "Used for constructing various things."
+	name = " construction kit"
+	desc = "Used for constructing various things"
 	w_class = WEIGHT_CLASS_BULKY
 	flags_1 = NODECONSTRUCT_1
 	throwforce = 0
 	///What is the path for the resulting structure generating by using this item?
 	var/obj/structure/resulting_structure = /obj/structure/chair
 	///How much time does it take to construct an item using this?
-	var/construction_time = 8 SECONDS
+	var/consturction_time = 8 SECONDS
 	///What color is the item using? If none, leave this blank.
 	var/current_color = ""
 
 /obj/item/construction_kit/Initialize(mapload)
 	. = ..()
-	name = "[initial(resulting_structure.name)] [name]"
+	name = initial(resulting_structure.name) + name
 
 /obj/item/construction_kit/examine(mob/user)
 	. = ..()
@@ -29,7 +29,7 @@
 		return FALSE
 
 	to_chat(user, span_notice("You begin to assemble [src]..."))
-	if(!do_after(user, construction_time, src))
+	if(!do_after(user, 8 SECONDS, src))
 		to_chat(user, span_warning("You fail to assemble [src]!"))
 		return FALSE
 

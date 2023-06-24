@@ -27,11 +27,11 @@
 	. = ..()
 	AddElement(/datum/element/empprotection, EMP_PROTECT_WIRES)
 	plastic_overlay = mutable_appearance(icon, "[inhand_icon_state]2", HIGH_OBJ_LAYER)
-	set_wires(new /datum/wires/explosive/c4(src))
+	wires = new /datum/wires/explosive/c4(src)
 
 /obj/item/grenade/c4/Destroy()
 	qdel(wires)
-	set_wires(null)
+	wires = null
 	target = null
 	return ..()
 

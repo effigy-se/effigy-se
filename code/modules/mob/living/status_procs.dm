@@ -1,33 +1,7 @@
+//Here are the procs used to modify status effects of a mob.
+//The effects include: stun, knockdown, unconscious, sleeping, resting
 
-/**
- * Checks if we have stun immunity. Godmode always passes this check.
- *
- * * check_flags - bitflag of status flags that must be set in order for the stun to succeed. Passing NONE will always return false.
- * * force_stun - whether we ignore stun immunity with the exception of godmode
- *
- * returns TRUE if stun immune, FALSE otherwise
- */
-/mob/living/proc/check_stun_immunity(check_flags = CANSTUN, force_stun = FALSE)
-	SHOULD_CALL_PARENT(TRUE)
-
-	if(status_flags & GODMODE)
-		return TRUE
-
-	if(force_stun) // Does not take priority over god mode? I guess
-		return FALSE
-
-	if(SEND_SIGNAL(src, COMSIG_LIVING_GENERIC_STUN_CHECK, check_flags, force_stun) & COMPONENT_NO_STUN)
-		return TRUE
-
-	if(HAS_TRAIT(src, TRAIT_STUNIMMUNE))
-		return TRUE
-
-	// Do we have the correct flag set to allow this status?
-	// This checks that ALL flags are set, not just one of them.
-	if((status_flags & check_flags) == check_flags)
-		return FALSE
-
-	return TRUE
+#define IS_STUN_IMMUNE(source, ignore_canstun) ((source.status_flags & GODMODE) || (!ignore_canstun && (!(source.status_flags & CANKNOCKDOWN) || HAS_TRAIT(source, TRAIT_STUNIMMUNE))))
 
 /* STUN */
 /mob/living/proc/IsStun() //If we're stunned
@@ -42,7 +16,9 @@
 /mob/living/proc/Stun(amount, ignore_canstun = FALSE) //Can't go below remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_STUN, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANSTUN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
+		return
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/stun/S = IsStun()
 	if(S)
@@ -54,13 +30,15 @@
 /mob/living/proc/SetStun(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_STUN, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANSTUN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/stun/S = IsStun()
 	if(amount <= 0)
 		if(S)
 			qdel(S)
 	else
+		if(absorb_stun(amount, ignore_canstun))
+			return
 		if(S)
 			S.duration = world.time + amount
 		else
@@ -70,7 +48,9 @@
 /mob/living/proc/AdjustStun(amount, ignore_canstun = FALSE) //Adds to remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_STUN, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANSTUN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
+		return
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/stun/S = IsStun()
 	if(S)
@@ -92,7 +72,9 @@
 /mob/living/proc/Knockdown(amount, ignore_canstun = FALSE) //Can't go below remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_KNOCKDOWN, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANKNOCKDOWN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
+		return
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/knockdown/K = IsKnockdown()
 	if(K)
@@ -104,13 +86,15 @@
 /mob/living/proc/SetKnockdown(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_KNOCKDOWN, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANKNOCKDOWN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/knockdown/K = IsKnockdown()
 	if(amount <= 0)
 		if(K)
 			qdel(K)
 	else
+		if(absorb_stun(amount, ignore_canstun))
+			return
 		if(K)
 			K.duration = world.time + amount
 		else
@@ -120,7 +104,9 @@
 /mob/living/proc/AdjustKnockdown(amount, ignore_canstun = FALSE) //Adds to remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_KNOCKDOWN, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANKNOCKDOWN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
+		return
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/knockdown/K = IsKnockdown()
 	if(K)
@@ -142,7 +128,9 @@
 /mob/living/proc/Immobilize(amount, ignore_canstun = FALSE) //Can't go below remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_IMMOBILIZE, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANSTUN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
+		return
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/immobilized/I = IsImmobilized()
 	if(I)
@@ -154,13 +142,15 @@
 /mob/living/proc/SetImmobilized(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_IMMOBILIZE, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANSTUN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/immobilized/I = IsImmobilized()
 	if(amount <= 0)
 		if(I)
 			qdel(I)
 	else
+		if(absorb_stun(amount, ignore_canstun))
+			return
 		if(I)
 			I.duration = world.time + amount
 		else
@@ -170,7 +160,9 @@
 /mob/living/proc/AdjustImmobilized(amount, ignore_canstun = FALSE) //Adds to remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_IMMOBILIZE, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANSTUN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
+		return
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/immobilized/I = IsImmobilized()
 	if(I)
@@ -192,7 +184,9 @@
 /mob/living/proc/Paralyze(amount, ignore_canstun = FALSE) //Can't go below remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_PARALYZE, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANSTUN|CANKNOCKDOWN, ignore_canstun)) // this requires both can stun and can knockdown
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
+		return
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/paralyzed/P = IsParalyzed(FALSE)
 	if(P)
@@ -204,13 +198,15 @@
 /mob/living/proc/SetParalyzed(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_PARALYZE, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANSTUN|CANKNOCKDOWN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/paralyzed/P = IsParalyzed(FALSE)
 	if(amount <= 0)
 		if(P)
 			qdel(P)
 	else
+		if(absorb_stun(amount, ignore_canstun))
+			return
 		if(P)
 			P.duration = world.time + amount
 		else
@@ -220,7 +216,9 @@
 /mob/living/proc/AdjustParalyzed(amount, ignore_canstun = FALSE) //Adds to remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_PARALYZE, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANSTUN|CANKNOCKDOWN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
+		return
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/paralyzed/P = IsParalyzed(FALSE)
 	if(P)
@@ -246,9 +244,9 @@
  * * ignore_canstun - If TRUE, the mob's resistance to stuns is ignored.
  */
 /mob/living/proc/incapacitate(amount, ignore_canstun = FALSE)
-	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_INCAPACITATE, amount, ignore_canstun) & COMPONENT_NO_STUN)
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
-	if(check_stun_immunity(CANSTUN, ignore_canstun))
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/incapacitated/incapacitated_status_effect = has_status_effect(/datum/status_effect/incapacitating/incapacitated)
 	if(incapacitated_status_effect)
@@ -264,15 +262,15 @@
  * * ignore_canstun - If TRUE, the mob's resistance to stuns is ignored.
  */
 /mob/living/proc/set_incapacitated(amount, ignore_canstun = FALSE)
-	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_INCAPACITATE, amount, ignore_canstun) & COMPONENT_NO_STUN)
-		return
-	if(check_stun_immunity(CANSTUN, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/incapacitated/incapacitated_status_effect = has_status_effect(/datum/status_effect/incapacitating/incapacitated)
 	if(amount <= 0)
 		if(incapacitated_status_effect)
 			qdel(incapacitated_status_effect)
 	else
+		if(absorb_stun(amount, ignore_canstun))
+			return
 		if(incapacitated_status_effect)
 			incapacitated_status_effect.duration = world.time + amount
 		else
@@ -286,9 +284,9 @@
  * * ignore_canstun - If TRUE, the mob's resistance to stuns is ignored.
  */
 /mob/living/proc/adjust_incapacitated(amount, ignore_canstun = FALSE) //Adds to remaining duration
-	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_INCAPACITATE, amount, ignore_canstun) & COMPONENT_NO_STUN)
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
-	if(check_stun_immunity(CANSTUN, ignore_canstun))
+	if(absorb_stun(amount, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/incapacitated/incapacitated_status_effect = has_status_effect(/datum/status_effect/incapacitating/incapacitated)
 	if(incapacitated_status_effect)
@@ -332,7 +330,7 @@
 /mob/living/proc/Unconscious(amount, ignore_canstun = FALSE) //Can't go below remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANUNCONSCIOUS, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/unconscious/U = IsUnconscious()
 	if(U)
@@ -344,7 +342,7 @@
 /mob/living/proc/SetUnconscious(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANUNCONSCIOUS, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/unconscious/U = IsUnconscious()
 	if(amount <= 0)
@@ -359,7 +357,7 @@
 /mob/living/proc/AdjustUnconscious(amount, ignore_canstun = FALSE) //Adds to remaining duration
 	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, amount, ignore_canstun) & COMPONENT_NO_STUN)
 		return
-	if(check_stun_immunity(CANUNCONSCIOUS, ignore_canstun))
+	if(IS_STUN_IMMUNE(src, ignore_canstun))
 		return
 	var/datum/status_effect/incapacitating/unconscious/U = IsUnconscious()
 	if(U)
@@ -447,11 +445,49 @@
 /mob/living/proc/IsFrozen()
 	return has_status_effect(/datum/status_effect/freon)
 
+
+/* STUN ABSORPTION*/
+/mob/living/proc/add_stun_absorption(key, duration, priority, message, self_message, examine_message)
+//adds a stun absorption with a key, a duration in deciseconds, its priority, and the messages it makes when you're stun/examined, if any
+	if(!islist(stun_absorption))
+		stun_absorption = list()
+	if(stun_absorption[key])
+		stun_absorption[key]["end_time"] = world.time + duration
+		stun_absorption[key]["priority"] = priority
+		stun_absorption[key]["stuns_absorbed"] = 0
+	else
+		stun_absorption[key] = list("end_time" = world.time + duration, "priority" = priority, "stuns_absorbed" = 0, \
+		"visible_message" = message, "self_message" = self_message, "examine_message" = examine_message)
+
+/mob/living/proc/absorb_stun(amount, ignoring_flag_presence)
+	if(amount < 0 || stat || ignoring_flag_presence || !islist(stun_absorption))
+		return FALSE
+	if(!amount)
+		amount = 0
+	var/priority_absorb_key
+	var/highest_priority
+	for(var/i in stun_absorption)
+		if(stun_absorption[i]["end_time"] > world.time && (!priority_absorb_key || stun_absorption[i]["priority"] > highest_priority))
+			priority_absorb_key = stun_absorption[i]
+			highest_priority = priority_absorb_key["priority"]
+	if(priority_absorb_key)
+		if(amount) //don't spam up the chat for continuous stuns
+			if(priority_absorb_key["visible_message"] || priority_absorb_key["self_message"])
+				if(priority_absorb_key["visible_message"] && priority_absorb_key["self_message"])
+					visible_message(span_warning("[src][priority_absorb_key["visible_message"]]"), span_boldwarning("[priority_absorb_key["self_message"]]"))
+				else if(priority_absorb_key["visible_message"])
+					visible_message(span_warning("[src][priority_absorb_key["visible_message"]]"))
+				else if(priority_absorb_key["self_message"])
+					to_chat(src, span_boldwarning("[priority_absorb_key["self_message"]]"))
+			priority_absorb_key["stuns_absorbed"] += amount
+		return TRUE
+
 /**
  * Adds the passed quirk to the mob
  *
  * Arguments
  * * quirktype - Quirk typepath to add to the mob
+ * * override_client - optional, allows a client to be passed to the quirks on add procs.
  * If not passed, defaults to this mob's client.
  *
  * Returns TRUE on success, FALSE on failure (already has the quirk, etc)
@@ -723,3 +759,5 @@
 /// Helper to check if we seem to be alive or not
 /mob/living/proc/appears_alive()
 	return health >= 0 && !HAS_TRAIT(src, TRAIT_FAKEDEATH)
+
+#undef IS_STUN_IMMUNE

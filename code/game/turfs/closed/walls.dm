@@ -202,7 +202,7 @@
 		return FALSE
 
 	if(W.tool_behaviour == TOOL_WELDER)
-		if(!W.tool_start_check(user, amount=1))
+		if(!W.tool_start_check(user, amount=0))
 			return FALSE
 
 		to_chat(user, span_notice("You begin fixing dents on the wall..."))
@@ -231,7 +231,7 @@
 
 /turf/closed/wall/proc/try_decon(obj/item/I, mob/user)
 	if(I.tool_behaviour == TOOL_WELDER)
-		if(!I.tool_start_check(user, amount=round(slicing_duration / 50)))
+		if(!I.tool_start_check(user, amount=0))
 			return FALSE
 
 		to_chat(user, span_notice("You begin slicing through the outer plating..."))

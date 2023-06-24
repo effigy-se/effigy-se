@@ -254,8 +254,9 @@
 
 	var/total_thermal_energy = 0
 	var/total_heat_capacity = 0
+	var/datum/gas_mixture/total_gas_mixture = new(0)
 
-	var/list/total_gases = list()
+	var/list/total_gases = total_gas_mixture.gases
 
 	var/volume_sum = 0
 
@@ -284,14 +285,11 @@
 		total_heat_capacity += heat_capacity
 		total_thermal_energy += gas_mixture.temperature * heat_capacity
 
-	if(volume_sum == 0)
-		return
-
-	var/datum/gas_mixture/total_gas_mixture = new(volume_sum)
 	total_gas_mixture.temperature = total_heat_capacity ? (total_thermal_energy / total_heat_capacity) : 0
-	total_gas_mixture.gases = total_gases
+	total_gas_mixture.volume = volume_sum
 	total_gas_mixture.garbage_collect()
 
-	//Update individual gas_mixtures by volume ratio
-	for(var/datum/gas_mixture/gas_mixture as anything in gas_mixture_list)
-		gas_mixture.copy_from_ratio(total_gas_mixture, gas_mixture.volume / volume_sum)
+	if(total_gas_mixture.volume > 0)
+		//Update individual gas_mixtures by volume ratio
+		for(var/datum/gas_mixture/gas_mixture as anything in gas_mixture_list)
+			gas_mixture.copy_from_ratio(total_gas_mixture, gas_mixture.volume / volume_sum)

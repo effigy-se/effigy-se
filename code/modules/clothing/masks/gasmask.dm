@@ -114,7 +114,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	armor_type = /datum/armor/gas_atmos
 	resistance_flags = FIRE_PROOF
 	max_filters = 3
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EFFIGY EDIT ADD
 
 /datum/armor/gas_atmos
 	bio = 100
@@ -130,7 +129,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	icon_state = "gas_cap"
 	inhand_icon_state = "gasmask_captain"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EFFIGY EDIT ADD
 
 /obj/item/clothing/mask/gas/atmos/centcom
 	name = "\improper CentCom gas mask"
@@ -166,8 +164,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	acid = 55
 
 /obj/item/clothing/mask/gas/welding/attack_self(mob/user)
-	if(weldingvisortoggle(user))
-		playsound(src, 'sound/mecha/mechmove03.ogg', 50, TRUE)
+	weldingvisortoggle(user)
 
 /obj/item/clothing/mask/gas/welding/up
 

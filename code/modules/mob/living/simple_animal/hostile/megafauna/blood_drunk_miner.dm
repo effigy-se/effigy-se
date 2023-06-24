@@ -97,8 +97,9 @@ Difficulty: Medium
 	open_force = 10
 
 /obj/item/melee/cleaving_saw/miner/attack(mob/living/target, mob/living/carbon/human/user)
-	target.add_stun_absorption(source = "miner", duration = 1 SECONDS, priority = INFINITY)
-	return ..()
+	target.add_stun_absorption("miner", 10, INFINITY)
+	. = ..()
+	target.stun_absorption -= "miner"
 
 /obj/projectile/kinetic/miner
 	damage = 20

@@ -150,7 +150,7 @@
 		adjust_drowsiness(drowsy)
 	if(eyeblur)
 		adjust_eye_blur(eyeblur)
-	if(jitter && !check_stun_immunity(CANSTUN))
+	if(jitter && (status_flags & CANSTUN) && !HAS_TRAIT(src, TRAIT_STUNIMMUNE))
 		adjust_jitter(jitter)
 	if(slur)
 		adjust_slurring(slur)

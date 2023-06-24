@@ -16,7 +16,6 @@
 	icon = 'packages/lewd/assets/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY
 
-/// TODO - WHY IS THIS JUST REPEATED SOAPCODE?? WHY. WHY. WHYYYYYYYYYYYYYYYYYY
 /obj/item/serviette/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if(!proximity || !check_allowed_items(target))

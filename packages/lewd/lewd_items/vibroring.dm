@@ -6,7 +6,7 @@
 	icon = 'packages/lewd/assets/obj/lewd_items/lewd_items.dmi'
 	/// If the toy is currently on or not
 	var/toy_on = FALSE
-	/// The current color of the toy, can be changed and affects sprite
+	/// The current color of the toy, cna be changed and affects sprite
 	var/current_color = "pink"
 	/// If the color has been changed before
 	var/color_changed = FALSE

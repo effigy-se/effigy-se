@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars, list(
 	"bodyparts",
 	"ckey",
 	"client_mobs_in_contents",
-	"_listen_lookup",
+	"_comp_lookup",
 	"computer_id",
 	"contents",
 	"cooldowns",

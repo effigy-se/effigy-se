@@ -324,11 +324,11 @@
 	if(beaker)
 		try_put_in_hand(beaker, user)
 		beaker = null
-		to_chat(user, span_notice("You take the beaker out of [src]."))
+		to_chat(user, span_notice("You take the beaker out of [src]"))
 
 	if(new_beaker)
 		beaker = new_beaker
-		to_chat(user, span_notice("You put the beaker in [src]."))
+		to_chat(user, span_notice("You put the beaker in [src]"))
 
 	return TRUE
 
@@ -684,7 +684,7 @@
 
 /obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click.")
+	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
 
 #undef MILKING_PUMP_MODE_OFF
 #undef MILKING_PUMP_MODE_LOW

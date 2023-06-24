@@ -28,7 +28,7 @@
 
 /obj/item/clothing/neck/kink_collar
 	name = "collar"
-	desc = "A collar, designed to perfectly encompass the wearer's neck - and loudly proclaim their status at a mere glance."
+	desc = "A nice, tight collar. It fits snug to your skin"
 	icon = 'packages/lewd/assets/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'packages/lewd/assets/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_cyan"
@@ -36,7 +36,7 @@
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
 	/// What the name on the tag is
-	var/tagname = null /// TODO - WHY do we have this behavior as a repeat between this and /human_petcollar/. This really should be merged!!
+	var/tagname = null
 	/// Item path of on-init creation in the collar's storage
 	var/treat_path = /obj/item/food/cookie
 	unique_reskin = list("Cyan" = "collar_cyan",
@@ -85,8 +85,7 @@
 
 /obj/item/clothing/neck/kink_collar/locked
 	name = "locked collar"
-	desc = "A tight collar, affixed with a specialized, cryptographically-engraved lock - popularized in the BDSM scene due to it being \
-			statistically impossible to get a duplicate key without it being specially-ordered." // Makes the lock's difference from /human_petcollar/'s obvious.
+	desc = "A tight collar. It appears to have some kind of lock."
 	icon = 'packages/lewd/assets/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'packages/lewd/assets/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "lock_collar_cyan"
@@ -217,7 +216,7 @@
 	else
 		to_chat(user, span_warning("This isn't the correct key!"))
 
-/obj/item/circular_saw/attack(mob/living/carbon/target, mob/living/user, params) /// TODO - HEY WHAT THE FUCK??? WHY ARE WE DOING THIS. WHO OKAYED THIS.
+/obj/item/circular_saw/attack(mob/living/carbon/target, mob/living/user, params)
 	if(!istype(target))
 		return ..()
 	if(!istype(target.wear_neck, /obj/item/clothing/neck/kink_collar/locked))

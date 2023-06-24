@@ -103,8 +103,7 @@
 
 /obj/item/screwdriver/power/Initialize(mapload)
 	. = ..()
-	AddComponent( \
-		/datum/component/transforming, \
+	AddComponent(/datum/component/transforming, \
 		force_on = force, \
 		throwforce_on = throwforce, \
 		hitsound_on = hitsound, \
@@ -123,9 +122,8 @@
 	SIGNAL_HANDLER
 
 	tool_behaviour = (active ? TOOL_WRENCH : TOOL_SCREWDRIVER)
-	if(user)
-		balloon_alert(user, "attached [active ? "bolt bit" : "screw bit"]")
-	playsound(src, 'sound/items/change_drill.ogg', 50, TRUE)
+	balloon_alert(user, "attached [active ? "bolt bit" : "screw bit"]")
+	playsound(user ? user : src, 'sound/items/change_drill.ogg', 50, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/screwdriver/power/examine()

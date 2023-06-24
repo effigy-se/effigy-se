@@ -285,7 +285,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 	if(!panel_open)
 		return
 
-	if(!I.tool_start_check(user, amount=2))
+	if(!I.tool_start_check(user, amount=0))
 		return TRUE
 
 	to_chat(user, span_notice("You start to weld [src]..."))

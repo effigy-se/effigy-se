@@ -159,12 +159,3 @@
 	attack_verb_simple = list("sigh")
 	squeak_override = list('packages/emotes/assets/generic/female/female_sigh.ogg' = 1)
 	gender = FEMALE
-
-//Donation reward for BriareosBlue
-/obj/item/toy/plush/effigy/courier_synth
-	name = "courier synth plushie"
-	desc = "This synth plushie looks about ready to deliver hugs and beeps straight to the heart! The tag seems to have an advertisement for a delivery company on it..."
-	icon_state = "plushie_courier"
-	attack_verb_continuous = list("delivers", "export scans", "dwoops", "bwuhs", "stamps")
-	attack_verb_simple = list("deliver", "export scan", "dwoop", "bwuh", "stamp")
-	squeak_override = list('packages/emotes/assets/generic/twobeep.ogg' = 1)

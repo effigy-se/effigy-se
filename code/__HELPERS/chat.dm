@@ -1,17 +1,13 @@
 /*
 
-Here's how to use the TGS chat system with configs
+Here's how to use the chat system with configs
 
-send2adminchat is a simple function that broadcasts to all admin channels that are designated in TGS
+send2adminchat is a simple function that broadcasts to admin channels
 
 send2chat is a bit verbose but can be very specific
 
-In TGS3 it will always be sent to all connected designated game chats.
-
-In TGS4+ they use the new tagging system
-
 The second parameter is a string, this string should be read from a config.
-What this does is dictate which TGS channels can be sent to.
+What this does is dictacte which TGS4 channels can be sent to.
 
 For example if you have the following channels in tgs4 set up
 - Channel 1, Tag: asdf
@@ -35,6 +31,8 @@ Alternatively if you set the config option to just:
 WHERE_TO_SEND_SNIFF_BUTTS
 
 it will be sent to all connected chats.
+
+In TGS3 it will always be sent to all connected designated game chats.
 */
 
 /**

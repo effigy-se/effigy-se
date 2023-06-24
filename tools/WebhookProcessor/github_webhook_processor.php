@@ -28,8 +28,7 @@ define('F_SECRET_PR', 1<<1);
 
 $hookSecret = '08ajh0qj93209qj90jfq932j32r';
 $apiKey = '209ab8d879c0f987d06a09b9d879c0f987d06a09b9d8787d0a089c';
-$repoOwnerAndName = "tgstation/tgstation"; // this is just the repository auto-updates happen from
-$repoAutoTaggerWhitelist = array("tgstation", "TerraGov-Marine-Corps");
+$repoOwnerAndName = "tgstation/tgstation";
 $servers = array();
 $enable_live_tracking = true;
 $path_to_script = 'tools/WebhookProcessor/github_webhook_processor.php';
@@ -210,11 +209,6 @@ function check_tag_and_replace($payload, $title_tag, $label, &$array_to_add_labe
 }
 
 function set_labels($payload, $labels, $remove) {
-	global $repoAutoTaggerWhitelist;
-	if(!in_array($payload['repository']['name'], $repoAutoTaggerWhitelist)) {
-		return;
-	}
-
 	$existing = get_labels($payload);
 	$tags = array();
 

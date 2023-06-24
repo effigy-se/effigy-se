@@ -55,15 +55,9 @@
 		src.signals_which_destroy_us = signals_which_destroy_us
 	if(post_unlink_callback)
 		src.post_unlink_callback = post_unlink_callback
-	/* ORIGINAL CODE
+
 	master_speech = new(src)
 	master_speech.Grant(owner)
-	*/ //ORIGINAL CODE END
-	//EFFIGY EDIT - #184 NIFs
-	if(speech_action)
-		master_speech = new(src)
-		master_speech.Grant(owner)
-	//EFFIGY EDIT END
 
 /datum/component/mind_linker/Destroy(force, silent)
 	for(var/mob/living/remaining_mob as anything in linked_mobs)
@@ -100,7 +94,7 @@
 	new_link.Grant(to_link)
 
 	linked_mobs[to_link] = new_link
-	RegisterSignals(to_link, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING), PROC_REF(sig_unlink_mob))
+	RegisterSignals(to_link, list(COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING), PROC_REF(sig_unlink_mob))
 
 	return TRUE
 
@@ -121,7 +115,7 @@
 
 	post_unlink_callback?.Invoke(to_unlink)
 
-	UnregisterSignal(to_unlink, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING))
+	UnregisterSignal(to_unlink, list(COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING))
 
 	var/datum/action/innate/linked_speech/old_link = linked_mobs[to_unlink]
 	linked_mobs -= to_unlink
@@ -190,9 +184,9 @@
 	return ..()
 
 /datum/component/mind_linker/active_linking/link_mob(mob/living/to_link)
-	if(HAS_TRAIT(to_link, TRAIT_MINDSHIELD && linking_protection)) // Mindshield implant - no dice // EFFIGY EDIT - "&& linking_protection", #184, NIFS
+	if(HAS_TRAIT(to_link, TRAIT_MINDSHIELD)) // Mindshield implant - no dice
 		return FALSE
-	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0) && linking_protection) // EFFIGY EDIT - "&& linking_protection", #184, NIFS
+	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
 		return FALSE
 
 	. = ..()

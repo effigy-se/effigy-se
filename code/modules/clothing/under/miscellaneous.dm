@@ -66,7 +66,6 @@
 	bio = 100
 	fire = 100
 	acid = 100
-	wound = 100
 
 /obj/item/clothing/under/misc/burial
 	name = "burial garments"
@@ -106,7 +105,6 @@
 	acid = 10
 	bomb = 5
 	bio = 10
-	wound = 10
 
 /obj/item/clothing/under/misc/bouncer
 	name = "bouncer uniform"
@@ -121,7 +119,6 @@
 	bio = 10
 	fire = 30
 	acid = 30
-	wound = 5
 
 /obj/item/clothing/under/misc/coordinator
 	name = "coordinator jumpsuit"
