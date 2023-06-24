@@ -124,8 +124,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help_tickets/proc/ClientLogout(client/C)
 	if(C.current_ticket)
 		var/datum/admin_help/T = C.current_ticket
-		T.AddInteraction("Client disconnected.")
 		//Gotta async this cause clients only logout on destroy, and sleeping in destroy is disgusting
+		INVOKE_ASYNC(T, TYPE_PROC_REF(/datum/admin_help, AddInteraction), "Client disconnected")
 		INVOKE_ASYNC(SSblackbox, TYPE_PROC_REF(/datum/controller/subsystem/blackbox, LogAhelp), T.id, "Disconnected", "Client disconnected", C.ckey)
 		T.initiator = null
 
