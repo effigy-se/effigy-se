@@ -17,3 +17,5 @@
 #define LINK_SUCCESS 4
 
 #define EFFIGY_UNKNOWN_PLAYER 66
+
+#define COMSIG_EFFIGY_API_RESPONSE "api_response_se"

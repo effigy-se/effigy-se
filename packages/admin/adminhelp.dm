@@ -222,6 +222,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	opened_at = world.time
 	name = copytext_char(msg, 1, 100)
+	RegisterSignal(SSeffigy, COMSIG_EFFIGY_API_RESPONSE, PROC_REF(set_effigy_ticket_id))
 
 	initiator = C
 	initiator_ckey = initiator.ckey
@@ -241,9 +242,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/title = copytext_char(msg, 1, 64)
 	var/message = msg
 	var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
-	effigy_response = SSeffigy.send_message_request(request)
-	effigy_linked = LINK_SUCCESS
-	effigy_ticket_id = effigy_response["id"]
+	GLOB.ahelp_tickets.active_tickets += src
+	INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket) //This is a bug
@@ -264,7 +264,17 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	else
 		MessageNoRecipient(msg_raw, urgent)
 		send_message_to_tgs(msg, urgent)
-	GLOB.ahelp_tickets.active_tickets += src
+
+/datum/admin_help/proc/set_effigy_ticket_id(source, datum/admin_help/ticket, datum/http_response/response)
+	SIGNAL_HANDLER
+
+	if(ticket != src)
+		return
+	if(effigy_linked == LINK_SUCCESS)
+		return
+	effigy_response = response
+	effigy_linked = LINK_SUCCESS
+	effigy_ticket_id = effigy_response["id"]
 
 /datum/admin_help/proc/format_embed_discord(message)
 	var/datum/discord_embed/embed = new()
@@ -381,6 +391,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	ticket_interactions += "[time_stamp()]: [formatted_message]"
 	if (!isnull(player_message))
 		player_interactions += "[time_stamp()]: [player_message]"
+		UNTIL(!isnull(effigy_response))
 		var/ef_type = EFFIGY_MESSAGE_TICKET_INTERACTION
 		var/int_id = id
 		var/link_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
@@ -393,12 +404,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/message = player_message
 		var/title = name
 		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
-		SSeffigy.send_message_request(request)
+		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
-//Removes the ahelp verb and returns it after 2 minutes
+//Removes the ahelp verb and returns it after 1 minute
 /datum/admin_help/proc/TimeoutVerb()
 	remove_verb(initiator, /client/verb/adminhelp)
-	initiator.adminhelptimerid = addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 1200, TIMER_STOPPABLE) //2 minute cooldown of admin helps
+	initiator.adminhelptimerid = addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 600, TIMER_STOPPABLE) //1 minute cooldown of admin helps
 
 //private
 /datum/admin_help/proc/FullMonty(ref_src)
