@@ -11,6 +11,10 @@
 	endpoint = EFFIGY_ENDPOINT_NEW_TICKET
 	method = RUSTG_HTTP_METHOD_POST
 
+/datum/effigy_message_type/ticket_interaction
+	endpoint = EFFIGY_ENDPOINT_TICKET_INTERACTION
+	method = RUSTG_HTTP_METHOD_POST
+
 /datum/effigy_message_type/get
 	method = RUSTG_HTTP_METHOD_GET
 
@@ -27,7 +31,8 @@
 	var/list/processed_content = list(
 		"forum=[raw_content["box"]]",
 		"author=[raw_content["link_id"]]",
-		"title=\[[GLOB.round_id]] [raw_content["title"]]",
+		"topic=[raw_content["ticket_id"]]",
+		"title=\[[GLOB.round_id][raw_content["int_id"]]] [raw_content["title"]]",
 		"post=[raw_content["message"]]"
 	)
 
