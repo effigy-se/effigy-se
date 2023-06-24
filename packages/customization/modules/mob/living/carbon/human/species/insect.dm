@@ -2,8 +2,7 @@
 	name = "Anthromorphic Insect"
 	id = SPECIES_INSECT
 	species_traits = list(
-		MUTCOLORS,
-		HAIR
+		MUTCOLORS
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
