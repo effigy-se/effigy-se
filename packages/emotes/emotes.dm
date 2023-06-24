@@ -113,6 +113,13 @@
 	vary = TRUE
 	sound = 'packages/emotes/assets/voice/awoo.ogg'
 
+/datum/emote/living/long_awoo
+	key = "awoo2"
+	message = "lets out an awoo!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/long_awoo.ogg'
+
 /datum/emote/living/nya
 	key = "nya"
 	key_third_person = "nyas"
@@ -161,6 +168,13 @@
 	vary = TRUE
 	sound = 'packages/emotes/assets/voice/bark2.ogg'
 
+/datum/emote/living/bark2
+	key = "bark2"
+	message = "barks!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/bark1.ogg'
+
 /datum/emote/living/squish
 	key = "squish"
 	key_third_person = "squishes"
@@ -185,6 +199,13 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
 	sound = 'packages/emotes/assets/generic/hiss.ogg'
+
+/datum/emote/living/feline_hiss //Ported from Horizon, originally by FedTheCat
+	key = "fhiss"
+	message = "hisses!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/feline_hiss.ogg'
 
 /datum/emote/living/chitter
 	key = "chitter"
@@ -402,13 +423,43 @@
 	vary = TRUE
 	sound = 'packages/emotes/assets/voice/growl.ogg'
 
+/datum/emote/living/rawr //Ported from Horizon, originally by FedTheCat
+	key = "rawr"
+	key_third_person = "rawrs"
+	message = "lets out a rawr!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/rawr.ogg'
+
 /datum/emote/living/woof
 	key = "woof"
 	key_third_person = "woofs"
-	message = "lets out a woof."
+	message = "lets out a woof!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'packages/emotes/assets/voice/woof.ogg'
+
+/datum/emote/living/woof2
+	key = "woof2"
+	message = "lets out a woof!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/woof2.ogg'
+
+/datum/emote/living/whine1 //Ported from Horizon, originally by FedTheCat
+	key = "whine1"
+	key_third_person = "whines"
+	message = "lets out a whine!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/whine1.ogg'
+
+/datum/emote/living/whine2 //Ported from Horizon, originally by FedTheCat
+	key = "whine2"
+	message = "lets out a whine!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/whine2.ogg'
 
 /datum/emote/living/baa
 	key = "baa"
@@ -449,7 +500,43 @@
 	message = "cackles hysterically!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'packages/emotes/assets/voice/cackle_yeen.ogg'
+	sound = 'packages/emotes/assets/voice/hyena/cackle.ogg'
+
+/datum/emote/living/cackle_giggle //Ported from Horizon
+	key = "cackle2"
+	message = "cackles hysterically!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/hyena/cackle_giggle.ogg'
+
+/datum/emote/living/hyena_laugh //Ported from Horizon
+	key = "hlaugh"
+	message = "laughs!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/hyena_laugh/get_sound(mob/living/user)
+	return pick('packages/emotes/assets/voice/hyena/laugh_bright.ogg',
+				'packages/emotes/assets/voice/hyena/laugh_low.ogg',
+				'packages/emotes/assets/voice/hyena/laugh_short.ogg',
+				'packages/emotes/assets/voice/hyena/laugh_twice.ogg',
+				'packages/emotes/assets/voice/hyena/laugh1.ogg',
+				'packages/emotes/assets/voice/hyena/laugh2.ogg')
+
+/datum/emote/living/whoop //Ported from Horizon
+	key = "whoop"
+	key_third_person = "whoops"
+	message = "lets out a whoop!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/hyena/whoop.ogg'
+
+/datum/emote/living/whoop2 //Ported from Horizon
+	key = "whoop2"
+	message = "lets out a whoop!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/hyena/whoop_long.ogg'
 
 /mob/living/proc/do_ass_slap_animation(atom/slapped)
 	do_attack_animation(slapped, no_effect=TRUE)
@@ -495,6 +582,13 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'packages/emotes/assets/voice/feline_purr.ogg'
+
+/datum/emote/living/catchirp //Ported from Horizon, originally by FedTheCat
+	key = "catchirp"
+	message = "chirps!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/catchirp.ogg'
 
 /datum/emote/living/moo
 	key = "moo"
