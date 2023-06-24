@@ -36,32 +36,16 @@ SUBSYSTEM_DEF(effigy)
 /datum/controller/subsystem/effigy/Destroy()
 	return ..()
 
-/obj/item/toy/plush/effigy/adminhelp
-	name = "admin plushie"
-	desc = "Some say speaking to this plushie, you speak to the Gods."
-	icon_state = "plushie_skyy"
-	attack_verb_continuous = list("kisses", "nuzzles", "cuddles", "purrs against")
-	attack_verb_simple = list("kiss", "nuzzle", "cuddle", "purr against")
-	squeak_override = list('packages/emotes/assets/voice/nya.ogg' = 1)
-
-/obj/item/toy/plush/effigy/adminhelp/attack_self(mob/user)
-	. = ..()
-	var/message = tgui_input_text(usr, "Some say speaking to this plushie, you speak to the Gods.", "Heavenly Nya")
-	var/title = copytext_char(message, 1, 64)
-	var/msg_type = EFFIGY_MESSAGE_NEW_TICKET
-	var/box = SOCIAL_DISTRICT_AHELP
-	var/link_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
-
-	SSeffigy.create_message_request(msg_type, link_id, box, title, message)
-
-/datum/controller/subsystem/effigy/proc/create_message_request(msg_type, link_id, box, title, message)
+/datum/controller/subsystem/effigy/proc/create_message_request(msg_type, int_id, link_id, ticket_id, box, title, message)
 	if(!efapi_key)
 		return
 
 	var/datum/effigy_message/effigy_request = new(
 		msg_type = new msg_type,
-		box = box,
+		int_id = int_id,
 		link_id = link_id,
+		ticket_id = ticket_id,
+		box = box,
 		title = title,
 		message = message,
 	)
@@ -76,23 +60,26 @@ SUBSYSTEM_DEF(effigy)
 	/// HTTP message request
 	var/datum/http_request/message_request
 
-/datum/effigy_message/New(msg_type, box, link_id, title, message)
+/datum/effigy_message/New(msg_type, box, int_id, ticket_id, link_id, title, message)
 	endpoint = msg_type
 	message_content = list(
 		"box" = box,
+		"int_id" = int_id,
 		"link_id" = link_id,
+		"ticket_id" = ticket_id,
 		"title" = title,
 		"message" = message,
 	)
 
-/datum/controller/subsystem/effigy/proc/start_request(datum/effigy_message/message)
+/datum/controller/subsystem/effigy/proc/send_message_request(datum/effigy_message/message, datum/admin_help/ticket)
+	set waitfor = FALSE
 	var/datum/http_request/request = message.endpoint.create_http_request(message.message_content)
 	request.begin_async()
 	UNTIL(request.is_complete())
 	var/datum/http_response/response = request.into_response()
-	if(response.errored || response.status_code != 200)
+	if(response.errored)
 		stack_trace(response.error)
-	return response.body
+	SEND_SIGNAL(src, COMSIG_EFFIGY_API_RESPONSE, ticket, json_decode(response.body))
 
 // Cleans up the request object when it is destroyed.
 /datum/effigy_message/Destroy(force, ...)
@@ -111,7 +98,10 @@ SUBSYSTEM_DEF(effigy)
  * Returns a [/datum/effigy_account_link]
  */
 /datum/controller/subsystem/effigy/proc/find_effigy_link_by_ckey(ckey)
-	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("effigy_links")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
+	var/query = "SELECT CAST(effigy_id AS CHAR(25)), ckey FROM [format_table_name("player")] WHERE ckey = :ckey GROUP BY ckey, effigy_id LIMIT 1"
+	if(!SSdbcore.Connect())
+		to_chat(usr, span_warning("Database connectivity failed!"))
+		return
 	var/datum/db_query/query_get_effigy_link_record = SSdbcore.NewQuery(
 		query,
 		list("ckey" = ckey)
@@ -123,6 +113,25 @@ SUBSYSTEM_DEF(effigy)
 	if(query_get_effigy_link_record.NextRow())
 		var/result = query_get_effigy_link_record.item
 		. = new /datum/effigy_account_link(result[2], result[1])
+	qdel(query_get_effigy_link_record)
+
+/datum/controller/subsystem/effigy/proc/create_effigy_link_by_ckey(ckey, effigyid)
+	var/query = "UPDATE [format_table_name("player")] SET effigy_id = :effigyid WHERE ckey = :ckey"
+	if(!SSdbcore.Connect())
+		to_chat(usr, span_warning("Database connectivity failed!"))
+		return FALSE
+	var/datum/db_query/query_set_effigy_link_record = SSdbcore.NewQuery(
+		query,
+		list(
+		"effigyid" = effigyid,
+		"ckey" = ckey)
+		)
+	if(!query_set_effigy_link_record.Execute())
+		qdel(query_set_effigy_link_record)
+		return FALSE
+
+	qdel(query_set_effigy_link_record)
+	return TRUE
 
 /datum/controller/subsystem/effigy/proc/ckey_to_effigy_id(lookup_ckey)
 	var/datum/effigy_account_link/link = find_effigy_link_by_ckey(lookup_ckey)
@@ -131,13 +140,71 @@ SUBSYSTEM_DEF(effigy)
 		return
 	return link.effigy_id
 
-/client/proc/find_effigy_id(ckeytomatch as text)
-	set category = "Admin"
-	set name = "Find Effigy ID"
-	set desc = "Find the Effigy account linked to a ckey."
+/datum/controller/subsystem/effigy/proc/link_effigy_id_to_ckey(lookup_ckey, effigyid)
+	var/datum/effigy_account_link/existing_link = find_effigy_link_by_ckey(lookup_ckey)
+	if(existing_link)
+		if(existing_link.effigy_id != "0")
+			log_admin_private("[usr] attempted to link Effigy ID [effigyid] to ckey [lookup_ckey], but it failed")
+			to_chat(usr, span_notice("Link for [lookup_ckey] already exists! Found [existing_link.effigy_id]."))
+			return
+	if(create_effigy_link_by_ckey(lookup_ckey, effigyid))
+		var/new_link = ckey_to_effigy_id(lookup_ckey)
+		log_admin_private("[usr] linked Effigy ID [new_link] to ckey [lookup_ckey]")
+		to_chat(usr, span_notice("Linked Effigy ID [new_link] for ckey [lookup_ckey]!"))
+	else
+		log_admin_private("[usr] attempted to link Effigy ID [effigyid] to ckey [lookup_ckey], but it failed")
+		to_chat(usr, span_notice("Effigy link attempt for ckey [lookup_ckey] failed!"))
 
+/client/proc/find_effigy_id()
+	set category = "Admin"
+	set name = "Effigy ID Search"
+	set desc = "Find the Effigy account linked to a ckey."
+	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Who could it be now?~")
 	var/requested_link = 0
 	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
+	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
+	if(!requested_link)
+		to_chat(usr, span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
+	else
+		to_chat(usr, span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
+
+/client/proc/link_effigy_id()
+	set category = "Admin"
+	set name = "Effigy ID Link"
+	set desc = "Link an Effigy account to a ckey"
+	if(!CONFIG_GET(flag/sql_enabled))
+		to_chat(usr, span_adminnotice("The Database is not enabled!"))
+		return
+
+	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
+	var/effigyid = tgui_input_number(src, "What is their Effigy ID?", "Someone wants to play here, apparently.", max_value = 99999999, min_value = 1, default = 0)
+
+	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
+	SSeffigy.link_effigy_id_to_ckey(ckeytomatch, effigyid)
+
+/client/proc/effigy_whitelist()
+	set category = "Admin"
+	set name = "Whitelist Player"
+	set desc = "Link an Effigy account to a ckey and add to whitelist"
+	if(!CONFIG_GET(flag/sql_enabled))
+		to_chat(usr, span_adminnotice("The Database is not enabled!"))
+		return
+
+	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
+	var/effigyid = tgui_input_number(src, "What is their Effigy ID?", "Someone wants to play here, apparently.", max_value = 99999999, min_value = 1, default = 0)
+	var/requested_link = 0
+
+	var/datum/db_query/query_add_player = SSdbcore.NewQuery({"
+		INSERT INTO [format_table_name("player")] (`ckey`, `effigy_id`, `firstseen`, `firstseen_round_id`, `lastseen`, `lastseen_round_id`, `ip`, `computerid`, `lastadminrank`)
+		VALUES (:ckey, :effigyid, Now(), :round_id, Now(), :round_id, "0", "0", "Player")
+	"}, list("ckey" = ckeytomatch, "effigyid" = effigyid, "round_id" = GLOB.round_id || null))
+	if(!query_add_player.Execute())
+		qdel(query_add_player)
+		to_chat(usr, span_adminnotice("Add player [ckeytomatch] to DB whitelist failed!"))
+		return
+	qdel(query_add_player)
+
+	to_chat(usr, span_info("Add player [ckeytomatch] to DB complete! Verifying link..."))
 	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
 	if(!requested_link)
 		to_chat(usr, span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
@@ -154,3 +221,16 @@ SUBSYSTEM_DEF(effigy)
 	evid = num2text(evid, 7, 16)
 	GLOB.current_effigy_evid++
 	return evid
+
+/proc/find_byond_age(ckey)
+	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
+	if(!http)
+		log_world("Failed to connect to byond member page to age check [ckey]")
+		return
+	var/F = file2text(http["CONTENT"])
+	if(F)
+		var/regex/R = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
+		if(R.Find(F))
+			. = R.group[1]
+		else
+			CRASH("Age check regex failed for [ckey]")
