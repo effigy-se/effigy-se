@@ -2,7 +2,7 @@
 /obj/structure/liquid_pump
 	name = "portable liquid pump"
 	desc = "An industrial grade pump, capable of either siphoning or spewing liquids. Needs to be anchored first to work. Has a limited capacity internal storage."
-	icon = 'packages/liquids/assets/obj/structures/liquid_pump.dmi'
+	icon = 'local/code/modules/liquids/assets/obj/structures/liquid_pump.dmi'
 	icon_state = "liquid_pump"
 	density = TRUE
 	max_integrity = 500
