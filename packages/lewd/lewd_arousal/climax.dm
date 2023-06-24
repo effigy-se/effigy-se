@@ -5,14 +5,7 @@
 #define CLIMAX_ON_FLOOR "On the floor"
 #define CLIMAX_IN_OR_ON "Climax in or on someone"
 
-#define CLIMAX_SOUND_MAX_DISTANCE 5
-
-// Plays the climax sound in a 5 tile radius IF someone has it enabled in their prefs
-/mob/living/carbon/human/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/sound_to_use, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE, sound_preference)
-	var/datum/preference/toggle/client_sound_preference = client?.prefs?.read_preference(sound_preference)
-	if(!isnull(sound_preference) && !sound_preference)
-		return
-	. = ..()
+#define CLIMAX_NO_ESCAPE_ZONE 5
 
 /mob/living/carbon/human/proc/climax(manual = TRUE)
 	if (CONFIG_GET(flag/disable_erp_preferences))
@@ -43,16 +36,26 @@
 			genitals.Add(CLIMAX_PENIS)
 		climax_choice = tgui_alert(src, "You are climaxing, choose which genitalia to climax with.", "Genitalia Preference!", genitals)
 
+	var/sound/cumsound
 	switch(gender)
 		if(MALE)
-			playsound_local(get_turf(src), pick('packages/lewd/assets/sounds/final_m1.ogg',
-										'packages/lewd/assets/sounds/final_m2.ogg',
-										'packages/lewd/assets/sounds/final_m3.ogg'), vol = 50, max_distance = CLIMAX_SOUND_MAX_DISTANCE, sound_preference = /datum/preference/toggle/erp/climax_sound)
+			cumsound = sound(pick(
+				'packages/lewd/assets/sounds/final_m1.ogg',
+				'packages/lewd/assets/sounds/final_m2.ogg',
+				'packages/lewd/assets/sounds/final_m3.ogg',
+			))
 
 		else
-			playsound_local(get_turf(src), pick('packages/lewd/assets/sounds/final_f1.ogg',
-									'packages/lewd/assets/sounds/final_f2.ogg',
-									'packages/lewd/assets/sounds/final_f3.ogg'), 50, max_distance = CLIMAX_SOUND_MAX_DISTANCE, sound_preference = /datum/preference/toggle/erp/climax_sound)
+			cumsound = (pick(
+				'packages/lewd/assets/sounds/final_f1.ogg',
+				'packages/lewd/assets/sounds/final_f2.ogg',
+				'packages/lewd/assets/sounds/final_f3.ogg',
+			))
+
+	var/list/cumheads = get_hearers_in_view(CLIMAX_NO_ESCAPE_ZONE, get_turf(src))
+	for(var/mob/horrified in cumheads)
+		if(horrified.client.prefs.read_preference(/datum/preference/toggle/erp/climax_sound))
+			SEND_SOUND(horrified.client, cumsound)
 
 	var/self_orgasm = FALSE
 	var/self_their = p_their()
