@@ -461,6 +461,20 @@
 	vary = TRUE
 	sound = 'packages/emotes/assets/voice/whine2.ogg'
 
+/datum/emote/living/yelp1 //Ported from Horizon, originally by FedTheCat
+	key = "yelp"
+	message = "lets out a yelp!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/yelp1.ogg'
+
+/datum/emote/living/yelp2 //Ported from Horizon, originally by FedTheCat
+	key = "yelp2"
+	message = "lets out a yelp!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'packages/emotes/assets/voice/yelp2.ogg'
+
 /datum/emote/living/baa
 	key = "baa"
 	key_third_person = "baas"
