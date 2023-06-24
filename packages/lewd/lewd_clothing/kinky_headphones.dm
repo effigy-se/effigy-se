@@ -89,8 +89,8 @@
 	to_chat(owner, span_notice("You turn the music [kinky_headphones_on ? "on. It plays relaxing music." : "off."]"))
 
 /datum/action/item_action/toggle_kinky_headphones
-	name = "Toggle kinky headphones"
-	desc = "Plays some nice relaxing music"
+	name = "Toggle Kinky Headphones"
+	desc = "Plays some nice relaxing music."
 
 /datum/action/item_action/toggle_kinky_headphones/Trigger(trigger_flags)
 	var/obj/item/clothing/ears/kinky_headphones/headphones = target

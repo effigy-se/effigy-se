@@ -30,10 +30,13 @@
 /obj/machinery/light_switch
 	icon = 'packages/gfx/assets/obj/power.dmi'
 
+
+#ifndef UNIT_TESTS
 /obj/machinery/light_switch/LateInitialize()
 	. = ..()
 	if(prob(70) && area.lightswitch) //70% chance for area to start with lights off.
 		turn_off()
+#endif
 
 /obj/machinery/light_switch/proc/turn_off()
 	if(!area.lightswitch)
@@ -74,6 +77,7 @@
 	var/door_sound = 'packages/gfx/assets/obj/door/blast_door.ogg'
 
 /obj/machinery/door/poddoor/shutters
+	icon = 'packages/gfx/assets/obj/door/shutters.dmi'
 	var/door_open_sound = 'packages/gfx/assets/obj/door/shutters_open.ogg'
 	var/door_close_sound = 'packages/gfx/assets/obj/door/shutters_close.ogg'
 

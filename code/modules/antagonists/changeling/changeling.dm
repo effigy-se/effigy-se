@@ -682,7 +682,7 @@
 		destroy_objective.find_target()
 		objectives += destroy_objective
 	else
-		if(prob(70))
+		if(prob(0)) // EFFIGY EDIT - #228 Removes krilling til we sort out how to handle it. Original: 70
 			var/datum/objective/assassinate/kill_objective = new
 			kill_objective.owner = owner
 			kill_objective.find_target()
