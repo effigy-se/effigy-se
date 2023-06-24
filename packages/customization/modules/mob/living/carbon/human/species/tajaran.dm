@@ -2,10 +2,7 @@
 	name = "Tajaran"
 	id = SPECIES_TAJARAN
 	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR
+		MUTCOLORS
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

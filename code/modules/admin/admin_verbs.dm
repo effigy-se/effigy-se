@@ -21,10 +21,12 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/secrets,
 	/client/proc/stop_sounds,
 	/client/proc/tag_datum_mapview,
-	/client/proc/addbunkerbypass, // EffigyEdit Add
-	/client/proc/revokebunkerbypass, // EffigyEdit Add
-	/client/proc/remove_liquid, // EffigyEdit Add
-	/client/proc/find_effigy_id, // EffigyEdit Add
+	/client/proc/addbunkerbypass, // EFFIGY EDIT ADD
+	/client/proc/revokebunkerbypass, // EFFIGY EDIT ADD
+	/client/proc/remove_liquid, // EFFIGY EDIT ADD
+	/client/proc/find_effigy_id, // EFFIGY EDIT ADD
+	/client/proc/link_effigy_id, // EFFIGY EDIT ADD
+	/client/proc/effigy_whitelist, // EFFIGY EDIT ADD
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)

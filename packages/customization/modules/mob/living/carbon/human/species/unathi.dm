@@ -2,10 +2,7 @@
 	name = "Unathi"
 	id = SPECIES_UNATHI
 	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR
+		MUTCOLORS
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

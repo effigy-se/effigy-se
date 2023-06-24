@@ -56,7 +56,7 @@
 		return
 	eye_recipient.cure_blind(NO_EYES)
 	apply_damaged_eye_effects()
-	refresh(eye_recipient, inserting = TRUE)
+	refresh(eye_recipient, inserting = TRUE, call_update = TRUE)
 
 /// Refreshes the visuals of the eyes
 /// If call_update is TRUE, we also will call update_body
@@ -88,7 +88,7 @@
 		is_emissive = TRUE
 	// EffigyEdit Add End (Emissives)
 	if(call_update)
-		affected_human.dna?.species?.handle_body(affected_human) //updates eye icon
+		affected_human.update_body()
 
 /obj/item/organ/internal/eyes/Remove(mob/living/carbon/eye_owner, special = FALSE)
 	. = ..()
@@ -98,9 +98,9 @@
 			human_owner.eye_color_left = old_eye_color_left
 		if(initial(eye_color_right))
 			human_owner.eye_color_right = old_eye_color_right
-		human_owner.update_body()
 		if(native_fov)
 			eye_owner.remove_fov_trait(type)
+		human_owner.update_body()
 
 	// Cure blindness from eye damage
 	eye_owner.cure_blind(EYE_DAMAGE)
@@ -128,13 +128,8 @@
 		return list()
 	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/species/human/human_face.dmi' // EffigyEdit Add
 
-	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // EffigyEdit Change - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
-	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // EffigyEdit Change - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
-	var/list/overlays = list(eye_left, eye_right)
-
-	if(EYECOLOR in parent.dna?.species.species_traits)
-		eye_right.color = eye_color_right
-		eye_left.color = eye_color_left
+	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -BODY_LAYER)
+	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -BODY_LAYER)
 
 	var/obscured = parent.check_obscured_slots(TRUE)
 	if(overlay_ignore_lighting && !(obscured & ITEM_SLOT_EYES))
@@ -142,17 +137,15 @@
 		eye_right.overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, parent, alpha = eye_right.alpha)
 
 	var/obj/item/bodypart/head/my_head = parent.get_bodypart(BODY_ZONE_HEAD)
-	if(my_head?.worn_face_offset)
-		for(var/mutable_appearance/overlay in overlays)
-			my_head.worn_face_offset.apply_offset(overlay)
+	if(my_head)
+		if(my_head.head_flags & HEAD_EYECOLOR)
+			eye_right.color = eye_color_right
+			eye_left.color = eye_color_left
+		if(my_head.worn_face_offset)
+			my_head.worn_face_offset.apply_offset(eye_left)
+			my_head.worn_face_offset.apply_offset(eye_right)
 
-	// EffigyEdit Add -  (Customization) (darn synths I swear)
-	if(eye_icon_state == "None")
-		eye_left.alpha = 0
-		eye_right.alpha = 0
-	// EffigyEdit Add STENDART (Customization) (darn synths I swear)
-
-	return overlays
+	return list(eye_left, eye_right)
 
 #undef OFFSET_X
 #undef OFFSET_Y

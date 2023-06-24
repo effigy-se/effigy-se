@@ -17,10 +17,7 @@
 	id = SPECIES_PODPERSON_WEAK
 	examine_limb_id = SPECIES_PODPERSON
 	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		HAIR, // Leaving this here so they can still use it if they want, even if it's kinda ugly compared to their special hair.
-		FACEHAIR
+		MUTCOLORS
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
