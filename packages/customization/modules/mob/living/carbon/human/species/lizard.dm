@@ -2,11 +2,7 @@
 	mutant_bodyparts = list()
 	external_organs = list()
 	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR,
+		MUTCOLORS
 	)
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
@@ -53,11 +49,7 @@
 /datum/species/lizard/ashwalker
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
 		NO_UNDERWEAR,
-		HAIR,
-		FACEHAIR
 	)
 	always_customizable = TRUE
 

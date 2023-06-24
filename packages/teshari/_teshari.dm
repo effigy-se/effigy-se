@@ -9,7 +9,6 @@
 	id = SPECIES_TESHARI
 	eyes_icon = 'packages/adv_medical/assets/organs/teshari_eyes.dmi'
 	species_traits = list(MUTCOLORS,
-		EYECOLOR,
 		NO_UNDERWEAR,
 		HAS_MARKINGS,
 		)
