@@ -16,6 +16,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/name = "soulcatcher"
 	/// What rooms are linked to this soulcatcher
 	var/list/soulcatcher_rooms = list()
+	/// What soulcatcher room are verbs sending messages to?
+	var/datum/soulcatcher_room/targeted_soulcatcher_room
+
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
 	/// Do we want to ask the user permission before the ghost joins?
@@ -27,13 +30,36 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return COMPONENT_INCOMPATIBLE
 
 	create_room()
+	targeted_soulcatcher_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
+
+	var/mob/living/soulcatcher_owner = parent
+	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
+	if(istype(parent_nif))
+		soulcatcher_owner = parent_nif.linked_mob
+
+	if(istype(soulcatcher_owner))
+		add_verb(soulcatcher_owner, list(
+			/mob/living/proc/soulcatcher_say,
+			/mob/living/proc/soulcatcher_emote,
+		))
 
 /datum/component/soulcatcher/Destroy(force, ...)
 	GLOB.soulcatchers -= src
 	for(var/datum/soulcatcher_room as anything in soulcatcher_rooms)
 		soulcatcher_rooms -= soulcatcher_room
 		qdel(soulcatcher_room)
+
+	var/mob/living/soulcatcher_owner = parent
+	var/obj/item/organ/internal/cyberimp/brain/nif/parent_nif = parent
+	if(istype(parent_nif))
+		soulcatcher_owner = parent_nif.linked_mob
+
+	if(istype(soulcatcher_owner))
+		remove_verb(soulcatcher_owner, list(
+			/mob/living/proc/soulcatcher_say,
+			/mob/living/proc/soulcatcher_emote,
+		))
 
 	return ..()
 
@@ -287,6 +313,21 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	return ..()
 
+/datum/action/innate/join_soulcatcher
+	name = "Enter Soulcatcher"
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon_state = "android"
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "soulcatcher_enter"
+
+/datum/action/innate/join_soulcatcher/Activate()
+	. = ..()
+	var/mob/dead/observer/joining_soul = owner
+	if(!joining_soul)
+		return FALSE
+
+	joining_soul.join_soulcatcher()
+
 /mob/dead/observer/verb/join_soulcatcher()
 	set name = "Enter Soulcatcher"
 	set category = "Ghost"
@@ -348,3 +389,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return TRUE
 
 	return ..()
+
+/mob/dead/observer/Login()
+	. = ..()
+	var/soulcatcher_action_given = client.prefs.read_preference(/datum/preference/toggle/soulcatcher_join_action)
+	if(!soulcatcher_action_given)
+		return
+
+	var/datum/action/innate/join_soulcatcher/new_join_action = new
+	new_join_action.Grant(src)
