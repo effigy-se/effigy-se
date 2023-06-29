@@ -1,14 +1,9 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
-	// EFFIGY EDIT CHANGE START
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
+		TRAIT_NO_UNDERWEAR,
 		TRAIT_NO_SLIP_ALL,
 		TRAIT_WATER_BREATHING,
 	)
