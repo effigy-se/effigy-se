@@ -45,6 +45,7 @@
 	resistance_flags = NONE
 
 /datum/armor/clothing_under/cargo_miner
+	bio = 10
 	fire = 80
 	wound = 10
 

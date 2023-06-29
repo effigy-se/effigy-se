@@ -8,11 +8,12 @@
 
 /obj/effect/decal/Initialize(mapload)
 	. = ..()
-	if(NeverShouldHaveComeHere(loc))
-		if(mapload)
-			stack_trace("[name] spawned in a bad turf ([loc]) at [AREACOORD(src)] in \the [get_area(src)]. \
-				Please remove it or allow it to pass NeverShouldHaveComeHere if it's intended.")
+	if(turf_loc_check && NeverShouldHaveComeHere(loc))
+#ifdef UNIT_TESTS
+		stack_trace("[name] spawned in a bad turf ([loc]) at [AREACOORD(src)] in \the [get_area(src)]. Please remove it or set turf_loc_check to FALSE on the decal if intended.")
+#else
 		return INITIALIZE_HINT_QDEL
+#endif
 	var/static/list/loc_connections = list(
 		COMSIG_TURF_CHANGE = PROC_REF(on_decal_move),
 	)
@@ -22,9 +23,8 @@
 	if(B && B.loc == loc)
 		qdel(src)
 
-///Checks if we are allowed to be in `here_turf`, and returns that result. Subtypes should override this when necessary.
-/obj/effect/decal/proc/NeverShouldHaveComeHere(turf/here_turf)
-	return isclosedturf(here_turf) || (isgroundlessturf(here_turf) && !SSmapping.get_turf_below(here_turf))
+/obj/effect/decal/proc/NeverShouldHaveComeHere(turf/T)
+	return isclosedturf(T) || (isgroundlessturf(T) && !SSmapping.get_turf_below(T))
 
 /obj/effect/decal/ex_act(severity, target)
 	qdel(src)

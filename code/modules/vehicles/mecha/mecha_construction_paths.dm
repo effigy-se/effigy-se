@@ -326,7 +326,7 @@
 	)
 
 /datum/component/construction/mecha/ripley
-	result = /obj/vehicle/sealed/mecha/ripley
+	result = /obj/vehicle/sealed/mecha/working/ripley
 	base_icon = "ripley"
 
 	circuit_control = /obj/item/circuitboard/mecha/ripley/main
@@ -399,7 +399,7 @@
 	)
 
 /datum/component/construction/mecha/clarke
-	result = /obj/vehicle/sealed/mecha/clarke
+	result = /obj/vehicle/sealed/mecha/working/clarke
 	base_icon = "clarke"
 
 	circuit_control = /obj/item/circuitboard/mecha/clarke/main

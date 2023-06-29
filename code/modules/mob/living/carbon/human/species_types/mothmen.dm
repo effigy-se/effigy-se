@@ -14,6 +14,9 @@
 	mutant_bodyparts = list("moth_markings" = "None")
 	// external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain") // EffigyEdit Remove (#3 Customization - Ported from Skyrat)
 	meat = /obj/item/food/meat/slab/human/mutant/moth
+	liked_food = VEGETABLES | DAIRY | CLOTH
+	disliked_food = FRUIT | GROSS | BUGS | GORE
+	toxic_food = MEAT | RAW | SEAFOOD
 	mutanttongue = /obj/item/organ/internal/tongue/moth
 	mutanteyes = /obj/item/organ/internal/eyes/moth
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -48,12 +51,11 @@
 
 	return randname
 
-/datum/species/moth/handle_chemical(datum/reagent/chem, mob/living/carbon/human/affected, seconds_per_tick, times_fired)
+/datum/species/moth/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()
-	if(. & COMSIG_MOB_STOP_REAGENT_CHECK)
-		return
 	if(chem.type == /datum/reagent/toxin/pestkiller)
-		affected.adjustToxLoss(3 * REM * seconds_per_tick)
+		H.adjustToxLoss(3 * REM * seconds_per_tick)
+		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * seconds_per_tick)
 
 /datum/species/moth/check_species_weakness(obj/item/weapon, mob/living/attacker)
 	if(istype(weapon, /obj/item/melee/flyswatter))

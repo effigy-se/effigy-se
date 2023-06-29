@@ -26,9 +26,9 @@
 		// Relays send signals to all ZTRAIT_STATION z-levels
 		if(SSmapping.level_trait(relay_turf.z, ZTRAIT_STATION))
 			for(var/z in SSmapping.levels_by_trait(ZTRAIT_STATION))
-				signal.levels |= SSmapping.get_connected_levels(z)
+				signal.levels |= z
 		else
-			signal.levels |= SSmapping.get_connected_levels(relay_turf)
+			signal.levels |= relay_turf.z
 
 	use_power(idle_power_usage)
 

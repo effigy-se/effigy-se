@@ -1,10 +1,11 @@
 /obj/item/clothing/under/rank/medical
 	icon = 'icons/obj/clothing/under/medical.dmi'
 	worn_icon = 'icons/mob/clothing/under/medical.dmi'
-	armor_type = /datum/armor/clothing_under/rank_medical
+	armor_type = /datum/armor/rank_medical
 
-/datum/armor/clothing_under/rank_medical
+/datum/armor/rank_medical
 	bio = 50
+	wound = 5
 
 /obj/item/clothing/under/rank/medical/doctor
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel."
@@ -120,11 +121,13 @@
 	name = "chemist's jumpsuit"
 	icon_state = "chemistry"
 	inhand_icon_state = "w_suit"
-	armor_type = /datum/armor/clothing_under/medical_chemist
+	armor_type = /datum/armor/medical_chemist
 
-/datum/armor/clothing_under/medical_chemist
+/datum/armor/medical_chemist
+	bio = 10
 	fire = 50
 	acid = 65
+	wound = 5
 
 /obj/item/clothing/under/rank/medical/chemist/skirt
 	name = "chemist's jumpskirt"

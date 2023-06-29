@@ -380,14 +380,15 @@
 	random_sensor = FALSE
 	resistance_flags = NONE
 	can_adjust = FALSE
-	armor_type = /datum/armor/clothing_under/chameleon
+	armor_type = /datum/armor/under_chameleon
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
-/datum/armor/clothing_under/chameleon
+/datum/armor/under_chameleon
 	melee = 10
 	bullet = 10
 	laser = 10
+	bio = 10
 	fire = 50
 	acid = 50
 	wound = 10

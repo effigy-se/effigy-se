@@ -71,24 +71,24 @@
 /obj/item/lightreplacer/attackby(obj/item/insert, mob/user, params)
 	. = ..()
 	if(uses >= max_uses)
-		user.balloon_alert(user, "already full!")
+		to_chat(user, span_warning("[src.name] is full."))
 		return TRUE
 
 	if(istype(insert, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/glass_to_insert = insert
 		if(glass_to_insert.use(LIGHTBULB_COST))
 			add_uses(GLASS_SHEET_USES)
-			user.balloon_alert(user, "glass inserted")
+			to_chat(user, span_notice("You insert a glass sheet into \the [src.name]. [status_string()]"))
 		else
-			user.balloon_alert(user, "need [LIGHTBULB_COST] glass sheets!")
+			to_chat(user, span_warning("You need [LIGHTBULB_COST] glass to replace lights!"))
 		return TRUE
 
 	if(insert.type == /obj/item/shard) //we don't want to insert plasma, titanium or other types of shards
 		if(!user.temporarilyRemoveItemFromInventory(insert))
-			user.balloon_alert(user, "stuck in your hand!")
+			to_chat(user, span_notice("[insert] is stuck in your hand!"))
 			return TRUE
 		if(!add_shard(user)) //add_shard will display a message if it created a bulb from the shard so only display message when that does not happen
-			user.balloon_alert(user, "shard inserted")
+			to_chat(user, span_notice("You insert [insert] into \the [src]. [status_string()]"))
 		qdel(insert)
 		return TRUE
 
@@ -96,7 +96,7 @@
 		var/obj/item/light/light_to_insert = insert
 		//remove from player's hand
 		if(!user.temporarilyRemoveItemFromInventory(light_to_insert))
-			user.balloon_alert(user, "stuck in your hand!")
+			to_chat(user, span_notice("[insert] is stuck in your hand!"))
 			return TRUE
 
 		//insert light. display message only if adding a shard did not create a new bulb else the messages will conflict
@@ -106,7 +106,7 @@
 		else if(add_shard(user))
 			display_msg = FALSE
 		if(display_msg)
-			user.balloon_alert(user, "light inserted")
+			to_chat(user, span_notice("You insert [light_to_insert] into \the [src]. [status_string()]"))
 		qdel(light_to_insert)
 
 		return TRUE
@@ -146,12 +146,12 @@
 
 		if(!replaced_something)
 			if(uses == max_uses)
-				user.balloon_alert(user, "already full!")
+				to_chat(user, span_warning("\The [src] is full!"))
 			else
-				user.balloon_alert(user, "nothing usable in [storage_to_empty]!")
+				to_chat(user, span_warning("\The [storage_to_empty] contains no lights, glass sheets or shards."))
 			return TRUE
 
-		user.balloon_alert(user, "lights inserted")
+		to_chat(user, span_notice("You fill \the [src] with lights from \the [storage_to_empty]. [status_string()]"))
 		return TRUE
 
 /obj/item/lightreplacer/emag_act()
@@ -190,12 +190,9 @@
 	return ..()
 
 /obj/item/lightreplacer/attack_self(mob/user)
-	var/on_a_light = FALSE //For if we are on the same tile as a light when we do this
 	for(var/obj/machinery/light/target in user.loc)
 		replace_light(target, user)
-		on_a_light = TRUE
-	if(!on_a_light) //So we dont give a ballon alert when we just used replace_light
-		user.balloon_alert(user, "[uses] lights, [bulb_shards]/[BULB_SHARDS_REQUIRED] fragments")
+	to_chat(user, status_string())
 
 /**
  * attempts to fix lights, flood lights & lights on a turf
@@ -248,14 +245,14 @@
 		return
 	// target not in view
 	if(!(target in view(7, get_turf(user))))
-		user.balloon_alert(user, "out of range!")
+		to_chat(user, span_warning("The \'Out of Range\' light on [src] blinks red."))
 		return
 
 	//replace lights & stuff
 	do_action(target, user)
 
 /obj/item/lightreplacer/proc/status_string()
-	return "It has [uses] light\s remaining (plus [bulb_shards]/[BULB_SHARDS_REQUIRED] fragment\s)."
+	return "It has [uses] light\s remaining (plus [bulb_shards] fragment\s)."
 
 /obj/item/lightreplacer/proc/Use(mob/user)
 	if(uses <= 0)
@@ -293,12 +290,11 @@
 		return FALSE
 	//If the light source is ok then what are we doing here
 	if(target.status == LIGHT_OK)
-		user.balloon_alert(user, "light already installed!")
+		to_chat(user, span_warning("There is a working [target.fitting] already inserted!"))
 		return FALSE
 	//Were all out
 	if(!Use(user))
-		//This balloon alert text is a little redundant, but I want to avoid a new player "yeah i know the light is empty" moment
-		user.balloon_alert(user, "light replacer empty!")
+		to_chat(user, span_warning("\The [src]'s refill light blinks red."))
 		return FALSE
 
 	//remove any broken light on the fixture & add it as a shard
@@ -318,6 +314,7 @@
 	target.update()
 	//clean up
 	qdel(old_light)
+	to_chat(user, span_notice("You replace \the [target.fitting] with \the [src]."))
 
 	return TRUE
 

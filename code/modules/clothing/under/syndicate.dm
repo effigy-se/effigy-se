@@ -4,13 +4,14 @@
 	icon_state = "syndicate"
 	inhand_icon_state = "bl_suit"
 	has_sensor = NO_SENSORS
-	armor_type = /datum/armor/clothing_under/syndicate
+	armor_type = /datum/armor/clothing_under/under_syndicate
 	alt_covers_chest = TRUE
 	icon = 'icons/obj/clothing/under/syndicate.dmi'
 	worn_icon = 'icons/mob/clothing/under/syndicate.dmi'
 
-/datum/armor/clothing_under/syndicate
+/datum/armor/clothing_under/under_syndicate
 	melee = 10
+	bio = 10
 	fire = 50
 	acid = 40
 	wound = 10
@@ -20,9 +21,19 @@
 	desc = "A non-descript and slightly suspicious looking skirtleneck."
 	icon_state = "syndicate_skirt"
 	inhand_icon_state = "bl_suit"
+	has_sensor = NO_SENSORS
+	armor_type = /datum/armor/clothing_under/syndicate_skirt
+	alt_covers_chest = TRUE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/datum/armor/clothing_under/syndicate_skirt
+	melee = 10
+	bio = 10
+	fire = 50
+	acid = 40
+	wound = 10
 
 /obj/item/clothing/under/syndicate/bloodred
 	name = "blood-red sneaksuit"
@@ -38,6 +49,7 @@
 	bullet = 10
 	laser = 10
 	energy = 10
+	bio = 10
 	fire = 50
 	acid = 40
 	wound = 10
@@ -50,6 +62,7 @@
 	armor_type = /datum/armor/clothing_under/bloodred_sleepytime
 
 /datum/armor/clothing_under/bloodred_sleepytime
+	bio = 10
 	fire = 50
 	acid = 40
 
@@ -63,6 +76,7 @@
 	stubborn_stains = TRUE
 
 /datum/armor/clothing_under/syndicate_tacticool
+	bio = 10
 	fire = 50
 	acid = 40
 
@@ -89,9 +103,15 @@
 	desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
 	icon_state = "tactifool_skirt"
 	inhand_icon_state = "bl_suit"
+	armor_type = /datum/armor/clothing_under/tacticool_skirt
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/datum/armor/clothing_under/tacticool_skirt
+	bio = 10
+	fire = 50
+	acid = 40
 
 /obj/item/clothing/under/syndicate/sniper
 	name = "tactical turtleneck suit"
@@ -117,6 +137,7 @@
 
 /datum/armor/clothing_under/syndicate_soviet
 	melee = 10
+	bio = 10
 
 /obj/item/clothing/under/syndicate/combat
 	name = "combat uniform"
@@ -134,6 +155,7 @@
 
 /datum/armor/clothing_under/syndicate_rus_army
 	melee = 5
+	bio = 10
 
 /obj/item/clothing/under/syndicate/scrubs
 	name = "tactical scrubs"

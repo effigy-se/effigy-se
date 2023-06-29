@@ -2,8 +2,9 @@
 /datum/species/human/felinid
 	name = "Felinid"
 	id = SPECIES_FELINE
-	examine_limb_id = SPECIES_HUMAN
+
 	mutant_bodyparts = list("ears" = "Cat", "wings" = "None")
+
 	mutanttongue = /obj/item/organ/internal/tongue/cat
 	/* EffigyEdit Remove -  - CUSTOMIZATION
 	mutantears = /obj/item/organ/internal/ears/cat
@@ -20,17 +21,15 @@
 	payday_modifier = 1
 	ass_image = 'icons/ass/asscat.png'
 	family_heirlooms = list(/obj/item/toy/cattoy)
-	/// When false, this is a felinid created by mass-purrbation
-	var/original_felinid = TRUE
+	examine_limb_id = SPECIES_HUMAN
 
 // Prevents felinids from taking toxin damage from carpotoxin
-/datum/species/human/felinid/handle_chemical(datum/reagent/chem, mob/living/carbon/human/affected, seconds_per_tick, times_fired)
+/datum/species/human/felinid/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()
-	if(. & COMSIG_MOB_STOP_REAGENT_CHECK)
-		return
 	if(istype(chem, /datum/reagent/toxin/carpotoxin))
 		var/datum/reagent/toxin/carpotoxin/fish = chem
 		fish.toxpwr = 0
+
 
 /datum/species/human/felinid/on_species_gain(mob/living/carbon/carbon_being, datum/species/old_species, pref_load)
 	if(ishuman(carbon_being))

@@ -267,6 +267,7 @@ export const CargoCatalog = (props, context) => {
                       onClick={() =>
                         act('add', {
                           id: pack.id,
+                          amount: 1,
                         })
                       }>
                       {formatMoney(

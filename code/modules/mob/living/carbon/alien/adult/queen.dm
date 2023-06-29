@@ -34,12 +34,9 @@
 /mob/living/carbon/alien/adult/royal/queen
 	name = "alien queen"
 	caste = "q"
-	maxHealth = 500
-	health = 500
+	maxHealth = 400
+	health = 400
 	icon_state = "alienq"
-	melee_damage_lower = 50
-	melee_damage_upper = 50
-	alien_speed = 2
 
 /mob/living/carbon/alien/adult/royal/queen/Initialize(mapload)
 	//there should only be one queen

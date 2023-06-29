@@ -236,15 +236,11 @@ function set_labels($payload, $labels, $remove) {
 function tag_pr($payload, $opened) {
 	//get the mergeable state
 	$url = $payload['pull_request']['url'];
-	$new_pull_request_payload = json_decode(github_apisend($url), TRUE);
-	if (isset($new_pull_request_payload['id']))
-		$payload['pull_request'] = $new_pull_request_payload;
+	$payload['pull_request'] = json_decode(github_apisend($url), TRUE);
 	if($payload['pull_request']['mergeable'] == null) {
 		//STILL not ready. Give it a bit, then try one more time
 		sleep(10);
-		$new_pull_request_payload = json_decode(github_apisend($url), TRUE);
-		if (isset($new_pull_request_payload['id']))
-			$payload['pull_request'] = $new_pull_request_payload;
+		$payload['pull_request'] = json_decode(github_apisend($url), TRUE);
 	}
 
 	$tags = array();
@@ -646,10 +642,10 @@ $no_changelog = false;
 function checkchangelog($payload) {
 	global $no_changelog;
 	if (!isset($payload['pull_request']) || !isset($payload['pull_request']['body'])) {
-		return array();
+		return;
 	}
 	if (!isset($payload['pull_request']['user']) || !isset($payload['pull_request']['user']['login'])) {
-		return array();
+		return;
 	}
 	$body = $payload['pull_request']['body'];
 

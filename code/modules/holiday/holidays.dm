@@ -659,26 +659,6 @@
 	drone_hat = /obj/item/clothing/head/costume/santa
 	mail_holiday = TRUE
 
-/datum/holiday/xmas/getStationPrefix()
-	return pick(
-		"Bible",
-		"Birthday",
-		"Chimney",
-		"Claus",
-		"Crucifixion",
-		"Elf",
-		"Fir",
-		"Ho Ho Ho",
-		"Jesus",
-		"Jolly",
-		"Merry",
-		"Present",
-		"Sack",
-		"Santa",
-		"Sleigh",
-		"Yule",
-	)
-
 /datum/holiday/xmas/greet()
 	return "Have a merry Christmas!"
 

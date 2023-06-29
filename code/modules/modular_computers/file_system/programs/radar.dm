@@ -10,11 +10,11 @@
 	size = 5
 	tgui_id = "NtosRadar"
 	///List of trackable entities. Updated by the scan() proc.
-	var/list/list/objects
+	var/list/objects
 	///Ref of the last trackable object selected by the user in the tgui window. Updated in the ui_act() proc.
-	var/selected
-	///Used to store when the next scan is available.
-	COOLDOWN_DECLARE(next_scan)
+	var/atom/selected
+	///Used to store when the next scan is available. Updated by the scan() proc.
+	var/next_scan = 0
 	///Used to keep track of the last value program_icon_state was set to, to prevent constant unnecessary update_appearance() calls
 	var/last_icon_state = ""
 	///Used by the tgui interface, themed NT or Syndicate.
@@ -24,12 +24,10 @@
 
 /datum/computer_file/program/radar/on_start(mob/living/user)
 	. = ..()
-	if(!.)
+	if(.)
+		START_PROCESSING(SSfastprocess, src)
 		return
-	if(COOLDOWN_FINISHED(src, next_scan))
-		// start with a scan without a cooldown, but don't scan if we *are* on cooldown already.
-		scan()
-	START_PROCESSING(SSfastprocess, src)
+	return FALSE
 
 /datum/computer_file/program/radar/kill_program()
 	objects = list()
@@ -49,8 +47,14 @@
 /datum/computer_file/program/radar/ui_data(mob/user)
 	var/list/data = list()
 	data["selected"] = selected
-	data["scanning"] = !COOLDOWN_FINISHED(src, next_scan)
-	data["object"] = objects
+	data["objects"] = list()
+	data["scanning"] = (world.time < next_scan)
+	for(var/list/i in objects)
+		var/list/objectdata = list(
+			ref = i["ref"],
+			name = i["name"],
+		)
+		data["object"] += list(objectdata)
 
 	data["target"] = list()
 	var/list/trackinfo = track()
@@ -59,28 +63,11 @@
 	return data
 
 /datum/computer_file/program/radar/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
-
 	switch(action)
 		if("selecttarget")
-			var/selected_new_ref = params["ref"]
-			if(selected_new_ref in trackable_object_refs())
-				selected = selected_new_ref
-			return TRUE
-
+			selected = params["ref"]
 		if("scan")
-			if(!COOLDOWN_FINISHED(src, next_scan))
-				return TRUE // update anyways
-
-			COOLDOWN_START(src, next_scan, 2 SECONDS)
 			scan()
-			return TRUE
-
-/// Returns all ref()s that are being tracked currently
-/datum/computer_file/program/radar/proc/trackable_object_refs()
-	var/list/all_refs = list()
-	for(var/list/object_list as anything in objects)
-		all_refs += object_list["ref"]
-	return all_refs
 
 /**
  *Updates tracking information of the selected target.
@@ -228,6 +215,9 @@
 	return locate(selected) in GLOB.human_list
 
 /datum/computer_file/program/radar/lifeline/scan()
+	if(world.time < next_scan)
+		return
+	next_scan = world.time + (2 SECONDS)
 	objects = list()
 	for(var/i in GLOB.human_list)
 		var/mob/living/carbon/human/humanoid = i
@@ -270,6 +260,9 @@
 	return locate(selected) in GLOB.janitor_devices
 
 /datum/computer_file/program/radar/custodial_locator/scan()
+	if(world.time < next_scan)
+		return
+	next_scan = world.time + (2 SECONDS)
 	objects = list()
 	for(var/obj/custodial_tools as anything in GLOB.janitor_devices)
 		if(!trackable(custodial_tools))
@@ -332,6 +325,9 @@
 	return SSpoints_of_interest.get_poi_atom_by_ref(selected)
 
 /datum/computer_file/program/radar/fission360/scan()
+	if(world.time < next_scan)
+		return
+	next_scan = world.time + (2 SECONDS)
 	objects = list()
 
 	// All the nukes
