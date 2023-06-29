@@ -10,7 +10,6 @@
 	// EFFIGY EDIT CHANGE END
 
 	coldmod = 0.5 //snails only come out when its cold and wet
-	speedmod = 6
 	siemens_coeff = 2 //snails are mostly water
 	liked_food = VEGETABLES | FRUIT | GROSS | RAW // EFFIGY EDIT ADD
 	disliked_food = DAIRY | ORANGES | SUGAR // EFFIGY EDIT ADD
