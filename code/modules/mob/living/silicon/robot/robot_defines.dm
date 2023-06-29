@@ -128,6 +128,9 @@
 	var/obj/item/hat
 	var/hat_offset = -3
 
+	var/robot_resting = FALSE // EffigyEdit Add
+	var/robot_rest_style = ROBOT_REST_NORMAL // EffigyEdit Add
+
 	///What types of mobs are allowed to ride/buckle to this mob
 	var/static/list/can_ride_typecache = typecacheof(/mob/living/carbon/human)
 	can_buckle = TRUE

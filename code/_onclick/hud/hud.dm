@@ -24,21 +24,6 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 /proc/ui_style2icon(ui_style)
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
 
-// EffigyEdit Add -  (#3 Customization - Ported from Skyrat)
-GLOBAL_LIST_INIT(available_erp_ui_styles, list(
-	"Glass" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/glass.dmi',
-	"Midnight" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/midnight.dmi',
-	"Retro" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/retro.dmi',
-	"Plasmafire" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/plasmafire.dmi',
-	"Slimecore" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/slimecore.dmi',
-	"Operative" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/operative.dmi',
-	"Clockwork" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/clockwork.dmi'
-))
-
-/proc/erp_ui_style2icon(ui_style)
-	return GLOB.available_erp_ui_styles[ui_style] || GLOB.available_erp_ui_styles[GLOB.available_erp_ui_styles[1]]
-// EffigyEdit Add End (#3 Customization - Ported from Skyrat)
-
 /datum/hud
 	var/mob/mymob
 
