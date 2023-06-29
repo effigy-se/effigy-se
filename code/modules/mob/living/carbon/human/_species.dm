@@ -1812,9 +1812,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/spec_unarmedattack(mob/living/carbon/human/user, atom/target, modifiers)
 	return FALSE
 
-
-// EffigyEdit Remove -  (#3 Customization - Ported from Skyrat)
-/*
 /// Returns a list of strings representing features this species has.
 /// Used by the preferences UI to know what buttons to show.
 /datum/species/proc/get_features()
@@ -1843,8 +1840,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	GLOB.features_by_species[type] = features
 
 	return features
-*/
-// EffigyEdit Remove End (#3 Customization - Ported from Skyrat)
+
+/datum/species/proc/apply_supplementary_body_changes(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE) // Effigy Edit Add - Character Customization
+	return
 
 /// Given a human, will adjust it before taking a picture for the preferences UI.
 /// This should create a CONSISTENT result, so the icons don't randomly change.
