@@ -2527,6 +2527,7 @@
 /obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden{
 	dir = 8
 	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
 "bxS" = (
@@ -5880,6 +5881,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/rack,
 /obj/machinery/camera/autoname/directional/north,
+/obj/item/pipe_dispenser,
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
 "doH" = (
@@ -7474,7 +7476,6 @@
 /area/station/service/chapel/office)
 "eoE" = (
 /obj/effect/turf_decal/trimline/yellow/warning,
-/obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 1
 	},
@@ -8071,7 +8072,7 @@
 /area/station/commons/fitness/recreation/entertainment)
 "eGx" = (
 /obj/machinery/door/airlock/maintenance_hatch,
-/obj/effect/mapping_helpers/airlock/access/any/service/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/pod/dark,
@@ -9625,10 +9626,6 @@
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "fyd" = (
-/obj/machinery/navbeacon{
-	codes_txt = "delivery;dir=2";
-	location = "Atmospherics"
-	},
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/visible{
 	dir = 8
 	},
@@ -15671,6 +15668,7 @@
 /obj/effect/turf_decal/siding/thinplating_new{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/iron/textured_large,
 /area/station/hallway/secondary/service)
 "iYM" = (
@@ -15860,13 +15858,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/textured_large,
 /area/station/commons/locker)
-"jfr" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/airalarm/directional/east,
-/turf/open/floor/plating,
-/area/station/engineering/atmos)
 "jfu" = (
 /obj/structure/barricade/security,
 /obj/effect/turf_decal/siding/dark{
@@ -20439,9 +20430,9 @@
 /turf/open/floor/plating/elevatorshaft,
 /area/station/security/prison)
 "lTL" = (
-/obj/item/pipe_dispenser,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/airalarm/directional/north,
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
 "lUl" = (
@@ -22502,13 +22493,10 @@
 /turf/open/floor/iron,
 /area/station/commons)
 "nix" = (
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/warning,
-/obj/machinery/navbeacon{
-	codes_txt = "delivery;dir=8";
-	location = "Engineering"
 	},
 /turf/open/floor/pod/dark,
 /area/station/maintenance/port/aft)
@@ -25734,6 +25722,17 @@
 	},
 /turf/open/floor/plating,
 /area/station/command/heads_quarters/hop)
+"phA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=2";
+	location = "Service Hall"
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/maintenance/port/central)
 "phI" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 1
@@ -29564,10 +29563,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/item/stack/tile/iron/edge,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/navbeacon{
-	codes_txt = "delivery;dir=8";
-	location = "Service Hall"
-	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/service)
 "rnf" = (
@@ -30112,6 +30107,10 @@
 "rFr" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=1";
+	location = "Engineering"
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/aft/greater)
@@ -31538,7 +31537,7 @@
 /turf/open/floor/grass,
 /area/station/security/prison/safe)
 "stF" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall,
 /area/station/science)
 "stL" = (
 /obj/structure/chair/comfy/black,
@@ -32422,6 +32421,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /obj/structure/sign/warning/radiation/rad_area/directional/north,
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=8";
+	location = "Atmospherics"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
 "sTh" = (
@@ -41088,7 +41092,6 @@
 /turf/open/space/basic,
 /area/space)
 "xBB" = (
-/obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
@@ -131559,11 +131562,11 @@ ggE
 fFk
 pvr
 aDZ
-ggE
-ggE
-ggE
-ggE
-ggE
+lQc
+lQc
+lQc
+lQc
+lQc
 gVX
 stF
 gKp
@@ -131820,7 +131823,7 @@ lQc
 cLy
 bGB
 cLy
-ggE
+lQc
 dKe
 gmH
 bgW
@@ -140035,7 +140038,7 @@ xSp
 fNa
 dAA
 cQZ
-iet
+phA
 iHs
 iHs
 iHs
@@ -143915,7 +143918,7 @@ gfR
 ino
 ino
 vaN
-jfr
+xdu
 xdu
 xdu
 xdu
@@ -144175,9 +144178,9 @@ bmd
 bmd
 bmd
 xnA
+xnA
+xnA
 gZm
-xnA
-xnA
 xnA
 gpw
 dGv
