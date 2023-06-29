@@ -20,6 +20,9 @@
 		"legs" = "Normal Legs"
 	)
 	payday_modifier = 1
+	liked_food = SEAFOOD | RAW
+	disliked_food = CLOTH | DAIRY
+	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,
