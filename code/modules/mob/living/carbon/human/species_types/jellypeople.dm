@@ -44,6 +44,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/jelly,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/jelly,
 	)
+	var/datum/action/innate/regenerate_limbs/regenerate_limbs
 
 /datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species, pref_load)
 	. = ..()
@@ -76,6 +77,7 @@
 	return ..()
 
 /datum/species/jelly/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	. = ..()
 	if(H.stat == DEAD) //can't farm slime jelly from a dead slime/jelly person indefinitely
 		return
 
@@ -249,6 +251,7 @@
 	bodies = old_species.bodies
 
 /datum/species/jelly/slime/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	. = ..()
 	if(H.blood_volume >= BLOOD_VOLUME_SLIME_SPLIT)
 		if(SPT_PROB(2.5, seconds_per_tick))
 			to_chat(H, span_notice("You feel very bloated!"))
@@ -257,8 +260,6 @@
 		H.blood_volume += 1.5 * seconds_per_tick
 		if(H.blood_volume <= BLOOD_VOLUME_LOSE_NUTRITION)
 			H.adjust_nutrition(-1.25 * seconds_per_tick)
-
-	..()
 
 /datum/action/innate/split_body
 	name = "Split Body"
