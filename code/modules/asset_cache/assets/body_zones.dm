@@ -5,7 +5,7 @@
 /datum/asset/simple/body_zones
 
 /datum/asset/simple/body_zones/register()
-	assets["body_zones.base_midnight.png"] = icon('icons/hud/screen_midnight.dmi', "zone_sel")
+	assets["body_zones.base_efcyan.png"] = icon('packages/ux/assets/hud/screen_efcyan.dmi', "zone_sel") // EffigyEdit Change - Custom HUD
 
 	add_limb(BODY_ZONE_HEAD)
 	add_limb(BODY_ZONE_CHEST)
