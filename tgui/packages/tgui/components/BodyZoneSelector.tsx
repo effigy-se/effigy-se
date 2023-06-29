@@ -75,7 +75,7 @@ export class BodyZoneSelector extends Component<
 
   render() {
     const { hoverZone } = this.state;
-    const { scale = 3, selectedZone, theme = 'midnight' } = this.props;
+    const { scale = 3, selectedZone, theme = 'efcyan' } = this.props; // EffigyEdit Change - Custom HUD
 
     return (
       <div
