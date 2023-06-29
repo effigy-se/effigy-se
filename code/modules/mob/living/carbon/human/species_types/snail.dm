@@ -14,8 +14,6 @@
 	coldmod = 0.5 //snails only come out when its cold and wet
 	speedmod = 6
 	siemens_coeff = 2 //snails are mostly water
-	liked_food = VEGETABLES | FRUIT | GROSS | RAW // EffigyEdit Add
-	disliked_food = DAIRY | ORANGES | SUGAR // EffigyEdit Add
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
 	eyes_icon = 'packages/adv_medical/assets/organs/snail_eyes.dmi' // EffigyEdit Add

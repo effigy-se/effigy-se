@@ -24,9 +24,6 @@
 		"head_acc" = "None",
 		"neck_acc" = "None"
 	)
-	liked_food = GRAIN | MEAT
-	disliked_food = CLOTH | GROSS | GORE
-	toxic_food = TOXIC
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
