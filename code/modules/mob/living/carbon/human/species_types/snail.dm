@@ -6,6 +6,8 @@
 		MUTCOLORS,
 	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
+		TRAIT_NO_UNDERWEAR,
 		TRAIT_NO_SLIP_ALL,
 		TRAIT_WATER_BREATHING,
 	)
