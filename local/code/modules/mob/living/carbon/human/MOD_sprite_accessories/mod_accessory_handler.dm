@@ -1,5 +1,5 @@
 // This DMI holds all of the overlayable textures for MODs
-#define HARDLIGHT_DMI 'packages/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
+#define HARDLIGHT_DMI 'local/icons/obj/clothing/modsuit/MOD_mask.dmi'
 
 /obj/item/mod/control/seal_part(obj/item/clothing/part, seal)
 	. = ..()

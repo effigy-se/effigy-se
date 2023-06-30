@@ -1,6 +1,6 @@
 // All available options
 // Remember these are read from:
-// 'packages/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
+// 'local/icons/obj/clothing/modsuit/MOD_mask.dmi'
 
 #define STANDARD_BLUE "standard_blue"
 #define ALERT_AMBER "alert_amber"

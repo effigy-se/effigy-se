@@ -1,5 +1,5 @@
 //	This DMI holds our radial icons for the 'hide mutant parts' verb
-#define HIDING_RADIAL_DMI 'packages/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/radial.dmi'
+#define HIDING_RADIAL_DMI 'local/icons/hud/radial_mutant.dmi'
 
 /mob/living/carbon/human
 	var/static/list/possible_genitals = list(ORGAN_SLOT_PENIS, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_VAGINA, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS)
