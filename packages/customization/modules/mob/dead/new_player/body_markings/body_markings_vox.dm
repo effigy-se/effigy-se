@@ -1,5 +1,5 @@
 /datum/body_marking/secondary/vox
-	icon = 'packages/customization/assets/body_markings/vox_secondary.dmi'
+	icon = 'local/icons/obj/mob/mutant/body_markings/vox_secondary.dmi'
 	recommended_species = list(SPECIES_VOX)
 
 /datum/body_marking/secondary/vox/vox
@@ -9,7 +9,7 @@
 
 /datum/body_marking/tertiary/vox
 	recommended_species = list(SPECIES_VOX)
-	icon = 'packages/customization/assets/body_markings/vox_tertiary.dmi'
+	icon = 'local/icons/obj/mob/mutant/body_markings/vox_tertiary.dmi'
 
 /datum/body_marking/tertiary/vox/tiger
 	name = "Vox Tiger Tattoo"

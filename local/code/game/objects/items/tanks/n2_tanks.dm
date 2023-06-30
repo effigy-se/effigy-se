@@ -20,8 +20,8 @@
 /obj/item/tank/internals/nitrogen/belt
 	icon = 'packages/customization/assets/tank.dmi'
 	worn_icon = 'packages/clothing/assets/mob/species/vox/belt.dmi'
-	lefthand_file = 'packages/customization/assets/inhands/equipment/tanks_lefthand.dmi'
-	righthand_file = 'packages/customization/assets/inhands/equipment/tanks_righthand.dmi'
+	lefthand_file = 'local/icons/obj/mob/inhands/equipment/tanks_lefthand.dmi'
+	righthand_file = 'local/icons/obj/mob/inhands/equipment/tanks_righthand.dmi'
 	icon_state = "nitrogen_extended"
 	inhand_icon_state = "nitrogen"
 	slot_flags = ITEM_SLOT_BELT

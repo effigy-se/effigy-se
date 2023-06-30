@@ -36,7 +36,7 @@
 		icon_to_use = worn_icon_vox
 
 	if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
-		icon_to_use = 'packages/customization/assets/mob/mod.dmi'
+		icon_to_use = 'local/icons/obj/mob/mod.dmi'
 		icon_state_to_use = "[module_icon_state]_digi"
 
 	var/add_overlay = TRUE
@@ -50,7 +50,7 @@
 		. += module_icon
 
 	if(has_head_sprite)
-		icon_to_use = 'packages/customization/assets/mob/mod.dmi'
+		icon_to_use = 'local/icons/obj/mob/mod.dmi'
 		icon_state_to_use = "[module_icon_state]_head"
 
 		if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_SNOUTED_VARIATION))

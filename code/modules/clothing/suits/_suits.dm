@@ -32,11 +32,11 @@
 	if(damaged_clothes)
 		// EFFIGY EDIT CHANGE START (Customization)
 		//. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]") //ORIGINAL
-		var/damagefile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'packages/customization/assets/mob/64x32_item_damage.dmi' : 'icons/effects/item_damage.dmi'
+		var/damagefile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'local/icons/obj/mob/64x32_item_damage.dmi' : 'icons/effects/item_damage.dmi'
 		. += mutable_appearance(damagefile2use, "damaged[blood_overlay_type]")
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
 		//. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood") //ORIGINAL
-		var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'packages/customization/assets/mob/64x32_blood.dmi' : 'icons/effects/blood.dmi'
+		var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'local/icons/obj/mob/64x32_blood.dmi' : 'icons/effects/blood.dmi'
 		. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
 		// EFFIGY EDIT CHANGE END
 
