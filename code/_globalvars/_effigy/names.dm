@@ -1,0 +1,8 @@
+GLOBAL_LIST_INIT(first_names_male_vulp, world.file2list("local/strings/first_male_vulp.txt"))
+GLOBAL_LIST_INIT(first_names_female_vulp, world.file2list("local/strings/first_female_vulp.txt"))
+GLOBAL_LIST_INIT(last_names_vulp, world.file2list("local/strings/last_vulp.txt"))
+GLOBAL_LIST_INIT(first_names_male_taj, world.file2list("local/strings/first_male_taj.txt"))
+GLOBAL_LIST_INIT(first_names_female_taj, world.file2list("local/strings/first_female_taj.txt"))
+GLOBAL_LIST_INIT(last_names_taj, world.file2list("local/strings/last_taj.txt"))
+GLOBAL_LIST_INIT(callsigns_nri, world.file2list("local/strings/callsigns_nri.txt"))
+GLOBAL_LIST_INIT(phonetic_alphabet_numbers, world.file2list("local/strings/phonetic_alphabet_numbers.txt"))

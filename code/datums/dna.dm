@@ -1,6 +1,4 @@
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
 /*
-/**
  * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
  * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
  * for these non-standard blocks to work, as well as the entire unique identity string.
@@ -20,35 +18,13 @@ GLOBAL_LIST_INIT(identity_block_lengths, list(
  * The same rules of the above also apply here, with the exception that this is for the unique_features string variable
  * (commonly abbreviated with uf) and its blocks. Both ui and uf have a standard block length of 3 ASCII characters.
  */
+// EffigyEdit Change - Customization
 GLOBAL_LIST_INIT(features_block_lengths, list(
 		"[DNA_MUTANT_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_MUTANT_COLOR_2_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_MUTANT_COLOR_3_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
 		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-	))
-
-/**
-
- * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
- * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
- * for these non-standard blocks to work, as well as the entire unique identity string.
- * Should you add a new ui block which size differ from the standard (again, 3 ASCII characters), like for example, a color,
- * please do not forget to also include it in this list in the following format:
- *  "[dna block number]" = dna block size,
- * Failure to do that may result in bugs. Thanks.
- */
-GLOBAL_LIST_INIT(identity_block_lengths, list(
-		"[DNA_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-		"[DNA_FACIAL_HAIR_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-		"[DNA_EYE_COLOR_LEFT_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-		"[DNA_EYE_COLOR_RIGHT_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-	))
-
-/**
- * The same rules of the above also apply here, with the exception that this is for the unique_features string variable
- * (commonly abbreviated with uf) and its blocks. Both ui and uf have a standard block length of 3 ASCII characters.
- */
-GLOBAL_LIST_INIT(features_block_lengths, list(
-		"[DNA_MUTANT_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
+		"[DNA_SKIN_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
 	))
 
 /**
@@ -73,8 +49,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	for(var/blocknumber in 1 to DNA_FEATURE_BLOCKS)
 		. += total_block_len
 		total_block_len += GET_UF_BLOCK_LEN(blocknumber)
-*/
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+
 /////////////////////////// DNA DATUM
 /datum/dna
 	///An md5 hash of the dna holder's real name
@@ -150,11 +125,11 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	new_dna.unique_features = unique_features
 	new_dna.blood_type = blood_type
 	new_dna.features = features.Copy()
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	new_dna.mutant_bodyparts = mutant_bodyparts.Copy()
 	new_dna.body_markings = body_markings.Copy()
 	new_dna.update_body_size()
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 	new_dna.species = new species.type
 	new_dna.species.species_traits = species.species_traits
 	//if the new DNA has a holder, transform them immediately, otherwise save it
@@ -225,7 +200,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	for(var/blocknum in 1 to DNA_UNI_IDENTITY_BLOCKS)
 		. += L[blocknum] || random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters)
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove - moved to local/code/datums/dna.dm
 /*
 /datum/dna/proc/generate_unique_features()
 	. = ""
@@ -267,9 +242,10 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 	return data.Join()
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove End
 
 /datum/dna/proc/generate_dna_blocks()
+
 	var/bonus
 	if(species?.inert_mutation)
 		bonus = GET_INITIALIZED_MUTATION(species.inert_mutation)
@@ -363,7 +339,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(DNA_HAIRSTYLE_BLOCK)
 			set_uni_identity_block(blocknumber, construct_block(GLOB.hairstyles_list.Find(H.hairstyle), GLOB.hairstyles_list.len))
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove - moved to local/code/datums/dna.dm
 /*
 /datum/dna/proc/update_uf_block(blocknumber)
 	if(!blocknumber)
@@ -397,10 +373,10 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			set_uni_feature_block(blocknumber, construct_block(GLOB.moth_markings_list.Find(features["moth_markings"]), GLOB.moth_markings_list.len))
 		if(DNA_MUSHROOM_CAPS_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.caps_list.Find(features["caps"]), GLOB.caps_list.len))
-*/
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
 		if(DNA_POD_HAIR_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.pod_hair_list.Find(features["pod_hair"]), GLOB.pod_hair_list.len))
+		*/
+		// EffigyEdit Remove End
 
 //Please use add_mutation or activate_mutation instead
 /datum/dna/proc/force_give(datum/mutation/human/HM)
@@ -471,8 +447,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	unique_enzymes = generate_unique_enzymes()
 	unique_features = generate_unique_features()
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
-/*
 /datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
 	if(newblood_type)
 		blood_type = newblood_type
@@ -480,10 +454,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	unique_identity = generate_unique_identity()
 	if(!skip_index) //I hate this
 		generate_dna_blocks()
-	features = random_features()
+	mutant_bodyparts = species.get_random_mutant_bodyparts(features) // EffigyEdit Change - Customization
 	unique_features = generate_unique_features()
-*/
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
 
 /datum/dna/stored //subtype used by brain mob's stored_dna
 
@@ -515,10 +487,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		else
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
-
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
-/*
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
+/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
 	if(mrace && has_dna())
@@ -537,6 +506,28 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if (old_species.properly_gained)
 			old_species.on_species_loss(src, new_race, pref_load)
 
+		// EffigyEdit Add - Customization
+		if(override_mutantparts && override_mutantparts.len)
+			for(var/feature in dna.mutant_bodyparts)
+				override_mutantparts[feature] = dna.mutant_bodyparts[feature]
+			dna.mutant_bodyparts = override_mutantparts
+
+		if(override_markings && override_markings.len)
+			for(var/feature in dna.body_markings)
+				override_markings[feature] = dna.body_markings[feature]
+			dna.body_markings = override_markings
+
+		if(override_features && override_features.len)
+			for(var/feature in dna.features)
+				override_features[feature] = dna.features[feature]
+			dna.features = override_features
+		// EffigyEdit Add End
+
+		apply_customizable_dna_features_to_species()
+		dna.unique_features = dna.generate_unique_features()
+
+		dna.update_body_size()
+
 		dna.species.on_species_gain(src, old_species, pref_load)
 		if(ishuman(src))
 			qdel(language_holder)
@@ -544,9 +535,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			language_holder = new species_holder(src)
 		update_atom_languages()
 		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
-
-*/
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()

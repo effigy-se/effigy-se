@@ -37,7 +37,7 @@
 	icon_state = "plushie_cali"
 	attack_verb_continuous = list("fixes", "updates", "hugs")
 	attack_verb_simple = list("fix", "update", "hug")
-	squeak_override = list('packages/customization/game/objects/items/sound/deerplush.ogg' = 1)
+	squeak_override = list('local/sound/items/plushes/deerplush.ogg' = 1)
 
 /obj/item/toy/plush/effigy/blue_cat
 	name = "blue cat plushie"
@@ -148,7 +148,7 @@
 	icon_state = "plush_lonie"
 	attack_verb_continuous = list("snuggles", "nibbles", "awoos", "tail whaps")
 	attack_verb_simple = list("snuggle", "nibble", "awoo", "tail whap")
-	squeak_override = list('packages/customization/game/objects/items/sound/merowr.ogg' = 1)
+	squeak_override = list('local/sound/items/plushes/merowr.ogg' = 1)
 
 //Donation reward for Kitsun
 /obj/item/toy/plush/effigy/jecca

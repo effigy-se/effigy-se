@@ -51,7 +51,7 @@
 /obj/item/organ/internal/brain/synth/circuit
 	name = "compact AI circuit"
 	desc = "A compact and extremely complex circuit, perfectly dimensioned to fit in the same slot as a synthetic-compatible positronic brain. It is usually slotted into the chest of synthetic crewmembers."
-	icon = 'packages/customization/assets/alt_silicon_brains.dmi'
+	icon = 'local/icons/obj/mob/silicon/alt_silicon_brains.dmi'
 	icon_state = "circuit-occupied"
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'

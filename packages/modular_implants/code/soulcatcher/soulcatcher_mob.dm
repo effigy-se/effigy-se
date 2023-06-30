@@ -156,9 +156,9 @@
 
 /datum/action/innate/leave_soulcatcher
 	name = "Leave Soulcatcher"
-	background_icon = 'packages/customization/assets/mob/actions/action_backgrounds.dmi'
+	background_icon = 'local/icons/obj/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
-	button_icon = 'packages/customization/assets/mob/actions/actions_nif.dmi'
+	button_icon = 'local/icons/obj/mob/actions/actions_nif.dmi'
 	button_icon_state = "soulcatcher_exit"
 
 /datum/action/innate/leave_soulcatcher/Activate()
