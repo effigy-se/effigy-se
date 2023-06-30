@@ -42,7 +42,7 @@
 	for(var/t in turfs) //Go through all the turfs and generate them
 		var/turf/gen_turf = t
 
-		if(istype(gen_turf, /turf/open/space/mirage) || istype(gen_turf, /turf/open/openspace/ocean))
+		if(istype(gen_turf, /turf/open/openspace/ocean))
 			continue
 
 		var/drift_x = (gen_turf.x + rand(-BIOME_RANDOM_SQUARE_DRIFT, BIOME_RANDOM_SQUARE_DRIFT)) / perlin_zoom
