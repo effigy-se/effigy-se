@@ -18,5 +18,5 @@
 		"kai", "ka", "ke", "keng", "kong", "kuang", "lang", "nei", "qian", "qiang", "rui", "shuai", "teng", "zu"
 	)
 	icon_state = "torii"
-	icon = 'packages/customization/assets/language.dmi'
+	icon = 'local/icons/misc/language.dmi'
 	default_priority = 94

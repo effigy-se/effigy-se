@@ -1,5 +1,5 @@
 /datum/sprite_accessory/fluff/moth
-	icon = 'packages/customization/assets/sprite_accessory/moth_fluff.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/moth_fluff.dmi'
 	default_color = "#FFFFFF"
 	key = "fluff"
 	generic = "Fluff"

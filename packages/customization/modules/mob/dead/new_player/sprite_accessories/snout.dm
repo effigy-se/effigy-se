@@ -1,7 +1,7 @@
 /datum/sprite_accessory/snouts
 	key = "snout"
 	generic = "Snout"
-	icon = 'packages/customization/assets/sprite_accessory/lizard_snouts.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/lizard_snouts.dmi'
 	flags_for_organ = SPRITE_ACCESSORY_USE_MUZZLED_SPRITE
 	organ_type = /obj/item/organ/external/snout
 	recommended_species = list(SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
@@ -59,7 +59,7 @@
 	factual = FALSE
 
 /datum/sprite_accessory/snouts/mammal
-	icon = 'packages/customization/assets/sprite_accessory/snouts.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/snouts.dmi'
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMANOID)
 

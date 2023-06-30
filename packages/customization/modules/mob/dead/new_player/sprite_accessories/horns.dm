@@ -2,7 +2,7 @@
 	key = "horns"
 	generic = "Horns"
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
-	icon = 'packages/customization/assets/sprite_accessory/horns.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/horns.dmi'
 	default_color = "#555555"
 	genetic = TRUE
 	organ_type = /obj/item/organ/external/horns
@@ -59,7 +59,7 @@
 	icon_state = "oni_large"
 
 /datum/sprite_accessory/horns/big
-	icon = 'packages/customization/assets/sprite_accessory/horns_big.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/horns_big.dmi'
 
 /datum/sprite_accessory/horns/big/antlers
 	name = "Antlers"

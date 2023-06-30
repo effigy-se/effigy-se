@@ -2,7 +2,7 @@
 	key = "tail"
 	generic = "Tail"
 	organ_type = /obj/item/organ/external/tail
-	icon = 'packages/customization/assets/sprite_accessory/tails.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/tails.dmi'
 	special_render_case = TRUE
 	special_colorize = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
@@ -40,7 +40,7 @@
 	factual = FALSE
 
 /datum/sprite_accessory/tails/lizard
-	icon = 'packages/customization/assets/sprite_accessory/tails.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/tails.dmi'
 	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
 	organ_type = /obj/item/organ/external/tail/lizard
 
@@ -49,7 +49,7 @@
 	organ_type = /obj/item/organ/external/tail/cat
 
 /datum/sprite_accessory/tails/human/cat
-	icon = 'packages/customization/assets/sprite_accessory/tails.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/tails.dmi'
 	icon_state = "cat"
 	color_src = USE_ONE_COLOR
 
@@ -84,7 +84,7 @@
 	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_VULP, SPECIES_HUMANOID, SPECIES_GHOUL)
 
 /datum/sprite_accessory/tails/mammal/wagging/big
-	icon = 'packages/customization/assets/sprite_accessory/tails_big.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/tails_big.dmi'
 	dimension_x = 64
 	center = TRUE
 

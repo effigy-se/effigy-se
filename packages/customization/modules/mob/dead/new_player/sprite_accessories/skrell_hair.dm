@@ -1,5 +1,5 @@
 /datum/sprite_accessory/skrell_hair
-	icon = 'packages/customization/assets/sprite_accessory/skrell_hair.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/skrell_hair.dmi'
 	generic = "Skrell Headtails"
 	key = "skrell_hair"
 	color_src = USE_ONE_COLOR

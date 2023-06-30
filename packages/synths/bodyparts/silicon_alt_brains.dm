@@ -3,7 +3,7 @@
 /obj/item/mmi/posibrain/circuit
 	name = "compact AI circuit"
 	desc = "A compact circuit, perfectly dimensioned to fit in the same slot as a cyborg's positronic brain."
-	icon = 'packages/customization/assets/alt_silicon_brains.dmi'
+	icon = 'local/icons/obj/mob/silicon/alt_silicon_brains.dmi'
 	icon_state = "circuit"
 	base_icon_state = "circuit"
 	inhand_icon_state = "electronic"

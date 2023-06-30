@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/spines
 	key = "spines"
 	generic = "Spines"
-	icon = 'packages/customization/assets/mutant_bodyparts.dmi'
+	icon = 'local/icons/obj/mob/species/mutant/bodyparts.dmi'
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list(SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)

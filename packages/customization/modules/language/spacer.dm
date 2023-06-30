@@ -7,5 +7,5 @@
 		"ada", "zir", "bian", "ach", "usk", "ado", "ich", "cuan", "iga", "qing", "le", "que", "ki", "qaf", "dei", "eta"
 	)
 	icon_state = "spacer"
-	icon = 'packages/customization/assets/language.dmi'
+	icon = 'local/icons/misc/language.dmi'
 	default_priority = 50

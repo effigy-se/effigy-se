@@ -8,5 +8,5 @@
 		"ha", "take", "yaer", "cur", "yoro", "armn", "tirtu", "ren", "wap", "wop", "ran", "cra", "wih"
 	)
 	icon_state = "gutter"
-	icon = 'packages/customization/assets/language.dmi'
+	icon = 'local/icons/misc/language.dmi'
 	default_priority = 40

@@ -19,5 +19,5 @@
 		"zem", "lya", "kan", "ce", "la", "ri", "јa", "snezh", "ne", "pa", "da", "vi", "ne"
 	)
 	icon_state = "panslavic"
-	icon = 'packages/customization/assets/language.dmi'
+	icon = 'local/icons/misc/language.dmi'
 	default_priority = 95

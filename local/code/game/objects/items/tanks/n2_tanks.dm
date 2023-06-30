@@ -18,7 +18,7 @@
 	air_contents.gases[/datum/gas/nitrogen][MOLES] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 
 /obj/item/tank/internals/nitrogen/belt
-	icon = 'packages/customization/assets/tank.dmi'
+	icon = 'local/icons/obj/atmospherics/tank.dmi'
 	worn_icon = 'packages/clothing/assets/mob/species/vox/belt.dmi'
 	lefthand_file = 'local/icons/obj/mob/inhands/equipment/tanks_lefthand.dmi'
 	righthand_file = 'local/icons/obj/mob/inhands/equipment/tanks_righthand.dmi'

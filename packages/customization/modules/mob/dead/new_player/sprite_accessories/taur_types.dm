@@ -16,7 +16,7 @@
 	return taur.taur_mode
 
 /datum/sprite_accessory/taur
-	icon = 'packages/customization/assets/sprite_accessory/taur.dmi'
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/taur.dmi'
 	key = "taur"
 	generic = "Taur Type"
 	color_src = USE_MATRIXED_COLORS

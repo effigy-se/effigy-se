@@ -12,4 +12,4 @@
 		"di", "tol", "mi", "solari", "ite", "domum"
 	)
 	icon_state = "solcommon"
-	icon = 'packages/customization/assets/language.dmi'
+	icon = 'local/icons/misc/language.dmi'
