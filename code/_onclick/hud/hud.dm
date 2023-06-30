@@ -6,19 +6,19 @@
 
 // The default UI style is the first one in the list
 GLOBAL_LIST_INIT(available_ui_styles, list(
-	"Effigy Cyan" = 'packages/ux/assets/hud/screen_efcyan.dmi',
-	"Effigy Magenta" = 'packages/ux/assets/hud/screen_efmagenta.dmi',
-	"Effigy Yellow" = 'packages/ux/assets/hud/screen_efyellow.dmi',
-	"Effigy Green" = 'packages/ux/assets/hud/screen_efgreen.dmi',
-	"Glass" = 'packages/ux/assets/hud/screen_glass.dmi',
-	"Midnight" = 'packages/ux/assets/hud/screen_midnight.dmi',
-	"Retro" = 'packages/ux/assets/hud/screen_retro.dmi',
-	"Plasmafire" = 'packages/ux/assets/hud/screen_plasmafire.dmi',
-	"Slimecore" = 'packages/ux/assets/hud/screen_slimecore.dmi',
-	"Operative" = 'packages/ux/assets/hud/screen_operative.dmi',
-	"Clockwork" = 'packages/ux/assets/hud/screen_clockwork.dmi',
-	"Trasen-Knox" = 'packages/ux/assets/hud/screen_trasenknox.dmi',
-	"Detective" = 'packages/ux/assets/hud/screen_detective.dmi',
+	"Effigy Cyan" = 'local/icons/hud/screen_efcyan.dmi',
+	"Effigy Magenta" = 'local/icons/hud/screen_efmagenta.dmi',
+	"Effigy Yellow" = 'local/icons/hud/screen_efyellow.dmi',
+	"Effigy Green" = 'local/icons/hud/screen_efgreen.dmi',
+	"Glass" = 'local/icons/hud/screen_glass.dmi',
+	"Midnight" = 'local/icons/hud/screen_midnight.dmi',
+	"Retro" = 'local/icons/hud/screen_retro.dmi',
+	"Plasmafire" = 'local/icons/hud/screen_plasmafire.dmi',
+	"Slimecore" = 'local/icons/hud/screen_slimecore.dmi',
+	"Operative" = 'local/icons/hud/screen_operative.dmi',
+	"Clockwork" = 'local/icons/hud/screen_clockwork.dmi',
+	"Trasen-Knox" = 'local/icons/hud/screen_trasenknox.dmi',
+	"Detective" = 'local/icons/hud/screen_detective.dmi',
 ))
 
 /proc/ui_style2icon(ui_style)

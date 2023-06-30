@@ -20,4 +20,4 @@
 //Families
 #define ui_wanted_lvl "NORTH,11"
 
-#define GENERAL_SCREEN_ICONS 'packages/ux/assets/hud/screen_gen.dmi'
+#define GENERAL_SCREEN_ICONS 'local/icons/hud/screen_gen.dmi'

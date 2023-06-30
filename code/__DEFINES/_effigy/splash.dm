@@ -1,7 +1,7 @@
 #define DEFAULT_TITLE_MAP_LOADTIME (40 SECONDS)
 
-#define DEFAULT_TITLE_SCREEN_IMAGE 'packages/splash/assets/title.png'
-#define DEFAULT_TITLE_LOADING_SCREEN 'packages/splash/assets/loading.gif'
+#define DEFAULT_TITLE_SCREEN_IMAGE 'local/icons/runtime/title-x2.png'
+#define DEFAULT_TITLE_LOADING_SCREEN 'local/icons/runtime/loading.gif'
 
 #define TITLE_PROGRESS_CACHE_FILE "data/progress_cache.json"
 #define TITLE_PROGRESS_CACHE_VERSION "2"
