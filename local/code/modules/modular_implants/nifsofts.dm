@@ -142,7 +142,7 @@
 /obj/item/disk/nifsoft_uploader
 	name = "Generic NIFSoft datadisk"
 	desc = "A datadisk that can be used to upload a loaded NIFSoft to the user's NIF"
-	icon = 'packages/modular_implants/icons/obj/disks.dmi'
+	icon = 'local/icons/obj/disks.dmi'
 	icon_state = "base_disk"
 	///What NIFSoft is currently loaded in?
 	var/datum/nifsoft/loaded_nifsoft = /datum/nifsoft

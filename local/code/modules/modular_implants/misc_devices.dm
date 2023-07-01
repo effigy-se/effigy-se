@@ -3,7 +3,7 @@
 	name = "Lopland 'Wrangler' NIF-Cutter"
 	desc = "A small device that lets the user remove NIFSofts from a NIF user"
 	special_desc = "Given the relatively recent and sudden proliferation of NIFs, their use in crime both petty and organized has skyrocketed in recent years. The existence of nanomachine-based real-time burst communication that cannot be effectively monitored or hacked into has given most PMCs cause enough for concern to invent their own devices. This one is a 'Wrangler' model NIF-Cutter, used for crudely wiping programs directly off a user's Framework.."
-	icon = 'packages/modular_implants/icons/obj/devices.dmi'
+	icon = 'local/icons/obj/devices.dmi'
 	icon_state = "nifsoft_remover"
 
 	///Is a disk with the corresponding NIFSoft created when said NIFSoft is removed?
@@ -64,7 +64,7 @@
 	name = "Cerulean NIF Regenerator"
 	desc = "A repair kit that allows for NIFs to be repaired without the use of surgery"
 	special_desc = "The effects of capitalism and industry run deep, and they run within the Nanite Implant Framework industry as well. Frameworks, complicated devices as they are, are normally locked at the firmware level to requiring specific 'approved' brands of repair paste or repair-docks. This hacked-kit has been developed by the Altspace Coven as a freeware alternative, spread far and wide throughout extra-Solarian space for quality of life for users located on the peripheries of society."
-	icon = 'packages/modular_implants/icons/obj/devices.dmi'
+	icon = 'local/icons/obj/devices.dmi'
 	icon_state = "repair_paste"
 	w_class = WEIGHT_CLASS_SMALL
 	///How much does this repair each time it is used?
