@@ -717,7 +717,7 @@
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/bag/sheetsnatcher/borg,
 		/obj/item/gun/energy/recharge/kinetic_accelerator/cyborg,
-		/obj/item/kinetic_crusher,
+		/obj/item/kinetic_crusher, //EffigyEdit Add - Borgs
 		/obj/item/gps/cyborg,
 		/obj/item/stack/marker_beacon,
 	)
