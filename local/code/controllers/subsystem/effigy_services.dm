@@ -10,14 +10,6 @@ SUBSYSTEM_DEF(effigy)
 	/// Our API key
 	var/efapi_key
 
-/datum/effigy_account_link
-	var/ckey
-	var/effigy_id
-
-/datum/effigy_account_link/New(ckey, effigy_id)
-	src.ckey = ckey
-	src.effigy_id = effigy_id
-
 /datum/controller/subsystem/effigy/Initialize()
 	// Check for enable
 	if(!CONFIG_GET(flag/use_effigy_api))

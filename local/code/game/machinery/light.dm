@@ -6,8 +6,8 @@
 	light_power = 1.25
 
 /obj/machinery/light
-	icon = 'packages/gfx/assets/obj/lighting.dmi'
-	overlay_icon = 'packages/gfx/assets/obj/lighting_overlay.dmi'
+	icon = 'local/icons/obj/lighting.dmi'
+	overlay_icon = 'local/icons/obj/lighting_overlay.dmi'
 	brightness = 6.5
 	fire_brightness = 4.5
 	fire_colour = "#D47F9B"
@@ -71,7 +71,7 @@
 			use_power = ACTIVE_POWER_USE
 			set_light(new_brightness, new_power, new_color)
 		//if(play_sound)
-		//	playsound(src.loc, 'packages/gfx/assets/obj/light_on.ogg', 65, 1)
+		//	playsound(src.loc, 'local/icons/obj/light_on.ogg', 65, 1)
 
 /obj/machinery/light/proc/start_flickering()
 	on = FALSE
@@ -114,9 +114,9 @@
 		start_flickering()
 
 /obj/item/light/tube
-	icon = 'packages/gfx/assets/obj/lighting.dmi'
-	lefthand_file = 'packages/gfx/assets/obj/lights_lefthand.dmi'
-	righthand_file = 'packages/gfx/assets/obj/lights_righthand.dmi'
+	icon = 'local/icons/obj/lighting.dmi'
+	lefthand_file = 'local/icons/obj/lights_lefthand.dmi'
+	righthand_file = 'local/icons/obj/lights_righthand.dmi'
 
 
 /obj/machinery/light/multitool_act(mob/living/user, obj/item/multitool)

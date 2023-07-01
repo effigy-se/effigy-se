@@ -1,7 +1,7 @@
 /obj/item/food/canned/tuna
 	name = "can of tuna"
 	desc = "You can tune a piano, but you can't tuna fish."
-	icon = 'packages/food/assets/irnbru.dmi'
+	icon = 'local/icons/obj/food/irnbru.dmi'
 	icon_state = "tunacan"
 	trash_type = /obj/item/trash/can/food/tuna
 	food_reagents = list(
@@ -14,5 +14,5 @@
 
 /obj/item/trash/can/food/tuna
 	name = "can of tuna"
-	icon = 'packages/food/assets/irnbru.dmi'
+	icon = 'local/icons/obj/food/irnbru.dmi'
 	icon_state = "tunacan_empty"

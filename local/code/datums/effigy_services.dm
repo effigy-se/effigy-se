@@ -56,3 +56,11 @@
 	request.prepare(method, url, body, headers)
 
 	return request
+
+/datum/effigy_account_link
+	var/ckey
+	var/effigy_id
+
+/datum/effigy_account_link/New(ckey, effigy_id)
+	src.ckey = ckey
+	src.effigy_id = effigy_id

@@ -135,7 +135,7 @@
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
-	icon = 'icons/obj/medical/rollerbed.dmi'
+	icon = 'local/icons/obj/medical/rollerbed.dmi' // EffigyEdit Change - Custom Icon
 	icon_state = "folded"
 	w_class = WEIGHT_CLASS_NORMAL // No more excuses, stop getting blood everywhere
 
