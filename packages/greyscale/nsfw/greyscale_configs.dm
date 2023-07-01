@@ -6,22 +6,22 @@
 
 /datum/greyscale_config/ballgag
 	name = "Ball Gag"
-	icon_file = 'packages/lewd/assets/obj/lewd_clothing/lewd_masks.dmi'
+	icon_file = 'local/icons/lewd/obj/lewd_clothing/lewd_masks.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/mask/ballgag.json'
 
 /datum/greyscale_config/ballgag/worn
 	name = "Ball Gag Worn"
-	icon_file = 'packages/lewd/assets/mob/lewd_clothing/lewd_masks.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_clothing/lewd_masks.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/mask/ballgag_worn.json'
 
 /datum/greyscale_config/ballgag/left_hand
 	name = "Ball Gag Left Hand"
-	icon_file = 'packages/lewd/assets/mob/lewd_inhands/lewd_inhand_left.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_inhands/lewd_inhand_left.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/mask/ballgag_inhand_left.json'
 
 /datum/greyscale_config/ballgag/right_hand
 	name = "Ball Gag Right Hand"
-	icon_file = 'packages/lewd/assets/mob/lewd_inhands/lewd_inhand_right.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_inhands/lewd_inhand_right.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/mask/ballgag_inhand_right.json'
 
 /datum/greyscale_config/ballgag/choking_small
@@ -40,34 +40,34 @@
 
 /datum/greyscale_config/shibari_stand
 	name = "Shibari Stand"
-	icon_file = 'packages/lewd/assets/obj/lewd_structures/shibari_stand.dmi'
+	icon_file = 'local/icons/lewd/obj/lewd_structures/shibari_stand.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/structures/shibari_stand.json'
 
 /datum/greyscale_config/shibari_stand_item
 	name = "Shibari Stand Item"
-	icon_file = 'packages/lewd/assets/obj/lewd_structures/bdsm_furniture.dmi'
+	icon_file = 'local/icons/lewd/obj/lewd_structures/bdsm_furniture.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/items/shibari_stand_item.json'
 
 /datum/greyscale_config/shibari_stand_ropes
 	name = "Shibari Stand Rope Overlays"
-	icon_file = 'packages/lewd/assets/obj/lewd_structures/shibari_stand.dmi'
+	icon_file = 'local/icons/lewd/obj/lewd_structures/shibari_stand.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/structures/shibari_stand_ropes.json'
 
 //shibari
 
 /datum/greyscale_config/shibari_rope
 	name = "Shibari Rope"
-	icon_file = 'packages/lewd/assets/obj/lewd_items/lewd_items.dmi'
+	icon_file = 'local/icons/lewd/obj/lewd_items/lewd_items.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/items/shibari.json'
 
 /datum/greyscale_config/shibari_rope_inhand_left
 	name = "Shibari Rope inhand left"
-	icon_file = 'packages/lewd/assets/mob/lewd_inhands/lewd_inhand_left.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_inhands/lewd_inhand_left.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/items/shibari_inhands.json'
 
 /datum/greyscale_config/shibari_rope_inhand_right
 	name = "Shibari Rope inhand right"
-	icon_file = 'packages/lewd/assets/mob/lewd_inhands/lewd_inhand_right.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_inhands/lewd_inhand_right.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/items/shibari_inhands.json'
 
 /datum/greyscale_config/shibari_rope/med
@@ -78,32 +78,32 @@
 
 /datum/greyscale_config/shibari_clothes
 	name = "Shibari Clothes"
-	icon_file = 'packages/lewd/assets/obj/lewd_clothing/lewd_uniform.dmi'
+	icon_file = 'local/icons/lewd/obj/lewd_clothing/lewd_uniform.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/body.json'
 
 /datum/greyscale_config/shibari_worn
 	name = "Shibari"
-	icon_file = 'packages/lewd/assets/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/body.json'
 
 /datum/greyscale_config/shibari_worn_digi
 	name = "Shibari Digi"
-	icon_file = 'packages/lewd/assets/mob/lewd_clothing/lewd_uniform/lewd_uniform-digi.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_clothing/lewd_uniform/lewd_uniform-digi.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/body.json'
 
 /datum/greyscale_config/shibari_worn_taur_snake
 	name = "Shibari Taur Snake"
-	icon_file = 'packages/lewd/assets/mob/lewd_clothing/lewd_uniform/lewd_uniform-snake.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_clothing/lewd_uniform/lewd_uniform-snake.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/body.json'
 
 /datum/greyscale_config/shibari_worn_taur_paw
 	name = "Shibari Taur Paw"
-	icon_file = 'packages/lewd/assets/mob/lewd_clothing/lewd_uniform/lewd_uniform-paw.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_clothing/lewd_uniform/lewd_uniform-paw.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/body.json'
 
 /datum/greyscale_config/shibari_worn_taur_hoof
 	name = "Shibari Taur Hoof"
-	icon_file = 'packages/lewd/assets/mob/lewd_clothing/lewd_uniform/lewd_uniform-hoof.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_clothing/lewd_uniform/lewd_uniform-hoof.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/body.json'
 
 //body
@@ -188,28 +188,28 @@
 
 /datum/greyscale_config/shibari_clothes/hands
 	name = "Shibari Hands Icon"
-	icon_file = 'packages/lewd/assets/obj/lewd_clothing/lewd_gloves.dmi'
+	icon_file = 'local/icons/lewd/obj/lewd_clothing/lewd_gloves.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/hands.json'
 
 /datum/greyscale_config/shibari_worn/hands
 	name = "Shibari Hands"
-	icon_file = 'packages/lewd/assets/mob/lewd_clothing/lewd_gloves.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_clothing/lewd_gloves.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/hands.json'
 
 //legs
 
 /datum/greyscale_config/shibari_clothes/legs
 	name = "Shibari Legs Icon"
-	icon_file = 'packages/lewd/assets/obj/lewd_clothing/lewd_shoes.dmi'
+	icon_file = 'local/icons/lewd/obj/lewd_clothing/lewd_shoes.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/legs.json'
 
 /datum/greyscale_config/shibari_worn/legs
 	name = "Shibari Legs"
-	icon_file = 'packages/lewd/assets/mob/lewd_clothing/lewd_shoes.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_clothing/lewd_shoes.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/legs.json'
 
 /datum/greyscale_config/shibari_worn_digi/legs
 	name = "Shibari Legs Digi"
-	icon_file = 'packages/lewd/assets/mob/lewd_clothing/lewd_shoes_digi.dmi'
+	icon_file = 'local/icons/lewd/mob/lewd_clothing/lewd_shoes_digi.dmi'
 	json_config = 'packages/greyscale/nsfw/json_configs/clothes/legs.json'
 
