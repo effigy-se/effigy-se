@@ -1,8 +1,8 @@
 /obj/item/clothing/neck/chaplain
 	name = "bishop's cloak"
 	desc = "Become the space pope."
-	icon = 'packages/clothing/assets/obj/neck.dmi'
-	worn_icon = 'packages/clothing/assets/mob/neck.dmi'
+	icon = 'local/icons/obj/clothing/neck.dmi'
+	worn_icon = 'local/icons/mob/clothing/neck.dmi'
 	icon_state = "bishopcloak"
 
 /obj/item/clothing/neck/chaplain/black
@@ -18,8 +18,8 @@
 	desc = "A sand covered cloak, there seems to be a small deer head with antlers embroidered inside."
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
-	icon = 'packages/clothing/assets/obj/neck.dmi'
-	worn_icon = 'packages/clothing/assets/mob/neck.dmi'
+	icon = 'local/icons/obj/clothing/neck.dmi'
+	worn_icon = 'local/icons/mob/clothing/neck.dmi'
 	icon_state = "cowboy_poncho"
 	heat_protection = CHEST
 

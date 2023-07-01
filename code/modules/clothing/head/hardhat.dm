@@ -144,7 +144,7 @@
 	// EFFIGY EDIT ADD START
 	var/mob/living/carbon/carbon_user = user
 	if(carbon_user.dna.species.mutant_bodyparts["snout"])
-		visor_sprite_path = 'packages/clothing/assets/mob/head_muzzled.dmi'
+		visor_sprite_path = 'local/icons/mob/clothing/head_muzzled.dmi'
 	else
 		visor_sprite_path = 'icons/mob/clothing/head/utility.dmi'	// EFFIGY EDIT CHANGE
 	update_appearance()

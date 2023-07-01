@@ -2,7 +2,7 @@
 	name = "airlock assembly"
 	icon = 'icons/obj/doors/airlocks/station/public.dmi'
 	icon_state = "construction"
-	var/overlays_file = 'packages/gfx/assets/obj/airlock/station/overlays.dmi'
+	var/overlays_file = 'local/icons/obj/airlock/station/overlays.dmi'
 	anchored = FALSE
 	density = TRUE
 	max_integrity = 200

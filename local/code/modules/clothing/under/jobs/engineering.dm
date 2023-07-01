@@ -1,17 +1,17 @@
 /obj/item/clothing/under/rank/engineering
-	worn_icon_digi = 'packages/clothing/assets/mob/under/engineering_digi.dmi' // Anything that was in the engineering.dmi, should be in the engineering_digi.dmi
+	worn_icon_digi = 'local/icons/mob/clothing/under/engineering_digi.dmi' // Anything that was in the engineering.dmi, should be in the engineering_digi.dmi
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat
-	icon = 'packages/clothing/assets/obj/under/engineering.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/engineering.dmi'
+	icon = 'local/icons/obj/clothing/under/engineering.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/engineering.dmi'
 
 /obj/item/clothing/under/rank/engineering/chief_engineer/skyrat
-	icon = 'packages/clothing/assets/obj/under/engineering.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/engineering.dmi'
+	icon = 'local/icons/obj/clothing/under/engineering.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/engineering.dmi'
 
 /obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat
-	icon = 'packages/clothing/assets/obj/under/engineering.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/engineering.dmi'
+	icon = 'local/icons/obj/clothing/under/engineering.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/engineering.dmi'
 
 /*
 *	ENGINEER

@@ -1,5 +1,6 @@
 /obj/item/radio/intercom
 	name = "station intercom"
+	icon = 'local/icons/obj/radio.dmi' // EffigyEdit Change - Custom Icon
 	desc = "Talk through this."
 	icon_state = "intercom"
 	anchored = TRUE
@@ -175,6 +176,7 @@
 /obj/item/wallframe/intercom
 	name = "intercom frame"
 	desc = "A ready-to-go intercom. Just slap it on a wall and screw it in!"
+	icon = 'local/icons/obj/radio.dmi' // EffigyEdit Change - Custom Icon
 	icon_state = "intercom"
 	result_path = /obj/item/radio/intercom/unscrewed
 	pixel_shift = 26

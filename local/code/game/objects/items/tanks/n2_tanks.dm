@@ -19,7 +19,7 @@
 
 /obj/item/tank/internals/nitrogen/belt
 	icon = 'local/icons/obj/atmospherics/tank.dmi'
-	worn_icon = 'packages/clothing/assets/mob/species/vox/belt.dmi'
+	worn_icon = 'local/icons/mob/clothing/species/vox/belt.dmi'
 	lefthand_file = 'local/icons/obj/mob/inhands/equipment/tanks_lefthand.dmi'
 	righthand_file = 'local/icons/obj/mob/inhands/equipment/tanks_righthand.dmi'
 	icon_state = "nitrogen_extended"

@@ -4,20 +4,20 @@
 
 //Define worn_icon_digi below here for suits so we don't have to make whole new .dm files for each
 /obj/item/clothing/suit/bio_suit
-	worn_icon_digi = 'packages/clothing/assets/mob/suits/bio_digi.dmi'
+	worn_icon_digi = 'local/icons/mob/clothing/suits/bio_digi.dmi'
 
 /obj/item/clothing/suit/wizrobe
-	worn_icon_digi = 'packages/clothing/assets/mob/suits/wizard_digi.dmi'
+	worn_icon_digi = 'local/icons/mob/clothing/suits/wizard_digi.dmi'
 	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/suit/toggle/labcoat
-	worn_icon_digi = 'packages/clothing/assets/mob/suits/labcoat_digi.dmi'
+	worn_icon_digi = 'local/icons/mob/clothing/suits/labcoat_digi.dmi'
 
 /obj/item/clothing/suit/space
-	worn_icon_digi = 'packages/clothing/assets/mob/suits/spacesuit_digi.dmi'
+	worn_icon_digi = 'local/icons/mob/clothing/suits/spacesuit_digi.dmi'
 
 /obj/item/clothing/suit/chaplainsuit
-	worn_icon_digi = 'packages/clothing/assets/mob/suits/chaplain_digi.dmi'
+	worn_icon_digi = 'local/icons/mob/clothing/suits/chaplain_digi.dmi'
 
 /obj/item/clothing/suit/hooded/chaplainsuit
-	worn_icon_digi = 'packages/clothing/assets/mob/suits/chaplain_digi.dmi'
+	worn_icon_digi = 'local/icons/mob/clothing/suits/chaplain_digi.dmi'

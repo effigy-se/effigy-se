@@ -4,3 +4,7 @@
 
 /area/station/service/studio/stage
 	name = "\improper Studio Floor"
+
+/area/station/common/cryo
+	name = "Cryogenics Quarters"
+	icon_state = "crew_quarters"

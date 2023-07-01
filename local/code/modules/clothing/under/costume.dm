@@ -1,12 +1,12 @@
 /obj/item/clothing/under/costume
-	worn_icon_digi = 'packages/clothing/assets/mob/under/costume_digi.dmi'
+	worn_icon_digi = 'local/icons/mob/clothing/under/costume_digi.dmi'
 
 /obj/item/clothing/under/costume/russian_officer
-	worn_icon_digi = 'packages/clothing/assets/mob/under/security_digi.dmi'
+	worn_icon_digi = 'local/icons/mob/clothing/under/security_digi.dmi'
 
 /obj/item/clothing/under/costume/skyrat
-	icon = 'packages/clothing/assets/obj/under/costume.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/costume.dmi'
+	icon = 'local/icons/obj/clothing/under/costume.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/costume.dmi'
 	can_adjust = FALSE
 
 //My least favorite file. Just... try to keep it sorted. And nothing over the top (The victorian dresses were way too much)
@@ -22,16 +22,16 @@
 /obj/item/clothing/under/costume/deckers/alt //not even going to bother re-pathing this one because its such a unique case of 'TGs item has something but this alt doesnt'
 	name = "deckers maskless outfit"
 	desc = "A decker jumpsuit with neon blue coloring."
-	icon = 'packages/clothing/assets/obj/under/costume.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/costume.dmi'
-	worn_icon_digi = 'packages/clothing/assets/mob/under/costume_digi.dmi'
+	icon = 'local/icons/obj/clothing/under/costume.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/costume.dmi'
+	worn_icon_digi = 'local/icons/mob/clothing/under/costume_digi.dmi'
 	icon_state = "decking_jumpsuit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/costume/skyrat/bathrobe
 	name = "bathrobe"
 	desc = "A warm fluffy bathrobe, perfect for relaxing after finally getting clean."
-	icon = 'packages/clothing/assets/obj/under/suits.dmi'
+	icon = 'local/icons/obj/clothing/under/suits.dmi'
 	worn_icon = 'packages/greyscale/assets/suit/suit.dmi'
 	worn_icon_teshari = 'packages/greyscale/assets/suit/suit_teshari.dmi'
 	icon_state = "robes"

@@ -11,7 +11,7 @@
 //More items can be added in the lists and in the if statement.
 /obj/machinery/computer/order_console/mining/proc/redeem_suit_voucher(obj/item/suit_voucher/voucher, mob/redeemer)
 	var/items = list(
-		"SEVA suit" = image(icon = 'packages/clothing/assets/obj/suits.dmi', icon_state = "seva"),
+		"SEVA suit" = image(icon = 'local/icons/obj/clothing/suits.dmi', icon_state = "seva"),
 		"Explorer suit" = image(icon = 'icons/mob/clothing/suits/utility.dmi', icon_state = "explorer"),
 	)
 

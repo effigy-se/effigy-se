@@ -29,20 +29,20 @@
 	//for each airlock type we create its overlayed version with the suffix Glass in the sprite name
 	//EFFIGY EDIT START - Updated airlock sprites for RCD
 	var/list/airlocks = list(
-		"Standard" = 'packages/gfx/assets/obj/airlock/station/generic.dmi',
-		"Public" = 'packages/gfx/assets/obj/airlock/station2/glass.dmi',
-		"Engineering" = 'packages/gfx/assets/obj/airlock/station/engi.dmi',
-		"Atmospherics" = 'packages/gfx/assets/obj/airlock/station/atmos.dmi',
-		"Security" = 'packages/gfx/assets/obj/airlock/station/sec.dmi',
-		"Command" = 'packages/gfx/assets/obj/airlock/station/com.dmi',
-		"Medical" = 'packages/gfx/assets/obj/airlock/station/med.dmi',
-		"Research" = 'packages/gfx/assets/obj/airlock/station/rnd.dmi',
+		"Standard" = 'local/icons/obj/airlock/station/generic.dmi',
+		"Public" = 'local/icons/obj/airlock/station2/glass.dmi',
+		"Engineering" = 'local/icons/obj/airlock/station/engi.dmi',
+		"Atmospherics" = 'local/icons/obj/airlock/station/atmos.dmi',
+		"Security" = 'local/icons/obj/airlock/station/sec.dmi',
+		"Command" = 'local/icons/obj/airlock/station/com.dmi',
+		"Medical" = 'local/icons/obj/airlock/station/med.dmi',
+		"Research" = 'local/icons/obj/airlock/station/rnd.dmi',
 		"Freezer" = 'icons/obj/doors/airlocks/station/freezer.dmi',
-		"Virology" = 'packages/gfx/assets/obj/airlock/station/viro.dmi',
-		"Mining" = 'packages/gfx/assets/obj/airlock/station/cargo.dmi',
-		"Maintenance" = 'packages/gfx/assets/obj/airlock/station/maint-int.dmi',
+		"Virology" = 'local/icons/obj/airlock/station/viro.dmi',
+		"Mining" = 'local/icons/obj/airlock/station/cargo.dmi',
+		"Maintenance" = 'local/icons/obj/airlock/station/maint-int.dmi',
 		"External" = 'icons/obj/doors/airlocks/external/external.dmi',
-		"External Maintenance" = 'packages/gfx/assets/obj/airlock/station/maint-ext.dmi',
+		"External Maintenance" = 'local/icons/obj/airlock/station/maint-ext.dmi',
 		"Airtight Hatch" = 'icons/obj/doors/airlocks/hatch/centcom.dmi',
 		"Maintenance Hatch" = 'icons/obj/doors/airlocks/hatch/maintenance.dmi'
 	)

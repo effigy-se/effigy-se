@@ -5,7 +5,7 @@
 /obj/item/storage/fancy/ringbox
 	name = "ring box"
 	desc = "A tiny box covered in soft red felt made for holding rings."
-	icon = 'packages/clothing/assets/obj/ring.dmi'
+	icon = 'local/icons/obj/clothing/ring.dmi'
 	icon_state = "gold ringbox"
 	base_icon_state = "gold ringbox"
 	w_class = WEIGHT_CLASS_TINY

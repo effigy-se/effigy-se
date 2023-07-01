@@ -128,21 +128,21 @@
 			RESKIN_WORN_ICON_STATE = "hostrench"
 		),
 		"Navy Blue Jacket" = list(
-			RESKIN_ICON = 'packages/clothing/assets/obj/suits.dmi',
+			RESKIN_ICON = 'local/icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "hosbluejacket",
-			RESKIN_WORN_ICON = 'packages/clothing/assets/mob/suit.dmi',
+			RESKIN_WORN_ICON = 'local/icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "hosbluejacket"
 		),
 		"Trenchcloak" = list(
-			RESKIN_ICON = 'packages/clothing/assets/obj/suits.dmi',
+			RESKIN_ICON = 'local/icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "trenchcloak",
-			RESKIN_WORN_ICON = 'packages/clothing/assets/mob/suit.dmi',
+			RESKIN_WORN_ICON = 'local/icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "trenchcloak"
 		),
 		"Black" = list(
-			RESKIN_ICON = 'packages/clothing/assets/obj/suits.dmi',
+			RESKIN_ICON = 'local/icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "hos_black",
-			RESKIN_WORN_ICON = 'packages/clothing/assets/mob/suit.dmi',
+			RESKIN_WORN_ICON = 'local/icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "hos_black",
 			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)

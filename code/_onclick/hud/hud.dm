@@ -26,13 +26,13 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 
 // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 GLOBAL_LIST_INIT(available_erp_ui_styles, list(
-	"Glass" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/glass.dmi',
-	"Midnight" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/midnight.dmi',
-	"Retro" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/retro.dmi',
-	"Plasmafire" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/plasmafire.dmi',
-	"Slimecore" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/slimecore.dmi',
-	"Operative" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/operative.dmi',
-	"Clockwork" = 'packages/lewd/assets/obj/lewd_items/inventory_icons/clockwork.dmi'
+	"Glass" = 'local/icons/lewd/obj/lewd_items/inventory_icons/glass.dmi',
+	"Midnight" = 'local/icons/lewd/obj/lewd_items/inventory_icons/midnight.dmi',
+	"Retro" = 'local/icons/lewd/obj/lewd_items/inventory_icons/retro.dmi',
+	"Plasmafire" = 'local/icons/lewd/obj/lewd_items/inventory_icons/plasmafire.dmi',
+	"Slimecore" = 'local/icons/lewd/obj/lewd_items/inventory_icons/slimecore.dmi',
+	"Operative" = 'local/icons/lewd/obj/lewd_items/inventory_icons/operative.dmi',
+	"Clockwork" = 'local/icons/lewd/obj/lewd_items/inventory_icons/clockwork.dmi'
 ))
 
 /proc/erp_ui_style2icon(ui_style)
