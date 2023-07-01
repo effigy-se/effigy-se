@@ -20,7 +20,7 @@
 	Just slap 'em in the Healixir and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
 	via the magic technology of DNA regeneration! Just don't call it cloning. Wink wink. Within a few short moments, they'll be popped out as their ideal self, \
 	ready to continue on with their day lawsuit-free!"
-	icon = 'packages/adv_medical/assets/dna_fixer.dmi'
+	icon = 'local/icons/obj/medical/dna_fixer.dmi'
 	icon_state = "sad_open"
 	circuit = /obj/item/circuitboard/machine/dna_fixer
 	state_open = FALSE

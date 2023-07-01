@@ -2,7 +2,7 @@
 	// Bird-like humanoids
 	name = "Vox"
 	id = SPECIES_VOX
-	eyes_icon = 'packages/adv_medical/assets/organs/vox_eyes.dmi'
+	eyes_icon = 'local/icons/obj/medical/organs/vox_eyes.dmi'
 	can_augment = FALSE
 	species_traits = list(
 		MUTCOLORS,

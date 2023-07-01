@@ -3,7 +3,7 @@
 /obj/machinery/breath_machine
 	name = "portable breath machine"
 	desc = "A stand on wheels with a digital regulator, similar to an IV drip, that can hold a canister of gas along with a gas mask.<br>Is it N2 for humans and N2O for vox again? Other way? What's O2? I'm not the doctor here."
-	icon = 'packages/adv_medical/assets/breath_machine.dmi'
+	icon = 'local/icons/obj/medical/breath_machine.dmi'
 	icon_state = "breath_machine"
 	anchored = FALSE
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER

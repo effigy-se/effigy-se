@@ -4,7 +4,7 @@
 	gender = PLURAL
 	singular_name = "medical splint"
 	icon_state = "splint"
-	icon = 'packages/adv_medical/assets/stack_medical.dmi'
+	icon = 'local/icons/obj/medical/stack_medical.dmi'
 	self_delay = 5 SECONDS
 	other_delay = 2 SECONDS
 	max_amount = 12
@@ -64,3 +64,18 @@
 	amount = 1
 	splint_type = /datum/bodypart_aid/splint/improvised
 	merge_type = /obj/item/stack/medical/splint/improvised
+
+/obj/item/stack/medical/gauze
+	var/gauze_type = /datum/bodypart_aid/gauze
+
+/obj/item/bodypart/proc/apply_gauze(obj/item/stack/medical/gauze/new_gauze)
+	if(!istype(new_gauze) || current_gauze)
+		return
+	current_gauze = new new_gauze.gauze_type(src)
+	new_gauze.use(1)
+
+/obj/item/bodypart/proc/apply_splint(obj/item/stack/medical/splint/new_splint)
+	if(!istype(new_splint) || current_splint)
+		return
+	current_splint = new new_splint.splint_type(src)
+	new_splint.use(1)

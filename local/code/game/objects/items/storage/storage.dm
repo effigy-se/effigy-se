@@ -1,7 +1,7 @@
 /obj/item/storage/hypospraykit
 	name = "hypospray kit"
 	desc = "It's a portable kit containing a hypospray and purpose-built storage for chemical-filled vials."
-	icon = 'packages/adv_medical/assets/obj/hypokits.dmi'
+	icon = 'local/icons/obj/medical/hypokits.dmi'
 	icon_state = "firstaid-mini"
 	worn_icon_state = "healthanalyzer" // Get a better sprite later
 	inhand_icon_state = "medkit"

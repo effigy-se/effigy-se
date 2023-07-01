@@ -21,7 +21,7 @@
 	disliked_food = DAIRY | ORANGES | SUGAR // EFFIGY EDIT ADD
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
-	eyes_icon = 'packages/adv_medical/assets/organs/snail_eyes.dmi' // EFFIGY EDIT ADD
+	eyes_icon = 'local/icons/obj/medical/organs/snail_eyes.dmi' // EFFIGY EDIT ADD
 	mutanteyes = /obj/item/organ/internal/eyes/snail
 	mutanttongue = /obj/item/organ/internal/tongue/snail
 	mutantliver = /obj/item/organ/internal/liver/snail // EFFIGY EDIT ADD

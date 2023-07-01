@@ -10,7 +10,7 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
-	icon = 'packages/adv_medical/assets/surgery.dmi'
+	icon = 'local/icons/obj/medical/surgery.dmi'
 	icon_state = "posibrain-ipc"
 	/// The last time (in ticks) a message about brain damage was sent. Don't touch.
 	var/last_message_time = 0
@@ -60,7 +60,7 @@
 /obj/item/organ/internal/brain/synth/mmi
 	name = "compact man-machine interface"
 	desc = "A compact man-machine interface, perfectly dimensioned to fit in the same slot as a synthetic-compatible positronic brain. Unfortunately, the brain seems to be permanently attached to the circuitry, and it seems relatively sensitive to it's environment. It is usually slotted into the chest of synthetic crewmembers."
-	icon = 'packages/adv_medical/assets/surgery.dmi'
+	icon = 'local/icons/obj/medical/surgery.dmi'
 	icon_state = "mmi-ipc"
 
 #undef SYNTH_EMP_BRAIN_DAMAGE

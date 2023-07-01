@@ -207,7 +207,7 @@
 	PRIVATE_PROC(TRUE)
 
 	return mutable_appearance(
-		'local/code/modules/liquids/assets/obj/effects/liquid_overlays.dmi',
+		'local/icons/effects/liquid_overlays.dmi',
 		overlay_state,
 		overlay_layer,
 		src,
