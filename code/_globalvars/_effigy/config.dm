@@ -64,6 +64,21 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/string/effigy_api_key
 	abstract_type = /datum/config_entry/string
 
+/datum/config_entry/number/cryo_min_ssd_time
+	config_entry_value = 15
+
+// After u not ded anymore
+/datum/config_entry/string/blackoutpolicy
+	config_entry_value = "You remember nothing after you've blacked out and you do not remember who killed you. However, you can have faint recollection of what led up to it."
+
+// Disables the ability to commit suicide
+/datum/config_entry/flag/disable_suicide
+
+// Discord config
+/datum/config_entry/string/game_alert_role_id
+/datum/config_entry/string/role_assign_channel_id
+
+
 /datum/config_entry/string/alert_green
 	default = "All threats to the station have passed. Security may not have high powered weapons and may not search or arrest without Probable Cause."
 

@@ -10,7 +10,7 @@
 	name = "latex gasmask"
 	desc = "A toned gas mask that completely muffles the wearer. Wearing this makes breathing a lot difficult."
 	worn_icon = 'packages/lewd/assets/mob/lewd_clothing/lewd_masks.dmi'
-	worn_icon_muzzled = 'packages/clothing/assets/mob/mask_muzzled.dmi'
+	worn_icon_muzzled = 'local/icons/mob/clothing/mask_muzzled.dmi'
 	icon = 'packages/lewd/assets/obj/lewd_clothing/lewd_masks.dmi'
 	icon_state = "mask_pink_off"
 	base_icon_state = "mask"

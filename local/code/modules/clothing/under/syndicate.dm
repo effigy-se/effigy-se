@@ -3,12 +3,12 @@
 #define RESKIN_SYNDIE "Syndicate Red"
 
 /obj/item/clothing/under/syndicate
-	worn_icon_digi = 'packages/clothing/assets/mob/under/syndicate_digi.dmi' // Anything that was in the syndicate.dmi, should be in the syndicate_digi.dmi
+	worn_icon_digi = 'local/icons/mob/clothing/under/syndicate_digi.dmi' // Anything that was in the syndicate.dmi, should be in the syndicate_digi.dmi
 
 
 /obj/item/clothing/under/syndicate/skyrat
-	icon = 'packages/clothing/assets/obj/under/syndicate.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/syndicate.dmi'
+	icon = 'local/icons/obj/clothing/under/syndicate.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/syndicate.dmi'
 	//These are pre-set for ease and reference, as syndie under items SHOULDNT have sensors and should have similar stats; also its better to start with adjust = false
 	has_sensor = NO_SENSORS
 	armor_type = /datum/armor/syndicate_skyrat
@@ -29,8 +29,8 @@
 /obj/item/clothing/under/syndicate/tacticool //Overwrites the 'fake' one. Zero armor, sensors, and default blue. More Balanced to make station-available.
 	name = "tacticool turtleneck"
 	desc = "A snug turtleneck, in fabulous Nanotrasen-blue. Just looking at it makes you want to buy a NT-certifed coffee, go into the office, and -work-."
-	icon = 'packages/clothing/assets/obj/under/syndicate.dmi' //Since its an overwrite it needs new icon linking. Woe.
-	worn_icon = 'packages/clothing/assets/mob/under/syndicate.dmi'
+	icon = 'local/icons/obj/clothing/under/syndicate.dmi' //Since its an overwrite it needs new icon linking. Woe.
+	worn_icon = 'local/icons/mob/clothing/under/syndicate.dmi'
 	icon_state = "tactifool_blue"
 	inhand_icon_state = "b_suit"
 	can_adjust = TRUE

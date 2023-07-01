@@ -14,9 +14,9 @@
 /obj/item/storage/belt/mailbelt
 	name = "messenger belt bag"
 	desc = "A small bag with a belt, worn around the waist. It's just big enough to hold a small stack of letters. This one is postal blue, perfect for standing out!"
-	icon = 'packages/clothing/assets/obj/belts.dmi'
+	icon = 'local/icons/obj/clothing/belts.dmi'
 	icon_state = "mailbelt"
-	worn_icon = 'packages/clothing/assets/mob/belt.dmi'
+	worn_icon = 'local/icons/mob/clothing/belt.dmi'
 	worn_icon_state = "mailbelt"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 
@@ -33,17 +33,17 @@
 /obj/item/storage/belt/mailbelt/white
 	name = "white belt bag"
 	desc = "A small bag with a belt, worn around the waist. It's just big enough to hold a small stack of letters. This one is a pearly white."
-	icon = 'packages/clothing/assets/obj/belts.dmi'
+	icon = 'local/icons/obj/clothing/belts.dmi'
 	icon_state = "mailbelt_white"
-	worn_icon = 'packages/clothing/assets/mob/belt.dmi'
+	worn_icon = 'local/icons/mob/clothing/belt.dmi'
 	worn_icon_state = "mailbelt_white"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 
 /obj/item/storage/belt/mailbelt/leather
 	name = "leather belt bag"
 	desc = "A small bag with a belt, worn around the waist. It's just big enough to hold a small stack of letters. This one is made out of a synthetic leather blend."
-	icon = 'packages/clothing/assets/obj/belts.dmi'
+	icon = 'local/icons/obj/clothing/belts.dmi'
 	icon_state = "mailbelt_leather"
-	worn_icon = 'packages/clothing/assets/mob/belt.dmi'
+	worn_icon = 'local/icons/mob/clothing/belt.dmi'
 	worn_icon_state = "mailbelt_leather"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'

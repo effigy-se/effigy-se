@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 /obj/machinery/computer/cryopod
 	name = "cryogenic oversight console"
 	desc = "An interface between crew and the cryogenic storage oversight systems."
-	icon = 'packages/cryo/assets/cryo.dmi'
+	icon = 'local/icons/obj/cryo.dmi'
 	icon_state = "cryocomp"
 	icon_screen = "cryo"
 	icon_keyboard = null

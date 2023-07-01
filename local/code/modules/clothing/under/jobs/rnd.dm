@@ -1,17 +1,17 @@
 /obj/item/clothing/under/rank/rnd
-	worn_icon_digi = 'packages/clothing/assets/mob/under/rnd_digi.dmi'	// Anything that was in the rnd.dmi, should be in the rnd_digi.dmi
+	worn_icon_digi = 'local/icons/mob/clothing/under/rnd_digi.dmi'	// Anything that was in the rnd.dmi, should be in the rnd_digi.dmi
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat
-	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
+	icon = 'local/icons/obj/clothing/under/rnd.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/rnd.dmi'
 
 /obj/item/clothing/under/rank/rnd/roboticist/skyrat
-	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
+	icon = 'local/icons/obj/clothing/under/rnd.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/rnd.dmi'
 
 /obj/item/clothing/under/rank/rnd/research_director/skyrat
-	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
+	icon = 'local/icons/obj/clothing/under/rnd.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/rnd.dmi'
 
 /*
 *	SCIENTIST
@@ -75,24 +75,24 @@
 */
 
 /obj/item/clothing/under/rank/rnd/scientist
-	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
+	icon = 'local/icons/obj/clothing/under/rnd.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/rnd.dmi'
 	icon_state = "science_new"
 
 /obj/item/clothing/under/rank/rnd/scientist/skirt
 	icon_state = "sciwhite_skirt_new"
 
 /obj/item/clothing/under/rank/rnd/roboticist
-	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
+	icon = 'local/icons/obj/clothing/under/rnd.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/rnd.dmi'
 	icon_state = "robotics_new"
 
 /obj/item/clothing/under/rank/rnd/roboticist/skirt
 	icon_state = "robotics_skirt_new"
 
 /obj/item/clothing/under/rank/rnd/geneticist
-	icon = 'packages/clothing/assets/obj/under/rnd.dmi'
-	worn_icon = 'packages/clothing/assets/mob/under/rnd.dmi'
+	icon = 'local/icons/obj/clothing/under/rnd.dmi'
+	worn_icon = 'local/icons/mob/clothing/under/rnd.dmi'
 	icon_state = "genetics_new"
 
 /obj/item/clothing/under/rank/rnd/geneticist/skirt

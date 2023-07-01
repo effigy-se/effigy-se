@@ -10,11 +10,11 @@
 #define TOWEL_USED "used"
 
 /// Icon path to the obj icon of the towel.
-#define TOWEL_OBJ_ICON 'packages/clothing/assets/obj/towel.dmi'
+#define TOWEL_OBJ_ICON 'local/icons/obj/clothing/towel.dmi'
 /// Icon path to the worn icon of the towel.
-#define TOWEL_WORN_ICON 'packages/clothing/assets/mob/towel.dmi'
+#define TOWEL_WORN_ICON 'local/icons/mob/clothing/towel.dmi'
 /// Icon path to the worn icon of the towel for digitigrades.
-#define TOWEL_WORN_ICON_DIGI 'packages/clothing/assets/mob/towel_digi.dmi'
+#define TOWEL_WORN_ICON_DIGI 'local/icons/mob/clothing/towel_digi.dmi'
 
 /// How much cloth goes into a towel.
 #define TOWEL_CLOTH_AMOUNT 2

@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('packages/cryo/assets/ssd_indicator.dmi', "ssd", FLY_LAYER))
+GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('local/icons/hud/ssd_indicator.dmi', "ssd", FLY_LAYER))
 
 /mob/living
 	var/ssd_indicator = FALSE

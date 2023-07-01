@@ -7,8 +7,8 @@
 /obj/item/clothing/mask/balaclavaadjust
 	name = "adjustable balaclava"
 	desc = "Wider eyed and made of an elastic based material, this one seems like it can contort more."
-	icon = 'packages/clothing/assets/obj/masks.dmi'
-	worn_icon = 'packages/clothing/assets/mob/mask.dmi'
+	icon = 'local/icons/obj/clothing/masks.dmi'
+	worn_icon = 'local/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava"
 	inhand_icon_state = "balaclava"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
@@ -54,8 +54,8 @@
 /obj/item/clothing/mask/balaclava/threehole
 	name = "three hole balaclava"
 	desc = "Tiocfaidh ar la."
-	icon = 'packages/clothing/assets/obj/masks.dmi'
-	worn_icon = 'packages/clothing/assets/mob/mask.dmi'
+	icon = 'local/icons/obj/clothing/masks.dmi'
+	worn_icon = 'local/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclavam"
 	inhand_icon_state = "balaclava"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
@@ -64,23 +64,23 @@
 /obj/item/clothing/mask/balaclava/threehole/green
 	name = "three hole green balaclava"
 	desc = "Tiocfaidh ar la."
-	icon = 'packages/clothing/assets/obj/masks.dmi'
-	worn_icon = 'packages/clothing/assets/mob/mask.dmi'
+	icon = 'local/icons/obj/clothing/masks.dmi'
+	worn_icon = 'local/icons/mob/clothing/mask.dmi'
 	icon_state = "swatclavam"
 	inhand_icon_state = "balaclava"
 
 /obj/item/clothing/mask/muzzle/ball
 	name = "ballgag"
 	desc = "I'm pretty fuckin far from okay."
-	icon = 'packages/clothing/assets/obj/masks.dmi'
-	worn_icon = 'packages/clothing/assets/mob/mask.dmi'
+	icon = 'local/icons/obj/clothing/masks.dmi'
+	worn_icon = 'local/icons/mob/clothing/mask.dmi'
 	icon_state = "ballgag"
 
 /obj/item/clothing/mask/muzzle/ring
 	name = "ring gag"
 	desc = "A mouth wrap seemingly designed to hold the mouth open."
-	icon = 'packages/clothing/assets/obj/masks.dmi'
-	worn_icon = 'packages/clothing/assets/mob/mask.dmi'
+	icon = 'local/icons/obj/clothing/masks.dmi'
+	worn_icon = 'local/icons/mob/clothing/mask.dmi'
 	icon_state = "ringgag"
 
 /obj/item/clothing/mask/surgical/greyscale

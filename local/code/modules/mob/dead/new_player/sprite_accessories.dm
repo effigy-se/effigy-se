@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	genetic = TRUE
 
 /datum/sprite_accessory/socks
-	icon = 'packages/clothing/assets/mob/underwear.dmi'
+	icon = 'local/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
 /datum/sprite_accessory/socks/socks_norm
 	name = "Normal (Greyscale)"
@@ -371,7 +371,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	erp_accessory = TRUE
 
 /datum/sprite_accessory/underwear
-	icon = 'packages/clothing/assets/mob/underwear.dmi'
+	icon = 'local/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
 	var/has_digitigrade = FALSE
 	///Whether this underwear includes a top (Because gender = FEMALE doesn't actually apply here.). Hides breasts, nothing more.
@@ -610,7 +610,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 */
 
 /datum/sprite_accessory/undershirt
-	icon = 'packages/clothing/assets/mob/underwear.dmi'
+	icon = 'local/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
 	///Whether this underwear includes a bottom (For Leotards and the likes)
 	var/hides_groin = FALSE

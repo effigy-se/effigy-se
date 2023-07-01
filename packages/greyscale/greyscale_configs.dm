@@ -40,57 +40,57 @@
 //COWBOY
 /datum/greyscale_config/cowboy_wide
 	name = "Wide Brimmed Hat"
-	icon_file = 'packages/clothing/assets/obj/head/cowboy.dmi'
+	icon_file = 'local/icons/obj/clothing/head/cowboy.dmi'
 	json_config = 'packages/greyscale/json_configs/head/cowboy/two_layer_hats.json'
 
 /datum/greyscale_config/cowboy_wide/worn
 	name = "Wide Brimmed Hat (Worn)"
-	icon_file = 'packages/clothing/assets/mob/head/cowboy.dmi'
+	icon_file = 'local/icons/mob/clothing/head/cowboy.dmi'
 
 /datum/greyscale_config/cowboy_wide_feathered
 	name = "Wide Brimmed Feathered Hat"
-	icon_file = 'packages/clothing/assets/obj/head/cowboy.dmi'
+	icon_file = 'local/icons/obj/clothing/head/cowboy.dmi'
 	json_config = 'packages/greyscale/json_configs/head/cowboy/three_layer_hats.json'
 
 /datum/greyscale_config/cowboy_wide_feathered/worn
 	name = "Wide Brimmed Feathered Hat (Worn)"
-	icon_file = 'packages/clothing/assets/mob/head/cowboy.dmi'
+	icon_file = 'local/icons/mob/clothing/head/cowboy.dmi'
 
 /datum/greyscale_config/cowboy_flat
 	name = "Flat Brimmed Hat"
-	icon_file = 'packages/clothing/assets/obj/head/cowboy.dmi'
+	icon_file = 'local/icons/obj/clothing/head/cowboy.dmi'
 	json_config = 'packages/greyscale/json_configs/head/cowboy/two_layer_hats.json'
 
 /datum/greyscale_config/cowboy_flat/worn
 	name = "Flat Brimmed Hat (Worn)"
-	icon_file = 'packages/clothing/assets/mob/head/cowboy.dmi'
+	icon_file = 'local/icons/mob/clothing/head/cowboy.dmi'
 
 /datum/greyscale_config/cowboy_flat_cowl
 	name = "Flat Brimmed Hat with Cowl"
-	icon_file = 'packages/clothing/assets/obj/head/cowboy.dmi'
+	icon_file = 'local/icons/obj/clothing/head/cowboy.dmi'
 	json_config = 'packages/greyscale/json_configs/head/cowboy/three_layer_hats.json'
 
 /datum/greyscale_config/cowboy_flat_cowl/worn
 	name = "Flat Brimmed Hat with Cowl (Worn)"
-	icon_file = 'packages/clothing/assets/mob/head/cowboy.dmi'
+	icon_file = 'local/icons/mob/clothing/head/cowboy.dmi'
 
 /datum/greyscale_config/cowboy_cattleman
 	name = "Cattleman Hat"
-	icon_file = 'packages/clothing/assets/obj/head/cowboy.dmi'
+	icon_file = 'local/icons/obj/clothing/head/cowboy.dmi'
 	json_config = 'packages/greyscale/json_configs/head/cowboy/two_layer_hats.json'
 
 /datum/greyscale_config/cowboy_cattleman/worn
 	name = "Cattleman Hat (Worn)"
-	icon_file = 'packages/clothing/assets/mob/head/cowboy.dmi'
+	icon_file = 'local/icons/mob/clothing/head/cowboy.dmi'
 
 /datum/greyscale_config/cowboy_cattleman_wide
 	name = "Wide Brimmed Cattleman Hat"
-	icon_file = 'packages/clothing/assets/obj/head/cowboy.dmi'
+	icon_file = 'local/icons/obj/clothing/head/cowboy.dmi'
 	json_config = 'packages/greyscale/json_configs/head/cowboy/two_layer_hats.json'
 
 /datum/greyscale_config/cowboy_cattleman_wide/worn
 	name = "Wide Brimmed Cattleman Hat (Worn)"
-	icon_file = 'packages/clothing/assets/mob/head/cowboy.dmi'
+	icon_file = 'local/icons/mob/clothing/head/cowboy.dmi'
 
 //MUSHROOM CAP
 
@@ -164,7 +164,7 @@
 // VAPE
 /datum/greyscale_config/vape/worn/digi
 	name = "Worn Vape - Digitigrade"
-	icon_file = 'packages/clothing/assets/mob/mask.dmi'
+	icon_file = 'local/icons/mob/clothing/mask.dmi'
 
 // RESPIRATOR
 /datum/greyscale_config/respirator
@@ -397,11 +397,11 @@
 // ARMOR
 
 /datum/greyscale_config/heck_suit/worn/digi
-	icon_file = 'packages/clothing/assets/mob/suit_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/suit_digi.dmi'
 
 //Helmet pairs with the above suit
 /datum/greyscale_config/heck_helmet/worn/snouted
-	icon_file = 'packages/clothing/assets/mob/head/helmet_muzzled.dmi'
+	icon_file = 'local/icons/mob/clothing/head/helmet_muzzled.dmi'
 
 // Bathrobes
 
@@ -435,29 +435,29 @@
 
 /datum/greyscale_config/recolorable_suit
 	name = "Formal Suit"
-	icon_file = 'packages/clothing/assets/obj/under/suits.dmi'
+	icon_file = 'local/icons/obj/clothing/under/suits.dmi'
 	json_config = 'packages/greyscale/json_configs/fancy_suits/recolorable_suit.json'
 
 /datum/greyscale_config/recolorable_suit/worn
 	name = "Worn Formal Suit"
-	icon_file = 'packages/clothing/assets/mob/under/suits.dmi'
+	icon_file = 'local/icons/mob/clothing/under/suits.dmi'
 
 /datum/greyscale_config/recolorable_suit/worn/digi
 	name = "Worn Formal Suit - Digitigrade"
-	icon_file = 'packages/clothing/assets/mob/under/suits_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/under/suits_digi.dmi'
 
 /datum/greyscale_config/recolorable_suitskirt
 	name = "Formal Suitskirt"
-	icon_file = 'packages/clothing/assets/obj/under/suits.dmi'
+	icon_file = 'local/icons/obj/clothing/under/suits.dmi'
 	json_config = 'packages/greyscale/json_configs/fancy_suits/recolorable_suit.json'
 
 /datum/greyscale_config/recolorable_suitskirt/worn
 	name = "Worn Formal Suitskirt"
-	icon_file = 'packages/clothing/assets/mob/under/suits.dmi'
+	icon_file = 'local/icons/mob/clothing/under/suits.dmi'
 
 /datum/greyscale_config/recolorable_suitskirt/worn/digi
 	name = "Worn Formal Suitskirt - Digitigrade"
-	icon_file = 'packages/clothing/assets/mob/under/suits_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/under/suits_digi.dmi'
 
 // HOODIES
 /datum/greyscale_config/hoodie
@@ -611,11 +611,11 @@
 
 /datum/greyscale_config/jumpsuit_worn/digi
 	name = "Worn Jumpsuit - Digitigrade"
-	icon_file = 'packages/clothing/assets/mob/under/color_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_prison_worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
-	icon_file = 'packages/clothing/assets/mob/under/color_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_worn/monkey
 	name = "Worn Jumpsuit - Monkey"
@@ -681,12 +681,12 @@
 
 /datum/greyscale_config/shorts_ripped
 	name = "Ripped Shorts"
-	icon_file = 'packages/clothing/assets/obj/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/obj/clothing/under/shorts_pants_shirts.dmi'
 	json_config = 'packages/greyscale/json_configs/pants_shorts_skirts_dresses/shorts_ripped.json'
 
 /datum/greyscale_config/shorts_ripped/worn //TG will hopefully start having worn as a subtype, it means only needing 1 .json
 	name = "Worn Ripped Shorts"
-	icon_file = 'packages/clothing/assets/mob/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/mob/clothing/under/shorts_pants_shirts.dmi'
 
 /datum/greyscale_config/shorts_ripped/worn/digi
 	name = "Worn Ripped Shorts - Digitigrade"
@@ -698,12 +698,12 @@
 
 /datum/greyscale_config/jeans_ripped
 	name = "Ripped Jeans"
-	icon_file = 'packages/clothing/assets/obj/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/obj/clothing/under/shorts_pants_shirts.dmi'
 	json_config = 'packages/greyscale/json_configs/pants_shorts_skirts_dresses/jeans_ripped.json'
 
 /datum/greyscale_config/jeans_ripped/worn
 	name = "Worn Ripped Jeans"
-	icon_file = 'packages/clothing/assets/mob/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/mob/clothing/under/shorts_pants_shirts.dmi'
 
 /datum/greyscale_config/jeans_ripped/worn/digi
 	name = "Worn Ripped Jeans - Digitigrade"
@@ -711,12 +711,12 @@
 
 /datum/greyscale_config/yoga_pants
 	name = "Yoga Pants"
-	icon_file = 'packages/clothing/assets/obj/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/obj/clothing/under/shorts_pants_shirts.dmi'
 	json_config = 'packages/greyscale/json_configs/pants_shorts_skirts_dresses/yoga_pants.json'
 
 /datum/greyscale_config/yoga_pants/worn
 	name = "Worn Yoga Pants"
-	icon_file = 'packages/clothing/assets/mob/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/mob/clothing/under/shorts_pants_shirts.dmi'
 
 /datum/greyscale_config/yoga_pants/worn/digi
 	name = "Worn Yoga Pants - Digitigrade"
@@ -730,30 +730,30 @@
 
 /datum/greyscale_config/lone_skirt
 	name = "Skirt"
-	icon_file = 'packages/clothing/assets/obj/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'packages/greyscale/json_configs/pants_shorts_skirts_dresses/lone_skirt.json'
 
 /datum/greyscale_config/lone_skirt/worn
 	name = "Worn Skirt"
-	icon_file = 'packages/clothing/assets/mob/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/mob/clothing/under/skirts_dresses.dmi'
 
 /datum/greyscale_config/turtleskirt_knit
 	name = "Cableknit Skirtleneck"
-	icon_file = 'packages/clothing/assets/obj/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'packages/greyscale/json_configs/pants_shorts_skirts_dresses/turtleskirt_knit.json'
 
 /datum/greyscale_config/turtleskirt_knit/worn
 	name = "Worn Cableknit Skirtleneck"
-	icon_file = 'packages/clothing/assets/mob/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/mob/clothing/under/skirts_dresses.dmi'
 
 /datum/greyscale_config/jean_skirt
 	name = "Jean Skirt"
-	icon_file = 'packages/clothing/assets/obj/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'packages/greyscale/json_configs/pants_shorts_skirts_dresses/jean_skirt.json'
 
 /datum/greyscale_config/jean_skirt/worn
 	name = "Worn Jean Skirt"
-	icon_file = 'packages/clothing/assets/mob/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/mob/clothing/under/skirts_dresses.dmi'
 
 /datum/greyscale_config/jean_skirt/worn/digi
 	name = "Worn Jean Skirt - Digitigrade"
@@ -761,30 +761,30 @@
 
 /datum/greyscale_config/short_dress
 	name = "Short Dress"
-	icon_file = 'packages/clothing/assets/obj/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'packages/greyscale/json_configs/pants_shorts_skirts_dresses/short_dress.json'
 
 /datum/greyscale_config/short_dress/worn
 	name = "Worn Short Dress"
-	icon_file = 'packages/clothing/assets/mob/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/mob/clothing/under/skirts_dresses.dmi'
 
 /datum/greyscale_config/strapless_dress
 	name = "Strapless Dress"
-	icon_file = 'packages/clothing/assets/obj/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'packages/greyscale/json_configs/pants_shorts_skirts_dresses/strapless_dress.json'
 
 /datum/greyscale_config/strapless_dress/worn
 	name = "Worn Strapless Dress"
-	icon_file = 'packages/clothing/assets/mob/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/mob/clothing/under/skirts_dresses.dmi'
 
 /datum/greyscale_config/pentagram_dress
 	name = "Pentagram Strapped Dress"
-	icon_file = 'packages/clothing/assets/obj/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'packages/greyscale/json_configs/pants_shorts_skirts_dresses/pentagram_dress.json'
 
 /datum/greyscale_config/pentagram_dress/worn
 	name = "Worn Pentagram Strapped Dress"
-	icon_file = 'packages/clothing/assets/mob/under/skirts_dresses.dmi'
+	icon_file = 'local/icons/mob/clothing/under/skirts_dresses.dmi'
 
 /datum/greyscale_config/plaidskirt_worn/teshari
 	name = "Worn Plaid Skirt - Teshari"
@@ -806,55 +806,55 @@
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/football_suit_worn/digi
-	icon_file = 'packages/clothing/assets/mob/under/costume_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/under/costume_digi.dmi'
 
 /datum/greyscale_config/qipao
 	name = "Qipao"
-	icon_file = 'packages/clothing/assets/obj/under/costume.dmi'
+	icon_file = 'local/icons/obj/clothing/under/costume.dmi'
 	json_config = 'packages/greyscale/json_configs/costumes/lunar_japanese.json'
 
 /datum/greyscale_config/qipao/worn
 	name = "Worn Qipao"
-	icon_file = 'packages/clothing/assets/mob/under/costume.dmi'
+	icon_file = 'local/icons/mob/clothing/under/costume.dmi'
 
 /datum/greyscale_config/qipao/worn/digi
 	name = "Worn Qipao - Digitigrade"
-	icon_file = 'packages/clothing/assets/mob/under/costume_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/under/costume_digi.dmi'
 
 /datum/greyscale_config/cheongsam
 	name = "Cheongsam"
-	icon_file = 'packages/clothing/assets/obj/under/costume.dmi'
+	icon_file = 'local/icons/obj/clothing/under/costume.dmi'
 	json_config = 'packages/greyscale/json_configs/costumes/lunar_japanese.json'
 
 /datum/greyscale_config/cheongsam/worn
 	name = "Worn Cheongsam"
-	icon_file = 'packages/clothing/assets/mob/under/costume.dmi'
+	icon_file = 'local/icons/mob/clothing/under/costume.dmi'
 
 /datum/greyscale_config/cheongsam/worn/digi
 	name = "Worn Cheongsam - Digitigrade"
-	icon_file = 'packages/clothing/assets/mob/under/costume_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/under/costume_digi.dmi'
 
 /datum/greyscale_config/yukata
 	name = "Yukata"
-	icon_file = 'packages/clothing/assets/obj/under/costume.dmi'
+	icon_file = 'local/icons/obj/clothing/under/costume.dmi'
 	json_config = 'packages/greyscale/json_configs/costumes/lunar_japanese.json'
 
 /datum/greyscale_config/yukata/worn
 	name = "Worn Yukata"
-	icon_file = 'packages/clothing/assets/mob/under/costume.dmi'
+	icon_file = 'local/icons/mob/clothing/under/costume.dmi'
 
 /datum/greyscale_config/yukata/worn/digi
 	name = "Worn Yukata - Digitigrade"
-	icon_file = 'packages/clothing/assets/mob/under/costume_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/under/costume_digi.dmi'
 
 /datum/greyscale_config/kilt
 	name = "Kilt"
-	icon_file = 'packages/clothing/assets/obj/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/obj/clothing/under/shorts_pants_shirts.dmi'
 	json_config = 'packages/greyscale/json_configs/kilt/kilt.json'
 
 /datum/greyscale_config/kilt/worn
 	name = "Worn Kilt"
-	icon_file = 'packages/clothing/assets/mob/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/mob/clothing/under/shorts_pants_shirts.dmi'
 
 /datum/greyscale_config/kilt/worn/digi
 	name = "Worn Kilt - Digitigrade"
@@ -862,12 +862,12 @@
 
 /datum/greyscale_config/buttondown_vicvest
 	name = "Buttondown with Double-breasted Vest"
-	icon_file = 'packages/clothing/assets/obj/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/obj/clothing/under/shorts_pants_shirts.dmi'
 	json_config = 'packages/greyscale/json_configs/costumes/buttondown_vicvest.json'
 
 /datum/greyscale_config/buttondown_vicvest/worn
 	name = "Worn Buttondown with Double-breasted Vest"
-	icon_file = 'packages/clothing/assets/mob/under/shorts_pants_shirts.dmi'
+	icon_file = 'local/icons/mob/clothing/under/shorts_pants_shirts.dmi'
 
 /datum/greyscale_config/buttondown_vicvest/worn/digi
 	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
@@ -879,7 +879,7 @@ TREK
 
 /datum/greyscale_config/trek/worn/digi
 	name = "Worn Trek Uniform - Digitigrade"
-	icon_file = 'packages/clothing/assets/mob/under/trek_digi.dmi'
+	icon_file = 'local/icons/mob/clothing/under/trek_digi.dmi'
 
 /*
 *	SHOES

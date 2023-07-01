@@ -16,7 +16,7 @@
 	inhand_icon_state = "dephelmet_pinkn"
 	icon = 'packages/lewd/assets/obj/lewd_clothing/lewd_hats.dmi'
 	worn_icon = 'packages/lewd/assets/mob/lewd_clothing/lewd_hats.dmi'
-	worn_icon_muzzled = 'packages/clothing/assets/mob/head_muzzled.dmi'
+	worn_icon_muzzled = 'local/icons/mob/clothing/head_muzzled.dmi'
 	lefthand_file = 'packages/lewd/assets/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'packages/lewd/assets/mob/lewd_inhands/lewd_inhand_right.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT|HIDEFACIALHAIR

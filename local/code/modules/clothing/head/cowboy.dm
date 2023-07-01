@@ -4,8 +4,8 @@
 /obj/item/clothing/head/cowboy/skyrat
 	name = "SR COWBOY HAT DEBUG"
 	desc = "REPORT THIS IF FOUND"
-	icon = 'packages/clothing/assets/obj/head/cowboy.dmi'
-	worn_icon = 'packages/clothing/assets/mob/head/cowboy.dmi'
+	icon = 'local/icons/obj/clothing/head/cowboy.dmi'
+	worn_icon = 'local/icons/mob/clothing/head/cowboy.dmi'
 	icon_state = null //Keeps this from showing up under the chameleon hat
 	worn_icon_state = null //TG defaults this to "hunter" and breaks our items
 	flags_inv = SHOWSPRITEEARS

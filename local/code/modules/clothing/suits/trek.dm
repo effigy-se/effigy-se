@@ -1,7 +1,7 @@
 //Trek Jacket(s?)
 /obj/item/clothing/suit/fedcoat
-	icon = 'packages/clothing/assets/obj/suits.dmi'
-	worn_icon = 'packages/clothing/assets/mob/suit.dmi'
+	icon = 'local/icons/obj/clothing/suits.dmi'
+	worn_icon = 'local/icons/mob/clothing/suit.dmi'
 	name = "Federation uniform jacket"
 	desc = "A uniform jacket from the United Federation. Set phasers to awesome."
 	icon_state = "fedcoat"
