@@ -89,6 +89,7 @@
 		/obj/item/reagent_containers/medigel/libital = 2,
 		/obj/item/reagent_containers/medigel/aiuri = 2,
 		/obj/item/reagent_containers/medigel/sterilizine = 1,
+		/obj/item/storage/hypospraykit = 6, // EffigyEdit Add - Hypospray
 		)
 	contraband = list(
 		/obj/item/reagent_containers/pill/tox = 3,

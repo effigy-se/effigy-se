@@ -180,7 +180,7 @@
 			hud_list[hud] = list()
 
 		else
-			var/image/I = image('packages/ux/assets/mob/hud.dmi', src, "")
+			var/image/I = image('local/icons/mob/hud.dmi', src, "")
 			I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 			hud_list[hud] = I
 		set_hud_image_active(hud, update_huds = FALSE) //by default everything is active. but dont add it to huds to keep control.
@@ -823,7 +823,7 @@
 
 	if(!check_respawn_delay())
 		return
-		
+
 	// EFFIGY EDIT ADD START
 	if(ckey)
 		if(is_banned_from(ckey, BAN_RESPAWN))

@@ -1,5 +1,3 @@
-// EFFIGY EDIT REMOVE START (Moved to packages/ux)
-/*
 /**
  * Make a big red text announcement to
  *
@@ -39,6 +37,8 @@
 	else if(SSstation.announcer.event_sounds[sound])
 		sound = SSstation.announcer.event_sounds[sound]
 
+	// EffigyEdit Change - Announcements
+	/*
 	if(type == "Priority")
 		announcement += "<h1 class='alert'>Priority Announcement</h1>"
 		if (title && length(title) > 0)
@@ -69,6 +69,41 @@
 	else
 		announcement += "[span_alert(text)]"
 	announcement += "<br>"
+	*/
+
+	announcement += "<div class='efchatalert'>"
+
+	if(type == "Priority")
+		announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE("Priority Announcement")]<br>"
+		if (title && length(title) > 0)
+			announcement += "<br><h2 class='alert'>[title]</h2>"
+	else if(type == "Captain")
+		announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE("Captain's Announcement")]<br>"
+		GLOB.news_network.submit_article(text, "Captain's Announcement", "Station Announcements", null)
+	else if(type == "Syndicate Captain")
+		announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE("Syndicate Captain's Announcement")]<br>"
+
+	else
+		if(!sender_override)
+			announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE("[command_name()] Update")]<br>"
+		else
+			announcement += "[EFSPAN_ANNOUNCE_MAJ_TITLE(sender_override)]<br>"
+		if(title && length(title) > 0)
+			announcement += "[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>"
+
+		if(!sender_override)
+			if(title == "")
+				GLOB.news_network.submit_article(text, "Central Command Update", "Station Announcements", null)
+			else
+				GLOB.news_network.submit_article(title + "<br><br>" + text, "Central Command", "Station Announcements", null)
+
+	///If the announcer overrides alert messages, use that message.
+	if(SSstation.announcer.custom_alert_message && !has_important_message)
+		announcement += SSstation.announcer.custom_alert_message
+	else
+		announcement += "[EFSPAN_ANNOUNCE_MAJ_TEXT(text)]"
+	announcement += "</div>"
+	// EffigyEdit Change End
 
 	if(!players)
 		players = GLOB.player_list
@@ -122,9 +157,35 @@
 		if(!target.can_hear())
 			continue
 
+// EffigyEdit Change - Announcements
+		/*
 		to_chat(target, "<div class='alertbox'>[span_minorannouncetitle(title)]<br>[span_minorannouncemessage(message)]</div>")
 		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
-*/
-// EFFIGY EDIT REMOVE END (Moved to packages/ux)
+		*/
+
+		to_chat(target, "<div class='efchatalert'>[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>[EFSPAN_ANNOUNCE_MIN_TEXT(message)]</div>")
+		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
+			SEND_SOUND(target, sound(sound_to_play))
+
+/proc/level_announce(message, title, alert, html_encode = TRUE, list/players, sound_override, divcolor = SEC_LEVEL_GREEN)
+	if(!message)
+		return
+
+	title = html_encode(title)
+	message = html_encode(message)
+
+	for(var/mob/target in GLOB.player_list)
+		if(isnewplayer(target))
+			continue
+		if(!target.can_hear())
+			continue
+
+		to_chat(target, "<div class='efchatalert_[divcolor]' >[EFSPAN_ANNOUNCE_MIN_TITLE(title)]<br>[EFSPAN_ANNOUNCE_MIN_TEXT(message)]</div>")
+		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+			var/sound_to_play = sound_override || 'sound/misc/notice2.ogg'
+			SEND_SOUND(target, sound(sound_to_play))
+
+// EffigyEdit Change End
