@@ -1,5 +1,5 @@
 /obj/structure/flora/ocean
-	icon = 'packages/liquids/assets/obj/flora/ocean_flora.dmi'
+	icon = 'local/code/modules/liquids/assets/obj/flora/ocean_flora.dmi'
 	var/random_variants = 0
 
 /obj/structure/flora/ocean/Initialize(mapload)
@@ -43,7 +43,7 @@
 /obj/structure/flora/scrap
 	name = "scrap metal"
 	desc = "A huge chunk of metal, rusted and worn. Perhaps it can still be salvaged into something useful."
-	icon = 'packages/liquids/assets/obj/flora/scrap.dmi'
+	icon = 'local/code/modules/liquids/assets/obj/flora/scrap.dmi'
 	icon_state = "scrap"
 	anchored = FALSE
 	density = TRUE
@@ -82,7 +82,7 @@
 
 /obj/effect/spawner/liquids_spawner
 	name = "Liquids Spawner (Water, Waist-Deep)"
-	icon = 'packages/liquids/assets/obj/effects/liquid.dmi'
+	icon = 'local/code/modules/liquids/assets/obj/effects/liquid.dmi'
 	icon_state = "spawner"
 	color = "#AAAAAA77"
 	var/reagent_list = list(/datum/reagent/water = ONE_LIQUIDS_HEIGHT*LIQUID_WAIST_LEVEL_HEIGHT)

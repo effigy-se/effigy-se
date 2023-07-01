@@ -2,7 +2,7 @@
  * Base class for underfloor plumbing machines that mess with floor liquids.
  */
 /obj/machinery/plumbing/floor_pump
-	icon = 'packages/liquids/assets/obj/structures/drains.dmi'
+	icon = 'local/code/modules/liquids/assets/obj/structures/drains.dmi'
 	icon_state = "active_input"
 	anchored = FALSE
 	density = FALSE

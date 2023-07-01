@@ -2,7 +2,7 @@
 /obj/item/construction/rcd/mkii
 	name = "RCD Mk II"
 	desc = "A device used to rapidly build and deconstruct. Upgraded from the standard model with improved material storage. Reload with iron, plasteel, glass or compressed matter cartridges."
-	icon = 'packages/adv_engineering/assets/tools.dmi'
+	icon = 'local/icons/obj/tools.dmi'
 	icon_state = "ircd"
 	inhand_icon_state = "ircd"
 	max_matter = 320
@@ -27,12 +27,3 @@
 /obj/item/storage/box/rcd_ammo/PopulateContents()
 	for(var/i in 1 to 4)
 		new/obj/item/rcd_ammo/mkii(src)
-
-/obj/item/storage/belt/utility/full/powertools/rcd/mkii/PopulateContents()
-	new /obj/item/screwdriver/power(src)
-	new /obj/item/crowbar/power(src)
-	new /obj/item/weldingtool/experimental(src)
-	new /obj/item/construction/rcd/mkii(src)
-	new /obj/item/pipe_dispenser(src)
-	new /obj/item/wrench/bolter(src)
-	new /obj/item/analyzer/ranged(src)

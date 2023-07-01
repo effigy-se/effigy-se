@@ -31,7 +31,7 @@
 			desc = "It's a patch of water."
 			icon_state = "water"
 			src.add_overlay(image('packages/effects/assets/turf_effects.dmi', "water_top", EXTRA_ABOVE_MOB_LAYER))
-			flick_overlay_static(image('packages/liquids/assets/obj/effects/splash.dmi', "splash", EXTRA_ABOVE_MOB_LAYER), 20)
+			flick_overlay_static(image('local/code/modules/liquids/assets/obj/effects/splash.dmi', "splash", EXTRA_ABOVE_MOB_LAYER), 20)
 			playsound(get_turf(src), 'local/sound/effects/watersplash.ogg', 25, TRUE)
 
 		if("smoke")
