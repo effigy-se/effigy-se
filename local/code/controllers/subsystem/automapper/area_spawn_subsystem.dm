@@ -347,7 +347,7 @@ SUBSYSTEM_DEF(area_spawn)
 
 /obj/effect/turf_test
 	name = "PASS"
-	icon = 'packages/automapper/assets/area_test.dmi'
+	icon = 'local/icons/area/area_test.dmi'
 	icon_state = "area_test"
 	color = COLOR_BLUE
 	anchored = TRUE
