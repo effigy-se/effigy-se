@@ -16,4 +16,4 @@
 #define VOX_UNIFORM_ICON 'local/icons/mob/clothing/species/vox/uniform.dmi'
 #define VOX_EARS_ICON 'local/icons/mob/clothing/species/vox/ears.dmi'
 
-#define IPC_AUGMENTS_LOC 'packages/bodyparts/assets/'
+#define IPC_AUGMENTS_LOC 'local/icons/mob/species/'
