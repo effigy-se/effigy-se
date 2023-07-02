@@ -189,11 +189,6 @@
 
 	return TRUE
 
-	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
-	species = new species
-
-	return (savefile_key in species.get_features())
-
 /// Apply this preference onto the given human.
 /// May be overriden by subtypes.
 /// Called when the savefile_identifier == PREFERENCE_CHARACTER.

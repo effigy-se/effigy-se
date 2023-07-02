@@ -61,11 +61,6 @@
 
 	return TRUE
 
-	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
-	species = new species
-
-	return (savefile_key in species.get_features())
-
 /datum/preference/choiced/genital/create_default_value()
 	return initial(default_accessory_type?.name) || "None"
 

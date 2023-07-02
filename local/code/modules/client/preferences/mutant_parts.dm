@@ -603,11 +603,6 @@
 
 	return TRUE
 
-	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
-	species = new species
-
-	return (savefile_key in species.get_features())
-
 /datum/preference/numeric/hair_opacity/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	if(!preferences || !is_visible(target, preferences))
 		return FALSE
