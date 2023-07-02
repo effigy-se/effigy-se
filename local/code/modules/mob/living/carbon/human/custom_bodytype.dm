@@ -1,10 +1,14 @@
+/mob/living/carbon/human
+///Path to BODYTYPE_CUSTOM species worn icons. An assoc list of ITEM_SLOT_X => /icon
+	var/list/custom_worn_icons = list()
+
 /**
  * Modularly returns one of worn_icon_vox, worn_icon_teshari, etc.
  * Arguments:
  * * item_slot: The slot we're updating. One of LOADOUT_ITEM_HEAD, etc.
  * * item is the item we're checking.
  */
-/datum/species/proc/get_custom_worn_icon(item_slot, obj/item/item)
+/mob/living/carbon/human/proc/get_custom_worn_icon(item_slot, obj/item/item)
 	return null
 
 /**
@@ -14,8 +18,9 @@
  * * item is the item we're updating.
  * * icon is the icon we're setting to the var.
  */
-/datum/species/proc/set_custom_worn_icon(item_slot, obj/item/item, icon/icon)
+/mob/living/carbon/human/proc/set_custom_worn_icon(item_slot, obj/item/item, icon/icon)
 	return
+
 
 /**
  * Modularly get the species' fallback greyscale config.
@@ -24,10 +29,10 @@
  * * item_slot: The slot we're updating. One of LOADOUT_ITEM_HEAD, etc.
  * * item: The item being rendered.
  */
-/datum/species/proc/get_custom_worn_config_fallback(item_slot, obj/item/item)
+/mob/living/carbon/human/proc/get_custom_worn_config_fallback(item_slot, obj/item/item)
 	CRASH("`get_custom_worn_config_fallback()` was not implemented for [type]!")
 
-/datum/species/proc/use_custom_worn_icon_cached()
+/mob/living/carbon/human/proc/use_custom_worn_icon_cached()
 	LAZYINITLIST(GLOB.species_clothing_fallback_cache[name])
 
 /**
@@ -37,7 +42,7 @@
  * * state_to_use: icon state you're substituting
  * * meta: string containing other info.
  */
-/datum/species/proc/get_custom_worn_icon_cached(file_to_use, state_to_use, meta)
+/mob/living/carbon/human/proc/get_custom_worn_icon_cached(file_to_use, state_to_use, meta)
 	return GLOB.species_clothing_fallback_cache[name]["[file_to_use]-[state_to_use]-[meta]"]
 
 /**
@@ -48,7 +53,7 @@
  * * meta: string containing other info.
  * * cached_value: Cached value
  */
-/datum/species/proc/set_custom_worn_icon_cached(file_to_use, state_to_use, meta, cached_value)
+/mob/living/carbon/human/proc/set_custom_worn_icon_cached(file_to_use, state_to_use, meta, cached_value)
 	GLOB.species_clothing_fallback_cache[name]["[file_to_use]-[state_to_use]-[meta]"] = cached_value
 
 /**
@@ -58,7 +63,7 @@
  * * item_slot: The slot we're updating. One of LOADOUT_ITEM_HEAD, etc.
  * * item: The item being rendered.
  */
-/datum/species/proc/generate_custom_worn_icon(item_slot, obj/item/item)
+/mob/living/carbon/human/proc/generate_custom_worn_icon(item_slot, obj/item/item)
 	// If already set (possibly by us, or manually, use it.)
 	var/icon/final_icon = get_custom_worn_icon(item_slot, item)
 	if(final_icon && icon_exists(final_icon, item.worn_icon_state || item.icon_state))
@@ -82,7 +87,7 @@
 /**
  * Generate a fallback worn icon, if the species supports it. You must call it in an override of generate_custom_worn_icon()
  */
-/datum/species/proc/generate_custom_worn_icon_fallback(item_slot, obj/item/item)
+/mob/living/carbon/human/proc/generate_custom_worn_icon_fallback(item_slot, obj/item/item)
 	var/icon/human_icon = item.worn_icon || item.icon
 	var/human_icon_state = item.worn_icon_state || item.icon_state
 

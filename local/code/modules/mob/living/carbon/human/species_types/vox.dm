@@ -85,6 +85,8 @@
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
 
+// EffigyTODO - Nuke Vox
+/*
 /datum/species/vox/get_custom_worn_icon(item_slot, obj/item/item)
 	// snowflakey but vox legs weird.
 	if(item_slot == LOADOUT_ITEM_SHOES)
@@ -97,6 +99,7 @@
 
 /datum/species/vox/set_custom_worn_icon(item_slot, obj/item/item, icon/icon)
 	item.worn_icon_vox = icon
+*/
 
 /datum/species/vox/get_species_description()
 	return placeholder_description

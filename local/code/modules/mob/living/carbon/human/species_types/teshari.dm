@@ -83,6 +83,8 @@
 	var/datum/greyscale_config/greyscale_config_worn_teshari_fallback
 	var/datum/greyscale_config/greyscale_config_worn_teshari_fallback_skirt
 
+// EffigyTODO - Nuke Teshari
+/*
 /datum/species/teshari/get_custom_worn_icon(item_slot, obj/item/item)
 	return item.worn_icon_teshari
 
@@ -137,6 +139,8 @@
 		new_icon.Insert(new_icon, human_icon_state)
 		set_custom_worn_icon_cached(human_icon, human_icon_state, "m", new_icon)
 		return new_icon
+
+*/
 
 #undef MASK_SNOUT_EXTRA_OFFSET_X
 #undef MASK_SNOUT_EXTRA_OFFSET_Y
