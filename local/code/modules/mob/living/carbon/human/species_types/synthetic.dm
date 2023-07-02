@@ -18,11 +18,10 @@
 		TRAIT_NO_HUSK,
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
-	)
-	species_traits = list(
+		TRAIT_NO_DNA_COPY,
+		TRAIT_NO_TRANSFORMATION_STING,
 		ROBOTIC_DNA_ORGANS,
 		ROBOTIC_LIMBS,
-		NOTRANSSTING,
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
@@ -122,7 +121,7 @@
 	examine_limb_id = chassis_of_choice.icon_state
 
 	if(chassis_of_choice.color_src || head_of_choice.color_src)
-		species_traits += MUTCOLORS
+		inherent_traits += TRAIT_MUTANT_COLORS
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
 	for(var/obj/item/bodypart/limb as anything in target.bodyparts)

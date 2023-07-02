@@ -499,7 +499,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		limb.alpha = specific_alpha
 	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
-	if(TRAIT_NOMETABOLISM in inherent_traits)
+	if(TRAIT_LIVERLESS_METABOLISM in inherent_traits)
 		C.reagents.end_metabolization(C, keep_liverless = TRUE)
 
 	if(TRAIT_GENELESS in inherent_traits)

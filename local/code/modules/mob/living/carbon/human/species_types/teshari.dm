@@ -8,11 +8,9 @@
 	name = "Teshari"
 	id = SPECIES_TESHARI
 	eyes_icon = 'local/icons/obj/medical/organs/teshari_eyes.dmi'
-	species_traits = list(MUTCOLORS,
-		NO_UNDERWEAR,
-		HAS_MARKINGS,
-		)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
+		TRAIT_NO_UNDERWEAR,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_LITERATE,

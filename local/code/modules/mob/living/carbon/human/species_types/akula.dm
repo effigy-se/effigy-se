@@ -1,10 +1,8 @@
 /datum/species/akula
 	name = "Akula"
 	id = SPECIES_AKULA
-	species_traits = list(
-		MUTCOLORS
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,

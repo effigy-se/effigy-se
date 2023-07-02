@@ -1,8 +1,8 @@
 /datum/species/lizard
 	mutant_bodyparts = list()
 	external_organs = list()
-	species_traits = list(
-		MUTCOLORS,
+	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 	)
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
@@ -47,9 +47,6 @@
 	lizard.update_body(TRUE)
 
 /datum/species/lizard/ashwalker
-	species_traits = list(
-		MUTCOLORS,
-	)
 	always_customizable = TRUE
 
 /datum/species/lizard/ashwalker/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#990000")

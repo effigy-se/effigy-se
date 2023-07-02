@@ -2,9 +2,6 @@
 	name = "Snailperson"
 	id = SPECIES_SNAIL
 	// EFFIGY EDIT CHANGE START
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
 		TRAIT_NO_UNDERWEAR,

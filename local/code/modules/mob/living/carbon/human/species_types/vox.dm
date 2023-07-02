@@ -4,10 +4,8 @@
 	id = SPECIES_VOX
 	eyes_icon = 'local/icons/obj/medical/organs/vox_eyes.dmi'
 	can_augment = FALSE
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,

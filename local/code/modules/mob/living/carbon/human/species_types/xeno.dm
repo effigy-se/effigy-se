@@ -3,10 +3,8 @@
 	name = "Xenomorph Hybrid"
 	id = SPECIES_XENO
 	family_heirlooms = list(/obj/item/toy/plush/rouny, /obj/item/toy/toy_xeno,)
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,

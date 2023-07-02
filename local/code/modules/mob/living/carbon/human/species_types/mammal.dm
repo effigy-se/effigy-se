@@ -1,10 +1,8 @@
 /datum/species/mammal
 	name = "Anthromorph" //Called so because the species is so much more universal than just mammals
 	id = SPECIES_MAMMAL
-	species_traits = list(
-		MUTCOLORS,
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,

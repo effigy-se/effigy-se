@@ -3,11 +3,9 @@
 /datum/species/skrell
 	name = "Skrell"
 	id = SPECIES_SKRELL
-	species_traits = list(
-		MUTCOLORS,
-		NO_SLIP_WHEN_WALKING
-	)
 	inherent_traits = list(
+		TRAIT_NO_SLIP_ALL,
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,

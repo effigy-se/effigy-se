@@ -596,7 +596,7 @@
 			owner.updatehealth()
 		// EFFIGY EDIT CHANGE START (#3 Medical)
 		//Consider moving this to a new species proc "spec_heal" maybe?
-		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
+		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.inherent_traits))
 			if(owner.health > 50)
 				owner.revive(FALSE)
 		// EFFIGY EDIT CHANGE END (#3 Medical)
