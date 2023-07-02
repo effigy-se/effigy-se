@@ -21,9 +21,6 @@
 		"body_markings" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	disliked_food = GRAIN | DAIRY | CLOTH | GROSS
-	liked_food = GORE | MEAT | SEAFOOD | NUTS
-	toxic_food = TOXIC
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_LIZARD

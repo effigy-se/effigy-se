@@ -21,9 +21,6 @@
 		TRAIT_EASILY_WOUNDED, //theyre like fuckin skin and bones
 		TRAIT_LITERATE,
 	)
-	toxic_food = DAIRY | PINEAPPLE
-	disliked_food = VEGETABLES | FRUIT | CLOTH
-	liked_food = RAW | MEAT
 	payday_modifier = 1 //-- "Equality"
 	damage_modifier = 75 // EffigyLocal Edit - god I hope this works
 	stunmod = 1.25 //multiplier for stun durations

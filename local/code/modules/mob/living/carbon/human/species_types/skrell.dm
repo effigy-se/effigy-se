@@ -21,9 +21,6 @@
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/skrell
-	toxic_food = DAIRY | MEAT
-	disliked_food = RAW | CLOTH
-	liked_food = TOXIC | FRUIT | VEGETABLES
 	payday_modifier = 1
 	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

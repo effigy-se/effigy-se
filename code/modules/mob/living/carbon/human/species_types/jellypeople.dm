@@ -48,19 +48,11 @@
 		regenerate_limbs = new
 		regenerate_limbs.Grant(new_jellyperson)
 		update_mail_goodies(new_jellyperson)
-		// EFFIGY EDIT ADD START (Customization)
-		alter_form = new
-		alter_form.Grant(new_jellyperson)
-		// EFFIGY EDIT ADD END (Customization)
 	new_jellyperson.AddElement(/datum/element/soft_landing)
 
 /datum/species/jelly/on_species_loss(mob/living/carbon/former_jellyperson, datum/species/new_species, pref_load)
 	if(regenerate_limbs)
 		regenerate_limbs.Remove(former_jellyperson)
-	// EFFIGY EDIT ADD START (Customization)
-	if(alter_form)
-		alter_form.Remove(former_jellyperson)
-	// EFFIGY EDIT ADD END (Customization)
 	former_jellyperson.RemoveElement(/datum/element/soft_landing)
 
 	return ..()
