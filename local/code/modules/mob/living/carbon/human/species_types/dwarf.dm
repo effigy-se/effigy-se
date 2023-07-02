@@ -2,12 +2,7 @@
 	name = "Dwarf"
 	id = SPECIES_DWARF
 	examine_limb_id = SPECIES_HUMAN
-	species_traits = list(
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-		LIPS,
-	)
+	species_traits = list()
 	inherent_traits = list(
 		TRAIT_DWARF,TRAIT_SNOB,
 		TRAIT_ADVANCEDTOOLUSER,

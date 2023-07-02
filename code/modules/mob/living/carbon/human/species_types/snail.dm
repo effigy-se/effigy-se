@@ -4,9 +4,6 @@
 	// EFFIGY EDIT CHANGE START
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR
 	)
 	inherent_traits = list(
 		TRAIT_NO_SLIP_ALL,
