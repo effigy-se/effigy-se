@@ -4,6 +4,7 @@
 	icon_state = "moth_head_m"
 	limb_id = SPECIES_MOTH
 	is_dimorphic = TRUE
+	head_flags = HEAD_ALL_FEATURES
 
 /obj/item/bodypart/chest/moth
 	icon = BODYPART_ICON_MOTH
