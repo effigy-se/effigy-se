@@ -111,7 +111,7 @@
 /obj/item/dogborg_tongue
 	name = "synthetic tongue"
 	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
-	icon = 'packages/borgs/assets/robot_items.dmi'
+	icon = 'local/icons/mob/borgs/robot_items.dmi'
 	icon_state = "synthtongue"
 	hitsound = 'sound/effects/attackblob.ogg'
 	desc = "For giving affectionate kisses."
@@ -134,7 +134,7 @@
 /obj/item/dogborg_nose
 	name = "boop module"
 	desc = "The BOOP module"
-	icon = 'packages/borgs/assets/robot_items.dmi'
+	icon = 'local/icons/mob/borgs/robot_items.dmi'
 	icon_state = "nose"
 	flags_1 = CONDUCT_1
 	item_flags = NOBLUDGEON
@@ -150,7 +150,7 @@
 /obj/item/crowbar/cyborg/power
 	name = "modular crowbar"
 	desc = "A cyborg fitted module resembling the jaws of life."
-	icon = 'packages/borgs/assets/items_cyborg.dmi'
+	icon = 'local/icons/mob/borgs/items_cyborg.dmi'
 	icon_state = "jaws_pry_cyborg"
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 10
@@ -176,7 +176,7 @@
 /obj/item/screwdriver/cyborg/power
 	name =	"automated drill"
 	desc = "A cyborg fitted module resembling the hand drill"
-	icon = 'packages/borgs/assets/items_cyborg.dmi'
+	icon = 'local/icons/mob/borgs/items_cyborg.dmi'
 	icon_state = "drill_screw_cyborg"
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
@@ -560,7 +560,7 @@
 
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific
-	icon = 'packages/borgs/assets/items_cyborg.dmi'
+	icon = 'local/icons/mob/borgs/items_cyborg.dmi'
 	icon_state = "misc"
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific/juice
@@ -586,7 +586,7 @@
 /obj/item/cooking/cyborg/power
 	name =	"automated cooking tool"
 	desc = "A cyborg fitted module resembling the rolling pins and Knifes"
-	icon = 'packages/borgs/assets/items_cyborg.dmi'
+	icon = 'local/icons/mob/borgs/items_cyborg.dmi'
 	icon_state = "knife_screw_cyborg"
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'

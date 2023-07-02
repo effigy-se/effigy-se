@@ -38,39 +38,6 @@
 			movable_parent.particles.position = list(6, 12, 0)
 			movable_parent.particles.drift = generator("vector", list(0, 0.4), list(0.8, -0.2))
 
-
-/mob/living/silicon/robot/proc/toggle_smoke()
-	set name = "Toggle smoke"
-	set category = "AI Commands"
-
-	if(particles)
-		dissipate()
-	else if (!stat && !robot_resting)
-		do_jitter_animation(10)
-		playsound(src, 'local/sound/effects/robot_smoke.ogg', 50)
-		particles = new /particles/smoke/robot()
-
-/mob/living/silicon/robot/proc/dissipate()
-	particles.spawning = 0
-	addtimer(CALLBACK(src, PROC_REF(particles_qdel)), 1.5 SECONDS)
-
-/mob/living/silicon/robot/proc/particles_qdel()
-	QDEL_NULL(particles)
-
-/mob/living/silicon/robot/death()
-	. = ..()
-	if(GetComponent(/datum/component/robot_smoke))
-		dissipate()
-
-/mob/living/silicon/robot/robot_lay_down()
-	. = ..()
-
-	if(GetComponent(/datum/component/robot_smoke))
-		if(robot_resting)
-			dissipate()
-		else
-			return
-
 // The smoke
 /particles/smoke/robot
 	spawning = 0.4

@@ -96,12 +96,12 @@
 /obj/item/robot_model/clown
 	borg_skins = list(
 		"Default" = list(SKIN_ICON_STATE = "clown"),
-		"Bootyborg" = list(SKIN_ICON_STATE = "bootyclown", SKIN_ICON = 'packages/borgs/assets/robots_clown.dmi'),
-		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyclown", SKIN_ICON = 'packages/borgs/assets/robots_clown.dmi'),
-		"Marina" = list(SKIN_ICON_STATE = "marina_mommy", SKIN_ICON = 'packages/borgs/assets/robots_clown.dmi', SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
-		"Garish" = list(SKIN_ICON_STATE = "garish", SKIN_ICON = 'packages/borgs/assets/robots_clown.dmi'),
-		"Robot" = list(SKIN_ICON_STATE = "clownbot", SKIN_ICON = 'packages/borgs/assets/robots_clown.dmi'),
-		"Sleek" = list(SKIN_ICON_STATE = "clownman", SKIN_ICON = 'packages/borgs/assets/robots_clown.dmi', SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK))
+		"Bootyborg" = list(SKIN_ICON_STATE = "bootyclown", SKIN_ICON = 'local/icons/mob/borgs/robots_clown.dmi'),
+		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyclown", SKIN_ICON = 'local/icons/mob/borgs/robots_clown.dmi'),
+		"Marina" = list(SKIN_ICON_STATE = "marina_mommy", SKIN_ICON = 'local/icons/mob/borgs/robots_clown.dmi', SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
+		"Garish" = list(SKIN_ICON_STATE = "garish", SKIN_ICON = 'local/icons/mob/borgs/robots_clown.dmi'),
+		"Robot" = list(SKIN_ICON_STATE = "clownbot", SKIN_ICON = 'local/icons/mob/borgs/robots_clown.dmi'),
+		"Sleek" = list(SKIN_ICON_STATE = "clownman", SKIN_ICON = 'local/icons/mob/borgs/robots_clown.dmi', SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK))
 	)
 
 //ENGINEERING
@@ -310,7 +310,7 @@
 	cyborg_base_icon = "ninja_sec"
 	cyborg_icon_override = CYBORG_ICON_NINJA
 	model_select_icon = "ninjaborg"
-	model_select_alternate_icon = 'packages/borgs/assets/screen_cyborg.dmi'
+	model_select_alternate_icon = 'local/icons/mob/borgs/screen_cyborg.dmi'
 	model_traits = list(TRAIT_PUSHIMMUNE, TRAIT_NOFLASH) //No more charging them with a flash and thinking it is a good idea
 	hat_offset = 3
 	borg_skins = list(
@@ -358,7 +358,7 @@
 	cyborg_base_icon = "ninja_medical"
 	cyborg_icon_override = CYBORG_ICON_NINJA
 	model_select_icon = "ninjaborg"
-	model_select_alternate_icon = 'packages/borgs/assets/screen_cyborg.dmi'
+	model_select_alternate_icon = 'local/icons/mob/borgs/screen_cyborg.dmi'
 
 /obj/item/robot_model/ninja_saboteur
 	name = "Spider Clan Saboteur"
@@ -387,7 +387,7 @@
 	cyborg_base_icon = "ninja_engi"
 	cyborg_icon_override = CYBORG_ICON_NINJA
 	model_select_icon = "ninjaborg"
-	model_select_alternate_icon = 'packages/borgs/assets/screen_cyborg.dmi'
+	model_select_alternate_icon = 'local/icons/mob/borgs/screen_cyborg.dmi'
 	model_traits = list(TRAIT_PUSHIMMUNE, TRAIT_NOFLASH)
 	model_traits = list(TRAIT_NEGATES_GRAVITY)
 	hat_offset = -4

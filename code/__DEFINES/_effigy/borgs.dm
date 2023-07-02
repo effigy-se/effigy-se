@@ -30,36 +30,36 @@ GLOBAL_LIST_EMPTY(cyborg_base_models_icon_list)
 GLOBAL_LIST_EMPTY(cyborg_all_models_icon_list)
 
 /// Icon file locations for borg icons
-#define CYBORG_ICON_STANDARD 'packages/borgs/assets/robots.dmi'
+#define CYBORG_ICON_STANDARD 'local/icons/mob/borgs/robots.dmi'
 
-#define CYBORG_ICON_MED 'packages/borgs/assets/robots_med.dmi'
-#define CYBORG_ICON_MED_WIDE 'packages/borgs/assets/widerobot_med.dmi'
+#define CYBORG_ICON_MED 'local/icons/mob/borgs/robots_med.dmi'
+#define CYBORG_ICON_MED_WIDE 'local/icons/mob/borgs/widerobot_med.dmi'
 
-#define CYBORG_ICON_CARGO 'packages/borgs/assets/robots_cargo.dmi'
-#define CYBORG_ICON_CARGO_WIDE 'packages/borgs/assets/widerobot_cargo.dmi'
+#define CYBORG_ICON_CARGO 'local/icons/mob/borgs/robots_cargo.dmi'
+#define CYBORG_ICON_CARGO_WIDE 'local/icons/mob/borgs/widerobot_cargo.dmi'
 
-#define CYBORG_ICON_SEC 'packages/borgs/assets/robots_sec.dmi'
-#define CYBORG_ICON_SEC_WIDE 'packages/borgs/assets/widerobot_sec.dmi'
+#define CYBORG_ICON_SEC 'local/icons/mob/borgs/robots_sec.dmi'
+#define CYBORG_ICON_SEC_WIDE 'local/icons/mob/borgs/widerobot_sec.dmi'
 
-#define CYBORG_ICON_ENG 'packages/borgs/assets/robots_eng.dmi'
-#define CYBORG_ICON_ENG_WIDE 'packages/borgs/assets/widerobot_eng.dmi'
+#define CYBORG_ICON_ENG 'local/icons/mob/borgs/robots_eng.dmi'
+#define CYBORG_ICON_ENG_WIDE 'local/icons/mob/borgs/widerobot_eng.dmi'
 
-#define CYBORG_ICON_PEACEKEEPER 'packages/borgs/assets/robots_pk.dmi'
-#define CYBORG_ICON_PEACEKEEPER_WIDE 'packages/borgs/assets/widerobot_pk.dmi'
+#define CYBORG_ICON_PEACEKEEPER 'local/icons/mob/borgs/robots_pk.dmi'
+#define CYBORG_ICON_PEACEKEEPER_WIDE 'local/icons/mob/borgs/widerobot_pk.dmi'
 
-#define CYBORG_ICON_SERVICE 'packages/borgs/assets/robots_serv.dmi'
-#define CYBORG_ICON_SERVICE_WIDE 'packages/borgs/assets/widerobot_serv.dmi'
+#define CYBORG_ICON_SERVICE 'local/icons/mob/borgs/robots_serv.dmi'
+#define CYBORG_ICON_SERVICE_WIDE 'local/icons/mob/borgs/widerobot_serv.dmi'
 
-#define CYBORG_ICON_MINING 'packages/borgs/assets/robots_mine.dmi'
-#define CYBORG_ICON_MINING_WIDE 'packages/borgs/assets/widerobot_mine.dmi'
+#define CYBORG_ICON_MINING 'local/icons/mob/borgs/robots_mine.dmi'
+#define CYBORG_ICON_MINING_WIDE 'local/icons/mob/borgs/widerobot_mine.dmi'
 
-#define CYBORG_ICON_JANI 'packages/borgs/assets/robots_jani.dmi'
-#define CYBORG_ICON_JANI_WIDE 'packages/borgs/assets/widerobot_jani.dmi'
+#define CYBORG_ICON_JANI 'local/icons/mob/borgs/robots_jani.dmi'
+#define CYBORG_ICON_JANI_WIDE 'local/icons/mob/borgs/widerobot_jani.dmi'
 
-#define CYBORG_ICON_SYNDIE 'packages/borgs/assets/robots_syndi.dmi'
-#define CYBORG_ICON_SYNDIE_WIDE 'packages/borgs/assets/widerobot_syndi.dmi'
+#define CYBORG_ICON_SYNDIE 'local/icons/mob/borgs/robots_syndi.dmi'
+#define CYBORG_ICON_SYNDIE_WIDE 'local/icons/mob/borgs/widerobot_syndi.dmi'
 
-#define CYBORG_ICON_CLOWN 'packages/borgs/assets/robots_clown.dmi'
-#define CYBORG_ICON_CLOWN_WIDE 'packages/borgs/assets/widerobot_clown.dmi'
+#define CYBORG_ICON_CLOWN 'local/icons/mob/borgs/robots_clown.dmi'
+#define CYBORG_ICON_CLOWN_WIDE 'local/icons/mob/borgs/widerobot_clown.dmi'
 
-#define CYBORG_ICON_NINJA 'packages/borgs/assets/robots_ninja.dmi'
+#define CYBORG_ICON_NINJA 'local/icons/mob/borgs/robots_ninja.dmi'
