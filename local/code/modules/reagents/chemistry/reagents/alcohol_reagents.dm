@@ -598,13 +598,6 @@
 		quality = DRINK_GOOD
 	return ..()
 
-/datum/reagent/consumable/ethanol/bloodshot/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
-	if(drinker.blood_volume < drinker.blood_volume_normal)
-		drinker.blood_volume = max(drinker.blood_volume, min(drinker.blood_volume + (3 * REM * seconds_per_tick), BLOOD_VOLUME_NORMAL)) //Bloodshot quickly restores blood loss.
-
-	return ..()
-
-
 /datum/reagent/consumable/ethanol/blizzard_brew
 	name = "Blizzard Brew"
 	description = "An ancient recipe. Served best chilled as much as dwarvenly possible."
