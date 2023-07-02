@@ -19,7 +19,7 @@
 	var/list/list/body_markings = list()
 
 	/// Will the person see accessories not meant for their species to choose from
-	var/mismatched_customization = FALSE
+	var/mismatched_customization = TRUE
 
 	/// Allows the user to freely color his body markings and mutant parts.
 	var/allow_advanced_colors = FALSE

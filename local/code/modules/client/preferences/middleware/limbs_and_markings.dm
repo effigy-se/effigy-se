@@ -234,7 +234,7 @@
 /datum/preference_middleware/limbs_and_markings/get_ui_data(mob/user)
 	var/list/data = list()
 	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	var/allow_mismatched_parts = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/allow_mismatched_parts = TRUE
 	if(!robotic_styles)
 		robotic_styles = list()
 		for(var/style_name in GLOB.robotic_styles_list)

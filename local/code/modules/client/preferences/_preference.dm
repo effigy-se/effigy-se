@@ -2,7 +2,7 @@
 
 /datum/preference/tri_color
 	abstract_type = /datum/preference/tri_color
-	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
+	var/type_to_check
 	var/check_mode = TRICOLOR_CHECK_BOOLEAN
 
 /datum/preference/tri_color/deserialize(input, datum/preferences/preferences)
@@ -19,7 +19,7 @@
 	if (check_mode == TRICOLOR_NO_CHECK || type == abstract_type)
 		return ..(preferences)
 	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/allowed = TRUE
 	var/part_enabled = preferences.read_preference(type_to_check)
 	if(check_mode == TRICOLOR_CHECK_ACCESSORY)
 		part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, part_enabled)
@@ -34,7 +34,7 @@
 
 /datum/preference/tri_bool
 	abstract_type = /datum/preference/tri_bool
-	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
+	var/type_to_check
 	var/check_mode = TRICOLOR_CHECK_BOOLEAN
 
 /datum/preference/tri_bool/deserialize(input, datum/preferences/preferences)
@@ -51,7 +51,7 @@
 	if(type == abstract_type)
 		return ..(preferences)
 	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/allowed = TRUE
 	var/emissives_allowed = preferences.read_preference(/datum/preference/toggle/allow_emissives)
 	var/part_enabled = preferences.read_preference(type_to_check)
 	if(check_mode == TRICOLOR_CHECK_ACCESSORY)
@@ -99,7 +99,7 @@
 
 /datum/preference/toggle/mutant_toggle/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/allowed = TRUE
 	return passed_initial_check || allowed
 
 /**
@@ -123,7 +123,7 @@
 
 /datum/preference/choiced/mutant_choice/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	var/overriding = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/overriding = TRUE
 	var/part_enabled = is_part_enabled(preferences)
 	return (passed_initial_check || overriding) && part_enabled
 
@@ -187,8 +187,7 @@
 	if(!is_part_enabled(preferences))
 		return FALSE
 
-	if(preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
-		return TRUE
+	return TRUE
 
 	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
 	species = new species
@@ -217,7 +216,7 @@
 /datum/preference/toggle/emissive
 	abstract_type = /datum/preference/toggle/emissive
 	/// Path to the corresponding /datum/preference/toggle to check if part is enabled.
-	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
+	var/type_to_check
 	/// Can either be `TRICOLOR_CHECK_BOOLEAN` or `TRICOLOR_CHECK_ACCESSORY`, the latter of which adding an extra check to make sure the accessory is enabled and a factual accessory, aka not None
 	var/check_mode = TRICOLOR_CHECK_BOOLEAN
 
@@ -225,7 +224,7 @@
 	if(type == abstract_type)
 		return ..(preferences)
 	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/allowed = TRUE
 	var/emissives_allowed = preferences.read_preference(/datum/preference/toggle/allow_emissives)
 	var/part_enabled = preferences.read_preference(type_to_check)
 	if(check_mode == TRICOLOR_CHECK_ACCESSORY)
