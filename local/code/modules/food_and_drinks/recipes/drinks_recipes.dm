@@ -125,7 +125,7 @@
 	results = list(/datum/reagent/consumable/ethanol/hippie_hooch = 5)
 	required_reagents = list(/datum/reagent/medicine/antihol = 1, /datum/reagent/consumable/ethanol/crevice_spike = 3, /datum/reagent/medicine/earthsblood = 1)
 	mix_message = "You hear wood flutes and nature as it mixes."
-	mix_sound = 'packages/emotes/assets/voice/hoot.ogg'
+	mix_sound = 'local/sound/emotes/voice/hoot.ogg'
 
 /datum/chemical_reaction/drink/research_rum
 	results = list(/datum/reagent/consumable/ethanol/research_rum = 4)

@@ -16,8 +16,8 @@
 				return pick('sound/voice/human/manlaugh1.ogg',
 						'sound/voice/human/manlaugh2.ogg')
 			else
-				return pick('packages/emotes/assets/generic/female/female_giggle_1.ogg',
-					'packages/emotes/assets/generic/female/female_giggle_2.ogg')
+				return pick('local/sound/emotes/generic/female/female_giggle_1.ogg',
+					'local/sound/emotes/generic/female/female_giggle_2.ogg')
 		if(user.gender == MALE || !LAZYLEN(H.selected_laugh.female_laughsounds))
 			return pick(H.selected_laugh.male_laughsounds)
 		else

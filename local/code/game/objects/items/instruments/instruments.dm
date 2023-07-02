@@ -10,4 +10,4 @@
 	attack_verb_simple = list("flutter", "flap", "squeak")
 	w_class = WEIGHT_CLASS_TINY
 	force = 0
-	hitsound = 'packages/emotes/assets/generic/mothsqueak.ogg'
+	hitsound = 'local/sound/emotes/generic/mothsqueak.ogg'
