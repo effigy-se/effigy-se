@@ -298,9 +298,9 @@
 /obj/item/clothing/suit/apron/chef/colorable_apron
 	name = "apron"
 	desc = "A basic apron."
-	icon = 'packages/greyscale/assets/suit/suit.dmi'
-	worn_icon = 'packages/greyscale/assets/suit/suit.dmi'
-	worn_icon_teshari = 'packages/greyscale/assets/suit/suit_teshari.dmi'
+	icon = 'local/icons/mob/clothing/greyscale/suit/suit.dmi'
+	worn_icon = 'local/icons/mob/clothing/greyscale/suit/suit.dmi'
+	worn_icon_teshari = 'local/icons/mob/clothing/greyscale/suit/suit_teshari.dmi'
 	icon_state = "apron"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	greyscale_colors = "#ffffff"

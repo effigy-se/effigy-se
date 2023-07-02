@@ -49,3 +49,6 @@
 
 #define BACK_COLORPIXEL_X_1 13
 #define BACK_COLORPIXEL_Y_1 18
+
+#define SHORTS_PANTS_SHIRTS_DIGIFILE 'local/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+#define SKIRTS_DRESSES_DIGIFILE 'local/icons/mob/clothing/under/skirts_dresses_digi.dmi'
