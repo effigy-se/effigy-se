@@ -32,8 +32,8 @@
 	name = "bathrobe"
 	desc = "A warm fluffy bathrobe, perfect for relaxing after finally getting clean."
 	icon = 'local/icons/obj/clothing/under/suits.dmi'
-	worn_icon = 'packages/greyscale/assets/suit/suit.dmi'
-	worn_icon_teshari = 'packages/greyscale/assets/suit/suit_teshari.dmi'
+	worn_icon = 'local/icons/mob/clothing/greyscale/suit/suit.dmi'
+	worn_icon_teshari = 'local/icons/mob/clothing/greyscale/suit/suit_teshari.dmi'
 	icon_state = "robes"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	greyscale_colors = "#ffffff"

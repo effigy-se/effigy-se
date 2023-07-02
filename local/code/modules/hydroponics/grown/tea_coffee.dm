@@ -3,9 +3,9 @@
 // Catnip
 /obj/item/seeds/tea/catnip
 	name = "pack of catnip seeds"
-	icon = 'packages/hydro/assets/seeds.dmi'
+	icon = 'local/icons/hydroponics/seeds.dmi'
 	icon_state = "seed-catnip"
-	growing_icon = 'packages/hydro/assets/growing.dmi'
+	growing_icon = 'local/icons/hydroponics/growing.dmi'
 	desc = "Long stalks with flowering tips, they contain a chemical that attracts felines."
 	species = "catnip"
 	plantname = "Catnip Plant"
@@ -18,7 +18,7 @@
 /obj/item/food/grown/tea/catnip
 	seed = /obj/item/seeds/tea/catnip
 	name = "catnip buds"
-	icon = 'packages/hydro/assets/harvest.dmi'
+	icon = 'local/icons/hydroponics/harvest.dmi'
 	icon_state = "catnip"
 	filling_color = "#4582B4"
 	grind_results = list(/datum/reagent/pax/catnip = 2, /datum/reagent/water = 1)

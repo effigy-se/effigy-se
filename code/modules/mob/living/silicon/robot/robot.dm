@@ -210,7 +210,7 @@
 		for(var/option in GLOB.cyborg_model_list)
 			var/obj/item/robot_model/model = GLOB.cyborg_model_list[option]
 			var/model_icon = initial(model.cyborg_base_icon)
-			GLOB.cyborg_base_models_icon_list[option] = image(icon = 'packages/borgs/assets/robots.dmi', icon_state = model_icon) // EFFIGY EDIT CHANGE - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
+			GLOB.cyborg_base_models_icon_list[option] = image(icon = 'local/icons/mob/borgs/robots.dmi', icon_state = model_icon) // EFFIGY EDIT CHANGE - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
 	// EFFIGY EDIT ADD END (Borgs)
 
 	var/input_model = show_radial_menu(src, src, GLOB.cyborg_base_models_icon_list, radius = 42)

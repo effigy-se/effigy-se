@@ -2,12 +2,12 @@
 /obj/item/seeds/kiri
 	name = "pack of kiri starters"
 	desc = "This bacterial colony forms into kiri fruits."
-	icon = 'packages/hydro/assets/seeds.dmi'
+	icon = 'local/icons/hydroponics/seeds.dmi'
 	icon_state = "seed-kiri"
 	species = "kiri"
 	plantname = "Kiri Colony"
 	product = /obj/item/food/grown/kiri
-	growing_icon = 'packages/hydro/assets/growing.dmi'
+	growing_icon = 'local/icons/hydroponics/growing.dmi'
 	icon_grow = "kiri-grow"
 	icon_dead = "kiri-dead"
 	lifespan = 60
@@ -19,7 +19,7 @@
 	seed = /obj/item/seeds/kiri
 	name = "kiri fruit"
 	desc = "A bizarre egg-shaped fruit, striped with a vivid pink and yellow color. It feels somewhat firm, but the entire thing is edible. Contains an ultra-sweet jelly typically used in teshari cuisine, or it can be baked by itself for a delightful treat."
-	icon = 'packages/hydro/assets/harvest.dmi'
+	icon = 'local/icons/hydroponics/harvest.dmi'
 	icon_state = "kiri"
 	foodtypes = FRUIT | SUGAR
 	grind_results = list(/datum/reagent/consumable/kiri_jelly = 0.1)

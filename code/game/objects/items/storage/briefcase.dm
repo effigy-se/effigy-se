@@ -72,3 +72,7 @@
 	new /obj/item/ammo_box/magazine/sniper_rounds/disruptor(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/disruptor(src)
 	new /obj/item/suppressor(src)
+
+// EffigyEdit Add e2879c1 - Loadouts
+/obj/item/storage/briefcase/empty/PopulateContents()
+	return

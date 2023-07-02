@@ -8,7 +8,7 @@
 	icon_state = "plushie_borb"
 	attack_verb_continuous = list("pecks", "peeps")
 	attack_verb_simple = list("peck", "peep")
-	squeak_override = list('packages/emotes/assets/voice/peep_once.ogg' = 1)
+	squeak_override = list('local/sound/emotes/voice/peep_once.ogg' = 1)
 
 /obj/item/toy/plush/effigy/ian
 	name = "plush corgi"
@@ -16,7 +16,7 @@
 	icon_state = "ianplushie"
 	attack_verb_continuous = list("barks", "woofs", "wags his tail at")
 	attack_verb_simple = list("lick", "nuzzle", "bite")
-	squeak_override = list('packages/emotes/assets/voice/bark2.ogg' = 1)
+	squeak_override = list('local/sound/emotes/voice/bark2.ogg' = 1)
 	young = TRUE //No.
 
 /obj/item/toy/plush/effigy/ian/small
@@ -45,7 +45,7 @@
 	icon_state = "plushie_skyy"
 	attack_verb_continuous = list("kisses", "nuzzles", "cuddles", "purrs against")
 	attack_verb_simple = list("kiss", "nuzzle", "cuddle", "purr against")
-	squeak_override = list('packages/emotes/assets/voice/nya.ogg' = 1)
+	squeak_override = list('local/sound/emotes/voice/nya.ogg' = 1)
 
 /obj/item/toy/plush/effigy/igneous_synth
 	name = "igneous synth plushie"
@@ -53,7 +53,7 @@
 	icon_state = "plushie_granite"
 	attack_verb_continuous = list("bleps", "SQUEEZES", "pies")
 	attack_verb_simple = list("blep", "SQUEEZE", "pie")
-	squeak_override = list('packages/emotes/assets/generic/twobeep.ogg' = 1)
+	squeak_override = list('local/sound/emotes/generic/twobeep.ogg' = 1)
 
 /obj/item/toy/plush/effigy/edgy_bird
 	name = "edgy birb plushie"
@@ -61,7 +61,7 @@
 	icon_state = "plushie_koto"
 	attack_verb_continuous = list("pecks", "teleports behind", "caws at")
 	attack_verb_simple = list("peck", "teleport behind", "caw at")
-	squeak_override = list('packages/emotes/assets/voice/caw.ogg' = 1)
+	squeak_override = list('local/sound/emotes/voice/caw.ogg' = 1)
 
 /obj/item/toy/plush/effigy/tree_ferret
 	name = "tree ferret plushy"
@@ -83,7 +83,7 @@
 	icon_state = "plushie_azu"
 	attack_verb_continuous = list("wurbles at", "warbles at")
 	attack_verb_simple = list("wurbles at", "warbles at")
-	squeak_override = list('packages/emotes/assets/voice/wurble.ogg' = 1)
+	squeak_override = list('local/sound/emotes/voice/wurble.ogg' = 1)
 
 /obj/item/toy/plush/effigy/commanding_teshari
 	name = "commanding teshari plushy"
@@ -91,7 +91,7 @@
 	icon_state = "plushie_alara"
 	attack_verb_continuous = list("peeps", "wurbles", "hugs")
 	attack_verb_simple = list("peeps", "wurbles", "hugs")
-	squeak_override = list('packages/emotes/assets/voice/peep_once.ogg' = 1)
+	squeak_override = list('local/sound/emotes/voice/peep_once.ogg' = 1)
 
 /obj/item/toy/plush/effigy/breakdancing_bird
 	name = "breakdancing bird plushie"
@@ -107,7 +107,7 @@
 	icon_state = "plushie_toko"
 	attack_verb_continuous = list("rustles at", "threatens", "skreks at")
 	attack_verb_simple = list("rustle at", "threaten", "skrek at")
-	squeak_override = list('packages/emotes/assets/generic/voxrustle.ogg' = 1)
+	squeak_override = list('local/sound/emotes/generic/voxrustle.ogg' = 1)
 
 /obj/item/toy/plush/effigy/blue_dog
 	name = "blue dog plushie"
@@ -115,7 +115,7 @@
 	icon_state = "plushie_cobalt"
 	attack_verb_continuous = list("barks at", "borks at", "woofs at")
 	attack_verb_simple = list("bark at", "bork at", "woof at")
-	squeak_override = list('packages/emotes/assets/voice/bark1.ogg'=1, 'packages/emotes/assets/voice/bark2.ogg'=1)
+	squeak_override = list('local/sound/emotes/voice/bark1.ogg'=1, 'local/sound/emotes/voice/bark2.ogg'=1)
 
 /obj/item/toy/plush/effigy/engi_snek
 	name = "engineering snek plushie"
@@ -157,7 +157,7 @@
 	icon_state = "plushie_jecca"
 	attack_verb_continuous = list("sighs")
 	attack_verb_simple = list("sigh")
-	squeak_override = list('packages/emotes/assets/generic/female/female_sigh.ogg' = 1)
+	squeak_override = list('local/sound/emotes/generic/female/female_sigh.ogg' = 1)
 	gender = FEMALE
 
 //Donation reward for BriareosBlue
@@ -167,4 +167,4 @@
 	icon_state = "plushie_courier"
 	attack_verb_continuous = list("delivers", "export scans", "dwoops", "bwuhs", "stamps")
 	attack_verb_simple = list("deliver", "export scan", "dwoop", "bwuh", "stamp")
-	squeak_override = list('packages/emotes/assets/generic/twobeep.ogg' = 1)
+	squeak_override = list('local/sound/emotes/generic/twobeep.ogg' = 1)

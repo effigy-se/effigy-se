@@ -1,12 +1,12 @@
 /obj/item/toy/tennis
 	name = "tennis ball"
 	desc = "A classical tennis ball. It appears to have faint bite marks scattered all over its surface."
-	icon = 'packages/misc_items/assets/balls.dmi'
+	icon = 'local/icons//balls.dmi'
 	icon_state = "tennis_classic"
-	lefthand_file = 'packages/misc_items/assets/mob/inhands/balls_left.dmi'
-	righthand_file = 'packages/misc_items/assets/mob/inhands/balls_right.dmi'
+	lefthand_file = 'local/icons//mob/inhands/balls_left.dmi'
+	righthand_file = 'local/icons//mob/inhands/balls_right.dmi'
 	inhand_icon_state = "tennis_classic"
-	worn_icon = 'packages/misc_items/assets/mouthball.dmi'
+	worn_icon = 'local/icons//mouthball.dmi'
 	slot_flags = ITEM_SLOT_HEAD | ITEM_SLOT_NECK | ITEM_SLOT_EARS	//Fluff item, put it wherever you want!
 	throw_range = 14
 	w_class = WEIGHT_CLASS_SMALL

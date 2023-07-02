@@ -75,8 +75,8 @@
 /obj/item/clothing/mask/gas/respirator
 	name = "half mask respirator"
 	desc = "A half mask respirator that's really just a standard gas mask with the glass taken off."
-	icon = 'packages/greyscale/assets/masks.dmi'
-	worn_icon = 'packages/greyscale/assets/masks.dmi'
+	icon = 'local/icons/mob/clothing/greyscale/masks.dmi'
+	worn_icon = 'local/icons/mob/clothing/greyscale/masks.dmi'
 	icon_state = "respirator"
 	inhand_icon_state = "sechailer"
 	w_class = WEIGHT_CLASS_SMALL

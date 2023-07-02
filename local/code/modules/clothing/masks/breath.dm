@@ -84,8 +84,8 @@
 	icon_state = "ringgag"
 
 /obj/item/clothing/mask/surgical/greyscale
-	icon = 'packages/greyscale/assets/masks.dmi'
-	worn_icon = 'packages/greyscale/assets/masks.dmi'
+	icon = 'local/icons/mob/clothing/greyscale/masks.dmi'
+	worn_icon = 'local/icons/mob/clothing/greyscale/masks.dmi'
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#AAE4DB"
 	greyscale_config = /datum/greyscale_config/sterile_mask
