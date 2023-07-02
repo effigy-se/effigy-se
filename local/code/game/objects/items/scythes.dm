@@ -1,11 +1,11 @@
 /obj/item/scythe
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
-	icon = 'packages/misc_items/assets/obj/scythe.dmi'
+	icon = 'local/icons//obj/scythe.dmi'
 	icon_state = "scythe_t1"
-	worn_icon = 'packages/misc_items/assets/mob/back.dmi'
-	lefthand_file = 'packages/misc_items/assets/mob/inhands/polearms_lefthand.dmi'
-	righthand_file = 'packages/misc_items/assets/mob/inhands/polearms_righthand.dmi'
+	worn_icon = 'local/icons//mob/back.dmi'
+	lefthand_file = 'local/icons//mob/inhands/polearms_lefthand.dmi'
+	righthand_file = 'local/icons//mob/inhands/polearms_righthand.dmi'
 	force = 10
 	throwforce = 5
 	throw_speed = 2

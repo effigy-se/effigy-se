@@ -3,10 +3,10 @@
 /obj/item/hairbrush
 	name = "hairbrush"
 	desc = "A small, circular brush with an ergonomic grip for efficient brush application."
-	icon = 'packages/misc_items/assets/obj/hairbrush.dmi'
+	icon = 'local/icons//obj/hairbrush.dmi'
 	icon_state = "brush"
-	lefthand_file = 'packages/misc_items/assets/mob/inhands/hairbrush_left.dmi'
-	righthand_file = 'packages/misc_items/assets/mob/inhands/hairbrush_right.dmi'
+	lefthand_file = 'local/icons//mob/inhands/hairbrush_left.dmi'
+	righthand_file = 'local/icons//mob/inhands/hairbrush_right.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	var/brush_speed = 3 SECONDS
 

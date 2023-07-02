@@ -7,7 +7,7 @@
 /obj/structure/sauna_oven
 	name = "sauna oven"
 	desc = "A modest sauna oven with rocks. Add some fuel, pour some water and enjoy the moment."
-	icon = 'packages/misc_items/assets/sauna_oven.dmi'
+	icon = 'local/icons//sauna_oven.dmi'
 	icon_state = "sauna_oven"
 	density = TRUE
 	anchored = TRUE

@@ -22,7 +22,7 @@
 //CODING SIN BYOND HERE
 
 /obj/item/trash/can/skyrat
-	icon = 'packages/misc_items/assets/janitor.dmi'
+	icon = 'local/icons//janitor.dmi'
 	icon_state = "lemonade"
 
 /*
