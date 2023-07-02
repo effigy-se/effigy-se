@@ -141,6 +141,3 @@
 			LAZYREMOVE(list_to_clean, path)
 
 	return list_to_clean
-
-/obj/item/storage/briefcase/empty/PopulateContents()
-	return

@@ -116,3 +116,16 @@
 /obj/item/storage/box/hypospray/PopulateContents()
 	for(var/i in 1 to 4)
 		new /obj/item/storage/hypospraykit(src)
+
+obj/item/storage/backpack/drone_bag
+	name = "drone backpack"
+
+/obj/item/storage/backpack/drone_bag/PopulateContents()
+	. = ..()
+	new /obj/item/crowbar(src)
+	new /obj/item/wirecutters(src)
+	new /obj/item/screwdriver(src)
+	new /obj/item/wrench(src)
+	new /obj/item/weldingtool(src)
+	new /obj/item/multitool(src)
+	new /obj/item/stack/cable_coil(src)
