@@ -117,7 +117,7 @@
 	for(var/i in 1 to 4)
 		new /obj/item/storage/hypospraykit(src)
 
-obj/item/storage/backpack/drone_bag
+/obj/item/storage/backpack/drone_bag
 	name = "drone backpack"
 
 /obj/item/storage/backpack/drone_bag/PopulateContents()
