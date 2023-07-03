@@ -165,7 +165,7 @@
 	else
 		ADD_TRAIT(owner, TRAIT_SPEAKS_CLEARLY, SPEAKING_FROM_TONGUE)
 
-/obj/item/organ/internal/tongue/apply_organ_damage(damage_amount, maximum, required_organtype)
+/obj/item/organ/internal/tongue/apply_organ_damage(damage_amount, maximum, required_organ_flag)
 	. = ..()
 	if(!owner)
 		return
