@@ -24,7 +24,7 @@
 #define ORGAN_UNREMOVABLE (1<<8)
 /// Can't be seen by scanners, doesn't anger body purists
 #define ORGAN_HIDDEN (1<<9)
-#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<10) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+#define ORGAN_ROBOTIC_FROM_SPECIES (1<<10) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
 /// Helper to figure out if a limb is organic
 #define IS_ORGANIC_LIMB(limb) (limb.bodytype & BODYTYPE_ORGANIC)

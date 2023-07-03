@@ -7,8 +7,7 @@
 	name = "compact positronic brain"
 	slot = ORGAN_SLOT_BRAIN
 	zone = BODY_ZONE_CHEST
-	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC | ORGAN_SYNTHETIC_FROM_SPECIES
+	organ_flags = ORGAN_ROBOTIC | ORGAN_ROBOTIC_FROM_SPECIES
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
 	icon = 'local/icons/obj/medical/surgery.dmi'
 	icon_state = "posibrain-ipc"
