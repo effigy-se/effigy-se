@@ -137,15 +137,15 @@ SUBSYSTEM_DEF(effigy)
 	if(existing_link)
 		if(existing_link.effigy_id != "0")
 			log_admin_private("[usr] attempted to link Effigy ID [effigyid] to ckey [lookup_ckey], but it failed")
-			to_chat(usr, span_notice("Link for [lookup_ckey] already exists! Found [existing_link.effigy_id]."))
+			message_admins(span_notice("Link for [lookup_ckey] already exists! Found [existing_link.effigy_id]."))
 			return
 	if(create_effigy_link_by_ckey(lookup_ckey, effigyid))
 		var/new_link = ckey_to_effigy_id(lookup_ckey)
 		log_admin_private("[usr] linked Effigy ID [new_link] to ckey [lookup_ckey]")
-		to_chat(usr, span_notice("Linked Effigy ID [new_link] for ckey [lookup_ckey]!"))
+		message_admins(span_notice("Linked Effigy ID [new_link] for ckey [lookup_ckey]!"))
 	else
 		log_admin_private("[usr] attempted to link Effigy ID [effigyid] to ckey [lookup_ckey], but it failed")
-		to_chat(usr, span_notice("Effigy link attempt for ckey [lookup_ckey] failed!"))
+		message_admins(span_notice("Effigy link attempt for ckey [lookup_ckey] failed!"))
 
 /client/proc/find_effigy_id()
 	set category = "Admin"
@@ -153,12 +153,12 @@ SUBSYSTEM_DEF(effigy)
 	set desc = "Find the Effigy account linked to a ckey."
 	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Who could it be now?~")
 	var/requested_link = 0
-	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
+	message_admins(span_info("Searching Effigy for [ckeytomatch]"))
 	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
 	if(!requested_link)
-		to_chat(usr, span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
+		message_admins(span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
 	else
-		to_chat(usr, span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
+		message_admins(span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
 
 /client/proc/link_effigy_id()
 	set category = "Admin"
@@ -171,7 +171,7 @@ SUBSYSTEM_DEF(effigy)
 	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
 	var/effigyid = tgui_input_number(src, "What is their Effigy ID?", "Someone wants to play here, apparently.", max_value = 99999999, min_value = 1, default = 0)
 
-	to_chat(usr, span_info("Searching Effigy for [ckeytomatch]"))
+	message_admins(span_info("Searching Effigy for [ckeytomatch]"))
 	SSeffigy.link_effigy_id_to_ckey(ckeytomatch, effigyid)
 
 /client/proc/effigy_whitelist()
@@ -192,16 +192,16 @@ SUBSYSTEM_DEF(effigy)
 	"}, list("ckey" = ckeytomatch, "effigyid" = effigyid, "round_id" = GLOB.round_id || null))
 	if(!query_add_player.Execute())
 		qdel(query_add_player)
-		to_chat(usr, span_adminnotice("Add player [ckeytomatch] to DB whitelist failed!"))
+		message_admins(span_adminnotice("Add player [ckeytomatch] to DB whitelist failed!"))
 		return
 	qdel(query_add_player)
 
-	to_chat(usr, span_info("Add player [ckeytomatch] to DB complete! Verifying link..."))
+	message_admins(span_info("Add player [ckeytomatch] to DB complete! Verifying link..."))
 	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
 	if(!requested_link)
-		to_chat(usr, span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
+		message_admins(span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
 	else
-		to_chat(usr, span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
+		message_admins(span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
 
 /proc/generate_effigy_event_id()
 	var/evid = null
