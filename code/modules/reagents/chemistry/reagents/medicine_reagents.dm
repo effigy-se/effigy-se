@@ -726,7 +726,7 @@
 	var/obj/item/organ/internal/eyes/eyes = affected_mob.get_organ_slot(ORGAN_SLOT_EYES)
 	if(eyes)
 		// Healing eye damage will cure nearsightedness and blindness from ... eye damage
-		eyes.apply_organ_damage(-2 * REM * seconds_per_tick * normalise_creation_purity(), required_organ_flag = affected_organ_flags)
+		eyes.apply_organ_damage(-2 * REM * seconds_per_tick * normalise_creation_purity(), required_organtype = affected_organtype)
 		// If our eyes are seriously damaged, we have a probability of causing eye blur while healing depending on purity
 		if(eyes.damaged && SPT_PROB(16 - min(normalized_purity * 6, 12), seconds_per_tick))
 			// While healing, gives some eye blur
