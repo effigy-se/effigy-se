@@ -61,7 +61,7 @@
 	var/list/available_surgeries = get_available_surgeries(user, target)
 
 	if(!length(available_surgeries))
-		if (target.body_position == LYING_DOWN)
+		if (target.body_position == LYING_DOWN || !(target.mobility_flags & MOBILITY_LIEDOWN))
 			target.balloon_alert(user, "no surgeries available!")
 		else
 			target.balloon_alert(user, "make them lie down!")
@@ -99,7 +99,7 @@
 				continue
 		else if(carbon_target && (surgery.surgery_flags & SURGERY_REQUIRE_LIMB)) //mob with no limb in surgery zone when we need a limb
 			continue
-		if((surgery.surgery_flags & SURGERY_REQUIRE_RESTING) && target.body_position != LYING_DOWN)
+		if(IS_IN_INVALID_SURGICAL_POSITION(target, surgery))
 			continue
 		if(!surgery.can_start(user, target))
 			continue
@@ -314,13 +314,14 @@
 		target.balloon_alert(user, "not the right type of limb!")
 		return
 
+	
 	// EFFIGY EDIT ADD START (#3 Medical - Ported from Skyrat)
 	if (surgery.removes_target_bodypart && !isnull(affecting_limb) && !affecting_limb.can_be_surgically_removed)
 		target.balloon_alert(user, "limb can't be surgically removed!")
 		return
 	// EFFIGY EDIT ADD END (#3 Medical - Ported from Skyrat)
 
-	if ((surgery.surgery_flags & SURGERY_REQUIRE_RESTING) && target.body_position != LYING_DOWN)
+	if (IS_IN_INVALID_SURGICAL_POSITION(target, surgery))
 		target.balloon_alert(user, "patient is not lying down!")
 		return
 

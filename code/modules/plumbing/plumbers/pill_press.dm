@@ -12,7 +12,7 @@
 	///maximum size of a patch
 	var/max_patch_volume = 40
 	///maximum size of a bottle
-	var/max_bottle_volume = 30
+	var/max_bottle_volume = 60
 	///maximum size of a vial
 	var/max_vial_volume = 60 // EFFIGY EDIT ADD
 	///current operating product (pills or patches)

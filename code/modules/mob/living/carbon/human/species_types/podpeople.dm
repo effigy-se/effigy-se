@@ -71,14 +71,6 @@
 	if(chem.type == /datum/reagent/toxin/plantbgone)
 		affected.adjustToxLoss(3 * REM * seconds_per_tick)
 
-// EFFIGY EDIT ADD START
-/datum/species/pod/get_species_description()
-	return "Plant lore!"
-
-/datum/species/pod/get_species_lore()
-	return list("You're a plant!")
-// EFFIGY EDIT ADD END
-
 /datum/species/pod/create_pref_unique_perks()
 	var/list/to_add = list()
 
