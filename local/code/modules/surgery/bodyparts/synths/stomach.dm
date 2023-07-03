@@ -9,7 +9,6 @@
 	zone = "chest"
 	slot = "stomach"
 	desc = "A specialised cell, for synthetic use only. Has a low-power mode. Without this, synthetics are unable to stay powered."
-
 	organ_flags = ORGAN_ROBOTIC | ORGAN_ROBOTIC_FROM_SPECIES
 
 /obj/item/organ/internal/stomach/synth/emp_act(severity)

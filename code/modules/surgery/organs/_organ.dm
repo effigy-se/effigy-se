@@ -4,32 +4,26 @@
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 0
-	/// The mob that owns this organ.
+	///The mob that owns this organ.
 	var/mob/living/carbon/owner = null
-	/// The body zone this organ is supposed to inhabit.
+	var/status = ORGAN_ORGANIC
+	///The body zone this organ is supposed to inhabit.
 	var/zone = BODY_ZONE_CHEST
-	/**
-	 * The organ slot this organ is supposed to inhabit. This should be unique by type. (Lungs, Appendix, Stomach, etc)
-	 * Do NOT add slots with matching names to different zones - it will break the organs_slot list!
-	 */
+	///The organ slot this organ is supposed to inhabit. This should be unique by type. (Lungs, Appendix, Stomach, etc)
 	var/slot
-	/// Random flags that describe this organ
-	var/organ_flags = ORGAN_ORGANIC | ORGAN_EDIBLE
-	/// Maximum damage the organ can take, ever.
+	// DO NOT add slots with matching names to different zones - it will break organs_slot list!
+	var/organ_flags = ORGAN_EDIBLE
 	var/maxHealth = STANDARD_ORGAN_THRESHOLD
-	/**
-	 * Total damage this organ has sustained.
-	 * Should only ever be modified by apply_organ_damage!
-	 */
+	/// Total damage this organ has sustained
+	/// Should only ever be modified by apply_organ_damage
 	var/damage = 0
-	/// Healing factor and decay factor function on % of maxhealth, and do not work by applying a static number per tick
+	///Healing factor and decay factor function on % of maxhealth, and do not work by applying a static number per tick
 	var/healing_factor = 0 //fraction of maxhealth healed per on_life(), set to 0 for generic organs
 	var/decay_factor = 0 //same as above but when without a living owner, set to 0 for generic organs
 	var/high_threshold = STANDARD_ORGAN_THRESHOLD * 0.45 //when severe organ damage occurs
 	var/low_threshold = STANDARD_ORGAN_THRESHOLD * 0.1 //when minor organ damage occurs
 	var/severe_cooldown //cooldown for severe effects, used for synthetic organ emp effects.
-
-	// Organ variables for determining what we alert the owner with when they pass/clear the damage thresholds
+	///Organ variables for determining what we alert the owner with when they pass/clear the damage thresholds
 	var/prev_damage = 0
 	var/low_threshold_passed
 	var/high_threshold_passed
@@ -38,22 +32,16 @@
 	var/high_threshold_cleared
 	var/low_threshold_cleared
 
-	/// When set to false, this can't be used in surgeries and such - Honestly a terrible variable.
+	///When you take a bite you cant jam it in for surgery anymore.
 	var/useable = TRUE
-
-	/// Food reagents if the organ is edible
 	var/list/food_reagents = list(/datum/reagent/consumable/nutriment = 5)
-	/// The size of the reagent container if the organ is edible
+	///The size of the reagent container
 	var/reagent_vol = 10
 
-	/// Time this organ has failed for
 	var/failure_time = 0
-	/// Do we affect the appearance of our mob. Used to save time in preference code
+	///Do we effect the appearance of our mob. Used to save time in preference code
 	var/visual = TRUE
-	/**
-	 * Traits that are given to the holder of the organ.
-	 * If you want an effect that changes this, don't add directly to this. Use the add_organ_trait() proc.
-	 */
+	/// Traits that are given to the holder of the organ. If you want an effect that changes this, don't add directly to this. Use the add_organ_trait() proc
 	var/list/organ_traits
 	/// Status Effects that are given to the holder of the organ.
 	var/list/organ_effects
@@ -213,7 +201,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	. += span_notice("It should be inserted in the [parse_zone(zone)].")
 
 	if(organ_flags & ORGAN_FAILING)
-		if(IS_ROBOTIC_ORGAN(src))
+		if(status == ORGAN_ROBOTIC)
 			. += span_warning("[src] seems to be broken.")
 			return
 		. += span_warning("[src] has decayed for too long, and has turned a sickly color. It probably won't work without repairs.")
@@ -237,12 +225,12 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	return //so we don't grant the organ's action to mobs who pick up the organ.
 
 ///Adjusts an organ's damage by the amount "damage_amount", up to a maximum amount, which is by default max damage
-/obj/item/organ/proc/apply_organ_damage(damage_amount, maximum = maxHealth, required_organ_flag = NONE) //use for damaging effects
+/obj/item/organ/proc/apply_organ_damage(damage_amount, maximum = maxHealth, required_organtype) //use for damaging effects
 	if(!damage_amount) //Micro-optimization.
 		return
 	if(maximum < damage)
 		return
-	if(required_organ_flag && !(organ_flags & required_organ_flag))
+	if(required_organtype && (status != required_organtype))
 		return
 	damage = clamp(damage + damage_amount, 0, maximum)
 	var/mess = check_damage_thresholds(owner)
@@ -257,8 +245,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		to_chat(owner, mess)
 
 ///SETS an organ's damage to the amount "damage_amount", and in doing so clears or sets the failing flag, good for when you have an effect that should fix an organ if broken
-/obj/item/organ/proc/set_organ_damage(damage_amount, required_organ_flag = NONE) //use mostly for admin heals
-	return apply_organ_damage(damage_amount - damage, required_organ_flag = required_organ_flag)
+/obj/item/organ/proc/set_organ_damage(damage_amount, required_organtype) //use mostly for admin heals
+	apply_organ_damage(damage_amount - damage, required_organtype = required_organtype)
 
 /** check_damage_thresholds
  * input: mob/organ_owner (a mob, the owner of the organ we call the proc on)
