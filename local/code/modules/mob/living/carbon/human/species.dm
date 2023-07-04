@@ -39,8 +39,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/custom_worn_icons = list()
 	///Is this species restricted from changing their body_size in character creation?
 	var/body_size_restricted = FALSE
-	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
-	var/list/default_mutant_bodyparts = list()
 	/// A static list of all genital slot possibilities.
 	var/static/list/genitals_list = list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_WOMB, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS)
 
@@ -51,18 +49,18 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	. = ..()
 	if(can_have_genitals)
 		for(var/genital in genitals_list)
-			default_mutant_bodyparts[genital] = "None"
+			mutant_bodyparts[genital] = "None"
 
 /datum/species/dullahan
 	mutant_bodyparts = list()
 
 /datum/species/human/felinid
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
+	mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
 
 /datum/species/human
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
+	mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
 
 /datum/species/mush
 	mutant_bodyparts = list()
@@ -89,7 +87,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()
-	var/list/bodyparts_to_add = default_mutant_bodyparts.Copy()
+	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		for(var/genital in genitals_list)
 			bodyparts_to_add.Remove(genital)

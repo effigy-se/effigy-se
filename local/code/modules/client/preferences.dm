@@ -107,18 +107,18 @@
 	return language
 
 /datum/preferences/proc/validate_species_parts()
-	var/list/target_bodyparts = pref_species.default_mutant_bodyparts.Copy()
+	var/list/target_bodyparts = pref_species.mutant_bodyparts.Copy()
 
 	// Remove all "extra" accessories
 	for(var/key in mutant_bodyparts)
 		if(!GLOB.sprite_accessories[key]) // That accessory no longer exists, remove it
 			mutant_bodyparts -= key
 			continue
-		if(!pref_species.default_mutant_bodyparts[key])
+		if(!pref_species.mutant_bodyparts[key])
 			mutant_bodyparts -= key
 			continue
 		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) // The individual accessory no longer exists
-			mutant_bodyparts[key][MUTANT_INDEX_NAME] = pref_species.default_mutant_bodyparts[key]
+			mutant_bodyparts[key][MUTANT_INDEX_NAME] = pref_species.mutant_bodyparts[key]
 		validate_color_keys_for_part(key) // Validate the color count of each accessory that wasnt removed
 
 	// Add any missing accessories

@@ -10,7 +10,7 @@
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
 		"ears" = ACC_RANDOM,

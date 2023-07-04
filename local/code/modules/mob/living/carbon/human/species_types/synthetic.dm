@@ -23,8 +23,8 @@
 		ROBOTIC_DNA_ORGANS,
 		ROBOTIC_LIMBS,
 	)
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
+	//mutant_bodyparts = list()
+	mutant_bodyparts = list(
 		"tail" = "None",
 		"ears" = "None",
 		"legs" = "Normal Legs",
