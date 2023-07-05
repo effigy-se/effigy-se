@@ -1,3 +1,4 @@
+/*
 /**
  * Returns a list of strings representing features this species has.
  *
@@ -27,7 +28,4 @@
 	GLOB.features_by_species[type] = features
 
 	return features
-
-
-/datum/species/proc/apply_supplementary_body_changes(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
-	return
+*/
