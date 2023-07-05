@@ -41,8 +41,9 @@
 /datum/preference/choiced/genital/is_accessible(datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		return FALSE
+	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
-	return erp_allowed
+	return passed_initial_check && erp_allowed
 
 /**
  * Actually rendered. Slimmed down version of the logic in is_available() that actually works when spawning or drawing the character.
@@ -73,12 +74,13 @@
 	var/genital_pref_type
 
 /datum/preference/toggle/genital_skin_tone/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
 	var/part_name = preferences.read_preference(genital_pref_type)
 	var/datum/sprite_accessory/genital/accessory = GLOB.sprite_accessories[relevant_mutant_bodypart]?[part_name]
 	if(!accessory?.factual || !accessory.has_skintone_shading)
 		return FALSE
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
-	return erp_allowed
+	return passed_initial_check && erp_allowed
 
 /datum/preference/toggle/genital_skin_color
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -88,12 +90,13 @@
 	var/genital_pref_type
 
 /datum/preference/toggle/genital_skin_color/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
 	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	if(TRAIT_USES_SKINTONES in species_type.inherent_traits)
 		return FALSE
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(genital_pref_type))
-	return erp_allowed && part_enabled
+	return passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/toggle/genital_skin_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	// If they're not using skintones, let's not apply this yeah?
@@ -175,9 +178,10 @@
 	maximum = PENIS_MAX_LENGTH
 
 /datum/preference/numeric/penis_length/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/penis))
-	return erp_allowed && part_enabled
+	return passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/numeric/penis_length/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["penis_size"] = value
@@ -194,9 +198,10 @@
 	maximum = PENIS_MAX_GIRTH
 
 /datum/preference/numeric/penis_girth/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/penis))
-	return erp_allowed && part_enabled
+	return passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/numeric/penis_girth/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["penis_girth"] = value
@@ -229,9 +234,10 @@
 /datum/preference/toggle/penis_taur_mode/is_accessible(datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		return FALSE
+	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/penis))
-	return erp_allowed && part_enabled
+	return passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/choiced/penis_sheath
 	savefile_key = "penis_sheath"
@@ -240,9 +246,10 @@
 	relevant_mutant_bodypart = ORGAN_SLOT_PENIS
 
 /datum/preference/choiced/penis_sheath/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/penis))
-	return erp_allowed && part_enabled
+	return passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/choiced/penis_sheath/init_possible_values()
 	return SHEATH_MODES
@@ -300,6 +307,7 @@
 	maximum = 3
 
 /datum/preference/numeric/balls_size/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/testicles))
 	return erp_allowed && part_enabled
@@ -404,6 +412,7 @@
 	target.dna.features["breasts_lactation"] = value
 
 /datum/preference/toggle/breasts_lactation/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/breasts))
 	return erp_allowed && part_enabled
@@ -418,6 +427,7 @@
 	return GLOB.breast_size_to_number
 
 /datum/preference/choiced/breasts_size/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/breasts))
 	return erp_allowed && part_enabled
