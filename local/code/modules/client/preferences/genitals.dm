@@ -100,7 +100,7 @@
 /datum/preference/toggle/genital_skin_color/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	if(HAS_TRAIT(species_type, TRAIT_USES_SKINTONES))
+	if(TRAIT_USES_SKINTONES in species_type.inherent_traits)
 		return FALSE
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
