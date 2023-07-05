@@ -18,25 +18,20 @@
 		TRAIT_NO_HUSK,
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
+		TRAIT_NO_TRANSFORMATION_STING,
+		TRAIT_LIVERLESS_METABOLISM,
+		TRAIT_NO_DNA_COPY,
 	)
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-		LIPS,
-		ROBOTIC_LIMBS,
-		NOTRANSSTING,
-	)
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = "None",
-		"ears" = "None",
-		"legs" = "Normal Legs",
+	mutant_bodyparts = list(
 		MUTANT_SYNTH_ANTENNA = "None",
 		MUTANT_SYNTH_SCREEN = "None",
 		MUTANT_SYNTH_CHASSIS = "Default Chassis",
 		MUTANT_SYNTH_HEAD = "Default Head",
+	)
+	default_mutant_bodyparts = list(
+		"tail" = "None",
+		"ears" = "None",
+		"legs" = "Normal Legs",
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
@@ -125,7 +120,7 @@
 	examine_limb_id = chassis_of_choice.icon_state
 
 	if(chassis_of_choice.color_src || head_of_choice.color_src)
-		species_traits += MUTCOLORS
+		inherent_traits += TRAIT_MUTANT_COLORS
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
 	for(var/obj/item/bodypart/limb as anything in target.bodyparts)

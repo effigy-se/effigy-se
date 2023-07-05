@@ -1,14 +1,8 @@
 /datum/species/aquatic
 	name = "Aquatic"
 	id = SPECIES_AQUATIC
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
@@ -26,9 +20,6 @@
 		"wings" = "None"
 	)
 	payday_modifier = 1
-	liked_food = SEAFOOD | MEAT | FRUIT | GORE
-	disliked_food = CLOTH | GROSS
-	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_AKULA
 	bodypart_overrides = list(

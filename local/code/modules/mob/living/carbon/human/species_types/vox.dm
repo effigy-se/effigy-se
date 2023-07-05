@@ -4,14 +4,8 @@
 	id = SPECIES_VOX
 	eyes_icon = 'local/icons/obj/medical/organs/vox_eyes.dmi'
 	can_augment = FALSE
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
@@ -29,7 +23,6 @@
 		"snout" = "Vox Snout",
 		"spines" = ACC_RANDOM
 	)
-	liked_food = MEAT | FRIED
 	payday_modifier = 1
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox

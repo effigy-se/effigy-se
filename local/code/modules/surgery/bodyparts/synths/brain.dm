@@ -7,8 +7,7 @@
 	name = "compact positronic brain"
 	slot = ORGAN_SLOT_BRAIN
 	zone = BODY_ZONE_CHEST
-	status = ORGAN_ROBOTIC
-	organ_flags = ORGAN_SYNTHETIC | ORGAN_SYNTHETIC_FROM_SPECIES
+	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
 	icon = 'local/icons/obj/medical/surgery.dmi'
 	icon_state = "posibrain-ipc"
@@ -22,7 +21,7 @@
 		return
 
 	var/mob/living/carbon/human/user_human = user
-	if(user_human?.dna?.species && (REVIVES_BY_HEALING in user_human.dna.species.species_traits) && user_human.health > SYNTH_BRAIN_WAKE_THRESHOLD)
+	if(user_human?.dna?.species && (REVIVES_BY_HEALING in user_human.dna.species.inherent_traits) && user_human.health > SYNTH_BRAIN_WAKE_THRESHOLD)
 		user_human.revive(FALSE)
 
 /obj/item/organ/internal/brain/synth/emp_act(severity)

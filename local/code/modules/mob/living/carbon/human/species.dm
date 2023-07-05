@@ -112,6 +112,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/get_random_body_markings(list/features) //Needs features to base the colour off of
 	return list()
 
+/*
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
 	var/height_offset = species_human.get_top_offset() // From high changed by varying limb height
@@ -121,7 +122,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 	if(HD && !(HAS_TRAIT(species_human, TRAIT_HUSK)))
 		// lipstick
-		if(species_human.lip_style && (LIPS in species_traits))
+		if(species_human.lip_style && (LIPS in inherent_traits))
 			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "lips_[species_human.lip_style]", -BODY_LAYER)
 			lip_overlay.color = species_human.lip_color
 			HD.worn_face_offset?.apply_offset(lip_overlay)
@@ -129,7 +130,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			standing += lip_overlay
 
 		// eyes
-		if(!(NOEYESPRITES in species_traits))
+		if(!(NOEYESPRITES in inherent_traits))
 			var/obj/item/organ/internal/eyes/eye_organ = species_human.get_organ_slot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
 			var/add_pixel_x = 0
@@ -162,7 +163,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 						standing += eye_emissive
 
 	//Underwear, Undershirts & Socks
-	if(!(NO_UNDERWEAR in species_traits))
+	if(!(TRAIT_NO_UNDERWEAR in inherent_traits))
 		if(species_human.underwear && !(species_human.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
 			var/datum/sprite_accessory/underwear/underwear = GLOB.underwear_list[species_human.underwear]
 			var/mutable_appearance/underwear_overlay
@@ -204,6 +205,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 	species_human.apply_overlay(BODY_LAYER)
 	handle_mutant_bodyparts(species_human)
+*/
 
 //I wag in death
 /datum/species/spec_death(gibbed, mob/living/carbon/human/H)
@@ -258,7 +260,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/regenerate_organs(mob/living/carbon/target, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
 	. = ..()
 
-	var/robot_organs = (ROBOTIC_DNA_ORGANS in target.dna.species.species_traits)
+	var/robot_organs = (ROBOTIC_DNA_ORGANS in target.dna.species.inherent_traits)
 
 	for(var/key in target.dna.mutant_bodyparts)
 		if(!islist(target.dna.mutant_bodyparts[key]) || !(target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME] in GLOB.sprite_accessories[key]))
@@ -275,8 +277,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				replacement.relevant_layers = mutant_accessory.relevent_layers
 
 				if(robot_organs)
-					replacement.status = ORGAN_ROBOTIC
-					replacement.organ_flags |= ORGAN_SYNTHETIC
+					replacement.organ_flags |= ORGAN_ROBOTIC
 
 				// If there's an existing mutant organ, we're technically replacing it.
 				// Let's abuse the snowflake proc that skillchips added. Basically retains

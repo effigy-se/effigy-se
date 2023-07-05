@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	new_dna.update_body_size()
 	// EffigyEdit Add End
 	new_dna.species = new species.type
-	new_dna.species.species_traits = species.species_traits
+	new_dna.species.inherent_traits = species.inherent_traits
 	//if the new DNA has a holder, transform them immediately, otherwise save it
 	if(new_dna.holder)
 		new_dna.holder.set_species(species.type, icon_update = 0)

@@ -108,9 +108,9 @@ There are several things that need to be remembered:
 			icon_file = MONKEY_UNIFORM_FILE
 		else if((bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			icon_file = DIGITIGRADE_UNIFORM_FILE
-			
+
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat) birbs
-		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		else if(bodytype & BODYTYPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src)
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
@@ -123,7 +123,7 @@ There are several things that need to be remembered:
 			handled_by_bodytype = FALSE
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat) Taur-friendly suits!
-		if(dna.species.bodytype & BODYTYPE_TAUR)
+		if(bodytype & BODYTYPE_TAUR)
 			if(istype(uniform) && uniform.gets_cropped_on_taurs)
 				mutant_styles |= get_taur_mode()
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
@@ -201,7 +201,7 @@ There are several things that need to be remembered:
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -244,7 +244,7 @@ There are several things that need to be remembered:
 
 		// EFFIGY EDIT ADD START (#3 Customization)
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLASSES, glasses, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -282,7 +282,7 @@ There are several things that need to be remembered:
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_EARS, ears, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -314,7 +314,7 @@ There are several things that need to be remembered:
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_NECK, wear_neck, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -351,17 +351,17 @@ There are several things that need to be remembered:
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
 
-		if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+		if((bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
 			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // EFFIGY EDIT CHANGE
 				mutant_override = TRUE // EFFIGY EDIT ADDITION
-		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		else if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		else if(dna.species.bodytype & BODYTYPE_HIDE_SHOES)
+		else if(bodytype & BODYTYPE_HIDE_SHOES)
 			return // We just don't want shoes that float if we're not displaying legs (useful for taurs, for now)
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
@@ -423,12 +423,12 @@ There are several things that need to be remembered:
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		if((icon_file == 'icons/mob/clothing/head/default.dmi') && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if((icon_file == 'icons/mob/clothing/head/default.dmi') && (bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			var/snout_icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
 			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = snout_icon_file
@@ -462,7 +462,7 @@ There are several things that need to be remembered:
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_BELT, belt, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -492,13 +492,13 @@ There are several things that need to be remembered:
 		var/mutant_override = FALSE // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 		var/mutant_styles = NONE // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 		//More currently unused digitigrade handling
-		if(dna.species.bodytype & BODYTYPE_DIGITIGRADE)
+		if(bodytype & BODYTYPE_DIGITIGRADE)
 			if(worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION)
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SUIT_FILE // EFFIGY EDIT CHANGE
 				mutant_override = TRUE // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
-		else if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		else if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SUIT, wear_suit)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -506,7 +506,7 @@ There are several things that need to be remembered:
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
-		if(dna.species.bodytype & BODYTYPE_TAUR)
+		if(bodytype & BODYTYPE_TAUR)
 			var/obj/item/clothing/suit/worn_suit = wear_suit
 			if(istype(worn_suit) && worn_suit.gets_cropped_on_taurs)
 				mutant_styles |= get_taur_mode()
@@ -567,12 +567,12 @@ There are several things that need to be remembered:
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MASK, wear_mask)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		if((icon_file == 'icons/mob/clothing/mask.dmi') && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if((icon_file == 'icons/mob/clothing/mask.dmi') && (bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			var/snout_icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
 			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = snout_icon_file
@@ -603,7 +603,7 @@ There are several things that need to be remembered:
 
 		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
 		var/mutant_override = FALSE
-		if(dna.species.bodytype & BODYTYPE_CUSTOM)
+		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MISC, back)
 			if(species_icon_file)
 				icon_file = species_icon_file

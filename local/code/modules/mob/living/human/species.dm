@@ -15,7 +15,7 @@
 
 		if ( \
 			(preference.relevant_mutant_bodypart in default_mutant_bodyparts) \
-			|| (preference.relevant_species_trait in species_traits) \
+			|| (preference.relevant_inherent_trait in inherent_traits) \
 		)
 			features += preference.savefile_key
 

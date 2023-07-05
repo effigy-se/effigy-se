@@ -1,12 +1,7 @@
-// EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
 /datum/species/fly
 	name = "Flyperson"
 	plural_form = "Flypeople"
 	id = SPECIES_FLYPERSON
-	species_traits = list(
-		HAIR,
-		FACEHAIR
-	)
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_TACKLING_FRAIL_ATTACKER,
@@ -35,7 +30,6 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/fly,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/fly,
 	)
-// EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
 
 /datum/species/fly/check_species_weakness(obj/item/weapon, mob/living/attacker)
 	if(istype(weapon, /obj/item/melee/flyswatter))

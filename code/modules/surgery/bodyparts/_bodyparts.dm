@@ -598,7 +598,7 @@
 			owner.updatehealth()
 		// EFFIGY EDIT CHANGE START (#3 Medical)
 		//Consider moving this to a new species proc "spec_heal" maybe?
-		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
+		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.inherent_traits))
 			if(owner.health > 50)
 				owner.revive(FALSE)
 		// EFFIGY EDIT CHANGE END (#3 Medical)
@@ -878,10 +878,10 @@
 		draw_color ||= species_color || (skin_tone ? skintone2hex(skin_tone) : null)
 
 	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
-	markings = LAZYCOPY(owner_species.body_markings[body_zone])
+	markings = LAZYCOPY(owner.dna.species.body_markings[body_zone])
 	if(aux_zone)
-		aux_zone_markings = LAZYCOPY(owner_species.body_markings[aux_zone])
-	markings_alpha = owner_species.markings_alpha
+		aux_zone_markings = LAZYCOPY(owner.dna.species.body_markings[aux_zone])
+	markings_alpha = owner.dna.species.markings_alpha
 	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 	recolor_external_organs()
