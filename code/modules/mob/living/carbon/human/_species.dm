@@ -625,8 +625,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(left_leg && (IS_ORGANIC_LIMB(left_leg)))
 				var/mutable_appearance/markings_l_leg_overlay = mutable_appearance(markings.icon, "[markings.icon_state]_l_leg", -BODY_LAYER)
 				standing += markings_l_leg_overlay
-			*/
-			// EffigyEdit Remove End
+		*/
+		// EffigyEdit Remove End
 
 	//Underwear, Undershirts & Socks
 	if(!HAS_TRAIT(species_human, TRAIT_NO_UNDERWEAR))
