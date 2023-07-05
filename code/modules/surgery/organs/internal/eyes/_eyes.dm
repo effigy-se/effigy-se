@@ -126,7 +126,7 @@
 
 	if(isnull(eye_icon_state))
 		return list()
-	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/species/human/human_face.dmi' // EFFIGY EDIT ADD
+	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/species/human/human_face.dmi' // EffigyEdit Add - Customization
 
 	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -BODY_LAYER)
 	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -BODY_LAYER)
@@ -144,6 +144,27 @@
 		if(my_head.worn_face_offset)
 			my_head.worn_face_offset.apply_offset(eye_left)
 			my_head.worn_face_offset.apply_offset(eye_right)
+
+	// EffigyEdit Add - Customization
+	if(eye_icon_state == "None")
+		eye_left.alpha = 0
+		eye_right.alpha = 0
+
+	if (is_emissive) // Because it was done all weird up there.
+		var/mutable_appearance/emissive_left = emissive_appearance(eye_left.icon, eye_left.icon_state, parent, -BODY_LAYER, eye_left.alpha)
+		var/mutable_appearance/emissive_right = emissive_appearance(eye_right.icon, eye_right.icon_state, parent, -BODY_LAYER, eye_right.alpha)
+
+		emissive_left.appearance_flags &= ~RESET_TRANSFORM
+		emissive_right.appearance_flags &= ~RESET_TRANSFORM
+
+		if(my_head.worn_face_offset)
+			my_head.worn_face_offset.apply_offset(emissive_right)
+			my_head.worn_face_offset.apply_offset(emissive_left)
+
+		eye_left.overlays += emissive_left
+		eye_right.overlays += emissive_right
+
+	// EffigyEdit Add- Customization
 
 	return list(eye_left, eye_right)
 
