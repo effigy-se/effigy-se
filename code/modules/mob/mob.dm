@@ -520,7 +520,7 @@
 	if (blacklist)
 		slot_priority -= blacklist
 	for(var/slot in slot_priority)
-		if(equip_to_slot_if_possible(W, slot, disable_warning = TRUE, redraw_mob = TRUE, indirect_action = indirect_action, initial))
+		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, initial, indirect_action = indirect_action))
 			return TRUE
 	// EFFIGY EDIT CHANGE END
 
