@@ -10,14 +10,20 @@
 	icon = 'local/icons/obj/clothing/under/syndicate.dmi'
 	worn_icon = 'local/icons/mob/clothing/under/syndicate.dmi'
 	//These are pre-set for ease and reference, as syndie under items SHOULDNT have sensors and should have similar stats; also its better to start with adjust = false
-	has_sensor = NO_SENSORS
-	armor_type = /datum/armor/clothing_under
+	armor_type = /datum/armor/clothing_under/syndicate_skyrat
 	can_adjust = FALSE
+
+/datum/armor/clothing_under/syndicate_skyrat
+	melee = 10
+	bio = 10
+	fire = 50
+	acid = 40
 
 /*
 *	TACTICOOL
 */
 
+//This is an overwrite, not a fully new item, but still fits best here.
 /obj/item/clothing/under/syndicate/tacticool //Overwrites the 'fake' one. Zero armor, sensors, and default blue. More Balanced to make station-available.
 	name = "tacticool turtleneck"
 	desc = "A snug turtleneck, in fabulous Nanotrasen-blue. Just looking at it makes you want to buy a NT-certifed coffee, go into the office, and -work-."
@@ -26,7 +32,6 @@
 	icon_state = "tactifool_blue"
 	inhand_icon_state = "b_suit"
 	can_adjust = TRUE
-	has_sensor = HAS_SENSORS
 	armor_type = /datum/armor/clothing_under
 	unique_reskin = list(
 		RESKIN_NT = "tactifool_blue",
@@ -43,7 +48,6 @@
 	name = "tacticool skirtleneck"
 	desc = "A snug skirtleneck, in fabulous Nanotrasen-blue. Just looking at it makes you want to buy a NT-certifed coffee, go into the office, and -work-."
 	icon_state = "tactifool_blue_skirt"
-	armor_type = /datum/armor/clothing_under
 	body_parts_covered = CHEST|GROIN|ARMS
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	dying_key = DYE_REGISTRY_JUMPSKIRT
@@ -74,13 +78,13 @@
 	inhand_icon_state = "r_suit"
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
-	armor_type = /datum/armor/clothing_under
+	armor_type = /datum/armor/clothing_under/skyrat_tactical
 	unique_reskin = list(
 		RESKIN_SYNDIE = "syndicate_red",
 		RESKIN_CHARCOAL = "syndicate"
 	)
 
-/datum/armor/skyrat_tactical
+/datum/armor/clothing_under/skyrat_tactical
 	melee = 10
 	bio = 10
 	fire = 50
@@ -114,6 +118,7 @@
 /*
 *	ENCLAVE
 */
+
 /obj/item/clothing/under/syndicate/skyrat/enclaveo
 	name = "neo american officer uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
@@ -132,9 +137,9 @@
 	name = "neo american officer uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclaveo"
-	armor_type = /datum/armor/clothing_under
+	armor_type = /datum/armor/clothing_under/enclaveo_real
 
-/datum/armor/enclaveo_real
+/datum/armor/clothing_under/enclaveo_real
 	melee = 10
 	bio = 10
 	fire = 50
@@ -144,14 +149,14 @@
 	name = "neo american sergeant uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclave"
-	armor_type = /datum/armor/clothing_under
+	armor_type = /datum/armor/clothing_under/enclave_real
 
-#undef RESKIN_CHARCOAL
-#undef RESKIN_NT
-#undef RESKIN_SYNDIE
-
-/datum/armor/enclave_real
+/datum/armor/clothing_under/enclave_real
 	melee = 10
 	bio = 10
 	fire = 50
 	acid = 40
+
+#undef RESKIN_CHARCOAL
+#undef RESKIN_NT
+#undef RESKIN_SYNDIE
