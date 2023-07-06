@@ -10,7 +10,7 @@
 	icon = 'local/icons/obj/clothing/under/syndicate.dmi'
 	worn_icon = 'local/icons/mob/clothing/under/syndicate.dmi'
 	//These are pre-set for ease and reference, as syndie under items SHOULDNT have sensors and should have similar stats; also its better to start with adjust = false
-	armor_type = /datum/armor/syndicate_skyrat
+	armor_type = /datum/armor/clothing_under/syndicate_skyrat
 	can_adjust = FALSE
 
 /*
@@ -19,7 +19,7 @@
 
 //This is an overwrite, not a fully new item, but still fits best here.
 
-/datum/armor/syndicate_skyrat
+/datum/armor/clothing_under/syndicate_skyrat
 	melee = 10
 	bio = 10
 	fire = 50
