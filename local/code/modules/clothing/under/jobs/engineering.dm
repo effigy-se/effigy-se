@@ -39,7 +39,7 @@
 	name = "chemical hazard jumpsuit"
 	desc = "A high visibility jumpsuit with additional protection from gas and chemical hazards, at the cost of less fire-proofing."
 	icon_state = "hazard_green"
-	armor_type = /datum/armor/skyrat_hazard_chem
+	armor_type = /datum/armor/clothing_under
 	resistance_flags = ACID_PROOF
 	alt_covers_chest = TRUE
 
@@ -52,7 +52,7 @@
 	name = "chemical hazard EMT jumpsuit"
 	desc = "An EMT jumpsuit used for first responders in situations involving gas and/or chemical hazards. The label reads, \"Not designed for prolonged exposure\"."
 	icon_state = "hazard_white"
-	armor_type = /datum/armor/hazard_chem_emt
+	armor_type = /datum/armor/clothing_under
 
 /*
 *	CHIEF ENGINEER
@@ -80,6 +80,6 @@
 	name = "advanced atmospherics uniform"
 	desc = "A jumpsuit worn by advanced atmospherics crews."
 	icon_state = "util_atmos"
-	armor_type = /datum/armor/atmos_adv
+	armor_type = /datum/armor/clothing_under
 	icon_state = "util_eng"
 	can_adjust = FALSE
