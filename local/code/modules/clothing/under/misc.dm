@@ -55,10 +55,10 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/misc/skyrat/utility/syndicate
-	armor_type = /datum/armor/clothing_under
+	armor_type = /datum/armor/clothing_under/utility_syndicate
 	has_sensor = NO_SENSORS
 
-/datum/armor/clothing_under
+/datum/armor/clothing_under/utility_syndicate
 	melee = 10
 	fire = 50
 	acid = 40
