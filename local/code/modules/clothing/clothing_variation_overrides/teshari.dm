@@ -104,12 +104,6 @@
 /obj/item/clothing/head/hopcap/beret
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
 
-/obj/item/clothing/head/flatcap
-	greyscale_config_worn_teshari = /datum/greyscale_config/beret/worn/teshari
-
-/obj/item/clothing/head/frenchberet
-	greyscale_config_worn_teshari = /datum/greyscale_config/beret/worn/teshari
-
 /obj/item/clothing/head/beret/sec/navywarden/syndicate
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
 
