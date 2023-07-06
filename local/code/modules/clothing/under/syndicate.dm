@@ -74,7 +74,7 @@
 	inhand_icon_state = "r_suit"
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
-	armor_type = /datum/armor/skyrat_tactical
+	armor_type = /datum/armor/clothing_under
 	unique_reskin = list(
 		RESKIN_SYNDIE = "syndicate_red",
 		RESKIN_CHARCOAL = "syndicate"
