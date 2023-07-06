@@ -65,23 +65,8 @@
 /obj/item/clothing/shoes/sneakers/orange
 	greyscale_config_worn_teshari = /datum/greyscale_config/sneakers_orange_worn/teshari
 
-/obj/item/clothing/head/collectable/beret
-	greyscale_config_worn_teshari = /datum/greyscale_config/beret/worn/teshari
-
-/obj/item/clothing/head/collectable/flatcap
-	greyscale_config_worn_teshari = /datum/greyscale_config/beret/worn/teshari
-
-/obj/item/clothing/head/frenchberet
-	greyscale_config_worn_teshari = /datum/greyscale_config/beret/worn/teshari
-
-/obj/item/clothing/head/flatcap
-	greyscale_config_worn_teshari = /datum/greyscale_config/beret/worn/teshari
-
 /obj/item/clothing/head/caphat/beret
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
-
-/obj/item/clothing/head/beret
-	greyscale_config_worn_teshari = /datum/greyscale_config/beret/worn/teshari
 
 /obj/item/clothing/head/beret/badge
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
