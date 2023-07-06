@@ -13,18 +13,17 @@
 	armor_type = /datum/armor/clothing_under/syndicate_skyrat
 	can_adjust = FALSE
 
-/*
-*	TACTICOOL
-*/
-
-//This is an overwrite, not a fully new item, but still fits best here.
-
 /datum/armor/clothing_under/syndicate_skyrat
 	melee = 10
 	bio = 10
 	fire = 50
 	acid = 40
 
+/*
+*	TACTICOOL
+*/
+
+//This is an overwrite, not a fully new item, but still fits best here.
 /obj/item/clothing/under/syndicate/tacticool //Overwrites the 'fake' one. Zero armor, sensors, and default blue. More Balanced to make station-available.
 	name = "tacticool turtleneck"
 	desc = "A snug turtleneck, in fabulous Nanotrasen-blue. Just looking at it makes you want to buy a NT-certifed coffee, go into the office, and -work-."
