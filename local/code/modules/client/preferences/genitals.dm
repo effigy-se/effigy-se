@@ -430,7 +430,7 @@
 	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/breasts))
-	passed_initial_check && erp_allowed && part_enabled
+	return passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/choiced/breasts_size/apply_to_human(mob/living/carbon/human/target, value)
 	return target.dna.features["breasts_size"] = GLOB.breast_size_to_number[value]
