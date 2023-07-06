@@ -433,7 +433,7 @@
 	passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/choiced/breasts_size/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["breasts_size"] = GLOB.breast_size_to_number[value]
+	return target.dna.features["breasts_size"] = GLOB.breast_size_to_number[value]
 
 /datum/preference/choiced/breasts_size/create_default_value()
 	return BREAST_SIZE_C
