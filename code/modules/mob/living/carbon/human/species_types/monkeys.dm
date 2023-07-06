@@ -3,7 +3,8 @@
 /datum/species/monkey
 	name = "Monkey"
 	id = SPECIES_MONKEY
-	//external_organs = list(/obj/item/organ/external/tail/monkey = "Monkey") // EffigyEdit Remove - Mutant Races
+	external_organs = list(/obj/item/organ/external/tail/monkey = "Monkey")
+	mutant_bodyparts = list("tail" = "Monkey") // EffigyEdit Remove - Mutant Races
 	mutanttongue = /obj/item/organ/internal/tongue/monkey
 	mutantbrain = /obj/item/organ/internal/brain/primate
 	skinned_type = /obj/item/stack/sheet/animalhide/monkey

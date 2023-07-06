@@ -59,6 +59,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/human/felinid
 	mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
 
+/datum/species/monkey/New()
+	. = ..()
+	default_mutant_bodyparts["tail"] = "Monkey"
+
 /datum/species/human
 	mutant_bodyparts = list()
 
