@@ -101,7 +101,7 @@
 /datum/preference/toggle/genital_skin_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	// If they're not using skintones, let's not apply this yeah?
 	var/datum/species/species_type = preferences?.read_preference(/datum/preference/choiced/species)
-	if(!species_type  || !HAS_TRAIT(target, TRAIT_USES_SKINTONES))
+	if(!species_type  || (TRAIT_USES_SKINTONES in species_type.inherent_traits))
 		return FALSE
 
 	return TRUE
@@ -310,7 +310,7 @@
 	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/testicles))
-	return erp_allowed && part_enabled
+	return passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/numeric/balls_size/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["balls_size"] = value
@@ -415,7 +415,7 @@
 	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/breasts))
-	return erp_allowed && part_enabled
+	return passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/choiced/breasts_size
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -430,7 +430,7 @@
 	var/passed_initial_check = ..(preferences)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/breasts))
-	return erp_allowed && part_enabled
+	passed_initial_check && erp_allowed && part_enabled
 
 /datum/preference/choiced/breasts_size/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["breasts_size"] = GLOB.breast_size_to_number[value]

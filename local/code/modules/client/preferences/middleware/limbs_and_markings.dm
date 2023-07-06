@@ -233,7 +233,6 @@
 
 /datum/preference_middleware/limbs_and_markings/get_ui_data(mob/user)
 	var/list/data = list()
-	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	if(!robotic_styles)
 		robotic_styles = list()
 		for(var/style_name in GLOB.robotic_styles_list)
