@@ -1,7 +1,5 @@
 /datum/species/pod
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_PLANT_SAFE,
 	)
 	mutant_bodyparts = list(
@@ -16,8 +14,6 @@
 	examine_limb_id = SPECIES_PODPERSON
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 	)
 
 	always_customizable = FALSE

@@ -3,11 +3,10 @@
 	id = SPECIES_TAJARAN
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
-		TRAIT_LITERATE,
 		TRAIT_HATED_BY_DOGS,
+		TRAIT_TACKLING_TAILED_DEFENDER,
+		TRAIT_TACKLING_FRAIL_ATTACKER,
 	)
 	mutanttongue = /obj/item/organ/internal/tongue/cat
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
@@ -17,6 +16,7 @@
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs",
 		"fluff" = "None",
+		"body_markings" = ACC_RANDOM,
 	)
 	payday_modifier = 1
 	species_language_holder = /datum/language_holder/tajaran

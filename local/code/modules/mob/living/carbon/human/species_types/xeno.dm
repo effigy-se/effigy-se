@@ -5,10 +5,7 @@
 	family_heirlooms = list(/obj/item/toy/plush/rouny, /obj/item/toy/toy_xeno,)
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
-		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutanttongue = /obj/item/organ/internal/tongue/xeno

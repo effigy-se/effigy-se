@@ -11,6 +11,9 @@
 		"frills" = "None",
 	)
 	hair_color = "mutcolor"
+	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
+	)
 	hair_alpha = 160 //a notch brighter so it blends better.
 
 /datum/species/jelly/get_species_description()

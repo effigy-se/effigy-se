@@ -12,12 +12,9 @@
 	mutanttongue = /obj/item/organ/internal/tongue/ghoul
 	inherent_traits = list(
 		TRAIT_FIXED_MUTANT_COLORS,
-		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
-		TRAIT_CAN_STRIP,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_EASILY_WOUNDED, //theyre like fuckin skin and bones
-		TRAIT_LITERATE,
 	)
 	payday_modifier = 1 //-- "Equality"
 	damage_modifier = 75 // EffigyLocal Edit - god I hope this works
