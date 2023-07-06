@@ -6,6 +6,9 @@
 #define CLIMAX_IN_OR_ON "Climax in or on someone"
 
 #define CLIMAX_NO_ESCAPE_ZONE 5
+/mob/living/carbon/human
+	/// Used to prevent nightmare scenarios.
+	var/refractory_period
 
 /mob/living/carbon/human/proc/climax(manual = TRUE)
 	if (CONFIG_GET(flag/disable_erp_preferences))
@@ -13,7 +16,9 @@
 
 	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) && !manual)
 		return
-
+	if(refractory_period > REALTIMEOFDAY)
+		return
+	refractory_period = REALTIMEOFDAY + 30 SECONDS
 	if(has_status_effect(/datum/status_effect/climax_cooldown) || !client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return
 
