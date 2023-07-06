@@ -16,8 +16,7 @@
 	mutantlungs = /obj/item/organ/internal/lungs/nitrogen/vox
 	mutantbrain = /obj/item/organ/internal/brain/vox
 	breathid = "n2"
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = "Vox Tail",
 		"legs" = DIGITIGRADE_LEGS,
 		"snout" = "Vox Snout",

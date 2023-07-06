@@ -9,15 +9,15 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
-		"spines" = "None",
-		"frills" = "None",
+		"spines" = ACC_RANDOM,
+		"frills" = ACC_RANDOM,
 		"horns" = ACC_RANDOM,
 		"body_markings" = ACC_RANDOM,
-		"legs" = "Normal Legs"
+		"legs" = DIGITIGRADE_LEGS,
+		"wings" = "None",
 	)
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

@@ -10,14 +10,15 @@
 		TRAIT_WATER_BREATHING,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
-		"horns" = "None",
 		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs",
-		"wings" = "None"
+		"legs" = "Normal Legs"
+		"frills" = "None"
+		"horns" = "None"
+		"spines" = "None"
+		"wings" "None"
 	)
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

@@ -11,12 +11,12 @@
 	)
 	mutanttongue = /obj/item/organ/internal/tongue/cat
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
+		"fluff" = "None"
 	)
 	payday_modifier = 1
 	species_language_holder = /datum/language_holder/tajaran

@@ -3,8 +3,8 @@
 	id = SPECIES_GHOUL
 	examine_limb_id = SPECIES_GHOUL
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
-	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
+		"ghoulcolor" = "Tan Necrotic",
 		"tail" = "None",
 		"ears" = "None",
 		"legs" = "Normal Legs"

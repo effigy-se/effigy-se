@@ -4,7 +4,7 @@
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
 	)
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
 		"spines" = ACC_RANDOM,

@@ -12,8 +12,7 @@
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutanttongue = /obj/item/organ/internal/tongue/xeno
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = "Xenomorph Tail",
 		"xenodorsal" = ACC_RANDOM,
 		"xenohead" = ACC_RANDOM,

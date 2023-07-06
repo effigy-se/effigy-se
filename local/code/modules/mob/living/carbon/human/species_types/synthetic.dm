@@ -27,11 +27,16 @@
 		MUTANT_SYNTH_SCREEN = "None",
 		MUTANT_SYNTH_CHASSIS = "Default Chassis",
 		MUTANT_SYNTH_HEAD = "Default Head",
-	)
-	default_mutant_bodyparts = list(
+		"moth_antennae" = "none",
 		"tail" = "None",
 		"ears" = "None",
 		"legs" = "Normal Legs",
+		"snout" = "None",
+		"frills" = "None",
+		"horns" = "None",
+		"spines" = "None",
+		"wings" = "None",
+		"taur" = "None",
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC

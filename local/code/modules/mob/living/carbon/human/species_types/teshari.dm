@@ -16,7 +16,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_LITERATE,
 	)
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"

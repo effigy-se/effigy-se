@@ -57,12 +57,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	mutant_bodyparts = list()
 
 /datum/species/human/felinid
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
+	mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
 
 /datum/species/human
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
 
 /datum/species/mush
 	mutant_bodyparts = list()

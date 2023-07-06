@@ -4,8 +4,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_PLANT_SAFE,
 	)
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"pod_hair" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
