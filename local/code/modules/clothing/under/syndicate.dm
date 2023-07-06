@@ -132,7 +132,7 @@
 	name = "neo american officer uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclaveo"
-	armor_type = /datum/armor/enclaveo_real
+	armor_type = /datum/armor/clothing_under
 
 /datum/armor/enclaveo_real
 	melee = 10
