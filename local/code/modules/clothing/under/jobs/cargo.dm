@@ -86,7 +86,7 @@
 	desc = "A dark suit with a classic cargo vest. For the ultimate master of all things paper."
 	icon_state = "qmsynd"
 	has_sensor = NO_SENSORS
-	armor_type = clothing_under
+	armor_type = /datum/armor/clothing_under
 	can_adjust = FALSE
 
 /datum/armor/skyrat_syndie
