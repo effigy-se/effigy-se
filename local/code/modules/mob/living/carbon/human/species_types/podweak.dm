@@ -3,7 +3,6 @@
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_PLANT_SAFE,
-		TRAIT_LITERATE,
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
@@ -16,21 +15,16 @@
 	name = "Podperson"
 	id = SPECIES_PODPERSON_WEAK
 	examine_limb_id = SPECIES_PODPERSON
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		HAIR, // Leaving this here so they can still use it if they want, even if it's kinda ugly compared to their special hair.
-		FACEHAIR
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
-		TRAIT_LITERATE,
 	)
 
 	always_customizable = FALSE
 
 /datum/species/pod/podweak/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	. = ..()
 	if(H.stat != CONSCIOUS)
 		return
 

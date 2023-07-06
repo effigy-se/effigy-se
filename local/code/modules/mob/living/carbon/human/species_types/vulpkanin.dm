@@ -1,14 +1,8 @@
 /datum/species/vulpkanin
 	name = "Vulpkanin"
 	id = SPECIES_VULP
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR,
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
@@ -22,9 +16,6 @@
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	liked_food = RAW | MEAT
-	disliked_food = CLOTH
-	toxic_food = TOXIC
 	species_language_holder = /datum/language_holder/vulpkanin
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

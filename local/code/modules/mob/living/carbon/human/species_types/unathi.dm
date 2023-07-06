@@ -1,13 +1,8 @@
 /datum/species/unathi
 	name = "Unathi"
 	id = SPECIES_UNATHI
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR
-	)
 	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
@@ -24,9 +19,6 @@
 		"body_markings" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	disliked_food = GRAIN | DAIRY | CLOTH | GROSS
-	liked_food = GORE | MEAT | SEAFOOD | NUTS
-	toxic_food = TOXIC
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_LIZARD
