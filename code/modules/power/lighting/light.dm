@@ -263,6 +263,7 @@
 	else
 		use_power = IDLE_POWER_USE
 		set_light(l_range = 0)
+	update_appearance()
 	update_current_power_usage()
 	broken_sparks(start_only=TRUE)
 
