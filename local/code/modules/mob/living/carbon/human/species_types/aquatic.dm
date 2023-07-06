@@ -14,11 +14,11 @@
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
 		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-		"frills" = "None"
-		"horns" = "None"
-		"spines" = "None"
-		"wings" "None"
+		"legs" = "Normal Legs",
+		"frills" = "None",
+		"horns" = "None",
+		"spines" = "None",
+		"wings" = "None",
 	)
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

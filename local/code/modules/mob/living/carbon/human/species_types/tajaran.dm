@@ -15,8 +15,8 @@
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
 		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-		"fluff" = "None"
+		"legs" = "Normal Legs",
+		"fluff" = "None",
 	)
 	payday_modifier = 1
 	species_language_holder = /datum/language_holder/tajaran
