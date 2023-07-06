@@ -11,20 +11,12 @@
 	worn_icon = 'local/icons/mob/clothing/under/syndicate.dmi'
 	//These are pre-set for ease and reference, as syndie under items SHOULDNT have sensors and should have similar stats; also its better to start with adjust = false
 	has_sensor = NO_SENSORS
-	armor_type = /datum/armor/syndicate_skyrat
+	armor_type = /datum/armor/clothing_under
 	can_adjust = FALSE
 
 /*
 *	TACTICOOL
 */
-
-//This is an overwrite, not a fully new item, but still fits best here.
-
-/datum/armor/syndicate_skyrat
-	melee = 10
-	bio = 10
-	fire = 50
-	acid = 40
 
 /obj/item/clothing/under/syndicate/tacticool //Overwrites the 'fake' one. Zero armor, sensors, and default blue. More Balanced to make station-available.
 	name = "tacticool turtleneck"

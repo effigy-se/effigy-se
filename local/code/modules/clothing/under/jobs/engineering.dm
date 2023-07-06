@@ -24,7 +24,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
-	armor_type = /datum/armor/utility_syndicate
+	armor_type = /datum/armor/clothing_under
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/trouser

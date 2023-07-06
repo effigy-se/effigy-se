@@ -26,7 +26,7 @@
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	desc = "A utility uniform worn by Science staff."
-	armor_type = /datum/armor/utility_syndicate
+	armor_type = /datum/armor/clothing_under
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
