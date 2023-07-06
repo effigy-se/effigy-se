@@ -3,7 +3,7 @@
 // DETECTIVE
 
 /obj/item/clothing/under/rank/security/detective/cowboy/armorless
-	armor_type = /datum/armor/none
+	armor_type = /datum/armor/clothing_under
 
 /obj/item/clothing/suit/cowboyvest
 	name = "blonde cowboy vest"

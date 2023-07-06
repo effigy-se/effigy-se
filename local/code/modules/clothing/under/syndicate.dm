@@ -35,7 +35,7 @@
 	inhand_icon_state = "b_suit"
 	can_adjust = TRUE
 	has_sensor = HAS_SENSORS
-	armor_type = /datum/armor/none
+	armor_type = /datum/armor/clothing_under
 	unique_reskin = list(
 		RESKIN_NT = "tactifool_blue",
 		RESKIN_CHARCOAL = "tactifool"
@@ -51,7 +51,7 @@
 	name = "tacticool skirtleneck"
 	desc = "A snug skirtleneck, in fabulous Nanotrasen-blue. Just looking at it makes you want to buy a NT-certifed coffee, go into the office, and -work-."
 	icon_state = "tactifool_blue_skirt"
-	armor_type = /datum/armor/none
+	armor_type = /datum/armor/clothing_under
 	body_parts_covered = CHEST|GROIN|ARMS
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	dying_key = DYE_REGISTRY_JUMPSKIRT
@@ -63,7 +63,7 @@
 
 /obj/item/clothing/under/syndicate/bloodred/sleepytime/sensors //Halloween-only
 	has_sensor = HAS_SENSORS
-	armor_type = /datum/armor/none
+	armor_type = /datum/armor/clothing_under
 
 /obj/item/clothing/under/syndicate/skyrat/baseball
 	name = "syndicate baseball tee"
@@ -127,14 +127,14 @@
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclaveo"
 	can_adjust = TRUE
-	armor_type = /datum/armor/none
+	armor_type = /datum/armor/clothing_under
 
 /obj/item/clothing/under/syndicate/skyrat/enclave
 	name = "neo american sergeant uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclave"
 	can_adjust = TRUE
-	armor_type = /datum/armor/none
+	armor_type = /datum/armor/clothing_under
 
 /obj/item/clothing/under/syndicate/skyrat/enclaveo/real
 	name = "neo american officer uniform"
