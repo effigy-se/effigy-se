@@ -35,7 +35,11 @@
 	SIGNAL_HANDLER
 
 	var/datum/status_effect/crusher_damage/damage = target.has_status_effect(/datum/status_effect/crusher_damage)
-	if(damage && prob((damage.total_damage/target.maxHealth) * drop_mod)) //on average, you'll need to kill 4 creatures before getting the item. by default.
+	// EffigyEdit Change - Ashwalker Trophies
+	var/datum/status_effect/ashwalker_damage/ashie_damage = target.has_status_effect(/datum/status_effect/ashwalker_damage)
+	var/damage_total = damage?.total_damage + ashie_damage?.total_damage
+	if(damage_total && prob((damage_total/target.maxHealth) * drop_mod)) //on average, you'll need to kill 4 creatures before getting the item. by default. // ORIGINAL: if(damage && prob((damage.total_damage/target.maxHealth) * drop_mod))
+	// EffigyEdit Change End
 		if(drop_immediately)
 			new trophy_type(get_turf(target))
 		else
