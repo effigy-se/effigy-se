@@ -53,12 +53,6 @@
       toggle lighting (shift), toggle equipment (alt), and toggle breaker (ctrl).
   - qol: Remove APC UI popup when using RMB to toggle the lock.
 2023-07-02:
-  unit0016:
-  - bugfix: Excitable now applies on headpat instead of tailpull, as was intended.
-      I would've had it apply on both but I am absolutely not making a new proc just
-      for that when we're still in customization DEFCON 1. You wouldn't either!
-  wiverns:
-  - rscadd: Adds a kinetic crusher to mining cyborgs.
   ChungusGamer666:
   - bugfix: Hair and facial hair gradients work again now
   - bugfix: Facial hair colors apply properly again
@@ -121,6 +115,12 @@
   carshalash:
   - balance: We are now using space Monsanto brand rice/wheat seeds. Nutriment of
       both grains has been changed to 12% from 4%
+  unit0016:
+  - bugfix: Excitable now applies on headpat instead of tailpull, as was intended.
+      I would've had it apply on both but I am absolutely not making a new proc just
+      for that when we're still in customization DEFCON 1. You wouldn't either!
+  wiverns:
+  - rscadd: Adds a kinetic crusher to mining cyborgs.
 2023-07-03:
   Cheshify:
   - bugfix: Frontier Militia only have one general now, and have headsets.
@@ -164,12 +164,6 @@
       buff to laser damage.
   - spellcheck: Fixed a typo on the Interdyne shuttle.
 2023-07-04:
-  unit0016:
-  - qol: There are showers in foxhole medbay outside of virology now. Oops.
-  - qol: There's also more AI holopads.
-  - rscadd: A handful of decals have been reworked on Foxhole.
-  - qol: Foxhole Atmos has easier access to space, and some maint has been shaken
-      up around it.
   FlufflesTheDog:
   - bugfix: Morbid (coroner's) tools now properly receive their speed boost in appropriate
       conditions
@@ -205,6 +199,12 @@
   - admin: Added a petrify smite. Try it out on your least favorite player!
   mc-oofert:
   - rscadd: You can use cable on TTVs to make them wearable on the back
+  unit0016:
+  - qol: There are showers in foxhole medbay outside of virology now. Oops.
+  - qol: There's also more AI holopads.
+  - rscadd: A handful of decals have been reworked on Foxhole.
+  - qol: Foxhole Atmos has easier access to space, and some maint has been shaken
+      up around it.
 2023-07-05:
   Archimus12:
   - rscadd: Adds coloured large scarfs and winter coats to ClothesMate and black shoes
@@ -303,12 +303,28 @@
   milktao:
   - bugfix: fixed food preferences displaying incorrectly when examining tongues
 2023-07-07:
+  1393F:
+  - bugfix: The cursed katana shard you can get from tendril loot no longer falsely
+      tells you you're not supposed to have it
   Ben10Omintrix:
   - refactor: Mushrooms have been refactors, please report any bugs/unintended behavior
   - rscadd: the mushroom basic mob can eat the mushroom plant to heal itself
+  BlueMemesauce:
+  - qol: AI VOX messages are sent over announcement instead of radio
+  - bugfix: AI VOX messages work properly on multi-Z stations
   ChungusGamer666:
   - rscadd: Added Alcoholic as a negative quirk.
   - rscadd: Added Hemiplegic quirk.
+  - rscadd: You can now put sandstone bricks in pillows to... make them deadlier?
+  - rscadd: Added colorblindness as a mild brain trauma.
+  Ghommie:
+  - refactor: Replaced hardcoded "safeties" for lava, chasms and ignoring turf slowdowns
+      on catwalks with traits.
+  - balance: much like catwalks, tables and conveyors also disable turf slowdowns.
+  - balance: slippery turfs won't slip you when walking on a table.
+  - bugfix: Fixed an edge case in which a mob standing on a lava turf would be left
+      visually but permanently  on fire if the lava is changed to another kind of
+      turf.
   Hatterhat:
   - rscadd: A really old data disk with the MOD module designs for the status readout
       was recovered, and has been haphazardly hotpatched into the research networks.
@@ -322,8 +338,24 @@
   - bugfix: Spiders once again have random numbers after their names.
   - bugfix: Mobs can once again emote (with sound) when they die.
   - bugfix: Basic mobs will tell you whether they are alive if you examine them.
+  - rscadd: A bible or lighter in your suit slot, or cowboy hat on your head will
+      occasionally intercept a bullet.
+  JohnFulpWillard:
+  - bugfix: Cultists promoted to Leader no longer lose their spells (rip whoever tried
+      saving up blood rites)
+  - admin: Admins can now force promote/demote people from Cult Leader if necessary.
+  - code_imp: Jousting now registers/unregisters properly on two-handed items.
   Jolly:
   - image: The plastic spoon sprite has been nudged to appear more centered.
+  - bugfix: '[TramStation] - Removed a (possibly) unused var on the barber shop doors.
+      Hopefully those taking refuge in the commissary wasn''t causing too many issues.'
+  Jolly, timothymtorres:
+  - code_imp: 'Jolly: Armories across all maps have been tweaked slightly. Report
+      to a Nanotrasen security advisor for any missing guns, armor, helmets or anything
+      else that was there previously (that means, post an issue on Github if theres
+      an issue!!)'
+  - code_imp: 'timothymtorres: Random item spawners now support better control of
+      their X/Y pixel offset.'
   LT3:
   - image: More maptext and font tweaks
   - spellcheck: Context tooltips too small, too big... just right?
@@ -334,6 +366,10 @@
       (stopping the heartbeat temporarily)
   - bugfix: Fixed an exploit involving observers
   - bugfix: Fix Tinea Luxor exposing not increasing light duration
+  - refactor: Refactor of connections.js. Yeah that's it.
+  - bugfix: Fixed some hard deletes involving constructed cyborgs
+  - bugfix: Cyborgs with nodrop hats no longer lose them on tip
+  - bugfix: Fix certain emote interactions happening twice at the same time
   OrionTheFox:
   - qol: 'put instructions on toggling bandanas into their examines. If you didn''t
       already know, it can be worn as more than a mask: use in-hand to wear as a hat,
@@ -342,6 +378,11 @@
   - bugfix: Engineers can now print the non-eyewear T-Ray scanner from their department
       lathe.
   - qol: Scientists can also print this scanner.
+  Youtubeboy139:
+  - image: Added new HUD sprites
+  - image: Added new Goggle Sprites
+  - image: Added new NVG sprites
+  - image: Removed unused/depreciated sprites in `glasses.dmi`
   atlasle:
   - sound: A new ambient track will now play in space
   mc-oofert:
