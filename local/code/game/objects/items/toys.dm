@@ -6,7 +6,7 @@
 	lefthand_file = 'local/icons//mob/inhands/balls_left.dmi'
 	righthand_file = 'local/icons//mob/inhands/balls_right.dmi'
 	inhand_icon_state = "tennis_classic"
-	worn_icon = 'local/icons//mouthball.dmi'
+	worn_icon = 'local/icons/mouthball.dmi'
 	slot_flags = ITEM_SLOT_HEAD | ITEM_SLOT_NECK | ITEM_SLOT_EARS	//Fluff item, put it wherever you want!
 	throw_range = 14
 	w_class = WEIGHT_CLASS_SMALL

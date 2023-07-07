@@ -284,11 +284,11 @@
 		updatehealth()
 	return amount
 
-/mob/living/proc/adjustOrganLoss(slot, amount, maximum, required_organtype)
+/mob/living/proc/adjustOrganLoss(slot, amount, maximum, required_organ_flag)
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_ORGAN, slot, amount) // EFFIGY EDIT ADD
 	return
 
-/mob/living/proc/setOrganLoss(slot, amount, maximum, required_organtype)
+/mob/living/proc/setOrganLoss(slot, amount, maximum, required_organ_flag)
 	return
 
 /mob/living/proc/get_organ_loss(slot)

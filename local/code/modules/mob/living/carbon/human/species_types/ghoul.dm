@@ -2,31 +2,20 @@
 	name = "Ghoul"
 	id = SPECIES_GHOUL
 	examine_limb_id = SPECIES_GHOUL
-	species_traits = list(
-		NOEYESPRITES,
-		DYNCOLORS,
-		HAIR,
-		FACEHAIR
-	)
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
-	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
+		"ghoulcolor" = "Tan Necrotic",
 		"tail" = "None",
 		"ears" = "None",
 		"legs" = "Normal Legs"
 	)
 	mutanttongue = /obj/item/organ/internal/tongue/ghoul
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_FIXED_MUTANT_COLORS,
 		TRAIT_RADIMMUNE,
-		TRAIT_CAN_STRIP,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_EASILY_WOUNDED, //theyre like fuckin skin and bones
-		TRAIT_LITERATE,
 	)
-	toxic_food = DAIRY | PINEAPPLE
-	disliked_food = VEGETABLES | FRUIT | CLOTH
-	liked_food = RAW | MEAT
 	payday_modifier = 1 //-- "Equality"
 	damage_modifier = 75 // EffigyLocal Edit - god I hope this works
 	stunmod = 1.25 //multiplier for stun durations

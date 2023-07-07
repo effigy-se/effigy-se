@@ -16,10 +16,6 @@
 	name = "Beret Worn - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/beret_vox.dmi'
 
-/datum/greyscale_config/beret/worn/teshari
-	name = "Beret Worn - Teshari"
-	icon_file = 'local/icons/mob/clothing/greyscale/beret_teshari.dmi'
-
 /datum/greyscale_config/beret_badge
 	name = "Beret With Badge"
 	icon_file = 'local/icons/mob/clothing/greyscale/beret.dmi'

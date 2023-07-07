@@ -1,11 +1,5 @@
 /datum/species/jelly
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-	)
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = "None",
 		"snout" = "None",
 		"ears" = "None",
@@ -16,8 +10,10 @@
 		"spines" = "None",
 		"frills" = "None",
 	)
-	mutant_bodyparts = list()
 	hair_color = "mutcolor"
+	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
+	)
 	hair_alpha = 160 //a notch brighter so it blends better.
 
 /datum/species/jelly/get_species_description()
@@ -378,9 +374,8 @@
 			new_acc_list[MUTANT_INDEX_NAME] = selected_sprite_accessory.name
 			new_acc_list[MUTANT_INDEX_COLOR_LIST] = selected_sprite_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
 			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
-			if(ROBOTIC_DNA_ORGANS in alterer.dna.species.species_traits)
-				organ_path.status = ORGAN_ROBOTIC
-				organ_path.organ_flags |= ORGAN_SYNTHETIC
+			if(ROBOTIC_DNA_ORGANS in alterer.dna.species.inherent_traits)
+				organ_path.organ_flags |= ORGAN_ROBOTIC
 			organ_path.build_from_dna(alterer.dna, chosen_key)
 			organ_path.Insert(alterer, 0, FALSE)
 

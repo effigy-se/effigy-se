@@ -8,24 +8,18 @@
 	name = "Teshari"
 	id = SPECIES_TESHARI
 	eyes_icon = 'local/icons/obj/medical/organs/teshari_eyes.dmi'
-	species_traits = list(MUTCOLORS,
-		EYECOLOR,
-		NO_UNDERWEAR,
-		HAS_MARKINGS,
-		)
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
-		TRAIT_LITERATE,
+		TRAIT_HAS_MARKINGS,
+		TRAIT_NO_UNDERWEAR,
+		TRAIT_MUTANT_COLORS,
+		TRAIT_TACKLING_FRAIL_ATTACKER,
 	)
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
 	digitigrade_customization = DIGITIGRADE_NEVER
-	disliked_food = GROSS | GRAIN | GORE
-	liked_food = MEAT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 1
 	custom_worn_icons = list(

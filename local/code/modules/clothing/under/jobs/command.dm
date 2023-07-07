@@ -43,19 +43,10 @@
 	desc = "A classic bodyguard's suit, with custom-fitted Blueshield-Blue cuffs and a Nanotrasen insignia over one of the pockets."
 	icon_state = "blueshield"
 	strip_delay = 50
-	armor_type = /datum/armor/rank_blueshield
+	armor_type = /datum/armor/clothing_under
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 	alt_covers_chest = TRUE
-
-/datum/armor/rank_blueshield
-	melee = 10
-	bullet = 5
-	laser = 5
-	energy = 10
-	bomb = 10
-	fire = 50
-	acid = 50
 
 /obj/item/clothing/under/rank/blueshield/skirt
 	name = "blueshield's suitskirt"
@@ -118,7 +109,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
-	armor_type = /datum/armor/utility_syndicate
+	armor_type = /datum/armor/clothing_under
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/captain/skyrat/imperial/generic
