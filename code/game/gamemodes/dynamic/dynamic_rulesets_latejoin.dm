@@ -16,6 +16,14 @@
 			candidates.Remove(P)
 		else if (!((antag_preference || antag_flag) in P.client.prefs.be_special) || is_banned_from(P.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
 			candidates.Remove(P)
+		// EffigyEdit Add - Antag Checks
+		else if(P.client?.prefs && !P.client.prefs.read_preference(/datum/preference/toggle/be_antag))
+			candidates.Remove(P)
+			continue
+		else if(is_banned_from(P.client?.ckey, BAN_ANTAGONIST))
+			candidates.Remove(P)
+			continue
+		// EffigyEdit Add End
 
 /datum/dynamic_ruleset/latejoin/ready(forced = 0)
 	if (forced)
