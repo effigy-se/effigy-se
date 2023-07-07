@@ -60,8 +60,6 @@
 */
 // EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
 
-#define DNA_FEATURE_BLOCKS GLOB.dna_total_feature_blocks
-
 #define DNA_MANDATORY_COLOR_BLOCKS 5
 #define DNA_MUTANT_COLOR_BLOCK 1
 #define DNA_MUTANT_COLOR_2_BLOCK 2
@@ -71,6 +69,7 @@
 
 #define DNA_POD_HAIR_BLOCK 15
 
+#define DNA_FEATURE_BLOCKS GLOB.dna_total_feature_blocks
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
