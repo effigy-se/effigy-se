@@ -51,6 +51,7 @@
 			"World Time: [world_time]",
 			"[SSticker.HasRoundStarted() ? "Round Time: [ROUND_TIME()]" : "Pre/Post Game Lobby"]",
 			"[SSticker.HasRoundStarted() ? "Adj. Round Time: [time2text(round_real_time, "hh:mm:ss", 0)]" : "N/A"]",
+			"<br>",
 		)
 
 	var/list/test_merges
@@ -67,8 +68,9 @@
 	var/processed_content
 	LAZYINITLIST(processed_content)
 	LAZYADD(processed_content, issue_metadata)
-	LAZYADD(processed_content, content)
 	LAZYADD(processed_content, test_merges)
+	LAZYADD(processed_content, title)
+	LAZYADD(processed_content, content)
 	var/request = SSeffigy.create_message_request(ef_type, event_id, effigy_player_id, effigy_ticket_id, ef_box, title, processed_content)
 	INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 	log_game("Issue report created: [event_id] [content]")
