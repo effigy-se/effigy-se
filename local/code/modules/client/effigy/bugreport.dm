@@ -32,8 +32,6 @@
 		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = span_boxannouncered("Failed to start a new Issue Report: You need to put a title for the submission!"))
 		return
 
-	title = "<u>[title]</u>"
-
 	content = tgui_input_text(src, message = "", title = "Detailed issue description", max_length = MAX_MESSAGE_LEN, multiline = TRUE, encode = TRUE, timeout = 0)
 
 	if(!content)
@@ -64,8 +62,8 @@
 			var/datum/tgs_revision_information/test_merge/tm = entry
 			test_merges += "- \[[tm.title]\]([githuburl]/pull/[tm.number])"
 		var/all_tms_joined = test_merges.Join("\n") // for some reason this can't go in the []
-		LAZYADD(test_merges, "## Testmerges:\n")
-		LAZYADD(test_merges, "## Testmerges:\n[all_tms_joined]")
+		LAZYADD(test_merges, "TMs:\n")
+		LAZYADD(test_merges, "TMs:\n[all_tms_joined]")
 
 	var/processed_content
 	LAZYINITLIST(processed_content)
