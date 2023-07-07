@@ -53,68 +53,12 @@
       toggle lighting (shift), toggle equipment (alt), and toggle breaker (ctrl).
   - qol: Remove APC UI popup when using RMB to toggle the lock.
 2023-07-02:
-  ChungusGamer666:
-  - bugfix: Hair and facial hair gradients work again now
-  - bugfix: Facial hair colors apply properly again
-  - bugfix: Admin spawned characters will get hair color preferences applied properly
-  Ghommie:
-  - bugfix: Fixed the office chair being silent. My bad.
-  JohnFulpWillard:
-  - balance: Jousting now works on anything you're buckled to, not just Cyborgs.
-  - balance: Brooms, Pitchforks, the Captain's Sabre, and Energy swords can now be
-      used for jousting.
-  - balance: Spears need to travel a longer distance to joust now.
-  - balance: Jousting's knockdown and damage now only gets stronger after you've traveled
-      the minimum tiles needed to joust.
-  - balance: Silicon now only know Common, Uncommon and Robotic languages.
-  JupiterJaeden:
-  - qol: people now lie down when buckled to surgery tables, and you no longer need
-      cuffs to buckle someone to a surgery table
-  LemonInTheDark:
-  - bugfix: Fixes some fuck with duffelbags, them not holding enough + issues with
-      spawning gear in them (job shit and all)
-  - rscdel: Removed language encryption keys from cargo, s bad for species talking
-      among each other, a thing we want them to do
-  LovliestPlant:
-  - rscadd: Stethoscopes may be used on the chest, groin, or extremities to assess
-      organ damage, blood level, and/or suffocation damage depending on the targeted
-      area.
-  - rscadd: Shining flashlights into the mouth or eyes of other players will additionally
-      assess brain health, suffocation damage, and/or blood level depending on the
-      targeted area.
-  - balance: Halves the duration of the flash effect from shining lights into players'
-      eyes (2s -> 1s). Use combat mode to get the full duration.
-  Melbert:
-  - qol: Sivlerscale Tongue action is now a cooldown action, making it significantly
-      easier to use
-  - balance: Buffed the silverscale statue every so slightly, it now has innate armor
-      and can reflect lasers shot at it. But it also requires you not by lying down
-      to activate.
-  - bugfix: Fix organ damage being uncapped
-  Pickle-Coding:
-  - bugfix: Fix hypernoblium formation gas reaction rate sanity clamping not accounting
-      for the reduction factor.
-  - bugfix: Fix N2O formation gas reaction rate clamping clamping for incorrect consumption
-      rates.
-  - bugfix: Fix BZ formation reaction rate sanity clamping not accounting for N2O
-      decomposition factor.
-  - spellcheck: Improves gas monitor reaction information RP.
-  Sealed101:
-  - bugfix: fixed shotguns not clearing their "mag" correctly
-  - bugfix: fixed basalt turfs remaining visually dug up when refilled by an ash storm
-  - bugfix: fixed ash storm ending sounds looping after the storm is over
-  - bugfix: mechs are now snow storm immune
-  - bugfix: jaunt spells protect from weather when jaunting
-  Seven:
-  - bugfix: Cult communion and assert leadership can be used while your hands are
-      blocked or you are immobile
-  Vekter:
-  - balance: Adds a build time to window types which didn't have ones before.
-  - bugfix: Fixed the ORM not granting mining points if you added ore by hand instead
-      of dumping it on the floor.
-  carshalash:
-  - balance: We are now using space Monsanto brand rice/wheat seeds. Nutriment of
-      both grains has been changed to 12% from 4%
+  unit0016:
+  - bugfix: Excitable now applies on headpat instead of tailpull, as was intended.
+      I would've had it apply on both but I am absolutely not making a new proc just
+      for that when we're still in customization DEFCON 1. You wouldn't either!
+  wiverns:
+  - rscadd: Adds a kinetic crusher to mining cyborgs.
 2023-07-03:
   Cheshify:
   - bugfix: Frontier Militia only have one general now, and have headsets.
@@ -158,41 +102,12 @@
       buff to laser damage.
   - spellcheck: Fixed a typo on the Interdyne shuttle.
 2023-07-04:
-  FlufflesTheDog:
-  - bugfix: Morbid (coroner's) tools now properly receive their speed boost in appropriate
-      conditions
-  Funnytoilet:
-  - qol: Matches command envirosuit helms' armor value with their hat counterparts.
-  GPeckman:
-  - qol: The health analyzer will now be more clear about how to treat burn wounds,
-      especially seriously infected ones.
-  Iamgoofball:
-  - bugfix: Fixes oversight with the voice disable config not working right for situations
-      in which a player re-enters their mob.
-  Jacquerel:
-  - bugfix: Horrid organics will no longer be made happy when mechanical chaplains
-      fail to heal them with a bible.
-  - bugfix: Lesser Form monkeys no longer maintain the name of the form you had prior
-      to transformation.
-  MMMiracles:
-  - bugfix: Tramstation lower Science is now less prone to cave-ins from their surrounding
-      maintenance corridors.
-  SyncIt21:
-  - code_imp: mat per unit values of materials now scale with material defines
-  Teleported-Bread:
-  - bugfix: Tips now mention telekenesis dusting you when used on the SM, not telepathy.
-  Vekter:
-  - rscdel: Plasma objects (statues, toilets, etc.) no longer explode when ignited.
-      They just release plasma like everything else plasma. (This doesn't impact injecting
-      plasma into cells or dipping cigars in plasma, those still explode.)
-  - bugfix: Removed nebula vomiting from the normal symptom pool. It should no longer
-      appear on regular viruses.
-  itseasytosee:
-  - spellcheck: You should see a lot less "you can not move while bucked too X" messages
-      where they don't make sense.
-  - admin: Added a petrify smite. Try it out on your least favorite player!
-  mc-oofert:
-  - rscadd: You can use cable on TTVs to make them wearable on the back
+  unit0016:
+  - qol: There are showers in foxhole medbay outside of virology now. Oops.
+  - qol: There's also more AI holopads.
+  - rscadd: A handful of decals have been reworked on Foxhole.
+  - qol: Foxhole Atmos has easier access to space, and some maint has been shaken
+      up around it.
 2023-07-05:
   Archimus12:
   - rscadd: Adds coloured large scarfs and winter coats to ClothesMate and black shoes
@@ -261,17 +176,20 @@
       that it's within the codebase-defined ages, since there's no (legitimate) way
       to get a character outside of those ages anyways. Invalid values will log to
       the config log.
-2023-07-02:
-  unit0016:
-  - bugfix: Excitable now applies on headpat instead of tailpull, as was intended.
-      I would've had it apply on both but I am absolutely not making a new proc just
-      for that when we're still in customization DEFCON 1. You wouldn't either!
-  wiverns:
-  - rscadd: Adds a kinetic crusher to mining cyborgs.
-2023-07-04:
-  unit0016:
-  - qol: There are showers in foxhole medbay outside of virology now. Oops.
-  - qol: There's also more AI holopads.
-  - rscadd: A handful of decals have been reworked on Foxhole.
-  - qol: Foxhole Atmos has easier access to space, and some maint has been shaken
-      up around it.
+2023-07-06:
+  Jacquerel:
+  - bugfix: A nuclear operative who is a slime will now correctly drop the disk upon
+      death.
+  - image: New directional sprites for spiderlings, with movement animations.
+  - bugfix: Dead spiderlings will be the same colour as they were when they were alive.
+  - bugfix: Tarantula spiderlings are no longer invisible,
+  LT3:
+  - refactor: The big SPECIES NUKING has occured!
+  - bugfix: You may have to reset some character preferences
+  - bugfix: 'Known issues: emissives'
+  - bugfix: There's probably other bugs, use the 'Report Issue' button
+  SomeRandomOwl:
+  - qol: Request Internet Sound now has the option to credit the person who requested
+      the Sound. Defaults to anonymous.
+  Youtubeboy139:
+  - image: Added new Surgery Bed sprite
