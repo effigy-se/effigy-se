@@ -241,8 +241,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/link_id = effigy_player_id
 		var/ticket_id = 0
 		var/box = SOCIAL_DISTRICT_AHELP
-		var/title = copytext_char(msg, 1, 64)
-		var/message = msg
+		var/title = strip_html_full(copytext_char(msg, 1, 64))
+		var/message = strip_html_full(msg)
 		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
 		GLOB.ahelp_tickets.active_tickets += src
 		effigy_linked = LINK_PENDING
@@ -415,8 +415,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			link_id = EFFIGY_UNKNOWN_PLAYER
 		var/box = SOCIAL_DISTRICT_AHELP
 		var/ticket_id = effigy_ticket_id
-		var/message = player_message
-		var/title = name
+		var/message = strip_html_full(player_message)
+		var/title = strip_html_full(name)
 		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
 		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
