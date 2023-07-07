@@ -32,6 +32,8 @@
 		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = span_boxannouncered("Failed to start a new Issue Report: You need to put a title for the submission!"))
 		return
 
+	title = "<u>[title]</u>"
+
 	content = tgui_input_text(src, message = "", title = "Detailed issue description", max_length = MAX_MESSAGE_LEN, multiline = TRUE, encode = TRUE, timeout = 0)
 
 	if(!content)
@@ -51,6 +53,7 @@
 			"World Time: [world_time]",
 			"[SSticker.HasRoundStarted() ? "Round Time: [ROUND_TIME()]" : "Pre/Post Game Lobby"]",
 			"[SSticker.HasRoundStarted() ? "Adj. Round Time: [time2text(round_real_time, "hh:mm:ss", 0)]" : "N/A"]",
+			"<br>",
 		)
 
 	var/list/test_merges
