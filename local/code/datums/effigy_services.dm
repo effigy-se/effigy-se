@@ -33,7 +33,7 @@
 		"author=[raw_content["link_id"]]",
 		"topic=[raw_content["ticket_id"]]",
 		"title=\[[GLOB.round_hex]-[raw_content["int_id"]]] [raw_content["title"]]",
-		"post=[raw_content["message"]]"
+		"post=[jointext(raw_content["message"], "<br>")]"
 	)
 
 	var/joined = jointext(processed_content, "&")
