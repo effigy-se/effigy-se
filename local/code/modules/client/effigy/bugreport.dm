@@ -51,7 +51,6 @@
 			"World Time: [world_time]",
 			"[SSticker.HasRoundStarted() ? "Round Time: [ROUND_TIME()]" : "Pre/Post Game Lobby"]",
 			"[SSticker.HasRoundStarted() ? "Adj. Round Time: [time2text(round_real_time, "hh:mm:ss", 0)]" : "N/A"]",
-			"<br>",
 		)
 
 	var/list/test_merges
