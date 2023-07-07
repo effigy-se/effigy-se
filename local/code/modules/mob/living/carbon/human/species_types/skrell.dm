@@ -3,17 +3,10 @@
 /datum/species/skrell
 	name = "Skrell"
 	id = SPECIES_SKRELL
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		NO_SLIP_WHEN_WALKING
-	)
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
+		TRAIT_MUTANT_COLORS,
+		TRAIT_NO_SLIP_ALL,
 		TRAIT_CAN_USE_FLIGHT_POTION,
-		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	exotic_blood = /datum/reagent/copper
@@ -23,11 +16,8 @@
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/skrell
-	toxic_food = DAIRY | MEAT
-	disliked_food = RAW | CLOTH
-	liked_food = TOXIC | FRUIT | VEGETABLES
 	payday_modifier = 1
-	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
+	mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	eyes_icon = 'local/icons/obj/medical/organs/skrell_eyes.dmi'
 	mutantbrain = /obj/item/organ/internal/brain/skrell

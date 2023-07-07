@@ -1,29 +1,7 @@
-/datum/config_entry/flag/disable_mismatched_parts
-	default = FALSE
-
-/datum/preference/toggle/allow_mismatched_parts
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "allow_mismatched_parts_toggle"
-	default_value = FALSE
-
-/datum/preference/toggle/allow_mismatched_parts/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return TRUE // we dont actually want this to do anything
-
-/datum/preference/toggle/allow_mismatched_parts/is_accessible(datum/preferences/preferences)
-	if(CONFIG_GET(flag/disable_mismatched_parts))
-		return FALSE
-	. = ..()
-
-/datum/preference/toggle/allow_mismatched_parts/deserialize(input, datum/preferences/preferences)
-	if(CONFIG_GET(flag/disable_mismatched_parts))
-		return FALSE
-	. = ..()
-
 /datum/preference/toggle/allow_emissives
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "allow_emissives_toggle" // no 'e' so it goes right after allow_mismatched_parts, not before
+	savefile_key = "allow_emissives_toggle"
 	default_value = FALSE
 
 /datum/preference/toggle/allow_emissives/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -44,7 +22,7 @@
 	savefile_key = "eye_emissives"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	relevant_species_trait = EYECOLOR
+	relevant_inherent_trait = TRAIT_MUTANT_COLORS
 
 /datum/preference/toggle/eye_emissives/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	value = value && preferences && is_allowed(preferences)
@@ -607,7 +585,7 @@
 
 /datum/preference/numeric/hair_opacity/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts) && preferences.read_preference(/datum/preference/toggle/mutant_toggle/hair_opacity)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/mutant_toggle/hair_opacity)
 	return passed_initial_check || allowed
 
 /**
@@ -623,13 +601,7 @@
 	if(!preferences.read_preference(/datum/preference/toggle/mutant_toggle/hair_opacity))
 		return FALSE
 
-	if(preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
-		return TRUE
-
-	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
-	species = new species
-
-	return (savefile_key in species.get_features())
+	return TRUE
 
 /datum/preference/numeric/hair_opacity/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	if(!preferences || !is_visible(target, preferences))

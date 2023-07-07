@@ -1,14 +1,11 @@
 /datum/species/lizard
 	mutant_bodyparts = list()
 	external_organs = list()
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		FACEHAIR,
+	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
+		TRAIT_TACKLING_TAILED_DEFENDER,
 	)
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
 		"spines" = ACC_RANDOM,
@@ -51,13 +48,8 @@
 	lizard.update_body(TRUE)
 
 /datum/species/lizard/ashwalker
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		NO_UNDERWEAR,
-		HAIR,
-		FACEHAIR
+	inherent_traits = list(
+		TRAIT_MUTANT_COLORS,
 	)
 	always_customizable = TRUE
 

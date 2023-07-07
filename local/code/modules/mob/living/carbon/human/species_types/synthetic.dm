@@ -4,9 +4,6 @@
 	say_mod = "beeps"
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	inherent_traits = list(
-		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
-		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_NOBREATH,
@@ -17,26 +14,25 @@
 		TRAIT_LIMBATTACHMENT,
 		TRAIT_NO_HUSK,
 		TRAIT_OXYIMMUNE,
-		TRAIT_LITERATE,
+		TRAIT_NO_TRANSFORMATION_STING,
+		TRAIT_LIVERLESS_METABOLISM,
+		TRAIT_NO_DNA_COPY,
 	)
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
-		LIPS,
-		ROBOTIC_LIMBS,
-		NOTRANSSTING,
-	)
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
-		"tail" = "None",
-		"ears" = "None",
-		"legs" = "Normal Legs",
+	mutant_bodyparts = list(
 		MUTANT_SYNTH_ANTENNA = "None",
 		MUTANT_SYNTH_SCREEN = "None",
 		MUTANT_SYNTH_CHASSIS = "Default Chassis",
 		MUTANT_SYNTH_HEAD = "Default Head",
+		"moth_antennae" = "none",
+		"tail" = "None",
+		"ears" = "None",
+		"legs" = "Normal Legs",
+		"snout" = "None",
+		"frills" = "None",
+		"horns" = "None",
+		"spines" = "None",
+		"wings" = "None",
+		"taur" = "None",
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
@@ -72,6 +68,7 @@
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 
 /datum/species/synthetic/spec_life(mob/living/carbon/human/human)
+	. = ..()
 	if(human.stat == SOFT_CRIT || human.stat == HARD_CRIT)
 		human.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
 		human.adjust_bodytemperature(13) //We're overheating!!
@@ -125,7 +122,7 @@
 	examine_limb_id = chassis_of_choice.icon_state
 
 	if(chassis_of_choice.color_src || head_of_choice.color_src)
-		species_traits += MUTCOLORS
+		inherent_traits += TRAIT_MUTANT_COLORS
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
 	for(var/obj/item/bodypart/limb as anything in target.bodyparts)

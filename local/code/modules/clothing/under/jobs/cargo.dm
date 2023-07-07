@@ -22,7 +22,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/utility/syndicate
-	armor_type = /datum/armor/utility_syndicate
+	armor_type = /datum/armor/clothing_under
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/long
@@ -86,7 +86,7 @@
 	desc = "A dark suit with a classic cargo vest. For the ultimate master of all things paper."
 	icon_state = "qmsynd"
 	has_sensor = NO_SENSORS
-	armor_type = /datum/armor/skyrat_syndie
+	armor_type = /datum/armor/clothing_under
 	can_adjust = FALSE
 
 /datum/armor/skyrat_syndie

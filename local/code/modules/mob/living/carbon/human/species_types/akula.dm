@@ -1,31 +1,23 @@
 /datum/species/akula
 	name = "Akula"
 	id = SPECIES_AKULA
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR
-	)
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
+		TRAIT_MUTANT_COLORS,
 		TRAIT_CAN_USE_FLIGHT_POTION,
-		TRAIT_LITERATE,
 		TRAIT_WATER_BREATHING,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list(
+	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
 		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs"
+		"legs" = "Normal Legs",
+		"frills" = "None",
+		"horns" = "None",
+		"spines" = "None",
+		"wings" = "None",
 	)
 	payday_modifier = 1
-	liked_food = SEAFOOD | RAW
-	disliked_food = CLOTH | DAIRY
-	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,

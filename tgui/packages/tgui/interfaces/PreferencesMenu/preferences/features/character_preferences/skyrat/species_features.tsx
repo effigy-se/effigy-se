@@ -87,12 +87,6 @@ export const background_info: Feature<string> = {
   component: FeatureTextInput,
 };
 // EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
-export const allow_mismatched_parts_toggle: FeatureToggle = {
-  name: 'Allow Mismatched Parts',
-  description:
-    'Want to go completely crazy with your character design? Use this to select any parts from any species!',
-  component: CheckboxInput,
-};
 
 export const allow_genitals_toggle: FeatureToggle = {
   name: 'Allow Genital Parts',
