@@ -303,7 +303,7 @@
 		update_body_parts()
 
 /**
- * Set the hair gradient color of a human.
+ * Set the Hair Gradient Color of a human.
  * Update calls update_body_parts().
  **/
 /mob/living/proc/set_hair_gradient_color(new_color, update = TRUE)
@@ -383,7 +383,7 @@
 		update_body_parts()
 
 /**
- * Set the facial hair gradient color of a human.
+ * Set the facial Hair Gradient Color of a human.
  * Update calls update_body_parts().
  **/
 /mob/living/proc/set_facial_hair_gradient_color(new_color, update = TRUE)
