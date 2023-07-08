@@ -1,7 +1,7 @@
 import { FeatureDropdownInput, Feature, FeatureNumberInput, CheckboxInput, FeatureTriColorInput, FeatureTriBoolInput, FeatureNumeric, FeatureToggle, FeatureChoiced } from '../../base';
 
 export const feature_penis: Feature<string> = {
-  name: 'Penis Choice',
+  name: 'Penis',
   component: FeatureDropdownInput,
 };
 
@@ -46,7 +46,7 @@ export const penis_taur_mode_toggle: FeatureToggle = {
 };
 
 export const feature_testicles: Feature<string> = {
-  name: 'Testicles Choice',
+  name: 'Testicles',
   component: FeatureDropdownInput,
 };
 
@@ -76,7 +76,7 @@ export const balls_size: FeatureNumeric = {
 };
 
 export const feature_vagina: Feature<string> = {
-  name: 'Vagina Choice',
+  name: 'Vagina',
   component: FeatureDropdownInput,
 };
 
@@ -101,22 +101,22 @@ export const vagina_emissive: Feature<boolean[]> = {
 };
 
 export const feature_womb: Feature<string> = {
-  name: 'Womb Choice',
+  name: 'Womb',
   component: FeatureDropdownInput,
 };
 
 export const feature_breasts: Feature<string> = {
-  name: 'Breast Choice',
+  name: 'Breasts',
   component: FeatureDropdownInput,
 };
 
 export const breasts_skin_tone: FeatureToggle = {
-  name: 'Breasts use Skin Tone',
+  name: 'Breast use Skin Tone',
   component: CheckboxInput,
 };
 
 export const breasts_skin_color: FeatureToggle = {
-  name: 'Breasts use Skin Color',
+  name: 'Breast use Skin Color',
   component: CheckboxInput,
 };
 
@@ -141,7 +141,7 @@ export const breasts_size: Feature<string> = {
 };
 
 export const feature_anus: Feature<string> = {
-  name: 'Anus Choice',
+  name: 'Anus',
   component: FeatureDropdownInput,
 };
 

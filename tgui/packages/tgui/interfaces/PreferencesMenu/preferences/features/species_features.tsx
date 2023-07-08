@@ -1,7 +1,7 @@
 import { FeatureColorInput, Feature, FeatureChoiced, FeatureDropdownInput, FeatureValueProps, FeatureChoicedServerData } from './base';
 
 export const eye_color: Feature<string> = {
-  name: 'Eye color',
+  name: 'Eye Color',
   component: FeatureColorInput,
 };
 
@@ -11,7 +11,7 @@ export const facial_hair_color: Feature<string> = {
 };
 
 export const facial_hair_gradient: FeatureChoiced = {
-  name: 'Facial hair gradient',
+  name: 'Facial Hair Gradient',
   component: (
     props: FeatureValueProps<string, string, FeatureChoicedServerData>
   ) => {
@@ -20,7 +20,7 @@ export const facial_hair_gradient: FeatureChoiced = {
 };
 
 export const facial_hair_gradient_color: Feature<string> = {
-  name: 'Facial hair gradient color',
+  name: 'Facial Hair Gradient Color',
   component: FeatureColorInput,
 };
 
