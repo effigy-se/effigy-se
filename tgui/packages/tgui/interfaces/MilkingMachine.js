@@ -53,7 +53,7 @@ const MilkingMachineContent = (props, context) => {
           <Stack.Item grow textAlign="center">
             {!data.mobName && (
               <Section backgroundColor={palette.SectionBackgroundColor}>
-                No creature in machine loaded
+                No creachure in machine loaded
               </Section>
             )}
             {data.mobName && (
