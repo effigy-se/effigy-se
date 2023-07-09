@@ -162,7 +162,7 @@
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
 			if(!(unres_sides & heading))
 				continue
-			var/mutable_appearance/floorlight = mutable_appearance('local/icons/obj/airlock/station/overlays.dmi', "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
+			var/mutable_appearance/floorlight = mutable_appearance(overlays_file, "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 			. += floorlight
 
 /obj/machinery/door/airlock
