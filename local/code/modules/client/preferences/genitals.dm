@@ -152,8 +152,6 @@
 /datum/preference/tri_bool/genital/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/allowed = TRUE
-	message_admins("preference master_erp_pref is [preferences.read_preference(/datum/preference/toggle/master_erp_preferences)].")
-	message_admins("preference allow_genitals is [preferences.read_preference(/datum/preference/toggle/master_erp_preferences)].")
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/can_color = TRUE
 	/// Checks that the use skin color pref is both enabled and actually accessible. If so, then this is useless.
