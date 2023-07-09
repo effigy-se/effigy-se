@@ -218,6 +218,8 @@
 /obj/machinery/door/airlock/external
 	icon = 'local/icons/obj/airlock/external/external.dmi'
 	overlays_file = 'local/icons/obj/airlock/external/overlays.dmi'
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_WINDOW_FULLTILE
 
 // Effigy
 
