@@ -8,7 +8,8 @@
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/red = 4,
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/white = 4,
 		/obj/item/clothing/under/rank/medical/doctor/skyrat/utility = 4,
-		/obj/item/clothing/suit/toggle/labcoat/medical = 4
+		/obj/item/clothing/suit/toggle/labcoat/medical = 4,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis = 2,
 	)
 
 /obj/machinery/vending/wardrobe/engi_wardrobe
@@ -23,13 +24,15 @@
 		/obj/item/clothing/head/utility/hardhat/welding/orange = 2,
 		/obj/item/clothing/head/utility/hardhat/dblue = 2,
 		/obj/item/clothing/head/utility/hardhat/welding/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/red = 2
+		/obj/item/clothing/head/utility/hardhat/red = 2,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis = 2,
 	)
 
 /obj/machinery/vending/wardrobe/atmos_wardrobe
 	effigy_products = list(
 		/obj/item/clothing/glasses/meson/engine = 2,
 		/obj/item/clothing/head/beret/atmos = 4,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis = 2,
 	)
 
 /obj/machinery/vending/wardrobe/cargo_wardrobe
@@ -103,6 +106,7 @@
 		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal = 2,
 		/obj/item/clothing/under/rank/medical/chemist/skyrat/formal/skirt = 2,
 		/obj/item/clothing/head/beret/medical/chemist = 2,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis = 2,
 	)
 
 /obj/machinery/vending/wardrobe/viro_wardrobe
@@ -122,7 +126,6 @@
 		/obj/item/clothing/suit/toggle/deckard = 2,
 		/obj/item/clothing/suit/armor/vest/det_suit/runner = 2,
 		/obj/item/clothing/under/rank/security/detective/runner = 2,
-		/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis = 2,
 		/obj/item/clothing/under/rank/security/detective/cowboy = 2,
 		/obj/item/clothing/suit/jacket/det_suit/cowboyvest = 2,
 	)
