@@ -52,7 +52,7 @@
 /obj/machinery/door/firedoor
 	name = "emergency shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a glass panel. It has a mechanism to open it with just your hands."
-	icon = 'local/icons/obj/door/firedoor_glass.dmi'
+	icon = 'local/icons/obj/doors/firedoor_glass.dmi'
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
@@ -64,7 +64,7 @@
 /obj/machinery/door/firedoor/heavy
 	name = "heavy emergency shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
-	icon = 'local/icons/obj/door/firedoor.dmi'
+	icon = 'local/icons/obj/doors/firedoor.dmi'
 
 /obj/effect/spawner/structure/window/reinforced/no_firelock
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)
@@ -73,13 +73,13 @@
 	alarm_type = FIRELOCK_ALARM_TYPE_GENERIC
 
 /obj/machinery/door/poddoor
-	icon = 'local/icons/obj/door/blast_door.dmi'
-	var/door_sound = 'local/icons/obj/door/blast_door.ogg'
+	icon = 'local/icons/obj/doors/blast_door.dmi'
+	var/door_sound = 'local/icons/obj/doors/blast_door.ogg'
 
 /obj/machinery/door/poddoor/shutters
-	icon = 'local/icons/obj/door/shutters.dmi'
-	var/door_open_sound = 'local/icons/obj/door/shutters_open.ogg'
-	var/door_close_sound = 'local/icons/obj/door/shutters_close.ogg'
+	icon = 'local/icons/obj/doors/shutters.dmi'
+	var/door_open_sound = 'local/icons/obj/doors/shutters_open.ogg'
+	var/door_close_sound = 'local/icons/obj/doors/shutters_close.ogg'
 
 /obj/machinery/door/poddoor/shutters/do_animate(animation)
 	switch(animation)

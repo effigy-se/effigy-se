@@ -544,7 +544,7 @@
 		return FALSE
 
 /obj/machinery/door/airlock/cult/proc/conceal()
-	icon = 'local/icons/obj/airlock/station/maint-int.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/maint-int.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
 	name = "Airlock"
 	desc = "It opens and closes."
