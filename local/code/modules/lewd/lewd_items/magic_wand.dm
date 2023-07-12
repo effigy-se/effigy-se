@@ -5,10 +5,10 @@
 	base_icon_state = "magicwand"
 	worn_icon_state = "magicwand"
 	inhand_icon_state = "magicwand"
-	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
-	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
+	worn_icon = 'local/icons/lewd/mob/lewd_items/lewd_items.dmi'
+	icon = 'local/icons/lewd/obj/lewd_items/lewd_items.dmi'
+	lefthand_file = 'local/icons/lewd/mob/lewd_inhands/lewd_inhand_left.dmi'
+	righthand_file = 'local/icons/lewd/mob/lewd_inhands/lewd_inhand_right.dmi'
 	/// What mode the vibrator is on
 	var/vibration_mode = "off"
 	/// Looping sound called on process()
@@ -33,7 +33,7 @@
 /obj/item/clothing/sextoy/magic_wand/Initialize(mapload)
 	. = ..()
 
-	magicwand_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "magicwand", ABOVE_MOB_LAYER + 0.1) //two arguments
+	magicwand_overlay = mutable_appearance('local/icons/lewd/mob/lewd_items/lewd_items.dmi', "magicwand", ABOVE_MOB_LAYER + 0.1) //two arguments
 
 	update_icon_state()
 	update_icon()
@@ -158,7 +158,7 @@
 		target.try_lewd_autoemote(pick("twitch_s", "moan"))
 
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', (vibration_mode == "low" ? 10 : (vibration_mode == "high" ? 30 : 20)), TRUE, ignore_walls = FALSE)
+	playsound(loc, 'local/sound/effects/lewd/vibrate.ogg', (vibration_mode == "low" ? 10 : (vibration_mode == "high" ? 30 : 20)), TRUE, ignore_walls = FALSE)
 
 /obj/item/clothing/sextoy/magic_wand/attack_self(mob/user)
 	toggle_mode()

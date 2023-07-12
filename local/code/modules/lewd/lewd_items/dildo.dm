@@ -386,7 +386,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /// Code for taking out/putting away the other end of the toy when one end is in you
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/toggle(mob/living/carbon/human/user)
-	playsound(user, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
+	playsound(user, 'local/sound/effects/lewd/latex.ogg', 40, TRUE, ignore_walls = FALSE)
 
 	if(!end_in_hand)
 		take_in_hand(user)
