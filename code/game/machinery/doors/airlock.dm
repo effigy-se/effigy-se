@@ -141,7 +141,7 @@
 	var/previous_airlock = /obj/structure/door_assembly
 	/// Material of inner filling; if its an airlock with glass, this should be set to "glass"
 	var/airlock_material
-	var/overlays_file = 'local/icons/obj/airlock/station/overlays.dmi'
+	var/overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 	/// Used for papers and photos pinned to the airlock
 	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
 
