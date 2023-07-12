@@ -211,8 +211,8 @@
 // Station2
 
 /obj/machinery/door/airlock/public
-	icon = 'local/icons/obj/airlock/station2/glass.dmi'
-	overlays_file = 'local/icons/obj/airlock/station2/overlays.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station2/glass.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/station2/overlays.dmi'
 
 // Effigy
 
