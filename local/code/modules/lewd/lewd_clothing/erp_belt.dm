@@ -61,7 +61,6 @@
 						/obj/item/clothing/suit/corset,
 						/obj/item/clothing/under/misc/latex_catsuit,
 						/obj/item/clothing/under/rank/civilian/janitor/maid,
-						/obj/item/clothing/under/costume/lewdmaid,
 						/obj/item/clothing/suit/straight_jacket/shackles,
 						/obj/item/clothing/under/stripper_outfit,
 						/obj/item/clothing/under/misc/skyrat/gear_harness,

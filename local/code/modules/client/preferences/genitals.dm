@@ -78,17 +78,13 @@
 
 /datum/preference/toggle/genital_skin_tone/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	return FALSE
-	/* // https://github.com/effigy-se/effigy-se/issues/303
-	var/passed_initial_check = ..(preferences)
 	var/part_name = preferences.read_preference(genital_pref_type)
 	var/datum/sprite_accessory/genital/accessory = GLOB.sprite_accessories[relevant_mutant_bodypart]?[part_name]
 	if(!accessory?.factual || !accessory.has_skintone_shading)
 		return FALSE
-	var/allowed = TRUE
+	var/allowed = FALSE
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	return erp_allowed && (passed_initial_check || allowed)
-	*/
 
 /datum/preference/toggle/genital_skin_color
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -99,17 +95,13 @@
 
 /datum/preference/toggle/genital_skin_color/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	return FALSE
-	/* // https://github.com/effigy-se/effigy-se/issues/303
-	var/passed_initial_check = ..(preferences)
 	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	if(TRAIT_USES_SKINTONES in species_type.inherent_traits)
 		return FALSE
-	var/allowed = TRUE
+	var/allowed = FALSE
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(genital_pref_type))
 	return erp_allowed && part_enabled && (passed_initial_check || allowed)
-	*/
 
 /datum/preference/toggle/genital_skin_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
