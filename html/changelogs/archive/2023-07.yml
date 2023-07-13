@@ -395,96 +395,6 @@
   LT3:
   - bugfix: Genital color customization is back
 2023-07-09:
-  LT3:
-  - bugfix: Crew can now properly hold their alcohol
-  unit0016:
-  - bugfix: Nanotrasen has been fined one (1) credit for improper fire safety on Foxhole.
-      I sure hope somebody got fired for that blunder.
-2023-07-12:
-  unit0016:
-  - rscadd: The coroner has a half-real office on Ministation.
-  - bugfix: Ian can actually have his birthday on Foxhole.
-  1393F:
-  - bugfix: The cursed katana shard you can get from tendril loot no longer falsely
-      tells you you're not supposed to have it
-  BlueMemesauce:
-  - qol: AI VOX messages are sent over announcement instead of radio
-  - bugfix: AI VOX messages work properly on multi-Z stations
-  ChungusGamer666:
-  - rscadd: You can now put sandstone bricks in pillows to... make them deadlier?
-  - rscadd: Added colorblindness as a mild brain trauma.
-  - rscadd: Added two new quirks, prosthetic organ and tin man. Essentially, they
-      replace organs with bad bad not good cybernetic counterparts.
-  Ghommie:
-  - refactor: Replaced hardcoded "safeties" for lava, chasms and ignoring turf slowdowns
-      on catwalks with traits.
-  - balance: much like catwalks, tables and conveyors also disable turf slowdowns.
-  - balance: slippery turfs won't slip you when walking on a table.
-  - bugfix: Fixed an edge case in which a mob standing on a lava turf would be left
-      visually but permanently  on fire if the lava is changed to another kind of
-      turf.
-  Jacquerel:
-  - rscadd: A bible or lighter in your suit slot, or cowboy hat on your head will
-      occasionally intercept a bullet.
-  JohnFulpWillard:
-  - balance: Bilingual quirk now lets you choose your language between ones given
-      to roundstart species.
-  - balance: Foreigner and Bilingual are now mutually exclusive languages.
-  - bugfix: Cultists promoted to Leader no longer lose their spells (rip whoever tried
-      saving up blood rites)
-  - admin: Admins can now force promote/demote people from Cult Leader if necessary.
-  - code_imp: Jousting now registers/unregisters properly on two-handed items.
-  Jolly:
-  - bugfix: '[TramStation] - Removed a (possibly) unused var on the barber shop doors.
-      Hopefully those taking refuge in the commissary wasn''t causing too many issues.'
-  Jolly, timothymtorres:
-  - code_imp: 'Jolly: Armories across all maps have been tweaked slightly. Report
-      to a Nanotrasen security advisor for any missing guns, armor, helmets or anything
-      else that was there previously (that means, post an issue on Github if theres
-      an issue!!)'
-  - code_imp: 'timothymtorres: Random item spawners now support better control of
-      their X/Y pixel offset.'
-  Melbert:
-  - bugfix: Fix certain emote interactions happening twice at the same time
-  - bugfix: Fixed some hard deletes involving constructed cyborgs
-  - bugfix: Cyborgs with nodrop hats no longer lose them on tip
-  - refactor: Refactor of connections.js. Yeah that's it.
-  Toastgoats:
-  - rscadd: Adds the Lustrous, ethereal pirates in a big bluespace geode!
-  - sound: Unique scream sound for the Lustrous species.
-  - image: Unique head icon for the Lustrous species.
-  Youtubeboy139:
-  - image: Added new HUD sprites
-  - image: Added new Goggle Sprites
-  - image: Added new NVG sprites
-  - image: Removed unused/depreciated sprites in `glasses.dmi`
-  carlarctg:
-  - bugfix: Serrated bone shovels can be created with any kind of shovel now, not
-      just a spade (???)
-  - rscadd: Serrated bone shovels can be used in place of circular saw in most surgeries.
-  - rscadd: Added a duller (still deadly) variant of the serrated bone shovel as coroner
-      mail.
-  - rscadd: Autopsy scanners now act as advanced health analyzers on dead and seemingly-dead
-      people.
-  - rscadd: Increased the force, throwforce, and wound bonus of inert ritual knives
-      and scythes.
-  - rscadd: Coroner gloves can quickly apply medicine like nitrile gloves.
-  - image: Heavily reworks and resprites first aid analyzers. They now display if
-      they're happy, sad, angry, or warning you! Also a 'pricking' animation.
-  - rscadd: First aid analyzers are now found in all basic and specialized medkits.
-      Toxin medkits get a new* disease analyzer. Miners get a miner-colored one in
-      their box.
-  - balance: Scanning yourself with a first aid analyzer will 'create a holo-image
-      with treatment instructions next to your wounds', doubling the speed of treatment
-      of scanned wounds!
-  - sound: Health analyzers and gene scanners now have a scanning sound, courtesy
-      of CM.
-  - refactor: Refactored some wound code to make treatment duration changes and changes
-      in the description of wounds easier.
-  - bugfix: Fixed a dummy parent feature of the health analyzer (Verbose mode) showing
-      up, uselessly, on the disease and first aid subtypes.
-  - image: Surgical processors and slime scanners have recieved a similar resprite.
-2023-07-09:
   DATA-xPUNGED:
   - qol: It has been issued brand new mini-fridges for our active stations, Featuring
       more booze and less moldy pizza!
@@ -625,6 +535,11 @@
   - refactor: Foxes are more crafty now. They will run from danger, and hunt small
       prey when no one is keeping an eye on them. Don't leave Renault alone with Ian!
 2023-07-13:
+  BlueMemesauce:
+  - bugfix: Removed initial 500 point balance on mining point transfer cards. Load
+      them up with points instead.
+  - rscadd: Added mining point transfer cards to mining lockers.
+  - rscdel: Removed mining point transfer cards from mining equipment vendor.
   Hatterhat:
   - qol: When a MOD fails to store something in itself when retracting, you're now
       notified in both the chat and by a balloon alert.
@@ -632,6 +547,15 @@
   - balance: Rocket launcher's backblast doesnt ignore armor now.
   - bugfix: eating mime's and rainbow crayons now properly transfers reagents.
   - bugfix: I somehow fixed the amount of reagents in crayons to what it was before.
+  - rscadd: You can now swab plasmaman clown clothes to get clown microbes.
+  - rscadd: Clown phobia makes you fear plasmaman clown's gloves and helmet.
+  Jacquerel:
+  - refactor: Goliaths now use the Basic Mob framework, please report any unusual
+      behaviour.
+  - rscadd: Goliaths learned a couple of new attacks which they will use in self-defence.
+  - balance: Help-clicking a miner grabbed by Goliath tentacles will immediately free
+      them, as will the effect of several items you can scavenge from around Lavaland.
+  - image: New sprites for the Goliath saddle.
   LT3:
   - image: Roller bed now has an inhand sprite
   - bugfix: Security records no longer accept negative values for citation payment
@@ -639,6 +563,12 @@
   - rscadd: You can now wear multiple accessories on your uniform at once (up to five
       by default)
   - balance: Removed armor from accessories, and nerfs the effects of some accessories.
+  Sealed101:
+  - qol: Lobby Menu buttons can now be collapsed. Rejoice!
+  - qol: Lobby Menu buttons have names, which can be seen in the prompt on the bottom
+      left of the viewport.
+  - qol: you may see your readiness status during pre-game in the Status Bar.
+  - qol: Reset Lobby Menu HUD verb added in case you manage to break the damn thing.
   SomeRandomOwl:
   - bugfix: Music Request Credit shows CKEY instead of character name
   Timberpoes:
@@ -647,3 +577,9 @@
       revolution fails.
   - rscadd: When the station is rolled in a state of Post-Revolutionary Fervor, the
       Captain will find their bedsheets replaced with an anti-Nanotrasen variant.
+  nikothedude:
+  - qol: APCs, fire alarms, and holopads now communicate some more of their silicon
+      interactions via screentips.
+  - qol: APCs, fire alarms, holopads and turret control panels now use balloon alerts
+      for more of their notifications.
+  - bugfix: Deployable turrets no longer runtime when firing
