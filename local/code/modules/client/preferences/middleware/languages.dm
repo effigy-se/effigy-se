@@ -1,33 +1,12 @@
 #define MAX_LANGUAGES_NORMAL 3
 #define MAX_LANGUAGES_LINGUIST 4
 
+/*
 /datum/asset/spritesheet/languages
 	name = "languages"
 	early = TRUE
 	cross_round_cachable = TRUE
-
-/datum/asset/spritesheet/languages/create_spritesheets()
-	var/list/to_insert = list()
-
-	if(!GLOB.all_languages.len)
-		for(var/iterated_language in subtypesof(/datum/language))
-			var/datum/language/language = iterated_language
-			if(!initial(language.key))
-				continue
-
-			GLOB.all_languages += language
-
-			var/datum/language/instance = new language
-
-			GLOB.language_datum_instances[language] = instance
-
-	for (var/language_name in GLOB.all_languages)
-		var/datum/language/language = GLOB.language_datum_instances[language_name]
-		var/icon/language_icon = icon(language.icon, icon_state = language.icon_state)
-		to_insert[sanitize_css_class_name(language.name)] = language_icon
-
-	for (var/spritesheet_key in to_insert)
-		Insert(spritesheet_key, to_insert[spritesheet_key])
+*/
 
 /// Middleware to handle languages
 /datum/preference_middleware/languages
@@ -42,10 +21,12 @@
 	var/datum/language_holder/language_holder = target.get_language_holder()
 	language_holder.adjust_languages_to_prefs(preferences)
 
+/*
 /datum/preference_middleware/languages/get_ui_assets()
 	return list(
 		get_asset_datum(/datum/asset/spritesheet/languages),
 	)
+*/
 
 /datum/preference_middleware/languages/post_set_preference(mob/user, preference, value)
 	if(preference != "species")

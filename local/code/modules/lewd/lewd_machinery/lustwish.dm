@@ -68,7 +68,6 @@
 					/obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5,
 					/obj/item/clothing/under/costume/maid = 5,
 					/obj/item/clothing/under/rank/civilian/janitor/maid = 5,
-					/obj/item/clothing/under/costume/lewdmaid = 5,
 					/obj/item/clothing/suit/straight_jacket/shackles = 4,
 					/obj/item/clothing/under/stripper_outfit = 5,
 					/obj/item/clothing/under/costume/bunnylewd = 5,
