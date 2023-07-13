@@ -6,6 +6,7 @@
 	early = TRUE
 	cross_round_cachable = TRUE
 
+/*
 /datum/asset/spritesheet/languages/create_spritesheets()
 	var/list/to_insert = list()
 
@@ -21,6 +22,7 @@
 
 			GLOB.language_datum_instances[language] = instance
 
+
 	for (var/language_name in GLOB.all_languages)
 		var/datum/language/language = GLOB.language_datum_instances[language_name]
 		var/icon/language_icon = icon(language.icon, icon_state = language.icon_state)
@@ -28,6 +30,7 @@
 
 	for (var/spritesheet_key in to_insert)
 		Insert(spritesheet_key, to_insert[spritesheet_key])
+*/
 
 /// Middleware to handle languages
 /datum/preference_middleware/languages
@@ -41,6 +44,7 @@
 /datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
 	var/datum/language_holder/language_holder = target.get_language_holder()
 	language_holder.adjust_languages_to_prefs(preferences)
+
 
 /datum/preference_middleware/languages/get_ui_assets()
 	return list(

@@ -21,7 +21,7 @@ export const PingIndicator = (props, context) => {
   return (
     <div className="Ping">
       <Box className="Ping__indicator" backgroundColor={color} />
-      {roundtrip}
+      {roundtrip}ms
     </div>
   );
 };
