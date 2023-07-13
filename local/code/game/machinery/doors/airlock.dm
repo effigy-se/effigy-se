@@ -162,62 +162,62 @@
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
 			if(!(unres_sides & heading))
 				continue
-			var/mutable_appearance/floorlight = mutable_appearance('local/icons/obj/airlock/station/overlays.dmi', "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
+			var/mutable_appearance/floorlight = mutable_appearance('local/icons/obj/doors/airlocks/station/overlays.dmi', "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 			. += floorlight
 
 /obj/machinery/door/airlock
-	icon = 'local/icons/obj/airlock/station/generic.dmi'
-	overlays_file = 'local/icons/obj/airlock/station/overlays.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/generic.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 
 /obj/machinery/door/airlock/atmos
-	icon = 'local/icons/obj/airlock/station/atmos.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/atmos.dmi'
 
 /obj/machinery/door/airlock/command
-	icon = 'local/icons/obj/airlock/station/com.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/com.dmi'
 
 /obj/machinery/door/airlock/engineering
-	icon = 'local/icons/obj/airlock/station/engi.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/engi.dmi'
 
 /obj/machinery/door/airlock/hydroponics
-	icon = 'local/icons/obj/airlock/station/hydro.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/hydro.dmi'
 
 /obj/machinery/door/airlock/maintenance
-	icon = 'local/icons/obj/airlock/station/maint-int.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/maint-int.dmi'
 
 /obj/machinery/door/airlock/maintenance/external
-	icon = 'local/icons/obj/airlock/station/maint-ext.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/maint-ext.dmi'
 
 /obj/machinery/door/airlock/medical
-	icon = 'local/icons/obj/airlock/station/med.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/med.dmi'
 
 /obj/machinery/door/airlock/mining
-	icon = 'local/icons/obj/airlock/station/cargo.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/cargo.dmi'
 
 /obj/machinery/door/airlock/research
-	icon = 'local/icons/obj/airlock/station/rnd.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/rnd.dmi'
 
 /obj/machinery/door/airlock/science
-	icon = 'local/icons/obj/airlock/station/sci.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/sci.dmi'
 
 /obj/machinery/door/airlock/security
-	icon = 'local/icons/obj/airlock/station/sec.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/sec.dmi'
 
 /obj/machinery/door/airlock/virology
-	icon = 'local/icons/obj/airlock/station/viro.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/viro.dmi'
 
 /obj/machinery/door/airlock/silver
-	icon = 'local/icons/obj/airlock/station/silver.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/silver.dmi'
 
 // Station2
 
 /obj/machinery/door/airlock/public
-	icon = 'local/icons/obj/airlock/station2/glass.dmi'
-	overlays_file = 'local/icons/obj/airlock/station2/overlays.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station2/glass.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/station2/overlays.dmi'
 
 // Effigy
 
 /obj/machinery/door/airlock/service
-	icon = 'local/icons/obj/airlock/station/service.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/service.dmi'
 
 /obj/machinery/door/airlock/service/glass
 	opacity = FALSE
@@ -225,13 +225,13 @@
 
 /obj/structure/door_assembly/door_assembly_svc
 	name = "service airlock assembly"
-	icon = 'local/icons/obj/airlock/station/service.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/service.dmi'
 	base_name = "service airlock"
 	glass_type = /obj/machinery/door/airlock/service/glass
 	airlock_type = /obj/machinery/door/airlock/service
 
 /obj/machinery/door/airlock/service/studio
-	icon = 'local/icons/obj/airlock/station/studio.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/studio.dmi'
 
 /obj/machinery/door/airlock/service/studio/glass
 	opacity = FALSE
@@ -239,7 +239,7 @@
 
 /obj/structure/door_assembly/door_assembly_sto
 	name = "studio airlock assembly"
-	icon = 'local/icons/obj/airlock/station/studio.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/studio.dmi'
 	base_name = "service airlock"
 	glass_type = /obj/machinery/door/airlock/service/studio/glass
 	airlock_type = /obj/machinery/door/airlock/service/studio
@@ -247,51 +247,51 @@
 // EFFIGY DOOR ASSEMBLIES
 
 /obj/structure/door_assembly
-	icon = 'local/icons/obj/airlock/station/generic.dmi'
-	overlays_file = 'local/icons/obj/airlock/station/overlays.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/generic.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 
 /obj/structure/door_assembly/door_assembly_public
-	icon = 'local/icons/obj/airlock/station2/glass.dmi'
-	overlays_file = 'local/icons/obj/airlock/station/overlays.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station2/glass.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 
 /obj/structure/door_assembly/door_assembly_com
-	icon = 'local/icons/obj/airlock/station/com.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/com.dmi'
 
 /obj/structure/door_assembly/door_assembly_sec
-	icon = 'local/icons/obj/airlock/station/sec.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/sec.dmi'
 
 /obj/structure/door_assembly/door_assembly_eng
-	icon = 'local/icons/obj/airlock/station/engi.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/engi.dmi'
 
 /obj/structure/door_assembly/door_assembly_min
-	icon = 'local/icons/obj/airlock/station/cargo.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/cargo.dmi'
 
 /obj/structure/door_assembly/door_assembly_atmo
-	icon = 'local/icons/obj/airlock/station/atmos.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/atmos.dmi'
 
 /obj/structure/door_assembly/door_assembly_research
-	icon = 'local/icons/obj/airlock/station/rnd.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/rnd.dmi'
 
 /obj/structure/door_assembly/door_assembly_science
-	icon = 'local/icons/obj/airlock/station/sci.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/sci.dmi'
 
 /obj/structure/door_assembly/door_assembly_med
-	icon = 'local/icons/obj/airlock/station/med.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/med.dmi'
 
 /obj/structure/door_assembly/door_assembly_hydro
-	icon = 'local/icons/obj/airlock/station/hydro.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/hydro.dmi'
 
 /obj/structure/door_assembly/door_assembly_viro
-	icon = 'local/icons/obj/airlock/station/viro.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/viro.dmi'
 
 /obj/structure/door_assembly/door_assembly_silver
-	icon = 'local/icons/obj/airlock/station/silver.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/silver.dmi'
 
 /obj/structure/door_assembly/door_assembly_mai
-	icon = 'local/icons/obj/airlock/station/maint-int.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/maint-int.dmi'
 
 /obj/structure/door_assembly/door_assembly_extmai
-	icon = 'local/icons/obj/airlock/station/maint-ext.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station/maint-ext.dmi'
 
 #undef AIRLOCK_LIGHT_POWER
 #undef AIRLOCK_LIGHT_RANGE
