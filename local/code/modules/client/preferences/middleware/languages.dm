@@ -6,6 +6,7 @@
 	early = TRUE
 	cross_round_cachable = TRUE
 
+/*
 /datum/asset/spritesheet/languages/create_spritesheets()
 	var/list/to_insert = list()
 
@@ -16,7 +17,6 @@
 				continue
 
 			GLOB.all_languages += language
-			GLOB.language_types_by_name[initial(language.name)] = language
 
 			var/datum/language/instance = new language
 
@@ -30,6 +30,7 @@
 
 	for (var/spritesheet_key in to_insert)
 		Insert(spritesheet_key, to_insert[spritesheet_key])
+*/
 
 /// Middleware to handle languages
 /datum/preference_middleware/languages
