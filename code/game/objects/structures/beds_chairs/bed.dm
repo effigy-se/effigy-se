@@ -11,7 +11,7 @@
 	name = "bed"
 	desc = "This is used to lie in, sleep in or strap on."
 	icon_state = "bed"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/bed.dmi'
 	anchored = TRUE
 	can_buckle = TRUE
 	buckle_lying = 90
@@ -132,6 +132,9 @@
 	desc = "A collapsed roller bed that can be carried around."
 	icon = 'local/icons/obj/medical/rollerbed.dmi' // EffigyEdit Change - Custom Icon
 	icon_state = "folded"
+	inhand_icon_state = "rollerbed"
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL // No more excuses, stop getting blood everywhere
 
 /obj/item/roller/attackby(obj/item/I, mob/living/user, params)
