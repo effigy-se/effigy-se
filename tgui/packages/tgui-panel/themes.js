@@ -4,9 +4,9 @@
  * @license MIT
  */
 
-export const THEMES = ['dark'];
+export const THEMES = ['light', 'dark'];
 
-const COLOR_DARK_BG = '#202020';
+const COLOR_DARK_BG = '#252525';
 const COLOR_DARK_BG_DARKER = '#171717';
 const COLOR_DARK_TEXT = '#a4bad6';
 
@@ -35,52 +35,52 @@ export const setClientTheme = (name) => {
     return Byond.winset({
       // Main windows
       'infowindow.background-color': 'none',
-      'infowindow.text-color': '#000000',
+      'infowindow.text-color': '#202020',
       'info.background-color': 'none',
-      'info.text-color': '#000000',
+      'info.text-color': '#202020',
       'browseroutput.background-color': 'none',
-      'browseroutput.text-color': '#000000',
+      'browseroutput.text-color': '#202020',
       'outputwindow.background-color': 'none',
-      'outputwindow.text-color': '#000000',
+      'outputwindow.text-color': '#202020',
       'mainwindow.background-color': 'none',
       'split.background-color': 'none',
       // Buttons
       'changelog.background-color': 'none',
-      'changelog.text-color': '#000000',
+      'changelog.text-color': '#202020',
       'rules.background-color': 'none',
-      'rules.text-color': '#000000',
+      'rules.text-color': '#202020',
       'wiki.background-color': 'none',
-      'wiki.text-color': '#000000',
+      'wiki.text-color': '#202020',
       'forum.background-color': 'none',
-      'forum.text-color': '#000000',
+      'forum.text-color': '#202020',
       'github.background-color': 'none',
-      'github.text-color': '#000000',
+      'github.text-color': '#202020',
       'report-issue.background-color': 'none',
-      'report-issue.text-color': '#000000',
+      'report-issue.text-color': '#202020',
       // Status and verb tabs
       'output.background-color': 'none',
-      'output.text-color': '#000000',
+      'output.text-color': '#202020',
       'statwindow.background-color': 'none',
-      'statwindow.text-color': '#000000',
-      'stat.background-color': '#FFFFFF',
+      'statwindow.text-color': '#202020',
+      'stat.background-color': '#eaeaea',
       'stat.tab-background-color': 'none',
-      'stat.text-color': '#000000',
-      'stat.tab-text-color': '#000000',
-      'stat.prefix-color': '#000000',
-      'stat.suffix-color': '#000000',
+      'stat.text-color': '#202020',
+      'stat.tab-text-color': '#202020',
+      'stat.prefix-color': '#202020',
+      'stat.suffix-color': '#202020',
       // Say, OOC, me Buttons etc.
       'saybutton.background-color': 'none',
-      'saybutton.text-color': '#000000',
+      'saybutton.text-color': '#202020',
       'oocbutton.background-color': 'none',
-      'oocbutton.text-color': '#000000',
+      'oocbutton.text-color': '#202020',
       'mebutton.background-color': 'none',
-      'mebutton.text-color': '#000000',
+      'mebutton.text-color': '#202020',
       'asset_cache_browser.background-color': 'none',
-      'asset_cache_browser.text-color': '#000000',
+      'asset_cache_browser.text-color': '#202020',
       'tooltip.background-color': 'none',
-      'tooltip.text-color': '#000000',
-      'input.background-color': '#FFFFFF',
-      'input.text-color': '#000000',
+      'tooltip.text-color': '#202020',
+      'input.background-color': '#eaeaea',
+      'input.text-color': '#202020',
     });
   }
   if (name === 'dark') {
