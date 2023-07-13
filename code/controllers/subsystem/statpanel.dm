@@ -23,8 +23,8 @@ SUBSYSTEM_DEF(statpanels)
 	if (!resumed)
 		num_fires++
 		var/datum/map_config/cached = SSmapping.next_map_config
-		// EFFIGY EDIT CHANGE START - STATPANEL
-		/*
+		// EffigyEdit Change - Statpanel
+		/* Original:
 		global_data = list(
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
@@ -39,19 +39,17 @@ SUBSYSTEM_DEF(statpanels)
 		var/server_rev = copytext(GLOB.revdata.commit, 1, 8)
 		var/round_real_time = REALTIMEOFDAY - SSticker.round_start_real_time
 		global_data = list(
-			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% (Average: [round(SStime_track.time_dilation_avg_fast,1)]% / [round(SStime_track.time_dilation_avg,1)]% / [round(SStime_track.time_dilation_avg_slow,1)]%)",
+			"Server Rev: [server_rev ? server_rev : "N/A"]",
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
-			"Round ID: [GLOB.round_hex ? GLOB.round_hex : "N/A"]",
 			"Connected Players: [GLOB.clients.len]",
-			"Server Rev: [server_rev ? server_rev : "N/A"]",
-			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			" ",
-			"[SSticker.HasRoundStarted() ? "Round Time: [ROUND_TIME()]" : ""]",
-			"[SSticker.HasRoundStarted() ? "Adj. Round Time: [time2text(round_real_time, "hh:mm:ss", 0)]" : ""]",
+			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
+			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% (Average: [round(SStime_track.time_dilation_avg_fast,1)]% / [round(SStime_track.time_dilation_avg,1)]% / [round(SStime_track.time_dilation_avg_slow,1)]%)",
+			"[SSticker.HasRoundStarted() ? "Round Time: [time2text(round_real_time, "hh:mm:ss", 0)]" : ""]",
 			"[SSticker.HasRoundStarted() ? "Station Time: [station_time_timestamp()]" : ""]"
 		)
-		// EFFIGY EDIT CHANGE END - STATPANEL
+		// EffigyEdit Change End
 
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()
@@ -123,7 +121,7 @@ SUBSYSTEM_DEF(statpanels)
 
 	target.stat_panel.send_message("update_stat", list(
 		"global_data" = global_data,
-		"ping_str" = "Ping: [round(target.lastping, 1)]ms (Average: [round(target.avgping, 1)]ms)",
+		"ping_str" = "Round ID: [GLOB.round_hex ? GLOB.round_hex : "N/A"]", // EffigyEdit Change - Statpanel
 		"other_str" = target.mob?.get_status_tab_items(),
 	))
 
