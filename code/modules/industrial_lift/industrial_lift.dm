@@ -809,7 +809,7 @@ GLOBAL_LIST_EMPTY(lifts)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 	lift_id = TRAM_LIFT_ID
-	lift_master_type = /datum/lift_master/tram
+	lift_master_type = /datum/transport_controller/linear/tram
 	radial_travel = FALSE
 
 	/// Set by the tram control console in late initialize
