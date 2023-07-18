@@ -72,7 +72,7 @@
 			return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a BYOND account.")
 		if (CONFIG_GET(flag/panic_bunker) && SSdbcore.Connect())
 			log_access("Failed Login: [ckey] - Guests not allowed during panic bunker")
-			return list("reason"="guest", "desc"="\nEffigy uses a player whitelist and your account was not found! Please visit <a href=\"https://socialdistrict.effigy.se\">https://socialdistrict.effigy.se</a> for details and to submit an application for the server.")
+			return list("reason"="guest", "desc"="\nEffigy uses a player whitelist and your account was not found! Please visit <a href=\"https://effigy.se\">https://effigy.se</a> for details and to submit an application for the server.")
 
 	//Population Cap Checking
 	var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
