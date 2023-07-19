@@ -214,6 +214,16 @@
 	icon = 'local/icons/obj/doors/airlocks/station2/glass.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/station2/overlays.dmi'
 
+// External
+
+/obj/machinery/door/airlock/external
+	icon = 'local/icons/obj/doors/airlocks/external/external.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/external/overlays.dmi'
+
+/obj/machinery/door/airlock/external/glass
+	icon = 'local/icons/obj/doors/airlocks/external/external.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/external/overlays.dmi'
+
 // Effigy
 
 /obj/machinery/door/airlock/service
