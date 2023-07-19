@@ -42,9 +42,9 @@
 
 	if(winning_option == CHOICE_TRANSFER)
 		SSshuttle.autoEnd()
-		var/obj/machinery/computer/communications/comms_console = locate() in GLOB.machines
-		if(comms_console)
-			comms_console.post_status("shuttle")
+		for(var/obj/machinery/computer/communications/comms_console as anything in SSmachines.get_machines_by_type(/obj/machinery/computer/communications))
+			if(comms_console)
+				comms_console.post_status("shuttle")
 		return
 
 	CRASH("[type] wasn't passed a valid winning choice. (Got: [winning_option || "null"])")
