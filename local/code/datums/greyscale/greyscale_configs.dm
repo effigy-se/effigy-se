@@ -605,7 +605,7 @@
 
 // JUMPSUITS
 
-/datum/greyscale_config/jumpsuit_worn/digi
+/datum/greyscale_config/jumpsuit/worn/digi
 	name = "Worn Jumpsuit - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
