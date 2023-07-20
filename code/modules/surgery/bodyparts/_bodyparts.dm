@@ -871,6 +871,10 @@
 		draw_color ||= species_color || (skin_tone ? skintone2hex(skin_tone) : null)
 
 	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	var/datum/species/owner_species = human_owner.dna.species
+
+	if(owner_species && owner_species.specific_alpha != 255)
+		alpha = owner_species.specific_alpha
 	markings = LAZYCOPY(owner.dna.species.body_markings[body_zone])
 	if(aux_zone)
 		aux_zone_markings = LAZYCOPY(owner.dna.species.body_markings[aux_zone])
@@ -958,7 +962,7 @@
 
 		if(draw_color)
 			// EFFIGY EDIT CHANGE START (#3 Customization)
-			var/limb_color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
+			var/limb_color = alpha != 255 ? "[draw_color][num2hex(alpha, 2)]" : "[draw_color]"
 
 			limb.color = limb_color
 			if(aux_zone)

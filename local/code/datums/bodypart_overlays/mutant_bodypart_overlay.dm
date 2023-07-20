@@ -1,6 +1,7 @@
 /// The greatest amount of colors that can be in a matrixed bodypart_overlay.
 #define MAX_MATRIXED_COLORS 3
 
+
 /**
  * Allows us to set the appearance from data that's located within the provided DNA,
  * for a little more control over what exactly is displayed.
@@ -40,6 +41,9 @@
 
 	else
 		. += "[draw_color]"
+
+	if(alpha != ALPHA_OPAQUE)
+		. += "[alpha]"
 
 	if(emissive_eligibility_by_color_index)
 		for(var/index in emissive_eligibility_by_color_index)
@@ -133,15 +137,14 @@
 	if(!sprite_datum || !overlays)
 		return
 
-	/* Uncomment when the fact that the body is husked is stored on the limbs too.
-	if(HAS_TRAIT(limb, TRAIT_HUSK))
+	if(limb?.is_husked)
 		if(sprite_datum.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
 			draw_color = HUSK_COLOR_LIST
 		else
 			draw_color = "#AAA" //The gray husk color
-	*/
 
 	var/specific_alpha = limb?.alpha || 255
+	alpha = limb?.alpha || ALPHA_OPAQUE
 	var/i = 1 // Starts at 1 for color layers.
 
 	for(var/index_to_color in overlay_indexes_to_color)
@@ -153,16 +156,16 @@
 		switch(sprite_datum.color_src)
 			if(USE_ONE_COLOR)
 				overlay.color = islist(draw_color) ? draw_color[i] : draw_color
-				overlay.alpha = specific_alpha
+				overlay.alpha = alpha
 
 			if(USE_MATRIXED_COLORS)
 				overlay.color = islist(draw_color) ? draw_color[i] : draw_color
-				overlay.alpha = specific_alpha
+				overlay.alpha = alpha
 				i++
 
 			else
 				overlay.color = limb?.color
-				overlay.alpha = specific_alpha
+				overlay.alpha = alpha
 
 
 /**
