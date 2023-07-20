@@ -797,7 +797,7 @@
 	name = "Worn Buttondown with Slacks - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/buttondown_shorts_worn/digi
+/datum/greyscale_config/buttondown_shorts/worn/digi
 	name = "Worn Buttondown with Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
