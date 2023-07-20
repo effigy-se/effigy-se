@@ -786,14 +786,14 @@
 	name = "Worn Plaid Skirt - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/dressteshari.dmi'
 
-/datum/greyscale_config/sundress_worn/teshari
+/datum/greyscale_config/sundress/worn/teshari
 	name = "Worn Sundress - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/dressteshari.dmi'
 
 // KILT
 // COSTUMES
 
-/datum/greyscale_config/buttondown_slacks_worn/digi
+/datum/greyscale_config/buttondown_slacks/worn/digi
 	name = "Worn Buttondown with Slacks - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 

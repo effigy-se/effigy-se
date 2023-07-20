@@ -273,7 +273,7 @@
 	icon_state = "buttondown_slacks"
 	greyscale_config = /datum/greyscale_config/buttondown_slacks
 	greyscale_config_worn = /datum/greyscale_config/buttondown_slacks/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/buttondown_slacks_worn/digi // EFFIGY EDIT ADD
+	greyscale_config_worn_digi = /datum/greyscale_config/buttondown_slacks/worn/digi // EFFIGY EDIT ADD
 	greyscale_colors = "#EEEEEE#EE8E2E#222227#D8D39C"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
