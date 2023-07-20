@@ -621,7 +621,7 @@
 /datum/greyscale_config/jumpsuit/prison/worn/monkey
 	name = "Worn Prison Jumpsuit - Monkey"
 	icon_file = MONKEY_UNIFORM_FILE
-	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit/prison/worn_monkey.json'
+	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit_prison_worn_monkey.json'
 
 /datum/greyscale_config/jumpsuit/worn/vox
 	name = "Worn Jumpsuit - Vox"
