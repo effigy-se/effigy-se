@@ -13,14 +13,28 @@
 	hair_color = "mutcolor"
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
+		TRAIT_TOXINLOVER,
 	)
 	hair_alpha = 160 //a notch brighter so it blends better.
+	/// Our internal shapeshifting action. Not initialized until on_species_gain is called.
+	var/datum/action/innate/alter_form/shapeshift_action
 
 /datum/species/jelly/get_species_description()
 	return placeholder_description
 
 /datum/species/jelly/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species, pref_load)
+	. = ..()
+	shapeshift_action = new
+	shapeshift_action.Grant(new_jellyperson)
+
+/datum/species/jelly/on_species_loss(mob/living/carbon/former_jellyperson, datum/species/new_species, pref_load)
+	. = ..()
+	if(shapeshift_action)
+		shapeshift_action.Remove(former_jellyperson)
+		QDEL_NULL(shapeshift_action)
 
 /datum/species/jelly/roundstartslime
 	name = "Xenobiological Slime Hybrid"
