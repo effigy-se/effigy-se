@@ -4,4 +4,4 @@
 	greyscale_config_worn_taur_snake = /datum/greyscale_config/jumpsuit/worn/taur/snake
 
 /obj/item/clothing/under/rank/prisoner
-	greyscale_config_worn_taur_snake = /datum/greyscale_config/jumpsuit_prison_worn/taur/snake
+	greyscale_config_worn_taur_snake = /datum/greyscale_config/jumpsuit/prison/worn/taur/snake

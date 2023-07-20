@@ -609,7 +609,7 @@
 	name = "Worn Jumpsuit - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/digi
+/datum/greyscale_config/jumpsuit/prison/worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
@@ -618,16 +618,16 @@
 	icon_file = MONKEY_UNIFORM_FILE
 	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit_worn_monkey.json'
 
-/datum/greyscale_config/jumpsuit_prison_worn/monkey
+/datum/greyscale_config/jumpsuit/prison/worn/monkey
 	name = "Worn Prison Jumpsuit - Monkey"
 	icon_file = MONKEY_UNIFORM_FILE
-	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit_prison_worn_monkey.json'
+	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit/prison/worn_monkey.json'
 
 /datum/greyscale_config/jumpsuit/worn/vox
 	name = "Worn Jumpsuit - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/vox
+/datum/greyscale_config/jumpsuit/prison/worn/vox
 	name = "Worn Prison Jumpsuit - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_vox.dmi'
 
@@ -635,7 +635,7 @@
 	name = "Worn Jumpsuit - Better Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_better_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/better_vox
+/datum/greyscale_config/jumpsuit/prison/worn/better_vox
 	name = "Worn Prison Jumpsuit - Better Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_better_vox.dmi'
 
@@ -643,7 +643,7 @@
 	name = "Worn Jumpsuit - Naga"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_snake.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/taur/snake
+/datum/greyscale_config/jumpsuit/prison/worn/taur/snake
 	name = "Worn Prison Jumpsuit - Naga"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_snake.dmi'
 
@@ -651,7 +651,7 @@
 	name = "Worn Jumpsuit - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_teshari.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/teshari
+/datum/greyscale_config/jumpsuit/prison/worn/teshari
 	name = "Worn Prison Jumpsuit - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_teshari.dmi'
 
