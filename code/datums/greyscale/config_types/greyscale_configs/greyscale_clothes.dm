@@ -218,7 +218,7 @@
 /datum/greyscale_config/jumpsuit/prison/worn
 	name = "Prison Jumpsuit (Worn)"
 	icon_file = 'icons/mob/clothing/under/color.dmi'
-	json_config = 'code/datums/greyscale/json_configs/jumpsuit/prison/worn.json' //Needs separate config for toggle states
+	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json' //Needs separate config for toggle states
 
 /datum/greyscale_config/jumpsuit/prison/inhand_left
 	name = "Prison Jumpsuit (Held, Left)"
