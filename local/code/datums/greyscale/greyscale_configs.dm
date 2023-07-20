@@ -801,7 +801,7 @@
 	name = "Worn Buttondown with Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/football_suit_worn/digi
+/datum/greyscale_config/football_suit/worn/digi
 	icon_file = 'local/icons/mob/clothing/under/costume_digi.dmi'
 
 /datum/greyscale_config/qipao
@@ -883,27 +883,27 @@ TREK
 
 // SNEAKERS
 
-/datum/greyscale_config/sneakers_worn/digi
+/datum/greyscale_config/sneakers/worn/digi
 	name = "Worn Sneakers - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_digi.dmi'
 
-/datum/greyscale_config/sneakers_orange_worn/digi
+/datum/greyscale_config/sneakers_orange/worn/digi
 	name = "Worn Orange Sneakers - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_digi.dmi'
 
-/datum/greyscale_config/sneakers_worn/vox
+/datum/greyscale_config/sneakers/worn/vox
 	name = "Worn Sneakers - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_vox.dmi'
 
-/datum/greyscale_config/sneakers_orange_worn/vox
+/datum/greyscale_config/sneakers_orange/worn/vox
 	name = "Worn Orange Sneakers - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_vox.dmi'
 
-/datum/greyscale_config/sneakers_worn/teshari
+/datum/greyscale_config/sneakers/worn/teshari
 	name = "Worn Sneakers - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_teshari.dmi'
 
-/datum/greyscale_config/sneakers_orange_worn/teshari
+/datum/greyscale_config/sneakers_orange/worn/teshari
 	name = "Worn Orange Sneakers - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_teshari.dmi'
 

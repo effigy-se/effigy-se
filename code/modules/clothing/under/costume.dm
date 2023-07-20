@@ -306,7 +306,7 @@
 	can_adjust = FALSE
 	greyscale_config = /datum/greyscale_config/football_suit
 	greyscale_config_worn = /datum/greyscale_config/football_suit/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/football_suit_worn/digi // EFFIGY EDIT ADD
+	greyscale_config_worn_digi = /datum/greyscale_config/football_suit/worn/digi // EFFIGY EDIT ADD
 	greyscale_colors = "#D74722"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
