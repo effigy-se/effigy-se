@@ -222,16 +222,16 @@
 			log_combat(thrown_by, M, "splashed", R)
 		reagents.expose(target, TOUCH, splash_multiplier)
 		reagents.expose(target_turf, TOUCH, (1 - splash_multiplier)) // 1 - splash_multiplier because it's what didn't hit the target
+		target_turf.add_liquid_from_reagents(reagents, reagent_multiplier = (1 - splash_multiplier)) /// EFFIGY EDIT - Liquids
 
 	else if(bartender_check(target) && thrown)
 		visible_message(span_notice("[src] lands onto the [target.name] without spilling a single drop."))
 		return
 
 	else
-		// EFFIGY EDIT CHANGE START
-		if(isturf(target))
-			var/turf/T = target
-			T.add_liquid_from_reagents(reagents)
+		// EFFIGY EDIT CHANGE START - Liquids
+		if(target.can_liquid_spill_on_hit())
+			target.add_liquid_from_reagents(reagents, thrown_from = src, thrown_to = target)
 			if(reagents.reagent_list.len && thrown_by)
 				log_combat(thrown_by, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
 				log_game("[key_name(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
