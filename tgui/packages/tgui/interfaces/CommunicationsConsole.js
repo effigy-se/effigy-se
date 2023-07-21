@@ -22,6 +22,64 @@ const sortShuttles = sortBy(
   (shuttle) => shuttle.creditCost
 );
 
+const GreenshiftButton = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { alertLevelTick, canSetAlertLevel } = data;
+  const { alertLevel, setShowAlertLevelConfirm } = props;
+
+  const thisIsCurrent = data.alertLevel === alertLevel;
+
+  return (
+    <Button
+      icon="check-square"
+      color={thisIsCurrent && 'good'}
+      content={capitalize(alertLevel)}
+      onClick={() => {
+        if (thisIsCurrent) {
+          return;
+        }
+
+        if (canSetAlertLevel === SWIPE_NEEDED) {
+          setShowAlertLevelConfirm([alertLevel, alertLevelTick]);
+        } else {
+          act('changeSecurityLevel', {
+            newSecurityLevel: alertLevel,
+          });
+        }
+      }}
+    />
+  );
+};
+
+const CircleButton = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { alertLevelTick, canSetAlertLevel } = data;
+  const { alertLevel, setShowAlertLevelConfirm } = props;
+
+  const thisIsCurrent = data.alertLevel === alertLevel;
+
+  return (
+    <Button
+      icon="exclamation-circle"
+      color={thisIsCurrent && 'darkblue'}
+      content={capitalize(alertLevel)}
+      onClick={() => {
+        if (thisIsCurrent) {
+          return;
+        }
+
+        if (canSetAlertLevel === SWIPE_NEEDED) {
+          setShowAlertLevelConfirm([alertLevel, alertLevelTick]);
+        } else {
+          act('changeSecurityLevel', {
+            newSecurityLevel: alertLevel,
+          });
+        }
+      }}
+    />
+  );
+};
+
 const AlertButton = (props, context) => {
   const { act, data } = useBackend(context);
   const { alertLevelTick, canSetAlertLevel } = data;
@@ -32,7 +90,65 @@ const AlertButton = (props, context) => {
   return (
     <Button
       icon="exclamation-triangle"
-      color={thisIsCurrent && 'good'}
+      color={thisIsCurrent && 'average'}
+      content={capitalize(alertLevel)}
+      onClick={() => {
+        if (thisIsCurrent) {
+          return;
+        }
+
+        if (canSetAlertLevel === SWIPE_NEEDED) {
+          setShowAlertLevelConfirm([alertLevel, alertLevelTick]);
+        } else {
+          act('changeSecurityLevel', {
+            newSecurityLevel: alertLevel,
+          });
+        }
+      }}
+    />
+  );
+};
+
+const MedicalButton = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { alertLevelTick, canSetAlertLevel } = data;
+  const { alertLevel, setShowAlertLevelConfirm } = props;
+
+  const thisIsCurrent = data.alertLevel === alertLevel;
+
+  return (
+    <Button
+      icon="kit-medical"
+      color={thisIsCurrent && 'white'}
+      content={capitalize(alertLevel)}
+      onClick={() => {
+        if (thisIsCurrent) {
+          return;
+        }
+
+        if (canSetAlertLevel === SWIPE_NEEDED) {
+          setShowAlertLevelConfirm([alertLevel, alertLevelTick]);
+        } else {
+          act('changeSecurityLevel', {
+            newSecurityLevel: alertLevel,
+          });
+        }
+      }}
+    />
+  );
+};
+
+const EngiButton = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { alertLevelTick, canSetAlertLevel } = data;
+  const { alertLevel, setShowAlertLevelConfirm } = props;
+
+  const thisIsCurrent = data.alertLevel === alertLevel;
+
+  return (
+    <Button
+      icon="wrench"
+      color={thisIsCurrent && 'pink'}
       content={capitalize(alertLevel)}
       onClick={() => {
         if (thisIsCurrent) {
@@ -330,33 +446,39 @@ const PageMain = (props, context) => {
             </Flex.Item>
 
             <Flex.Item>
-              <AlertButton
+              <GreenshiftButton
+                // EFFIGY EDIT ADD START (Alert Levels)
                 alertLevel="green"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
 
-              <AlertButton
+              <CircleButton
                 alertLevel="blue"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
 
+              <MedicalButton
+                alertLevel="white"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <EngiButton
+                alertLevel="pink"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
               <AlertButton
-                // EFFIGY EDIT ADD START (Alert Levels)
-                alertLevel="violet"
+                alertLevel="yellow"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
 
               <AlertButton
                 alertLevel="orange"
-                showAlertLevelConfirm={showAlertLevelConfirm}
-                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
-              />
-
-              <AlertButton
-                alertLevel="amber"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
                 // EFFIGY EDIT ADD END (Alert Levels)
@@ -676,7 +798,7 @@ export const CommunicationsConsole = (props, context) => {
   } = data;
 
   return (
-    <Window width={400} height={650} theme={emagged ? 'syndicate' : undefined}>
+    <Window width={440} height={677} theme={emagged ? 'syndicate' : undefined}>
       <Window.Content scrollable>
         {!hasConnection && <NoConnectionModal />}
 
