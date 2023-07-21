@@ -605,53 +605,53 @@
 
 // JUMPSUITS
 
-/datum/greyscale_config/jumpsuit_worn/digi
+/datum/greyscale_config/jumpsuit/worn/digi
 	name = "Worn Jumpsuit - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/digi
+/datum/greyscale_config/jumpsuit/prison/worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
-/datum/greyscale_config/jumpsuit_worn/monkey
+/datum/greyscale_config/jumpsuit/worn/monkey
 	name = "Worn Jumpsuit - Monkey"
 	icon_file = MONKEY_UNIFORM_FILE
 	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit_worn_monkey.json'
 
-/datum/greyscale_config/jumpsuit_prison_worn/monkey
+/datum/greyscale_config/jumpsuit/prison/worn/monkey
 	name = "Worn Prison Jumpsuit - Monkey"
 	icon_file = MONKEY_UNIFORM_FILE
 	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit_prison_worn_monkey.json'
 
-/datum/greyscale_config/jumpsuit_worn/vox
+/datum/greyscale_config/jumpsuit/worn/vox
 	name = "Worn Jumpsuit - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/vox
+/datum/greyscale_config/jumpsuit/prison/worn/vox
 	name = "Worn Prison Jumpsuit - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_worn/better_vox
+/datum/greyscale_config/jumpsuit/worn/better_vox
 	name = "Worn Jumpsuit - Better Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_better_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/better_vox
+/datum/greyscale_config/jumpsuit/prison/worn/better_vox
 	name = "Worn Prison Jumpsuit - Better Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_better_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_worn/taur/snake
+/datum/greyscale_config/jumpsuit/worn/taur/snake
 	name = "Worn Jumpsuit - Naga"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_snake.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/taur/snake
+/datum/greyscale_config/jumpsuit/prison/worn/taur/snake
 	name = "Worn Prison Jumpsuit - Naga"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_snake.dmi'
 
-/datum/greyscale_config/jumpsuit_worn/teshari
+/datum/greyscale_config/jumpsuit/worn/teshari
 	name = "Worn Jumpsuit - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_teshari.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/teshari
+/datum/greyscale_config/jumpsuit/prison/worn/teshari
 	name = "Worn Prison Jumpsuit - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_teshari.dmi'
 
@@ -883,27 +883,27 @@ TREK
 
 // SNEAKERS
 
-/datum/greyscale_config/sneakers_worn/digi
+/datum/greyscale_config/sneakers/worn/digi
 	name = "Worn Sneakers - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_digi.dmi'
 
-/datum/greyscale_config/sneakers_orange_worn/digi
+/datum/greyscale_config/sneakers_orange/worn/digi
 	name = "Worn Orange Sneakers - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_digi.dmi'
 
-/datum/greyscale_config/sneakers_worn/vox
+/datum/greyscale_config/sneakers/worn/vox
 	name = "Worn Sneakers - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_vox.dmi'
 
-/datum/greyscale_config/sneakers_orange_worn/vox
+/datum/greyscale_config/sneakers_orange/worn/vox
 	name = "Worn Orange Sneakers - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_vox.dmi'
 
-/datum/greyscale_config/sneakers_worn/teshari
+/datum/greyscale_config/sneakers/worn/teshari
 	name = "Worn Sneakers - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_teshari.dmi'
 
-/datum/greyscale_config/sneakers_orange_worn/teshari
+/datum/greyscale_config/sneakers_orange/worn/teshari
 	name = "Worn Orange Sneakers - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_teshari.dmi'
 

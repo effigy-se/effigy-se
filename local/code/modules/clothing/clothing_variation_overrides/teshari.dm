@@ -54,16 +54,16 @@
 ///GAGS below here
 
 /obj/item/clothing/under/color
-	greyscale_config_worn_teshari = /datum/greyscale_config/jumpsuit_worn/teshari
+	greyscale_config_worn_teshari = /datum/greyscale_config/jumpsuit/worn/teshari
 
 /obj/item/clothing/under/color/jumpskirt
-	greyscale_config_worn_teshari = /datum/greyscale_config/jumpsuit_worn/teshari
+	greyscale_config_worn_teshari = /datum/greyscale_config/jumpsuit/worn/teshari
 
 /obj/item/clothing/shoes/sneakers
-	greyscale_config_worn_teshari = /datum/greyscale_config/sneakers_worn/teshari
+	greyscale_config_worn_teshari = /datum/greyscale_config/sneakers/worn/teshari
 
 /obj/item/clothing/shoes/sneakers/orange
-	greyscale_config_worn_teshari = /datum/greyscale_config/sneakers_orange_worn/teshari
+	greyscale_config_worn_teshari = /datum/greyscale_config/sneakers_orange/worn/teshari
 
 /obj/item/clothing/head/caphat/beret
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
