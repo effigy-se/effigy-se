@@ -659,19 +659,19 @@
 //Note, these icons are now in master_files per TG's sorting. There's no reason to NOT have these pieces in master files now that they're sorted out.
 //The rest will eventually join them - preferably with a cleaner method too instead of having to have unique configs for every single item's digi state.
 
-/datum/greyscale_config/slacks_worn/digi
+/datum/greyscale_config/slacks/worn/digi
 	name = "Worn Slacks - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/jeans_worn/digi
+/datum/greyscale_config/jeans/worn/digi
 	name = "Worn Jeans - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/shorts_worn/digi
+/datum/greyscale_config/shorts/worn/digi
 	name = "Worn Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/jeanshorts_worn/digi
+/datum/greyscale_config/jeanshorts/worn/digi
 	name = "Worn Jean Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
@@ -720,7 +720,7 @@
 
 // DRESSES / SKIRTS
 
-/datum/greyscale_config/plaidskirt_worn/digi
+/datum/greyscale_config/plaidskirt/worn/digi
 	name = "Worn Plaid Skirt - Digitigrade"
 	icon_file = SKIRTS_DRESSES_DIGIFILE
 
@@ -782,26 +782,26 @@
 	name = "Worn Pentagram Strapped Dress"
 	icon_file = 'local/icons/mob/clothing/under/skirts_dresses.dmi'
 
-/datum/greyscale_config/plaidskirt_worn/teshari
+/datum/greyscale_config/plaidskirt/worn/teshari
 	name = "Worn Plaid Skirt - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/dressteshari.dmi'
 
-/datum/greyscale_config/sundress_worn/teshari
+/datum/greyscale_config/sundress/worn/teshari
 	name = "Worn Sundress - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/dressteshari.dmi'
 
 // KILT
 // COSTUMES
 
-/datum/greyscale_config/buttondown_slacks_worn/digi
+/datum/greyscale_config/buttondown_slacks/worn/digi
 	name = "Worn Buttondown with Slacks - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/buttondown_shorts_worn/digi
+/datum/greyscale_config/buttondown_shorts/worn/digi
 	name = "Worn Buttondown with Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/football_suit_worn/digi
+/datum/greyscale_config/football_suit/worn/digi
 	icon_file = 'local/icons/mob/clothing/under/costume_digi.dmi'
 
 /datum/greyscale_config/qipao

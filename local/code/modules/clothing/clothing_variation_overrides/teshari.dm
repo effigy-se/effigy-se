@@ -117,7 +117,7 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/ranger_poncho/worn/teshari
 
 /obj/item/clothing/under/dress/skirt/plaid
-	greyscale_config_worn_teshari = /datum/greyscale_config/plaidskirt_worn/teshari
+	greyscale_config_worn_teshari = /datum/greyscale_config/plaidskirt/worn/teshari
 
 /obj/item/clothing/under/dress/sundress
-	greyscale_config_worn_teshari = /datum/greyscale_config/sundress_worn/teshari
+	greyscale_config_worn_teshari = /datum/greyscale_config/sundress/worn/teshari

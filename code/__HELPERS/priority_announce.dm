@@ -158,9 +158,9 @@
 		if(!target.can_hear())
 			continue
 
-// EffigyEdit Change - Announcements
+		// EffigyEdit Change - Announcements
 		/*
-		to_chat(target, "<div class='alertbox'>[span_minorannouncetitle(title)]<br>[span_minorannouncemessage(message)]</div>")
+		to_chat(target, "[span_minorannounce("<font color = red>[title]</font color><BR>[message]")]<BR>")
 		if(should_play_sound && target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))

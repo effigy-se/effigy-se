@@ -1151,6 +1151,7 @@
 		"cargo",
 		"cargorequest",
 		"comconsole",
+		"bankmachine",
 		"crewconsole",
 		"idcard",
 		"libraryconsole",

@@ -237,10 +237,9 @@
 	greyscale_colors = "#ff8300"
 	greyscale_config = /datum/greyscale_config/jumpsuit/prison
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit/prison/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/prison/worn/digi // EFFIGY EDIT ADD (Digi)
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/prison/inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/prison/inhand_right
-
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/prison/worn/digi // EFFIGY EDIT ADD (Digi)
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -254,9 +253,9 @@
 	greyscale_colors = "#ff8300"
 	greyscale_config = /datum/greyscale_config/jumpsuit/prison
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit/prison/worn
+	greyscale_config_worn_digi = null // EFFIGY EDIT ADD
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/prison/inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/prison/inhand_right
-	greyscale_config_worn_digi = null // EFFIGY EDIT ADD
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
