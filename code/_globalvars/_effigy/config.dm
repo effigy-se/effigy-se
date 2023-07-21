@@ -116,7 +116,7 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas. Engineering staff will have expanded card access during this incident."
 
 /datum/config_entry/string/alert_white_upto
-	config_entry_value = "A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
+	config_entry_value = "A major medical emergency is in progress. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
 
 /datum/config_entry/string/alert_white_downto
-	config_entry_value = "A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
+	config_entry_value = "A major medical emergency is in progress. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
