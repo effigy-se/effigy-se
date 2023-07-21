@@ -185,6 +185,16 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	var/turf/T = get_turf(src)
 	if(T.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
 		return
+
+	// EffigyEdit Add - Hungry Sharks
+	if(isakula(user) || isaquatic(user))
+		var/mob/living/hungry_shark = user
+		if(hungry_shark.combat_mode && time2text(world.timeofday, "DDD") == FRIDAY)
+			user.visible_message(span_warning("[user] hungrily chomps through the fibre optic cable!"), span_notice("You hungrily chomp through the fibre optic cable!"))
+			investigate_log("was cut by [key_name(usr)] in [AREACOORD(src)]", INVESTIGATE_WIRES)
+			deconstruct()
+			return
+	// EffigyEdit Add End
 	if(W.tool_behaviour == TOOL_WIRECUTTER)
 		if (shock(user, 50))
 			return
