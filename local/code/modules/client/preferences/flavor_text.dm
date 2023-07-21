@@ -93,3 +93,12 @@
 
 /datum/preference/text/background/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
+
+/datum/preference/text/pda_writing
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "pda_writing"
+	maximum_value_length = MAX_FLAVOR_LEN
+
+/datum/preference/text/pda_writing/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
