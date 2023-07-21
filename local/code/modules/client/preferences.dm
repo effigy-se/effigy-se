@@ -37,6 +37,8 @@
 
 	var/background_info = ""
 
+	var/pda_writing = ""
+
 	/// Whether the user wants to see body size being shown in the preview
 	var/show_body_size = FALSE
 

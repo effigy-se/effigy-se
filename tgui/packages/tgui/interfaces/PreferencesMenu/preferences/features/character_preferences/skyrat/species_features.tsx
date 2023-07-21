@@ -86,6 +86,13 @@ export const background_info: Feature<string> = {
   description: 'nobody uses this lmao',
   component: FeatureTextInput,
 };
+
+export const pda_writing: Feature<string> = {
+  name: 'PDA Writing',
+  description:
+    "What's written down on your character's PDA. This can be anything they'll have written down for later - from shopping lists all the way to saucy fanfiction. Anyone with your PDA can read these with the notepad app, so keep it close!",
+  component: FeatureTextInput,
+};
 // EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 export const allow_genitals_toggle: FeatureToggle = {

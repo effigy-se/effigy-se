@@ -240,6 +240,13 @@
 	if(new_theme)
 		device_theme = GLOB.pda_name_to_theme[new_theme]
 
+	/// EFFIGY ADDITION BEGIN - Customization ///
+	var/new_text = owner_client.prefs.read_preference(/datum/preference/text/pda_writing)
+	if(new_text)
+		for(var/datum/computer_file/program/notepad/notepad_app in src.stored_files)
+			notepad_app.written_note = new_text
+	/// EFFIGY ADDITION END - Customization ///
+
 /// A simple proc to set the ringtone from a pda.
 /obj/item/modular_computer/pda/proc/update_ringtone(new_ringtone)
 	if(!istext(new_ringtone))
