@@ -605,53 +605,53 @@
 
 // JUMPSUITS
 
-/datum/greyscale_config/jumpsuit_worn/digi
+/datum/greyscale_config/jumpsuit/worn/digi
 	name = "Worn Jumpsuit - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/digi
+/datum/greyscale_config/jumpsuit/prison/worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
-/datum/greyscale_config/jumpsuit_worn/monkey
+/datum/greyscale_config/jumpsuit/worn/monkey
 	name = "Worn Jumpsuit - Monkey"
 	icon_file = MONKEY_UNIFORM_FILE
 	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit_worn_monkey.json'
 
-/datum/greyscale_config/jumpsuit_prison_worn/monkey
+/datum/greyscale_config/jumpsuit/prison/worn/monkey
 	name = "Worn Prison Jumpsuit - Monkey"
 	icon_file = MONKEY_UNIFORM_FILE
 	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit_prison_worn_monkey.json'
 
-/datum/greyscale_config/jumpsuit_worn/vox
+/datum/greyscale_config/jumpsuit/worn/vox
 	name = "Worn Jumpsuit - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/vox
+/datum/greyscale_config/jumpsuit/prison/worn/vox
 	name = "Worn Prison Jumpsuit - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_worn/better_vox
+/datum/greyscale_config/jumpsuit/worn/better_vox
 	name = "Worn Jumpsuit - Better Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_better_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/better_vox
+/datum/greyscale_config/jumpsuit/prison/worn/better_vox
 	name = "Worn Prison Jumpsuit - Better Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_better_vox.dmi'
 
-/datum/greyscale_config/jumpsuit_worn/taur/snake
+/datum/greyscale_config/jumpsuit/worn/taur/snake
 	name = "Worn Jumpsuit - Naga"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_snake.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/taur/snake
+/datum/greyscale_config/jumpsuit/prison/worn/taur/snake
 	name = "Worn Prison Jumpsuit - Naga"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_snake.dmi'
 
-/datum/greyscale_config/jumpsuit_worn/teshari
+/datum/greyscale_config/jumpsuit/worn/teshari
 	name = "Worn Jumpsuit - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_teshari.dmi'
 
-/datum/greyscale_config/jumpsuit_prison_worn/teshari
+/datum/greyscale_config/jumpsuit/prison/worn/teshari
 	name = "Worn Prison Jumpsuit - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_teshari.dmi'
 
@@ -659,19 +659,19 @@
 //Note, these icons are now in master_files per TG's sorting. There's no reason to NOT have these pieces in master files now that they're sorted out.
 //The rest will eventually join them - preferably with a cleaner method too instead of having to have unique configs for every single item's digi state.
 
-/datum/greyscale_config/slacks_worn/digi
+/datum/greyscale_config/slacks/worn/digi
 	name = "Worn Slacks - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/jeans_worn/digi
+/datum/greyscale_config/jeans/worn/digi
 	name = "Worn Jeans - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/shorts_worn/digi
+/datum/greyscale_config/shorts/worn/digi
 	name = "Worn Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/jeanshorts_worn/digi
+/datum/greyscale_config/jeanshorts/worn/digi
 	name = "Worn Jean Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
@@ -720,7 +720,7 @@
 
 // DRESSES / SKIRTS
 
-/datum/greyscale_config/plaidskirt_worn/digi
+/datum/greyscale_config/plaidskirt/worn/digi
 	name = "Worn Plaid Skirt - Digitigrade"
 	icon_file = SKIRTS_DRESSES_DIGIFILE
 
@@ -782,26 +782,26 @@
 	name = "Worn Pentagram Strapped Dress"
 	icon_file = 'local/icons/mob/clothing/under/skirts_dresses.dmi'
 
-/datum/greyscale_config/plaidskirt_worn/teshari
+/datum/greyscale_config/plaidskirt/worn/teshari
 	name = "Worn Plaid Skirt - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/dressteshari.dmi'
 
-/datum/greyscale_config/sundress_worn/teshari
+/datum/greyscale_config/sundress/worn/teshari
 	name = "Worn Sundress - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/dressteshari.dmi'
 
 // KILT
 // COSTUMES
 
-/datum/greyscale_config/buttondown_slacks_worn/digi
+/datum/greyscale_config/buttondown_slacks/worn/digi
 	name = "Worn Buttondown with Slacks - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/buttondown_shorts_worn/digi
+/datum/greyscale_config/buttondown_shorts/worn/digi
 	name = "Worn Buttondown with Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/football_suit_worn/digi
+/datum/greyscale_config/football_suit/worn/digi
 	icon_file = 'local/icons/mob/clothing/under/costume_digi.dmi'
 
 /datum/greyscale_config/qipao
@@ -883,27 +883,27 @@ TREK
 
 // SNEAKERS
 
-/datum/greyscale_config/sneakers_worn/digi
+/datum/greyscale_config/sneakers/worn/digi
 	name = "Worn Sneakers - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_digi.dmi'
 
-/datum/greyscale_config/sneakers_orange_worn/digi
+/datum/greyscale_config/sneakers_orange/worn/digi
 	name = "Worn Orange Sneakers - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_digi.dmi'
 
-/datum/greyscale_config/sneakers_worn/vox
+/datum/greyscale_config/sneakers/worn/vox
 	name = "Worn Sneakers - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_vox.dmi'
 
-/datum/greyscale_config/sneakers_orange_worn/vox
+/datum/greyscale_config/sneakers_orange/worn/vox
 	name = "Worn Orange Sneakers - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_vox.dmi'
 
-/datum/greyscale_config/sneakers_worn/teshari
+/datum/greyscale_config/sneakers/worn/teshari
 	name = "Worn Sneakers - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_teshari.dmi'
 
-/datum/greyscale_config/sneakers_orange_worn/teshari
+/datum/greyscale_config/sneakers_orange/worn/teshari
 	name = "Worn Orange Sneakers - Teshari"
 	icon_file = 'local/icons/mob/clothing/greyscale/sneakers_teshari.dmi'
 
