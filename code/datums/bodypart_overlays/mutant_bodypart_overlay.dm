@@ -12,7 +12,8 @@
 	var/color_source = ORGAN_COLOR_INHERIT
 	///Take on the dna/preference from whoever we're gonna be inserted in
 	var/imprint_on_next_insertion = TRUE
-
+	/// Alpha value associated to the overlay, to be inherited from the parent limb.
+	var/alpha = ALPHA_OPAQUE // EffigyEdit Add - Customization
 	// EFFIGY EDIT ADD START
 	/// An associative list of color indexes (i.e. "1") to boolean that says
 	/// whether or not that color should get an emissive overlay. Can be null.
@@ -112,10 +113,13 @@
 /datum/bodypart_overlay/mutant/proc/inherit_color(obj/item/bodypart/ownerlimb, force)
 	if(isnull(ownerlimb))
 		draw_color = null
+		alpha = 255 // EffigyEdit Add - Customization
 		return TRUE
 
 	if(draw_color && !force)
 		return FALSE
+
+	alpha = ownerlimb.alpha // EffigyEdit Add - Customization
 
 	switch(color_source)
 		if(ORGAN_COLOR_OVERRIDE)

@@ -95,11 +95,6 @@
 	var/brute_modifier = 1
 	/// Burn damage gets multiplied by this on receive_damage()
 	var/burn_modifier = 1
-	// Damage reduction variables for damage handled on the limb level. Handled after worn armor.
-	/// Amount subtracted from brute damage inflicted on the limb.
-	var/brute_reduction = 0
-	/// Amount subtracted from burn damage inflicted on the limb.
-	var/burn_reduction = 0
 
 	//Coloring and proper item icon update
 	var/skin_tone = ""
@@ -469,8 +464,6 @@
 	var/dmg_multi = CONFIG_GET(number/damage_multiplier) * hit_percent
 	brute = round(max(brute * dmg_multi * brute_modifier, 0), DAMAGE_PRECISION)
 	burn = round(max(burn * dmg_multi * burn_modifier, 0), DAMAGE_PRECISION)
-	brute = max(0, brute - brute_reduction)
-	burn = max(0, burn - burn_reduction)
 
 	if(!brute && !burn)
 		return FALSE
@@ -878,6 +871,10 @@
 		draw_color ||= species_color || (skin_tone ? skintone2hex(skin_tone) : null)
 
 	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	var/datum/species/owner_species = human_owner.dna.species
+
+	if(owner_species && owner_species.specific_alpha != 255)
+		alpha = owner_species.specific_alpha
 	markings = LAZYCOPY(owner.dna.species.body_markings[body_zone])
 	if(aux_zone)
 		aux_zone_markings = LAZYCOPY(owner.dna.species.body_markings[aux_zone])
@@ -965,7 +962,7 @@
 
 		if(draw_color)
 			// EFFIGY EDIT CHANGE START (#3 Customization)
-			var/limb_color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
+			var/limb_color = alpha != 255 ? "[draw_color][num2hex(alpha, 2)]" : "[draw_color]"
 
 			limb.color = limb_color
 			if(aux_zone)

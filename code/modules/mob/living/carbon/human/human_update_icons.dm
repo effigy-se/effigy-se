@@ -105,14 +105,12 @@ There are several things that need to be remembered:
 		var/mutant_styles = NONE // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat) mutant styles to pass down to build_worn_icon.
 		//BEGIN SPECIES HANDLING
 		if((bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
-			icon_file = MONKEY_UNIFORM_FILE
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // EffigyEdit Change - Customization
 		else if((bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
-			icon_file = DIGITIGRADE_UNIFORM_FILE
-
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat) birbs
+			icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // EffigyEdit Change - Customization
+		// EffigyEdit Add - Birbs
 		else if(bodytype & BODYTYPE_CUSTOM)
-			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src)
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // Might have to refactor how this works eventually, maybe.
 
 		//Female sprites have lower priority than digitigrade sprites
 		else if(dna.species.sexes && (bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh

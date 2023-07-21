@@ -33,7 +33,7 @@
 		if(DEFAULT_TERTIARY)
 			colors = sanitize_hexcolor(features["mcolor3"])
 		if(DEFAULT_SKIN_OR_PRIMARY)
-			if(HAS_TRAIT(src, TRAIT_USES_SKINTONES))
+			if(pref_species && !(TRAIT_USES_SKINTONES in pref_species.inherent_traits))
 				colors = sanitize_hexcolor(features["skin_color"])
 			else
 				colors = sanitize_hexcolor(features["mcolor"])
