@@ -143,7 +143,6 @@
 		else
 			draw_color = "#AAA" //The gray husk color
 
-	var/specific_alpha = limb?.alpha || 255
 	alpha = limb?.alpha || ALPHA_OPAQUE
 	var/i = 1 // Starts at 1 for color layers.
 
