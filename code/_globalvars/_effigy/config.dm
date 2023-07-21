@@ -69,7 +69,7 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 // After u not ded anymore
 /datum/config_entry/string/blackoutpolicy
-	config_entry_value = "You remember nothing after you've blacked out and you do not remember who killed you. However, you can have faint recollection of what led up to it."
+	config_entry_value = "You remember nothing after you've blacked out and you do not remember who killed you. However, you can have recollection of what led up to it."
 
 // Disables the ability to commit suicide
 /datum/config_entry/flag/disable_suicide
@@ -80,43 +80,43 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 
 /datum/config_entry/string/alert_green
-	default = "All threats to the station have passed. Security may not have high powered weapons and may not search or arrest without Probable Cause."
+	default = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
 
 /datum/config_entry/string/alert_blue_upto
-	default = "The station has received reliable information about possible hostile activity on the station. Security staff may have longarms with nonlethals, and may search crew members with authorization from the Head of Security, Warden, or Captain."
+	default = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible and are permitted to search crew members with authorization from the Captain or Head of Personnel."
 
 /datum/config_entry/string/alert_blue_downto
-	default = "The immediate threat has passed. Security may no longer have lethal weapons, but may continue to have longarms with nonlethals. Searches are allowed with authorization from the Head of Security, Warden, or Captain."
+	default = "The immediate threat has passed. Security staff may have weapons visible and are permitted to search crew members with authorization from the Captain or Head of Personnel."
 
 /datum/config_entry/string/alert_yellow_upto
-	config_entry_value = "A major security emergency has developed. Security staff may have lethal weapons. Random searches are allowed and advised. All security personnel are required to disengage personal activities and come to active duty. Non-security personnel are required to obey all relevant instructions from security staff."
+	config_entry_value = "A security incident has developed. Random searches of crew are permitted with probable cause. All security personnel are required to disengage personal activities and come to active duty. Non-security personnel are advised to comply with relevant instructions from security staff."
 
 /datum/config_entry/string/alert_yellow_downto
-	config_entry_value = "A major security emergency is still underway. Non-security personnel are required to obey all relevant instructions from security staff and submit to requested searches."
+	config_entry_value = "An active security incident in progress. Non-security personnel are advised to comply with relevant instructions from security staff and submit to requested searches."
 
 /datum/config_entry/string/alert_orange_upto
-	config_entry_value = "A major security emergency has developed. Security staff may have lethal weapons. Random searches are allowed and advised. All security personnel are required to disengage personal activities and come to active duty. Non-security personnel are required to obey all relevant instructions from security staff."
+	config_entry_value = "A major security emergency has developed. All random searches are permitted. All security personnel are required to disengage personal activities and come to active duty. Non-security personnel are advised to remain in their departments when possible and comply with security instructions."
 
 /datum/config_entry/string/alert_orange_downto
-	config_entry_value = "A major security emergency is still underway. Non-security personnel are required to obey all relevant instructions from security staff and submit to requested searches."
+	config_entry_value = "A major security emergency is in progress. All random searches are permitted. Non-security personnel are advised to remain in their departments when possible and comply with security instructions."
 
 /datum/config_entry/string/alert_red_upto
-	default = "There is an immediate serious threat to the station. Security may use all weapons available. Random searches are allowed and advised. Non-security personnel are required to obey all relevant instructions from security staff."
+	default = "There is an immediate serious threat to the station. Security may use all weapons available. All random searches are permitted. Non-security personnel are required to obey all relevant instructions from security staff and remain in their departments unless directed by security."
 
 /datum/config_entry/string/alert_red_downto
-	default = "The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may use all weapons available, random searches are allowed and advised. Non-security personnel are required to obey all relevant instructions from security staff and submit to requested searches."
+	default = "The station's destruction has been averted. However, an immediate serious threat is ongoing. Security may use all weapons available. All random searches are permitted. Non-security personnel are required to obey all relevant instructions from security staff and remain in their departments unless directed by security."
 
 /datum/config_entry/string/alert_delta_upto
 	config_entry_value = "Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff or security. Any violations of these orders can be punished by death. This is not a drill."
 
 /datum/config_entry/string/alert_pink_upto
-	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas."
+	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas. Engineering staff will have expanded card access during this incident."
 
 /datum/config_entry/string/alert_pink_downto
-	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas."
+	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas. Engineering staff will have expanded card access during this incident."
 
 /datum/config_entry/string/alert_white_upto
-	config_entry_value = "A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to wear internals and minimize unecessary contact."
+	config_entry_value = "A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
 
 /datum/config_entry/string/alert_white_downto
-	config_entry_value = "A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to wear internals and minimize unecessary contact."
+	config_entry_value = "A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
