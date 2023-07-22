@@ -226,16 +226,23 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	initiator = C
 	initiator_ckey = initiator.ckey
+	log_game("init [initiator_ckey]")
 
+	log_game("set effigy id")
 	effigy_player_id = SSeffigy.ckey_to_effigy_id(initiator_ckey)
+	log_game("effigy id [effigy_player_id]")
+	log_game("set id")
 	id = generate_effigy_event_id()
+	log_game("id [id]")
 
 	if(!effigy_player_id)
+		log_game("no efid")
 		effigy_linked = LINK_FAIL
 		stack_trace("Unable to find an Effigy account link for ckey [initiator_ckey]")
 		effigy_player_id = EFFIGY_UNKNOWN_PLAYER
 		GLOB.ahelp_tickets.active_tickets += src
 	else
+		log_game("set ticket vars")
 		var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
 		var/int_id = id
 		var/link_id = effigy_player_id
@@ -243,8 +250,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/box = SOCIAL_DISTRICT_AHELP
 		var/title = strip_html_full(copytext_char(msg, 1, 64))
 		var/message = strip_html_full(msg)
+		log_game("create request [ef_type] [int_id] [link_id] [ticket_id] [box]")
 		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
+		log_game("add ticket to glob")
 		GLOB.ahelp_tickets.active_tickets += src
+		log_game("set link status")
 		effigy_linked = LINK_PENDING
 		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
@@ -271,6 +281,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/set_effigy_ticket_id(source, datum/admin_help/ticket, datum/http_response/response)
 	SIGNAL_HANDLER
 
+	log_game("ticket signal handler", ticket, response)
 	if(ticket != src)
 		return
 	if(effigy_linked == LINK_SUCCESS)
@@ -417,6 +428,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/ticket_id = effigy_ticket_id
 		var/message = strip_html_full(player_message)
 		var/title = strip_html_full(name)
+		log_game("create request [ef_type] [int_id] [link_id] [box] [ticket_id]")
 		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
 		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
