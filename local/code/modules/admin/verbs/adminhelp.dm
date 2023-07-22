@@ -256,6 +256,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		GLOB.ahelp_tickets.active_tickets += src
 		log_game("set link status")
 		effigy_linked = LINK_PENDING
+		log_game("send message")
 		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
 	initiator_key_name = key_name(initiator, FALSE, TRUE)

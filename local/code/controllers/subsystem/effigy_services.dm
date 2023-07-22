@@ -65,12 +65,20 @@ SUBSYSTEM_DEF(effigy)
 
 /datum/controller/subsystem/effigy/proc/send_message_request(datum/effigy_message/message, datum/admin_help/ticket)
 	set waitfor = FALSE
+	log_game("create request", message.message_content)
 	var/datum/http_request/request = message.endpoint.create_http_request(message.message_content)
+	log_game("send async", request)
 	request.begin_async()
 	UNTIL(request.is_complete())
+	log_game("response rcv")
 	var/datum/http_response/response = request.into_response()
+	log_game("response processed", request)
 	if(response.errored)
+		log_game("[response.error]")
 		stack_trace(response.error)
+	log_game("response validated", response)
+	log_game("json decode", json_decode(response.body))
+	log_game("send signal")
 	SEND_SIGNAL(src, COMSIG_EFFIGY_API_RESPONSE, ticket, json_decode(response.body))
 
 // Cleans up the request object when it is destroyed.
