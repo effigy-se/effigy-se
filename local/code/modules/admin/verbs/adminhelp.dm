@@ -570,7 +570,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 50)
 
 	AddInteraction("<font color='green'>Resolved by [key_name].</font>", player_message = "<font color='green'>Ticket resolved!</font>")
-	to_chat(initiator, span_adminhelp("Your ticket has been resolved by an admin. The adminhelp verb will be returned to you shortly."), confidential = TRUE)
+	to_chat(initiator, span_boxannouncegreen("Your ticket has been resolved by an admin. The adminhelp verb will be returned to you shortly."), confidential = TRUE)
 	send_ticket_url(initiator)
 	if(!silent)
 		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "resolved")
@@ -621,7 +621,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	Resolve(silent = TRUE)
 
 /datum/admin_help/proc/send_ticket_url(initiator)
-	to_chat(initiator, span_boxannouncegreen("You can view this ticket at: <a href=\"https://effigy.se/ticket/[effigy_ticket_id]/">"https://effigy.se/ticket/[effigy_ticket_id]/</a>"), confidential = TRUE)
+	to_chat(initiator, span_boxannouncegrey("You can view this ticket in the portal at: <a href=\"https://effigy.se/ticket/[effigy_ticket_id]/\">https://effigy.se/ticket/[effigy_ticket_id]/</a>"), confidential = TRUE)
 
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
