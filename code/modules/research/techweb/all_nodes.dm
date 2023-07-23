@@ -887,6 +887,7 @@
 		"paicard",
 		"mecha_camera",
 		"botnavbeacon",
+		"borg_upgrade_snacks", // EFFIGY ADDITION - Cyborg Upgrades
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1269,6 +1270,7 @@
 		"dna_disk",
 		"dnascanner",
 		"scan_console",
+		"healixir", // EFFIGY EDIT ADDITION - Medical
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
