@@ -5,6 +5,9 @@
 /proc/log_subtler(text, list/data)
 	logger.Log(LOG_CATEGORY_GAME_SUBTLER, text, data)
 
+/proc/log_effigy_api(text, list/data)
+	logger.Log(LOG_CATEGORY_EFFIGY_API, text, data)
+
 GLOBAL_VAR(character_creation_log)
 GLOBAL_PROTECT(character_creation_log)
 

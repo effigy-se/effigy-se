@@ -47,7 +47,7 @@
 	var/body = construct_api_message_body(content)
 
 	// Make the API URL
-	url = "[SSeffigy.efapi_url]?[endpoint]"
+	url = "[SSeffigy.efapi_url][endpoint]"
 
 	// Create a new HTTP request
 	var/datum/http_request/request = new()

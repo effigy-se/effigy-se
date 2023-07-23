@@ -1,6 +1,7 @@
 // Logging types for log_message()
 #define LOG_SUBTLE (1 << 22)
 #define LOG_SUBTLER (1 << 23)
+#define LOG_EFFIGY_API (1 << 24)
 
 //Individual logging panel pages
 #undef INDIVIDUAL_EMOTE_LOG
@@ -13,6 +14,7 @@
 // Game categories
 #define LOG_CATEGORY_GAME_SUBTLE "game-subtle"
 #define LOG_CATEGORY_GAME_SUBTLER "game-subtler"
+#define LOG_CATEGORY_EFFIGY_API "effigy-api"
 
 // Investigate
 #define INVESTIGATE_CIRCUIT	"circuit"
