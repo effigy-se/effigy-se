@@ -36,6 +36,7 @@
 	var/medical_record = ""
 
 	var/background_info = ""
+	var/exploitable_info = ""
 
 	var/pda_writing = ""
 

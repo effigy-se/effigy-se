@@ -100,3 +100,12 @@
 	materials = list(/datum/material/iron = 32, /datum/material/glass = 8)
 	build_path = /obj/item/pen
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC)
+
+/datum/design/borg_snack_dispenser
+	name = "Snack Dispenser Module"
+	id = "borg_upgrade_snacks"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/snack_dispenser
+	materials = list(/datum/material/iron = 700, /datum/material/glass = 500)
+	construction_time = 1 SECONDS
+	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL)
