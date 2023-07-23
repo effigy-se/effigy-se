@@ -70,6 +70,7 @@ SUBSYSTEM_DEF(effigy)
 	UNTIL(request.is_complete())
 	var/datum/http_response/response = request.into_response()
 	if(response.errored)
+		log_effigy_api("ERROR: [response.error] received for ticket [ticket.id]")
 		stack_trace(response.error)
 	SEND_SIGNAL(src, COMSIG_EFFIGY_API_RESPONSE, ticket, json_decode(response.body))
 

@@ -245,7 +245,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
 		GLOB.ahelp_tickets.active_tickets += src
 		effigy_linked = LINK_PENDING
-		log_effigy_api("Creating new ticket: [id] [effigy_player_id] [box]")
+		log_effigy_api("Creating new ticket: [id] [effigy_player_id] [ticket_id] [box]")
 		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
