@@ -377,8 +377,10 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg/power, // EFFIGY EDIT CHANGE (Borgs)
-		/obj/item/crowbar/cyborg/power, // EFFIGY EDIT CHANGE (Borgs)
+		// EFFIGY EDIT CHANGE (Borgs) - Removed standard tools for these.
+		/obj/item/screwdriver/cyborg/power,
+		/obj/item/crowbar/cyborg/power,
+		// EFFIGY EDIT CHANGE (Borgs) - Removed standard tools for these.
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
@@ -392,9 +394,10 @@
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil,
-		//EFFIGY ADDITION - Adds cyborg painter
+		//EFFIGY ADDITION (Borgs) - Adds cyborg painter
 		/obj/item/airlock_painter/decal/cyborg,
 		/obj/item/lightreplacer/cyborg,
+		//EFFIGY ADDITION (Borgs) - Adds cyborg painter
 	)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(
@@ -807,11 +810,13 @@
 /obj/item/robot_model/service
 	name = "Service"
 	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
+		/obj/item/reagent_containers/borghypo/borgshaker,
+		/obj/item/borg/apparatus/beaker/service,
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
-		// EFFIGY EDIT CHANGE START (Borgs)
-		//obj/item/reagent_containers/condiment/enzyme, //edit
 		/obj/item/reagent_containers/condiment/enzyme,
 		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/syringe, //Effigy Edit (Borgs)
 		/obj/item/rsf,
 		/obj/item/storage/bag/tray,
 		/obj/item/pen,
@@ -821,15 +826,9 @@
 		/obj/item/razor,
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
-		/obj/item/reagent_containers/dropper,//edit
-		/obj/item/reagent_containers/dropper,
-		/obj/item/lighter,
-		/obj/item/storage/bag/tray,
-		//obj/item/reagent_containers/borghypo/borgshaker, //edit
-		/obj/item/reagent_containers/syringe, //edit
-		// EFFIGY EDIT CHANGE END (Borgs)
 		/obj/item/lighter,
 		/obj/item/borg/lollipop,
+		/obj/item/stack/pipe_cleaner_coil/cyborg,
 		/obj/item/chisel,
 		/obj/item/reagent_containers/cup/rag,
 		/obj/item/storage/bag/money,
