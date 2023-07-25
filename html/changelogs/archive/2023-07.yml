@@ -822,12 +822,137 @@
   - bugfix: fixes gravity generators causing CI failures from overriding a signal
   - bugfix: Deployable turrets no longer runtime when firing
 2023-07-21:
-  LT3:
-  - rscadd: Do you know what day it is?
-  - rscadd: Added adminhelp button
-  - bugfix: WebMap button works for all maps
-  unit0016:
-  - rscadd: Nanotrasen's IT department has finally figured out what that blue and
-      white square icon means in the PDA text editor. It means 'save'. What a funky
-      design for it.
-  - bugfix: Slimepeople have their unique features back. Oops.
+  Blockaboo:
+  - bugfix: Tin man no longer causes you to drop all of your organs.
+  JohnFulpWillard:
+  - bugfix: '[Birdshot] Xenos can no longer immediately destroy the shield wall generator
+      to break out.'
+2023-07-22:
+  CoiledLamb, RyeRice:
+  - image: cleans up shading on plasmatank sprite, gives it a cool new symbol.
+  Ghommie:
+  - image: walking on water will now immerse you in it... visually, at least.
+  Improvedname:
+  - bugfix: Brings security berets down to softcap armor values also softcaps get
+      wound armor
+  JohnFulpWillard:
+  - spellcheck: Silicons using weight machines are now told how pointless the task
+      was.
+  - spellcheck: Weight machine tooltips no longer lie about using LMB to use the machine.
+  Justice12354:
+  - qol: The word "chemical" has been removed from "chemical patch" when printing
+      patches
+  Melbert:
+  - bugfix: Once again you can award people medals.
+  Momo8289:
+  - qol: You can now use any hat with the hat stabilizer MOD
+  - bugfix: The MOD eating apparatus module now properly disables pepper spray protection
+  Sapphoqueer:
+  - bugfix: fixes a bug where borgs and TK users could effectively break ID's by removing
+      them from modular computers.
+  Sealed101:
+  - bugfix: fixed silicon alarm reports displaying power alarms as ALARM_ALARM_POWER
+  Senefi:
+  - rscadd: MetaStation Chemical Storage now has its own APC
+  - rscadd: MetaStation Chemical Storage is slightly larger than before
+  - rscadd: Ice Box Station Chemical Storage now has its own APC
+  itseasytosee:
+  - rscadd: You can now lean against walls! Simply turn your back to the wall and
+      clickdrag yourself onto it.
+  - bugfix: There should no longer be any instances of spacemen being able to run
+      straight through eachother as if they weren't even there.
+  - spellcheck: Added more variance to item throwing text.
+  - refactor: Mob density has been refactored
+  jughu:
+  - bugfix: removed a false silly tip about blob taking damage from flashbangs
+  scriptis:
+  - rscadd: ponies
+2023-07-23:
+  Inari-Whitebear:
+  - bugfix: Cable connections on various structures including electrified grilles,
+      APC terminals, and SMES terminals have been rectified and will shock as expected
+      again.
+  - bugfix: Gas miners draw power properly again.
+  JohnFulpWillard:
+  - qol: The TTS and TTS Blips option is now one choiced preference.
+  Melbert:
+  - rscadd: 'Wizards have a new Right and Wrong: Mass Teaching, allowing them to grant
+      everyone on the station one spell or relic of their choice!'
+  Thebleh:
+  - bugfix: Fixed several APC related issues.
+  vinylspiders:
+  - bugfix: fixed a bug that would cause you to be unable to lean again if you tried
+      leaning while facing the wrong direction
+2023-07-24:
+  ArcaneMusic:
+  - qol: ID cards tooltips now show how to assign a new account.
+  Ben10Omintrix:
+  - balance: the bee now can fly over the machines so its easy for him to go to the
+      hydroponics machine
+  - bugfix: player bees now will not be stuck inside the hive if he entered it, they
+      can now leave it
+  - bugfix: fixed a har deleted when the hive is deleted all the bees still have a
+      refence to the hive now its fixed
+  - bugfix: now when a player interacted with the bee hive the bees will now leave
+      the hive to defend the hive (it was glitched)
+  - refactor: the bees now are a basic insect.
+  Cheshify:
+  - image: Railing ends now exist.
+  Comxy:
+  - balance: Changes some cooldowns and upgrades of spells.
+  GPeckman:
+  - rscadd: Bounty pads can now be upgraded, to reduce the time until you can pick
+      a new bounty
+  - rscadd: Sunglasses can now be bought from cargo if you have security access.
+  - balance: Gripper gloves single-pack is now gorilla gloves singlepack
+  - rscdel: Removed shady jims bounty
+  - qol: Bounty pads can now be screwdrivered/crowbarred with left click like every
+      other machine
+  Hatterhat:
+  - qol: Ice cream vats now count as elevated surfaces for preventing germs from getting
+      onto germ-sensitive items (food).
+  - qol: Ice cream vats now dispense cones into your hands first, if possible.
+  - bugfix: Germ-sensitive items that fail to be placed in-hand now check for all
+      elevated surfaces, not just tables.
+  JohnFulpWillard:
+  - bugfix: Crates no longer stun you when you climb onto them.
+  Profakos:
+  - bugfix: Removed duplicate and incorrect Yaki Imo recipe
+  - qol: "Swapped out the flour in \xC6losterrm\xE6sch with two dough slices, to avoid\
+      \ competing reactions while preparing or cooking"
+  - spellcheck: Chicken nugget will have a description in the craft menu, and fiesta
+      skewers will have a description in general
+  Sealed101:
+  - bugfix: fixed third person throw verbs displaying as just an s
+  - bugfix: fixed possessed sword spirits summoned during destruction of the sword
+      spawning in the error room. those fellas are in godmode, and y'all don't need
+      an immortal spirit haunting your station, m'kay?
+  Singul0:
+  - rscadd: You can now use the genetic sequencer secondary click (RMB) to scan someone
+  Thebleh:
+  - bugfix: South Bronx Paradise Bars are once again the best weight loss aid on station
+  YakumoChen:
+  - bugfix: Dish drive no longer spams the bar/kitchen/etc when its idle with empty
+      messages.
+  kawoppi:
+  - rscdel: removed floating light fixture from the Deltastation security hallway
+  vinylspiders, Iamgoofball, VastKilleroOm for Skyrat 13, unit0016:
+  - bugfix: fixed an issue that was causing climaxes to not complete if you possessed
+      testicles, leading to being permanently horny in some cases
+  - bugfix: fixes some runtimes with the milking machine
+  - bugfix: Sadism quirk will now wait until the climax moodlet is gone before starting
+      to add more arousal
+  - bugfix: Buffs spacemen refractory period to reduce audio spam problems for players
+      walking past dorms
+  - bugfix: 'fixed a few things [Maintainer note: Synthliz tail now can wag again.
+      Unsure why this was left default SR-side asides from language barrier.]'
+  - bugfix: fixed a bug with the liquid output pump's height regulator that was causing
+      it to never output anything so long as a height was set
+  - bugfix: 'changes to thrown liquid behavior--now they will ricochet off of walls
+      and other dense objects and spill where the beaker lands instead of inside of
+      the wall. [Maintainer note: Consequently this fixed liquid splashing down here
+      entirely, oops. We missed a line.]'
+  - qol: The NIFSoft Catalog PDA app now automatically downloads itself roundstart
+      if you have a NIF installed.
+  - bugfix: The shark plushie is back. It sold out too soon.
+  - bugfix: Your PDA no longer gets comedically white when you open the NIFSoft shop.
