@@ -22,6 +22,15 @@
  */
 #define DB_MINOR_VERSION 24
 
+/**
+ * DB Effigy schema version
+ *
+ * Update this whenever the db schema changes
+ *
+ * make sure you add an update to the schema_version stable in the db changelog
+ */
+#define DB_EFFIGY_VERSION 4  // EffigyEdit Add
+
 
 //! ## Timing subsystem
 /**
