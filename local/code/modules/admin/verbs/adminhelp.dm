@@ -204,7 +204,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/effigy_player_id
 	var/effigy_ticket_id
 	var/effigy_linked = NO_LINK
-	var/list/effigy_response
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -246,6 +245,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
 		GLOB.ahelp_tickets.active_tickets += src
 		effigy_linked = LINK_PENDING
+		log_effigy_api("Creating new ticket: [id] [effigy_player_id] [ticket_id] [box]")
 		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
@@ -271,13 +271,19 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/set_effigy_ticket_id(source, datum/admin_help/ticket, datum/http_response/response)
 	SIGNAL_HANDLER
 
+	log_effigy_api("Processing API response: [ticket.id] [ticket.effigy_player_id]")
 	if(ticket != src)
 		return
 	if(effigy_linked == LINK_SUCCESS)
 		return
-	effigy_response = response
+	if(response["errorCode"])
+		effigy_linked = LINK_FAIL
+		log_effigy_api("ERROR: [response["errorCode"]] received for ticket [id]")
+		message_admins(span_boldwarning("Effigy Services Error: [response["errorCode"]] received for ticket [id]"))
+		to_chat(usr, span_boxannouncered("Effigy Services Error: [response["errorCode"]]    Please report to staff."), MESSAGE_TYPE_SYSTEM)
+		return
 	effigy_linked = LINK_SUCCESS
-	effigy_ticket_id = effigy_response["id"]
+	effigy_ticket_id = response["id"]
 
 /datum/admin_help/proc/format_embed_discord(message)
 	var/datum/discord_embed/embed = new()
@@ -418,6 +424,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/message = strip_html_full(player_message)
 		var/title = strip_html_full(name)
 		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
+		log_effigy_api("Sending ticket interaction: [id] [effigy_player_id] [box]")
 		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 
 //Removes the ahelp verb and returns it after 1 minute
@@ -563,7 +570,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 50)
 
 	AddInteraction("<font color='green'>Resolved by [key_name].</font>", player_message = "<font color='green'>Ticket resolved!</font>")
-	to_chat(initiator, span_adminhelp("Your ticket has been resolved by an admin. The adminhelp verb will be returned to you shortly."), confidential = TRUE)
+	to_chat(initiator, span_boxannouncegreen("Your ticket has been resolved by an admin. The adminhelp verb will be returned to you shortly."), confidential = TRUE)
 	send_ticket_url(initiator)
 	if(!silent)
 		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "resolved")
@@ -614,8 +621,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	Resolve(silent = TRUE)
 
 /datum/admin_help/proc/send_ticket_url(initiator)
-	var/ticket_url = LAZYACCESS(effigy_response, "url")
-	to_chat(initiator, span_boxannouncegreen("You can view this ticket in Social District at: <a href=\"[ticket_url]\">[ticket_url]</a>"), confidential = TRUE)
+	to_chat(initiator, span_boxannouncegrey("You can view this ticket in the portal at: <a href=\"https://effigy.se/ticket/[effigy_ticket_id]/\">https://effigy.se/ticket/[effigy_ticket_id]/</a>"), confidential = TRUE)
 
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()

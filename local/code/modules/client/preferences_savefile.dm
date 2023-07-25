@@ -50,6 +50,7 @@
 	security_record = sanitize_text(security_record)
 	medical_record = sanitize_text(medical_record)
 	background_info = sanitize_text(background_info)
+	exploitable_info = sanitize_text(exploitable_info)
 	pda_writing = sanitize_text(pda_writing)
 
 	var/list/save_loadout = SANITIZE_LIST(save_data["loadout_list"])
