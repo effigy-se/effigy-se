@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(dbcore)
 	var/schema_mismatch = 0
 	var/db_minor = 0
 	var/db_major = 0
+	var/db_effigy = 0 // EffigyEdit Add
 	var/failed_connections = 0
 
 	var/last_error
@@ -39,17 +40,12 @@ SUBSYSTEM_DEF(dbcore)
 
 	var/db_daemon_started = FALSE
 
-	/// An associative list of list of rows to add to a database table with the name of the target table as a key.
-	/// Used to queue up log entries for bigger queries that happen less often, to reduce the strain on the server caused by
-	/// hundreds of additional queries constantly trying to run.
-	var/list/queued_log_entries_by_table = list() // EFFIGY EDIT ADD
-
 /datum/controller/subsystem/dbcore/Initialize()
 	//We send warnings to the admins during subsystem init, as the clients will be New'd and messages
-	//will queue properly with goonchat
+	//will queue properly with goonchat // EffigyEdit Add - DB Revision
 	switch(schema_mismatch)
 		if(1)
-			message_admins("Database schema ([db_major].[db_minor]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION]), this may lead to undefined behaviour or errors")
+			message_admins("Database schema ([db_major].[db_minor] e[db_effigy]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION] e[DB_EFFIGY_VERSION]), this may lead to undefined behaviour or errors")
 		if(2)
 			message_admins("Could not get schema version from database")
 
@@ -180,14 +176,9 @@ SUBSYSTEM_DEF(dbcore)
 		for(var/datum/db_query/query in queries_standby)
 			run_query(query)
 
-		// EFFIGY EDIT ADD START (#3 Logging - Ported from Skyrat)
-		for(var/table in queued_log_entries_by_table)
-			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
-		// EFFIGY EDIT ADD END (#3 Logging - Ported from Skyrat)
-
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
-			"UPDATE [format_table_name("round")] SET effigy_rid = :effigy_rid, shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
-			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id, "effigy_rid" = GLOB.round_hex)
+			"UPDATE [format_table_name("round")] SET shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
+			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id)
 		)
 		query_round_shutdown.Execute()
 		qdel(query_round_shutdown)
@@ -277,9 +268,10 @@ SUBSYSTEM_DEF(dbcore)
 			if(query_db_version.NextRow())
 				db_major = text2num(query_db_version.item[1])
 				db_minor = text2num(query_db_version.item[2])
-				if(db_major != DB_MAJOR_VERSION || db_minor != DB_MINOR_VERSION)
+				db_effigy = text2num(query_db_version.item[3])
+				if(db_major != DB_MAJOR_VERSION || db_minor != DB_MINOR_VERSION || db_effigy != DB_EFFIGY_VERSION) // EffigyEdit Add - DB Revision
 					schema_mismatch = 1 // flag admin message about mismatch
-					log_sql("Database schema ([db_major].[db_minor]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION]), this may lead to undefined behaviour or errors")
+					log_sql("Database schema ([db_major].[db_minor] e[db_effigy]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION] e[DB_EFFIGY_VERSION]), this may lead to undefined behaviour or errors")
 			else
 				schema_mismatch = 2 //flag admin message about no schema version
 				log_sql("Could not get schema version from database")
@@ -313,8 +305,8 @@ SUBSYSTEM_DEF(dbcore)
 	if(!Connect())
 		return
 	var/datum/db_query/query_round_start = SSdbcore.NewQuery(
-		"UPDATE [format_table_name("round")] SET start_datetime = Now() WHERE id = :round_id",
-		list("round_id" = GLOB.round_id)
+		"UPDATE [format_table_name("round")] SET start_datetime = Now(), effigy_rid = :effigy_rid WHERE id = :round_id",
+		list("round_id" = GLOB.round_id, "effigy_rid" = GLOB.round_hex)
 	)
 	query_round_start.Execute()
 	qdel(query_round_start)
@@ -654,41 +646,3 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 /datum/db_query/proc/Close()
 	rows = null
 	item = null
-
-// EFFIGY EDIT ADD START
-/**
- * This is a proc to hopefully mitigate the effect of a large influx of queries needing to be created
- * for something like SQL-based game logs. The goal here is to bundle a certain amount of those log
- * entries together (default is 100, but it depends on the `SQL_GAME_LOG_MIN_BUNDLE_SIZE` config
- * entry) before sending them, so that we can massively reduce the amount of lag associated with
- * logging so many entries to the database.
- *
- * Arguments:
- * * table - The name of the table to insert the log enty into.
- * * log_entry - Associative list representing all of the information that needs to be logged.
- * Default format is as follows, for the `game_log` table (even if this could be used for another table):
- * 	list(
- * 		"datetime" = SQLtime(),
- * 		"round_id" = "[GLOB.round_id]",
- * 		"ckey" = key_name(src),
- * 		"loc" = loc_name(src),
- * 		"type" = message_type,
- * 		"message" = message,
- * 	)
- * Take a look at `/atom/proc/log_message()` for an example of implementation.
- */
-/datum/controller/subsystem/dbcore/proc/add_log_to_mass_insert_queue(table, log_entry)
-	if(IsAdminAdvancedProcCall())
-		return
-
-	if(!queued_log_entries_by_table[table])
-		queued_log_entries_by_table[table] = list()
-
-	queued_log_entries_by_table[table] += list(log_entry)
-
-	if(length(queued_log_entries_by_table[table]) < CONFIG_GET(number/sql_game_log_min_bundle_size))
-		return
-
-	INVOKE_ASYNC(src, PROC_REF(MassInsert), table, /*rows =*/ queued_log_entries_by_table[table], /*duplicate_key =*/ FALSE, /*ignore_errors =*/ FALSE, /*delayed =*/ FALSE, /*warn =*/ FALSE, /*async =*/ TRUE, /*special_columns =*/ null)
-	queued_log_entries_by_table -= table
-// EFFIGY EDIT ADD END
