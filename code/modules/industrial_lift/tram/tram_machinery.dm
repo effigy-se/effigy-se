@@ -291,8 +291,8 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	* Red: decent chance of getting hit, but if you're quick it's a decent gamble.
 	* Amber: slow people may be in danger.
 	*/
-	var/amber_distance_threshold = XING_DISTANCE_AMBER
-	var/red_distance_threshold = XING_DISTANCE_RED
+	var/amber_distance_threshold = XING_AMBER_THRESHOLD_NORMA
+	var/red_distance_threshold = RED_THRESHOLD_NORMAL
 	/// If the signal is facing east or west
 	var/signal_direction
 	/// Inbound station
@@ -302,34 +302,18 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	/// Is the signal malfunctioning?
 	var/malfunctioning = FALSE
 
-/** Crossing signal subtypes
- *
- *  Each map will have a different amount of tiles between stations, so adjust the signals here based on the map.
- *  The distance is calculated from the bottom left corner of the tram,
- *  so signals on the east side have their distance reduced by the tram length, in this case 10 for Tramstation.
-*/
 /obj/machinery/icts/crossing_signal/northwest
-	icon_state = "crossing-base-right"
-	signal_direction = XING_SIGNAL_DIRECTION_WEST
-	pixel_x = -32
-	pixel_y = -1
+	dir = WEST
 
 /obj/machinery/icts/crossing_signal/northeast
-	icon_state = "crossing-base-left"
-	signal_direction = XING_SIGNAL_DIRECTION_EAST
-	pixel_x = -2
-	pixel_y = -1
+	dir = EAST
 
 /obj/machinery/icts/crossing_signal/southwest
-	icon_state = "crossing-base-right"
-	signal_direction = XING_SIGNAL_DIRECTION_WEST
-	pixel_x = -32
+	dir = WEST
 	pixel_y = 20
 
 /obj/machinery/icts/crossing_signal/southeast
-	icon_state = "crossing-base-left"
-	signal_direction = XING_SIGNAL_DIRECTION_EAST
-	pixel_x = -2
+	dir = EAST
 	pixel_y = 20
 
 /obj/machinery/static_signal
@@ -493,7 +477,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 		tram_velocity_sign = tram.travel_direction & EAST ? 1 : -1
 
 	// How far away are we? negative if already passed.
-	var/approach_distance = tram_velocity_sign * (signal_pos - (tram_pos + (XING_DEFAULT_TRAM_LENGTH * 0.5)))
+	var/approach_distance = tram_velocity_sign * (signal_pos - (tram_pos + (DEFAULT_TRAM_LENGTH * 0.5)))
 
 	// Check for stopped state.
 	// Will kill the process since tram starting up will restart process.
