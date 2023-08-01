@@ -40,8 +40,9 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Nerve Stapled", "Nearsighted"),
 		list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
 		list("Mute", "Social Anxiety"),
-		list("No Guns", "Pacifist")
+		list("No Guns", "Pacifist"),
 		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+		list("Photophobia", "Nyctophobia"),
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
