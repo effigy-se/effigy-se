@@ -51,10 +51,10 @@
 				message_admins(span_adminnotice("[reject_message]"))
 			qdel(query_client_in_db)
 			return list("reason"="panicbunker", "desc" = "Sorry but the server is currently not accepting connections from never before seen players")
-	*/
-	// EFFIGY EDIT REMOVE END (Panic Bunker)
 
 		qdel(query_client_in_db)
+	*/
+	// EFFIGY EDIT REMOVE END (Panic Bunker)
 
 	//Whitelist
 	if(!real_bans_only && !C && CONFIG_GET(flag/usewhitelist))
