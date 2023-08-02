@@ -155,7 +155,6 @@ SUBSYSTEM_DEF(effigy)
 	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Who could it be now?~")
 	var/requested_link = 0
 	message_admins(span_info("Searching Effigy for [ckeytomatch]"))
-	send2chat(new /datum/tgs_message_content("Searching Effigy for [ckeytomatch]"), CONFIG_GET(string/channel_announce_delam))
 	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
 	if(!requested_link)
 		message_admins(span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))

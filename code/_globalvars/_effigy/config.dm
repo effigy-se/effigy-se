@@ -64,9 +64,10 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 // Discord config
 /datum/config_entry/string/game_alert_role_id
 /datum/config_entry/string/role_assign_channel_id
+
+GLOBAL_VAR(main_engine_start_reason)
 /datum/config_entry/string/channel_announce_delam
 	default = null
-
 
 /datum/config_entry/string/alert_green
 	default = "Standard security procedures. Security may not have weapons visible, privacy laws are in full effect."
