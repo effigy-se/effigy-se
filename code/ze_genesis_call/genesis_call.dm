@@ -48,5 +48,7 @@
  * Painful right? Good, now you share my suffering
  * Please lock the door on your way out
  */
+/*
 /world/proc/_()
 	var/static/_ = world.Genesis()
+*/ /// EFFIGY EDIT - Moved to /local/
