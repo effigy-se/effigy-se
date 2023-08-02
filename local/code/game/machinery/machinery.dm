@@ -27,9 +27,6 @@
 /obj/machinery/power/rad_collector
 	icon = 'local/icons/obj/engine/emitter.dmi'
 
-/obj/machinery/light_switch
-	icon = 'local/icons/obj/power.dmi'
-
 
 #ifndef UNIT_TESTS
 /obj/machinery/light_switch/LateInitialize()

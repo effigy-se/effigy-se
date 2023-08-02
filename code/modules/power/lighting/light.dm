@@ -161,7 +161,7 @@
 				icon_state = "[base_state]"
 			*/
 			if(low_power_mode)
-				icon_state = "[base_state]_lpower"
+				icon_state = "[base_state]_emergency" // EffigyTODO - low power lighting
 			else if(major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
