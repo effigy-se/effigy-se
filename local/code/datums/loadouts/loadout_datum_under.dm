@@ -589,10 +589,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal
 
-/datum/loadout_item/under/formal/amish_suit
-	name = "Amish Suit"
-	item_path = /obj/item/clothing/under/suit/sl
-
 /datum/loadout_item/under/formal/formaldressred
 	name = "Formal Red Dress"
 	item_path = /obj/item/clothing/under/dress/skyrat/redformal
@@ -616,10 +612,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/black_suitskirt
 	name = "Black Suitskirt"
 	item_path = /obj/item/clothing/under/suit/black/skirt
-
-/datum/loadout_item/under/formal/black_twopiece
-	name = "Black Two-Piece Suit"
-	item_path = /obj/item/clothing/under/suit/blacktwopiece
 
 /datum/loadout_item/under/formal/black_lawyer_suit
 	name = "Black Lawyer Suit"
@@ -724,10 +716,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/sailor_skirt
 	name = "Sailor Dress"
 	item_path = /obj/item/clothing/under/dress/sailor
-
-/datum/loadout_item/under/formal/scratch_suit
-	name = "Scratch Suit"
-	item_path = /obj/item/clothing/under/suit/white_on_white
 
 /datum/loadout_item/under/formal/sensible_suit
 	name = "Sensible Suit"
