@@ -64,6 +64,8 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 // Discord config
 /datum/config_entry/string/game_alert_role_id
 /datum/config_entry/string/role_assign_channel_id
+/datum/config_entry/string/channel_announce_delam
+	default = null
 
 
 /datum/config_entry/string/alert_green
