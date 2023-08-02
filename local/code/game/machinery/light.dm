@@ -6,8 +6,6 @@
 	light_power = 1.25
 
 /obj/machinery/light
-	icon = 'local/icons/obj/lighting.dmi'
-	overlay_icon = 'local/icons/obj/lighting_overlay.dmi'
 	brightness = 6.5
 	fire_brightness = 4.5
 	fire_colour = "#D47F9B"
@@ -112,12 +110,6 @@
 
 	if(roundstart_flicker)
 		start_flickering()
-
-/obj/item/light/tube
-	icon = 'local/icons/obj/lighting.dmi'
-	lefthand_file = 'local/icons/obj/lights_lefthand.dmi'
-	righthand_file = 'local/icons/obj/lights_righthand.dmi'
-
 
 /obj/machinery/light/multitool_act(mob/living/user, obj/item/multitool)
 	if(!constant_flickering)
