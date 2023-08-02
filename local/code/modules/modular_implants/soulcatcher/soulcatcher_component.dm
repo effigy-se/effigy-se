@@ -311,9 +311,9 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /datum/action/innate/join_soulcatcher
 	name = "Enter Soulcatcher"
-	background_icon = 'local/icons/obj/mob/actions/action_backgrounds.dmi'
-	background_icon_state = "android"
-	button_icon = 'local/icons/obj/mob/actions/actions_nif.dmi'
+	background_icon = 'local/icons/hud/screen_efcyan.dmi'
+	background_icon_state = "template"
+	button_icon = 'local/icons/hud/nifsoft.dmi'
 	button_icon_state = "soulcatcher_enter"
 
 /datum/action/innate/join_soulcatcher/Activate()
