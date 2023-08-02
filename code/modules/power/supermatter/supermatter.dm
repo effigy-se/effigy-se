@@ -634,7 +634,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	else
 		investigate_log("has been powered for the first time by [key_name(who)][how ? " with [how]" : ""].", INVESTIGATE_ENGINE)
 		message_admins("[src] [ADMIN_JMP(src)] has been powered for the first time by [ADMIN_FULLMONTY(who)][how ? " with [how]" : ""].") // EffigyEdit Add - Delam reporting to TGS
-		GLOB.main_engine_start_reason = "[ADMIN_FULLMONTY(who)][how ? " with [how]" : ""]."
+		GLOB.main_engine_start_reason = "[key_name(who)][how ? " with [how]" : ""]."
 	activation_logged = TRUE
 
 /**
