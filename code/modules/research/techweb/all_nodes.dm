@@ -297,7 +297,6 @@
 		"swab",
 		"syringe",
 		"xlarge_beaker",
-
 		//EFFIGY EDIT END - RESEARCH DESIGNS
 		"synth_eyes",
 		"synth_tongue",
