@@ -108,8 +108,10 @@ DEFINE_BITFIELD(smoothing_flags, list(
 #define SMOOTH_GROUP_MINERAL_WALLS S_TURF(57) ///turf/closed/mineral, /turf/closed/indestructible
 #define SMOOTH_GROUP_BOSS_WALLS S_TURF(58) ///turf/closed/indestructible/riveted/boss
 #define SMOOTH_GROUP_SURVIVAL_TITANIUM_WALLS S_TURF(59) ///turf/closed/wall/mineral/titanium/survival
+#define SMOOTH_GROUP_TURF_OPEN_CLIFF S_TURF(60) ///turf/open/cliff
+
 /* // EFFIGY REMOVAL - See code\_DEFINES\_effigy\icon_smoothing.dm
-#define MAX_S_TURF 59 //Always match this value with the one above it.
+#define MAX_S_TURF 60 //Always match this value with the one above it.
 */
 #define S_OBJ(num) ("-" + #num + ",")
 /* /obj included */

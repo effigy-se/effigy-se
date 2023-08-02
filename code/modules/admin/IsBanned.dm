@@ -45,12 +45,14 @@
 
 		var/client_is_in_db = query_client_in_db.NextRow()
 		if(!client_is_in_db)
-
 			var/reject_message = "Failed Login: [ckey] [address]-[computer_id] - New Account attempting to connect during panic bunker, but was rejected due to no prior connections to game servers (no database entry)"
 			log_access(reject_message)
 			if (message)
 				message_admins(span_adminnotice("[reject_message]"))
-			return list("reason"="panicbunker", "desc" = "Sorry, your BYOND account was not found on the whitelist. If you have played on this server with a BYOND account before, please log in to the BYOND account you have played from. If you think this is in error, contact the server staff.")
+			qdel(query_client_in_db)
+			return list("reason"="panicbunker", "desc" = "Sorry but the server is currently not accepting connections from never before seen players")
+
+		qdel(query_client_in_db)
 	*/
 	// EFFIGY EDIT REMOVE END (Panic Bunker)
 
