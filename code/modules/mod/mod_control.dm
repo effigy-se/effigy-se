@@ -21,10 +21,10 @@
 		/datum/action/item_action/mod/sprite_accessories, // EFFIGY EDIT ADD
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
-		/datum/action/item_action/mod/deploy/pai, // EFFIGY EDIT ADD
-		/datum/action/item_action/mod/activate/pai, // EFFIGY EDIT ADD
-		/datum/action/item_action/mod/panel/pai, // EFFIGY EDIT ADD
-		/datum/action/item_action/mod/module/pai, // EFFIGY EDIT ADD
+		/datum/action/item_action/mod/deploy/ai,
+		/datum/action/item_action/mod/activate/ai,
+		/datum/action/item_action/mod/panel/ai,
+		/datum/action/item_action/mod/module/ai,
 	)
 	resistance_flags = NONE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
@@ -287,7 +287,6 @@
 			balloon_alert(wearer, "retract parts first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 			return
-
 	// EFFIGY EDIT ADD START (Fix runtime)
 	if(active)
 		if(!wearer.incapacitated())
@@ -296,7 +295,6 @@
 
 		return
 	// EFFIGY EDIT ADD END (Fix runtime)
-
 	if(!wearer.incapacitated())
 		var/atom/movable/screen/inventory/hand/ui_hand = over_object
 		if(wearer.putItemFromInventoryInHandIfPossible(src, ui_hand.held_index))
@@ -580,12 +578,6 @@
 		new_module.on_equip()
 	if(active)
 		new_module.on_suit_activation()
-	// EFFIGY EDIT ADD START
-	if(mod_pai)
-		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[ref(mod_pai)]
-		if(action)
-			action.Grant(mod_pai)
-	// EFFIGY EDIT ADD END
 	if(user)
 		balloon_alert(user, "[new_module] added")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
@@ -688,7 +680,7 @@
 		part.flags_cover = category[UNSEALED_COVER] || NONE
 		part.visor_flags_cover = category[SEALED_COVER] || NONE
 		part.alternate_worn_layer = category[UNSEALED_LAYER]
-		mod_parts[part] = part.alternate_worn_layer
+		mod_parts[part] = part.alternate_worn_layer\
 		// EFFIGY EDIT REMOVE START
 		/*
 		if(!category[CAN_OVERSLOT])
