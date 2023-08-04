@@ -97,10 +97,10 @@
 			explosion(tram_part, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 3)
 			qdel(tram_part)
 
-		for(var/obj/machinery/destination_sign/desto as anything in GLOB.tram_signs)
+		for(var/obj/machinery/icts/destination_sign/desto as anything in GLOB.tram_signs)
 			desto.icon_state = "[desto.base_icon_state][DESTINATION_NOT_IN_SERVICE]"
 
-		for(var/obj/machinery/crossing_signal/xing as anything in GLOB.tram_signals)
+		for(var/obj/machinery/icts/crossing_signal/xing as anything in GLOB.tram_signals)
 			xing.set_signal_state(XING_STATE_MALF)
 			xing.update_appearance()
 

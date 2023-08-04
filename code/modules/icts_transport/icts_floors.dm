@@ -40,16 +40,16 @@
 	return list("tram_platform-scorched1","tram_platform-scorched2")
 
 /turf/open/floor/noslip/tram_plate/energized/proc/find_tram()
-	for(var/datum/lift_master/tram/tram as anything in GLOB.active_lifts_by_type[TRAM_LIFT_ID])
-		if(tram.specific_lift_id != MAIN_STATION_TRAM)
+	for(var/datum/transport_controller/linear/tram/tram as anything in GLOB.active_lifts_by_type[TRAM_LIFT_ID])
+		if(tram.specific_transport_id != TRAMSTATION_LINE_1)
 			continue
 		return tram
 
 /turf/open/floor/noslip/tram_plate/energized/proc/toast(mob/living/future_tram_victim)
-	var/datum/lift_master/tram/tram = find_tram()
+	var/datum/transport_controller/linear/tram/tram = find_tram()
 
 	// Check for stopped states.
-	if(!tram || !tram.is_operational || !inbound || !outbound)
+	if(!tram || !tram.controller_operational || !inbound || !outbound)
 		return FALSE
 
 	var/obj/structure/industrial_lift/tram/tram_part = tram.return_closest_platform_to(src)
@@ -72,10 +72,10 @@
 		tram_velocity_sign = tram.travel_direction & EAST ? 1 : -1
 
 	// How far away are we? negative if already passed.
-	var/approach_distance = tram_velocity_sign * (plate_pos - (tram_pos + (XING_DEFAULT_TRAM_LENGTH * 0.5)))
+	var/approach_distance = tram_velocity_sign * (plate_pos - (tram_pos + (DEFAULT_TRAM_LENGTH * 0.5)))
 
 	// Check if our victim is in the active path of the tram.
-	if(!tram.travelling)
+	if(!tram.controller_active)
 		return FALSE
 	if(approach_distance < 0)
 		return FALSE
@@ -87,10 +87,18 @@
 		return FALSE
 	if(tram.travel_direction & EAST && outbound > tram.idle_platform.platform_code)
 		return FALSE
-	if(approach_distance >= XING_DISTANCE_AMBER)
+	if(approach_distance >= AMBER_THRESHOLD_NORMAL)
 		return FALSE
 
 	// Finally the interesting part where they ACTUALLY get hit!
 	notify_ghosts("[future_tram_victim] has fallen in the path of an oncoming tram!", source = future_tram_victim, action = NOTIFY_ORBIT, header = "Electrifying!")
 	future_tram_victim.electrocute_act(15, src, 1)
 	return TRUE
+
+/turf/open/floor/glass/reinforced/tram/Initialize(mapload)
+	. = ..()
+	RemoveElement(/datum/element/atmos_sensitive, mapload)
+
+/turf/open/floor/glass/reinforced/tram
+	name = "tram bridge"
+	desc = "It shakes a bit when you step, but lets you cross between sides quickly!"
