@@ -11,7 +11,7 @@
 	nightshift_enabled = FALSE
 
 /obj/machinery/light/warm
-	bulb_colour = "#fae5c1"
+	bulb_colour = "#ccccff"
 
 /obj/machinery/light/warm/no_nightlight
 	nightshift_allowed = FALSE
@@ -21,8 +21,8 @@
 	bulb_power = 0.6
 
 /obj/machinery/light/cold
-	bulb_colour = LIGHT_COLOR_FAINT_BLUE
-	nightshift_light_color = LIGHT_COLOR_FAINT_BLUE
+	bulb_colour = "#ccccff"
+	nightshift_light_color = null
 
 /obj/machinery/light/cold/no_nightlight
 	nightshift_allowed = FALSE
@@ -47,7 +47,7 @@
 
 /obj/machinery/light/dim
 	nightshift_allowed = FALSE
-	bulb_colour = "#FFDDCC"
+	bulb_colour = "#ccccff"
 	bulb_power = 0.6
 
 // the smaller bulb light fixture
@@ -59,7 +59,7 @@
 	brightness = 4
 	nightshift_brightness = 4
 	fire_brightness = 3
-	bulb_colour = "#FFD6AA"
+	bulb_colour = "#ccccff"
 	fire_colour = "#bd3f46"
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light/bulb

@@ -65,10 +65,6 @@
 		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
 		vote_on_poll_handler(poll, href_list)
 
-/mob/dead/new_player/get_status_tab_items()
-	. = ..()
-	if(!SSticker.HasRoundStarted()) //only show this when the round hasn't started yet
-		. += "Readiness status: [ready ? "" : "Not "]Readied Up!"
 */
 // EFFIGY EDIT REMOVE END - SPLASH
 
