@@ -140,7 +140,7 @@
 		copied_appearance.icon = 'icons/obj/doors/airlocks/station/public.dmi'
 		copied_appearance.icon_state = "closed"
 	else if(danger_turfs[input.type])
-		copied_appearance.icon = EFFIGY_TURFS_FLOORS
+		copied_appearance.icon = 'icons/turf/floors.dmi'
 		copied_appearance.icon_state = "danger"
 		use_outline = FALSE
 	copied_appearance.color = black_white_matrix

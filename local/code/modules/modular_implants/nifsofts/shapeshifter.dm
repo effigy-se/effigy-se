@@ -36,9 +36,9 @@
 /datum/action/innate/alter_form/nif
 	name = "Polymorph"
 	slime_restricted =  FALSE
-	background_icon = 'local/icons/obj/mob/actions/action_backgrounds.dmi'
-	background_icon_state = "android"
-	button_icon = 'local/icons/obj/mob/actions/actions_nif.dmi'
+	background_icon = 'local/icons/hud/screen_efcyan.dmi'
+	background_icon_state = "template"
+	button_icon = 'local/icons/hud/nifsoft.dmi'
 	button_icon_state = "slime"
 	shapeshift_text = "closes their eyes to focus, their body subtly shifting and contorting."
 
@@ -47,9 +47,9 @@
 		alterer,
 		alterer,
 		list(
-			"DNA" = image(icon = 'local/icons/obj/mob/actions/actions_slime.dmi', icon_state = "dna"),
-			"Hair" = image(icon = 'local/icons/obj/mob/actions/actions_slime.dmi', icon_state = "scissors"),
-			"Markings" = image(icon = 'local/icons/obj/mob/actions/actions_slime.dmi', icon_state = "rainbow_spraycan"),
+			"DNA" = image(icon = 'local/icons/hud/actions_slime.dmi', icon_state = "dna"),
+			"Hair" = image(icon = 'local/icons/hud/actions_slime.dmi', icon_state = "scissors"),
+			"Markings" = image(icon = 'local/icons/hud/actions_slime.dmi', icon_state = "rainbow_spraycan"),
 		),
 		tooltips = TRUE,
 	)
