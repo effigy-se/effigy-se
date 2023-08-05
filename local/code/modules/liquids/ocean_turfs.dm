@@ -82,7 +82,7 @@
 	gender = PLURAL
 	name = "ocean sand"
 	baseturfs = /turf/open/misc/ocean
-	icon = EFFIGY_TURFS_FLOORS
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
 	base_icon_state = "asteroid"
 	footstep = FOOTSTEP_SAND
@@ -164,7 +164,7 @@
 	gender = PLURAL
 	name = "canal"
 	baseturfs = /turf/open/misc/canal
-	icon = EFFIGY_TURFS_FLOORS
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
 	base_icon_state = "asteroid"
 	footstep = FOOTSTEP_SAND
@@ -188,7 +188,7 @@
 	gender = PLURAL
 	name = "canal"
 	baseturfs = /turf/open/misc/canal_mutable
-	icon = EFFIGY_TURFS_FLOORS
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
 	base_icon_state = "asteroid"
 	footstep = FOOTSTEP_SAND
