@@ -9,7 +9,7 @@
 	brightness = 6.5
 	fire_brightness = 4.5
 	fire_colour = "#D47F9B"
-	bulb_colour = LIGHT_COLOR_FAINT_BLUE
+	bulb_colour = "#ccccff"
 	bulb_power = 1.15
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
 	bulb_low_power_colour = LIGHT_COLOR_DARK_BLUE
