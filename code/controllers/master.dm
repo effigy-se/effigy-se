@@ -56,7 +56,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	var/map_loading = FALSE //!Are we loading in a new map?
 
 	var/current_runlevel //!for scheduling different subsystems for different stages of the round
-	var/sleep_offline_after_initializations = TRUE
+	var/sleep_offline_after_initializations = FALSE // EffigyEdit Change - controlled by subsystem
 
 	/// During initialization, will be the instanced subsytem that is currently initializing.
 	/// Outside of initialization, returns null.
