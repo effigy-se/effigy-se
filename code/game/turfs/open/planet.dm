@@ -2,7 +2,7 @@
 	gender = PLURAL
 	name = "dirt"
 	desc = "Upon closer examination, it's still dirt."
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_FLOORS
 	icon_state = "dirt"
 	base_icon_state = "dirt"
 	baseturfs = /turf/open/chasm/jungle
@@ -29,7 +29,7 @@
 /turf/open/misc/dirt/jungle/wasteland //Like a more fun version of living in Arizona.
 	name = "cracked earth"
 	desc = "Looks a bit dry."
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_FLOORS
 	icon_state = "wasteland"
 	base_icon_state = "wasteland"
 	slowdown = 1

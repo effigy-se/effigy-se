@@ -732,7 +732,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 
 // A subtype intended for "public use"
 /obj/structure/industrial_lift/public
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_FLOORS
 	icon_state = "rockvault"
 	base_icon_state = null
 	smoothing_flags = NONE
@@ -797,7 +797,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 /obj/structure/industrial_lift/tram
 	name = "tram"
 	desc = "A tram for tramversing the station."
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_FLOORS
 	icon_state = "textured_large"
 	layer = TRAM_FLOOR_LAYER
 	base_icon_state = null
