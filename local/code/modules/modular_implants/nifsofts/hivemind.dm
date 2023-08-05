@@ -83,9 +83,9 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /datum/action/innate/hivemind_config
 	name = "Hivemind Configuration Settings"
-	background_icon = 'local/icons/obj/mob/actions/action_backgrounds.dmi'
-	background_icon_state = "android"
-	button_icon = 'local/icons/obj/mob/actions/actions_nif.dmi'
+	background_icon = 'local/icons/hud/screen_efcyan.dmi'
+	background_icon_state = "template"
+	button_icon = 'local/icons/hud/nifsoft.dmi'
 	button_icon_state = "phone_settings"
 
 /datum/action/innate/hivemind_config/Activate()
@@ -160,9 +160,9 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /datum/action/innate/hivemind_keyboard
 	name = "Hivemind Keyboard"
-	background_icon = 'local/icons/obj/mob/actions/action_backgrounds.dmi'
-	background_icon_state = "android"
-	button_icon = 'local/icons/obj/mob/actions/actions_nif.dmi'
+	background_icon = 'local/icons/hud/screen_efcyan.dmi'
+	background_icon_state = "template"
+	button_icon = 'local/icons/hud/nifsoft.dmi'
 	button_icon_state = "phone"
 
 /datum/action/innate/hivemind_keyboard/Activate()
