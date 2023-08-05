@@ -1,6 +1,6 @@
 //an "overlay" used by cult walls and floors to appear normal to mesons.
 /obj/effect/cult_turf
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_FLOORS
 	icon_state = "cult"
 	plane = FLOOR_PLANE
 	layer = CULT_OVERLAY_LAYER

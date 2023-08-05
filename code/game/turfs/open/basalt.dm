@@ -2,7 +2,7 @@
 	gender = NEUTER
 	name = "volcanic floor"
 	desc = "Rough volcanic floor that can be dug up for basalt."
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_FLOORS
 	icon_state = "basalt"
 	initial_gas_mix = OPENTURF_LOW_PRESSURE
 

@@ -9,7 +9,7 @@
 	brightness = 6.5
 	fire_brightness = 4.5
 	fire_colour = "#D47F9B"
-	bulb_colour = LIGHT_COLOR_FAINT_BLUE
+	bulb_colour = "#d4d4ff"
 	bulb_power = 1.15
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
 	bulb_low_power_colour = LIGHT_COLOR_DARK_BLUE
@@ -127,20 +127,20 @@
 /obj/machinery/light/dim
 	brightness = 4
 	nightshift_brightness = 4
-	bulb_colour = "#f8faff"
+	bulb_colour = "#d4d4ff"
 	bulb_power = 0.4
 
 /obj/machinery/light/small
 	brightness = 5
 	nightshift_brightness = 4.5
-	bulb_colour = "#f8faff"
+	bulb_colour = "#d4d4ff"
 	bulb_power = 0.9
 
 /obj/machinery/light/cold
 	nightshift_light_color = null
 
 /obj/machinery/light/warm
-	bulb_colour = "#f8faff"
+	bulb_colour = "#d4d4ff"
 	nightshift_light_color = null
 
 
