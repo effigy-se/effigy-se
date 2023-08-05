@@ -16,7 +16,7 @@
 		#include "map_files\Birdshot\birdshot.dmm"
 		// EFFIGY EDIT START
 		#include "map_files\FoxHoleStation\foxholestation.dmm"
-		#include "map_files\MiniStation\MiniStation.dmm"
+		#include "map_files\KiloStation\KiloStation.dmm"
 		// EFFIGY EDIT END
 		#ifdef CIBUILDING
 			#include "templates.dm"
