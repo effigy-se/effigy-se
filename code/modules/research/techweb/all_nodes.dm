@@ -298,6 +298,15 @@
 		"swab",
 		"syringe",
 		"xlarge_beaker",
+		//EFFIGY EDIT END - RESEARCH DESIGNS
+		"synth_eyes",
+		"synth_tongue",
+		"synth_liver",
+		"synth_lungs",
+		"synth_stomach",
+		"synth_ears",
+		"synth_heart",
+		//EFFIGY EDIT END - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/basic_circuitry
