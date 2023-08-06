@@ -166,15 +166,15 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	if(tram_part)
 		if(!tram_part.travelling)
 			if(is_operational)
-				for(var/obj/machinery/crossing_signal/xing as anything in GLOB.tram_signals)
+				for(var/obj/machinery/icts/crossing_signal/xing as anything in GLOB.tram_signals)
 					xing.set_signal_state(XING_STATE_MALF, TRUE)
-				for(var/obj/machinery/destination_sign/desto as anything in GLOB.tram_signs)
+				for(var/obj/machinery/icts/destination_sign/desto as anything in GLOB.tram_signs)
 					desto.icon_state = "[desto.base_icon_state][DESTINATION_OFF]"
 					desto.update_appearance()
 			else
-				for(var/obj/machinery/crossing_signal/xing as anything in GLOB.tram_signals)
+				for(var/obj/machinery/icts/crossing_signal/xing as anything in GLOB.tram_signals)
 					xing.set_signal_state(XING_STATE_MALF, TRUE)
-				for(var/obj/machinery/destination_sign/desto as anything in GLOB.tram_signs)
+				for(var/obj/machinery/icts/destination_sign/desto as anything in GLOB.tram_signs)
 					desto.icon_state = "[desto.base_icon_state][DESTINATION_NOT_IN_SERVICE]"
 					desto.update_appearance()
 
@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	location.set_output(destination_platform.name)
 
 /// Pedestrian crossing signal for tram
-/obj/machinery/crossing_signal
+/obj/machinery/icts/crossing_signal
 	name = "crossing signal"
 	desc = "Indicates to pedestrians if it's safe to cross the tracks."
 	icon = 'icons/obj/machines/crossing_signal.dmi'
@@ -291,8 +291,8 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	* Red: decent chance of getting hit, but if you're quick it's a decent gamble.
 	* Amber: slow people may be in danger.
 	*/
-	var/amber_distance_threshold = XING_DISTANCE_AMBER
-	var/red_distance_threshold = XING_DISTANCE_RED
+	var/amber_distance_threshold = XING_AMBER_THRESHOLD_NORMA
+	var/red_distance_threshold = RED_THRESHOLD_NORMAL
 	/// If the signal is facing east or west
 	var/signal_direction
 	/// Inbound station
@@ -302,34 +302,18 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	/// Is the signal malfunctioning?
 	var/malfunctioning = FALSE
 
-/** Crossing signal subtypes
- *
- *  Each map will have a different amount of tiles between stations, so adjust the signals here based on the map.
- *  The distance is calculated from the bottom left corner of the tram,
- *  so signals on the east side have their distance reduced by the tram length, in this case 10 for Tramstation.
-*/
-/obj/machinery/crossing_signal/northwest
-	icon_state = "crossing-base-right"
-	signal_direction = XING_SIGNAL_DIRECTION_WEST
-	pixel_x = -32
-	pixel_y = -1
+/obj/machinery/icts/crossing_signal/northwest
+	dir = WEST
 
-/obj/machinery/crossing_signal/northeast
-	icon_state = "crossing-base-left"
-	signal_direction = XING_SIGNAL_DIRECTION_EAST
-	pixel_x = -2
-	pixel_y = -1
+/obj/machinery/icts/crossing_signal/northeast
+	dir = EAST
 
-/obj/machinery/crossing_signal/southwest
-	icon_state = "crossing-base-right"
-	signal_direction = XING_SIGNAL_DIRECTION_WEST
-	pixel_x = -32
+/obj/machinery/icts/crossing_signal/southwest
+	dir = WEST
 	pixel_y = 20
 
-/obj/machinery/crossing_signal/southeast
-	icon_state = "crossing-base-left"
-	signal_direction = XING_SIGNAL_DIRECTION_EAST
-	pixel_x = -2
+/obj/machinery/icts/crossing_signal/southeast
+	dir = EAST
 	pixel_y = 20
 
 /obj/machinery/static_signal
@@ -370,11 +354,11 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	pixel_x = -2
 	pixel_y = 20
 
-/obj/machinery/crossing_signal/Initialize(mapload)
+/obj/machinery/icts/crossing_signal/Initialize(mapload)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/crossing_signal/LateInitialize()
+/obj/machinery/icts/crossing_signal/LateInitialize()
 	. = ..()
 	find_tram()
 
@@ -383,7 +367,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 		RegisterSignal(tram_part, COMSIG_TRAM_SET_TRAVELLING, PROC_REF(on_tram_travelling))
 		GLOB.tram_signals += src
 
-/obj/machinery/crossing_signal/Destroy()
+/obj/machinery/icts/crossing_signal/Destroy()
 	GLOB.tram_signals -= src
 	. = ..()
 
@@ -391,7 +375,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	if(tram_part)
 		UnregisterSignal(tram_part, COMSIG_TRAM_SET_TRAVELLING)
 
-/obj/machinery/crossing_signal/emag_act(mob/user, obj/item/card/emag/emag_card)
+/obj/machinery/icts/crossing_signal/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
 		return FALSE
 	balloon_alert(user, "disabled motion sensors")
@@ -400,12 +384,12 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	obj_flags |= EMAGGED
 	return TRUE
 
-/obj/machinery/crossing_signal/proc/start_malfunction()
+/obj/machinery/icts/crossing_signal/proc/start_malfunction()
 	if(signal_state != XING_STATE_MALF)
 		malfunctioning = TRUE
 		set_signal_state(XING_STATE_MALF)
 
-/obj/machinery/crossing_signal/proc/end_malfunction()
+/obj/machinery/icts/crossing_signal/proc/end_malfunction()
 	if(obj_flags & EMAGGED)
 		return
 
@@ -417,7 +401,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
  *
  * Locates tram parts in the lift global list after everything is done.
  */
-/obj/machinery/crossing_signal/proc/find_tram()
+/obj/machinery/icts/crossing_signal/proc/find_tram()
 	for(var/datum/lift_master/tram/tram as anything in GLOB.active_lifts_by_type[TRAM_LIFT_ID])
 		if(tram.specific_lift_id != tram_id)
 			continue
@@ -427,12 +411,12 @@ GLOBAL_LIST_EMPTY(tram_doors)
 /**
  * Only process if the tram is actually moving
  */
-/obj/machinery/crossing_signal/proc/on_tram_travelling(datum/source, travelling)
+/obj/machinery/icts/crossing_signal/proc/on_tram_travelling(datum/source, travelling)
 	SIGNAL_HANDLER
 
 	update_operating()
 
-/obj/machinery/crossing_signal/on_set_is_operational()
+/obj/machinery/icts/crossing_signal/on_set_is_operational()
 	. = ..()
 
 	update_operating()
@@ -442,7 +426,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
  *
  * Returns whether we are still processing.
  */
-/obj/machinery/crossing_signal/proc/update_operating()
+/obj/machinery/icts/crossing_signal/proc/update_operating()
 
 	use_power(idle_power_usage)
 
@@ -459,7 +443,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 		return
 	end_processing()
 
-/obj/machinery/crossing_signal/process()
+/obj/machinery/icts/crossing_signal/process()
 
 	var/datum/lift_master/tram/tram = tram_ref?.resolve()
 
@@ -493,7 +477,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 		tram_velocity_sign = tram.travel_direction & EAST ? 1 : -1
 
 	// How far away are we? negative if already passed.
-	var/approach_distance = tram_velocity_sign * (signal_pos - (tram_pos + (XING_DEFAULT_TRAM_LENGTH * 0.5)))
+	var/approach_distance = tram_velocity_sign * (signal_pos - (tram_pos + (DEFAULT_TRAM_LENGTH * 0.5)))
 
 	// Check for stopped state.
 	// Will kill the process since tram starting up will restart process.
@@ -533,14 +517,14 @@ GLOBAL_LIST_EMPTY(tram_doors)
  * new_state - the new state (XING_STATE_RED, etc)
  * force_update - force appearance to update even if state didn't change.
  */
-/obj/machinery/crossing_signal/proc/set_signal_state(new_state, force = FALSE)
+/obj/machinery/icts/crossing_signal/proc/set_signal_state(new_state, force = FALSE)
 	if(new_state == signal_state && !force)
 		return
 
 	signal_state = new_state
 	update_appearance()
 
-/obj/machinery/crossing_signal/update_appearance(updates)
+/obj/machinery/icts/crossing_signal/update_appearance(updates)
 	. = ..()
 
 	if(!is_operational)
@@ -560,7 +544,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 
 	set_light(l_on = TRUE, l_color = new_color)
 
-/obj/machinery/crossing_signal/update_overlays()
+/obj/machinery/icts/crossing_signal/update_overlays()
 	. = ..()
 
 	if(!is_operational)
@@ -584,7 +568,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	icon_state = "[base_icon_state]on"
 	set_light(l_on = TRUE)
 
-/obj/machinery/destination_sign
+/obj/machinery/icts/destination_sign
 	name = "destination sign"
 	desc = "A display to show you what direction the tram is travelling."
 	icon = 'icons/obj/machines/tram_sign.dmi'
@@ -609,25 +593,25 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	/// A default list of possible sign states
 	var/static/list/sign_states = list()
 
-/obj/machinery/destination_sign/north
+/obj/machinery/icts/destination_sign/north
 	layer = BELOW_OBJ_LAYER
 
-/obj/machinery/destination_sign/south
+/obj/machinery/icts/destination_sign/south
 	plane = WALL_PLANE_UPPER
 	layer = BELOW_OBJ_LAYER
 
-/obj/machinery/destination_sign/indicator
+/obj/machinery/icts/destination_sign/indicator
 	icon_state = "indicator_off"
 	base_icon_state = "indicator_"
 	light_range = 1.5
 	light_color = LIGHT_COLOR_DARK_BLUE
 	light_mask = "indicator_off_e"
 
-/obj/machinery/destination_sign/Initialize(mapload)
+/obj/machinery/icts/destination_sign/Initialize(mapload)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/destination_sign/LateInitialize()
+/obj/machinery/icts/destination_sign/LateInitialize()
 	. = ..()
 	find_tram()
 
@@ -646,7 +630,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 		"[DESTINATION_CENTRAL_WESTBOUND_ACTIVE]",
 	)
 
-/obj/machinery/destination_sign/Destroy()
+/obj/machinery/icts/destination_sign/Destroy()
 	GLOB.tram_signs -= src
 	. = ..()
 
@@ -654,19 +638,19 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	if(tram_part)
 		UnregisterSignal(tram_part, COMSIG_TRAM_SET_TRAVELLING)
 
-/obj/machinery/destination_sign/proc/find_tram()
+/obj/machinery/icts/destination_sign/proc/find_tram()
 	for(var/datum/lift_master/tram/tram as anything in GLOB.active_lifts_by_type[TRAM_LIFT_ID])
 		if(tram.specific_lift_id != tram_id)
 			continue
 		tram_ref = WEAKREF(tram)
 		break
 
-/obj/machinery/destination_sign/proc/on_tram_travelling(datum/source, travelling)
+/obj/machinery/icts/destination_sign/proc/on_tram_travelling(datum/source, travelling)
 	SIGNAL_HANDLER
 	update_sign()
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/datum, process))
 
-/obj/machinery/destination_sign/proc/update_operating()
+/obj/machinery/icts/destination_sign/proc/update_operating()
 	// Immediately process for snappy feedback
 	var/should_process = process() != PROCESS_KILL
 	if(should_process)
@@ -674,7 +658,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 		return
 	end_processing()
 
-/obj/machinery/destination_sign/proc/update_sign()
+/obj/machinery/icts/destination_sign/proc/update_sign()
 	var/datum/lift_master/tram/tram = tram_ref?.resolve()
 
 	if(!tram || !tram.is_operational)
@@ -735,7 +719,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 		update_appearance()
 		return PROCESS_KILL
 
-/obj/machinery/destination_sign/update_overlays()
+/obj/machinery/icts/destination_sign/update_overlays()
 	. = ..()
 	if(!light_mask)
 		return
@@ -768,5 +752,5 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	. += span_notice("THIS CALLS THE TRAM! IT DOES NOT OPERATE IT! The console on the tram tells it where to go!")
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/tram_controls, 0)
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/destination_sign/indicator, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/icts/destination_sign/indicator, 32)
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/tram, 32)

@@ -56,7 +56,8 @@ SUBSYSTEM_DEF(persistence)
 	save_scars()
 	save_custom_outfits()
 	save_delamination_counter()
-	if(SStramprocess.can_fire)
+	if(SSicts_transport.can_fire)
+		save_tram_stats()
 		save_tram_counter()
 	save_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 	save_tagline() // EFFIGY EDIT ADD (Tagline)
@@ -573,6 +574,37 @@ SUBSYSTEM_DEF(persistence)
 /datum/controller/subsystem/persistence/proc/save_tram_counter()
 		rustg_file_write("[tram_hits_this_round]", TRAM_COUNT_FILEPATH)
 
+#define TRAM_STATS_SAVE_FILE "data/trams/[SSmapping.config.map_name]_trams.json"
+
+/datum/controller/subsystem/persistence/proc/load_tram_stats(specific_transport_id)
+	var/json_file = file(TRAM_STATS_SAVE_FILE)
+	if(!fexists(json_file))
+		return
+	var/list/json = json_decode(file2text(json_file))
+	if(!json)
+		return
+
+	if(!islist(json))
+		return
+
+	for(var/tram_data in json)
+		if(!islist(tram_data))
+			continue
+
+		if(tram_data["install_location"] == specific_transport_id)
+			return tram_data
+
+/datum/controller/subsystem/persistence/proc/save_tram_stats()
+	var/json_file = file(TRAM_STATS_SAVE_FILE)
+	fdel(json_file)
+
+	var/list/tram_data = list()
+	for(var/datum/transport_controller/linear/tram/tram as anything in SSicts_transport.transports_by_type[ICTS_TYPE_TRAM])
+		tram_data += list(tram.get_json_data())
+
+	var/json_data = json_encode(tram_data)
+	rustg_file_write(json_data, TRAM_STATS_SAVE_FILE)
+	
 // EFFIGY EDIT ADD START (Tagline)
 /// Location where we save the server tagline
 #define SERVER_TAGLINE_FILEPATH "data/tagline.txt"
@@ -595,3 +627,4 @@ SUBSYSTEM_DEF(persistence)
 #undef TRAM_COUNT_FILEPATH
 #undef FILE_RECENT_MAPS
 #undef KEEP_ROUNDS_MAP
+#undef TRAM_STATS_SAVE_FILE
