@@ -1,5 +1,6 @@
 /obj/effect/turf_decal/stripes/line
-	icon_state = "warningline_white"
+	icon = 'local/icons/turf/decals.dmi'
+	icon_state = "reversedline_white"
 
 /obj/effect/turf_decal/stripes/end
 	icon_state = "warn_end_white"
