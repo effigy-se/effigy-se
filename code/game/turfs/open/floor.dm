@@ -1,7 +1,7 @@
 /// Anything above a lattice should go here.
 /turf/open/floor
 	name = "floor"
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_ICON_FILE
 	base_icon_state = "floor"
 	baseturfs = /turf/open/floor/plating
 

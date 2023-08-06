@@ -248,7 +248,7 @@ GLOBAL_VAR_INIT(starlight_color, COLOR_STARLIGHT)
 	destination_z = dest_z
 
 /turf/open/space/openspace
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_ICON_FILE
 	icon_state = MAP_SWITCH("pure_white", "invisible")
 	plane = TRANSPARENT_FLOOR_PLANE
 

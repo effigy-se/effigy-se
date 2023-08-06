@@ -5,8 +5,8 @@
 	name = "asteroid sand"
 	desc = "It's coarse and rough and gets everywhere."
 	baseturfs = /turf/open/misc/asteroid
-	icon = 'icons/turf/floors.dmi'
-	damaged_dmi = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_ICON_FILE
+	damaged_dmi = EFFIGY_TURFS_ICON_FILE
 	icon_state = "asteroid"
 	base_icon_state = "asteroid"
 
@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 /turf/open/misc/asteroid/basalt
 	name = "volcanic floor"
 	baseturfs = /turf/open/misc/asteroid/basalt
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_ICON_FILE
 	icon_state = "basalt"
 	base_icon_state = "basalt"
 	floor_variance = 15
@@ -297,7 +297,7 @@ GLOBAL_LIST_EMPTY(dug_up_basalt)
 /turf/open/misc/asteroid/moon
 	name = "lunar surface"
 	baseturfs = /turf/open/misc/asteroid/moon
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_ICON_FILE
 	icon_state = "moon"
 	base_icon_state = "moon"
 	floor_variance = 40
