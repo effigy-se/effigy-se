@@ -100,7 +100,8 @@
 			new_turf.turf_flags |= NO_RUINS
 
 	var/message = "[name] terrain generation finished in [(REALTIMEOFDAY - start_time)/10]s!"
-	to_chat(world, span_boldannounce("[message]"))
+	// to_chat(world, span_boldannounce("[message]"))
+	add_startup_message(message) // EFFIGY EDIT CHANGE - SPLASH
 	log_world(message)
 
 /datum/map_generator/cave_generator/populate_terrain(list/turfs, area/generate_in)
