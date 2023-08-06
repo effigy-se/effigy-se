@@ -383,7 +383,7 @@
 			new_acc_list[MUTANT_INDEX_NAME] = selected_sprite_accessory.name
 			new_acc_list[MUTANT_INDEX_COLOR_LIST] = selected_sprite_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
 			alterer.dna.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
-			if(ROBOTIC_DNA_ORGANS in alterer.dna.species.inherent_traits)
+			if(TRAIT_ROBOTIC_DNA_ORGANS in alterer.dna.species.inherent_traits)
 				organ_path.organ_flags |= ORGAN_ROBOTIC
 			organ_path.build_from_dna(alterer.dna, chosen_key)
 			organ_path.Insert(alterer, 0, FALSE)

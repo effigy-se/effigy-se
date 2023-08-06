@@ -1,3 +1,6 @@
+/obj/item/radio/intercom
+	icon = 'local/icons/obj/radio.dmi'
+
 /obj/item/radio/intercom/broadcast
 	icon = 'local/icons/obj/radio.dmi'
 /obj/item/radio/intercom/broadcast
