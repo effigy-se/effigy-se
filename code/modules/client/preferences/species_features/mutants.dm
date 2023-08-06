@@ -9,6 +9,7 @@
 		return FALSE
 
 	return FALSE
+	// EffigyEdit Remove - Customization
 	/*
 	if (!..(preferences))
 		return FALSE
@@ -17,6 +18,7 @@
 	var/datum/species/species = new species_type
 	return !(TRAIT_FIXED_MUTANT_COLORS in species.inherent_traits)
 	*/
+	// EffigyEdit Remove End
 
 /datum/preference/color/mutant_color/create_default_value()
 	return sanitize_hexcolor("[pick("7F", "FF")][pick("7F", "FF")][pick("7F", "FF")]")
