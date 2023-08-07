@@ -8,4 +8,4 @@
 	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
 
 /obj/structure/window/reinforced/tinted/fulltile
-	icon = 'local/icons/obj/smooth_structures/window.dmi'
+	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
