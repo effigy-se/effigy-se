@@ -184,7 +184,7 @@ The console is located at computer/gulag_teleporter.dm
 /obj/structure/gulag_beacon
 	name = "labor camp bluespace beacon"
 	desc = "A receiving beacon for bluespace teleportations."
-	icon = EFFIGY_TURFS_ICON_FILE
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "light_on-8"
 	resistance_flags = INDESTRUCTIBLE
 	anchored = TRUE
