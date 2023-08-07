@@ -8,6 +8,3 @@
 
 /turf/open/floor/carpet/lone
 	icon = 'icons/turf/floors/carpet.dmi'
-
-/turf/open/floor/wood
-	icon = EFFIGY_TURFS_ICON_FILE
