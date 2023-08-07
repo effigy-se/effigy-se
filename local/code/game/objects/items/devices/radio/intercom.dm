@@ -1,3 +1,8 @@
+/obj/item/radio/intercom
+	icon = 'local/icons/obj/radio.dmi'
+
+/obj/item/radio/intercom/broadcast
+	icon = 'local/icons/obj/radio.dmi'
 /obj/item/radio/intercom/broadcast
 	name = "Broadcast intercom"
 	desc = "Talk at this to be heard by the whole... station."

@@ -56,7 +56,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	var/map_loading = FALSE //!Are we loading in a new map?
 
 	var/current_runlevel //!for scheduling different subsystems for different stages of the round
-	var/sleep_offline_after_initializations = TRUE
+	var/sleep_offline_after_initializations = FALSE // EffigyEdit Change - controlled by subsystem
 
 	/// During initialization, will be the instanced subsytem that is currently initializing.
 	/// Outside of initialization, returns null.
@@ -311,6 +311,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	// Gave invalid return value.
 	if(result && !(result in valid_results))
 		warning("[subsystem.name] subsystem initialized, returning invalid result [result]. This is a bug.")
+		add_startup_message("[subsystem.name] subsystem initialized, returning invalid result [result].", TRUE) // EFFIGY EDIT ADD (#2 Splash)
 
 	// just returned ..() or didn't implement Initialize() at all
 	if(result == SS_INIT_NONE)
@@ -334,26 +335,26 @@ GLOBAL_REAL(Master, /datum/controller/master)
 
 	switch(result)
 		if(SS_INIT_FAILURE)
-			message_prefix = "Failed to initialize [subsystem.name] subsystem after"
+			message_prefix = "Failed to initialize [subsystem.name] subsystem!" // EffigyEdit Change - Splash
 			chat_warning = TRUE
 		if(SS_INIT_SUCCESS)
-			message_prefix = "Initialized [subsystem.name] subsystem within"
+			message_prefix = "Initialized [subsystem.name] Subsystem..." // EffigyEdit Change - Splash
 		if(SS_INIT_NO_NEED)
 			// This SS is disabled or is otherwise shy.
 			return
 		else
 			// SS_INIT_NONE or an invalid value.
-			message_prefix = "Initialized [subsystem.name] subsystem with errors within"
+			message_prefix = "[subsystem.name] Subsystem Error!" // EffigyEdit Change - Splash
 			chat_warning = TRUE
 
-	var/message = "[message_prefix] [seconds] second[seconds == 1 ? "" : "s"]!"
+	var/message = "[message_prefix] Completed in [seconds] second[seconds == 1 ? "" : "s"]!"
 	// EFFIGY EDIT REMOVE START (#2 Splash)
 	/*
 	var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
 	*/
 	// EFFIGY EDIT REMOVE END (#2 Splash)
 
-	add_startup_message(message, chat_warning) // EFFIGY EDIT ADD (#2 Splash)
+	add_startup_message(message_prefix, chat_warning) // EFFIGY EDIT ADD (#2 Splash)
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)

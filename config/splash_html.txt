@@ -17,7 +17,7 @@
 					overflow: hidden;
 					font-family: 'Segoe UI';
 					text-align: center;
-					background-color: #040404;
+					background-color: #000000;
 					padding-top: 5vmin;
 					-ms-user-select: none;
 					cursor: default;
@@ -41,26 +41,27 @@
 
 				.container_terminal {
 					position: absolute;
-					width: 1%;
-					height: 1%;
+					top: calc(90% - 3vmin);
+					left: 21vmin;
+					height: 3vmin;
+					width: calc(100% - 42vmin);
 					overflow: clip;
 					box-sizing: border-box;
-					padding: 3vmin 2vmin;
-					top: 0%;
-					left:0%;
 					z-index: 1;
 				}
 
 				.terminal_text {
+					font-family: 'Chakra Petch';
+					font-weight: 600;
+					src: url("ChakraPetch-Semibold.ttf");
 					display: inline-block;
-					font-family: "Segoe UI";
 					text-decoration: none;
 					width: 100%;
 					text-align: left;
-					color:#040404;
+					color:#FCFCFC;
 					margin-right: 0%;
 					margin-top: 0px;
-					font-size: 7px;
+					font-size: 2vmin;
 				}
 
 				.container_progress {
@@ -75,7 +76,7 @@
 					border-left: 4px solid #FCFCFC;
 					border-right: 4px solid #FCFCFC;
 					padding: 4px;
-					background-color: #040404;
+					background-color: #000000;
 				}
 
 				.progress_bar {
