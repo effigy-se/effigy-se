@@ -4,16 +4,16 @@
 	force = 3
 	throwforce = 3
 	w_class = WEIGHT_CLASS_SMALL
-	icon = 'icons/mob/species/human/bodyparts.dmi'
+	icon = 'icons/mob/human/bodyparts.dmi'
 	icon_state = "" //Leave this blank! Bodyparts are built using overlays
 	/// The icon for Organic limbs using greyscale
 	VAR_PROTECTED/icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 	///The icon for non-greyscale limbs
-	VAR_PROTECTED/icon_static = 'icons/mob/species/human/bodyparts.dmi'
+	VAR_PROTECTED/icon_static = 'icons/mob/human/bodyparts.dmi'
 	///The icon for husked limbs
-	VAR_PROTECTED/icon_husk = 'icons/mob/species/human/bodyparts.dmi'
+	VAR_PROTECTED/icon_husk = 'icons/mob/human/bodyparts.dmi'
 	///The icon for invisible limbs
-	VAR_PROTECTED/icon_invisible = 'icons/mob/species/human/bodyparts.dmi'
+	VAR_PROTECTED/icon_invisible = 'icons/mob/human/bodyparts.dmi'
 	///The type of husk for building an iconstate
 	var/husk_type = "humanoid"
 	layer = BELOW_MOB_LAYER //so it isn't hidden behind objects when on the floor
@@ -608,7 +608,7 @@
 			owner.updatehealth()
 		// EFFIGY EDIT CHANGE START (#3 Medical)
 		//Consider moving this to a new species proc "spec_heal" maybe?
-		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.inherent_traits))
+		if(owner.stat == DEAD && owner?.dna?.species && (TRAIT_REVIVES_BY_HEALING in owner.dna.species.inherent_traits))
 			if(owner.health > 50)
 				owner.revive(FALSE)
 		// EFFIGY EDIT CHANGE END (#3 Medical)
@@ -1327,13 +1327,13 @@
 	owner.visible_message(span_danger("[owner]'s [src.name] seems to malfunction!"))
 
 	var/time_needed = 10 SECONDS
-	var/brute_damage = 5 + 1.5 // Augments reduce brute damage by 5.
-	var/burn_damage = 4 + 2.5 // As above, but for burn it's 4.
+	var/brute_damage = 2.5 // Effigy EDIT : OLD is 5 + 1.5
+	var/burn_damage = 2 // Effigy EDIT : OLD is 4 + 2.5
 
 	if(severity == EMP_HEAVY)
 		time_needed *= 2
-		brute_damage *= 2
-		burn_damage *= 2
+		brute_damage *= 1.3 // Effigy EDIT : Makes Total Brute damage ~30
+		burn_damage *= 1.3 // Effigy EDIT : Makes Total Burn damage ~24
 
 	receive_damage(brute_damage, burn_damage)
 	do_sparks(number = 1, cardinal_only = FALSE, source = owner)

@@ -225,7 +225,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 /turf/closed/indestructible/fakeglass/Initialize(mapload)
 	. = ..()
 	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01) //add a grille underlay
-	underlays += mutable_appearance(EFFIGY_TURFS_FLOORS, "plating", layer - 0.02) //add the plating underlay, below the grille
+	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", layer - 0.02) //add the plating underlay, below the grille
 
 /turf/closed/indestructible/opsglass
 	name = "window"
@@ -241,7 +241,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	. = ..()
 	icon_state = null
 	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01)
-	underlays += mutable_appearance(EFFIGY_TURFS_FLOORS, "plating", layer - 0.02)
+	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", layer - 0.02)
 
 /turf/closed/indestructible/fakedoor
 	name = "airlock"
@@ -302,7 +302,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	baseturfs = /turf/closed/indestructible/necropolis
 
 /turf/closed/indestructible/necropolis/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = EFFIGY_TURFS_FLOORS
+	underlay_appearance.icon = 'icons/turf/floors.dmi'
 	underlay_appearance.icon_state = "necro1"
 	return TRUE
 
@@ -333,7 +333,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	opacity = FALSE
 
 /turf/closed/indestructible/riveted/boss/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = EFFIGY_TURFS_FLOORS
+	underlay_appearance.icon = 'icons/turf/floors.dmi'
 	underlay_appearance.icon_state = "basalt"
 	return TRUE
 
@@ -366,7 +366,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 
 /turf/closed/indestructible/resin/membrane/Initialize(mapload)
 	. = ..()
-	underlays += mutable_appearance(EFFIGY_TURFS_FLOORS, "engine") // add the reinforced floor underneath
+	underlays += mutable_appearance('icons/turf/floors.dmi', "engine") // add the reinforced floor underneath
 
 /turf/closed/indestructible/grille
 	name = "grille"
@@ -376,4 +376,4 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 
 /turf/closed/indestructible/grille/Initialize(mapload)
 	. = ..()
-	underlays += mutable_appearance(EFFIGY_TURFS_FLOORS, "plating")
+	underlays += mutable_appearance('icons/turf/floors.dmi', "plating")

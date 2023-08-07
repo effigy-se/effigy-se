@@ -298,6 +298,15 @@
 		"swab",
 		"syringe",
 		"xlarge_beaker",
+		//EFFIGY EDIT END - RESEARCH DESIGNS
+		"synth_eyes",
+		"synth_tongue",
+		"synth_liver",
+		"synth_lungs",
+		"synth_stomach",
+		"synth_ears",
+		"synth_heart",
+		//EFFIGY EDIT END - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/basic_circuitry
@@ -1269,6 +1278,7 @@
 	prereq_ids = list("biotech")
 	design_ids = list(
 		"dna_disk",
+		"dnainfuser",
 		"dnascanner",
 		"scan_console",
 		"healixir", // EFFIGY EDIT ADDITION - Medical
