@@ -1,7 +1,7 @@
 /turf/open/water
 	gender = PLURAL
 	desc = "Shallow water."
-	icon = EFFIGY_TURFS_ICON_FILE
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "riverwater_motion"
 	baseturfs = /turf/open/chasm/lavaland
 	planetary_atmos = TRUE

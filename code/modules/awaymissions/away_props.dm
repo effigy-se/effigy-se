@@ -112,6 +112,6 @@
 
 /obj/structure/pitgrate/hidden
 	name = "floor"
-	icon = EFFIGY_TURFS_ICON_FILE
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "floor"
 	hidden = TRUE
