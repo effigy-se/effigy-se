@@ -35,7 +35,7 @@
 	/// the temperature that this turf will attempt to heat/cool gasses too in a heat exchanger, in kelvin
 	var/lava_temperature = 5000
 	/// The icon that covers the lava bits of our turf
-	var/mask_icon = EFFIGY_TURFS_FLOORS
+	var/mask_icon = 'icons/turf/floors.dmi'
 	/// The icon state that covers the lava bits of our turf
 	var/mask_state = "lava-lightmask"
 	/// The configuration key for the preset fishing spot for this type of turf.
@@ -177,7 +177,7 @@
 	return
 
 /turf/open/lava/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = EFFIGY_TURFS_FLOORS
+	underlay_appearance.icon = 'icons/turf/floors.dmi'
 	underlay_appearance.icon_state = "basalt"
 	return TRUE
 
