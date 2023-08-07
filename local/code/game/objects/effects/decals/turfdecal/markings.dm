@@ -1,3 +1,6 @@
+/obj/effect/turf_decal/siding/wood
+	color = "#FFE2A6"
+
 /obj/effect/turf_decal/stripes/line
 	icon = 'local/icons/turf/decals.dmi'
 	icon_state = "reversedline_white"
