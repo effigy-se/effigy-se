@@ -18368,9 +18368,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/vending/assist,
 /obj/effect/turf_decal/bot_white,
-/obj/structure/sign/poster/contraband/punch_shit{
-	pixel_x = 30
-	},
+/obj/structure/sign/poster/contraband/punch_shit/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/port/fore)
 "hhc" = (
@@ -18637,10 +18635,8 @@
 /turf/open/floor/plating,
 /area/station/hallway/secondary/exit/departure_lounge)
 "hlb" = (
-/obj/structure/sign/poster/official/safety_eye_protection/directional/south{
-	pixel_x = 32
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/official/safety_eye_protection/directional/east,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "hlC" = (
@@ -27137,15 +27133,9 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/lesser)
 "kwM" = (
-/obj/machinery/smartfridge/chemistry/preloaded,
-/obj/machinery/door/firedoor/heavy,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
-	id = "chemistry_shutters";
-	name = "Chemistry Lobby Shutters"
-	},
-/turf/open/floor/iron/white,
-/area/station/medical/pharmacy)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "kxf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -27622,7 +27612,13 @@
 /area/station/medical/storage)
 "kHG" = (
 /obj/machinery/smartfridge/chemistry/preloaded,
-/turf/closed/wall,
+/obj/machinery/door/firedoor/heavy,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id = "chemistry_shutters";
+	name = "Chemistry Lobby Shutters"
+	},
+/turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
 "kHK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
@@ -28049,6 +28045,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"kPE" = (
+/obj/machinery/smartfridge/chemistry/preloaded,
+/obj/machinery/door/firedoor/heavy,
+/turf/open/floor/iron/dark,
+/area/station/medical/pharmacy)
 "kPK" = (
 /obj/machinery/button/ignition/incinerator/atmos{
 	pixel_x = 8;
@@ -29069,7 +29070,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/landmark/start/hangover,
-/turf/open/floor/iron,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "lhB" = (
@@ -38989,7 +38989,6 @@
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
-/turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "plG" = (
 /obj/item/kirbyplants/organic/plant5,
@@ -39579,7 +39578,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
-/turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "pwa" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -39756,10 +39754,6 @@
 	},
 /turf/open/space/basic,
 /area/space)
-"pBR" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "pBU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
@@ -43442,6 +43436,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
+"qYy" = (
+/obj/structure/sign/poster/contraband/punch_shit,
+/turf/closed/mineral/random/labormineral,
+/area/space/nearstation)
 "qZf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -55475,7 +55473,8 @@
 /area/station/engineering/supermatter/room)
 "vDD" = (
 /obj/machinery/smartfridge/drinks,
-/turf/closed/wall,
+/obj/machinery/door/firedoor,
+/turf/open/floor/wood,
 /area/station/hallway/secondary/service)
 "vDO" = (
 /obj/machinery/door/firedoor,
@@ -58350,7 +58349,6 @@
 /area/station/engineering/atmos)
 "wGe" = (
 /obj/effect/landmark/start/assistant,
-/turf/open/floor/iron,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "wGh" = (
@@ -81118,7 +81116,7 @@ aeU
 exA
 aeu
 aeu
-aeu
+qYy
 pVz
 xBI
 pVz
@@ -83206,7 +83204,7 @@ bdM
 vkE
 mpv
 opL
-kHG
+kPE
 ofg
 ofg
 nlR
@@ -84489,7 +84487,7 @@ tCd
 uHg
 dQG
 vsR
-kwM
+kHG
 kji
 fxt
 fbK
@@ -103035,7 +103033,7 @@ lFC
 rCi
 qUb
 hUL
-pBR
+kwM
 slC
 nuh
 lAB
@@ -103292,7 +103290,7 @@ lFC
 fSC
 slC
 slC
-pBR
+kwM
 hUL
 lAB
 lAB
@@ -103549,7 +103547,7 @@ dsh
 fSC
 hUL
 cyc
-pBR
+kwM
 xbx
 cOT
 wNr
