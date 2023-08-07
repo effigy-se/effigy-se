@@ -52,7 +52,7 @@
 	gender = PLURAL
 	name = "dirt"
 	desc = "Upon closer examination, it's still dirt."
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_ICON_FILE
 	icon_state = "sand"
 	base_icon_state = "sand"
 	bullet_bounce_sound = null
