@@ -5,3 +5,6 @@
 	floor_tile = /obj/item/stack/tile/carpet/purple
 	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET_PURPLE
 	canSmoothWith = SMOOTH_GROUP_CARPET_PURPLE
+
+/turf/open/floor/carpet/lone
+	icon = 'icons/turf/floors/carpet.dmi'
