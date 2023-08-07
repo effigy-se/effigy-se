@@ -2,7 +2,7 @@
 #define CIRCUIT_FLOOR_POWERUSE 120
 //Circuit flooring, glows a little
 /turf/open/floor/circuit
-	icon = 'icons/turf/floors.dmi'
+	icon = EFFIGY_TURFS_ICON_FILE
 	icon_state = "bcircuit"
 	var/icon_normal = "bcircuit"
 	light_color = LIGHT_COLOR_BABY_BLUE

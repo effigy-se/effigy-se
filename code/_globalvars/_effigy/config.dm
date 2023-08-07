@@ -65,6 +65,8 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/string/game_alert_role_id
 /datum/config_entry/string/role_assign_channel_id
 
+/datum/config_entry/flag/all_lights_after_init
+	default = FALSE
 
 /datum/config_entry/string/alert_green
 	default = "Standard security procedures. Security may not have weapons visible, privacy laws are in full effect."
