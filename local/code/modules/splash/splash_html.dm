@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(startup_messages)
 
-#define MAX_STARTUP_MESSAGES 27
+#define MAX_STARTUP_MESSAGES 1
 
 /mob/dead/new_player/proc/get_title_html()
 	var/splash_data = SStitle.title_html

@@ -159,3 +159,118 @@
   - server: Added a preventative measure to prevent calling both TGSHardRestart and
       TGSReboot, as well as potentially invoking sensitive procs that are only meant
       to be called once.
+2023-08-05:
+  Ghommie:
+  - bugfix: Areas created with the "land claim" blueprints are no longer hazardous
+      to free golems.
+  Jacquerel:
+  - rscadd: Lightgeists under AI control will selflessly heal any wounded creature
+      that they see.
+  - balance: Lightgeists can no longer repair non-organic tissue.
+  - admin: The imaginary friend smite now allows selecting "offer to ghosts" instead
+      of having to perform that poll yourself manually. When offering to ghosts you
+      can also offer for several ghosts to volunteer at the same time.
+  LT3:
+  - bugfix: Fixed disease outbreak viruses sometimes getting stuck invisible from
+      medHUDs
+  - admin: Added more admin features to create/manange disease outbreaks
+  - admin: Pressing 'cancel' on disease outbreak setup dialogs will actually cancel
+      the event instead of running it with default settings
+  MTandi:
+  - qol: You can fill microwave with stuff by hitting it with a box full of stuff.
+  Sealed101:
+  - rscdel: removed new player status tab Readiness Status
+  - rscadd: added a Ready Status Blip on the Collapse Menu button
+  - bugfix: golems that ate plasma are properly immune to ash storms
+2023-08-06:
+  Fikou:
+  - bugfix: sniper scope and kinesis should work without widescreen
+  Jacquerel:
+  - bugfix: Goliaths no longer intermittently reset their target and retarget something
+      else.
+  - bugfix: Goliaths can once again step diagonally.
+  JohnFulpWillard:
+  - bugfix: Boss music cuts out when you die.
+  Kryson, MTandi, Zeckle (Mike):
+  - image: New bottles and holy grenade sprites
+  Rhials:
+  - qol: Most of the colored oval-shaped portals faintly glow now. Cool!
+  Senefi:
+  - code_imp: Autowiki module for stock parts
+  - bugfix: Emergency lights no longer runtime when created in nullspace
+  Vekter:
+  - bugfix: Fixed the DNA Infuser's circuit board missing from the techfab and tech
+      storage.
+  Watermelon914:
+  - bugfix: Fixed being unable to purchase regular-priced uplink items if you bought
+      the discounted variant of it.
+  carlarctg:
+  - rscadd: Cursed crewmembers can randomly, extremely rarely, spontaneously combust
+      for no reason.
+  - rscadd: Cursed crewmembers can get zapped by nearby light tubes.
+  - rscadd: Cursed crewmembers can freak out when passing by mirrors.
+  - rscadd: To make up for these, triggering a cursed effect is slightly less than
+      half as likely now when walking around now.
+  necromanceranne:
+  - bugfix: Restores a lost feature, Clarkes and Odysseus mechs once again can pivot
+      on a dime and step in the same button press.
+  - qol: Mechs universally have diagonal movement as to avoid unresponsive movement,
+      as block diagonal movement was having unintended side effects and was actually
+      intended for pivot step mechs.
+  timothymtorres:
+  - rscadd: Add pAI movement freedom when emagged.
+  - qol: The "Malicious Software Detected" button has been appropriately renamed to
+      "Reset Software" for when pAIs are emagged
+  - qol: Add a new law notification popup and flavor texts when pAI is emagged
+2023-08-07:
+  Zergspower:
+  - bugfix: Fix robotic organs to not gain health passively, from revival, smart organ
+      fridge, pluxium, occuline, and earmuffs.
+  - rscadd: Some diseases now require the appropriate internal organ to work. A robotic
+      organ will give immunity to the disease symptom unless the disease has "Inorganic
+      Biology".
+  - rscadd: Disease transmission methods now require an internal organ to be successful.
+      Robotic organs give immunity. (except inorganic biology) Airborne disease transmission
+      require lungs. Ingested (drunk or eaten) disease transmission requires a stomach.
+      Blood (inject or patch) disease transmission requires a heart.
+  - rscadd: Organs removed from a mob that is afflicted with a disease will be infectious
+      while handling or transplanting it. (again, robotic organs are immune unless
+      inorganic biology is present) Certain admin spawned or special diseases are
+      exempt from this transmission method.
+  - rscadd: A stomach is required for nebula nausea, gastritium, carpellosis, metabolic
+      boost, vomit, weight loss, death sandwich poisoning
+  - rscadd: Lungs are required for choking, asphyxiation, cough, cold9, oxygen restoration,
+      sneezing, flu, cold, spanish flu, tuberculosis
+  - rscadd: A liver is required for tissue hydration, plasma fixation, parasitic infection
+  - rscadd: 'Ears are required for deafness, sensory restoration add: A heart is required
+      for toxolysis, heart failure add: Eyes are required for sensory restoration,
+      hyphema'
+  - rscadd: 'A tongue is required for voice change, pierrot throat bal: Remove head
+      requirement for wizarditis disease /'
+  - code_imp: Synth organs take EMP damage
+  - rscadd: Synth organs can be printed and replaced
+  - bugfix: 'Synth EMP damage is normalized again
+  EuSouAFazer:
+  - bugfix: Removed a doubled filing cabnet in Northstar's Library Book Return room
+  - bugfix: Exorcised uneeded variables from windoors in Meta's Xenobio
+  Ghommie:
+  - bugfix: Fixed a logic mistake for chasm fishing that resulted in only generic
+      items being spawned.
+  SandPoot:
+  - image: Changed screentips icons to something a lot fancier unified with the LMB
+      / RMB text.
+  - qol: There are accessibility preferences to disable this! Look for "Screentip
+      context with images" beside the other screentip preferences.
+  Sealed101:
+  - bugfix: fixed missing froth sprites
+  - image: bubblegum's blood smack and blood grab use new bubblegum sprites
+  Senefi:
+  - qol: Bluespace Artillery Cargo Crate includes a guide paper for how to assemble
+      it.
+  Sheits:
+  - image: Re-sprites some of the oldest hairstyles
+  Watermelon914:
+  - bugfix: Fixed particles sometimes being left behind when an object drops all of
+      its contents whilst having a particle active.
+  Wisemonster:
+  - bugfix: Fix mulebots receiving the wrong message when thier cell is added/removed.
