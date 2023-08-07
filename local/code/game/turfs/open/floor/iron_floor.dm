@@ -67,35 +67,35 @@
 	floor_tile = /obj/item/stack/tile/iron/textured_large
 
 /turf/open/floor/iron/grey
-	base_icon_state = "darkfull"
+	base_icon_state = "floor"
 
 /turf/open/floor/iron/grey/edge
-	icon_state = "dark_edge"
-	base_icon_state = "dark_edge"
+	icon_state = "floor_edge"
+	base_icon_state = "floor_edge"
 
 /turf/open/floor/iron/grey/half
-	icon_state = "dark_half"
-	base_icon_state = "dark_half"
+	icon_state = "floor_half"
+	base_icon_state = "floor_half"
 
 /turf/open/floor/iron/grey/corner
-	icon_state = "dark_corner"
-	base_icon_state = "dark_corner"
+	icon_state = "floor_corner"
+	base_icon_state = "floor_corner"
 
 /turf/open/floor/iron/grey/large
-	icon_state = "dark_large"
-	base_icon_state = "dark_large"
+	icon_state = "floor_large"
+	base_icon_state = "floor_large"
 
 /turf/open/floor/iron/grey/small
-	icon_state = "dark_small"
-	base_icon_state = "dark_small"
+	icon_state = "small"
+	base_icon_state = "small"
 
 /turf/open/floor/iron/grey/diagonal
-	icon_state = "dark_diagonal"
-	base_icon_state = "dark_diagonal"
+	icon_state = "diagonal"
+	base_icon_state = "diagonal"
 
 /turf/open/floor/iron/grey/herringbone
-	icon_state = "dark_herringbone"
-	base_icon_state = "dark_herringbone"
+	icon_state = "herringbone"
+	base_icon_state = "herringbone"
 
 /turf/open/floor/iron/grey/checker
 	icon_state = "checker"
