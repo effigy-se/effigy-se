@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(effigy)
 	name = "Effigy Game Services"
 	wait = 0.1 SECONDS
+	init_order = INIT_ORDER_EFFIGY
 	flags = SS_NO_FIRE
 
 	/// The URL of the Effigy API
