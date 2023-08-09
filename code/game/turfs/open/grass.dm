@@ -1,7 +1,7 @@
 /turf/open/misc/grass
 	name = "grass"
 	desc = "A patch of grass."
-	icon = EFFIGY_TURFS_ICON_FILE
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "grass"
 	base_icon_state = "grass"
 	baseturfs = /turf/open/misc/sandy_dirt
