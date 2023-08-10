@@ -8,7 +8,6 @@
 #define AIRLOCK_PERMIT_LIGHT_COLOR LIGHT_COLOR_ELECTRIC_CYAN
 #define AIRLOCK_DENY_LIGHT_COLOR LIGHT_COLOR_INTENSE_RED
 #define AIRLOCK_WARN_LIGHT_COLOR LIGHT_COLOR_PINK
-#define AIRLOCK_WAIT_LIGHT_COLOR LIGHT_COLOR_FAINT_BLUE
 
 #define AIRLOCK_CLOSED	1
 #define AIRLOCK_CLOSING	2
@@ -40,7 +39,6 @@
 	var/light_color_permit = AIRLOCK_PERMIT_LIGHT_COLOR
 	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
 	var/light_color_warn = AIRLOCK_WARN_LIGHT_COLOR
-	var/light_color_wait = AIRLOCK_WAIT_LIGHT_COLOR
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
 	///Is this door external? E.g. does it lead to space? Shuttle docking systems bolt doors with this flag.
@@ -105,7 +103,7 @@
 				pre_light_color = light_color_warn
 			else
 				lights_overlay = "lights_poweron_open"
-				pre_light_color = light_color_wait
+				pre_light_color = light_color_poweron
 		if(AIRLOCK_OPENING)
 			frame_state = AIRLOCK_FRAME_OPENING
 			light_state = AIRLOCK_LIGHT_OPENING

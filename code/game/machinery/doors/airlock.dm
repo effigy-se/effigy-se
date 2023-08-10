@@ -1312,7 +1312,7 @@
 	if(visible && !glass)
 		set_opacity(1)
 	update_freelook_sight()
-	sleep(0.1 SECONDS)
+	sleep(0.3 SECONDS)
 	update_icon(ALL, AIRLOCK_CLOSED, 1)
 	operating = FALSE
 	delayed_close_requested = FALSE
