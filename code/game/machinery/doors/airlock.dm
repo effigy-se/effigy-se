@@ -1228,15 +1228,15 @@
 	SEND_SIGNAL(src, COMSIG_AIRLOCK_OPEN, forced)
 	operating = TRUE
 	update_icon(ALL, AIRLOCK_OPENING, TRUE)
-	sleep(0.1 SECONDS)
-	set_opacity(0)
-	update_freelook_sight()
-	sleep(0.7 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.8 SECONDS) // EFFIGY EDIT CHANGE
 	set_density(FALSE)
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	air_update_turf(TRUE, FALSE)
-	sleep(0.3 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.2 SECONDS) // EFFIGY EDIT CHANGE
+	set_opacity(0)
+	update_freelook_sight()
 	layer = OPEN_DOOR_LAYER
+	sleep(0.4 SECONDS) // EFFIGY EDIT CHANGE
 	update_icon(ALL, AIRLOCK_OPEN, TRUE)
 	operating = FALSE
 	if(delayed_close_requested)
@@ -1306,7 +1306,7 @@
 		set_density(TRUE)
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.7 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.6 SECONDS) // EFFIGY EDIT CHANGE
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)
