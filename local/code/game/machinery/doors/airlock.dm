@@ -176,7 +176,10 @@
 	icon = 'local/icons/obj/doors/airlocks/station/com.dmi'
 
 /obj/machinery/door/airlock/engineering
-	icon = 'local/icons/obj/doors/airlocks/station/engi.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station2/greyscale.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/station2/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#EFB341#7f7e80"
 
 /obj/machinery/door/airlock/hydroponics
 	icon = 'local/icons/obj/doors/airlocks/station/hydro.dmi'
@@ -188,7 +191,10 @@
 	icon = 'local/icons/obj/doors/airlocks/station/maint-ext.dmi'
 
 /obj/machinery/door/airlock/medical
-	icon = 'local/icons/obj/doors/airlocks/station/med.dmi'
+	icon = 'local/icons/obj/doors/airlocks/station2/greyscale.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/station2/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#52B4E9#7f7e80"
 
 /obj/machinery/door/airlock/mining
 	icon = 'local/icons/obj/doors/airlocks/station/cargo.dmi'
