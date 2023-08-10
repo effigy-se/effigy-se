@@ -1,13 +1,14 @@
-#define AIRLOCK_LIGHT_POWER 0.7
-#define AIRLOCK_LIGHT_RANGE 2
+#define AIRLOCK_LIGHT_POWER 1
+#define AIRLOCK_LIGHT_RANGE 1.7
 #define AIRLOCK_LIGHT_ENGINEERING "engineering"
-#define AIRLOCK_POWERON_LIGHT_COLOR LIGHT_COLOR_LAVENDER
+#define AIRLOCK_POWERON_LIGHT_COLOR COLOR_STARLIGHT
 #define AIRLOCK_BOLTS_LIGHT_COLOR LIGHT_COLOR_INTENSE_RED
 #define AIRLOCK_EMERGENCY_LIGHT_COLOR LIGHT_COLOR_DIM_YELLOW
-#define AIRLOCK_ENGINEERING_LIGHT_COLOR CIRCUIT_COLOR_SCIENCE
-#define AIRLOCK_PERMIT_LIGHT_COLOR LIGHT_COLOR_VIVID_GREEN
+#define AIRLOCK_ENGINEERING_LIGHT_COLOR LIGHT_COLOR_PINK
+#define AIRLOCK_PERMIT_LIGHT_COLOR LIGHT_COLOR_ELECTRIC_CYAN
 #define AIRLOCK_DENY_LIGHT_COLOR LIGHT_COLOR_INTENSE_RED
-#define AIRLOCK_WARN_LIGHT_COLOR CIRCUIT_COLOR_SCIENCE
+#define AIRLOCK_WARN_LIGHT_COLOR LIGHT_COLOR_PINK
+#define AIRLOCK_WAIT_LIGHT_COLOR LIGHT_COLOR_FAINT_BLUE
 
 #define AIRLOCK_CLOSED	1
 #define AIRLOCK_CLOSING	2
@@ -30,6 +31,7 @@
 	/// For the airlocks that use a greyscale accent door color, set this color to the accent color you want it to be.
 	var/greyscale_accent_color = null
 
+	light_dir = NONE
 	var/has_environment_lights = TRUE //Does this airlock emit a light?
 	var/light_color_poweron = AIRLOCK_POWERON_LIGHT_COLOR
 	var/light_color_bolts = AIRLOCK_BOLTS_LIGHT_COLOR
@@ -38,6 +40,7 @@
 	var/light_color_permit = AIRLOCK_PERMIT_LIGHT_COLOR
 	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
 	var/light_color_warn = AIRLOCK_WARN_LIGHT_COLOR
+	var/light_color_wait = AIRLOCK_WAIT_LIGHT_COLOR
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
 	///Is this door external? E.g. does it lead to space? Shuttle docking systems bolt doors with this flag.
@@ -97,17 +100,21 @@
 			if(locked)
 				lights_overlay = "lights_bolts_open"
 				pre_light_color = light_color_bolts
-			else if(emergency)
-				lights_overlay = "lights_emergency_open"
-				pre_light_color = light_color_emergency
+			else if(!normalspeed)
+				lights_overlay = "lights_engineering_open"
+				pre_light_color = light_color_warn
 			else
 				lights_overlay = "lights_poweron_open"
-				pre_light_color = light_color_poweron
+				pre_light_color = light_color_wait
 		if(AIRLOCK_OPENING)
 			frame_state = AIRLOCK_FRAME_OPENING
 			light_state = AIRLOCK_LIGHT_OPENING
-			lights_overlay = "lights_opening"
-			pre_light_color = light_color_permit
+			if(!normalspeed)
+				lights_overlay = "lights_engineering_opening"
+				pre_light_color = light_color_warn
+			else
+				lights_overlay = "lights_opening"
+				pre_light_color = light_color_permit
 
 	. += get_airlock_overlay(frame_state, icon, src, em_block = TRUE)
 	if(airlock_material)
@@ -123,7 +130,7 @@
 		pre_light_range = door_light_range
 		pre_light_power = door_light_power
 		if(has_environment_lights)
-			set_light(pre_light_range, pre_light_power, pre_light_color, TRUE)
+			set_light(l_range = pre_light_range, l_power = pre_light_power, l_color = pre_light_color, l_on = TRUE)
 	else
 		lights_overlay = ""
 
@@ -170,55 +177,87 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 
 /obj/machinery/door/airlock/atmos
-	icon = 'local/icons/obj/doors/airlocks/station/atmos.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/command
-	icon = 'local/icons/obj/doors/airlocks/station/com.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/engineering
-	icon = 'local/icons/obj/doors/airlocks/station2/greyscale.dmi'
-	overlays_file = 'local/icons/obj/doors/airlocks/station2/overlays.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
 	greyscale_config = /datum/greyscale_config/effigy_airlock
-	greyscale_colors = "#EFB341#7f7e80"
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/hydroponics
-	icon = 'local/icons/obj/doors/airlocks/station/hydro.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/maintenance
-	icon = 'local/icons/obj/doors/airlocks/station/maint-int.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/maintenance/external
-	icon = 'local/icons/obj/doors/airlocks/station/maint-ext.dmi'
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/medical
-	icon = 'local/icons/obj/doors/airlocks/station2/greyscale.dmi'
-	overlays_file = 'local/icons/obj/doors/airlocks/station2/overlays.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
 	greyscale_config = /datum/greyscale_config/effigy_airlock
 	greyscale_colors = "#52B4E9#7f7e80"
 
 /obj/machinery/door/airlock/mining
-	icon = 'local/icons/obj/doors/airlocks/station/cargo.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/research
-	icon = 'local/icons/obj/doors/airlocks/station/rnd.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/science
-	icon = 'local/icons/obj/doors/airlocks/station/sci.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/security
-	icon = 'local/icons/obj/doors/airlocks/station/sec.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/virology
-	icon = 'local/icons/obj/doors/airlocks/station/viro.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/silver
-	icon = 'local/icons/obj/doors/airlocks/station/silver.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 // Station2
 
 /obj/machinery/door/airlock/public
-	icon = 'local/icons/obj/doors/airlocks/station2/glass.dmi'
-	overlays_file = 'local/icons/obj/doors/airlocks/station2/overlays.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 // External
 
@@ -233,7 +272,10 @@
 // Effigy
 
 /obj/machinery/door/airlock/service
-	icon = 'local/icons/obj/doors/airlocks/station/service.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/service/glass
 	opacity = FALSE
@@ -247,7 +289,10 @@
 	airlock_type = /obj/machinery/door/airlock/service
 
 /obj/machinery/door/airlock/service/studio
-	icon = 'local/icons/obj/doors/airlocks/station/studio.dmi'
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/effigy_airlock
+	greyscale_colors = "#7f7e80#7f7e80"
 
 /obj/machinery/door/airlock/service/studio/glass
 	opacity = FALSE
@@ -267,8 +312,8 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 
 /obj/structure/door_assembly/door_assembly_public
-	icon = 'local/icons/obj/doors/airlocks/station2/glass.dmi'
-	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
+	icon = 'icons/obj/doors/airlocks/station2/glass.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
 
 /obj/structure/door_assembly/door_assembly_com
 	icon = 'local/icons/obj/doors/airlocks/station/com.dmi'
