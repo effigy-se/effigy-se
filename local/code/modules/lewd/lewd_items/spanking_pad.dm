@@ -82,4 +82,4 @@
 			if(prob(10) && (target.stat != DEAD))
 				target.apply_status_effect(/datum/status_effect/subspace)
 			user.visible_message(span_purple("[user] [message]!"))
-			playsound(loc, 'local/sound/effects/lewd/slap.ogg', 100, 1, -1)
+			play_lewd_sound(loc, 'local/sound/effects/lewd/slap.ogg', 100, 1, -1)

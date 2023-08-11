@@ -77,9 +77,9 @@
 			target.adjust_arousal(6)
 			target.adjust_pleasure(9)
 			user.visible_message(span_purple("[user] [message]!"))
-			playsound(loc, pick('local/sound/effects/lewd/bang1.ogg',
+			play_lewd_sound(loc, pick('local/sound/effects/lewd/bang1.ogg',
 								'local/sound/effects/lewd/bang2.ogg',
 								'local/sound/effects/lewd/bang3.ogg',
 								'local/sound/effects/lewd/bang4.ogg',
 								'local/sound/effects/lewd/bang5.ogg',
-								'local/sound/effects/lewd/bang6.ogg'), 70, 1, -1, ignore_walls = FALSE)
+								'local/sound/effects/lewd/bang6.ogg'), 70, 1, -1)
