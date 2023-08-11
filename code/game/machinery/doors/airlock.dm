@@ -1326,7 +1326,7 @@
 			if(obj_flags & EMAGGED)
 				return FALSE
 			use_power(50)
-			playsound(src, doorClose, 30, FALSE) // EffigyEdit Change - Sound Vary FALSE
+			playsound(src, doorClose, 40, FALSE) // EffigyEdit Change - Volume, Sound Vary FALSE
 			return TRUE
 
 		if(BYPASS_DOOR_CHECKS)
