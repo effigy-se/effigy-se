@@ -85,6 +85,13 @@
 		return FALSE
 	if(SEND_SIGNAL(mob, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, new_loc, direct) & COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE)
 		return FALSE
+	// EFFIGY EDIT ADD START - Pixel Shifting
+	if(mob.shifting)
+		mob.pixel_shift(direct)
+		return FALSE
+	else if(mob.is_shifted)
+		mob.unpixel_shift()
+	// EFFIGY EDIT ADD END - Pixel Shifting
 
 	var/mob/living/L = mob //Already checked for isliving earlier
 	if(L.incorporeal_move && !is_secret_level(mob.z)) //Move though walls
