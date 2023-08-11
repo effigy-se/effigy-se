@@ -278,14 +278,15 @@
 /obj/machinery/door/airlock/external
 	icon = 'local/icons/obj/doors/airlocks/external/external.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/external/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
-/obj/machinery/door/airlock/external/glass
-	icon = 'local/icons/obj/doors/airlocks/external/external.dmi'
-	overlays_file = 'local/icons/obj/doors/airlocks/external/overlays.dmi'
 
 /obj/machinery/door/airlock/vault
 	icon = 'icons/obj/doors/airlocks/vault/vault.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/vault/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
 // Misc
 
@@ -293,32 +294,50 @@
 	icon = 'icons/obj/doors/airlocks/hatch/centcom.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/hatch/overlays.dmi'
 	note_overlay_file = 'icons/obj/doors/airlocks/hatch/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
 /obj/machinery/door/airlock/maintenance_hatch
 	icon = 'icons/obj/doors/airlocks/hatch/maintenance.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/hatch/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
 /obj/machinery/door/airlock/highsecurity
 	icon = 'icons/obj/doors/airlocks/highsec/highsec.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/highsec/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
 /obj/machinery/door/airlock/shuttle
 	icon = 'icons/obj/doors/airlocks/shuttle/shuttle.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/shuttle/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
 /obj/machinery/door/airlock/abductor
 	icon = 'icons/obj/doors/airlocks/abductor/abductor_airlock.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/abductor/overlays.dmi'
 	note_overlay_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
 /obj/machinery/door/airlock/cult
 	name = "cult airlock"
 	icon = 'icons/obj/doors/airlocks/cult/runed/cult.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/cult/runed/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
 /obj/machinery/door/airlock/cult/unruned
 	icon = 'icons/obj/doors/airlocks/cult/unruned/cult.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/cult/unruned/overlays.dmi'
+
+/obj/machinery/door/airlock/grunge
+	icon = 'icons/obj/doors/airlocks/centcom/centcom.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/centcom/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
 // Effigy
 
