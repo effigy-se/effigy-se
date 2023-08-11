@@ -196,14 +196,6 @@
 
 	return quirks_edited
 
-/// Returns the damage of the `organ_to_check`, if the organ isn't there, the proc returns `100`.
-/mob/living/carbon/human/proc/check_organ_damage(obj/item/organ/organ_to_check)
-	var/obj/item/organ/organ_to_track = get_organ_by_type(organ_to_check)
-	if(!organ_to_track)
-		return 100 //If the organ is missing, return max damage.
-
-	return organ_to_track.damage
-
 
 /// This proc saves the damage currently on `character` (human) and reapplies it after `safe_transfer_prefs()` is applied to the `character`.
 /datum/preferences/proc/safe_transfer_prefs_to_with_damage(mob/living/carbon/human/character, icon_updates = TRUE, is_antag = FALSE)

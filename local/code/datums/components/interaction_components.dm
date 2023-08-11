@@ -205,7 +205,7 @@
 
 /// Checks if the target has ERP toys enabled, and can be logially reached by the user.
 /datum/component/interactable/proc/can_lewd_strip(mob/living/carbon/human/source, mob/living/carbon/human/target, slot_index)
-	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
+	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, source, src))
 		return FALSE
 	if(!(source.loc == target.loc || source.Adjacent(target)))
 		return FALSE
