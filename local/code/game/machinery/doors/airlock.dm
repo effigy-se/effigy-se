@@ -27,8 +27,10 @@
 	var/fill_state_suffix = null
 	/// For the airlocks that use greyscale lights, set this to the color you want your lights to be.
 	var/greyscale_lights_color = null
-	doorOpen = 'sound/machines/windowdoor.ogg'
-	doorClose = 'sound/machines/boltsup.ogg'
+	doorOpen = 'local/sound/machines/airlockopen.ogg'
+	doorClose = 'local/sound/machines/airlockclose.ogg'
+	boltUp = 'local/sound/machines/bolts_up.ogg'
+	boltDown = 'local/sound/machines/bolts_down.ogg'
 	light_dir = NONE
 	var/has_environment_lights = TRUE //Does this airlock emit a light?
 	var/light_color_poweron = AIRLOCK_POWERON_LIGHT_COLOR
