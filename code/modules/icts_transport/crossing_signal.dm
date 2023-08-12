@@ -119,6 +119,8 @@
 	. = ..()
 	find_tram()
 	link_sensor(src)
+	auto_uplink(src, TRAMCTRL_INBOUND)
+	auto_uplink(src, TRAMCTRL_OUTBOUND)
 
 /obj/machinery/icts/crossing_signal/Destroy()
 	SSicts_transport.crossing_signals -= src
@@ -139,6 +141,16 @@
 /obj/machinery/icts/crossing_signal/proc/end_event_malfunction()
 	if(operating_status == ICTS_REMOTE_FAULT)
 		operating_status = ICTS_SYSTEM_NORMAL
+
+/obj/machinery/icts/crossing_signal/module/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+
+	if(default_change_direction_wrench(user, tool))
+		auto_uplink(src, TRAMCTRL_INBOUND)
+		auto_uplink(src, TRAMCTRL_OUTBOUND)
+		update_appearance()
+		return TRUE
+
 
 /**
  * Finds the tram, just like the tram computer
@@ -469,6 +481,14 @@
 		paired_sensor = null
 	. = ..()
 
+/obj/machinery/icts/guideway_sensor/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+
+	if(default_change_direction_wrench(user, tool))
+		update_appearance()
+		pair_sensor()
+		return TRUE
+
 /obj/machinery/icts/guideway_sensor/update_overlays()
 	. = ..()
 	if(machine_stat & NOPOWER)
@@ -555,4 +575,46 @@
 	if(winner_distance <= DEFAULT_TRAM_LENGTH)
 		return winner
 
+	return FALSE
+
+/obj/machinery/icts/crossing_signal/proc/auto_uplink(obj/machinery/icts/crossing_signal/signal, path)
+	if(!istype(signal) || !signal.z)
+		return FALSE
+
+	var/list/obj/effect/landmark/icts/nav_beacon/tram/candidate_beacons = list()
+
+	switch(path)
+		if(TRAMCTRL_INBOUND)
+			inbound = null
+		if(TRAMCTRL_OUTBOUND)
+			outbound = null
+
+	for(var/obj/effect/landmark/icts/nav_beacon/tram/beacon in SSicts_transport.nav_beacons)
+		switch(path)
+			if(TRAMCTRL_INBOUND)
+				if(beacon.z == signal.z)
+					if((beacon.x < signal.x && signal.dir & EAST|WEST) || (beacon.y < signal.y && signal.dir & NORTH|SOUTH))
+						candidate_beacons += beacon
+			if(TRAMCTRL_OUTBOUND)
+				if(beacon.z == signal.z)
+					if((beacon.x > signal.x && signal.dir & EAST|WEST) || (beacon.y > signal.y && signal.dir & NORTH|SOUTH))
+						candidate_beacons += beacon
+			else
+				return FALSE
+
+	var/obj/effect/landmark/icts/nav_beacon/tram/winner = candidate_beacons[1]
+	var/winner_distance = get_dist(signal, winner)
+
+	for(var/obj/effect/landmark/icts/nav_beacon/tram/beacon_to_sort as anything in candidate_beacons)
+		var/beacon_distance = get_dist(signal, beacon_to_sort)
+
+		if(beacon_distance < winner_distance)
+			winner = beacon_to_sort
+			winner_distance = beacon_distance
+
+	if(winner_distance <= DEFAULT_TRAM_LENGTH)
+		message_admins("Winning platform [winner.platform_code] found for [src.x] [src.y] [src.z], direction [path]")
+		return winner.platform_code
+
+	message_admins("No candidate beacon found for [src.x] [src.y] [src.z], direction [path]")
 	return FALSE
