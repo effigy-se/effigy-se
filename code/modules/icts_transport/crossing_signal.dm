@@ -569,9 +569,7 @@
 	return FALSE
 
 /obj/machinery/icts/crossing_signal/proc/auto_uplink(obj/machinery/icts/crossing_signal/signal, path)
-	message_admins("Attempting crossing signal auto uplink in direction [path]")
 	if(!istype(signal) || !signal.z)
-		message_admins("not [signal] or wrong z-level")
 		return FALSE
 
 	var/list/obj/effect/landmark/icts/nav_beacon/tram/candidate_beacons = list()
