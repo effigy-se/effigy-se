@@ -328,6 +328,8 @@
 	greyscale_colors = null
 
 /obj/machinery/door/airlock/material
+	icon = 'local/icons/obj/doors/airlocks/station/silver.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
 
