@@ -119,8 +119,8 @@
 	. = ..()
 	find_tram()
 	link_sensor(src)
-	inbound = auto_uplink(src, TRAMCTRL_INBOUND)
-	outbound = auto_uplink(src, TRAMCTRL_OUTBOUND)
+	inbound = auto_link(TRAMCTRL_INBOUND)
+	outbound = auto_link(TRAMCTRL_OUTBOUND)
 
 /obj/machinery/icts/crossing_signal/Destroy()
 	SSicts_transport.crossing_signals -= src
@@ -138,8 +138,8 @@
 	. = ..()
 
 	if(default_change_direction_wrench(user, tool))
-		inbound = auto_uplink(src, TRAMCTRL_INBOUND)
-		outbound = auto_uplink(src, TRAMCTRL_OUTBOUND)
+		inbound = auto_link(src, TRAMCTRL_INBOUND)
+		outbound = auto_link(src, TRAMCTRL_OUTBOUND)
 		update_appearance()
 		return TRUE
 
@@ -542,22 +542,22 @@
 	buddy.update_appearance()
 	update_appearance()
 
-/obj/machinery/icts/crossing_signal/proc/return_closest_sensor(obj/machinery/icts/crossing_signal/comparison, allow_multiple_answers = FALSE)
-	if(!istype(comparison) || !comparison.z)
+/obj/machinery/icts/crossing_signal/proc/return_closest_sensor()
+	if(!istype(src) || !src.z)
 		return FALSE
 
 	var/list/obj/machinery/icts/guideway_sensor/candidate_sensors = list()
 
 	for(var/obj/machinery/icts/guideway_sensor/sensor in SSicts_transport.sensors)
-		if(sensor.z == comparison.z)
-			if((sensor.x == comparison.x && sensor.dir & NORTH|SOUTH) || (sensor.y == comparison.y && sensor.dir & EAST|WEST))
+		if(sensor.z == src.z)
+			if((sensor.x == src.x && sensor.dir & NORTH|SOUTH) || (sensor.y == src.y && sensor.dir & EAST|WEST))
 				candidate_sensors += sensor
 
 	var/obj/machinery/icts/guideway_sensor/winner = candidate_sensors[1]
-	var/winner_distance = get_dist(comparison, winner)
+	var/winner_distance = get_dist(src, winner)
 
 	for(var/obj/machinery/icts/guideway_sensor/sensor_to_sort as anything in candidate_sensors)
-		var/sensor_distance = get_dist(comparison, sensor_to_sort)
+		var/sensor_distance = get_dist(src, sensor_to_sort)
 
 		if(sensor_distance < winner_distance)
 			winner = sensor_to_sort
@@ -568,36 +568,36 @@
 
 	return FALSE
 
-/obj/machinery/icts/crossing_signal/proc/auto_uplink(obj/machinery/icts/crossing_signal/signal, path)
-	if(!istype(signal) || !signal.z)
+/obj/machinery/icts/crossing_signal/proc/auto_link(path_inbound)
+	if(!istype(src) || !src.z)
 		return FALSE
 
 	var/list/obj/effect/landmark/icts/nav_beacon/tram/candidate_beacons = list()
 
-	switch(path)
-		if(TRAMCTRL_INBOUND)
-			inbound = null
-		if(TRAMCTRL_OUTBOUND)
-			outbound = null
+	if(path_inbound)
+		inbound = null
+	else
+		outbound = null
 
 	for(var/obj/effect/landmark/icts/nav_beacon/tram/beacon in SSicts_transport.nav_beacons[tram_id])
-		switch(path)
-			if(TRAMCTRL_INBOUND)
-				if(beacon.z == signal.z)
-					if((beacon.x < signal.x && signal.dir & EAST|WEST) || (beacon.y < signal.y && signal.dir & NORTH|SOUTH))
-						candidate_beacons += beacon
-			if(TRAMCTRL_OUTBOUND)
-				if(beacon.z == signal.z)
-					if((beacon.x > signal.x && signal.dir & EAST|WEST) || (beacon.y > signal.y && signal.dir & NORTH|SOUTH))
-						candidate_beacons += beacon
+		if(beacon.z != src.z)
+			continue
+		var/beacon_dir = get_cardinal_dir(src, beacon)
+		switch(beacon_dir)
+			if(WEST, NORTH)
+				if(path_inbound)
+					candidate_beacons += beacon
+			if(EAST, SOUTH)
+				if(!path_inbound)
+					candidate_beacons += beacon
 			else
 				return FALSE
 
 	var/obj/effect/landmark/icts/nav_beacon/tram/winner = candidate_beacons[1]
-	var/winner_distance = get_dist(signal, winner)
+	var/winner_distance = get_dist(src, winner)
 
 	for(var/obj/effect/landmark/icts/nav_beacon/tram/beacon_to_sort as anything in candidate_beacons)
-		var/beacon_distance = get_dist(signal, beacon_to_sort)
+		var/beacon_distance = get_dist(src, beacon_to_sort)
 
 		if(beacon_distance < winner_distance)
 			winner = beacon_to_sort
