@@ -2,7 +2,7 @@
 *	Looping sound for vibrating stuff
 */
 
-/datum/looping_sound/vibrator
+/datum/looping_sound/lewd/vibrator
 	start_sound = 'local/sound/effects/lewd/bzzz-loop-1.ogg'
 	start_length = 1
 	mid_sounds = 'local/sound/effects/lewd/bzzz-loop-1.ogg'
@@ -13,13 +13,13 @@
 	extra_range = SILENCED_SOUND_EXTRARANGE
 	ignore_walls = FALSE
 
-/datum/looping_sound/vibrator/low
+/datum/looping_sound/lewd/vibrator/low
 	volume = 80
 
-/datum/looping_sound/vibrator/medium
+/datum/looping_sound/lewd/vibrator/medium
 	volume = 90
 
-/datum/looping_sound/vibrator/high
+/datum/looping_sound/lewd/vibrator/high
 	volume = 100
 
 /*

@@ -12,6 +12,7 @@
 	credit_cost = CARGO_CRATE_VALUE * 3
 	description = "A middlingly small evacuation vessel, with \"private\" cabins for the research and engineering staff. Warranty void if used with more than 25 occupants."
 	admin_notes = "While the hull is as big as Boxstation's shuttle, the floorplan is SMALL. S-M-A-L-L. Meant for under 25 people. You have been warned."
+	occupancy_limit = "25"
 
 /datum/map_template/shuttle/whiteship/foxhole
 	suffix = "foxhole"
