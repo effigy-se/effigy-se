@@ -97,7 +97,7 @@
 		return
 
 	var/message = ""
-	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("[target] doesn't want you to do that."))
 		return
 
@@ -163,12 +163,12 @@
 		target.try_lewd_autoemote(pick(possible_emotes))
 
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, pick('local/sound/effects/lewd/bang1.ogg',
+	play_lewd_sound(loc, pick('local/sound/effects/lewd/bang1.ogg',
 						'local/sound/effects/lewd/bang2.ogg',
 						'local/sound/effects/lewd/bang3.ogg',
 						'local/sound/effects/lewd/bang4.ogg',
 						'local/sound/effects/lewd/bang5.ogg',
-						'local/sound/effects/lewd/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
+						'local/sound/effects/lewd/bang6.ogg'), 100, TRUE)
 
 /*
 *	COLOUR CHANGING
@@ -386,7 +386,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /// Code for taking out/putting away the other end of the toy when one end is in you
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/toggle(mob/living/carbon/human/user)
-	playsound(user, 'local/sound/effects/lewd/latex.ogg', 40, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(user, 'local/sound/effects/lewd/latex.ogg', 40, TRUE)
 
 	if(!end_in_hand)
 		take_in_hand(user)

@@ -58,7 +58,7 @@
 		return
 
 	var/message = ""
-	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!target.check_erp_prefs(/datum/preference/toggle/erp/sex_toy, user, src))
 		to_chat(user, span_danger("[target] doesn't want you to do that!"))
 		return
 	switch(user.zone_selected) //to let code know what part of body we gonna... Uhh... You get the point.
@@ -77,9 +77,9 @@
 			target.adjust_arousal(6)
 			target.adjust_pleasure(9)
 			user.visible_message(span_purple("[user] [message]!"))
-			playsound(loc, pick('local/sound/effects/lewd/bang1.ogg',
+			play_lewd_sound(loc, pick('local/sound/effects/lewd/bang1.ogg',
 								'local/sound/effects/lewd/bang2.ogg',
 								'local/sound/effects/lewd/bang3.ogg',
 								'local/sound/effects/lewd/bang4.ogg',
 								'local/sound/effects/lewd/bang5.ogg',
-								'local/sound/effects/lewd/bang6.ogg'), 70, 1, -1, ignore_walls = FALSE)
+								'local/sound/effects/lewd/bang6.ogg'), 70, 1, -1)

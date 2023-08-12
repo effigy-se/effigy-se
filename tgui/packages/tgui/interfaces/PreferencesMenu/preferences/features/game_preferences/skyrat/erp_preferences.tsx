@@ -14,6 +14,13 @@ export const erp_pref: FeatureToggle = {
   component: CheckboxInput,
 };
 
+export const erp_sounds_pref: FeatureToggle = {
+  name: 'ERP sounds',
+  category: 'ERP',
+  description: 'Toggles if you want to hear sounds from ERP mechanics.',
+  component: CheckboxInput,
+};
+
 export const bimbofication_pref: FeatureToggle = {
   name: 'Bimbofication',
   category: 'ERP',
@@ -34,6 +41,13 @@ export const sextoy_pref: FeatureToggle = {
   name: 'Sex toy interaction',
   category: 'ERP',
   description: 'When enabled, you will be able to interact with sex toys.',
+  component: CheckboxInput,
+};
+
+export const sextoy_sounds_pref: FeatureToggle = {
+  name: 'Sex toy sounds',
+  category: 'ERP',
+  description: 'Toggles if you will hear sounds from sex toys.',
   component: CheckboxInput,
 };
 
@@ -121,12 +135,5 @@ export const new_genitalia_growth_pref: FeatureToggle = {
   category: 'ERP',
   description:
     'If checked, allows drugs to grow new genitalia on your character.',
-  component: CheckboxInput,
-};
-
-export const climax_sound_perf: FeatureToggle = {
-  name: 'Toggle climax sound',
-  category: 'ERP',
-  description: 'Toggles the climax sound.',
   component: CheckboxInput,
 };

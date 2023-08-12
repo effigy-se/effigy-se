@@ -5,8 +5,6 @@
 #define CLIMAX_ON_FLOOR "On the floor"
 #define CLIMAX_IN_OR_ON "Climax in or on someone"
 
-#define CLIMAX_NO_ESCAPE_ZONE 5
-
 /mob/living/carbon/human
 	/// Used to prevent nightmare scenarios.
 	var/refractory_period
@@ -17,7 +15,6 @@
 
 	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) && !manual)
 		return
-
 	if(refractory_period > REALTIMEOFDAY)
 		return
 	refractory_period = REALTIMEOFDAY + 30 SECONDS
@@ -43,26 +40,15 @@
 			genitals.Add(CLIMAX_PENIS)
 		climax_choice = tgui_alert(src, "You are climaxing, choose which genitalia to climax with.", "Genitalia Preference!", genitals)
 
-	var/sound/cumsound
 	switch(gender)
 		if(MALE)
-			cumsound = sound(pick(
-				'local/sound/effects/lewd/final_m1.ogg',
-				'local/sound/effects/lewd/final_m2.ogg',
-				'local/sound/effects/lewd/final_m3.ogg',
-			))
-
-		else
-			cumsound = (pick(
-				'local/sound/effects/lewd/final_f1.ogg',
-				'local/sound/effects/lewd/final_f2.ogg',
-				'local/sound/effects/lewd/final_f3.ogg',
-			))
-
-	var/list/cumheads = get_hearers_in_view(CLIMAX_NO_ESCAPE_ZONE, get_turf(src))
-	for(var/mob/horrified in cumheads)
-		if(horrified.client.prefs.read_preference(/datum/preference/toggle/erp/climax_sound))
-			SEND_SOUND(horrified.client, cumsound)
+			play_lewd_sound(get_turf(src), pick('local/sound/effects/lewd/final_m1.ogg',
+										'local/sound/effects/lewd/final_m2.ogg',
+										'local/sound/effects/lewd/final_m3.ogg'), 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds)
+		if(FEMALE)
+			play_lewd_sound(get_turf(src), pick('local/sound/effects/lewd/final_f1.ogg',
+										'local/sound/effects/lewd/final_f2.ogg',
+										'local/sound/effects/lewd/final_f3.ogg'), 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds)
 
 	var/self_orgasm = FALSE
 	var/self_their = p_their()
