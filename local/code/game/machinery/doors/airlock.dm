@@ -278,6 +278,12 @@
 
 // Misc
 
+/obj/machinery/door/airlock/tram
+	icon = 'icons/obj/doors/airlocks/tram/tram.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/tram/tram-overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
+
 /obj/machinery/door/airlock/hatch
 	icon = 'icons/obj/doors/airlocks/hatch/centcom.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/hatch/overlays.dmi'
