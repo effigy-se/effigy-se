@@ -196,8 +196,8 @@
 		if(prob(50))
 			attacked.try_lewd_autoemote(pick("twitch_s" , "gasp", "shiver"))
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, pick('local/sound/effects/lewd/vax1.ogg',
-						'local/sound/effects/lewd/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
+	play_lewd_sound(loc, pick('local/sound/effects/lewd/vax1.ogg',
+						'local/sound/effects/lewd/vax2.ogg'), 70, TRUE)
 
 #undef CANDLE_LUMINOSITY
 #undef PAIN_DEFAULT

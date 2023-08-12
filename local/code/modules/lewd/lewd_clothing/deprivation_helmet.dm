@@ -86,13 +86,13 @@
 	if(user_client == "speech")
 		if(muzzle == TRUE)
 			muzzle = FALSE
-			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
 			to_chat(usr, span_notice("Speech switch off."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
 		else
 			muzzle = TRUE
-			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
 			to_chat(usr, span_notice("Speech switch on."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
@@ -100,13 +100,13 @@
 	if(user_client == "hearing")
 		if(earmuffs == TRUE)
 			earmuffs = FALSE
-			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
 			to_chat(usr, span_notice("Hearing switch off."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
 		else
 			earmuffs = TRUE
-			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
 			to_chat(usr, span_notice("Hearing switch on."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
@@ -115,13 +115,13 @@
 		var/mob/living/carbon/human/user = usr
 		if(prevent_vision == TRUE)
 			prevent_vision = FALSE
-			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
 			to_chat(usr, span_notice("Vision switch off."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.cure_blind("deprivation_helmet_[REF(src)]")
 		else
 			prevent_vision = TRUE
-			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
+			play_lewd_sound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
 			to_chat(usr, span_notice("Vision switch on."))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.become_blind("deprivation_helmet_[REF(src)]")
