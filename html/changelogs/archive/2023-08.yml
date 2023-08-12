@@ -223,9 +223,34 @@
       "Reset Software" for when pAIs are emagged
   - qol: Add a new law notification popup and flavor texts when pAI is emagged
 2023-08-07:
+  EuSouAFazer:
+  - bugfix: Removed a doubled filing cabnet in Northstar's Library Book Return room
+  - bugfix: Exorcised uneeded variables from windoors in Meta's Xenobio
+  Ghommie:
+  - bugfix: Fixed a logic mistake for chasm fishing that resulted in only generic
+      items being spawned.
   LT3:
-  - rscadd: "Nanotrasen has procured budget for station refurbishments and new building materials"
-  - rscadd: "KiloStation"
+  - rscadd: Nanotrasen has procured budget for station refurbishments and new building
+      materials
+  - rscadd: KiloStation
+  SandPoot:
+  - image: Changed screentips icons to something a lot fancier unified with the LMB
+      / RMB text.
+  - qol: There are accessibility preferences to disable this! Look for "Screentip
+      context with images" beside the other screentip preferences.
+  Sealed101:
+  - bugfix: fixed missing froth sprites
+  - image: bubblegum's blood smack and blood grab use new bubblegum sprites
+  Senefi:
+  - qol: Bluespace Artillery Cargo Crate includes a guide paper for how to assemble
+      it.
+  Sheits:
+  - image: Re-sprites some of the oldest hairstyles
+  Watermelon914:
+  - bugfix: Fixed particles sometimes being left behind when an object drops all of
+      its contents whilst having a particle active.
+  Wisemonster:
+  - bugfix: Fix mulebots receiving the wrong message when thier cell is added/removed.
   Zergspower:
   - bugfix: Fix robotic organs to not gain health passively, from revival, smart organ
       fridge, pluxium, occuline, and earmuffs.
@@ -253,35 +278,7 @@
   - code_imp: Synth organs take EMP damage
   - rscadd: Synth organs can be printed and replaced
   - bugfix: Synth EMP damage is normalized again
-  EuSouAFazer:
-  - bugfix: Removed a doubled filing cabnet in Northstar's Library Book Return room
-  - bugfix: Exorcised uneeded variables from windoors in Meta's Xenobio
-  Ghommie:
-  - bugfix: Fixed a logic mistake for chasm fishing that resulted in only generic
-      items being spawned.
-  SandPoot:
-  - image: Changed screentips icons to something a lot fancier unified with the LMB
-      / RMB text.
-  - qol: There are accessibility preferences to disable this! Look for "Screentip
-      context with images" beside the other screentip preferences.
-  Sealed101:
-  - bugfix: fixed missing froth sprites
-  - image: bubblegum's blood smack and blood grab use new bubblegum sprites
-  Senefi:
-  - qol: Bluespace Artillery Cargo Crate includes a guide paper for how to assemble
-      it.
-  Sheits:
-  - image: Re-sprites some of the oldest hairstyles
-  Watermelon914:
-  - bugfix: Fixed particles sometimes being left behind when an object drops all of
-      its contents whilst having a particle active.
-  Wisemonster:
-  - bugfix: Fix mulebots receiving the wrong message when thier cell is added/removed.
 2023-08-08:
-  LT3:
-  - bugfix: Turned on my monitor and fixed the grey levels of glass, airlock lighting.
-  - bugfix: Advanced viruses that are supposed to be stealth will again actually be
-      stealth to analyzers
   Ben10Omintrix:
   - bugfix: the bee will now care more about polinating
   - qol: in case u miscliked the bee queen with a seringe 2 times, the raegent will
@@ -311,6 +308,10 @@
   - balance: All Coroner medkits are the same, there is no 'large' variant.
   - balance: Coroners no longer get a folder.
   - code_imp: Virus visibility flags can now be toggled in view variables
+  LT3:
+  - bugfix: Turned on my monitor and fixed the grey levels of glass, airlock lighting.
+  - bugfix: Advanced viruses that are supposed to be stealth will again actually be
+      stealth to analyzers
   Melbert:
   - code_imp: Updated some status effect tick code to be more clear of how long is
       elapsing between ticks. Some effects that were inadvertently weakened are now
@@ -491,6 +492,8 @@
   - bugfix: Fixed the tramstation kitchen not having any lights
   - image: added a wagging tail for cake cats to match other cats
 2023-08-11:
+  Derpguy3:
+  - bugfix: The metastation law office's shutters now function again.
   EOBGames, MrMelbert:
   - rscadd: Mars celebrates the 250th anniversary of the Martian Concession this year,
       and this has brought Martian cuisine to new heights of popularity. Find a new
@@ -516,10 +519,12 @@
       being sent multiple times.
   LT3:
   - bugfix: Large airlocks are now a subtype and function on both tiles
+  - refactor: New airlocks
   Melbert:
   - bugfix: Fix some missing wizard spellbook flavor
   - bugfix: Fixed latejoiners being affected by certain things twice, such as Summon
       Guns and Summon Magic
+  - bugfix: Fix antimagic effect not expiring
   Paxilmaniac:
   - bugfix: The bulbs of lights will now have an emissive glow when on, making it
       so they appear active no matter how dark the area surrounding them happens to
@@ -534,15 +539,40 @@
       way.
   Vincent983:
   - spellcheck: improvised fire extinguishers aren't full of typoes now
+  Wallem:
+  - rscadd: T
   Watermelon914:
   - admin: 'Added new lua functions: SS13.is_valid, SS13.stop_tracking, SS13.new_untracked,
       SS13.type and SS13.qdel'
   carlarctg:
   - qol: Drill module automatically disables if it's about to drill into gibtonite
+  - balance: Lepton Violet (wabbajack) shuttle must be unlocked by having some form
+      of polymorph happen in-game first (Pride Mirror or the cursed springs are the
+      most accessible sources)
+  - balance: Scrapheap shuttle can only be bought if the Cargo budget is below 600
+      credits, and the shuttle has just less than half of its usual refueling time
+      left. However, it gives the cargo budget an influx of 3000 credits!
+  - qol: Uncle Pete's Rollerdome has had its price increased, and the disco machine
+      is no longer unbreakable.
   iain0:
   - bugfix: A small clerical error fixed which will cause the Ukrainian station naming
       prefix to be properly applied to the Independence Day of Ukraine holiday on
       24th August, rather than overwriting the Indigenous People's Day station prefixes.
+  larentoun, softcerv, GoldenAlpharex, vinylspiders for Skyrat 13, unit0016:
+  - refactor: Moves Pixel Shift logic to Component
+  - qol: Organic Interface sounds now have prefs associated with them.
+  - bugfix: Certain organs that should have been unremovable for a long time, are
+      now properly unremovable. You know exactly why.
+  - bugfix: greyscale color selection menu is now working again in the loadout prefs
+      menu
+  - code_imp: the damage tracking code used by the SAD, to prevent unintended healing,
+      has been moved to it's own separate component.
+  - bugfix: fixes soulcatchers not properly returning minds back to bodies.
+  - bugfix: Layershifting is no longer stealth removed. Lol, lmao
   timothymtorres:
   - rscadd: Add admin blackhole shuttle event with a normal version and suicidal version.
   - bugfix: Fix several shuttle event runtimes
+  - qol: Emergency shuttle now gracefully display occupancy limits and prerequisites
+      in the communication console.
+  - balance: Change mousetraps to kill mice instead of damaging them (except regal
+      rats)
