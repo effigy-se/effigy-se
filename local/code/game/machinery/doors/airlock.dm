@@ -327,6 +327,10 @@
 	greyscale_config = null
 	greyscale_colors = null
 
+/obj/machinery/door/airlock/material
+	greyscale_config = null
+	greyscale_colors = null
+
 // Effigy
 
 /obj/machinery/door/airlock/service
