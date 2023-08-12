@@ -26,6 +26,11 @@
 
 #define PLATFORM_ACTIVE 1
 
+#define TRAMCTRL_INBOUND 1
+#define TRAMCTRL_OUTBOUND 0
+#define TRAMCTRL_FAST 1
+#define TRAMCTRL_SAFE 0
+
 // Flags for the ICTS Tram VOBC (vehicle on-board computer)
 
 #define SYSTEM_FAULT (1<<0)

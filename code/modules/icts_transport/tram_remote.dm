@@ -1,8 +1,3 @@
-#define TRAMCTRL_INBOUND 1
-#define TRAMCTRL_OUTBOUND 0
-#define TRAMCTRL_FAST 1
-#define TRAMCTRL_SAFE 0
-
 /obj/item/assembly/control/icts/remote
 	icon_state = "tramremote_nis"
 	inhand_icon_state = "electronic"
