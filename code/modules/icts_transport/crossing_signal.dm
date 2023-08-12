@@ -119,8 +119,8 @@
 	. = ..()
 	find_tram()
 	link_sensor(src)
-	auto_uplink(src, TRAMCTRL_INBOUND)
-	auto_uplink(src, TRAMCTRL_OUTBOUND)
+	inbound = auto_uplink(src, TRAMCTRL_INBOUND)
+	outbound = auto_uplink(src, TRAMCTRL_OUTBOUND)
 
 /obj/machinery/icts/crossing_signal/Destroy()
 	SSicts_transport.crossing_signals -= src
@@ -134,23 +134,14 @@
 	obj_flags |= EMAGGED
 	return TRUE
 
-/obj/machinery/icts/crossing_signal/proc/start_event_malfunction()
-	if(operating_status == ICTS_SYSTEM_NORMAL)
-		operating_status = ICTS_REMOTE_FAULT
-
-/obj/machinery/icts/crossing_signal/proc/end_event_malfunction()
-	if(operating_status == ICTS_REMOTE_FAULT)
-		operating_status = ICTS_SYSTEM_NORMAL
-
 /obj/machinery/icts/crossing_signal/module/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 
 	if(default_change_direction_wrench(user, tool))
-		auto_uplink(src, TRAMCTRL_INBOUND)
-		auto_uplink(src, TRAMCTRL_OUTBOUND)
+		inbound = auto_uplink(src, TRAMCTRL_INBOUND)
+		outbound = auto_uplink(src, TRAMCTRL_OUTBOUND)
 		update_appearance()
 		return TRUE
-
 
 /**
  * Finds the tram, just like the tram computer
@@ -578,7 +569,9 @@
 	return FALSE
 
 /obj/machinery/icts/crossing_signal/proc/auto_uplink(obj/machinery/icts/crossing_signal/signal, path)
+	message_admins("Attempting crossing signal auto uplink in direction [path]")
 	if(!istype(signal) || !signal.z)
+		message_admins("not [signal] or wrong z-level")
 		return FALSE
 
 	var/list/obj/effect/landmark/icts/nav_beacon/tram/candidate_beacons = list()
@@ -589,7 +582,7 @@
 		if(TRAMCTRL_OUTBOUND)
 			outbound = null
 
-	for(var/obj/effect/landmark/icts/nav_beacon/tram/beacon in SSicts_transport.nav_beacons)
+	for(var/obj/effect/landmark/icts/nav_beacon/tram/beacon in SSicts_transport.nav_beacons[tram_id])
 		switch(path)
 			if(TRAMCTRL_INBOUND)
 				if(beacon.z == signal.z)
@@ -612,9 +605,7 @@
 			winner = beacon_to_sort
 			winner_distance = beacon_distance
 
-	if(winner_distance <= DEFAULT_TRAM_LENGTH)
-		message_admins("Winning platform [winner.platform_code] found for [src.x] [src.y] [src.z], direction [path]")
-		return winner.platform_code
+	if(!winner)
+		return FALSE
 
-	message_admins("No candidate beacon found for [src.x] [src.y] [src.z], direction [path]")
-	return FALSE
+	return winner.platform_code
