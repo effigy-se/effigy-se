@@ -119,8 +119,8 @@
 	. = ..()
 	find_tram()
 	link_sensor(src)
-	inbound = auto_link(TRAMCTRL_INBOUND)
-	outbound = auto_link(TRAMCTRL_OUTBOUND)
+	auto_link(TRAMCTRL_INBOUND)
+	auto_link(TRAMCTRL_OUTBOUND)
 
 /obj/machinery/icts/crossing_signal/Destroy()
 	SSicts_transport.crossing_signals -= src
@@ -568,7 +568,7 @@
 
 	return FALSE
 
-/obj/machinery/icts/crossing_signal/proc/auto_link(path_inbound)
+/obj/machinery/icts/crossing_signal/proc/auto_link(path_inbound = TRAMCTRL_INBOUND)
 	if(!istype(src) || !src.z)
 		return FALSE
 
@@ -582,7 +582,17 @@
 	for(var/obj/effect/landmark/icts/nav_beacon/tram/beacon in SSicts_transport.nav_beacons[tram_id])
 		if(beacon.z != src.z)
 			continue
-		var/beacon_dir = get_cardinal_dir(src, beacon)
+		var/beacon_dir = NONE
+		while(!beacon_dir) // Yes, we have to make sure get_cardinal_dir doesn't return the wrong direction somehow. This is why we drink.
+			var/temp_dir = get_cardinal_dir(src, beacon)
+			switch(dir)
+				if(EAST, WEST)
+					if(temp_dir == EAST || temp_dir == WEST)
+						beacon_dir = temp_dir
+				if(NORTH, SOUTH)
+					if(temp_dir == NORTH || temp_dir == SOUTH)
+						beacon_dir = temp_dir
+
 		switch(beacon_dir)
 			if(WEST, NORTH)
 				if(path_inbound)
@@ -604,6 +614,9 @@
 			winner_distance = beacon_distance
 
 	if(!winner)
-		return FALSE
+		return
 
-	return winner.platform_code
+	if(path_inbound)
+		inbound = winner.platform_code
+	else
+		outbound = winner.platform_code
