@@ -1093,3 +1093,8 @@ TREK
 	name = "Colourable ID Card"
 	icon_file = 'local/icons/mob/clothing/greyscale/id_card.dmi'
 	json_config = 'local/code/datums/greyscale/json_configs/items/id_card.json'
+
+/datum/greyscale_config/effigy_airlock
+	name = "Effigy Airlock"
+	icon_file = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	json_config = 'local/code/datums/greyscale/json_configs/effigy_airlock.json'
