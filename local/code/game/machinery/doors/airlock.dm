@@ -328,14 +328,22 @@
 	greyscale_config = null
 	greyscale_colors = null
 
-/obj/machinery/door/airlock/material
-	greyscale_config = /datum/greyscale_config/airlock_effigy/material
+/**
+ * Multi-tile
+ */
 
-
+/obj/machinery/door/airlock/multi_tile
+	icon = 'icons/obj/doors/airlocks/glass_large/glass_large.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/glass_large/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
 
 /**
  * Mineral
  */
+
+/obj/machinery/door/airlock/material
+	greyscale_config = /datum/greyscale_config/airlock_effigy/material
 
 /obj/machinery/door/airlock/gold
 	icon = 'icons/obj/doors/airlocks/station/gold.dmi'
