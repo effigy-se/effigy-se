@@ -1340,13 +1340,13 @@
 			vend_ready = TRUE
 			return
 		else if(age_restrictions && item_record.age_restricted && (!card_used.registered_age || card_used.registered_age < AGE_MINOR))
-			speak("You are not of legal age to purchase [item_record.name].")
+			speak("Your ID has been blacklisted from purchasing [item_record.name].")
 			if(!(usr in GLOB.narcd_underages))
 				if (isnull(sec_radio))
 					sec_radio = new (src)
 					sec_radio.set_listening(FALSE)
 				sec_radio.set_frequency(FREQ_SECURITY)
-				sec_radio.talk_into(src, "SECURITY ALERT: [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY) // EFFIGY EDIT CHANGE
+				sec_radio.talk_into(src, "SECURITY ALERT: [usr] recorded attempting to purchase blacklisted product [item_record.name] in [get_area(src)].", FREQ_SECURITY) // EFFIGY EDIT CHANGE
 				GLOB.narcd_underages += usr
 			flick(icon_deny,src)
 			vend_ready = TRUE
