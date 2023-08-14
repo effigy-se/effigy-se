@@ -43,10 +43,12 @@
 			colored_message = "(ASAY) [colored_message]"
 		if(LOG_EMOTE)
 			colored_message = "(EMOTE) [colored_message]"
-		// EFFIGY EDIT ADD START (Subtler)
+		// EffigyEdit Add - Subtle
+		if(LOG_SUBTLE)
+			colored_message = "(EMOTE) (SUBTLE) [colored_message]"
 		if(LOG_SUBTLER)
 			colored_message = "(EMOTE) (SUBTLER) [colored_message]"
-		// EFFIGY EDIT ADD END (Subtler)
+		// EffigyEdit Add End
 		if(LOG_RADIO_EMOTE)
 			colored_message = "(RADIOEMOTE) [colored_message]"
 
