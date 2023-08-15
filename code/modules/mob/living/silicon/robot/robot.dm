@@ -726,9 +726,6 @@
 		update_transform(0.8) // EFFIGY EDIT CHANGE (Was 0.5)
 		hasExpanded = FALSE
 	// EFFIGY EDIT ADD START
-	if (hasShrunk)
-		hasShrunk = FALSE
-		update_transform(4/3)
 	hasAffection = FALSE
 	// EFFIGY EDIT ADD END
 	logevent("Chassis model has been reset.")
