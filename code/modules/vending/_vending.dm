@@ -1340,7 +1340,7 @@
 			vend_ready = TRUE
 			return
 		else if(age_restrictions && item_record.age_restricted && (!card_used.registered_age || card_used.registered_age < AGE_MINOR))
-			speak("You are not of legal age to purchase [item_record.name].")
+			speak("Your ID has been blacklisted from purchasing [item_record.name].")
 			if(!(usr in GLOB.narcd_underages))
 				if (isnull(sec_radio))
 					sec_radio = new (src)
