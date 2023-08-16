@@ -366,7 +366,14 @@
 			/obj/machinery/plumbing/bottler = 50,
 			/obj/machinery/plumbing/tank = 20,
 			/obj/machinery/plumbing/acclimator = 10,
-		)
+		),
+		// EffigyEdit Add - Liquids
+
+		//category 4 liquids
+		"Liquids" = list(
+			/obj/structure/drain = 5,
+		),
+		// EffigyEdit Add End
 	)
 
 /obj/item/construction/plumbing/service/Initialize(mapload)
