@@ -1346,7 +1346,7 @@
 					sec_radio = new (src)
 					sec_radio.set_listening(FALSE)
 				sec_radio.set_frequency(FREQ_SECURITY)
-				sec_radio.talk_into(src, "SECURITY ALERT: [usr] recorded attempting to purchase blacklisted product [item_record.name] in [get_area(src)].", FREQ_SECURITY) // EFFIGY EDIT CHANGE
+				sec_radio.talk_into(src, "SECURITY ALERT: [usr] recorded attempting to purchase blacklisted item [item_record.name] in [get_area(src)].", FREQ_SECURITY) // EffigyEdit Change
 				GLOB.narcd_underages += usr
 			flick(icon_deny,src)
 			vend_ready = TRUE
