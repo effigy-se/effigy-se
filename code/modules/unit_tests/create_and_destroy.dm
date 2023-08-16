@@ -11,16 +11,16 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	// EFFIGY EDIT ADD START (Unit Tests)
 
 	//Not designed to be spawned without a turf.
-	ignore += typesof(/obj/effect/abstract/liquid_turf)
+	uncreatables += typesof(/obj/effect/abstract/liquid_turf)
 	//Unused - not supposed to be spawned without SSliquids
-	ignore += typesof(/turf/open/openspace/ocean)
+	uncreatables += typesof(/turf/open/openspace/ocean)
 	//Baseturf editors can only go up to ten, stop this.
-	ignore += typesof(/obj/effect/baseturf_helper)
+	uncreatables += typesof(/obj/effect/baseturf_helper)
 	// It's the abstract base type, it shouldn't be spawned.
-	ignore += /obj/item/organ/external/genital
+	uncreatables += /obj/item/organ/external/genital
 	// These two are locked to one type only, and shouldn't be widely available, hence why they runtime otherwise.
 	// Can't be bothered adding more to them.
-	ignore += list(/obj/item/organ/external/neck_accessory, /obj/item/organ/external/head_accessory)
+	uncreatables += list(/obj/item/organ/external/neck_accessory, /obj/item/organ/external/head_accessory)
 
 	// EFFIGY EDIT ADD END (Unit Tests)
 
