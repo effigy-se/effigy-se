@@ -381,7 +381,7 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 
 /obj/structure/door_assembly/door_assembly_public
-	icon = 'icons/obj/doors/airlocks/station2/glass.dmi'
+	icon = 'icons/obj/doors/airlocks/public/glass.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
 
 /obj/structure/door_assembly/door_assembly_com
