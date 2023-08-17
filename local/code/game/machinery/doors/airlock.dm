@@ -333,8 +333,8 @@
  */
 
 /obj/machinery/door/airlock/multi_tile
-	icon = 'icons/obj/doors/airlocks/glass_large/glass_large.dmi'
-	overlays_file = 'icons/obj/doors/airlocks/glass_large/overlays.dmi'
+	icon = 'icons/obj/doors/airlocks/multi_tile/public/glass.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/multi_tile/public/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
 
