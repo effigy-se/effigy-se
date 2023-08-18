@@ -704,10 +704,10 @@
 		// EFFIGY EDIT ADD START (Medical)
 		if(body_part.current_gauze)
 			var/datum/bodypart_aid/current_gauze = body_part.current_gauze
-			combined_msg += "\t [span_notice("Your [body_part.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.")]"
+			combined_msg += "[span_notice("Your [body_part.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.")]"
 		if(body_part.current_splint)
 			var/datum/bodypart_aid/current_splint = body_part.current_splint
-			combined_msg += "\t [span_notice("Your [body_part.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.")]"
+			combined_msg += "[span_notice("Your [body_part.name] is [current_splint.desc_prefix] with a<a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.")]"
 		// EFFIGY EDIT ADD END
 
 	for(var/t in missing)
