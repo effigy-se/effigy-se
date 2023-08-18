@@ -74,4 +74,4 @@
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
 		user.flick_overlay_static(overlay, 50)
-		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/annoyed.ogg', 25, TRUE)
+		playsound(get_turf(user), 'local/sound/emotes/generic/annoyed.ogg', 25, TRUE)
