@@ -571,7 +571,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 /obj/machinery/icts/destination_sign
 	name = "destination sign"
 	desc = "A display to show you what direction the tram is travelling."
-	icon = 'icons/obj/machines/tram_sign.dmi'
+	icon = 'icons/obj/tram/tram_sign.dmi'
 	icon_state = "desto_off"
 	base_icon_state = "desto_"
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 1.2
