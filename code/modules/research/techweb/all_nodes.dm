@@ -275,6 +275,7 @@
 		"circular_saw",
 		"cybernetic_ears",
 		"cybernetic_eyes",
+		"cybernetic_eyes_moth",
 		"cybernetic_heart",
 		"cybernetic_liver",
 		"cybernetic_lungs",
@@ -1325,6 +1326,7 @@
 	design_ids = list(
 		"cybernetic_ears_u",
 		"cybernetic_eyes_improved",
+		"cybernetic_eyes_improved_moth",
 		"cybernetic_heart_tier2",
 		"cybernetic_liver_tier2",
 		"cybernetic_lungs_tier2",
@@ -1348,6 +1350,8 @@
 		"cybernetic_ears_xray",
 		"ci-gloweyes",
 		"ci-welding",
+		"ci-gloweyes-moth",
+		"ci-welding-moth",
 		"cybernetic_heart_tier3",
 		"cybernetic_liver_tier3",
 		"cybernetic_lungs_tier3",
@@ -1532,6 +1536,8 @@
 	description = "Unlocks new designs that improve rapid devices."
 	prereq_ids = list("adv_engi")
 	design_ids = list(
+		"rcd_upgrade_anti_interrupt",
+		"rcd_upgrade_cooling",
 		"rcd_upgrade_frames",
 		"rcd_upgrade_furnishing",
 		"rcd_upgrade_simple_circuits",
@@ -1667,6 +1673,7 @@
 		"mod_clamp",
 		"mod_drill",
 		"mod_orebag",
+		"modlink_scryer",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
