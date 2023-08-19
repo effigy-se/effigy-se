@@ -34,15 +34,16 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Mute", "Soft-Spoken"),
 		list("Stormtrooper Aim", "Big Hands"),
 		list("Bilingual", "Foreigner"),
-		list("Spacer", "Paraplegic"),
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		list("Spacer", "Paraplegic", "Settler"),
+		list("Photophobia", "Nyctophobia"),
+		list("Settler", "Freerunning"),
+		// EffigyEdit Add - #3 Customization - Ported from Skyrat
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
 		list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
 		list("Mute", "Social Anxiety"),
 		list("No Guns", "Pacifist"),
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
-		list("Photophobia", "Nyctophobia"),
+		// EffigyEdit End
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
