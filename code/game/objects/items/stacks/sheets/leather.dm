@@ -218,6 +218,10 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 		new/datum/stack_recipe("security belt", /obj/item/storage/belt/security, 2, check_density = FALSE, category = CAT_CONTAINERS), \
 		new/datum/stack_recipe("shoulder holster", /obj/item/storage/belt/holster, 3, check_density = FALSE, category = CAT_CONTAINERS), \
 		new/datum/stack_recipe("bandolier", /obj/item/storage/belt/bandolier, 5, check_density = FALSE, category = CAT_CONTAINERS), \
+		// EffigyEdit Add - Recipes
+		new/datum/stack_recipe("medical bandolier", /obj/item/storage/belt/medbandolier, 5, check_density = FALSE, category = CAT_CONTAINERS), \
+		new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/skyrat/gear_harness, 6, check_density = FALSE, category = CAT_CLOTHING), \
+		// EffigyEdit End
 	)),
 	new/datum/stack_recipe_list("cowboy hats", list( \
 		new/datum/stack_recipe("sheriff hat", /obj/item/clothing/head/cowboy/brown, 2, check_density = FALSE, category = CAT_CLOTHING), \
@@ -231,7 +235,6 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 /obj/item/stack/sheet/leather/get_main_recipes()
 	. = ..()
 	. += GLOB.leather_recipes
-	add_recipes_to_sublist(., "belts", GLOB.effigy_leather_belt_recipes) // EFFIGY EDIT ADD
 
 /obj/item/stack/sheet/leather/five
 	amount = 5
