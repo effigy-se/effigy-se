@@ -222,10 +222,7 @@
 	custom_materials = list(/datum/material/bone = HALF_SHEET_MATERIAL_AMOUNT * 7)
 	force_unwielded = 12
 	force_wielded = 20
-
-	//SKYRAT EDIT ADDITION BEGIN - increases bone spear range to 2
-	reach = 2
-	//SKYRAT EDIT ADDITION END
+	reach = 2 // EffigyEdit Add - increases bone spear range to 2
 
 /*
  * Bamboo Spear

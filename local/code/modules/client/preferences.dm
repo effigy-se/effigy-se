@@ -49,6 +49,13 @@
 	/// A photo of the character, visible on close examine
 	var/headshot = ""
 
+/**
+ * A wrapper function for apply_prefs_to to use asynchronously when timing wonkiness happens.
+*/
+/datum/preferences/proc/apply_prefs_to_sleepy(mob/living/carbon/human/character, icon_updates = TRUE, visuals_only = FALSE, delay = 1)
+	sleep(delay)
+	apply_prefs_to(character, icon_updates, visuals_only)
+
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	// Reset cultural stuff

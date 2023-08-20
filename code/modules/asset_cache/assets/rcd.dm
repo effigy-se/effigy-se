@@ -28,7 +28,7 @@
 	//EFFIGY EDIT START - Updated airlock sprites for RCD
 	var/list/airlocks = list(
 		"Standard" = 'local/icons/obj/doors/airlocks/station/generic.dmi',
-		"Public" = 'icons/obj/doors/airlocks/station2/glass.dmi',
+		"Public" = 'icons/obj/doors/airlocks/public/glass.dmi',
 		"Engineering" = 'local/icons/obj/doors/airlocks/station/engi.dmi',
 		"Atmospherics" = 'local/icons/obj/doors/airlocks/station/atmos.dmi',
 		"Security" = 'local/icons/obj/doors/airlocks/station/sec.dmi',
