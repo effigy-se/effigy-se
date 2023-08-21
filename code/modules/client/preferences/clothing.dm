@@ -1,13 +1,13 @@
-/proc/generate_underwear_icon(datum/sprite_accessory/accessory, icon/base_icon, color)
+/proc/generate_underwear_icon(datum/sprite_accessory/accessory, icon/base_icon, color, icon_offset = 0) // EffigyEdit Change - icon_offset customized underwear
 	var/icon/final_icon = new(base_icon)
 
 	if (!isnull(accessory))
-		var/icon/accessory_icon = icon('icons/mob/clothing/underwear.dmi', accessory.icon_state)
+		var/icon/accessory_icon = icon(accessory.icon, accessory.icon_state) // EffigyEdit Change - icon_offset customized underwear - Original: var/icon/accessory_icon = icon('icons/mob/clothing/underwear.dmi', accessory.icon_state)
 		if (color && !accessory.use_static)
 			accessory_icon.Blend(color, ICON_MULTIPLY)
 		final_icon.Blend(accessory_icon, ICON_OVERLAY)
 
-	final_icon.Crop(10, 1, 22, 13)
+	final_icon.Crop(10, 1+icon_offset, 22, 13+icon_offset) // EffigyEdit Change - icon_offset customized underwear
 	final_icon.Scale(32, 32)
 
 	return final_icon
@@ -99,7 +99,7 @@
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_r_leg"), ICON_OVERLAY)
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_l_leg"), ICON_OVERLAY)
 
-	return generate_underwear_icon(GLOB.socks_list[value], lower_half)
+	return generate_underwear_icon(GLOB.socks_list[value], lower_half) // EffigyEdit Change - icon_offset customized underwear
 
 /datum/preference/choiced/socks/apply_to_human(mob/living/carbon/human/target, value)
 	target.socks = value
@@ -130,9 +130,9 @@
 
 	if (value != "Nude")
 		var/datum/sprite_accessory/accessory = GLOB.undershirt_list[value]
-		icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
+		icon_with_undershirt.Blend(icon(accessory.icon, accessory.icon_state), ICON_OVERLAY) // EffigyEdit Change - customized underwear - Original: icon_with_undershirt.Blend(icon('icons/mob/clothing/underwear.dmi', accessory.icon_state), ICON_OVERLAY)
 
-	icon_with_undershirt.Crop(9, 9, 23, 23)
+	icon_with_undershirt.Crop(10, 11, 22, 23) // EffigyEdit Change - customized underwear - Original: icon_with_undershirt.Crop(9, 9, 23, 23)
 	icon_with_undershirt.Scale(32, 32)
 	return icon_with_undershirt
 
@@ -159,7 +159,7 @@
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_r_leg"), ICON_OVERLAY)
 		lower_half.Blend(icon('icons/mob/human/bodyparts_greyscale.dmi', "human_l_leg"), ICON_OVERLAY)
 
-	return generate_underwear_icon(GLOB.underwear_list[value], lower_half, COLOR_ALMOST_BLACK)
+	return generate_underwear_icon(GLOB.underwear_list[value], lower_half, COLOR_ALMOST_BLACK, icon_offset = 5) // EffigyEdit Change - icon_offset customized underwear
 
 /datum/preference/choiced/underwear/apply_to_human(mob/living/carbon/human/target, value)
 	target.underwear = value
