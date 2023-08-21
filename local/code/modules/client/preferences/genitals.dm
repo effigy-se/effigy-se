@@ -64,7 +64,7 @@
 	return TRUE
 
 /datum/preference/choiced/genital/create_default_value()
-	return initial(default_accessory_type?.name) || "None"
+	return initial(default_accessory_type.name)
 
 /datum/preference/choiced/genital/init_possible_values()
 	return assoc_to_keys_features(GLOB.sprite_accessories[relevant_mutant_bodypart])
