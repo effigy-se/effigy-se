@@ -1,5 +1,11 @@
 /obj/machinery/light/update_overlays()
 	. = ..()
+
+	if(low_power_mode)
+		. += mutable_appearance(overlay_icon, "[base_state]_lowpower")
+		. += emissive_appearance(overlay_icon, "[base_state]_lowpower", src, alpha = src.alpha)
+		return
+
 	if(!on || status != LIGHT_OK)
 		. += mutable_appearance(overlay_icon, "[base_state]_off")
 		. += emissive_appearance(overlay_icon, "[base_state]_off", src, alpha = src.alpha)
@@ -7,10 +13,6 @@
 
 	var/area/local_area = get_room_area(src)
 
-	if(low_power_mode)
-		. += mutable_appearance(overlay_icon, "[base_state]_lowpower")
-		. += emissive_appearance(overlay_icon, "[base_state]_lowpower", src, alpha = src.alpha)
-		return
 	if(major_emergency || (local_area?.fire))
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		. += emissive_appearance(overlay_icon, "[base_state]_emergency", src, alpha = src.alpha)
