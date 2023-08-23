@@ -1094,7 +1094,11 @@ TREK
 	icon_file = 'local/icons/mob/clothing/greyscale/id_card.dmi'
 	json_config = 'local/code/datums/greyscale/json_configs/items/id_card.json'
 
-/datum/greyscale_config/effigy_airlock
+/datum/greyscale_config/airlock_effigy
 	name = "Effigy Airlock"
 	icon_file = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
-	json_config = 'local/code/datums/greyscale/json_configs/effigy_airlock.json'
+	json_config = 'local/code/datums/greyscale/json_configs/airlock/effigy_airlock_v2.json'
+
+/datum/greyscale_config/airlock_effigy/material
+	name = "Material Effigy Airlock"
+	json_config = 'local/code/datums/greyscale/json_configs/airlock/effigy_airlock_material.json'

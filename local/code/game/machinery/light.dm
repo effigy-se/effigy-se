@@ -6,6 +6,8 @@
 	light_power = 1.25
 
 /obj/machinery/light
+	icon = 'local/icons/obj/lighting.dmi'
+	overlay_icon = 'local/icons/obj/lighting_overlay.dmi'
 	brightness = 6.5
 	fire_brightness = 4.5
 	fire_colour = "#D47F9B"
