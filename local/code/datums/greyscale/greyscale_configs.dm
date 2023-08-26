@@ -1101,4 +1101,5 @@ TREK
 
 /datum/greyscale_config/airlock_effigy/material
 	name = "Material Effigy Airlock"
+	icon_file = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
 	json_config = 'local/code/datums/greyscale/json_configs/airlock/effigy_airlock_material.json'
