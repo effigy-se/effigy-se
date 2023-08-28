@@ -16,7 +16,8 @@
 		"fluff" = "None",
 		"wings" = "None",
 		"head_acc" = "None",
-		"neck_acc" = "None"
+		"neck_acc" = "None",
+		MUTANT_SYNTH_ANTENNA = "None"
 	)
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
