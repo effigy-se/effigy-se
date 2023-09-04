@@ -386,3 +386,16 @@
 /datum/sprite_accessory/wings/moth/moffra
 	name = "Moth (Moffra)"
 	icon_state = "moffra"
+
+/*
+*	Snowflake
+*/
+
+/datum/sprite_accessory/wings/sylveon
+	name = "Sylveon Neck Bow"
+	icon = 'local/icons/obj/mob/mutant/mutant_accessories/wings.dmi'
+	icon_state = "sylveon_bow"
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	color_src = USE_MATRIXED_COLORS
+	recommended_species = list(SPECIES_MOTH, SPECIES_MAMMAL, SPECIES_INSECT) // Mammals too, I guess. They wont get flight though, see the wing organs for that logic
+	organ_type = /obj/item/organ/external/wings/moth
