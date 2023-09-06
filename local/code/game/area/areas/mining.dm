@@ -14,8 +14,8 @@
 	flags_1 = NONE
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | FLORA_ALLOWED
 	sound_environment = SOUND_AREA_TAELOTH
-	min_ambience_cooldown = 70 SECONDS
-	max_ambience_cooldown = 220 SECONDS
+	min_ambience_cooldown = 3 MINUTES
+	max_ambience_cooldown = 8 MINUTES
 	ambient_buzz = 'sound/ambience/ambicha3.ogg'
 	outdoors = TRUE
 
