@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(objectives) // EFFIGY EDIT ADD (#46 - Cryo)
 	if (new_target == "Free objective")
 		target = null
 	else if (new_target == "Random")
-		find_target()
+		find_target(blacklist = minimum_opt_in_level(level = YES_KILL))
 	else
 		target = new_target.mind
 

@@ -231,7 +231,7 @@
 		if(prob(MAROON_PROB))
 			var/datum/objective/maroon/maroon_objective = new()
 			maroon_objective.owner = owner
-			maroon_objective.find_target(blacklist = minimum_opt_in_level(level = YES_KILL)) // EffigyEdit Change - Antag opt-in blacklist
+			maroon_objective.find_target(blacklist = minimum_opt_in_level(level = YES_TEMP)) // EffigyEdit Change - Antag opt-in blacklist
 			return maroon_objective
 
 		var/datum/objective/assassinate/kill_objective = new()

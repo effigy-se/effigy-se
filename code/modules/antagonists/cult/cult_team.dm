@@ -84,7 +84,7 @@
 /datum/team/cult/proc/setup_objectives()
 	var/datum/objective/sacrifice/sacrifice_objective = new
 	sacrifice_objective.team = src
-	sacrifice_objective.find_target()
+	sacrifice_objective.find_target(blacklist = minimum_opt_in_level(level = YES_ROUND_REMOVE)) // EffigyEdit Change - Opt-in antag blacklist
 	objectives += sacrifice_objective
 
 	var/datum/objective/eldergod/summon_objective = new
