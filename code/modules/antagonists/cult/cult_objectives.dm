@@ -68,7 +68,7 @@
 
 /datum/objective/sacrifice/proc/do_we_have_a_body()
 	if(!target.current) //The player was ghosted and the mind isn't probably going to be transferred to another mob at this point.
-		find_target()
+		find_target(blacklist = minimum_opt_in_level(level = YES_ROUND_REMOVE)) // EffigyEdit Change - Opt-in antag blacklist
 		return
 	RegisterSignal(target.current, COMSIG_QDELETING, PROC_REF(on_target_body_del))
 	RegisterSignal(target.current, COMSIG_MOB_MIND_TRANSFERRED_INTO, PROC_REF(on_possible_mindswap))
