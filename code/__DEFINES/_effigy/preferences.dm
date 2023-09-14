@@ -16,3 +16,9 @@
 #define ORGAN_PREF_CIRCUIT_BRAIN "Circuitboard"
 
 #define PLAYTIME_GREEN 1000
+
+// Antag opt-in
+#define YES_TEMP 1
+#define YES_KILL 2
+#define YES_ROUND_REMOVE 3
+#define NOT_TARGET 0

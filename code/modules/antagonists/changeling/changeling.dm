@@ -668,7 +668,7 @@
 	if(prob(60))
 		var/datum/objective/steal/steal_objective = new
 		steal_objective.owner = owner
-		steal_objective.find_target()
+		steal_objective.find_target(blacklist = minimum_opt_in_level(level = YES_TEMP)) // EffigyEdit Change - Opt-in antag blacklist
 		objectives += steal_objective
 
 	var/list/active_ais = active_ais()
@@ -678,15 +678,15 @@
 		destroy_objective.find_target()
 		objectives += destroy_objective
 	else
-		if(prob(0)) // EFFIGY EDIT - #228 Removes krilling til we sort out how to handle it. Original: 70
+		if(prob(70))
 			var/datum/objective/assassinate/kill_objective = new
 			kill_objective.owner = owner
-			kill_objective.find_target()
+			kill_objective.find_target(blacklist = minimum_opt_in_level(level = YES_KILL)) // EffigyEdit Change - Opt-in antag blacklist
 			objectives += kill_objective
 		else
 			var/datum/objective/maroon/maroon_objective = new
 			maroon_objective.owner = owner
-			maroon_objective.find_target()
+			maroon_objective.find_target(blacklist = minimum_opt_in_level(level = YES_TEMP)) // EffigyEdit Change - Opt-in antag blacklist
 			objectives += maroon_objective
 
 			if (!(locate(/datum/objective/escape) in objectives) && escape_objective_possible)
@@ -705,7 +705,7 @@
 		else
 			var/datum/objective/escape/escape_with_identity/identity_theft = new
 			identity_theft.owner = owner
-			identity_theft.find_target()
+			identity_theft.find_target(blacklist = minimum_opt_in_level(level = YES_TEMP)) // EffigyEdit Change - Opt-in antag blacklist
 			objectives += identity_theft
 		escape_objective_possible = FALSE
 
