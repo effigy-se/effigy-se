@@ -20,6 +20,10 @@
 			continue
 		if(!(H.mind.assigned_role.job_flags & JOB_CREW_MEMBER)) //please stop giving my centcom admin gimmicks full body paralysis
 			continue
+		// EffigyEdit Add - Event Station Filtering
+		if(engaged_role_play_check(H, station = TRUE, dorms = TRUE))
+			continue
+		// EffigyEdit Add End
 		traumatize(H)
 		announce_to_ghosts(H)
 		break
