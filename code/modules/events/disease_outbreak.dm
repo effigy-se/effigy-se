@@ -62,7 +62,7 @@
 		if(length(candidate.diseases)) //Is our candidate already sick?
 			continue
 		// EffigyEdit Add - Event Station Filtering
-		if(engaged_role_play_check(H, station = TRUE, dorms = TRUE))
+		if(engaged_role_play_check(candidate, station = TRUE, dorms = TRUE))
 			continue
 		// EffigyEdit Add End
 		disease_candidates += candidate
