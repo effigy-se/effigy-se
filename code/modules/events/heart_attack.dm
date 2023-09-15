@@ -34,6 +34,10 @@
 			continue
 		if(!(candidate.mind.assigned_role.job_flags & JOB_CREW_MEMBER))//only crewmembers can get one, a bit unfair for some ghost roles and it wastes the event
 			continue
+		// EffigyEdit Add - Event Station Filtering
+		if(engaged_role_play_check(candidate, station = TRUE, dorms = TRUE))
+			continue
+		// EffigyEdit Add End
 		if(candidate.satiety <= -60 && !candidate.has_status_effect(/datum/status_effect/exercised)) //Multiple junk food items recently //No foodmaxxing for the achievement
 			heart_attack_candidates[candidate] = 3
 		else

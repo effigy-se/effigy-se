@@ -68,7 +68,7 @@
 	for(var/i in objective_count to objective_limit - 1)
 		var/datum/objective/assassinate/kill_objective = new
 		kill_objective.owner = owner
-		kill_objective.find_target()
+		kill_objective.find_target(blacklist = minimum_opt_in_level(level = YES_KILL)) // EffigyEdit Change - Opt-in antag blacklist
 		objectives += kill_objective
 
 	var/datum/objective/survive/malf/dont_die_objective = new
@@ -95,7 +95,7 @@
 			var/datum/objective/protect/yandere_one = new
 			yandere_one.owner = owner
 			objectives += yandere_one
-			yandere_one.find_target()
+			yandere_one.find_target(blacklist = minimum_opt_in_level(level = YES_TEMP)) // EffigyEdit Change - Opt-in antag blacklist
 			var/datum/objective/maroon/yandere_two = new
 			yandere_two.owner = owner
 			yandere_two.target = yandere_one.target

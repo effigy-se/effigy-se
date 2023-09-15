@@ -96,3 +96,8 @@
 /datum/sprite_accessory/horns/sideswept
 	name = "Side swept back"
 	icon_state = "sideswept"
+
+/datum/sprite_accessory/horns/sylveon
+	name = "Sylveon Head Bow"
+	icon_state = "sylveon_bow"
+	color_src = USE_MATRIXED_COLORS
