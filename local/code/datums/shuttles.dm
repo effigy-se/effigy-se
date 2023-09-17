@@ -26,3 +26,11 @@
 /datum/map_template/shuttle/arrival/rimpoint
 	suffix = "rimpoint"
 	name = "arrival shuttle (RimPoint)"
+
+/datum/map_template/shuttle/emergency/rimpoint
+	suffix = "rimpoint"
+	name = "RimPoint Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 10
+	description = "A middling-sized evacuation shuttle, with an individualized floorplan for each department."
+	admin_notes = "Center room is as wide as Cere's shuttle and very, VERY comically easy for lasers to dominate in. Otherwise a standard fare shuttle as far as equipment's concerned."
+	occupancy_limit = "50"
