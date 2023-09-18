@@ -959,8 +959,13 @@
 /obj/effect/turf_decal/stripes/end{
 	dir = 8
 	},
-/obj/structure/disposaloutlet{
-	dir = 4
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=2";
+	location = "QM #1"
+	},
+/mob/living/simple_animal/bot/mulebot{
+	home_destination = "QM #1";
+	suffix = "#1"
 	},
 /turf/open/floor/plating,
 /area/station/cargo/sorting)
@@ -2141,6 +2146,10 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 5
 	},
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=1";
+	location = "Service Hall"
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "bjs" = (
@@ -2759,13 +2768,15 @@
 /turf/open/floor/mineral/titanium/tiled/yellow,
 /area/station/medical/chemistry)
 "byA" = (
-/obj/machinery/navbeacon{
-	codes_txt = "delivery;dir=8";
-	location = "QM #4"
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
 	},
-/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/delivery/red,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/open/floor/iron,
-/area/station/cargo/storage)
+/area/station/security/brig/entrance)
 "byX" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -3204,7 +3215,11 @@
 /area/taeloth)
 "bJm" = (
 /obj/structure/sign/departments/engineering/directional/south,
-/turf/open/misc/grass/jungle,
+/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
 /area/taeloth)
 "bJA" = (
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -8407,15 +8422,13 @@
 "emt" = (
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=8";
-	location = "QM #3"
+	location = "Engineering"
 	},
-/obj/effect/turf_decal/delivery,
-/mob/living/simple_animal/bot/mulebot{
-	home_destination = "QM #3";
-	suffix = "#3"
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 1
 	},
-/turf/open/floor/iron,
-/area/station/cargo/storage)
+/turf/open/floor/iron/dark/textured_large,
+/area/taeloth)
 "emw" = (
 /obj/effect/turf_decal/siding/dark/corner,
 /obj/effect/turf_decal/trimline/dark_red/warning{
@@ -10476,6 +10489,7 @@
 /obj/machinery/camera/directional/south{
 	c_tag = "Science - Research, South"
 	},
+/obj/structure/closet/crate/bin,
 /turf/open/floor/iron/dark,
 /area/station/science/research)
 "fkR" = (
@@ -12112,9 +12126,7 @@
 /obj/effect/turf_decal/stripes/end{
 	dir = 4
 	},
-/obj/machinery/disposal/delivery_chute{
-	dir = 8
-	},
+/obj/structure/closet/crate/secure/loot,
 /turf/open/floor/plating,
 /area/station/cargo/sorting)
 "gct" = (
@@ -12582,9 +12594,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/conveyor{
-	id = "cargodisposals";
-	dir = 4
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=2";
+	location = "QM #4"
 	},
 /turf/open/floor/plating,
 /area/station/cargo/sorting)
@@ -12868,11 +12880,15 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/conveyor{
-	id = "cargodisposals";
-	dir = 4
-	},
 /obj/machinery/light/directional/north,
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=2";
+	location = "QM #3"
+	},
+/mob/living/simple_animal/bot/mulebot{
+	home_destination = "QM #3";
+	suffix = "#3"
+	},
 /turf/open/floor/plating,
 /area/station/cargo/sorting)
 "gyz" = (
@@ -14208,11 +14224,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/conveyor{
-	id = "cargodisposals";
-	dir = 4
-	},
 /obj/item/radio/intercom/directional/north,
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=2";
+	location = "QM #2"
+	},
 /turf/open/floor/plating,
 /area/station/cargo/sorting)
 "hiZ" = (
@@ -20011,10 +20027,6 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
-	},
-/obj/machinery/conveyor{
-	id = "cargodisposals";
-	dir = 4
 	},
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/plating,
@@ -29654,11 +29666,12 @@
 /turf/open/floor/iron/white,
 /area/station/science/research)
 "puz" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
 /obj/machinery/camera/directional/south{
 	c_tag = "Science - Lobby, South"
+	},
+/obj/effect/turf_decal/delivery/purple,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
 	},
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
@@ -34290,13 +34303,13 @@
 /turf/open/floor/iron/dark,
 /area/station/service/studio)
 "rNq" = (
-/obj/machinery/conveyor_switch/oneway{
-	id = "cargodisposals";
-	name = "disposals conveyor switch";
-	pixel_x = -8
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
 	},
-/turf/open/floor/iron,
-/area/station/cargo/sorting)
+/obj/structure/railing/corner/end,
+/turf/open/floor/catwalk_floor/iron,
+/area/station/security/brig/entrance)
 "rNG" = (
 /obj/item/stack/tile/carpet/neon/simple/purple/ten,
 /turf/open/floor/plating/rust,
@@ -35561,16 +35574,11 @@
 /area/station/command/teleporter)
 "ssD" = (
 /obj/machinery/navbeacon{
-	codes_txt = "delivery;dir=4";
-	location = "QM #1"
+	codes_txt = "delivery;dir=1";
+	location = "Medbay"
 	},
-/obj/effect/turf_decal/delivery,
-/mob/living/simple_animal/bot/mulebot{
-	home_destination = "QM #1";
-	suffix = "#1"
-	},
-/turf/open/floor/iron,
-/area/station/cargo/storage)
+/turf/open/floor/iron/white,
+/area/station/science/lobby)
 "ssR" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/open/floor/glass/reinforced/plasma,
@@ -35709,6 +35717,10 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 10
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=8";
+	location = "Security"
 	},
 /turf/open/floor/iron,
 /area/station/security/brig/entrance)
@@ -38357,12 +38369,11 @@
 /area/station/security/range)
 "tYS" = (
 /obj/machinery/navbeacon{
-	codes_txt = "delivery;dir=4";
-	location = "QM #2"
+	codes_txt = "delivery;dir=2";
+	location = "Research Division"
 	},
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron,
-/area/station/cargo/storage)
+/turf/open/floor/iron/white,
+/area/station/science/lobby)
 "tZo" = (
 /turf/closed/wall/r_wall,
 /area/station/service/lawoffice)
@@ -41302,6 +41313,7 @@
 /obj/machinery/camera/directional/north{
 	c_tag = "Science - Lobby, North"
 	},
+/obj/effect/turf_decal/delivery/blue,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "vxO" = (
@@ -72433,8 +72445,8 @@ iYz
 izh
 izh
 xLI
-fYL
-cff
+rNq
+byA
 cFb
 cFb
 cFb
@@ -77374,12 +77386,12 @@ sAb
 nyj
 nyj
 vxF
-eot
+ssD
 gEU
 xIn
 sJu
 vWV
-eot
+tYS
 puz
 nyj
 nyj
@@ -81513,7 +81525,7 @@ sAb
 sAb
 sAb
 sAb
-sAb
+emt
 taE
 taE
 hGw
@@ -82723,7 +82735,7 @@ iYL
 iYL
 tac
 hiX
-rNq
+siC
 tfO
 igD
 xCg
@@ -86834,8 +86846,8 @@ ihO
 jhS
 uTB
 wTV
-emt
-byA
+uTB
+uTB
 wTV
 axX
 ihF
@@ -87091,8 +87103,8 @@ xnn
 snQ
 uTB
 plR
-ssD
-tYS
+uTB
+uTB
 wTV
 axX
 xUq
