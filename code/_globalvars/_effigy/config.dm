@@ -98,10 +98,10 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/string/alert_delta
 	default = "Station destruction imminent. All crew are instructed to obey all instructions given by heads of staff or security. Any violations of these orders can be punished by death."
 
-/datum/config_entry/string/alert_pink_upto
+/datum/config_entry/string/alert_magenta_upto
 	default = "Engineering emergency in progress. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas. Engineering staff will have expanded station access during this incident."
 
-/datum/config_entry/string/alert_pink_downto
+/datum/config_entry/string/alert_magenta_downto
 	default = "Engineering emergency in progress. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas. Engineering staff will have expanded station access during this incident."
 
 /datum/config_entry/string/alert_white_upto

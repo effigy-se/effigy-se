@@ -225,7 +225,7 @@
 	target.visible_message(span_danger("[user.name] dislocates [target.name]'s [affecting.name]!"), \
 		span_userdanger("[user.name] dislocates your [affecting.name]!"), ignored_mobs=user)
 	to_chat(user, span_danger("You dislocate [target.name]'s [affecting.name]!"))
-	affecting.force_wound_upwards(/datum/wound/blunt/moderate)
+	affecting.force_wound_upwards(/datum/wound/blunt/bone/moderate)
 	log_combat(user, target, "dislocates", "the [affecting.name]")
 	return TRUE
 

@@ -15,9 +15,6 @@
 /obj/structure/window
 	icon = 'local/icons/obj/directwindow.dmi'
 
-/obj/structure/bed/roller
-	icon = 'local/icons/obj/medical/rollerbed.dmi'
-
 /obj/structure/bodycontainer
 	icon = 'local/icons/obj/medical/morgue.dmi'
 
