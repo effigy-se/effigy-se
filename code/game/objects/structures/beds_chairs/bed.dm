@@ -28,13 +28,6 @@
 	AddElement(/datum/element/soft_landing)
 	register_context()
 
-// EffigyEdit Add - Rollerbeds
-/obj/structure/bed/pod/Initialize(mapload)
-	. = ..()
-	new /obj/structure/bed/roller(loc)
-	qdel(src)
-// EffigyEdit Add End
-
 /obj/structure/bed/examine(mob/user)
 	. = ..()
 	if(!(flags_1 & NODECONSTRUCT_1))
