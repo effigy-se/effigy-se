@@ -163,16 +163,16 @@
 	desc = "Normal cooking oil not cutting it? Chef throw all the quality stuff in the frier because they thought it was funny? Well, We got you covered, Introducing a bulk pack of Ten (10) bottles of our finest oils, blended for the perfect taste in cold recipes, and a resistance for going acrid when cooking."
 	cost = CARGO_CRATE_VALUE * 9
 	contains = list(
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
-		/obj/item/reagent_containers/condiment/quality_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
+		/obj/item/reagent_containers/condiment/olive_oil,
 	)
 	crate_name = "bulk quality oil pack"
 	crate_type = /obj/structure/closet/crate/freezer
