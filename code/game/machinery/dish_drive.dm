@@ -150,7 +150,7 @@
 		if(manual)
 			visible_message(span_notice("[src] is empty!"))
 		return
-	var/obj/machinery/disposal/bin/bin = locate() in view(binrange, src) // EFFIGY EDIT CHANGE
+	var/obj/machinery/disposal/bin/bin = locate() in view(7, src)
 	if(!bin)
 		if(manual)
 			visible_message(span_warning("[src] buzzes. There are no disposal bins in range!"))

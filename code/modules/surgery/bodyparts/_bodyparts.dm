@@ -154,15 +154,8 @@
 	var/cached_bleed_rate = 0
 	/// How much generic bleedstacks we have on this bodypart
 	var/generic_bleedstacks
-	// EFFIGY EDIT ADD START (#3 Medical - Ported from Skyrat)
-	/*
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
-	*/
-	/// If we have a gauze wrapping currently applied
-	var/datum/bodypart_aid/gauze/current_gauze
-	/// If we have a splint currently applied
-	var/datum/bodypart_aid/splint/current_splint
 	/// What icon do we use to render this limb? Ususally used by robotic limb augments.
 	var/rendered_bp_icon
 	/// Do we use an organic render for this robotic limb?
@@ -253,12 +246,6 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
-	// EFFIGY EDIT ADD START (#3 Medical)
-	if(current_gauze)
-		qdel(current_gauze)
-	if(current_splint)
-		qdel(current_splint)
-	// EFFIGY EDIT ADD END (#3 Medical)
 
 	if(length(external_organs))
 		for(var/obj/item/organ/external/external_organ as anything in external_organs)
@@ -351,20 +338,14 @@
 
 	for(var/datum/wound/wound as anything in wounds)
 		switch(wound.severity)
-			// EFFIGY EDIT CHANGE START (#3 Medical)
 			if(WOUND_SEVERITY_TRIVIAL)
-				// check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)].")]"
-				check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)].")]"
+				check_list += "\t [span_danger("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)].")]"
 			if(WOUND_SEVERITY_MODERATE)
-				// check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]"
-				check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!")]"
+				check_list += "\t [span_warning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]"
 			if(WOUND_SEVERITY_SEVERE)
-				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]"
-				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!")]"
+				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!")]"
 			if(WOUND_SEVERITY_CRITICAL)
-				// check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!!")]"
-				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [wound.get_topic_name(owner)]!!")]"
-			// EFFIGY EDIT CHANGE END (#3 Medical)
+				check_list += "\t [span_boldwarning("Your [name] is suffering [wound.a_or_from] [lowertext(wound.name)]!!")]"
 
 	for(var/obj/item/embedded_thing in embedded_objects)
 		var/stuck_word = embedded_thing.isEmbedHarmless() ? "stuck" : "embedded"
@@ -547,20 +528,6 @@
 			return
 		// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 		if(wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
-			// EFFIGY EDIT CHANGE START (#3 Medical)
-			//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
-			//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
-			if(wounding_dmg < DAMAGED_BODYPART_BONUS_WOUNDING_BONUS)
-				var/damaged_percent = (brute_dam + burn_dam) / max_damage
-				if(damaged_percent > DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD)
-					damaged_percent = DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD
-				wounding_dmg = min(DAMAGED_BODYPART_BONUS_WOUNDING_BONUS, wounding_dmg + (damaged_percent * DAMAGED_BODYPART_BONUS_WOUNDING_COEFF))
-
-			if(current_gauze)
-				current_gauze.take_damage()
-			if(current_splint)
-				current_splint.take_damage()
-			// EFFIGY EDIT CHANGE END (#3 Medical)
 			check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus, attack_direction)
 
 	for(var/datum/wound/iter_wound as anything in wounds)
@@ -1357,8 +1324,6 @@
 		owner.visible_message(span_danger("\The [current_gauze.name] on [owner]'s [name] falls away in rags."), span_warning("\The [current_gauze.name] on your [name] falls away in rags."), vision_distance=COMBAT_MESSAGE_RANGE)
 		QDEL_NULL(current_gauze)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
-*/
-// EFFIGY EDIT REMOVE END (#3 Medical - Ported from Skyrat)
 
 ///Loops through all of the bodypart's external organs and update's their color.
 /obj/item/bodypart/proc/recolor_external_organs()

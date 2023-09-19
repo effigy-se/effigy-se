@@ -1,5 +1,3 @@
-// EFFIGY EDIT REMOVE START (#3 Medical - Ported from Skyrat)
-/*
 /*
 	Burn wounds
 */
