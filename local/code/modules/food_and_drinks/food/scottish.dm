@@ -59,7 +59,7 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/nutriment = 2,
-		/datum/reagent/consumable/cooking_oil = 2
+		/datum/reagent/consumable/nutriment/fat/oil = 2
 	)
 	foodtypes = MEAT | BREAKFAST | FRIED
 

@@ -291,6 +291,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		SS_INIT_NONE,
 		SS_INIT_SUCCESS,
 		SS_INIT_NO_NEED,
+		SS_INIT_NO_MESSAGE,
 	)
 
 	if (subsystem.flags & SS_NO_INIT || subsystem.initialized) //Don't init SSs with the corresponding flag or if they already are initialized
@@ -337,7 +338,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		if(SS_INIT_FAILURE)
 			message_prefix = "Failed to initialize [subsystem.name] subsystem!" // EffigyEdit Change - Splash
 			chat_warning = TRUE
-		if(SS_INIT_SUCCESS)
+		if(SS_INIT_SUCCESS, SS_INIT_NO_MESSAGE)
 			message_prefix = "Initialized [subsystem.name] Subsystem..." // EffigyEdit Change - Splash
 		if(SS_INIT_NO_NEED)
 			// This SS is disabled or is otherwise shy.
@@ -354,7 +355,8 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	*/
 	// EFFIGY EDIT REMOVE END (#2 Splash)
 
-	add_startup_message(message_prefix, chat_warning) // EFFIGY EDIT ADD (#2 Splash)
+	if(result != SS_INIT_NO_MESSAGE)
+		add_startup_message(message_prefix, chat_warning) // EFFIGY EDIT ADD (#2 Splash)
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)

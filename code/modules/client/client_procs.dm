@@ -572,6 +572,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		adminGreet(1)
 		holder.owner = null
 		GLOB.admins -= src
+		/* EffigyEdit Remove - TGS Notification
 		if (!GLOB.admins.len && SSticker.IsRoundInProgress()) //Only report this stuff if we are currently playing.
 			var/cheesy_message = pick(
 				"I have no admins online!",\
@@ -589,9 +590,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			)
 
 			send2adminchat("Server", "[cheesy_message] (No admins online)")
+		*/ //EffigyEdit Remove End
+
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 
-	active_mousedown_item = null
 	SSambience.remove_ambience_client(src)
 	SSmouse_entered.hovers -= src
 	SSping.currentrun -= src

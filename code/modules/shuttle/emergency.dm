@@ -337,16 +337,11 @@
 
 	. = ..()
 
-/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, set_coefficient=null, silent=FALSE) // EFFIGY EDIT CHANGE
-	var/security_num = SSsecurity_level.get_current_level_as_number()
-	switch(security_num)
-		if(SEC_LEVEL_GREEN)
-			set_coefficient = 2
-		if(SEC_LEVEL_BLUE)
-			set_coefficient = 1
-		else
-			set_coefficient = 0.5
-	var/call_time = SSshuttle.emergency_call_time * set_coefficient * engine_coeff
+/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, set_coefficient=null, silent = FALSE)
+	if(!isnum(set_coefficient))
+		set_coefficient = SSsecurity_level.current_security_level.shuttle_call_time_mod
+	alert_coeff = set_coefficient
+	var/call_time = SSshuttle.emergency_call_time * alert_coeff * engine_coeff
 	switch(mode)
 		// The shuttle can not normally be called while "recalling", so
 		// if this proc is called, it's via admin fiat
@@ -363,7 +358,7 @@
 	else
 		SSshuttle.emergency_last_call_loc = null
 
-	if(!silent) // EFFIGY EDIT ADD
+	if(!silent)
 		priority_announce("The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority")
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
@@ -572,7 +567,7 @@
 					destination_dock = "emergency_syndicate"
 					minor_announce("Corruption detected in \
 						shuttle navigation protocols. Please contact your \
-						supervisor.", "SYSTEM ERROR:", alert=TRUE)
+						supervisor.", "SYSTEM ERROR:", sound_override = 'sound/misc/announce_syndi.ogg')
 
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME
