@@ -12719,6 +12719,7 @@
 /area/station/hallway/secondary/exit/departure_lounge)
 "hew" = (
 /obj/effect/turf_decal/siding/white,
+/obj/machinery/bluespace_vendor/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit/departure_lounge)
 "hez" = (
@@ -15246,6 +15247,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
+"iyG" = (
+/obj/machinery/bluespace_vendor/directional/west,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "iza" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -17182,6 +17187,13 @@
 	},
 /obj/structure/cable,
 /obj/structure/extinguisher_cabinet/directional/south,
+/obj/machinery/atmospherics/components/tank/air{
+	dir = 4;
+	piping_layer = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/open/floor/iron/edge{
 	dir = 8
 	},
@@ -19013,12 +19025,10 @@
 /turf/open/floor/engine/o2,
 /area/station/engineering/atmos)
 "kHl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/aft/lesser)
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/station/maintenance/disposal/incinerator)
 "kHw" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -26660,6 +26670,7 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 8
 	},
+/obj/structure/railing/corner/end,
 /turf/open/floor/iron/edge{
 	dir = 8
 	},
@@ -30141,6 +30152,10 @@
 /obj/structure/fans/tiny/shield,
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
+"rbV" = (
+/obj/machinery/atmospherics/components/unary/bluespace_sender,
+/turf/open/floor/plating,
+/area/station/engineering/atmos)
 "rci" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -38446,6 +38461,14 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
+"vue" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/effect/landmark/generic_maintenance_landmark,
+/turf/open/floor/plating,
+/area/station/maintenance/aft/lesser)
 "vun" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -38676,7 +38699,7 @@
 	},
 /area/station/hallway/primary/fore)
 "vDV" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor/iron,
 /area/station/maintenance/disposal/incinerator)
 "vDW" = (
@@ -40249,9 +40272,10 @@
 /turf/open/floor/plating,
 /area/station/medical/medbay/central)
 "wsr" = (
-/obj/effect/landmark/generic_maintenance_landmark,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/binary/pump/on/supply/hidden/layer4{
+	dir = 1
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
@@ -67701,7 +67725,7 @@ gEx
 gEx
 gEx
 rVA
-ihh
+iyG
 hJD
 jdE
 ihh
@@ -145089,7 +145113,7 @@ oIk
 kqh
 bxE
 nTH
-kHl
+gsL
 gsL
 mXb
 oEX
@@ -145346,7 +145370,7 @@ hYB
 kqh
 sSU
 ksD
-iqi
+ksD
 iqi
 inn
 oEX
@@ -145585,7 +145609,7 @@ bmd
 bmd
 bmd
 bmd
-xnA
+rbV
 xnA
 xnA
 gZm
@@ -145594,7 +145618,7 @@ gpw
 dGv
 vDV
 mDu
-apf
+kHl
 dfR
 tkW
 cwr
@@ -145604,7 +145628,7 @@ ohS
 wsr
 wIW
 rae
-gsL
+vue
 esz
 uFj
 poQ
