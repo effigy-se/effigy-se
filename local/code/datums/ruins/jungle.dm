@@ -14,6 +14,12 @@
 	name = "LUNA"
 	description = "The dream of a dead dreamer."
 
+/datum/map_template/ruin/jungle/deadorgone
+	id = "deadorgone"
+	suffix = "deadorgone.dmm"
+	name = "Dead Or Gone"
+	description = "Everyone is dead or gone. The story is over."
+
 /datum/map_template/ruin/jungle/fountain
 	name = "Fountain Hall"
 	id = "jungle_fountain"
