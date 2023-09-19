@@ -104,10 +104,10 @@
 	if(!source_area.engineering_override_eligible)
 		return
 
-	if(level != SEC_LEVEL_PINK && GLOB.force_eng_override)
+	if(level != SEC_LEVEL_MAGENTA && GLOB.force_eng_override)
 		return
 
-	if(level == SEC_LEVEL_PINK)
+	if(level == SEC_LEVEL_MAGENTA)
 		engineering_override = TRUE
 		normalspeed = FALSE
 		update_appearance()
@@ -131,7 +131,7 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 		minor_announce("Expanded engineering access has been revoked.", "Engineering Emergency")
 		var/level = SSsecurity_level.get_current_level_as_number()
 		SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("engineer override access", "disabled"))
-		if(level == SEC_LEVEL_PINK)
+		if(level == SEC_LEVEL_MAGENTA)
 			return
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, FALSE)
 
