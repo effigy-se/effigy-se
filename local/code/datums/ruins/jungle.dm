@@ -5,6 +5,7 @@
 	ruin_type = ZTRAIT_JUNGLE_RUINS
 	prefix = "_maps/RandomRuins/JungleRuins/"
 	default_area = /area/taeloth/unexplored
+	cost = 1
 
 /datum/map_template/ruin/jungle/luna
 	id = "luna"
