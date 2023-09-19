@@ -9972,8 +9972,8 @@
 	},
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/rack,
-/obj/item/roller,
-/obj/item/roller,
+/obj/item/emergency_bed,
+/obj/item/emergency_bed,
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
@@ -14666,7 +14666,7 @@
 /area/station/command/heads_quarters/captain/private)
 "ifW" = (
 /obj/structure/table/reinforced/rglass,
-/obj/item/storage/backpack/duffelbag/med/surgery{
+/obj/item/surgery_tray/full{
 	pixel_y = 5;
 	pixel_x = -3
 	},
@@ -17652,7 +17652,9 @@
 	dir = 4;
 	id = "garbage"
 	},
-/obj/machinery/recycler,
+/obj/machinery/recycler{
+	dir = 8
+	},
 /turf/open/floor/pod,
 /area/station/maintenance/disposal)
 "jOD" = (
@@ -22215,7 +22217,9 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "myP" = (
-/obj/machinery/recycler,
+/obj/machinery/recycler{
+	dir = 8
+	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "garbage";
@@ -23007,7 +23011,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/medical/storage)
 "mZQ" = (
-/obj/machinery/lapvend,
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/white/smooth_half{
 	dir = 1
@@ -26659,7 +26662,7 @@
 /area/station/hallway/primary/fore)
 "piC" = (
 /obj/machinery/iv_drip,
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
@@ -28909,7 +28912,7 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/table/reinforced/rglass,
 /obj/effect/turf_decal/trimline/blue/line,
-/obj/item/storage/backpack/duffelbag/coroner/surgery{
+/obj/item/surgery_tray/full/morgue{
 	pixel_y = 5
 	},
 /turf/open/floor/iron/dark/textured,
@@ -32356,7 +32359,7 @@
 /turf/open/floor/engine,
 /area/station/engineering/atmos)
 "sly" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/white/smooth_half{
 	dir = 1
@@ -39576,7 +39579,7 @@
 	pixel_y = 12;
 	pixel_x = 6
 	},
-/obj/item/storage/backpack/duffelbag/med/surgery{
+/obj/item/surgery_tray/full{
 	pixel_y = 6
 	},
 /obj/item/storage/belt/utility/full/engi{
