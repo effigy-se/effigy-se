@@ -286,12 +286,6 @@ SUBSYSTEM_DEF(mapping)
 	for (var/ice_z in ice_ruins_underground)
 		spawn_rivers(ice_z, 4, level_trait(ice_z, ZTRAIT_BASETURF), /area/icemoon/underground/unexplored/rivers)
 
-	/// EFFIGY EDIT BEGIN - Jungle Rivers ///
-	var/list/jungle_ruins = levels_by_trait(ZTRAIT_JUNGLE_RUINS)
-	for (var/jungle_z in jungle_ruins)
-		spawn_rivers(jungle_z, 4, /turf/open/water/jungle, /area/taeloth/unexplored)
-	/// EFFIGY EDIT END - Jungle Rivers ///
-
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)
 	if(clearing_reserved_turfs || !initialized) //in either case this is just not needed.
 		return
