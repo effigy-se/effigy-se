@@ -1,5 +1,6 @@
 // Hey! Listen! Update \config\jungleruinblacklist.txt with your new ruins!
-// has_ceiling = TRUE for any ruin with an interior
+// has_ceiling = TRUE for any ruin without any external tiles.
+// If your ruin has external tiles, you can't have a ceiling atm. A mapping helper for this'll be in soon:tm:.
 
 /datum/map_template/ruin/jungle
 	ruin_type = ZTRAIT_JUNGLE_RUINS
