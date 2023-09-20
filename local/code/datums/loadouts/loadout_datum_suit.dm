@@ -589,11 +589,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/toggle/jacket/supply
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER)
 
-/datum/loadout_item/suit/supply_gorka_jacket
-	name = "Supply Gorka Jacket"
-	item_path = /obj/item/clothing/suit/gorka/supply
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER)
-
 // LABCOATS
 /datum/loadout_item/suit/labcoat_highvis
 	name = "High-Vis Labcoat"

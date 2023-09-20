@@ -43,7 +43,6 @@
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/utility = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/casualman = 3,
-		/obj/item/clothing/suit/gorka/supply = 3,
 		/obj/item/clothing/suit/toggle/jacket/supply = 3,
 	)
 
