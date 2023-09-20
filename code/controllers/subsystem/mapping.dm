@@ -256,6 +256,12 @@ SUBSYSTEM_DEF(mapping)
 	if (ice_ruins_underground.len)
 		seedRuins(ice_ruins_underground, CONFIG_GET(number/icemoon_budget), list(/area/icemoon/underground/unexplored), themed_ruins[ZTRAIT_ICE_RUINS_UNDERGROUND], clear_below = TRUE)
 
+	/// EFFIGY EDIT BEGIN - Taeloth / Jungle Ruins, Rimpoint ///
+	var/list/jungle_ruins = levels_by_trait(ZTRAIT_JUNGLE_RUINS)
+	if (jungle_ruins.len)
+		seedRuins(jungle_ruins, CONFIG_GET(number/jungle_budget), list(/area/taeloth/unexplored), themed_ruins[ZTRAIT_JUNGLE_RUINS], clear_below = TRUE)
+	/// EFFIGY EDIT END - Taeloth / Jungle Ruins, Rimpoint ///
+
 	// Generate deep space ruins
 	var/list/space_ruins = levels_by_trait(ZTRAIT_SPACE_RUINS)
 	if (space_ruins.len)

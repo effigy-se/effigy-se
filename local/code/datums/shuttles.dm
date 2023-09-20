@@ -1,3 +1,5 @@
+/// FOXHOLE ///
+
 /datum/map_template/shuttle/arrival/foxhole
 	suffix = "foxhole"
 	name = "arrival shuttle (FoxHole)"
@@ -19,3 +21,16 @@
 	name = "Tungsten-Class Cruise Vessel" // This is the safest of any whiteship so far. No hostile mobs, but on the coinflip, no power and only a PACMAN to work with to change that.
 	description = "Life is a party - and we aren't in the dark ages of Orion anymore. Why stop having a good time just because you have \"captaincy\" and a \"crew\"? Our automated systems take \
 	the hard choices from your journey, no matter where it takes you - so you can focus on what really matters. Complimentary NIF Subscription with your purchase!"
+
+/// RIMPOINT ///
+/datum/map_template/shuttle/arrival/rimpoint
+	suffix = "rimpoint"
+	name = "arrival shuttle (RimPoint)"
+
+/datum/map_template/shuttle/emergency/rimpoint
+	suffix = "rimpoint"
+	name = "RimPoint Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 10
+	description = "A middling-sized evacuation shuttle, with an individualized floorplan for each department."
+	admin_notes = "Center room is as wide as Cere's shuttle and very, VERY comically easy for lasers to dominate in. Otherwise a standard fare shuttle as far as equipment's concerned."
+	occupancy_limit = "50"
