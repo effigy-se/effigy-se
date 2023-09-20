@@ -339,11 +339,13 @@
 	greyscale_colors = null
 
 /**
- * Mineral
+ * Mineral/Material
  */
 
 /obj/machinery/door/airlock/material
 	greyscale_config = /datum/greyscale_config/airlock_effigy/material
+	greyscale_colors = "#757278"
+	assemblytype = /obj/structure/door_assembly/door_assembly_material
 
 /obj/machinery/door/airlock/gold
 	icon = 'icons/obj/doors/airlocks/station/gold.dmi'
