@@ -846,10 +846,22 @@
       from exotic seed crates or traitor uplink
   GPeckman:
   - admin: Boneless smite should work properly again.
+  - bugfix: Epinephrine will now update health properly.
+  Jacquerel:
+  - rscadd: Brimdemon corpses release an explosion shortly after death, just to keep
+      you on your toes.
+  - refactor: Brimdemons now use the basic mob framework which (should) improve their
+      pathfinding somewhat. Please bug report any unusual behaviour.
+  - admin: The brimdemon's beam ability can be given to any mob, for your Binding
+      of Isaac event
+  - admin: Admins can now reset or modify the chaplain's sect from a UI panel
   LT3:
   - rscadd: Poly now causes a power surge when dusted by the supermatter crystal
   - bugfix: Ghosts and godmode mobs will no longer create resonance when touching
       the supermatter crystal
+  Melbert:
+  - bugfix: Maybe fixes some weird occurrences where you lose the ability to pass
+      over tables when you shouldn't, and visa versa
   Shadow-Quill:
   - rscadd: The Message Monitor console's board can now be obtained via the telecoms
       research node.
@@ -857,6 +869,16 @@
   - rscadd: 'Added two new awards specifically for engineering and medical: The "Emergency
       Services Award" and the "Atmospheric Mastery Award". CEs get 3 Emergency Services
       Awards and 1 Atmospheric Mastery Award and CMOs get 3 Emergency Services Awards.'
+  jlsnow301:
+  - rscadd: Adds Bitrunning to supply department- a semi-offstation role that rewards
+      teamwork.
+  - rscadd: Adds new machines to complement the job- net pod, quantum server, quantum
+      consoles, and the nexacache vendor.
+  - rscadd: Adds several new maps which can be loaded and unloaded at will.
+  - rscadd: Some flair for the new bitrunning vendor.
+  - rscadd: Adds a new antagonist for the virtual domain only. Short lived ghost role
+      that fights bitrunners.
+  - rscdel: Removes the BEPIS machine, moves its tech into the Bitrunning vendor.
   lizardqueenlexi:
   - bugfix: Foods that have special conditions for liking/disliking them (such as
       donuts for sec officers) have these conditions again.
@@ -866,14 +888,7 @@
   mc-oofert:
   - bugfix: clown bomb payload is no longer named badmin payload and no longer disperses
       clowns in cardinal directions only
-  vinylspiders:
-  - rscadd: You can now actually ship crates on foxhole without getting a little silly...
-      but the chute's in the disposals area, by the dorms. Better start walking.
-  - bugfix: Foxhole is now back to being up to new standard.
-  - bugfix: the suffocation moodlet will now be cleared when you stop drowning in
-      liquid
-  wiverns:
-  - rscadd: wake up babe, new green lizard dropped
+  - refactor: clowns are basicmobs now
   softcerv, tf-4, IAmGoofBall:
   - balance: the evoker soulcatcher is now available through the R&D protolathe.
   - bugfix: Ass slapping now puts an overlay on the right person
@@ -887,3 +902,11 @@
   - rscadd: Rimpoint's caves have received some additional love.
   - bugfix: Icebox's laundry room is no longer incredibly broken, as is disposals.
   - bugfix: Dead Or Gone no longer creates atmosdiffs on roundstart.
+  vinylspiders:
+  - rscadd: You can now actually ship crates on foxhole without getting a little silly...
+      but the chute's in the disposals area, by the dorms. Better start walking.
+  - bugfix: Foxhole is now back to being up to new standard.
+  - bugfix: the suffocation moodlet will now be cleared when you stop drowning in
+      liquid
+  wiverns:
+  - rscadd: wake up babe, new green lizard dropped
