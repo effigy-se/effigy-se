@@ -10,20 +10,8 @@
 
 	brother2.dna.mutant_bodyparts["wings"] = list(MUTANT_INDEX_NAME = "Moth (Plain)", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
 	brother2.dna.mutant_bodyparts["moth_antennae"] = list(MUTANT_INDEX_NAME = "Plain", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
-	brother2.dna.features["mcolor"] = COLOR_WHITE
+	brother2.dna.features["mcolor"] = "#F9DB9B"
 	brother2.set_species(/datum/species/moth)
-
-	// NASTY HACK INBOUND SINCE SKYRAT HANDLES MOTHS COMPLETELY
-	// DIFFERENTLY AND WE WANT BACKWARDS COMPATIBILITY
-	for(var/obj/item/bodypart/limb in brother2.bodyparts)
-		limb.icon = 'icons/mob/human/species/moth/bodyparts.dmi'
-		limb.icon_greyscale = 'icons/mob/human/species/moth/bodyparts.dmi'
-
-	var/obj/item/bodypart/head/moth_head = brother2.get_bodypart(BODY_ZONE_HEAD)
-	moth_head.is_dimorphic = FALSE
-
-	brother2.regenerate_icons()
-	// NASTY HACK HAS PASSED
 
 	var/icon/brother1_icon = render_preview_outfit(/datum/outfit/job/quartermaster, brother1)
 	brother1_icon.Blend(icon('icons/effects/blood.dmi', "maskblood"), ICON_OVERLAY)
