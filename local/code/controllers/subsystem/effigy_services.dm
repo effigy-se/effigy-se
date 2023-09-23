@@ -153,7 +153,8 @@ SUBSYSTEM_DEF(effigy)
 	set category = "Admin"
 	set name = "Effigy ID Search"
 	set desc = "Find the Effigy account linked to a ckey."
-	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Who could it be now?~")
+	var/input_key = tgui_input_text(src, "What is their ckey?", "Who could it be now?~")
+	var/ckeytomatch = ckey(input_key)
 	var/requested_link = 0
 	message_admins(span_info("Searching Effigy for [ckeytomatch]"))
 	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
@@ -170,7 +171,8 @@ SUBSYSTEM_DEF(effigy)
 		to_chat(usr, span_adminnotice("The Database is not enabled!"))
 		return
 
-	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
+	var/input_key = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
+	var/ckeytomatch = ckey(input_key)
 	var/effigyid = tgui_input_number(src, "What is their Effigy ID?", "Someone wants to play here, apparently.", max_value = 99999999, min_value = 1, default = 0)
 
 	message_admins(span_info("Searching Effigy for [ckeytomatch]"))
@@ -184,9 +186,13 @@ SUBSYSTEM_DEF(effigy)
 		to_chat(usr, span_adminnotice("The Database is not enabled!"))
 		return
 
-	var/ckeytomatch = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
+	var/input_key = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
+	var/ckeytomatch = ckey(input_key)
 	var/effigyid = tgui_input_number(src, "What is their Effigy ID?", "Someone wants to play here, apparently.", max_value = 99999999, min_value = 1, default = 0)
 	var/requested_link = 0
+	if(!ckeytomatch)
+		message_admins(span_notice("Invalid ckey [ckeytomatch] provided."))
+		return
 
 	var/datum/db_query/query_add_player = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("player")] (`ckey`, `effigy_id`, `firstseen`, `firstseen_round_id`, `lastseen`, `lastseen_round_id`, `ip`, `computerid`, `lastadminrank`)
