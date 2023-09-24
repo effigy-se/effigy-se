@@ -96,11 +96,13 @@
 /datum/preference/toggle/genital_skin_color/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	if(TRAIT_USES_SKINTONES in species_type.inherent_traits)
+	var/datum/species/species = new species_type()
+	if(TRAIT_USES_SKINTONES in species.inherent_traits)
 		return FALSE
 	var/allowed = FALSE
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(genital_pref_type))
+	qdel(species)
 	return erp_allowed && part_enabled && (passed_initial_check || allowed)
 
 /datum/preference/toggle/genital_skin_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
