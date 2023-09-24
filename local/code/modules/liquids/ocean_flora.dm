@@ -112,15 +112,6 @@
 	name = "Liquids Spawner (Water, Fulltile)"
 	reagent_list = list(/datum/reagent/water = ONE_LIQUIDS_HEIGHT*LIQUID_FULLTILE_LEVEL_HEIGHT)
 
-/obj/effect/spawner/liquids_spawner/acid
-	name = "Liquids Spawner (Sulfuric Acid, Waist-Deep)"
-	color = "#00FF32"
-	reagent_list = list(/datum/reagent/toxin/acid = ONE_LIQUIDS_HEIGHT*LIQUID_WAIST_LEVEL_HEIGHT)
-
-/obj/effect/spawner/liquids_spawner/acid/puddle
-	name = "Liquids Spawner (Sulfuric Acid, Puddle)"
-	reagent_list = list(/datum/reagent/toxin/acid = ONE_LIQUIDS_HEIGHT)
-
 /obj/effect/spawner/ocean_curio
 	name = "Ocean Curio Spawner"
 	var/default_1 = /obj/structure/flora/ocean/seaweed
