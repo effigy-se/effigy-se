@@ -1,0 +1,70 @@
+name: CI Suite (Effigy)
+on:
+  push:
+    branches:
+    - main
+    - 'project/**'
+    - 'gh-readonly-queue/main/**'
+    - 'gh-readonly-queue/project/**'
+  pull_request:
+    branches:
+    - main
+    - 'project/**'
+  merge_group:
+    branches:
+    - main
+
+jobs:
+  run_linters_effigy:
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
+    name: Run Linters
+    runs-on: ubuntu-22.04
+    concurrency:
+      group: run_linters_effigy-${{ github.head_ref || github.run_id }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v3
+      - name: Restore SpacemanDMM cache
+        uses: actions/cache@v3
+        with:
+          path: ~/SpacemanDMM
+          key: ${{ runner.os }}-spacemandmm
+      - name: Restore Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: tgui/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Restore Node cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.nvm
+          key: ${{ runner.os }}-node-${{ hashFiles('dependencies.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Restore Bootstrap cache
+        uses: actions/cache@v3
+        with:
+          path: tools/bootstrap/.cache
+          key: ${{ runner.os }}-bootstrap-${{ hashFiles('tools/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-bootstrap-
+      - name: Restore Rust cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust
+      - name: Install Tools
+        run: |
+          pip3 install setuptools
+          bash tools/ci/install_node.sh
+          bash tools/ci/install_spaceman_dmm.sh dreamchecker
+          tools/bootstrap/python -c ''
+      - name: Give Linters A Go
+        id: linter-setup
+        run: ':'
+      - name: Ticked File Enforcement (Effigy)
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: |
+          tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/effigy_local.json
