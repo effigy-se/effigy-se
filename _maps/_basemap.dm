@@ -11,7 +11,6 @@
 		#include "map_files\MetaStation\MetaStation.dmm"
 		#include "map_files\Mining\Lavaland.dmm"
 		#include "map_files\tramstation\tramstation.dmm"
-		#include "map_files\Birdshot\birdshot.dmm"
 		// EFFIGY EDIT START
 		#include "map_files\debug\effigy_liquids.dmm"
 		#include "map_files\FoxHoleStation\foxholestation.dmm"
