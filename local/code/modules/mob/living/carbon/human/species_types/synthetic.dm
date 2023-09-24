@@ -129,9 +129,6 @@
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
 	for(var/obj/item/bodypart/limb as anything in target.bodyparts)
-		if(limb.limb_id != SPECIES_SYNTH && initial(limb.base_limb_id) != SPECIES_SYNTH) // No messing with limbs that aren't actually synthetic.
-			continue
-
 		if(limb.body_zone == BODY_ZONE_HEAD)
 			if(head_of_choice.color_src && head[MUTANT_INDEX_COLOR_LIST] && length(head[MUTANT_INDEX_COLOR_LIST]))
 				limb.variable_color = head[MUTANT_INDEX_COLOR_LIST][1]
@@ -140,7 +137,11 @@
 
 		if(chassis_of_choice.color_src && chassis[MUTANT_INDEX_COLOR_LIST] && length(chassis[MUTANT_INDEX_COLOR_LIST]))
 			limb.variable_color = chassis[MUTANT_INDEX_COLOR_LIST][1]
-		limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, !!chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
+
+		if (limb.limb_id == SPECIES_SYNTH || initial(limb.base_limb_id) == SPECIES_SYNTH)
+			limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, !!chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
+		else
+			limb.change_appearance(chassis_of_choice.icon, null, !!chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
 		limb.name = "\improper[chassis_of_choice.name] [parse_zone(limb.body_zone)]"
 
 
