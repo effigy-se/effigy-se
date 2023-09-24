@@ -91,6 +91,9 @@
 	if(iscarbon(AM))
 		START_PROCESSING(SSobj, src)
 		to_chat(AM, span_danger("You feel a series of tiny pricks!"))
+	// EffigyEdit Addition Start - Call mark_patient
+	mark_patient(src, AM)
+	// EffigyEdit Addition End
 
 /obj/structure/table/optable/abductor/process(seconds_per_tick)
 	. = PROCESS_KILL
