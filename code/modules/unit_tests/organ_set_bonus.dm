@@ -10,7 +10,6 @@
 		TEST_ASSERT(!(effect_id in existing_ids), "The ID of [bonus_effect] was duplicated in another status effect.")
 		existing_ids += effect_id
 
-/* EffigyTODO: https://github.com/effigy-se/effigy-se/issues/324
 /// Checks that all implantable DNA Infuser organs are set up correctly and without error.
 /// Tests the "organ set bonus" Elements and Status Effects, which are for the DNA Infuser.
 /// This test ensures that the "organ_set_bonus" status effects activate and deactivate when expected.
@@ -75,4 +74,3 @@
 
 		// Search for added Status Effect.
 		TEST_ASSERT(!removed_status || !added_status.bonus_active, "The `[added_status.type]` bonus was not deactivated after removing [total_inserted] of the [total_organs_needed] required organs from the mob, when it was expected.")
-*/
