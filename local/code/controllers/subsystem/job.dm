@@ -7,7 +7,7 @@
 		return FALSE
 	job.current_positions = max(0, job.current_positions - 1)
 
-/datum/controller/subsystem/job/DivideOccupations()
+/datum/controller/subsystem/job/DivideOccupations(pure = FALSE, allow_all = FALSE)
 	. = ..()
 
 	var/lowpop = (length(GLOB.clients) <= CONFIG_GET(number/minimal_access_threshold))
