@@ -82,15 +82,18 @@
 		return
 
 	if(bodypart_overlay.imprint_on_next_insertion) //We only want this set *once*
-
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat) - ORIGINAL: bodypart_overlay.set_appearance_from_name(receiver.dna.features[bodypart_overlay.feature_key])
-		if(receiver.dna.features[bodypart_overlay.feature_key])
-			bodypart_overlay.set_appearance_from_name(receiver.dna.features[bodypart_overlay.feature_key])
-
+		var/feature_name = receiver.dna.features[bodypart_overlay.feature_key]
+		if (isnull(feature_name))
+			bodypart_overlay.set_appearance_from_dna(receiver.dna) // SKYRAT EDIT CHANGE - ORIGINAL: feature_name = receiver.dna.species.external_organs[type]
+		// SKYRAT EDIT CHANGE START - Puts the following line in an else block
 		else
-			bodypart_overlay.set_appearance_from_dna(receiver.dna)
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+			bodypart_overlay.set_appearance_from_name(feature_name)
+		// SKYRAT EDIT CHANGE END
 		bodypart_overlay.imprint_on_next_insertion = FALSE
+		var/feature_name = receiver.dna.features[bodypart_overlay.feature_key]
+		if (isnull(feature_name))
+			feature_name = receiver.dna.species.external_organs[type]
+		bodypart_overlay.set_appearance_from_name(feature_name)
 
 	ownerlimb = limb
 	add_to_limb(ownerlimb)
