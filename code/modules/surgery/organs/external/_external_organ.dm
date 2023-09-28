@@ -82,14 +82,13 @@
 		return
 
 	if(bodypart_overlay.imprint_on_next_insertion) //We only want this set *once*
-
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat) - ORIGINAL: bodypart_overlay.set_appearance_from_name(receiver.dna.features[bodypart_overlay.feature_key])
+		// EffigyEdit Change - Customization - ORIGINAL: bodypart_overlay.set_appearance_from_name(receiver.dna.features[bodypart_overlay.feature_key])
 		if(receiver.dna.features[bodypart_overlay.feature_key])
 			bodypart_overlay.set_appearance_from_name(receiver.dna.features[bodypart_overlay.feature_key])
 
 		else
 			bodypart_overlay.set_appearance_from_dna(receiver.dna)
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Change End
 		bodypart_overlay.imprint_on_next_insertion = FALSE
 
 	ownerlimb = limb
