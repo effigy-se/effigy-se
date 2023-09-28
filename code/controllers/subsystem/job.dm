@@ -649,10 +649,9 @@ SUBSYSTEM_DEF(job)
 	JobDebug("Player rejected :[player]")
 	unassigned -= player
 	if(!run_divide_occupation_pure)
-		to_chat(player, "<span class='infoplain'><b>You have failed to qualify for any job you desired.</b></span>")
+		to_chat(player, "<div class='efchatalert_3'><span class='boldannounce'>You have failed to qualify for any job you desired.</span></div>") // EffigyEdit Change - Splash
 		player.ready = PLAYER_NOT_READY
-		player.client << output(player.ready, "lobby_browser:imgsrc") // EFFIGY EDIT ADD - SPLASH
-
+		player.client << output(player.ready, "lobby_browser:imgsrc") // EffigyEdit Add - Splash
 
 /datum/controller/subsystem/job/Recover()
 	set waitfor = FALSE
