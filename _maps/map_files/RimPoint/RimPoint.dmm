@@ -15850,6 +15850,7 @@
 /obj/machinery/modular_computer/preset/civilian{
 	dir = 1
 	},
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics)
 "hxW" = (
@@ -24484,7 +24485,9 @@
 "lKU" = (
 /obj/machinery/door/airlock/public/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/landmark/navigate_destination,
+/obj/effect/landmark/navigate_destination{
+	location = "Cryogenic Storage"
+	},
 /turf/open/floor/iron/textured_large,
 /area/station/commons/cryo)
 "lLa" = (
@@ -25675,7 +25678,10 @@
 /turf/closed/mineral/random/jungle,
 /area/station/security/prison/garden)
 "mne" = (
-/obj/machinery/jukebox/disco,
+/obj/effect/turf_decal/trimline/dark/warning{
+	dir = 4
+	},
+/obj/machinery/jukebox,
 /turf/open/floor/iron/dark/diagonal,
 /area/station/service/cafeteria)
 "mnj" = (
@@ -27163,6 +27169,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/machinery/shower/directional/west,
 /turf/open/floor/iron/white,
 /area/station/medical/cryo)
 "mXg" = (
@@ -35067,6 +35074,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/shower/directional/west,
 /turf/open/floor/iron/white,
 /area/station/medical/cryo)
 "qKr" = (
@@ -39306,6 +39314,9 @@
 	},
 /obj/structure/railing/corner/end/flip{
 	dir = 8
+	},
+/obj/effect/landmark/navigate_destination{
+	location = "Public Mining Dock"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/dock)
@@ -79374,7 +79385,7 @@ tlb
 sAb
 sAb
 vSj
-sAb
+ogM
 jEB
 ayZ
 wZh
@@ -94509,7 +94520,7 @@ xpx
 vya
 nBr
 eHk
-eHk
+mne
 eHk
 nmH
 wuW
@@ -94766,7 +94777,7 @@ vDe
 rVF
 jAO
 jAO
-mne
+jAO
 jAO
 jAO
 wuW
