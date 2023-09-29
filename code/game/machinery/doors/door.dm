@@ -422,6 +422,7 @@
 	if(operating)
 		return FALSE
 	operating = TRUE
+	update_appearance() // EffigyEdit Add - Operating Appearance
 	use_power(active_power_usage)
 	do_animate("opening")
 	set_opacity(0)
@@ -430,9 +431,9 @@
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	SLEEP_NOT_DEL(0.5 SECONDS)
 	layer = initial(layer)
+	operating = FALSE // EffigyEdit Change - Operating Appearance
 	update_appearance()
 	set_opacity(0)
-	operating = FALSE
 	air_update_turf(TRUE, FALSE)
 	update_freelook_sight()
 	if(autoclose)
@@ -459,17 +460,17 @@
 				return FALSE
 
 	operating = TRUE
-
+	update_appearance() // EffigyEdit Add - Operating Appearance
 	do_animate("closing")
 	layer = closingLayer
 	SLEEP_NOT_DEL(0.5 SECONDS)
 	set_density(TRUE)
 	flags_1 |= PREVENT_CLICK_UNDER_1
 	SLEEP_NOT_DEL(0.5 SECONDS)
+	operating = FALSE  // EffigyEdit Change - Operating Appearance
 	update_appearance()
 	if(visible && !glass)
 		set_opacity(1)
-	operating = FALSE
 	air_update_turf(TRUE, TRUE)
 	update_freelook_sight()
 

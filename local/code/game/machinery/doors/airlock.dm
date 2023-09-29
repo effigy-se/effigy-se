@@ -1,13 +1,4 @@
-#define AIRLOCK_LIGHT_POWER 1
-#define AIRLOCK_LIGHT_RANGE 1.7
 #define AIRLOCK_LIGHT_ENGINEERING "engineering"
-#define AIRLOCK_POWERON_LIGHT_COLOR COLOR_STARLIGHT
-#define AIRLOCK_BOLTS_LIGHT_COLOR LIGHT_COLOR_INTENSE_RED
-#define AIRLOCK_EMERGENCY_LIGHT_COLOR LIGHT_COLOR_DIM_YELLOW
-#define AIRLOCK_ENGINEERING_LIGHT_COLOR LIGHT_COLOR_PINK
-#define AIRLOCK_PERMIT_LIGHT_COLOR LIGHT_COLOR_ELECTRIC_CYAN
-#define AIRLOCK_DENY_LIGHT_COLOR LIGHT_COLOR_INTENSE_RED
-#define AIRLOCK_WARN_LIGHT_COLOR LIGHT_COLOR_PINK
 
 #define AIRLOCK_CLOSED	1
 #define AIRLOCK_CLOSING	2
@@ -32,14 +23,15 @@
 	boltUp = 'local/sound/machines/bolts_up.ogg'
 	boltDown = 'local/sound/machines/bolts_down.ogg'
 	light_dir = NONE
-	var/has_environment_lights = TRUE //Does this airlock emit a light?
-	var/light_color_poweron = AIRLOCK_POWERON_LIGHT_COLOR
-	var/light_color_bolts = AIRLOCK_BOLTS_LIGHT_COLOR
-	var/light_color_emergency = AIRLOCK_EMERGENCY_LIGHT_COLOR
-	var/light_color_engineering = AIRLOCK_ENGINEERING_LIGHT_COLOR
-	var/light_color_permit = AIRLOCK_PERMIT_LIGHT_COLOR
-	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
-	var/light_color_warn = AIRLOCK_WARN_LIGHT_COLOR
+	/// Does this airlock emit a light?
+	var/has_environment_lights = TRUE
+	var/light_color_poweron = COLOR_STARLIGHT
+	var/light_color_bolts = LIGHT_COLOR_INTENSE_RED
+	var/light_color_emergency = LIGHT_COLOR_DIM_YELLOW
+	var/light_color_engineering = LIGHT_COLOR_PINK
+	var/light_color_permit = LIGHT_COLOR_ELECTRIC_CYAN
+	var/light_color_deny = LIGHT_COLOR_INTENSE_RED
+	var/light_color_warn = LIGHT_COLOR_PINK
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
 	///Is this door external? E.g. does it lead to space? Shuttle docking systems bolt doors with this flag.
@@ -484,16 +476,7 @@
 /obj/structure/door_assembly/door_assembly_extmai
 	icon = 'local/icons/obj/doors/airlocks/station/maint-ext.dmi'
 
-#undef AIRLOCK_LIGHT_POWER
-#undef AIRLOCK_LIGHT_RANGE
 #undef AIRLOCK_LIGHT_ENGINEERING
-#undef AIRLOCK_ENGINEERING_LIGHT_COLOR
-#undef AIRLOCK_POWERON_LIGHT_COLOR
-#undef AIRLOCK_BOLTS_LIGHT_COLOR
-#undef AIRLOCK_EMERGENCY_LIGHT_COLOR
-#undef AIRLOCK_PERMIT_LIGHT_COLOR
-#undef AIRLOCK_DENY_LIGHT_COLOR
-#undef AIRLOCK_WARN_LIGHT_COLOR
 #undef AIRLOCK_CLOSED
 #undef AIRLOCK_CLOSING
 #undef AIRLOCK_OPEN
