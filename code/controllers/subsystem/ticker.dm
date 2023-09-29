@@ -295,7 +295,8 @@ SUBSYSTEM_DEF(ticker)
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore,SetRoundStart))
 
 	to_chat(world, span_notice("<B>Welcome to [station_name()], enjoy your stay!</B>"))
-	send2chat(new /datum/tgs_message_content("[GLOB.round_hex ? "Round [GLOB.round_hex]" : "New round"] starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_announce_new_game))
+	//send2chat(new /datum/tgs_message_content("[GLOB.round_hex ? "Round [GLOB.round_hex]" : "New round"] starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_announce_new_game)) // EffigyEdit Remove - Game Notifications
+	discord_new_game_alert() // EffigyEdit Add - Game Notifications
 	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
 
 	current_state = GAME_STATE_PLAYING
