@@ -55,13 +55,26 @@
 	. = ..()
 	if(istype(src, /obj/machinery/door/firedoor/border_only))
 		return
-	if(density) // if the door is closed, add the bottom blinking overlay -- and only if it's closed
-		. += "firelock_alarm_type_bottom"
+	if(!density)
+		return
+	if(powered() && !ignore_alarms) // if the door is closed, add the bottom blinking overlay -- and only if it's closed
+		if(obj_flags & EMAGGED)
+			. += mutable_appearance(icon, "firelock_alarm_type_emag")
+			. += emissive_appearance(icon, "firelock_alarm_type_emag", src, alpha = src.alpha)
+		else if(isnull(alarm_type))
+			. += mutable_appearance(icon, "firelock_no_alarm")
+			. += emissive_appearance(icon, "firelock_no_alarm", src, alpha = src.alpha)
+		else
+			. += mutable_appearance(icon, alarm_type)
+			. += emissive_appearance(icon, alarm_type, src, alpha = src.alpha)
+	else
+		. += mutable_appearance(icon, "firelock_no_power")
+		. += emissive_appearance(icon, "firelock_no_power", src, alpha = src.alpha)
 
 /obj/machinery/door/firedoor/heavy
 	name = "heavy emergency shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
-	icon = 'local/icons/obj/doors/firedoor.dmi'
+	icon = 'local/icons/obj/doors/firedoor_glass.dmi'
 
 /obj/effect/spawner/structure/window/reinforced/no_firelock
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)

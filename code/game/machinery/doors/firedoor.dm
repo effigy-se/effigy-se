@@ -617,11 +617,11 @@
 		. += density ? "welded" : "welded_open"
 	if(alarm_type && powered() && !ignore_alarms)
 		var/mutable_appearance/hazards
-		hazards = mutable_appearance(icon, "[(obj_flags & EMAGGED) ? "firelock_alarm_type_emag" : alarm_type]")
+		hazards = mutable_appearance(icon, "door_lights") // EffigyEdit Change - Firelocks - Original: [(obj_flags & EMAGGED) ? "firelock_alarm_type_emag" : alarm_type]
 		hazards.pixel_x = light_xoffset
 		hazards.pixel_y = light_yoffset
 		. += hazards
-		hazards = emissive_appearance(icon, "[(obj_flags & EMAGGED) ? "firelock_alarm_type_emag" : alarm_type]", src, alpha = src.alpha)
+		hazards = emissive_appearance(icon, "door_lights", src, alpha = src.alpha)  // EffigyEdit Change - Firelocks - Original: [(obj_flags & EMAGGED) ? "firelock_alarm_type_emag" : alarm_type]
 		hazards.pixel_x = light_xoffset
 		hazards.pixel_y = light_yoffset
 		. += hazards
