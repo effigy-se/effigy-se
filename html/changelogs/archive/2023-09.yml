@@ -904,6 +904,12 @@
   Melbert:
   - bugfix: Maybe fixes some weird occurrences where you lose the ability to pass
       over tables when you shouldn't, and visa versa
+  distributivgesetz:
+  - bugfix: Synth lizard digitigrade legs should now be colored like the rest of the
+      body.
+  - bugfix: Organic creatures will now vomit correctly when drinking synth drinks
+      again.
+  - bugfix: Bitrunners now partake in cybernetic revolutions again.
   jlsnow301:
   - rscadd: Adds Bitrunning to supply department- a semi-offstation role that rewards
       teamwork.
@@ -937,12 +943,6 @@
       liquid
   wiverns:
   - rscadd: wake up babe, new green lizard dropped
-  distributivgesetz:
-  - bugfix: Synth lizard digitigrade legs should now be colored like the rest of the
-      body.
-  - bugfix: Organic creatures will now vomit correctly when drinking synth drinks
-      again.
-  - bugfix: Bitrunners now partake in cybernetic revolutions again.
 2023-09-25:
   Ghommie:
   - bugfix: Fixed beams rendering below mobs by default.
@@ -1078,3 +1078,81 @@
   - bugfix: Fixed job configs not being loaded properly.
   admeeer:
   - rscadd: Added a candle box crate for all your candle needs!
+2023-09-28:
+  CoiledLamb:
+  - rscdel: removes surgical duffelbags
+  - bugfix: the surgery supply order now comes with a surgery tray
+  GPeckman:
+  - bugfix: The flight potion wings will no longer fail to work on lavaland/icemoon
+      on rare occasions.
+  Iamgoofball:
+  - qol: Gas masks now muffle your voice with TTS.
+  - qol: Security Hailer masks now disguise your voice to protect your right to brutalize
+      greytiders.
+  - qol: Lizards, Ethereals, and Xenomorphs now have a vocal effect.
+  - qol: Security Records now show someone's voice name.
+  Melbert:
+  - rscadd: Doctors can now get head mirrors from their clothes vendor, to complete
+      the doctor outfit
+  - config: Adds a config option for player respawning that enables respawns, but
+      forces you pick a new character.
+  - config: '"NORESPAWN" has been replaced with "ALLOW_RESPAWN 0". Unlimited respawns
+      is "ALLOW_RESPAWN 1" and character limited respawns is "ALLOW_RESPAWN 2".'
+  MidoriWroth:
+  - bugfix: Added complexity factors to foods that were missing them.
+  Profakos:
+  - rscadd: Added the BEPIS' minor rewards as purchasable products to the bitrunning
+      order console.
+  - rscdel: Removed the base BEPIS disk from the bitrunner console
+  Sealed101:
+  - qol: you can undeploy fulton beacons by clicking them with an empty hand
+  - qol: you can rename fulton beacons with a pen
+  - bugfix: fixed geysers spawning on turfs with plants
+  Tattle:
+  - qol: drones now have individual names, instead of just "drone"
+  Watermelon914:
+  - spellcheck: Tweaks the message that players get when not being able to qualify
+      for roundstart antag to be more accurate as to what's happening.
+  carlarctg:
+  - bugfix: Fixed zombies being able to infect headless corpses (Including former
+      zombies)
+  - bugfix: 'Fixed bio armor being totally useless against zombies. Now it checks
+      how hurt your limb is: If it''s more than the bio armor value, you get infected.
+      THICKMATERIAL clothing guarantees at least 25 damage required to infect you,
+      non-thick clothing reduces effective defence by 25. In practice this means people
+      with MODsuits, biosuits will resist infection unless they''re pummeled into
+      crit, and wearing a firesuit will save you from the first few slashes.'
+  - bugfix: Fixed the bomb hood armor not having the same bio armor value as bomb
+      armor.
+  - qol: Added a message to the zed when they succesfully infect someone.
+  - code_imp: Turned some proc names into snake_case rather than, uh, nospacecase.
+  - bugfix: Fixes full advanced surgery trays spawning with 'nothing'
+  - refactor: Turned slapcrafting into a component! You can examine compatible items
+      to see what recipes they can be used in, and what the ingredients for them are.
+      For example, spears and the head-on-spear crafting recipe.
+  - bugfix: Valentines and ERTs will no longer get mood boosts from traitor moodener
+      items
+  mc-oofert:
+  - bugfix: you can now deconstruct exodrone scanner arrays
+  - bugfix: the tree in space exodrone adventure no longer softlocks you
+  - qol: the exodrone launchers now tell you on examine how to remove their fuel canister
+      if you somehow needed to do that
+  - balance: exodrone wide scans are now capped at 10 minutes
+  - balance: exodrone travel times are 18% faster
+  - balance: you can now upgrade scanner arrays for faster wide scan
+  - balance: exodrone point scan and deep scan are faster
+  - spellcheck: fixes several typos related to exodrones and gives scanner control
+      console a description
+  nikothedude:
+  - bugfix: You can no longer break the game by AI rolling in a card or APC
+  - qol: AI Roll now doesnt require you to click the exact turf to move you
+  - qol: AI roll cooldown and roll time is now a variable, making it possible for
+      AIs to become terrifying catamari damacy balls
+  timothymtorres:
+  - bugfix: Fix altars not allowing items to be sacrificed
+  vinylspiders:
+  - bugfix: Seeds will no longer be removed from existence after receiving the "You
+      can't seem to add [seed type] to the seed extractor" message
+  - bugfix: Some seeds that were previously not able to be added to the seed extractor
+      may now be added (starthistle for example)
+  - bugfix: fixes replica pod seeds spawning humans in nullspace
