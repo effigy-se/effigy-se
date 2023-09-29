@@ -686,6 +686,13 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "Officials are advising nearby colonies about a newly declared exclusion zone in \
 				the sector surrounding [decoded_station_name]."
 
+	// EffigyEdit Add - Game Notification
+	if(SSblackbox.first_death)
+		var/list/f_in_chat = SSblackbox.first_death
+		if(!isnull(f_in_chat))
+			news_message += " Medbay records indicate the first crewmember loss was [f_in_chat["name"]] ([f_in_chat["role"]]), last seen on sensors at [f_in_chat["area"]].[f_in_chat["last_words"] ? " Suit sensor final recording was: \"[f_in_chat["last_words"]]\"" : ""]" // " // Funny last words go brrrrrr
+	// EffigyEdit Add End
+
 	if(news_message)
 		send2otherserver(news_source, news_message, "News_Report")
 
