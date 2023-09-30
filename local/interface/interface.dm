@@ -19,6 +19,8 @@
 			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/MiniStation/"
 		if("NorthStar")
 			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/NorthStar/"
+		if("RimPoint")
+			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/RimPoint/"
 	if(mapurl)
 		src << link(mapurl)
 	else
