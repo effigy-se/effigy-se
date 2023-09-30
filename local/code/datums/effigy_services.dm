@@ -36,7 +36,7 @@
 		"post" = "[jointext(raw_content["message"], "<br>")]"
 	)
 
-	var/parsed_content = list()
+	var/list/parsed_content = list()
 	for(var/urlkey in processed_content)
 		parsed_content.Add("[urlkey]=[url_encode(processed_content[urlkey])]")
 
