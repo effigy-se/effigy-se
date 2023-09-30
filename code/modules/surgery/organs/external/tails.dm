@@ -108,8 +108,12 @@
 	color_source = NONE
 	feature_key = "tail" // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) ORIGINAL: feature_key = "tail_monkey"
 
+// EffigyEdit Remove - Customization
+/*
 /datum/bodypart_overlay/mutant/tail/monkey/get_global_feature_list()
 	return GLOB.tails_list_monkey
+*/
+// EffigyEdit Remove End
 
 /obj/item/organ/external/tail/lizard
 	name = "lizard tail"
