@@ -29,14 +29,18 @@
 /// Generates the request body
 /datum/effigy_message_type/proc/construct_api_message_body(list/raw_content)
 	var/list/processed_content = list(
-		"forum=[raw_content["box"]]",
-		"author=[raw_content["link_id"]]",
-		"topic=[raw_content["ticket_id"]]",
-		"title=\[[GLOB.round_hex]-[raw_content["int_id"]]] [raw_content["title"]]",
-		"post=[jointext(raw_content["message"], "<br>")]"
+		"forum" = "[raw_content["box"]]",
+		"author" = "[raw_content["link_id"]]",
+		"topic" = "[raw_content["ticket_id"]]",
+		"title" = "\[[GLOB.round_hex]-[raw_content["int_id"]]] [raw_content["title"]]",
+		"post" = "[jointext(raw_content["message"], "<br>")]"
 	)
 
-	var/joined = jointext(processed_content, "&")
+	var/parsed_content = list()
+	for(var/urlkey in processed_content)
+		parsed_content.Add("[urlkey]=[url_encode(processed_content[urlkey])]")
+
+	var/joined = jointext(parsed_content, "&")
 	return joined
 
 /datum/effigy_message_type/proc/create_http_request(content)
