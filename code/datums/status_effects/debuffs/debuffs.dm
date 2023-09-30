@@ -265,9 +265,8 @@
 	. = ..()
 	if(!.)
 		return
-	// EFFIGY EDIT CHANGE START
-	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id))
-	owner.throw_alert("stasis numbed", /atom/movable/screen/alert/numbed)
+	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id))
+	owner.throw_alert("stasis numbed", /atom/movable/screen/alert/numbed) // EffigyEdit Add - Surgery Numbing
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	//EFFIGY EDIT CHANGE END
 	var/filter = owner.get_filter("stasis_status_ripple")
@@ -283,10 +282,10 @@
 		owner.Sleeping(15 SECONDS) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 
 /datum/status_effect/grouped/stasis/on_remove()
-	// EFFIGY EDIT CHANGE START
-	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id)) // EFFIGY EDIT START - STASIS END REMOVES NUMBING
-	owner.clear_alert("stasis numbed")
-	//EFFIGY EDIT CHANGE END
+	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id))
+	owner.remove_filter("stasis_status_ripple")
+	owner.clear_alert("stasis numbed") // EffigyEdit Add - Surgery Numbing
+
 	update_time_of_death()
 	if(iscarbon(owner))
 		var/mob/living/carbon/carbon_owner = owner

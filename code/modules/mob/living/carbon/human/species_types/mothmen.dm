@@ -51,9 +51,10 @@
 		return 10 //flyswatters deal 10x damage to moths
 	return 1
 
-/datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["moth_markings"] = pick(GLOB.moth_wings_list) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
-	randomize_external_organs(human_mob)
+/datum/species/moth/randomize_features()
+	var/list/features = ..()
+	features["moth_markings"] = pick(GLOB.moth_wings_list) // EffigyEdit Change - Customization
+	return features
 
 /datum/species/moth/get_scream_sound(mob/living/carbon/human/human)
 	return 'sound/voice/moth/scream_moth.ogg'

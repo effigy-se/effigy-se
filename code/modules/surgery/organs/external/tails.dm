@@ -6,11 +6,11 @@
 
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_EXTERNAL_TAIL
-
-	bodypart_overlay = /datum/bodypart_overlay/mutant/tail
-
 	//dna_block = DNA_TAIL_BLOCK // EFFIGY EDIT REMOVE (#3 Customization - Ported from Skyrat)
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
+
+	// defaults to cat, but the parent type shouldn't be created regardless
+	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/cat
 
 	///Does this tail have a wagging sprite, and is it currently wagging?
 	var/wag_flags = NONE
@@ -71,17 +71,13 @@
 	wag_flags &= ~WAG_WAGGING
 	accessory.wagging = FALSE
 
-///Tail parent type (which is MONKEEEEEEEEEEE by default), with wagging functionality
+///Tail parent type, with wagging functionality
 /datum/bodypart_overlay/mutant/tail
 	layers = EXTERNAL_FRONT|EXTERNAL_BEHIND
-	feature_key = "tail" // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) ORIGINAL: feature_key = "tail_monkey"
 	var/wagging = FALSE
 
 /datum/bodypart_overlay/mutant/tail/get_base_icon_state()
 	return (wagging ? "wagging_" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging
-
-/datum/bodypart_overlay/mutant/tail/get_global_feature_list()
-	return GLOB.sprite_accessories["tail"] // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) ORIGINAL: return GLOB.tails_list
 
 /datum/bodypart_overlay/mutant/tail/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(human.wear_suit && (human.wear_suit.flags_inv & HIDEJUMPSUIT))
@@ -111,6 +107,9 @@
 /datum/bodypart_overlay/mutant/tail/monkey
 	color_source = NONE
 	feature_key = "tail" // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) ORIGINAL: feature_key = "tail_monkey"
+
+/datum/bodypart_overlay/mutant/tail/monkey/get_global_feature_list()
+	return GLOB.tails_list_monkey
 
 /obj/item/organ/external/tail/lizard
 	name = "lizard tail"
