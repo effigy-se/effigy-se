@@ -23,16 +23,16 @@
 		return
 	if(powered() && !ignore_alarms) // if the door is closed, add the bottom blinking overlay -- and only if it's closed
 		if(obj_flags & EMAGGED)
-			. += mutable_appearance(icon, "firelock_alarm_type_emag")
-			. += emissive_appearance(icon, "firelock_alarm_type_emag", src, alpha = src.alpha)
+			. += mutable_appearance(icon, "em_firelock_alarm_type_emag")
+			. += emissive_appearance(icon, "em_firelock_alarm_type_emag", src, alpha = src.alpha)
 			set_light(l_color = light_color_emag, l_on = TRUE)
 		else if(isnull(alarm_type))
-			. += mutable_appearance(icon, "firelock_no_alarm")
-			. += emissive_appearance(icon, "firelock_no_alarm", src, alpha = src.alpha)
+			. += mutable_appearance(icon, "em_firelock_no_alarm")
+			. += emissive_appearance(icon, "em_firelock_no_alarm", src, alpha = src.alpha)
 			set_light(l_color = light_color_generic, l_on = TRUE)
 		else
-			. += mutable_appearance(icon, alarm_type)
-			. += emissive_appearance(icon, alarm_type, src, alpha = src.alpha)
+			. += mutable_appearance(icon, "em_[alarm_type]")
+			. += emissive_appearance(icon, "em_[alarm_type]", src, alpha = src.alpha)
 			switch(alarm_type)
 				if(FIRELOCK_ALARM_TYPE_HOT)
 					set_light(l_color = light_color_hot, l_on = TRUE)
@@ -41,8 +41,8 @@
 				if(FIRELOCK_ALARM_TYPE_GENERIC)
 					set_light(l_color = light_color_generic, l_on = TRUE)
 	else
-		. += mutable_appearance(icon, "firelock_no_power")
-		. += emissive_appearance(icon, "firelock_no_power", src, alpha = src.alpha)
+		. += mutable_appearance(icon, "em_firelock_no_power")
+		. += emissive_appearance(icon, "em_firelock_no_power", src, alpha = src.alpha)
 		set_light(l_color = light_color_generic, l_on = TRUE)
 
 /obj/machinery/door/firedoor/heavy
