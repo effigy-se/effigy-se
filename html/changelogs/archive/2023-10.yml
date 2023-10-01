@@ -1,71 +1,56 @@
 2023-10-01:
-  A.C.M.O.:
-  - bugfix: Fixes the death sandwich, making it safe to examine.
-  BurgerBB:
-  - bugfix: Scrubbers and Vents will no longer reset their settings on map load.
+  ArcaneMusic:
+  - rscadd: A new export has arrived in the imports section, the Galactic Materials
+      Market! You can use this to buy and sell minerals for profit or cost, as well
+      as stock your station when you don't have any miners.
+  - rscadd: Insert sheets of minerals into the Galactic Materials Market to convert
+      them into a stock block, allowing you to lock in your price for 5 minutes. Wait
+      too long and it'll be subject to market value again!
+  - rscadd: Minerals can be bought on the market either using the station's cargo
+      budget by cargo crew, or privately by everyone else.
+  - rscdel: Any material stacks that can be bought and sold on the market before have
+      been removed from the cargo catalog.
   GPeckman:
-  - admin: There is now a tool to apply a DNA Infuser entry to any human.
-  Ghilker:
-  - code_imp: adds a gas connector component that allows connection to the atmos piping
-      system without the need of repathing
-  - refactor: changes the cryo machine to use this new system
+  - bugfix: Security officers can now download the crew manifest PDA app that they
+      start with.
+  Ghommie:
+  - bugfix: Actually fixed the hooked item exploit.
   Higgin:
-  - balance: Diabetics rejoice! Nerfed sugar OD/hyperglycaemic shock to be an immediate
-      KO followed by drowsiness afterwards until the OD is gone.
-  Jacquerel:
-  - bugfix: The Nuke Op MODsuit AI downloader only works once per purchase, as intended.
-  JohnFulpWillard:
-  - balance: You can now remove and replace power cells from PDAs (with screwdriver).
-  - balance: PDAs now drain their power cells harder, and also take into account active
-      programs & their flashlight being on.
-  - balance: PDAs running out of charge now turn their flashlights off.
-  Melbert:
-  - qol: Examine blocked out roundstart / latejoin job information.
-  - qol: Captain gets a little bit more information about how their radio works roundstart.
-  - bugfix: Fixed roundstart players not getting radio information.
-  Rhials:
-  - bugfix: The Polymorph Belt should now update its sprite when active.
-  - qol: The freedom implant has received minor feedback and other minor usage improvements.
-  Sealed101:
-  - bugfix: fixed lobstrosities becoming unmovable when killed during their charge
-      windup
+  - bugfix: Added warden to list of default required enemies for rulesets.
+  NPC1314:
+  - image: new chaplain outfit
   SyncIt21:
-  - bugfix: removes incorrect stack traces when using some admin secrets
-  Vekter:
-  - bugfix: Fixes the missing grinder in Birdshot's Virology department
-  Vincent983:
-  - bugfix: the parole status and discharged status are now green and blue respectively
-      in the security record interface
-  Watermelon914:
-  - balance: Head revolutionaries and heads of staff are no longer immediately considered
-      disqualified when going AFK or disconnecting and are given a 2 minute grace
-      period.
-  - admin: Admins now get a log when a head revolutionary or head of staff disconnects
-      or goes AFK during a revolution. They also get the same log 1 minute after to
-      give them a chance to act on the information.
-  necromanceranne:
-  - bugfix: Splattercasting resets your blood to normal values when you transsform
-      into a vampire.
-  - bugfix: Gaining a new species will set your blood volume down to the normal volume
-      levels if higher than normal.
+  - bugfix: Aloe and other baked foods that don't have reagents can be baked again
+      without turning to ash
+  carlarctg:
+  - rscadd: Heretic Rebalance
+  - balance: Researching the Main Knowledge paths that unlock Side Paths will grant
+      one Side Point that can be used only on those side paths. You can still spend
+      normal knowledge points on them if you wish.
+  - balance: Rune drawing time has been reduced from 30->20 seconds. Codex drawing
+      time has been reduced from 15->8.
+  - balance: 'Codex Cicatrix is now a roundstart knowledge, works as an amber focus
+      when held in-hand and opened, and has had its recipe changed to: 1 of any non-standard
+      pen (literally anything that isn''t the base pen), any book, and either animal
+      hide OR a corpse, any kind.'
+  - code_imp: Added support for using a list inside ritual requirements and a special
+      'snowflake check' rituals can utilize.
+  - balance: The first non-path knowledge, the Mansus Hand Mark, has had its cost
+      reduced from 2->1 points.
+  distributivgesetz:
+  - qol: Font settings in the chat panel applies to all text now.
+  nikothedude:
+  - balance: Sci now has access to the materials & canisters section in their departmental
+      order console
+  ninjanomnom:
+  - rscdel: An easter egg plushie that was spawning where it shouldn't has been brought
+      back home.
+  - rscadd: The secure closet can now spawn live gibtonite, enjoy your free bomb.
   san7890:
-  - code_imp: Robot Customers have recently been touched codewise, please report any
-      bugs or unexpected behavior as there really should not be any.
-  - refactor: Snakes have been refactored into basic mobs. This means that they are
-      a bit more intelligent than previous snakes, making them more docile and averse
-      to harming people (unless otherwise provoked). They do chomp all sorts of mice
-      though. You can feed them a dead mouse to make them your friend if you'd want
-      that.
-  - sound: If you listen closely to snakes, you might be able to hear a small hissing
-      sound...
-  timothymtorres:
-  - bugfix: Fix water puddle runtime when washing items
-  - rscadd: Add drinking water causes drunk mobs to become sober
-  - rscadd: Add candle design to biogenerator
-  yorii:
-  - bugfix: dead bodies now cool down to room temperature over time
-  - qol: allowed names to start with a number if AI/Borg
-2023-10-02:
+  - refactor: Supermatter Spiders have been refactored into basic mobs, on the extremely
+      off chance you spot one and also notice any weird bugs regarding it, please
+	  report it.
+  2023-10-02:
   LT3:
   - server: New TGS config for discord game notifications
   unit0016:
