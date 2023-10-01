@@ -16,12 +16,12 @@ Mostly for Effigy exclusive stuff, otherwise if you need to modify a base file f
 * When changing any code in any stock /tg/ .DM file, you must mark your changes:
     * For single-line changes: // EffigyEdit Change - Explanation (Edit can also be Add for new lines or Remove if you are commenting the line out.)
     * For multi-line additions: // EffigyEdit Change - Explanation and then at the bottom of your changes, // EffigyEdit Change End
-    * For multi-line removals: Use a block comment (/\* xxx \*/) to comment out the existing code block (do not modify whitespace more than necessary) and at the start, it should contain    // EffigyEdit Remove - Explanation
-								/*
-								<code here>
-								<code here>
-								*/
-								// EffigyEdit Remove End
+    * For multi-line removals: Use a block comment (/\* xxx \*/) to comment out the existing code block (do not modify whitespace more than necessary) and at the start, it should contain
+	/* EffigyEdit Remove - Explanation
+	<code here>
+	<code here>
+	*/ EffigyEdit Remove End
+ 
 * Change whitespace as little as possible. Do not randomly add/remove whitespace.
 * Any new files should preferrably go into the local folder following the file structure of where it would be placed normally.
 * Do not make changes to base icon files. New icon files should go into /local and code should be changed to point to the new file.
@@ -37,4 +37,4 @@ The syntax for `effigy_proc()` is: `effigy_proc(atom,"proc_name",list(arg1,arg2)
 As an example of something you can do with `effigy_proc()` in a single line, the grab code is done with this in a single line. When a grab is clicked on someone, there is a line similar to:
 `if(effigy_proc(src,"handle_grabs_se",list(src,attacker))) return`
 
-Then in our `handle_grabs_se()` proc, if we want to avoid performing the stock game actions and have handled something ourselves, we return true, and the original proc returns since attempt_ch returns true.
+Then in our `handle_grabs_se()` proc, if we want to avoid performing the stock game actions and have handled something ourselves, we return true, and the original proc returns since attempt_se returns true.

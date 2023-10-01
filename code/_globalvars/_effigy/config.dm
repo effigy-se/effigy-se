@@ -62,8 +62,10 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/flag/disable_suicide
 
 // Discord config
-/datum/config_entry/string/game_alert_role_id
-/datum/config_entry/string/role_assign_channel_id
+/datum/config_entry/string/game_notify_role_id
+/datum/config_entry/string/channel_role_assignment
+/datum/config_entry/string/channel_social_new_game
+/datum/config_entry/string/channel_social_end_game
 
 /datum/config_entry/flag/all_lights_after_init
 	default = FALSE
@@ -109,3 +111,9 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /datum/config_entry/string/alert_white_downto
 	default = "Medical emergency in progress. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
+
+/datum/config_entry/number/jungle_budget
+	default = 4
+	integer = FALSE
+	min_val = 0
+
