@@ -39,8 +39,6 @@ SUBSYSTEM_DEF(persistence)
 	load_custom_outfits()
 	load_delamination_counter()
 	load_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-	load_tagline() // EFFIGY EDIT ADD (Tagline)
-
 	load_tram_counter()
 	load_adventures()
 	return SS_INIT_SUCCESS
@@ -59,7 +57,6 @@ SUBSYSTEM_DEF(persistence)
 	if(SStramprocess.can_fire)
 		save_tram_counter()
 	save_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-	save_tagline() // EFFIGY EDIT ADD (Tagline)
 	save_modular_persistence() // EFFIGY EDIT ADDITION - (#184 Modular Persistence - Ported From Skyrat)
 
 
@@ -572,23 +569,6 @@ SUBSYSTEM_DEF(persistence)
 
 /datum/controller/subsystem/persistence/proc/save_tram_counter()
 		rustg_file_write("[tram_hits_this_round]", TRAM_COUNT_FILEPATH)
-
-// EFFIGY EDIT ADD START (Tagline)
-/// Location where we save the server tagline
-#define SERVER_TAGLINE_FILEPATH "data/tagline.txt"
-
-/datum/controller/subsystem/persistence/proc/load_tagline()
-	if (!fexists(SERVER_TAGLINE_FILEPATH))
-		log_game("SERVER: No tagline file found!")
-		message_admins(span_boxannounceorange("No server tagline file found!"))
-		return
-	GLOB.tagline = file2text(SERVER_TAGLINE_FILEPATH)
-
-/datum/controller/subsystem/persistence/proc/save_tagline()
-	rustg_file_write("[GLOB.tagline]", SERVER_TAGLINE_FILEPATH)
-
-#undef SERVER_TAGLINE_FILEPATH
-// EFFIGY EDIT ADD END (Tagline)
 
 #undef DELAMINATION_COUNT_FILEPATH
 #undef DELAMINATION_HIGHSCORE_FILEPATH
