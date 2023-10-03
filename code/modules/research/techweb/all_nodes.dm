@@ -917,6 +917,7 @@
 		"mecha_camera",
 		"botnavbeacon",
 		"borg_upgrade_snacks", // EFFIGY ADDITION - Cyborg Upgrades
+		"mini_soulcatcher", // EFFIGY ADDITION - Soulcatchers
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

@@ -152,7 +152,7 @@
 		SEND_SIGNAL(old_body, COMSIG_SOULCATCHER_CHECK_SOUL, FALSE)
 
 	chosen_soul.mind.transfer_to(target_mob, TRUE)
-	playsound(src, 'modular_skyrat/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
+	playsound(src, 'local/code/modules/modular_implants/sounds/default_good.ogg', 50, FALSE, ignore_walls = FALSE)
 	visible_message(span_notice("[src] beeps: Body transfer complete."))
 	log_admin("[src] was used by [user] to transfer [chosen_soul]'s soulcatcher soul to [target_mob].")
 
