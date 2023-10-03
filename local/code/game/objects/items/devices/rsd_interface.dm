@@ -13,7 +13,7 @@
 	if(!proximity_flag || !istype(target_brain))
 		return FALSE
 
-	if(HAS_TRAIT(target_brain, TRAIT_NIFSOFT_HUD_GRANTER))
+	if(HAS_TRAIT(target_brain, TRAIT_RSD_COMPATIBLE))
 		balloon_alert("already upgraded!")
 		return FALSE
 
@@ -34,7 +34,7 @@
 /// Adds text to the examine text of the parent item, explaining that the item can be used to enable the use of NIFSoft HUDs
 /datum/element/rsd_interface/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
-	examine_text += span_cyan("Souls can be transferred to [source], assuming it is inert.")
+	examine_text += span_blue("Souls can be transferred to [source], assuming it is inert.")
 
 /datum/element/rsd_interface/Detach(datum/target)
 	UnregisterSignal(target, COMSIG_ATOM_EXAMINE)
