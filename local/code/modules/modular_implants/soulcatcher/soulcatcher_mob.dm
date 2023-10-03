@@ -21,6 +21,14 @@
 	var/able_to_emote = TRUE
 	/// Is the soul able to speak inside the soulcatcher room?
 	var/able_to_speak = TRUE
+	/// Is the soul able to change their own name?
+	var/able_to_rename = TRUE
+	/// Is the soul able to speak as the object it is inside?
+	var/able_to_speak_as_container = TRUE
+	/// Is the soul able to emote as the object it is inside?
+	var/able_to_emote_as_container = TRUE
+	/// Are emote's and Say's done through the container the mob is in?
+	var/communicating_externally = FALSE
 
 	/// Is the soul able to leave the soulcatcher?
 	var/able_to_leave = TRUE
@@ -39,6 +47,11 @@
 
 	var/datum/action/innate/leave_soulcatcher/leave_action = new
 	leave_action.Grant(src)
+
+	var/datum/action/innate/soulcatcher_user/soulcatcher_action = new
+	soulcatcher_action.Grant(src)
+	var/datum/component/soulcatcher_user/user_component = AddComponent(/datum/component/soulcatcher_user)
+	soulcatcher_action.soulcatcher_user_component = WEAKREF(user_component)
 
 /// Toggles whether or not the soul inside the soulcatcher can see the outside world. Returns the state of the `outside_sight` variable.
 /mob/living/soulcatcher_soul/proc/toggle_sight()
@@ -59,6 +72,21 @@
 		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
 
 	return outside_hearing
+
+/// Changes the soul's name based off `new_name`. Returns `TRUE` if the name has been changed, otherwise returns `FALSE`.
+/mob/living/soulcatcher_soul/proc/change_name(new_name)
+	if(!new_name || (round_participant && body_scan_needed))
+		return FALSE
+
+	name = new_name
+	return TRUE
+
+/// Attempts to reset the soul's name to it's name in prefs. Returns `TRUE` if the name is reset, otherwise returns `FALSE`.
+/mob/living/soulcatcher_soul/proc/reset_name()
+	if(!mind?.name || change_name(mind.name))
+		return FALSE
+
+	return TRUE
 
 /// Checks if the mob wants to leave the soulcatcher. If they do and are able to leave, they are booted out.
 /mob/living/soulcatcher_soul/verb/leave_soulcatcher()
@@ -88,7 +116,7 @@
 	if(!message || message == "")
 		return
 
-	if(!able_to_speak)
+	if((!able_to_speak && !communicating_externally) || (!able_to_speak_as_container && communicating_externally))
 		to_chat(src, span_warning("You are unable to speak!"))
 		return FALSE
 
@@ -104,7 +132,7 @@
 	if(!message)
 		return FALSE
 
-	if(!able_to_emote)
+	if((!able_to_emote && !communicating_externally) || (!able_to_emote_as_container && communicating_externally))
 		to_chat(src, span_warning("You are unable to emote!"))
 		return FALSE
 
@@ -174,3 +202,20 @@
 		return FALSE
 
 	parent_soul.leave_soulcatcher()
+
+/datum/action/innate/soulcatcher_user
+	name = "Soulcatcher"
+	background_icon = 'local/icons/hud/screen_efcyan.dmi'
+	background_icon_state = "template"
+	button_icon = 'local/icons/hud/nifsoft.dmi'
+	button_icon_state = "soulcatcher"
+	/// What soulcatcher user component are we bringing up the menu for?
+	var/datum/weakref/soulcatcher_user_component
+
+/datum/action/innate/soulcatcher_user/Activate()
+	. = ..()
+	var/datum/component/soulcatcher_user/user_component = soulcatcher_user_component.resolve()
+	if(!user_component)
+		return FALSE
+
+	user_component.ui_interact(owner)
