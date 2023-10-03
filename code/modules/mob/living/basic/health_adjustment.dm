@@ -9,13 +9,12 @@
  */
 /mob/living/basic/proc/adjust_health(amount, updating_health = TRUE, forced = FALSE)
 	. = FALSE
-	if(!forced && (status_flags & GODMODE))
-		return 0
-	. = bruteloss // bruteloss value before applying damage
-	bruteloss = round(clamp(bruteloss + amount, 0, maxHealth * 2), DAMAGE_PRECISION)
-	if(updating_health)
-		updatehealth()
-	return . - bruteloss
+	if(forced || !(status_flags & GODMODE))
+		. = bruteloss // bruteloss value before applying damage
+		bruteloss = round(clamp(bruteloss + amount, 0, maxHealth * 2), DAMAGE_PRECISION)
+		if(updating_health)
+			updatehealth()
+		. -= bruteloss
 
 /mob/living/basic/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
 	if(!forced && (status_flags & GODMODE))
@@ -58,16 +57,12 @@
 		. = adjust_health(amount * damage_coeff[TOX] * CONFIG_GET(number/damage_multiplier), updating_health, forced)
 
 /mob/living/basic/adjustCloneLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
-	if(on_damage_adjustment(CLONE, amount, forced) & COMPONENT_IGNORE_CHANGE)
-		return 0
 	if(forced)
 		. = adjust_health(amount * CONFIG_GET(number/damage_multiplier), updating_health, forced)
 	else if(damage_coeff[CLONE])
 		. = adjust_health(amount * damage_coeff[CLONE] * CONFIG_GET(number/damage_multiplier), updating_health, forced)
 
 /mob/living/basic/adjustStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE, required_biotype)
-	if(on_damage_adjustment(STAMINA, amount, forced) & COMPONENT_IGNORE_CHANGE)
-		return 0
 	. = staminaloss
 	if(forced)
 		staminaloss = max(0, min(BASIC_MOB_MAX_STAMINALOSS, staminaloss + amount))

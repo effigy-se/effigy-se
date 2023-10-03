@@ -169,9 +169,7 @@
 /mob/living/proc/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_BRUTE, amount) // EFFIGY EDIT ADD
 	if(!forced && (status_flags & GODMODE))
-		return 0
-	if(on_damage_adjustment(BRUTE, amount, forced) & COMPONENT_IGNORE_CHANGE)
-		return 0
+		return FALSE
 	. = bruteloss
 	bruteloss = clamp((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	. -= bruteloss
@@ -200,17 +198,15 @@
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) // EFFIGY EDIT ADD
 	if(!forced)
 		if(status_flags & GODMODE)
-			return 0
+			return FALSE
 
 		var/obj/item/organ/internal/lungs/affected_lungs = get_organ_slot(ORGAN_SLOT_LUNGS)
 		if(isnull(affected_lungs))
 			if(!(mob_respiration_type & required_respiration_type))  // if the mob has no lungs, use mob_respiration_type
-				return 0
+				return FALSE
 		else
 			if(!(affected_lungs.respiration_type & required_respiration_type)) // otherwise use the lungs' respiration_type
-				return 0
-	if(on_damage_adjustment(OXY, amount, forced) & COMPONENT_IGNORE_CHANGE)
-		return 0
+				return FALSE
 	. = oxyloss
 	oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	. -= oxyloss
@@ -277,25 +273,23 @@
 /mob/living/proc/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_FIRE, amount) // EFFIGY EDIT ADD
 	if(!forced && (status_flags & GODMODE))
-		return 0
-	if(on_damage_adjustment(BURN, amount, forced) & COMPONENT_IGNORE_CHANGE)
-		return 0
+		return FALSE
 	. = fireloss
 	fireloss = clamp((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	. -= fireloss
-	if(. == 0) // no change, no need to update
-		return
+	if(!.) // no change, no need to update
+		return FALSE
 	if(updating_health)
 		updatehealth()
 
 /mob/living/proc/setFireLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
 	if(!forced && (status_flags & GODMODE))
-		return 0
+		return FALSE
 	. = fireloss
 	fireloss = amount
 	. -= fireloss
-	if(. == 0) // no change, no need to update
-		return 0
+	if(!.) // no change, no need to update
+		return FALSE
 	if(updating_health)
 		updatehealth()
 
@@ -303,15 +297,15 @@
 	return cloneloss
 
 /mob/living/proc/adjustCloneLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype = ALL)
-	if(!forced && (!(mob_biotypes & required_biotype) || status_flags & GODMODE || HAS_TRAIT(src, TRAIT_NOCLONELOSS)))
-		return 0
-	if(on_damage_adjustment(CLONE, amount, forced) & COMPONENT_IGNORE_CHANGE)
-		return 0
+	if(!forced && ( (status_flags & GODMODE) || HAS_TRAIT(src, TRAIT_NOCLONELOSS)) )
+		return FALSE
+	if(!forced && !(mob_biotypes & required_biotype))
+		return FALSE
 	. = cloneloss
 	cloneloss = clamp((cloneloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	. -= cloneloss
-	if(. == 0) // no change, no need to update
-		return 0
+	if(!.) // no change, no need to update
+		return FALSE
 	if(updating_health)
 		updatehealth()
 
@@ -342,15 +336,15 @@
 	return staminaloss
 
 /mob/living/proc/adjustStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE, required_biotype = ALL)
-	if(!forced && ((status_flags & GODMODE) || required_biotype && !(mob_biotypes & required_biotype)))
-		return 0
-	if(on_damage_adjustment(STAMINA, amount, forced) & COMPONENT_IGNORE_CHANGE)
-		return 0
+	if(!forced && (status_flags & GODMODE))
+		return FALSE
+	if(!forced && !(mob_biotypes & required_biotype))
+		return FALSE
 	. = staminaloss
 	staminaloss = clamp((staminaloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, max_stamina)
 	. -= staminaloss
-	if(. == 0) // no change, no need to update
-		return 0
+	if(!.) // no change, no need to update
+		return FALSE
 	if(updating_stamina)
 		updatehealth()
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) // EFFIGY EDIT ADD
