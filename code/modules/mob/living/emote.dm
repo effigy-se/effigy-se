@@ -160,6 +160,10 @@
 // EffigyEdit Remove End
 
 
+		// play moth flutter noise if moth wing
+		if(istype(wings, /obj/item/organ/external/wings/moth))
+			playsound(H, 'sound/voice/moth/moth_flutter.ogg', 50, TRUE)
+
 /datum/emote/living/flap/aflap
 	key = "aflap"
 	key_third_person = "aflaps"
