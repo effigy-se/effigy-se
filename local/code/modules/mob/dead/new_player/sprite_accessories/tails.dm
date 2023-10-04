@@ -325,6 +325,10 @@
 	name = "Shepherd"
 	icon_state = "shepherd"
 
+/datum/sprite_accessory/tails/mammal/wagging/australian_shepherd
+	name = "Australian Shepherd"
+	icon_state = "australianshepherd"
+
 /datum/sprite_accessory/tails/mammal/wagging/skunk
 	name = "Skunk"
 	icon_state = "skunk"
