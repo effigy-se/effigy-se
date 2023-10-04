@@ -7249,6 +7249,9 @@
 /obj/effect/landmark/lift_id{
 	specific_lift_id = "med_vator"
 	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "med_vator"
+	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/medical/medbay/central)
 "dmH" = (
@@ -37411,6 +37414,13 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/diagonal,
 /area/station/science/robotics/augments)
+"qQP" = (
+/obj/structure/industrial_lift/public,
+/obj/machinery/elevator_control_panel/directional/west{
+	linked_elevator_id = "med_vator"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/medical/medbay/central)
 "qQT" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
@@ -81225,7 +81235,7 @@ xnM
 rEm
 gRx
 dmE
-rFb
+qQP
 ewY
 eZN
 ewY
