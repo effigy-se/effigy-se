@@ -96,6 +96,7 @@
 	return TRUE
 
 /datum/action/changeling/sting/transformation/sting_action(mob/user, mob/target)
+	. = ..()
 	log_combat(user, target, "stung", "transformation sting", " new identity is '[selected_dna.dna.real_name]'")
 	var/datum/dna/NewDNA = selected_dna.dna
 
@@ -106,11 +107,15 @@
 		NewDNA.transfer_identity(C)
 		C.updateappearance(mutcolor_update=1)
 
+	// EffigyEdit Remove Start: TODO: Requires https://github.com/effigy-se/effigy-se/issues/471
+	/*
 	if(target.apply_status_effect(/datum/status_effect/temporary_transformation/trans_sting, final_duration, selected_dna.dna))
 		..()
 		log_combat(user, target, "stung", "transformation sting", " new identity is '[selected_dna.dna.real_name]'")
 		to_chat(user, final_message)
 		return TRUE
+	*/
+	// EffigyEdit Remove End
 	return FALSE
 
 /datum/action/changeling/sting/false_armblade
