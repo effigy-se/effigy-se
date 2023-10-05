@@ -38,7 +38,6 @@ SUBSYSTEM_DEF(persistence)
 	load_randomized_recipes()
 	load_custom_outfits()
 	load_delamination_counter()
-	load_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
 	load_tram_counter()
 	load_adventures()
 	return SS_INIT_SUCCESS
@@ -56,9 +55,7 @@ SUBSYSTEM_DEF(persistence)
 	save_delamination_counter()
 	if(SStramprocess.can_fire)
 		save_tram_counter()
-	save_panic_bunker() // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-	save_modular_persistence() // EFFIGY EDIT ADDITION - (#184 Modular Persistence - Ported From Skyrat)
-
+	save_modular_persistence() // EffigyEdit Add - Modular Persistence
 
 ///Loads up Poly's speech buffer.
 /datum/controller/subsystem/persistence/proc/load_poly()
