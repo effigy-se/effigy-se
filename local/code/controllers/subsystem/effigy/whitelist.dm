@@ -25,25 +25,21 @@
 
 /proc/effigy_player_insert(input_key, input_efid)
 	if(!CONFIG_GET(flag/sql_enabled))
-		message_admins(span_adminnotice("Attempted to add a player to Effigy whitelist, but the Database is not enabled!"))
-		log_effigy_api("Attempted to add a player to Effigy whitelist, but the Database is not enabled!")
+		log_effigy_api("Attempted to add a player to Effigy whitelist, but the database is not enabled!", notify_admins = TRUE)
 		return FALSE
 
 	if(isnull(input_key))
-		message_admins(span_adminnotice("Attempted to add a player to Effigy whitelist, but no ckey provided!"))
-		log_effigy_api("Attempted to add a player to Effigy whitelist, but no ckey provided!")
+		log_effigy_api("Attempted to add a player to Effigy whitelist, but no ckey provided!", notify_admins = TRUE)
 		return FALSE
 
 	if(isnull(input_efid))
-		message_admins(span_adminnotice("Attempted to add a player to Effigy whitelist, but no effigy_id provided!"))
-		log_effigy_api("Attempted to add a player to Effigy whitelist, but no effigy_id provided!")
+		log_effigy_api("Attempted to add a player to Effigy whitelist, but no effigy_id provided!", notify_admins = TRUE)
 		return FALSE
 
 	var/ckey_to_match = ckey(input_key)
 	var/requested_link = 0
 	if(isnull(ckey_to_match))
-		message_admins(span_adminnotice("Invalid ckey [ckey_to_match] provided."))
-		log_effigy_api("Invalid ckey [ckey_to_match] provided.")
+		log_effigy_api("Invalid ckey [ckey_to_match] provided.", notify_admins = TRUE)
 		return FALSE
 
 	var/datum/db_query/query_add_player = SSdbcore.NewQuery({"
@@ -52,21 +48,18 @@
 	"}, list("ckey" = ckey_to_match, "effigy_id" = input_efid, "round_id" = GLOB.round_id || null))
 	if(!query_add_player.Execute())
 		qdel(query_add_player)
-		message_admins(span_adminnotice("Add player [ckey_to_match] to DB whitelist failed!"))
-		log_effigy_api("Add player [ckey_to_match] to DB whitelist failed!")
+		log_effigy_api("Add player [ckey_to_match] to DB whitelist failed!", notify_admins = TRUE)
 		return FALSE
 	qdel(query_add_player)
 
-	message_admins(span_adminnotice("Add player [ckey_to_match] to DB complete! Verifying link..."))
-	log_effigy_api("Add player [ckey_to_match] to DB complete!")
+	log_effigy_api("Player [ckey_to_match] successfully added to database. Validating.", notify_admins = TRUE)
 	requested_link = SSeffigy.ckey_to_effigy_id(ckey_to_match)
 	if(!requested_link)
-		message_admins(span_adminnotice("Could not find an Effigy ID for ckey [ckey_to_match]!"))
-		log_effigy_api("Could not find an Effigy ID for ckey [ckey_to_match]!")
+		log_effigy_api("Could not find an Effigy ID for ckey [ckey_to_match] in database!", notify_admins = FALSE) // we don't use the default notify since the message is customised and in a div
+		message_admins(span_boxannouncered("ckey validation in database for [ckey_to_match] failed! Check SQL log for details."))
 		return FALSE
 	else
-		message_admins(span_adminnotice("Found Effigy ID [requested_link] for ckey [ckey_to_match]!"))
-		log_effigy_api("Could not find an Effigy ID for ckey [ckey_to_match]!")
+		log_effigy_api("Validation passed for [ckey_to_match].", notify_admins = TRUE)
 		return TRUE
 
 /datum/tgs_chat_command/effigy_whitelist/Run(datum/tgs_chat_user/sender, params)
@@ -77,11 +70,15 @@
 	if(all_params.len < 2)
 		return new /datum/tgs_message_content("Requires both a ckey and an effigy_id!")
 
-	var/input_ckey = all_params[1]
-	var/input_efid = all_params[2]
+	var/input_ckey = ckey(all_params[1])
+	if(isnull(input_ckey))
+		return new /datum/tgs_message_content("[input_ckey] is not a valid ckey for whitelisting!")
 
-	log_admin("[sender.friendly_name] is attempting to add [params] to the Effigy whitelist.")
-	message_admins("[sender.friendly_name] is attempting to add [params] to the Effigy whitelist.")
+	var/input_efid = clamp(all_params[2], 0, 99999999)
+	if(isnull(input_efid) || input_efid == 0)
+		return new /datum/tgs_message_content("[input_efid] is not a valid effigy_id for whitelisting!")
+
+	log_effigy_api("[sender.friendly_name] is attempting to add [params] to the Effigy whitelist.", notify_admins = TRUE)
 	if(effigy_player_insert(input_ckey, input_efid))
 		return new /datum/tgs_message_content("[params] has been added to the Effigy whitelist.")
 	else
