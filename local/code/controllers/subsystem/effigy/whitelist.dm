@@ -20,10 +20,8 @@
 	if(isnull(input_efid) || input_efid == 0)
 		return
 
-	if(effigy_player_insert(input_key, input_efid))
-		message_admins("some success text here")
-	else
-		message_admins("some fail text here")
+	log_admin("[ckey(usr)] is attempting to add ckey [input_key] with effigy_id [input_efid] to the Effigy whitelist.")
+	(effigy_player_insert(input_key, input_efid))
 
 /proc/effigy_player_insert(input_key, input_efid)
 	if(!CONFIG_GET(flag/sql_enabled))
