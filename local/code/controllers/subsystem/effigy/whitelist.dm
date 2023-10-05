@@ -21,7 +21,7 @@
 		return
 
 	log_admin("[ckey(usr)] is attempting to add ckey [input_key] with effigy_id [input_efid] to the Effigy whitelist.")
-	(effigy_player_insert(input_key, input_efid))
+	effigy_player_insert(input_key, input_efid)
 
 /proc/effigy_player_insert(input_key, input_efid)
 	if(!CONFIG_GET(flag/sql_enabled))
