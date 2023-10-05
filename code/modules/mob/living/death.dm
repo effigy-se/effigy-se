@@ -15,6 +15,8 @@
 		gib_animation()
 
 	spill_organs(no_brain, no_organs, no_bodyparts, TRUE) // EFFIGY EDIT ADD
+	ghostize()
+	spill_organs(no_brain, no_organs, no_bodyparts)
 
 	if(!no_bodyparts)
 		spread_bodyparts(no_brain, no_organs)
