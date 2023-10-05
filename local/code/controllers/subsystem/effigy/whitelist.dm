@@ -42,7 +42,7 @@
 	var/ckey_to_match = ckey(input_key)
 	var/requested_link = 0
 	if(isnull(ckey_to_match))
-		message_admins(span_notice("Invalid ckey [ckey_to_match] provided."))
+		message_admins(span_adminnotice("Invalid ckey [ckey_to_match] provided."))
 		log_effigy_api("Invalid ckey [ckey_to_match] provided.")
 		return FALSE
 
@@ -54,24 +54,24 @@
 		qdel(query_add_player)
 		message_admins(span_adminnotice("Add player [ckey_to_match] to DB whitelist failed!"))
 		log_effigy_api("Add player [ckey_to_match] to DB whitelist failed!")
-		return
+		return FALSE
 	qdel(query_add_player)
 
-	message_admins(span_info("Add player [ckey_to_match] to DB complete! Verifying link..."))
+	message_admins(span_adminnotice("Add player [ckey_to_match] to DB complete! Verifying link..."))
 	log_effigy_api("Add player [ckey_to_match] to DB complete!")
 	requested_link = SSeffigy.ckey_to_effigy_id(ckey_to_match)
 	if(!requested_link)
-		message_admins(span_notice("Could not find an Effigy ID for ckey [ckey_to_match]!"))
+		message_admins(span_adminnotice("Could not find an Effigy ID for ckey [ckey_to_match]!"))
 		log_effigy_api("Could not find an Effigy ID for ckey [ckey_to_match]!")
 		return FALSE
 	else
-		message_admins(span_notice("Found Effigy ID [requested_link] for ckey [ckey_to_match]!"))
+		message_admins(span_adminnotice("Found Effigy ID [requested_link] for ckey [ckey_to_match]!"))
 		log_effigy_api("Could not find an Effigy ID for ckey [ckey_to_match]!")
 		return TRUE
 
 /datum/tgs_chat_command/effigy_whitelist/Run(datum/tgs_chat_user/sender, params)
 	if(!CONFIG_GET(flag/sql_enabled))
-		return "The Database is not enabled!"
+		return new /datum/tgs_message_content("The Database is not enabled!")
 
 	var/list/all_params = splittext(params, " ")
 	if(all_params.len < 2)
