@@ -178,39 +178,6 @@ SUBSYSTEM_DEF(effigy)
 	message_admins(span_info("Searching Effigy for [ckeytomatch]"))
 	SSeffigy.link_effigy_id_to_ckey(ckeytomatch, effigyid)
 
-/client/proc/effigy_whitelist()
-	set category = "Admin"
-	set name = "Whitelist Player"
-	set desc = "Link an Effigy account to a ckey and add to whitelist"
-	if(!CONFIG_GET(flag/sql_enabled))
-		to_chat(usr, span_adminnotice("The Database is not enabled!"))
-		return
-
-	var/input_key = tgui_input_text(src, "What is their ckey?", "Someone wants to play here, apparently.")
-	var/ckeytomatch = ckey(input_key)
-	var/effigyid = tgui_input_number(src, "What is their Effigy ID?", "Someone wants to play here, apparently.", max_value = 99999999, min_value = 1, default = 0)
-	var/requested_link = 0
-	if(!ckeytomatch)
-		message_admins(span_notice("Invalid ckey [ckeytomatch] provided."))
-		return
-
-	var/datum/db_query/query_add_player = SSdbcore.NewQuery({"
-		INSERT INTO [format_table_name("player")] (`ckey`, `effigy_id`, `firstseen`, `firstseen_round_id`, `lastseen`, `lastseen_round_id`, `ip`, `computerid`, `lastadminrank`)
-		VALUES (:ckey, :effigyid, Now(), :round_id, Now(), :round_id, "0", "0", "Player")
-	"}, list("ckey" = ckeytomatch, "effigyid" = effigyid, "round_id" = GLOB.round_id || null))
-	if(!query_add_player.Execute())
-		qdel(query_add_player)
-		message_admins(span_adminnotice("Add player [ckeytomatch] to DB whitelist failed!"))
-		return
-	qdel(query_add_player)
-
-	message_admins(span_info("Add player [ckeytomatch] to DB complete! Verifying link..."))
-	requested_link = SSeffigy.ckey_to_effigy_id(ckeytomatch)
-	if(!requested_link)
-		message_admins(span_notice("Could not find an Effigy ID for ckey [ckeytomatch]!"))
-	else
-		message_admins(span_notice("Found Effigy ID [requested_link] for ckey [ckeytomatch]!"))
-
 /proc/generate_effigy_event_id()
 	var/evid = null
 	if(!GLOB.round_id)
