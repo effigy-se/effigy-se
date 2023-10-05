@@ -95,9 +95,11 @@
 
 /mob/living/carbon/adjustToxLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype = ALL)
 	if(!forced && (status_flags & GODMODE))
-		return FALSE
+		return 0
 	if(!forced && !(mob_biotypes & required_biotype))
-		return FALSE
+		return 0
+	if(on_damage_adjustment(TOX, amount, forced) & COMPONENT_IGNORE_CHANGE)
+		return 0
 	if(!forced && HAS_TRAIT(src, TRAIT_TOXINLOVER)) //damage becomes healing and healing becomes damage
 		amount = -amount
 		if(HAS_TRAIT(src, TRAIT_TOXIMMUNE)) //Prevents toxin damage, but not healing
