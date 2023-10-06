@@ -35,5 +35,8 @@
 		new_species.randomize_features(human)
 	human.dna.species.spec_updatehealth(human)
 	human.dna.update_dna_identity()
-	human.updateappearance()
-	human.update_body(is_creating = TRUE)
+	// Needs to be called towards the end to update all the UIs just set above
+	human.dna.initialize_dna(newblood_type = random_blood_type(), create_mutation_blocks = randomize_mutations, randomize_features = TRUE)
+	// Snowflake for Ethereals
+	human.updatehealth()
+	human.updateappearance(mutcolor_update = TRUE)
