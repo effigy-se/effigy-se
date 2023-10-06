@@ -256,8 +256,8 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.2)
 
 /obj/item/stock_parts/servo
-	name = "micro LI manipulator"
-	desc = "A tiny little linear induction component used in the construction of certain devices."
+	name = "micro-servo"
+	desc = "A tiny little servo motor used in the construction of certain devices."
 	icon_state = "micro_servo"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.3)
 	base_name = "servo"
@@ -293,8 +293,8 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.2)
 
 /obj/item/stock_parts/servo/nano
-	name = "nano LI manipulator"
-	desc = "A tiny little linear induction component used in the construction of certain devices."
+	name = "nano-servo"
+	desc = "A tiny little servo motor used in the construction of certain devices."
 	icon_state = "nano_servo"
 	rating = 2
 	energy_rating = 3
@@ -335,8 +335,8 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.2)
 
 /obj/item/stock_parts/servo/pico
-	name = "pico LI manipulator"
-	desc = "A tiny little linear induction component used in the construction of certain devices."
+	name = "pico-servo"
+	desc = "A tiny little servo motor used in the construction of certain devices."
 	icon_state = "pico_servo"
 	rating = 3
 	energy_rating = 5
@@ -377,8 +377,8 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.2)
 
 /obj/item/stock_parts/servo/femto
-	name = "femto LI manipulator"
-	desc = "A tiny little linear induction component used in the construction of certain devices."
+	name = "femto-servo"
+	desc = "A tiny little servo motor used in the construction of certain devices."
 	icon_state = "femto_servo"
 	rating = 4
 	energy_rating = 10
