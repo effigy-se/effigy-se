@@ -851,6 +851,8 @@
 	dir = 4
 	},
 /obj/machinery/airalarm/directional/east,
+/obj/item/ph_meter,
+/obj/item/storage/box/bandages,
 /turf/open/floor/iron/white/small,
 /area/station/medical/pharmacy)
 "axX" = (
@@ -985,7 +987,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/window/right/directional/north{
 	req_access = list("pharmacy");
-	name = "Chemistry Desk"
+	name = "Chemistry Desk";
+	dir = 2
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "pharmacy_shutters_2";
@@ -10109,11 +10112,9 @@
 /area/station/service/hydroponics)
 "eyU" = (
 /obj/effect/turf_decal/tile/blue/full,
-/obj/structure/bed/pod{
-	dir = 1
-	},
 /obj/effect/turf_decal/siding/blue,
 /obj/machinery/defibrillator_mount/directional/north,
+/obj/structure/bed/medical/anchored,
 /turf/open/floor/iron/white/small,
 /area/station/medical/treatment_center)
 "ezj" = (
@@ -13685,6 +13686,10 @@
 	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
+	},
+/obj/item/storage/box/bandages{
+	pixel_x = -7;
+	pixel_y = 12
 	},
 /turf/open/floor/iron,
 /area/station/cargo/office)
@@ -21569,6 +21574,10 @@
 	pixel_x = -6
 	},
 /obj/machinery/airalarm/directional/west,
+/obj/item/storage/box/bandages{
+	pixel_x = -8;
+	pixel_y = 12
+	},
 /turf/open/floor/wood,
 /area/station/engineering/hallway)
 "jIy" = (
@@ -24401,9 +24410,33 @@
 /turf/open/openspace,
 /area/station/maintenance/department/electrical)
 "kWn" = (
-/obj/structure/reagent_dispensers/water_cooler,
 /obj/machinery/camera/directional/east{
 	c_tag = "Medbay - Lobby"
+	},
+/obj/structure/table/reinforced/titaniumglass,
+/obj/item/storage/box/bandages{
+	pixel_y = 9;
+	pixel_x = 7
+	},
+/obj/item/storage/box/bandages{
+	pixel_y = -1;
+	pixel_x = 7
+	},
+/obj/item/stack/medical/mesh{
+	pixel_x = -7;
+	pixel_y = 10
+	},
+/obj/item/stack/medical/mesh{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/stack/medical/mesh{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/item/stack/medical/mesh{
+	pixel_x = -7;
+	pixel_y = -2
 	},
 /turf/open/floor/carpet/blue,
 /area/station/medical/medbay/lobby)
@@ -24772,6 +24805,10 @@
 /obj/machinery/cell_charger,
 /obj/structure/table/reinforced,
 /obj/item/stock_parts/cell/high,
+/obj/item/storage/box/bandages{
+	pixel_x = 6;
+	pixel_y = 12
+	},
 /turf/open/floor/iron/dark/small,
 /area/station/engineering/main)
 "lgm" = (
@@ -29586,6 +29623,7 @@
 /obj/machinery/camera/directional/north{
 	c_tag = "Medbay - Storage"
 	},
+/obj/machinery/requests_console/auto_name/directional/north,
 /turf/open/floor/iron,
 /area/station/medical/storage)
 "nqR" = (
@@ -31985,9 +32023,11 @@
 /area/taeloth)
 "oyb" = (
 /obj/effect/turf_decal/tile/blue/full,
-/obj/structure/bed/pod,
 /obj/effect/turf_decal/siding/blue,
 /obj/machinery/defibrillator_mount/directional/north,
+/obj/structure/bed/medical/anchored{
+	dir = 4
+	},
 /turf/open/floor/iron/white/small,
 /area/station/medical/treatment_center)
 "oyy" = (
@@ -35805,6 +35845,10 @@
 	},
 /obj/item/wrench/medical,
 /obj/machinery/light/small/directional/south,
+/obj/item/storage/pill_bottle/mannitol{
+	pixel_x = 12;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/cryo)
 "qjc" = (
@@ -43494,7 +43538,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/window/right/directional/east{
 	req_access = list("pharmacy");
-	name = "Chemistry Desk"
+	name = "Chemistry Desk";
+	dir = 8
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "pharmacy_shutters_1";
