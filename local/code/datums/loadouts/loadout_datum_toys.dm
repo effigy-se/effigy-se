@@ -217,6 +217,10 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "D20"
 	item_path = /obj/item/dice/d20
 
+/datum/loadout_item/toys/d20/nat1
+	name = "D20 (weighted on 1)"
+	item_path = /obj/item/dice/d20/nat1
+
 /datum/loadout_item/toys/d100
 	name = "D100"
 	item_path = /obj/item/dice/d100
