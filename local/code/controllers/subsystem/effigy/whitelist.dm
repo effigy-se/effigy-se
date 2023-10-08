@@ -3,7 +3,7 @@
 	help_text = "whitelist <ckey> <effigy_id>"
 	admin_only = TRUE
 
-/client/proc/effigy_whitelist(player_key, player_effigy_id)
+/client/proc/effigy_whitelist()
 	set category = "Admin"
 	set name = "Whitelist Player"
 	set desc = "Link an Effigy account to a ckey and add to whitelist"
