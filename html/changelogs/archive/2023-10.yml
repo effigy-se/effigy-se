@@ -51,13 +51,6 @@
       off chance you spot one and also notice any weird bugs regarding it, please
       report it.
 2023-10-02:
-  LT3:
-  - server: New TGS config for discord game notifications
-  unit0016:
-  - rscadd: There are now more fuel tanks on rimpoint.
-  - rscadd: Every head of staff on Rimpoint now has a secret in their office, as was
-      intended originally.
-  
   Ghommie:
   - rscadd: Expanded the fishing portal generator. It now comes with several portal
       options that can be unlocked by performing fish scanning experiments, which
@@ -75,5 +68,141 @@
   Jacquerel:
   - rscadd: Wizards who complete the grand ritual can now gift everyone with eternal
       life
+  LT3:
+  - server: New TGS config for discord game notifications
   distributivgesetz:
   - bugfix: Font scaling in TGUI chat has been reverted to its original implementation.
+  unit0016:
+  - rscadd: There are now more fuel tanks on rimpoint.
+  - rscadd: Every head of staff on Rimpoint now has a secret in their office, as was
+      intended originally.
+2023-10-03:
+  ArcaneMusic:
+  - image: Railings have had a visual update.
+  CoiledLamb:
+  - rscadd: adds boxes of bandages, a quick healing item
+  Fazzie:
+  - rscadd: Added a budget solar crate to the derelict teleporter room
+  - rscadd: Added a solar panel control to the north derelict solar
+  - qol: The derelict's AI coridoor is now shorter and prettier
+  Ical92:
+  - bugfix: fixed misplaced door on syndicate listening post
+  Jacquerel:
+  - bugfix: Spiders, Morphs, Fire Sharks, and Regal Rats no longer have a reduced
+      click speed.
+  timothymtorres:
+  - bugfix: Fix organs having no DNA and become bloody when violently removed.
+  unit0016:
+  - bugfix: You can access the MortiDrobe again.
+2023-10-04:
+  Coded by Jacquerel, Sprited by Dalmationer:
+  - rscadd: Added tongs to the kitchen, which you can use to manipulate food from
+      further away
+  Cruix:
+  - bugfix: Some icons for selecting character preferences are no longer scaled incorrectly.
+  FIoppie:
+  - sound: '*flap now makes a fluttering noise for moth wings'
+  - sound: Moths now have a death sound
+  - qol: '*tremble emote now is just "trembles!" instead of "trembles in fear!"'
+  Fazzie:
+  - rscadd: A lot of new content has been added to the beach away mission
+  - qol: It also looks substantially better, too!
+  Jacquerel:
+  - refactor: Raw Prophets now use the basic mob framework. Please report any unusual
+      behaviour.
+  - admin: Admins can turn off dynamic rulesets (or force them on despite not meeting
+      the qualification criteria) on a per-round basis.
+  LT3:
+  - bugfix: Rimpoint's medbay elevator now has buttons, increasing usability by 400%
+  - qol: PDAs use slightly less power with the screen on
+  Melbert:
+  - qol: Moved a lot of maintenance spawnpoints out of non-maintenance rooms. Some
+      antags (paradox clone, fugitives, nightmares, spiders) are now less likely to
+      spawn in obvious places like the morgue, tech storage, or dorms rooms.
+  MortoSasye (Mystral Mom):
+  - rscadd: 'Two new sets of cosmetic sprites are now available: Arfel Harpy Wings
+      and Australian Shepherd tail. Enjoy, new harpies and canids players.'
+  TheBoondock:
+  - rscadd: Added blackout, happens when you drink...ALOT
+  Wallem:
+  - rscadd: Adds The Hand of Midas, an ancient Egyptian matchlock pistol.
+  ZephyrTFA:
+  - bugfix: The Syndicate have fired their previous construction company after poor
+      results in recent outposts.
+  lizardqueenlexi:
+  - bugfix: Your heart will no longer be deleted if an admin heals you while you have
+      corazargh in your system.
+  - refactor: The cursed heart has been streamlined a bit, and now gives you a visual
+      cooldown for when you can beat your heart again.
+  - bugfix: Cutting open a hand-pressed paper bundle no longer deletes all of the
+      paper.
+  nikothedude:
+  - qol: Departmental order consoles now alert their department via radio when their
+      cooldown expires
+  ninjanomnom:
+  - admin: Appearance vars in VV now display instead of being left blank
+  softcerv for Skyrat 13:
+  - qol: the speech impairment on the adult gas mask can now be toggled
+  - qol: NIFSofts now use the same TGUI as their parent NIF.
+  softcerv for Skyrat 13, unit0016:
+  - rscadd: soulcatcher souls can now be renamed by themselves or the owner of the
+      soulcatcher
+  - qol: soulcatcher souls now have their own dedicated UI
+  - rscadd: Adds in a wiki-book NIFSoft, allowing the user to access various wiki
+      books.
+  - rscadd: Adds in the ability for certain NIFSofts to be kept between rounds.
+  - rscadd: Adds in the RSD brain interface, an item that allows for soulcatcher souls,
+      that died within a round and were scanned, to be transferred to a new brain.
+  - rscadd: Adds in the NIFSoft Scryer, a NIFSoft that gives the user a Scryer they
+      can use to communicate with other Scryer users.
+  - rscadd: Adds the mini-soulcatcher, a more lightweight soulcatcher that can be
+      attached to objects
+  - rscadd: Adds in Purpura Eye, a NIFSoft that allows for the user to hypnotize others.
+  - spellcheck: Renamed certain NIFSofts to no longer be a cognitohazard.
+  timothymtorres:
+  - bugfix: Fix butchered monkeys to transfer reagents and diseases to meat
+  unit0016:
+  - rscadd: The funds the syndicate have been saving by restricting galley access
+      has been suddenly funneled into a singular mosaic pattern in the experiments
+      wing.
+  vinylspiders:
+  - refactor: fixed many instances of updatehealth() either being called needlessly
+      or not at all within on_mob_life() and in various other parts of the code
+  - refactor: damage procs now return useful information--the actual net change in
+      damage on the mob. added a unit test for this
+2023-10-05:
+  lizardqueenlexi:
+  - bugfix: The Galactic Materials Market now offers things for sale as it should.
+  mc-oofert:
+  - code_imp: exploration drone adventures are now file-based and not database-based
+  timothymtorres:
+  - balance: CQC legsweeps now cause knockdown instead of paralysis.
+  - balance: CQC kicks now knockout a target on the floor for ten seconds if they
+      reach stam crit. Helmet protection shortens the knockout length.
+2023-10-06:
+  EricZilla:
+  - image: We have received a new shipment of IDs, as the old ones were found out
+      to be haunted.
+  - image: Laser tag red team ID has received a massive nerf
+  - image: Station budget cards have gotten a facelift
+  - image: Emags and Doorjacks
+  - bugfix: Numbered prisoner IDs will now be legible
+  LT3:
+  - server: Effigy whitelist TGS integration
+  SyncIt21:
+  - bugfix: plumbing reaction chamber now balances the ph of it's solution correctly
+      to the best of it's ability so no guarantees
+  - code_imp: converted plumbing reaction chamber & mixing chamber UI files to Typescript
+  - refactor: plumbing mixing chamber now also accepts an TGUI input list to input
+      it's chemicals
+  Wallem:
+  - rscadd: Buffs the Active Sonar module with a radial scan, and makes the power
+      costs more in-line with other modules.
+  mc-oofert:
+  - bugfix: you are now made a ghost faster if you get gibbed
+  unit0016:
+  - bugfix: Servos are now no longer occasionally called Manipulators. Please consume
+      your scheduled corn syrup as normal.
+2023-10-07:
+  distributivgesetz:
+  - rscadd: Added a weighted d20 to player loadouts. It's not favorable.

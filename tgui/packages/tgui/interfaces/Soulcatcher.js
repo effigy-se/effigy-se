@@ -1,13 +1,22 @@
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledList } from '../components';
+import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledList, ProgressBar } from '../components';
 
 export const Soulcatcher = (props, context) => {
   const { act, data } = useBackend(context);
-  const { require_approval, current_rooms = [], ghost_joinable } = data;
+  const {
+    require_approval,
+    current_rooms = [],
+    ghost_joinable,
+    current_soul_count,
+    max_souls,
+    removable,
+    communicate_as_parent,
+    theme,
+  } = data;
 
   return (
-    <Window width={520} height={400} resizable>
+    <Window width={520} height={400} theme={theme} resizable>
       <Window.Content scrollable>
         {current_rooms.map((room) => (
           <Section
@@ -130,16 +139,46 @@ export const Soulcatcher = (props, context) => {
                       <Collapsible
                         title={soul.name}
                         buttons={
-                          <Button
-                            icon="paper-plane"
-                            tooltip="Transfer a soul to another room"
-                            onClick={() =>
-                              act('transfer_soul', {
-                                room_ref: room.reference,
-                                target_soul: soul.reference,
-                              })
-                            }
-                          />
+                          <>
+                            {soul.scan_needed ? (
+                              <> </>
+                            ) : (
+                              <>
+                                <Button
+                                  color="green"
+                                  icon="pen"
+                                  tooltip="Change the soul's name."
+                                  onClick={() =>
+                                    act('change_name', {
+                                      target_soul: soul.reference,
+                                      room_ref: room.reference,
+                                    })
+                                  }
+                                />
+                                <Button
+                                  color="red"
+                                  icon="arrow-rotate-left"
+                                  tooltip="Reset the soul's name."
+                                  onClick={() =>
+                                    act('reset_name', {
+                                      target_soul: soul.reference,
+                                      room_ref: room.reference,
+                                    })
+                                  }
+                                />
+                              </>
+                            )}
+                            <Button
+                              icon="paper-plane"
+                              tooltip="Transfer a soul to another room"
+                              onClick={() =>
+                                act('transfer_soul', {
+                                  room_ref: room.reference,
+                                  target_soul: soul.reference,
+                                })
+                              }
+                            />
+                          </>
                         }>
                         <Box textAlign="center" fontSize="13px" opacity={0.8}>
                           <b>Flavor Text</b>
@@ -248,6 +287,68 @@ export const Soulcatcher = (props, context) => {
                               {soul.able_to_emote ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
+                          {communicate_as_parent ? (
+                            <>
+                              <LabeledList.Item label="External Speech">
+                                <Button
+                                  color={
+                                    soul.able_to_speak_as_container
+                                      ? 'green'
+                                      : 'red'
+                                  }
+                                  fluid
+                                  tooltip="Is the soul able to speak the container?"
+                                  onClick={() =>
+                                    act('toggle_soul_external_communication', {
+                                      target_soul: soul.reference,
+                                      communication_type: 'speech',
+                                      room_ref: room.reference,
+                                    })
+                                  }>
+                                  {soul.able_to_speak_as_container
+                                    ? 'Enabled'
+                                    : 'Disabled'}
+                                </Button>
+                              </LabeledList.Item>
+                              <LabeledList.Item label="External Emote">
+                                <Button
+                                  color={
+                                    soul.able_to_emote_as_container
+                                      ? 'green'
+                                      : 'red'
+                                  }
+                                  fluid
+                                  tooltip="Is the soul able to emote as the container?"
+                                  onClick={() =>
+                                    act('toggle_soul_external_communication', {
+                                      target_soul: soul.reference,
+                                      communication_type: 'emote',
+                                      room_ref: room.reference,
+                                    })
+                                  }>
+                                  {soul.able_to_emote_as_container
+                                    ? 'Enabled'
+                                    : 'Disabled'}
+                                </Button>
+                              </LabeledList.Item>
+                            </>
+                          ) : (
+                            <> </>
+                          )}
+                          <LabeledList.Item label="Rename">
+                            <Button
+                              color={soul.able_to_rename ? 'green' : 'red'}
+                              fluid
+                              tooltip="Is the soul able to rename themselves?"
+                              onClick={() =>
+                                act('toggle_soul_renaming', {
+                                  target_soul: soul.reference,
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.able_to_rename ? 'Enabled' : 'Disabled'}
+                            </Button>
+                          </LabeledList.Item>
                         </LabeledList>
                         <br />
                         <Button
@@ -272,6 +373,20 @@ export const Soulcatcher = (props, context) => {
             )}
           </Section>
         ))}
+        {max_souls ? (
+          <Section>
+            <ProgressBar
+              textAlign="left"
+              minValue={0}
+              color="blue"
+              maxValue={max_souls}
+              value={max_souls - current_soul_count}>
+              Remaining soul capacity: {max_souls - current_soul_count}
+            </ProgressBar>
+          </Section>
+        ) : (
+          <> </>
+        )}
         <Button
           fluid
           color="green"
@@ -293,6 +408,18 @@ export const Soulcatcher = (props, context) => {
           onClick={() => act('toggle_approval', {})}>
           Approval is {require_approval ? '' : 'not'} required to join
         </Button>
+        {removable ? (
+          <Button
+            require_approval
+            fluid
+            color="red"
+            icon="eject"
+            onClick={() => act('delete_self', {})}>
+            Remove soulcatcher from parent object
+          </Button>
+        ) : (
+          <> </>
+        )}
       </Window.Content>
     </Window>
   );

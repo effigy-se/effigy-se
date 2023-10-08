@@ -63,3 +63,6 @@
 
 /// Trait that was granted by a reagent.
 #define REAGENT_TRAIT "reagent"
+
+/// Trait given to a brain that is able to accept souls from a RSD
+#define TRAIT_RSD_COMPATIBLE "rsd_compatible"

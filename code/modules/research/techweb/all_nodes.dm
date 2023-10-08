@@ -115,6 +115,7 @@
 		"titaniumglass",
 		"toner_large",
 		"toner",
+		"tongs",
 		"toy_armblade",
 		"toy_balloon",
 		"toygun",
@@ -917,6 +918,7 @@
 		"mecha_camera",
 		"botnavbeacon",
 		"borg_upgrade_snacks", // EFFIGY ADDITION - Cyborg Upgrades
+		"mini_soulcatcher", // EFFIGY ADDITION - Soulcatchers
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -961,7 +963,8 @@
 	prereq_ids = list("biotech", "datatheory")
 	design_ids = list(
 		"skill_station",
-		"soulcatcher_device", //EFFIGY EDIT - #184 SOULCATCHERS
+		"soulcatcher_device", //EFFIGY ADD - #184 SOULCATCHERS
+		"rsd_interface", // EFFIGY ADD - NIFS, Soulcatchers
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
