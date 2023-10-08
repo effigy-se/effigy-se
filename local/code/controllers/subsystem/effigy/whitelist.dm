@@ -44,7 +44,7 @@
 
 	if(!query_add_player && !query_add_player.Execute())
 		qdel(query_add_player)
-		log_effigy_api("Add player [ckey_to_match] to DB whitelist failed!", notify_admins = TRUE)
+		log_effigy_api("Add player [ckey_to_match] to DB whitelist failed! Check SQL log for details.", notify_admins = TRUE)
 		return FALSE
 	qdel(query_add_player)
 
