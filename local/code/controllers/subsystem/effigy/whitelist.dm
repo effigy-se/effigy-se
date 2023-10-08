@@ -1,8 +1,3 @@
-/datum/tgs_chat_command/effigy_whitelist
-	name = "whitelist"
-	help_text = "whitelist <ckey> <effigy_id>"
-	admin_only = TRUE
-
 /client/proc/effigy_whitelist()
 	set category = "Admin"
 	set name = "Whitelist Player"
@@ -46,9 +41,10 @@
 		INSERT INTO [format_table_name("player")] (`ckey`, `effigy_id`, `firstseen`, `firstseen_round_id`, `lastseen`, `lastseen_round_id`, `ip`, `computerid`, `lastadminrank`)
 		VALUES (:ckey, :effigy_id, Now(), :round_id, Now(), :round_id, "0", "0", "Player")
 	"}, list("ckey" = ckey_to_match, "effigy_id" = input_efid, "round_id" = GLOB.round_id || null))
-	if(!query_add_player.Execute())
+
+	if(!query_add_player && !query_add_player.Execute())
 		qdel(query_add_player)
-		log_effigy_api("Add player [ckey_to_match] to DB whitelist failed!", notify_admins = TRUE)
+		log_effigy_api("Add player [ckey_to_match] to DB whitelist failed! Check SQL log for details.", notify_admins = TRUE)
 		return FALSE
 	qdel(query_add_player)
 
@@ -62,6 +58,11 @@
 		log_effigy_api("Validation passed for [ckey_to_match].", notify_admins = TRUE)
 		return TRUE
 
+/datum/tgs_chat_command/effigy_whitelist
+	name = "whitelist"
+	help_text = "whitelist <ckey> <effigy_id>"
+	admin_only = TRUE
+
 /datum/tgs_chat_command/effigy_whitelist/Run(datum/tgs_chat_user/sender, params)
 	if(!CONFIG_GET(flag/sql_enabled))
 		return new /datum/tgs_message_content("The Database is not enabled!")
@@ -74,9 +75,10 @@
 	if(isnull(input_ckey))
 		return new /datum/tgs_message_content("[input_ckey] is not a valid ckey for whitelisting!")
 
-	var/input_efid = clamp(all_params[2], 0, 99999999)
-	if(isnull(input_efid) || input_efid == 0)
+	var/input_efid = text2num(all_params[2])
+	if(isnull(input_efid) || input_efid <= 0)
 		return new /datum/tgs_message_content("[input_efid] is not a valid effigy_id for whitelisting!")
+	input_efid = clamp(input_efid, 0, 99999999)
 
 	log_effigy_api("[sender.friendly_name] is attempting to add [params] to the Effigy whitelist.", notify_admins = TRUE)
 	if(effigy_player_insert(input_ckey, input_efid))
