@@ -117,3 +117,28 @@
 /obj/effect/turf_decal/box/blue/corners
 	icon = 'local/icons/turf/decals.dmi'
 	icon_state = "box_corners_blue"
+
+/obj/effect/turf_decal/siding/wood
+	color = "#ffecb1"
+
+/obj/effect/turf_decal/siding/thinplating
+	color = "#4b494d"
+
+/obj/effect/turf_decal/siding/thinplating_new
+	color = "#4b494d"
+
+/obj/effect/turf_decal/siding/thinplating_new/dark
+	color = "#262328"
+
+/obj/effect/turf_decal/siding/wideplating
+	color = "#4b494d"
+
+/obj/effect/turf_decal/siding/wideplating_new
+	color = "#4b494d"
+
+/obj/effect/turf_decal/siding/wideplating_new/dark
+	color = "#262328"
+
+
+
+
