@@ -7,7 +7,7 @@
 	icon_state = "assistant"
 
 /obj/item/toy/faustian_doll/attack_self(mob/user as mob)
-	var/turf/T = find_safe_turf(SSmapping.levels_by_trait(ZTRAIT_STATION))
+	var/turf/T = find_safe_turf(zlevels=SSmapping.levels_by_trait(ZTRAIT_STATION))
 
 	playsound(src, 'sound/effects/screech.ogg', 70)
 	if(T)
