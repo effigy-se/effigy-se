@@ -27,6 +27,12 @@
 	name = "Trilogy"
 	description = "They have to sell out at some point, right? If the sequel does well, raise them a third, make a box set... bam. Millions."
 
+/datum/map_template/ruin/jungle/generator_right_here
+	id = "generator_right_here"
+	suffix = "generator_right_here.dmm"
+	name = "Generator, Right Here!"
+	description = "I knew transferring to power recovery was a fuckin' bad idea. I'm going back to scouting, on god!"
+
 /datum/map_template/ruin/jungle/fountain
 	name = "Fountain Hall"
 	id = "jungle_fountain"
