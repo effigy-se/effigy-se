@@ -16,7 +16,6 @@
 	if(!prev_lying)
 		gib_animation()
 
-	spill_organs(no_brain, no_organs, no_bodyparts, TRUE) // EFFIGY EDIT ADD
 	ghostize()
 	spill_organs(drop_bitflags)
 
