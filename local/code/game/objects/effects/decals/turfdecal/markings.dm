@@ -117,3 +117,14 @@
 /obj/effect/turf_decal/box/blue/corners
 	icon = 'local/icons/turf/decals.dmi'
 	icon_state = "box_corners_blue"
+
+/// DS-3 ///
+/obj/effect/turf_decal/deep_space_three
+	icon = 'local/icons/turf/decals.dmi'
+	icon_state = "ds3_mid"
+
+/obj/effect/turf_decal/deep_space_three/left
+	icon_state = "ds3_left"
+
+/obj/effect/turf_decal/deep_space_three/right
+	icon_state = "ds3_right"

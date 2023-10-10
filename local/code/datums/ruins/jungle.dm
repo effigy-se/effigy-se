@@ -21,6 +21,12 @@
 	name = "Dead Or Gone"
 	description = "Everyone is dead or gone. The story is over."
 
+/datum/map_template/ruin/jungle/trilogy
+	id = "trilogy"
+	suffix = "trilogy.dmm"
+	name = "Trilogy"
+	description = "They have to sell out at some point, right? If the sequel does well, raise them a third, make a box set... bam. Millions."
+
 /datum/map_template/ruin/jungle/fountain
 	name = "Fountain Hall"
 	id = "jungle_fountain"
