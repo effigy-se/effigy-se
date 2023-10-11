@@ -490,6 +490,7 @@
 		"gibber",
 		"griddle",
 		"microwave",
+		"microwave_engineering",
 		"monkey_recycler",
 		"oven",
 		"processor",
