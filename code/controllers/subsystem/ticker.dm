@@ -687,14 +687,14 @@ SUBSYSTEM_DEF(ticker)
 				the sector surrounding [decoded_station_name]."
 
 	// EffigyEdit Add - Game Notification
-	if(SSblackbox.first_death)
+	if(length(SSblackbox.first_death) > 0)
 		var/list/f_in_chat = SSblackbox.first_death
-		if(!isnull(f_in_chat))
-			news_message += " Medbay records indicate the first crewmember loss was [f_in_chat["name"]] ([f_in_chat["role"]]), last seen on sensors at [f_in_chat["area"]].[f_in_chat["last_words"] ? " Suit sensor final recording was: \"[f_in_chat["last_words"]]\"" : ""]" // " // Funny last words go brrrrrr
+		news_message += " Medbay records indicate the first crewmember loss was [f_in_chat["name"]] ([f_in_chat["role"]]), last seen on sensors at [f_in_chat["area"]].[f_in_chat["last_words"] ? " Suit sensor final recording was: \"[f_in_chat["last_words"]]\"" : ""]" // " // Funny last words go brrrrrr
 	// EffigyEdit Add End
 
 	if(news_message)
 		// send2otherserver(news_source, news_message, "News_Report") // EffigyEdit Remove - Game Notification
+		to_chat(world, news_message)
 		discord_end_game_alert(news_message) // EffigyEdit Add - Game Notification
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
