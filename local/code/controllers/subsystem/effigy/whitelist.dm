@@ -42,7 +42,11 @@
 		VALUES (:ckey, :effigy_id, Now(), :round_id, Now(), :round_id, "0", "0", "Player")
 	"}, list("ckey" = ckey_to_match, "effigy_id" = input_efid, "round_id" = GLOB.round_id || null))
 
-	if(!query_add_player && !query_add_player.Execute())
+	if(!query_add_player)
+		log_effigy_api("Unable to create SQL query. Check SQL log for details.", notify_admins = TRUE)
+		return FALSE
+
+	if(!query_add_player.Execute())
 		qdel(query_add_player)
 		log_effigy_api("Add player [ckey_to_match] to DB whitelist failed! Check SQL log for details.", notify_admins = TRUE)
 		return FALSE
