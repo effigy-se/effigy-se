@@ -82,7 +82,7 @@
 		"server" = server,
 		"internet_address" = world.internet_address || "0",
 		"port" = "[world.port]",
-		"round_id" = GLOB.round_id,
+		"round_id" = GLOB.round_hex, // EffigyEdit Change - Logging
 		"secret" = secret,
 		"expiry" = expiry || null,
 		"note_severity" = note_severity,

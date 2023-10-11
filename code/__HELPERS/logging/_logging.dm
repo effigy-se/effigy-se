@@ -156,7 +156,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /* For logging round startup. */
 /proc/start_log(log)
-	WRITE_LOG(log, "Starting up round ID [GLOB.round_id].\n-------------------------")
+	WRITE_LOG(log, "Starting up round ID [GLOB.round_hex]-[GLOB.round_id].\n-------------------------") // EffigyEdit Change - Logging
 
 /* Close open log handles. This should be called as late as possible, and no logging should hapen after. */
 /proc/shutdown_logging()

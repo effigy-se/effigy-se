@@ -320,7 +320,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
-	send2adminchat("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]" : ""] has started[allmins.len ? ".":" with no active admins online!"]")
+	send2adminchat("Server", "Round [GLOB.round_hex ? "#[GLOB.round_hex]" : ""] has started[allmins.len ? ".":" with no active admins online!"]") // EffigyEdit Change - Logging
 	setup_done = TRUE
 
 	for(var/i in GLOB.start_landmarks_list)
@@ -594,7 +594,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
-	var/news_source = "Nanotrasen News Network"
+	//var/news_source = "Nanotrasen News Network" // EffigyEdit Remove - Game Notifications
 	var/decoded_station_name = html_decode(station_name()) //decode station_name to avoid minor_announce double encode
 
 	switch(news_report)
@@ -694,7 +694,8 @@ SUBSYSTEM_DEF(ticker)
 	// EffigyEdit Add End
 
 	if(news_message)
-		send2otherserver(news_source, news_message, "News_Report")
+		// send2otherserver(news_source, news_message, "News_Report") // EffigyEdit Remove - Game Notification
+		discord_end_game_alert(news_message) // EffigyEdit Add - Game Notification
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))

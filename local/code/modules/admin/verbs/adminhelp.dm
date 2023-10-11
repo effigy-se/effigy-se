@@ -318,7 +318,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		"CKEY" = initiator_ckey,
 		"PLAYERS" = player_count,
 		"ROUND STATE" = round_state,
-		"ROUND ID" = GLOB.round_id,
+		"ROUND ID" = GLOB.round_hex,
 		"ROUND TIME" = ROUND_TIME(),
 		"MESSAGE" = message,
 		"ADMINS" = admin_text,

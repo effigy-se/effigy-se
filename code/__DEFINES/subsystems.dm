@@ -29,7 +29,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-#define DB_EFFIGY_VERSION 4  // EffigyEdit Add
+#define DB_EFFIGY_VERSION 5  // EffigyEdit Add
 
 
 //! ## Timing subsystem

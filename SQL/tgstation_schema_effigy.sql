@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS `admin_log`;
 CREATE TABLE `admin_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
-  `round_id` int(11) unsigned NULL,
+  `round_id` VARCHAR(32) NULL,
   `adminckey` varchar(32) NOT NULL,
   `adminip` int(10) unsigned NOT NULL,
   `operation` enum('add admin','remove admin','change admin rank','add rank','remove rank','change rank flags') NOT NULL,
@@ -69,10 +69,12 @@ DROP TABLE IF EXISTS `ban`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ban` (
   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`effigy_evid` VARCHAR(32) DEFAULT NULL,
   `bantime` DATETIME NOT NULL,
+	`server_name` VARCHAR(32) DEFAULT NULL,
   `server_ip` INT(10) UNSIGNED NOT NULL,
   `server_port` SMALLINT(5) UNSIGNED NOT NULL,
-  `round_id` INT(11) UNSIGNED NULL,
+  `round_id` VARCHAR(32) DEFAULT NULL,
   `role` VARCHAR(32) NULL DEFAULT NULL,
   `expiration_time` DATETIME NULL DEFAULT NULL,
   `applies_to_admins` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
@@ -90,7 +92,7 @@ CREATE TABLE `ban` (
   `unbanned_ckey` VARCHAR(32) NULL DEFAULT NULL,
   `unbanned_ip` INT(10) UNSIGNED NULL DEFAULT NULL,
   `unbanned_computerid` VARCHAR(32) NULL DEFAULT NULL,
-  `unbanned_round_id` INT(11) UNSIGNED NULL DEFAULT NULL,
+  `unbanned_round_id` VARCHAR(32) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_ban_isbanned` (`ckey`,`role`,`unbanned_datetime`,`expiration_time`),
   KEY `idx_ban_isbanned_details` (`ckey`,`ip`,`computerid`,`role`,`unbanned_datetime`,`expiration_time`),
@@ -107,7 +109,7 @@ DROP TABLE IF EXISTS `citation`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE IF NOT EXISTS `citation` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `round_id` int(11) unsigned NULL,
+  `round_id` VARCHAR(32) NULL,
   `server_ip` int(11) unsigned NOT NULL,
   `server_port` int(11) unsigned NOT NULL,
   `citation` text NOT NULL,
@@ -136,7 +138,7 @@ CREATE TABLE `connection_log` (
   `datetime` datetime DEFAULT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
-  `round_id` int(11) unsigned NULL,
+  `round_id` VARCHAR(32) NULL,
   `ckey` varchar(45) DEFAULT NULL,
   `ip` int(10) unsigned NOT NULL,
   `computerid` varchar(45) DEFAULT NULL,
@@ -160,7 +162,7 @@ CREATE TABLE `death` (
   `mapname` varchar(32) NOT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
-  `round_id` int(11) unsigned NULL,
+  `round_id` VARCHAR(32) NULL,
   `tod` datetime NOT NULL COMMENT 'Time of death',
   `job` varchar(32) NOT NULL,
   `special` varchar(32) DEFAULT NULL,
@@ -191,7 +193,7 @@ DROP TABLE IF EXISTS `feedback`;
 CREATE TABLE `feedback` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
-  `round_id` int(11) unsigned NULL,
+  `round_id` VARCHAR(32) unsigned NULL,
   `key_name` varchar(32) NOT NULL,
   `key_type` enum('text', 'amount', 'tally', 'nested tally', 'associative') NOT NULL,
   `version` tinyint(3) unsigned NOT NULL,
@@ -230,7 +232,7 @@ CREATE TABLE `legacy_population` (
   `time` datetime NOT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
-  `round_id` int(11) unsigned NULL,
+  `round_id` VARCHAR(32) NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -251,7 +253,7 @@ CREATE TABLE `library` (
   `ckey` varchar(32) NOT NULL DEFAULT 'LEGACY',
   `datetime` datetime NOT NULL,
   `deleted` tinyint(1) unsigned DEFAULT NULL,
-  `round_id_created` int(11) unsigned NULL,
+  `round_id_created` VARCHAR(32) NULL,
   PRIMARY KEY (`id`),
   KEY `deleted_idx` (`deleted`),
   KEY `idx_lib_id_del` (`id`,`deleted`),
@@ -296,7 +298,7 @@ CREATE TABLE `messages` (
   `server` varchar(32) DEFAULT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
-  `round_id` int(11) unsigned NULL,
+  `round_id` VARCHAR(32) NULL,
   `secret` tinyint(1) unsigned NOT NULL,
   `expire_timestamp` datetime DEFAULT NULL,
   `severity` enum('high','medium','minor','none') DEFAULT NULL,
@@ -320,12 +322,12 @@ DROP TABLE IF EXISTS `role_time`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 
-CREATE TABLE `role_time`
-( `ckey` VARCHAR(32) NOT NULL ,
- `job` VARCHAR(32) NOT NULL ,
- `minutes` INT UNSIGNED NOT NULL,
- PRIMARY KEY (`ckey`, `job`)
- ) ENGINE = InnoDB;
+CREATE TABLE `role_time` (
+  `ckey` VARCHAR(32) NOT NULL ,
+  `job` VARCHAR(32) NOT NULL ,
+  `minutes` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`ckey`, `job`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,10 +361,11 @@ DROP TABLE IF EXISTS `player`;
 CREATE TABLE `player` (
   `ckey` varchar(32) NOT NULL,
   `byond_key` varchar(32) DEFAULT NULL,
+	`effigy_id` mediumint(8) unsigned DEFAULT NULL,
   `firstseen` datetime NOT NULL,
-  `firstseen_round_id` int(11) unsigned NULL,
+  `firstseen_round_id` VARCHAR(32) NULL,
   `lastseen` datetime NOT NULL,
-  `lastseen_round_id` int(11) unsigned NULL,
+  `lastseen_round_id` VARCHAR(32) NULL,
   `ip` int(10) unsigned NOT NULL,
   `computerid` varchar(32) NOT NULL,
   `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
@@ -370,7 +373,8 @@ CREATE TABLE `player` (
   `flags` smallint(5) unsigned DEFAULT '0' NOT NULL,
   PRIMARY KEY (`ckey`),
   KEY `idx_player_cid_ckey` (`computerid`,`ckey`),
-  KEY `idx_player_ip_ckey` (`ip`,`ckey`)
+  KEY `idx_player_ip_ckey` (`ip`,`ckey`),
+	KEY `effigy_id` (`effigy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -478,6 +482,7 @@ DROP TABLE IF EXISTS `round`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `round` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
+	`effigy_rid` varchar(32) DEFAULT NULL,
   `initialize_datetime` DATETIME NOT NULL,
   `start_datetime` DATETIME NULL,
   `shutdown_datetime` DATETIME NULL,
@@ -491,7 +496,8 @@ CREATE TABLE `round` (
   `shuttle_name` VARCHAR(64) NULL,
   `map_name` VARCHAR(32) NULL,
   `station_name` VARCHAR(80) NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+	KEY `effigy_rid` (`effigy_rid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -503,8 +509,9 @@ DROP TABLE IF EXISTS `schema_revision`;
 CREATE TABLE `schema_revision` (
   `major` TINYINT(3) unsigned NOT NULL,
   `minor` TINYINT(3) unsigned NOT NULL,
+	`effigy` tinyint(3) unsigned NOT NULL,
   `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`major`, `minor`)
+  PRIMARY KEY (`major`, `minor`, `effigy`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -586,7 +593,7 @@ CREATE TABLE `ticket` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
-  `round_id` int(11) unsigned NULL,
+  `round_id` VARCHAR(32) NULL,
   `ticket` smallint(11) unsigned NOT NULL,
   `action` varchar(20) NOT NULL DEFAULT 'Message',
   `urgent` TINYINT(1) unsigned NOT NULL DEFAULT '0',
