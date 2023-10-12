@@ -694,7 +694,6 @@ SUBSYSTEM_DEF(ticker)
 
 	if(news_message)
 		// send2otherserver(news_source, news_message, "News_Report") // EffigyEdit Remove - Game Notification
-		to_chat(world, news_message)
 		discord_end_game_alert(news_message) // EffigyEdit Add - Game Notification
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
