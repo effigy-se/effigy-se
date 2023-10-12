@@ -241,6 +241,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/unload_ctf,
 	/client/proc/validate_cards,
 	/client/proc/validate_puzzgrids,
+	/client/proc/GeneratePipeSpritesheet,
 	/client/proc/view_runtimes,
 	// EFFIGY EDIT ADD START
 	/client/proc/reload_interactions, // Interactions

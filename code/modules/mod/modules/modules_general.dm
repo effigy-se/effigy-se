@@ -244,7 +244,7 @@
 	. = ..()
 	.["display_time"] = display_time
 	.["shift_time"] = station_time_timestamp()
-	.["shift_id"] = GLOB.round_id
+	.["shift_id"] = GLOB.round_hex // EffigyEdit Change - Logging
 	.["health"] = mod.wearer?.health || 0
 	.["health_max"] = mod.wearer?.getMaxHealth() || 0
 	if(display_detailed_vitals)

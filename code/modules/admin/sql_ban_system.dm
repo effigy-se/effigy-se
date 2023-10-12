@@ -1,3 +1,5 @@
+// EffigyEdit Remove - Moved to local/code/modules/admin
+/*
 #define MAX_ADMINBANS_PER_ADMIN 1
 #define MAX_ADMINBANS_PER_HEADMIN 3
 
@@ -397,19 +399,6 @@
 				ROLE_TRAITOR,
 				ROLE_WIZARD,
 			),
-			// EFFIGY EDIT ADD START
-			"Expanded Roles" = list(
-				BAN_PACIFICATION,
-				BAN_DONOTREVIVE,
-				BAN_RESPAWN,
-				BAN_MOB_CONTROL,
-				BAN_GHOST_ROLE_SPAWNER,
-				BAN_GHOST_TAKEOVER,
-				BAN_EORG,
-				BAN_ANTAGONIST,
-				BAN_LOOC,
-			// EFFIGY EDIT ADD END
-			),
 		)
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'>[tgui_fancy ? "<input type='checkbox' name='[department]' class='hidden' onClick='header_click_all_checkboxes(this)'>" : ""][department]</label><div class='content'>"
@@ -618,9 +607,6 @@
 			"server_ip" = world.internet_address || 0,
 			"server_port" = world.port,
 			"round_id" = GLOB.round_id,
-			"effigy_rid" = GLOB.round_hex,
-			"effigy_evid" = generate_effigy_event_id(),
-			"server_name" = CONFIG_GET(string/serversqlname),
 			"role" = role,
 			"expiration_time" = duration,
 			"applies_to_admins" = applies_to_admins,
@@ -649,13 +635,6 @@
 	var/other_ban_notification = span_boldannounce("Another player sharing your IP or CID has been banned by [usr.client.key] from [is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
 
 	notify_all_banned_players(player_ckey, player_ip, player_cid, player_ban_notification, other_ban_notification, is_server_ban, applies_to_admins)
-
-	// EFFIGY EDIT ADD START (EXPANDED BANS)
-	if(BAN_PACIFICATION in roles_to_ban)
-		var/client/C = GLOB.directory[player_ckey]
-		if(ismob(C.mob))
-			ADD_TRAIT(C.mob, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
-	// EFFIGY EDIT ADD END (EXPANDED BANS)
 
 	var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]")
 
@@ -1118,3 +1097,4 @@
 #undef MAX_ADMINBANS_PER_ADMIN
 #undef MAX_ADMINBANS_PER_HEADMIN
 #undef MAX_REASON_LENGTH
+*/
