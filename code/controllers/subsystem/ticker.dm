@@ -320,7 +320,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
-	send2adminchat("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]" : ""] has started[allmins.len ? ".":" with no active admins online!"]")
+	send2adminchat("Server", "Round [GLOB.round_hex ? "#[GLOB.round_hex]" : ""] has started[allmins.len ? ".":" with no active admins online!"]") // EffigyEdit Change - Logging
 	setup_done = TRUE
 
 	for(var/i in GLOB.start_landmarks_list)
@@ -594,7 +594,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
-	var/news_source = "Nanotrasen News Network"
+	//var/news_source = "Nanotrasen News Network" // EffigyEdit Remove - Game Notifications
 	var/decoded_station_name = html_decode(station_name()) //decode station_name to avoid minor_announce double encode
 
 	switch(news_report)
@@ -687,14 +687,15 @@ SUBSYSTEM_DEF(ticker)
 				the sector surrounding [decoded_station_name]."
 
 	// EffigyEdit Add - Game Notification
-	if(SSblackbox.first_death)
+	if(length(SSblackbox.first_death) > 0)
 		var/list/f_in_chat = SSblackbox.first_death
-		if(!isnull(f_in_chat))
-			news_message += " Medbay records indicate the first crewmember loss was [f_in_chat["name"]] ([f_in_chat["role"]]), last seen on sensors at [f_in_chat["area"]].[f_in_chat["last_words"] ? " Suit sensor final recording was: \"[f_in_chat["last_words"]]\"" : ""]" // " // Funny last words go brrrrrr
+		news_message += " Medbay records indicate the first crewmember loss was [f_in_chat["name"]] ([f_in_chat["role"]]), last seen on sensors at [f_in_chat["area"]].[f_in_chat["last_words"] ? " Suit sensor final recording was: \"[f_in_chat["last_words"]]\"" : ""]" // " // Funny last words go brrrrrr
 	// EffigyEdit Add End
 
 	if(news_message)
-		send2otherserver(news_source, news_message, "News_Report")
+		// send2otherserver(news_source, news_message, "News_Report") // EffigyEdit Remove - Game Notification
+		to_chat(world, news_message)
+		discord_end_game_alert(news_message) // EffigyEdit Add - Game Notification
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))
