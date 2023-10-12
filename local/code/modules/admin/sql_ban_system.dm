@@ -1,5 +1,3 @@
-// EffigyEdit Remove - Moved to local/code/modules/admin
-/*
 #define MAX_ADMINBANS_PER_ADMIN 1
 #define MAX_ADMINBANS_PER_HEADMIN 3
 
@@ -95,7 +93,7 @@
 		return
 	var/datum/db_query/query_check_ban = SSdbcore.NewQuery({"
 		SELECT
-			id,
+			effigy_evid,
 			bantime,
 			round_id,
 			expiration_time,
@@ -118,7 +116,7 @@
 		return
 	. = list()
 	while(query_check_ban.NextRow())
-		. += list(list("id" = query_check_ban.item[1], "bantime" = query_check_ban.item[2], "round_id" = query_check_ban.item[3], "expiration_time" = query_check_ban.item[4], "duration" = query_check_ban.item[5], "applies_to_admins" = query_check_ban.item[6], "reason" = query_check_ban.item[7], "key" = query_check_ban.item[8], "ip" = query_check_ban.item[9], "computerid" = query_check_ban.item[10], "admin_key" = query_check_ban.item[11]))
+		. += list(list("effigy_evid" = query_check_ban.item[1], "bantime" = query_check_ban.item[2], "round_id" = query_check_ban.item[3], "expiration_time" = query_check_ban.item[4], "duration" = query_check_ban.item[5], "applies_to_admins" = query_check_ban.item[6], "reason" = query_check_ban.item[7], "key" = query_check_ban.item[8], "ip" = query_check_ban.item[9], "computerid" = query_check_ban.item[10], "admin_key" = query_check_ban.item[11]))
 	qdel(query_check_ban)
 
 /// Gets the ban cache of the passed in client
@@ -399,6 +397,19 @@
 				ROLE_TRAITOR,
 				ROLE_WIZARD,
 			),
+			// EFFIGY EDIT ADD START
+			"Expanded Roles" = list(
+				BAN_PACIFICATION,
+				BAN_DONOTREVIVE,
+				BAN_RESPAWN,
+				BAN_MOB_CONTROL,
+				BAN_GHOST_ROLE_SPAWNER,
+				BAN_GHOST_TAKEOVER,
+				BAN_EORG,
+				BAN_ANTAGONIST,
+				BAN_LOOC,
+			// EFFIGY EDIT ADD END
+			),
 		)
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'>[tgui_fancy ? "<input type='checkbox' name='[department]' class='hidden' onClick='header_click_all_checkboxes(this)'>" : ""][department]</label><div class='content'>"
@@ -606,7 +617,9 @@
 		sql_ban += list(list(
 			"server_ip" = world.internet_address || 0,
 			"server_port" = world.port,
-			"round_id" = GLOB.round_id,
+			"round_id" = GLOB.round_hex,
+			"effigy_evid" = generate_effigy_event_id(),
+			"server_name" = CONFIG_GET(string/serversqlname),
 			"role" = role,
 			"expiration_time" = duration,
 			"applies_to_admins" = applies_to_admins,
@@ -626,15 +639,21 @@
 	var/msg = "has created a [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][is_server_ban ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]."
 	log_admin_private("[kn] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join(", ")]"] Reason: [reason]")
 	message_admins("[kna] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join("\n")]"]\nReason: [reason]")
-	if(applies_to_admins)
-		send2adminchat("BAN ALERT","[kn] [msg]")
+	send2adminchat("BAN ALERT","[kn] [msg]")
 	if(player_ckey)
 		create_message("note", player_ckey, admin_ckey, note_reason, null, null, 0, 0, null, 0, severity)
 
-	var/player_ban_notification = span_boldannounce("You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
-	var/other_ban_notification = span_boldannounce("Another player sharing your IP or CID has been banned by [usr.client.key] from [is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
+	var/player_ban_notification = span_boldannounce("You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_hex].")]")
+	var/other_ban_notification = span_boldannounce("Another player sharing your IP or CID has been banned by [usr.client.key] from [is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_hex].")]")
 
 	notify_all_banned_players(player_ckey, player_ip, player_cid, player_ban_notification, other_ban_notification, is_server_ban, applies_to_admins)
+
+	// EFFIGY EDIT ADD START (EXPANDED BANS)
+	if(BAN_PACIFICATION in roles_to_ban)
+		var/client/C = GLOB.directory[player_ckey]
+		if(ismob(C.mob))
+			ADD_TRAIT(C.mob, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
+	// EFFIGY EDIT ADD END (EXPANDED BANS)
 
 	var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]")
 
@@ -696,7 +715,7 @@
 			output += pagelist.Join(" | ")
 		var/datum/db_query/query_unban_search_bans = SSdbcore.NewQuery({"
 			SELECT
-				id,
+				effigy_evid,
 				bantime,
 				round_id,
 				role,
@@ -801,7 +820,7 @@
 		return
 	var/kn = key_name(usr)
 	var/kna = key_name_admin(usr)
-	var/change_message = "[usr.client.key] unbanned [target] from [role] on [SQLtime()] during round #[GLOB.round_id]<hr>"
+	var/change_message = "[usr.client.key] unbanned [target] from [role] on [SQLtime()] during round #[GLOB.round_hex]<hr>"
 	var/datum/db_query/query_unban = SSdbcore.NewQuery({"
 		UPDATE [format_table_name("ban")] SET
 			unbanned_datetime = NOW(),
@@ -810,8 +829,8 @@
 			unbanned_computerid = :admin_cid,
 			unbanned_round_id = :round_id,
 			edits = CONCAT(IFNULL(edits,''), :change_message)
-		WHERE id = :ban_id
-	"}, list("ban_id" = ban_id, "admin_ckey" = usr.client.ckey, "admin_ip" = usr.client.address, "admin_cid" = usr.client.computer_id, "round_id" = GLOB.round_id, "change_message" = change_message))
+		WHERE effigy_evid = :ban_id
+	"}, list("ban_id" = ban_id, "admin_ckey" = usr.client.ckey, "admin_ip" = usr.client.address, "admin_cid" = usr.client.computer_id, "round_id" = GLOB.round_hex, "change_message" = change_message))
 	if(!query_unban.warn_execute())
 		qdel(query_unban)
 		return
@@ -846,7 +865,7 @@
 
 	var/kn = key_name(usr)
 	var/kna = key_name_admin(usr)
-	var/change_message = "[usr.client.key] re-activated ban of [target] from [role] on [SQLtime()] during round #[GLOB.round_id]<hr>"
+	var/change_message = "[usr.client.key] re-activated ban of [target] from [role] on [SQLtime()] during round #[GLOB.round_hex]<hr>"
 	var/datum/db_query/query_reban = SSdbcore.NewQuery({"
 		UPDATE [format_table_name("ban")] SET
 			unbanned_datetime = NULL,
@@ -855,7 +874,7 @@
 			unbanned_computerid = NULL,
 			unbanned_round_id = NULL,
 			edits = CONCAT(IFNULL(edits,''), :change_message)
-		WHERE id = :ban_id
+		WHERE effigy_evid = :ban_id
 	"}, list("change_message" = change_message, "ban_id" = ban_id))
 	if(!query_reban.warn_execute())
 		qdel(query_reban)
@@ -883,7 +902,7 @@
 		var/datum/db_query/query_edit_ban_get_player = SSdbcore.NewQuery({"
 			SELECT
 				byond_key,
-				(SELECT bantime FROM [format_table_name("ban")] WHERE id = :ban_id),
+				(SELECT bantime FROM [format_table_name("ban")] WHERE effigy_evid = :ban_id),
 				ip,
 				computerid
 			FROM [format_table_name("player")]
@@ -947,7 +966,7 @@
 			arguments["old_cid"] = old_cid
 		where = wherelist.Join(" AND ")
 	else
-		where = "id = :ban_id"
+		where = "effigy_evid = :ban_id"
 		arguments["ban_id"] = ban_id
 
 	var/datum/db_query/query_edit_ban = SSdbcore.NewQuery({"
@@ -991,7 +1010,7 @@
 		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
 		return
 	var/datum/db_query/query_get_ban_edits = SSdbcore.NewQuery({"
-		SELECT edits FROM [format_table_name("ban")] WHERE id = :ban_id
+		SELECT edits FROM [format_table_name("ban")] WHERE effigy_evid = :ban_id
 	"}, list("ban_id" = ban_id))
 	if(!query_get_ban_edits.warn_execute())
 		qdel(query_get_ban_edits)
@@ -1097,4 +1116,3 @@
 #undef MAX_ADMINBANS_PER_ADMIN
 #undef MAX_ADMINBANS_PER_HEADMIN
 #undef MAX_REASON_LENGTH
-*/

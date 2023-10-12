@@ -219,7 +219,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		roundend_callbacks.InvokeAsync()
 	LAZYCLEARLIST(round_end_events)
 
-	var/speed_round = (STATION_TIME_PASSED() <= 10 MINUTES)
+	var/speed_round = (STATION_TIME_PASSED() <= 45 MINUTES) // EffigyEdit Change - Shift length
 
 	for(var/client/C in GLOB.clients)
 		if(!C?.credits)
@@ -244,14 +244,20 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	//Set news report and mode result
 	mode.set_round_result()
 
-	to_chat(world, span_infoplain(span_boxannounceblue(span_bold("<BR><BR><BR>The round has ended.")))) // EffigyEdit Change - Game Notifications
+	to_chat(world, span_boxannounceblue("<h2 class='alert'>The round has ended.</h2>")) // EffigyEdit Change - Game Notifications
 	log_game("The round has ended.")
 	//send2chat(new /datum/tgs_message_content("[GLOB.round_hex ? "Round [GLOB.round_hex]" : "The round has"] just ended."), CONFIG_GET(string/channel_announce_end_game)) // EffigyEdit Remove - Game Notifications
-	discord_end_game_alert() // EffigyEdit Add - Game Notifications
-	send2adminchat("Server", "Round [GLOB.round_hex] just ended.") // EffigyEdit Change - Game Notifications
+	// EffigyEdit Add - Game Notifications
+	if(was_forced != ADMIN_FORCE_END_ROUND)
+		send_news_report() // EffigyEdit Add - Game Notifications
+		send2adminchat("Server", "Round [GLOB.round_hex] just ended.") // EffigyEdit Change - Game Notifications
+	// EffigyEdit Add End
 
+	// EffigyEdit Remove - Game Notifications
+	/*
 	if(length(CONFIG_GET(keyed_list/cross_server)))
 		send_news_report()
+	*/
 
 	CHECK_TICK
 
@@ -336,7 +342,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	if(GLOB.round_id)
 		var/statspage = CONFIG_GET(string/roundstatsurl)
-		var/info = statspage ? "<a href='?action=openLink&link=[url_encode(statspage)][GLOB.round_id]'>[GLOB.round_id]</a>" : GLOB.round_id
+		var/info = statspage ? "<a href='?action=openLink&link=[url_encode(statspage)][GLOB.round_hex]'>[GLOB.round_hex]</a>" : GLOB.round_hex // EffigyEdit Change - Game Notifications
 		parts += "[FOURSPACES]Round ID: <b>[info]</b>"
 	parts += "[FOURSPACES]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
 	parts += "[FOURSPACES]Station Integrity: <B>[GLOB.station_was_nuked ? span_redtext("Destroyed") : "[popcount["station_integrity"]]%"]</B>"
