@@ -159,46 +159,6 @@
       attached to objects
   - rscadd: Adds in Purpura Eye, a NIFSoft that allows for the user to hypnotize others.
   - spellcheck: Renamed certain NIFSofts to no longer be a cognitohazard.
-  Coded by Jacquerel, Sprited by Dalmationer:
-  - rscadd: Added tongs to the kitchen, which you can use to manipulate food from
-      further away
-  Cruix:
-  - bugfix: Some icons for selecting character preferences are no longer scaled incorrectly.
-  FIoppie:
-  - sound: '*flap now makes a fluttering noise for moth wings'
-  - sound: Moths now have a death sound
-  - qol: '*tremble emote now is just "trembles!" instead of "trembles in fear!"'
-  Fazzie:
-  - rscadd: A lot of new content has been added to the beach away mission
-  - qol: It also looks substantially better, too!
-  Jacquerel:
-  - refactor: Raw Prophets now use the basic mob framework. Please report any unusual
-      behaviour.
-  - admin: Admins can turn off dynamic rulesets (or force them on despite not meeting
-      the qualification criteria) on a per-round basis.
-  Melbert:
-  - qol: Moved a lot of maintenance spawnpoints out of non-maintenance rooms. Some
-      antags (paradox clone, fugitives, nightmares, spiders) are now less likely to
-      spawn in obvious places like the morgue, tech storage, or dorms rooms.
-  TheBoondock:
-  - rscadd: Added blackout, happens when you drink...ALOT
-  Wallem:
-  - rscadd: Adds The Hand of Midas, an ancient Egyptian matchlock pistol.
-  ZephyrTFA:
-  - bugfix: The Syndicate have fired their previous construction company after poor
-      results in recent outposts.
-  lizardqueenlexi:
-  - bugfix: Your heart will no longer be deleted if an admin heals you while you have
-      corazargh in your system.
-  - refactor: The cursed heart has been streamlined a bit, and now gives you a visual
-      cooldown for when you can beat your heart again.
-  - bugfix: Cutting open a hand-pressed paper bundle no longer deletes all of the
-      paper.
-  nikothedude:
-  - qol: Departmental order consoles now alert their department via radio when their
-      cooldown expires
-  ninjanomnom:
-  - admin: Appearance vars in VV now display instead of being left blank
   timothymtorres:
   - bugfix: Fix butchered monkeys to transfer reagents and diseases to meat
   unit0016:
@@ -366,6 +326,9 @@
   Jacquerel:
   - bugfix: Cowardly mobs will consistently run away from you instead of getting tired
       and just sort of standing there after an initial burst of movement.
+  LT3:
+  - rscadd: RimPoint has been brought up to the latest Space OSHA standard, bandages
+      now available in a few common areas.
   Melber:
   - bugfix: Wearing bread (or roses, or other non-mask things) no longer prevents
       you from TTS speaking.
@@ -387,6 +350,8 @@
   - qol: The autopsy tray (and surgery trays) can now hold the autopsy scanner
   admeeer:
   - code_imp: made an eensy teensie weensie change to some supermatter boilerplate
+  distributivgesetz:
+  - admin: The whitelist discord command should work properly again.
   jlsnow301:
   - bugfix: Added extra checks to bitrunning domain cleanup so avatars are deleted
       properly.
@@ -418,15 +383,6 @@
       (by holy weapons) should be tweaked a bit to allow better management. This should
       mean that getting unstunned and such should be a bit more precise now.
   - qol: Revenant instructions are now relayed in a neat little examine block.
-  distributivgesetz:
-  - rscadd: Added a weighted d20 to player loadouts. It's not favorable.
-  LT3:
-  - rscadd: RimPoint has been brought up to the latest Space OSHA standard, bandages
-      now available in a few common areas.
-  distributivgesetz:
-  - rscdel: Disposals no longer deals damage when travelling through them.
-  distributivgesetz:
-  - admin: The whitelist discord command should work properly again.
   unit0016:
   - rscadd: Rimpoint now has a public garden.
   - rscadd: Rimpoint has received two new ruins.
@@ -439,3 +395,41 @@
   - bugfix: End of round report should properly broadcast to discord
   - code_imp: Changed some log entries to use Effigy RID for consistency
   - server: Published Effigy DB schema
+2023-10-13:
+  GPeckman:
+  - bugfix: Borg modules can no longer be sold by pirates.
+  Iamgoofball:
+  - bugfix: Fixes a few runtimes with TTS and skips some code if TTS isn't enabled.
+  Jacquerel:
+  - balance: The Changeling Space Suit has been replaced by a new ability which makes
+      you passively spaceproof without replacing your clothing.
+  - admin: Editing the atmos sensitivity variables on a basic mob during the game
+      will now actually do something.
+  - bugfix: Heretic mobs will not be summoned with AI enabled, and won't turn into
+      small animals instead of summoning a flesh stalker.
+  JohnFulpWillard:
+  - bugfix: Antiglow now probably has negative glow power.
+  Melbert:
+  - bugfix: Miner's Salve, Sterilizine, and Space Cleaner now all properly affect
+      burn wounds
+  Sealed101:
+  - bugfix: you can no longer polymorph belt into a holoparasite
+  jlsnow301:
+  - bugfix: Fixed some issues in the security camera UI - pressing next or back will
+      now loop through the cameras
+  - bugfix: Fixed some style issues in the camera console where selected cams weren't
+      showing as selected
+  - bugfix: Camera console search works again
+  mc-oofert:
+  - bugfix: count station food verb now counts food only onstation
+  necromanceranne:
+  - balance: Unholy water acts as a coagulant for cultists.
+  nikothedude:
+  - bugfix: Wound promotion and demotion no longer removes gauze from the limb
+  timothymtorres:
+  - sound: Add burning sound loop to bonfires and fireplaces
+  - code_imp: Improved fireplaces to only process when lit
+  vinylspiders:
+  - bugfix: fixes a runtime in organ on_death()
+  - bugfix: moved a garbage spawner on Tramstation that was causing random runtimes
+      due to sometimes spawning in space depending on which module got loaded
