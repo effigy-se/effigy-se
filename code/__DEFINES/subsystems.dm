@@ -20,7 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-#define DB_MINOR_VERSION 24
+#define DB_MINOR_VERSION 25
 
 /**
  * DB Effigy schema version
@@ -29,7 +29,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-#define DB_EFFIGY_VERSION 4  // EffigyEdit Add
+#define DB_EFFIGY_VERSION 5  // EffigyEdit Add
 
 
 //! ## Timing subsystem

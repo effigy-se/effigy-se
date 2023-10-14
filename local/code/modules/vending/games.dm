@@ -6,6 +6,7 @@
 			"products" = list(
 				/obj/item/hairbrush = 3,
 				/obj/item/clothing/mask/holocigarette = 5,
+				/obj/item/attachable_soulcatcher = 5,
 			),
 		)
 	)

@@ -201,10 +201,10 @@ GLOBAL_VAR(restart_counter)
 		GLOB.log_directory = "data/logs/[texttime]/round-"
 		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD")]_"
 		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
-		if(GLOB.round_id)
-			GLOB.log_directory += "[GLOB.round_id]"
-			GLOB.picture_logging_prefix += "R_[GLOB.round_id]_"
-			GLOB.picture_log_directory += "[GLOB.round_id]"
+		if(GLOB.round_hex) // EffigyEdit Change - Logging
+			GLOB.log_directory += "[GLOB.round_hex]" // EffigyEdit Change - Logging
+			GLOB.picture_logging_prefix += "R_[GLOB.round_hex]_" // EffigyEdit Change - Logging
+			GLOB.picture_log_directory += "[GLOB.round_hex]" // EffigyEdit Change - Logging
 		else
 			var/timestamp = replacetext(time_stamp(), ":", ".")
 			GLOB.log_directory += "[timestamp]"
@@ -220,8 +220,8 @@ GLOBAL_VAR(restart_counter)
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
-	if(GLOB.round_id)
-		log_game("Round ID: [GLOB.round_id]")
+	if(GLOB.round_hex) // EffigyEdit Change - Logging
+		log_game("Round ID: [GLOB.round_hex]") // EffigyEdit Change - Logging
 
 	// This was printed early in startup to the world log and config_error.log,
 	// but those are both private, so let's put the commit info in the runtime
@@ -348,8 +348,6 @@ GLOBAL_VAR(restart_counter)
 	auxcleanup()
 	. = ..()
 
-// EFFIGY EDIT REMOVE START (moved to packages/admin)
-/*
 /world/proc/update_status()
 
 	var/list/features = list()
@@ -390,8 +388,6 @@ GLOBAL_VAR(restart_counter)
 		new_status += "<br>Alert: <b>[capitalize(alert_text)]</b>"
 
 	status = new_status
-*/
-// EFFIGY EDIT REMOVE END
 
 /world/proc/update_hub_visibility(new_visibility)
 	if(new_visibility == GLOB.hub_visibility)

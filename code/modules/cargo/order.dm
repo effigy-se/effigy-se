@@ -188,6 +188,14 @@
 	generateManifest(miscbox, misc_own, "", misc_cost)
 	return
 
+/datum/supply_order/proc/append_order(list/new_contents, cost_increase)
+	for(var/i as anything in new_contents)
+		if(pack.contains[i])
+			pack.contains[i] += new_contents[i]
+		else
+			pack.contains += i
+			pack.contains[i] = new_contents[i]
+	pack.cost += cost_increase
 // EFFIGY EDIT ADD START
 /// A proc to be overriden if you want custom code to happen when SSshuttle spawns the order
 /datum/supply_order/proc/on_spawn()

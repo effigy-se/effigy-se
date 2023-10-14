@@ -4975,6 +4975,11 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/iron,
 /area/station/maintenance/port/central)
+"cJO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/smooth,
+/area/station/cargo/warehouse)
 "cJW" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -9407,13 +9412,9 @@
 	},
 /area/station/science)
 "flD" = (
-/obj/effect/landmark/bitrunning/station_reward_spawn,
-/obj/effect/turf_decal/box/corners,
-/obj/effect/turf_decal/box/corners{
-	dir = 8
-	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/west,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/bitrunning/den)
 "fmC" = (
@@ -11412,9 +11413,7 @@
 /area/station/cargo/warehouse)
 "grT" = (
 /obj/structure/table/reinforced/rglass,
-/obj/machinery/microwave{
-	pixel_y = 6
-	},
+/obj/machinery/microwave/engineering/cell_included,
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/iron/white,
 /area/station/medical/break_room)
@@ -18585,9 +18584,7 @@
 /area/station/maintenance/aft/lesser)
 "kqi" = (
 /obj/structure/table,
-/obj/machinery/microwave{
-	pixel_y = 6
-	},
+/obj/machinery/microwave/engineering/cell_included,
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/science)
@@ -23022,11 +23019,15 @@
 /obj/structure/cable,
 /obj/structure/table,
 /obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/storage/box/bandages{
+	pixel_y = 6;
+	pixel_x = 4
+	},
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/cargo/storage)
 "mWf" = (
@@ -26315,15 +26316,10 @@
 /turf/open/floor/plating,
 /area/station/hallway/secondary/service)
 "oWb" = (
-/obj/effect/landmark/bitrunning/station_reward_spawn,
-/obj/effect/turf_decal/box/corners{
-	dir = 4
-	},
-/obj/effect/turf_decal/box/corners{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/byteforge,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/bitrunning/den)
 "oWe" = (
@@ -29035,9 +29031,7 @@
 "qtK" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/red/opposingcorners,
-/mob/living/simple_animal/hostile/retaliate/goat{
-	name = "Pete"
-	},
+/mob/living/basic/goat/pete,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/showroomfloor,
 /area/station/service/kitchen/coldroom)
@@ -140100,7 +140094,7 @@ ctm
 uyY
 wUB
 hKS
-iZZ
+cJO
 vZY
 mhY
 vcB
