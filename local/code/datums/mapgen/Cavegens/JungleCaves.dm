@@ -1,5 +1,5 @@
 /datum/map_generator/cave_generator/jungle
-	weighted_open_turf_types = list(/turf/open/misc/dirt/jungle = 10, /turf/open/misc/dirt/jungle/dark = 1)
+	weighted_open_turf_types = list(/turf/open/misc/dirt/jungle = 19, /turf/open/misc/dirt/jungle/dark = 1)
 	weighted_closed_turf_types = list(/turf/closed/mineral/random/jungle = 1)
 	weighted_mob_spawn_list = list(
 		null,
