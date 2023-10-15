@@ -28,7 +28,7 @@
 
 /obj/item/pressure_plate/Initialize(mapload)
 	. = ..()
-	tile_overlay = image(icon = 'icons/turf/floors.dmi', icon_state = "pp_overlay")
+	tile_overlay = image(icon = EFFIGY_TURFS_ICON_FILE, icon_state = "pp_overlay") // EffigyEdit Change - Floors
 	if(roundstart_signaller)
 		sigdev = new
 		sigdev.code = roundstart_signaller_code
