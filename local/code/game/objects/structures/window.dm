@@ -9,3 +9,6 @@
 
 /obj/structure/window/reinforced/tinted/fulltile
 	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
+
+/turf/closed/indestructible/fakeglass
+	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
