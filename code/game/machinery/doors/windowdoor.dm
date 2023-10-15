@@ -218,9 +218,10 @@
 		operating = TRUE
 
 	do_animate("opening")
+	sleep(0.4 SECONDS) // EffigyEdit Change - Airlocks
 	playsound(src, 'sound/machines/windowdoor.ogg', 100, TRUE)
 	icon_state ="[base_state]open"
-	sleep(1 SECONDS)
+	sleep(0.6 SECONDS) // EffigyEdit Change - Airlocks
 	set_density(FALSE)
 	air_update_turf(TRUE, FALSE)
 	update_freelook_sight()
@@ -261,13 +262,14 @@
 
 	operating = TRUE
 	do_animate("closing")
+	sleep(0.7 SECONDS) // EffigyEdit Change - Airlocks
 	playsound(src, 'sound/machines/windowdoor.ogg', 100, TRUE)
 	icon_state = base_state
 
 	set_density(TRUE)
 	air_update_turf(TRUE, TRUE)
 	update_freelook_sight()
-	sleep(1 SECONDS)
+	sleep(0.3 SECONDS) // EffigyEdit Change - Airlocks
 
 	operating = FALSE
 	return TRUE
