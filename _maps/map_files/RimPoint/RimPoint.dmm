@@ -3194,13 +3194,13 @@
 /turf/open/openspace,
 /area/station/maintenance/department/security)
 "bzf" = (
-/obj/machinery/atmospherics/components/tank{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/purple/corner{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/tank/oxygen{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/science/ordnance/storage)
 "bzg" = (
@@ -3229,7 +3229,7 @@
 /turf/closed/wall/r_wall,
 /area/station/security/courtroom)
 "bzO" = (
-/obj/structure/chair/comfy/teal{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -18253,6 +18253,12 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
+/obj/machinery/lift_indicator/directional/north{
+	linked_elevator_id = "lib_vator"
+	},
+/obj/machinery/button/elevator/directional/north{
+	id = "lib_vator"
+	},
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
 "ifW" = (
@@ -18819,6 +18825,10 @@
 "iuo" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/window/elevator/left/directional/south{
+	elevator_linked_id = "lib_vator";
+	elevator_mode = 1
+	},
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
 "iuq" = (
@@ -30642,6 +30652,13 @@
 /obj/structure/fence/door,
 /turf/open/floor/plating,
 /area/taeloth)
+"nNI" = (
+/obj/structure/industrial_lift/public,
+/obj/effect/landmark/lift_id{
+	specific_lift_id = "lib_vator"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/service/library)
 "nNU" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/line,
 /obj/effect/turf_decal/siding/wideplating_new/dark,
@@ -33381,12 +33398,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/storage)
-"pch" = (
-/obj/structure/chair/comfy/teal{
-	dir = 1
-	},
-/turf/open/floor/carpet/executive,
-/area/station/command/meeting_room/council)
 "pck" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
@@ -39880,6 +39891,19 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
+"rVo" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/machinery/door/window/elevator/right/directional/north{
+	elevator_mode = 1;
+	elevator_linked_id = "lib_vator"
+	},
+/turf/open/floor/wood/parquet,
+/area/station/service/library)
 "rVr" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -43539,6 +43563,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/toilet/restrooms)
+"tGc" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/misc/grass/jungle,
+/area/taeloth)
 "tGe" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 1
@@ -43909,13 +43937,6 @@
 /obj/item/clothing/glasses/sunglasses,
 /turf/open/floor/wood/large,
 /area/station/service/lawoffice)
-"tQK" = (
-/obj/structure/chair/comfy/teal,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/turf/open/floor/carpet/executive,
-/area/station/command/meeting_room/council)
 "tRc" = (
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 8
@@ -46086,6 +46107,10 @@
 /turf/open/floor/iron,
 /area/station/commons/toilet/restrooms)
 "uJu" = (
+/obj/structure/industrial_lift/public,
+/obj/machinery/elevator_control_panel/directional/west{
+	linked_elevator_id = "lib_vator"
+	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/service/library)
 "uJx" = (
@@ -46534,6 +46559,10 @@
 	},
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
+"uWc" = (
+/obj/structure/industrial_lift/public,
+/turf/open/floor/plating/elevatorshaft,
+/area/station/service/library)
 "uWl" = (
 /obj/structure/barricade/wooden,
 /turf/open/misc/asteroid,
@@ -50322,6 +50351,12 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
+/obj/machinery/lift_indicator/directional/south{
+	linked_elevator_id = "lib_vator"
+	},
+/obj/machinery/button/elevator/directional/south{
+	id = "lib_vator"
+	},
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
 "wJt" = (
@@ -51522,6 +51557,15 @@
 	},
 /turf/open/floor/wood,
 /area/station/commons/dorms/room3)
+"xla" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/window/elevator/right/directional/south{
+	elevator_linked_id = "lib_vator";
+	elevator_mode = 1
+	},
+/turf/open/floor/wood/parquet,
+/area/station/service/library)
 "xlh" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -52568,6 +52612,10 @@
 	},
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
+	},
+/obj/machinery/door/window/elevator/left/directional/north{
+	elevator_mode = 1;
+	elevator_linked_id = "lib_vator"
 	},
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
@@ -87787,9 +87835,9 @@ sPO
 yfL
 kgC
 cRJ
-tQK
+heX
 ngy
-pch
+scP
 xfQ
 jIL
 mvo
@@ -97014,7 +97062,7 @@ gAj
 hLN
 nhU
 iuo
-uJu
+nNI
 uJu
 rDi
 gZS
@@ -97270,9 +97318,9 @@ hjR
 fYi
 oeM
 oeM
-iuo
-uJu
-uJu
+xla
+uWc
+uWc
 rDi
 baK
 lFA
@@ -101169,7 +101217,7 @@ gMo
 gMo
 gMo
 gMo
-sAb
+tGc
 vSj
 vSj
 sAb
@@ -162809,7 +162857,7 @@ nJi
 nJi
 nJi
 nJi
-xGq
+rVo
 oeM
 etA
 nEt

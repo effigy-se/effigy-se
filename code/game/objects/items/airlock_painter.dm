@@ -330,7 +330,7 @@
 	cross_round_cachable = TRUE
 
 	/// The floor icon used for blend_preview_floor()
-	var/preview_floor_icon = 'icons/turf/floors.dmi'
+	var/preview_floor_icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
 	/// The floor icon state used for blend_preview_floor()
 	var/preview_floor_state = "floor"
 	/// The associated decal painter type to grab decals, colors, etc from.

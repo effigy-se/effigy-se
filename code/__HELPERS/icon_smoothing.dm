@@ -104,7 +104,7 @@ xxx xxx xxx
 		(GLOB.adjacent_direction_lookup[border_obj.dir][direction + 1]) ? REVERSE_DIR(direction) : NONE \
 	)
 
-#define DEFAULT_UNDERLAY_ICON 'icons/turf/floors.dmi'
+#define DEFAULT_UNDERLAY_ICON EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
 #define DEFAULT_UNDERLAY_ICON_STATE "plating"
 
 
