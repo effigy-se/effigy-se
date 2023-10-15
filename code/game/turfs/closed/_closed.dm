@@ -224,7 +224,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 
 /turf/closed/indestructible/fakeglass/Initialize(mapload)
 	. = ..()
-	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01) //add a grille underlay  // EffigyEdit Change - Floors
+	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01) //add a grille underlay
 	underlays += mutable_appearance(EFFIGY_TURFS_ICON_FILE, "plating", layer - 0.02) //add the plating underlay, below the grille  // EffigyEdit Change - Floors
 
 /turf/closed/indestructible/opsglass
