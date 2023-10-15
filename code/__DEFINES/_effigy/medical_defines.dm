@@ -8,3 +8,8 @@
 
 #define COMSIG_BODYPART_SPLINTED "bodypart_splinted" // from /obj/item/bodypart/proc/apply_gauze(/obj/item/stack/gauze)
 #define COMSIG_BODYPART_SPLINT_DESTROYED "bodypart_desplinted" // from [/obj/item/bodypart/proc/seep_gauze] when it runs out of absorption
+
+/// If a synth is revived via defib, they will have a brain trauma for this amount of time.
+#define SYNTH_DEFIBBED_TRAUMA_DURATION 90 SECONDS
+/// If a synth is revived via defib, they will get a brain trauma of this severity.
+#define SYNTH_DEFIBBED_TRAUMA_SEVERITY BRAIN_TRAUMA_SEVERE
