@@ -28,7 +28,7 @@
 	var/res = tgui_alert(usr, "Show the title of this song to the players?",, list("Yes","No", "Cancel"))
 	switch(res)
 		if("Yes")
-			to_chat(world, span_boxannouncepink("An admin played: [S]"), confidential = TRUE)
+			to_chat(world, span_boxannouncemagenta("An admin played: [S]"), confidential = TRUE)
 		if("Cancel")
 			return
 
@@ -130,12 +130,12 @@
 		switch(anon)
 			if("Yes")
 				if(res == "Yes")
-					to_chat(world, span_boxannouncepink("[user.key] played: [webpage_url]"), confidential = TRUE)
+					to_chat(world, span_boxannouncemagenta("[user.key] played: [webpage_url]"), confidential = TRUE)
 				else
-					to_chat(world, span_boxannouncepink("[user.key] played a sound"), confidential = TRUE)
+					to_chat(world, span_boxannouncemagenta("[user.key] played a sound"), confidential = TRUE)
 			if("No")
 				if(res == "Yes")
-					to_chat(world, span_boxannouncepink("An admin played: [webpage_url]"), confidential = TRUE)
+					to_chat(world, span_boxannouncemagenta("An admin played: [webpage_url]"), confidential = TRUE)
 			if("Cancel", null)
 				return
 		if(credit)
