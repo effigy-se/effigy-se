@@ -157,6 +157,11 @@
 			var/obj/item/gun/energy/gun = module
 			if(!gun.chambered)
 				gun.recharge_newshot() //try to reload a new shot.
+		/// EFFIGY EDIT START - Cargo borgs
+		else if(istype(module, /obj/item/hand_labeler/cyborg))
+			var/obj/item/hand_labeler/cyborg/labeler = module
+			labeler.labels_left = 30
+		/// EFFIGY EDIT END
 
 	cyborg.toner = cyborg.tonermax
 
