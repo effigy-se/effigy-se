@@ -71,7 +71,7 @@
 /obj/item/borg/hydraulic_clamp
 	name = "integrated hydraulic clamp"
 	desc = "A neat way to lift and move around few small packages for quick and painless deliveries!"
-	icon = 'icons/mecha/mecha_equipment.dmi' // Just some temporary sprites because I don't have any unique one yet
+	icon = 'icons/mob/mecha_equipment.dmi' // Just some temporary sprites because I don't have any unique one yet
 	icon_state = "mecha_clamp"
 	/// How much power does it draw per operation?
 	var/charge_cost = 20
@@ -287,7 +287,7 @@
 /obj/item/borg/hydraulic_clamp/mail
 	name = "integrated rapid mail delivery device"
 	desc = "Allows you to carry around a lot of mail, to distribute it around the station like the good little mailbot you are!"
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/obj/service/library.dmi'
 	icon_state = "bookbag"
 	storage_capacity = 100
 	loading_time = 0.25 SECONDS
@@ -365,7 +365,7 @@
 /obj/item/borg/paperplane_crossbow
 	name = "paper plane crossbow"
 	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
-	icon = 'icons/obj/guns/energy.dmi'
+	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "crossbow"
 	/// How many planes does the crossbow currently have in its internal magazine?
 	var/planes = 4
