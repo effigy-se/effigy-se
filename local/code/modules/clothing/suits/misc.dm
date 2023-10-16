@@ -253,6 +253,9 @@
 	icon_state = "don_cossak"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/costume/ghost_sheet
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"
 	icon = 'local/icons/obj/clothing/suits.dmi'
