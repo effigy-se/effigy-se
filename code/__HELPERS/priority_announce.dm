@@ -40,22 +40,22 @@
 	// EffigyEdit Change - Announcements
 	/*
 	if(type == "Priority")
-		announcement += "<h1 class='alert'>Priority Announcement</h1>"
+		announcement += "[span_priorityannounce("<u>Priority Announcement</u>")]"
 		if (title && length(title) > 0)
-			announcement += "<br><h2 class='alert'>[title]</h2>"
+			announcement += "[span_prioritytitle("<br>[title]")]"
 	else if(type == "Captain")
-		announcement += "<h1 class='alert'>Captain Announces</h1>"
+		announcement += "[span_priorityannounce("<u>Captain Announces</u>")]"
 		GLOB.news_network.submit_article(text, "Captain's Announcement", "Station Announcements", null)
 	else if(type == "Syndicate Captain")
-		announcement += "<h1 class='alert'>Syndicate Captain Announces</h1>"
+		announcement += "[span_priorityannounce("<u>Syndicate Captain Announces</u>")]"
 
 	else
 		if(!sender_override)
-			announcement += "<h1 class='alert'>[command_name()] Update</h1>"
+			announcement += "[span_priorityannounce("<u>[command_name()] Update</u>")]"
 		else
-			announcement += "<h1 class='alert'>[sender_override]</h1>"
+			announcement += "[span_priorityannounce("<u>[sender_override]</u>")]"
 		if (title && length(title) > 0)
-			announcement += "<br><h2 class='alert'>[title]</h2>"
+			announcement += "[span_prioritytitle("<br>[title]")]"
 
 		if(!sender_override)
 			if(title == "")
@@ -65,7 +65,7 @@
 
 	///If the announcer overrides alert messages, use that message.
 	if(SSstation.announcer.custom_alert_message && !has_important_message)
-		announcement += SSstation.announcer.custom_alert_message
+		announcement += "[span_priorityalert("<br>[SSstation.announcer.custom_alert_message]<br>")]"
 	else
 		announcement += "[span_alert(text)]"
 	announcement += "<br>"
@@ -122,11 +122,11 @@
 	if(announce)
 		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", SSstation.announcer.get_rand_report_sound(), has_important_message = TRUE)
 
-	var/datum/comm_message/M = new
-	M.title = title
-	M.content = text
+	var/datum/comm_message/message = new
+	message.title = title
+	message.content = text
 
-	SScommunications.send_message(M)
+	SScommunications.send_message(message)
 
 /**
  * Sends a minor annoucement to players.
