@@ -21,6 +21,7 @@
 	. = ..()
 	if(.)
 		RegisterSignal(receiver, COMSIG_ORGAN_WAG_TAIL, PROC_REF(wag))
+		RegisterSignal(receiver, COMSIG_LIVING_DEATH, PROC_REF(stop_wag))
 		original_owner ||= WEAKREF(receiver)
 
 		receiver.clear_mood_event("tail_lost")
@@ -41,6 +42,7 @@
 	. = ..()
 
 	UnregisterSignal(organ_owner, COMSIG_ORGAN_WAG_TAIL)
+	UnregisterSignal(organ_owner, COMSIG_LIVING_DEATH)
 
 	if(type in organ_owner.dna.species.external_organs)
 		organ_owner.add_mood_event("tail_lost", /datum/mood_event/tail_lost)

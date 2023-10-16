@@ -114,11 +114,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/get_random_body_markings(list/features) //Needs features to base the colour off of
 	return list()
 
-//I wag in death
-/datum/species/spec_death(gibbed, mob/living/carbon/human/H)
-	if(H)
-		stop_wagging_tail(H)
-
 /datum/species/spec_stun(mob/living/carbon/human/H,amount)
 	if(H)
 		stop_wagging_tail(H)
