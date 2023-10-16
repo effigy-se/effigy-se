@@ -157,8 +157,8 @@
 			var/obj/item/gun/energy/gun = module
 			if(!gun.chambered)
 				gun.recharge_newshot() //try to reload a new shot.
-				
-	cyborg.toner = cyborg.tonermax
+
+cyborg.toner = cyborg.tonermax
 
 /**
  * Refills consumables that require materials, rather than being given for free.
