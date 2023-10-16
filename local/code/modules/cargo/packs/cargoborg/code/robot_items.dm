@@ -1,5 +1,5 @@
 /// CARGO BORGS ///
-#define CYBORG_FONT "Consolas"
+#define CYBORG_FONT "Ubuntu Mono"
 #define MAX_PAPER_INTEGRATED_CLIPBOARD 10
 
 /obj/item/pen/cyborg
