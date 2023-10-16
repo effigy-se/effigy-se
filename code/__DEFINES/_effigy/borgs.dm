@@ -36,7 +36,7 @@ GLOBAL_LIST_EMPTY(cyborg_all_models_icon_list)
 #define CYBORG_ICON_MED_WIDE 'local/icons/mob/borgs/widerobot_med.dmi'
 
 #define CYBORG_ICON_CARGO 'local/icons/mob/borgs/robots_cargo.dmi'
-#define CYBORG_ICON_CARGO_WIDE 'local/icons/mob/borgs/widerobot_cargo.dmi'
+#define CYBORG_ICON_CARGO_WIDE 'local/icons/mob/borgs/widerobots_cargo.dmi'
 
 #define CYBORG_ICON_SEC 'local/icons/mob/borgs/robots_sec.dmi'
 #define CYBORG_ICON_SEC_WIDE 'local/icons/mob/borgs/widerobot_sec.dmi'
