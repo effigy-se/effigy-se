@@ -27,9 +27,9 @@
 
 /obj/item/clipboard/cyborg/examine()
 	. = ..()
-	. += "Alt-click to synthetize a piece of paper."
+	. += span_notice("Alt-click to synthetize a piece of paper.")
 	if(!COOLDOWN_FINISHED(src, printer_cooldown))
-		. += "Its integrated paper synthetizer seems to still be on cooldown."
+		. += span_notice("Its integrated paper synthetizer seems to still be on cooldown.")
 
 
 /obj/item/clipboard/cyborg/AltClick(mob/user)
@@ -52,7 +52,7 @@
 			if(toppaper_ref)
 				var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 				UnregisterSignal(toppaper, COMSIG_ATOM_UPDATED_ICON)
-			RegisterSignal(new_paper, COMSIG_ATOM_UPDATED_ICON, .proc/on_top_paper_change)
+			RegisterSignal(new_paper, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
 			toppaper_ref = WEAKREF(new_paper)
 			update_appearance()
 			to_chat(user, span_notice("[src]'s integrated printer whirs to life, spitting out a fresh piece of paper and clipping it into place."))
@@ -115,7 +115,7 @@
 	var/obj/item/robot_model/holder_model = loc
 	cyborg_holding_me = WEAKREF(holder_model.robot)
 
-	RegisterSignal(holder_model.robot, COMSIG_LIVING_DEATH, .proc/empty_contents)
+	RegisterSignal(holder_model.robot, COMSIG_LIVING_DEATH, PROC_REF(empty_contents))
 
 
 /obj/item/borg/hydraulic_clamp/Destroy()
@@ -401,7 +401,7 @@
 /// A simple proc to check if we're at the max amount of planes, if not, we keep on charging. Called by [/obj/item/borg/paperplane_crossbow/proc/charge_paper_planes()].
 /obj/item/borg/paperplane_crossbow/proc/check_amount()
 	if(!charging && planes < max_planes)
-		addtimer(CALLBACK(src, .proc/charge_paper_planes), charge_delay)
+		addtimer(CALLBACK(src, PROC_REF(charge_paper_planes)), charge_delay)
 		charging = TRUE
 
 
@@ -415,7 +415,7 @@
 /// A proc for shooting a projectile at the target, it's just that simple, really.
 /obj/item/borg/paperplane_crossbow/proc/shoot(atom/target, mob/living/user, params)
 	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
-		return
+		return FALSE
 	if(planes <= 0)
 		to_chat(user, span_warning("Not enough paper planes left!"))
 		return FALSE
@@ -480,3 +480,6 @@
 // I did this out of sanity, I didn't want to make the clamp code more complex than necessary, and honestly I'm considering taking this upstream, it just feels awkward to PR just that.
 /obj/item/bounty_cube
 	w_class = WEIGHT_CLASS_SMALL
+
+#undef CYBORG_FONT
+#undef MAX_PAPER_INTEGRATED_CLIPBOARD

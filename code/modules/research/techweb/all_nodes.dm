@@ -982,7 +982,7 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
-		//EFFIGY EDIT ADD START
+		// EFFIGY EDIT ADD START
 		"borg_upgrade_clamp",
 		"borg_upgrade_brush", 
 		// EFFIGY EDIT END

@@ -172,12 +172,6 @@
 	set_model = /obj/item/robot_model/medical
 	icon_state = "medical"
 
-// EFFIGY ADD START
-/mob/living/silicon/robot/model/medical
-	set_model = /obj/item/robot_model/cargo
-	icon_state = "cargo"
-// EFFIGY ADD END
-
 /mob/living/silicon/robot/model/miner
 	set_model = /obj/item/robot_model/miner
 	icon_state = "miner"
