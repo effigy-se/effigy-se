@@ -123,7 +123,7 @@
 
 	if (unreceived.len)
 		if (unreceived.len >= ASSET_CACHE_TELL_CLIENT_AMOUNT)
-			to_chat(client, span_boxannouncegrey("Streaming assets from Effigy Game Services...</span>"), MESSAGE_TYPE_DEBUG)
+			to_chat(client, span_boxannouncewhite("Streaming assets from Effigy Game Services...</span>"), MESSAGE_TYPE_DEBUG)
 
 		for (var/asset_name in unreceived)
 			var/new_asset_name = asset_name

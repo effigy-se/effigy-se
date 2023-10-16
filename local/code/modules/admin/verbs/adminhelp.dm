@@ -621,7 +621,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	Resolve(silent = TRUE)
 
 /datum/admin_help/proc/send_ticket_url(initiator)
-	to_chat(initiator, span_boxannouncegrey("You can view this ticket in the portal at: <a href=\"https://effigy.se/ticket/[effigy_ticket_id]/\">https://effigy.se/ticket/[effigy_ticket_id]/</a>"), confidential = TRUE)
+	to_chat(initiator, span_boxannouncewhite("You can view this ticket in the portal at: <a href=\"https://effigy.se/ticket/[effigy_ticket_id]/\">https://effigy.se/ticket/[effigy_ticket_id]/</a>"), confidential = TRUE)
 
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
