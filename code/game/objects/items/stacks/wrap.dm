@@ -83,7 +83,7 @@
 		parcel.base_icon_state = "deliverypackage5"
 		parcel.update_icon()
 		user.forceMove(parcel)
-		parcel.contains_mobs = TRUE // EFFIGY EDIT - Cargoborgs
+		parcel.contains_mobs = TRUE // EFFIGY EDIT - CARGO BORGS
 		parcel.add_fingerprint(user)
 		return OXYLOSS
 	else
@@ -159,7 +159,7 @@
 			// EFFIGY EDIT START - CARGO BORGS
 			for(var/item in closet.get_all_contents())
 				if(istype(item, /mob))
-					P.contains_mobs = TRUE
+					parcel.contains_mobs = TRUE
 					break
 			// EFFIGY EDIT END
 		else
