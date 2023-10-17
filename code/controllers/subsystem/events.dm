@@ -8,12 +8,14 @@ SUBSYSTEM_DEF(events)
 	var/list/running = list()
 	///cache of currently running events, for lag checking.
 	var/list/currentrun = list()
+	///list of previously run events
+	var/list/previously_run = list() // EffigyEdit Add
 	///The next world.time that a naturally occuring random event can be selected.
 	var/scheduled = 0
 	///The lower bound for how soon another random event can be scheduled.
-	var/frequency_lower = 2.5 MINUTES
+	var/frequency_lower = 4 MINUTES // EffigyEdit Change
 	///The upper bound for how soon another random event can be scheduled.
-	var/frequency_upper = 7 MINUTES
+	var/frequency_upper = 14 MINUTES // EffigyEdit Change
 	///Will wizard events be included in the event pool?
 	var/wizardmode = FALSE
 
