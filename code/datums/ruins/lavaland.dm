@@ -51,15 +51,10 @@
 	id = "ash-walker"
 	description = "A race of unbreathing lizards live here, that run faster than a human can, worship a broken dead city, and are capable of reproducing by something involving tentacles? \
 	Probably best to stay clear."
-	// EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
-	prefix = "_maps/RandomRuins/LavaRuins/skyrat/"
-	suffix = "lavaland_surface_ash_walker1_skyrat.dmm"
-	always_place = TRUE
-	// EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
+	suffix = "lavaland_surface_ash_walker1.dmm"
+	cost = 20
 	allow_duplicates = FALSE
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
-/*
 /datum/map_template/ruin/lavaland/syndicate_base
 	name = "Syndicate Lava Base"
 	id = "lava-base"
@@ -67,8 +62,6 @@
 	suffix = "lavaland_surface_syndicate_base1.dmm"
 	cost = 20
 	allow_duplicates = FALSE
-*/
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
 
 /datum/map_template/ruin/lavaland/free_golem
 	name = "Free Golem Ship"

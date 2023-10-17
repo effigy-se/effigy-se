@@ -69,8 +69,6 @@
 
 // above and below ground together
 
-// EFFIGY EDIT REMOVE START (#3 Mapping)
-/*
 /datum/map_template/ruin/icemoon/mining_site
 	name = "Mining Site"
 	id = "miningsite"
@@ -86,8 +84,6 @@
 	suffix = "icemoon_underground_mining_site.dmm"
 	has_ceiling = FALSE
 	unpickable = TRUE
-*/
-// EFFIGY EDIT REMOVE END (#3 Mapping)
 
 // below ground only
 
