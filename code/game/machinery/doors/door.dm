@@ -1,4 +1,4 @@
-#define DOOR_CLOSE_WAIT 60 ///Default wait until doors autoclose
+// #define DOOR_CLOSE_WAIT 60 ///Default wait until doors autoclose // EffigyEdit Change - Moved to code/__DEFINES/_effigy/airlock.dm
 /obj/machinery/door
 	name = "door"
 	desc = "It opens and closes."
@@ -594,4 +594,4 @@
 		return ..()
 	return ..(0)
 
-#undef DOOR_CLOSE_WAIT
+//#undef DOOR_CLOSE_WAIT // EffigyEdit Change - Moved to code/__DEFINES/_effigy/airlock.dm

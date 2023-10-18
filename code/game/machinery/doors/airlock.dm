@@ -46,6 +46,7 @@
 
 // Wires for the airlock are located in the datum folder, inside the wires datum folder.
 
+/*  // EffigyEdit Change - Moved to code/__DEFINES/_effigy/airlock.dm
 #define AIRLOCK_FRAME_CLOSED "closed"
 #define AIRLOCK_FRAME_CLOSING "closing"
 #define AIRLOCK_FRAME_OPEN "open"
@@ -71,6 +72,7 @@
 #define DOOR_CLOSE_WAIT 60 /// Time before a door closes, if not overridden
 
 #define DOOR_VISION_DISTANCE 11 ///The maximum distance a door will see out to
+*/ // EffigyEdit Change End
 
 /obj/machinery/door/airlock
 	name = "Airlock"
