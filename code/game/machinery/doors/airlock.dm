@@ -2470,7 +2470,7 @@
 	set_density(TRUE)
 	operating = FALSE
 	return TRUE
-
+/*  // EffigyEdit Change - Moved to code/__DEFINES/_effigy/airlock.dm
 #undef AIRLOCK_SECURITY_NONE
 #undef AIRLOCK_SECURITY_IRON
 #undef AIRLOCK_SECURITY_PLASTEEL_I_S
@@ -2495,3 +2495,4 @@
 #undef AIRLOCK_FRAME_CLOSING
 #undef AIRLOCK_FRAME_OPEN
 #undef AIRLOCK_FRAME_OPENING
+*/  // EffigyEdit Change End
