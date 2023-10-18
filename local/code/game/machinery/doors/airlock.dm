@@ -317,6 +317,18 @@
 	greyscale_colors = null
 
 /**
+ * Tram
+ */
+
+/obj/machinery/door/airlock/tram
+	icon = 'icons/obj/doors/airlocks/tram/tram.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/tram/tram-overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
+	has_environment_lights = FALSE
+
+
+/**
  * Mineral/Material
  */
 
