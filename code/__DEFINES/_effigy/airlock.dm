@@ -17,8 +17,6 @@
 #define AIRLOCK_DENY 5
 #define AIRLOCK_EMAG 6
 
-#define DOOR_CLOSE_WAIT 60 ///Default wait until doors autoclose
-
 #define AIRLOCK_FRAME_CLOSED "closed"
 #define AIRLOCK_FRAME_CLOSING "closing"
 #define AIRLOCK_FRAME_OPEN "open"
