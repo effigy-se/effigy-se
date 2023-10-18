@@ -41,11 +41,14 @@
 		faction = string_list(faction)
 
 /// Creates whatever mob the spawner makes. Return FALSE if we want to exit from here without doing that, returning NULL will be logged to admins.
-/obj/effect/mob_spawn/proc/create(mob/mob_possessor, newname)
+/obj/effect/mob_spawn/proc/create(mob/mob_possessor, newname, is_pref_loaded) //EFFIGY CHANGE START - Loading Preferences in Ghost roles - Adds is_pref_loaded as an argument
 	var/mob/living/spawned_mob = new mob_type(get_turf(src)) //living mobs only
 	name_mob(spawned_mob, newname)
 	special(spawned_mob, mob_possessor)
-	equip(spawned_mob)
+	//EFFIGY EDIT START - Loading Preferences in Ghost roles
+	if(!is_pref_loaded)
+		equip(spawned_mob)
+	//EFFIGY EDIT END - Loading Preferences in Ghost roles
 	spawned_mob_ref = WEAKREF(spawned_mob)
 	return spawned_mob
 
@@ -150,6 +153,9 @@
 	var/quirks_enabled = FALSE
 	/// Are we limited to a certain species type? LISTED TYPE
 	var/restricted_species
+	/// set this to make the spawner use the outfit.name instead of its name var for things like cryo announcements and ghost records
+	/// modifying the actual name during the game will cause issues with the GLOB.mob_spawners associative list
+	var/use_outfit_name
 	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
 
 /obj/effect/mob_spawn/ghost_role/Initialize(mapload)

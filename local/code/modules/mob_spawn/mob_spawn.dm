@@ -1,18 +1,10 @@
-#define GHOSTROLE_RANDOM_APPEARANCE "Random"
-#define GHOSTROLE_STATIC_APPEARANCE "Current"
-
-/obj/effect/mob_spawn/ghost_role/
-	/// set this to make the spawner use the outfit.name instead of its name var for things like cryo announcements and ghost records
-	/// modifying the actual name during the game will cause issues with the GLOB.mob_spawners associative list
-	var/use_outfit_name
-
 /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
 	var/load_prefs = FALSE
 	if(!random_appearance && mob_possessor?.client)
 		//if we have gotten to this point, they have already waived their species pref.-- they were told they need to use the specific species already
 		if((restricted_species && (mob_possessor?.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species)) || !restricted_species)
-			var/choice = tgui_alert(mob_possessor, "Do you want to load from your currently selected character slot, or randomize your character?", "Choose your fate", list(GHOSTROLE_STATIC_APPEARANCE,GHOSTROLE_RANDOM_APPEARANCE))
-			if(choice == GHOSTROLE_STATIC_APPEARANCE)
+			var/choice = tgui_alert(mob_possessor, "Do you want to load from your currently selected character slot, or randomize your character?", "Choose your fate", list("Current","Random"))
+			if(choice == "Current")
 				load_prefs = TRUE
 
 	var/mob/living/carbon/human/spawned_human = ..(mob_possessor, newname, load_prefs)
