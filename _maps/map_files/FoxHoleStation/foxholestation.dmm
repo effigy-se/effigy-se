@@ -2005,8 +2005,8 @@
 /obj/effect/turf_decal/stripes/red/line,
 /obj/machinery/door/window/elevator/right/directional/south{
 	pixel_y = -6;
-	elevator_linked_id = "PermaElevator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "PermaElevator"
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/security/prison)
@@ -2669,7 +2669,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/window/elevator/left/directional/south{
 	elevator_mode = 1;
-	elevator_linked_id = "MunchLift"
+	transport_linked_id = "MunchLift"
 	},
 /turf/open/floor/iron/dark/diagonal,
 /area/station/service/cafeteria)
@@ -3439,7 +3439,7 @@
 "bTm" = (
 /obj/machinery/door/window/elevator/left/directional/south{
 	elevator_mode = 1;
-	elevator_linked_id = "Bridgelift"
+	transport_linked_id = "Bridgelift"
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/white/line,
@@ -3537,7 +3537,10 @@
 "bVJ" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "medivator"
+	specific_transport_id = "medivator"
+	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "medivator"
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/medical/medbay/central)
@@ -5248,8 +5251,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor{
-	elevator_linked_id = "cargo_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "cargo_vator"
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/warehouse)
@@ -6003,7 +6006,10 @@
 "dmQ" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "MunchLift"
+	specific_transport_id = "MunchLift"
+	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "MunchLift"
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/service/cafeteria)
@@ -6420,8 +6426,8 @@
 	dir = 8
 	},
 /obj/machinery/door/poddoor{
-	elevator_linked_id = "cargo_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "cargo_vator"
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/warehouse)
@@ -6475,8 +6481,8 @@
 /area/station/medical/morgue)
 "dAw" = (
 /obj/machinery/door/window/elevator/left/directional/east{
-	elevator_linked_id = "HoloLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "HoloLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning{
 	dir = 4
@@ -6653,8 +6659,8 @@
 /obj/effect/turf_decal/stripes/red/line,
 /obj/machinery/door/window/elevator/left/directional/south{
 	pixel_y = -6;
-	elevator_linked_id = "PermaElevator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "PermaElevator"
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/security/prison)
@@ -7017,9 +7023,9 @@
 	linked_elevator_id = "PermaElevator"
 	},
 /obj/machinery/door/window/elevator/right/directional/east{
-	elevator_linked_id = "PermaElevator";
 	elevator_mode = 1;
-	pixel_x = 7
+	pixel_x = 7;
+	transport_linked_id = "PermaElevator"
 	},
 /turf/open/floor/catwalk_floor,
 /area/station/security/prison/upper)
@@ -7377,9 +7383,9 @@
 	dir = 4
 	},
 /obj/machinery/door/poddoor/preopen{
-	elevator_linked_id = "cargo_vator";
 	elevator_mode = 1;
-	name = "Elevator Door"
+	name = "Elevator Door";
+	transport_linked_id = "cargo_vator"
 	},
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 8
@@ -7976,7 +7982,10 @@
 "euo" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "Bridgelift"
+	specific_transport_id = "Bridgelift"
+	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "Bridgelift"
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/hallway/secondary/command)
@@ -8433,9 +8442,9 @@
 	dir = 4
 	},
 /obj/machinery/door/poddoor/preopen{
-	elevator_linked_id = "cargo_vator";
 	elevator_mode = 1;
-	name = "Elevator Door"
+	name = "Elevator Door";
+	transport_linked_id = "cargo_vator"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -8658,10 +8667,10 @@
 /area/station/security/execution/education)
 "ePJ" = (
 /obj/machinery/door/morgue{
-	elevator_linked_id = "medivator";
 	elevator_mode = 1;
 	req_access = list("tcomms");
-	name = "Elevator Door"
+	name = "Elevator Door";
+	transport_linked_id = "medivator"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -9816,8 +9825,8 @@
 /area/station/science/ordnance/storage)
 "fuU" = (
 /obj/machinery/door/window/elevator/right/directional/south{
-	elevator_linked_id = "PortLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "PortLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning,
 /obj/effect/turf_decal/siding/wideplating_new/dark{
@@ -9929,9 +9938,9 @@
 	dir = 4
 	},
 /obj/machinery/door/window/elevator/left/directional/east{
-	elevator_linked_id = "SciLift";
 	elevator_mode = 1;
-	pixel_x = 6
+	pixel_x = 6;
+	transport_linked_id = "SciLift"
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/white,
@@ -10714,8 +10723,8 @@
 /area/station/medical/break_room)
 "fZc" = (
 /obj/machinery/door/window/elevator/left/directional/south{
-	elevator_linked_id = "PortLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "PortLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning,
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -12169,8 +12178,8 @@
 /area/station/medical/surgery)
 "gMk" = (
 /obj/machinery/door/window/elevator/right/directional/west{
-	elevator_linked_id = "HoloLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "HoloLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning{
 	dir = 8
@@ -13599,7 +13608,7 @@
 	},
 /obj/machinery/door/window/elevator/left/directional/west{
 	elevator_mode = 1;
-	elevator_linked_id = "MunchLift"
+	transport_linked_id = "MunchLift"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -14595,8 +14604,8 @@
 /area/station/science/robotics)
 "icF" = (
 /obj/machinery/door/window/elevator/left/directional/west{
-	elevator_linked_id = "HoloLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "HoloLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning{
 	dir = 8
@@ -16072,7 +16081,7 @@
 "iSg" = (
 /obj/machinery/door/window/elevator/right/directional/south{
 	elevator_mode = 1;
-	elevator_linked_id = "Bridgelift"
+	transport_linked_id = "Bridgelift"
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/white/line,
@@ -18427,8 +18436,8 @@
 	linked_elevator_id = "SciLift"
 	},
 /obj/machinery/door/window/elevator/right/directional/south{
-	elevator_linked_id = "SciLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "SciLift"
 	},
 /turf/open/floor/iron/white/smooth_half,
 /area/station/science)
@@ -19451,8 +19460,8 @@
 /area/station/service/library)
 "kSj" = (
 /obj/machinery/door/window/elevator/left/directional/east{
-	elevator_linked_id = "HoloLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "HoloLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning{
 	dir = 4
@@ -23064,7 +23073,7 @@
 "mXu" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "HoloLift"
+	specific_transport_id = "HoloLift"
 	},
 /obj/effect/abstract/elevator_music_zone{
 	linked_elevator_id = "HoloLift"
@@ -23086,9 +23095,9 @@
 	dir = 4
 	},
 /obj/machinery/door/poddoor/preopen{
-	elevator_linked_id = "cargo_vator";
 	elevator_mode = 1;
-	name = "Elevator Door"
+	name = "Elevator Door";
+	transport_linked_id = "cargo_vator"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -23162,8 +23171,8 @@
 /area/station/maintenance/starboard/aft)
 "nbr" = (
 /obj/machinery/door/window/elevator/right/directional/south{
-	elevator_linked_id = "PortLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "PortLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning,
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -25606,7 +25615,10 @@
 "oBC" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "cargo_vator"
+	specific_transport_id = "cargo_vator"
+	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "cargo_vator"
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/cargo/storage)
@@ -26080,8 +26092,8 @@
 /obj/effect/turf_decal/stripes/red/line,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/window/elevator/right/directional/south{
-	elevator_linked_id = "MunchLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "MunchLift"
 	},
 /obj/machinery/lift_indicator/directional/east{
 	linked_elevator_id = "MunchLift"
@@ -26373,7 +26385,7 @@
 	},
 /obj/machinery/door/window/right/directional/west{
 	elevator_mode = 1;
-	elevator_linked_id = "MunchLift"
+	transport_linked_id = "MunchLift"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -28826,8 +28838,8 @@
 /area/station/maintenance/fore)
 "qnV" = (
 /obj/machinery/door/window/elevator/right/directional/east{
-	elevator_linked_id = "HoloLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "HoloLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning{
 	dir = 4
@@ -29901,8 +29913,8 @@
 	},
 /obj/machinery/door/window/elevator/left/directional/east{
 	elevator_mode = 1;
-	elevator_linked_id = "PermaElevator";
-	pixel_x = 7
+	pixel_x = 7;
+	transport_linked_id = "PermaElevator"
 	},
 /turf/open/floor/catwalk_floor,
 /area/station/security/prison/upper)
@@ -29958,8 +29970,8 @@
 /area/station/engineering/atmos)
 "qRh" = (
 /obj/machinery/door/window/elevator/left/directional/south{
-	elevator_linked_id = "PortLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "PortLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning,
 /obj/effect/turf_decal/siding/wideplating_new/dark{
@@ -30916,7 +30928,7 @@
 /obj/machinery/door/window/elevator/left/directional/north{
 	pixel_y = 6;
 	elevator_mode = 1;
-	elevator_linked_id = "Bridgelift"
+	transport_linked_id = "Bridgelift"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark/textured_half,
@@ -31823,9 +31835,9 @@
 	dir = 4
 	},
 /obj/machinery/door/window/elevator/right/directional/east{
-	elevator_linked_id = "SciLift";
 	elevator_mode = 1;
-	pixel_x = 6
+	pixel_x = 6;
+	transport_linked_id = "SciLift"
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/white,
@@ -32748,10 +32760,10 @@
 	dir = 1
 	},
 /obj/machinery/door/morgue{
-	elevator_linked_id = "medivator";
 	elevator_mode = 1;
 	req_access = list("tcomms");
-	name = "Elevator Door"
+	name = "Elevator Door";
+	transport_linked_id = "medivator"
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
@@ -34249,9 +34261,12 @@
 /area/station/ai_monitored/turret_protected/ai_upload)
 "tgk" = (
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "PermaElevator"
+	specific_transport_id = "PermaElevator"
 	},
 /obj/structure/transport/linear/public,
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "PermaElevator"
+	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/security/prison)
 "tgs" = (
@@ -36353,7 +36368,7 @@
 /obj/machinery/door/window/elevator/right/directional/north{
 	pixel_y = 6;
 	elevator_mode = 1;
-	elevator_linked_id = "Bridgelift"
+	transport_linked_id = "Bridgelift"
 	},
 /turf/open/floor/iron/dark/textured_half,
 /area/station/hallway/secondary/command)
@@ -36789,9 +36804,12 @@
 /area/station/service/hydroponics)
 "uAM" = (
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "SciLift"
+	specific_transport_id = "SciLift"
 	},
 /obj/structure/transport/linear/public,
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "SciLift"
+	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/science/lower)
 "uAQ" = (
@@ -37706,7 +37724,7 @@
 "uXn" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "PortLift"
+	specific_transport_id = "PortLift"
 	},
 /obj/effect/abstract/elevator_music_zone{
 	linked_elevator_id = "PortLift"
@@ -41881,8 +41899,8 @@
 /area/station/engineering/supermatter/room)
 "xdX" = (
 /obj/machinery/door/window/elevator/right/directional/east{
-	elevator_linked_id = "HoloLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "HoloLift"
 	},
 /obj/effect/turf_decal/trimline/white/warning{
 	dir = 4
@@ -42272,8 +42290,8 @@
 	},
 /obj/effect/turf_decal/siding/white,
 /obj/machinery/door/window/elevator/left/directional/south{
-	elevator_linked_id = "SciLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "SciLift"
 	},
 /turf/open/floor/iron/white/smooth_half,
 /area/station/science)

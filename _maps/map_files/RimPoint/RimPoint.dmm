@@ -7271,7 +7271,7 @@
 "dmE" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "med_vator"
+	specific_transport_id = "med_vator"
 	},
 /obj/effect/abstract/elevator_music_zone{
 	linked_elevator_id = "med_vator"
@@ -8039,8 +8039,8 @@
 	dir = 8
 	},
 /obj/machinery/door/poddoor{
-	elevator_linked_id = "ai_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "ai_vator"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -8180,8 +8180,8 @@
 	dir = 1
 	},
 /obj/machinery/door/window/elevator/left/directional/south{
-	elevator_linked_id = "com_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "com_vator"
 	},
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
@@ -8876,8 +8876,8 @@
 	dir = 1
 	},
 /obj/machinery/door/window/elevator/right/directional/south{
-	elevator_linked_id = "com_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "com_vator"
 	},
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
@@ -10678,8 +10678,8 @@
 /obj/effect/turf_decal/stripes/blue/line,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/window/elevator/right/directional/south{
-	elevator_linked_id = "med_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "med_vator"
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
@@ -13817,7 +13817,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/window/elevator/left/directional/north{
 	elevator_mode = 1;
-	elevator_linked_id = "sec_vator"
+	transport_linked_id = "sec_vator"
 	},
 /obj/machinery/door/firedoor/border_only,
 /turf/open/floor/iron/small,
@@ -18826,8 +18826,8 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/window/elevator/left/directional/south{
-	elevator_linked_id = "lib_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "lib_vator"
 	},
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
@@ -20152,8 +20152,8 @@
 	dir = 8
 	},
 /obj/machinery/door/poddoor/preopen{
-	elevator_linked_id = "ai_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "ai_vator"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -20651,8 +20651,8 @@
 	dir = 8
 	},
 /obj/machinery/door/window/elevator/right/directional/west{
-	elevator_linked_id = "med_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "med_vator"
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
@@ -23722,7 +23722,10 @@
 	},
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "AtmosLift"
+	specific_transport_id = "AtmosLift"
+	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "AtmosLift"
 	},
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
@@ -25795,7 +25798,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/window/elevator/left/directional/south{
 	elevator_mode = 1;
-	elevator_linked_id = "AtmosLift"
+	transport_linked_id = "AtmosLift"
 	},
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/door/firedoor/border_only,
@@ -27888,7 +27891,7 @@
 "mzs" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "com_vator"
+	specific_transport_id = "com_vator"
 	},
 /obj/effect/abstract/elevator_music_zone{
 	linked_elevator_id = "com_vator";
@@ -28337,7 +28340,7 @@
 /obj/machinery/light/directional/south,
 /obj/machinery/door/window/elevator/left/directional/west{
 	elevator_mode = 1;
-	elevator_linked_id = "med_vator"
+	transport_linked_id = "med_vator"
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
@@ -30670,7 +30673,7 @@
 "nNI" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "lib_vator"
+	specific_transport_id = "lib_vator"
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/station/service/library)
@@ -32957,8 +32960,8 @@
 	dir = 1
 	},
 /obj/machinery/door/window/elevator/left/directional/south{
-	elevator_linked_id = "sec_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "sec_vator"
 	},
 /obj/effect/turf_decal/siding/wideplating_new,
 /obj/machinery/door/firedoor/border_only{
@@ -33711,8 +33714,8 @@
 "pkK" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/window/elevator/right/directional/south{
-	elevator_linked_id = "AtmosLift";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "AtmosLift"
 	},
 /obj/machinery/button/elevator/directional/east{
 	id = "AtmosLift"
@@ -34111,8 +34114,8 @@
 	dir = 1
 	},
 /obj/machinery/door/window/elevator/right/directional/south{
-	elevator_linked_id = "sec_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "sec_vator"
 	},
 /obj/effect/turf_decal/siding/wideplating_new,
 /obj/machinery/door/firedoor/border_only{
@@ -35738,7 +35741,7 @@
 	},
 /obj/machinery/door/window/elevator/right/directional/north{
 	elevator_mode = 1;
-	elevator_linked_id = "sec_vator"
+	transport_linked_id = "sec_vator"
 	},
 /obj/machinery/door/firedoor/border_only,
 /turf/open/floor/iron/small,
@@ -36756,7 +36759,7 @@
 "qAc" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "ai_vator"
+	specific_transport_id = "ai_vator"
 	},
 /obj/effect/abstract/elevator_music_zone{
 	linked_elevator_id = "ai_vator";
@@ -38902,7 +38905,7 @@
 /obj/machinery/door/window/elevator/right/directional/north{
 	pixel_y = 6;
 	elevator_mode = 1;
-	elevator_linked_id = "AtmosLift"
+	transport_linked_id = "AtmosLift"
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
@@ -39914,7 +39917,7 @@
 	},
 /obj/machinery/door/window/elevator/right/directional/north{
 	elevator_mode = 1;
-	elevator_linked_id = "lib_vator"
+	transport_linked_id = "lib_vator"
 	},
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
@@ -44066,8 +44069,8 @@
 /obj/effect/turf_decal/stripes/blue/line,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/window/elevator/left/directional/south{
-	elevator_linked_id = "med_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "med_vator"
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
@@ -44712,7 +44715,7 @@
 /obj/machinery/door/window/elevator/left/directional/north{
 	pixel_y = 6;
 	elevator_mode = 1;
-	elevator_linked_id = "AtmosLift"
+	transport_linked_id = "AtmosLift"
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
@@ -47519,7 +47522,7 @@
 "vsT" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
-	specific_lift_id = "sec_vator"
+	specific_transport_id = "sec_vator"
 	},
 /obj/effect/abstract/elevator_music_zone{
 	linked_elevator_id = "sec_vator";
@@ -51582,8 +51585,8 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/window/elevator/right/directional/south{
-	elevator_linked_id = "lib_vator";
-	elevator_mode = 1
+	elevator_mode = 1;
+	transport_linked_id = "lib_vator"
 	},
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
@@ -52637,7 +52640,7 @@
 	},
 /obj/machinery/door/window/elevator/left/directional/north{
 	elevator_mode = 1;
-	elevator_linked_id = "lib_vator"
+	transport_linked_id = "lib_vator"
 	},
 /turf/open/floor/wood/parquet,
 /area/station/service/library)
