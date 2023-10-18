@@ -22,6 +22,7 @@
 #define INVESTIGATE_RADIATION "radiation"
 #define INVESTIGATE_RECORDS "records"
 #define INVESTIGATE_RESEARCH "research"
+#define INVESTIGATE_TRANSPORT "transport"
 #define INVESTIGATE_WIRES "wires"
 
 // Logging types for log_message()
@@ -47,11 +48,12 @@
 #define LOG_VICTIM (1 << 19)
 #define LOG_RADIO_EMOTE (1 << 20)
 #define LOG_SPEECH_INDICATORS (1 << 21)
+#define LOG_TRANSPORT (1 << 22)
 
 // Effigy logging types
-#define LOG_SUBTLE (1 << 22)
-#define LOG_SUBTLER (1 << 23)
-#define LOG_EFFIGY_API (1 << 24)
+#define LOG_SUBTLE (1 << 23)
+#define LOG_SUBTLER (1 << 24)
+#define LOG_EFFIGY_API (1 << 25)
 
 //Individual logging panel pages
 #define INDIVIDUAL_GAME_LOG (LOG_GAME)
@@ -112,6 +114,7 @@
 #define LOG_CATEGORY_TARGET_ZONE_SWITCH "target-zone-switch"
 #define LOG_CATEGORY_TELECOMMS "telecomms"
 #define LOG_CATEGORY_TOOL "tool"
+#define LOG_CATEGORY_TRANSPORT "transport"
 #define LOG_CATEGORY_VIRUS "virus"
 
 // Admin categories

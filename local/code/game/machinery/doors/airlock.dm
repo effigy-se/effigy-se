@@ -1,17 +1,3 @@
-#define AIRLOCK_LIGHT_ENGINEERING "engineering"
-
-#define AIRLOCK_CLOSED	1
-#define AIRLOCK_CLOSING	2
-#define AIRLOCK_OPEN	3
-#define AIRLOCK_OPENING	4
-#define AIRLOCK_DENY	5
-#define AIRLOCK_EMAG	6
-
-#define AIRLOCK_FRAME_CLOSED "closed"
-#define AIRLOCK_FRAME_CLOSING "closing"
-#define AIRLOCK_FRAME_OPEN "open"
-#define AIRLOCK_FRAME_OPENING "opening"
-
 /obj/machinery/door/airlock
 	/// For those airlocks you might want to have varying "fillings" for, without having to
 	/// have an icon file per door with a different filling.
@@ -331,6 +317,18 @@
 	greyscale_colors = null
 
 /**
+ * Tram
+ */
+
+/obj/machinery/door/airlock/tram
+	icon = 'icons/obj/doors/airlocks/tram/tram.dmi'
+	overlays_file = 'icons/obj/doors/airlocks/tram/tram-overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
+	has_environment_lights = FALSE
+
+
+/**
  * Mineral/Material
  */
 
@@ -475,16 +473,3 @@
 
 /obj/structure/door_assembly/door_assembly_extmai
 	icon = 'local/icons/obj/doors/airlocks/station/maint-ext.dmi'
-
-#undef AIRLOCK_LIGHT_ENGINEERING
-#undef AIRLOCK_CLOSED
-#undef AIRLOCK_CLOSING
-#undef AIRLOCK_OPEN
-#undef AIRLOCK_OPENING
-#undef AIRLOCK_DENY
-#undef AIRLOCK_EMAG
-
-#undef AIRLOCK_FRAME_CLOSED
-#undef AIRLOCK_FRAME_CLOSING
-#undef AIRLOCK_FRAME_OPEN
-#undef AIRLOCK_FRAME_OPENING

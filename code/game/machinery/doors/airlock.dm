@@ -46,13 +46,7 @@
 
 // Wires for the airlock are located in the datum folder, inside the wires datum folder.
 
-#define AIRLOCK_CLOSED 1
-#define AIRLOCK_CLOSING 2
-#define AIRLOCK_OPEN 3
-#define AIRLOCK_OPENING 4
-#define AIRLOCK_DENY 5
-#define AIRLOCK_EMAG 6
-
+/*  // EffigyEdit Change - Moved to code/__DEFINES/_effigy/airlock.dm
 #define AIRLOCK_FRAME_CLOSED "closed"
 #define AIRLOCK_FRAME_CLOSING "closing"
 #define AIRLOCK_FRAME_OPEN "open"
@@ -78,6 +72,7 @@
 #define DOOR_CLOSE_WAIT 60 /// Time before a door closes, if not overridden
 
 #define DOOR_VISION_DISTANCE 11 ///The maximum distance a door will see out to
+*/ // EffigyEdit Change End
 
 /obj/machinery/door/airlock
 	name = "Airlock"
@@ -2475,15 +2470,7 @@
 	set_density(TRUE)
 	operating = FALSE
 	return TRUE
-
-
-#undef AIRLOCK_CLOSED
-#undef AIRLOCK_CLOSING
-#undef AIRLOCK_OPEN
-#undef AIRLOCK_OPENING
-#undef AIRLOCK_DENY
-#undef AIRLOCK_EMAG
-
+/*  // EffigyEdit Change - Moved to code/__DEFINES/_effigy/airlock.dm
 #undef AIRLOCK_SECURITY_NONE
 #undef AIRLOCK_SECURITY_IRON
 #undef AIRLOCK_SECURITY_PLASTEEL_I_S
@@ -2508,3 +2495,4 @@
 #undef AIRLOCK_FRAME_CLOSING
 #undef AIRLOCK_FRAME_OPEN
 #undef AIRLOCK_FRAME_OPENING
+*/  // EffigyEdit Change End
