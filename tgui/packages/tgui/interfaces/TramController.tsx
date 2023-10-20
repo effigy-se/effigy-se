@@ -60,7 +60,7 @@ export const TramController = (props, context) => {
   );
 
   return (
-    <Window title="Tram Controller" width={778} height={327} theme="dark">
+    <Window title="Tram Controller" width={778} height={374} theme="dark">
       <Window.Content>
         <Stack>
           <Stack.Item grow={4}>
