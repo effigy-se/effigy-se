@@ -512,36 +512,36 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 
 	death_sound = new_race.death_sound
 
-		var/datum/species/old_species = dna.species
-		dna.species = new_race
+	var/datum/species/old_species = dna.species
+	dna.species = new_race
 
-		if (old_species.properly_gained)
-			old_species.on_species_loss(src, new_race, pref_load)
+	if (old_species.properly_gained)
+		old_species.on_species_loss(src, new_race, pref_load)
 
-		// EffigyEdit Add - Customization
-		if(override_mutantparts && override_mutantparts.len)
-			for(var/feature in dna.mutant_bodyparts)
-				override_mutantparts[feature] = dna.mutant_bodyparts[feature]
-			dna.mutant_bodyparts = override_mutantparts
+	// EffigyEdit Add - Customization
+	if(override_mutantparts && override_mutantparts.len)
+		for(var/feature in dna.mutant_bodyparts)
+			override_mutantparts[feature] = dna.mutant_bodyparts[feature]
+		dna.mutant_bodyparts = override_mutantparts
 
-		if(override_markings && override_markings.len)
-			for(var/feature in dna.body_markings)
-				override_markings[feature] = dna.body_markings[feature]
-			dna.body_markings = override_markings
+	if(override_markings && override_markings.len)
+		for(var/feature in dna.body_markings)
+			override_markings[feature] = dna.body_markings[feature]
+		dna.body_markings = override_markings
 
-		if(override_features && override_features.len)
-			for(var/feature in dna.features)
-				override_features[feature] = dna.features[feature]
-			dna.features = override_features
-		// EffigyEdit Add End
+	if(override_features && override_features.len)
+		for(var/feature in dna.features)
+			override_features[feature] = dna.features[feature]
+		dna.features = override_features
+	// EffigyEdit Add End
 
-		apply_customizable_dna_features_to_species()
-		dna.unique_features = dna.generate_unique_features()
+	apply_customizable_dna_features_to_species()
+	dna.unique_features = dna.generate_unique_features()
 
-		dna.update_body_size()
+	dna.update_body_size()
 
-		dna.species.on_species_gain(src, old_species, pref_load)
-		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
+	dna.species.on_species_gain(src, old_species, pref_load)
+	log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
