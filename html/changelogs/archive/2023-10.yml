@@ -837,9 +837,6 @@
 2023-10-19:
   LT3:
   - spellcheck: More announcement CSS fixes, now including light mode
-  unit0016:
-  - bugfix: You no longer need to break - or climb, skill issue - a railing to exit
-      the AI core on Rimpoint.
   Rhials:
   - qol: As an observer, clicking on a bitrunning pod will let you orbit it's bitrunning
       avatar. Cool!
@@ -856,6 +853,9 @@
   - qol: Birdshot ordnance is now equipped with a second RPD and two holofan projectors.
   - qol: Ordnance mishaps on Birdshot are significantly less likely to slam you into
       an electrified window until you die.
+  unit0016:
+  - bugfix: You no longer need to break - or climb, skill issue - a railing to exit
+      the AI core on Rimpoint.
   vinylspiders:
   - bugfix: fixes a tgui bluescreen bug with the bank account console that can occur
       when there is bad bank account data
@@ -863,10 +863,70 @@
       they are supposed to while fishing'
   - bugfix: fixed runtime caused by simple mobs AttackingTarget() missing an arg
 2023-10-20:
+  GPeckman:
+  - bugfix: B.O.R.I.S. modules can once again be properly applied to the unformatted
+      borg created when you reset an AI shell.
+  Higgin:
+  - bugfix: automatic breathers rejoice. oxyloss now knocks people out again.
   LT3:
   - balance: Reverted electric shock damage to match TG.
   - balance: Tram crossing signals adjusted to match run speed
+  - bugfix: Maploaded medical beds now have correct brake lights
+  LemonInTheDark:
+  - rscadd: Screen is now more grungy for halloween
+  Melbert:
+  - bugfix: Silicons don't spark when shot by disablers
+  - bugfix: Changelings who fail to catch something with a tencacle will have throw
+      mode disabled automatically
+  - bugfix: Fixes occasions where you can reflect with Sleeping Carp when you shouldn't
+      be able to
+  - bugfix: Fixes some projectiles causing like 20x less eye blur than they should
+      be
+  - refactor: Refactored bullet-mob interactions
+  - refactor: Nightmare "shadow dodge" projectile ability is now sourced from their
+      brain
+  - bugfix: Spasms won't trigger in stasis, incapacitated, if your hands are blocked,
+      or you are immobilized.
+  - bugfix: Magic Mirrors properly prevent you from being soft locked
+  - bugfix: Robo customers are as robust as before
+  - bugfix: Magic Mirrors can change your race again (?)
+  Pickle-Coding:
+  - bugfix: Fixed tesla coil zaps cutting off too early.
+  Rhials:
+  - qol: Ghosts will now be prompted to orbit when someone loses control due to being
+      blackout drunk.
+  - qol: Ghosts will now be prompted to orbit when a cultist begins inscribing a Nar'Sie
+      rune.
+  Yttriums:
+  - balance: reduces cellulose fibers required for advanced regenerative mesh creation
+      from 20u to 10u
+  carlarctg:
+  - code_imp: Adds 'Bloody Spreader' component that bloodies everything it touches!
+  - code_imp: For example inserting an item into it if it is a storage item. Or entering
+      it if it's a turf, or bumping onto it, or... you get the point, hopefully.
+  - rscadd: Added this component to the MEAT backpack, meat slabs, bouncy castles,
+      meateor fluff, meateor heart, and the heretic sanguine blade.
+  - rscadd: Gave most of these the blood walk component as well, which spreads blood
+      if it's dragged around.
+  - rscadd: Meat slabs contain a limited amount of both components, eventually they
+      will 'dry out'.
+  - code_imp: Added a signal for when an item is entered into storage.
+  lizardqueenlexi:
+  - bugfix: Heretic summons should now display the correct name when polling ghosts
+      to play as them.
   nikothedude for Skyrat 13:
   - bugfix: Experimental robotic tend wounds now actually shows up
   retlaw34:
   - rscadd: You can now spawn in as ghost roles as your selected character
+  san7890:
+  - bugfix: People should be crawling into welded vents a lot less now.
+  timothymtorres:
+  - rscadd: Add new fitness skill and mechanics for weight machines and punching bags.  Working
+      out with a proper diet and good sleep will result in massive fitness gains.  As
+      your fitness increases, so does your mass.
+  - bugfix: Airtank suicides will now drop items and organs again.
+  - bugfix: Fix husks fire decay rate to be slower. Pyre chaplains can now use husked
+      bodies (only caused by burns) to complete their burning sacrifice rite.
+  vinylspiders:
+  - bugfix: Fixes a bug where your mother would delete your species after calling
+      you a disappointment, rendering you a broken husk of a mob
