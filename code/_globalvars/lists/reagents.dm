@@ -32,6 +32,11 @@ GLOBAL_LIST_INIT(reagent_containers, list(
 	CAT_PILLS = typecacheof(list(
 		/obj/item/reagent_containers/pill/style
 	)),
+	// EffigyEdit Add - Hyposprays
+	CAT_HYPOS = list(
+		/obj/item/reagent_containers/cup/hypovial
+	),
+	// EffigyEdit Add End
 	CAT_PATCHES = typecacheof(list(
 		/obj/item/reagent_containers/pill/patch/style
 	))

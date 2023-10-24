@@ -37,6 +37,7 @@
 			CAT_PILLS = GLOB.reagent_containers[CAT_PILLS],
 			CAT_PATCHES = GLOB.reagent_containers[CAT_PATCHES],
 			"Bottles" = list(/obj/item/reagent_containers/cup/bottle),
+			CAT_HYPOS = GLOB.reagent_containers[CAT_HYPOS], // EffigyEdit Add - Hyposprays
 		)
 
 		packaging_types = list()
@@ -69,6 +70,10 @@
 		packaging_category = CAT_PATCHES
 	else if(ispath(container, /obj/item/reagent_containers/pill))
 		packaging_category = CAT_PILLS
+	// EffigyEdit Add - Hyposprays
+	else if(ispath(container, /obj/item/reagent_containers/cup/hypovial))
+		packaging_category = CAT_HYPOS
+	// EffigyEdit Add End
 	else
 		packaging_category = "Bottles"
 	return container
@@ -87,6 +92,8 @@
 				suffix = "Pill"
 			if(CAT_PATCHES)
 				suffix = "Patch"
+			if(CAT_HYPOS)
+				suffix = "Hypo"
 			else
 				suffix = "Bottle"
 		container.name = "[product_name] [suffix]"
