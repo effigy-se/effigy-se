@@ -4,11 +4,9 @@
 	icon_state = "water-0"
 	base_icon_state = "water"
 	anchored = TRUE
-
-	layer = FLY_LAYER
-	plane = ABOVE_GAME_PLANE
+	plane = FLOOR_PLANE
+	layer = ABOVE_OPEN_TURF_LAYER
 	appearance_flags = TILE_BOUND
-	vis_flags = NONE
 
 	color = "#DDF"
 
@@ -657,6 +655,8 @@
 	smoothing_flags = NONE
 	icon_state = "ocean"
 	base_icon_state = "ocean"
+	layer = FLY_LAYER
+	plane = ABOVE_GAME_PLANE
 	starting_temp = T20C-150
 	no_effects = TRUE
 
