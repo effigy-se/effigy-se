@@ -197,7 +197,7 @@ SUBSYSTEM_DEF(ticker)
 
 			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && !totalPlayersReady)
 				if(!delay_notified)
-					to_chat(world, "[span_boxannounceorange("Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
+					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
 					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
 					message_admins("Game setup delayed due to lack of players.")
 					log_game("Game setup delayed due to lack of players.")
@@ -235,7 +235,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, span_boxannounceblue("Starting game..."))
+	to_chat(world, SPAN_BOX_ALERT(BLUE, "Starting game..."))
 	var/init_start = world.timeofday
 
 	mode = new /datum/game_mode/dynamic
@@ -728,7 +728,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boxannounceorange("An admin has delayed the round end."))
+		to_chat(world, SPAN_BOX_ALERT(ORANGE, "An admin has delayed the round end."))
 		return
 
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
@@ -738,7 +738,7 @@ SUBSYSTEM_DEF(ticker)
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boxannounceorange("Reboot was cancelled by an admin."))
+		to_chat(world, SPAN_BOX_ALERT(ORANGE, "Reboot was cancelled by an admin."))
 		return
 	if(end_string)
 		end_state = end_string

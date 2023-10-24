@@ -17,7 +17,7 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 			return
 	else // otherwise just toggle it
 		GLOB.dchat_allowed = !GLOB.dchat_allowed
-	to_chat(world, span_boxannounceyellow("The dead chat channel has been globally [GLOB.dchat_allowed ? "enabled" : "disabled"]."))
+	to_chat(world, SPAN_BOX_ALERT(YELLOW, "The dead chat channel has been globally [GLOB.dchat_allowed ? "enabled" : "disabled"]."))
 
 // EFFIGY EDIT TODO (Convert to API)
 /*

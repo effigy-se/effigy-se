@@ -691,7 +691,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat_immediate(src, {"<div class='efchatalert_6'>[EFSPAN_ANNOUNCE_MIN_TITLE("Not Authorized \[2F173/2]")]<br>[EFSPAN_ANNOUNCE_MIN_TEXT("Effigy uses a player whitelist and your account was not found! Please visit <a href=\"https://effigy.se\">https://effigy.se</a> for details and to submit an application for the server.")]</div>"})
 			qdel(query_client_in_db)
 			sleep(3 SECONDS)
-			to_chat_immediate(src, span_boxannounceorange("2F173/2: Disconnecting player"))
+			to_chat_immediate(src, SPAN_BOX_ALERT(ORANGE, "2F173/2: Disconnecting player"))
 			qdel(src)
 			return
 		// EFFIGY EDIT ADD END - PANICBUNKER

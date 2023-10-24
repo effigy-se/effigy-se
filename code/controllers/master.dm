@@ -257,7 +257,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 
 
 	var/msg = "Initialization complete in [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, span_boxannounceblue("[msg]"))
+	to_chat(world, SPAN_BOX_ALERT(BLUE, "[msg]"))
 	log_world(msg)
 
 
