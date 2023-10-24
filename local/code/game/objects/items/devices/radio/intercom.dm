@@ -1,5 +1,5 @@
 /obj/item/radio/intercom
-	icon = 'local/icon/obj/machines/wallmounts.dmi'
+	icon = 'local/icons/obj/machines/wallmounts.dmi'
 	overlay_mic_active = "intercom_transmit"
 
 /obj/item/radio/intercom/broadcast
