@@ -14,8 +14,8 @@
 	can_be_shoved_into = TRUE
 	initial_language_holder = /datum/language_holder/empty // We get stuff from our species
 
-	maxHealth = 120 // EFFIGY EDIT CHANGE
-	health = 120 // EFFIGY EDIT CHANGE
+	maxHealth = 120 // EffigyEdit Change
+	health = 120 // EffigyEdit Change
 
 	//Hair colour and style
 	var/hair_color = "#000000"

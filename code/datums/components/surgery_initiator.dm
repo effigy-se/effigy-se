@@ -235,7 +235,7 @@
 				surgery_info["blocked"] = TRUE
 				surgery_info["blocked_reason"] = "Their body is covered!"
 
-			// EFFIGY EDIT ADD START (#3 Medical - Ported from Skyrat)
+			// EffigyEdit Add - Surgery
 			if (surgery.removes_target_bodypart)
 				if (iscarbon(surgery_target))
 					var/mob/living/carbon/carbon_target = surgery_target
@@ -243,7 +243,7 @@
 					if(!affecting_limb.can_be_surgically_removed)
 						surgery_info["blocked"] = TRUE
 						surgery_info["blocked_reason"] = "That limb cannot be surgically removed!"
-			// EFFIGY EDIT ADD END (#3 Medical - Ported from Skyrat)
+			// EffigyEdit Add End
 
 			surgeries += list(surgery_info)
 

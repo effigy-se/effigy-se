@@ -427,7 +427,7 @@ SUBSYSTEM_DEF(shuttle)
 		if(SEC_LEVEL_BLUE)
 			if(emergency.timeLeft(1) < emergency_call_time * 0.5)
 				return
-		// EFFIGY EDIT ADD START (Alert Levels)
+		// EffigyEdit Add - Alert Levels
 		if(SEC_LEVEL_MAGENTA)
 			if(emergency.timeLeft(1) < emergency_call_time * 0.4)
 				return
@@ -437,7 +437,7 @@ SUBSYSTEM_DEF(shuttle)
 		if(SEC_LEVEL_ORANGE)
 			if(emergency.timeLeft(1) < emergency_call_time * 0.4)
 				return
-		// EFFIGY EDIT ADD END (Alert Levels)
+		// EffigyEdit Add End
 		else
 			if(emergency.timeLeft(1) < emergency_call_time * 0.25)
 				return
@@ -516,13 +516,13 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.sound_played = FALSE
 		priority_announce("Hostile environment detected. \
 			Departure has been postponed indefinitely pending \
-			conflict resolution.", null, 'sound/misc/notice1.ogg', "Priority")
+			conflict resolution.", null, 'sound/misc/notice1.ogg', ANNOUNCEMENT_TYPE_PRIORITY)
 	if(!emergency_no_escape && (emergency.mode == SHUTTLE_STRANDED))
 		emergency.mode = SHUTTLE_DOCKED
 		emergency.setTimer(emergency_dock_time)
 		priority_announce("Hostile environment resolved. \
 			You have 3 minutes to board the Emergency Shuttle.",
-			null, ANNOUNCER_SHUTTLEDOCK, "Priority")
+			null, ANNOUNCER_SHUTTLEDOCK, ANNOUNCEMENT_TYPE_PRIORITY)
 
 //try to move/request to dock_home if possible, otherwise dock_away. Mainly used for admin buttons
 /datum/controller/subsystem/shuttle/proc/toggleShuttle(shuttle_id, dock_home, dock_away, timed)

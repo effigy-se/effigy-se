@@ -41,7 +41,7 @@
 		return
 	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
 		to_chat(new_player, span_boldannounce("TITLE NOTICE UPDATED: [new_notice]"))
-	//	SEND_SOUND(new_player,  sound('local/icons/runtime/notify.ogg')) // EFFIGY EDIT TODO
+	//	SEND_SOUND(new_player,  sound('local/icons/runtime/notify.ogg')) // EffigyEdit TODO
 
 /**
  * Reloads the titlescreen if it is bugged for someone.

@@ -134,10 +134,10 @@
 			continue
 		if(!(player.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
 			continue
-		// EFFIGY EDIT TODO START (#3 Events - Ported from Skyrat)
-		//if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
-		//	continue
-		// EFFIGY EDIT TODO END (#3 Events - Ported from Skyrat)
+		/* EffigyEdit Remove - Events
+		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
+			continue
+		*/ // EffigyEdit Remove End
 		viable_minds += player.mind
 	for(var/datum/mind/possible_target as anything in viable_minds)
 		if(possible_target != owner && ishuman(possible_target.current))

@@ -303,7 +303,7 @@
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
 	surplus = 15
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove START
 /*
 /datum/uplink_item/role_restricted/spider_injector
 	name = "Australicus Slime Mutator"
@@ -317,7 +317,7 @@
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
 	surplus = 10
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/uplink_item/role_restricted/blastcannon
 	name = "Blast Cannon"
@@ -336,4 +336,11 @@
 	desc = "A rare seed we have recovered that grows into a dangerous species that will aid you with your tasks!"
 	item = /obj/item/seeds/seedling/evil
 	cost = 8
+	restricted_roles = list(JOB_BOTANIST)
+
+/datum/uplink_item/role_restricted/bee_smoker
+	name = "Bee Smoker"
+	desc = "A device that runs on cannabis, turning it into a gas that can hypnotize bees to follow our commands."
+	item = /obj/item/bee_smoker
+	cost = 4
 	restricted_roles = list(JOB_BOTANIST)

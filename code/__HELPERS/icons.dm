@@ -1066,7 +1066,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	if(job)
 		body.dna.species.pre_equip_species_outfit(job, body, TRUE)
 	if(outfit)
-		body.equip_outfit_and_loadout(outfit, prefs, TRUE) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+		body.equip_outfit_and_loadout(outfit, prefs, TRUE) // EffigyEdit Change Customization
 
 	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
 	for(var/direction in showDirs)

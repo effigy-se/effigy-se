@@ -306,12 +306,12 @@ GLOBAL_LIST_INIT(prototype_language_holders, init_language_holder_prototypes())
 		/datum/language/draconic = list(LANGUAGE_ATOM),
 	)
 
-// EFFIGY EDIT CHANGE START
+// EffigyEdit Change START
 /datum/language_holder/lizard/ash
 	understood_languages = list(/datum/language/ashtongue = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/ashtongue = list(LANGUAGE_ATOM))
 	selected_language = /datum/language/ashtongue
-// EFFIGY EDIT CHANGE END
+// EffigyEdit Change END
 
 /datum/language_holder/lizard/silver
 	understood_languages = list(
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(prototype_language_holders, init_language_holder_prototypes())
 	spoken_languages = list(/datum/language/buzzwords = list(LANGUAGE_ATOM))
 	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
 
-// EFFIGY EDIT REMOVE START (moved to overrides)
+// EffigyEdit Remove START (moved to overrides)
 /*
 /datum/language_holder/synthetic
 	understood_languages = list(
@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(prototype_language_holders, init_language_holder_prototypes())
 		/datum/language/machine = list(LANGUAGE_ATOM),
 	)
 */
-// EFFIGY EDIT REMOVE END (moved to overrides)
+// EffigyEdit Remove END (moved to overrides)
 
 
 /datum/language_holder/moth

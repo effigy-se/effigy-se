@@ -420,7 +420,7 @@
 	in_melee = FALSE
 	SSmove_manager.stop_looping(src)
 	LoseAggro()
-	SEND_SIGNAL(src, COMSIG_HOSTILE_MOB_LOST_TARGET) // EFFIGY EDIT ADD
+	SEND_SIGNAL(src, COMSIG_HOSTILE_MOB_LOST_TARGET) // EffigyEdit Add
 
 //////////////END HOSTILE MOB TARGETTING AND AGGRESSION////////////
 

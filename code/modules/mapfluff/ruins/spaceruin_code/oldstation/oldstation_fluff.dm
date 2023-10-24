@@ -125,7 +125,7 @@
 
 /obj/item/reagent_containers/cup/beaker/oldstation
 	name = "cultivation broth"
-	amount_per_transfer_from_this = 60 /// EFFIGY EDIT - Original: 50
+	amount_per_transfer_from_this = 60 // EffigyEdit Change - Original: 50
 	list_reagents = list(
 		// Required for CELL_LINE_TABLE_COW
 		/datum/reagent/consumable/nutriment/protein = 10,

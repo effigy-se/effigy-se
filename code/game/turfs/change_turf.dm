@@ -76,11 +76,11 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_lighting_corner_NW = lighting_corner_NW
 	var/old_directional_opacity = directional_opacity
 	var/old_dynamic_lumcount = dynamic_lumcount
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	var/obj/effect/abstract/liquid_turf/old_liquids = liquids
 	if(lgroup)
 		lgroup.remove_from_group(src)
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 	var/old_rcd_memory = rcd_memory
 	var/old_explosion_throw_details = explosion_throw_details
 	var/old_opacity = opacity
@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			for(var/turf/open/space/space_tile in RANGE_TURFS(1, src))
 				space_tile.update_starlight()
 
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	if(old_liquids)
 		if(new_turf.liquids)
 			var/liquid_cache = new_turf.liquids //Need to cache and re-set some vars due to the cleaning on Destroy(), and turf references
@@ -197,7 +197,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 					old_liquids.remove_turf(src)
 				else
 					qdel(old_liquids, TRUE)
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 
 	// If we're not either, but were formerly a space turf, then we want light
 	else if(ispath(old_type, /turf/open/space))

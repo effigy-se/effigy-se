@@ -39,7 +39,7 @@
 	///The config type to use for greyscaled belt overlays. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_belt
 
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 
 	/// Icon file for mob worn overlays, if the user is digi.
 	var/icon/worn_icon_digi
@@ -76,7 +76,7 @@
 	/// Does this use the advanced reskinning setup?
 	var/uses_advanced_reskins = FALSE
 
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 
 	/* !!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!
 
@@ -406,7 +406,7 @@
 		return
 	if(greyscale_config_worn)
 		worn_icon = SSgreyscale.GetColoredIconByType(greyscale_config_worn, greyscale_colors)
-	// EFFIGY EDIT ADD START (Digi)
+	// EffigyEdit Add - Digi
 	if(greyscale_config_worn_digi)
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
 	if(greyscale_config_worn_monkey)
@@ -423,7 +423,7 @@
 		worn_icon_taur_paw = SSgreyscale.GetColoredIconByType(greyscale_config_worn_taur_paw, greyscale_colors)
 	if(greyscale_config_worn_taur_hoof)
 		worn_icon_taur_hoof = SSgreyscale.GetColoredIconByType(greyscale_config_worn_taur_hoof, greyscale_colors)
-	// EFFIGY EDIT ADD END (Digi)
+	// EffigyEdit Add End
 	if(greyscale_config_inhand_left)
 		lefthand_file = SSgreyscale.GetColoredIconByType(greyscale_config_inhand_left, greyscale_colors)
 	if(greyscale_config_inhand_right)

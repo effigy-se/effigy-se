@@ -79,7 +79,7 @@
 			if(!calibrated && prob(30 - ((accuracy) * 10))) //oh dear a problem
 				if(ishuman(M))//don't remove people from the round randomly you jerks
 					var/mob/living/carbon/human/human = M
-					// EFFIGY EDIT CHANGE START
+					// EffigyEdit Change START
 					to_chat(human, span_danger("Your limbs lose molecular cohesion as you teleport!"))
 					var/list/bodyparts_dismember = list()
 					var/rad_mod = 0
@@ -95,7 +95,7 @@
 						bodyparts_dismember.Remove(BP) //GC optimisation
 						BP.dismember()
 						qdel(BP)
-					// EFFIGY EDIT CHANGE END
+					// EffigyEdit Change END
 			calibrated = FALSE
 	return
 

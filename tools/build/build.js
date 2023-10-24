@@ -80,8 +80,8 @@ export const DmTarget = new Juke.Target({
     'html/**',
     'icons/**',
     'interface/**',
-    'overrides/**', // EFFIGY EDIT ADD
-    'packages/**', // EFFIGY EDIT ADD
+    'overrides/**', // EffigyEdit Add
+    'packages/**', // EffigyEdit Add
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],

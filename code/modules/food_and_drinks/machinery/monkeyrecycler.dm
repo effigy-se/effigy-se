@@ -29,9 +29,9 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	. = ..()
 	cube_production = 0
 	for(var/datum/stock_part/servo/servo in component_parts)
-		cube_production += servo.tier * 0.2 // EFFIGY EDIT CHANGE (Was 0.1)
+		cube_production += servo.tier * 0.2 // EffigyEdit Change (Was 0.1)
 	for(var/datum/stock_part/matter_bin/matter_bin in component_parts)
-		cube_production += matter_bin.tier * 0.2 // EFFIGY EDIT CHANGE (Was 0.1)
+		cube_production += matter_bin.tier * 0.2 // EffigyEdit Change (Was 0.1)
 
 /obj/machinery/monkey_recycler/examine(mob/user)
 	. = ..()

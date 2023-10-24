@@ -110,6 +110,8 @@
 	var/light_dir = NORTH
 	///Boolean variable for toggleable lights. Has no effect without the proper light_system, light_range and light_power values.
 	var/light_on = TRUE
+	/// How many tiles "up" this light is. 1 is typical, should only really change this if it's a floor light
+	var/light_height = LIGHTING_HEIGHT
 	///Bitflags to determine lighting-related atom properties.
 	var/light_flags = NONE
 	///Our light source. Don't fuck with this directly unless you have a good reason!
@@ -673,14 +675,14 @@
 
 	. += get_name_chaser(user)
 	if(desc)
-		. += "<span class='info'>[desc]" // EFFIGY EDIT CHANGE
+		. += "<span class='info'>[desc]" // EffigyEdit Change
 
 	if(custom_materials)
 		var/list/materials_list = list()
 		for(var/custom_material in custom_materials)
 			var/datum/material/current_material = GET_MATERIAL_REF(custom_material)
 			materials_list += "[current_material.name]"
-		. += span_info("<u>It is made out of [english_list(materials_list)]</u>.") // EFFIGY EDIT CHANGE
+		. += span_info("<u>It is made out of [english_list(materials_list)]</u>.") // EffigyEdit Change
 
 	if(reagents)
 		var/user_sees_reagents = user.can_see_reagents()
@@ -697,7 +699,7 @@
 						. += span_notice("The solution's pH is [round(reagents.ph, 0.01)] and has a temperature of [reagents.chem_temp]K.")
 
 				else
-					. += span_info("It contains:<br>Nothing.") // EFFIGY EDIT CHANGE
+					. += span_info("It contains:<br>Nothing.") // EffigyEdit Change
 			else if(reagents.flags & AMOUNT_VISIBLE)
 				if(reagents.total_volume)
 					. += span_notice("It has [reagents.total_volume] unit\s left.")
@@ -755,7 +757,6 @@
 
 /// Updates the icon of the atom
 /atom/proc/update_icon(updates=ALL)
-	SIGNAL_HANDLER
 	SHOULD_CALL_PARENT(TRUE)
 
 	. = NONE
@@ -769,19 +770,54 @@
 			SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 
 		var/list/new_overlays = update_overlays(updates)
-		if (managed_overlays)
-			if (length(overlays) == (islist(managed_overlays) ? length(managed_overlays) : 1))
-				overlays = null
-				POST_OVERLAY_CHANGE(src)
-			else
-				cut_overlay(managed_overlays)
-				managed_overlays = null
-		if(length(new_overlays))
-			if (length(new_overlays) == 1)
-				managed_overlays = new_overlays[1]
-			else
-				managed_overlays = new_overlays
-			add_overlay(new_overlays)
+		var/nulls = 0
+		for(var/i in 1 to length(new_overlays))
+			var/atom/maybe_not_an_atom = new_overlays[i]
+			if(isnull(maybe_not_an_atom))
+				nulls++
+				continue
+			if(istext(maybe_not_an_atom) || isicon(maybe_not_an_atom))
+				continue
+			new_overlays[i] = maybe_not_an_atom.appearance
+		if(nulls)
+			for(var/i in 1 to nulls)
+				new_overlays -= null
+
+		var/identical = FALSE
+		var/new_length = length(new_overlays)
+		if(!managed_overlays && !new_length)
+			identical = TRUE
+		else if(!islist(managed_overlays))
+			if(new_length == 1 && managed_overlays == new_overlays[1])
+				identical = TRUE
+		else if(length(managed_overlays) == new_length)
+			identical = TRUE
+			for(var/i in 1 to length(managed_overlays))
+				if(managed_overlays[i] != new_overlays[i])
+					identical = FALSE
+					break
+
+		if(!identical)
+			var/full_control = FALSE
+			if(managed_overlays)
+				full_control = length(overlays) == (islist(managed_overlays) ? length(managed_overlays) : 1)
+				if(full_control)
+					overlays = null
+				else
+					cut_overlay(managed_overlays)
+
+			switch(length(new_overlays))
+				if(0)
+					if(full_control)
+						POST_OVERLAY_CHANGE(src)
+					managed_overlays = null
+				if(1)
+					add_overlay(new_overlays)
+					managed_overlays = new_overlays[1]
+				else
+					add_overlay(new_overlays)
+					managed_overlays = new_overlays
+
 		. |= UPDATE_OVERLAYS
 
 	. |= SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON, updates, .)
@@ -1239,8 +1275,15 @@
 			if(light_system == STATIC_LIGHT)
 				set_light(l_dir = var_value)
 				. = TRUE
+		if(NAMEOF(src, light_height))
+			if(light_system == STATIC_LIGHT)
+				set_light(l_height = var_value)
+				. = TRUE
 		if(NAMEOF(src, light_on))
-			set_light_on(var_value)
+			if(light_system == STATIC_LIGHT)
+				set_light(l_on = var_value)
+			else
+				set_light_on(var_value)
 			. = TRUE
 		if(NAMEOF(src, light_flags))
 			set_light_flags(var_value)

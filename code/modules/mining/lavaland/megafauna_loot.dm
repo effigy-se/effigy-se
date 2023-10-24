@@ -268,7 +268,7 @@
 	greyscale_colors = "#4d4d4d#808080"
 	greyscale_config = /datum/greyscale_config/heck_suit
 	greyscale_config_worn = /datum/greyscale_config/heck_suit/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/heck_suit/worn/digi // EFFIGY EDIT ADD
+	greyscale_config_worn_digi = /datum/greyscale_config/heck_suit/worn/digi // EffigyEdit Add
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /datum/armor/hooded_hostile_environment
@@ -314,7 +314,7 @@
 	greyscale_colors = "#4d4d4d#808080#ff3300"
 	greyscale_config = /datum/greyscale_config/heck_helmet
 	greyscale_config_worn = /datum/greyscale_config/heck_helmet/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/heck_helmet/worn/snouted // EFFIGY EDIT ADD
+	greyscale_config_worn_digi = /datum/greyscale_config/heck_helmet/worn/snouted // EffigyEdit Add
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/head/hooded/hostile_environment/Initialize(mapload)
@@ -425,19 +425,31 @@
 	using = TRUE
 	balloon_alert(user, "you hold the scythe up...")
 	ADD_TRAIT(src, TRAIT_NODROP, type)
-	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to play as [user.real_name]'s soulscythe?", ROLE_PAI, FALSE, 100, POLL_IGNORE_POSSESSED_BLADE)
-	if(LAZYLEN(candidates))
-		var/mob/dead/observer/picked_ghost = pick(candidates)
-		soul.ckey = picked_ghost.ckey
-		soul.copy_languages(user, LANGUAGE_MASTER) //Make sure the sword can understand and communicate with the user.
-		soul.faction = list("[REF(user)]")
-		balloon_alert(user, "the scythe glows up")
-		add_overlay("soulscythe_gem")
-		density = TRUE
-		if(!ismob(loc))
-			reset_spin()
-	else
-		balloon_alert(user, "the scythe is dormant!")
+
+	var/datum/callback/to_call = CALLBACK(src, PROC_REF(on_poll_concluded), user)
+	AddComponent(/datum/component/orbit_poll, \
+		ignore_key = POLL_IGNORE_POSSESSED_BLADE, \
+		job_bans = ROLE_PAI, \
+		to_call = to_call, \
+	)
+
+/// Ghost poll has concluded and a candidate has been chosen.
+/obj/item/soulscythe/proc/on_poll_concluded(mob/living/master, mob/dead/observer/ghost)
+	if(isnull(ghost))
+		balloon_alert(master, "the scythe is dormant!")
+		REMOVE_TRAIT(src, TRAIT_NODROP, type)
+		using = FALSE
+		return
+
+	soul.ckey = ghost.ckey
+	soul.copy_languages(master, LANGUAGE_MASTER) //Make sure the sword can understand and communicate with the master.
+	soul.faction = list("[REF(master)]")
+	balloon_alert(master, "the scythe glows")
+	add_overlay("soulscythe_gem")
+	density = TRUE
+	if(!ismob(loc))
+		reset_spin()
+
 	REMOVE_TRAIT(src, TRAIT_NODROP, type)
 	using = FALSE
 
@@ -721,7 +733,7 @@
 		return
 
 	var/mob/living/carbon/human/consumer = user
-	var/random = rand(2,4) // EFFIGY EDIT CHANGE
+	var/random = rand(2,4) // EffigyEdit Change
 
 	switch(random)
 		if(1)

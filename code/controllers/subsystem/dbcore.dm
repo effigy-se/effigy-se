@@ -300,7 +300,7 @@ SUBSYSTEM_DEF(dbcore)
 
 	if(!Connect())
 		return
-	// EFFIGY EDIT CHANGE START (Logging)
+	// EffigyEdit Change START (Logging)
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
 		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
 		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]")
@@ -312,7 +312,7 @@ SUBSYSTEM_DEF(dbcore)
 	ev_round_id = text2num("[GLOB.round_id]999")
 	ev_round_id = num2text(ev_round_id, 6, 16)
 	GLOB.round_hex = ev_round_id
-	// EFFIGY EDIT CHANGE END (Logging)
+	// EffigyEdit Change END (Logging)
 	qdel(query_round_initialize)
 
 /datum/controller/subsystem/dbcore/proc/SetRoundStart()

@@ -1,6 +1,6 @@
 
 /mob/living/proc/run_armor_check(def_zone = null, attack_flag = MELEE, absorb_text = null, soften_text = null, armour_penetration, penetrated_text, silent=FALSE, weak_against_armour = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOB_RUN_ARMOR) // EFFIGY EDIT ADD
+	SEND_SIGNAL(src, COMSIG_MOB_RUN_ARMOR) // EffigyEdit Add
 	var/our_armor = getarmor(def_zone, attack_flag)
 
 	if(our_armor <= 0)
@@ -150,7 +150,7 @@
 		return
 	. = combat_mode
 	combat_mode = new_mode
-	SEND_SIGNAL(src, COMSIG_LIVING_COMBAT_MODE_TOGGLE, new_mode) // EFFIGY EDIT ADD
+	SEND_SIGNAL(src, COMSIG_LIVING_COMBAT_MODE_TOGGLE, new_mode) // EffigyEdit Add
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
 	if(silent || !(client?.prefs.read_preference(/datum/preference/toggle/sound_combatmode)))
@@ -478,11 +478,11 @@
 	else
 		switch(rand(1, 4))
 			if(1)
-				new /mob/living/simple_animal/hostile/construct/juggernaut/hostile(get_turf(src))
+				new /mob/living/basic/construct/juggernaut/hostile(get_turf(src))
 			if(2)
 				new /mob/living/simple_animal/hostile/construct/wraith/hostile(get_turf(src))
 			if(3)
-				new /mob/living/simple_animal/hostile/construct/artificer/hostile(get_turf(src))
+				new /mob/living/basic/construct/artificer/hostile(get_turf(src))
 			if(4)
 				new /mob/living/simple_animal/hostile/construct/proteon/hostile(get_turf(src))
 	spawn_dust()

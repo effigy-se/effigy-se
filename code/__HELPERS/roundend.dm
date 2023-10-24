@@ -244,7 +244,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	//Set news report and mode result
 	mode.set_round_result()
 
-	to_chat(world, span_boxannounceblue("<h2 class='alert'>The round has ended.</h2>")) // EffigyEdit Change - Game Notifications
+	to_chat(world, SPAN_BOX_ALERT(BLUE, "<h2 class='alert'>The round has ended.</h2>")) // EffigyEdit Change - Game Notifications
 	log_game("The round has ended.")
 	//send2chat(new /datum/tgs_message_content("[GLOB.round_hex ? "Round [GLOB.round_hex]" : "The round has"] just ended."), CONFIG_GET(string/channel_announce_end_game)) // EffigyEdit Remove - Game Notifications
 	// EffigyEdit Add - Game Notifications
@@ -478,13 +478,13 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				borg_num--
 				if(robo.mind)
-					parts += "<b>[robo.name]</b> [robo.stat == DEAD ? " [span_redtext("(Deactivated)")]" : ""][borg_num ?", ":""]" // EFFIGY EDIT CHANGE (Remove ckey)
+					parts += "<b>[robo.name]</b> [robo.stat == DEAD ? " [span_redtext("(Deactivated)")]" : ""][borg_num ?", ":""]" // EffigyEdit Change (Remove ckey)
 		if(!borg_spacer)
 			borg_spacer = TRUE
 
 	for (var/mob/living/silicon/robot/robo in GLOB.silicon_mobs)
 		if (!robo.connected_ai && robo.mind)
-			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."] Its laws were:" // EFFIGY EDIT CHANGE (Remove ckey)
+			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."] Its laws were:" // EffigyEdit Change (Remove ckey)
 
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
 				parts += robo.laws.get_law_list(include_zeroth=TRUE)

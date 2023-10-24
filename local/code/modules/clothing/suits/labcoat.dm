@@ -39,16 +39,6 @@
 	armor_type = /datum/armor/none
 	equip_delay_other = 8
 
-/obj/item/clothing/suit/toggle/labcoat/roboticist //Overwrite the TG Roboticist labcoat to Black and Red (not the Interdyne labcoat though)
-	icon = 'local/icons/obj/clothing/suits/labcoat.dmi'
-	worn_icon = 'local/icons/mob/clothing/suits/labcoat.dmi'
-	icon_state = "labcoat_robo_sr"
-
-/obj/item/clothing/suit/toggle/labcoat/medical //Renamed version of the Genetics labcoat for more generic medical purposes; just a subtype of /labcoat/ for the TG files
-	name = "medical labcoat"
-	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder."
-	icon_state = "labcoat_gen"
-
 /obj/item/clothing/suit/toggle/labcoat/Initialize(mapload)
 	. = ..()
 	allowed += list(

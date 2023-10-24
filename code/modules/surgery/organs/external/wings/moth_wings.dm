@@ -5,7 +5,7 @@
 
 	preference = "feature_moth_wings"
 
-	//dna_block = DNA_MOTH_WINGS_BLOCK // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+	//dna_block = DNA_MOTH_WINGS_BLOCK // EffigyEdit Change Customization
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/moth
 
@@ -71,7 +71,7 @@
 
 ///Moth wing bodypart overlay, including burn functionality!
 /datum/bodypart_overlay/mutant/wings/moth
-	feature_key = "wings" // EFFIGY EDIT REMOVE (#3 Customization - Ported from Skyrat) ORIGINAL: feature_key = "moth_wings"
+	feature_key = "wings" // EffigyEdit Remove Customization ORIGINAL: feature_key = "moth_wings"
 	layers = EXTERNAL_BEHIND | EXTERNAL_FRONT
 	///Accessory datum of the burn sprite
 	var/datum/sprite_accessory/burn_datum = /datum/sprite_accessory/moth_wings/burnt_off
@@ -84,7 +84,7 @@
 	burn_datum = fetch_sprite_datum(burn_datum)
 
 /datum/bodypart_overlay/mutant/wings/moth/get_global_feature_list()
-	return GLOB.sprite_accessories["wings"] // EFFIGY EDIT REMOVE (#3 Customization - Ported from Skyrat) ORIGINAL: return GLOB.moth_wings_list
+	return GLOB.sprite_accessories["wings"] // EffigyEdit Remove Customization ORIGINAL: return GLOB.moth_wings_list
 
 /datum/bodypart_overlay/mutant/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))

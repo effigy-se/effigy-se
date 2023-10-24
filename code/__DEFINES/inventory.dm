@@ -90,7 +90,7 @@
 ///hides mutant/moth wings, does not apply to functional wings
 #define HIDEMUTWINGS (1<<13)
 
-// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 /// Manually set this on items you want anthro ears to show on!
 #define SHOWSPRITEEARS (1<<14)
 /// Does this sprite hide the tail?
@@ -99,7 +99,7 @@
 #define HIDESPINE (1<<16)
 /// Does this sprite hide devious devices?
 #define HIDESEXTOY (1<<17)
-// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
@@ -118,7 +118,7 @@
 #define HAND_RIGHT (1<<10)
 #define HANDS (HAND_LEFT | HAND_RIGHT)
 #define NECK (1<<11)
-#define FULL_BODY (~0)
+#define FULL_BODY ALL
 
 //defines for the index of hands
 #define LEFT_HANDS 1
@@ -149,7 +149,7 @@
 ///has a sprite for monkeys
 #define CLOTHING_MONKEY_VARIATION (1<<3)
 
-// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 /// The sprite works fine for snouts.
 #define CLOTHING_SNOUTED_VARIATION (1<<4)
 /// The sprite works fine for snouts as-is.
@@ -162,7 +162,7 @@
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<8)
 /// The sprite works fine for vox snouts as is.
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
-// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)
@@ -180,7 +180,7 @@
 /// How many messages you can remember while logged out before you stop remembering new ones
 #define AFK_THEFT_MAX_MESSAGES 10
 /// If someone logs back in and there are entries older than this, just tell them they can't remember who it was or when
-#define AFK_THEFT_FORGET_DETAILS_TIME (15 MINUTES) // EFFIGY EDIT CHANGE
+#define AFK_THEFT_FORGET_DETAILS_TIME (15 MINUTES) // EffigyEdit Change
 /// The index of the entry in 'afk_thefts' with the person's visible name at the time
 #define AFK_THEFT_NAME 1
 /// The index of the entry in 'afk_thefts' with the text

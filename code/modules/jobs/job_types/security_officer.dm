@@ -54,24 +54,24 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 /datum/job/security_officer/after_roundstart_spawn(mob/living/spawning, client/player_client)
 	. = ..()
-	// EFFIGY EDIT REMOVE START
+	// EffigyEdit Remove START
 	/*
 	if(ishuman(spawning))
 		setup_department(spawning, player_client)
 	*/
-	// EFFIGY EDIT REMOVE END
+	// EffigyEdit Remove END
 
 
 /datum/job/security_officer/after_latejoin_spawn(mob/living/spawning)
 	. = ..()
-	// EFFIGY EDIT REMOVE START
+	// EffigyEdit Remove START
 	/*
 	if(ishuman(spawning))
 		var/department = setup_department(spawning, spawning.client)
 		if(department)
 			announce_latejoin(spawning, department, GLOB.security_officer_distribution)
 	*/
-	// EFFIGY EDIT REMOVE END
+	// EffigyEdit Remove END
 
 /// Returns the department this mob was assigned to, if any.
 /datum/job/security_officer/proc/setup_department(mob/living/carbon/human/spawning, client/player_client)

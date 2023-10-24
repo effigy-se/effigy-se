@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	var/value = 0
 	var/purchases = 0
 	var/list/goodies_by_buyer = list() // if someone orders more than GOODY_FREE_SHIPPING_MAX goodies, we upcharge to a normal crate so they can't carry around 20 combat shotties
-	var/list/forced_briefcases = list() // EFFIGY EDIT ADD
+	var/list/forced_briefcases = list() // EffigyEdit Add
 
 	for(var/datum/supply_order/spawning_order in SSshuttle.shopping_list)
 		if(!empty_turfs.len)
@@ -189,7 +189,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 						paying_for_this.bank_card_talk("Cargo order #[spawning_order.id] rejected due to lack of funds. Credits required: [price]")
 					continue
 
-		if(spawning_order.paying_account && spawning_order.charge_on_purchase) // EFFIGY EDIT CHANGE
+		if(spawning_order.paying_account && spawning_order.charge_on_purchase) // EffigyEdit Change
 			paying_for_this = spawning_order.paying_account
 			if(spawning_order.pack.goody)
 				LAZYADD(goodies_by_buyer[spawning_order.paying_account], spawning_order)
@@ -205,7 +205,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		SSshuttle.order_history += spawning_order
 		QDEL_NULL(spawning_order.applied_coupon)
 
-		spawning_order.on_spawn() // EFFIGY EDIT ADD
+		spawning_order.on_spawn() // EffigyEdit Add
 		if(!spawning_order.pack.goody) //we handle goody crates below
 			var/obj/structure/closet/crate = spawning_order.generate(pick_n_take(empty_turfs))
 			crate.name += " - #[spawning_order.id]"
@@ -244,7 +244,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			misc_costs[buyer] += our_order.pack.cost
 			misc_order_num[buyer] = "[misc_order_num[buyer]]#[our_order.id] "
 
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	for(var/briefcase_order in forced_briefcases)
 		var/list/buying_account_orders = forced_briefcases[briefcase_order]
 		var/datum/bank_account/buying_account = briefcase_order
@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 				misc_contents[buyer] += item
 			misc_costs[buyer] += order.pack.cost
 			misc_order_num[buyer] = "[misc_order_num[buyer]]#[order.id]  "
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 
 	for(var/miscbox in miscboxes)
 		var/datum/supply_order/order = new/datum/supply_order()

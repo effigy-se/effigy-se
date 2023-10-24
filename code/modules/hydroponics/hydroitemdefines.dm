@@ -504,7 +504,7 @@
 	resistance_flags = FLAMMABLE
 	flags_1 = NONE
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove START
 /*
 /obj/item/scythe
 	name = "scythe"
@@ -568,7 +568,7 @@
 	swiping = FALSE
 	return TRUE
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /obj/item/secateurs
 	name = "secateurs"

@@ -11,7 +11,7 @@
 		/obj/item/reagent_containers/dropper = 2,
 		/obj/item/storage/belt/medical = 1,
 		/obj/item/storage/box/syringes = 1,
-		/obj/item/storage/box/hypospray = 1, // EFFIGY EDIT ADD
+		/obj/item/storage/box/hypospray = 1, // EffigyEdit Add
 		/obj/item/reagent_containers/cup/bottle/toxin = 1,
 		/obj/item/reagent_containers/cup/bottle/morphine = 2,
 		/obj/item/reagent_containers/cup/bottle/epinephrine= 3,

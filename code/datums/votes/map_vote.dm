@@ -12,7 +12,7 @@
 	var/list/maps = shuffle(global.config.maplist)
 	for(var/map in maps)
 		var/datum/map_config/possible_config = config.maplist[map]
-		if(!possible_config.votable || (possible_config.map_name in SSpersistence.blocked_maps) || possible_config.map_name == SSmapping.config?.map_name) // EFFIGY EDIT CHANGE (No map twice)
+		if(!possible_config.votable || (possible_config.map_name in SSpersistence.blocked_maps) || possible_config.map_name == SSmapping.config?.map_name) // EffigyEdit Change (No map twice)
 			continue
 
 		default_choices += possible_config.map_name
@@ -24,7 +24,7 @@
 		var/de_facto_winner = choices[1]
 		var/datum/map_config/change_me_out = global.config.maplist[de_facto_winner]
 		SSmapping.changemap(change_me_out)
-		to_chat(world, span_boxannounceblue("The map vote has been skipped because there is only one map left to vote for. The map has been changed to [change_me_out.map_name]."))
+		to_chat(world, SPAN_BOX_ALERT(BLUE, "The map vote has been skipped because there is only one map left to vote for. The map has been changed to [change_me_out.map_name]."))
 		SSmapping.map_voted = TRUE // voted by not voting, very sad.
 		return FALSE
 

@@ -111,13 +111,13 @@
 		return TRUE
 	return authenticated
 
-// EFFIGY EDIT ADD START - AI CHECK
+// EffigyEdit Add - AI CHECK
 /// Are we the AI?
 /obj/machinery/computer/communications/proc/authenticated_as_ai_or_captain(mob/user)
 	if (isAI(user))
 		return TRUE
 	return ACCESS_CAPTAIN in authorize_access
-// EFFIGY EDIT ADD END - AI CHECK
+// EffigyEdit Add End
 
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
 	if(isidcard(I))
@@ -209,7 +209,7 @@
 					return
 
 			var/new_sec_level = SSsecurity_level.text_level_to_number(params["newSecurityLevel"])
-			if (new_sec_level < SEC_LEVEL_GREEN || new_sec_level > SEC_LEVEL_ORANGE) // EFFIGY EDIT CHANGE (Alert Levels)
+			if (new_sec_level < SEC_LEVEL_GREEN || new_sec_level > SEC_LEVEL_ORANGE) // EffigyEdit Change (Alert Levels)
 				return
 			if (SSsecurity_level.get_current_level_as_number() == new_sec_level)
 				return
@@ -443,7 +443,7 @@
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
 				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
-		// EFFIGY EDIT ADD START (Airlock Override)
+		// EffigyEdit Add - (Airlock Override)
 		if("toggleEngOverride")
 			if(emergency_access_cooldown(usr)) //if were in cooldown, dont allow the following code
 				return
@@ -457,7 +457,7 @@
 				toggle_eng_override()
 				usr.log_message("enabled airlock engineering override.", LOG_GAME)
 				deadchat_broadcast(" enabled airlock engineering override at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
-		// EFFIGY EDIT ADD END
+		// EffigyEdit Add End
 		if("requestSafeCodes")
 			if(SSjob.assigned_captain)
 				to_chat(usr, span_warning("There is already an assigned Captain or Acting Captain on deck!"))
@@ -561,7 +561,7 @@
 				data["canSendToSectors"] = FALSE
 				data["canSetAlertLevel"] = FALSE
 				data["canToggleEmergencyAccess"] = FALSE
-				data["canToggleEngineeringOverride"] = FALSE // EFFIGY EDIT ADD (Airlock Override)
+				data["canToggleEngineeringOverride"] = FALSE // EffigyEdit Add (Airlock Override)
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
@@ -593,8 +593,8 @@
 				if (authenticated_as_silicon_or_captain(user))
 					data["canToggleEmergencyAccess"] = TRUE
 					data["emergencyAccess"] = GLOB.emergency_access
-					data["canToggleEngineeringOverride"] = TRUE // EFFIGY EDIT ADD (Airlock Override)
-					data["engineeringOverride"] = GLOB.force_eng_override // EFFIGY EDIT ADD (Airlock Override)
+					data["canToggleEngineeringOverride"] = TRUE // EffigyEdit Add (Airlock Override)
+					data["engineeringOverride"] = GLOB.force_eng_override // EffigyEdit Add (Airlock Override)
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
 					data["canSetAlertLevel"] = issilicon(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"

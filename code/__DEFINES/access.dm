@@ -333,7 +333,7 @@
 	ACCESS_VIROLOGY, \
 	ACCESS_WEAPONS, \
 	ACCESS_XENOBIOLOGY, \
-) /// EFFIGY EDIT - Added ACCESS_STUDIO_CONTROL. Yes I have to put the comment here. Yes repeatedly. Yes it sucks.
+) /// EffigyEdit Add - ACCESS_STUDIO_CONTROL. Yes I have to put the comment here. Yes repeatedly. Yes it sucks.
 
 /// Command staff/secure accesses, think bridge/armoury, ai_upload, notably access to modify ID cards themselves. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND)
 #define COMMAND_ACCESS list( \
@@ -429,7 +429,7 @@
 	ACCESS_SERVICE, \
 	ACCESS_STUDIO_CONTROL, \
 	ACCESS_THEATRE, \
-) /// EFFIGY EDIT - Added ACCESS_STUDIO_CONTROL. Yes I have to put the comment here. Yes repeatedly. Yes it sucks.
+) /// EffigyEdit Add - ACCESS_STUDIO_CONTROL. Yes I have to put the comment here. Yes repeatedly. Yes it sucks.
 /// Name for the Security region.
 #define REGION_SECURITY "Security"
 /// Used to seed the accesses_by_region list in SSid_access. A list of all security regional accesses that are overseen by the HoS.

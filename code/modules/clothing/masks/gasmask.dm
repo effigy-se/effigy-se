@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	armor_type = /datum/armor/gas_atmos
 	resistance_flags = FIRE_PROOF
 	max_filters = 3
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EFFIGY EDIT ADD
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EffigyEdit Add
 
 /datum/armor/gas_atmos
 	bio = 100
@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	icon_state = "gas_cap"
 	inhand_icon_state = "gasmask_captain"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EFFIGY EDIT ADD
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EffigyEdit Add
 
 /obj/item/clothing/mask/gas/atmos/centcom
 	name = "\improper CentCom gas mask"
@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		"The Madman" = image(icon = src.icon, icon_state = "joker"),
 		"The Rainbow Color" = image(icon = src.icon, icon_state = "rainbow")
 		)
-	// AddElement(/datum/element/swabable, CELL_LINE_TABLE_CLOWN, CELL_VIRUS_TABLE_GENERIC, rand(2,3), 0) // EFFIGY EDIT REMOVE
+	// AddElement(/datum/element/swabable, CELL_LINE_TABLE_CLOWN, CELL_VIRUS_TABLE_GENERIC, rand(2,3), 0) // EffigyEdit Remove
 
 /obj/item/clothing/mask/gas/clown_hat/ui_action_click(mob/user)
 	if(!istype(user) || user.incapacitated())

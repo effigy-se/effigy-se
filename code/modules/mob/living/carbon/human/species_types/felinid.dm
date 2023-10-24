@@ -6,12 +6,12 @@
 	mutant_bodyparts = list("ears" = "Cat", "wings" = "None")
 	mutantbrain = /obj/item/organ/internal/brain/felinid
 	mutanttongue = /obj/item/organ/internal/tongue/cat
-	/* EFFIGY EDIT REMOVE START - CUSTOMIZATION
+	/* EffigyEdit Remove START - CUSTOMIZATION
 	mutantears = /obj/item/organ/internal/ears/cat
 	external_organs = list(
 		/obj/item/organ/external/tail/cat = "Cat",
 	)
-	*/ // EFFIGY EDIT REMOVE END
+	*/ // EffigyEdit Remove END
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_HATED_BY_DOGS,
@@ -134,12 +134,12 @@
 	human_for_preview.set_haircolor("#ffcccc", update = FALSE) // pink
 	human_for_preview.set_hairstyle("Hime Cut", update = TRUE)
 
-	// EFFIGY EDIT CHANGE START
+	// EffigyEdit Change START
 	human_for_preview.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
 	human_for_preview.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
 	regenerate_organs(human_for_preview, src, visual_only = TRUE)
 	human_for_preview.update_body(TRUE)
-	// EFFIGY EDIT CHANGE END
+	// EffigyEdit Change END
 
 /datum/species/human/felinid/get_physical_attributes()
 	return "Felinids are very similar to humans in almost all respects, with their biggest differences being the ability to lick their wounds, \

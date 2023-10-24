@@ -47,14 +47,14 @@
 		backpack_contents += list(/obj/item/gun/ballistic/revolver)
 		r_pocket = /obj/item/ammo_box/a357
 
-// EFFIGY EDIT REMOVE START - JANITOR KEY - (Moved to Overrides)
+// EffigyEdit Remove START - JANITOR KEY - (Moved to Overrides)
 /*
 	var/static/access_key_given = FALSE
 	if(!access_key_given && !visuals_only)
 		access_key_given = TRUE
 		backpack_contents += list(/obj/item/access_key)
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/outfit/job/janitor/get_types_to_preload()
 	. = ..()

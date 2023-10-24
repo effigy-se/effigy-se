@@ -14,7 +14,7 @@
 	var/datum/species/species = new species_type
 	return !(TRAIT_NO_UNDERWEAR in species.inherent_traits)
 
-// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 /datum/preference/color/undershirt_color
 	savefile_key = "undershirt_color"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -46,4 +46,4 @@
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type
 	return !(TRAIT_NO_UNDERWEAR in species.inherent_traits)
-// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End

@@ -394,7 +394,7 @@
 /datum/reagent/medicine/mine_salve/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	affected_mob.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
-	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EFFIGY EDIT ADD
+	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EffigyEdit Add
 
 /datum/reagent/medicine/mine_salve/on_burn_wound_processing(datum/wound/burn/flesh/burn_wound)
 	burn_wound.sanitization += 0.3
@@ -676,14 +676,14 @@
 /datum/reagent/medicine/morphine/on_mob_metabolize(mob/living/affected_mob)
 	. = ..()
 	affected_mob.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	ADD_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EFFIGY EDIT ADD (Medical)
-	affected_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed) // EFFIGY EDIT ADD (Medical)
+	ADD_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EffigyEdit Add (Medical)
+	affected_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed) // EffigyEdit Add (Medical)
 
 /datum/reagent/medicine/morphine/on_mob_end_metabolize(mob/living/affected_mob)
 	. = ..()
 	affected_mob.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EFFIGY EDIT ADD (Medical)
-	affected_mob.clear_alert("numbed") // EFFIGY EDIT ADD (Medical)
+	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, REF(src)) // EffigyEdit Add (Medical)
+	affected_mob.clear_alert("numbed") // EffigyEdit Add (Medical)
 	..()
 
 /datum/reagent/medicine/morphine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
@@ -1256,7 +1256,7 @@
 	var/mob/living/carbon/human/exposed_human = exposed_mob
 	exposed_human.set_facial_haircolor(color, update = FALSE)
 	exposed_human.set_haircolor(color, update = TRUE)
-	exposed_human.update_mutant_bodyparts(force_update=TRUE) // EFFIGY EDIT ADD
+	exposed_human.update_mutant_bodyparts(force_update=TRUE) // EffigyEdit Add
 
 
 /datum/reagent/medicine/regen_jelly/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)

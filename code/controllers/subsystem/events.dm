@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(events)
 	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
-/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) // EFFIGY EDIT ADD (#3 Events - Ported from Skyrat)
+/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) // EffigyEdit Add (#3 Events - Ported from Skyrat)
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return

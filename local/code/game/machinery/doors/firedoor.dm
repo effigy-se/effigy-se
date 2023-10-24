@@ -16,7 +16,7 @@
 	if(istype(src, /obj/machinery/door/firedoor/border_only))
 		return
 	if(!density)
-		set_light(l_color = light_color_idle, l_on = TRUE)
+		set_light(l_color = light_color_idle, l_on = FALSE)
 		return
 	if(operating)
 		set_light(l_color = light_color_operating, l_on = TRUE)

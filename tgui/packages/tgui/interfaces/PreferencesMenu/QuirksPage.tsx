@@ -113,7 +113,7 @@ const QuirkList = (props: {
 };
 
 export const StatDisplay: StatelessComponent<{}> = (props) => {
-  // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+  // EffigyEdit Change Customization
   return (
     <Box
       backgroundColor="#eee"
@@ -138,10 +138,10 @@ export const QuirksPage = (props, context) => {
 
   return (
     <ServerPreferencesFetcher
-      // EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
+      // EffigyEdit Change START Customization
       render={(quirks_data) => {
         if (!quirks_data) {
-          // EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
+          // EffigyEdit Change END Customization
           return <Box>Loading quirks...</Box>;
         }
 
@@ -149,7 +149,7 @@ export const QuirksPage = (props, context) => {
           max_positive_quirks: maxPositiveQuirks,
           quirk_blacklist: quirkBlacklist,
           quirk_info: quirkInfo,
-        } = quirks_data.quirks; // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+        } = quirks_data.quirks; // EffigyEdit Change Customization
 
         const quirks = Object.entries(quirkInfo);
         quirks.sort(([_, quirkA], [__, quirkB]) => {
@@ -160,10 +160,10 @@ export const QuirksPage = (props, context) => {
           }
         });
 
-        // EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
+        // EffigyEdit Change START Customization
         let balance = -data.quirks_balance;
         let positiveQuirks = data.positive_quirk_count;
-        // EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
+        // EffigyEdit Change END Customization
 
         const getReasonToNotAdd = (quirkName: string) => {
           const quirk = quirkInfo[quirkName];

@@ -84,25 +84,32 @@
 			return
 		attempt_grow()
 
-///Attempt to burst an alien outside of the host, getting a ghost to play as the xeno.
+/// Attempt to burst an alien outside of the host, getting a ghost to play as the xeno.
 /obj/item/organ/internal/body_egg/alien_embryo/proc/attempt_grow(gib_on_success = TRUE)
-	if(!owner || bursting)
+	if(QDELETED(owner) || bursting)
 		return
 
 	bursting = TRUE
 
-	var/list/candidates = poll_ghost_candidates("Do you want to play as an alien larva that will burst out of [owner.real_name]?", ROLE_ALIEN, ROLE_ALIEN, 100, POLL_IGNORE_ALIEN_LARVA)
+	var/datum/callback/to_call = CALLBACK(src, PROC_REF(on_poll_concluded), gib_on_success)
+	owner.AddComponent(/datum/component/orbit_poll, \
+		ignore_key = POLL_IGNORE_ALIEN_LARVA, \
+		job_bans = ROLE_ALIEN, \
+		to_call = to_call, \
+		custom_message = "An alien is bursting out of [owner.real_name]", \
+		title = "alien larva" \
+	)
 
-	if(QDELETED(src) || QDELETED(owner))
+/// Poll has concluded with a suitor
+/obj/item/organ/internal/body_egg/alien_embryo/proc/on_poll_concluded(gib_on_success, mob/dead/observer/ghost)
+	if(QDELETED(owner))
 		return
 
-	if(!candidates.len || !owner)
+	if(isnull(ghost))
 		bursting = FALSE
 		stage = 5 // If no ghosts sign up for the Larva, let's regress our growth by one minute, we will try again!
 		addtimer(CALLBACK(src, PROC_REF(advance_embryo_stage)), growth_time)
 		return
-
-	var/mob/dead/observer/ghost = pick(candidates)
 
 	var/mutable_appearance/overlay = mutable_appearance('icons/mob/nonhuman-player/alien.dmi', "burst_lie")
 	owner.add_overlay(overlay)
@@ -126,12 +133,12 @@
 
 	if(gib_on_success)
 		new_xeno.visible_message(span_danger("[new_xeno] bursts out of [owner] in a shower of gore!"), span_userdanger("You exit [owner], your previous host."), span_hear("You hear organic matter ripping and tearing!"))
-		// EFFIGY EDIT CHANGE START (No gib)
+		// EffigyEdit Change START (No gib)
 		owner.apply_damage(150, BRUTE, BODY_ZONE_CHEST, wound_bonus = 30, sharpness = SHARP_POINTY)
 		owner.spawn_gibs()
 		owner.cut_overlay(overlay)
 		owner.investigate_log("has been chestbursted.", INVESTIGATE_DEATHS)
-		// EFFIGY EDIT CHANGE END (No gib)
+		// EffigyEdit Change END (No gib)
 	else
 		new_xeno.visible_message(span_danger("[new_xeno] wriggles out of [owner]!"), span_userdanger("You exit [owner], your previous host."))
 		owner.log_message("had an alien larva within them escape (without being gibbed).", LOG_ATTACK, log_globally = FALSE)

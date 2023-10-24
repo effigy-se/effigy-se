@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START - SPLASH
+// EffigyEdit Remove START - SPLASH
 /*
 SUBSYSTEM_DEF(title)
 	name = "Title Screen"
@@ -71,4 +71,4 @@ SUBSYSTEM_DEF(title)
 	file_path = SStitle.file_path
 	previous_icon = SStitle.previous_icon
 */
-// EFFIGY EDIT REMOVE END - SPLASH
+// EffigyEdit Remove END - SPLASH
