@@ -173,7 +173,7 @@
 	*/
 	// EffigyEdit Remove End
 
-	// EffigyEdit Add Start
+	// EffigyEdit Add -
 	// And drunk people will always lose jitteriness
 	owner.adjust_jitter(-6 SECONDS)
 

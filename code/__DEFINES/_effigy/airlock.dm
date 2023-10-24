@@ -37,7 +37,7 @@
 #define AIRLOCK_DAMAGE_DEFLECTION_N  21  // Normal airlock damage deflection
 #define AIRLOCK_DAMAGE_DEFLECTION_R  30  // Reinforced airlock damage deflection
 
-#define AIRLOCK_DENY_ANIMATION_TIME (0.8 SECONDS) /// The amount of time for the airlock deny animation to show // EFFIGY EDIT CHANGE
+#define AIRLOCK_DENY_ANIMATION_TIME (0.8 SECONDS) /// The amount of time for the airlock deny animation to show // EffigyEdit Change
 
 #define DOOR_CLOSE_WAIT 60 /// Time before a door closes, if not overridden
 

@@ -67,7 +67,7 @@
 #define AIRLOCK_DAMAGE_DEFLECTION_N  21  // Normal airlock damage deflection
 #define AIRLOCK_DAMAGE_DEFLECTION_R  30  // Reinforced airlock damage deflection
 
-#define AIRLOCK_DENY_ANIMATION_TIME (0.8 SECONDS) /// The amount of time for the airlock deny animation to show // EFFIGY EDIT CHANGE
+#define AIRLOCK_DENY_ANIMATION_TIME (0.8 SECONDS) /// The amount of time for the airlock deny animation to show // EffigyEdit Change
 
 #define DOOR_CLOSE_WAIT 60 /// Time before a door closes, if not overridden
 
@@ -516,7 +516,7 @@
 		if(AIRLOCK_DENY, AIRLOCK_OPENING, AIRLOCK_CLOSING, AIRLOCK_EMAG)
 			icon_state = "nonexistenticonstate" //MADNESS
 
-// EFFIGY EDIT CHANGE START (#74 Airlocks)
+// EffigyEdit Change START (#74 Airlocks)
 /*
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
@@ -597,7 +597,7 @@
 					floorlight.pixel_y = 0
 			. += floorlight
 */
-// EFFIGY EDIT CHANGE END (#74 Airlocks)
+// EffigyEdit Change END (#74 Airlocks)
 
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)
@@ -1236,17 +1236,17 @@
 	SEND_SIGNAL(src, COMSIG_AIRLOCK_OPEN, forced)
 	operating = TRUE
 	update_icon(ALL, AIRLOCK_OPENING, TRUE)
-	sleep(0.8 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.8 SECONDS) // EffigyEdit Change
 	set_density(FALSE)
 	if(multi_tile)
 		filler.set_density(FALSE)
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	air_update_turf(TRUE, FALSE)
-	sleep(0.2 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.2 SECONDS) // EffigyEdit Change
 	set_opacity(0)
 	update_freelook_sight()
 	layer = OPEN_DOOR_LAYER
-	sleep(0.4 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.4 SECONDS) // EffigyEdit Change
 	update_icon(ALL, AIRLOCK_OPEN, TRUE)
 	operating = FALSE
 	if(delayed_close_requested)
@@ -1314,14 +1314,14 @@
 			filler.density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.8 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.8 SECONDS) // EffigyEdit Change
 	if(!air_tight)
 		set_density(TRUE)
 		if(multi_tile)
 			filler.density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.6 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.6 SECONDS) // EffigyEdit Change
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)

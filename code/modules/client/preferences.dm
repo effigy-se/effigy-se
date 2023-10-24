@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Ensures that we always load the last used save, QOL
 	var/default_slot = 1
 	/// The maximum number of slots we're allowed to contain
-	var/max_save_slots = 14 // EFFIGY EDIT CHANGE
+	var/max_save_slots = 14 // EffigyEdit Change
 
 	/// Bitflags for communications that are muted
 	var/muted = NONE
@@ -92,10 +92,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
 	value_cache = null
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	if(pref_species)
 		QDEL_NULL(pref_species)
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 	return ..()
 
 /datum/preferences/New(client/parent)
@@ -111,7 +111,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			try_savefile_type_migration()
 		unlock_content = !!parent.IsByondMember()
 		if(unlock_content)
-			max_save_slots = 21 // EFFIGY EDIT CHANGE
+			max_save_slots = 21 // EffigyEdit Change
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
 	load_savefile()
@@ -124,10 +124,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
-			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+			// EffigyEdit Add - Customization
 			sanitize_languages()
 			sanitize_quirks()
-			// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+			// EffigyEdit Add End
 			return
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
@@ -174,11 +174,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		data["character_profiles"] = create_character_profiles()
 		tainted_character_profiles = FALSE
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	data["preview_selection"] = preview_pref
 	data["quirks_balance"] = GetQuirkBalance()
 	data["positive_quirk_count"] = GetPositiveQuirkCount()
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	data["character_preferences"] = compile_character_preferences(user)
 
@@ -192,12 +192,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/ui_static_data(mob/user)
 	var/list/data = list()
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED)
 	else
 		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED, PREVIEW_PREF_NAKED_AROUSED)
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	data["character_profiles"] = create_character_profiles()
 
@@ -245,10 +245,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				randomise_appearance_prefs()
 				save_character()
 
-			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+			// EffigyEdit Add - Customization
 			if(sanitize_languages())
 				save_character()
-			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+			// EffigyEdit Add - Customization
 
 			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 				preference_middleware.on_new_character(usr)
@@ -259,10 +259,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 
 		if ("rotate")
-			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+			// EffigyEdit Add - Customization
 			var/backwards = params["backwards"]
 			character_preview_view.dir = turn(character_preview_view.dir, backwards ? 90 : -90)
-			// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+			// EffigyEdit Add End
 
 
 			return TRUE
@@ -285,12 +285,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if (istype(requested_preference, /datum/preference/name))
 				tainted_character_profiles = TRUE
 
-			// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+			// EffigyEdit Add - Customization
 			update_mutant_bodyparts(requested_preference)
 			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 				if (preference_middleware.post_set_preference(usr, requested_preference_key, value))
 					return TRUE
-			// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+			// EffigyEdit Add End
 
 			return TRUE
 		if ("set_color_preference")
@@ -321,7 +321,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		if("update_preview")
 			preview_pref = params["updated_preview"]
 			character_preview_view.update_body()
@@ -371,7 +371,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		// For the quirks in the prefs menu.
 		if ("get_quirks_balance")
 			return TRUE
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		var/delegation = preference_middleware.action_delegations[action]
@@ -473,7 +473,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	body = new
 
 	// Without this, it doesn't show up in the menu
-	body.appearance_flags |= KEEP_TOGETHER // EFFIGY EDIT CHANGE - Original: &= ~KEEP_TOGETHER
+	body.appearance_flags |= KEEP_TOGETHER // EffigyEdit Change - Original: &= ~KEEP_TOGETHER
 
 /datum/preferences/proc/create_character_profiles()
 	var/list/profiles = list()
@@ -524,11 +524,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	for(var/key in augments)
 		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
 		bal -= aug.cost
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 	return bal
 
 /datum/preferences/proc/GetPositiveQuirkCount()
@@ -597,7 +597,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /// Applies the given preferences to a human mob.
 /datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, visuals_only = FALSE)
-	character.dna.features = MANDATORY_FEATURE_LIST // EFFIGY EDIT ADD
+	character.dna.features = MANDATORY_FEATURE_LIST // EffigyEdit Add
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
@@ -605,10 +605,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 		preference.apply_to_human(character, read_preference(preference.type), src)
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.apply_to_human(character, src, visuals_only = visuals_only)
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	character.dna.real_name = character.real_name
 

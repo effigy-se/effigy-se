@@ -175,7 +175,7 @@
 	cost = 3
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove START
 /*
 /datum/uplink_item/device_tools/suspiciousphone
 	name = "Protocol CRAB-17 Phone"
@@ -186,7 +186,7 @@
 	cost = 7
 	limited_stock = 1
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/uplink_item/device_tools/binary
 	name = "Binary Translator Key"

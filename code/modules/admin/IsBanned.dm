@@ -32,7 +32,7 @@
 	if(GLOB.admin_datums[ckey] || GLOB.deadmins[ckey])
 		admin = TRUE
 
-	// EFFIGY EDIT REMOVE START (Panic Bunker)
+	// EffigyEdit Remove START (Panic Bunker)
 	/*
 	if(!real_bans_only && !admin && CONFIG_GET(flag/panic_bunker) && !CONFIG_GET(flag/panic_bunker_interview))
 		var/datum/db_query/query_client_in_db = SSdbcore.NewQuery(
@@ -54,7 +54,7 @@
 
 		qdel(query_client_in_db)
 	*/
-	// EFFIGY EDIT REMOVE END (Panic Bunker)
+	// EffigyEdit Remove END (Panic Bunker)
 
 	//Whitelist
 	if(!real_bans_only && !C && CONFIG_GET(flag/usewhitelist))

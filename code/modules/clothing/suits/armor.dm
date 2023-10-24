@@ -145,7 +145,7 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Greatcoat" = list(
@@ -180,7 +180,7 @@
 			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)
 	)
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 
 /datum/armor/armor_hos
 	melee = 30
@@ -213,7 +213,7 @@
 	icon_state = "hosformal"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS
-	current_skin = "hosformal" // EFFIGY EDIT CHANGE
+	current_skin = "hosformal" // EffigyEdit Change
 
 /obj/item/clothing/suit/armor/hos/hos_formal/Initialize(mapload)
 	. = ..()

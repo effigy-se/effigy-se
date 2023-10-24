@@ -123,7 +123,7 @@
 	var/datum/sprite_accessory/socks = null
 
 	/// Bitflag-based variable to store which parts of the uniform have been modified by the loadout, to avoid them being overriden again.
-	var/modified_outfit_slots = NONE // EFFIGY EDIT ADD
+	var/modified_outfit_slots = NONE // EffigyEdit Add
 
 /**
  * Called at the start of the equip proc
@@ -339,7 +339,7 @@
 		item.add_fingerprint(user, ignoregloves = TRUE)
 	return TRUE
 
-// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 /**
  * Copies the outfit from a human to itself.
  **/
@@ -383,7 +383,7 @@
 	for(var/obj/item/item in user.held_items)
 		item.add_fingerprint(user, ignoregloves = TRUE)
 	return TRUE
-// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 /// Return a list of all the types that are required to disguise as this outfit type
 /datum/outfit/proc/get_chameleon_disguise_info()

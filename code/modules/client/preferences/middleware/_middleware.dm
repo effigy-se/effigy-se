@@ -51,7 +51,7 @@
 /datum/preference_middleware/proc/on_new_character(mob/user)
 	return
 
-// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 /// Called after every update_preference, returns TRUE if this handled it.
 /datum/preference_middleware/proc/post_set_preference(mob/user, preference, value)
 	return FALSE
@@ -61,4 +61,4 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(FALSE)
 	return
-// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End

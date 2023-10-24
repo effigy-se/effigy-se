@@ -50,7 +50,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 	data["red_alert"] = (SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED) ? 1 : 0
 	data["emergency_maint"] = GLOB.emergency_access
 	data["bsa_unlock"] = GLOB.bsa_unlock
-	data["eng_override"] = GLOB.force_eng_override // EFFIGY EDIT ADD (Airlock Override)
+	data["eng_override"] = GLOB.force_eng_override // EffigyEdit Add (Airlock Override)
 	return data
 
 /obj/machinery/keycard_auth/ui_status(mob/user)

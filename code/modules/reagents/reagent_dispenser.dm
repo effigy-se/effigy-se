@@ -74,10 +74,10 @@
 	. = ..()
 	if(. && atom_integrity > 0)
 		if(tank_volume && (damage_flag == BULLET || damage_flag == LASER))
-			// EFFIGY EDIT CHANGE START
+			// EffigyEdit Change START
 			var/guaranteed_violent = (damage_flag == BULLET || damage_flag == LASER)
 			boom(damage_type, guaranteed_violent)
-			// EFFIGY EDIT CHANGE END
+			// EffigyEdit Change END
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user, params)
 	if(W.is_refillable())
@@ -159,7 +159,7 @@
  * This is most dangerous for fuel tanks, which will explosion().
  * Other dispensers will scatter their contents within range.
  */
-/obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) // EFFIGY EDIT CHANGE
+/obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) // EffigyEdit Change
 	if(QDELETED(src))
 		return // little bit of sanity sauce before we wreck ourselves somehow
 	var/datum/reagent/fuel/volatiles = reagents.has_reagent(/datum/reagent/fuel)
@@ -273,24 +273,24 @@
 		. = ..()
 
 /obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
-	boom(guaranteed_violent = TRUE) // EFFIGY EDIT CHANGE
+	boom(guaranteed_violent = TRUE) // EffigyEdit Change
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
-	boom(guaranteed_violent = TRUE) // EFFIGY EDIT CHANGE
+	boom(guaranteed_violent = TRUE) // EffigyEdit Change
 	return TRUE
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
-	boom(guaranteed_violent = TRUE) // EFFIGY EDIT CHANGE
+	boom(guaranteed_violent = TRUE) // EffigyEdit Change
 
 /obj/structure/reagent_dispensers/fueltank/zap_act(power, zap_flags)
 	. = ..() //extend the zap
 	if(ZAP_OBJ_DAMAGE & zap_flags)
-		boom(guaranteed_violent = TRUE) // EFFIGY EDIT CHANGE
+		boom(guaranteed_violent = TRUE) // EffigyEdit Change
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/hitting_projectile)
 	if(hitting_projectile.damage > 0 && ((hitting_projectile.damage_type == BURN) || (hitting_projectile.damage_type == BRUTE)))
 		log_bomber(hitting_projectile.firer, "detonated a", src, "via projectile")
-		boom(guaranteed_violent = TRUE) // EFFIGY EDIT CHANGE
+		boom(guaranteed_violent = TRUE) // EffigyEdit Change
 		return hitting_projectile.on_hit(src, 0)
 
 	// we override parent like this because otherwise we won't actually properly log the fact that a projectile caused this welding tank to explode.
@@ -314,7 +314,7 @@
 		else
 			user.visible_message(span_danger("[user] catastrophically fails at refilling [user.p_their()] [I.name]!"), span_userdanger("That was stupid of you."))
 			log_bomber(user, "detonated a", src, "via welding tool")
-			boom(guaranteed_violent = TRUE) // EFFIGY EDIT CHANGE
+			boom(guaranteed_violent = TRUE) // EffigyEdit Change
 		return
 
 	return ..()
@@ -325,14 +325,14 @@
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
-// EFFIGY EDIT ADD START
-/obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE) // EFFIGY EDIT CHANGE
+// EffigyEdit Add -
+/obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE) // EffigyEdit Change
 	if(damage_type == BURN || guaranteed_violent)
 		explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12)
 		qdel(src)
 	else
 		. = ..()
-// EFFIGY EDIT ADD END
+// EffigyEdit Add End
 
 /// Wall mounted dispeners, like pepper spray or virus food. Not a normal tank, and shouldn't be able to be turned into a plumbed stationary one.
 /obj/structure/reagent_dispensers/wall

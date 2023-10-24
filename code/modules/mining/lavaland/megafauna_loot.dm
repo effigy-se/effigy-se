@@ -268,7 +268,7 @@
 	greyscale_colors = "#4d4d4d#808080"
 	greyscale_config = /datum/greyscale_config/heck_suit
 	greyscale_config_worn = /datum/greyscale_config/heck_suit/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/heck_suit/worn/digi // EFFIGY EDIT ADD
+	greyscale_config_worn_digi = /datum/greyscale_config/heck_suit/worn/digi // EffigyEdit Add
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /datum/armor/hooded_hostile_environment
@@ -314,7 +314,7 @@
 	greyscale_colors = "#4d4d4d#808080#ff3300"
 	greyscale_config = /datum/greyscale_config/heck_helmet
 	greyscale_config_worn = /datum/greyscale_config/heck_helmet/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/heck_helmet/worn/snouted // EFFIGY EDIT ADD
+	greyscale_config_worn_digi = /datum/greyscale_config/heck_helmet/worn/snouted // EffigyEdit Add
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/head/hooded/hostile_environment/Initialize(mapload)
@@ -733,7 +733,7 @@
 		return
 
 	var/mob/living/carbon/human/consumer = user
-	var/random = rand(2,4) // EFFIGY EDIT CHANGE
+	var/random = rand(2,4) // EffigyEdit Change
 
 	switch(random)
 		if(1)

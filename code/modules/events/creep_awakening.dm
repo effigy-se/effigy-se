@@ -1,4 +1,4 @@
-/* /// EFFIGY EDIT REMOVAL - #228 - Obsession kinda lame tbh
+/* EffigyEdit Remove - #228 - Obsession kinda lame tbh
 /datum/round_event_control/obsessed
 	name = "Obsession Awakening"
 	typepath = /datum/round_event/obsessed
@@ -25,4 +25,4 @@
 		H.gain_trauma(/datum/brain_trauma/special/obsessed)
 		announce_to_ghosts(H)
 		break
-*/
+*/// EffigyEdit Remove End

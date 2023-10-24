@@ -267,10 +267,10 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 				channel_to_add = RADIO_TOKEN_SUPPLY
 			if (RADIO_CHANNEL_SERVICE)
 				channel_to_add = RADIO_TOKEN_SERVICE
-			/// EFFIGY EDIT BEGIN - BROADCAST TEAM
+			// EffigyEdit Add - BROADCAST TEAM
 			if (RADIO_CHANNEL_BROADCAST)
 				channel_to_add = RADIO_TOKEN_BROADCAST
-			/// EFFIGY EDIT END
+			// EffigyEdit Add End
 
 		if (channel_to_add)
 			parrot_source.available_channels += channel_to_add

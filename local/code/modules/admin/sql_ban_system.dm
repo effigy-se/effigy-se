@@ -397,7 +397,7 @@
 				ROLE_TRAITOR,
 				ROLE_WIZARD,
 			),
-			// EFFIGY EDIT ADD START
+			// EffigyEdit Add -
 			"Expanded Roles" = list(
 				BAN_PACIFICATION,
 				BAN_DONOTREVIVE,
@@ -408,7 +408,7 @@
 				BAN_EORG,
 				BAN_ANTAGONIST,
 				BAN_LOOC,
-			// EFFIGY EDIT ADD END
+			// EffigyEdit Add End
 			),
 		)
 		for(var/department in long_job_lists)
@@ -648,12 +648,12 @@
 
 	notify_all_banned_players(player_ckey, player_ip, player_cid, player_ban_notification, other_ban_notification, is_server_ban, applies_to_admins)
 
-	// EFFIGY EDIT ADD START (EXPANDED BANS)
+	// EffigyEdit Add - EXPANDED BANS
 	if(BAN_PACIFICATION in roles_to_ban)
 		var/client/C = GLOB.directory[player_ckey]
 		if(ismob(C.mob))
 			ADD_TRAIT(C.mob, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
-	// EFFIGY EDIT ADD END (EXPANDED BANS)
+	// EffigyEdit Add End
 
 	var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]")
 

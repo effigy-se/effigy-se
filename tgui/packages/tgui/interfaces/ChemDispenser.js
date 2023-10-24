@@ -125,7 +125,7 @@ export const ChemDispenser = (props, context) => {
             {recipes.length === 0 && <Box color="light-gray">No recipes.</Box>}
           </Box>
         </Section>
-        <Button // EFFIGY EDIT ADD
+        <Button // EffigyEdit Add
           icon="pen"
           content="Custom Amount"
           onClick={() => act('custom_amount')}

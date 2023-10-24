@@ -1,6 +1,6 @@
-#define LOG_BURN_TIMER 5000 // EFFIGY EDIT CHANGE
+#define LOG_BURN_TIMER 5000 // EffigyEdit Change
 #define PAPER_BURN_TIMER 5
-#define MAXIMUM_BURN_TIMER 100000 // EFFIGY EDIT CHANGE
+#define MAXIMUM_BURN_TIMER 100000 // EffigyEdit Change
 
 /obj/structure/fireplace
 	name = "fireplace"
@@ -95,15 +95,15 @@
 		return
 
 	switch(burn_time_remaining())
-		if(0 to 19999) // EFFIGY EDIT CHANGE original: if(0 to 500)
+		if(0 to 19999) // EffigyEdit Change original: if(0 to 500)
 			. += "fireplace_fire0"
-		if(20000 to 39999) // EFFIGY EDIT CHANGE original: if(500 to 1000)
+		if(20000 to 39999) // EffigyEdit Change original: if(500 to 1000)
 			. += "fireplace_fire1"
-		if(40000 to 59999) // EFFIGY EDIT CHANGE original: if(1000 to 1500)
+		if(40000 to 59999) // EffigyEdit Change original: if(1000 to 1500)
 			. += "fireplace_fire2"
-		if(60000 to 79999) // EFFIGY EDIT CHANGE original: if(1500 to 2000)
+		if(60000 to 79999) // EffigyEdit Change original: if(1500 to 2000)
 			. += "fireplace_fire3"
-		if(80000 to MAXIMUM_BURN_TIMER) // EFFIGY EDIT CHANGE original: if(2000 to MAXIMUM_BURN_TIMER)
+		if(80000 to MAXIMUM_BURN_TIMER) // EffigyEdit Change original: if(2000 to MAXIMUM_BURN_TIMER)
 			. += "fireplace_fire4"
 	. += "fireplace_glow"
 
@@ -113,15 +113,15 @@
 		return
 
 	switch(burn_time_remaining())
-		if(0 to 19999) // EFFIGY EDIT CHANGE original: if(0 to 500)
+		if(0 to 19999) // EffigyEdit Change original: if(0 to 500)
 			set_light(1)
-		if(20000 to 39999) // EFFIGY EDIT CHANGE original: if(500 to 1000)
+		if(20000 to 39999) // EffigyEdit Change original: if(500 to 1000)
 			set_light(2)
-		if(40000 to 59999) // EFFIGY EDIT CHANGE original: if(1000 to 1500)
+		if(40000 to 59999) // EffigyEdit Change original: if(1000 to 1500)
 			set_light(3)
-		if(60000 to 79999) // EFFIGY EDIT CHANGE original: if(1500 to 2000)
+		if(60000 to 79999) // EffigyEdit Change original: if(1500 to 2000)
 			set_light(4)
-		if(80000 to MAXIMUM_BURN_TIMER) // EFFIGY EDIT CHANGE original: if(2000 to MAXIMUM_BURN_TIMER)
+		if(80000 to MAXIMUM_BURN_TIMER) // EffigyEdit Change original: if(2000 to MAXIMUM_BURN_TIMER)
 			set_light(6)
 
 /obj/structure/fireplace/process(seconds_per_tick)

@@ -5,7 +5,7 @@
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	stat = DEAD
-	//hud_type = /datum/hud/new_player // EFFIGY EDIT REMOVE
+	//hud_type = /datum/hud/new_player // EffigyEdit Remove
 	hud_possible = list()
 
 	var/ready = FALSE
@@ -45,7 +45,7 @@
 
 /mob/dead/new_player/prepare_huds()
 	return
-// EFFIGY EDIT REMOVE START - SPLASH
+// EffigyEdit Remove START - SPLASH
 /*
 /mob/dead/new_player/Topic(href, href_list)
 	if (usr != src)
@@ -66,7 +66,7 @@
 		vote_on_poll_handler(poll, href_list)
 
 */
-// EFFIGY EDIT REMOVE END - SPLASH
+// EffigyEdit Remove END - SPLASH
 
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
@@ -78,13 +78,13 @@
 	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
 		less_input_message = " - Notice: Observer freelook is currently disabled."
 	// Don't convert this to tgui please, it's way too important
-	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No") // EFFIGY EDIT CHANGE - SPLASH
+	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No") // EffigyEdit Change - SPLASH
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
-		show_title_screen() // EFFIGY EDIT ADD - SPLASH
+		show_title_screen() // EffigyEdit Add - SPLASH
 		return FALSE
 
-	hide_title_screen() // EFFIGY EDIT ADD - SPLASH
+	hide_title_screen() // EffigyEdit Add - SPLASH
 	var/mob/dead/observer/observer = new()
 	spawning = TRUE
 
@@ -199,7 +199,7 @@
 		tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
 		return FALSE
 
-	hide_title_screen() // EFFIGY EDIT ADD - SPLASH
+	hide_title_screen() // EffigyEdit Add - SPLASH
 	mind.late_joiner = TRUE
 	var/atom/destination = mind.assigned_role.get_latejoin_spawn_point()
 	if(!destination)
@@ -238,19 +238,19 @@
 		humanc = character //Let's retypecast the var to be human,
 
 	if(humanc) //These procs all expect humans
-		// EFFIGY EDIT CHANGE START - CUSTOMIZATION
+		// EffigyEdit Change START - CUSTOMIZATION
 		var/chosen_rank = rank // put alt job here
 		GLOB.manifest.inject(humanc, humanc.client)
 		if(SSshuttle.arrivals)
 			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
 			announce_arrival(humanc, chosen_rank)
-		// EFFIGY EDIT CHANGE END - CUSTOMIZATION
+		// EffigyEdit Change END - CUSTOMIZATION
 		AddEmploymentContract(humanc)
 
 		humanc.increment_scar_slot()
 		humanc.load_persistent_scars()
-		SSpersistence.load_modular_persistence(humanc.get_organ_slot(ORGAN_SLOT_BRAIN)) // EFFIGY EDIT ADDITION - #184 Modular Persistence
+		SSpersistence.load_modular_persistence(humanc.get_organ_slot(ORGAN_SLOT_BRAIN)) // EffigyEdit AddITION - #184 Modular Persistence
 
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)
@@ -276,7 +276,7 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CREWMEMBER_JOINED, character, rank)
 
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	if(humanc)
 		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(humanc?.client?.prefs?.loadout_list))
 			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))
@@ -295,7 +295,7 @@
 /mob/dead/new_player/proc/create_character(atom/destination)
 	spawning = TRUE
 
-	hide_title_screen() // EFFIGY EDIT ADD - SPLASH
+	hide_title_screen() // EffigyEdit Add - SPLASH
 
 	mind.active = FALSE //we wish to transfer the key manually
 	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)

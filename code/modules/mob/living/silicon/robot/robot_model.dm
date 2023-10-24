@@ -226,9 +226,9 @@
 	cyborg.diag_hud_set_aishell()
 	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
-	// EFFIGY EDIT ADD START (Borgs)
+	// EffigyEdit Add - Borgs
 	new_model.update_dogborg()
-	// EFFIGY EDIT ADD END (Borgs)
+	// EffigyEdit Add End
 
 	INVOKE_ASYNC(new_model, PROC_REF(do_transform_animation))
 	qdel(src)
@@ -244,29 +244,29 @@
 		for(var/skin in borg_skins)
 			var/list/details = borg_skins[skin]
 			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
-			// EFFIGY EDIT ADD START (Borgs)
+			// EffigyEdit Add - Borgs
 			if (!isnull(details[SKIN_FEATURES]))
 				if (R_TRAIT_WIDE in details[SKIN_FEATURES])
 					var/image/reskin = reskin_icons[skin]
 					reskin.pixel_x -= 16
-			// EFFIGY EDIT ADD END (Borgs)
+			// EffigyEdit Add End
 		var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), cyborg, old_model), radius = 38, require_near = TRUE)
 		if(!borg_skin)
 			return FALSE
 		var/list/details = borg_skins[borg_skin]
-		// EFFIGY EDIT ADD START (Borgs)
+		// EffigyEdit Add - Borgs
 		if(cyborg.hasExpanded && (((R_TRAIT_WIDE in details[SKIN_FEATURES]) && (R_TRAIT_WIDE in model_features)) || ((R_TRAIT_TALL in details[SKIN_FEATURES]) && (R_TRAIT_TALL in model_features))))
 			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
 			return FALSE
-		// EFFIGY EDIT ADD END (Borgs)
+		// EffigyEdit Add En
 		if(!isnull(details[SKIN_ICON_STATE]))
 			cyborg_base_icon = details[SKIN_ICON_STATE]
-		// EFFIGY EDIT CHANGE START (Borgs)
+		// EffigyEdit Change - Borgs
 		if(!isnull(details[SKIN_ICON]))
 			cyborg.icon = details[SKIN_ICON]
 			cyborg_icon_override = details[SKIN_ICON]
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
-		// EFFIGY EDIT CHANGE END (Borgs)
+		// EffigyEdit Change End
 		if(!isnull(details[SKIN_PIXEL_Y]))
 			cyborg.base_pixel_y = details[SKIN_PIXEL_Y]
 		if(!isnull(details[SKIN_LIGHT_KEY]))
@@ -275,10 +275,10 @@
 			hat_offset = details[SKIN_HAT_OFFSET]
 		if(!isnull(details[SKIN_TRAITS]))
 			model_traits += details[SKIN_TRAITS]
-		// EFFIGY EDIT ADD START (Borgs)
+		// EffigyEdit Add - Borgs
 		if(!isnull(details[SKIN_FEATURES]))
 			model_features += details[SKIN_FEATURES]
-		// EFFIGY EDIT ADD END (Borgs)
+		// EffigyEdit Add End
 	for(var/i in old_model.added_modules)
 		added_modules += i
 		old_model.added_modules -= i
@@ -381,14 +381,14 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		// EFFIGY EDIT CHANGE (Borgs) - Removed standard tools for these.
+		// EffigyEdit Change (Borgs) - Removed standard tools for these.
 		/obj/item/screwdriver/cyborg/power,
 		/obj/item/crowbar/cyborg/power,
-		// EFFIGY EDIT CHANGE (Borgs) - Removed standard tools for these.
+		// EffigyEdit Change (Borgs) - Removed standard tools for these.
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
-		/obj/item/holosign_creator/atmos, // EFFIGY EDIT CHANGE (Borgs)
+		/obj/item/holosign_creator/atmos, // EffigyEdit Change (Borgs)
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -820,7 +820,7 @@
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
 		/obj/item/reagent_containers/condiment/enzyme,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/syringe, //Effigy Edit (Borgs)
+		/obj/item/reagent_containers/syringe, // EffigyEdit Add - BORGS
 		/obj/item/rsf,
 		/obj/item/storage/bag/tray,
 		/obj/item/pen,

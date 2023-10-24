@@ -447,7 +447,7 @@
 #define OFFSET_HELD "held"
 
 //MINOR TWEAKS/MISC
-#define AGE_MIN 18 //youngest a character can be // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+#define AGE_MIN 18 //youngest a character can be // EffigyEdit Change Customization
 #define AGE_MAX 85 //oldest a character can be
 #define AGE_MINOR 20 //legal age of space drinking and smoking
 #define WIZARD_AGE_MIN 30 //youngest a wizard can be
@@ -715,7 +715,7 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// This layer is used for things that shouldn't be over clothes, but should be over mutations
 #define BODY_FRONT_UNDER_CLOTHES 32
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 31 // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) - ORIGINAL: 25
+#define UNIFORM_LAYER 31 // EffigyEdit Change Customization - ORIGINAL: 25
 // If you need a comment to tell you what these layers are, I can't help you
 #define ANUS_LAYER 30
 #define VAGINA_LAYER 29
@@ -826,12 +826,12 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 /// Draws overlay on the BODY_BEHIND_LAYER
 #define EXTERNAL_BEHIND (1 << 2)
 
-// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 /// Draws organ on the BODY_FRONT_UNDER_CLOTHES
 #define EXTERNAL_FRONT_UNDER_CLOTHES (1 << 4)
 /// Draws organ on the ABOVE_BODY_FRONT_HEAD_LAYER
 #define EXTERNAL_FRONT_OVER (1 << 5)
-// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND

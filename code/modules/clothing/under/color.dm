@@ -5,7 +5,7 @@
 	greyscale_colors = "#3f3f3f"
 	greyscale_config = /datum/greyscale_config/jumpsuit
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/worn/digi // EFFIGY EDIT ADD (Digi)
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/worn/digi // EffigyEdit Add (Digi)
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/inhand_right
 	icon = 'icons/obj/clothing/under/color.dmi'
@@ -21,7 +21,7 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	icon_state = "jumpskirt"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	greyscale_config_worn_digi = null // EFFIGY EDIT ADD (Digi)
+	greyscale_config_worn_digi = null // EffigyEdit Add (Digi)
 
 /// Returns a random, acceptable jumpsuit typepath
 /proc/get_random_jumpsuit()

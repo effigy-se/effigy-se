@@ -659,7 +659,7 @@
 		/obj/machinery/vending/modularpc = "Deluxe Silicate Selections",
 		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor",
-		/obj/machinery/vending/dorms = "LustWish", // EFFIGY EDIT CHANGE
+		/obj/machinery/vending/dorms = "LustWish", // EffigyEdit Change
 		)
 
 /obj/item/circuitboard/machine/vendor/screwdriver_act(mob/living/user, obj/item/tool)
