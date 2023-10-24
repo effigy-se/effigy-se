@@ -484,10 +484,12 @@
 	. = ..()
 	if(unscrewed)
 		return
-	if(broadcasting && overlay_mic_idle)
-		. += overlay_mic_idle
+	//if(broadcasting && overlay_mic_idle) // EffigyEdit Change - Move below listening
+	//	. += overlay_mic_idle
 	if(listening && overlay_speaker_idle)
 		. += overlay_speaker_idle
+	if(broadcasting && overlay_mic_idle)
+		. += overlay_mic_idle
 
 /obj/item/radio/screwdriver_act(mob/living/user, obj/item/tool)
 	add_fingerprint(user)
