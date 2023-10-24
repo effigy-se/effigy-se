@@ -822,7 +822,7 @@
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-	weight = 0 // EFFIGY EDIT #228 - Obsession is cringe. Original: 4
+	weight = 0 // EffigyEdit Change #228 - Obsession is cringe. Original: 4
 	cost = 3 // Doesn't have the same impact on rounds as revenants, dragons, sentient disease (10) or syndicate infiltrators (5).
 	repeatable = TRUE
 

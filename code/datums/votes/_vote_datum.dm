@@ -10,7 +10,7 @@
 	/// If supplied, an override question will be displayed instead of the name of the vote.
 	var/override_question
 	/// The sound effect played to everyone when this vote is initiated.
-	var/vote_sound = 'sound/misc/announce_dig.ogg' // EFFIGY EDIT CHANGE
+	var/vote_sound = 'sound/misc/announce_dig.ogg' // EffigyEdit Change
 	/// A list of default choices we have for this vote.
 	var/list/default_choices
 	/// Does the name of this vote contain the word "vote"?

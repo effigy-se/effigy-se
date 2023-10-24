@@ -1,5 +1,5 @@
 GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
-GLOBAL_LIST_EMPTY(objectives) // EFFIGY EDIT ADD (#46 - Cryo)
+GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 
 /datum/objective
 	var/datum/mind/owner //The primary owner of the objective. !!SOMEWHAT DEPRECATED!! Prefer using 'team' for new code.
@@ -17,13 +17,13 @@ GLOBAL_LIST_EMPTY(objectives) // EFFIGY EDIT ADD (#46 - Cryo)
 	var/admin_grantable = FALSE
 
 /datum/objective/New(text)
-	GLOB.objectives += src // EFFIGY EDIT ADD (#46 - Cryo)
+	GLOB.objectives += src // EffigyEdit Add (#46 - Cryo)
 	if(text)
 		explanation_text = text
 
 //Apparently objectives can be qdel'd. Learn a new thing every day
 /datum/objective/Destroy()
-	GLOB.objectives -= src // EFFIGY EDIT ADD (#46 - Cryo)
+	GLOB.objectives -= src // EffigyEdit Add (#46 - Cryo)
 	return ..()
 
 /datum/objective/proc/get_owners() // Combine owner and team into a single list.

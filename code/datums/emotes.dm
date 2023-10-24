@@ -58,12 +58,12 @@
 	var/can_message_change = FALSE
 	/// How long is the cooldown on the audio of the emote, if it has one?
 	var/audio_cooldown = 2 SECONDS
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	var/sound_volume = 25 //Emote volume
 	var/list/allowed_species
 	/// Are silicons explicitely allowed to use this emote?
 	var/silicon_allowed = FALSE
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -104,10 +104,10 @@
 		return
 
 	user.log_message(msg, LOG_EMOTE)
-	// EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Change START (#3 Customization - Ported from Skyrat)
 	var/space = should_have_space_before_emote(html_decode(msg)[1]) ? " " : ""
 	var/dchatmsg = "<b>[user]</b>[space][msg]"
-	// EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Change END (#3 Customization - Ported from Skyrat)
 
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && should_play_sound(user, intentional) && !TIMER_COOLDOWN_CHECK(user, type))
@@ -130,7 +130,7 @@
 			if(viewer.is_blind() && !viewer.can_hear())
 				to_chat(viewer, msg)
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 	if(hologram)
 		if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE))
@@ -141,7 +141,7 @@
 			for(var/mob/living/viewer in viewers(world.view, hologram))
 				if(viewer.is_blind() && !viewer.can_hear())
 					to_chat(viewer, msg)
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 
 	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 
@@ -282,7 +282,7 @@
 	if(HAS_TRAIT(user, TRAIT_EMOTEMUTE))
 		return FALSE
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	if(allowed_species)
 		var/check = FALSE
 		if(silicon_allowed && issilicon(user))
@@ -292,7 +292,7 @@
 			if(sender.dna.species.type in allowed_species)
 				check = TRUE
 		return check
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 
 	return TRUE
 

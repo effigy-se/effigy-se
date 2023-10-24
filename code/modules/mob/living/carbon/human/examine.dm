@@ -9,10 +9,10 @@
 	var/obscure_name
 	var/obscure_examine
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 
 	if(isliving(user))
 		var/mob/living/L = user
@@ -22,7 +22,7 @@
 			obscure_name = TRUE
 			obscure_examine = TRUE
 
-	//EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
+	//EffigyEdit Change START (#3 Customization - Ported from Skyrat)
 
 	var/species_visible
 	var/species_name_string
@@ -41,16 +41,16 @@
 	else
 		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
 
-	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]", EXAMINE_SECTION_BREAK) // EFFIGY EDIT CHANGE
+	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]", EXAMINE_SECTION_BREAK) // EffigyEdit Change
 	if(species_visible) //If they have a custom species shown, show the real one too
 		if(dna.features["custom_species"])
 			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
 	else
 		. += "You can't make out what species they are."
-	// EFFIGY EDIT CHANGE END
+	// EffigyEdit Change END
 
 
-	// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Remove START (#3 Customization - Ported from Skyrat)
 	/*
 	var/apparent_species
 	if(dna?.species && !skipface)
@@ -65,7 +65,7 @@
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	*/
-	// EFFIGY EDIT REMOVE END
+	// EffigyEdit Remove END
 
 
 	//uniform
@@ -146,7 +146,7 @@
 
 		. += wear_id.get_id_examine_strings(user)
 
-	. += EXAMINE_SECTION_BREAK // EFFIGY EDIT ADD
+	. += EXAMINE_SECTION_BREAK // EffigyEdit Add
 
 	//Status effects
 	var/list/status_examines = get_status_effect_examinations()
@@ -382,7 +382,7 @@
 				msg += "[span_deadsay("[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.")]\n"
 			else if(!client)
 			//	msg += "[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.\n"
-				msg += "[t_He] [t_has] a blank, absent-minded stare and [t_has] been completely unresponsive to anything for [round(((world.time - lastclienttime) / (1 MINUTES)),1)] minutes. [t_He] may snap out of it soon.\n" // EFFIGY EDIT ADD (#46 - Cryo)
+				msg += "[t_He] [t_has] a blank, absent-minded stare and [t_has] been completely unresponsive to anything for [round(((world.time - lastclienttime) / (1 MINUTES)),1)] minutes. [t_He] may snap out of it soon.\n" // EffigyEdit Add (#46 - Cryo)
 
 	var/scar_severity = 0
 	for(var/i in all_scars)
@@ -438,10 +438,10 @@
 			if(target_record)
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1;examine_time=[world.time]'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1;examine_time=[world.time]'>\[See quirks\]</a>"
-			// EFFIGY EDIT ADD START - RECORDS
+			// EffigyEdit Add START - RECORDS
 			if(target_record && length(target_record.past_medical_records) > RECORDS_INVISIBLE_THRESHOLD)
 				. += "<a href='?src=[REF(src)];hud=m;medrecords=1;examine_time=[world.time]'>\[View medical records\]</a>"
-			// EFFIGY EDIT ADD END - RECORDS
+			// EffigyEdit Add END - RECORDS
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			if(!user.stat && user != src)
@@ -466,7 +466,7 @@
 		. += span_info("<b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
 	. += "</span>"
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	for(var/genital in possible_genitals)
 		if(dna.species.mutant_bodyparts[genital])
 			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
@@ -526,10 +526,10 @@
 		return
 	var/age_text
 	switch(age)
-		if(-INFINITY to 17) // EFFIGY EDIT CHANGE
-			age_text = "too young to be here" // EFFIGY EDIT CHANGE
+		if(-INFINITY to 17) // EffigyEdit Change
+			age_text = "too young to be here" // EffigyEdit Change
 		if(18 to 25)
-			age_text = "a young adult" // EFFIGY EDIT CHANGE
+			age_text = "a young adult" // EffigyEdit Change
 		if(26 to 35)
 			age_text = "of adult age"
 		if(36 to 55)

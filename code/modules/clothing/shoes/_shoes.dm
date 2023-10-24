@@ -3,7 +3,7 @@
 	icon = 'icons/obj/clothing/shoes.dmi'
 	lefthand_file = 'icons/mob/inhands/clothing/shoes_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing/shoes_righthand.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION // EFFIGY EDIT ADD
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION // EffigyEdit Add
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 
@@ -45,7 +45,7 @@
 			playsound(user, 'sound/weapons/genhit2.ogg', 50, TRUE)
 		return BRUTELOSS
 
-// EFFIGY EDIT REMOVE START (Digi)
+// EffigyEdit Remove START (Digi)
 /*
 /obj/item/clothing/shoes/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
 	. = ..()
@@ -60,7 +60,7 @@
 		else
 			. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /obj/item/clothing/shoes/examine(mob/user)
 	. = ..()
@@ -167,12 +167,12 @@
 			to_chat(user, span_warning("You're already interacting with [src]!"))
 			return
 		user.visible_message(span_notice("[user] begins [tied ? "unknotting" : "tying"] the laces of [user.p_their()] [src.name]."), span_notice("You begin [tied ? "unknotting" : "tying"] the laces of your [src.name]..."))
-		// EFFIGY EDIT ADD START
+		// EffigyEdit Add START
 		var/tie_time = lace_time
 		if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
 			tie_time *= 0.5
 		if(do_after(user, tie_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
-		// EFFIGY EDIT ADD END
+		// EffigyEdit Add END
 			to_chat(user, span_notice("You [tied ? "unknot" : "tie"] the laces of your [src.name]."))
 			if(tied == SHOES_UNTIED)
 				adjust_laces(SHOES_TIED, user)
@@ -195,10 +195,10 @@
 		to_chat(user, span_notice("You quietly set to work [tied ? "untying" : "knotting"] [loc]'s [src.name]..."))
 		if(HAS_TRAIT(user, TRAIT_CLUMSY)) // based clowns trained their whole lives for this
 			mod_time *= 0.75
-		// EFFIGY EDIT ADD START
+		// EffigyEdit Add START
 		if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS)) // Clowns with thieving gloves will be a menace
 			mod_time *= 0.5
-		// EFFIGY EDIT ADD END
+		// EffigyEdit Add END
 
 		if(do_after(user, mod_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
 			to_chat(user, span_notice("You [tied ? "untie" : "knot"] the laces on [loc]'s [src.name]."))
@@ -287,12 +287,12 @@
 		return
 
 	to_chat(user, span_notice("You begin [tied ? "untying" : "tying"] the laces on [src]..."))
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add START
 	var/tie_time = lace_time
 	if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
 		tie_time *= 0.5
 	if(do_after(user, lace_time, target = src,extra_checks = CALLBACK(src, PROC_REF(still_shoed), user)))
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add END
 		to_chat(user, span_notice("You [tied ? "untie" : "tie"] the laces on [src]."))
 		adjust_laces(tied ? SHOES_UNTIED : SHOES_TIED, user)
 

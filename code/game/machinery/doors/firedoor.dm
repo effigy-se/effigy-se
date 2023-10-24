@@ -277,10 +277,10 @@
 		stack_trace("We tried to check a gas_mixture that doesn't exist for its firetype, what are you DOING")
 		return
 
-	var/pressure = environment?.return_pressure() // EFFIGY EDIT ADD
+	var/pressure = environment?.return_pressure() // EffigyEdit Add
 	if(environment.temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
 		return FIRELOCK_ALARM_TYPE_HOT
-	if(environment.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE || pressure < WARNING_LOW_PRESSURE) // EFFIGY EDIT CHANGE (Add pressure)
+	if(environment.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE || pressure < WARNING_LOW_PRESSURE) // EffigyEdit Change (Add pressure)
 		return FIRELOCK_ALARM_TYPE_COLD
 	return
 

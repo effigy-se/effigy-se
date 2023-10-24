@@ -18,7 +18,7 @@
 	required_count = 2
 	wanted_types = list(/obj/item/oar = TRUE)
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove START
 /*
 /datum/bounty/item/mining/bone_axe
 	name = "Bone Axe"
@@ -26,7 +26,7 @@
 	reward = CARGO_CRATE_VALUE * 15
 	wanted_types = list(/obj/item/fireaxe/boneaxe = TRUE)
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/bounty/item/mining/bone_armor
 	name = "Bone Armor"
@@ -47,7 +47,7 @@
 	required_count = 3
 	wanted_types = list(/obj/item/clothing/accessory/talisman = TRUE)
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove START
 /*
 /datum/bounty/item/mining/bone_dagger
 	name = "Bone Daggers"
@@ -56,7 +56,7 @@
 	required_count = 3
 	wanted_types = list(/obj/item/knife/combat/bone = TRUE)
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/bounty/item/mining/polypore_mushroom
 	name = "Mushroom Bowl"

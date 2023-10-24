@@ -272,11 +272,11 @@
 	for(var/mob/candidate_mob as anything in group)
 		if(!candidate_mob.key || !candidate_mob.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (candidate_mob.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 		if(is_banned_from(candidate_mob.ckey, BAN_GHOST_TAKEOVER) || is_banned_from(candidate_mob.ckey, BAN_ANTAGONIST))
 			to_chat(candidate_mob, "There was a ghost prompt for: [question], unfortunately you are banned from ghost takeovers.")
 			continue
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 		if(be_special_flag)
 			if(!(candidate_mob.client.prefs) || !(be_special_flag in candidate_mob.client.prefs.be_special))
 				continue

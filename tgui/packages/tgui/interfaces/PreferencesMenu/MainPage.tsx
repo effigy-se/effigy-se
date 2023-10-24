@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { sendAct, useBackend, useLocalState } from '../../backend';
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from '../../components'; // EFFIGY EDIT CHANGE
+import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from '../../components'; // EffigyEdit Change
 import { createSetPreference, PreferencesMenuData, RandomSetting } from './data';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { RandomizationButton } from './RandomizationButton';
@@ -13,7 +13,7 @@ import { filterMap, sortBy } from 'common/collections';
 import { useRandomToggleState } from './useRandomToggleState';
 
 const CLOTHING_CELL_SIZE = 48;
-const CLOTHING_SIDEBAR_ROWS = 13.4; // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) Original 9
+const CLOTHING_SIDEBAR_ROWS = 13.4; // EffigyEdit Change (#3 Customization - Ported from Skyrat) Original 9
 
 const CLOTHING_SELECTION_CELL_SIZE = 48;
 const CLOTHING_SELECTION_WIDTH = 5.4;
@@ -22,7 +22,7 @@ const CLOTHING_SELECTION_MULTIPLIER = 5.2;
 const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
-  handleLoadout: () => void; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+  handleLoadout: () => void; // EffigyEdit Add (#3 Customization - Ported from Skyrat)
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -58,7 +58,7 @@ const CharacterControls = (props: {
         </Stack.Item>
       )}
       {props.handleLoadout && (
-        // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+        // EffigyEdit Add (#3 Customization - Ported from Skyrat)
         <Stack.Item>
           <Button
             onClick={props.handleLoadout}
@@ -553,13 +553,13 @@ export const MainPage = (
 
                   <Stack.Item grow>
                     <CharacterPreview
-                      height="80%" // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat) Original 100
+                      height="80%" // EffigyEdit Change (#3 Customization - Ported from Skyrat) Original 100
                       id={data.character_preview_view}
                     />
                   </Stack.Item>
 
                   <Stack.Item
-                    // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+                    // EffigyEdit Add (#3 Customization - Ported from Skyrat)
                     position="relative">
                     <Dropdown
                       width="100%"

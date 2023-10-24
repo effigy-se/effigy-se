@@ -58,7 +58,7 @@
 /proc/random_backpack()
 	return pick(GLOB.backpacklist)
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove START (#3 Customization - Ported from Skyrat)
 /*
 /proc/random_features()
 	if(!GLOB.tails_list.len)
@@ -114,7 +114,7 @@
 		"pod_hair" = pick(GLOB.pod_hair_list),
 	))
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove END (#3 Customization - Ported from Skyrat)
 
 /proc/random_hairstyle(gender)
 	switch(gender)
@@ -633,10 +633,10 @@ GLOBAL_LIST_EMPTY(species_list)
 		moblist += mob_to_sort
 	for(var/mob/living/basic/mob_to_sort in sortmob)
 		moblist += mob_to_sort
-	// EFFIGY EDIT START - SOULCATCHERS
+	// EffigyEdit Add - SOULCATCHERS
 	for(var/mob/living/soulcatcher_soul/mob_to_sort in sortmob)
 		moblist += mob_to_sort
-	// EFFIGY EDIT END - SOULCATCHERS
+	// EffigyEdit Add End
 	return moblist
 
 ///returns a mob type controlled by a specified ckey

@@ -99,7 +99,7 @@
 	/// The degree of pressure protection that mobs in list/contents have from the external environment, between 0 and 1
 	var/contents_pressure_protection = 0
 	/// Whether a user will face atoms on entering them with a mouse. Despite being a mob variable, it is here for performances
-	var/face_mouse = FALSE // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	var/face_mouse = FALSE // EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	/// The voice that this movable makes when speaking
 	var/voice
 
@@ -617,7 +617,7 @@
 	if(!direction)
 		direction = get_dir(src, newloc)
 
-	if(set_dir_on_move && dir != direction && update_dir && !face_mouse) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+	if(set_dir_on_move && dir != direction && update_dir && !face_mouse) // EffigyEdit Change (#3 Customization - Ported from Skyrat)
 		setDir(direction)
 
 	var/is_multi_tile_object = is_multi_tile_object(src)
@@ -743,7 +743,7 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!. && set_dir_on_move && update_dir && !face_mouse) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+				if(!. && set_dir_on_move && update_dir && !face_mouse) // EffigyEdit Change (#3 Customization - Ported from Skyrat)
 					setDir(first_step_dir)
 				else if(!inertia_moving)
 					newtonian_move(direct)
@@ -783,7 +783,7 @@
 
 	last_move = direct
 
-	if(set_dir_on_move && dir != direct && update_dir) // EFFIGY EDIT TODO (#3 Customization - Ported from Skyrat)
+	if(set_dir_on_move && dir != direct && update_dir) // EffigyEdit TODO - Customization
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE
@@ -1221,7 +1221,7 @@
 	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
 		return TRUE
 
-	if(locate(/obj/structure/spacevine) in range(1, get_turf(src))) //EFFIGY EDIT CHANGE (Allow walking when vines are around)
+	if(locate(/obj/structure/spacevine) in range(1, get_turf(src))) //EffigyEdit Change (Allow walking when vines are around)
 		return TRUE
 
 	return FALSE

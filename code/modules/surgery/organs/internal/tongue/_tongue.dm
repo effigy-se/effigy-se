@@ -167,7 +167,7 @@
 
 /obj/item/organ/internal/tongue/could_speak_language(datum/language/language_path)
 	// return (language_path in languages_possible)
-	return TRUE // EFFIGY EDIT CHANGE
+	return TRUE // EffigyEdit Change
 
 /obj/item/organ/internal/tongue/get_availability(datum/species/owner_species, mob/living/owner_mob)
 	return owner_species.mutanttongue
@@ -560,7 +560,7 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	modifies_speech = TRUE
 	voice_filter = "atempo=0.5" // makes them talk really slow
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove START
 /*
 /obj/item/organ/internal/tongue/snail/modify_speech(datum/source, list/speech_args)
 	var/new_message
@@ -572,7 +572,7 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 			new_message += message[i]
 	speech_args[SPEECH_MESSAGE] = new_message
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /obj/item/organ/internal/tongue/ethereal
 	name = "electric discharger"

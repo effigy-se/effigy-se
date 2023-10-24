@@ -9,12 +9,12 @@
 	human.say("*shrug")
 	TEST_ASSERT_EQUAL(emotes_used, 1, "Human did not shrug")
 
-	// EFFIGY EDIT REMOVE START - Following check does not affect us
+	// EffigyEdit Remove START - Following check does not affect us
 	/*
 	human.say("*beep")
 	TEST_ASSERT_EQUAL(emotes_used, 1, "Human beeped, when that should be restricted to silicons")
 	*/
-	// EFFIGY EDIT REMOVE END
+	// EffigyEdit Remove END
 
 	human.setOxyLoss(140)
 
@@ -23,12 +23,12 @@
 	human.say("*shrug")
 	TEST_ASSERT_EQUAL(emotes_used, 1, "Human shrugged while unconscious")
 
-	// EFFIGY EDIT REMOVE START - Following check fails due to global cooldown from the above test step (.8s)
+	// EffigyEdit Remove START - Following check fails due to global cooldown from the above test step (.8s)
 	/*
 	human.say("*deathgasp")
 	TEST_ASSERT_EQUAL(emotes_used, 2, "Human could not deathgasp while unconscious")
 	*/
-	// EFFIGY EDIT REMOVE END
+	// EffigyEdit Remove END
 
 	human.key = null
 

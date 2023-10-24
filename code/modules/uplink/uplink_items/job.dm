@@ -303,7 +303,7 @@
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
 	surplus = 15
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove START
 /*
 /datum/uplink_item/role_restricted/spider_injector
 	name = "Australicus Slime Mutator"
@@ -317,7 +317,7 @@
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
 	surplus = 10
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/uplink_item/role_restricted/blastcannon
 	name = "Blast Cannon"

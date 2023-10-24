@@ -544,10 +544,10 @@
 			var/obj/item/clothing/CH = H.head
 			if (CS.clothing_flags & CH.clothing_flags & THICKMATERIAL)
 				return FALSE // Skip over them if they have no exposed flesh.
-		// EFFIGY EDIT ADD START
+		// EffigyEdit Add START
 		if(H.mob_biotypes & MOB_ROBOTIC)
 			return FALSE
-		// EFFIGY EDIT ADD END
+		// EffigyEdit Add END
 
 	if(medical_mode_flags & MEDBOT_DECLARE_CRIT && C.health <= 0) //Critical condition! Call for help!
 		declare(C)
@@ -650,7 +650,7 @@
 			C.visible_message(span_danger("[src] is trying to tend the wounds of [patient]!"), \
 				span_userdanger("[src] is trying to tend your wounds!"))
 
-			if(do_after(src, 8 SECONDS, patient)) //Slightly faster than default tend wounds, but does less HPS // EFFIGY EDIT CHANGE (was 2 sec)
+			if(do_after(src, 8 SECONDS, patient)) //Slightly faster than default tend wounds, but does less HPS // EffigyEdit Change (was 2 sec)
 				if((get_dist(src, patient) <= 1) && (bot_mode_flags & BOT_MODE_ON) && assess_patient(patient))
 					var/healies = heal_amount
 					var/obj/item/storage/medkit/medkit = medkit_type

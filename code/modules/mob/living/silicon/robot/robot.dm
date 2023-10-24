@@ -160,7 +160,7 @@
 		to_chat(src,span_userdanger("ERROR: Lockdown is engaged. Please disengage lockdown to pick module."))
 		return
 
-	// EFFIGY EDIT ADD START (Borgs)
+	// EffigyEdit Add START (Borgs)
 	if(!length(GLOB.cyborg_model_list))
 		GLOB.cyborg_model_list = list(
 			"Engineering" = /obj/item/robot_model/engineering,
@@ -184,8 +184,8 @@
 		for(var/option in GLOB.cyborg_model_list)
 			var/obj/item/robot_model/model = GLOB.cyborg_model_list[option]
 			var/model_icon = initial(model.cyborg_base_icon)
-			GLOB.cyborg_base_models_icon_list[option] = image(icon = 'local/icons/mob/borgs/robots.dmi', icon_state = model_icon) // EFFIGY EDIT CHANGE - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
-	// EFFIGY EDIT ADD END (Borgs)
+			GLOB.cyborg_base_models_icon_list[option] = image(icon = 'local/icons/mob/borgs/robots.dmi', icon_state = model_icon) // EffigyEdit Change - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
+	// EffigyEdit Add END (Borgs)
 
 	var/input_model = show_radial_menu(src, src, GLOB.cyborg_base_models_icon_list, radius = 42)
 	if(!input_model || model.type != /obj/item/robot_model)
@@ -732,11 +732,11 @@
 		hud_used.update_robot_modules_display()
 
 	if (hasExpanded)
-		update_transform(0.8) // EFFIGY EDIT CHANGE (Was 0.5)
+		update_transform(0.8) // EffigyEdit Change (Was 0.5)
 		hasExpanded = FALSE
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add START
 	hasAffection = FALSE
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add END
 	logevent("Chassis model has been reset.")
 	log_silicon("CYBORG: [key_name(src)] has reset their cyborg model.")
 	model.transform_to(/obj/item/robot_model)

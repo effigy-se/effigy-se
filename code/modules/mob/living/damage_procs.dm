@@ -344,7 +344,7 @@
 		updatehealth()
 
 /mob/living/proc/adjustOrganLoss(slot, amount, maximum, required_organ_flag)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_ORGAN, slot, amount) // EFFIGY EDIT ADD
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_ORGAN, slot, amount) // EffigyEdit Add
 	return
 
 /mob/living/proc/setOrganLoss(slot, amount, maximum, required_organ_flag)
@@ -373,7 +373,7 @@
 		return 0
 	if(updating_stamina)
 		updatehealth()
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) // EFFIGY EDIT ADD
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) // EffigyEdit Add
 
 /mob/living/proc/setStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE, required_biotype = ALL)
 	if(!forced && (status_flags & GODMODE))

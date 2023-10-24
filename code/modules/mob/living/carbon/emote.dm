@@ -15,7 +15,7 @@
 	key = "blink_r"
 	message = "blinks rapidly."
 
-// EFFIGY EDIT REMOVE START TODO
+// EffigyEdit Remove START TODO
 /*
 /datum/emote/living/carbon/clap
 	key = "clap"
@@ -37,7 +37,7 @@
 							'sound/misc/clap3.ogg',
 							'sound/misc/clap4.ogg')
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/emote/living/carbon/crack
 	key = "crack"

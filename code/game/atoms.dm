@@ -675,14 +675,14 @@
 
 	. += get_name_chaser(user)
 	if(desc)
-		. += "<span class='info'>[desc]" // EFFIGY EDIT CHANGE
+		. += "<span class='info'>[desc]" // EffigyEdit Change
 
 	if(custom_materials)
 		var/list/materials_list = list()
 		for(var/custom_material in custom_materials)
 			var/datum/material/current_material = GET_MATERIAL_REF(custom_material)
 			materials_list += "[current_material.name]"
-		. += span_info("<u>It is made out of [english_list(materials_list)]</u>.") // EFFIGY EDIT CHANGE
+		. += span_info("<u>It is made out of [english_list(materials_list)]</u>.") // EffigyEdit Change
 
 	if(reagents)
 		var/user_sees_reagents = user.can_see_reagents()
@@ -699,7 +699,7 @@
 						. += span_notice("The solution's pH is [round(reagents.ph, 0.01)] and has a temperature of [reagents.chem_temp]K.")
 
 				else
-					. += span_info("It contains:<br>Nothing.") // EFFIGY EDIT CHANGE
+					. += span_info("It contains:<br>Nothing.") // EffigyEdit Change
 			else if(reagents.flags & AMOUNT_VISIBLE)
 				if(reagents.total_volume)
 					. += span_notice("It has [reagents.total_volume] unit\s left.")

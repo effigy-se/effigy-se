@@ -67,7 +67,7 @@
 		TIMER_STOPPABLE, \
 	)
 
-	// EFFIGY EDIT REMOVE START - Event notification
+	// EffigyEdit Remove START - Event notification
 	/**
 	log_dynamic("[rule] ruleset executing...")
 	message_admins("DYNAMIC: Executing midround ruleset [rule] in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME)]. \
@@ -76,9 +76,9 @@
 
 	return rule
 	*/
-	// EFFIGY EDIT REMOVE END - Event notification
+	// EffigyEdit Remove END - Event notification
 
-	// EFFIGY EDIT ADD START - Event notification
+	// EffigyEdit Add START - Event notification
 	message_admins("<font color='[COLOR_ADMIN_PINK]'>Dynamic Event triggering in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME)]: [rule]. (\
 		<a href='?src=[REF(src)];cancelmidround=[midround_injection_timer_id]'>CANCEL</a> | \
 		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>)</font>")
@@ -93,7 +93,7 @@
 		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>)</font>")
 
 	return rule
-	// EFFIGY EDIT ADD END - Event notification
+	// EffigyEdit Add END - Event notification
 
 /// Fired after admins do not cancel a midround injection.
 /datum/game_mode/dynamic/proc/execute_midround_rule(datum/dynamic_ruleset/rule)

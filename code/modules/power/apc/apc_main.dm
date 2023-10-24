@@ -551,7 +551,7 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-		else if(cell.percent() < 7 && long_term_power < 0) // EFFIGY EDIT CHANGE (15)
+		else if(cell.percent() < 7 && long_term_power < 0) // EffigyEdit Change (15)
 			equipment = autoset(equipment, AUTOSET_OFF)
 			lighting = autoset(lighting, AUTOSET_OFF)
 			environ = autoset(environ, AUTOSET_ON)
@@ -559,9 +559,9 @@
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
-		else if(cell.percent() < 17 && long_term_power < 0) // EFFIGY EDIT CHANGE (30)
-			equipment = autoset(equipment, AUTOSET_ON) // EFFIGY EDIT CHANGE
-			lighting = autoset(lighting, AUTOSET_OFF) // EFFIGY EDIT CHANGE
+		else if(cell.percent() < 17 && long_term_power < 0) // EffigyEdit Change (30)
+			equipment = autoset(equipment, AUTOSET_ON) // EffigyEdit Change
+			lighting = autoset(lighting, AUTOSET_OFF) // EffigyEdit Change
 			environ = autoset(environ, AUTOSET_ON)
 			alarm_manager.send_alarm(ALARM_POWER)
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))

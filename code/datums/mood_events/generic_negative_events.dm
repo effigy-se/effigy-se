@@ -395,7 +395,7 @@
 	mood_change = -1
 	timeout = 30 SECONDS
 
-// EFFIGY EDIT ADD START
+// EffigyEdit Add START
 /datum/mood_event/severe_surgery
 	description = "<span class='boldwarning'>Wait, THEY CUT ME OPEN - AND I FELT EVERY SECOND OF IT!</span>\n"
 	mood_change = -4
@@ -405,7 +405,7 @@
 	description = "<span class='warning'>Having my robotic parts messed with while I was conscious felt wrong... if only I had a sleep mode!</span>\n"
 	mood_change = -4
 	timeout = 10 MINUTES
-// EFFIGY EDIT ADD END
+// EffigyEdit Add END
 
 /datum/mood_event/gamer_withdrawal
 	description = "I wish I was gaming right now..."

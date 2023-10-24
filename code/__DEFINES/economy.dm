@@ -9,14 +9,14 @@
 ///Default paygrade for the Unassigned Job/Unpaid job assignments.
 #define PAYCHECK_ZERO 0
 ///Paygrade for Prisoners and Assistants.
-#define PAYCHECK_LOWER 30 // EFFIGY EDIT CHANGE
+#define PAYCHECK_LOWER 30 // EffigyEdit Change - Pay equalization
 ///Paygrade for all regular crew not belonging to PAYGRADE_LOWER or PAYGRADE_COMMAND.
-#define PAYCHECK_CREW 40 // EFFIGY EDIT CHANGE
+#define PAYCHECK_CREW 40 // EffigyEdit Change - Pay equalization
 ///Paygrade for Heads of Staff.
-#define PAYCHECK_COMMAND 60 // EFFIGY EDIT CHANGE
+#define PAYCHECK_COMMAND 60 // EffigyEdit Change - Pay equalization
 
 //How many credits a player is charged if they print something from a departmental lathe they shouldn't have access to.
-#define LATHE_TAX 5 // EFFIGY EDIT CHANGE
+#define LATHE_TAX 5 // EffigyEdit Change - Pay equalization
 //How much POWER a borg's cell is taxed if they print something from a departmental lathe.
 #define SILICON_LATHE_TAX 2000
 
@@ -28,7 +28,7 @@
 #define MAX_GRANT_DPT 500
 
 //What should vending machines charge when you buy something in-department.
-#define DEPARTMENT_DISCOUNT 0.3 // EFFIGY EDIT CHANGE
+#define DEPARTMENT_DISCOUNT 0.3 // EffigyEdit Change
 
 #define ACCOUNT_CIV "CIV"
 #define ACCOUNT_CIV_NAME "Civil Budget"

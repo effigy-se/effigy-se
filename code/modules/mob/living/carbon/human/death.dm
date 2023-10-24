@@ -61,6 +61,6 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 
 /mob/living/carbon/proc/Drain()
 	become_husk(CHANGELING_DRAIN)
-	// ADD_TRAIT(src, TRAIT_BADDNA, CHANGELING_DRAIN) // EFFIGY EDIT REMOVE
+	// ADD_TRAIT(src, TRAIT_BADDNA, CHANGELING_DRAIN) // EffigyEdit Remove
 	blood_volume = 0
 	return TRUE

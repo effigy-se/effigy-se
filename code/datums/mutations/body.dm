@@ -119,23 +119,23 @@
 /datum/mutation/human/dwarfism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	if(owner.dna.features["body_size"] < 1)
 		to_chat(owner, "You feel your body shrinking even further, but your organs aren't! Uh oh!")
 		owner.adjustBruteLoss(25)
 		return
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 	ADD_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))
 
 /datum/mutation/human/dwarfism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	if(owner.dna.features["body_size"] < 1)
 		to_chat(owner, "You feel relief as the pressure building inside you subsides.")
 		return
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 	REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
 
@@ -390,12 +390,12 @@
 /datum/mutation/human/gigantism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	if(owner.dna.features["body_size"] > 1)
 		to_chat(owner, "You feel your body expanding even further, but it feels like your bones are expanding too much!")
 		owner.adjustBruteLoss(25) // take some DAMAGE
 		return
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(1.25)
 	owner.visible_message(span_danger("[owner] suddenly grows!"), span_notice("Everything around you seems to shrink.."))
@@ -403,11 +403,11 @@
 /datum/mutation/human/gigantism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	if(owner.dna.features["body_size"] > 1)
 		to_chat(owner, "You feel relief as your bones cease their growth spurt.")
 		return
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.update_transform(0.8)
 	owner.visible_message(span_danger("[owner] suddenly shrinks!"), span_notice("Everything around you seems to grow.."))

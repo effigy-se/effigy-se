@@ -225,10 +225,10 @@
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
-	volume = 60 // EFFIGY EDIT - Original: 50
+	volume = 60 // EffigyEdit Change - Original: 50
 	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT*5)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
-	possible_transfer_amounts = list(5,10,15,20,30,60) // EFFIGY EDIT ADD
+	possible_transfer_amounts = list(5,10,15,20,30,60) // EffigyEdit Add
 
 /obj/item/reagent_containers/cup/beaker/Initialize(mapload)
 	. = ..()
@@ -248,9 +248,9 @@
 	desc = "A large beaker. Can hold up to 120 units."
 	icon_state = "beakerlarge"
 	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT*1.25)
-	volume = 120 // EFFIGY EDIT CHANGE
+	volume = 120 // EffigyEdit Change
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,40,60,120) // EFFIGY EDIT CHANGE
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,120) // EffigyEdit Change
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/plastic
@@ -258,9 +258,9 @@
 	desc = "An extra-large beaker. Can hold up to 150 units."
 	icon_state = "beakerwhite"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5)
-	volume = 150 // EFFIGY EDIT CHANGE
+	volume = 150 // EffigyEdit Change
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,50,60,75,150) // EFFIGY EDIT CHANGE
+	possible_transfer_amounts = list(5,10,15,20,30,50,60,75,150) // EffigyEdit Change
 	fill_icon_thresholds = list(0, 1, 10, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/meta
@@ -268,9 +268,9 @@
 	desc = "A large beaker. Can hold up to 240 units."
 	icon_state = "beakergold"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/gold=HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium=HALF_SHEET_MATERIAL_AMOUNT)
-	volume = 240 // EFFIGY EDIT CHANGE
+	volume = 240 // EffigyEdit Change
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,60,80,100,120,160,200,240) // EFFIGY EDIT CHANGE
+	possible_transfer_amounts = list(5,10,15,20,30,60,80,100,120,160,200,240) // EffigyEdit Change
 	fill_icon_thresholds = list(0, 1, 10, 25, 35, 50, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/noreact
@@ -280,9 +280,9 @@
 	icon_state = "beakernoreact"
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 1.5)
 	reagent_flags = OPENCONTAINER | NO_REACT
-	volume = 60 // EFFIGY EDIT CHANGE
+	volume = 60 // EffigyEdit Change
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,60) // EFFIGY EDIT ADD
+	possible_transfer_amounts = list(5,10,15,20,30,60) // EffigyEdit Add
 
 /obj/item/reagent_containers/cup/beaker/bluespace
 	name = "bluespace beaker"
@@ -293,9 +293,9 @@
 	custom_materials = list(/datum/material/glass =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/plasma =SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/diamond =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/bluespace =HALF_SHEET_MATERIAL_AMOUNT)
 	volume = 300
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,60,80,100,120,160,200,240,300) // EFFIGY EDIT CHANGE
+	possible_transfer_amounts = list(5,10,15,20,30,60,80,100,120,160,200,240,300) // EffigyEdit Change
 
-// EFFIGY EDIT CHANGE START
+// EffigyEdit Change START
 /obj/item/reagent_containers/cup/beaker/meta/omnizine
 	list_reagents = list(/datum/reagent/medicine/omnizine = 240)
 
@@ -344,7 +344,7 @@
 
 /obj/item/reagent_containers/cup/beaker/synthflesh
 	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 60)
-// EFFIGY EDIT CHANGE END
+// EffigyEdit Change END
 
 /obj/item/reagent_containers/cup/bucket
 	name = "bucket"
@@ -363,8 +363,8 @@
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 2)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,25,30,45,90) // EFFIGY EDIT CHANGE
-	volume = 90 // EFFIGY EDIT CHANGE
+	possible_transfer_amounts = list(5,10,15,20,25,30,45,90) // EffigyEdit Change
+	volume = 90 // EffigyEdit Change
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_HEAD
 	resistance_flags = NONE
@@ -407,8 +407,8 @@
 	melee = 10
 	acid = 50
 
-// EFFIGY EDIT CHANGE START (TODO move to overrides)
-/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) // EFFIGY EDIT CHANGE
+// EffigyEdit Change START (TODO move to overrides)
+/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) // EffigyEdit Change
 	if(istype(O, /obj/item/mop))
 		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
 		if(is_right_clicking)
@@ -434,7 +434,7 @@
 		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
 		user.put_in_hands(new_cleanbot_ass)
 		return
-// EFFIGY EDIT CHANGE END
+// EffigyEdit Change END
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()

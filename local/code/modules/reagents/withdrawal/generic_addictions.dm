@@ -6,7 +6,7 @@
 	medium_withdrawal_moodlet = /datum/mood_event/nicotine_withdrawal_moderate
 	severe_withdrawal_moodlet = /datum/mood_event/nicotine_withdrawal_severe
 
-// EFFIGY EDIT START - Alters nicotine Withdrawal
+/// Alters nicotine Withdrawal
 /datum/addiction/nicotine/proc/trigger_random_side_effect(mob/living/carbon/affected_carbon, seconds_per_tick, strength)
 	switch(rand(1, 10))
 		if(1 to 3)
@@ -47,5 +47,3 @@
 	. = ..()
 	if(SPT_PROB(5, seconds_per_tick))
 		trigger_random_side_effect(affected_carbon, seconds_per_tick, 2)
-
-	//EFFIGY EDIT END

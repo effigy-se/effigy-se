@@ -14,13 +14,13 @@ Mostly for Effigy exclusive stuff, otherwise if you need to modify a base file f
 * If it is something like a bugfix that /tg/station would want (the codebase we use, also called upstream), code it in their code and make the PR to them. We regularly update to maintain parity with the upstream master. They would want any general gameplay bugfixes, and things that are obviously intended to work one way, but do not. They do not have any of our fluff species (vulp, akula, tajaran, etc) or additional content so do not make PRs related to that.
 * Never edit stock /tg/ DMI files. If you are confused about which .dmi files we have added and which were there originally, refer to their repository and and see if they exist (https://github.com/tgstation/tgstation). All PRs with edits to stock .DMI files may be rejected.
 * When changing any code in any stock /tg/ .DM file, you must mark your changes:
-    * For single-line changes: // EffigyEdit Change - Explanation (Edit can also be Add for new lines or Remove if you are commenting the line out.)
-    * For multi-line additions: // EffigyEdit Change - Explanation and then at the bottom of your changes, // EffigyEdit Change End
+    * For single-line changes: // EffigyEdit Change - Explanation (Change can also be Add for new lines or Remove if you are commenting the line out.)
+    * For multi-line additions: // EffigyEdit Change - Explanation and then at the bottom of your changes, // EffigyEdit Change/Add/Remove End
     * For multi-line removals: Use a block comment (/\* xxx \*/) to comment out the existing code block (do not modify whitespace more than necessary) and at the start, it should contain
 	/* EffigyEdit Remove - Explanation
 	<code here>
 	<code here>
-	*/ EffigyEdit Remove End
+	*/// EffigyEdit Remove End
  
 * Change whitespace as little as possible. Do not randomly add/remove whitespace.
 * Any new files should preferrably go into the local folder following the file structure of where it would be placed normally.

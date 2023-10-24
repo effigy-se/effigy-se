@@ -1,4 +1,4 @@
-/*
+/* EffigyEdit Remove - Moved to /local/
 
 	You look around.
 
@@ -51,4 +51,4 @@
 /*
 /world/proc/_()
 	var/static/_ = world.Genesis()
-*/ /// EFFIGY EDIT - Moved to /local/
+*/// EffigyEdit Remove End

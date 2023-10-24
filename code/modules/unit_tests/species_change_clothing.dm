@@ -9,7 +9,7 @@
 	morphing_human.equipOutfit(/datum/outfit/job/assistant/consistent)
 	morphing_human.dna.features["legs"] = DIGITIGRADE_LEGS //you WILL have digitigrade legs
 
-	// EFFIGY EDIT REMOVE START (Let lizards wear shoes)
+	// EffigyEdit Remove START (Let lizards wear shoes)
 	/* This part of the test is useless as it's behavior that we actually WANT from those shoes, here.
 	var/obj/item/human_shoes = morphing_human.get_item_by_slot(ITEM_SLOT_FEET)
 	human_shoes.supports_variations_flags = NONE //do not fit lizards at all costs.
@@ -18,7 +18,7 @@
 
 	// TEST_ASSERT_NOTEQUAL(human_shoes, lizard_shoes, "Lizard still has shoes after changing species.")
 	*/
-	// EFFIGY EDIT REMOVE END (Let lizards wear shoes)
+	// EffigyEdit Remove END (Let lizards wear shoes)
 
 	// Testing whether item-species restrictions properly blocks changing into a blacklisted species.
 	morphing_human.set_species(/datum/species/monkey)

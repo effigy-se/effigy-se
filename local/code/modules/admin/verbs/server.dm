@@ -19,7 +19,7 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 		GLOB.dchat_allowed = !GLOB.dchat_allowed
 	to_chat(world, SPAN_BOX_ALERT(YELLOW, "The dead chat channel has been globally [GLOB.dchat_allowed ? "enabled" : "disabled"]."))
 
-// EFFIGY EDIT TODO (Convert to API)
+// EffigyEdit TODO - Convert to API
 /*
 //Let the initiator know their ahelp is being handled
 /datum/admin_help/proc/handle_issue(key_name = key_name_admin(usr))

@@ -8,12 +8,12 @@
 
 //MONKEY PATHS
 ///The dmi for monkey uniforms
-#define MONKEY_UNIFORM_FILE 'local/icons/mob/clothing/species/monkey/uniform.dmi' // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+#define MONKEY_UNIFORM_FILE 'local/icons/mob/clothing/species/monkey/uniform.dmi' // EffigyEdit Change (#3 Customization - Ported from Skyrat)
 
 //DIGITIGRADE PATHS
 ///The dmi containing digitigrade uniforms
-#define DIGITIGRADE_UNIFORM_FILE 'local/icons/mob/clothing/uniform_digi.dmi' // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+#define DIGITIGRADE_UNIFORM_FILE 'local/icons/mob/clothing/uniform_digi.dmi' // EffigyEdit Change (#3 Customization - Ported from Skyrat)
 ///The dmi containing digitigrade shoes
-#define DIGITIGRADE_SHOES_FILE 'local/icons/mob/clothing/feet_digi.dmi' // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+#define DIGITIGRADE_SHOES_FILE 'local/icons/mob/clothing/feet_digi.dmi' // EffigyEdit Change (#3 Customization - Ported from Skyrat)
 ///The dmi containing digitigrade oversuits
-#define DIGITIGRADE_SUIT_FILE 'local/icons/mob/clothing/suit_digi.dmi' // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+#define DIGITIGRADE_SUIT_FILE 'local/icons/mob/clothing/suit_digi.dmi' // EffigyEdit Change (#3 Customization - Ported from Skyrat)

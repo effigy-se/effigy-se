@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(undershirt_f)  //stores only undershirt name
 GLOBAL_LIST_EMPTY(socks_list) //stores /datum/sprite_accessory/socks indexed by name
 	//Lizard Bits (all datum lists indexed by name)
 
-// EFFIGY EDIT REMOVE (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove (#3 Customization - Ported from Skyrat)
 /*
 GLOBAL_LIST_EMPTY(body_markings_list)
 GLOBAL_LIST_EMPTY(snouts_list)
@@ -42,9 +42,9 @@ GLOBAL_LIST_EMPTY(moth_antennae_list)
 GLOBAL_LIST_EMPTY(moth_markings_list)
 GLOBAL_LIST_EMPTY(caps_list)
 */
-// EFFIGY EDIT REMOVE (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove (#3 Customization - Ported from Skyrat)
 
-GLOBAL_LIST_EMPTY(moth_wings_list) // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+GLOBAL_LIST_EMPTY(moth_wings_list) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
 GLOBAL_LIST_EMPTY(pod_hair_list)
 
 GLOBAL_LIST_INIT(color_list_ethereal, list(

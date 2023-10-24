@@ -121,7 +121,7 @@
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	///Icon state of the welding visor.
 	var/visor_state = "weldvisor"
-	var/visor_sprite_path // EFFIGY EDIT ADD
+	var/visor_sprite_path // EffigyEdit Add
 
 /obj/item/clothing/head/utility/hardhat/welding/Initialize(mapload)
 	. = ..()
@@ -141,12 +141,12 @@
 /obj/item/clothing/head/utility/hardhat/welding/proc/toggle_welding_screen(mob/living/user)
 	if(weldingvisortoggle(user))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 50, TRUE) //Visors don't just come from nothing
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add START
 	var/mob/living/carbon/carbon_user = user
 	if(carbon_user.dna.species.mutant_bodyparts["snout"])
 		visor_sprite_path = 'local/icons/mob/clothing/head_muzzled.dmi'
 	else
-		visor_sprite_path = 'icons/mob/clothing/head/utility.dmi'	// EFFIGY EDIT CHANGE
+		visor_sprite_path = 'icons/mob/clothing/head/utility.dmi'	// EffigyEdit Change
 	update_appearance()
 
 /obj/item/clothing/head/utility/hardhat/welding/worn_overlays(mutable_appearance/standing, isinhands)
@@ -160,7 +160,7 @@
 /obj/item/clothing/head/utility/hardhat/welding/update_overlays()
 	. = ..()
 	if(!up)
-		. += mutable_appearance(visor_sprite_path, visor_state) // EFFIGY EDIT CHANGE
+		. += mutable_appearance(visor_sprite_path, visor_state) // EffigyEdit Change
 
 /obj/item/clothing/head/utility/hardhat/welding/orange
 	icon_state = "hardhat0_orange"
@@ -201,7 +201,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_inv = NONE
 	visor_state = "weldvisor_atmos"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EFFIGY EDIT ADD
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EffigyEdit Add
 
 /obj/item/clothing/head/utility/hardhat/welding/atmos/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()

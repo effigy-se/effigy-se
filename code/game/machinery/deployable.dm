@@ -129,7 +129,7 @@
 /obj/structure/barricade/sandbags/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/climbable)
-	AddElement(/datum/element/liquids_height, 20) // EFFIGY EDIT ADD
+	AddElement(/datum/element/liquids_height, 20) // EffigyEdit Add
 
 /obj/structure/barricade/security
 	name = "security barrier"

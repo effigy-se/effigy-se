@@ -65,8 +65,8 @@
 			quirk_notes = target.quirk_notes,
 			rank = target.rank,
 			species = target.species,
-			past_medical_records = target.past_medical_records, // EFFIGY EDIT ADD (Records)
-			past_general_records = target.past_general_records, // EFFIGY EDIT ADD (Records)
+			past_medical_records = target.past_medical_records, // EffigyEdit Add (Records)
+			past_general_records = target.past_general_records, // EffigyEdit Add (Records)
 		))
 
 	data["records"] = records

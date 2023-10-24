@@ -18,7 +18,7 @@
 	actions_types = list(
 		/datum/action/item_action/mod/deploy,
 		/datum/action/item_action/mod/activate,
-		/datum/action/item_action/mod/sprite_accessories, // EFFIGY EDIT ADD
+		/datum/action/item_action/mod/sprite_accessories, // EffigyEdit Add
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
 		/datum/action/item_action/mod/deploy/ai,
@@ -297,14 +297,14 @@
 			balloon_alert(wearer, "retract parts first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 			return
-	// EFFIGY EDIT ADD START (Fix runtime)
+	// EffigyEdit Add START (Fix runtime)
 	if(active)
 		if(!wearer.incapacitated())
 			balloon_alert(wearer, "deactivate first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 
 		return
-	// EFFIGY EDIT ADD END (Fix runtime)
+	// EffigyEdit Add END (Fix runtime)
 	if(!wearer.incapacitated())
 		var/atom/movable/screen/inventory/hand/ui_hand = over_object
 		if(wearer.putItemFromInventoryInHandIfPossible(src, ui_hand.held_index))
@@ -696,7 +696,7 @@
 		part.visor_flags_cover = category[SEALED_COVER] || NONE
 		part.alternate_worn_layer = category[UNSEALED_LAYER]
 		mod_parts[part] = part.alternate_worn_layer\
-		// EFFIGY EDIT REMOVE START
+		// EffigyEdit Remove START
 		/*
 		if(!category[CAN_OVERSLOT])
 			if(overslotting_parts[part])
@@ -705,7 +705,7 @@
 			overslotting_parts -= part
 			continue
 		*/
-		// EFFIGY EDIT REMOVE END
+		// EffigyEdit Remove END
 		overslotting_parts |= part
 	wearer?.regenerate_icons()
 

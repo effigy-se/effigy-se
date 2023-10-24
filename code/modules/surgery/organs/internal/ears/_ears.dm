@@ -68,7 +68,7 @@
 	visual = TRUE
 	damage_multiplier = 2
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove START (#3 Customization - Ported from Skyrat)
 /*
 /obj/item/organ/internal/ears/cat/on_insert(mob/living/carbon/human/ear_owner)
 	. = ..()
@@ -85,7 +85,7 @@
 		ear_owner.dna.species.mutant_bodyparts -= "ears"
 		ear_owner.update_body()
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove END (#3 Customization - Ported from Skyrat)
 
 /obj/item/organ/internal/ears/penguin
 	name = "penguin ears"

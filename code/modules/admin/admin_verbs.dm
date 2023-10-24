@@ -21,12 +21,12 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/secrets,
 	/client/proc/stop_sounds,
 	/client/proc/tag_datum_mapview,
-	/client/proc/addbunkerbypass, // EFFIGY EDIT ADD
-	/client/proc/revokebunkerbypass, // EFFIGY EDIT ADD
-	/client/proc/remove_liquid, // EFFIGY EDIT ADD
-	/client/proc/find_effigy_id, // EFFIGY EDIT ADD
-	/client/proc/link_effigy_id, // EFFIGY EDIT ADD
-	/client/proc/effigy_whitelist, // EFFIGY EDIT ADD
+	/client/proc/addbunkerbypass, // EffigyEdit Add
+	/client/proc/revokebunkerbypass, // EffigyEdit Add
+	/client/proc/remove_liquid, // EffigyEdit Add
+	/client/proc/find_effigy_id, // EffigyEdit Add
+	/client/proc/link_effigy_id, // EffigyEdit Add
+	/client/proc/effigy_whitelist, // EffigyEdit Add
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -138,11 +138,11 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/summon_ert,
 	/client/proc/toggle_nuke,
 	/client/proc/toggle_random_events,
-	/client/proc/admin_change_title_screen, // EFFIGY EDIT ADD - SPLASH
-	/client/proc/change_title_screen_notice, // EFFIGY EDIT ADD - SPLASH
-	/client/proc/change_title_screen_html, // EFFIGY EDIT ADD - SPLASH
-	/client/proc/spawn_liquid, // EFFIGY EDIT ADD - LIQUID
-	/client/proc/remove_liquid, // EFFIGY EDIT ADD - LIQUID
+	/client/proc/admin_change_title_screen, // EffigyEdit Add - SPLASH
+	/client/proc/change_title_screen_notice, // EffigyEdit Add - SPLASH
+	/client/proc/change_title_screen_html, // EffigyEdit Add - SPLASH
+	/client/proc/spawn_liquid, // EffigyEdit Add - LIQUID
+	/client/proc/remove_liquid, // EffigyEdit Add - LIQUID
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -244,7 +244,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/validate_puzzgrids,
 	/client/proc/GeneratePipeSpritesheet,
 	/client/proc/view_runtimes,
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add START
 	/client/proc/reload_interactions, // Interactions
 	/client/proc/test_area_spawner,	// Automapper
 	/client/proc/toggle_liquid_debug, // Customization

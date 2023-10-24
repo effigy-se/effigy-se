@@ -711,11 +711,11 @@
 				var/datum/mutation/human/matched_mutation = null
 				//Go through all sequences for matching gene, and set the mutation
 				for (var/M in subtypesof(/datum/mutation/human))
-					// EFFIGY EDIT ADD START (Medical)
+					// EffigyEdit Add START (Medical)
 					var/datum/mutation/human/iterating_mutation = M
 					if(iterating_mutation.disabled)
 						continue
-					// EFFIGY EDIT ADD END (Medical)
+					// EffigyEdit Add END (Medical)
 					var/true_sequence = GET_SEQUENCE(M)
 					if (new_sequence == true_sequence)
 						matched_mutation = M

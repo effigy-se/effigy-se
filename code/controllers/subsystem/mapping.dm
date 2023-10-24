@@ -256,11 +256,11 @@ SUBSYSTEM_DEF(mapping)
 	if (ice_ruins_underground.len)
 		seedRuins(ice_ruins_underground, CONFIG_GET(number/icemoon_budget), list(/area/icemoon/underground/unexplored), themed_ruins[ZTRAIT_ICE_RUINS_UNDERGROUND], clear_below = TRUE)
 
-	/// EFFIGY EDIT BEGIN - Taeloth / Jungle Ruins, Rimpoint ///
+	/// EffigyEdit Add - Taeloth / Jungle Ruins, Rimpoint ///
 	var/list/jungle_ruins = levels_by_trait(ZTRAIT_JUNGLE_RUINS)
 	if (jungle_ruins.len)
 		seedRuins(jungle_ruins, CONFIG_GET(number/jungle_budget), list(/area/taeloth/unexplored), themed_ruins[ZTRAIT_JUNGLE_RUINS], clear_below = TRUE)
-	/// EFFIGY EDIT END - Taeloth / Jungle Ruins, Rimpoint ///
+	/// EffigyEdit Add End
 
 	// Generate deep space ruins
 	var/list/space_ruins = levels_by_trait(ZTRAIT_SPACE_RUINS)
@@ -411,25 +411,25 @@ Used by the AI doomsday and the self-destruct nuke.
 		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = FALSE)
 		++i
 
-	SSautomapper.preload_templates_from_toml(files) // EFFIGY EDIT ADD (Automapper) We need to load our templates AFTER the Z level exists, otherwise, there is no z level to preload.
-	var/turf_blacklist = SSautomapper.get_turf_blacklists(files) // EFFIGY EDIT ADD (Automapper) We use blacklisted turfs to carve out places for our templates.
+	SSautomapper.preload_templates_from_toml(files) // EffigyEdit Add (Automapper) We need to load our templates AFTER the Z level exists, otherwise, there is no z level to preload.
+	var/turf_blacklist = SSautomapper.get_turf_blacklists(files) // EffigyEdit Add (Automapper) We use blacklisted turfs to carve out places for our templates.
 
 	// load the maps
 	for (var/P in parsed_maps)
 		var/datum/parsed_map/pm = P
-		pm.turf_blacklist = turf_blacklist // EFFIGY EDIT ADD (Automapper) apply blacklist
+		pm.turf_blacklist = turf_blacklist // EffigyEdit Add (Automapper) apply blacklist
 		var/bounds = pm.bounds
 		var/x_offset = bounds ? round(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1 : 1
 		var/y_offset = bounds ? round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1 : 1
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[P], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
-	// EFFIGY EDIT ADD START (Automapper) We need to load our templates from cache after our space has been carved out.
+	// EffigyEdit Add START (Automapper) We need to load our templates from cache after our space has been carved out.
 	if(!LAZYLEN(errorList))
 		SSautomapper.load_templates_from_cache(files)
-	// EFFIGY EDIT ADD END (Automapper)
+	// EffigyEdit Add END (Automapper)
 	if(!silent)
 	//	INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
-		add_startup_message("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!") // EFFIGY EDIT CHANGE - SPLASH
+		add_startup_message("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!") // EffigyEdit Change - SPLASH
 	return parsed_maps
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
@@ -442,7 +442,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	// load the station
 	station_start = world.maxz + 1
 //	INIT_ANNOUNCE("Loading [config.map_name]...")
-	add_startup_message("Loading [config.map_name]...") // EFFIGY EDIT CHANGE - SPLASH
+	add_startup_message("Loading [config.map_name]...") // EffigyEdit Change - SPLASH
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
 	if(SSdbcore.Connect())

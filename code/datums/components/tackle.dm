@@ -106,7 +106,7 @@
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(checkObstacle))
 	playsound(user, 'sound/weapons/thudswoosh.ogg', 40, TRUE, -1)
 
-	var/leap_word = isfeline(user) ? "pounce" : "leap" //If cat, "pounce" instead of "leap". // EFFIGY EDIT CHANGE (#3 Nya)
+	var/leap_word = isfeline(user) ? "pounce" : "leap" //If cat, "pounce" instead of "leap". // EffigyEdit Change (#3 Nya)
 	if(can_see(user, clicked_atom, 7))
 		user.visible_message(span_warning("[user] [leap_word]s at [clicked_atom]!"), span_danger("You [leap_word] at [clicked_atom]!"))
 	else
@@ -157,7 +157,7 @@
 	var/mob/living/carbon/target = hit
 	var/mob/living/carbon/human/T = target
 	var/mob/living/carbon/human/S = user
-	var/tackle_word = isfeline(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle". // EFFIGY EDIT CHANGE (felinid to feline)
+	var/tackle_word = isfeline(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle". // EffigyEdit Change (felinid to feline)
 
 	var/roll = rollTackle(target)
 	tackling = FALSE

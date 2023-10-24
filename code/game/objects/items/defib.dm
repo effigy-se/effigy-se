@@ -578,13 +578,13 @@
 	do_cancel()
 
 /obj/item/shockpaddles/proc/do_help(mob/living/carbon/H, mob/living/user)
-	/// EFFIGY EDIT BEGIN - Synthetic Defibrillator Handling ///
+	/// EffigyEdit Add - Synthetic Defibrillator Handling ///
 	var/target_synthetic = (user.mob_biotypes & MOB_ROBOTIC)
 	if (target_synthetic)
 		to_chat(user, span_boldwarning("[H] is a synthetic lifeform! This defibrillator probably isn't calibrated to revive [H.p_them()] properly and could have some serious consequences! \
 		[span_warning("You might want to [span_blue("surgically revive [H.p_them()]")]...")]"))
 		balloon_alert(user, "target is synthetic!") // immediately grabs their attention even if they dont see chat
-	/// EFFIGY EDIT END - Synthetic Defibrillator Handling ///
+	/// EffigyEdit Add End
 	user.visible_message(span_warning("[user] begins to place [src] on [H]'s chest."), span_warning("You begin to place [src] on [H]'s chest..."))
 	busy = TRUE
 	update_appearance()
@@ -631,10 +631,10 @@
 						fail_reason = "Patient's brain is missing. Further attempts futile."
 					if (DEFIB_FAIL_BLACKLISTED)
 						fail_reason = "Patient has been blacklisted from revival. Further attempts futile."
-					// EFFIGY EDIT ADD START - DNR
+					// EffigyEdit Add START - DNR
 					if (DEFIB_FAIL_DNR)
 						fail_reason = "Patient has been flagged as Do Not Resuscitate. Further attempts futile."
-					// EFFIGY EDIT ADD END - DNR
+					// EffigyEdit Add END - DNR
 
 				if(fail_reason)
 					user.visible_message(span_warning("[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - [fail_reason]"))
@@ -670,7 +670,7 @@
 					else
 						user.add_mood_event("saved_life", /datum/mood_event/saved_life)
 					log_combat(user, H, "revived", defib)
-					/// EFFIGY EDIT BEGIN - Synthetic Defibrillator Handling ///
+					/// EffigyEdit Add - Synthetic Defibrillator Handling ///
 					if (target_synthetic)
 						user.visible_message(span_boldwarning("[src] fire a powerful jolt of electricity into [H]'s vulnerable circuitry!"))
 						to_chat(H, span_userdanger("[user]'s defibrillator fires a powerful jolt of electricity into your vulnerable circuitry, overloading it!"))
@@ -685,7 +685,7 @@
 							var/datum/brain_trauma/trauma = brain_organ.gain_trauma_type(SYNTH_DEFIBBED_TRAUMA_SEVERITY, TRAUMA_LIMIT_BASIC)
 							if (!QDELETED(trauma))
 								addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_synth_defib_trauma), brain_organ, trauma), SYNTH_DEFIBBED_TRAUMA_DURATION)
-					/// EFFIGY EDIT END - Synthetic Defibrillator Handling ///
+					/// EffigyEdit Add End
 				do_success()
 				return
 			else if (!H.get_organ_by_type(/obj/item/organ/internal/heart))

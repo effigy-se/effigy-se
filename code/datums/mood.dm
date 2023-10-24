@@ -267,12 +267,12 @@
 			mood_screen_object.color = "#f15d36"
 
 	if (!conflicting_moodies.len) // theres no special icons, use the normal icon states
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 		if(HAS_TRAIT(mob_parent, TRAIT_MOOD_NOEXAMINE))
 			mood_screen_object.icon_state = "mood5"
 			mood_screen_object.color = "#4b96c4"
 			return
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 		mood_screen_object.icon_state = "mood[mood_level]"
 		return
 
@@ -315,7 +315,7 @@
 /datum/mood/proc/print_mood(mob/user)
 	var/msg = "[span_info("<EM>My current mental status:</EM>")]\n"
 	msg += span_notice("My current sanity: ") //Long term
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
 		switch(sanity)
 			if(SANITY_GREAT to INFINITY)
@@ -332,10 +332,10 @@
 				msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]\n"
 	else
 		msg += span_notice("I don't really know.")
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 
 	msg += span_notice("My current mood: ") //Short term
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
 	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
 		switch(mood_level)
 			if(MOOD_LEVEL_SAD4)
@@ -358,10 +358,10 @@
 				msg += "[span_boldnicegreen("I love life!")]\n"
 	else
 		msg += "[span_notice("No clue.")]\n"
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
 
 	msg += "[span_notice("Moodlets:")]\n"//All moodlets
-	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) // EffigyEdit Change (#3 Customization - Ported from Skyrat)
 		for(var/category in mood_events)
 			var/datum/mood_event/event = mood_events[category]
 			switch(event.mood_change)

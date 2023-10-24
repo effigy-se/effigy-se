@@ -580,7 +580,7 @@ SUBSYSTEM_DEF(job)
 	var/ssc = CONFIG_GET(number/security_scaling_coeff)
 	if(ssc > 0)
 		if(J.spawn_positions > 0)
-			var/officer_positions = min(7, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 7 officers // EFFIGY EDIT CHANGE
+			var/officer_positions = min(7, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 7 officers // EffigyEdit Change
 			JobDebug("Setting open security officer positions to [officer_positions]")
 			J.total_positions = officer_positions
 			J.spawn_positions = officer_positions
