@@ -1,11 +1,12 @@
 /obj/item/radio/intercom
-	icon = 'local/icons/obj/radio.dmi'
+	icon = 'local/icon/obj/machines/wallmounts.dmi'
+	overlay_mic_active = "intercom_transmit"
 
-/obj/item/radio/intercom/broadcast
-	icon = 'local/icons/obj/radio.dmi'
 /obj/item/radio/intercom/broadcast
 	name = "Broadcast intercom"
 	desc = "Talk at this to be heard by the whole... station."
+	icon_state = "intercom_broadcast"
+	icon_off = "intercom_broadcast-p"
 	freerange = TRUE
 	freqlock = RADIO_FREQENCY_EMAGGABLE_LOCK // Go ahead. Get silly.
 
