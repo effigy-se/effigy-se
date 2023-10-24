@@ -244,7 +244,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	//Set news report and mode result
 	mode.set_round_result()
 
-	to_chat(world, span_boxannounceblue("<h2 class='alert'>The round has ended.</h2>")) // EffigyEdit Change - Game Notifications
+	to_chat(world, SPAN_BOX_ALERT(BLUE, "<h2 class='alert'>The round has ended.</h2>")) // EffigyEdit Change - Game Notifications
 	log_game("The round has ended.")
 	//send2chat(new /datum/tgs_message_content("[GLOB.round_hex ? "Round [GLOB.round_hex]" : "The round has"] just ended."), CONFIG_GET(string/channel_announce_end_game)) // EffigyEdit Remove - Game Notifications
 	// EffigyEdit Add - Game Notifications

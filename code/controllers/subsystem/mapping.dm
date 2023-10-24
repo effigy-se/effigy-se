@@ -560,7 +560,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	message_admins("Randomly rotating map to [VM.map_name]")
 	. = changemap(VM)
 	if (. && VM.map_name != config.map_name)
-		to_chat(world, span_boxannounceblue("Map rotation has chosen [VM.map_name] for next round!"))
+		to_chat(world, SPAN_BOX_ALERT(BLUE, "Map rotation has chosen [VM.map_name] for next round!"))
 
 /datum/controller/subsystem/mapping/proc/mapvote()
 	if(map_voted || SSmapping.next_map_config) //If voted or set by other means.
