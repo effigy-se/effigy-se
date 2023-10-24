@@ -4,8 +4,12 @@
 	icon_state = "water-0"
 	base_icon_state = "water"
 	anchored = TRUE
-	plane = FLOOR_PLANE
-	layer = ABOVE_OPEN_TURF_LAYER
+
+	layer = FLY_LAYER
+	plane = ABOVE_GAME_PLANE
+	appearance_flags = TILE_BOUND
+	vis_flags = NONE
+
 	color = "#DDF"
 
 	//For being on fire
@@ -653,17 +657,15 @@
 	smoothing_flags = NONE
 	icon_state = "ocean"
 	base_icon_state = "ocean"
-	plane = WALL_PLANE //Same as weather, etc.
-	layer = OBJ_LAYER
 	starting_temp = T20C-150
 	no_effects = TRUE
-	vis_flags = NONE
 
 /obj/effect/abstract/liquid_turf/immutable/ocean/warm
 	starting_temp = T20C+20
 
-/obj/effect/abstract/liquid_turf/immutable/Initialize(mapload)
+/obj/effect/abstract/liquid_turf/immutable/Initialize(mapload, plane_offset)
 	. = ..()
+	SET_PLANE_W_SCALAR(src, initial(plane), plane_offset)
 	reagent_list = starting_mixture.Copy()
 	total_reagents = 0
 	for(var/key in reagent_list)
