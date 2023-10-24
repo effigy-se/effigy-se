@@ -111,7 +111,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/hudfix_method = TRUE //TRUE to change anchor to user, FALSE to shift by py_shift
 	var/py_shift = 0
 	var/entry_animation = TRUE
-	var/icon_path = 'icons/hud/radial.dmi' // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+	var/icon_path = 'icons/hud/radial.dmi' // EffigyEdit Add Customization
 
 	///A replacement icon state for the generic radial slice bg icon. Doesn't affect the next page nor the center buttons
 	var/radial_slice_icon
@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		var/elements_to_add = max_elements - elements.len
 		for(var/i in 1 to elements_to_add) //Create all elements
 			var/atom/movable/screen/radial/slice/new_element = new /atom/movable/screen/radial/slice
-			new_element.icon = icon_path // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+			new_element.icon = icon_path // EffigyEdit Add Customization
 			new_element.tooltips = use_tooltips
 			new_element.set_parent(src)
 			elements += new_element

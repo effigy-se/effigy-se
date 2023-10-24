@@ -447,13 +447,13 @@ SUBSYSTEM_DEF(ticker)
 				new_player_mob.client.prefs.hardcore_random_setup(new_player_living)
 			SSquirks.AssignQuirks(new_player_living, new_player_mob.client)
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		if(ishuman(new_player_living))
 			for(var/datum/loadout_item/item as anything in loadout_list_to_datums(new_player_mob.client?.prefs?.loadout_list))
 				if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
 					continue
 				item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 		CHECK_TICK
 
 	if(captainless)

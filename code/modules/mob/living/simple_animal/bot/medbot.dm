@@ -544,10 +544,10 @@
 			var/obj/item/clothing/CH = H.head
 			if (CS.clothing_flags & CH.clothing_flags & THICKMATERIAL)
 				return FALSE // Skip over them if they have no exposed flesh.
-		// EffigyEdit Add START
+		// EffigyEdit Add -
 		if(H.mob_biotypes & MOB_ROBOTIC)
 			return FALSE
-		// EffigyEdit Add END
+		// EffigyEdit Add End
 
 	if(medical_mode_flags & MEDBOT_DECLARE_CRIT && C.health <= 0) //Critical condition! Call for help!
 		declare(C)

@@ -81,13 +81,13 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		if(initial(quirk_type.abstract_parent_type) == type)
 			continue
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
 			continue
 		// Hidden quirks aren't visible to TGUI or the player
 		if (initial(quirk_type.hidden_quirk))
 			continue
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		quirks[initial(quirk_type.name)] = quirk_type
 		quirk_points[initial(quirk_type.name)] = initial(quirk_type.value)
@@ -179,18 +179,18 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 /// be valid.
 /// If no changes need to be made, will return the same list.
 /// Expects all quirk names to be unique, but makes no other expectations.
-/datum/controller/subsystem/processing/quirks/proc/filter_invalid_quirks(list/quirks, list/augments) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+/datum/controller/subsystem/processing/quirks/proc/filter_invalid_quirks(list/quirks, list/augments) // EffigyEdit Add Customization
 	var/list/new_quirks = list()
 	var/list/positive_quirks = list()
 	var/balance = 0
 
 	var/list/all_quirks = get_quirks()
 
-	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	for(var/key in augments)
 		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
 		balance += aug.cost
-	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = all_quirks[quirk_name]

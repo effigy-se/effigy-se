@@ -452,7 +452,7 @@ const PageMain = (props, context) => {
 
             <Flex.Item>
               <GreenshiftButton
-                // EffigyEdit Add START (Alert Levels)
+                // EffigyEdit Add - Alert Levels
                 alertLevel="green"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
@@ -471,7 +471,7 @@ const PageMain = (props, context) => {
               />
 
               <EngiButton
-                alertLevel="pink"
+                alertLevel="magenta"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
@@ -486,7 +486,7 @@ const PageMain = (props, context) => {
                 alertLevel="orange"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
-                // EffigyEdit Add END (Alert Levels)
+                // EffigyEdit Add End
               />
             </Flex.Item>
           </Flex>
@@ -513,7 +513,7 @@ const PageMain = (props, context) => {
             />
           )}
 
-          {/* EffigyEdit Add START (Airlock Override) */}
+          {/* EffigyEdit Add - Airlock Override */}
           {!!canToggleEngineeringOverride && (
             <Button.Confirm
               icon="wrench"
@@ -524,7 +524,7 @@ const PageMain = (props, context) => {
               onClick={() => act('toggleEngOverride')}
             />
           )}
-          {/* EffigyEdit Add END (Airlock Override) */}
+          {/* EffigyEdit Add End */}
 
           {!syndicate && (
             <Button

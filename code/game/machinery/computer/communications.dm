@@ -111,13 +111,13 @@
 		return TRUE
 	return authenticated
 
-// EffigyEdit Add START - AI CHECK
+// EffigyEdit Add - AI CHECK
 /// Are we the AI?
 /obj/machinery/computer/communications/proc/authenticated_as_ai_or_captain(mob/user)
 	if (isAI(user))
 		return TRUE
 	return ACCESS_CAPTAIN in authorize_access
-// EffigyEdit Add END - AI CHECK
+// EffigyEdit Add End
 
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
 	if(isidcard(I))
@@ -443,7 +443,7 @@
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
 				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
-		// EffigyEdit Add START (Airlock Override)
+		// EffigyEdit Add - (Airlock Override)
 		if("toggleEngOverride")
 			if(emergency_access_cooldown(usr)) //if were in cooldown, dont allow the following code
 				return
@@ -457,7 +457,7 @@
 				toggle_eng_override()
 				usr.log_message("enabled airlock engineering override.", LOG_GAME)
 				deadchat_broadcast(" enabled airlock engineering override at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
-		// EffigyEdit Add END
+		// EffigyEdit Add End
 		if("requestSafeCodes")
 			if(SSjob.assigned_captain)
 				to_chat(usr, span_warning("There is already an assigned Captain or Acting Captain on deck!"))

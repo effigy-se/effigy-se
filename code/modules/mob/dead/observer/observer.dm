@@ -415,13 +415,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		// Update med huds
 		current_mob.med_hud_set_status()
 		current_mob.log_message("had their player ([key_name(src)]) do-not-resuscitate / DNR", LOG_GAME, color = COLOR_GREEN, log_globally = FALSE)
-		// EffigyEdit Add START (DNR)
+		// EffigyEdit Add - DNR
 		if(!current_mob.has_quirk(/datum/quirk/dnr))
 			current_mob.add_quirk(/datum/quirk/dnr)
 		var/datum/job/job_to_free = SSjob.GetJob(current_mob.mind.assigned_role.title)
 		if(job_to_free)
 			job_to_free.current_positions = max(0, job_to_free.current_positions - 1)
-		// EffigyEdit Add END (DNR)
+		// EffigyEdit Add End
 
 	log_message("has opted to do-not-resuscitate / DNR from their body ([current_mob])", LOG_GAME, color = COLOR_GREEN)
 

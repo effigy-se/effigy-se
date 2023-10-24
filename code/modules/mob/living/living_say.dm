@@ -503,11 +503,11 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	return list("message" = message, "tts_message" = tts_message, "tts_filter" = tts_filter)
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if((message_mods[MODE_HEADSET] || message_mods[RADIO_EXTENSION]) && !(mobility_flags & MOBILITY_USE) && !isAI(src) &&  !ispAI(src)) // If can't use items, you can't press the button
 		to_chat(src, span_warning("You can't use the radio right now as you can't reach the button!"))
 		return ITALICS | REDUCE_RANGE
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 	var/obj/item/implant/radio/imp = locate() in src
 	if(imp?.radio.is_on())
 		if(message_mods[MODE_HEADSET])

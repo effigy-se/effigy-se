@@ -631,10 +631,10 @@
 						fail_reason = "Patient's brain is missing. Further attempts futile."
 					if (DEFIB_FAIL_BLACKLISTED)
 						fail_reason = "Patient has been blacklisted from revival. Further attempts futile."
-					// EffigyEdit Add START - DNR
+					// EffigyEdit Add - DNR
 					if (DEFIB_FAIL_DNR)
 						fail_reason = "Patient has been flagged as Do Not Resuscitate. Further attempts futile."
-					// EffigyEdit Add END - DNR
+					// EffigyEdit Add End
 
 				if(fail_reason)
 					user.visible_message(span_warning("[req_defib ? "[defib]" : "[src]"] buzzes: Resuscitation failed - [fail_reason]"))

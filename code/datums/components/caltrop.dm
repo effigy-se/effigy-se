@@ -97,10 +97,10 @@
 		return
 
 	if (!(flags & CALTROP_BYPASS_SHOES))
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		if(HAS_TRAIT(H, TRAIT_HARD_SOLES))
 			return
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 		if ((H.wear_suit?.body_parts_covered | H.w_uniform?.body_parts_covered | H.shoes?.body_parts_covered) & FEET)
 			return
 

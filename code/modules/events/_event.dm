@@ -103,7 +103,7 @@
 	triggering = TRUE
 
 	// We sleep HERE, in pre-event setup (because there's no sense doing it in run_event() since the event is already running!) for the given amount of time to make an admin has enough time to cancel an event un-fitting of the present round.
-	// EffigyEdit Remove START (Event notification)
+	// EffigyEdit Remove Start - Events notification
 	/*
 	if(alert_observers)
 		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") // EffigyEdit Change
@@ -113,9 +113,9 @@
 			message_admins("Second pre-condition check for [name] failed, skipping...")
 			return EVENT_INTERRUPTED
 	*/
-	// EffigyEdit Remove END (Event notification)
+	// EffigyEdit Remove End
 
-	// EffigyEdit Add START (Event notification)
+	// EffigyEdit Add - Events notification
 	message_admins("<font color='[COLOR_ADMIN_PINK]'>Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (\
 		<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
 		<a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)</font>")
@@ -129,7 +129,7 @@
 		<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
 		<a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)</font>")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
-	// EffigyEdit Add END (Event notification)
+	// EffigyEdit Add End
 
 	if(!triggering)
 		return EVENT_CANCELLED //admin cancelled
@@ -146,7 +146,7 @@
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
 		log_admin_private("[key_name(usr)] cancelled event [name].")
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if(href_list["something_else"])
 		if(!triggering)
 			to_chat(usr, span_admin("Too late! The event is running."))
@@ -155,7 +155,7 @@
 		SSevents.spawnEvent(TRUE)
 		message_admins("[key_name_admin(usr)] requested a new event be spawned instead of [name].")
 		log_admin_private("[key_name(usr)] requested a new event be spawned instead of [name].")
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 /*
 Runs the event

@@ -31,9 +31,9 @@
 /datum/unit_test/screenshot_humanoids/proc/make_dummy(species, job_outfit)
 	var/mob/living/carbon/human/dummy/consistent/dummy = allocate(/mob/living/carbon/human/dummy/consistent)
 	dummy.set_species(species)
-	// EffigyEdit Add START - More consistent screenshots
+	// EffigyEdit Add - - More consistent screenshots
 	var/datum/species/dummy_species = new species
 	dummy_species.prepare_human_for_preview(dummy)
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 	dummy.equipOutfit(job_outfit, visualsOnly = TRUE)
 	return dummy

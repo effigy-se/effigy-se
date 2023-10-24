@@ -90,7 +90,7 @@
 ///hides mutant/moth wings, does not apply to functional wings
 #define HIDEMUTWINGS (1<<13)
 
-// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 /// Manually set this on items you want anthro ears to show on!
 #define SHOWSPRITEEARS (1<<14)
 /// Does this sprite hide the tail?
@@ -99,7 +99,7 @@
 #define HIDESPINE (1<<16)
 /// Does this sprite hide devious devices?
 #define HIDESEXTOY (1<<17)
-// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
@@ -149,7 +149,7 @@
 ///has a sprite for monkeys
 #define CLOTHING_MONKEY_VARIATION (1<<3)
 
-// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 /// The sprite works fine for snouts.
 #define CLOTHING_SNOUTED_VARIATION (1<<4)
 /// The sprite works fine for snouts as-is.
@@ -162,7 +162,7 @@
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<8)
 /// The sprite works fine for vox snouts as is.
 #define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
-// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)

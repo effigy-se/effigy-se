@@ -63,10 +63,10 @@ Assistant
 
 	var/index = (jumpsuit_number % GLOB.colored_assistant.jumpsuits.len) + 1
 
-	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	if(modified_outfit_slots & ITEM_SLOT_ICLOTHING)
 		return
-	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	//We don't cache these, because they can delete on init
 	//Too fragile, better to just eat the cost

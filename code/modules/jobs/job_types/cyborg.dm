@@ -30,7 +30,7 @@
 	var/mob/living/silicon/robot/robot_spawn = spawned
 	robot_spawn.notify_ai(AI_NOTIFICATION_NEW_BORG)
 
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	var/list/malf_ais = list()
 	var/list/regular_ais = list()
 	for(var/mob/living/silicon/ai/ai_possible as anything in GLOB.ai_list)
@@ -55,7 +55,7 @@
 		robot_spawn.lawsync()
 		robot_spawn.lawupdate = TRUE
 		robot_spawn.show_laws()
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 	if(!robot_spawn.connected_ai) // Only log if there's no Master AI
 		robot_spawn.log_current_laws()

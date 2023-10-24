@@ -602,7 +602,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	QDEL_NULL(view_size)
 	QDEL_NULL(void)
 	QDEL_NULL(tooltips)
-	QDEL_NULL(open_loadout_ui) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+	QDEL_NULL(open_loadout_ui) // EffigyEdit Add Customization
 	seen_messages = null
 	Master.UpdateTickRate()
 	..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
@@ -684,7 +684,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/client_is_in_db = query_client_in_db.NextRow()
 
 	if(!client_is_in_db)
-		// EffigyEdit Add START - PANICBUNKER
+		// EffigyEdit Add - PANICBUNKER
 		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
 			log_access("Failed Login: [key] - [address] - Non-verified account attempting to connect.")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - [address] - Non-verified account attempting to connect</span>")
@@ -694,7 +694,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat_immediate(src, SPAN_BOX_ALERT(ORANGE, "2F173/2: Disconnecting player"))
 			qdel(src)
 			return
-		// EffigyEdit Add END - PANICBUNKER
+		// EffigyEdit Add End
 		new_player = 1
 		account_join_date = findJoinDate()
 		var/datum/db_query/query_add_player = SSdbcore.NewQuery({"
@@ -709,10 +709,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if(!account_join_date)
 			account_join_date = "Error"
 			account_age = -1
-		// EffigyEdit Add START - PANICBUNKER
+		// EffigyEdit Add - PANICBUNKER
 		else if(ckey in GLOB.bunker_passthrough)
 			GLOB.bunker_passthrough -= ckey
-		// EffigyEdit Add END - PANICBUNKER
+		// EffigyEdit Add End
 	qdel(query_client_in_db)
 	var/datum/db_query/query_get_client_age = SSdbcore.NewQuery(
 		"SELECT firstseen, DATEDIFF(Now(),firstseen), accountjoindate, DATEDIFF(Now(),accountjoindate) FROM [format_table_name("player")] WHERE ckey = :ckey",

@@ -78,7 +78,7 @@
 	*/
 	// EffigyEdit Remove END - Event notification
 
-	// EffigyEdit Add START - Event notification
+	// EffigyEdit Add - - Event notification
 	message_admins("<font color='[COLOR_ADMIN_PINK]'>Dynamic Event triggering in [DisplayTimeText(ADMIN_CANCEL_MIDROUND_TIME)]: [rule]. (\
 		<a href='?src=[REF(src)];cancelmidround=[midround_injection_timer_id]'>CANCEL</a> | \
 		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>)</font>")
@@ -93,7 +93,7 @@
 		<a href='?src=[REF(src)];differentmidround=[midround_injection_timer_id]'>SOMETHING ELSE</a>)</font>")
 
 	return rule
-	// EffigyEdit Add END - Event notification
+	// EffigyEdit Add End
 
 /// Fired after admins do not cancel a midround injection.
 /datum/game_mode/dynamic/proc/execute_midround_rule(datum/dynamic_ruleset/rule)

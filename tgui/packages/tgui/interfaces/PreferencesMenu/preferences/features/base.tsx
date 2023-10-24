@@ -391,7 +391,7 @@ export const FeatureShortTextInput = (
   );
 };
 
-// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 
 export const FeatureTextInput = (
   props: FeatureValueProps<string, string, FeatureShortTextData>

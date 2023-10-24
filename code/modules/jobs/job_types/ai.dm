@@ -34,7 +34,7 @@
 	var/mob/living/silicon/ai/ai_spawn = spawned
 	ai_spawn.log_current_laws()
 
-	// EffigyEdit Add START (Sync Borgs)
+	// EffigyEdit Add - Sync Borgs
 	for(var/mob/living/silicon/robot/sync_target in GLOB.silicon_mobs)
 		if(!(sync_target.z in SSmapping.levels_by_trait(ZTRAIT_STATION)) || (sync_target.z in SSmapping.levels_by_trait(ZTRAIT_ICE_RUINS_UNDERGROUND))) // Skip ghost cafe, interlink, and other cyborgs.
 			continue
@@ -55,7 +55,7 @@
 		sync_target.lawsync()
 		sync_target.lawupdate = TRUE
 		sync_target.show_laws()
-	// EffigyEdit Add END (Sync Borgs)
+	// EffigyEdit Add End
 
 
 /datum/job/ai/get_roundstart_spawn_point()

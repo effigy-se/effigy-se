@@ -77,13 +77,13 @@
 /datum/species/pod/get_physical_attributes()
 	return "Podpeople are in many ways the inverse of shadows, healing in light and starving with the dark. \
 		Their bodies are like tinder and easy to char."
-// EffigyEdit Add START
+// EffigyEdit Add -
 /datum/species/pod/get_species_description()
 	return "Plant lore!"
 
 /datum/species/pod/get_species_lore()
 	return list("You're a plant!")
-// EffigyEdit Add END
+// EffigyEdit Add End
 
 /datum/species/pod/create_pref_unique_perks()
 	var/list/to_add = list()

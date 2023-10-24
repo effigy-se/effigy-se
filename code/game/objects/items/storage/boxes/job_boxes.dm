@@ -29,7 +29,7 @@
 		return
 	if(!isnull(mask_type))
 		new mask_type(src)
-	// EffigyEdit Add START (Vox)
+	// EffigyEdit Add - Vox
 	if(!isplasmaman(loc))
 		if(isvox(loc))
 			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
@@ -37,7 +37,7 @@
 			new internal_type(src)
 	else
 		new /obj/item/tank/internals/plasmaman/belt(src)
-	// EffigyEdit Add END (Vox)
+	// EffigyEdit Add End
 
 	if(!isnull(medipen_type))
 		new medipen_type(src)
@@ -61,12 +61,12 @@
 		return
 	var/obj/item/mask = locate(mask_type) in src
 	var/obj/item/internals = locate(internal_type) in src
-	// EffigyEdit Add START (Vox) - Vox mimic the above and below behavior, removing the redundant mask/internals; they dont mimic the plasma breathing though
+	// EffigyEdit Add - Vox mimic the above and below behavior, removing the redundant mask/internals; they dont mimic the plasma breathing though
 	if(!isvox(loc))
 		new /obj/item/tank/internals/plasmaman/belt(src)
 	else
 		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
-	// EffigyEdit Add END (Vox)
+	// EffigyEdit Add End
 	qdel(mask) // Get rid of the items that shouldn't be
 	qdel(internals)
 

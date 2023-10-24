@@ -14,7 +14,7 @@
 	var/imprint_on_next_insertion = TRUE
 	/// Alpha value associated to the overlay, to be inherited from the parent limb.
 	var/alpha = ALPHA_OPAQUE // EffigyEdit Add - Customization
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	/// An associative list of color indexes (i.e. "1") to boolean that says
 	/// whether or not that color should get an emissive overlay. Can be null.
 	var/list/emissive_eligibility_by_color_index
@@ -28,7 +28,7 @@
 	/// A simple cache of what the last icon_states built were.
 	/// It's really only there to help with debugging what's happening.
 	var/list/last_built_icon_states
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 /datum/bodypart_overlay/mutant/get_overlay(layer, obj/item/bodypart/limb)
 	inherit_color(limb) // If draw_color is not set yet, go ahead and do that

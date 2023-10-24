@@ -1,4 +1,4 @@
-// EffigyEdit Remove (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove Customization
 /*
 /datum/preference/choiced/moth_antennae
 	savefile_key = "feature_moth_antennae"

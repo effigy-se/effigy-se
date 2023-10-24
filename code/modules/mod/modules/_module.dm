@@ -75,11 +75,11 @@
 		if(mod.wearer)
 			balloon_alert(mod.wearer, "not active!")
 		return
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if((mod.wearer.wear_suit != mod.chestplate) && !(allow_flags & MODULE_ALLOW_INACTIVE))
 		balloon_alert(mod.wearer, "chestplate retracted!")
 		return
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 	if(module_type != MODULE_USABLE)
 		if(active)
 			on_deactivation()
@@ -104,13 +104,13 @@
 	if(!mod.active || mod.activating || !mod.get_charge())
 		balloon_alert(mod.wearer, "unpowered!")
 		return FALSE
-	// EffigyEdit Add START - No using modules when not all parts are deployed.
+	// EffigyEdit Add - - No using modules when not all parts are deployed.
 	if(!(allow_flags & MODULE_ALLOW_INACTIVE))
 		for(var/obj/item/part as anything in mod.mod_parts)
 			if(part.loc == mod)
 				balloon_alert(mod.wearer, "deploy all parts first!")
 				return FALSE
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
 		to_chat(mod.wearer, span_warning("You cannot activate this right now."))

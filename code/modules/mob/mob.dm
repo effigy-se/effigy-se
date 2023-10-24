@@ -276,7 +276,7 @@
 	var/list/hearers = get_hearers_in_view(vision_distance, src) //caches the hearers and then removes ignored mobs.
 	hearers -= ignored_mobs
 
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	for(var/mob/camera/ai_eye/ai_eye in hearers)
 		if(ai_eye.ai?.client && !(ai_eye.ai.stat == DEAD))
 			hearers -= ai_eye
@@ -285,7 +285,7 @@
 	for(var/obj/effect/overlay/holo_pad_hologram/holo in hearers)
 		if(holo.Impersonation?.client)
 			hearers |= holo.Impersonation
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 	if(self_message)
 		hearers -= src
@@ -340,7 +340,7 @@
 /atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // EffigyEdit Change (Separation)
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
 
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	for(var/mob/camera/ai_eye/ai_eye in hearers)
 		if(ai_eye.ai?.client && !(ai_eye.ai.stat == DEAD))
 			hearers -= ai_eye
@@ -349,7 +349,7 @@
 	for(var/obj/effect/overlay/holo_pad_hologram/holo in hearers)
 		if(holo.Impersonation?.client)
 			hearers |= holo.Impersonation
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 	if(self_message)
 		hearers -= src
@@ -837,12 +837,12 @@
 	if(!check_respawn_delay())
 		return
 
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if(ckey)
 		if(is_banned_from(ckey, BAN_RESPAWN))
 			to_chat(usr, "<span class='boldnotice'>You are respawn banned, you can't respawn!</span>")
 			return
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 	usr.log_message("used the respawn button.", LOG_GAME)
 

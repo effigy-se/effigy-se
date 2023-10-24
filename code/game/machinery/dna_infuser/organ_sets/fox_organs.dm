@@ -6,7 +6,7 @@
 	visual = TRUE
 	damage_multiplier = 2
 
-// EffigyEdit Remove START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove START Customization
 /*
 /obj/item/organ/internal/ears/fox/on_insert(mob/living/carbon/human/ear_owner)
 	. = ..()
@@ -23,4 +23,4 @@
 		ear_owner.dna.species.mutant_bodyparts -= "ears"
 		ear_owner.update_body()
 */
-// EffigyEdit Remove END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove END Customization

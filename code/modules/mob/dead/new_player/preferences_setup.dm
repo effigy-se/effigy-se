@@ -91,7 +91,7 @@
 			highest_pref = job_preferences[job]
 
 	return preview_job
-// EffigyEdit Remove START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove START Customization
 /*
 /datum/preferences/proc/render_new_preview_appearance(mob/living/carbon/human/dummy/mannequin)
 	var/datum/job/preview_job = get_highest_priority_job()
@@ -123,4 +123,4 @@
 
 	return mannequin.appearance
 */
-// EffigyEdit Remove END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove END Customization

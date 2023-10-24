@@ -38,7 +38,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			misc_list[++misc_list.len] = list(
 				"name" = name,
 				"rank" = rank,
-				"trim" = trim, // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+				"trim" = trim, // EffigyEdit Add Customization
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
@@ -52,7 +52,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			var/list/entry = list(
 				"name" = name,
 				"rank" = rank,
-				"trim" = trim, // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+				"trim" = trim, // EffigyEdit Add Customization
 				)
 			var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
@@ -99,7 +99,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 
 /// Injects a record into the manifest.
-/datum/manifest/proc/inject(mob/living/carbon/human/person, client/person_client) // EffigyEdit Change (#3 Customization - Ported from Skyrat)
+/datum/manifest/proc/inject(mob/living/carbon/human/person, client/person_client) // EffigyEdit Change Customization
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -150,13 +150,13 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, from_scan = TRUE),
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		background_information = person_client?.prefs.read_preference(/datum/preference/text/background) || "",
 		exploitable_information = person_client?.prefs.read_preference(/datum/preference/text/exploitable) || "",
 		past_general_records = person_client?.prefs.read_preference(/datum/preference/text/general) || "",
 		past_medical_records = person_client?.prefs.read_preference(/datum/preference/text/medical) || "",
 		past_security_records = person_client?.prefs.read_preference(/datum/preference/text/security) || "",
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 	)
 
 	return

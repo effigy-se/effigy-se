@@ -102,7 +102,7 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = TRUE
 		var/icon_file
 		var/woman
-		var/mutant_styles = NONE // EffigyEdit Add (#3 Customization - Ported from Skyrat) mutant styles to pass down to build_worn_icon.
+		var/mutant_styles = NONE // EffigyEdit Add Customization mutant styles to pass down to build_worn_icon.
 		//BEGIN SPECIES HANDLING
 		if((bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // EffigyEdit Change - Customization
@@ -120,11 +120,11 @@ There are several things that need to be remembered:
 			icon_file = DEFAULT_UNIFORM_FILE
 			handled_by_bodytype = FALSE
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat) Taur-friendly suits!
+		// EffigyEdit Add - Customization Taur-friendly suits!
 		if(bodytype & BODYTYPE_TAUR)
 			if(istype(uniform) && uniform.gets_cropped_on_taurs)
 				mutant_styles |= get_taur_mode()
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		//END SPECIES HANDLING
 		uniform_overlay = uniform.build_worn_icon(
@@ -134,7 +134,7 @@ There are several things that need to be remembered:
 			female_uniform = woman ? uniform.female_sprite_flags : null,
 			override_state = target_overlay,
 			override_file = handled_by_bodytype ? icon_file : null,
-			mutant_styles = mutant_styles, // EffigyEdit Add (#3 Customization - Ported from Skyrat) Taur-friendly uniforms!
+			mutant_styles = mutant_styles, // EffigyEdit Add Customization Taur-friendly uniforms!
 		)
 
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
@@ -197,14 +197,14 @@ There are several things that need to be remembered:
 
 		var/icon_file = 'icons/mob/clothing/hands.dmi'
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		var/mutable_appearance/gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EffigyEdit Change
 
@@ -240,21 +240,21 @@ There are several things that need to be remembered:
 
 		var/icon_file = 'icons/mob/clothing/eyes.dmi'
 
-		// EffigyEdit Add START (#3 Customization)
+		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLASSES, glasses, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		// EffigyEdit Add END (#3 Customization)
+		// EffigyEdit Add End
 
 		var/mutable_appearance/glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EffigyEdit Change
 
-		// EffigyEdit Add START (#3 Customization)
+		// EffigyEdit Add - Customization
 		if(!mutant_override)
 			my_head.worn_glasses_offset?.apply_offset(glasses_overlay)
-		// EffigyEdit Add END (#3 Customization)
+		// EffigyEdit Add End
 		overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
 
@@ -278,17 +278,17 @@ There are several things that need to be remembered:
 
 		var/icon_file = 'icons/mob/clothing/ears.dmi'
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_EARS, ears, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		var/mutable_appearance/ears_overlay = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null)
-		if(!mutant_override) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+		if(!mutant_override) // EffigyEdit Add Customization
 			my_head.worn_ears_offset?.apply_offset(ears_overlay)
 
 		overlays_standing[EARS_LAYER] = ears_overlay
@@ -310,18 +310,18 @@ There are several things that need to be remembered:
 
 		var/icon_file = 'icons/mob/clothing/neck.dmi'
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_NECK, wear_neck, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		var/mutable_appearance/neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EffigyEdit Change
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
-		if(!mutant_override) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+		if(!mutant_override) // EffigyEdit Add Customization
 			my_chest?.worn_belt_offset?.apply_offset(neck_overlay)
 		overlays_standing[NECK_LAYER] = neck_overlay
 
@@ -346,7 +346,7 @@ There are several things that need to be remembered:
 
 		var/icon_file = DEFAULT_SHOES_FILE
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 
 		if((bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
@@ -361,7 +361,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		else if(bodytype & BODYTYPE_HIDE_SHOES)
 			return // We just don't want shoes that float if we're not displaying legs (useful for taurs, for now)
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		var/mutable_appearance/shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EffigyEdit Change
 		if(!shoes_overlay)
@@ -419,7 +419,7 @@ There are several things that need to be remembered:
 
 		var/icon_file = 'icons/mob/clothing/head/default.dmi'
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head, src)
@@ -431,11 +431,11 @@ There are several things that need to be remembered:
 			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = snout_icon_file
 				mutant_override = TRUE
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		var/mutable_appearance/head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EffigyEdit Change
 		var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
-		if(!mutant_override) // EffigyEdit Add(#3 Customization - Ported from Skyrat)
+		if(!mutant_override) // EffigyEdit AddCustomization
 			my_head?.worn_head_offset?.apply_offset(head_overlay)
 		overlays_standing[HEAD_LAYER] = head_overlay
 
@@ -458,18 +458,18 @@ There are several things that need to be remembered:
 
 		var/icon_file = 'icons/mob/clothing/belt.dmi'
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_BELT, belt, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		var/mutable_appearance/belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EffigyEdit Change
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
-		if(!mutant_override) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+		if(!mutant_override) // EffigyEdit Add Customization
 			my_chest?.worn_belt_offset?.apply_offset(belt_overlay)
 		overlays_standing[BELT_LAYER] = belt_overlay
 
@@ -487,33 +487,33 @@ There are several things that need to be remembered:
 		update_hud_wear_suit(worn_item)
 		var/icon_file = DEFAULT_SUIT_FILE
 
-		var/mutant_override = FALSE // EffigyEdit Add (#3 Customization - Ported from Skyrat)
-		var/mutant_styles = NONE // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+		var/mutant_override = FALSE // EffigyEdit Add Customization
+		var/mutant_styles = NONE // EffigyEdit Add Customization
 		//More currently unused digitigrade handling
 		if(bodytype & BODYTYPE_DIGITIGRADE)
 			if(worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION)
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SUIT_FILE // EffigyEdit Change
-				mutant_override = TRUE // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+				mutant_override = TRUE // EffigyEdit Add Customization
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		else if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SUIT, wear_suit)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		if(bodytype & BODYTYPE_TAUR)
 			var/obj/item/clothing/suit/worn_suit = wear_suit
 			if(istype(worn_suit) && worn_suit.gets_cropped_on_taurs)
 				mutant_styles |= get_taur_mode()
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		var/mutable_appearance/suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null, mutant_styles = mutant_styles) // EffigyEdit Change - Mutant bodytypes and Taur-friendly suits!
 
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
-		if(!mutant_override) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+		if(!mutant_override) // EffigyEdit Add Customization
 			my_chest?.worn_suit_offset?.apply_offset(suit_overlay)
 		overlays_standing[SUIT_LAYER] = suit_overlay
 	update_body_parts()
@@ -563,7 +563,7 @@ There are several things that need to be remembered:
 
 		var/icon_file = 'icons/mob/clothing/mask.dmi'
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MASK, wear_mask)
@@ -575,11 +575,11 @@ There are several things that need to be remembered:
 			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = snout_icon_file
 				mutant_override = TRUE
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		var/mutable_appearance/mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EffigyEdit Change
 		my_head.worn_mask_offset?.apply_offset(mask_overlay)
-		if(!mutant_override) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+		if(!mutant_override) // EffigyEdit Add Customization
 			my_head.worn_mask_offset?.apply_offset(mask_overlay)
 		overlays_standing[FACEMASK_LAYER] = mask_overlay
 
@@ -599,14 +599,14 @@ There are several things that need to be remembered:
 		update_hud_back(worn_item)
 		var/icon_file = 'icons/mob/clothing/back.dmi'
 
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 		if(bodytype & BODYTYPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MISC, back)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 		back_overlay = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // EffigyEdit Change
 
@@ -614,7 +614,7 @@ There are several things that need to be remembered:
 			return
 		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
 		my_chest?.worn_back_offset?.apply_offset(back_overlay)
-		if(!mutant_override) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+		if(!mutant_override) // EffigyEdit Add Customization
 			my_chest?.worn_back_offset?.apply_offset(back_overlay)
 		overlays_standing[BACK_LAYER] = back_overlay
 	apply_overlay(BACK_LAYER)
@@ -814,10 +814,10 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // EffigyEd
 		standing = wear_female_version(t_state, file2use, layer2use, female_uniform, greyscale_colors) //should layer2use be in sync with the adjusted value below? needs testing - shiz
 	if(!standing)
 		standing = mutable_appearance(file2use, t_state, -layer2use)
-	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	if(mutant_styles & STYLE_TAUR_ALL)
 		standing = wear_taur_version(standing.icon_state, standing.icon, layer2use, female_uniform, greyscale_colors)
-	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.

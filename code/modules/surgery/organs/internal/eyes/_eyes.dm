@@ -90,10 +90,10 @@
 		lighting_cutoff = LIGHTING_CUTOFF_REAL_LOW
 	if(CONFIG_GET(flag/native_fov) && native_fov)
 		affected_human.add_fov_trait(type, native_fov)
-	// EffigyEdit Add START (Emissives)
+	// EffigyEdit Add - Emissives
 	if (affected_human.emissive_eyes)
 		is_emissive = TRUE
-	// EffigyEdit Add END (Emissives)
+	// EffigyEdit Add End
 	if(call_update)
 		affected_human.update_body()
 

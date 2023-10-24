@@ -339,7 +339,7 @@
 		item.add_fingerprint(user, ignoregloves = TRUE)
 	return TRUE
 
-// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 /**
  * Copies the outfit from a human to itself.
  **/
@@ -383,7 +383,7 @@
 	for(var/obj/item/item in user.held_items)
 		item.add_fingerprint(user, ignoregloves = TRUE)
 	return TRUE
-// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 /// Return a list of all the types that are required to disguise as this outfit type
 /datum/outfit/proc/get_chameleon_disguise_info()

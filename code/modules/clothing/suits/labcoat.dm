@@ -52,13 +52,13 @@
 		/obj/item/storage/medkit, // EffigyEdit Add
 	)
 
-// EffigyEdit Add START
+// EffigyEdit Add -
 /obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize(mapload)
 	. = ..()
 	allowed += list(
 		/obj/item/storage/medkit,
 	)
-// EffigyEdit Add END
+// EffigyEdit Add End
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	name = "paramedic's jacket"

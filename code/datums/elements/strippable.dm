@@ -68,7 +68,7 @@
 	var/show_visible_message = TRUE
 
 	/// Can it be silent?
-	var/can_be_silent = FALSE // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+	var/can_be_silent = FALSE // EffigyEdit Add Customization
 
 /// Gets the item from the given source.
 /datum/strippable_item/proc/get_item(atom/source)
@@ -131,7 +131,7 @@
 	if (HAS_TRAIT(item, TRAIT_NO_STRIP))
 		return FALSE
 
-	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	var/is_silent = can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS)
 	if (!is_silent)
 		source.visible_message(
@@ -140,7 +140,7 @@
 			blind_message = span_hear("You hear rustling."),
 			ignored_mobs = user,
 		)
-	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	to_chat(user, span_danger("You try to remove [source]'s [item.name]..."))
 	user.log_message("is stripping [key_name(source)] of [item].", LOG_ATTACK, color="red")
@@ -277,11 +277,11 @@
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
 /proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
-	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	//if (!do_after(user, strip_delay || item.strip_delay, source, interaction_key = REF(item)))
 	if (!do_after(user, (strip_delay || item.strip_delay) * (HAS_TRAIT(user, TRAIT_STICKY_FINGERS) ? THIEVING_GLOVES_STRIP_SLOWDOWN : NORMAL_STRIP_SLOWDOWN), source, interaction_key = REF(item)))
 		return FALSE
-	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	return TRUE
 

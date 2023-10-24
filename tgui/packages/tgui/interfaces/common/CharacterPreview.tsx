@@ -1,16 +1,16 @@
 import { ByondUi } from '../../components';
 
 export const CharacterPreview = (props: {
-  width?: string; // EffigyEdit Change (#3 Customization - Ported from Skyrat)
+  width?: string; // EffigyEdit Change Customization
   height: string;
   id: string;
 }) => {
-  // EffigyEdit Change START (#3 Customization - Ported from Skyrat)
+  // EffigyEdit Change START Customization
   const { width = '220px' } = props;
-  // EffigyEdit Change END (#3 Customization - Ported from Skyrat)
+  // EffigyEdit Change END Customization
   return (
     <ByondUi
-      width={width} // EffigyEdit Change (#3 Customization - Ported from Skyrat)
+      width={width} // EffigyEdit Change Customization
       height={props.height}
       params={{
         id: props.id,

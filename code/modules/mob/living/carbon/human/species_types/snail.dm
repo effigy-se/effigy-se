@@ -83,7 +83,7 @@
 	armor_type = /datum/armor/backpack_snail
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER //This makes them layer over tails like the cult backpack; some tails really shouldn't appear over them!
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -154,7 +154,7 @@
 			RESKIN_WORN_ICON_STATE = "rockshellwhite"
 		),
 	)
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 /datum/armor/backpack_snail
 	melee = 40

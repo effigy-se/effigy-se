@@ -45,7 +45,7 @@ export const custom_species_lore: Feature<string> = {
     "Add some lore for your species! Won't show up if there's no custom species.",
   component: FeatureTextInput,
 };
-// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 export const general_record: Feature<string> = {
   name: 'Records - General',
   description:
@@ -93,7 +93,7 @@ export const pda_writing: Feature<string> = {
     "What's written down on your character's PDA. This can be anything they'll have written down for later - from shopping lists all the way to saucy fanfiction. Anyone with your PDA can read these with the notepad app, so keep it close!",
   component: FeatureTextInput,
 };
-// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 export const allow_genitals_toggle: FeatureToggle = {
   name: 'Allow Genital Parts',

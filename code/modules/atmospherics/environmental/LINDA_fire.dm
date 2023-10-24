@@ -21,10 +21,10 @@
  * is handled by the hotspot itself, specifically perform_exposure().
  */
 /turf/open/hotspot_expose(exposed_temperature, exposed_volume, soh)
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if(liquids && !liquids.fire_state && liquids.check_fire(TRUE))
 		SSliquids.processing_fire[src] = TRUE
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 	//If the air doesn't exist we just return false
 	var/list/air_gases = air?.gases

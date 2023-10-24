@@ -93,12 +93,12 @@
 	switch(damage_type)
 		if(BRUTE)
 			if(damage_amount)
-				//EffigyEdit Add START - CREDITS TO WHITEDREAM(valtos)
+				//EffigyEdit Add - - CREDITS TO WHITEDREAM(valtos)
 				playsound(src, pick('local/sound/effects/metalblock1.wav', 'local/sound/effects/metalblock2.wav', \
 									'local/sound/effects/metalblock3.wav', 'local/sound/effects/metalblock4.wav', \
 									'local/sound/effects/metalblock5.wav', 'local/sound/effects/metalblock6.wav', \
 									'local/sound/effects/metalblock7.wav', 'local/sound/effects/metalblock8.wav'), 50, TRUE)
-				//EffigyEdit Add END
+				//EffigyEdit Add End
 			else
 				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
 		if(BURN)

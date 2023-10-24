@@ -145,7 +145,7 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Greatcoat" = list(
@@ -180,7 +180,7 @@
 			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)
 	)
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 /datum/armor/armor_hos
 	melee = 30

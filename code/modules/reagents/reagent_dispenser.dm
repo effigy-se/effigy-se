@@ -325,14 +325,14 @@
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
-// EffigyEdit Add START
+// EffigyEdit Add -
 /obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE) // EffigyEdit Change
 	if(damage_type == BURN || guaranteed_violent)
 		explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12)
 		qdel(src)
 	else
 		. = ..()
-// EffigyEdit Add END
+// EffigyEdit Add End
 
 /// Wall mounted dispeners, like pepper spray or virus food. Not a normal tank, and shouldn't be able to be turned into a plumbed stationary one.
 /obj/structure/reagent_dispensers/wall

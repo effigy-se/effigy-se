@@ -115,11 +115,11 @@
 		if(!wearer.equip_to_slot_if_possible(overslot, overslot.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
 			wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
 		overslotting_parts[part] = null
-	// EffigyEdit Add START - Avoiding exploits with the modules staying active when any of the parts are retracted.
+	// EffigyEdit Add - - Avoiding exploits with the modules staying active when any of the parts are retracted.
 	for(var/obj/item/mod/module/module as anything in modules)
 		if(module.active)
 			module.on_deactivation(display_message = !!user)
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 	if(!user)
 		return
 	wearer.visible_message(span_notice("[wearer]'s [part.name] retract[part.p_s()] back into [src] with a mechanical hiss."),

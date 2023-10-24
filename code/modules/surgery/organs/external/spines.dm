@@ -8,7 +8,7 @@
 	slot = ORGAN_SLOT_EXTERNAL_SPINES
 
 	preference = "feature_lizard_spines"
-	//dna_block = DNA_SPINES_BLOCK // EffigyEdit Remove -  (#3 Customization - Ported from Skyrat)
+	//dna_block = DNA_SPINES_BLOCK // EffigyEdit Remove -  Customization
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/spines
@@ -35,7 +35,7 @@
 	var/wagging = FALSE
 
 /datum/bodypart_overlay/mutant/spines/get_global_feature_list()
-	return GLOB.sprite_accessories["spines"] // EffigyEdit Change (#3 Customization - Ported from Skyrat) ORIGINAL: return GLOB.spines_list
+	return GLOB.sprite_accessories["spines"] // EffigyEdit Change Customization ORIGINAL: return GLOB.spines_list
 
 /datum/bodypart_overlay/mutant/spines/get_base_icon_state()
 	return (wagging ? "wagging" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging

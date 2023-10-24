@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 /proc/ui_style2icon(ui_style)
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
 
-// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	"Glass" = 'local/icons/lewd/obj/lewd_items/inventory_icons/glass.dmi',
 	"Midnight" = 'local/icons/lewd/obj/lewd_items/inventory_icons/midnight.dmi',
@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 /proc/erp_ui_style2icon(ui_style)
 	return GLOB.available_erp_ui_styles[ui_style] || GLOB.available_erp_ui_styles[GLOB.available_erp_ui_styles[1]]
-// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 /datum/hud
 	var/mob/mymob
@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/inventory_shown = FALSE //Equipped item inventory
 	var/hotkey_ui_hidden = FALSE //This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
-	var/atom/movable/screen/ammo_counter // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+	var/atom/movable/screen/ammo_counter // EffigyEdit Add Customization
 
 	var/atom/movable/screen/blobpwrdisplay
 
@@ -118,7 +118,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
-	var/erp_ui_style // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+	var/erp_ui_style // EffigyEdit Add Customization
 
 	// List of weakrefs to objects that we add to our screen that we don't expect to DO anything
 	// They typically use * in their render target. They exist solely so we can reuse them,

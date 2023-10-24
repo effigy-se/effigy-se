@@ -363,10 +363,10 @@
 			. += "The [fitting] has been smashed."
 	if(cell || has_mock_cell)
 		. += "Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
-	// EffigyEdit Add START (#73 Lighting)
+	// EffigyEdit Add - #73 Lighting
 	if(constant_flickering)
 		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
-	// EffigyEdit Add END (#73 Lighting)
+	// EffigyEdit Add End
 
 
 // attack with item - insert light (if right type), otherwise try to break the light

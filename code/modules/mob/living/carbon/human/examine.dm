@@ -9,10 +9,10 @@
 	var/obscure_name
 	var/obscure_examine
 
-	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	if(isliving(user))
 		var/mob/living/L = user
@@ -22,7 +22,7 @@
 			obscure_name = TRUE
 			obscure_examine = TRUE
 
-	//EffigyEdit Change START (#3 Customization - Ported from Skyrat)
+	//EffigyEdit Change START Customization
 
 	var/species_visible
 	var/species_name_string
@@ -50,7 +50,7 @@
 	// EffigyEdit Change END
 
 
-	// EffigyEdit Remove START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Remove START Customization
 	/*
 	var/apparent_species
 	if(dna?.species && !skipface)
@@ -438,10 +438,10 @@
 			if(target_record)
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1;examine_time=[world.time]'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1;examine_time=[world.time]'>\[See quirks\]</a>"
-			// EffigyEdit Add START - RECORDS
+			// EffigyEdit Add - RECORDS
 			if(target_record && length(target_record.past_medical_records) > RECORDS_INVISIBLE_THRESHOLD)
 				. += "<a href='?src=[REF(src)];hud=m;medrecords=1;examine_time=[world.time]'>\[View medical records\]</a>"
-			// EffigyEdit Add END - RECORDS
+			// EffigyEdit Add End
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			if(!user.stat && user != src)
@@ -466,7 +466,7 @@
 		. += span_info("<b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
 	. += "</span>"
 
-	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	for(var/genital in possible_genitals)
 		if(dna.species.mutant_bodyparts[genital])
 			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]

@@ -17,7 +17,7 @@
 #define SCANGATE_GOLEM "golem"
 #define SCANGATE_ZOMBIE "zombie"
 
-// EffigyEdit Add START
+// EffigyEdit Add -
 #define SCANGATE_MAMMAL "mammal"
 #define SCANGATE_VOX "vox"
 #define SCANGATE_AQUATIC "aquatic"
@@ -31,7 +31,7 @@
 #define SCANGATE_HEMOPHAGE "hemophage"
 #define SCANGATE_SNAIL "snail"
 #define SCANGATE_GENDER "Gender"
-// EffigyEdit Add END
+// EffigyEdit Add End
 
 /obj/machinery/scanner_gate
 	name = "scanner gate"
@@ -175,7 +175,7 @@
 						scan_species = /datum/species/golem
 					if(SCANGATE_ZOMBIE)
 						scan_species = /datum/species/zombie
-					// EffigyEdit Add START (Medical)
+					// EffigyEdit Add - (Medical)
 					if(SCANGATE_MAMMAL)
 						scan_species = /datum/species/mammal
 					if(SCANGATE_VOX)
@@ -198,7 +198,7 @@
 						scan_species = /datum/species/teshari
 					if(SCANGATE_SNAIL)
 						scan_species = /datum/species/snail
-					// EffigyEdit Add END (Medical)
+					// EffigyEdit Add End
 				if(is_species(H, scan_species))
 					beep = TRUE
 				if(detect_species == SCANGATE_ZOMBIE) //Can detect dormant zombies
@@ -216,14 +216,14 @@
 					beep = TRUE
 				if(H.nutrition >= detect_nutrition && detect_nutrition == NUTRITION_LEVEL_FAT)
 					beep = TRUE
-		// EffigyEdit Add START (Medical)
+		// EffigyEdit Add - Medical
 		if(SCANGATE_GENDER)
 			if(ishuman(M))
 				var/mob/living/carbon/human/scanned_human = M
 				if((scanned_human.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
 					if(scanned_human.gender == detect_gender)
 						beep = TRUE
-		// EffigyEdit Add END (Medical)
+		// EffigyEdit Add End
 
 	if(reverse)
 		beep = !beep
@@ -314,7 +314,7 @@
 					if("Obese")
 						detect_nutrition = NUTRITION_LEVEL_FAT
 			. = TRUE
-		// EffigyEdit Add START (Medical)
+		// EffigyEdit Add - Medical
 		if("set_target_gender")
 			var/new_gender = params["new_gender"]
 			var/gender_list = list(
@@ -328,7 +328,7 @@
 					if("Female")
 						detect_gender = "female"
 			. = TRUE
-		// EffigyEdit Add END (Medical)
+		// EffigyEdit Add End
 
 #undef SCANGATE_NONE
 #undef SCANGATE_MINDSHIELD
@@ -349,7 +349,7 @@
 #undef SCANGATE_GOLEM
 #undef SCANGATE_ZOMBIE
 
-// EffigyEdit Add START (Medical)
+// EffigyEdit Add - Medical
 #undef SCANGATE_MAMMAL
 #undef SCANGATE_VOX
 #undef SCANGATE_AQUATIC
@@ -364,4 +364,4 @@
 #undef SCANGATE_SNAIL
 
 #undef SCANGATE_GENDER
-// EffigyEdit Add END (Medical)
+// EffigyEdit Add End

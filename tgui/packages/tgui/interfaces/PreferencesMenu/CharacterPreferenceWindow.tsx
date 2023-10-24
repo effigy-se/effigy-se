@@ -9,14 +9,14 @@ import { JobsPage } from './JobsPage';
 import { MainPage } from './MainPage';
 import { SpeciesPage } from './SpeciesPage';
 import { QuirksPage } from './QuirksPage';
-import { LanguagesPage } from './LanguagesMenu'; // EffigyEdit Add (#3 Customization - Ported from Skyrat)
-import { LimbsPage } from './LimbsPage'; // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+import { LanguagesPage } from './LanguagesMenu'; // EffigyEdit Add Customization
+import { LimbsPage } from './LimbsPage'; // EffigyEdit Add Customization
 enum Page {
   Antags,
   Main,
   Jobs,
-  Limbs, // EffigyEdit Add (#3 Customization - Ported from Skyrat)
-  Languages, // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+  Limbs, // EffigyEdit Add Customization
+  Languages, // EffigyEdit Add Customization
   Species,
   Quirks,
 }
@@ -66,14 +66,14 @@ export const CharacterPreferenceWindow = (props, context) => {
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
-    // EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+    // EffigyEdit Add - Customization
     case Page.Limbs:
       pageContents = <LimbsPage />;
       break;
     case Page.Languages:
       pageContents = <LanguagesPage />;
       break;
-    // EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+    // EffigyEdit Add End
     case Page.Main:
       pageContents = (
         <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
@@ -142,7 +142,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
               {
-                // EffigyEdit Change START (#3 Customization - Ported from Skyrat)
+                // EffigyEdit Change START Customization
               }
               <Stack.Item grow>
                 <PageButton
@@ -162,7 +162,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
               {
-                // // EffigyEdit Change END (#3 Customization - Ported from Skyrat)
+                // // EffigyEdit Change END Customization
               }
               <Stack.Item grow>
                 <PageButton

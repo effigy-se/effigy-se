@@ -929,7 +929,7 @@
 	if(should_draw_greyscale) //Should the limb be colored?
 		draw_color ||= species_color || (skin_tone ? skintone2hex(skin_tone) : null)
 
-	// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	var/datum/species/owner_species = human_owner.dna.species
 
 	if(owner_species && owner_species.specific_alpha != 255)
@@ -938,7 +938,7 @@
 	if(aux_zone)
 		aux_zone_markings = LAZYCOPY(owner.dna.species.body_markings[aux_zone])
 	markings_alpha = owner.dna.species.markings_alpha
-	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	recolor_external_organs()
 	return TRUE
@@ -1065,7 +1065,7 @@
 				if(overlay.layers & external_layer)
 					. += overlay.get_overlay(external_layer, src)
 
-	// EffigyEdit Add START (#3 Customization - Ported from Skyrat) Body Markings
+	// EffigyEdit Add - Customization Body Markings
 	var/override_color
 	var/atom/offset_spokesman = owner || src
 	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
@@ -1120,7 +1120,7 @@
 				. += accessory_overlay
 				if (emissive)
 					. += emissive
-	// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	return .
 

@@ -423,10 +423,10 @@ Used by the AI doomsday and the self-destruct nuke.
 		var/y_offset = bounds ? round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1 : 1
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[P], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
-	// EffigyEdit Add START (Automapper) We need to load our templates from cache after our space has been carved out.
+	// EffigyEdit Add - (Automapper) We need to load our templates from cache after our space has been carved out.
 	if(!LAZYLEN(errorList))
 		SSautomapper.load_templates_from_cache(files)
-	// EffigyEdit Add END (Automapper)
+	// EffigyEdit Add End
 	if(!silent)
 	//	INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 		add_startup_message("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!") // EffigyEdit Change - SPLASH

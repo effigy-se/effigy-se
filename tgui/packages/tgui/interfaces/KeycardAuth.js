@@ -43,14 +43,14 @@ export const KeycardAuth = (props, context) => {
                       onClick={() => act('emergency_maint')}
                       content="Emergency Maintenance Access"
                     />
-                    {/* EffigyEdit Add START (Airlock Override) */}
+                    {/* EffigyEdit Add - Airlock Override */}
                     <Button
                       icon="wrench"
                       fluid
                       onClick={() => act('eng_override')}
                       content="Engineering Override Access"
                     />
-                    {/* EffigyEdit Add END */}
+                    {/* EffigyEdit Add End */}
                     <Button
                       icon="meteor"
                       fluid

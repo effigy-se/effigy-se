@@ -52,12 +52,12 @@
 		if(charging)
 			to_chat(user, span_warning("There is already a cell in the charger!"))
 			return
-		// EffigyEdit Add START
+		// EffigyEdit Add -
 		var/obj/item/stock_parts/cell/inserting_cell = W
 		if(inserting_cell.chargerate <= 0)
 			to_chat(user, span_warning("[inserting_cell] cannot be recharged!"))
 			return
-		// EffigyEdit Add END
+		// EffigyEdit Add End
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(a))

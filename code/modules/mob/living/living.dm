@@ -56,11 +56,11 @@
 	if(SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, T) & NO_Z_IMPACT_DAMAGE)
 		return
 
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_WAIST)
 		Knockdown(20)
 		return
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 	visible_message(span_danger("[src] crashes into [T] with a sickening noise!"), \
 					span_userdanger("You crash into [T] with a sickening noise!"))
 	adjustBruteLoss((levels * 5) ** 1.5)
@@ -2338,10 +2338,10 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	body_position = new_value
 	SEND_SIGNAL(src, COMSIG_LIVING_SET_BODY_POSITION, new_value, .)
 	if(new_value == LYING_DOWN) // From standing to lying down.
-		// EffigyEdit Add START
+		// EffigyEdit Add -
 		if(has_gravity())
 			playsound(src, "bodyfall", 50, TRUE)
-		// EffigyEdit Add END
+		// EffigyEdit Add End
 		on_lying_down()
 	else // From lying down to standing up.
 		on_standing_up()

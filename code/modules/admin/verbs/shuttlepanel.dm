@@ -18,7 +18,7 @@
 		var/obj/docking_port/stationary/S = port
 		if (canDock(S) == SHUTTLE_CAN_DOCK)
 			options[S.name || S.shuttle_id] = S
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	options += ">>> INVALID DOCKS:" //I WILL CRASH THIS SHIP WITH NO SURVIVORS!
 	for(var/port in SSshuttle.stationary_docking_ports)
 		if (istype(port, /obj/docking_port/stationary/transit))
@@ -26,7 +26,7 @@
 		var/obj/docking_port/stationary/S = port
 		if(!(canDock(S) == SHUTTLE_CAN_DOCK))
 			options[S.name || S.shuttle_id] = S
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 	options += "--------"
 	options += "Infinite Transit"

@@ -115,10 +115,10 @@
 	var/list/recording_recipe
 
 	var/list/saved_recipes = list()
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	var/list/transferAmounts = list()
 	var/customTransferAmount
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 /obj/machinery/chem_dispenser/Initialize(mapload)
 	. = ..()
@@ -127,12 +127,12 @@
 		emagged_reagents = sort_list(emagged_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(upgrade_reagents)
 		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if(upgrade_reagents2)
 		upgrade_reagents2 = sort_list(upgrade_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(upgrade_reagents3)
 		upgrade_reagents3 = sort_list(upgrade_reagents3, GLOBAL_PROC_REF(cmp_reagents_asc))
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if(is_operational)
 		begin_processing()
 	update_appearance()
@@ -400,7 +400,7 @@
 				return
 			recording_recipe = null
 			. = TRUE
-		// EffigyEdit Add START
+		// EffigyEdit Add -
 		if("custom_amount")
 			if(!beaker)
 				to_chat(usr, span_warning("Insert a container first!"))
@@ -409,7 +409,7 @@
 				transferAmounts -= customTransferAmount
 			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
 			transferAmounts += customTransferAmount
-		// EffigyEdit Add END
+		// EffigyEdit Add End
 		if("reaction_lookup")
 			if(beaker)
 				beaker.reagents.ui_interact(usr)
@@ -427,11 +427,11 @@
 		return
 	if(is_reagent_container(I) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		var/obj/item/reagent_containers/B = I
-		// EffigyEdit Add START
+		// EffigyEdit Add -
 		if(customTransferAmount)
 			transferAmounts -= customTransferAmount
 		transferAmounts = B.possible_transfer_amounts
-		// EffigyEdit Add END
+		// EffigyEdit Add End
 		. = TRUE //no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return
@@ -584,7 +584,7 @@
 		/datum/reagent/consumable/tonic,
 		/datum/reagent/water,
 	)
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	upgrade_reagents = list(
 		/datum/reagent/consumable/applejuice,
 		/datum/reagent/consumable/pumpkinjuice,
@@ -600,7 +600,7 @@
 		/datum/reagent/consumable/peachjuice,
 		/datum/reagent/consumable/sol_dry
 	)
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol/thirteenloko,
 		/datum/reagent/consumable/ethanol/whiskey_cola,

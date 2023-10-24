@@ -244,7 +244,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			misc_costs[buyer] += our_order.pack.cost
 			misc_order_num[buyer] = "[misc_order_num[buyer]]#[our_order.id] "
 
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	for(var/briefcase_order in forced_briefcases)
 		var/list/buying_account_orders = forced_briefcases[briefcase_order]
 		var/datum/bank_account/buying_account = briefcase_order
@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 				misc_contents[buyer] += item
 			misc_costs[buyer] += order.pack.cost
 			misc_order_num[buyer] = "[misc_order_num[buyer]]#[order.id]  "
-	// EffigyEdit Add END
+	// EffigyEdit Add End
 
 	for(var/miscbox in miscboxes)
 		var/datum/supply_order/order = new/datum/supply_order()

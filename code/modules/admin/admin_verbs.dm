@@ -244,7 +244,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/validate_puzzgrids,
 	/client/proc/GeneratePipeSpritesheet,
 	/client/proc/view_runtimes,
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	/client/proc/reload_interactions, // Interactions
 	/client/proc/test_area_spawner,	// Automapper
 	/client/proc/toggle_liquid_debug, // Customization

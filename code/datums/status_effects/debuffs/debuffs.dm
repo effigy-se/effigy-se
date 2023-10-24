@@ -292,8 +292,8 @@
 
 /datum/status_effect/grouped/stasis/tick(seconds_between_ticks)
 	update_time_of_death()
-	if(owner.stat >= UNCONSCIOUS) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
-		owner.Sleeping(15 SECONDS) // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+	if(owner.stat >= UNCONSCIOUS) // EffigyEdit Add Customization
+		owner.Sleeping(15 SECONDS) // EffigyEdit Add Customization
 
 /datum/status_effect/grouped/stasis/on_remove()
 	// EffigyEdit Change - Numbing

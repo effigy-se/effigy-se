@@ -276,7 +276,7 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CREWMEMBER_JOINED, character, rank)
 
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if(humanc)
 		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(humanc?.client?.prefs?.loadout_list))
 			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))

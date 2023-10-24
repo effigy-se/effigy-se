@@ -179,7 +179,7 @@
 			if(gloves)
 				return
 			gloves = equipping
-			// EffigyEdit Add START - ERP
+			// EffigyEdit Add - - ERP
 			if(gloves.breakouttime)
 				ADD_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 				stop_pulling()
@@ -257,10 +257,10 @@
 				update_worn_undersuit()
 			update_worn_oversuit()
 
-			// EffigyEdit Add START (ERP)
+			// EffigyEdit Add - (ERP)
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_lewd()
-			// EffigyEdit Add END
+			// EffigyEdit Add End
 
 	else if(I == w_uniform)
 		if(invdrop)
@@ -277,12 +277,12 @@
 		if(!QDELETED(src))
 			update_worn_undersuit()
 	else if(I == gloves)
-		// EffigyEdit Add START (ERP)
+		// EffigyEdit Add - (ERP)
 		if(gloves.breakouttime) //when unequipping a straightjacket
 			REMOVE_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 			drop_all_held_items() //suit is restraining
 			update_mob_action_buttons() //certain action buttons may be usable again.
-		// EffigyEdit Add END
+		// EffigyEdit Add End
 		gloves = null
 		if(!QDELETED(src))
 			update_worn_gloves()

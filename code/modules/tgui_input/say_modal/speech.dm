@@ -47,14 +47,14 @@
 		if(ADMIN_CHANNEL)
 			client.cmd_admin_say(entry)
 			return TRUE
-		// EffigyEdit Add START
+		// EffigyEdit Add -
 		if(LOOC_CHANNEL)
 			client.looc(entry)
 			return TRUE
 		if(WHIS_CHANNEL)
 			client.mob.whisper_verb(entry)
 			return TRUE
-		// EffigyEdit Add END
+		// EffigyEdit Add End
 	return FALSE
 
 /**

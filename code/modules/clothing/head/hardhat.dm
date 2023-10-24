@@ -141,7 +141,7 @@
 /obj/item/clothing/head/utility/hardhat/welding/proc/toggle_welding_screen(mob/living/user)
 	if(weldingvisortoggle(user))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 50, TRUE) //Visors don't just come from nothing
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	var/mob/living/carbon/carbon_user = user
 	if(carbon_user.dna.species.mutant_bodyparts["snout"])
 		visor_sprite_path = 'local/icons/mob/clothing/head_muzzled.dmi'

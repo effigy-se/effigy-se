@@ -115,7 +115,7 @@
 	var/policy_index = ""
 
 	/// Job title to use for spawning. Allows a job to spawn without needing map edits.
-	var/job_spawn_title // EffigyEdit Add (#3 Customization - Ported from Skyrat)
+	var/job_spawn_title // EffigyEdit Add Customization
 
 	///RPG job names, for the memes
 	var/rpg_title

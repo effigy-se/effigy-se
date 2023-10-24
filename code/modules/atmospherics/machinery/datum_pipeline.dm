@@ -217,7 +217,7 @@
 	var/turf_temperature = target.GetTemperature()
 	var/turf_heat_capacity = target.GetHeatCapacity()
 
-	// EffigyEdit Add START
+	// EffigyEdit Add -
 	if(target.liquids?.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
 		turf_temperature = target.liquids.temp
 		turf_heat_capacity = target.liquids.total_reagents * REAGENT_HEAT_CAPACITY
@@ -231,7 +231,7 @@
 		air.temperature -= heat / total_heat_capacity
 		if(!target.liquids.immutable)
 			target.liquids.temp += heat / turf_heat_capacity
-	else // EffigyEdit Add END
+	else // EffigyEdit Add End
 		if(turf_heat_capacity <= 0 || partial_heat_capacity <= 0)
 			return TRUE
 

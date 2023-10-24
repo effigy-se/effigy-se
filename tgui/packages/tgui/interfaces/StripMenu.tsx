@@ -5,7 +5,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Icon, Stack } from '../components';
 import { Window } from '../layouts';
 
-const ROWS = 6; // EffigyEdit Change (#3 Customization - Ported from Skyrat)
+const ROWS = 6; // EffigyEdit Change Customization
 const COLUMNS = 6;
 
 const BUTTON_DIMENSIONS = '50px';
@@ -57,12 +57,12 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 
   enable_internals: {
-    icon: 'lungs', // EffigyEdit Change (#3 Customization - Ported from Skyrat) TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
+    icon: 'lungs', // EffigyEdit Change Customization TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
     text: 'Enable internals',
   },
 
   disable_internals: {
-    icon: 'lungs-virus', // EffigyEdit Change (#3 Customization - Ported from Skyrat) TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
+    icon: 'lungs-virus', // EffigyEdit Change Customization TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
     text: 'Disable internals',
   },
 
@@ -206,7 +206,7 @@ const SLOTS: Record<
     gridSpot: getGridSpotKey([4, 5]),
     image: 'inventory-pocket.png',
   },
-  // EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+  // EffigyEdit Add - Customization
   vagina: {
     displayName: 'vagina',
     gridSpot: getGridSpotKey([5, 1]),
@@ -231,7 +231,7 @@ const SLOTS: Record<
     image: 'inventory-pocket.png',
   },
 };
-// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 enum ObscuringLevel {
   Completely = 1,
   Hidden = 2,

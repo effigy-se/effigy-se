@@ -124,13 +124,13 @@ SUBSYSTEM_DEF(lag_switch)
 				to_chat(world, span_boldannounce("Footstep sounds have been disabled for performance concerns."))
 			else
 				to_chat(world, span_boldannounce("Footstep sounds have been re-enabled."))
-		// EffigyEdit Add START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		if (DISABLE_CREATOR)
 			if (state)
 				to_chat(world, span_boldannounce("The character creator and preferences menu has been disabled for performance metrics."))
 			else
 				to_chat(world, span_boldannounce("The character creatior has been re-enabled."))
-		// EffigyEdit Add END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 
 	return TRUE
 
