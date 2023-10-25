@@ -45,6 +45,7 @@
 		var/list/possibleslashcoitems = list(
 			/obj/item/toy/faustian_doll, \
 			/obj/item/food/meat/lab_grown, \
+			/obj/item/reagent_containers/condiment/mayonnaise/slashco, \
 		)
 		var/our_selection = pick(possibleslashcoitems)
 		new our_selection
