@@ -23,13 +23,6 @@
 /datum/reagent/drug/therma_vision/on_mob_metabolize(mob/living/the_mealer)
 	. = ..()
 	to_chat(the_mealer, span_nicegreen("You feel pins and needles behind your neck, and begin to pay attention to the world beyond."))
-	if(requires_liver)
-		if(!the_mealer.get_organ_slot(ORGAN_SLOT_LIVER))
-			return
-		if(the_mealer.undergoing_liver_failure())
-			return
-		if(HAS_TRAIT(the_mealer, TRAIT_LIVERLESS_METABOLISM))
-			return
 	if(the_mealer.has_status_effect(/datum/status_effect/grouped/stasis))
 		return
 
