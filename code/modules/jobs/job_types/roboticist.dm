@@ -38,9 +38,6 @@
 	. = ..()
 	family_heirlooms += subtypesof(/obj/item/toy/mecha)
 
-/datum/job/roboticist/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
-
 /datum/outfit/job/roboticist
 	name = "Roboticist"
 	jobtype = /datum/job/roboticist

@@ -37,8 +37,6 @@
 	rpg_title = "Alchemist"
 	job_flags = STATION_JOB_FLAGS
 
-/datum/job/chemist/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/chemist
 	name = "Chemist"

@@ -109,9 +109,6 @@
 	SSblackbox.record_feedback("text", "religion_deity", 1, "[new_deity]", 1)
 	SSblackbox.record_feedback("text", "religion_bible", 1, "[new_bible]", 1)
 
-/datum/job/chaplain/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
-
 /datum/outfit/job/chaplain
 	name = "Chaplain"
 	jobtype = /datum/job/chaplain

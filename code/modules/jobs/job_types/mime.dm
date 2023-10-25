@@ -36,9 +36,6 @@
 
 	job_tone = "silence"
 
-/datum/job/mime/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
-
 
 /datum/job/mime/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

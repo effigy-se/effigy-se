@@ -36,9 +36,6 @@
 	voice_of_god_silence_power = 3
 	rpg_title = "Veteran Adventurer"
 
-/datum/job/curator/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
-
 /datum/outfit/job/curator
 	name = "Curator"
 	jobtype = /datum/job/curator
