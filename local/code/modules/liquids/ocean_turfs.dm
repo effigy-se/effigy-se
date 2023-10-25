@@ -28,7 +28,7 @@
 			liquids.remove_turf(src)
 		else
 			qdel(liquids, TRUE)
-	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
 	new_immmutable.add_turf(src)
 
 /turf/open/misc/ironsand/ocean
@@ -42,7 +42,7 @@
 			liquids.remove_turf(src)
 		else
 			qdel(liquids, TRUE)
-	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
 	new_immmutable.add_turf(src)
 
 
@@ -101,7 +101,7 @@
 			liquids.remove_turf(src)
 		else
 			qdel(liquids, TRUE)
-	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(liquid_type)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(liquid_type, src)
 	new_immmutable.add_turf(src)
 
 	if(rand_variants && prob(rand_chance))
@@ -120,7 +120,7 @@
 			liquids.remove_turf(src)
 		else
 			qdel(liquids, TRUE)
-	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
 	new_immmutable.add_turf(src)
 
 /turf/open/floor/iron/ocean
@@ -134,7 +134,7 @@
 			liquids.remove_turf(src)
 		else
 			qdel(liquids, TRUE)
-	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
 	new_immmutable.add_turf(src)
 
 /turf/closed/mineral/random/ocean
@@ -181,7 +181,7 @@
 			liquids.remove_turf(src)
 		else
 			qdel(liquids, TRUE)
-	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/canal)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/canal, src)
 	new_immmutable.add_turf(src)
 
 /turf/open/misc/canal_mutable
