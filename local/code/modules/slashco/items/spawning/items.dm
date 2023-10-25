@@ -1,6 +1,6 @@
 /obj/effect/landmark/slashco_item_spawn
 	name = "SlashCo Item spawn"
-	icon_state = "x4"
+	icon_state = "x2"
 
 /obj/effect/landmark/slashco_item_spawn/Initialize(mapload)
 	..()
