@@ -21,6 +21,7 @@
 	if(!GLOB.generators_spawned)
 		spawn_slashco_generators()
 		spawn_slashco_sheets()
+		spawn_slashco_items()
 		spawn_slashco_batteries()
 	equip_slasher()
 	forge_objectives()
@@ -36,6 +37,20 @@
 		var/OurSheet = pick(GLOB.fuelstart)
 		GLOB.fuelstart -= OurSheet
 		new /obj/item/stack/fuel(OurSheet)
+
+/proc/spawn_slashco_items()
+	for(var/integer=1 to rand(6,24))
+		var/OurItem = pick(GLOB.slashitemstart)
+		GLOB.slashitemstart -= OurItem
+		var/list/possibleslashcoitems = list(
+			/obj/item/toy/faustian_doll, \
+			/obj/item/food/meat/lab_grown, \
+			/obj/item/reagent_containers/condiment/mayonnaise/slashco, \
+			/obj/item/food/cookie, \
+			/obj/item/reagent_containers/cup/soda_cans/b_gone \
+		)
+		var/our_selection = pick(possibleslashcoitems)
+		new our_selection
 
 /proc/spawn_slashco_batteries()
 	for(var/integer=1 to 3)

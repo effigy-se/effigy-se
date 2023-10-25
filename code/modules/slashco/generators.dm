@@ -29,7 +29,7 @@
 	name = "generator"
 	desc = "Generators like these give SlashCo control over more derelicts and access to their slashers. All in all, they should require 4 sheets of plasma and \
 	one bluespace power cell."
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/machines/engine/other.dmi'
 	icon_state = "portgen0_0"
 	base_icon_state = "portgen0"
 	density = TRUE
