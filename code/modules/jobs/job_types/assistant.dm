@@ -37,9 +37,6 @@ Assistant
 	rpg_title = "Lout"
 	config_tag = "ASSISTANT"
 
-/datum/job/assistant/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
-
 /datum/outfit/job/assistant
 	name = JOB_ASSISTANT
 	jobtype = /datum/job/assistant

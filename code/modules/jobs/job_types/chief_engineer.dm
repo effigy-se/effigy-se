@@ -51,9 +51,6 @@
 /datum/job/chief_engineer/get_captaincy_announcement(mob/living/captain)
 	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
 
-/datum/job/chief_engineer/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
-
 
 /datum/outfit/job/ce
 	name = "Chief Engineer"

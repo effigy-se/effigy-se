@@ -39,9 +39,6 @@
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Gardener"
 
-/datum/job/botanist/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
-
 /datum/outfit/job/botanist
 	name = "Botanist"
 	jobtype = /datum/job/botanist

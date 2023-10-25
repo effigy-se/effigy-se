@@ -38,8 +38,6 @@
 	rpg_title = "Corpse Runner"
 	job_flags = STATION_JOB_FLAGS
 
-/datum/job/paramedic/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/paramedic
 	name = "Paramedic"

@@ -31,8 +31,6 @@
 	rpg_title = "Genemancer"
 	job_flags = STATION_JOB_FLAGS
 
-/datum/job/geneticist/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/geneticist
 	name = "Geneticist"

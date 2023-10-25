@@ -38,8 +38,6 @@
 	rpg_title = "Crystallomancer"
 	job_flags = STATION_JOB_FLAGS
 
-/datum/job/station_engineer/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/engineer
 	name = "Station Engineer"

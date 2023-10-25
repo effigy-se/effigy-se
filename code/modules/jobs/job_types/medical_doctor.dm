@@ -38,8 +38,6 @@
 	rpg_title = "Cleric"
 	job_flags = STATION_JOB_FLAGS
 
-/datum/job/doctor/config_check()
-	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/doctor
 	name = "Medical Doctor"
