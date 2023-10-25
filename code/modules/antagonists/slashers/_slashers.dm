@@ -46,7 +46,8 @@
 			/obj/item/toy/faustian_doll, \
 			/obj/item/food/meat/lab_grown, \
 		)
-		new pick(possibleslashcoitems)
+		var/our_selection = pick(possibleslashcoitems)
+		new our_selection
 
 /proc/spawn_slashco_batteries()
 	for(var/integer=1 to 3)
