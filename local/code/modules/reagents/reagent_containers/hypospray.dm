@@ -241,10 +241,9 @@
 	icon = 'local/icons/obj/medical/vials.dmi'
 	icon_state = "hypovial"
 	spillable = FALSE
-	volume = 60
+	volume = 50
 	/// The suffix of the overlay texture that the hypovial uses when loading textures.
 	var/type_suffix = "-s"
-	possible_transfer_amounts = list(1,2,5,10,14,20,30,45,60)
 	fill_icon_thresholds = list(10, 25, 50, 75, 100)
 	var/chem_color //Used for hypospray overlay
 
@@ -282,27 +281,27 @@
 //Hypos that are in the CMO's kit round start
 /obj/item/reagent_containers/cup/hypovial/crit
 	name = "crit hypovial"
-	list_reagents = list(/datum/reagent/medicine/omnizine/protozine = 30, /datum/reagent/medicine/atropine = 30)
+	list_reagents = list(/datum/reagent/medicine/omnizine/protozine = 25, /datum/reagent/medicine/atropine = 25)
 
 /obj/item/reagent_containers/cup/hypovial/lenturi
 	name = "burn hypovial"
-	list_reagents = list(/datum/reagent/medicine/c2/lenturi = 60)
+	list_reagents = list(/datum/reagent/medicine/c2/lenturi = 50)
 
 /obj/item/reagent_containers/cup/hypovial/syriniver
 	name = "toxins hypovial"
-	list_reagents = list(/datum/reagent/medicine/c2/syriniver = 60)
+	list_reagents = list(/datum/reagent/medicine/c2/syriniver = 50)
 
 /obj/item/reagent_containers/cup/hypovial/synthflesh
 	name = "synthflesh hypovial"
-	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 60)
+	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 50)
 
 /obj/item/reagent_containers/cup/hypovial/libital
 	name = "brute hypovial"
-	list_reagents = list(/datum/reagent/medicine/c2/libital = 60)
+	list_reagents = list(/datum/reagent/medicine/c2/libital = 50)
 
 /obj/item/reagent_containers/cup/hypovial/convermol
 	name = "oxyloss hypovial"
-	list_reagents = list(/datum/reagent/medicine/c2/convermol = 60)
+	list_reagents = list(/datum/reagent/medicine/c2/convermol = 50)
 
 #undef HYPO_SPRAY
 #undef HYPO_INJECT

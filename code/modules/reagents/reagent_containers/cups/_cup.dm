@@ -218,17 +218,16 @@
 
 /obj/item/reagent_containers/cup/beaker
 	name = "beaker"
-	desc = "A beaker. It can hold up to 60 units."
+	desc = "A beaker. It can hold up to 50 units."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "beaker"
 	inhand_icon_state = "beaker"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
-	volume = 60 // EffigyEdit Change - Original: 50
+	volume = 50
 	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT*5)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
-	possible_transfer_amounts = list(5,10,15,20,30,60) // EffigyEdit Add
 
 /obj/item/reagent_containers/cup/beaker/Initialize(mapload)
 	. = ..()
@@ -245,44 +244,42 @@
 
 /obj/item/reagent_containers/cup/beaker/large
 	name = "large beaker"
-	desc = "A large beaker. Can hold up to 120 units."
+	desc = "A large beaker. Can hold up to 100 units."
 	icon_state = "beakerlarge"
 	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT*1.25)
-	volume = 120 // EffigyEdit Change
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,40,60,120) // EffigyEdit Change
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/plastic
 	name = "x-large beaker"
-	desc = "An extra-large beaker. Can hold up to 150 units."
+	desc = "An extra-large beaker. Can hold up to 120 units."
 	icon_state = "beakerwhite"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5)
-	volume = 150 // EffigyEdit Change
+	volume = 120
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,50,60,75,150) // EffigyEdit Change
+	possible_transfer_amounts = list(5,10,15,20,25,30,60,120)
 	fill_icon_thresholds = list(0, 1, 10, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/meta
 	name = "metamaterial beaker"
-	desc = "A large beaker. Can hold up to 240 units."
+	desc = "A large beaker. Can hold up to 180 units."
 	icon_state = "beakergold"
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plastic=SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/gold=HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium=HALF_SHEET_MATERIAL_AMOUNT)
-	volume = 240 // EffigyEdit Change
+	volume = 180
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,60,80,100,120,160,200,240) // EffigyEdit Change
+	possible_transfer_amounts = list(5,10,15,20,25,30,60,120,180)
 	fill_icon_thresholds = list(0, 1, 10, 25, 35, 50, 60, 80, 100)
 
 /obj/item/reagent_containers/cup/beaker/noreact
 	name = "cryostasis beaker"
 	desc = "A cryostasis beaker that allows for chemical storage without \
-		reactions. Can hold up to 60 units."
+		reactions. Can hold up to 50 units."
 	icon_state = "beakernoreact"
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT * 1.5)
 	reagent_flags = OPENCONTAINER | NO_REACT
-	volume = 60 // EffigyEdit Change
+	volume = 50
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,60) // EffigyEdit Add
 
 /obj/item/reagent_containers/cup/beaker/bluespace
 	name = "bluespace beaker"
@@ -293,58 +290,56 @@
 	custom_materials = list(/datum/material/glass =SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/plasma =SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/diamond =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/bluespace =HALF_SHEET_MATERIAL_AMOUNT)
 	volume = 300
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,30,60,80,100,120,160,200,240,300) // EffigyEdit Change
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,100,300)
 
-// EffigyEdit Change START
 /obj/item/reagent_containers/cup/beaker/meta/omnizine
-	list_reagents = list(/datum/reagent/medicine/omnizine = 240)
+	list_reagents = list(/datum/reagent/medicine/omnizine = 180)
 
 /obj/item/reagent_containers/cup/beaker/meta/sal_acid
-	list_reagents = list(/datum/reagent/medicine/sal_acid = 240)
+	list_reagents = list(/datum/reagent/medicine/sal_acid = 180)
 
 /obj/item/reagent_containers/cup/beaker/meta/oxandrolone
-	list_reagents = list(/datum/reagent/medicine/oxandrolone = 240)
+	list_reagents = list(/datum/reagent/medicine/oxandrolone = 180)
 
 /obj/item/reagent_containers/cup/beaker/meta/pen_acid
-	list_reagents = list(/datum/reagent/medicine/pen_acid = 240)
+	list_reagents = list(/datum/reagent/medicine/pen_acid = 180)
 
 /obj/item/reagent_containers/cup/beaker/meta/atropine
-	list_reagents = list(/datum/reagent/medicine/atropine = 240)
+	list_reagents = list(/datum/reagent/medicine/atropine = 180)
 
 /obj/item/reagent_containers/cup/beaker/meta/salbutamol
-	list_reagents = list(/datum/reagent/medicine/salbutamol = 240)
+	list_reagents = list(/datum/reagent/medicine/salbutamol = 180)
 
 /obj/item/reagent_containers/cup/beaker/meta/rezadone
-	list_reagents = list(/datum/reagent/medicine/rezadone = 240)
+	list_reagents = list(/datum/reagent/medicine/rezadone = 180)
 
 /obj/item/reagent_containers/cup/beaker/cryoxadone
 	list_reagents = list(/datum/reagent/medicine/cryoxadone = 30)
 
 /obj/item/reagent_containers/cup/beaker/sulfuric
-	list_reagents = list(/datum/reagent/toxin/acid = 60)
+	list_reagents = list(/datum/reagent/toxin/acid = 50)
 
 /obj/item/reagent_containers/cup/beaker/slime
-	list_reagents = list(/datum/reagent/toxin/slimejelly = 60)
+	list_reagents = list(/datum/reagent/toxin/slimejelly = 50)
 
 /obj/item/reagent_containers/cup/beaker/large/libital
 	name = "libital reserve tank (diluted)"
-	list_reagents = list(/datum/reagent/medicine/c2/libital = 15,/datum/reagent/medicine/granibitaluri = 45)
+	list_reagents = list(/datum/reagent/medicine/c2/libital = 10,/datum/reagent/medicine/granibitaluri = 40)
 
 /obj/item/reagent_containers/cup/beaker/large/aiuri
 	name = "aiuri reserve tank (diluted)"
-	list_reagents = list(/datum/reagent/medicine/c2/aiuri = 15, /datum/reagent/medicine/granibitaluri = 45)
+	list_reagents = list(/datum/reagent/medicine/c2/aiuri = 10, /datum/reagent/medicine/granibitaluri = 40)
 
 /obj/item/reagent_containers/cup/beaker/large/multiver
 	name = "multiver reserve tank (diluted)"
-	list_reagents = list(/datum/reagent/medicine/c2/multiver = 15, /datum/reagent/medicine/granibitaluri = 45)
+	list_reagents = list(/datum/reagent/medicine/c2/multiver = 10, /datum/reagent/medicine/granibitaluri = 40)
 
 /obj/item/reagent_containers/cup/beaker/large/epinephrine
 	name = "epinephrine reserve tank (diluted)"
-	list_reagents = list(/datum/reagent/medicine/epinephrine = 60)
+	list_reagents = list(/datum/reagent/medicine/epinephrine = 50)
 
 /obj/item/reagent_containers/cup/beaker/synthflesh
-	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 60)
-// EffigyEdit Change END
+	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 50)
 
 /obj/item/reagent_containers/cup/bucket
 	name = "bucket"
@@ -363,8 +358,8 @@
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 2)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,25,30,45,90) // EffigyEdit Change
-	volume = 90 // EffigyEdit Change
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,70)
+	volume = 70
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_HEAD
 	resistance_flags = NONE
