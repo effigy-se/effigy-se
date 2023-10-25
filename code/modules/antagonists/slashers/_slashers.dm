@@ -46,6 +46,8 @@
 			/obj/item/toy/faustian_doll, \
 			/obj/item/food/meat/lab_grown, \
 			/obj/item/reagent_containers/condiment/mayonnaise/slashco, \
+			/obj/item/food/cookie, \
+			/obj/item/reagent_containers/cup/soda_cans/b_gone \
 		)
 		var/our_selection = pick(possibleslashcoitems)
 		new our_selection
