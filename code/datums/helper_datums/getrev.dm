@@ -37,6 +37,8 @@
 	else if(!originmastercommit)
 		msg += "No commit information"
 
+	msg += "Running rust-g version [rustg_get_version()]"
+
 	return msg.Join("\n")
 
 /datum/getrev/proc/GetTestMergeInfo(header = TRUE)
@@ -56,8 +58,8 @@
 
 	var/list/msg = list("")
 	// Round ID
-	if(GLOB.round_id)
-		msg += "<b>Round ID:</b> [GLOB.round_id]"
+	if(GLOB.round_hex) // EffigyEdit Change - Logging
+		msg += "<b>Round ID:</b> [GLOB.round_hex]" // EffigyEdit Change - Logging
 
 	msg += "<b>BYOND Version:</b> [world.byond_version].[world.byond_build]"
 	if(DM_VERSION != world.byond_version || DM_BUILD != world.byond_build)

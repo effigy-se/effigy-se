@@ -2,28 +2,23 @@
 	name = "\improper Mothman"
 	plural_form = "Mothmen"
 	id = SPECIES_MOTH
-	species_traits = list(
-		LIPS,
-		HAS_MARKINGS,
-	)
 	inherent_traits = list(
+		TRAIT_HAS_MARKINGS,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_TACKLING_WINGED_ATTACKER,
 		TRAIT_ANTENNAE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	mutant_bodyparts = list("moth_markings" = "None")
-	external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain")
+	// external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain") // EffigyEdit Remove Customization
 	meat = /obj/item/food/meat/slab/human/mutant/moth
-	liked_food = VEGETABLES | DAIRY | CLOTH
-	disliked_food = FRUIT | GROSS | BUGS | GORE
-	toxic_food = MEAT | RAW | SEAFOOD
 	mutanttongue = /obj/item/organ/internal/tongue/moth
 	mutanteyes = /obj/item/organ/internal/eyes/moth
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/moth
+	death_sound = 'sound/voice/moth/moth_death.ogg'
 	wing_types = list(/obj/item/organ/external/wings/functional/moth/megamoth, /obj/item/organ/external/wings/functional/moth/mothra)
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	family_heirlooms = list(/obj/item/flashlight/lantern/heirloom_moth)
 
 	bodypart_overrides = list(
@@ -52,24 +47,21 @@
 
 	return randname
 
-/datum/species/moth/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
-	. = ..()
-	if(chem.type == /datum/reagent/toxin/pestkiller)
-		H.adjustToxLoss(3 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
-		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
-
 /datum/species/moth/check_species_weakness(obj/item/weapon, mob/living/attacker)
 	if(istype(weapon, /obj/item/melee/flyswatter))
 		return 10 //flyswatters deal 10x damage to moths
 	return 1
 
-
 /datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["moth_markings"] = pick(GLOB.moth_markings_list)
+	human_mob.dna.features["moth_markings"] = pick(GLOB.moth_wings_list) // EffigyEdit Change Customization
 	randomize_external_organs(human_mob)
 
 /datum/species/moth/get_scream_sound(mob/living/carbon/human/human)
 	return 'sound/voice/moth/scream_moth.ogg'
+
+/datum/species/moth/get_physical_attributes()
+	return "Moths have large and fluffy wings, which help them navigate the station if gravity is offline by pushing the air around them. \
+		Due to that, it isn't of much use out in space. Their eyes are very sensitive."
 
 /datum/species/moth/get_species_description()
 	return "Hailing from a planet that was lost long ago, the moths travel \

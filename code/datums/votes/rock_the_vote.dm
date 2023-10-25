@@ -69,7 +69,7 @@
 		return
 
 	if(winning_option == CHOICE_TO_ROCK)
-		to_chat(world, span_boldannounce("The vote has been rocked! Players are now able to re-run the map vote once more."))
+		to_chat(world, SPAN_BOX_ALERT(GREEN, "The vote has been rocked! Players are now able to re-run the map vote once more."))
 		message_admins("The players have successfully rocked the vote.")
 		SSmapping.map_vote_rocked = TRUE
 		return

@@ -21,13 +21,13 @@
 	if(!manifest_can_fail)
 		return
 
-	if(prob(MANIFEST_ERROR_CHANCE))
+	if(prob(MANIFEST_ERROR_CHANCE) && (world.time-SSticker.round_start_time > STATION_RENAME_TIME_LIMIT)) //Too confusing if station name gets changed
 		errors |= MANIFEST_ERROR_NAME
 		investigate_log("Supply order #[order_id] generated a manifest with an incorrect station name.", INVESTIGATE_CARGO)
 	if(prob(MANIFEST_ERROR_CHANCE))
 		errors |= MANIFEST_ERROR_CONTENTS
 		investigate_log("Supply order #[order_id] generated a manifest missing listed contents.", INVESTIGATE_CARGO)
-	if(prob(MANIFEST_ERROR_CHANCE))
+	else if(prob(MANIFEST_ERROR_CHANCE)) //Content and item errors could remove the same items, so only one at a time
 		errors |= MANIFEST_ERROR_ITEM
 		investigate_log("Supply order #[order_id] generated with incorrect contents shipped.", INVESTIGATE_CARGO)
 
@@ -132,13 +132,22 @@
 		manifest_text += "Item: [packname]<br/>"
 	manifest_text += "Contents: <br/>"
 	manifest_text += "<ul>"
+	var/container_contents = list() // Associative list with the format (item_name = nº of occurences, ...)
 	for(var/atom/movable/AM in container.contents - manifest_paper)
-		if((manifest_paper.errors & MANIFEST_ERROR_CONTENTS))
-			if(prob(50))
-				manifest_text += "<li>[AM.name]</li>"
-			else
-				continue
-		manifest_text += "<li>[AM.name]</li>"
+		container_contents[AM.name]++
+	if((manifest_paper.errors & MANIFEST_ERROR_CONTENTS) && container_contents)
+		if(HAS_TRAIT(container, TRAIT_NO_MANIFEST_CONTENTS_ERROR))
+			manifest_paper.errors &= ~MANIFEST_ERROR_CONTENTS
+		else
+			for(var/iteration in 1 to rand(1, round(container.contents.len * 0.5))) // Remove anywhere from one to half of the items
+				var/missing_item = pick(container_contents)
+				container_contents[missing_item]--
+				if(container_contents[missing_item] == 0) // To avoid 0s and negative values on the manifest
+					container_contents -= missing_item
+
+
+	for(var/item in container_contents)
+		manifest_text += "<li> [container_contents[item]] [item][container_contents[item] == 1 ? "" : "s"]</li>"
 	manifest_text += "</ul>"
 	manifest_text += "<h4>Stamp below to confirm receipt of goods:</h4>"
 
@@ -182,6 +191,20 @@
 		new I(miscbox)
 	generateManifest(miscbox, misc_own, "", misc_cost)
 	return
+
+/datum/supply_order/proc/append_order(list/new_contents, cost_increase)
+	for(var/i as anything in new_contents)
+		if(pack.contains[i])
+			pack.contains[i] += new_contents[i]
+		else
+			pack.contains += i
+			pack.contains[i] = new_contents[i]
+	pack.cost += cost_increase
+// EffigyEdit Add -
+/// A proc to be overriden if you want custom code to happen when SSshuttle spawns the order
+/datum/supply_order/proc/on_spawn()
+	return
+// EffigyEdit Add End
 
 #undef MANIFEST_ERROR_CHANCE
 #undef MANIFEST_ERROR_NAME

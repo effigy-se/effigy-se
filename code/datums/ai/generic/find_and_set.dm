@@ -6,11 +6,14 @@
 /datum/ai_behavior/find_and_set
 	action_cooldown = 2 SECONDS
 
-/datum/ai_behavior/find_and_set/perform(delta_time, datum/ai_controller/controller, set_key, locate_path, search_range)
+/datum/ai_behavior/find_and_set/perform(seconds_per_tick, datum/ai_controller/controller, set_key, locate_path, search_range)
 	. = ..()
+	if (controller.blackboard_key_exists(set_key))
+		finish_action(controller, TRUE)
+		return
 	var/find_this_thing = search_tactic(controller, locate_path, search_range)
 	if(find_this_thing)
-		controller.blackboard[set_key] = WEAKREF(find_this_thing)
+		controller.set_blackboard_key(set_key, find_this_thing)
 		finish_action(controller, TRUE)
 	else
 		finish_action(controller, FALSE)
@@ -126,7 +129,7 @@
 			continue
 		if (living_pawn.see_invisible < dead_pal.invisibility)
 			continue
-		if (!living_pawn.faction_check_mob(dead_pal))
+		if (!living_pawn.faction_check_atom(dead_pal))
 			continue
 		nearby_bodies += dead_pal
 

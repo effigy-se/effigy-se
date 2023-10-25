@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(nightshift)
 	check_nightshift()
 
 /datum/controller/subsystem/nightshift/proc/announce(message)
-	priority_announce(message, sound='sound/misc/notice2.ogg', sender_override="Automated Lighting System Announcement")
+	minor_announce(message, title="Automated Lighting System Announcement", sound_override='sound/misc/notice2.ogg') // EffigyEdit Change (Make it minor)
 
 /datum/controller/subsystem/nightshift/proc/check_nightshift()
 	var/emergency = SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED
@@ -35,27 +35,32 @@ SUBSYSTEM_DEF(nightshift)
 		high_security_mode = emergency
 		if(night_time)
 			announcing = FALSE
+			// EffigyEdit Remove START
+			/*
 			if(!emergency)
 				announce("Restoring night lighting configuration to normal operation.")
 			else
 				announce("Disabling night lighting: Station is in a state of emergency.")
+			*/
+			// EffigyEdit Remove END
+
 	if(emergency)
 		night_time = FALSE
 	if(nightshift_active != night_time)
 		update_nightshift(night_time, announcing)
 
-/datum/controller/subsystem/nightshift/proc/update_nightshift(active, announce = TRUE, resumed = FALSE)
+/datum/controller/subsystem/nightshift/proc/update_nightshift(active, announce = TRUE, resumed = FALSE, forced = FALSE)
 	if(!resumed)
-		currentrun = GLOB.apcs_list.Copy()
+		currentrun = SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/apc)
 		nightshift_active = active
 		if(announce)
 			if (active)
 				announce("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the lights aboard the station have been dimmed for the night.")
 			else
-				announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
+				announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their full brightness.") // EffigyEdit Change
 	for(var/obj/machinery/power/apc/APC as anything in currentrun)
 		currentrun -= APC
 		if (APC.area && (APC.area.type in GLOB.the_station_areas))
 			APC.set_nightshift(nightshift_active)
-		if(MC_TICK_CHECK)
+		if(MC_TICK_CHECK && !forced) // subsystem will be in state SS_IDLE if forced by an admin
 			return

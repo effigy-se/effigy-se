@@ -16,6 +16,8 @@
 	var/spawn_admin = FALSE
 	/// If TRUE, we try and pick one of the most experienced players who volunteered to fill the leader slot
 	var/leader_experience = TRUE
+	/// Do we want to notify the players of this ERT?
+	var/notify_players = TRUE
 	/// A custom map template to spawn the ERT at. If this is null or use_custom_shuttle is FALSE, the ERT will spawn at Centcom.
 	var/datum/map_template/ert_template
 	/// If we should actually _use_ the ert_template custom shuttle
@@ -116,3 +118,13 @@
 	polldesc = "a Centcom-hired bounty hunting gang"
 	random_names = FALSE
 	ert_template = /datum/map_template/shuttle/ert/bounty
+
+/datum/ert/militia
+	roles = list(/datum/antagonist/ert/militia)
+	leader_role = /datum/antagonist/ert/militia/general
+	teamsize = 4
+	opendoors = FALSE
+	rename_team = "Frontier Militia"
+	mission = "Having heard the station's request for aid, assist the crew in defending themselves."
+	polldesc = "an independent station defense militia"
+	random_names = TRUE

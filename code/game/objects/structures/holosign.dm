@@ -7,6 +7,8 @@
 	anchored = TRUE
 	max_integrity = 1
 	armor_type = /datum/armor/structure_holosign
+	// How can you freeze a trick of the light?
+	resistance_flags = FREEZE_PROOF
 	var/obj/item/holosign_creator/projector
 	var/use_vis_overlay = TRUE
 
@@ -74,7 +76,7 @@
 		var/mob/living/carbon/C = mover
 		if(C.stat) // Lets not prevent dragging unconscious/dead people.
 			return TRUE
-		if(allow_walk && C.m_intent == MOVE_INTENT_WALK)
+		if(allow_walk && C.move_intent == MOVE_INTENT_WALK)
 			return TRUE
 
 /obj/structure/holosign/barrier/wetsign
@@ -82,6 +84,7 @@
 	desc = "When it says walk it means walk."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "holosign"
+	max_integrity = 1
 
 /obj/structure/holosign/barrier/wetsign/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
@@ -89,12 +92,13 @@
 		var/mob/living/carbon/C = mover
 		if(C.stat) // Lets not prevent dragging unconscious/dead people.
 			return TRUE
-		if(allow_walk && C.m_intent != MOVE_INTENT_WALK)
+		if(allow_walk && C.move_intent != MOVE_INTENT_WALK)
 			return FALSE
 
 /obj/structure/holosign/barrier/engineering
 	icon_state = "holosign_engi"
 	rad_insulation = RAD_LIGHT_INSULATION
+	max_integrity = 1
 
 /obj/structure/holosign/barrier/atmos
 	name = "holofirelock"
@@ -105,7 +109,7 @@
 	can_atmos_pass = ATMOS_PASS_NO
 	alpha = 150
 	rad_insulation = RAD_LIGHT_INSULATION
-	resistance_flags = FIRE_PROOF
+	resistance_flags = FIRE_PROOF | FREEZE_PROOF
 
 /obj/structure/holosign/barrier/atmos/sturdy
 	name = "sturdy holofirelock"
@@ -119,7 +123,8 @@
 /obj/structure/holosign/barrier/atmos/Initialize(mapload)
 	. = ..()
 	air_update_turf(TRUE, TRUE)
-	AddElement(/datum/element/trait_loc, TRAIT_FIREDOOR_STOP)
+	var/static/list/turf_traits = list(TRAIT_FIREDOOR_STOP)
+	AddElement(/datum/element/give_turf_traits, turf_traits)
 
 /obj/structure/holosign/barrier/atmos/block_superconductivity() //Didn't used to do this, but it's "normal", and will help ease heat flow transitions with the players.
 	return TRUE
@@ -134,20 +139,20 @@
 	density = TRUE
 	max_integrity = 10
 	allow_walk = FALSE
+	armor_type = /datum/armor/structure_holosign/cyborg_barrier // Gets a special armor subtype which is extra good at defense.
 
-/obj/structure/holosign/barrier/cyborg/bullet_act(obj/projectile/P)
-	take_damage((P.damage / 5) , BRUTE, MELEE, 1) //Doesn't really matter what damage flag it is.
-	if(istype(P, /obj/projectile/energy/electrode))
-		take_damage(10, BRUTE, MELEE, 1) //Tasers aren't harmful.
-	if(istype(P, /obj/projectile/beam/disabler))
-		take_damage(5, BRUTE, MELEE, 1) //Disablers aren't harmful.
-	return BULLET_ACT_HIT
+/datum/armor/structure_holosign/cyborg_barrier
+	bullet = 80
+	laser = 80
+	energy = 80
+	melee = 20
 
 /obj/structure/holosign/barrier/medical
 	name = "\improper PENLITE holobarrier"
 	desc = "A holobarrier that uses biometrics to detect human viruses. Denies passing to personnel with easily-detected, malicious viruses. Good for quarantines."
 	icon_state = "holo_medical"
 	alpha = 125 //lazy :)
+	max_integrity = 1
 	var/force_allaccess = FALSE
 	var/buzzcd = 0
 
@@ -194,11 +199,8 @@
 	name = "Charged Energy Field"
 	desc = "A powerful energy field that blocks movement. Energy arcs off it."
 	max_integrity = 20
+	armor_type = /datum/armor/structure_holosign //Yeah no this doesn't get projectile resistance.
 	var/shockcd = 0
-
-/obj/structure/holosign/barrier/cyborg/hacked/bullet_act(obj/projectile/P)
-	take_damage(P.damage, BRUTE, MELEE, 1) //Yeah no this doesn't get projectile resistance.
-	return BULLET_ACT_HIT
 
 /obj/structure/holosign/barrier/cyborg/hacked/proc/cooldown()
 	shockcd = FALSE

@@ -279,12 +279,13 @@ const FunTab = (props, context) => {
             />
           </Stack.Item>
           <Stack.Item>
-            <NoticeBox
-              mb={-0.5}
+            <Button
+              icon="flag"
+              lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              height={lineHeightNormal}>
-              Your admin button here, coder!
-            </NoticeBox>
+              content="CTF Instagib Mode"
+              onClick={() => act('ctf_instagib')}
+            />
           </Stack.Item>
           <Stack.Item>
             <NoticeBox
@@ -619,7 +620,7 @@ export const Secrets = (props, context) => {
   const [tabIndex, setTabIndex] = useLocalState(context, 'tab-index', 2);
   const TabComponent = TAB2NAME[tabIndex - 1].component();
   return (
-    <Window title="Secrets Panel" width={500} height={488} theme="admin">
+    <Window title="Secrets Panel" width={586} height={564} theme="admin">
       <Window.Content>
         <Flex direction="column" height="100%">
           <Flex.Item mb={1}>

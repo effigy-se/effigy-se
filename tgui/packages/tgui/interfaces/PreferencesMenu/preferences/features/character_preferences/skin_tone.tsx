@@ -17,7 +17,7 @@ const sortHexValues = sortBy<[string, HexValue]>(
 );
 
 export const skin_tone: Feature<string, string, SkinToneServerData> = {
-  name: 'Skin tone',
+  name: 'Skin Tone',
   component: (props: FeatureValueProps<string, string, SkinToneServerData>) => {
     const { handleSetValue, serverData, value } = props;
 
@@ -55,6 +55,7 @@ export const skin_tone: Feature<string, string, SkinToneServerData> = {
         )}
         onSetValue={handleSetValue}
         value={value}
+        buttons
       />
     );
   },

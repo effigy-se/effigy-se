@@ -1,3 +1,5 @@
+#define REAGENT_SPILL_DIVISOR 200
+
 /obj/structure/reagent_dispensers
 	name = "Dispenser"
 	desc = "..."
@@ -72,7 +74,10 @@
 	. = ..()
 	if(. && atom_integrity > 0)
 		if(tank_volume && (damage_flag == BULLET || damage_flag == LASER))
-			boom()
+			// EffigyEdit Change START
+			var/guaranteed_violent = (damage_flag == BULLET || damage_flag == LASER)
+			boom(damage_type, guaranteed_violent)
+			// EffigyEdit Change END
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user, params)
 	if(W.is_refillable())
@@ -154,7 +159,9 @@
  * This is most dangerous for fuel tanks, which will explosion().
  * Other dispensers will scatter their contents within range.
  */
-/obj/structure/reagent_dispensers/proc/boom()
+/obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) // EffigyEdit Change
+	if(QDELETED(src))
+		return // little bit of sanity sauce before we wreck ourselves somehow
 	var/datum/reagent/fuel/volatiles = reagents.has_reagent(/datum/reagent/fuel)
 	var/fuel_amt = 0
 	if(istype(volatiles) && volatiles.volume >= 25)
@@ -174,7 +181,7 @@
 		// It did not account for how much fuel was actually in the tank at all, just the size of the tank.
 		// I encourage others to better scale these numbers in the future.
 		// As it stands this is a minor nerf in exchange for an easy bombing technique working that has been broken for a while.
-		switch(volatiles.volume)
+		switch(fuel_amt)
 			if(25 to 150)
 				explosion(src, light_impact_range = 1, flame_range = 2)
 			if(150 to 300)
@@ -200,6 +207,15 @@
 		reagents.remove_reagent(reagent_id, amount_to_leak)
 		return TRUE
 	return FALSE
+
+/obj/structure/reagent_dispensers/proc/knock_down()
+	var/datum/effect_system/fluid_spread/smoke/chem/smoke = new ()
+	var/range = reagents.total_volume / REAGENT_SPILL_DIVISOR
+	smoke.attach(drop_location())
+	smoke.set_up(round(range), holder = drop_location(), location = drop_location(), carry = reagents, silent = FALSE)
+	smoke.start(log = TRUE)
+	reagents.clear_reagents()
+	qdel(src)
 
 /obj/structure/reagent_dispensers/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -249,26 +265,37 @@
 	if(check_holidays(APRIL_FOOLS))
 		icon_state = "fuel_fools"
 
+/obj/structure/reagent_dispensers/fueltank/boom(damage_type = BRUTE, guaranteed_violent = FALSE)
+	if(damage_type == BURN || guaranteed_violent)
+		explosion(src, heavy_impact_range = 1, light_impact_range = 5, flame_range = 5)
+		qdel(src)
+	else
+		. = ..()
+
 /obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
-	boom()
+	boom(guaranteed_violent = TRUE) // EffigyEdit Change
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
-	boom()
+	boom(guaranteed_violent = TRUE) // EffigyEdit Change
+	return TRUE
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
-	boom()
+	boom(guaranteed_violent = TRUE) // EffigyEdit Change
 
 /obj/structure/reagent_dispensers/fueltank/zap_act(power, zap_flags)
 	. = ..() //extend the zap
 	if(ZAP_OBJ_DAMAGE & zap_flags)
-		boom()
+		boom(guaranteed_violent = TRUE) // EffigyEdit Change
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/P)
-	. = ..()
-	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
-		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
-			log_bomber(P.firer, "detonated a", src, "via projectile")
-			boom()
+/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/hitting_projectile)
+	if(hitting_projectile.damage > 0 && ((hitting_projectile.damage_type == BURN) || (hitting_projectile.damage_type == BRUTE)))
+		log_bomber(hitting_projectile.firer, "detonated a", src, "via projectile")
+		boom(guaranteed_violent = TRUE) // EffigyEdit Change
+		return hitting_projectile.on_hit(src, 0)
+
+	// we override parent like this because otherwise we won't actually properly log the fact that a projectile caused this welding tank to explode.
+	// if this sucks, feel free to change it, but make sure the damn thing will log. thanks.
+	return ..()
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER)
@@ -280,14 +307,14 @@
 			if(W.reagents.has_reagent(/datum/reagent/fuel, W.max_fuel))
 				to_chat(user, span_warning("Your [W.name] is already full!"))
 				return
-			reagents.trans_to(W, W.max_fuel, transfered_by = user)
+			reagents.trans_to(W, W.max_fuel, transferred_by = user)
 			user.visible_message(span_notice("[user] refills [user.p_their()] [W.name]."), span_notice("You refill [W]."))
 			playsound(src, 'sound/effects/refill.ogg', 50, TRUE)
 			W.update_appearance()
 		else
 			user.visible_message(span_danger("[user] catastrophically fails at refilling [user.p_their()] [I.name]!"), span_userdanger("That was stupid of you."))
 			log_bomber(user, "detonated a", src, "via welding tool")
-			boom()
+			boom(guaranteed_violent = TRUE) // EffigyEdit Change
 		return
 
 	return ..()
@@ -297,6 +324,15 @@
 	desc = "A tank full of a high quantity of welding fuel. Keep away from open flames."
 	icon_state = "fuel_high"
 	tank_volume = 5000
+
+// EffigyEdit Add -
+/obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE) // EffigyEdit Change
+	if(damage_type == BURN || guaranteed_violent)
+		explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12)
+		qdel(src)
+	else
+		. = ..()
+// EffigyEdit Add End
 
 /// Wall mounted dispeners, like pepper spray or virus food. Not a normal tank, and shouldn't be able to be turned into a plumbed stationary one.
 /obj/structure/reagent_dispensers/wall
@@ -316,11 +352,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 	. = ..()
 	if(prob(1))
 		desc = "IT'S PEPPER TIME, BITCH!"
+	find_and_hang_on_wall()
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "liquid cooler"
 	desc = "A machine that dispenses liquid to drink."
-	icon = 'icons/obj/vending.dmi'
+	icon = 'icons/obj/machines/vending.dmi'
 	icon_state = "water_cooler"
 	anchored = TRUE
 	tank_volume = 500
@@ -367,18 +404,22 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30)
 
+/obj/structure/reagent_dispensers/wall/virusfood/Initialize(mapload)
+	. = ..()
+	find_and_hang_on_wall()
+
 /obj/structure/reagent_dispensers/cooking_oil
 	name = "vat of cooking oil"
 	desc = "A huge metal vat with a tap on the front. Filled with cooking oil for use in frying food."
 	icon_state = "vat"
 	anchored = TRUE
-	reagent_id = /datum/reagent/consumable/cooking_oil
+	reagent_id = /datum/reagent/consumable/nutriment/fat/oil
 	openable = TRUE
 
 /obj/structure/reagent_dispensers/servingdish
 	name = "serving dish"
 	desc = "A dish full of food slop for your bowl."
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/service/kitchen.dmi'
 	icon_state = "serving"
 	anchored = TRUE
 	reagent_id = /datum/reagent/consumable/nutraslop
@@ -429,3 +470,5 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30
 	desc = "A stationary, plumbed, fuel tank."
 	reagent_id = /datum/reagent/fuel
 	accepts_rig = TRUE
+
+#undef REAGENT_SPILL_DIVISOR

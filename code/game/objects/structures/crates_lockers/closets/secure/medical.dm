@@ -11,6 +11,7 @@
 		/obj/item/reagent_containers/dropper = 2,
 		/obj/item/storage/belt/medical = 1,
 		/obj/item/storage/box/syringes = 1,
+		/obj/item/storage/box/hypospray = 1, // EffigyEdit Add
 		/obj/item/reagent_containers/cup/bottle/toxin = 1,
 		/obj/item/reagent_containers/cup/bottle/morphine = 2,
 		/obj/item/reagent_containers/cup/bottle/epinephrine= 3,
@@ -55,8 +56,8 @@
 
 /obj/structure/closet/secure_closet/psychology/PopulateContents()
 	..()
-	new /obj/item/clothing/under/suit/black(src)
-	new /obj/item/clothing/under/suit/black/skirt(src)
+	new /obj/item/clothing/under/costume/buttondown/slacks/service(src)
+	new /obj/item/clothing/under/costume/buttondown/skirt/service(src)
 	new /obj/item/clothing/neck/tie/black(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/storage/backpack/medic(src)
@@ -68,7 +69,7 @@
 	new /obj/item/clothing/glasses/blindfold(src)
 
 /obj/structure/closet/secure_closet/chief_medical
-	name = "\proper chief medical officer's locker"
+	name = "chief medical officer's locker"
 	req_access = list(ACCESS_CMO)
 	icon_state = "cmo"
 
@@ -97,10 +98,10 @@
 	. = ..()
 
 	// Traitor steal objective
-	new /obj/item/reagent_containers/hypospray/cmo(src)
+	new /obj/item/storage/hypospraykit/cmo(src)
 
 /obj/structure/closet/secure_closet/animal
-	name = "animal control"
+	name = "animal control locker"
 	req_access = list(ACCESS_SURGERY)
 
 /obj/structure/closet/secure_closet/animal/PopulateContents()

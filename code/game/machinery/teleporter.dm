@@ -79,14 +79,23 @@
 			if(!calibrated && prob(30 - ((accuracy) * 10))) //oh dear a problem
 				if(ishuman(M))//don't remove people from the round randomly you jerks
 					var/mob/living/carbon/human/human = M
-					if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
-						var/datum/species/species_to_transform = /datum/species/fly
-						if(check_holidays(MOTH_WEEK))
-							species_to_transform = /datum/species/moth
-						if(human.dna && human.dna.species.id != initial(species_to_transform.id))
-							to_chat(M, span_hear("You hear a buzzing in your ears."))
-							human.set_species(species_to_transform)
-							human.log_message("was turned into a [initial(species_to_transform.name)] through [src].", LOG_GAME)
+					// EffigyEdit Change START
+					to_chat(human, span_danger("Your limbs lose molecular cohesion as you teleport!"))
+					var/list/bodyparts_dismember = list()
+					var/rad_mod = 0
+					for(var/obj/item/bodypart/BP in human.bodyparts)
+						if(BP.body_zone == BODY_ZONE_CHEST || BP.body_zone== BODY_ZONE_HEAD)
+							continue
+						bodyparts_dismember.Add(BP)
+					for(var/i in 1 to 2) //Removing two bodyparts.
+						var/obj/item/bodypart/BP = pick(bodyparts_dismember)
+						if(!istype(BP))
+							rad_mod += 300 //Bad snowflake, take more rads!
+							break
+						bodyparts_dismember.Remove(BP) //GC optimisation
+						BP.dismember()
+						qdel(BP)
+					// EffigyEdit Change END
 			calibrated = FALSE
 	return
 
@@ -165,14 +174,14 @@
 			return
 		var/obj/item/multitool/M = W
 		if(panel_open)
-			M.buffer = src
-			to_chat(user, span_notice("You download the data to the [W.name]'s buffer."))
+			M.set_buffer(src)
+			balloon_alert(user, "saved to multitool buffer")
 		else
 			if(M.buffer && istype(M.buffer, /obj/machinery/teleport/station) && M.buffer != src)
 				if(linked_stations.len < efficiency)
 					linked_stations.Add(M.buffer)
-					M.buffer = null
-					to_chat(user, span_notice("You upload the data from the [W.name]'s buffer."))
+					M.set_buffer(null)
+					balloon_alert(user, "data uploaded from buffer")
 				else
 					to_chat(user, span_alert("This station can't hold more information, try to use better parts."))
 		return

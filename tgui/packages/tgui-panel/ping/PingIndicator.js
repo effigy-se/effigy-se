@@ -13,15 +13,15 @@ import { selectPing } from './selectors';
 export const PingIndicator = (props, context) => {
   const ping = useSelector(context, selectPing);
   const color = Color.lookup(ping.networkQuality, [
-    new Color(220, 40, 40),
-    new Color(220, 200, 40),
-    new Color(60, 220, 40),
+    new Color(209, 17, 65),
+    new Color(235, 160, 37),
+    new Color(0, 174, 219),
   ]);
   const roundtrip = ping.roundtrip ? toFixed(ping.roundtrip) : '--';
   return (
     <div className="Ping">
       <Box className="Ping__indicator" backgroundColor={color} />
-      {roundtrip}
+      {roundtrip}ms
     </div>
   );
 };

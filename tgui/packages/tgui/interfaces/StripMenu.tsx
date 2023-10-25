@@ -5,7 +5,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Icon, Stack } from '../components';
 import { Window } from '../layouts';
 
-const ROWS = 5;
+const ROWS = 6; // EffigyEdit Change Customization
 const COLUMNS = 6;
 
 const BUTTON_DIMENSIONS = '50px';
@@ -57,12 +57,12 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 
   enable_internals: {
-    icon: 'tg-air-tank',
+    icon: 'lungs', // EffigyEdit Change Customization TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
     text: 'Enable internals',
   },
 
   disable_internals: {
-    icon: 'tg-air-tank-slash',
+    icon: 'lungs-virus', // EffigyEdit Change Customization TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
     text: 'Disable internals',
   },
 
@@ -206,8 +206,32 @@ const SLOTS: Record<
     gridSpot: getGridSpotKey([4, 5]),
     image: 'inventory-pocket.png',
   },
-};
+  // EffigyEdit Add - Customization
+  vagina: {
+    displayName: 'vagina',
+    gridSpot: getGridSpotKey([5, 1]),
+    image: 'inventory-pocket.png',
+  },
 
+  anus: {
+    displayName: 'anus',
+    gridSpot: getGridSpotKey([5, 2]),
+    image: 'inventory-pocket.png',
+  },
+
+  nipples: {
+    displayName: 'nipples',
+    gridSpot: getGridSpotKey([5, 3]),
+    image: 'inventory-pocket.png',
+  },
+
+  penis: {
+    displayName: 'penis',
+    gridSpot: getGridSpotKey([5, 4]),
+    image: 'inventory-pocket.png',
+  },
+};
+// EffigyEdit Add End
 enum ObscuringLevel {
   Completely = 1,
   Hidden = 2,

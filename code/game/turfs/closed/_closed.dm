@@ -38,6 +38,12 @@
 /turf/closed/indestructible/singularity_act()
 	return
 
+/turf/closed/indestructible/attackby(obj/item/attacking_item, mob/user, params)
+	if(istype(attacking_item, /obj/item/poster) && Adjacent(user))
+		return place_poster(attacking_item, user)
+
+	return ..()
+
 /turf/closed/indestructible/oldshuttle
 	name = "strange shuttle wall"
 	icon = 'icons/turf/shuttleold.dmi'
@@ -85,6 +91,8 @@
 
 INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 
+// EffigyEdit Remove START - SPLASH
+/*
 /turf/closed/indestructible/splashscreen/Initialize(mapload)
 	. = ..()
 	SStitle.splash_turf = src
@@ -112,7 +120,8 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 /turf/closed/indestructible/splashscreen/examine()
 	desc = pick(strings(SPLASH_FILE, "splashes"))
 	return ..()
-
+*/
+// EffigyEdit Remove END - SPLASH
 /turf/closed/indestructible/start_area
 	name = null
 	desc = null
@@ -216,7 +225,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 /turf/closed/indestructible/fakeglass/Initialize(mapload)
 	. = ..()
 	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01) //add a grille underlay
-	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", layer - 0.02) //add the plating underlay, below the grille
+	underlays += mutable_appearance(EFFIGY_TURFS_ICON_FILE, "plating", layer - 0.02) //add the plating underlay, below the grille  // EffigyEdit Change - Floors
 
 /turf/closed/indestructible/opsglass
 	name = "window"
@@ -232,12 +241,22 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	. = ..()
 	icon_state = null
 	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01)
-	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", layer - 0.02)
+	underlays += mutable_appearance(EFFIGY_TURFS_ICON_FILE, "plating", layer - 0.02) // EffigyEdit Change - Floors
 
 /turf/closed/indestructible/fakedoor
-	name = "CentCom Access"
+	name = "airlock"
 	icon = 'icons/obj/doors/airlocks/centcom/centcom.dmi'
 	icon_state = "fake_door"
+
+/turf/closed/indestructible/fakedoor/maintenance
+	icon = 'icons/obj/doors/airlocks/hatch/maintenance.dmi'
+
+/turf/closed/indestructible/fakedoor/glass_airlock
+	icon = 'icons/obj/doors/airlocks/external/external.dmi'
+	opacity = FALSE
+
+/turf/closed/indestructible/fakedoor/engineering
+	icon = 'icons/obj/doors/airlocks/station/engineering.dmi'
 
 /turf/closed/indestructible/rock
 	name = "dense rock"
@@ -268,7 +287,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	pixel_x = -4
 	pixel_y = -4
 
-
 /turf/closed/indestructible/paper
 	name = "thick paper wall"
 	desc = "A wall layered with impenetrable sheets of paper."
@@ -284,7 +302,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	baseturfs = /turf/closed/indestructible/necropolis
 
 /turf/closed/indestructible/necropolis/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = 'icons/turf/floors.dmi'
+	underlay_appearance.icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
 	underlay_appearance.icon_state = "necro1"
 	return TRUE
 
@@ -315,7 +333,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	opacity = FALSE
 
 /turf/closed/indestructible/riveted/boss/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = 'icons/turf/floors.dmi'
+	underlay_appearance.icon = EFFIGY_TURFS_ICON_FILE
 	underlay_appearance.icon_state = "basalt"
 	return TRUE
 
@@ -327,3 +345,35 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	smoothing_flags = SMOOTH_CORNERS
 	smoothing_groups = SMOOTH_GROUP_HIERO_WALL
 	canSmoothWith = SMOOTH_GROUP_HIERO_WALL
+
+/turf/closed/indestructible/resin
+	name = "resin wall"
+	icon = 'icons/obj/smooth_structures/alien/resin_wall.dmi'
+	icon_state = "resin_wall-0"
+	base_icon_state = "resin_wall"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_ALIEN_WALLS + SMOOTH_GROUP_ALIEN_RESIN
+	canSmoothWith = SMOOTH_GROUP_ALIEN_WALLS
+
+/turf/closed/indestructible/resin/membrane
+	name = "resin membrane"
+	icon = 'icons/obj/smooth_structures/alien/resin_membrane.dmi'
+	icon_state = "resin_membrane-0"
+	base_icon_state = "resin_membrane"
+	opacity = FALSE
+	smoothing_groups = SMOOTH_GROUP_ALIEN_WALLS + SMOOTH_GROUP_ALIEN_RESIN
+	canSmoothWith = SMOOTH_GROUP_ALIEN_WALLS
+
+/turf/closed/indestructible/resin/membrane/Initialize(mapload)
+	. = ..()
+	underlays += mutable_appearance(EFFIGY_TURFS_ICON_FILE, "engine") // add the reinforced floor underneath // EffigyEdit Change - Floors
+
+/turf/closed/indestructible/grille
+	name = "grille"
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "grille"
+	base_icon_state = "grille"
+
+/turf/closed/indestructible/grille/Initialize(mapload)
+	. = ..()
+	underlays += mutable_appearance(EFFIGY_TURFS_ICON_FILE, "plating") // EffigyEdit Change - Floors

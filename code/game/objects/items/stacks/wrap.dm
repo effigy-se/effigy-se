@@ -36,10 +36,10 @@
 		//Set layers to these colors, base then ribbon
 		set_greyscale(colors = list(generated_base_color, generated_ribbon_color))
 
-/obj/item/stack/wrapping_paper/attack_hand_secondary(mob/user, modifiers)
+/obj/item/stack/wrapping_paper/AltClick(mob/user, modifiers)
 	var/new_base = input(user, "", "Select a base color", color) as color
 	var/new_ribbon = input(user, "", "Select a ribbon color", color) as color
-	if(!user.canUseTopic(src, be_close = TRUE))
+	if(!user.can_perform_action(src))
 		return
 	set_greyscale(colors = list(new_base, new_ribbon))
 	return TRUE
@@ -83,6 +83,7 @@
 		parcel.base_icon_state = "deliverypackage5"
 		parcel.update_icon()
 		user.forceMove(parcel)
+		parcel.contains_mobs = TRUE // EffigyEdit Change - CARGO BORGS
 		parcel.add_fingerprint(user)
 		return OXYLOSS
 	else
@@ -109,6 +110,10 @@
 		return
 	if(target.anchored)
 		return
+	// EffigyEdit Add - Cargo borgs
+	if(!amount)
+		return
+	// EffigyEdit Add End
 
 	if(isitem(target))
 		. |= AFTERATTACK_PROCESSED_ITEM
@@ -151,6 +156,12 @@
 			closet.forceMove(parcel)
 			parcel.add_fingerprint(user)
 			closet.add_fingerprint(user)
+			// EffigyEdit Add - Cargo borgs
+			for(var/item in closet.get_all_contents())
+				if(istype(item, /mob))
+					parcel.contains_mobs = TRUE
+					break
+			// EffigyEdit Add End
 		else
 			balloon_alert(user, "not enough paper!")
 			return

@@ -3,3 +3,6 @@
 	starting_programs = list(
 		/datum/computer_file/program/chatclient,
 	)
+
+/obj/item/modular_computer/laptop/preset/civilian/closed // EffigyEdit Add
+	start_open = FALSE

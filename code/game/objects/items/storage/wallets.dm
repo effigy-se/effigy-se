@@ -12,6 +12,7 @@
 
 /obj/item/storage/wallet/Initialize(mapload)
 	. = ..()
+	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 	atom_storage.max_slots = 4
 	atom_storage.set_holdable(list(
 		/obj/item/stack/spacecash,
@@ -20,13 +21,16 @@
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/coupon,
 		/obj/item/flashlight/pen,
+		/obj/item/folder/biscuit,
 		/obj/item/seeds,
 		/obj/item/stack/medical,
 		/obj/item/toy/crayon,
 		/obj/item/coin,
+		/obj/item/food/chococoin,
 		/obj/item/dice,
 		/obj/item/disk,
 		/obj/item/implanter,
+		/obj/item/laser_pointer,
 		/obj/item/lighter,
 		/obj/item/lipstick,
 		/obj/item/match,
@@ -37,7 +41,9 @@
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/pill,
 		/obj/item/screwdriver,
-		/obj/item/stamp),
+		/obj/item/spess_knife,
+		/obj/item/stamp,
+		/obj/item/condom_pack), // EffigyEdit Add (Lewd)
 		list(/obj/item/screwdriver/power))
 
 /obj/item/storage/wallet/Exited(atom/movable/gone, direction)
@@ -160,3 +166,12 @@
 /obj/item/storage/wallet/random/PopulateContents()
 	new /obj/item/holochip(src, rand(5, 30))
 	new /obj/effect/spawner/random/entertainment/wallet_storage(src)
+
+///Used by the toilet fish source.
+/obj/item/storage/wallet/money
+	desc = "It can hold a few small and personal things. This one reeks of toilet water."
+
+/obj/item/storage/wallet/money/PopulateContents()
+	for(var/iteration in 1 to pick(3, 4))
+		new /obj/item/holochip(src, rand(50, 450))
+

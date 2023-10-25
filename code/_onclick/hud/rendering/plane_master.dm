@@ -64,7 +64,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	/// If this plane master is outside of our visual bounds right now
 	var/is_outside_bounds = FALSE
 
-/atom/movable/screen/plane_master/Initialize(mapload, datum/plane_master_group/home, offset = 0)
+/atom/movable/screen/plane_master/Initialize(mapload, datum/hud/hud_owner, datum/plane_master_group/home, offset = 0)
 	. = ..()
 	src.offset = offset
 	true_alpha = alpha
@@ -132,7 +132,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	if(force_hidden)
 		return FALSE
 
-	var/client/our_client = mymob?.client
+	var/client/our_client = mymob?.canon_client
 	// Alright, let's get this out of the way
 	// Mobs can move z levels without their client. If this happens, we need to ensure critical display settings are respected
 	// This is done here. Mild to severe pain but it's nessesary
@@ -143,12 +143,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 			return TRUE
 		our_client.screen += src
 
-		if(!(critical & PLANE_CRITICAL_NO_EMPTY_RELAY))
+		if(!(critical & PLANE_CRITICAL_NO_RELAY))
 			our_client.screen += relays
 			return TRUE
-		for(var/atom/movable/render_plane_relay/relay as anything in relays)
-			if(relay.critical_target)
-				our_client.screen += relay
 		return TRUE
 
 	if(!our_client)
@@ -208,34 +205,33 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	is_outside_bounds = TRUE
 	// If we're of critical importance, AND we're below the rendering layer
 	if(critical & PLANE_CRITICAL_DISPLAY)
-		if(!(critical & PLANE_CRITICAL_NO_EMPTY_RELAY))
+		// We here assume that your render target starts with *
+		if(critical & PLANE_CRITICAL_CUT_RENDER && render_target)
+			render_target = copytext_char(render_target, 2)
+		if(!(critical & PLANE_CRITICAL_NO_RELAY))
 			return
 		var/client/our_client = relevant.client
 		if(our_client)
 			for(var/atom/movable/render_plane_relay/relay as anything in relays)
-				if(!relay.critical_target)
-					our_client.screen -= relay
+				our_client.screen -= relay
 
-		// We here assume that your render target starts with *
-		if(render_target)
-			render_target = copytext_char(render_target, 2)
 		return
 	hide_from(relevant)
 
 /atom/movable/screen/plane_master/proc/inside_bounds(mob/relevant)
 	is_outside_bounds = FALSE
 	if(critical & PLANE_CRITICAL_DISPLAY)
-		if(!(critical & PLANE_CRITICAL_NO_EMPTY_RELAY))
+		// We here assume that your render target starts with *
+		if(critical & PLANE_CRITICAL_CUT_RENDER && render_target)
+			render_target = "*[render_target]"
+
+		if(!(critical & PLANE_CRITICAL_NO_RELAY))
 			return
 		var/client/our_client = relevant.client
 		if(our_client)
 			for(var/atom/movable/render_plane_relay/relay as anything in relays)
-				if(!relay.critical_target)
-					our_client.screen += relay
+				our_client.screen += relay
 
-		// We here assume that your render target starts with *
-		if(render_target)
-			render_target = "*[render_target]"
 		return
 	show_to(relevant)
 
@@ -248,7 +244,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	multiz_scaled = FALSE
 	critical = PLANE_CRITICAL_DISPLAY
 
-/atom/movable/screen/plane_master/clickcatcher/Initialize(mapload, datum/plane_master_group/home, offset)
+/atom/movable/screen/plane_master/clickcatcher/Initialize(mapload, datum/hud/hud_owner, datum/plane_master_group/home, offset)
 	. = ..()
 	RegisterSignal(SSmapping, COMSIG_PLANE_OFFSET_INCREASE, PROC_REF(offset_increased))
 	offset_increased(SSmapping, 0, SSmapping.max_plane_offset)
@@ -266,10 +262,10 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 		<br>If you want something to look as if it has parallax on it, draw it to this plane."
 	plane = PLANE_SPACE
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
-	render_relay_planes = list(RENDER_PLANE_GAME, EMISSIVE_MASK_PLANE)
+	render_relay_planes = list(RENDER_PLANE_GAME, LIGHT_MASK_PLANE)
 	critical = PLANE_CRITICAL_FUCKO_PARALLAX // goes funny when touched. no idea why I don't trust byond
 
-/atom/movable/screen/plane_master/parallax_white/Initialize(mapload, datum/plane_master_group/home, offset)
+/atom/movable/screen/plane_master/parallax_white/Initialize(mapload, datum/hud/hud_owner, datum/plane_master_group/home, offset)
 	. = ..()
 	add_relay_to(GET_NEW_PLANE(EMISSIVE_RENDER_PLATE, offset), relay_layer = EMISSIVE_SPACE_LAYER)
 
@@ -286,12 +282,15 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	multiz_scaled = FALSE
 
-/atom/movable/screen/plane_master/parallax/Initialize(mapload, datum/plane_master_group/home, offset)
+/atom/movable/screen/plane_master/parallax/Initialize(mapload, datum/hud/hud_owner, datum/plane_master_group/home, offset)
 	. = ..()
 	if(offset != 0)
 		// You aren't the source? don't change yourself
 		return
 	RegisterSignal(SSmapping, COMSIG_PLANE_OFFSET_INCREASE, PROC_REF(on_offset_increase))
+	RegisterSignal(SSdcs, COMSIG_NARSIE_SUMMON_UPDATE, PROC_REF(narsie_modified))
+	if(GLOB.narsie_summon_count >= 1)
+		narsie_start_midway(GLOB.narsie_effect_last_modified) // We assume we're on the start, so we can use this number
 	offset_increase(0, SSmapping.max_plane_offset)
 
 /atom/movable/screen/plane_master/parallax/proc/on_offset_increase(datum/source, old_offset, new_offset)
@@ -336,6 +335,33 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	// If we're outside bounds AND we're the 0th plane, we need to show cause parallax is hacked to hell
 	return offset != 0 && is_outside_bounds
 
+/// Starts the narsie animation midway, so we can catch up to everyone else quickly
+/atom/movable/screen/plane_master/parallax/proc/narsie_start_midway(start_time)
+	var/time_elapsed = world.time - start_time
+	narsie_summoned_effect(max(16 SECONDS - time_elapsed, 0))
+
+/// Starts the narsie animation, make us grey, then red
+/atom/movable/screen/plane_master/parallax/proc/narsie_modified(datum/source, new_count)
+	SIGNAL_HANDLER
+	if(new_count >= 1)
+		narsie_summoned_effect(16 SECONDS)
+	else
+		narsie_unsummoned()
+
+/atom/movable/screen/plane_master/parallax/proc/narsie_summoned_effect(animate_time)
+	if(GLOB.narsie_summon_count >= 2)
+		var/static/list/nightmare_parallax = list(255,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, -130,0,0,0)
+		animate(src, color = nightmare_parallax, time = animate_time)
+		return
+
+	var/static/list/grey_parallax = list(0.4,0.4,0.4,0, 0.4,0.4,0.4,0, 0.4,0.4,0.4,0, 0,0,0,1, -0.1,-0.1,-0.1,0)
+	// We're gonna animate ourselves grey
+	// Then, once it's done, about 40 seconds into the event itself, we're gonna start doin some shit. see below
+	animate(src, color = grey_parallax, time = animate_time)
+
+/atom/movable/screen/plane_master/parallax/proc/narsie_unsummoned()
+	animate(src, color = null, time = 8 SECONDS)
+
 /atom/movable/screen/plane_master/gravpulse
 	name = "Gravpulse"
 	documentation = "Ok so this one's fun. Basically, we want to be able to distort the game plane when a grav annom is around.\
@@ -353,9 +379,18 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	name = "Floor"
 	documentation = "The well, floor. This is mostly used as a sorting mechanism, but it also lets us create a \"border\" around the game world plane, so its drop shadow will actually work."
 	plane = FLOOR_PLANE
-	render_relay_planes = list(RENDER_PLANE_GAME, EMISSIVE_MASK_PLANE)
+	render_relay_planes = list(RENDER_PLANE_GAME, LIGHT_MASK_PLANE)
 
-/atom/movable/screen/plane_master/floor/Initialize(mapload, datum/plane_master_group/home, offset)
+/atom/movable/screen/plane_master/transparent_floor
+	name = "Transparent Floor"
+	documentation = "Really just openspace, stuff that is a turf but has no color or alpha whatsoever.\
+		<br>We use this to draw to just the light mask plane, cause if it's not there we get holes of blackness over openspace"
+	plane = TRANSPARENT_FLOOR_PLANE
+	render_relay_planes = list(LIGHT_MASK_PLANE)
+	// Needs to be critical or it uh, it'll look white
+	critical = PLANE_CRITICAL_DISPLAY|PLANE_CRITICAL_NO_RELAY
+
+/atom/movable/screen/plane_master/floor/Initialize(mapload, datum/hud/hud_owner, datum/plane_master_group/home, offset)
 	. = ..()
 	add_relay_to(GET_NEW_PLANE(EMISSIVE_RENDER_PLATE, offset), relay_layer = EMISSIVE_FLOOR_LAYER, relay_color = GLOB.em_block_color)
 
@@ -363,9 +398,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	name = "Wall"
 	documentation = "Holds all walls. We render this onto the game world. Separate so we can use this + space and floor planes as a guide for where byond blackness is NOT."
 	plane = WALL_PLANE
-	render_relay_planes = list(RENDER_PLANE_GAME_WORLD, EMISSIVE_MASK_PLANE)
+	render_relay_planes = list(RENDER_PLANE_GAME_WORLD, LIGHT_MASK_PLANE)
 
-/atom/movable/screen/plane_master/wall/Initialize(mapload, datum/plane_master_group/home, offset)
+/atom/movable/screen/plane_master/wall/Initialize(mapload, datum/hud/hud_owner, datum/plane_master_group/home, offset)
 	. = ..()
 	add_relay_to(GET_NEW_PLANE(EMISSIVE_RENDER_PLATE, offset), relay_layer = EMISSIVE_WALL_LAYER, relay_color = GLOB.em_block_color)
 
@@ -381,7 +416,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	plane = GAME_PLANE_FOV_HIDDEN
 	render_relay_planes = list(RENDER_PLANE_GAME_WORLD)
 
-/atom/movable/screen/plane_master/game_world_fov_hidden/Initialize(mapload)
+/atom/movable/screen/plane_master/game_world_fov_hidden/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
 	add_filter("vision_cone", 1, alpha_mask_filter(render_source = OFFSET_RENDER_TARGET(FIELD_OF_VISION_BLOCKER_RENDER_TARGET, offset), flags = MASK_INVERSE))
 
@@ -401,7 +436,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	// This is safe because we will ALWAYS be on the top z layer, so it DON'T MATTER
 	multiz_scaled = FALSE
 
-/atom/movable/screen/plane_master/field_of_vision_blocker/Initialize(mapload, datum/plane_master_group/home, offset)
+/atom/movable/screen/plane_master/field_of_vision_blocker/Initialize(mapload, datum/hud/hud_owner, datum/plane_master_group/home, offset)
 	. = ..()
 	mirror_parent_hidden()
 
@@ -416,9 +451,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	documentation = "There are some walls that want to render above most things (mostly minerals since they shift over.\
 		<br>We draw them to their own plane so we can hijack them for our emissive mask stuff"
 	plane = WALL_PLANE_UPPER
-	render_relay_planes = list(RENDER_PLANE_GAME_WORLD, EMISSIVE_MASK_PLANE)
+	render_relay_planes = list(RENDER_PLANE_GAME_WORLD, LIGHT_MASK_PLANE)
 
-/atom/movable/screen/plane_master/wall_upper/Initialize(mapload, datum/plane_master_group/home, offset)
+/atom/movable/screen/plane_master/wall_upper/Initialize(mapload, datum/hud/hud_owner, datum/plane_master_group/home, offset)
 	. = ..()
 	add_relay_to(GET_NEW_PLANE(EMISSIVE_RENDER_PLATE, offset), relay_layer = EMISSIVE_WALL_LAYER, relay_color = GLOB.em_block_color)
 
@@ -428,7 +463,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	plane = GAME_PLANE_UPPER_FOV_HIDDEN
 	render_relay_planes = list(RENDER_PLANE_GAME_WORLD)
 
-/atom/movable/screen/plane_master/game_world_upper_fov_hidden/Initialize(mapload)
+/atom/movable/screen/plane_master/game_world_upper_fov_hidden/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
 	// Dupe of the other hidden plane
 	add_filter("vision_cone", 1, alpha_mask_filter(render_source = OFFSET_RENDER_TARGET(FIELD_OF_VISION_BLOCKER_RENDER_TARGET, offset), flags = MASK_INVERSE))
@@ -531,7 +566,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	plane = PIPECRAWL_IMAGES_PLANE
 	start_hidden = TRUE
 
-/atom/movable/screen/plane_master/pipecrawl/Initialize(mapload)
+/atom/movable/screen/plane_master/pipecrawl/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
 	// Makes everything on this plane slightly brighter
 	// Has a nice effect, makes thing stand out
@@ -545,18 +580,31 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	documentation = "Holds camera static images. Usually only visible to people who can well, see static.\
 		<br>We use images rather then vis contents because they're lighter on maptick, and maptick sucks butt."
 	plane = CAMERA_STATIC_PLANE
-	start_hidden = TRUE
 
 /atom/movable/screen/plane_master/camera_static/show_to(mob/mymob)
-	// If we aren't an AI, we have no need for this plane master (most of the time, ai eyes are weird and annoying)
-	if(force_hidden && isAI(mymob))
-		unhide_plane(mymob)
 	. = ..()
 	if(!.)
 		return
-	if(isAI(mymob))
+	var/datum/hud/our_hud = home.our_hud
+	if(isnull(our_hud))
 		return
-	return FALSE
+
+	// We'll hide the slate if we're not seeing through a camera eye
+	// This can call on a cycle cause we don't clear in hide_from
+	// Yes this is the best way of hooking into the hud, I hate myself too
+	RegisterSignal(our_hud, COMSIG_HUD_EYE_CHANGED, PROC_REF(eye_changed), override = TRUE)
+	eye_changed(our_hud, null, our_hud.mymob?.canon_client?.eye)
+
+/atom/movable/screen/plane_master/camera_static/proc/eye_changed(datum/hud/source, atom/old_eye, atom/new_eye)
+	SIGNAL_HANDLER
+
+	if(!isaicamera(new_eye))
+		if(!force_hidden)
+			hide_plane(source.mymob)
+		return
+
+	if(force_hidden)
+		unhide_plane(source.mymob)
 
 /atom/movable/screen/plane_master/high_game
 	name = "High Game"
@@ -593,7 +641,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/plane_master)
 	if(!.)
 		return
 	remove_filter("AO")
-	if(istype(mymob) && mymob.client?.prefs?.read_preference(/datum/preference/toggle/ambient_occlusion))
+	if(istype(mymob) && mymob.canon_client?.prefs?.read_preference(/datum/preference/toggle/ambient_occlusion))
 		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
 /atom/movable/screen/plane_master/balloon_chat

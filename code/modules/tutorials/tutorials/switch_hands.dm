@@ -6,7 +6,7 @@
 /// Tutorial for showing how to switch hands.
 /// Fired when clicking on an item with another item with an empty inactive hand.
 /datum/tutorial/switch_hands
-	grandfather_date = "2023-01-07"
+	grandfather_date = "2069-04-20" // EffigyEdit Change (Fuck this tutorial)
 
 	var/stage = STAGE_SHOULD_SWAP_HAND
 	var/atom/movable/screen/hand_preview

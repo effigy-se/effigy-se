@@ -82,7 +82,7 @@
 	if(our_loop)
 		RegisterSignal(our_loop, COMSIG_MOVELOOP_PREPROCESS_CHECK, PROC_REF(pre_move))
 		RegisterSignal(our_loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(try_expel))
-		RegisterSignal(our_loop, COMSIG_PARENT_QDELETING, PROC_REF(movement_stop))
+		RegisterSignal(our_loop, COMSIG_QDELETING, PROC_REF(movement_stop))
 		current_pipe = loc
 
 /// Handles the preprocess check signal, sets the current pipe as the last pipe
@@ -91,7 +91,7 @@
 	last_pipe = loc
 
 /// Handles the postprocess check signal, tries to leave the pipe
-/obj/structure/disposalholder/proc/try_expel(datum/move_loop/source, succeed, visual_delay)
+/obj/structure/disposalholder/proc/try_expel(datum/move_loop/source, result, visual_delay)
 	SIGNAL_HANDLER
 	if(current_pipe || !active)
 		return
@@ -168,7 +168,7 @@
 	if(!T)
 		return null
 
-	var/fdir = turn(dir, 180) // flip the movement direction
+	var/fdir = REVERSE_DIR(dir) // flip the movement direction
 	for(var/obj/structure/disposalpipe/P in T)
 		if(fdir & P.dpdir) // find pipe direction mask that matches flipped dir
 			if(QDELING(P))

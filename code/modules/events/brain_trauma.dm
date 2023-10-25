@@ -2,8 +2,11 @@
 	name = "Spontaneous Brain Trauma"
 	typepath = /datum/round_event/brain_trauma
 	weight = 25
+	min_players = 13
 	category = EVENT_CATEGORY_HEALTH
 	description = "A crewmember gains a random trauma."
+	min_wizard_trigger_potency = 2
+	max_wizard_trigger_potency = 6
 
 /datum/round_event/brain_trauma
 	fakeable = FALSE
@@ -14,10 +17,14 @@
 			continue
 		if(H.stat == DEAD) // What are you doing in this list
 			continue
-		if(!H.getorgan(/obj/item/organ/internal/brain)) // If only I had a brain
+		if(!H.get_organ_by_type(/obj/item/organ/internal/brain)) // If only I had a brain
 			continue
 		if(!(H.mind.assigned_role.job_flags & JOB_CREW_MEMBER)) //please stop giving my centcom admin gimmicks full body paralysis
 			continue
+		// EffigyEdit Add - Event Station Filtering
+		if(engaged_role_play_check(H, station = TRUE, dorms = TRUE))
+			continue
+		// EffigyEdit Add End
 		traumatize(H)
 		announce_to_ghosts(H)
 		break

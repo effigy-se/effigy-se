@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(antagonist_teams)
 /datum/team/proc/add_objective(datum/objective/new_objective, needs_target = FALSE)
 	new_objective.team = src
 	if(needs_target)
-		new_objective.find_target(dupe_search_range = list(src))
+		new_objective.find_target(dupe_search_range = list(src), blacklist = minimum_opt_in_level(level = YES_KILL)) // EffigyEdit Change - Opt-in antag blacklist
 	new_objective.update_explanation_text()
 	objectives += new_objective
 
@@ -58,11 +58,9 @@ GLOBAL_LIST_EMPTY(antagonist_teams)
 		var/win = TRUE
 		var/objective_count = 1
 		for(var/datum/objective/objective as anything in objectives)
-			if(objective.check_completion())
-				report += "<B>Objective #[objective_count]</B>: [objective.explanation_text] [span_greentext("Success!")]"
-			else
-				report += "<B>Objective #[objective_count]</B>: [objective.explanation_text] [span_redtext("Fail.")]"
+			if(!objective.check_completion())
 				win = FALSE
+			report += "<B>Objective #[objective_count]</B>: [objective.explanation_text] [objective.get_roundend_success_suffix()]"
 			objective_count++
 		if(win)
 			report += span_greentext("The [name] was successful!")

@@ -17,6 +17,22 @@
 #define SCANGATE_GOLEM "golem"
 #define SCANGATE_ZOMBIE "zombie"
 
+// EffigyEdit Add -
+#define SCANGATE_MAMMAL "mammal"
+#define SCANGATE_VOX "vox"
+#define SCANGATE_AQUATIC "aquatic"
+#define SCANGATE_INSECT "insect"
+#define SCANGATE_XENO "xeno"
+#define SCANGATE_UNATHI "unathi"
+#define SCANGATE_TAJARAN "tajaran"
+#define SCANGATE_VULPKANIN "vulpkanin"
+#define SCANGATE_SYNTH "synth"
+#define SCANGATE_TESHARI "teshari"
+#define SCANGATE_HEMOPHAGE "hemophage"
+#define SCANGATE_SNAIL "snail"
+#define SCANGATE_GENDER "Gender"
+// EffigyEdit Add End
+
 /obj/machinery/scanner_gate
 	name = "scanner gate"
 	desc = "A gate able to perform mid-depth scans on any organisms who pass under it."
@@ -45,11 +61,12 @@
 	var/light_fail = FALSE
 	///Does the scanner ignore light_pass and light_fail for sending signals?
 	var/ignore_signals = FALSE
-
+	///Detects gender
+	var/detect_gender = "male" // EffigyEdit Add
 
 /obj/machinery/scanner_gate/Initialize(mapload)
 	. = ..()
-	wires = new /datum/wires/scanner_gate(src)
+	set_wires(new /datum/wires/scanner_gate(src))
 	set_scanline("passive")
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
@@ -58,7 +75,7 @@
 
 /obj/machinery/scanner_gate/Destroy()
 	qdel(wires)
-	wires = null
+	set_wires(null)
 	. = ..()
 
 /obj/machinery/scanner_gate/examine(mob/user)
@@ -105,13 +122,14 @@
 			wires.interact(user)
 	return ..()
 
-/obj/machinery/scanner_gate/emag_act(mob/user)
+/obj/machinery/scanner_gate/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		return
+		return FALSE
 	locked = FALSE
 	req_access = list()
 	obj_flags |= EMAGGED
-	to_chat(user, span_notice("You fry the ID checking system."))
+	balloon_alert(user, "id checker disabled")
+	return TRUE
 
 /obj/machinery/scanner_gate/proc/perform_scan(mob/living/M)
 	var/beep = FALSE
@@ -157,10 +175,34 @@
 						scan_species = /datum/species/golem
 					if(SCANGATE_ZOMBIE)
 						scan_species = /datum/species/zombie
+					// EffigyEdit Add - (Medical)
+					if(SCANGATE_MAMMAL)
+						scan_species = /datum/species/mammal
+					if(SCANGATE_VOX)
+						scan_species = /datum/species/vox
+					if(SCANGATE_AQUATIC)
+						scan_species = /datum/species/aquatic
+					if(SCANGATE_INSECT)
+						scan_species = /datum/species/insect
+					if(SCANGATE_XENO)
+						scan_species = /datum/species/xeno
+					if(SCANGATE_UNATHI)
+						scan_species = /datum/species/unathi
+					if(SCANGATE_TAJARAN)
+						scan_species = /datum/species/tajaran
+					if(SCANGATE_VULPKANIN)
+						scan_species = /datum/species/vulpkanin
+					if(SCANGATE_SYNTH)
+						scan_species = /datum/species/synthetic
+					if(SCANGATE_TESHARI)
+						scan_species = /datum/species/teshari
+					if(SCANGATE_SNAIL)
+						scan_species = /datum/species/snail
+					// EffigyEdit Add End
 				if(is_species(H, scan_species))
 					beep = TRUE
 				if(detect_species == SCANGATE_ZOMBIE) //Can detect dormant zombies
-					if(H.getorganslot(ORGAN_SLOT_ZOMBIE))
+					if(H.get_organ_slot(ORGAN_SLOT_ZOMBIE))
 						beep = TRUE
 		if(SCANGATE_GUNS)
 			for(var/I in M.get_contents())
@@ -174,6 +216,14 @@
 					beep = TRUE
 				if(H.nutrition >= detect_nutrition && detect_nutrition == NUTRITION_LEVEL_FAT)
 					beep = TRUE
+		// EffigyEdit Add - Medical
+		if(SCANGATE_GENDER)
+			if(ishuman(M))
+				var/mob/living/carbon/human/scanned_human = M
+				if((scanned_human.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
+					if(scanned_human.gender == detect_gender)
+						beep = TRUE
+		// EffigyEdit Add End
 
 	if(reverse)
 		beep = !beep
@@ -196,11 +246,11 @@
 
 /obj/machinery/scanner_gate/proc/alarm_beep()
 	if(next_beep <= world.time)
-		next_beep = world.time + 20
+		next_beep = world.time + (2 SECONDS)
 		playsound(src, 'sound/machines/scanbuzz.ogg', 100, FALSE)
-	var/image/I = image(icon, src, "alarm_light", layer+1)
-	flick_overlay_view(I, src, 20)
-	set_scanline("alarm", 20)
+	var/mutable_appearance/alarm_display = mutable_appearance(icon, "alarm_light")
+	flick_overlay_view(alarm_display, 2 SECONDS)
+	set_scanline("alarm", 2 SECONDS)
 
 /obj/machinery/scanner_gate/can_interact(mob/user)
 	if(locked)
@@ -221,6 +271,8 @@
 	data["disease_threshold"] = disease_threshold
 	data["target_species"] = detect_species
 	data["target_nutrition"] = detect_nutrition
+	data["target_gender"] = detect_gender // EffigyEdit Add (Medical)
+
 	return data
 
 /obj/machinery/scanner_gate/ui_act(action, params)
@@ -262,6 +314,21 @@
 					if("Obese")
 						detect_nutrition = NUTRITION_LEVEL_FAT
 			. = TRUE
+		// EffigyEdit Add - Medical
+		if("set_target_gender")
+			var/new_gender = params["new_gender"]
+			var/gender_list = list(
+				"Male",
+				"Female"
+			)
+			if(new_gender && (new_gender in gender_list))
+				switch(new_gender)
+					if("Male")
+						detect_gender = "male"
+					if("Female")
+						detect_gender = "female"
+			. = TRUE
+		// EffigyEdit Add End
 
 #undef SCANGATE_NONE
 #undef SCANGATE_MINDSHIELD
@@ -281,3 +348,20 @@
 #undef SCANGATE_POD
 #undef SCANGATE_GOLEM
 #undef SCANGATE_ZOMBIE
+
+// EffigyEdit Add - Medical
+#undef SCANGATE_MAMMAL
+#undef SCANGATE_VOX
+#undef SCANGATE_AQUATIC
+#undef SCANGATE_INSECT
+#undef SCANGATE_XENO
+#undef SCANGATE_UNATHI
+#undef SCANGATE_TAJARAN
+#undef SCANGATE_VULPKANIN
+#undef SCANGATE_SYNTH
+#undef SCANGATE_TESHARI
+#undef SCANGATE_HEMOPHAGE
+#undef SCANGATE_SNAIL
+
+#undef SCANGATE_GENDER
+// EffigyEdit Add End

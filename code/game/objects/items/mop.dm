@@ -1,7 +1,7 @@
 /obj/item/mop
 	desc = "The world of janitalia wouldn't be complete without a mop."
 	name = "mop"
-	icon = 'icons/obj/janitor.dmi'
+	icon = 'icons/obj/service/janitor.dmi'
 	icon_state = "mop"
 	inhand_icon_state = "mop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
@@ -16,7 +16,7 @@
 	resistance_flags = FLAMMABLE
 	var/mopcount = 0
 	///Maximum volume of reagents it can hold.
-	var/max_reagent_volume = 15
+	var/max_reagent_volume = 50 // EffigyEdit Change
 	var/mopspeed = 1.5 SECONDS
 	force_string = "robust... against germs"
 	var/insertable = TRUE
@@ -24,6 +24,14 @@
 		/obj/item/reagent_containers/cup/bucket,
 		/obj/structure/mop_bucket,
 	))
+
+/obj/item/mop/apply_fantasy_bonuses(bonus)
+	. = ..()
+	mopspeed = modify_fantasy_variable("mopspeed", mopspeed, -bonus)
+
+/obj/item/mop/remove_fantasy_bonuses(bonus)
+	mopspeed = reset_fantasy_variable("mopspeed", mopspeed)
+	return ..()
 
 /obj/item/mop/Initialize(mapload)
 	. = ..()
@@ -40,7 +48,7 @@
 	if(clean_blacklist[atom_to_clean.type])
 		return DO_NOT_CLEAN
 	if(reagents.total_volume < 0.1)
-		to_chat(cleaner, span_warning("Your mop is dry!"))
+		cleaner.balloon_alert(cleaner, "mop is dry!")
 		return DO_NOT_CLEAN
 	return reagents.has_chemical_flag(REAGENT_CLEANS, 1)
 
@@ -66,7 +74,7 @@
 /obj/item/mop/advanced
 	desc = "The most advanced tool in a custodian's arsenal, complete with a condenser for self-wetting! Just think of all the viscera you will clean up with this!"
 	name = "advanced mop"
-	max_reagent_volume = 10
+	max_reagent_volume = 100 // EffigyEdit Change
 	icon_state = "advmop"
 	inhand_icon_state = "advmop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
@@ -90,11 +98,11 @@
 		START_PROCESSING(SSobj, src)
 	else
 		STOP_PROCESSING(SSobj,src)
-	to_chat(user, span_notice("You set the condenser switch to the '[refill_enabled ? "ON" : "OFF"]' position."))
+	user.balloon_alert(user, "condenser switch [refill_enabled ? "on" : "off"]")
 	playsound(user, 'sound/machines/click.ogg', 30, TRUE)
 
-/obj/item/mop/advanced/process(delta_time)
-	var/amadd = min(max_reagent_volume - reagents.total_volume, refill_rate * delta_time)
+/obj/item/mop/advanced/process(seconds_per_tick)
+	var/amadd = min(max_reagent_volume - reagents.total_volume, refill_rate * seconds_per_tick)
 	if(amadd > 0)
 		reagents.add_reagent(refill_reagent, amadd)
 

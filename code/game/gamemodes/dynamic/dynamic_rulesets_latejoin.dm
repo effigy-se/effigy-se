@@ -16,6 +16,14 @@
 			candidates.Remove(P)
 		else if (!((antag_preference || antag_flag) in P.client.prefs.be_special) || is_banned_from(P.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
 			candidates.Remove(P)
+		// EffigyEdit Add - Antag Checks
+		else if(P.client?.prefs && !P.client.prefs.read_preference(/datum/preference/toggle/be_antag))
+			candidates.Remove(P)
+			continue
+		else if(is_banned_from(P.client?.ckey, BAN_ANTAGONIST))
+			candidates.Remove(P)
+			continue
+		// EffigyEdit Add End
 
 /datum/dynamic_ruleset/latejoin/ready(forced = 0)
 	if (forced)
@@ -30,8 +38,8 @@
 				job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that rule, or have a job that restricts them from it
 
 	var/threat = round(mode.threat_level/10)
-
-	if (job_check < required_enemies[threat])
+	var/ruleset_forced = (GLOB.dynamic_forced_rulesets[type] || RULESET_NOT_FORCED) == RULESET_FORCE_ENABLED
+	if (!ruleset_forced && job_check < required_enemies[threat])
 		log_dynamic("FAIL: [src] is not ready, because there are not enough enemies: [required_enemies[threat]] needed, [job_check] found")
 		return FALSE
 
@@ -52,7 +60,7 @@
 
 /datum/dynamic_ruleset/latejoin/infiltrator
 	name = "Syndicate Infiltrator"
-	antag_datum = /datum/antagonist/traitor
+	antag_datum = /datum/antagonist/traitor/infiltrator
 	antag_flag = ROLE_SYNDICATE_INFILTRATOR
 	antag_flag_override = ROLE_TRAITOR
 	protected_roles = list(
@@ -68,7 +76,7 @@
 		JOB_CYBORG,
 	)
 	required_candidates = 1
-	weight = 7
+	weight = 11
 	cost = 5
 	requirements = list(5,5,5,5,5,5,5,5,5,5)
 	repeatable = TRUE
@@ -111,7 +119,7 @@
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-	weight = 2
+	weight = 1
 	delay = 1 MINUTES // Prevents rule start while head is offstation.
 	cost = 10
 	requirements = list(101,101,70,40,30,20,20,20,20,20)
@@ -144,7 +152,7 @@
 		new_head.remove_clumsy = TRUE
 		new_head = M.mind.add_antag_datum(new_head, revolution)
 		revolution.update_objectives()
-		revolution.update_heads()
+		revolution.update_rev_heads()
 		SSshuttle.registerHostileEnvironment(revolution)
 		return TRUE
 	else
@@ -158,6 +166,10 @@
 		return
 
 	finished = winner
+
+	if(winner == REVOLUTION_VICTORY)
+		GLOB.revolutionary_win = TRUE
+
 	return RULESET_STOP_PROCESSING
 
 /// Checks for revhead loss conditions and other antag datums.
@@ -195,7 +207,7 @@
 		JOB_CYBORG,
 	)
 	required_candidates = 1
-	weight = 4
+	weight = 8
 	cost = 6
 	requirements = list(101,101,50,10,10,10,10,10,10,10)
 	repeatable = TRUE
@@ -215,4 +227,36 @@
 	// Limit it to four missed passive gain cycles (4 points).
 	new_heretic.knowledge_points = min(new_heretic.knowledge_points, 5)
 
+	return TRUE
+
+/// Ruleset for latejoin changelings
+/datum/dynamic_ruleset/latejoin/stowaway_changeling
+	name = "Stowaway Changeling"
+	antag_datum = /datum/antagonist/changeling
+	antag_flag = ROLE_STOWAWAY_CHANGELING
+	antag_flag_override = ROLE_CHANGELING
+	protected_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_PERSONNEL,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+	)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+	)
+	required_candidates = 1
+	weight = 2
+	cost = 12
+	requirements = list(101,101,60,50,40,20,20,10,10,10)
+	repeatable = TRUE
+
+/datum/dynamic_ruleset/latejoin/stowaway_changeling/execute()
+	var/mob/picked_mob = pick(candidates)
+	assigned += picked_mob.mind
+	picked_mob.mind.special_role = antag_flag
+	picked_mob.mind.add_antag_datum(antag_datum)
 	return TRUE

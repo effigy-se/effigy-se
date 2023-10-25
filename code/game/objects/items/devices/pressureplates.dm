@@ -2,7 +2,7 @@
 	name = "pressure plate"
 	desc = "An electronic device that triggers when stepped on."
 	desc_controls = "Ctrl-Click to toggle the pressure plate off and on."
-	icon = 'icons/obj/puzzle_small.dmi'
+	icon = 'icons/obj/fluff/puzzle_small.dmi'
 	inhand_icon_state = "flashtool"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
@@ -28,7 +28,7 @@
 
 /obj/item/pressure_plate/Initialize(mapload)
 	. = ..()
-	tile_overlay = image(icon = 'icons/turf/floors.dmi', icon_state = "pp_overlay")
+	tile_overlay = image(icon = EFFIGY_TURFS_ICON_FILE, icon_state = "pp_overlay") // EffigyEdit Change - Floors
 	if(roundstart_signaller)
 		sigdev = new
 		sigdev.code = roundstart_signaller_code

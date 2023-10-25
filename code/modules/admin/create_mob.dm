@@ -12,7 +12,7 @@
 
 /proc/randomize_human(mob/living/carbon/human/human)
 	if(human.dna.species.sexes)
-		human.gender = pick(MALE, FEMALE, PLURAL)
+		human.gender = pick(MALE, FEMALE, PLURAL, NEUTER)
 	else
 		human.gender = PLURAL
 	human.physique = human.gender
@@ -33,7 +33,9 @@
 	for(var/datum/species/species_path as anything in subtypesof(/datum/species))
 		var/datum/species/new_species = new species_path
 		new_species.randomize_features(human)
-	human.dna.species.spec_updatehealth(human)
 	human.dna.update_dna_identity()
-	human.updateappearance()
-	human.update_body(is_creating = TRUE)
+	// Needs to be called towards the end to update all the UIs just set above
+	human.dna.initialize_dna(newblood_type = random_blood_type())
+	// Snowflake for Ethereals
+	human.updatehealth()
+	human.updateappearance(mutcolor_update = TRUE)

@@ -1,7 +1,7 @@
-#define MAX_TIMER (15 MINUTES)
-#define PRESET_SHORT (2 MINUTES)
-#define PRESET_MEDIUM (3 MINUTES)
-#define PRESET_LONG (5 MINUTES)
+#define MAX_TIMER (30 MINUTES) // EffigyEdit Change
+#define PRESET_SHORT (5 MINUTES) // EffigyEdit Change
+#define PRESET_MEDIUM (10 MINUTES) // EffigyEdit Change
+#define PRESET_LONG (15 MINUTES) // EffigyEdit Change
 
 /**
  * Brig Door control displays.
@@ -68,7 +68,7 @@
 	if(!timing)
 		return PROCESS_KILL
 
-	if(world.time - activation_time >= timer_duration)
+	if(REALTIMEOFDAY - activation_time >= timer_duration) // EffigyEdit Change (instead of world.time)
 		timer_end() // open doors, reset timer, clear status screen
 	update_content()
 
@@ -94,7 +94,7 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 
-	activation_time = world.time
+	activation_time = REALTIMEOFDAY // EffigyEdit Change (instead of world.time)
 	timing = TRUE
 	begin_processing()
 
@@ -167,7 +167,7 @@
  * * seconds - return time in seconds it TRUE, else deciseconds.
  */
 /obj/machinery/status_display/door_timer/proc/time_left(seconds = FALSE)
-	. = max(0, timer_duration - (activation_time ? world.time - activation_time : 0))
+	. = max(0, timer_duration - (activation_time ? REALTIMEOFDAY - activation_time : 0)) // EffigyEdit Change (instead of world.time)
 	if(seconds)
 		. /= 10
 
@@ -259,7 +259,7 @@
 			user.investigate_log("set cell [id]'s timer to [preset_time/10] seconds", INVESTIGATE_RECORDS)
 			user.log_message("set cell [id]'s timer to [preset_time/10] seconds", LOG_ATTACK)
 			if(timing)
-				activation_time = world.time
+				activation_time = REALTIMEOFDAY // EffigyEdit Change (instead of world.time)
 		else
 			. = FALSE
 

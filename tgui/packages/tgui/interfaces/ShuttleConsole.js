@@ -7,7 +7,7 @@ export const ShuttleConsole = (props, context) => {
   const { type = 'shuttle', blind_drop } = props;
   const { authorization_required } = data;
   return (
-    <Window width={350} height={230}>
+    <Window width={350} height={264}>
       {!!authorization_required && (
         <Modal
           ml={1}
@@ -75,13 +75,11 @@ export const ShuttleConsoleContent = (props, context) => {
   } = data;
   return (
     <Section>
-      <Box bold fontSize="26px" textAlign="center" fontFamily="monospace">
+      <Box bold fontSize="26px" textAlign="center" fontFamily="Ubuntu Mono">
         {timer_str || '00:00'}
       </Box>
-      <Box textAlign="center" fontSize="14px" mb={1}>
-        <Box inline bold>
-          STATUS:
-        </Box>
+      <Box textAlign="center" fontSize="18px" mb={1}>
+        <Box inline>Status:</Box>
         <Box inline color={STATUS_COLOR_KEYS[status] || 'bad'} ml={1}>
           {status || 'Not Available'}
         </Box>

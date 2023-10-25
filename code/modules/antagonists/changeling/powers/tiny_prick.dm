@@ -21,7 +21,7 @@
 	changeling.chosen_sting = src
 
 	changeling.lingstingdisplay.icon_state = button_icon_state
-	changeling.lingstingdisplay.invisibility = 0
+	changeling.lingstingdisplay.SetInvisibility(0, id=type)
 
 /datum/action/changeling/sting/proc/unset_sting(mob/user)
 	to_chat(user, span_warning("We retract our sting, we can't sting anyone for now."))
@@ -29,7 +29,7 @@
 	changeling.chosen_sting = null
 
 	changeling.lingstingdisplay.icon_state = null
-	changeling.lingstingdisplay.invisibility = INVISIBILITY_ABSTRACT
+	changeling.lingstingdisplay.RemoveInvisibility(type)
 
 /mob/living/carbon/proc/unset_sting()
 	if(mind)
@@ -81,21 +81,22 @@
 	selected_dna = changeling.select_dna()
 	if(!selected_dna)
 		return
-	if(NOTRANSSTING in selected_dna.dna.species.species_traits)
-		to_chat(user, span_notice("That DNA is not compatible with changeling retrovirus!"))
+	if(HAS_TRAIT(user, TRAIT_NO_TRANSFORMATION_STING))
+		user.balloon_alert(user, "incompatible DNA!")
 		return
-	..()
+	return ..()
 
 /datum/action/changeling/sting/transformation/can_sting(mob/user, mob/living/carbon/target)
 	. = ..()
 	if(!.)
 		return
-	if((HAS_TRAIT(target, TRAIT_HUSK)) || !iscarbon(target) || (NOTRANSSTING in target.dna.species.species_traits))
-		to_chat(user, span_warning("Our sting appears ineffective against its DNA."))
+	if(!iscarbon(target) || HAS_TRAIT(target, TRAIT_HUSK) || HAS_TRAIT(target, TRAIT_NO_TRANSFORMATION_STING))
+		user.balloon_alert(user, "incompatible DNA!")
 		return FALSE
 	return TRUE
 
 /datum/action/changeling/sting/transformation/sting_action(mob/user, mob/target)
+	. = ..()
 	log_combat(user, target, "stung", "transformation sting", " new identity is '[selected_dna.dna.real_name]'")
 	var/datum/dna/NewDNA = selected_dna.dna
 
@@ -106,6 +107,16 @@
 		NewDNA.transfer_identity(C)
 		C.updateappearance(mutcolor_update=1)
 
+	// EffigyEdit Remove Start: TODO: Requires https://github.com/effigy-se/effigy-se/issues/471
+	/*
+	if(target.apply_status_effect(/datum/status_effect/temporary_transformation/trans_sting, final_duration, selected_dna.dna))
+		..()
+		log_combat(user, target, "stung", "transformation sting", " new identity is '[selected_dna.dna.real_name]'")
+		to_chat(user, final_message)
+		return TRUE
+	*/
+	// EffigyEdit Remove End
+	return FALSE
 
 /datum/action/changeling/sting/false_armblade
 	name = "False Armblade Sting"
@@ -126,18 +137,19 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if((HAS_TRAIT(L, TRAIT_HUSK)) || !L.has_dna())
-			to_chat(user, span_warning("Our sting appears ineffective against its DNA."))
+			user.balloon_alert(user, "incompatible DNA!")
 			return FALSE
 	return TRUE
 
 /datum/action/changeling/sting/false_armblade/sting_action(mob/user, mob/target)
-	log_combat(user, target, "stung", object="false armblade sting")
 
 	var/obj/item/held = target.get_active_held_item()
 	if(held && !target.dropItemToGround(held))
 		to_chat(user, span_warning("[held] is stuck to [target.p_their()] hand, you cannot grow a false armblade over it!"))
 		return
+
 	..()
+	log_combat(user, target, "stung", object = "false armblade sting")
 	if(ismonkey(target))
 		to_chat(user, span_notice("Our genes cry out as we sting [target.name]!"))
 
@@ -173,6 +185,7 @@
 		return changeling.can_absorb_dna(target)
 
 /datum/action/changeling/sting/extract_dna/sting_action(mob/user, mob/living/carbon/human/target)
+	..()
 	log_combat(user, target, "stung", "extraction sting")
 	var/datum/antagonist/changeling/changeling = user.mind.has_antag_datum(/datum/antagonist/changeling)
 	if(!changeling.has_profile_with_dna(target.dna))
@@ -188,6 +201,7 @@
 	dna_cost = 2
 
 /datum/action/changeling/sting/mute/sting_action(mob/user, mob/living/carbon/target)
+	..()
 	log_combat(user, target, "stung", "mute sting")
 	target.adjust_silence(1 MINUTES)
 	return TRUE
@@ -195,33 +209,40 @@
 /datum/action/changeling/sting/blind
 	name = "Blind Sting"
 	desc = "We temporarily blind our victim. Costs 25 chemicals."
-	helptext = "This sting completely blinds a target for a short time, and leaves them with blurred vision for a long time."
+	helptext = "This sting completely blinds a target for a short time, and leaves them with blurred vision for a long time. Does not work if target has robotic or missing eyes."
 	button_icon_state = "sting_blind"
 	chemical_cost = 25
 	dna_cost = 1
 
 /datum/action/changeling/sting/blind/sting_action(mob/user, mob/living/carbon/target)
-	var/obj/item/organ/internal/eyes/eyes = target.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/internal/eyes/eyes = target.get_organ_slot(ORGAN_SLOT_EYES)
 	if(!eyes)
-		to_chat(user, span_notice("You prepare to sting [target], but one of the voices in your hivemind points out they have no eyes."))
+		user.balloon_alert(user, "no eyes!")
 		return FALSE
 
+	if(IS_ROBOTIC_ORGAN(eyes))
+		user.balloon_alert(user, "robotic eyes!")
+		return FALSE
+
+	..()
 	log_combat(user, target, "stung", "blind sting")
 	to_chat(target, span_danger("Your eyes burn horrifically!"))
-	eyes.applyOrganDamage(eyes.maxHealth * 0.8)
+	eyes.apply_organ_damage(eyes.maxHealth * 0.8)
 	target.adjust_temp_blindness(40 SECONDS)
 	target.set_eye_blur_if_lower(80 SECONDS)
 	return TRUE
 
 /datum/action/changeling/sting/lsd
 	name = "Hallucination Sting"
-	desc = "We cause mass terror to our victim."
-	helptext = "We evolve the ability to sting a target with a powerful hallucinogenic chemical. The target does not notice they have been stung, and the effect occurs after 30 to 60 seconds."
+	desc = "We cause mass terror to our victim. Costs 10 chemicals."
+	helptext = "We evolve the ability to sting a target with a powerful hallucinogenic chemical. \
+			The target does not notice they have been stung, and the effect occurs after 30 to 60 seconds."
 	button_icon_state = "sting_lsd"
 	chemical_cost = 10
 	dna_cost = 1
 
 /datum/action/changeling/sting/lsd/sting_action(mob/user, mob/living/carbon/target)
+	..()
 	log_combat(user, target, "stung", "LSD sting")
 	addtimer(CALLBACK(src, PROC_REF(hallucination_time), target), rand(30 SECONDS, 60 SECONDS))
 	return TRUE
@@ -240,6 +261,7 @@
 	dna_cost = 2
 
 /datum/action/changeling/sting/cryo/sting_action(mob/user, mob/target)
+	..()
 	log_combat(user, target, "stung", "cryo sting")
 	if(target.reagents)
 		target.reagents.add_reagent(/datum/reagent/consumable/frostoil, 30)

@@ -19,16 +19,16 @@ SUBSYSTEM_DEF(traitor)
 	var/configuration_data = list()
 
 	/// The coefficient multiplied by the current_global_progression for new joining traitors to calculate their progression
-	var/newjoin_progression_coeff = 0.6
+	var/newjoin_progression_coeff = 1
 	/// The current progression that all traitors should be at in the round
 	var/current_global_progression = 0
 	/// The amount of deviance from the current global progression before you start getting 2x the current scaling or no scaling at all
 	/// Also affects objectives, so -50% progress reduction or 50% progress boost.
-	var/progression_scaling_deviance = 20 MINUTES
+	var/progression_scaling_deviance = 24 MINUTES // EffigyEdit Change (Antags)
 	/// The current uplink handlers being managed
 	var/list/datum/uplink_handler/uplink_handlers = list()
 	/// The current scaling per minute of progression. Has a maximum value of 1 MINUTES.
-	var/current_progression_scaling = 1 MINUTES
+	var/current_progression_scaling = 21 SECONDS // EffigyEdit Change (Antags)
 	/// Used to handle the probability of getting an objective.
 	var/datum/traitor_category_handler/category_handler
 	/// The current debug handler for objectives. Used for debugging objectives
@@ -43,6 +43,9 @@ SUBSYSTEM_DEF(traitor)
 /datum/controller/subsystem/traitor/Initialize()
 	category_handler = new()
 	traitor_debug_panel = new(category_handler)
+
+	for(var/theft_item in subtypesof(/datum/objective_item/steal))
+		new theft_item
 
 	if(fexists(configuration_path))
 		var/list/data = json_decode(file2text(file(configuration_path)))
@@ -89,7 +92,7 @@ SUBSYSTEM_DEF(traitor)
 	uplink_handlers |= uplink_handler
 	// An uplink handler can be registered multiple times if they get assigned to new uplinks, so
 	// override is set to TRUE here because it is intentional that they could get added multiple times.
-	RegisterSignal(uplink_handler, COMSIG_PARENT_QDELETING, PROC_REF(uplink_handler_deleted), override = TRUE)
+	RegisterSignal(uplink_handler, COMSIG_QDELETING, PROC_REF(uplink_handler_deleted), override = TRUE)
 
 /datum/controller/subsystem/traitor/proc/uplink_handler_deleted(datum/uplink_handler/uplink_handler)
 	SIGNAL_HANDLER

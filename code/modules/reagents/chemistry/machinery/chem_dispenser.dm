@@ -64,6 +64,8 @@
 		/datum/reagent/water,
 		/datum/reagent/fuel
 	)
+	// EffigyEdit Change START
+	/*
 	//these become available once the manipulator has been upgraded to tier 4 (femto)
 	var/list/upgrade_reagents = list(
 		/datum/reagent/acetone,
@@ -80,10 +82,43 @@
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin
 	)
+	*/
+	var/list/upgrade_reagents = list(
+		/datum/reagent/fuel/oil,
+		/datum/reagent/ammonia,
+		/datum/reagent/ash,
+		/datum/reagent/phenol
+	)
+
+	var/list/upgrade_reagents2 = list(
+		/datum/reagent/acetone,
+		/datum/reagent/diethylamine
+	)
+
+	var/list/upgrade_reagents3 = list(
+		/datum/reagent/medicine/mine_salve,
+		/datum/reagent/toxin
+	)
+
+	var/list/emagged_reagents = list(
+		/datum/reagent/drug/space_drugs,
+		/datum/reagent/toxin/plasma,
+		/datum/reagent/consumable/frostoil,
+		/datum/reagent/toxin/carpotoxin,
+		/datum/reagent/toxin/histamine,
+		/datum/reagent/medicine/morphine
+	)
+	// EffigyEdit Change END
+	/// Starting purity of the created reagents
+	var/base_reagent_purity = 1
 
 	var/list/recording_recipe
 
 	var/list/saved_recipes = list()
+	// EffigyEdit Add -
+	var/list/transferAmounts = list()
+	var/customTransferAmount
+	// EffigyEdit Add End
 
 /obj/machinery/chem_dispenser/Initialize(mapload)
 	. = ..()
@@ -92,6 +127,12 @@
 		emagged_reagents = sort_list(emagged_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(upgrade_reagents)
 		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+	// EffigyEdit Add -
+	if(upgrade_reagents2)
+		upgrade_reagents2 = sort_list(upgrade_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade_reagents3)
+		upgrade_reagents3 = sort_list(upgrade_reagents3, GLOBAL_PROC_REF(cmp_reagents_asc))
+	// EffigyEdit Add -
 	if(is_operational)
 		begin_processing()
 	update_appearance()
@@ -119,14 +160,14 @@
 		begin_processing()
 
 
-/obj/machinery/chem_dispenser/process(delta_time)
+/obj/machinery/chem_dispenser/process(seconds_per_tick)
 	if (recharge_counter >= 8)
 		var/usedpower = cell.give(recharge_amount)
 		if(usedpower)
 			use_power(active_power_usage + recharge_amount)
 		recharge_counter = 0
 		return
-	recharge_counter += delta_time
+	recharge_counter += seconds_per_tick
 
 /obj/machinery/chem_dispenser/proc/display_beaker()
 	var/mutable_appearance/b_o = beaker_overlay || mutable_appearance(icon, "disp_beaker")
@@ -152,13 +193,14 @@
 		. += beaker_overlay
 
 
-/obj/machinery/chem_dispenser/emag_act(mob/user)
+/obj/machinery/chem_dispenser/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
-		to_chat(user, span_warning("[src] has no functional safeties to emag."))
-		return
-	to_chat(user, span_notice("You short out [src]'s safeties."))
+		balloon_alert(user, "already emagged!")
+		return FALSE
+	balloon_alert(user, "safeties shorted out")
 	dispensable_reagents |= emagged_reagents//add the emagged reagents to the dispensable ones
 	obj_flags |= EMAGGED
+	return TRUE
 
 /obj/machinery/chem_dispenser/ex_act(severity, target)
 	if(severity <= EXPLODE_LIGHT)
@@ -178,9 +220,9 @@
 		if(EXPLODE_LIGHT)
 			SSexplosions.low_mov_atom += beaker
 
-/obj/machinery/chem_dispenser/handle_atom_del(atom/A)
-	..()
-	if(A == beaker)
+/obj/machinery/chem_dispenser/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == beaker)
 		beaker = null
 		cut_overlays()
 
@@ -277,7 +319,7 @@
 					if(!cell?.use(to_dispense / powerefficiency))
 						say("Not enough energy to complete operation!")
 						return
-					holder.add_reagent(reagent, to_dispense, reagtemp = dispensed_temperature)
+					holder.add_reagent(reagent, to_dispense, reagtemp = dispensed_temperature, added_purity = base_reagent_purity)
 
 					work_animation()
 			else
@@ -317,7 +359,7 @@
 					if(!cell?.use(to_dispense / powerefficiency))
 						say("Not enough energy to complete operation!")
 						return
-					holder.add_reagent(reagent, to_dispense, reagtemp = dispensed_temperature)
+					holder.add_reagent(reagent, to_dispense, reagtemp = dispensed_temperature, added_purity = base_reagent_purity)
 					work_animation()
 				else
 					recording_recipe[key] += dispense_amount
@@ -338,7 +380,7 @@
 			if(!is_operational)
 				return
 			var/name = tgui_input_text(usr, "What do you want to name this recipe?", "Recipe Name", MAX_NAME_LEN)
-			if(!usr.canUseTopic(src, !issilicon(usr)))
+			if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 				return
 			if(saved_recipes[name] && tgui_alert(usr, "\"[name]\" already exists, do you want to overwrite it?",, list("Yes", "No")) == "No")
 				return
@@ -358,6 +400,16 @@
 				return
 			recording_recipe = null
 			. = TRUE
+		// EffigyEdit Add -
+		if("custom_amount")
+			if(!beaker)
+				to_chat(usr, span_warning("Insert a container first!"))
+				return
+			if(customTransferAmount)
+				transferAmounts -= customTransferAmount
+			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
+			transferAmounts += customTransferAmount
+		// EffigyEdit Add End
 		if("reaction_lookup")
 			if(beaker)
 				beaker.reagents.ui_interact(usr)
@@ -375,6 +427,11 @@
 		return
 	if(is_reagent_container(I) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		var/obj/item/reagent_containers/B = I
+		// EffigyEdit Add -
+		if(customTransferAmount)
+			transferAmounts -= customTransferAmount
+		transferAmounts = B.possible_transfer_amounts
+		// EffigyEdit Add End
 		. = TRUE //no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return
@@ -400,7 +457,7 @@
 	if(beaker?.reagents)
 		R += beaker.reagents
 	for(var/i in 1 to total)
-		Q.add_reagent(pick(dispensable_reagents), 10, reagtemp = dispensed_temperature)
+		Q.add_reagent(pick(dispensable_reagents), 10, reagtemp = dispensed_temperature, added_purity = base_reagent_purity)
 	R += Q
 	chem_splash(get_turf(src), null, 3, R)
 	if(beaker?.reagents)
@@ -423,12 +480,30 @@
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
 		recharge_amount *= capacitor.tier
 		parts_rating += capacitor.tier
-	for(var/datum/stock_part/manipulator/manipulator in component_parts)
-		if (manipulator.tier > 3)
+	for(var/datum/stock_part/servo/servo in component_parts)
+		// EffigyEdit Change START
+		/*
+		if (servo.tier > 3)
 			dispensable_reagents |= upgrade_reagents
 		else
 			dispensable_reagents -= upgrade_reagents
-		parts_rating += manipulator.tier
+		*/
+		if (servo.tier > 1)
+			dispensable_reagents |= upgrade_reagents
+		else
+			dispensable_reagents -= upgrade_reagents
+
+		if (servo.tier > 2)
+			dispensable_reagents |= upgrade_reagents2
+		else
+			dispensable_reagents -= upgrade_reagents2
+
+		if (servo.tier > 3)
+			dispensable_reagents |= upgrade_reagents3
+		else
+			dispensable_reagents -= upgrade_reagents3
+		// EffigyEdit Change END
+		parts_rating += servo.tier
 	powerefficiency = round(newpowereff, 0.01)
 
 /obj/machinery/chem_dispenser/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
@@ -453,7 +528,7 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user), FALSE, no_tk = TRUE))
+	if(!can_interact(user) || !user.can_perform_action(src, ALLOW_SILICON_REACH|FORBID_TELEKINESIS_REACH))
 		return
 	replace_beaker(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -476,7 +551,7 @@
 	has_panel_overlay = FALSE
 	dispensed_temperature = WATER_MATTERSTATE_CHANGE_TEMP // magical mystery temperature of 274.5, where ice does not melt, and water does not freeze
 	amount = 10
-	pixel_y = 6
+	anchored_tabletop_offset = 6
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/drinks
 	working_state = null
 	nopower_state = null
@@ -493,6 +568,7 @@
 		/datum/reagent/consumable/lemonjuice,
 		/datum/reagent/consumable/lemon_lime,
 		/datum/reagent/consumable/limejuice,
+		/datum/reagent/consumable/melon_soda,
 		/datum/reagent/consumable/menthol,
 		/datum/reagent/consumable/orangejuice,
 		/datum/reagent/consumable/pineapplejuice,
@@ -500,6 +576,7 @@
 		/datum/reagent/consumable/shamblers,
 		/datum/reagent/consumable/spacemountainwind,
 		/datum/reagent/consumable/sodawater,
+		/datum/reagent/consumable/sol_dry,
 		/datum/reagent/consumable/space_up,
 		/datum/reagent/consumable/sugar,
 		/datum/reagent/consumable/tea,
@@ -507,13 +584,30 @@
 		/datum/reagent/consumable/tonic,
 		/datum/reagent/water,
 	)
-	upgrade_reagents = null
+	// EffigyEdit Add -
+	upgrade_reagents = list(
+		/datum/reagent/consumable/applejuice,
+		/datum/reagent/consumable/pumpkinjuice,
+		/datum/reagent/consumable/vanilla
+	)
+	upgrade_reagents2 = list(
+		/datum/reagent/consumable/banana,
+		/datum/reagent/consumable/berryjuice,
+		/datum/reagent/consumable/blumpkinjuice
+	)
+	upgrade_reagents3 = list(
+		/datum/reagent/consumable/watermelonjuice,
+		/datum/reagent/consumable/peachjuice,
+		/datum/reagent/consumable/sol_dry
+	)
+	// EffigyEdit Add End
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol/thirteenloko,
 		/datum/reagent/consumable/ethanol/whiskey_cola,
 		/datum/reagent/toxin/mindbreaker,
 		/datum/reagent/toxin/staminatoxin
 	)
+	base_reagent_purity = 0.5
 
 /obj/machinery/chem_dispenser/drinks/Initialize(mapload)
 	. = ..()
@@ -565,6 +659,7 @@
 		/datum/reagent/consumable/ethanol/ale,
 		/datum/reagent/consumable/ethanol/applejack,
 		/datum/reagent/consumable/ethanol/beer,
+		/datum/reagent/consumable/ethanol/coconut_rum,
 		/datum/reagent/consumable/ethanol/cognac,
 		/datum/reagent/consumable/ethanol/creme_de_cacao,
 		/datum/reagent/consumable/ethanol/creme_de_coconut,
@@ -575,16 +670,21 @@
 		/datum/reagent/consumable/ethanol/kahlua,
 		/datum/reagent/consumable/ethanol/beer/maltliquor,
 		/datum/reagent/consumable/ethanol/navy_rum,
+		/datum/reagent/consumable/ethanol/rice_beer,
 		/datum/reagent/consumable/ethanol/rum,
 		/datum/reagent/consumable/ethanol/sake,
+		/datum/reagent/consumable/ethanol/synthanol, // EffigyEdit Add
 		/datum/reagent/consumable/ethanol/tequila,
 		/datum/reagent/consumable/ethanol/triple_sec,
 		/datum/reagent/consumable/ethanol/vermouth,
 		/datum/reagent/consumable/ethanol/vodka,
 		/datum/reagent/consumable/ethanol/whiskey,
 		/datum/reagent/consumable/ethanol/wine,
+		/datum/reagent/consumable/ethanol/yuyake,
 	)
 	upgrade_reagents = null
+	upgrade_reagents2 = null // EffigyEdit Add
+	upgrade_reagents3 = null // EffigyEdit Add
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,
@@ -647,7 +747,7 @@
 /obj/machinery/chem_dispenser/abductor
 	name = "reagent synthesizer"
 	desc = "Synthesizes a variety of reagents using proto-matter."
-	icon = 'icons/obj/abductor.dmi'
+	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "chem_dispenser"
 	base_icon_state = "chem_dispenser"
 	has_panel_overlay = FALSE

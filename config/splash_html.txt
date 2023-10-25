@@ -1,0 +1,200 @@
+<html>
+		<head>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<style type='text/css'>
+				@font-face {
+					font-family: 'Chakra Petch';
+					font-style: normal;
+					font-weight: 600;
+					font-display: block;
+					src: url("ChakraPetch-Semibold.ttf");
+					}
+
+				body,
+				html {
+					margin: 0;
+					overflow: hidden;
+					font-family: 'Segoe UI';
+					text-align: center;
+					background-color: #000000;
+					padding-top: 5vmin;
+					-ms-user-select: none;
+					cursor: default;
+				}
+
+				img {
+					border-style:none;
+				}
+
+				.bg {
+					position: absolute;
+					width: auto;
+					height: 100vmin;
+					min-width: 100vmin;
+					min-height: 100vmin;
+					top: 50%;
+					left:50%;
+					transform: translate(-50%, -50%);
+					z-index: 0;
+				}
+
+				.container_terminal {
+					position: absolute;
+					top: calc(90% - 3vmin);
+					left: 21vmin;
+					height: 3vmin;
+					width: calc(100% - 42vmin);
+					overflow: clip;
+					box-sizing: border-box;
+					z-index: 1;
+				}
+
+				.terminal_text {
+					font-family: 'Chakra Petch';
+					font-weight: 600;
+					src: url("ChakraPetch-Semibold.ttf");
+					display: inline-block;
+					text-decoration: none;
+					width: 100%;
+					text-align: left;
+					color:#FCFCFC;
+					margin-right: 0%;
+					margin-top: 0px;
+					font-size: 2vmin;
+				}
+
+				.container_progress {
+					position: absolute;
+					box-sizing: border-box;
+					top: 90%;
+					left: 21vmin;
+					height: 4vmin;
+					width: calc(100% - 42vmin);
+					border-top: 4px solid #FCFCFC;
+					border-bottom: 4px solid #FCFCFC;
+					border-left: 4px solid #FCFCFC;
+					border-right: 4px solid #FCFCFC;
+					padding: 4px;
+					background-color: #000000;
+				}
+
+				.progress_bar {
+					width: 0%;
+					height: 100%;
+					background-color: #FCFCFC;
+				}
+
+				@keyframes fade_out {
+					to {
+						opacity: 0;
+					}
+				}
+
+				.fade_out {
+					animation: fade_out 2s both;
+				}
+
+				.container_nav {
+					position: absolute;
+					box-sizing: border-box;
+					width: 75vmin;
+					min-height: 10vmin;
+					top: calc(50% + 22.5vmin);
+					left:50%;
+					transform: translate(-50%, -50%);
+					z-index: 1;
+					border: 2px solid white;
+					border-radius: 0;
+					box-shadow: 2px 2px #333, inset 1px 1px #333;
+					background: linear-gradient(175deg, #606060, #cccccc);
+					opacity: 75%;
+					padding: 1em;
+				}
+
+				.container_nav hr {
+					height: 2px;
+					background-color: #FCFCFC;
+					border: none;
+					box-shadow: 2px 2px black;
+				}
+
+				.menu_button {
+					display: block;
+					box-sizing: border-box;
+					font-family: 'Chakra Petch', 'Segoe UI';
+					font-weight: 600;
+					text-decoration: none;
+					font-size: 4vmin;
+					text-shadow: 2px 2px black;
+					line-height: 4vmin;
+					width: 100%;
+					text-align: left;
+					color: #FCFCFC;
+					height: 4.5vmin;
+					padding-left: 1vmin;
+					letter-spacing: 1px;
+					cursor: pointer;
+					white-space: nowrap;
+					overflow: hidden;
+				}
+
+				.menu_button:hover {
+					color: #dddddd;
+				}
+
+				@keyframes pollsbox {
+					0% {color: #FCFCFC;}
+					50% {color: #f80;}
+				}
+
+				.menu_newpoll {
+					animation: pollsbox 2s step-start infinite;
+					padding-left: 0px;
+				}
+
+				.container_notice {
+					position: absolute;
+					box-sizing: border-box;
+					width: 75vmin;
+					min-height: 4vmin;
+					top:40%;
+					left:50%;
+					transform: translate(-50%, -50%);
+					z-index: 1;
+					border: 2px solid white;
+					border-radius: 0;
+					box-shadow: 2px 2px #333, inset 1px 1px #333;
+					background: linear-gradient(175deg, #75005a, #8f004a);
+					opacity: 75%;
+					padding: 1em;
+				}
+
+				.menu_notice {
+					display: block;
+					box-sizing: border-box;
+					font-family: 'Chakra Petch', 'Segoe UI';
+					font-weight: 600;
+					text-decoration: none;
+					font-size: 4vmin;
+					text-shadow: 2px 2px black;
+					line-height: 4vmin;
+					width: 100%;
+					text-align: left;
+					color: #FCFCFC;
+					height: 4.5vmin;
+					padding-left: 1vmin;
+					letter-spacing: 1px;
+					white-space: nowrap;
+				}
+
+				.unchecked {
+					color: #ff0059;
+				}
+
+				.checked {
+					color: #66ff00;
+				}
+			</style>
+		</head>
+		<body>

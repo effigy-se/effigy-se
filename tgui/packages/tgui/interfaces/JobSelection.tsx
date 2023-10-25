@@ -30,6 +30,7 @@ type Data = {
   disable_jobs_for_non_observers: BooleanLike;
   priority: BooleanLike;
   round_duration: string;
+  alert_level: { name: string; color: string }; // EffigyEdit AddITION - Alert level on jobs menu
 };
 
 export const JobEntry: SFC<{
@@ -106,8 +107,8 @@ export const JobSelection = (props, context) => {
 
   return (
     <Window
-      width={1012}
-      height={data.shuttle_status ? 690 : 666 /* Hahahahahaha */}
+      width={1017}
+      height={data.shuttle_status ? 916 : 858 /* Hahahahahaha */}
       onComponentDidMount={() => {
         // Send a heartbeat back to DM to let it know the window is alive and well
         act('ui_mounted_with_no_bluescreen');
@@ -119,6 +120,12 @@ export const JobSelection = (props, context) => {
               {data.shuttle_status && (
                 <NoticeBox info>{data.shuttle_status}</NoticeBox>
               )}
+              {
+                // EffigyEdit Add (Alert Levels)
+                <NoticeBox color={data.alert_level.color}>
+                  The current alert level is: {data.alert_level.name}
+                </NoticeBox>
+              }
               <span style={{ 'color': 'grey' }}>
                 It is currently {data.round_duration} into the shift.
               </span>

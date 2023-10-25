@@ -69,7 +69,7 @@
 		return
 	next_click = world.time + 1
 
-	if(check_click_intercept(params,A) || notransform)
+	if(check_click_intercept(params,A) || HAS_TRAIT(src, TRAIT_NO_TRANSFORM))
 		return
 
 	var/list/modifiers = params2list(params)
@@ -260,7 +260,7 @@
 		if(2 to INFINITY)
 			var/obj/dummy = new(get_turf(here))
 			dummy.pass_flags |= PASSTABLE
-			dummy.invisibility = INVISIBILITY_ABSTRACT
+			dummy.SetInvisibility(INVISIBILITY_ABSTRACT)
 			for(var/i in 1 to reach) //Limit it to that many tries
 				var/turf/T = get_step(dummy, get_dir(dummy, there))
 				if(dummy.CanReach(there))
@@ -277,7 +277,10 @@
 
 
 /**
- * Translates into [atom/proc/attack_hand], etc.
+ * UnarmedAttack: The higest level of mob click chain discounting click itself.
+ *
+ * This handles, just "clicking on something" without an item. It translates
+ * into [atom/proc/attack_hand], [atom/proc/attack_animal] etc.
  *
  * Note: proximity_flag here is used to distinguish between normal usage (flag=1),
  * and usage when clicking on things telekinetically (flag=0).  This proc will
@@ -339,9 +342,10 @@
 
 /atom/proc/ShiftClick(mob/user)
 	var/flags = SEND_SIGNAL(user, COMSIG_CLICK_SHIFT, src)
+	if(flags & COMSIG_MOB_CANCEL_CLICKON)
+		return
 	if(user.client && (user.client.eye == user || user.client.eye == user.loc || flags & COMPONENT_ALLOW_EXAMINATE))
 		user.examinate(src)
-	return
 
 /**
  * Ctrl click
@@ -457,7 +461,7 @@
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	src.pointed(A)
 	return
-
+// NOTE: CtrlShiftClick for HUMANS has been overriden in click.dm in the interaction module.
 /atom/proc/CtrlShiftClick(mob/user)
 	if(!can_interact(user))
 		return FALSE
@@ -470,19 +474,19 @@
 */
 
 /// Simple helper to face what you clicked on, in case it should be needed in more than one place
-/mob/proc/face_atom(atom/A)
-	if( buckled || stat != CONSCIOUS || !A || !x || !y || !A.x || !A.y )
+/mob/proc/face_atom(atom/atom_to_face)
+	if( buckled || stat != CONSCIOUS || !atom_to_face || !x || !y || !atom_to_face.x || !atom_to_face.y )
 		return
-	var/dx = A.x - x
-	var/dy = A.y - y
+	var/dx = atom_to_face.x - x
+	var/dy = atom_to_face.y - y
 	if(!dx && !dy) // Wall items are graphically shifted but on the floor
-		if(A.pixel_y > 16)
+		if(atom_to_face.pixel_y > 16)
 			setDir(NORTH)
-		else if(A.pixel_y < -16)
+		else if(atom_to_face.pixel_y < -16)
 			setDir(SOUTH)
-		else if(A.pixel_x > 16)
+		else if(atom_to_face.pixel_x > 16)
 			setDir(EAST)
-		else if(A.pixel_x < -16)
+		else if(atom_to_face.pixel_x < -16)
 			setDir(WEST)
 		return
 
@@ -506,7 +510,7 @@
 	transform = M
 
 /atom/movable/screen/click_catcher
-	icon = 'icons/hud/screen_gen.dmi'
+	icon = GENERAL_SCREEN_ICONS
 	icon_state = "catcher"
 	plane = CLICKCATCHER_PLANE
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
@@ -516,7 +520,7 @@
 #define MAX_SAFE_BYOND_ICON_SCALE_PX (33 * 32) //Not using world.icon_size on purpose.
 
 /atom/movable/screen/click_catcher/proc/UpdateGreed(view_size_x = 15, view_size_y = 15)
-	var/icon/newicon = icon('icons/hud/screen_gen.dmi', "catcher")
+	var/icon/newicon = icon(GENERAL_SCREEN_ICONS, "catcher")
 	var/ox = min(MAX_SAFE_BYOND_ICON_SCALE_TILES, view_size_x)
 	var/oy = min(MAX_SAFE_BYOND_ICON_SCALE_TILES, view_size_y)
 	var/px = view_size_x * world.icon_size
@@ -530,7 +534,7 @@
 	M.Scale(px/sx, py/sy)
 	transform = M
 
-/atom/movable/screen/click_catcher/Initialize(mapload)
+/atom/movable/screen/click_catcher/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
 	RegisterSignal(SSmapping, COMSIG_PLANE_OFFSET_INCREASE, PROC_REF(offset_increased))
 	offset_increased(SSmapping, 0, SSmapping.max_plane_offset)
@@ -578,3 +582,6 @@
 			return TRUE
 
 	return FALSE
+
+#undef MAX_SAFE_BYOND_ICON_SCALE_TILES
+#undef MAX_SAFE_BYOND_ICON_SCALE_PX

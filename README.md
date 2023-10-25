@@ -1,11 +1,23 @@
-## SlashCo 13
+### [![Effigy](.github/assets/effigy_logo_header_800.png)](#) Effigy: based on the [/tg/station](https://github.com/tgstation/tgstation) branch of [Space Station 13](https://spacestation13.com/).
+## 
 
-An unofficial demake of [SlashCo](https://github.com/Mantibro/SlashCo) in BYOND, based on the round-based, paranoia-laden deathtrap that is Space Station 13. Everything here is in a conceptual phase at the moment, with our current goal being getting the basic gameplay mechanics working along with three of the original slashers. (The Imposter, Male07, and Sid respectively.) - Information about progress is best visualized in the Projects tab.
+[![resentment](.github/images/badges/built-with-resentment.svg)](.github/images/comics/131-bug-free.png) [![technical debt](.github/images/badges/contains-technical-debt.svg)](.github/images/comics/106-tech-debt-modified.png) [![forinfinityandbyond](.github/images/badges/made-in-byond.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
+
+* **Website:** https://effigy.se
+* **Effigy Discord:** https://discord.gg/KDZf9prucS
+
+* **/tg/ Wiki:** https://tgstation13.org/wiki/Main_Page
+* **/tg/ Codedocs:** https://codedocs.tgstation13.org/
+* **Coderbus Discord:** https://discord.gg/Vh8TJp9
+
+This is the codebase for Effigy, a /tg/station fork of Space Station 13.
+
+Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
 
 ## DOWNLOADING
 [Downloading](.github/guides/DOWNLOADING.md)
 
-[Running on the server](.github/guides/RUNNING_A_SERVER.md)
+[Running a server](.github/guides/RUNNING_A_SERVER.md)
 
 [Maps and Away Missions](.github/guides/MAPS_AND_AWAY_MISSIONS.md)
 
@@ -26,8 +38,6 @@ On **2021-01-04** we have changed the way to compile the codebase.
 
 [/tg/station HACKMD account](https://hackmd.io/@tgstation) - Design documentation here
 
-[Interested in some starting lore?](https://github.com/tgstation/common_core)
-
 ## LICENSE
 
 All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
@@ -37,7 +47,7 @@ All code before [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 a
 
 See LICENSE and GPLv3.txt for more details.
 
-The TGS DMAPI API is licensed as a subproject under the MIT license.
+The TGS DMAPI is licensed as a subproject under the MIT license.
 
 See the footer of [code/__DEFINES/tgs.dm](./code/__DEFINES/tgs.dm) and [code/modules/tgs/LICENSE](./code/modules/tgs/LICENSE) for the MIT license.
 

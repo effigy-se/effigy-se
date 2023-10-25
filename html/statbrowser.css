@@ -1,6 +1,19 @@
+@font-face {
+	font-family: 'Chakra Petch';
+	font-style: normal;
+	font-weight: 500;
+	font-display: block;
+	src: url("ChakraPetch-Medium.ttf");
+	  }
+
+* {
+	font-family: "Chakra Petch", Tahoma, sans-serif;
+}
+
 body {
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	font-size: 12px !important;
+	font-family: "Chakra Petch", Tahoma, sans-serif;
+	font-size: 14px !important;
+	color: #202020;
 	margin: 0 !important;
 	padding: 0 !important;
 	overflow-x: hidden;
@@ -8,8 +21,8 @@ body {
 }
 
 body.dark {
-	background-color: #131313;
-	color: #b2c4dd;
+	background-color: #202020;
+	color: #e6f1ff;
 	scrollbar-base-color: #1c1c1c;
 	scrollbar-face-color: #3b3b3b;
 	scrollbar-3dlight-color: #252525;
@@ -40,7 +53,7 @@ a {
 }
 
 .dark a {
-	color: #b2c4dd;
+	color: #e6f1ff;
 }
 
 a:hover,
@@ -82,14 +95,13 @@ li a:hover:not(.active) {
 }
 
 .button {
-	background-color: #dfdfdf;
-	border: 1px solid #cecece;
-	border-bottom-width: 2px;
+	background-color: #eaeaea;
 	color: rgba(0, 0, 0, 0.7);
+	border: 0;
 	padding: 6px 4px 4px;
 	text-align: center;
 	text-decoration: none;
-	font-size: 12px;
+	font-size: 14px;
 	margin: 0;
 	cursor: pointer;
 	transition-duration: 100ms;
@@ -98,8 +110,8 @@ li a:hover:not(.active) {
 }
 
 .dark button {
-	background-color: #222222;
-	border-color: #343434;
+	background-color: #202020;
+	border-color: #202020;
 	color: rgba(255, 255, 255, 0.5);
 }
 
@@ -109,7 +121,7 @@ li a:hover:not(.active) {
 }
 
 .dark button:hover {
-	background-color: #2e2e2e;
+	background-color: #444444;
 }
 
 .button:active,
@@ -124,11 +136,11 @@ li a:hover:not(.active) {
 
 .dark .button:active,
 .dark .button.active {
-	background-color: #444444;
+	background-color: #202020;
 	color: white;
-	border-top-color: #343434;
-	border-left-color: #343434;
-	border-right-color: #343434;
+	border-top-color: #000000;
+	border-left-color: #000000;
+	border-right-color: #000000;
 	border-bottom-color: #ffffff;
 }
 
@@ -193,7 +205,7 @@ li a:hover:not(.active) {
 }
 
 .dark .grid-item-text {
-	background-color: #131313;
+	background-color: #202020;
 }
 
 .link {
@@ -204,7 +216,7 @@ li a:hover:not(.active) {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
-	font-size: 13px;
+	font-size: 14px;
 	margin: 2px 2px;
 }
 

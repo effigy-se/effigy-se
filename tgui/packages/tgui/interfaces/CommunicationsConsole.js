@@ -19,8 +19,66 @@ const EMAG_SHUTTLE_NOTICE =
 
 const sortShuttles = sortBy(
   (shuttle) => !shuttle.emagOnly,
-  (shuttle) => shuttle.creditCost
+  (shuttle) => shuttle.initial_cost
 );
+
+const GreenshiftButton = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { alertLevelTick, canSetAlertLevel } = data;
+  const { alertLevel, setShowAlertLevelConfirm } = props;
+
+  const thisIsCurrent = data.alertLevel === alertLevel;
+
+  return (
+    <Button
+      icon="check-square"
+      color={thisIsCurrent && 'good'}
+      content={capitalize(alertLevel)}
+      onClick={() => {
+        if (thisIsCurrent) {
+          return;
+        }
+
+        if (canSetAlertLevel === SWIPE_NEEDED) {
+          setShowAlertLevelConfirm([alertLevel, alertLevelTick]);
+        } else {
+          act('changeSecurityLevel', {
+            newSecurityLevel: alertLevel,
+          });
+        }
+      }}
+    />
+  );
+};
+
+const CircleButton = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { alertLevelTick, canSetAlertLevel } = data;
+  const { alertLevel, setShowAlertLevelConfirm } = props;
+
+  const thisIsCurrent = data.alertLevel === alertLevel;
+
+  return (
+    <Button
+      icon="exclamation-circle"
+      color={thisIsCurrent && 'darkblue'}
+      content={capitalize(alertLevel)}
+      onClick={() => {
+        if (thisIsCurrent) {
+          return;
+        }
+
+        if (canSetAlertLevel === SWIPE_NEEDED) {
+          setShowAlertLevelConfirm([alertLevel, alertLevelTick]);
+        } else {
+          act('changeSecurityLevel', {
+            newSecurityLevel: alertLevel,
+          });
+        }
+      }}
+    />
+  );
+};
 
 const AlertButton = (props, context) => {
   const { act, data } = useBackend(context);
@@ -32,7 +90,65 @@ const AlertButton = (props, context) => {
   return (
     <Button
       icon="exclamation-triangle"
-      color={thisIsCurrent && 'good'}
+      color={thisIsCurrent && 'average'}
+      content={capitalize(alertLevel)}
+      onClick={() => {
+        if (thisIsCurrent) {
+          return;
+        }
+
+        if (canSetAlertLevel === SWIPE_NEEDED) {
+          setShowAlertLevelConfirm([alertLevel, alertLevelTick]);
+        } else {
+          act('changeSecurityLevel', {
+            newSecurityLevel: alertLevel,
+          });
+        }
+      }}
+    />
+  );
+};
+
+const MedicalButton = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { alertLevelTick, canSetAlertLevel } = data;
+  const { alertLevel, setShowAlertLevelConfirm } = props;
+
+  const thisIsCurrent = data.alertLevel === alertLevel;
+
+  return (
+    <Button
+      icon="kit-medical"
+      color={thisIsCurrent && 'white'}
+      content={capitalize(alertLevel)}
+      onClick={() => {
+        if (thisIsCurrent) {
+          return;
+        }
+
+        if (canSetAlertLevel === SWIPE_NEEDED) {
+          setShowAlertLevelConfirm([alertLevel, alertLevelTick]);
+        } else {
+          act('changeSecurityLevel', {
+            newSecurityLevel: alertLevel,
+          });
+        }
+      }}
+    />
+  );
+};
+
+const EngiButton = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { alertLevelTick, canSetAlertLevel } = data;
+  const { alertLevel, setShowAlertLevelConfirm } = props;
+
+  const thisIsCurrent = data.alertLevel === alertLevel;
+
+  return (
+    <Button
+      icon="wrench"
+      color={thisIsCurrent && 'pink'}
       content={capitalize(alertLevel)}
       onClick={() => {
         if (thisIsCurrent) {
@@ -193,9 +309,14 @@ const PageBuyingShuttle = (props, context) => {
             />
           }>
           <Box>{shuttle.description}</Box>
-          {shuttle.prerequisites ? (
-            <b>Prerequisites: {shuttle.prerequisites}</b>
-          ) : null}
+          <Box color="teal" fontSize="10px" italic>
+            Occupancy Limit: {shuttle.occupancy_limit}
+          </Box>
+          <Box color="violet" fontSize="10px" bold>
+            {shuttle.prerequisites ? (
+              <b>Prerequisites: {shuttle.prerequisites}</b>
+            ) : null}
+          </Box>
         </Section>
       ))}
     </Box>
@@ -235,9 +356,11 @@ const PageMain = (props, context) => {
     canSendToSectors,
     canSetAlertLevel,
     canToggleEmergencyAccess,
+    canToggleEngineeringOverride, // EffigyEdit Add (Airlock Override)
     emagged,
     syndicate,
     emergencyAccess,
+    engineeringOverride, // EffigyEdit Add (Airlock Override)
     importantActionReady,
     sectors,
     shuttleCalled,
@@ -328,16 +451,42 @@ const PageMain = (props, context) => {
             </Flex.Item>
 
             <Flex.Item>
-              <AlertButton
+              <GreenshiftButton
+                // EffigyEdit Add - Alert Levels
                 alertLevel="green"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
 
-              <AlertButton
+              <CircleButton
                 alertLevel="blue"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <MedicalButton
+                alertLevel="white"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <EngiButton
+                alertLevel="magenta"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <AlertButton
+                alertLevel="yellow"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <AlertButton
+                alertLevel="orange"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+                // EffigyEdit Add End
               />
             </Flex.Item>
           </Flex>
@@ -353,15 +502,6 @@ const PageMain = (props, context) => {
               onClick={() => act('makePriorityAnnouncement')}
             />
           )}
-
-          {!!aprilFools && !!canMakeAnnouncement && (
-            <Button
-              icon="bullhorn"
-              content="Call Emergency Meeting"
-              onClick={() => act('emergency_meeting')}
-            />
-          )}
-
           {!!canToggleEmergencyAccess && (
             <Button.Confirm
               icon="id-card-o"
@@ -372,6 +512,19 @@ const PageMain = (props, context) => {
               onClick={() => act('toggleEmergencyAccess')}
             />
           )}
+
+          {/* EffigyEdit Add - Airlock Override */}
+          {!!canToggleEngineeringOverride && (
+            <Button.Confirm
+              icon="wrench"
+              content={`${
+                engineeringOverride ? 'Disable' : 'Enable'
+              } Engineering Override Access`}
+              color={engineeringOverride ? 'bad' : undefined}
+              onClick={() => act('toggleEngOverride')}
+            />
+          )}
+          {/* EffigyEdit Add End */}
 
           {!syndicate && (
             <Button
@@ -650,7 +803,7 @@ export const CommunicationsConsole = (props, context) => {
   } = data;
 
   return (
-    <Window width={400} height={650} theme={emagged ? 'syndicate' : undefined}>
+    <Window width={440} height={677} theme={emagged ? 'syndicate' : undefined}>
       <Window.Content scrollable>
         {!hasConnection && <NoConnectionModal />}
 

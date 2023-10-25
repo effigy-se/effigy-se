@@ -40,7 +40,7 @@
 
 	client.playtitlemusic()
 
-	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
+	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/namespaced/effigy_ui)
 	asset_datum.send(client)
 	if(!client) // client disconnected during asset transit
 		return FALSE
@@ -54,6 +54,4 @@
 
 	if(SSticker.current_state < GAME_STATE_SETTING_UP)
 		var/tl = SSticker.GetTimeLeft()
-		to_chat(src, "Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
-
-
+		to_chat(src, "<span class='notice'>Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].</span>")

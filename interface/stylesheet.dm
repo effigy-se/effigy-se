@@ -2,18 +2,18 @@
 /// !!!!!!!!!!HEY LISTEN!!!!!!!!!!!!!!!!!!!!!!!!
 /// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// If you modify this file you ALSO need to modify tgui/packages/tgui-panel/styles/goon/chat-light.scss and chat-dark.scss
+// If you modify this file you ALSO need to modify tgui/packages/tgui-panel/styles/tgchat/chat-light.scss and chat-dark.scss
 // BUT you have to use PX font sizes with are on a x8 scale of these font sizes
 // Sample font-size: DM: 8 CSS: 64px
 
 /client/script = {"<style>
-body					{font-family: Verdana, sans-serif;}
+body					{font-family: 'Chakra Petch', sans-serif;}
 
-h1, h2, h3, h4, h5, h6	{color: #0000ff;	font-family: Georgia, Verdana, sans-serif;}
+h1, h2, h3, h4, h5, h6	{color: #0000ff;	font-family: 'Chakra Petch', sans-serif;}
 
 em						{font-style: normal;	font-weight: bold;}
 
-.motd					{color: #638500;	font-family: Verdana, sans-serif;}
+.motd					{color: #638500;	font-family: 'Chakra Petch', sans-serif;}
 .motd h1, .motd h2, .motd h3, .motd h4, .motd h5, .motd h6
 	{color: #638500;	text-decoration: underline;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover
@@ -44,7 +44,7 @@ em						{font-style: normal;	font-weight: bold;}
 .sciradio				{color: #993399;}
 .comradio				{color: #948f02;}
 .secradio				{color: #a30000;}
-.medradio				{color: #337296;}
+.medradio				{color: #3859b3;}
 .engradio				{color: #fb5613;}
 .suppradio				{color: #a8732b;}
 .servradio				{color: #6eaa2c;}
@@ -59,21 +59,21 @@ em						{font-style: normal;	font-weight: bold;}
 
 .yell					{					font-weight: bold;}
 
-.alert					{color: #ff0000;}
+.alert					{color: #ff0066;}
 h1.alert, h2.alert		{color: #000000;}
 
 .emote					{}
 .infoplain				{}
 
-.userdanger				{color: #ff0000;	font-weight: bold;	font-size: 3;}
-.danger					{color: #ff0000;	font-weight: bold;}
-.danger					{color: #ff0000;}
-.tinydanger				{color: #ff0000; font-size: 85%;}
-.smalldanger			{color: #ff0000; font-size: 90%;}
-.warning				{color: #ff0000;	font-style: italic;}
-.boldwarning			{color: #ff0000;	font-style: italic;	font-weight: bold}
+.userdanger				{color: #ff0066;	font-weight: bold;	font-size: 3;}
+.danger					{color: #ff0066;	font-weight: bold;}
+.danger					{color: #ff0066;}
+.tinydanger				{color: #ff0066; font-size: 85%;}
+.smalldanger			{color: #ff0066; font-size: 90%;}
+.warning				{color: #ff0066;	font-style: italic;}
+.boldwarning			{color: #ff0066;	font-style: italic;	font-weight: bold}
 .announce				{color: #228b22;	font-weight: bold;}
-.boldannounce			{color: #ff0000;	font-weight: bold;}
+.boldannounce			{color: #ff0066;	font-weight: bold;}
 .minorannounce			{					font-weight: bold;  font-size: 3;}
 .greenannounce			{color: #00ff00;	font-weight: bold;}
 .rose					{color: #ff5050;}
@@ -86,7 +86,7 @@ h1.alert, h2.alert		{color: #000000;}
 .boldnotice				{color: #000099;	font-weight: bold;}
 .hear					{color: #000099;	font-style: italic;}
 .adminnotice			{color: #0000ff;}
-.adminhelp				{color: #ff0000;	font-weight: bold;}
+.adminhelp				{color: #ff0066;	font-weight: bold;}
 .unconscious			{color: #0000ff;	font-weight: bold;}
 .suicide				{color: #ff5050;	font-style: italic;}
 .green					{color: #03ff39;}
@@ -128,9 +128,9 @@ h1.alert, h2.alert		{color: #000000;}
 
 .blob					{color: #556B2F;	font-weight: bold;	font-size: 3;}
 
-.sans					{font-family: "Comic Sans MS", cursive, sans-serif;}
-.papyrus				{font-family: "Papyrus", cursive, sans-serif;}
-.robot					{font-family: "Courier New", cursive, sans-serif;}
+.sans					{font-family: "Comic Sans MS", sans-serif;}
+.papyrus				{font-family: "Papyrus", sans-serif;}
+.robot					{font-family: "Ubuntu Mono", sans-serif;}
 
 .command_headset		{font-weight: bold;	font-size: 3;}
 .small					{font-size: 1;}
@@ -138,10 +138,10 @@ h1.alert, h2.alert		{color: #000000;}
 .reallybig				{font-size: 4;}
 .extremelybig			{font-size: 5;}
 .greentext				{color: #00FF00;	font-size: 3;}
-.redtext				{color: #FF0000;	font-size: 3;}
+.redtext				{color: #ff0066;	font-size: 3;}
 .clown					{color: #FF69Bf;	font-size: 3;	font-family: "Comic Sans MS", cursive, sans-serif;	font-weight: bold;}
-.singing				{font-family: "Trebuchet MS", cursive, sans-serif; font-style: italic;}
-.his_grace				{color: #15D512;	font-family: "Courier New", cursive, sans-serif;	font-style: italic;}
+.singing				{font-family: "Chakra Petch", sans-serif; font-style: italic;}
+.his_grace				{color: #15D512;	font-family: "Ubuntu Monow", sans-serif;	font-style: italic;}
 .hypnophrase			{color: #3bb5d3;	font-weight: bold;	animation: hypnocolor 1500ms infinite; animation-direction: alternate;}
 	@keyframes hypnocolor {
 		0%		{color: #0d0d0d;}
@@ -170,4 +170,5 @@ h1.alert, h2.alert		{color: #000000;}
 .swarmer				{color: #2C75FF;}
 .resonate				{color: #298F85;}
 
+.upside_down			{display: inline; -moz-transform: scale(-1, -1); -webkit-transform: scale(-1, -1); -o-transform: scale(-1, -1); -ms-transform: scale(-1, -1); transform: scale(-1, -1);}
 </style>"}

@@ -1,9 +1,16 @@
 import { ByondUi } from '../../components';
 
-export const CharacterPreview = (props: { height: string; id: string }) => {
+export const CharacterPreview = (props: {
+  width?: string; // EffigyEdit Change Customization
+  height: string;
+  id: string;
+}) => {
+  // EffigyEdit Change START Customization
+  const { width = '220px' } = props;
+  // EffigyEdit Change END Customization
   return (
     <ByondUi
-      width="220px"
+      width={width} // EffigyEdit Change Customization
       height={props.height}
       params={{
         id: props.id,

@@ -1,4 +1,5 @@
 #define ROUND_START_MUSIC_LIST "strings/round_start_sounds.txt"
+#define SS_TICKER_TRAIT "SS_Ticker"
 
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
@@ -10,12 +11,16 @@ SUBSYSTEM_DEF(ticker)
 
 	/// state of current round (used by process()) Use the defines GAME_STATE_* !
 	var/current_state = GAME_STATE_STARTUP
-	/// Boolean to track if round was ended by admin intervention or a "round-ending" event, like summoning Nar'Sie, a blob victory, the nuke going off, etc.
-	var/force_ending = FALSE
+	/// Boolean to track if round should be forcibly ended next ticker tick.
+	/// Set by admin intervention ([ADMIN_FORCE_END_ROUND])
+	/// or a "round-ending" event, like summoning Nar'Sie, a blob victory, the nuke going off, etc. ([FORCE_END_ROUND])
+	var/force_ending = END_ROUND_AS_NORMAL
 	/// If TRUE, there is no lobby phase, the game starts immediately.
 	var/start_immediately = FALSE
 	/// Boolean to track and check if our subsystem setup is done.
 	var/setup_done = FALSE
+	/// Did we broadcast at players to hurry up?
+	var/delay_notified = FALSE
 
 	var/datum/game_mode/mode = null
 
@@ -55,6 +60,7 @@ SUBSYSTEM_DEF(ticker)
 	var/roundend_check_paused = FALSE
 
 	var/round_start_time = 0
+	var/round_start_real_time = 0 // EffigyEdit Add - STATPANEL
 	var/list/round_start_events
 	var/list/round_end_events
 	var/mode_result = "undefined"
@@ -144,6 +150,8 @@ SUBSYSTEM_DEF(ticker)
 		gametime_offset = rand(0, 23) HOURS
 	else if(CONFIG_GET(flag/shift_time_realtime))
 		gametime_offset = world.timeofday
+	else
+		gametime_offset = (CONFIG_GET(number/shift_time_start_hour) HOURS)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
@@ -154,8 +162,10 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
-			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/channel_announce_new_game))
+			// send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_announce_new_game)) // EffigyEdit Remove
 			current_state = GAME_STATE_PREGAME
+			SStitle.change_title_screen() // EffigyEdit Add - SPLASH
+			addtimer(CALLBACK(SStitle, TYPE_PROC_REF(/datum/controller/subsystem/title, change_title_screen)), 1 SECONDS) // EffigyEdit Add - SPLASH
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 
 			fire()
@@ -174,20 +184,31 @@ SUBSYSTEM_DEF(ticker)
 
 			if(start_immediately)
 				timeLeft = 0
+				CONFIG_SET(flag/setup_bypass_player_check, TRUE)
 
 			//countdown
-			if(timeLeft < 0)
-				return
+			if(timeLeft < 0 && CONFIG_GET(flag/setup_bypass_player_check))
+				return // 'DELAYED' delayed by an admin
 			timeLeft -= wait
 
-			if(timeLeft <= 300 && !tipped)
+			if(timeLeft <= 450 && !tipped) // EffigyEdit Change
 				send_tip_of_the_round(world, selected_tip)
 				tipped = TRUE
+
+			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && !totalPlayersReady)
+				if(!delay_notified)
+					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
+					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
+					message_admins("Game setup delayed due to lack of players.")
+					log_game("Game setup delayed due to lack of players.")
+					delay_notified = TRUE
+				return // 'SOON' waiting for players
 
 			if(timeLeft <= 0)
 				SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
+				SSevents.reschedule() // EffigyEdit Change
 				if(start_immediately)
 					fire()
 
@@ -204,7 +225,7 @@ SUBSYSTEM_DEF(ticker)
 			mode.process(wait * 0.1)
 			check_queue()
 
-			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
+			if(!roundend_check_paused && (mode.check_finished() || force_ending))
 				current_state = GAME_STATE_FINISHED
 				toggle_ooc(TRUE) // Turn it on
 				toggle_dooc(TRUE)
@@ -214,7 +235,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, span_boldannounce("Starting game..."))
+	to_chat(world, SPAN_BOX_ALERT(BLUE, "Starting game..."))
 	var/init_start = world.timeofday
 
 	mode = new /datum/game_mode/dynamic
@@ -249,6 +270,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!CONFIG_GET(flag/ooc_during_round))
 		toggle_ooc(FALSE) // Turn it off
 
+	SSnightshift.check_nightshift() // EffigyEdit Add (Reset the lights)
 	CHECK_TICK
 	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
 	create_characters() //Create player characters
@@ -265,12 +287,16 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
+	round_start_real_time = REALTIMEOFDAY // EffigyEdit Add - STATPANEL
+	SSautotransfer.new_shift(round_start_real_time)
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore,SetRoundStart))
 
 	to_chat(world, span_notice("<B>Welcome to [station_name()], enjoy your stay!</B>"))
+	//send2chat(new /datum/tgs_message_content("[GLOB.round_hex ? "Round [GLOB.round_hex]" : "New round"] starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_announce_new_game)) // EffigyEdit Remove - Game Notifications
+	discord_new_game_alert() // EffigyEdit Add - Game Notifications
 	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
 
 	current_state = GAME_STATE_PLAYING
@@ -280,7 +306,7 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, span_notice("and..."))
 		for(var/holidayname in GLOB.holidays)
 			var/datum/holiday/holiday = GLOB.holidays[holidayname]
-			to_chat(world, "<h4>[holiday.greet()]</h4>")
+			to_chat(world, span_info(holiday.greet()))
 
 	PostSetup()
 
@@ -294,7 +320,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
-	send2adminchat("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]" : ""] has started[allmins.len ? ".":" with no active admins online!"]")
+	send2adminchat("Server", "Round [GLOB.round_hex ? "#[GLOB.round_hex]" : ""] has started[allmins.len ? ".":" with no active admins online!"]") // EffigyEdit Change - Logging
 	setup_done = TRUE
 
 	for(var/i in GLOB.start_landmarks_list)
@@ -312,6 +338,7 @@ SUBSYSTEM_DEF(ticker)
 
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
+		SSpersistence.load_modular_persistence(iter_human.get_organ_slot(ORGAN_SLOT_BRAIN)) // EffigyEdit AddITION - (#184 Modular Persistence - Ported From Skyrat)
 
 		if(!iter_human.hardcore_survival_score)
 			continue
@@ -345,8 +372,11 @@ SUBSYSTEM_DEF(ticker)
 			GLOB.joined_player_list += player.ckey
 			var/atom/destination = player.mind.assigned_role.get_roundstart_spawn_point()
 			if(!destination) // Failed to fetch a proper roundstart location, won't be going anywhere.
+				player.show_title_screen() // EffigyEdit Add - SPLASH
 				continue
 			player.create_character(destination)
+		else 							// EffigyEdit Add - SPLASH
+			player.show_title_screen() // EffigyEdit Add - SPLASH
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
@@ -416,6 +446,14 @@ SUBSYSTEM_DEF(ticker)
 			if(new_player_mob.client?.prefs?.should_be_random_hardcore(player_assigned_role, new_player_living.mind))
 				new_player_mob.client.prefs.hardcore_random_setup(new_player_living)
 			SSquirks.AssignQuirks(new_player_living, new_player_mob.client)
+
+		// EffigyEdit Add - Customization
+		if(ishuman(new_player_living))
+			for(var/datum/loadout_item/item as anything in loadout_list_to_datums(new_player_mob.client?.prefs?.loadout_list))
+				if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
+					continue
+				item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
+		// EffigyEdit Add End
 		CHECK_TICK
 
 	if(captainless)
@@ -458,19 +496,18 @@ SUBSYSTEM_DEF(ticker)
 		var/mob/living = player.transfer_character()
 		if(living)
 			qdel(player)
-			living.notransform = TRUE
+			ADD_TRAIT(living, TRAIT_NO_TRANSFORM, SS_TICKER_TRAIT)
 			if(living.client)
 				var/atom/movable/screen/splash/S = new(null, living.client, TRUE)
 				S.Fade(TRUE)
 				living.client.init_verbs()
 			livings += living
 	if(livings.len)
-		addtimer(CALLBACK(src, PROC_REF(release_characters), livings), 30, TIMER_CLIENT_TIME)
+		addtimer(CALLBACK(src, PROC_REF(release_characters), livings), 3 SECONDS, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/ticker/proc/release_characters(list/livings)
-	for(var/I in livings)
-		var/mob/living/L = I
-		L.notransform = FALSE
+	for(var/mob/living/living_mob as anything in livings)
+		REMOVE_TRAIT(living_mob, TRAIT_NO_TRANSFORM, SS_TICKER_TRAIT)
 
 /datum/controller/subsystem/ticker/proc/check_queue()
 	if(!queued_players.len)
@@ -557,7 +594,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
-	var/news_source = "Nanotrasen News Network"
+	//var/news_source = "Nanotrasen News Network" // EffigyEdit Remove - Game Notifications
 	var/decoded_station_name = html_decode(station_name()) //decode station_name to avoid minor_announce double encode
 
 	switch(news_report)
@@ -649,8 +686,15 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "Officials are advising nearby colonies about a newly declared exclusion zone in \
 				the sector surrounding [decoded_station_name]."
 
+	// EffigyEdit Add - Game Notification
+	if(length(SSblackbox.first_death) > 0)
+		var/list/f_in_chat = SSblackbox.first_death
+		news_message += " Medbay records indicate the first crewmember loss was [f_in_chat["name"]] ([f_in_chat["role"]]), last seen on sensors at [f_in_chat["area"]].[f_in_chat["last_words"] ? " Suit sensor final recording was: \"[f_in_chat["last_words"]]\"" : ""]" // " // Funny last words go brrrrrr
+	// EffigyEdit Add End
+
 	if(news_message)
-		send2otherserver(news_source, news_message, "News_Report")
+		// send2otherserver(news_source, news_message, "News_Report") // EffigyEdit Remove - Game Notification
+		discord_end_game_alert(news_message) // EffigyEdit Add - Game Notification
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))
@@ -684,7 +728,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldannounce("An admin has delayed the round end."))
+		to_chat(world, SPAN_BOX_ALERT(ORANGE, "An admin has delayed the round end."))
 		return
 
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
@@ -694,7 +738,7 @@ SUBSYSTEM_DEF(ticker)
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldannounce("Reboot was cancelled by an admin."))
+		to_chat(world, SPAN_BOX_ALERT(ORANGE, "Reboot was cancelled by an admin."))
 		return
 	if(end_string)
 		end_state = end_string
@@ -732,3 +776,6 @@ SUBSYSTEM_DEF(ticker)
 		possible_themes += themes
 	if(possible_themes.len)
 		return "[global.config.directory]/reboot_themes/[pick(possible_themes)]"
+
+#undef ROUND_START_MUSIC_LIST
+#undef SS_TICKER_TRAIT

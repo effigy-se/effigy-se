@@ -50,7 +50,7 @@
 	RegisterSignal(mob_to_make_moody, COMSIG_ENTER_AREA, PROC_REF(check_area_mood))
 	RegisterSignal(mob_to_make_moody, COMSIG_LIVING_REVIVE, PROC_REF(on_revive))
 	RegisterSignal(mob_to_make_moody, COMSIG_MOB_STATCHANGE, PROC_REF(handle_mob_death))
-	RegisterSignal(mob_to_make_moody, COMSIG_PARENT_QDELETING, PROC_REF(clear_parent_ref))
+	RegisterSignal(mob_to_make_moody, COMSIG_QDELETING, PROC_REF(clear_parent_ref))
 
 	mob_to_make_moody.become_area_sensitive(MOOD_DATUM_TRAIT)
 	if(mob_to_make_moody.hud_used)
@@ -63,7 +63,7 @@
 
 	unmodify_hud()
 	mob_parent.lose_area_sensitivity(MOOD_DATUM_TRAIT)
-	UnregisterSignal(mob_parent, list(COMSIG_MOB_HUD_CREATED, COMSIG_ENTER_AREA, COMSIG_LIVING_REVIVE, COMSIG_MOB_STATCHANGE, COMSIG_PARENT_QDELETING))
+	UnregisterSignal(mob_parent, list(COMSIG_MOB_HUD_CREATED, COMSIG_ENTER_AREA, COMSIG_LIVING_REVIVE, COMSIG_MOB_STATCHANGE, COMSIG_QDELETING))
 
 	mob_parent = null
 
@@ -72,34 +72,34 @@
 	QDEL_LIST_ASSOC_VAL(mood_events)
 	return ..()
 
-/datum/mood/process(delta_time)
+/datum/mood/process(seconds_per_tick)
 	switch(mood_level)
 		if(MOOD_LEVEL_SAD4)
-			set_sanity(sanity - 0.3 * delta_time, SANITY_INSANE)
+			set_sanity(sanity - 0.3 * seconds_per_tick, SANITY_INSANE)
 		if(MOOD_LEVEL_SAD3)
-			set_sanity(sanity - 0.15 * delta_time, SANITY_INSANE)
+			set_sanity(sanity - 0.15 * seconds_per_tick, SANITY_INSANE)
 		if(MOOD_LEVEL_SAD2)
-			set_sanity(sanity - 0.1 * delta_time, SANITY_CRAZY)
+			set_sanity(sanity - 0.1 * seconds_per_tick, SANITY_CRAZY)
 		if(MOOD_LEVEL_SAD1)
-			set_sanity(sanity - 0.05 * delta_time, SANITY_UNSTABLE)
+			set_sanity(sanity - 0.05 * seconds_per_tick, SANITY_UNSTABLE)
 		if(MOOD_LEVEL_NEUTRAL)
 			set_sanity(sanity, SANITY_UNSTABLE) //This makes sure that mood gets increased should you be below the minimum.
 		if(MOOD_LEVEL_HAPPY1)
-			set_sanity(sanity + 0.2 * delta_time, SANITY_UNSTABLE)
+			set_sanity(sanity + 0.2 * seconds_per_tick, SANITY_UNSTABLE)
 		if(MOOD_LEVEL_HAPPY2)
-			set_sanity(sanity + 0.3 * delta_time, SANITY_UNSTABLE)
+			set_sanity(sanity + 0.3 * seconds_per_tick, SANITY_UNSTABLE)
 		if(MOOD_LEVEL_HAPPY3)
-			set_sanity(sanity + 0.4 * delta_time, SANITY_NEUTRAL, SANITY_MAXIMUM)
+			set_sanity(sanity + 0.4 * seconds_per_tick, SANITY_NEUTRAL, SANITY_MAXIMUM)
 		if(MOOD_LEVEL_HAPPY4)
-			set_sanity(sanity + 0.6 * delta_time, SANITY_NEUTRAL, SANITY_MAXIMUM)
+			set_sanity(sanity + 0.6 * seconds_per_tick, SANITY_NEUTRAL, SANITY_MAXIMUM)
 	handle_nutrition()
 
 	// 0.416% is 15 successes / 3600 seconds. Calculated with 2 minute
 	// mood runtime, so 50% average uptime across the hour.
-	if(HAS_TRAIT(mob_parent, TRAIT_DEPRESSION) && DT_PROB(0.416, delta_time))
+	if(HAS_TRAIT(mob_parent, TRAIT_DEPRESSION) && SPT_PROB(0.416, seconds_per_tick))
 		add_mood_event("depression_mild", /datum/mood_event/depression_mild)
 
-	if(HAS_TRAIT(mob_parent, TRAIT_JOLLY) && DT_PROB(0.416, delta_time))
+	if(HAS_TRAIT(mob_parent, TRAIT_JOLLY) && SPT_PROB(0.416, seconds_per_tick))
 		add_mood_event("jolly", /datum/mood_event/jolly)
 
 /datum/mood/proc/handle_mob_death(datum/source)
@@ -139,8 +139,9 @@
  * Arguments:
  * * category - (text) category of the mood event - see /datum/mood_event for category explanation
  * * type - (path) any /datum/mood_event
+ * * timeout_mod - (number) /datum/mood_event timeout modifier
  */
-/datum/mood/proc/add_mood_event(category, type, ...)
+/datum/mood/proc/add_mood_event(category, type, timeout_mod = 1, ...)
 	if (!ispath(type, /datum/mood_event))
 		CRASH("A non path ([type]), was used to add a mood event. This shouldn't be happening.")
 	if (!istext(category))
@@ -153,6 +154,7 @@
 			clear_mood_event(category)
 		else
 			if (the_event.timeout)
+				the_event.timeout = initial(the_event.timeout) * timeout_mod
 				addtimer(CALLBACK(src, PROC_REF(clear_mood_event), category), the_event.timeout, (TIMER_UNIQUE|TIMER_OVERRIDE))
 			return // Don't need to update the event.
 	var/list/params = args.Copy(3)
@@ -162,8 +164,9 @@
 	if (QDELETED(the_event)) // the mood event has been deleted for whatever reason (requires a job, etc)
 		return
 
-	mood_events[category] = the_event
+	the_event.timeout *= timeout_mod
 	the_event.category = category
+	mood_events[category] = the_event
 	update_mood()
 
 	if (the_event.timeout)
@@ -264,6 +267,12 @@
 			mood_screen_object.color = "#f15d36"
 
 	if (!conflicting_moodies.len) // theres no special icons, use the normal icon states
+		// EffigyEdit Add - Customization
+		if(HAS_TRAIT(mob_parent, TRAIT_MOOD_NOEXAMINE))
+			mood_screen_object.icon_state = "mood5"
+			mood_screen_object.color = "#4b96c4"
+			return
+		// EffigyEdit Add End
 		mood_screen_object.icon_state = "mood[mood_level]"
 		return
 
@@ -280,7 +289,7 @@
 	mood_screen_object = new
 	mood_screen_object.color = "#4b96c4"
 	hud.infodisplay += mood_screen_object
-	RegisterSignal(hud, COMSIG_PARENT_QDELETING, PROC_REF(unmodify_hud))
+	RegisterSignal(hud, COMSIG_QDELETING, PROC_REF(unmodify_hud))
 	RegisterSignal(mood_screen_object, COMSIG_CLICK, PROC_REF(hud_click))
 
 /// Removes the mood HUD object
@@ -306,43 +315,53 @@
 /datum/mood/proc/print_mood(mob/user)
 	var/msg = "[span_info("<EM>My current mental status:</EM>")]\n"
 	msg += span_notice("My current sanity: ") //Long term
-	switch(sanity)
-		if(SANITY_GREAT to INFINITY)
-			msg += "[span_boldnicegreen("My mind feels like a temple!")]\n"
-		if(SANITY_NEUTRAL to SANITY_GREAT)
-			msg += "[span_nicegreen("I have been feeling great lately!")]\n"
-		if(SANITY_DISTURBED to SANITY_NEUTRAL)
-			msg += "[span_nicegreen("I have felt quite decent lately.")]\n"
-		if(SANITY_UNSTABLE to SANITY_DISTURBED)
-			msg += "[span_warning("I'm feeling a little bit unhinged...")]\n"
-		if(SANITY_CRAZY to SANITY_UNSTABLE)
-			msg += "[span_warning("I'm freaking out!!")]\n"
-		if(SANITY_INSANE to SANITY_CRAZY)
-			msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]\n"
+	// EffigyEdit Add - Customization
+	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
+		switch(sanity)
+			if(SANITY_GREAT to INFINITY)
+				msg += "[span_nicegreen("My mind feels like a temple!")]\n"
+			if(SANITY_NEUTRAL to SANITY_GREAT)
+				msg += "[span_nicegreen("I have been feeling great lately!")]\n"
+			if(SANITY_DISTURBED to SANITY_NEUTRAL)
+				msg += "[span_nicegreen("I have felt quite decent lately.")]\n"
+			if(SANITY_UNSTABLE to SANITY_DISTURBED)
+				msg += "[span_warning("I'm feeling a little bit unhinged...")]\n"
+			if(SANITY_CRAZY to SANITY_UNSTABLE)
+				msg += "[span_boldwarning("I'm freaking out!!")]\n"
+			if(SANITY_INSANE to SANITY_CRAZY)
+				msg += "[span_boldwarning("AHAHAHAHAHAHAHAHAHAH!!")]\n"
+	else
+		msg += span_notice("I don't really know.")
+	// EffigyEdit Add End
 
 	msg += span_notice("My current mood: ") //Short term
-	switch(mood_level)
-		if(MOOD_LEVEL_SAD4)
-			msg += "[span_boldwarning("I wish I was dead!")]\n"
-		if(MOOD_LEVEL_SAD3)
-			msg += "[span_boldwarning("I feel terrible...")]\n"
-		if(MOOD_LEVEL_SAD2)
-			msg += "[span_boldwarning("I feel very upset.")]\n"
-		if(MOOD_LEVEL_SAD1)
-			msg += "[span_warning("I'm a bit sad.")]\n"
-		if(MOOD_LEVEL_NEUTRAL)
-			msg += "[span_grey("I'm alright.")]\n"
-		if(MOOD_LEVEL_HAPPY1)
-			msg += "[span_nicegreen("I feel pretty okay.")]\n"
-		if(MOOD_LEVEL_HAPPY2)
-			msg += "[span_boldnicegreen("I feel pretty good.")]\n"
-		if(MOOD_LEVEL_HAPPY3)
-			msg += "[span_boldnicegreen("I feel amazing!")]\n"
-		if(MOOD_LEVEL_HAPPY4)
-			msg += "[span_boldnicegreen("I love life!")]\n"
+	// EffigyEdit Add - Customization
+	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
+		switch(mood_level)
+			if(MOOD_LEVEL_SAD4)
+				msg += "[span_boldwarning("I wish I was dead!")]\n"
+			if(MOOD_LEVEL_SAD3)
+				msg += "[span_boldwarning("I feel terrible...")]\n"
+			if(MOOD_LEVEL_SAD2)
+				msg += "[span_boldwarning("I feel very upset.")]\n"
+			if(MOOD_LEVEL_SAD1)
+				msg += "[span_warning("I'm a bit sad.")]\n"
+			if(MOOD_LEVEL_NEUTRAL)
+				msg += "[span_grey("I'm alright.")]\n"
+			if(MOOD_LEVEL_HAPPY1)
+				msg += "[span_nicegreen("I feel pretty okay.")]\n"
+			if(MOOD_LEVEL_HAPPY2)
+				msg += "[span_boldnicegreen("I feel pretty good.")]\n"
+			if(MOOD_LEVEL_HAPPY3)
+				msg += "[span_boldnicegreen("I feel amazing!")]\n"
+			if(MOOD_LEVEL_HAPPY4)
+				msg += "[span_boldnicegreen("I love life!")]\n"
+	else
+		msg += "[span_notice("No clue.")]\n"
+	// EffigyEdit Add End
 
 	msg += "[span_notice("Moodlets:")]\n"//All moodlets
-	if(mood_events.len)
+	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) // EffigyEdit Change Customization
 		for(var/category in mood_events)
 			var/datum/mood_event/event = mood_events[category]
 			switch(event.mood_change)

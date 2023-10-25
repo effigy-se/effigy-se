@@ -27,7 +27,7 @@ export const ChemDispenser = (props, context) => {
     data.beakerContents ||
     [];
   return (
-    <Window width={565} height={620}>
+    <Window width={505} height={720}>
       <Window.Content scrollable>
         <Section
           title="Status"
@@ -125,6 +125,11 @@ export const ChemDispenser = (props, context) => {
             {recipes.length === 0 && <Box color="light-gray">No recipes.</Box>}
           </Box>
         </Section>
+        <Button // EffigyEdit Add
+          icon="pen"
+          content="Custom Amount"
+          onClick={() => act('custom_amount')}
+        />
         <Section
           title="Dispense"
           buttons={beakerTransferAmounts.map((amount) => (

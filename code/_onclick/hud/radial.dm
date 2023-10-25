@@ -11,10 +11,10 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 /atom/movable/screen/radial/proc/set_parent(new_value)
 	if(parent)
-		UnregisterSignal(parent, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(parent, COMSIG_QDELETING)
 	parent = new_value
 	if(parent)
-		RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(handle_parent_del))
+		RegisterSignal(parent, COMSIG_QDELETING, PROC_REF(handle_parent_del))
 
 /atom/movable/screen/radial/proc/handle_parent_del()
 	SIGNAL_HANDLER
@@ -111,6 +111,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/hudfix_method = TRUE //TRUE to change anchor to user, FALSE to shift by py_shift
 	var/py_shift = 0
 	var/entry_animation = TRUE
+	var/icon_path = 'icons/hud/radial.dmi' // EffigyEdit Add Customization
 
 	///A replacement icon state for the generic radial slice bg icon. Doesn't affect the next page nor the center buttons
 	var/radial_slice_icon
@@ -158,6 +159,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		var/elements_to_add = max_elements - elements.len
 		for(var/i in 1 to elements_to_add) //Create all elements
 			var/atom/movable/screen/radial/slice/new_element = new /atom/movable/screen/radial/slice
+			new_element.icon = icon_path // EffigyEdit Add Customization
 			new_element.tooltips = use_tooltips
 			new_element.set_parent(src)
 			elements += new_element
@@ -337,7 +339,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /datum/radial_menu/Destroy()
 	Reset()
 	hide()
-	QDEL_NULL(custom_check_callback)
+	custom_check_callback = null
 	. = ..()
 
 /*
@@ -393,3 +395,6 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /datum/radial_menu_choice/Destroy(force, ...)
 	. = ..()
 	QDEL_NULL(image)
+
+#undef NEXT_PAGE_ID
+#undef DEFAULT_CHECK_DELAY

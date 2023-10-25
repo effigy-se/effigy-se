@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if (!istype(jumpsuit))
 		return null
 	to_chat(source, "<span class='notice'>[user] is trying to adjust your [jumpsuit.name].")
-	if (!do_mob(user, source, jumpsuit.strip_delay * 0.5))
+	if (!do_after(user, (jumpsuit.strip_delay * 0.5), source))
 		return
 	to_chat(source, "<span class='notice'>[user] successfully adjusted your [jumpsuit.name].")
 	jumpsuit.toggle_jumpsuit_adjust()
@@ -119,6 +119,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 /datum/strippable_item/mob_item_slot/id
 	key = STRIPPABLE_ITEM_ID
 	item_slot = ITEM_SLOT_ID
+	can_be_silent = TRUE // EffigyEdit Add
 
 /datum/strippable_item/mob_item_slot/belt
 	key = STRIPPABLE_ITEM_BELT
@@ -135,6 +136,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 /datum/strippable_item/mob_item_slot/pocket
 	/// Which pocket we're referencing. Used for visible text.
 	var/pocket_side
+	can_be_silent = TRUE // EffigyEdit Add
 
 /datum/strippable_item/mob_item_slot/pocket/get_obscuring(atom/source)
 	return isnull(get_item(source)) \
@@ -162,7 +164,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 	var/result = start_unequip_mob(item, source, user, POCKET_STRIP_DELAY)
 
-	if (!result)
+	if (!(result || HAS_TRAIT(user, TRAIT_STICKY_FINGERS))) // EffigyEdit Change
 		warn_owner(source)
 
 	return result
@@ -211,7 +213,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 	to_chat(user, span_notice("You try to [(carbon_source.internal != item) ? "open" : "close"] the valve on [source]'s [item.name]..."))
 
-	if(!do_mob(user, carbon_source, INTERNALS_TOGGLE_DELAY))
+	if(!do_after(user, INTERNALS_TOGGLE_DELAY, carbon_source))
 		return
 
 	if (carbon_source.internal == item)

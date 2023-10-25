@@ -1,8 +1,9 @@
 /obj/structure/dresser
 	name = "dresser"
 	desc = "A nicely-crafted wooden dresser. It's filled with lots of undies."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "dresser"
+	resistance_flags = FLAMMABLE
 	density = TRUE
 	anchored = TRUE
 
@@ -29,12 +30,11 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/dressing_human = user
-
-	if(dressing_human.dna && dressing_human.dna.species && (NO_UNDERWEAR in dressing_human.dna.species.species_traits))
-		to_chat(user, span_warning("You are not capable of wearing underwear."))
+	if(HAS_TRAIT(dressing_human, TRAIT_NO_UNDERWEAR))
+		to_chat(dressing_human, span_warning("You are not capable of wearing underwear."))
 		return
 
-	var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear","Underwear Color","Undershirt","Socks"))
+	var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear", "Underwear Color", "Undershirt", "Socks", "Undershirt Color", "Socks Color")) // EffigyEdit Add (Colorable Undershirt/Socks)
 	if(isnull(choice))
 		return
 
@@ -57,6 +57,16 @@
 			var/new_socks = tgui_input_list(user, "Select your socks", "Changing", GLOB.socks_list)
 			if(new_socks)
 				dressing_human.socks= new_socks
+		// EffigyEdit Add - (Colorable Undershirt/Socks)
+		if("Undershirt Color")
+			var/new_undershirt_color = input(dressing_human, "Choose your undershirt color", "Undershirt Color", dressing_human.undershirt_color) as color|null
+			if(new_undershirt_color)
+				dressing_human.undershirt_color = sanitize_hexcolor(new_undershirt_color)
+		if("Socks Color")
+			var/new_socks_color = input(dressing_human, "Choose your socks color", "Socks Color", dressing_human.socks_color) as color|null
+			if(new_socks_color)
+				dressing_human.socks_color = sanitize_hexcolor(new_socks_color)
+		// EffigyEdit Add - (Colorable Undershirt/Socks)
 
 	add_fingerprint(dressing_human)
 	dressing_human.update_body()

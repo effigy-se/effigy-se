@@ -3,13 +3,14 @@
 	desc = "We take on the appearance and voice of one we have absorbed. Costs 5 chemicals."
 	button_icon_state = "transform"
 	chemical_cost = 5
-	dna_cost = 0
+	dna_cost = CHANGELING_POWER_INNATE
 	req_dna = 1
 	req_human = TRUE
 
 /obj/item/clothing/glasses/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON // EffigyEdit Add
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/glasses/changeling/attack_hand(mob/user, list/modifiers)
@@ -97,6 +98,7 @@
 	name = "flesh"
 	slot_flags = ALL
 	item_flags = DROPDEL
+	supports_variations_flags = NONE // EffigyEdit Add
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/changeling/attack_hand(mob/user, list/modifiers)

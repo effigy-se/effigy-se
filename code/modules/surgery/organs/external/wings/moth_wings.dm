@@ -5,7 +5,7 @@
 
 	preference = "feature_moth_wings"
 
-	dna_block = DNA_MOTH_WINGS_BLOCK
+	//dna_block = DNA_MOTH_WINGS_BLOCK // EffigyEdit Change Customization
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/moth
 
@@ -14,16 +14,14 @@
 	///Store our old datum here for if our burned wings are healed
 	var/original_sprite_datum
 
-/obj/item/organ/external/wings/moth/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
+/obj/item/organ/external/wings/moth/on_insert(mob/living/carbon/receiver)
 	. = ..()
-
 	RegisterSignal(receiver, COMSIG_HUMAN_BURNING, PROC_REF(try_burn_wings))
 	RegisterSignal(receiver, COMSIG_LIVING_POST_FULLY_HEAL, PROC_REF(heal_wings))
 	RegisterSignal(receiver, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(update_float_move))
 
-/obj/item/organ/external/wings/moth/Remove(mob/living/carbon/organ_owner, special, moving)
+/obj/item/organ/external/wings/moth/on_remove(mob/living/carbon/organ_owner)
 	. = ..()
-
 	UnregisterSignal(organ_owner, list(COMSIG_HUMAN_BURNING, COMSIG_LIVING_POST_FULLY_HEAL, COMSIG_MOVABLE_PRE_MOVE))
 	REMOVE_TRAIT(organ_owner, TRAIT_FREE_FLOAT_MOVEMENT, REF(src))
 
@@ -73,7 +71,7 @@
 
 ///Moth wing bodypart overlay, including burn functionality!
 /datum/bodypart_overlay/mutant/wings/moth
-	feature_key = "moth_wings"
+	feature_key = "wings" // EffigyEdit Remove Customization ORIGINAL: feature_key = "moth_wings"
 	layers = EXTERNAL_BEHIND | EXTERNAL_FRONT
 	///Accessory datum of the burn sprite
 	var/datum/sprite_accessory/burn_datum = /datum/sprite_accessory/moth_wings/burnt_off
@@ -86,7 +84,7 @@
 	burn_datum = fetch_sprite_datum(burn_datum)
 
 /datum/bodypart_overlay/mutant/wings/moth/get_global_feature_list()
-	return GLOB.moth_wings_list
+	return GLOB.sprite_accessories["wings"] // EffigyEdit Remove Customization ORIGINAL: return GLOB.moth_wings_list
 
 /datum/bodypart_overlay/mutant/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))

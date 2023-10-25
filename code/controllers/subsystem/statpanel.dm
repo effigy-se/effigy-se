@@ -23,6 +23,8 @@ SUBSYSTEM_DEF(statpanels)
 	if (!resumed)
 		num_fires++
 		var/datum/map_config/cached = SSmapping.next_map_config
+		// EffigyEdit Change - Statpanel
+		/* Original:
 		global_data = list(
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
@@ -32,6 +34,22 @@ SUBSYSTEM_DEF(statpanels)
 			"Station Time: [station_time_timestamp()]",
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
 		)
+		*/
+		//var/real_round_time = world.timeofday - SSticker.real_round_start_time
+		var/server_rev = copytext(GLOB.revdata.commit, 1, 8)
+		var/round_real_time = REALTIMEOFDAY - SSticker.round_start_real_time
+		global_data = list(
+			"Server Rev: [server_rev ? server_rev : "N/A"]",
+			"Map: [SSmapping.config?.map_name || "Loading..."]",
+			cached ? "Next Map: [cached.map_name]" : null,
+			"Connected Players: [GLOB.clients.len]",
+			" ",
+			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
+			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% (Average: [round(SStime_track.time_dilation_avg_fast,1)]% / [round(SStime_track.time_dilation_avg,1)]% / [round(SStime_track.time_dilation_avg_slow,1)]%)",
+			"[SSticker.HasRoundStarted() ? "Round Time: [time2text(round_real_time, "hh:mm:ss", 0)]" : ""]",
+			"[SSticker.HasRoundStarted() ? "Station Time: [station_time_timestamp()]" : ""]"
+		)
+		// EffigyEdit Change End
 
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()
@@ -102,9 +120,9 @@ SUBSYSTEM_DEF(statpanels)
 		return
 
 	target.stat_panel.send_message("update_stat", list(
-		global_data = global_data,
-		ping_str = "Ping: [round(target.lastping, 1)]ms (Average: [round(target.avgping, 1)]ms)",
-		other_str = target.mob?.get_status_tab_items(),
+		"global_data" = global_data,
+		"ping_str" = "Round ID: [GLOB.round_hex ? GLOB.round_hex : "N/A"]", // EffigyEdit Change - Statpanel
+		"other_str" = target.mob?.get_status_tab_items(),
 	))
 
 /datum/controller/subsystem/statpanels/proc/set_MC_tab(client/target)
@@ -112,7 +130,7 @@ SUBSYSTEM_DEF(statpanels)
 	var/coord_entry = COORD(eye_turf)
 	if(!mc_data)
 		generate_mc_data()
-	target.stat_panel.send_message("update_mc", list(mc_data = mc_data, coord_entry = coord_entry))
+	target.stat_panel.send_message("update_mc", list("mc_data" = mc_data, "coord_entry" = coord_entry))
 
 /datum/controller/subsystem/statpanels/proc/set_tickets_tab(client/target)
 	var/list/ahelp_tickets = GLOB.ahelp_tickets.stat_entry()
@@ -227,7 +245,7 @@ SUBSYSTEM_DEF(statpanels)
 		// Now, we're gonna queue image generation out of those refs
 		to_make += turf_item
 		already_seen[turf_item] = OBJ_IMAGE_LOADING
-		obj_window.RegisterSignal(turf_item, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/object_window_info,viewing_atom_deleted)) // we reset cache if anything in it gets deleted
+		obj_window.RegisterSignal(turf_item, COMSIG_QDELETING, TYPE_PROC_REF(/datum/object_window_info,viewing_atom_deleted)) // we reset cache if anything in it gets deleted
 	return turf_items
 
 #undef OBJ_IMAGE_LOADING
@@ -333,7 +351,7 @@ SUBSYSTEM_DEF(statpanels)
 
 /// Takes a client, attempts to generate object images for it
 /// We will update the client with any improvements we make when we're done
-/datum/object_window_info/process(delta_time)
+/datum/object_window_info/process(seconds_per_tick)
 	// Cache the datum access for sonic speed
 	var/list/to_make = atoms_to_imagify
 	var/list/newly_seen = atoms_to_images

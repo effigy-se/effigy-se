@@ -75,7 +75,7 @@
 	if(HAS_TRAIT(H, TRAIT_PIERCEIMMUNE))
 		return
 
-	if((flags & CALTROP_IGNORE_WALKERS) && H.m_intent == MOVE_INTENT_WALK)
+	if((flags & CALTROP_IGNORE_WALKERS) && H.move_intent == MOVE_INTENT_WALK)
 		return
 
 	if(H.movement_type & (FLOATING|FLYING)) //check if they are able to pass over us
@@ -97,6 +97,10 @@
 		return
 
 	if (!(flags & CALTROP_BYPASS_SHOES))
+		// EffigyEdit Add - Customization
+		if(HAS_TRAIT(H, TRAIT_HARD_SOLES))
+			return
+		// EffigyEdit Add End
 		if ((H.wear_suit?.body_parts_covered | H.w_uniform?.body_parts_covered | H.shoes?.body_parts_covered) & FEET)
 			return
 
@@ -112,7 +116,7 @@
 			span_userdanger("You step on [parent]!")
 		)
 
-	H.apply_damage(damage, BRUTE, picked_def_zone, wound_bonus = CANT_WOUND)
+	H.apply_damage(damage, BRUTE, picked_def_zone, wound_bonus = CANT_WOUND, attacking_item = parent)
 
 	if(!(flags & CALTROP_NOSTUN)) // Won't set off the paralysis.
 		H.Paralyze(paralyze_duration)

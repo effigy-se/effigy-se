@@ -1,5 +1,7 @@
+// EffigyEdit Remove START
+/*
 /datum/emote/silicon
-	mob_type_allowed_typecache = list(/mob/living/silicon)
+	mob_type_allowed_typecache = list(/mob/living/silicon, /mob/living/simple_animal/bot)
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/silicon/boop
@@ -7,7 +9,7 @@
 	key_third_person = "boops"
 	message = "boops."
 
-/datum/emote/silicon/buzz
+/datum/emote/living/human/buzz
 	key = "buzz"
 	key_third_person = "buzzes"
 	message = "buzzes."
@@ -16,7 +18,7 @@
 	sound = 'sound/machines/buzz-sigh.ogg'
 
 
-/datum/emote/silicon/buzz2
+/datum/emote/living/human/buzz2
 	key = "buzz2"
 	message = "buzzes twice."
 	emote_type = EMOTE_AUDIBLE
@@ -62,3 +64,5 @@
 	message = "activates their slow clap processor."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/slowclap.ogg'
+*/
+// EffigyEdit Remove END

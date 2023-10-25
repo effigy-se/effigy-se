@@ -7,7 +7,7 @@
 @use 'sass:meta';
 
 @use '~tgui/styles/colors.scss' with (
-  $primary: #ffffff,
+  $primary: #eaeaea,
   $bg-lightness: -25%,
   $fg-lightness: -10%,
   $label: #3b3b3b,
@@ -20,8 +20,8 @@
 );
 @use '~tgui/styles/base.scss' with (
   $color-fg: #000000,
-  $color-bg: #eeeeee,
-  $color-bg-section: #ffffff,
+  $color-bg: #eaeaea,
+  $color-bg-section: #eaeaea,
   $color-bg-grad-spread: 0%,
 );
 
@@ -40,7 +40,7 @@
   @include meta.load-css(
     '~tgui/styles/components/Button.scss',
     $with: (
-      'color-default': #bbbbbb,
+      'color-default': #eaeaea,
       'color-disabled': #363636,
       'color-selected': #0668b8,
       'color-caution': #be6209,
@@ -52,7 +52,7 @@
     '~tgui/styles/components/Input.scss',
     $with: (
       'border-color': colors.fg(colors.$label),
-      'background-color': #ffffff
+      'background-color': #eaeaea
     )
   );
   @include meta.load-css('~tgui/styles/components/NumberInput.scss');
@@ -82,6 +82,6 @@
     )
   );
 
-  // Goonchat styles
-  @include meta.load-css('../goon/chat-light.scss');
+  // tgchat styles
+  @include meta.load-css('../tgchat/chat-light.scss');
 }

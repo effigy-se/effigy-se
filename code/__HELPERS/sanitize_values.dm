@@ -9,7 +9,7 @@
 /proc/sanitize_float(number, min=0, max=1, accuracy=1, default=0)
 	if(isnum(number))
 		number = round(number, accuracy)
-		if(min <= number && number <= max)
+		if(round(min, accuracy) <= number && number <= round(max, accuracy))
 			return number
 	return default
 
@@ -53,6 +53,11 @@
 
 /proc/sanitize_hexcolor(color, desired_format = DEFAULT_HEX_COLOR_LEN, include_crunch = TRUE, default)
 	var/crunch = include_crunch ? "#" : ""
+	// EffigyEdit Add - Customization
+	if(islist(color))
+		var/list/color_list = color
+		color = color_list.Join()
+	// EffigyEdit Add End
 	if(!istext(color))
 		color = ""
 

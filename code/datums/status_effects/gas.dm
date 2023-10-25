@@ -23,7 +23,7 @@
 	owner.add_overlay(cube)
 
 
-/datum/status_effect/freon/tick()
+/datum/status_effect/freon/tick(seconds_between_ticks)
 	if(can_melt && owner.bodytemperature >= owner.get_body_temp_normal())
 		qdel(src)
 
@@ -33,7 +33,7 @@
 
 /datum/status_effect/freon/proc/do_resist()
 	to_chat(owner, span_notice("You start breaking out of the ice cube..."))
-	if(do_mob(owner, owner, 40))
+	if(do_after(owner, owner, 4 SECONDS))
 		if(!QDELETED(src))
 			to_chat(owner, span_notice("You break out of the ice cube!"))
 			owner.remove_status_effect(/datum/status_effect/freon)
@@ -51,6 +51,9 @@
 /datum/status_effect/freon/watcher
 	duration = 8
 	can_melt = FALSE
+
+/datum/status_effect/freon/watcher/extended
+	duration = 5 SECONDS
 
 /datum/status_effect/freon/lasting
 	id = "lasting_frozen"

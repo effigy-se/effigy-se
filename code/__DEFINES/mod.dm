@@ -16,6 +16,13 @@
 /// Actively usable module, you may only have one selected at a time.
 #define MODULE_ACTIVE 3
 
+/// This module can be used during phaseout
+#define MODULE_ALLOW_PHASEOUT (1<<0)
+/// This module can be used while incapacitated
+#define MODULE_ALLOW_INCAPACITATED (1<<1)
+/// This module can be used while the suit is off
+#define MODULE_ALLOW_INACTIVE (1<<2)
+
 //Defines used by the theme for clothing flags and similar
 #define CONTROL_LAYER "control_layer"
 #define HELMET_FLAGS "helmet_flags"
@@ -36,5 +43,13 @@
 #define MOD_ICON_OVERRIDE "mod_icon_override"
 #define MOD_WORN_ICON_OVERRIDE "mod_worn_icon_override"
 
+//Defines for MODlink frequencies
+#define MODLINK_FREQ_NANOTRASEN "NT"
+#define MODLINK_FREQ_SYNDICATE "SYND"
+#define MODLINK_FREQ_CHARLIE "CHRL"
+#define MODLINK_FREQ_CENTCOM "CC"
+
 /// Global list of all /datum/mod_theme
 GLOBAL_LIST_INIT(mod_themes, setup_mod_themes())
+/// Global list of all ids associated to a /datum/mod_link instance
+GLOBAL_LIST_EMPTY(mod_link_ids)

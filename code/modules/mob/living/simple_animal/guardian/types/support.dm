@@ -47,10 +47,13 @@
 		span_userdanger("[src] heals you!"), null, COMBAT_MESSAGE_RANGE, src)
 	to_chat(src, span_notice("You heal [target]!"))
 	playsound(target, attack_sound, 50, TRUE, TRUE, frequency = -1) //play punch in REVERSE
-	target.adjustBruteLoss(-healing_amount)
-	target.adjustFireLoss(-healing_amount)
-	target.adjustOxyLoss(-healing_amount)
-	target.adjustToxLoss(-healing_amount)
+	var/need_mob_update
+	need_mob_update = target.adjustBruteLoss(-healing_amount, updating_health = FALSE)
+	need_mob_update += target.adjustFireLoss(-healing_amount, updating_health = FALSE)
+	need_mob_update += target.adjustOxyLoss(-healing_amount, updating_health = FALSE)
+	need_mob_update += target.adjustToxLoss(-healing_amount, updating_health = FALSE, forced = TRUE)
+	if(need_mob_update)
+		target.updatehealth()
 	var/obj/effect/temp_visual/heal/heal_effect = new /obj/effect/temp_visual/heal(get_turf(target))
 	heal_effect.color = guardian_color
 
@@ -123,7 +126,7 @@
 	span_userdanger("You start to faintly glow, and you feel strangely weightless!"))
 	do_attack_animation(teleport_target)
 	playsound(teleport_target, attack_sound, 50, TRUE, TRUE, frequency = -1) //play punch in REVERSE
-	if(!do_mob(src, teleport_target, teleporting_time)) //now start the channel
+	if(!do_after(src, teleporting_time, teleport_target)) //now start the channel
 		to_chat(src, span_bolddanger("You need to hold still!"))
 		return
 	new /obj/effect/temp_visual/guardian/phase/out(target_turf)

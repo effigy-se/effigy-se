@@ -1,5 +1,5 @@
 /// When sending mutiple assets, how many before we give the client a quaint little sending resources message
-#define ASSET_CACHE_TELL_CLIENT_AMOUNT 8
+#define ASSET_CACHE_TELL_CLIENT_AMOUNT 6
 
 /// Base browse_rsc asset transport
 /datum/asset_transport
@@ -98,10 +98,12 @@
 	for (var/asset_name in asset_list)
 		var/datum/asset_cache_item/ACI = asset_list[asset_name]
 		if (!istype(ACI) && !(ACI = SSassets.cache[asset_name]))
+			to_chat(client, "<span class='infoplain'>ERROR: can't send asset `[asset_name]`: unregistered or invalid state: `[ACI]`</span>")
 			log_asset("ERROR: can't send asset `[asset_name]`: unregistered or invalid state: `[ACI]`")
 			continue
 		var/asset_file = ACI.resource
 		if (!asset_file)
+			to_chat(client, "<span class='infoplain'>ERROR: can't send asset `[asset_name]`: invalid registered resource: `[ACI.resource]`</span>")
 			log_asset("ERROR: can't send asset `[asset_name]`: invalid registered resource: `[ACI.resource]`")
 			continue
 
@@ -121,7 +123,7 @@
 
 	if (unreceived.len)
 		if (unreceived.len >= ASSET_CACHE_TELL_CLIENT_AMOUNT)
-			to_chat(client, "<span class='infoplain'>Sending Resources...</span>")
+			to_chat(client, SPAN_BOX_ALERT(WHITE, "Streaming assets from Effigy Game Services...</span>"), MESSAGE_TYPE_DEBUG)
 
 		for (var/asset_name in unreceived)
 			var/new_asset_name = asset_name
@@ -158,3 +160,5 @@
 /// Returns TRUE or FALSE
 /datum/asset_transport/proc/validate_config(log = TRUE)
 	return TRUE
+
+#undef ASSET_CACHE_TELL_CLIENT_AMOUNT

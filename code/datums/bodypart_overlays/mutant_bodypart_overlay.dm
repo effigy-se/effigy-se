@@ -12,6 +12,27 @@
 	var/color_source = ORGAN_COLOR_INHERIT
 	///Take on the dna/preference from whoever we're gonna be inserted in
 	var/imprint_on_next_insertion = TRUE
+	/// Alpha value associated to the overlay, to be inherited from the parent limb.
+	var/alpha = ALPHA_OPAQUE // EffigyEdit Add - Customization
+	// EffigyEdit Add -
+	/// An associative list of color indexes (i.e. "1") to boolean that says
+	/// whether or not that color should get an emissive overlay. Can be null.
+	var/list/emissive_eligibility_by_color_index
+	/// A simple list of indexes to color (as we don't want to color emissives, MOD overlays or inner ears)
+	var/list/overlay_indexes_to_color
+	/// Whether or not this overlay can be affected by MODsuit-related procs.
+	var/modsuit_affected = FALSE
+	/// Additional information we might want to add to the cache_key, stored into a list.
+	/// Should only ever contain strings.
+	var/list/cache_key_extra_information
+	/// A simple cache of what the last icon_states built were.
+	/// It's really only there to help with debugging what's happening.
+	var/list/last_built_icon_states
+	// EffigyEdit Add End
+
+/datum/bodypart_overlay/mutant/get_overlay(layer, obj/item/bodypart/limb)
+	inherit_color(limb) // If draw_color is not set yet, go ahead and do that
+	return ..()
 
 ///Completely random image and color generation (obeys what a player can choose from)
 /datum/bodypart_overlay/mutant/proc/randomize_appearance()
@@ -41,7 +62,7 @@
 ///Get the image we need to draw on the person. Called from get_overlay() which is called from _bodyparts.dm. Limb can be null
 /datum/bodypart_overlay/mutant/get_image(image_layer, obj/item/bodypart/limb)
 	if(!sprite_datum)
-		return
+		CRASH("Trying to call get_image() on [type] while it didn't have a sprite_datum. This shouldn't happen, report it as soon as possible.")
 
 	var/gender = (limb?.limb_gender == FEMALE) ? "f" : "m"
 	var/list/icon_state_builder = list()
@@ -59,7 +80,8 @@
 
 	return appearance
 
-/datum/bodypart_overlay/mutant/color_image(image/overlay, obj/item/bodypart/limb)
+/datum/bodypart_overlay/mutant/color_image(image/overlay, layer, obj/item/bodypart/limb)
+
 	overlay.color = sprite_datum.color_src ? draw_color : null
 
 /datum/bodypart_overlay/mutant/added_to_limb(obj/item/bodypart/limb)
@@ -89,8 +111,16 @@
 
 ///Give the organ its color. Force will override the existing one.
 /datum/bodypart_overlay/mutant/proc/inherit_color(obj/item/bodypart/ownerlimb, force)
+	if(isnull(ownerlimb))
+		draw_color = null
+		alpha = 255 // EffigyEdit Add - Customization
+		return TRUE
+
 	if(draw_color && !force)
-		return
+		return FALSE
+
+	alpha = ownerlimb.alpha // EffigyEdit Add - Customization
+
 	switch(color_source)
 		if(ORGAN_COLOR_OVERRIDE)
 			draw_color = override_color(ownerlimb.draw_color)
@@ -100,7 +130,13 @@
 			if(!ishuman(ownerlimb.owner))
 				return
 			var/mob/living/carbon/human/human_owner = ownerlimb.owner
-			draw_color = human_owner.hair_color
+			var/obj/item/bodypart/head/my_head = human_owner.get_bodypart(BODY_ZONE_HEAD) //not always the same as ownerlimb
+			//head hair color takes priority, owner hair color is a backup if we lack a head or something
+			if(my_head)
+				draw_color = my_head.hair_color
+			else
+				draw_color = human_owner.hair_color
+
 	return TRUE
 
 ///Sprite accessories are singletons, stored list("Big Snout" = instance of /datum/sprite_accessory/snout/big), so here we get that singleton

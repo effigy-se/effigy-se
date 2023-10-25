@@ -14,7 +14,7 @@
 
 
 /datum/surgery_step/replace_limb/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	if(NOAUGMENTS in target.dna.species.species_traits)
+	if(HAS_TRAIT(target, TRAIT_NO_AUGMENTS))
 		to_chat(user, span_warning("[target] cannot be augmented!"))
 		return SURGERY_STEP_FAIL
 	if(istype(tool, /obj/item/borg/apparatus/organ_storage) && istype(tool.contents[1], /obj/item/bodypart))
@@ -59,6 +59,7 @@
 		/datum/surgery_step/clamp_bleeders,
 		/datum/surgery_step/replace_limb,
 	)
+	removes_target_bodypart = TRUE // EffigyEdit Add
 
 //SURGERY STEP SUCCESSES
 
@@ -80,6 +81,8 @@
 				)
 				tool.forceMove(target.loc)
 				return
+		if(tool.check_for_frankenstein(target))
+			tool.bodypart_flags |= BODYPART_IMPLANTED
 		display_results(
 			user,
 			target,

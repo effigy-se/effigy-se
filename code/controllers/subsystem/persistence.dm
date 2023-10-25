@@ -1,7 +1,6 @@
 #define FILE_RECENT_MAPS "data/RecentMaps.json"
 
 #define KEEP_ROUNDS_MAP 3
-#define ROUNDCOUNT_ENGINE_JUST_EXPLODED 0
 
 SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
@@ -10,6 +9,8 @@ SUBSYSTEM_DEF(persistence)
 
 	///instantiated wall engraving components
 	var/list/wall_engravings = list()
+	///all saved persistent engravings loaded from JSON
+	var/list/saved_engravings = list()
 	///tattoo stories that we're saving.
 	var/list/prison_tattoos_to_save = list()
 	///tattoo stories that have been selected for this round.
@@ -23,6 +24,9 @@ SUBSYSTEM_DEF(persistence)
 	var/list/obj/structure/sign/picture_frame/photo_frames
 	var/list/obj/item/storage/photo_album/photo_albums
 	var/rounds_since_engine_exploded = 0
+	var/delam_highscore = 0
+	var/tram_hits_this_round = 0
+	var/tram_hits_last_round = 0
 
 /datum/controller/subsystem/persistence/Initialize()
 	load_poly()
@@ -34,7 +38,7 @@ SUBSYSTEM_DEF(persistence)
 	load_randomized_recipes()
 	load_custom_outfits()
 	load_delamination_counter()
-
+	load_tram_counter()
 	load_adventures()
 	return SS_INIT_SUCCESS
 
@@ -49,6 +53,11 @@ SUBSYSTEM_DEF(persistence)
 	save_scars()
 	save_custom_outfits()
 	save_delamination_counter()
+	if(SStransport.can_fire)
+		for(var/datum/transport_controller/linear/tram/transport as anything in SStransport.transports_by_type[TRANSPORT_TYPE_TRAM])
+			save_tram_history(transport.specific_transport_id)
+		save_tram_counter()
+	save_modular_persistence() // EffigyEdit Add - Modular Persistence
 
 ///Loads up Poly's speech buffer.
 /datum/controller/subsystem/persistence/proc/load_poly()
@@ -61,6 +70,7 @@ SUBSYSTEM_DEF(persistence)
 	var/json_file = file(ENGRAVING_SAVE_FILE)
 	if(!fexists(json_file))
 		return
+
 	var/list/json = json_decode(file2text(json_file))
 	if(!json)
 		return
@@ -68,7 +78,11 @@ SUBSYSTEM_DEF(persistence)
 	if(json["version"] < ENGRAVING_PERSISTENCE_VERSION)
 		update_wall_engravings(json)
 
-	var/successfully_loaded_engravings = 0
+	saved_engravings = json["entries"]
+
+	if(!saved_engravings.len)
+		log_world("Failed to load engraved messages on map [SSmapping.config.map_name]")
+		return
 
 	var/list/viable_turfs = get_area_turfs(/area/station/maintenance, subtypes = TRUE) + get_area_turfs(/area/station/security/prison, subtypes = TRUE)
 	var/list/turfs_to_pick_from = list()
@@ -78,23 +92,22 @@ SUBSYSTEM_DEF(persistence)
 			continue
 		turfs_to_pick_from += T
 
-	var/list/engraving_entries = json["entries"]
+	var/successfully_loaded_engravings = 0
 
-	if(engraving_entries.len)
-		for(var/iteration in 1 to rand(MIN_PERSISTENT_ENGRAVINGS, MAX_PERSISTENT_ENGRAVINGS))
-			var/engraving = engraving_entries[rand(1, engraving_entries.len)] //This means repeats will happen for now, but its something I can live with. Just make more engravings!
-			if(!islist(engraving))
-				stack_trace("something's wrong with the engraving data! one of the saved engravings wasn't a list!")
-				continue
+	for(var/iteration in 1 to rand(MIN_PERSISTENT_ENGRAVINGS, MAX_PERSISTENT_ENGRAVINGS))
+		var/engraving = pick_n_take(saved_engravings)
+		if(!islist(engraving))
+			stack_trace("something's wrong with the engraving data! one of the saved engravings wasn't a list!")
+			continue
 
-			var/turf/closed/engraved_wall = pick(turfs_to_pick_from)
+		var/turf/closed/engraved_wall = pick(turfs_to_pick_from)
 
-			if(HAS_TRAIT(engraved_wall, TRAIT_NOT_ENGRAVABLE))
-				continue
+		if(HAS_TRAIT(engraved_wall, TRAIT_NOT_ENGRAVABLE))
+			continue
 
-			engraved_wall.AddComponent(/datum/component/engraved, engraving["story"], FALSE, engraving["story_value"])
-			successfully_loaded_engravings++
-			turfs_to_pick_from -= engraved_wall
+		engraved_wall.AddComponent(/datum/component/engraved, engraving["story"], FALSE, engraving["story_value"])
+		successfully_loaded_engravings++
+		turfs_to_pick_from -= engraved_wall
 
 	log_world("Loaded [successfully_loaded_engravings] engraved messages on map [SSmapping.config.map_name]")
 
@@ -126,8 +139,6 @@ SUBSYSTEM_DEF(persistence)
 
 ///This proc can update entries if the format has changed at some point.
 /datum/controller/subsystem/persistence/proc/update_wall_engravings(json)
-
-
 	for(var/engraving_entry in json["entries"])
 		continue //no versioning yet
 
@@ -162,7 +173,7 @@ SUBSYSTEM_DEF(persistence)
 
 	log_world("Loaded [prison_tattoos_to_use.len] prison tattoos")
 
-///Saves all tattoos, so they can appear on prisoners in future rounds 
+///Saves all tattoos, so they can appear on prisoners in future rounds
 /datum/controller/subsystem/persistence/proc/save_prisoner_tattoos()
 	var/json_file = file(PRISONER_TATTOO_SAVE_FILE)
 	var/list/saved_data = list()
@@ -183,7 +194,6 @@ SUBSYSTEM_DEF(persistence)
 
 ///This proc can update entries if the format has changed at some point.
 /datum/controller/subsystem/persistence/proc/update_prisoner_tattoos(json)
-
 	for(var/tattoo_entry in json["entries"])
 		continue //no versioning yet
 
@@ -295,7 +305,7 @@ SUBSYSTEM_DEF(persistence)
 	for(var/obj/structure/displaycase/trophy/trophy_case in GLOB.trophy_cases)
 		if(!valid_trophies.len)
 			break
-		
+
 		if(trophy_case.showpiece)
 			continue
 
@@ -532,17 +542,88 @@ SUBSYSTEM_DEF(persistence)
 
 	WRITE_FILE(file, json_encode(data))
 
-/// Location where we save the information about how many rounds it has been since the engine blew up
+/// Location where we save the information about how many rounds it has been since the engine blew up/tram hits
 #define DELAMINATION_COUNT_FILEPATH "data/rounds_since_delamination.txt"
+#define DELAMINATION_HIGHSCORE_FILEPATH "data/delamination_highscore.txt"
+#define TRAM_COUNT_FILEPATH "data/tram_hits_last_round.txt"
 
 /datum/controller/subsystem/persistence/proc/load_delamination_counter()
 	if (!fexists(DELAMINATION_COUNT_FILEPATH))
 		return
 	rounds_since_engine_exploded = text2num(file2text(DELAMINATION_COUNT_FILEPATH))
-	for (var/obj/structure/sign/delamination_counter/sign as anything in GLOB.map_delamination_counters)
-		sign.update_count(rounds_since_engine_exploded)
+	if (fexists(DELAMINATION_HIGHSCORE_FILEPATH))
+		delam_highscore = text2num(file2text(DELAMINATION_HIGHSCORE_FILEPATH))
+	for (var/obj/machinery/incident_display/sign as anything in GLOB.map_delamination_counters)
+		sign.update_delam_count(rounds_since_engine_exploded, delam_highscore)
 
 /datum/controller/subsystem/persistence/proc/save_delamination_counter()
 	rustg_file_write("[rounds_since_engine_exploded + 1]", DELAMINATION_COUNT_FILEPATH)
+	if((rounds_since_engine_exploded + 1) > delam_highscore)
+		rustg_file_write("[rounds_since_engine_exploded + 1]", DELAMINATION_HIGHSCORE_FILEPATH)
+
+/datum/controller/subsystem/persistence/proc/load_tram_counter()
+	if(!fexists(TRAM_COUNT_FILEPATH))
+		return
+	tram_hits_last_round = text2num(file2text(TRAM_COUNT_FILEPATH))
+
+/datum/controller/subsystem/persistence/proc/save_tram_counter()
+		rustg_file_write("[tram_hits_this_round]", TRAM_COUNT_FILEPATH)
+
+#define MAX_TRAM_SAVES 4
+
+// Loads historical tram data
+/datum/controller/subsystem/persistence/proc/load_tram_history(specific_transport_id)
+	var/list/raw_saved_trams = list()
+	var/json_file = file("data/tram_data/[specific_transport_id].json")
+	if(!fexists(json_file))
+		return
+	var/list/json = json_decode(file2text(json_file))
+	if(!json)
+		return
+	raw_saved_trams = json["data"]
+
+	var/list/previous_tram_data = list()
+	for(var/raw_json in raw_saved_trams)
+		var/datum/tram_mfg_info/parsed_tram_data = new
+		parsed_tram_data.load_from_json(raw_json)
+		previous_tram_data += parsed_tram_data
+	return previous_tram_data
+
+// Saves historical tram data
+/datum/controller/subsystem/persistence/proc/save_tram_history(specific_transport_id)
+	var/list/packaged_tram_data = list()
+	for(var/datum/transport_controller/linear/tram/transport as anything in SStransport.transports_by_type[TRANSPORT_TYPE_TRAM])
+		if(transport.specific_transport_id == specific_transport_id)
+			packaged_tram_data = package_tram_data(transport)
+			break
+
+	var/json_file = file("data/tram_data/[specific_transport_id].json")
+	var/list/file_data = list()
+	var/list/converted_data = list()
+
+	for(var/datum/tram_mfg_info/data in packaged_tram_data)
+		converted_data += list(data.export_to_json())
+
+	file_data["data"] = converted_data
+	fdel(json_file)
+	WRITE_FILE(json_file, json_encode(file_data))
+
+/datum/controller/subsystem/persistence/proc/package_tram_data(datum/transport_controller/linear/tram/tram_controller)
+	var/list/packaged_data = list()
+	var/list/tram_list = tram_controller.tram_history
+	if(!isnull(tram_list))
+		while(tram_list.len > MAX_TRAM_SAVES)
+			tram_list.Cut(1,2)
+
+		for(var/datum/tram_mfg_info/data as anything in tram_list)
+			packaged_data += data
+
+	packaged_data += tram_controller.tram_registration
+	return packaged_data
 
 #undef DELAMINATION_COUNT_FILEPATH
+#undef DELAMINATION_HIGHSCORE_FILEPATH
+#undef TRAM_COUNT_FILEPATH
+#undef FILE_RECENT_MAPS
+#undef KEEP_ROUNDS_MAP
+#undef MAX_TRAM_SAVES

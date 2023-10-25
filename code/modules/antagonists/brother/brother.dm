@@ -9,6 +9,7 @@
 	suicide_cry = "FOR MY BROTHER!!"
 	var/datum/team/brother_team/team
 	antag_moodlet = /datum/mood_event/focused
+	hardcore_random_bonus = TRUE
 
 /datum/antagonist/brother/create_team(datum/team/brother_team/new_team)
 	if(!new_team)
@@ -33,6 +34,8 @@
 /datum/antagonist/brother/antag_panel_data()
 	return "Conspirators : [get_brother_names()]"
 
+// EffigyEdit Remove Start - Conforming BB Icon to Skyrat Customization
+/*
 /datum/antagonist/brother/get_preview_icon()
 	var/mob/living/carbon/human/dummy/consistent/brother1 = new
 	var/mob/living/carbon/human/dummy/consistent/brother2 = new
@@ -60,6 +63,8 @@
 	qdel(brother2)
 
 	return finish_preview_icon(final_icon)
+*/
+// EffigyEdit Remove End
 
 /datum/antagonist/brother/proc/get_brother_names()
 	var/list/brothers = team.members - owner
@@ -98,7 +103,8 @@
 			continue
 		candidates[L.mind.name] = L.mind
 
-	var/choice = input(admin,"Choose the blood brother.", "Brother") as null|anything in sort_names(candidates)
+	sortTim(candidates, GLOBAL_PROC_REF(cmp_text_asc))
+	var/choice = tgui_input_list(admin, "Choose the blood brother.", "Brother", candidates)
 	if(!choice)
 		return
 	var/datum/mind/bro = candidates[choice]

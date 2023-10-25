@@ -201,9 +201,6 @@
 	default = list( //DEFAULTS
 	/mob/living/simple_animal = 1,
 	/mob/living/silicon/pai = 1,
-	/mob/living/carbon/alien/adult/hunter = -1,
-	/mob/living/carbon/alien/adult/royal/praetorian = 1,
-	/mob/living/carbon/alien/adult/royal/queen = 3
 	)
 
 /datum/config_entry/keyed_list/multiplicative_movespeed/ValidateAndSet()
@@ -321,7 +318,6 @@
 /datum/config_entry/string/overflow_job
 	default = /datum/job/slashco_employee
 
-/datum/config_entry/flag/starlight
 /datum/config_entry/flag/grey_assistants
 
 /datum/config_entry/number/lavaland_budget
@@ -383,6 +379,11 @@
 
 /datum/config_entry/flag/shift_time_realtime
 
+/datum/config_entry/number/shift_time_start_hour
+	default = 12
+	min_val = 0
+	max_val = 23
+
 /datum/config_entry/number/monkeycap
 	default = 64
 	min_val = 0
@@ -416,4 +417,18 @@
 
 /datum/config_entry/flag/disallow_circuit_sounds
 
+/datum/config_entry/string/tts_http_url
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/tts_http_token
+	protection = CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/number/tts_max_concurrent_requests
+	default = 4
+	min_val = 1
+
+/datum/config_entry/str_list/tts_voice_blacklist
+
 /datum/config_entry/flag/give_tutorials_without_db
+
+/datum/config_entry/string/new_player_alert_role_id

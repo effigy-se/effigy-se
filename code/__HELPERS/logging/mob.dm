@@ -3,12 +3,11 @@
  * Arguments:
  * * text - text to log.
  */
-/mob/proc/log_mob_tag(text)
-	WRITE_LOG(GLOB.world_mob_tag_log, "TAG: \[[tag]\] [text]")
+/mob/proc/log_mob_tag(text, list/data)
+	logger.Log(LOG_CATEGORY_DEBUG_MOBTAG, text, data)
 
-/proc/log_silicon(text)
-	if (CONFIG_GET(flag/log_silicon))
-		WRITE_LOG(GLOB.world_silicon_log, "SILICON: [text]")
+/proc/log_silicon(text, list/data)
+	logger.Log(LOG_CATEGORY_SILICON, text, data)
 
 
 /// Logs a message in a mob's individual log, and in the global logs as well if log_globally is true
@@ -44,6 +43,12 @@
 			colored_message = "(ASAY) [colored_message]"
 		if(LOG_EMOTE)
 			colored_message = "(EMOTE) [colored_message]"
+		// EffigyEdit Add - Subtle
+		if(LOG_SUBTLE)
+			colored_message = "(EMOTE) (SUBTLE) [colored_message]"
+		if(LOG_SUBTLER)
+			colored_message = "(EMOTE) (SUBTLER) [colored_message]"
+		// EffigyEdit Add End
 		if(LOG_RADIO_EMOTE)
 			colored_message = "(RADIOEMOTE) [colored_message]"
 

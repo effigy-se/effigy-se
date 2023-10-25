@@ -29,7 +29,7 @@ export const PaiSubmit = (props, context) => {
   logger.log(input);
 
   return (
-    <Window width={400} height={460} title="pAI Candidacy Menu">
+    <Window width={460} height={550} title="pAI Candidacy Menu">
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item grow>

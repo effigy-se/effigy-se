@@ -1,4 +1,5 @@
 /obj/item/clothing/suit/armor
+	name = "armor"
 	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	allowed = null
@@ -28,13 +29,27 @@
 	if(!allowed)
 		allowed = GLOB.security_vest_allowed
 
+/obj/item/clothing/suit/armor/apply_fantasy_bonuses(bonus)
+	. = ..()
+	slowdown = modify_fantasy_variable("slowdown", slowdown, -bonus * 0.1, 0)
+	if(ismob(loc))
+		var/mob/wearer = loc
+		wearer.update_equipment_speed_mods()
+
+/obj/item/clothing/suit/armor/remove_fantasy_bonuses(bonus)
+	slowdown = reset_fantasy_variable("slowdown", slowdown)
+	if(ismob(loc))
+		var/mob/wearer = loc
+		wearer.update_equipment_speed_mods()
+	return ..()
+
 /obj/item/clothing/suit/armor/vest
 	name = "armor vest"
 	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
 	icon_state = "armoralt"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
-	dog_fashion = /datum/dog_fashion/back
+	dog_fashion = /datum/dog_fashion/back/armorvest
 
 /obj/item/clothing/suit/armor/vest/alt
 	desc = "A Type I armored vest that provides decent protection against most types of damage."
@@ -68,6 +83,16 @@
 	acid = 50
 	wound = 20
 
+/datum/armor/pmc
+	melee = 40
+	bullet = 50
+	laser = 60
+	energy = 50
+	bomb = 50
+	bio = 100
+	acid = 50
+	wound = 20
+
 /obj/item/clothing/suit/armor/vest/marine/security
 	name = "large tactical armor vest"
 	icon_state = "marine_security"
@@ -80,6 +105,14 @@
 	name = "tactical medic's armor vest"
 	icon_state = "marine_medic"
 	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/suit/armor/vest/marine/pmc
+	desc = "A set of the finest mass produced, stamped plasteel armor plates, for an all-around door-kicking and ass-smashing. Its stellar survivability making up is for it's lack of space worthiness"
+	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	clothing_flags = THICKMATERIAL
+	w_class = WEIGHT_CLASS_BULKY
+	armor_type = /datum/armor/pmc
 
 /obj/item/clothing/suit/armor/vest/old
 	name = "degrading armor vest"
@@ -100,6 +133,7 @@
 	desc = "A lighter plate armor used to still keep out those pesky arrows, while retaining the ability to move."
 	icon_state = "cuirass"
 	inhand_icon_state = "armor"
+	dog_fashion = null
 
 /obj/item/clothing/suit/armor/hos
 	name = "armored greatcoat"
@@ -111,6 +145,42 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
+	// EffigyEdit Add -
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Greatcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "hos",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "hos"
+		),
+		"Trenchcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
+			RESKIN_ICON_STATE = "hostrench",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
+			RESKIN_WORN_ICON_STATE = "hostrench"
+		),
+		"Navy Blue Jacket" = list(
+			RESKIN_ICON = 'local/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hosbluejacket",
+			RESKIN_WORN_ICON = 'local/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hosbluejacket"
+		),
+		"Trenchcloak" = list(
+			RESKIN_ICON = 'local/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "trenchcloak",
+			RESKIN_WORN_ICON = 'local/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "trenchcloak"
+		),
+		"Black" = list(
+			RESKIN_ICON = 'local/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hos_black",
+			RESKIN_WORN_ICON = 'local/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hos_black",
+			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
+		)
+	)
+	// EffigyEdit Add End
 
 /datum/armor/armor_hos
 	melee = 30
@@ -129,6 +199,7 @@
 	inhand_icon_state = "hostrench"
 	flags_inv = 0
 	strip_delay = 80
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON //EFFIGY ADDITION for digi wearers.
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
 	name = "head of security's winter trenchcoat"
@@ -142,6 +213,7 @@
 	icon_state = "hosformal"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS
+	current_skin = "hosformal" // EffigyEdit Change
 
 /obj/item/clothing/suit/armor/hos/hos_formal/Initialize(mapload)
 	. = ..()
@@ -299,7 +371,7 @@
 		return TRUE
 
 /obj/item/clothing/suit/armor/vest/det_suit
-	name = "detective's armor vest"
+	name = "detective's flak vest"
 	desc = "An armored vest with a detective's badge on it."
 	icon_state = "detective-armor"
 	resistance_flags = FLAMMABLE
@@ -453,6 +525,7 @@
 	max_integrity = 200
 	resistance_flags = FLAMMABLE
 	armor_type = /datum/armor/vest_durathread
+	dog_fashion = null
 
 /datum/armor/vest_durathread
 	melee = 20
@@ -469,6 +542,7 @@
 	icon_state = "rus_armor"
 	inhand_icon_state = null
 	armor_type = /datum/armor/vest_russian
+	dog_fashion = null
 
 /datum/armor/vest_russian
 	melee = 25
@@ -488,6 +562,7 @@
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	armor_type = /datum/armor/vest_russian_coat
+	dog_fashion = null
 
 /datum/armor/vest_russian_coat
 	melee = 25
@@ -556,3 +631,24 @@
 	icon_state = "hop_coat"
 	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
+	dog_fashion = null
+
+/obj/item/clothing/suit/armor/militia
+	name = "station defender's coat"
+	desc = "A well worn uniform used by militia across the frontier, it's thick padding useful for cushioning blows."
+	icon_state = "militia"
+	inhand_icon_state = "b_suit"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	armor_type = /datum/armor/coat_militia
+
+/datum/armor/coat_militia
+	melee = 40
+	bullet = 40
+	laser = 30
+	energy = 25
+	bomb = 50
+	fire = 40
+	acid = 50
+	wound = 30

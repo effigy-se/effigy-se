@@ -5,7 +5,7 @@
 	var/desc
 
 	///From __DEFINES/surgery.dm
-	///Selection: SURGERY_IGNORE_CLOTHES | SURGERY_SELF_OPERABLE | SURGERY_REQUIRE_RESTING | SURGERY_REQUIRE_LIMB | SURGERY_REQUIRES_REAL_LIMB
+	///Selection: SURGERY_IGNORE_CLOTHES | SURGERY_SELF_OPERABLE | SURGERY_REQUIRE_RESTING | SURGERY_REQUIRE_LIMB | SURGERY_REQUIRES_REAL_LIMB | SURGERY_MORBID_CURIOSITY
 	var/surgery_flags = SURGERY_REQUIRE_RESTING | SURGERY_REQUIRE_LIMB
 	///The surgery step we're currently on, increases each time we do a step.
 	var/status = 1
@@ -28,7 +28,9 @@
 	var/datum/wound/operated_wound
 	///Types of wounds this surgery can target.
 	var/datum/wound/targetable_wound
-
+	/// Whether this surgery aims to remove or replace the target bodypart, with the goal of being used
+	/// with a bodypart's `can_be_surgically_removed` variable. Defaults to FALSE.
+	var/removes_target_bodypart = FALSE // EffigyEdit Add (#3 Medical - Ported from Skyrat)
 	///The types of bodyparts that this surgery can have performed on it. Used for augmented surgeries.
 	var/requires_bodypart_type = BODYTYPE_ORGANIC
 	///The speed modifier given to the surgery through external means.
@@ -74,7 +76,7 @@
 		return FALSE
 
 	// True surgeons (like abductor scientists) need no instructions
-	if(HAS_TRAIT(user, TRAIT_SURGEON) || (!isnull(user.mind) && HAS_TRAIT(user.mind, TRAIT_SURGEON)))
+	if(HAS_MIND_TRAIT(user, TRAIT_SURGEON))
 		if(replaced_by) // only show top-level surgeries
 			return FALSE
 		else
@@ -116,13 +118,15 @@
 		try_to_fail = TRUE
 
 	var/datum/surgery_step/step = get_surgery_step()
-	if(step)
-		var/obj/item/tool = user.get_active_held_item()
-		if(step.try_op(user, target, user.zone_selected, tool, src, try_to_fail))
-			return TRUE
-		if(tool && tool.item_flags & SURGICAL_TOOL) //Just because you used the wrong tool it doesn't mean you meant to whack the patient with it
-			to_chat(user, span_warning("This step requires a different tool!"))
-			return TRUE
+	if(isnull(step))
+		return FALSE
+	var/obj/item/tool = user.get_active_held_item()
+	if(step.try_op(user, target, user.zone_selected, tool, src, try_to_fail))
+		return TRUE
+	if(tool && tool.item_flags & SURGICAL_TOOL) //Just because you used the wrong tool it doesn't mean you meant to whack the patient with it
+		to_chat(user, span_warning("This step requires a different tool!"))
+		return TRUE
+
 	return FALSE
 
 /datum/surgery/proc/get_surgery_step()
@@ -164,14 +168,14 @@
 	name = "Surgery Procedure Disk"
 	desc = "A disk that contains advanced surgery procedures, must be loaded into an Operating Console."
 	icon_state = "datadisk1"
-	custom_materials = list(/datum/material/iron=300, /datum/material/glass=100)
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass=SMALL_MATERIAL_AMOUNT)
 	var/list/surgeries
 
 /obj/item/disk/surgery/debug
 	name = "Debug Surgery Disk"
 	desc = "A disk that contains all existing surgery procedures."
 	icon_state = "datadisk1"
-	custom_materials = list(/datum/material/iron=300, /datum/material/glass=100)
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 3, /datum/material/glass=SMALL_MATERIAL_AMOUNT)
 
 /obj/item/disk/surgery/debug/Initialize(mapload)
 	. = ..()
@@ -184,7 +188,7 @@
 //INFO
 //Check /mob/living/carbon/attackby for how surgery progresses, and also /mob/living/carbon/attack_hand.
 //As of Feb 21 2013 they are in code/modules/mob/living/carbon/carbon.dm, lines 459 and 51 respectively.
-//Other important variables are var/list/surgeries (/mob/living) and var/list/internal_organs (/mob/living/carbon)
+//Other important variables are var/list/surgeries (/mob/living) and var/list/organs (/mob/living/carbon)
 // var/list/bodyparts (/mob/living/carbon/human) is the LIMBS of a Mob.
 //Surgical procedures are initiated by attempt_initiate_surgery(), which is called by surgical drapes and bedsheets.
 

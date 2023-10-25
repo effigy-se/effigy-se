@@ -11,7 +11,7 @@
 	var/mob/user
 	/// The object which owns the UI.
 	var/datum/src_object
-	/// The title of te UI.
+	/// The title of the UI.
 	var/title
 	/// The window_id for browse() and onclose().
 	var/datum/tgui_window/window
@@ -98,19 +98,13 @@
 		window.initialize(
 			strict_mode = TRUE,
 			fancy = user.client.prefs.read_preference(/datum/preference/toggle/tgui_fancy),
+			inline_css = file('local/interface/effigy.css'),
 			assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
 			))
 	else
 		window.send_message("ping")
-	var/flush_queue = window.send_asset(get_asset_datum(
-		/datum/asset/simple/namespaced/fontawesome))
-	flush_queue |= window.send_asset(get_asset_datum(
-		/datum/asset/simple/namespaced/tgfont))
-	for(var/datum/asset/asset in src_object.ui_assets(user))
-		flush_queue |= window.send_asset(asset)
-	if (flush_queue)
-		user.client.browse_queue_flush()
+	send_assets()
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE))
@@ -119,6 +113,16 @@
 	SStgui.on_open(src)
 
 	return TRUE
+
+/datum/tgui/proc/send_assets()
+	var/flush_queue = window.send_asset(get_asset_datum(
+		/datum/asset/simple/namespaced/fontawesome))
+	flush_queue |= window.send_asset(get_asset_datum(
+		/datum/asset/simple/namespaced/tgfont))
+	for(var/datum/asset/asset in src_object.ui_assets(user))
+		flush_queue |= window.send_asset(asset)
+	if (flush_queue)
+		user.client.browse_queue_flush()
 
 /**
  * public
@@ -275,7 +279,7 @@
  * Run an update cycle for this UI. Called internally by SStgui
  * every second or so.
  */
-/datum/tgui/process(delta_time, force = FALSE)
+/datum/tgui/process(seconds_per_tick, force = FALSE)
 	if(closing)
 		return
 	var/datum/host = src_object.ui_host(user)

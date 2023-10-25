@@ -78,7 +78,11 @@
 #define REDUCE_RANGE (1<<1)
 #define NOPASS (1<<2)
 
-//Eavesdropping
+/// Range to hear normal messages
+#define MESSAGE_RANGE 7
+/// Range to hear whispers normally
+#define WHISPER_RANGE 1
+/// Additional range to partially hear whispers
 #define EAVESDROP_EXTRA_RANGE 1 //how much past the specified message_range does the message get starred, whispering only
 
 /// How close intercoms can be for radio code use
@@ -90,7 +94,7 @@
 #define FOLLOW_OR_TURF_LINK(alice, bob, turfy) "<a href=?src=[REF(alice)];follow=[REF(bob)];x=[turfy.x];y=[turfy.y];z=[turfy.z]>(F)</a>"
 
 //Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
-#define MAX_MESSAGE_LEN 1024
+#define MAX_MESSAGE_LEN 2048 // EffigyEdit Change (YOLO!)
 #define MAX_NAME_LEN 42
 #define MAX_BROADCAST_LEN 512
 #define MAX_CHARTER_LEN 80

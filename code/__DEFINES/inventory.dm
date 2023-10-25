@@ -90,6 +90,17 @@
 ///hides mutant/moth wings, does not apply to functional wings
 #define HIDEMUTWINGS (1<<13)
 
+// EffigyEdit Add - Customization
+/// Manually set this on items you want anthro ears to show on!
+#define SHOWSPRITEEARS (1<<14)
+/// Does this sprite hide the tail?
+#define HIDETAIL (1<<15)
+/// Does this sprite also hide the spine on tails? Realistically only useful for the clothes that have a special tail overlay, like MODsuits
+#define HIDESPINE (1<<16)
+/// Does this sprite hide devious devices?
+#define HIDESEXTOY (1<<17)
+// EffigyEdit Add End
+
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
 #define CHEST (1<<1)
@@ -107,7 +118,7 @@
 #define HAND_RIGHT (1<<10)
 #define HANDS (HAND_LEFT | HAND_RIGHT)
 #define NECK (1<<11)
-#define FULL_BODY (~0)
+#define FULL_BODY ALL
 
 //defines for the index of hands
 #define LEFT_HANDS 1
@@ -138,6 +149,21 @@
 ///has a sprite for monkeys
 #define CLOTHING_MONKEY_VARIATION (1<<3)
 
+// EffigyEdit Add - Customization
+/// The sprite works fine for snouts.
+#define CLOTHING_SNOUTED_VARIATION (1<<4)
+/// The sprite works fine for snouts as-is.
+#define CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON (1<<5)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_SNOUTED_VOX_VARIATION (1<<6)
+/// The sprite works fine for vox snouts as is.
+#define CLOTHING_SNOUTED_VOX_VARIATION_NO_NEW_ICON (1<<7)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<8)
+/// The sprite works fine for vox snouts as is.
+#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
+// EffigyEdit Add End
+
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)
 #define MASKCOVERSEYES (1<<1) // get rid of some of the other stupidness in these flags
@@ -145,6 +171,7 @@
 #define MASKCOVERSMOUTH (1<<3) // on other items, these are just for mask/head
 #define HEADCOVERSMOUTH (1<<4)
 #define PEPPERPROOF (1<<5) //protects against pepperspray
+#define EARS_COVERED (1<<6)
 
 #define TINT_DARKENED 2 //Threshold of tint level to apply weld mask overlay
 #define TINT_BLIND 3 //Threshold of tint level to obscure vision fully
@@ -153,7 +180,7 @@
 /// How many messages you can remember while logged out before you stop remembering new ones
 #define AFK_THEFT_MAX_MESSAGES 10
 /// If someone logs back in and there are entries older than this, just tell them they can't remember who it was or when
-#define AFK_THEFT_FORGET_DETAILS_TIME (5 MINUTES)
+#define AFK_THEFT_FORGET_DETAILS_TIME (15 MINUTES) // EffigyEdit Change
 /// The index of the entry in 'afk_thefts' with the person's visible name at the time
 #define AFK_THEFT_NAME 1
 /// The index of the entry in 'afk_thefts' with the text
@@ -180,7 +207,8 @@ GLOBAL_LIST_INIT(detective_vest_allowed, list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
-	/obj/item/storage/belt/holster/thermal,
+	/obj/item/storage/belt/holster/energy,
+	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
 ))
 
 GLOBAL_LIST_INIT(security_vest_allowed, list(
@@ -197,7 +225,8 @@ GLOBAL_LIST_INIT(security_vest_allowed, list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
-	/obj/item/storage/belt/holster/thermal,
+	/obj/item/storage/belt/holster/energy,
+	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
 ))
 
 GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
@@ -210,7 +239,22 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
 	/obj/item/restraints/handcuffs,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
-	/obj/item/storage/belt/holster/thermal,
+	/obj/item/storage/belt/holster/energy,
+	/obj/item/gun/ballistic/shotgun/automatic/combat/compact,
+))
+
+//Allowed list for all chaplain suits (except the honkmother robe)
+
+GLOBAL_LIST_INIT(chaplain_suit_allowed, list(
+	/obj/item/book/bible,
+	/obj/item/nullrod,
+	/obj/item/reagent_containers/cup/glass/bottle/holywater,
+	/obj/item/storage/fancy/candle_box,
+	/obj/item/flashlight/flare/candle,
+	/obj/item/tank/internals/emergency_oxygen,
+	/obj/item/tank/internals/plasmaman,
+	/obj/item/gun/ballistic/bow/divine,
+	/obj/item/gun/ballistic/revolver/chaplain,
 ))
 
 /// String for items placed into the left pocket.

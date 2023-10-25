@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Ensures that we always load the last used save, QOL
 	var/default_slot = 1
 	/// The maximum number of slots we're allowed to contain
-	var/max_save_slots = 3
+	var/max_save_slots = 14 // EffigyEdit Change
 
 	/// Bitflags for communications that are muted
 	var/muted = NONE
@@ -92,6 +92,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
 	value_cache = null
+	// EffigyEdit Add - Customization
+	if(pref_species)
+		QDEL_NULL(pref_species)
+	// EffigyEdit Add End
 	return ..()
 
 /datum/preferences/New(client/parent)
@@ -107,7 +111,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			try_savefile_type_migration()
 		unlock_content = !!parent.IsByondMember()
 		if(unlock_content)
-			max_save_slots = 8
+			max_save_slots = 21 // EffigyEdit Change
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
 	load_savefile()
@@ -120,6 +124,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
+			// EffigyEdit Add - Customization
+			sanitize_languages()
+			sanitize_quirks()
+			// EffigyEdit Add End
 			return
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
@@ -166,6 +174,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		data["character_profiles"] = create_character_profiles()
 		tainted_character_profiles = FALSE
 
+	// EffigyEdit Add - Customization
+	data["preview_selection"] = preview_pref
+	data["quirks_balance"] = GetQuirkBalance()
+	data["positive_quirk_count"] = GetPositiveQuirkCount()
+	// EffigyEdit Add End
+
 	data["character_preferences"] = compile_character_preferences(user)
 
 	data["active_slot"] = default_slot
@@ -177,6 +191,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences/ui_static_data(mob/user)
 	var/list/data = list()
+
+	// EffigyEdit Add - Customization
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED)
+	else
+		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED, PREVIEW_PREF_NAKED_AROUSED)
+	// EffigyEdit Add End
 
 	data["character_profiles"] = create_character_profiles()
 
@@ -207,6 +228,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if (.)
 		return
 
+	if(SSlag_switch.measures[DISABLE_CREATOR] && action != "change_slot")
+		to_chat(usr, "Character creation is temporarily paused. Please do not aHelp, staff have been notified.")
+		return
+
+	log_creator("[key_name(usr)] ACTED [action] | PREFERENCE: [params["preference"]] | VALUE: [params["value"]]")
+
 	switch (action)
 		if ("change_slot")
 			// Save existing character
@@ -218,14 +245,25 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				randomise_appearance_prefs()
 				save_character()
 
+			// EffigyEdit Add - Customization
+			if(sanitize_languages())
+				save_character()
+			// EffigyEdit Add - Customization
+
 			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 				preference_middleware.on_new_character(usr)
 
 			character_preview_view.update_body()
 
 			return TRUE
+
+
 		if ("rotate")
-			character_preview_view.dir = turn(character_preview_view.dir, -90)
+			// EffigyEdit Add - Customization
+			var/backwards = params["backwards"]
+			character_preview_view.dir = turn(character_preview_view.dir, backwards ? 90 : -90)
+			// EffigyEdit Add End
+
 
 			return TRUE
 		if ("set_preference")
@@ -246,6 +284,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			if (istype(requested_preference, /datum/preference/name))
 				tainted_character_profiles = TRUE
+
+			// EffigyEdit Add - Customization
+			update_mutant_bodyparts(requested_preference)
+			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
+				if (preference_middleware.post_set_preference(usr, requested_preference_key, value))
+					return TRUE
+			// EffigyEdit Add End
 
 			return TRUE
 		if ("set_color_preference")
@@ -275,6 +320,58 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				return FALSE
 
 			return TRUE
+
+		// EffigyEdit Add - Customization
+		if("update_preview")
+			preview_pref = params["updated_preview"]
+			character_preview_view.update_body()
+			return TRUE
+
+		if ("open_loadout")
+			if(parent.open_loadout_ui)
+				parent.open_loadout_ui.ui_interact(usr)
+			else
+				var/datum/loadout_manager/tgui = new(usr)
+				tgui.ui_interact(usr)
+			return TRUE
+		if ("set_tricolor_preference")
+			var/requested_preference_key = params["preference"]
+			var/index_key = params["value"]
+
+			var/datum/preference/requested_preference = GLOB.preference_entries_by_key[requested_preference_key]
+			if (isnull(requested_preference))
+				return FALSE
+
+			if (!istype(requested_preference, /datum/preference/tri_color))
+				return FALSE
+
+			var/default_value_list = read_preference(requested_preference.type)
+			if (!islist(default_value_list))
+				return FALSE
+			var/default_value = default_value_list[index_key]
+
+			// Yielding
+			var/new_color = input(
+				usr,
+				"Select new color",
+				null,
+				default_value || COLOR_WHITE,
+			) as color | null
+
+			if (!new_color)
+				return FALSE
+
+			default_value_list[index_key] = new_color
+
+			if (!update_preference(requested_preference, default_value_list))
+				return FALSE
+
+			return TRUE
+
+		// For the quirks in the prefs menu.
+		if ("get_quirks_balance")
+			return TRUE
+		// EffigyEdit Add End
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		var/delegation = preference_middleware.action_delegations[action]
@@ -376,7 +473,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	body = new
 
 	// Without this, it doesn't show up in the menu
-	body.appearance_flags &= ~KEEP_TOGETHER
+	body.appearance_flags |= KEEP_TOGETHER // EffigyEdit Change - Original: &= ~KEEP_TOGETHER
 
 /datum/preferences/proc/create_character_profiles()
 	var/list/profiles = list()
@@ -427,6 +524,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
+	// EffigyEdit Add - Customization
+	for(var/key in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
+		bal -= aug.cost
+	// EffigyEdit Add End
 	return bal
 
 /datum/preferences/proc/GetPositiveQuirkCount()
@@ -439,20 +541,74 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(GetQuirkBalance() < 0)
 		all_quirks = list()
 
+/**
+ * Safely read a given preference datum from a given client.
+ *
+ * Reads the given preference datum from the given client, and guards against null client and null prefs.
+ * The client object is fickle and can go null at times, so use this instead of read_preference() if you
+ * want to ensure no runtimes.
+ *
+ * returns client.prefs.read_preference(prefs_to_read) or FALSE if something went wrong.
+ *
+ * Arguments:
+ * * client/prefs_holder - the client to read the pref from
+ * * datum/preference/pref_to_read - the type of preference datum to read.
+ */
+/proc/safe_read_pref(client/prefs_holder, datum/preference/pref_to_read)
+	if(!prefs_holder)
+		return FALSE
+	if(prefs_holder && !prefs_holder?.prefs)
+		stack_trace("[prefs_holder?.mob] ([prefs_holder?.ckey]) had null prefs, which shouldn't be possible!")
+		return FALSE
+
+	return prefs_holder?.prefs.read_preference(pref_to_read)
+
+/**
+ * Get the given client's chat toggle prefs.
+ *
+ * Getter function for prefs.chat_toggles which guards against null client and null prefs.
+ * The client object is fickle and can go null at times, so use this instead of directly accessing the var
+ * if you want to ensure no runtimes.
+ *
+ * returns client.prefs.chat_toggles or FALSE if something went wrong.
+ *
+ * Arguments:
+ * * client/prefs_holder - the client to get the chat_toggles pref from.
+ */
+/proc/get_chat_toggles(client/target)
+	if(ismob(target))
+		var/mob/target_mob = target
+		target = target_mob.client
+
+	if(isnull(target))
+		return NONE
+
+	var/datum/preferences/preferences = target.prefs
+	if(isnull(preferences))
+		stack_trace("[key_name(target)] preference datum was null")
+		return NONE
+
+	return preferences.chat_toggles
+
 /// Sanitizes the preferences, applies the randomization prefs, and then applies the preference to the human mob.
 /datum/preferences/proc/safe_transfer_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, is_antag = FALSE)
 	apply_character_randomization_prefs(is_antag)
 	apply_prefs_to(character, icon_updates)
 
 /// Applies the given preferences to a human mob.
-/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
-	character.dna.features = list()
+/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, visuals_only = FALSE)
+	character.dna.features = MANDATORY_FEATURE_LIST // EffigyEdit Add
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
 
-		preference.apply_to_human(character, read_preference(preference.type))
+		preference.apply_to_human(character, read_preference(preference.type), src)
+
+	// EffigyEdit Add - Customization
+	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
+		preference_middleware.apply_to_human(character, src, visuals_only = visuals_only)
+	// EffigyEdit Add End
 
 	character.dna.real_name = character.real_name
 
@@ -460,6 +616,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.icon_render_keys = list()
 		character.update_body(is_creating = TRUE)
 
+	SEND_SIGNAL(character, COMSIG_HUMAN_PREFS_APPLIED)
 
 /// Returns whether the parent mob should have the random hardcore settings enabled. Assumes it has a mind.
 /datum/preferences/proc/should_be_random_hardcore(datum/job/job, datum/mind/mind)

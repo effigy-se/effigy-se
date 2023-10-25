@@ -1,6 +1,5 @@
 #define IMPORTANT_ACTION_COOLDOWN (60 SECONDS)
 #define EMERGENCY_ACCESS_COOLDOWN (30 SECONDS)
-#define MAX_STATUS_LINE_LENGTH 40
 
 #define STATE_BUYING_SHUTTLE "buying_shuttle"
 #define STATE_CHANGING_STATUS "changing_status"
@@ -68,7 +67,7 @@
 	syndicate = TRUE
 
 /obj/machinery/computer/communications/syndicate/emag_act(mob/user, obj/item/card/emag/emag_card)
-	return
+	return FALSE
 
 /obj/machinery/computer/communications/syndicate/can_buy_shuttles(mob/user)
 	return FALSE
@@ -88,6 +87,9 @@
 
 /obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()
+	// All maps should have at least 1 comms console
+	REGISTER_REQUIRED_MAP_ITEM(1, INFINITY)
+
 	GLOB.shuttle_caller_list += src
 	AddComponent(/datum/component/gps, "Secured Communications Signal")
 
@@ -109,6 +111,14 @@
 		return TRUE
 	return authenticated
 
+// EffigyEdit Add - AI CHECK
+/// Are we the AI?
+/obj/machinery/computer/communications/proc/authenticated_as_ai_or_captain(mob/user)
+	if (isAI(user))
+		return TRUE
+	return ACCESS_CAPTAIN in authorize_access
+// EffigyEdit Add End
+
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
 	if(isidcard(I))
 		attack_hand(user)
@@ -117,26 +127,29 @@
 
 /obj/machinery/computer/communications/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(istype(emag_card, /obj/item/card/emag/battlecruiser))
-		if(!user.mind?.has_antag_datum(/datum/antagonist/traitor))
-			to_chat(user, span_danger("You get the feeling this is a bad idea."))
-			return
 		var/obj/item/card/emag/battlecruiser/caller_card = emag_card
+		if (user)
+			if(!IS_TRAITOR(user))
+				to_chat(user, span_danger("You get the feeling this is a bad idea."))
+				return FALSE
 		if(battlecruiser_called)
-			to_chat(user, span_danger("The card reports a long-range message already sent to the Syndicate fleet...?"))
-			return
+			if (user)
+				to_chat(user, span_danger("The card reports a long-range message already sent to the Syndicate fleet...?"))
+			return FALSE
 		battlecruiser_called = TRUE
 		caller_card.use_charge(user)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(summon_battlecruiser), caller_card.team), rand(20 SECONDS, 1 MINUTES))
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
-		return
+		return TRUE
 
 	if(obj_flags & EMAGGED)
-		return
+		return FALSE
 	obj_flags |= EMAGGED
 	if (authenticated)
 		authorize_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
-	to_chat(user, span_danger("You scramble the communication routing circuits!"))
+	balloon_alert(user, "routing circuits scrambled")
 	playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
+	return TRUE
 
 /obj/machinery/computer/communications/ui_act(action, list/params)
 	var/static/list/approved_states = list(STATE_BUYING_SHUTTLE, STATE_CHANGING_STATUS, STATE_MAIN, STATE_MESSAGES)
@@ -196,7 +209,7 @@
 					return
 
 			var/new_sec_level = SSsecurity_level.text_level_to_number(params["newSecurityLevel"])
-			if (new_sec_level != SEC_LEVEL_GREEN && new_sec_level != SEC_LEVEL_BLUE)
+			if (new_sec_level < SEC_LEVEL_GREEN || new_sec_level > SEC_LEVEL_ORANGE) // EffigyEdit Change (Alert Levels)
 				return
 			if (SSsecurity_level.get_current_level_as_number() == new_sec_level)
 				return
@@ -219,12 +232,6 @@
 			if (!message_index)
 				return
 			LAZYREMOVE(messages, LAZYACCESS(messages, message_index))
-		if ("emergency_meeting")
-			if(!check_holidays(APRIL_FOOLS))
-				return
-			if (!authenticated_as_silicon_or_captain(usr))
-				return
-			emergency_meeting(usr)
 		if ("makePriorityAnnouncement")
 			if (!authenticated_as_silicon_or_captain(usr) && !syndicate)
 				return
@@ -381,7 +388,19 @@
 			if(picture in GLOB.status_display_state_pictures)
 				post_status(picture)
 			else
-				post_status("alert", picture)
+				if(picture == "currentalert") // You cannot set Code Blue display during Code Red and similiar
+					switch(SSsecurity_level.get_current_level_as_number())
+						if(SEC_LEVEL_DELTA)
+							post_status("alert", "deltaalert")
+						if(SEC_LEVEL_RED)
+							post_status("alert", "redalert")
+						if(SEC_LEVEL_BLUE)
+							post_status("alert", "bluealert")
+						if(SEC_LEVEL_GREEN)
+							post_status("alert", "greenalert")
+				else
+					post_status("alert", picture)
+
 			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
 		if ("toggleAuthentication")
 			// Log out if we're logged in
@@ -424,6 +443,21 @@
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
 				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
+		// EffigyEdit Add - (Airlock Override)
+		if("toggleEngOverride")
+			if(emergency_access_cooldown(usr)) //if were in cooldown, dont allow the following code
+				return
+			if (!authenticated_as_silicon_or_captain(usr))
+				return
+			if (GLOB.force_eng_override)
+				toggle_eng_override()
+				usr.log_message("disabled airlock engineering override.", LOG_GAME)
+				deadchat_broadcast(" disabled airlock engineering override at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+			else
+				toggle_eng_override()
+				usr.log_message("enabled airlock engineering override.", LOG_GAME)
+				deadchat_broadcast(" enabled airlock engineering override at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+		// EffigyEdit Add End
 		if("requestSafeCodes")
 			if(SSjob.assigned_captain)
 				to_chat(usr, span_warning("There is already an assigned Captain or Acting Captain on deck!"))
@@ -527,6 +561,7 @@
 				data["canSendToSectors"] = FALSE
 				data["canSetAlertLevel"] = FALSE
 				data["canToggleEmergencyAccess"] = FALSE
+				data["canToggleEngineeringOverride"] = FALSE // EffigyEdit Add (Airlock Override)
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
@@ -558,7 +593,8 @@
 				if (authenticated_as_silicon_or_captain(user))
 					data["canToggleEmergencyAccess"] = TRUE
 					data["emergencyAccess"] = GLOB.emergency_access
-
+					data["canToggleEngineeringOverride"] = TRUE // EffigyEdit Add (Airlock Override)
+					data["engineeringOverride"] = GLOB.force_eng_override // EffigyEdit Add (Airlock Override)
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
 					data["canSetAlertLevel"] = issilicon(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"
@@ -601,7 +637,9 @@
 					shuttles += list(list(
 						"name" = shuttle_template.name,
 						"description" = shuttle_template.description,
+						"occupancy_limit" = shuttle_template.occupancy_limit,
 						"creditCost" = shuttle_template.credit_cost,
+						"initial_cost" = initial(shuttle_template.credit_cost),
 						"emagOnly" = shuttle_template.emag_only,
 						"prerequisites" = shuttle_template.prerequisites,
 						"ref" = REF(shuttle_template),
@@ -712,40 +750,24 @@
 
 	return length(CONFIG_GET(keyed_list/cross_server)) > 0
 
-/**
- * Call an emergency meeting
- *
- * Comm Console wrapper for the Communications subsystem wrapper for the call_emergency_meeting world proc.
- * Checks to make sure the proc can be called, and handles relevant feedback, logging and timing.
- * See the SScommunications proc definition for more detail, in short, teleports the entire crew to
- * the bridge for a meetup. Should only really happen during april fools.
- * Arguments:
- * * user - Mob who called the meeting
- */
-/obj/machinery/computer/communications/proc/emergency_meeting(mob/living/user)
-	if(!SScommunications.can_make_emergency_meeting(user))
-		to_chat(user, span_alert("The emergency meeting button doesn't seem to work right now. Please stand by."))
-		return
-	SScommunications.emergency_meeting(user)
-	deadchat_broadcast(" called an emergency meeting from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
-
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user)
 	var/is_ai = issilicon(user)
 	if(!SScommunications.can_announce(user, is_ai))
 		to_chat(user, span_alert("Intercomms recharging. Please stand by."))
 		return
 	var/input = tgui_input_text(user, "Message to announce to the station crew", "Announcement")
-	if(!input || !user.canUseTopic(src, !issilicon(usr)))
+	if(!input || !user.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
 	if(user.try_speak(input))
 		//Adds slurs and so on. Someone should make this use languages too.
-		input = user.treat_message(input)
+		var/list/input_data = user.treat_message(input)
+		input = input_data["message"]
 	else
 		//No cheating, mime/random mute guy!
 		input = "..."
 		user.visible_message(
-			span_notice("You leave the mic on in awkward silence..."),
 			span_notice("[user] holds down [src]'s announcement button, leaving the mic on in awkward silence."),
+			span_notice("You leave the mic on in awkward silence..."),
 			span_hear("You hear an awkward silence, somehow."),
 			vision_distance = 4,
 		)
@@ -844,30 +866,36 @@
 	// If we have a certain amount of ghosts, we'll add some more !!fun!! options to the list
 	var/num_ghosts = length(GLOB.current_observers_list) + length(GLOB.dead_player_list)
 
-	// Pirates require empty space for the ship, and ghosts for the pirates obviously
-	if(SSmapping.empty_space && (num_ghosts >= MIN_GHOSTS_FOR_PIRATES))
-		hack_options += HACK_PIRATE
-	// Fugitives require empty space for the hunter's ship, and ghosts for both fugitives and hunters (Please no waldo)
-	if(SSmapping.empty_space && (num_ghosts >= MIN_GHOSTS_FOR_FUGITIVES))
-		hack_options += HACK_FUGITIVES
-	// If less than a certain percent of the population is ghosts, consider sleeper agents
-	if(num_ghosts < (length(GLOB.clients) * MAX_PERCENT_GHOSTS_FOR_SLEEPER))
-		hack_options += HACK_SLEEPER
+	// Pirates / Fugitives have enough lead in time that there's no point summoning them if the shuttle is called
+	// Both of these events also summon space ships and so cannot run on planetary maps
+	if (EMERGENCY_IDLE_OR_RECALLED && !SSmapping.is_planetary())
+		// Pirates require ghosts for the pirates obviously
+		if(num_ghosts >= MIN_GHOSTS_FOR_PIRATES)
+			hack_options += HACK_PIRATE
+		// Fugitives require ghosts for both fugitives and hunters (Please no waldo)
+		if(num_ghosts >= MIN_GHOSTS_FOR_FUGITIVES)
+			hack_options += HACK_FUGITIVES
+
+	if (!EMERGENCY_PAST_POINT_OF_NO_RETURN)
+		// If less than a certain percent of the population is ghosts, consider sleeper agents
+		if(num_ghosts < (length(GLOB.clients) * MAX_PERCENT_GHOSTS_FOR_SLEEPER))
+			hack_options += HACK_SLEEPER
 
 	var/picked_option = pick(hack_options)
 	message_admins("[ADMIN_LOOKUPFLW(hacker)] hacked a [name] located at [ADMIN_VERBOSEJMP(src)], resulting in: [picked_option]!")
 	hacker.log_message("hacked a communications console, resulting in: [picked_option].", LOG_GAME, log_globally = TRUE)
 	switch(picked_option)
 		if(HACK_PIRATE) // Triggers pirates, which the crew may be able to pay off to prevent
+			var/datum/game_mode/dynamic/dynamic = SSticker.mode
+			var/list/pirate_rulesets = list(
+				/datum/dynamic_ruleset/midround/pirates,
+				/datum/dynamic_ruleset/midround/dangerous_pirates,
+			)
 			priority_announce(
 				"Attention crew: sector monitoring reports a massive jump-trace from an enemy vessel destined for your system. Prepare for imminent hostile contact.",
 				"[command_name()] High-Priority Update",
 			)
-
-			var/datum/round_event_control/pirates/pirate_event = locate() in SSevents.control
-			if(!pirate_event)
-				CRASH("hack_console() attempted to run pirates, but could not find an event controller!")
-			addtimer(CALLBACK(pirate_event, TYPE_PROC_REF(/datum/round_event_control, runEvent)), rand(20 SECONDS, 1 MINUTES))
+			dynamic.picking_specific_rule(pick(pirate_rulesets), forced = TRUE, ignore_cost = TRUE)
 
 		if(HACK_FUGITIVES) // Triggers fugitives, which can cause confusion / chaos as the crew decides which side help
 			priority_announce(
@@ -875,10 +903,7 @@
 				"[command_name()] High-Priority Update",
 			)
 
-			var/datum/round_event_control/fugitives/fugitive_event = locate() in SSevents.control
-			if(!fugitive_event)
-				CRASH("hack_console() attempted to run fugitives, but could not find an event controller!")
-			addtimer(CALLBACK(fugitive_event, TYPE_PROC_REF(/datum/round_event_control, runEvent)), rand(20 SECONDS, 1 MINUTES))
+			force_event_after(/datum/round_event_control/fugitives, "[hacker] hacking a communications console", rand(20 SECONDS, 1 MINUTES))
 
 		if(HACK_THREAT) // Force an unfavorable situation on the crew
 			priority_announce(
@@ -939,6 +964,10 @@
 		content = new_content
 	if(new_possible_answers)
 		possible_answers = new_possible_answers
+
+/datum/comm_message/Destroy()
+	answer_callback = null
+	return ..()
 
 #undef IMPORTANT_ACTION_COOLDOWN
 #undef EMERGENCY_ACCESS_COOLDOWN

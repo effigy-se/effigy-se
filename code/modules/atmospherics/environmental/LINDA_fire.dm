@@ -21,6 +21,11 @@
  * is handled by the hotspot itself, specifically perform_exposure().
  */
 /turf/open/hotspot_expose(exposed_temperature, exposed_volume, soh)
+	// EffigyEdit Add -
+	if(liquids && !liquids.fire_state && liquids.check_fire(TRUE))
+		SSliquids.processing_fire[src] = TRUE
+	// EffigyEdit Add End
+
 	//If the air doesn't exist we just return false
 	var/list/air_gases = air?.gases
 	if(!air_gases)
@@ -304,10 +309,5 @@
 
 /obj/effect/hotspot/singularity_pull()
 	return
-
-/obj/effect/dummy/lighting_obj/moblight/fire
-	name = "fire"
-	light_color = LIGHT_COLOR_FIRE
-	light_range = LIGHT_RANGE_FIRE
 
 #undef INSUFFICIENT

@@ -4,7 +4,7 @@ import { Window } from '../layouts';
 
 export const AdminFax = (props, context) => {
   return (
-    <Window title="Admin Fax Panel" width={400} height={675} theme="admin">
+    <Window title="Admin Fax Panel" width={500} height={757} theme="admin">
       <Window.Content>
         <FaxMainPanel />
       </Window.Content>
@@ -53,7 +53,7 @@ export const FaxMainPanel = (props, context) => {
             </Button>
           </Box>
         }>
-        <Box fontSize="13px">
+        <Box fontSize="14px">
           <Dropdown
             textAlign="center"
             selected="Choose fax machine..."
@@ -91,7 +91,7 @@ export const FaxMainPanel = (props, context) => {
             icon="n"
             mr="7px"
             width="49%"
-            onClick={() => setPaperName('Nanotrasen Offical Report')}>
+            onClick={() => setPaperName('Nanotrasen Official Report')}>
             Nanotrasen
           </Button>
           <Button

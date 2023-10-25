@@ -6,7 +6,7 @@ export const MassDriverControl = (props, context) => {
   const { act, data } = useBackend(context);
   const { connected, minutes, seconds, timing, power, poddoor } = data;
   return (
-    <Window width={300} height={connected ? 215 : 107}>
+    <Window width={350} height={connected ? 237 : 127}>
       <Window.Content>
         {!!connected && (
           <Section

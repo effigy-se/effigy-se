@@ -20,6 +20,7 @@ export enum Food {
   Pineapple = 'PINEAPPLE',
   Raw = 'RAW',
   Seafood = 'SEAFOOD',
+  Stone = 'STONE',
   Sugar = 'SUGAR',
   Toxic = 'TOXIC',
   Vegetables = 'VEGETABLES',
@@ -75,7 +76,43 @@ export type Job = {
   description: string;
   department: string;
 };
+// EffigyEdit Add - Customization
+export type Language = {
+  description: string;
+  name: string;
+  icon: string;
+};
 
+export type Marking = {
+  name: string;
+  color: string;
+  marking_id: string;
+};
+
+export type MarkingData = {
+  marking_choices: string[];
+  markings_list: Marking[];
+};
+
+export type Limb = {
+  slot: string;
+  name: string;
+  can_augment: boolean;
+  chosen_aug: string;
+  chosen_style: string;
+  aug_choices: Record<string, string>;
+  costs: Record<string, number>;
+  markings: MarkingData;
+};
+
+export type Organ = {
+  slot: string;
+  name: string;
+  chosen_organ: string;
+  organ_choices: Record<string, string>;
+  costs: Record<string, number>;
+};
+// EffigyEdit Add End
 export type Quirk = {
   description: string;
   icon: string;
@@ -124,6 +161,9 @@ export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
+  preview_options: string[]; // EffigyEdit Add Customization
+  preview_selection: string; // EffigyEdit Add Customization
+
   character_preferences: {
     clothing: Record<string, string>;
     features: Record<string, string>;
@@ -158,7 +198,21 @@ export type PreferencesMenuData = {
     }
   >;
   job_preferences: Record<string, JobPriority>;
+  // EffigyEdit Add - Customization
+  job_alt_titles: Record<string, string>;
 
+  robotic_styles: string[];
+  limbs_data: Limb[];
+  organs_data: Organ[];
+  marking_presets: string[];
+
+  selected_languages: Language[];
+  unselected_languages: Language[];
+  total_language_points: number;
+  quirks_balance: number;
+  positive_quirk_count: number;
+  species_restricted_jobs?: string[];
+  // EffigyEdit Add End
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];

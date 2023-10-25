@@ -111,12 +111,23 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		font-family = "Arial"
-		font-size = 7
+		font-family = "Grand9K Pixel"
+		font-size = 6pt
 		is-default = true
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
-		style = ".center { text-align: center; } .maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .command_headset { font-weight: bold;\tfont-size: 8px; } .small { font-size: 6px; } .big { font-size: 8px; } .reallybig { font-size: 8px; } .extremelybig { font-size: 8px; } .greentext { color: #00FF00; font-size: 7px; } .redtext { color: #FF0000; font-size: 7px; } .clown { color: #FF69Bf; font-size: 7px;  font-weight: bold; } .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; } .italics { font-size: 6px; }"
+		style = ".center { text-align: center; } .maptext { font-family: 'Grand9K Pixel'; font-size: 6pt; -dm-text-outline: 1px black; color: white; line-height: 1.0; } .command_headset { font-weight: bold; } .context { font-family: 'Pixellari'; font-size: 12pt; -dm-text-outline: 1px black; }  .subcontext { font-family: 'TinyUnicode'; font-size: 12pt; line-height: 0.75; } .small { font-family: 'Spess Font'; font-size: 6pt; line-height: 1.4; } .big { font-family: 'Pixellari'; font-size: 12pt; } .reallybig { font-size: 12pt; } .extremelybig { font-size: 12pt; } .greentext { color: #00FF00; font-size: 6pt; } .redtext { color: #FF0000; font-size: 6pt; } .clown { color: #FF69BF; font-weight: bold; } .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; } .italics { font-family: 'Spess Font'; font-size: 6pt; line-height: 1.4; }"
+	elem "title_browser"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		is-visible = false
+		is-disabled = true
+		saved-params = ""
+		auto-format = false
 	elem "status_bar"
 		type = LABEL
 		pos = 0,464
@@ -150,58 +161,74 @@ window "infowindow"
 		is-vert = false
 	elem "changelog"
 		type = BUTTON
-		pos = 16,5
-		size = 104x20
-		anchor1 = 3,0
-		anchor2 = 19,0
+		pos = 0,8
+		size = 91x20
+		anchor1 = 0,0
+		anchor2 = 14,0
+		font-family = "Chakra Petch"
 		saved-params = "is-checked"
 		text = "Changelog"
 		command = "changelog"
 	elem "rules"
 		type = BUTTON
-		pos = 120,5
-		size = 100x20
-		anchor1 = 19,0
-		anchor2 = 34,0
+		pos = 90,8
+		size = 91x20
+		anchor1 = 14,0
+		anchor2 = 28,0
+		font-family = "Chakra Petch"
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
+	elem "forum"
+		type = BUTTON
+		pos = 180,8
+		size = 91x20
+		anchor1 = 28,0
+		anchor2 = 42,0
+		font-family = "Chakra Petch"
+		saved-params = "is-checked"
+		text = "Tickets"
+		command = "forum"
 	elem "wiki"
 		type = BUTTON
-		pos = 220,5
-		size = 100x20
-		anchor1 = 34,0
-		anchor2 = 50,0
+		pos = 270,8
+		size = 91x20
+		anchor1 = 42,0
+		anchor2 = 56,0
+		font-family = "Chakra Petch"
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
-	elem "forum"
+	elem "webmap"
 		type = BUTTON
-		pos = 320,5
-		size = 100x20
-		anchor1 = 50,0
-		anchor2 = 66,0
+		pos = 360,8
+		size = 91x20
+		anchor1 = 56,0
+		anchor2 = 70,0
+		font-family = "Chakra Petch"
 		saved-params = "is-checked"
-		text = "Forum"
-		command = "forum"
-	elem "github"
+		text = "View WebMap"
+		command = "webmap"
+	elem "ahelp"
 		type = BUTTON
-		pos = 420,5
-		size = 100x20
-		anchor1 = 66,0
-		anchor2 = 81,0
+		pos = 450,8
+		size = 91x20
+		anchor1 = 70,0
+		anchor2 = 84,0
+		font-family = "Chakra Petch"
 		saved-params = "is-checked"
-		text = "Github"
-		command = "github"
+		text = "AdminHelp"
+		command = "Adminhelp"
 	elem "report-issue"
 		type = BUTTON
-		pos = 520,5
-		size = 100x20
-		anchor1 = 81,0
-		anchor2 = 97,0
+		pos = 540,8
+		size = 91x20
+		anchor1 = 84,0
+		anchor2 = 98,0
+		font-family = "Chakra Petch"
 		saved-params = "is-checked"
 		text = "Report Issue"
-		command = "report-issue"
+		command = "effigy-issue"
 
 window "outputwindow"
 	elem "outputwindow"

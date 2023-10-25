@@ -38,9 +38,13 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			misc_list[++misc_list.len] = list(
 				"name" = name,
 				"rank" = rank,
+				"trim" = trim, // EffigyEdit Add Customization
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
+			//Jobs under multiple departments should only be displayed if this is their first department or the command department
+			if(job.departments_list[1] != department_type && !(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
+				continue
 			var/datum/job_department/department = departments_by_type[department_type]
 			if(!department)
 				stack_trace("get_manifest() failed to get job department for [department_type] of [job.type]")
@@ -48,6 +52,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			var/list/entry = list(
 				"name" = name,
 				"rank" = rank,
+				"trim" = trim, // EffigyEdit Add Customization
 				)
 			var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
@@ -94,7 +99,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 
 /// Injects a record into the manifest.
-/datum/manifest/proc/inject(mob/living/carbon/human/person)
+/datum/manifest/proc/inject(mob/living/carbon/human/person, client/person_client) // EffigyEdit Change Customization
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -106,43 +111,52 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		person_gender = "Male"
 	if(person.gender == "female")
 		person_gender = "Female"
+	var/datum/dna/record_dna = new()
+	person.dna.copy_dna(record_dna)
 
 	var/datum/record/locked/lockfile = new(
 		age = person.age,
-		blood_type = person.dna.blood_type,
+		blood_type = record_dna.blood_type,
 		character_appearance = character_appearance,
-		dna_string = person.dna.unique_enzymes,
-		fingerprint = md5(person.dna.unique_identity),
+		dna_string = record_dna.unique_enzymes,
+		fingerprint = md5(record_dna.unique_identity),
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
 		rank = assignment,
-		species = person.dna.species.name,
+		species = record_dna.species.name,
 		trim = assignment,
 		// Locked specifics
-		dna_ref = person.dna,
+		locked_dna = record_dna,
 		mind_ref = person.mind,
 	)
 
 	new /datum/record/crew(
 		age = person.age,
-		blood_type = person.dna.blood_type,
+		blood_type = record_dna.blood_type,
 		character_appearance = character_appearance,
-		dna_string = person.dna.unique_enzymes,
-		fingerprint = md5(person.dna.unique_identity),
+		dna_string = record_dna.unique_enzymes,
+		fingerprint = md5(record_dna.unique_identity),
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
 		rank = assignment,
-		species = person.dna.species.name,
+		species = record_dna.species.name,
 		trim = assignment,
 		// Crew specific
 		lock_ref = REF(lockfile),
-		major_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MAJOR_DISABILITY),
+		major_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MAJOR_DISABILITY, from_scan = TRUE),
 		major_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MAJOR_DISABILITY),
-		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY),
+		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, from_scan = TRUE),
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
+		// EffigyEdit Add - Customization
+		background_information = person_client?.prefs.read_preference(/datum/preference/text/background) || "",
+		exploitable_information = person_client?.prefs.read_preference(/datum/preference/text/exploitable) || "",
+		past_general_records = person_client?.prefs.read_preference(/datum/preference/text/general) || "",
+		past_medical_records = person_client?.prefs.read_preference(/datum/preference/text/medical) || "",
+		past_security_records = person_client?.prefs.read_preference(/datum/preference/text/security) || "",
+		// EffigyEdit Add End
 	)
 
 	return
