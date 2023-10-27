@@ -458,7 +458,7 @@ GLOBAL_LIST_EMPTY(dynamic_forced_rulesets)
 
 /datum/game_mode/dynamic/pre_setup()
 	if(CONFIG_GET(flag/dynamic_config_enabled))
-		var/json_file = file("[global.config.directory]/dynamic.json")
+		var/json_file = file("[global.config.directory]/dynamic_effigy.json") // EffigyEdit Change - Dynamic - Original: dynamic.json
 		if(fexists(json_file))
 			configuration = json_decode(file2text(json_file))
 			if(configuration["Dynamic"])
