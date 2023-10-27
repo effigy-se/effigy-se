@@ -8,7 +8,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	//We'll spawn everything here
 	var/turf/spawn_at = run_loc_floor_bottom_left
 
-	// EFFIGY EDIT ADD START (Unit Tests)
+	// EffigyEdit Add - Unit Tests
 
 	//Not designed to be spawned without a turf.
 	uncreatables += typesof(/obj/effect/abstract/liquid_turf)
@@ -22,7 +22,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	// Can't be bothered adding more to them.
 	uncreatables += list(/obj/item/organ/external/neck_accessory, /obj/item/organ/external/head_accessory)
 
-	// EFFIGY EDIT ADD END (Unit Tests)
+	// EffigyEdit Add End
 
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/original_turf_type = spawn_at.type

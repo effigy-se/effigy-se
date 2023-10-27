@@ -46,13 +46,7 @@
 
 // Wires for the airlock are located in the datum folder, inside the wires datum folder.
 
-#define AIRLOCK_CLOSED 1
-#define AIRLOCK_CLOSING 2
-#define AIRLOCK_OPEN 3
-#define AIRLOCK_OPENING 4
-#define AIRLOCK_DENY 5
-#define AIRLOCK_EMAG 6
-
+/*  // EffigyEdit Change - Moved to code/__DEFINES/_effigy/airlock.dm
 #define AIRLOCK_FRAME_CLOSED "closed"
 #define AIRLOCK_FRAME_CLOSING "closing"
 #define AIRLOCK_FRAME_OPEN "open"
@@ -73,11 +67,12 @@
 #define AIRLOCK_DAMAGE_DEFLECTION_N  21  // Normal airlock damage deflection
 #define AIRLOCK_DAMAGE_DEFLECTION_R  30  // Reinforced airlock damage deflection
 
-#define AIRLOCK_DENY_ANIMATION_TIME (0.8 SECONDS) /// The amount of time for the airlock deny animation to show // EFFIGY EDIT CHANGE
+#define AIRLOCK_DENY_ANIMATION_TIME (0.8 SECONDS) /// The amount of time for the airlock deny animation to show // EffigyEdit Change
 
 #define DOOR_CLOSE_WAIT 60 /// Time before a door closes, if not overridden
 
 #define DOOR_VISION_DISTANCE 11 ///The maximum distance a door will see out to
+*/ // EffigyEdit Change End
 
 /obj/machinery/door/airlock
 	name = "Airlock"
@@ -521,7 +516,7 @@
 		if(AIRLOCK_DENY, AIRLOCK_OPENING, AIRLOCK_CLOSING, AIRLOCK_EMAG)
 			icon_state = "nonexistenticonstate" //MADNESS
 
-// EFFIGY EDIT CHANGE START (#74 Airlocks)
+// EffigyEdit Change START (#74 Airlocks)
 /*
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
@@ -602,7 +597,7 @@
 					floorlight.pixel_y = 0
 			. += floorlight
 */
-// EFFIGY EDIT CHANGE END (#74 Airlocks)
+// EffigyEdit Change END (#74 Airlocks)
 
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)
@@ -1241,17 +1236,17 @@
 	SEND_SIGNAL(src, COMSIG_AIRLOCK_OPEN, forced)
 	operating = TRUE
 	update_icon(ALL, AIRLOCK_OPENING, TRUE)
-	sleep(0.8 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.8 SECONDS) // EffigyEdit Change
 	set_density(FALSE)
 	if(multi_tile)
 		filler.set_density(FALSE)
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	air_update_turf(TRUE, FALSE)
-	sleep(0.2 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.2 SECONDS) // EffigyEdit Change
 	set_opacity(0)
 	update_freelook_sight()
 	layer = OPEN_DOOR_LAYER
-	sleep(0.4 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.4 SECONDS) // EffigyEdit Change
 	update_icon(ALL, AIRLOCK_OPEN, TRUE)
 	operating = FALSE
 	if(delayed_close_requested)
@@ -1319,14 +1314,14 @@
 			filler.density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.8 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.8 SECONDS) // EffigyEdit Change
 	if(!air_tight)
 		set_density(TRUE)
 		if(multi_tile)
 			filler.density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(TRUE, TRUE)
-	sleep(0.6 SECONDS) // EFFIGY EDIT CHANGE
+	sleep(0.6 SECONDS) // EffigyEdit Change
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)
@@ -1399,9 +1394,9 @@
 	assemblytype = initial(airlock.assemblytype)
 	update_appearance()
 
-/obj/machinery/door/airlock/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller, no_id = FALSE)
+/obj/machinery/door/airlock/CanAStarPass(to_dir, datum/can_pass_info/pass_info)
 	//Airlock is passable if it is open (!density), bot has access, and is not bolted shut or powered off)
-	return !density || (check_access(ID) && !locked && hasPower() && !no_id)
+	return !density || (check_access_list(pass_info.access) && !locked && hasPower() && !pass_info.no_id)
 
 /obj/machinery/door/airlock/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(!operating && density && hasPower() && !(obj_flags & EMAGGED))
@@ -2475,15 +2470,7 @@
 	set_density(TRUE)
 	operating = FALSE
 	return TRUE
-
-
-#undef AIRLOCK_CLOSED
-#undef AIRLOCK_CLOSING
-#undef AIRLOCK_OPEN
-#undef AIRLOCK_OPENING
-#undef AIRLOCK_DENY
-#undef AIRLOCK_EMAG
-
+/*  // EffigyEdit Change - Moved to code/__DEFINES/_effigy/airlock.dm
 #undef AIRLOCK_SECURITY_NONE
 #undef AIRLOCK_SECURITY_IRON
 #undef AIRLOCK_SECURITY_PLASTEEL_I_S
@@ -2508,3 +2495,4 @@
 #undef AIRLOCK_FRAME_CLOSING
 #undef AIRLOCK_FRAME_OPEN
 #undef AIRLOCK_FRAME_OPENING
+*/  // EffigyEdit Change End

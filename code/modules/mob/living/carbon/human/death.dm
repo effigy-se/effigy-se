@@ -30,9 +30,6 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 	if(client && !HAS_TRAIT(src, TRAIT_SUICIDED) && !(client in GLOB.dead_players_during_shift))
 		GLOB.dead_players_during_shift += client
 
-	if(!QDELETED(dna)) //The gibbed param is bit redundant here since dna won't exist at this point if they got deleted.
-		dna.species.spec_death(gibbed, src)
-
 	if(SSticker.HasRoundStarted())
 		SSblackbox.ReportDeath(src)
 		log_message("has died (BRUTE: [src.getBruteLoss()], BURN: [src.getFireLoss()], TOX: [src.getToxLoss()], OXY: [src.getOxyLoss()], CLONE: [src.getCloneLoss()])", LOG_ATTACK)
@@ -64,6 +61,6 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 
 /mob/living/carbon/proc/Drain()
 	become_husk(CHANGELING_DRAIN)
-	// ADD_TRAIT(src, TRAIT_BADDNA, CHANGELING_DRAIN) // EFFIGY EDIT REMOVE
+	// ADD_TRAIT(src, TRAIT_BADDNA, CHANGELING_DRAIN) // EffigyEdit Remove
 	blood_volume = 0
 	return TRUE

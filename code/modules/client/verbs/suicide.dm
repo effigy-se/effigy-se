@@ -12,11 +12,11 @@
 	if(!suicide_alert())
 		return
 
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	if(CONFIG_GET(flag/disable_suicide))
 		to_chat(usr, span_warning("Suicide is disabled on this server."))
 		return
-	// EFFIGY EDIT ADD END
+	// EffigyEdit Add End
 
 	set_suicide(TRUE)
 	send_applicable_messages()

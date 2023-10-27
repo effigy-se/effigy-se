@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(ticker)
 	var/roundend_check_paused = FALSE
 
 	var/round_start_time = 0
-	var/round_start_real_time = 0 // EFFIGY EDIT ADD - STATPANEL
+	var/round_start_real_time = 0 // EffigyEdit Add - STATPANEL
 	var/list/round_start_events
 	var/list/round_end_events
 	var/mode_result = "undefined"
@@ -162,10 +162,10 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
-			// send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_announce_new_game)) // EFFIGY EDIT REMOVE
+			// send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_announce_new_game)) // EffigyEdit Remove
 			current_state = GAME_STATE_PREGAME
-			SStitle.change_title_screen() // EFFIGY EDIT ADD - SPLASH
-			addtimer(CALLBACK(SStitle, TYPE_PROC_REF(/datum/controller/subsystem/title, change_title_screen)), 1 SECONDS) // EFFIGY EDIT ADD - SPLASH
+			SStitle.change_title_screen() // EffigyEdit Add - SPLASH
+			addtimer(CALLBACK(SStitle, TYPE_PROC_REF(/datum/controller/subsystem/title, change_title_screen)), 1 SECONDS) // EffigyEdit Add - SPLASH
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 
 			fire()
@@ -191,13 +191,13 @@ SUBSYSTEM_DEF(ticker)
 				return // 'DELAYED' delayed by an admin
 			timeLeft -= wait
 
-			if(timeLeft <= 450 && !tipped) // EFFIGY EDIT CHANGE
+			if(timeLeft <= 450 && !tipped) // EffigyEdit Change
 				send_tip_of_the_round(world, selected_tip)
 				tipped = TRUE
 
 			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && !totalPlayersReady)
 				if(!delay_notified)
-					to_chat(world, "[span_boxannounceorange("Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
+					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
 					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
 					message_admins("Game setup delayed due to lack of players.")
 					log_game("Game setup delayed due to lack of players.")
@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(ticker)
 				SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
-				SSevents.reschedule() // EFFIGY EDIT CHANGE
+				SSevents.reschedule() // EffigyEdit Change
 				if(start_immediately)
 					fire()
 
@@ -235,7 +235,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, span_boxannounceblue("Starting game..."))
+	to_chat(world, SPAN_BOX_ALERT(BLUE, "Starting game..."))
 	var/init_start = world.timeofday
 
 	mode = new /datum/game_mode/dynamic
@@ -270,7 +270,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!CONFIG_GET(flag/ooc_during_round))
 		toggle_ooc(FALSE) // Turn it off
 
-	SSnightshift.check_nightshift() // EFFIGY EDIT ADD (Reset the lights)
+	SSnightshift.check_nightshift() // EffigyEdit Add (Reset the lights)
 	CHECK_TICK
 	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
 	create_characters() //Create player characters
@@ -287,7 +287,7 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
-	round_start_real_time = REALTIMEOFDAY // EFFIGY EDIT ADD - STATPANEL
+	round_start_real_time = REALTIMEOFDAY // EffigyEdit Add - STATPANEL
 	SSautotransfer.new_shift(round_start_real_time)
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
 
@@ -306,7 +306,7 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, span_notice("and..."))
 		for(var/holidayname in GLOB.holidays)
 			var/datum/holiday/holiday = GLOB.holidays[holidayname]
-			to_chat(world, "<h4>[holiday.greet()]</h4>")
+			to_chat(world, span_info(holiday.greet()))
 
 	PostSetup()
 
@@ -338,7 +338,7 @@ SUBSYSTEM_DEF(ticker)
 
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
-		SSpersistence.load_modular_persistence(iter_human.get_organ_slot(ORGAN_SLOT_BRAIN)) // EFFIGY EDIT ADDITION - (#184 Modular Persistence - Ported From Skyrat)
+		SSpersistence.load_modular_persistence(iter_human.get_organ_slot(ORGAN_SLOT_BRAIN)) // EffigyEdit AddITION - (#184 Modular Persistence - Ported From Skyrat)
 
 		if(!iter_human.hardcore_survival_score)
 			continue
@@ -372,11 +372,11 @@ SUBSYSTEM_DEF(ticker)
 			GLOB.joined_player_list += player.ckey
 			var/atom/destination = player.mind.assigned_role.get_roundstart_spawn_point()
 			if(!destination) // Failed to fetch a proper roundstart location, won't be going anywhere.
-				player.show_title_screen() // EFFIGY EDIT ADD - SPLASH
+				player.show_title_screen() // EffigyEdit Add - SPLASH
 				continue
 			player.create_character(destination)
-		else 							// EFFIGY EDIT ADD - SPLASH
-			player.show_title_screen() // EFFIGY EDIT ADD - SPLASH
+		else 							// EffigyEdit Add - SPLASH
+			player.show_title_screen() // EffigyEdit Add - SPLASH
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
@@ -447,13 +447,13 @@ SUBSYSTEM_DEF(ticker)
 				new_player_mob.client.prefs.hardcore_random_setup(new_player_living)
 			SSquirks.AssignQuirks(new_player_living, new_player_mob.client)
 
-		// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add - Customization
 		if(ishuman(new_player_living))
 			for(var/datum/loadout_item/item as anything in loadout_list_to_datums(new_player_mob.client?.prefs?.loadout_list))
 				if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
 					continue
 				item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
-		// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+		// EffigyEdit Add End
 		CHECK_TICK
 
 	if(captainless)
@@ -728,7 +728,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boxannounceorange("An admin has delayed the round end."))
+		to_chat(world, SPAN_BOX_ALERT(ORANGE, "An admin has delayed the round end."))
 		return
 
 	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
@@ -738,7 +738,7 @@ SUBSYSTEM_DEF(ticker)
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boxannounceorange("Reboot was cancelled by an admin."))
+		to_chat(world, SPAN_BOX_ALERT(ORANGE, "Reboot was cancelled by an admin."))
 		return
 	if(end_string)
 		end_state = end_string

@@ -163,7 +163,7 @@
 #define INIT_ORDER_AI_CONTROLLERS 55 //So the controller can get the ref
 #define INIT_ORDER_TICKER 55
 #define INIT_ORDER_TCG 55
-#define INIT_ORDER_AUTOMAPPER 51 // EFFIGY EDIT ADD - We need to load just before mapping.
+#define INIT_ORDER_AUTOMAPPER 51 // EffigyEdit Add - We need to load just before mapping.
 #define INIT_ORDER_MAPPING 50
 #define INIT_ORDER_EARLY_ASSETS 48
 #define INIT_ORDER_RESEARCH 47
@@ -173,7 +173,7 @@
 #define INIT_ORDER_OUTPUTS 35
 #define INIT_ORDER_RESTAURANT 34
 #define INIT_ORDER_TTS 33
-#define INIT_ORDER_EFFIGY 31 // EFFIGY EDIT ADD
+#define INIT_ORDER_EFFIGY 31 // EffigyEdit Add
 #define INIT_ORDER_ATOMS 30
 #define INIT_ORDER_LANGUAGE 25
 #define INIT_ORDER_MACHINES 20

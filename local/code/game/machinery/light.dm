@@ -1,6 +1,7 @@
 /// Dynamically calculate nightshift brightness. How TG does it is painful to modify.
-#define NIGHTSHIFT_LIGHT_MODIFIER 0.15
-#define NIGHTSHIFT_COLOR_MODIFIER 0.10
+#define NIGHTSHIFT_POWER_MODIFIER 0.25
+#define NIGHTSHIFT_RANGE_MODIFIER 0.25
+#define NIGHTSHIFT_COLOR_MODIFIER 0.15
 
 /atom
 	light_power = 1.25
@@ -8,17 +9,18 @@
 /obj/machinery/light
 	icon = 'local/icons/obj/lighting.dmi'
 	overlay_icon = 'local/icons/obj/lighting_overlay.dmi'
-	brightness = 6.5
-	fire_brightness = 4.5
+	brightness = 6
+	fire_brightness = 6
 	fire_colour = "#D47F9B"
 	bulb_colour = "#d4d4ff"
-	bulb_power = 1.15
+	bulb_power = 1.4
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
-	bulb_low_power_colour = LIGHT_COLOR_DARK_BLUE
-	bulb_low_power_brightness_mul = 0.4
-	bulb_low_power_pow_min = 0.4
+	bulb_low_power_colour = COLOR_STRONG_BLUE
+	bulb_low_power_brightness_mul = 0.75
+	bulb_low_power_pow_mul = 0.75
+	bulb_low_power_pow_min = 0.75
 	bulb_emergency_colour = LIGHT_COLOR_INTENSE_RED
-	bulb_major_emergency_brightness_mul = 0.7
+	bulb_major_emergency_brightness_mul = 1
 	power_consumption_rate = 5.62
 	var/maploaded = FALSE //So we don't have a lot of stress on startup.
 	var/turning_on = FALSE //More stress stuff.
@@ -42,8 +44,8 @@
 	else if(color)
 		new_color = color
 	else if (nightshift_enabled)
-		new_brightness -= new_brightness * NIGHTSHIFT_LIGHT_MODIFIER
-		new_power -= new_power * NIGHTSHIFT_LIGHT_MODIFIER
+		new_brightness -= NIGHTSHIFT_RANGE_MODIFIER
+		new_power -= NIGHTSHIFT_POWER_MODIFIER
 		if(!color && nightshift_light_color)
 			new_color = nightshift_light_color
 		else if(color) // In case it's spraypainted.
@@ -64,7 +66,7 @@
 	var/matching = light && new_brightness == light.light_range && new_power == light.light_power && new_color == light.light_color
 	if(!matching)
 		switchcount++
-		if( prob( min(60, (switchcount**2)*0.01) ) )
+		if(prob(min(60, (switchcount**2)*0.01)))
 			if(trigger)
 				burn_out()
 		else
@@ -127,16 +129,16 @@
 
 // Kneecapping light values every light at a time.
 /obj/machinery/light/dim
-	brightness = 4
-	nightshift_brightness = 4
+	brightness = 3.5
+	nightshift_brightness = 3
 	bulb_colour = "#d4d4ff"
-	bulb_power = 0.4
+	bulb_power = 1.15
 
 /obj/machinery/light/small
-	brightness = 5
-	nightshift_brightness = 4.5
+	brightness = 3.5
+	nightshift_brightness = 3
 	bulb_colour = "#d4d4ff"
-	bulb_power = 0.9
+	bulb_power = 1.3
 
 /obj/machinery/light/cold
 	nightshift_light_color = null
@@ -146,5 +148,6 @@
 	nightshift_light_color = null
 
 
-#undef NIGHTSHIFT_LIGHT_MODIFIER
+#undef NIGHTSHIFT_POWER_MODIFIER
+#undef NIGHTSHIFT_RANGE_MODIFIER
 #undef NIGHTSHIFT_COLOR_MODIFIER

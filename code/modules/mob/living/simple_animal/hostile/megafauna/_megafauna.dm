@@ -25,7 +25,7 @@
 	pull_force = MOVE_FORCE_OVERPOWERING
 	mob_size = MOB_SIZE_HUGE
 	layer = LARGE_MOB_LAYER //Looks weird with them slipping under mineral walls and cameras and shit otherwise
-	plane = GAME_PLANE_UPPER // EFFIGY EDIT CHANGE
+	plane = GAME_PLANE_UPPER // EffigyEdit Change
 	mouse_opacity = MOUSE_OPACITY_OPAQUE // Easier to click on in melee, they're giant targets anyway
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	/// Crusher loot dropped when the megafauna is killed with a crusher
@@ -114,7 +114,7 @@
 
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/AttackingTarget()
+/mob/living/simple_animal/hostile/megafauna/AttackingTarget(atom/attacked_target)
 	if(recovery_time >= world.time)
 		return
 	. = ..()

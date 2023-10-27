@@ -46,9 +46,9 @@
 			. += span_warning("It doesn't seem to be responding.")
 		if(DEAD)
 			. += span_deadsay("It looks like its system is corrupted and requires a reset.")
-	//EFFIGY EDIT ADD START- Silicon Flavor text (Ported from SR)
+	//EffigyEdit Add -- Silicon Flavor text (Ported from SR)
 	. += get_silicon_flavortext()
-	//EFFIGY EDIT ADD END
+	//EffigyEdit Add End
 	. += "</span>"
 
 	. += ..()

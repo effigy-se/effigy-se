@@ -18,6 +18,8 @@
 	var/initial_language_holder = /datum/language_holder
 	/// Holds all languages this mob can speak and understand
 	VAR_PRIVATE/datum/language_holder/language_holder
+	/// The list of factions this atom belongs to
+	var/list/faction
 
 	var/verb_say = "says"
 	var/verb_ask = "asks"
@@ -97,7 +99,7 @@
 	/// The degree of pressure protection that mobs in list/contents have from the external environment, between 0 and 1
 	var/contents_pressure_protection = 0
 	/// Whether a user will face atoms on entering them with a mouse. Despite being a mob variable, it is here for performances
-	var/face_mouse = FALSE // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	var/face_mouse = FALSE // EffigyEdit Add - Customization
 	/// The voice that this movable makes when speaking
 	var/voice
 
@@ -274,7 +276,11 @@
 	QDEL_NULL(em_block)
 	// We're gonna build a light, and mask it with the base turf's appearance
 	// grab a 32x32 square of it
-	var/mutable_appearance/light = new(GLOB.fullbright_overlays[GET_TURF_PLANE_OFFSET(generate_for) + 1])
+	// I would like to use GLOB.starbright_overlays here
+	// But that breaks down for... some? reason. I think recieving a render relay breaks keep_together or something
+	// So we're just gonna accept  that this'll break with starlight color changing. hardly matters since this is really only for offset stuff, but I'd love to fix it someday
+	var/mutable_appearance/light = new(GLOB.starlight_objects[GET_TURF_PLANE_OFFSET(generate_for) + 1])
+	light.render_target = ""
 	light.appearance_flags |= KEEP_TOGETHER
 	// Now apply a copy of the turf, set to multiply
 	// This will multiply against our light, so we only light up the bits that aren't "on" the wall
@@ -424,7 +430,7 @@
 			else
 				to_chat(src, span_warning("You are not Superman."))
 		return FALSE
-	if(!(z_move_flags & ZMOVE_IGNORE_OBSTACLES) && !(start.zPassOut(src, direction, destination, (z_move_flags & ZMOVE_ALLOW_ANCHORED)) && destination.zPassIn(src, direction, start)))
+	if((!(z_move_flags & ZMOVE_IGNORE_OBSTACLES) && !(start.zPassOut(direction) && destination.zPassIn(direction))) || (!(z_move_flags & ZMOVE_ALLOW_ANCHORED) && anchored))
 		if(z_move_flags & ZMOVE_FEEDBACK)
 			to_chat(rider || src, span_warning("You couldn't move there!"))
 		return FALSE
@@ -611,7 +617,7 @@
 	if(!direction)
 		direction = get_dir(src, newloc)
 
-	if(set_dir_on_move && dir != direction && update_dir && !face_mouse) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+	if(set_dir_on_move && dir != direction && update_dir && !face_mouse) // EffigyEdit Change Customization
 		setDir(direction)
 
 	var/is_multi_tile_object = is_multi_tile_object(src)
@@ -737,7 +743,7 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!. && set_dir_on_move && update_dir && !face_mouse) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+				if(!. && set_dir_on_move && update_dir && !face_mouse) // EffigyEdit Change Customization
 					setDir(first_step_dir)
 				else if(!inertia_moving)
 					newtonian_move(direct)
@@ -777,7 +783,7 @@
 
 	last_move = direct
 
-	if(set_dir_on_move && dir != direct && update_dir) // EFFIGY EDIT TODO (#3 Customization - Ported from Skyrat)
+	if(set_dir_on_move && dir != direct && update_dir) // EffigyEdit TODO - Customization
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE
@@ -1215,7 +1221,7 @@
 	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
 		return TRUE
 
-	if(locate(/obj/structure/spacevine) in range(1, get_turf(src))) //EFFIGY EDIT CHANGE (Allow walking when vines are around)
+	if(locate(/obj/structure/spacevine) in range(1, get_turf(src))) //EffigyEdit Change (Allow walking when vines are around)
 		return TRUE
 
 	return FALSE
@@ -1654,3 +1660,20 @@
 */
 /atom/movable/proc/keybind_face_direction(direction)
 	setDir(direction)
+
+/**
+ * Check if the other atom/movable has any factions the same as us. Defined at the atom/movable level so it can be defined for just about anything.
+ *
+ * If exact match is set, then all our factions must match exactly
+ */
+/atom/movable/proc/faction_check_atom(atom/movable/target, exact_match)
+	if(!exact_match)
+		return faction_check(faction, target.faction, FALSE)
+
+	var/list/faction_src = LAZYCOPY(faction)
+	var/list/faction_target = LAZYCOPY(target.faction)
+	if(!("[REF(src)]" in faction_target)) //if they don't have our ref faction, remove it from our factions list.
+		faction_src -= "[REF(src)]" //if we don't do this, we'll never have an exact match.
+	if(!("[REF(target)]" in faction_src))
+		faction_target -= "[REF(target)]" //same thing here.
+	return faction_check(faction_src, faction_target, TRUE)

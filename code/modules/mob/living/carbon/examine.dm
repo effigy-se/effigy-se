@@ -6,7 +6,7 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) // EFFIGY EDIT CHANGE
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) // EffigyEdit Change
 	var/obscured = check_obscured_slots()
 
 	if (handcuffed)
@@ -26,7 +26,7 @@
 	if (back)
 		. += "[t_He] [t_has] [back.get_examine_string(user)] on [t_his] back."
 
-	. += EXAMINE_SECTION_BREAK // EFFIGY EDIT ADD
+	. += EXAMINE_SECTION_BREAK // EffigyEdit Add
 
 	var/appears_dead = FALSE
 	if (stat == DEAD)
@@ -154,7 +154,7 @@
 
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
 
-// EFFIGY EDIT REMOVE START (Medical)
+// EffigyEdit Remove START (Medical)
 /*
 /mob/living/carbon/examine_more(mob/user)
 	. = ..()
@@ -183,4 +183,4 @@
 
 	return .
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END

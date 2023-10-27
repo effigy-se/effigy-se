@@ -633,7 +633,7 @@
 
 INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 
-// EFFIGY EDIT REMOVE START - SPLASH
+// EffigyEdit Remove START - SPLASH
 /*
 /atom/movable/screen/splash/Initialize(mapload, datum/hud/hud_owner, client/C, visible, use_previous_title)
 	. = ..()
@@ -655,7 +655,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 
 	holder.screen += src
 */
-// EFFIGY EDIT REMOVE END - SPLASH
+// EffigyEdit Remove END - SPLASH
 /atom/movable/screen/splash/proc/Fade(out, qdel_after = TRUE)
 	if(QDELETED(src))
 		return

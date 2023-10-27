@@ -217,7 +217,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	var/mc_started = FALSE
 
 	//to_chat(world, span_boldannounce("Initializing subsystems..."))
-	add_startup_message("Initializing subsystems...") // EFFIGY EDIT CHANGE - SPLASH
+	add_startup_message("Initializing subsystems...") // EffigyEdit Change - SPLASH
 
 	var/list/stage_sorted_subsystems = new(INITSTAGE_MAX)
 	for (var/i in 1 to INITSTAGE_MAX)
@@ -257,7 +257,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 
 
 	var/msg = "Initialization complete in [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, span_boxannounceblue("[msg]"))
+	to_chat(world, SPAN_BOX_ALERT(BLUE, "[msg]"))
 	log_world(msg)
 
 
@@ -312,7 +312,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 	// Gave invalid return value.
 	if(result && !(result in valid_results))
 		warning("[subsystem.name] subsystem initialized, returning invalid result [result]. This is a bug.")
-		add_startup_message("[subsystem.name] subsystem initialized, returning invalid result [result].", TRUE) // EFFIGY EDIT ADD (#2 Splash)
+		add_startup_message("[subsystem.name] subsystem initialized, returning invalid result [result].", TRUE) // EffigyEdit Add (#2 Splash)
 
 	// just returned ..() or didn't implement Initialize() at all
 	if(result == SS_INIT_NONE)
@@ -349,14 +349,14 @@ GLOBAL_REAL(Master, /datum/controller/master)
 			chat_warning = TRUE
 
 	var/message = "[message_prefix] Completed in [seconds] second[seconds == 1 ? "" : "s"]!"
-	// EFFIGY EDIT REMOVE START (#2 Splash)
+	// EffigyEdit Remove START (#2 Splash)
 	/*
 	var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
 	*/
-	// EFFIGY EDIT REMOVE END (#2 Splash)
+	// EffigyEdit Remove END (#2 Splash)
 
 	if(result != SS_INIT_NO_MESSAGE)
-		add_startup_message(message_prefix, chat_warning) // EFFIGY EDIT ADD (#2 Splash)
+		add_startup_message(message_prefix, chat_warning) // EffigyEdit Add (#2 Splash)
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)

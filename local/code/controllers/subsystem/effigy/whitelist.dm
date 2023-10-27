@@ -65,7 +65,7 @@
 	requested_link = SSeffigy.ckey_to_effigy_id(ckey_to_match)
 	if(!requested_link)
 		log_effigy_api("Could not find an Effigy ID for ckey [ckey_to_match] in database!", notify_admins = FALSE) // we don't use the default notify since the message is customised and in a div
-		message_admins(span_boxannouncered("ckey validation in database for [ckey_to_match] failed! Check SQL log for details."))
+		message_admins(SPAN_BOX_ALERT(RED, "ckey validation in database for [ckey_to_match] failed! Check SQL log for details."))
 		return FALSE
 	else
 		log_effigy_api("Validation passed for [ckey_to_match].", notify_admins = TRUE)

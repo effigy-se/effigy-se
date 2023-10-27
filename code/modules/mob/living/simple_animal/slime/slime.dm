@@ -298,15 +298,6 @@
 		amount = -abs(amount)
 	return ..() //Heals them
 
-/mob/living/simple_animal/slime/bullet_act(obj/projectile/Proj, def_zone, piercing_hit = FALSE)
-	attacked += 10
-	if((Proj.damage_type == BURN))
-		adjustBruteLoss(-abs(Proj.damage)) //fire projectiles heals slimes.
-		Proj.on_hit(src, 0, piercing_hit)
-	else
-		. = ..(Proj)
-	. = . || BULLET_ACT_BLOCK
-
 /mob/living/simple_animal/slime/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -490,7 +481,7 @@
 	return
 
 /mob/living/simple_animal/slime/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) // EFFIGY EDIT CHANGE
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) // EffigyEdit Change
 	if (stat == DEAD)
 		. += span_deadsay("It is limp and unresponsive.")
 	else

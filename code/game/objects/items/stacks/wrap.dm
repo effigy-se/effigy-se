@@ -83,6 +83,7 @@
 		parcel.base_icon_state = "deliverypackage5"
 		parcel.update_icon()
 		user.forceMove(parcel)
+		parcel.contains_mobs = TRUE // EffigyEdit Change - CARGO BORGS
 		parcel.add_fingerprint(user)
 		return OXYLOSS
 	else
@@ -109,6 +110,10 @@
 		return
 	if(target.anchored)
 		return
+	// EffigyEdit Add - Cargo borgs
+	if(!amount)
+		return
+	// EffigyEdit Add End
 
 	if(isitem(target))
 		. |= AFTERATTACK_PROCESSED_ITEM
@@ -151,6 +156,12 @@
 			closet.forceMove(parcel)
 			parcel.add_fingerprint(user)
 			closet.add_fingerprint(user)
+			// EffigyEdit Add - Cargo borgs
+			for(var/item in closet.get_all_contents())
+				if(istype(item, /mob))
+					parcel.contains_mobs = TRUE
+					break
+			// EffigyEdit Add End
 		else
 			balloon_alert(user, "not enough paper!")
 			return

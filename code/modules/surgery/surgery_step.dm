@@ -256,7 +256,7 @@
  * * pain_message - The message to be displayed
  * * mechanical_surgery - Boolean flag that represents if a surgery step is done on a mechanical limb (therefore does not force scream)
  */
-// EFFIGY EDIT CHANGE START: Fixes painkillers not actually stopping pain. Adds mood effects to painful surgeries.
+// EffigyEdit Change START: Fixes painkillers not actually stopping pain. Adds mood effects to painful surgeries.
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
 	if(target.stat >= UNCONSCIOUS || HAS_TRAIT(target, TRAIT_NUMBED)) //the unconscious do not worry about pain
 		return
@@ -267,7 +267,7 @@
 	target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery)
 	if(prob(30))
 		target.emote("scream")
-// EFFIGY EDIT CHANGE END
+// EffigyEdit Change END
 
 #undef SURGERY_SPEED_DISSECTION_MODIFIER
 #undef SURGERY_SPEED_MORBID_CURIOSITY

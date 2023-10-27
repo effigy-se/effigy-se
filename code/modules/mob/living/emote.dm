@@ -2,7 +2,7 @@
 /* EMOTE DATUMS */
 /datum/emote/living
 	mob_type_allowed_typecache = /mob/living
-	mob_type_blacklist_typecache = list(/mob/living/brain) //EFFIGY EDIT - OVERWRITTEN BY `local/code/modules/modular_implants/soulcatcher\soulcatcher_mob.dm`
+	mob_type_blacklist_typecache = list(/mob/living/brain) // EffigyEdit Change - OVERWRITTEN BY `local/code/modules/modular_implants/soulcatcher\soulcatcher_mob.dm`
 
 /datum/emote/living/blush
 	key = "blush"
@@ -272,7 +272,7 @@
 		qdel(kiss_blower)
 		to_chat(user, span_warning("You're incapable of blowing a kiss in your current state."))
 
-// EFFIGY EDIT REMOVE START - (Moved to packages)
+// EffigyEdit Remove START - (Moved to packages)
 /*
 /datum/emote/living/laugh
 	key = "laugh"
@@ -297,7 +297,7 @@
 		else
 			return pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
 	return ..() && user.can_speak(allow_mimes = TRUE)
@@ -714,7 +714,7 @@
 /datum/emote/living/custom/replace_pronoun(mob/user, message)
 	return message
 
-// EFFIGY EDIT REMOVE START (Synths)
+// EffigyEdit Remove START (Synths)
 /*
 /datum/emote/living/human/beep
 	key = "beep"
@@ -725,7 +725,7 @@
 	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon)
 	emote_type = EMOTE_AUDIBLE
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/emote/living/inhale
 	key = "inhale"

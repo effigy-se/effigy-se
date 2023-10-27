@@ -315,11 +315,11 @@
 		/obj/item/flashlight/pen,
 		/obj/item/healthanalyzer,
 		/obj/item/hemostat,
-		/obj/item/hypospray/mkii, // EFFIGY EDIT ADD
+		/obj/item/hypospray/mkii, // EffigyEdit Add
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
-		/obj/item/reagent_containers/cup/hypovial, // EFFIGY EDIT ADD
+		/obj/item/reagent_containers/cup/hypovial, // EffigyEdit Add
 		/obj/item/reagent_containers/cup/tube,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/syringe,

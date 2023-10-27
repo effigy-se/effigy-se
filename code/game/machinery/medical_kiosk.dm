@@ -263,7 +263,7 @@
 		var/list/trauma_text = list()
 		for(var/t in patient.get_traumas())
 			var/datum/brain_trauma/trauma = t
-			if(!trauma.display_scanner) // EFFIGY EDIT ADD
+			if(!trauma.display_scanner) // EffigyEdit Add
 				continue
 			var/trauma_desc = ""
 			switch(trauma.resilience)

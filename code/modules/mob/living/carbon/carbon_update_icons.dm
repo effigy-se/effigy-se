@@ -85,8 +85,8 @@
 	SEND_SIGNAL(src, COMSIG_CARBON_REMOVE_OVERLAY, cache_index, I)
 
 //used when putting/removing clothes that hide certain mutant body parts to just update those and not update the whole body.
-/mob/living/carbon/human/proc/update_mutant_bodyparts(force_update = FALSE) // EFFIGY EDIT CHANGE (force_update)
-	dna?.species.handle_mutant_bodyparts(src, force_update = force_update) // EFFIGY EDIT CHANGE (force_update)
+/mob/living/carbon/human/proc/update_mutant_bodyparts(force_update = FALSE) // EffigyEdit Change (force_update)
+	dna?.species.handle_mutant_bodyparts(src, force_update = force_update) // EffigyEdit Change (force_update)
 	update_body_parts()
 
 /mob/living/carbon/update_body(is_creating = FALSE)
@@ -364,7 +364,7 @@
 
 	apply_overlay(WOUND_LAYER)
 
-// EFFIGY EDIT REMOVE START (Moved to packages)
+// EffigyEdit Remove START (Moved to packages)
 /*
 /mob/living/carbon/update_worn_mask()
 	remove_overlay(FACEMASK_LAYER)
@@ -426,11 +426,11 @@
 
 	apply_overlay(HEAD_LAYER)
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /mob/living/carbon/update_worn_handcuffs()
 	remove_overlay(HANDCUFF_LAYER)
-	if(handcuffed && !(handcuffed.item_flags & ABSTRACT)) // EFFIGY EDIT CHANGE
+	if(handcuffed && !(handcuffed.item_flags & ABSTRACT)) // EffigyEdit Change
 		var/mutable_appearance/handcuff_overlay = mutable_appearance('icons/mob/simple/mob.dmi', "handcuff1", -HANDCUFF_LAYER)
 		if(handcuffed.blocks_emissive != EMISSIVE_BLOCK_NONE)
 			handcuff_overlay.overlays += emissive_blocker(handcuff_overlay.icon, handcuff_overlay.icon_state, src, alpha = handcuff_overlay.alpha)
@@ -468,7 +468,7 @@
 //Overlays for the worn overlay so you can overlay while you overlay
 //eg: ammo counters, primed grenade flashing, etc.
 //"icon_file" is used automatically for inhands etc. to make sure it gets the right inhand file
-/obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, mutant_styles = NONE) // EFFIGY EDIT CHANGE
+/obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, mutant_styles = NONE) // EffigyEdit Change
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/list)
 

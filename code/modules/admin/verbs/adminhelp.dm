@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START (moved to packages/admin)
+// EffigyEdit Remove START (moved to packages/admin)
 /*
 
 /// Client var used for returning the ahelp verb
@@ -1142,4 +1142,4 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 #undef WEBHOOK_NON_URGENT
 
 */
-// EFFIGY EDIT REMOVE END (moved to packages/admin)
+// EffigyEdit Remove END (moved to packages/admin)

@@ -33,7 +33,7 @@
 	var/glass_colour_type
 	/// Whether or not vision coloring is forcing
 	var/forced_glass_color = FALSE
-	supports_variations_flags = CLOTHING_SNOUTED_VOX_VARIATION // EFFIGY EDIT ADD
+	supports_variations_flags = CLOTHING_SNOUTED_VOX_VARIATION // EffigyEdit Add
 
 /obj/item/clothing/glasses/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] is stabbing \the [src] into [user.p_their()] eyes! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -53,7 +53,7 @@
 
 /obj/item/clothing/glasses/weldingvisortoggle(mob/user)
 	. = ..()
-	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : initial(alternate_worn_layer) // EFFIGY EDIT CHANGE
+	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : initial(alternate_worn_layer) // EffigyEdit Change
 	if(. && user)
 		user.update_sight()
 		if(iscarbon(user))
@@ -74,7 +74,7 @@
 				eyes.apply_organ_damage(5)
 
 /obj/item/clothing/glasses/AltClick(mob/user)
-	. = ..() // EFFIGY EDIT ADD
+	. = ..() // EffigyEdit Add
 	if(glass_colour_type && !forced_glass_color && ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 
@@ -455,7 +455,7 @@
 	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	flags_cover = GLASSESCOVERSEYES
 	glass_colour_type = /datum/client_colour/glass_colour/gray
-	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER // EFFIGY EDIT CHANGE
+	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER // EffigyEdit Change
 
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
 	weldingvisortoggle(user)

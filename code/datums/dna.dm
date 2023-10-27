@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		destination.dna.default_mutation_genes = default_mutation_genes
 	if(transfer_species)
 		//destination.set_species(species.type, icon_update=0) - ORIGINAL
-		destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) // EFFIGY EDIT CHANGE (#3 Customization - Ported from Skyrat)
+		destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) // EffigyEdit Change Customization
 
 /datum/dna/proc/copy_dna(datum/dna/new_dna)
 	new_dna.unique_enzymes = unique_enzymes
@@ -495,46 +495,53 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
-	if(mrace && has_dna())
-		var/datum/species/new_race
-		if(ispath(mrace))
-			new_race = new mrace
-		else if(istype(mrace))
-			new_race = mrace
-		else
-			return
-		death_sound = new_race.death_sound
+	if(isnull(mrace))
+		CRASH("set_species called without a species to set to")
+	if(!has_dna())
+		return
 
-		var/datum/species/old_species = dna.species
-		dna.species = new_race
+	var/datum/species/new_race
+	if(ispath(mrace))
+		new_race = new mrace
+	else if(istype(mrace))
+		if(QDELING(mrace))
+			CRASH("someone is calling set_species() and is passing it a qdeling species datum, this is VERY bad, stop it")
+		new_race = mrace
+	else
+		CRASH("set_species called with an invalid mrace [mrace]")
 
-		if (old_species.properly_gained)
-			old_species.on_species_loss(src, new_race, pref_load)
+	death_sound = new_race.death_sound
 
-		// EffigyEdit Add - Customization
-		if(override_mutantparts && override_mutantparts.len)
-			for(var/feature in dna.mutant_bodyparts)
-				override_mutantparts[feature] = dna.mutant_bodyparts[feature]
-			dna.mutant_bodyparts = override_mutantparts
+	var/datum/species/old_species = dna.species
+	dna.species = new_race
 
-		if(override_markings && override_markings.len)
-			for(var/feature in dna.body_markings)
-				override_markings[feature] = dna.body_markings[feature]
-			dna.body_markings = override_markings
+	if (old_species.properly_gained)
+		old_species.on_species_loss(src, new_race, pref_load)
 
-		if(override_features && override_features.len)
-			for(var/feature in dna.features)
-				override_features[feature] = dna.features[feature]
-			dna.features = override_features
-		// EffigyEdit Add End
+	// EffigyEdit Add - Customization
+	if(override_mutantparts && override_mutantparts.len)
+		for(var/feature in dna.mutant_bodyparts)
+			override_mutantparts[feature] = dna.mutant_bodyparts[feature]
+		dna.mutant_bodyparts = override_mutantparts
 
-		apply_customizable_dna_features_to_species()
-		dna.unique_features = dna.generate_unique_features()
+	if(override_markings && override_markings.len)
+		for(var/feature in dna.body_markings)
+			override_markings[feature] = dna.body_markings[feature]
+		dna.body_markings = override_markings
 
-		dna.update_body_size()
+	if(override_features && override_features.len)
+		for(var/feature in dna.features)
+			override_features[feature] = dna.features[feature]
+		dna.features = override_features
+	// EffigyEdit Add End
 
-		dna.species.on_species_gain(src, old_species, pref_load)
-		log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
+	apply_customizable_dna_features_to_species()
+	dna.unique_features = dna.generate_unique_features()
+
+	dna.update_body_size()
+
+	dna.species.on_species_gain(src, old_species, pref_load)
+	log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
@@ -625,7 +632,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		else
 			gender = PLURAL
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove START Customization
 /*
 /mob/living/carbon/human/updateappearance(icon_update = TRUE, mutcolor_update = FALSE, mutations_overlay_update = FALSE)
 	..()
@@ -694,7 +701,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(mutations_overlay_update)
 			update_mutations_overlay()
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove END Customization
 
 /mob/proc/domutcheck()
 	return

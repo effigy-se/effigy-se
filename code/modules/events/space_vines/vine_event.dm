@@ -53,9 +53,9 @@
 		else
 			selected_mutations = override_mutations
 		if(isnull(potency))
-			potency = rand(20,40) // EFFIGY EDIT CHANGE
+			potency = rand(20,40) // EffigyEdit Change
 		if(isnull(production))
-			production = rand(2, 8) // EFFIGY EDIT CHANGE
+			production = rand(2, 8) // EffigyEdit Change
 
 		new /datum/spacevine_controller(floor, selected_mutations, potency, production, src) //spawn a controller at turf with randomized stats and a single random mutation
 
@@ -94,7 +94,7 @@
 	max_value = 100
 
 /datum/event_admin_setup/input_number/spacevine_potency/prompt_admins()
-	default_value = rand(20, 40) // EFFIGY EDIT CHANGE
+	default_value = rand(20, 40) // EffigyEdit Change
 	return ..()
 
 /datum/event_admin_setup/input_number/spacevine_potency/apply_to_event(datum/round_event/spacevine/event)
@@ -106,7 +106,7 @@
 	max_value = 10
 
 /datum/event_admin_setup/input_number/spacevine_production/prompt_admins()
-	default_value = rand(2, 8) // EFFIGY EDIT CHANGE
+	default_value = rand(2, 8) // EffigyEdit Change
 	return ..()
 
 /datum/event_admin_setup/input_number/spacevine_production/apply_to_event(datum/round_event/spacevine/event)

@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove START
 /*
 /proc/generate_lizard_side_shot(datum/sprite_accessory/sprite_accessory, key, include_snout = TRUE)
 	var/static/icon/lizard
@@ -147,4 +147,4 @@
 	var/datum/sprite_accessory/tails/lizard/smooth/tail = /datum/sprite_accessory/tails/lizard/smooth
 	return initial(tail.name)
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END

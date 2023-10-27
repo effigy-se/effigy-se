@@ -17,7 +17,7 @@
 		/datum/surgery_step/clamp_bleeders,
 		/datum/surgery_step/sever_limb,
 	)
-	removes_target_bodypart = TRUE // EFFIGY EDIT ADD
+	removes_target_bodypart = TRUE // EffigyEdit Add
 
 /datum/surgery/amputation/can_start(mob/user, mob/living/patient)
 	if(HAS_TRAIT(patient, TRAIT_NODISMEMBER))

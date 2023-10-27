@@ -9,25 +9,25 @@ import { JobsPage } from './JobsPage';
 import { MainPage } from './MainPage';
 import { SpeciesPage } from './SpeciesPage';
 import { QuirksPage } from './QuirksPage';
-import { LanguagesPage } from './LanguagesMenu'; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-import { LimbsPage } from './LimbsPage'; // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+import { LanguagesPage } from './LanguagesMenu'; // EffigyEdit Add Customization
+import { LimbsPage } from './LimbsPage'; // EffigyEdit Add Customization
 enum Page {
   Antags,
   Main,
   Jobs,
-  Limbs, // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
-  Languages, // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+  Limbs, // EffigyEdit Add Customization
+  Languages, // EffigyEdit Add Customization
   Species,
   Quirks,
 }
 
 const CharacterProfiles = (props: {
-  activeSlot: number; // EFFIGY EDIT CHANGE
+  activeSlot: number; // EffigyEdit Change
   onClick: (index: number) => void;
   profiles: (string | null)[];
 }) => {
   const { profiles, activeSlot, onClick } = props;
-  // EFFIGY EDIT CHANGE
+  // EffigyEdit Change
   return (
     <Flex align="center" justify="center">
       <Flex.Item width="25%">
@@ -66,14 +66,14 @@ export const CharacterPreferenceWindow = (props, context) => {
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
-    // EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+    // EffigyEdit Add - Customization
     case Page.Limbs:
       pageContents = <LimbsPage />;
       break;
     case Page.Languages:
       pageContents = <LanguagesPage />;
       break;
-    // EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+    // EffigyEdit Add End
     case Page.Main:
       pageContents = (
         <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
@@ -142,7 +142,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
               {
-                // EFFIGY EDIT CHANGE START (#3 Customization - Ported from Skyrat)
+                // EffigyEdit Change START Customization
               }
               <Stack.Item grow>
                 <PageButton
@@ -162,7 +162,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
               {
-                // // EFFIGY EDIT CHANGE END (#3 Customization - Ported from Skyrat)
+                // // EffigyEdit Change END Customization
               }
               <Stack.Item grow>
                 <PageButton

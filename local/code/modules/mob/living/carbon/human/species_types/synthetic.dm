@@ -85,8 +85,7 @@
 	playsound(transformer.loc, 'sound/machines/chime.ogg', 50, TRUE)
 	transformer.visible_message(span_notice("[transformer]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("All systems nominal. You're back online!"))
 
-/datum/species/synthetic/spec_death(gibbed, mob/living/carbon/human/transformer)
-	. = ..()
+/datum/species/synthetic/proc/death_bsod(mob/living/carbon/human/transformer)
 	saved_screen = screen
 	switch_to_screen(transformer, "BSOD")
 	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, "Blank"), 5 SECONDS)
@@ -94,6 +93,7 @@
 /datum/species/synthetic/on_species_gain(mob/living/carbon/human/transformer)
 	. = ..()
 
+	RegisterSignal(transformer, COMSIG_LIVING_DEATH, PROC_REF(death_bsod))
 	var/screen_mutant_bodypart = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN]
 	var/obj/item/organ/internal/eyes/eyes = transformer.get_organ_slot(ORGAN_SLOT_EYES)
 
@@ -155,6 +155,8 @@
 
 	if(screen)
 		screen.Remove(human)
+
+	UnregisterSignal(human, COMSIG_LIVING_DEATH)
 
 /**
  * Simple proc to switch the screen of a monitor-enabled synth, while updating their appearance.

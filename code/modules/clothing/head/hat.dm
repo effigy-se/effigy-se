@@ -90,11 +90,11 @@
 	inhand_icon_state = null
 
 /obj/item/clothing/head/cowboy
-	name = "bounty hunting hat"
+	name = "cowboy hat"
 	desc = "Ain't nobody gonna cheat the hangman in my town."
 	icon = 'icons/obj/clothing/head/cowboy.dmi'
 	worn_icon = 'icons/mob/clothing/head/cowboy.dmi'
-	icon_state = "cowboy"
+	icon_state = "cowboy_hat_brown"
 	worn_icon_state = "hunter"
 	inhand_icon_state = null
 	armor_type = /datum/armor/head_cowboy
@@ -126,6 +126,10 @@
 
 /// Bounty hunter's hat, very likely to intercept bullets
 /obj/item/clothing/head/cowboy/bounty
+	name = "bounty hunting hat"
+	desc = "Reach for the skies, pardner."
+	icon_state = "bounty_hunter"
+	worn_icon_state = "hunter"
 	deflect_chance = 50
 
 /obj/item/clothing/head/cowboy/black
@@ -257,7 +261,7 @@
 	flags_inv = 0
 	armor_type = /datum/armor/hats_centcom_cap
 	strip_delay = (8 SECONDS)
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON // EFFIGY EDIT ADD
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON // EffigyEdit Add
 
 /datum/armor/hats_centcom_cap
 	melee = 30
@@ -279,7 +283,7 @@
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"
 	inhand_icon_state = null
-	flags_inv = HIDEEARS // EFFIGY EDIT CHANGE
+	flags_inv = HIDEEARS // EffigyEdit Change
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	dog_fashion = /datum/dog_fashion/head/ushanka

@@ -40,7 +40,7 @@
 
 #define DNA_UNI_IDENTITY_BLOCKS 8
 
-// EFFIGY EDIT REMOVE START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove - Customization
 /*
 /// This number needs to equal the total number of DNA blocks
 #define DNA_MUTANT_COLOR_BLOCK 1
@@ -58,7 +58,7 @@
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
 */
-// EFFIGY EDIT REMOVE END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Remove End
 
 #define DNA_MANDATORY_COLOR_BLOCKS 5
 #define DNA_MUTANT_COLOR_BLOCK 1

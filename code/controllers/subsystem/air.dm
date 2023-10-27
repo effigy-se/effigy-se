@@ -605,7 +605,7 @@ SUBSYSTEM_DEF(air)
 		log_active_turfs() // invoke this here so we can count the time it takes to run this proc as "wasted time", quite simple honestly.
 
 		var/msg = "HEY! LISTEN! [SSmapping.config?.map_name] has [starting_ats] active turfs connected to [ending_ats - starting_ats] other turfs! You should fix that!"
-		to_chat(world, span_boxannounceorange("[msg]"))
+		to_chat(world, SPAN_BOX_ALERT(ORANGE, "[msg]"))
 		warning(msg)
 
 /// Logs all active turfs at roundstart to the mapping log so it can be readily accessed.

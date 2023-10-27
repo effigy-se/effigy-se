@@ -8,7 +8,6 @@
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/red = 4,
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/white = 4,
 		/obj/item/clothing/under/rank/medical/doctor/skyrat/utility = 4,
-		/obj/item/clothing/suit/toggle/labcoat/medical = 4,
 		/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis = 2,
 	)
 
@@ -59,9 +58,6 @@
 		/obj/item/clothing/mask/breath = 2,
 		/obj/item/reagent_containers/cup/bottle/morphine = 2,
 		/obj/item/reagent_containers/syringe = 2,
-		/obj/item/storage/backpack/science/robo = 2,
-		/obj/item/storage/backpack/satchel/science/robo = 2,
-		/obj/item/storage/backpack/duffelbag/science/robo = 2,
 	)
 
 /obj/machinery/vending/wardrobe/science_wardrobe

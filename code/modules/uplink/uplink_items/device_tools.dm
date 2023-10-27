@@ -46,7 +46,7 @@
 	desc = "When linked to a tram's on board computer systems, this device allows the user to manipulate the controls remotely. \
 		Includes direction toggle and a rapid mode to bypass door safety checks and crossing signals. \
 		Perfect for running someone over in the name of a tram malfunction!"
-	item = /obj/item/tram_remote
+	item = /obj/item/assembly/control/transport/remote
 	cost = 2
 
 /datum/uplink_item/device_tools/thermal
@@ -175,7 +175,7 @@
 	cost = 3
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
-// EFFIGY EDIT REMOVE START
+// EffigyEdit Remove START
 /*
 /datum/uplink_item/device_tools/suspiciousphone
 	name = "Protocol CRAB-17 Phone"
@@ -186,7 +186,7 @@
 	cost = 7
 	limited_stock = 1
 */
-// EFFIGY EDIT REMOVE END
+// EffigyEdit Remove END
 
 /datum/uplink_item/device_tools/binary
 	name = "Binary Translator Key"

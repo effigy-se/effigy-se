@@ -29,7 +29,7 @@
 		return
 	if(!isnull(mask_type))
 		new mask_type(src)
-	// EFFIGY EDIT ADD START (Vox)
+	// EffigyEdit Add - Vox
 	if(!isplasmaman(loc))
 		if(isvox(loc))
 			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
@@ -37,7 +37,7 @@
 			new internal_type(src)
 	else
 		new /obj/item/tank/internals/plasmaman/belt(src)
-	// EFFIGY EDIT ADD END (Vox)
+	// EffigyEdit Add End
 
 	if(!isnull(medipen_type))
 		new medipen_type(src)
@@ -48,7 +48,7 @@
 
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_RADIOACTIVE_NEBULA))
 		new /obj/item/storage/pill_bottle/potassiodide(src)
-	
+
 	if(SSmapping.is_planetary() && LAZYLEN(SSmapping.multiz_levels))
 		new /obj/item/climbing_hook/emergency(src)
 
@@ -57,16 +57,16 @@
 	new /obj/item/radio/off(src)
 
 /obj/item/storage/box/survival/proc/wardrobe_removal()
-	if(!isplasmaman(loc) && !isvox(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one // EFFIGY EDIT CHANGE
+	if(!isplasmaman(loc) && !isvox(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one // EffigyEdit Change
 		return
 	var/obj/item/mask = locate(mask_type) in src
 	var/obj/item/internals = locate(internal_type) in src
-	// EFFIGY EDIT ADD START (Vox) - Vox mimic the above and below behavior, removing the redundant mask/internals; they dont mimic the plasma breathing though
+	// EffigyEdit Add - Vox mimic the above and below behavior, removing the redundant mask/internals; they dont mimic the plasma breathing though
 	if(!isvox(loc))
 		new /obj/item/tank/internals/plasmaman/belt(src)
 	else
 		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
-	// EFFIGY EDIT ADD END (Vox)
+	// EffigyEdit Add End
 	qdel(mask) // Get rid of the items that shouldn't be
 	qdel(internals)
 

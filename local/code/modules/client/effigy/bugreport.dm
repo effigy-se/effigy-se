@@ -22,20 +22,20 @@
 	var/effigy_ticket_id = 0
 
 	if(!effigy_player_id)
-		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = span_boxannouncered("Failed to start a new Issue Report: Please create an Issue Report to report this issue."))
-		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = span_boxannouncered("Alternatively, scream into the void. Both are equally effective options right now."))
+		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = SPAN_BOX_ALERT(RED, "Failed to start a new Issue Report: Please create an Issue Report to report this issue."))
+		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = SPAN_BOX_ALERT(RED, "Alternatively, scream into the void. Both are equally effective options right now."))
 		return
 
 	title = tgui_input_text(src, message = "", title = "Issue Report - Title", max_length = 128, multiline = FALSE, encode = TRUE, timeout = 0)
 
 	if(!title)
-		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = span_boxannouncered("Failed to start a new Issue Report: You need to put a title for the submission!"))
+		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = SPAN_BOX_ALERT(RED, "Failed to start a new Issue Report: You need to put a title for the submission!"))
 		return
 
 	content = tgui_input_text(src, message = "", title = "Detailed issue description", max_length = MAX_MESSAGE_LEN, multiline = TRUE, encode = TRUE, timeout = 0)
 
 	if(!content)
-		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = span_boxannouncered("Failed to start a new Issue Report: You need to put content in the submission!"))
+		to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = SPAN_BOX_ALERT(RED, "Failed to start a new Issue Report: You need to put content in the submission!"))
 		return
 
 	var/server_rev = copytext(GLOB.revdata.commit, 1, 8)
@@ -74,6 +74,6 @@
 	var/request = SSeffigy.create_message_request(ef_type, event_id, effigy_player_id, effigy_ticket_id, ef_box, title, processed_content)
 	INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
 	log_game("Issue report created: [event_id] [content]")
-	to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = span_boxannounceblue("Issue Report: [event_id] created."))
+	to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = SPAN_BOX_ALERT(BLUE, "Issue Report: [event_id] created."))
 
 

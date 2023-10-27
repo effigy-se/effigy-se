@@ -32,7 +32,7 @@
 	ninja.mind.add_antag_datum(/datum/antagonist/ninja)
 	spawned_mobs += ninja
 
-	// EFFIGY EDIT ADD START (Character slot)
+	// EffigyEdit Add - Character slot
 	var/loadme = tgui_input_list(ninja, "Do you wish to load your character slot?", "Load Character?", list("Yes!", "No, I want to be random!"), default = "No, I want to be random!", timeout = 60 SECONDS)
 	var/codename
 	if(loadme == "Yes!")
@@ -45,7 +45,7 @@
 	else
 		ninja.randomize_human_appearance(~(RANDOMIZE_NAME|RANDOMIZE_SPECIES))
 		ninja.dna.update_dna_identity()
-	// EFFIGY EDIT ADD END (Character slot)
+	// EffigyEdit Add End
 
 	message_admins("[ADMIN_LOOKUPFLW(ninja)] has been made into a space ninja by an event.")
 	ninja.log_message("was spawned as a ninja by an event.", LOG_GAME)
@@ -57,9 +57,9 @@
 
 /proc/create_space_ninja(spawn_loc)
 	var/mob/living/carbon/human/new_ninja = new(spawn_loc)
-	// new_ninja.randomize_human_appearance(~(RANDOMIZE_NAME|RANDOMIZE_SPECIES)) // EFFIGY EDIT REMOVE (Character slot)
+	// new_ninja.randomize_human_appearance(~(RANDOMIZE_NAME|RANDOMIZE_SPECIES)) // EffigyEdit Remove (Character slot)
 	var/new_name = "[pick(GLOB.ninja_titles)] [pick(GLOB.ninja_names)]"
 	new_ninja.name = new_name
 	new_ninja.real_name = new_name
-	// new_ninja.dna.update_dna_identity() // EFFIGY EDIT REMOVE (Character slot)
+	// new_ninja.dna.update_dna_identity() // EffigyEdit Remove (Character slot)
 	return new_ninja

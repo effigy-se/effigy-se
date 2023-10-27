@@ -277,10 +277,10 @@
 		stack_trace("We tried to check a gas_mixture that doesn't exist for its firetype, what are you DOING")
 		return
 
-	var/pressure = environment?.return_pressure() // EFFIGY EDIT ADD
+	var/pressure = environment?.return_pressure() // EffigyEdit Add
 	if(environment.temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
 		return FIRELOCK_ALARM_TYPE_HOT
-	if(environment.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE || pressure < WARNING_LOW_PRESSURE) // EFFIGY EDIT CHANGE (Add pressure)
+	if(environment.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE || pressure < WARNING_LOW_PRESSURE) // EffigyEdit Change (Add pressure)
 		return FIRELOCK_ALARM_TYPE_COLD
 	return
 
@@ -728,7 +728,7 @@
 	if(!(border_dir == dir)) //Make sure looking at appropriate border
 		return TRUE
 
-/obj/machinery/door/firedoor/border_only/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller, no_id = FALSE)
+/obj/machinery/door/firedoor/border_only/CanAStarPass(to_dir, datum/can_pass_info/pass_info)
 	return !density || (dir != to_dir)
 
 /obj/machinery/door/firedoor/border_only/proc/on_exit(datum/source, atom/movable/leaving, direction)

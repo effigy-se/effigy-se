@@ -1,4 +1,4 @@
-// EFFIGY EDIT REMOVE
+// EffigyEdit Remove
 /*
 /obj/item/bodypart/head/moth
 	icon = 'icons/mob/human/species/moth/bodyparts.dmi'

@@ -93,12 +93,12 @@
 	switch(damage_type)
 		if(BRUTE)
 			if(damage_amount)
-				//EFFIGY EDIT ADD START - CREDITS TO WHITEDREAM(valtos)
+				//EffigyEdit Add - - CREDITS TO WHITEDREAM(valtos)
 				playsound(src, pick('local/sound/effects/metalblock1.wav', 'local/sound/effects/metalblock2.wav', \
 									'local/sound/effects/metalblock3.wav', 'local/sound/effects/metalblock4.wav', \
 									'local/sound/effects/metalblock5.wav', 'local/sound/effects/metalblock6.wav', \
 									'local/sound/effects/metalblock7.wav', 'local/sound/effects/metalblock8.wav'), 50, TRUE)
-				//EFFIGY EDIT ADD END
+				//EffigyEdit Add End
 			else
 				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
 		if(BURN)
@@ -151,4 +151,6 @@
 
 /// A cut-out proc for [/atom/proc/bullet_act] so living mobs can have their own armor behavior checks without causing issues with needing their own on_hit call
 /atom/proc/check_projectile_armor(def_zone, obj/projectile/impacting_projectile, is_silent)
+	if(uses_integrity)
+		return clamp(PENETRATE_ARMOUR(get_armor_rating(impacting_projectile.armor_flag), impacting_projectile.armour_penetration), 0, 100)
 	return 0

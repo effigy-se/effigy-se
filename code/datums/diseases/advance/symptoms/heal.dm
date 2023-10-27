@@ -378,7 +378,7 @@
 			return power * 0.9
 		if(SOFT_CRIT)
 			return power * 0.5
-	if(M.getBruteLoss() + M.getFireLoss() >= 103 && !active_coma) // EFFIGY EDIT CHANGE - Original 70
+	if(M.getBruteLoss() + M.getFireLoss() >= 103 && !active_coma) // EffigyEdit Change - Original 70
 		to_chat(M, span_warning("You feel yourself slip into a regenerative coma..."))
 		active_coma = TRUE
 		addtimer(CALLBACK(src, PROC_REF(coma), M), 60)

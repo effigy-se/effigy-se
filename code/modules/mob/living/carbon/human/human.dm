@@ -23,7 +23,7 @@
 
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, PROC_REF(clean_face))
 	AddComponent(/datum/component/personal_crafting)
-	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) // EFFIGY EDIT CHANGE
+	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) // EffigyEdit Change
 	AddComponent(/datum/component/bloodysoles/feet)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/human)
 	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human/, should_strip))
@@ -410,8 +410,8 @@
 
 
 	//Check for nonhuman scum
-	// if(dna && dna.species.id && dna.species.id != SPECIES_HUMAN) // EFFIGY EDIT REMOVE
-	//	threatcount += 1 // EFFIGY EDIT REMOVE
+	// if(dna && dna.species.id && dna.species.id != SPECIES_HUMAN) // EffigyEdit Remove
+	//	threatcount += 1 // EffigyEdit Remove
 
 	//mindshield implants imply trustworthyness
 	if(HAS_TRAIT(src, TRAIT_MINDSHIELD))
@@ -782,10 +782,10 @@
 			if(initial(quirk_type.abstract_parent_type) == type)
 				continue
 
-			// EFFIGY EDIT ADD START
+			// EffigyEdit Add -
 			if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
 				continue
-			// EFFIGY EDIT ADD END
+			// EffigyEdit Add End
 
 			var/qname = initial(quirk_type.name)
 			options[has_quirk(quirk_type) ? "[qname] (Remove)" : "[qname] (Add)"] = quirk_type
@@ -981,7 +981,7 @@
 	if (!isnull(race))
 		dna.species = new race
 
-/mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // EFFIGY EDIT CHANGE
+/mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // EffigyEdit Change
 	. = ..()
 	if(use_random_name)
 		fully_replace_character_name(real_name, dna.species.random_name())

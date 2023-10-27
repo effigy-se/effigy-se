@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 /proc/ui_style2icon(ui_style)
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
 
-// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add - Customization
 GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	"Glass" = 'local/icons/lewd/obj/lewd_items/inventory_icons/glass.dmi',
 	"Midnight" = 'local/icons/lewd/obj/lewd_items/inventory_icons/midnight.dmi',
@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 /proc/erp_ui_style2icon(ui_style)
 	return GLOB.available_erp_ui_styles[ui_style] || GLOB.available_erp_ui_styles[GLOB.available_erp_ui_styles[1]]
-// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+// EffigyEdit Add End
 
 /datum/hud
 	var/mob/mymob
@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/inventory_shown = FALSE //Equipped item inventory
 	var/hotkey_ui_hidden = FALSE //This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
-	var/atom/movable/screen/ammo_counter // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+	var/atom/movable/screen/ammo_counter // EffigyEdit Add Customization
 
 	var/atom/movable/screen/blobpwrdisplay
 
@@ -118,7 +118,12 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
-	var/erp_ui_style // EFFIGY EDIT ADD (#3 Customization - Ported from Skyrat)
+	var/erp_ui_style // EffigyEdit Add Customization
+
+	// List of weakrefs to objects that we add to our screen that we don't expect to DO anything
+	// They typically use * in their render target. They exist solely so we can reuse them,
+	// and avoid needing to make changes to all idk 300 consumers if we want to change the appearance
+	var/list/asset_refs_for_reuse = list()
 
 /datum/hud/New(mob/owner)
 	mymob = owner
@@ -151,6 +156,11 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 		plane_master_controllers[controller_instance.name] = controller_instance
 
 	owner.overlay_fullscreen("see_through_darkness", /atom/movable/screen/fullscreen/see_through_darkness)
+
+	// Register onto the global spacelight appearances
+	// So they can be render targeted by anything in the world
+	for(var/obj/starlight_appearance/starlight as anything in GLOB.starlight_objects)
+		register_reuse(starlight)
 
 	RegisterSignal(SSmapping, COMSIG_PLANE_OFFSET_INCREASE, PROC_REF(on_plane_increase))
 	RegisterSignal(mymob, COMSIG_MOB_LOGIN, PROC_REF(client_refresh))
@@ -267,6 +277,8 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 /datum/hud/proc/on_plane_increase(datum/source, old_max_offset, new_max_offset)
 	SIGNAL_HANDLER
+	for(var/i in old_max_offset + 1 to new_max_offset)
+		register_reuse(GLOB.starlight_objects[i + 1])
 	build_plane_groups(old_max_offset + 1, new_max_offset)
 
 /// Creates the required plane masters to fill out new z layers (because each "level" of multiz gets its own plane master set)
@@ -395,6 +407,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	reorganize_alerts(screenmob)
 	screenmob.reload_fullscreen()
 	update_parallax_pref(screenmob)
+	update_reuse(screenmob)
 
 	// ensure observers get an accurate and up-to-date view
 	if (!viewmob)
@@ -445,6 +458,22 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 	ui_style = new_ui_style
 	build_hand_slots()
+
+/datum/hud/proc/register_reuse(atom/movable/screen/reuse)
+	asset_refs_for_reuse += WEAKREF(reuse)
+	mymob?.client?.screen += reuse
+
+/datum/hud/proc/unregister_reuse(atom/movable/screen/reuse)
+	asset_refs_for_reuse -= WEAKREF(reuse)
+	mymob?.client?.screen -= reuse
+
+/datum/hud/proc/update_reuse(mob/show_to)
+	for(var/datum/weakref/screen_ref as anything in asset_refs_for_reuse)
+		var/atom/movable/screen/reuse = screen_ref.resolve()
+		if(isnull(reuse))
+			asset_refs_for_reuse -= screen_ref
+			continue
+		show_to.client?.screen += reuse
 
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()

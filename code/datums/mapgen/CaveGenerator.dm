@@ -101,7 +101,7 @@
 
 	var/message = "[name] terrain generation finished in [(REALTIMEOFDAY - start_time)/10]s!"
 	// to_chat(world, span_boldannounce("[message]"))
-	add_startup_message(message) // EFFIGY EDIT CHANGE - SPLASH
+	add_startup_message(message) // EffigyEdit Change - SPLASH
 	log_world(message)
 
 /datum/map_generator/cave_generator/populate_terrain(list/turfs, area/generate_in)
@@ -189,6 +189,6 @@
 		CHECK_TICK
 
 	var/message = "[name] terrain population finished in [(REALTIMEOFDAY - start_time)/10]s!"
-	// to_chat(world, span_boldannounce("[message]")) -- EFFIGY EDIT REMOVAL
-	add_startup_message(message) // EFFIGY EDIT ADD - SPLASH
+	// to_chat(world, span_boldannounce("[message]")) // EffigyEdit Remove - SPLASH
+	add_startup_message(message) // EffigyEdit Add - SPLASH
 	log_world(message)

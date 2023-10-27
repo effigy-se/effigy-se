@@ -72,7 +72,7 @@
 	///Controls if the limb is disabled. TRUE means it is disabled (similar to being removed, but still present for the sake of targeted interactions).
 	var/bodypart_disabled = FALSE
 	///Handles limb disabling by damage. If 0 (0%), a limb can't be disabled via damage. If 1 (100%), it is disabled at max limb damage. Anything between is the percentage of damage against maximum limb damage needed to disable the limb.
-	var/disabling_threshold_percentage = 1 // EFFIGY EDIT CHANGE - COMBAT
+	var/disabling_threshold_percentage = 1 // EffigyEdit Change - COMBAT
 
 	// Damage variables
 	///A mutiplication of the burn and brute damage that the limb's stored damage contributes to its attached mob's overall wellbeing.
@@ -652,12 +652,12 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
-		// EFFIGY EDIT CHANGE START (#3 Medical)
+		// EffigyEdit Change START (#3 Medical)
 		//Consider moving this to a new species proc "spec_heal" maybe?
 		if(owner.stat == DEAD && owner?.dna?.species && (TRAIT_REVIVES_BY_HEALING in owner.dna.species.inherent_traits))
 			if(owner.health > 50)
 				owner.revive(FALSE)
-		// EFFIGY EDIT CHANGE END (#3 Medical)
+		// EffigyEdit Change END (#3 Medical)
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
@@ -929,7 +929,7 @@
 	if(should_draw_greyscale) //Should the limb be colored?
 		draw_color ||= species_color || (skin_tone ? skintone2hex(skin_tone) : null)
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add - Customization
 	var/datum/species/owner_species = human_owner.dna.species
 
 	if(owner_species && owner_species.specific_alpha != 255)
@@ -938,7 +938,7 @@
 	if(aux_zone)
 		aux_zone_markings = LAZYCOPY(owner.dna.species.body_markings[aux_zone])
 	markings_alpha = owner.dna.species.markings_alpha
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	recolor_external_organs()
 	return TRUE
@@ -953,8 +953,8 @@
 		icon_state = initial(icon_state)//no overlays found, we default back to initial icon.
 		return
 	for(var/image/img as anything in standing)
-		img.pixel_x = px_x
-		img.pixel_y = px_y
+		img.pixel_x += px_x
+		img.pixel_y += px_y
 	add_overlay(standing)
 
 ///Generates an /image for the limb to be used as an overlay
@@ -1020,13 +1020,13 @@
 			draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
 		if(draw_color)
-			// EFFIGY EDIT CHANGE START (#3 Customization)
+			// EffigyEdit Change START (#3 Customization)
 			var/limb_color = alpha != 255 ? "[draw_color][num2hex(alpha, 2)]" : "[draw_color]"
 
 			limb.color = limb_color
 			if(aux_zone)
 				aux.color = limb_color
-			// EFFIGY EDIT CHANGE END (#3 Customization)
+			// EffigyEdit Change END (#3 Customization)
 
 		//EMISSIVE CODE START
 		// For some reason this was applied as an overlay on the aux image and limb image before.
@@ -1065,7 +1065,7 @@
 				if(overlay.layers & external_layer)
 					. += overlay.get_overlay(external_layer, src)
 
-	// EFFIGY EDIT ADD START (#3 Customization - Ported from Skyrat) Body Markings
+	// EffigyEdit Add - Customization Body Markings
 	var/override_color
 	var/atom/offset_spokesman = owner || src
 	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
@@ -1120,7 +1120,7 @@
 				. += accessory_overlay
 				if (emissive)
 					. += emissive
-	// EFFIGY EDIT ADD END (#3 Customization - Ported from Skyrat)
+	// EffigyEdit Add End
 
 	return .
 
@@ -1376,8 +1376,8 @@
 	var/burn_damage = AUGGED_LIMB_EMP_BURN_DAMAGE
 	if(severity == EMP_HEAVY)
 		time_needed *= 2
-		brute_damage *= 1.3 // Effigy EDIT : Makes Total Brute damage ~30
-		burn_damage *= 1.3 // Effigy EDIT : Makes Total Burn damage ~24
+		brute_damage *= 1.3 // EffigyEdit Change : Makes Total Brute damage ~30
+		burn_damage *= 1.3 // EffigyEdit Change : Makes Total Burn damage ~24
 
 	receive_damage(brute_damage, burn_damage)
 	do_sparks(number = 1, cardinal_only = FALSE, source = owner || src)

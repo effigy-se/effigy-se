@@ -246,7 +246,7 @@
 /mob/living/proc/getToxLoss()
 	return toxloss
 
-/mob/living/proc/can_adjust_tox_loss(amount, forced, required_biotype)
+/mob/living/proc/can_adjust_tox_loss(amount, forced, required_biotype = ALL)
 	if(!forced && ((status_flags & GODMODE) || !(mob_biotypes & required_biotype)))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_LIVING_ADJUST_TOX_DAMAGE, TOX, amount, forced) & COMPONENT_IGNORE_CHANGE)
@@ -312,7 +312,7 @@
 /mob/living/proc/getCloneLoss()
 	return cloneloss
 
-/mob/living/proc/can_adjust_clone_loss(amount, forced, required_biotype)
+/mob/living/proc/can_adjust_clone_loss(amount, forced, required_biotype = ALL)
 	if(!forced && (!(mob_biotypes & required_biotype) || status_flags & GODMODE || HAS_TRAIT(src, TRAIT_NOCLONELOSS)))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_LIVING_ADJUST_CLONE_DAMAGE, CLONE, amount, forced) & COMPONENT_IGNORE_CHANGE)
@@ -344,7 +344,7 @@
 		updatehealth()
 
 /mob/living/proc/adjustOrganLoss(slot, amount, maximum, required_organ_flag)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_ORGAN, slot, amount) // EFFIGY EDIT ADD
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_ORGAN, slot, amount) // EffigyEdit Add
 	return
 
 /mob/living/proc/setOrganLoss(slot, amount, maximum, required_organ_flag)
@@ -356,7 +356,7 @@
 /mob/living/proc/getStaminaLoss()
 	return staminaloss
 
-/mob/living/proc/can_adjust_stamina_loss(amount, forced, required_biotype)
+/mob/living/proc/can_adjust_stamina_loss(amount, forced, required_biotype = ALL)
 	if(!forced && (!(mob_biotypes & required_biotype) || status_flags & GODMODE))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_LIVING_ADJUST_STAMINA_DAMAGE, STAMINA, amount, forced) & COMPONENT_IGNORE_CHANGE)
@@ -373,7 +373,7 @@
 		return 0
 	if(updating_stamina)
 		updatehealth()
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) // EFFIGY EDIT ADD
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) // EffigyEdit Add
 
 /mob/living/proc/setStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE, required_biotype = ALL)
 	if(!forced && (status_flags & GODMODE))

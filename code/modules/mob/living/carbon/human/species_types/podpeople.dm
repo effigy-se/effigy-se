@@ -8,7 +8,7 @@
 		TRAIT_PLANT_SAFE,
 	)
 	external_organs = list(
-		// /obj/item/organ/external/pod_hair = "None", // EFFIGY EDIT REMOVAL (Unit test not required)
+		// /obj/item/organ/external/pod_hair = "None", // EffigyEdit Remove - (Unit test not required)
 	)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_PLANT
 	inherent_factions = list(FACTION_PLANTS, FACTION_VINES)
@@ -77,13 +77,13 @@
 /datum/species/pod/get_physical_attributes()
 	return "Podpeople are in many ways the inverse of shadows, healing in light and starving with the dark. \
 		Their bodies are like tinder and easy to char."
-// EFFIGY EDIT ADD START
+// EffigyEdit Add -
 /datum/species/pod/get_species_description()
 	return "Plant lore!"
 
 /datum/species/pod/get_species_lore()
 	return list("You're a plant!")
-// EFFIGY EDIT ADD END
+// EffigyEdit Add End
 
 /datum/species/pod/create_pref_unique_perks()
 	var/list/to_add = list()

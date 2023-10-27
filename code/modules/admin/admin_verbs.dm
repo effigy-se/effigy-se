@@ -21,12 +21,12 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/secrets,
 	/client/proc/stop_sounds,
 	/client/proc/tag_datum_mapview,
-	/client/proc/addbunkerbypass, // EFFIGY EDIT ADD
-	/client/proc/revokebunkerbypass, // EFFIGY EDIT ADD
-	/client/proc/remove_liquid, // EFFIGY EDIT ADD
-	/client/proc/find_effigy_id, // EFFIGY EDIT ADD
-	/client/proc/link_effigy_id, // EFFIGY EDIT ADD
-	/client/proc/effigy_whitelist, // EFFIGY EDIT ADD
+	/client/proc/addbunkerbypass, // EffigyEdit Add
+	/client/proc/revokebunkerbypass, // EffigyEdit Add
+	/client/proc/remove_liquid, // EffigyEdit Add
+	/client/proc/find_effigy_id, // EffigyEdit Add
+	/client/proc/link_effigy_id, // EffigyEdit Add
+	/client/proc/effigy_whitelist, // EffigyEdit Add
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -52,6 +52,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/admins/proc/view_all_circuits,
 	/datum/verbs/menu/Admin/verb/playerpanel, /* It isn't /datum/admin but it fits no less */
 	/datum/admins/proc/change_shuttle_events, //allows us to change the shuttle events
+	/datum/admins/proc/reset_tram, //tram related admin actions
 // Client procs
 	/client/proc/admin_call_shuttle, /*allows us to call the emergency shuttle*/
 	/client/proc/admin_cancel_shuttle, /*allows us to cancel the emergency shuttle, sending it back to centcom*/
@@ -137,11 +138,11 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/summon_ert,
 	/client/proc/toggle_nuke,
 	/client/proc/toggle_random_events,
-	/client/proc/admin_change_title_screen, // EFFIGY EDIT ADD - SPLASH
-	/client/proc/change_title_screen_notice, // EFFIGY EDIT ADD - SPLASH
-	/client/proc/change_title_screen_html, // EFFIGY EDIT ADD - SPLASH
-	/client/proc/spawn_liquid, // EFFIGY EDIT ADD - LIQUID
-	/client/proc/remove_liquid, // EFFIGY EDIT ADD - LIQUID
+	/client/proc/admin_change_title_screen, // EffigyEdit Add - SPLASH
+	/client/proc/change_title_screen_notice, // EffigyEdit Add - SPLASH
+	/client/proc/change_title_screen_html, // EffigyEdit Add - SPLASH
+	/client/proc/spawn_liquid, // EffigyEdit Add - LIQUID
+	/client/proc/remove_liquid, // EffigyEdit Add - LIQUID
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -243,7 +244,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/validate_puzzgrids,
 	/client/proc/GeneratePipeSpritesheet,
 	/client/proc/view_runtimes,
-	// EFFIGY EDIT ADD START
+	// EffigyEdit Add -
 	/client/proc/reload_interactions, // Interactions
 	/client/proc/test_area_spawner,	// Automapper
 	/client/proc/toggle_liquid_debug, // Customization
@@ -369,16 +370,16 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	set name = "Invisimin"
 	set category = "Admin.Game"
 	set desc = "Toggles ghost-like invisibility (Don't abuse this)"
-	if(holder && mob)
-		if(initial(mob.invisibility) == INVISIBILITY_OBSERVER)
-			to_chat(mob, span_boldannounce("Invisimin toggle failed. You are already an invisible mob like a ghost."), confidential = TRUE)
-			return
-		if(mob.invisibility == INVISIBILITY_OBSERVER)
-			mob.invisibility = initial(mob.invisibility)
-			to_chat(mob, span_boldannounce("Invisimin off. Invisibility reset."), confidential = TRUE)
-		else
-			mob.invisibility = INVISIBILITY_OBSERVER
-			to_chat(mob, span_adminnotice("<b>Invisimin on. You are now as invisible as a ghost.</b>"), confidential = TRUE)
+	if(isnull(holder) || isnull(mob))
+		return
+	if(mob.invisimin)
+		mob.invisimin = FALSE
+		mob.RemoveInvisibility(INVISIBILITY_SOURCE_INVISIMIN)
+		to_chat(mob, span_boldannounce("Invisimin off. Invisibility reset."), confidential = TRUE)
+	else
+		mob.invisimin = TRUE
+		mob.SetInvisibility(INVISIBILITY_OBSERVER, INVISIBILITY_SOURCE_INVISIMIN, INVISIBILITY_PRIORITY_ADMIN)
+		to_chat(mob, span_adminnotice("<b>Invisimin on. You are now as invisible as a ghost.</b>"), confidential = TRUE)
 
 /client/proc/check_antagonists()
 	set name = "Check Antagonists"
@@ -524,7 +525,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	holder.fakekey = new_key
 	createStealthKey()
 	if(isobserver(mob))
-		mob.invisibility = INVISIBILITY_MAXIMUM //JUST IN CASE
+		mob.SetInvisibility(INVISIBILITY_ABSTRACT, INVISIBILITY_SOURCE_STEALTHMODE, INVISIBILITY_PRIORITY_ADMIN)
 		mob.alpha = 0 //JUUUUST IN CASE
 		mob.name = " "
 		mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -538,7 +539,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 /client/proc/disable_stealth_mode()
 	holder.fakekey = null
 	if(isobserver(mob))
-		mob.invisibility = initial(mob.invisibility)
+		mob.RemoveInvisibility(INVISIBILITY_SOURCE_STEALTHMODE)
 		mob.alpha = initial(mob.alpha)
 		if(mob.mind)
 			if(mob.mind.ghostname)

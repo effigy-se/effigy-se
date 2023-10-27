@@ -22,7 +22,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	flags_1 = SUPERMATTER_IGNORES_1
 
-// EFFIGY EDIT CHANGE START
+// EffigyEdit Change START
 /obj/boh_tear/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 10 SECONDS) // vanishes after 10 seconds
@@ -37,7 +37,7 @@
 		roaming = FALSE, \
 		singularity_size = STAGE_SIX, \
 	)
-// EFFIGY EDIT CHANGE END
+// EffigyEdit Change END
 
 /obj/boh_tear/attack_tk(mob/user)
 	if(!isliving(user))
