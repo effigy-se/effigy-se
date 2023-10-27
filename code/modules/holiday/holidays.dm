@@ -549,9 +549,9 @@
 
 /datum/holiday/halloween
 	name = HALLOWEEN
-	begin_day = 29
+	begin_day = 7 // EffigyEdit Change - 79316
 	begin_month = OCTOBER
-	end_day = 2
+	end_day = 3 // EffigyEdit Change - 79316
 	end_month = NOVEMBER
 	holiday_colors = list(COLOR_MOSTLY_PURE_ORANGE, COLOR_PRISONER_BLACK)
 
