@@ -5,6 +5,7 @@
  */
 /datum/security_level/white
 	name = "white"
+	announcement_color = "default"
 	number_level = SEC_LEVEL_WHITE
 	sound = 'sound/misc/notice2.ogg'
 	lowering_to_configuration_key = /datum/config_entry/string/alert_white_downto
@@ -18,6 +19,7 @@
  */
 /datum/security_level/magenta
 	name = "magenta"
+	announcement_color = "pink"
 	number_level = SEC_LEVEL_MAGENTA
 	sound = 'sound/misc/notice2.ogg'
 	lowering_to_configuration_key = /datum/config_entry/string/alert_magenta_downto
@@ -31,6 +33,7 @@
  */
 /datum/security_level/yellow
 	name = "yellow"
+	announcement_color = "yellow"
 	number_level = SEC_LEVEL_YELLOW
 	sound = 'sound/misc/notice1.ogg'
 	lowering_to_configuration_key = /datum/config_entry/string/alert_yellow_downto
@@ -44,6 +47,7 @@
  */
 /datum/security_level/orange
 	name = "orange"
+	announcement_color = "orange"
 	number_level = SEC_LEVEL_ORANGE
 	sound = 'sound/misc/notice1.ogg'
 	lowering_to_configuration_key = /datum/config_entry/string/alert_orange_downto
