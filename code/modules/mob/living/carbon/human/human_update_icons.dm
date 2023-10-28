@@ -790,8 +790,9 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // EffigyEd
 	female_uniform = NO_FEMALE_UNIFORM,
 	override_state = null,
 	override_file = null,
-	mutant_styles = NONE,
-) // EffigyEdit Change - Further outfit modification for outfits (added `mutant_styles` argument)
+	use_height_offset = TRUE,
+	mutant_styles = NONE, // EffigyEdit Add - Further outfit modification for outfits (added `mutant_styles` argument)
+)
 
 	//Find a valid icon_state from variables+arguments
 	var/t_state
@@ -823,7 +824,7 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // EffigyEd
 	//eg: ammo counters, primed grenade flashes, etc.
 	var/list/worn_overlays = worn_overlays(standing, isinhands, file2use, mutant_styles) // EffigyEdit Change - ORIGINAL: var/list/worn_overlays = worn_overlays(standing, isinhands)
 	if(worn_overlays?.len)
-		if(!isinhands && default_layer && ishuman(loc))
+		if(!isinhands && default_layer && ishuman(loc) && use_height_offset)
 			var/mob/living/carbon/human/human_loc = loc
 			if(human_loc.get_mob_height() != HUMAN_HEIGHT_MEDIUM)
 				var/string_form_layer = num2text(default_layer)
