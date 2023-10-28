@@ -925,72 +925,52 @@ em {
   color: #ffd861;
 }
 
-.major_announcement_title {
-  color: #ff0066;
-  text-decoration: underline;
-  font-weight: bold;
-  font-size: 175%;
-}
-
-.major_announcement_text {
-  color: #eaeaea;
-  font-weight: bold;
-  font-size: 125%;
-}
-
-.minor_announcement_title {
-  color: #33d5ff;
-  font-weight: bold;
-  font-size: 150%;
-}
-
-.minor_announcement_text {
-  color: #eaeaea;
-  font-size: 125%;
-}
-
 $alert-stripe-colors: (
-  'default': #00283a,
+  // EffigyEdit Change
+  'default': #252525,
   'green': #003d00,
   'blue': #00283a,
   'pink': #30001b,
   'yellow': #574a00,
   'orange': #593400,
   'red': #420000,
-  'purple': #2c0030,
+  'purple': #2c0030
 );
 
 $alert-stripe-alternate-colors: (
-  'default': #003045,
+  // EffigyEdit Change
+  'default': #292929,
   'green': #004700,
   'blue': #003045,
   'pink': #400025,
   'yellow': #4d4100,
   'orange': #6b4200,
   'red': #520000,
-  'purple': #38003d,
+  'purple': #38003d
 );
 
 $alert-major-header-colors: (
-  'default': #33d5ff,
+  // EffigyEdit Change
+  'default': #ff4791,
   'green': #00ff80,
   'blue': #33d5ff,
   'pink': #ff80b3,
   'yellow': #fff4e0,
   'orange': #feefe7,
   'red': #ffa8c4,
-  'purple': #c7a1f7,
+  'purple': #c7a1f7
 );
 
 $alert-subheader-header-colors: (
-  'default': #ff9ebb,
+  // EffigyEdit Change
+  'default': #33d5ff,
   'green': #ffb3c9,
   'blue': #ff9ebb,
   'pink': #75e3ff,
   'yellow': #75e3ff,
   'orange': #bdf1ff,
   'red': #75e3ff,
-  'purple': #75e3ff,
+  'purple': #75e3ff
 );
 
 $border-width: 4;
@@ -999,7 +979,8 @@ $border-width-px: $border-width * 1px;
 
 .major_announcement_title {
   font-size: 175%;
-  padding: 0rem 0.5rem;
+  // EffigyEdit Change
+  padding: 0rem 0.4rem;
   line-height: 100%;
   text-align: left;
   text-decoration: none;
@@ -1008,8 +989,8 @@ $border-width-px: $border-width * 1px;
 
 .subheader_announcement_text {
   font-weight: bold;
-  padding: 0 0.5rem;
-  padding-top: 0.25rem;
+  // EffigyEdit Change
+  padding: 0.25rem 0 0 0.5rem;
   line-height: 100%;
   width: 100%;
   height: 100%;
@@ -1019,7 +1000,8 @@ $border-width-px: $border-width * 1px;
 
 .major_announcement_text {
   color: #eaeaea;
-  background-color: #131313;
+  // EffigyEdit Change
+  // background-color: #131313;
   font-weight: bold;
   font-size: 100%;
   text-align: left;
@@ -1030,7 +1012,8 @@ $border-width-px: $border-width * 1px;
 
 .minor_announcement_title {
   font-weight: bold;
-  padding: 0 0.5rem;
+  // EffigyEdit Change
+  padding: 0 0.4rem;
   padding-top: 0;
   line-height: 100%;
   width: 100%;
@@ -1040,8 +1023,9 @@ $border-width-px: $border-width * 1px;
 }
 
 .minor_announcement_text {
-  background-color: #202020;
   color: #eaeaea;
+  // EffigyEdit Change - Custom CSS
+  // background-color: #202020;
   padding: 0.5rem 0.5rem;
   text-align: left;
   font-size: 100%;
@@ -1056,11 +1040,11 @@ $border-width-px: $border-width * 1px;
 @each $color-name, $color-value in $alert-stripe-colors {
   .chat_alert_#{$color-name} {
     color: #ffffff;
-    padding: 0.5rem 0.5rem;
     box-shadow: none;
     font-weight: bold;
     margin: 1rem 0 1rem 0;
-    padding: 0;
+    // EffigyEdit Change - Custom CSS
+    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
     display: flex;
     flex-direction: column;
     border-image: repeating-linear-gradient(
@@ -1089,7 +1073,7 @@ $border-width-px: $border-width * 1px;
   .chat_alert_#{$color-name} .subheader_announcement_text {
     color: map.get($alert-subheader-header-colors, $color-name);
   }
-
+  /* // EffigyEdit Remove - Custom CSS
   .chat_alert_#{$color-name} .minor_announcement_text {
     background-color: darken(map.get($alert-stripe-colors, $color-name), 5);
   }
@@ -1097,4 +1081,5 @@ $border-width-px: $border-width * 1px;
   .chat_alert_#{$color-name} .major_announcement_text {
     background-color: darken(map.get($alert-stripe-colors, $color-name), 5);
   }
+  */ // EffigyEdit Remove End
 }
