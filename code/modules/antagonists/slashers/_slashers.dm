@@ -29,8 +29,8 @@
 		var/mob/SlasherToBe = our_slasher
 		SlasherToBe.change_mob_type(mob_type, null, null, TRUE)
 	else
-		var/mob/living/carbon/human/our_slasher
-		our_slasher.equipOutfit(slasher_outfit)
+		var/mob/living/carbon/human/our_carbon = our_slasher
+		our_carbon.equipOutfit(slasher_outfit)
 	give_slasher_abilities(our_slasher)
 
 /// Exists for subtypes to override.
