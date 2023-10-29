@@ -238,7 +238,7 @@ SUBSYSTEM_DEF(ticker)
 	to_chat(world, SPAN_BOX_ALERT(BLUE, "Starting game..."))
 	var/init_start = world.timeofday
 
-	mode = new /datum/game_mode/dynamic
+	mode = new /datum/game_mode/slashco
 
 	CHECK_TICK
 	//Configure mode and assign player to special mode stuff
