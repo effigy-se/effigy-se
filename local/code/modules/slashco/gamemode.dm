@@ -22,7 +22,7 @@
 	our_slasher.mind.set_assigned_role(SSjob.GetJobType(/datum/job/slasher))
 	our_slasher.mind.special_role = ROLE_SLASHER
 
-	for(var/mob/dead/new_player/employee as anything in candidates)
+	for(var/mob/employee as anything in candidates)
 		employee.mind.set_assigned_role(SSjob.GetJobType(/datum/job/slashco_employee))
 
 	return TRUE
@@ -35,9 +35,14 @@
 		var/OurGenerator = pick(GLOB.genstart)
 		GLOB.genstart -= OurGenerator
 		new /obj/machinery/slashco_generator(OurGenerator)
-		var/list/valid_battery_turfs
+		var/list/valid_battery_turfs = list()
 		for(var/turf/open/turf in range(7, OurGenerator))
-			turf += valid_battery_turfs
+			if(!is_safe_turf(turf))
+				continue
+			valid_battery_turfs += turf
+		if(!length(valid_battery_turfs))
+			stack_trace("nowhere safe to put this battery, WTF?")
+			continue
 		new /obj/item/stock_parts/cell/lead(pick(valid_battery_turfs))
 
 /datum/game_mode/slashco/proc/spawn_slashco_sheets()
