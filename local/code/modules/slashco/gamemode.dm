@@ -1,12 +1,24 @@
 /datum/game_mode/slashco
+	var/list/slasher_antag_types
 
 /datum/game_mode/slashco/New()
-	. = ..()
+	slasher_antag_types = subtypesof(/datum/antagonist/slasher)
 
 /datum/game_mode/slashco/pre_setup()
 	spawn_slashco_generators()
 	spawn_slashco_sheets()
 	spawn_slashco_items()
+
+	var/list/candidates = list()
+
+	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
+		if(player.ready == PLAYER_READY_TO_PLAY && player.mind && player.check_preferences())
+			candidates.Add(player)
+
+	var/mob/dead/new_player/our_slasher = pick_n_take(candidates)
+
+	our_slasher.mind.add_antag_datum(pick(slasher_antag_types))
+
 	return TRUE
 
 /datum/game_mode/slashco/post_setup(report)
