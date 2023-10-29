@@ -26,6 +26,10 @@
 	if(ispath(job))
 		job = SSjob.GetJobType(job)
 
+	if(isnull(job))
+		refresh_trim_access()
+		return
+
 	if(isnull(job_changes))
 		job_changes = SSmapping.config.job_changes
 
