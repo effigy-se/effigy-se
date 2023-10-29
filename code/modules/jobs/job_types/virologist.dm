@@ -38,6 +38,8 @@
 	rpg_title = "Plague Doctor"
 	job_flags = STATION_JOB_FLAGS
 
+/datum/job/virologist/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/virologist
 	name = "Virologist"

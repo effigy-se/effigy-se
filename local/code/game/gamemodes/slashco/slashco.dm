@@ -7,7 +7,6 @@
 	spawn_slashco_generators()
 	spawn_slashco_sheets()
 	spawn_slashco_items()
-	spawn_slashco_batteries()
 	return TRUE
 
 /datum/game_mode/slashco/post_setup(report)
@@ -18,6 +17,10 @@
 		var/OurGenerator = pick(GLOB.genstart)
 		GLOB.genstart -= OurGenerator
 		new /obj/machinery/slashco_generator(OurGenerator)
+		var/list/valid_battery_turfs
+		for(var/turf/open/turf in range(7, OurGenerator))
+			turf += valid_battery_turfs
+		new /obj/item/stock_parts/cell/lead(pick(valid_battery_turfs))
 
 /datum/game_mode/slashco/proc/spawn_slashco_sheets()
 	for(var/i in 1 to 24) // Double the sheets you'll need
@@ -39,9 +42,3 @@
 
 		var/our_selection = pick(possibleslashcoitems)
 		new our_selection
-
-/datum/game_mode/slashco/proc/spawn_slashco_batteries()
-	for(var/i in 1 to 3)
-		var/OurBattery = pick(GLOB.batterystart)
-		GLOB.batterystart -= OurBattery
-		new /obj/item/stock_parts/cell/lead(OurBattery)

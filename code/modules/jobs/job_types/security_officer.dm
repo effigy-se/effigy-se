@@ -200,6 +200,9 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		GLOB.security_officer_distribution,
 	)
 
+/datum/job/security_officer/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/outfit/job/security
 	name = "Security Officer"
 	jobtype = /datum/job/security_officer

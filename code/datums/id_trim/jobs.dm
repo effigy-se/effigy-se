@@ -1129,7 +1129,7 @@
 	template_access = null
 
 /datum/id_trim/job/slashco_employee
-	assignment = "SlashCo Employee"
+	assignment = "SlashCo Power Recovery Technician"
 	trim_state = "trim_deathcommando"
 	department_color = COLOR_PRISONER_BLACK
 	subdepartment_color = COLOR_PRISONER_BLACK

@@ -58,6 +58,8 @@
 		award_score -= award_status
 	winner.give_award(/datum/award/score/chef_tourist_score, winner.mob, award_score)
 
+/datum/job/cook/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/cook
 	name = "Cook"

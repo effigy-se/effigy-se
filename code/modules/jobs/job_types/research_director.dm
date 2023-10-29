@@ -50,6 +50,9 @@
 	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
 
 
+/datum/job/research_director/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/outfit/job/rd
 	name = JOB_RESEARCH_DIRECTOR
 	jobtype = /datum/job/research_director

@@ -55,6 +55,9 @@
 	. = ..()
 	. += "\nYou have access to all radio channels, but they are not automatically tuned. Check your radio for more information."
 
+/datum/job/captain/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/outfit/job/captain
 	name = "Captain"
 	jobtype = /datum/job/captain

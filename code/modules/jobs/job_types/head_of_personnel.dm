@@ -46,6 +46,8 @@
 /datum/job/head_of_personnel/get_captaincy_announcement(mob/living/captain)
 	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
 
+/datum/job/head_of_personnel/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/hop
 	name = "Head of Personnel"

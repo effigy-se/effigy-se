@@ -43,6 +43,9 @@
 
 	rpg_title = "Undertaker"
 
+/datum/job/coroner/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/outfit/job/coroner
 	name = "Coroner"
 	jobtype = /datum/job/coroner

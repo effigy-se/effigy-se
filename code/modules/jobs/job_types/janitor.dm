@@ -32,6 +32,9 @@
 
 	job_tone = "slip"
 
+/datum/job/janitor/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/outfit/job/janitor
 	name = "Janitor"
 	jobtype = /datum/job/janitor

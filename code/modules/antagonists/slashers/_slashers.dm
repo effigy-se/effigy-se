@@ -7,9 +7,10 @@
 	antagpanel_category = "Slashers"
 	show_to_ghosts = TRUE
 	var/mob_type = /mob/living/carbon/human
+	var/slasher_outfit = /datum/outfit/job/assistant
 
 /datum/antagonist/slasher/get_preview_icon()
-	var/icon/icon = icon('icons/mob/nonhuman-player/spacedragon.dmi', "spacedragon")
+	var/icon/icon = icon('local/icons/mob/slashers.dmi', "amogus")
 	icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
 	return icon
 
@@ -27,6 +28,9 @@
 	if(mob_type != /mob/living/carbon/human)
 		var/mob/SlasherToBe = our_slasher
 		SlasherToBe.change_mob_type(mob_type, null, null, TRUE)
+	else
+		var/mob/living/carbon/human/our_slasher
+		our_slasher.equipOutfit(slasher_outfit)
 	give_slasher_abilities(our_slasher)
 
 /// Exists for subtypes to override.

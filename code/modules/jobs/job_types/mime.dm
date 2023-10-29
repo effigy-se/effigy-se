@@ -43,6 +43,8 @@
 		return
 	spawned.apply_pref_name(/datum/preference/name/mime, player_client)
 
+/datum/job/mime/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/mime
 	name = "Mime"
