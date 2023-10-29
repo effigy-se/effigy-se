@@ -17,7 +17,13 @@
 
 	var/mob/dead/new_player/our_slasher = pick_n_take(candidates)
 
+	// antag stuff takes it from there
 	our_slasher.mind.add_antag_datum(pick(slasher_antag_types))
+	our_slasher.mind.set_assigned_role(SSjob.GetJobType(/datum/job/slasher))
+	our_slasher.mind.special_role = ROLE_SLASHER
+
+	for(var/mob/dead/new_player/employee as anything in candidates)
+		employee.mind.set_assigned_role(SSjob.GetJobType(/datum/job/slashco_employee))
 
 	return TRUE
 

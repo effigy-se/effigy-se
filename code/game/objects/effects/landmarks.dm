@@ -256,12 +256,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	department = SEC_DEPT_SCIENCE
 
 /obj/effect/landmark/start/slashco_employee
-	name = "SlashCo Power Recovery Technician"
-	icon_state = "Assistant"
+	name = JOB_SLASHCO_EMPLOYEE
+	icon_state = JOB_ASSISTANT
 
 /obj/effect/landmark/start/slasher
-	name = "Slasher"
-	icon_state = "Assistant"
+	name = JOB_SLASHER
+	icon_state = JOB_ASSISTANT
 
 //Antagonist spawns
 
