@@ -2,10 +2,13 @@
 	name = "The Imposter"
 	mob_type = /mob/living/basic/slasher/imposter
 	var/datum/action/cooldown/spell/shapeshift/imposter/shapeshift_human
+	var/datum/action/cooldown/fuel_disguise/fuel_shapeshift
 
 /datum/antagonist/slasher/imposter/give_slasher_abilities()
 	shapeshift_human = new
 	shapeshift_human.Grant(owner.current)
+	fuel_shapeshift = new
+	fuel_shapeshift.Grant(owner.current)
 	. = ..()
 
 /// Imposter Spells ///
@@ -45,3 +48,29 @@
 	our_disguise.equipOutfit(/datum/outfit/job/slashco_employee)
 	playsound(get_turf(caster), 'sound/slashco/slasher/imposter/amogus.ogg', 75)
 	sound = 'sound/slashco/slasher/imposter/undisguise.ogg'
+
+/datum/action/cooldown/fuel_disguise
+	name = "Fuel Disguise"
+	desc = "Assume the form of the precious generator fuel."
+	button_icon = 'icons/mob/actions/actions_spells.dmi'
+	button_icon_state = "transformslime"
+	cooldown_time = 5 SECONDS
+	var/obj/item/chameleon/imposter/internal_projector
+
+/datum/action/cooldown/fuel_disguise/Grant(mapload)
+	. = ..()
+	internal_projector = new
+	internal_projector.forceMove(owner.contents)
+
+/datum/action/cooldown/fuel_disguise/Remove(mapload)
+	. = ..()
+	qdel(internal_projector)
+
+/datum/action/cooldown/fuel_disguise/Activate(atom/target_atom)
+	. = ..()
+	internal_projector.attack_self(owner)
+
+/obj/item/chameleon/imposter/Initialize(mapload)
+	. = ..()
+	var/obj/item/stack/fuel/fuel = /obj/item/stack/fuel
+	saved_appearance = initial(fuel.appearance)
