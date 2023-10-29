@@ -186,6 +186,18 @@ SUBSYSTEM_DEF(ticker)
 				timeLeft = 0
 				CONFIG_SET(flag/setup_bypass_player_check, TRUE)
 
+			if(!CONFIG_GET(flag/setup_bypass_player_check) && totalPlayersReady < 2)
+				if(!delay_notified)
+					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when enough players are ready.")]", confidential = TRUE)
+					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
+					message_admins("Game setup delayed due to lack of players.")
+					log_game("Game setup delayed due to lack of players.")
+					delay_notified = TRUE
+				timeLeft = world.time + (CONFIG_GET(number/lobby_countdown) SECONDS)
+				return // 'SOON' waiting for players
+
+			delay_notified = FALSE
+
 			//countdown
 			if(timeLeft < 0 && CONFIG_GET(flag/setup_bypass_player_check))
 				return // 'DELAYED' delayed by an admin
@@ -194,15 +206,6 @@ SUBSYSTEM_DEF(ticker)
 			if(timeLeft <= 450 && !tipped) // EffigyEdit Change
 				send_tip_of_the_round(world, selected_tip)
 				tipped = TRUE
-
-			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && !totalPlayersReady)
-				if(!delay_notified)
-					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
-					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
-					message_admins("Game setup delayed due to lack of players.")
-					log_game("Game setup delayed due to lack of players.")
-					delay_notified = TRUE
-				return // 'SOON' waiting for players
 
 			if(timeLeft <= 0)
 				SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
