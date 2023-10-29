@@ -48,6 +48,8 @@
 /datum/job/chief_medical_officer/get_captaincy_announcement(mob/living/captain)
 	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
 
+/datum/job/chief_medical_officer/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"

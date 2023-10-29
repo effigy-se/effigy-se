@@ -256,8 +256,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	department = SEC_DEPT_SCIENCE
 
 /obj/effect/landmark/start/slashco_employee
-	name = "SlashCo Employee"
+	name = "SlashCo Power Recovery Technician"
 	icon_state = "Assistant"
+
 /obj/effect/landmark/start/slasher
 	name = "Slasher"
 	icon_state = "Assistant"

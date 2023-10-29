@@ -44,6 +44,8 @@
 		return
 	spawned.apply_pref_name(/datum/preference/name/clown, player_client)
 
+/datum/job/clown/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/clown
 	name = "Clown"

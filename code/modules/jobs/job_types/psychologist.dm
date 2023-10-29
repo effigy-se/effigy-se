@@ -34,6 +34,9 @@
 	job_flags = STATION_JOB_FLAGS
 
 
+/datum/job/psychologist/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/outfit/job/psychologist
 	name = "Psychologist"
 	jobtype = /datum/job/psychologist

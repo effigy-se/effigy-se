@@ -35,6 +35,8 @@
 	rpg_title = "Merchantman"
 	job_flags = STATION_JOB_FLAGS
 
+/datum/job/cargo_technician/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"

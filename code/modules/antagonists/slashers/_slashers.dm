@@ -9,7 +9,7 @@
 	var/mob_type = /mob/living/carbon/human
 
 /datum/antagonist/slasher/get_preview_icon()
-	var/icon/icon = icon('icons/mob/nonhuman-player/spacedragon.dmi', "spacedragon")
+	var/icon/icon = icon('local/icons/mob/slashers.dmi', "amogus")
 	icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
 	return icon
 
@@ -22,7 +22,6 @@
 		spawn_slashco_generators()
 		spawn_slashco_sheets()
 		spawn_slashco_items()
-		spawn_slashco_batteries()
 	equip_slasher()
 	forge_objectives()
 
@@ -31,6 +30,10 @@
 		var/OurGenerator = pick(GLOB.genstart)
 		GLOB.genstart -= OurGenerator
 		new /obj/machinery/slashco_generator(OurGenerator)
+		var/list/valid_battery_turfs
+		for(var/turf/open/turf in range(7, OurGenerator))
+			turf += valid_battery_turfs
+		new /obj/item/stock_parts/cell/lead(pick(valid_battery_turfs))
 
 /proc/spawn_slashco_sheets()
 	for(var/integer=1 to 24) // Double the sheets you'll need
@@ -50,13 +53,7 @@
 			/obj/item/reagent_containers/cup/soda_cans/b_gone \
 		)
 		var/our_selection = pick(possibleslashcoitems)
-		new our_selection
-
-/proc/spawn_slashco_batteries()
-	for(var/integer=1 to 3)
-		var/OurBattery = pick(GLOB.batterystart)
-		GLOB.batterystart -= OurBattery
-		new /obj/item/stock_parts/cell/lead(OurBattery)
+		new our_selection(OurItem)
 
 /datum/antagonist/slasher/proc/equip_slasher(var/OurSlasher = owner.current)
 	if(mob_type != /mob/living/carbon/human)

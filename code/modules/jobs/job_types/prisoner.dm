@@ -46,6 +46,9 @@
 	target_record.crimes += past_crime
 	to_chat(crewmember, span_warning("You are imprisoned for \"[crime_name]\"."))
 
+/datum/job/prisoner/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/outfit/job/prisoner
 	name = "Prisoner"
 	jobtype = /datum/job/prisoner

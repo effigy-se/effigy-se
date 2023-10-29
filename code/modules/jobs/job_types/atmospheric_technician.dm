@@ -38,6 +38,9 @@
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Aeromancer"
 
+/datum/job/atmospheric_technician/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/outfit/job/atmos
 	name = "Atmospheric Technician"
 	jobtype = /datum/job/atmospheric_technician

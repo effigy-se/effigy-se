@@ -13,7 +13,3 @@ GLOBAL_LIST_EMPTY(genstart)
 GLOBAL_LIST_EMPTY(fuelstart)
 /// Every possible item spawn point. These are scattered throughout the map.
 GLOBAL_LIST_EMPTY(slashitemstart)
-/// Every possible battery spawn point. These are always nearby generator spawnpoints.
-/// TODO: In slashco proper, these spawn near the actual generators, not just their spawnpoints.
-/// This will need some revisiting.
-GLOBAL_LIST_EMPTY(batterystart)

@@ -29,6 +29,8 @@
 
 	job_tone = "objection"
 
+/datum/job/lawyer/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
 
 /datum/outfit/job/lawyer
 	name = "Lawyer"

@@ -37,6 +37,9 @@
 	voice_of_god_power = 1.4 //Command staff has authority
 	ignore_human_authority = TRUE
 
+/datum/job/quartermaster/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/quartermaster

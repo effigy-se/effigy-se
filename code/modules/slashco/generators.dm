@@ -15,15 +15,6 @@
 	GLOB.fuelstart += loc
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/landmark/battery_spawn
-	name = "battery spawn"
-	icon_state = "x3" // x3
-
-/obj/effect/landmark/battery_spawn/Initialize(mapload)
-	..()
-	GLOB.batterystart += loc
-	return INITIALIZE_HINT_QDEL
-
 /// Generator ///
 /obj/machinery/slashco_generator
 	name = "generator"
