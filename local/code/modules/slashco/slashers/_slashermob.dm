@@ -1,3 +1,11 @@
 /mob/living/basic/slasher
-	maxHealth = 9999999
-	health = 9999999
+	maxHealth = INFINITY
+	health = INFINITY
+	icon = 'local/icons/mob/slashers.dmi'
+	lighting_cutoff_red = 50
+	lighting_cutoff_green = 22
+	lighting_cutoff_blue = 22
+
+/mob/living/basic/slasher/Initialize(mapload)
+	. = ..()
+	name = initial(name)

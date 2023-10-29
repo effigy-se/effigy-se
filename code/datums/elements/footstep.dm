@@ -52,6 +52,12 @@
 			footstep_sounds = 'sound/effects/tank_treads.ogg'
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
 			return
+		/// SLASHCO 13 AMOGUS ///
+		if(FOOTSTEP_IMPOSTER)
+			footstep_sounds = list('sound/slashco/slasher/imposter/step1.ogg', 'sound/slashco/slasher/imposter/step2.ogg', 'sound/slashco/slasher/imposter/step3.ogg')
+			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
+			return
+		/// SLASHCO 13 AMOGUS ///
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep))
 	steps_for_living[target] = 0
 
