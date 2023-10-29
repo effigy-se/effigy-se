@@ -193,7 +193,8 @@ SUBSYSTEM_DEF(ticker)
 					message_admins("Game setup delayed due to lack of players.")
 					log_game("Game setup delayed due to lack of players.")
 					delay_notified = TRUE
-				timeLeft = world.time + (CONFIG_GET(number/lobby_countdown) SECONDS)
+				start_at = world.time + (CONFIG_GET(number/lobby_countdown) SECONDS)
+				timeLeft = null
 				return // 'SOON' waiting for players
 
 			delay_notified = FALSE
