@@ -19,7 +19,6 @@
 
 /datum/antagonist/slasher/on_gain()
 	. = ..()
-	equip_slasher()
 	forge_objectives()
 
 /datum/antagonist/slasher/proc/equip_slasher(mob/our_slasher = null)
