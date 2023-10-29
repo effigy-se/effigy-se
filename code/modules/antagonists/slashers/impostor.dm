@@ -19,13 +19,11 @@
 	possible_shapes = list(/mob/living/simple_animal/slime/transformed_slime) // TEMP
 
 /datum/action/cooldown/spell/shapeshift/imposter/do_unshapeshift(mob/living/caster)
-	var/lazy_coder_spot = get_turf(caster)
 	. = ..()
 	caster.Paralyze(3 SECONDS)
-	playsound(lazy_coder_spot, 'sound/slashco/slasher/imposter/disguise.ogg', 75)
+	playsound(get_turf(caster), 'sound/slashco/slasher/imposter/disguise.ogg', 75)
 
 /datum/action/cooldown/spell/shapeshift/imposter/do_shapeshift(mob/living/caster)
-	var/lazy_coder_spot = get_turf(caster)
 	. = ..()
 	caster.Paralyze(3 SECONDS)
-	playsound(lazy_coder_spot, 'sound/slashco/slasher/imposter/undisguise.ogg', 75)
+	playsound(get_turf(caster), 'sound/slashco/slasher/imposter/undisguise.ogg', 75)
