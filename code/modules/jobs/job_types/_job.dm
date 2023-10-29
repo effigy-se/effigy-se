@@ -372,6 +372,9 @@
 	if(!equipped_job)
 		equipped_job = SSjob.GetJob(equipped.job)
 
+	if(!equipped_job)
+		equipped_job = SSjob.GetJobType(SSjob.overflow_role)
+
 	var/obj/item/card/id/card = equipped.wear_id
 
 	if(istype(card))
