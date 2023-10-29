@@ -5,4 +5,4 @@
 
 /mob/living/basic/slasher/princess/UnarmedAttack(atom/attack_target, proximity_flag, list/modifiers)
 	. = ..()
-	if(istype(attack_target, /))
+	if(istype(attack_target, /obj/item/toy/faustian_doll))
