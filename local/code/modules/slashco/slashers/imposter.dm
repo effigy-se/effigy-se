@@ -60,7 +60,7 @@
 /datum/action/cooldown/fuel_disguise/Grant(mapload)
 	. = ..()
 	internal_projector = new
-	internal_projector.forceMove(owner.contents)
+	internal_projector.forceMove(owner)
 
 /datum/action/cooldown/fuel_disguise/Remove(mapload)
 	. = ..()
