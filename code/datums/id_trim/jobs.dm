@@ -1031,7 +1031,7 @@
 	if(CONFIG_GET(number/depsec_access_level) == POPULATION_SCALED_ACCESS)
 		var/minimal_security_officers = 3 // We do not spawn in any more lockers if there are 5 or less security officers, so let's keep it lower than that number.
 		var/datum/job/J = SSjob.GetJob(JOB_SECURITY_OFFICER)
-		if((J.spawn_positions - minimal_security_officers) <= 0)
+		if(J && (J.spawn_positions - minimal_security_officers) <= 0)
 			access |= elevated_access
 
 	if(CONFIG_GET(number/depsec_access_level) == ALWAYS_GETS_ACCESS)
