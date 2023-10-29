@@ -42,12 +42,12 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	else
 		. += "Time To Start: SOON"
 	*/
-	if(time_remaining > 0)
+	if(SSticker.totalPlayersReady < 2)
+		. += "Status: Waiting for players to hit READY"
+	else if(time_remaining > 0)
 		. += "Status: Game Start in [round(time_remaining/10)]s"
 	else if(time_remaining == -10)
 		. += "Status: Game Start DELAYED"
-	else if(SSticker.totalPlayersReady < 2)
-		. += "Status: Waiting for players to hit READY"
 	else
 		. += "Status: WARNING, INCOMING GAME"
 
