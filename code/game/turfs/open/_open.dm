@@ -222,6 +222,7 @@
 
 /turf/open/indestructible/meat
 	icon_state = "meat"
+	icon = 'icons/turf/floors.dmi' // EffigyEdit Change
 	footstep = FOOTSTEP_MEAT
 	barefootstep = FOOTSTEP_MEAT
 	clawfootstep = FOOTSTEP_MEAT
