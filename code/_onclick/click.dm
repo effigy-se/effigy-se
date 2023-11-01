@@ -453,6 +453,7 @@
 /**
  * Control+Shift click
  * Unused except for AI
+ * EffigyEdit Note - CtrlShiftClick for HUMANS has been overriden in click.dm in the interaction module.
  */
 /mob/proc/CtrlShiftClickOn(atom/A)
 	A.CtrlShiftClick(src)
@@ -461,7 +462,7 @@
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	src.pointed(A)
 	return
-// NOTE: CtrlShiftClick for HUMANS has been overriden in click.dm in the interaction module.
+
 /atom/proc/CtrlShiftClick(mob/user)
 	if(!can_interact(user))
 		return FALSE

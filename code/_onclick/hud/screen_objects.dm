@@ -8,7 +8,7 @@
 */
 /atom/movable/screen
 	name = ""
-	icon = GENERAL_SCREEN_ICONS
+	icon = GENERAL_SCREEN_ICONS // EffigyEdit Change - Custom UI Styles
 	// NOTE: screen objects do NOT change their plane to match the z layer of their owner
 	// You shouldn't need this, but if you ever do and it's widespread, reconsider what you're doing.
 	plane = HUD_PLANE

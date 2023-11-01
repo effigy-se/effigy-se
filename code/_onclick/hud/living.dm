@@ -1,5 +1,5 @@
 /datum/hud/living
-	ui_style = GENERAL_SCREEN_ICONS
+	ui_style = GENERAL_SCREEN_ICONS // EffigyEdit Change - Custom UI Styles
 
 /datum/hud/living/New(mob/living/owner)
 	..()

@@ -1,5 +1,5 @@
 /datum/hud/revenant
-	ui_style = GENERAL_SCREEN_ICONS
+	ui_style = GENERAL_SCREEN_ICONS // EffigyEdit Change - Custom UI Styles
 
 /datum/hud/revenant/New(mob/owner)
 	..()
