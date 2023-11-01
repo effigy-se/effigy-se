@@ -5,7 +5,6 @@
 	inherent_traits = list(
 		TRAIT_DWARF,
 		TRAIT_SNOB,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_USES_SKINTONES,
 	)
 	mutanttongue = /obj/item/organ/internal/tongue/dwarven
