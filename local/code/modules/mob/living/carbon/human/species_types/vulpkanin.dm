@@ -3,6 +3,7 @@
 	id = SPECIES_VULP
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list(

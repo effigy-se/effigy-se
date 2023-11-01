@@ -101,7 +101,7 @@
 
 /obj/item/folded_navigation_gigabeacon/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/deployable, 3 SECONDS, /obj/machinery/spaceship_navigation_beacon)
+	AddComponent(/datum/component/deployable, 3 SECONDS, /obj/machinery/spaceship_navigation_beacon, delete_on_use = TRUE)
 
 /obj/item/folded_navigation_gigabeacon/examine()
 	.=..()

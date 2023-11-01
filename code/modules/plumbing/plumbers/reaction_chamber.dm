@@ -3,9 +3,6 @@
 /// coefficient to convert temperature to joules. same lvl as acclimator
 #define HEATER_COEFFICIENT 0.05
 
-/// maximum number of attempts the reaction chamber will make to balance the ph(More means better results but higher tick usage)
-#define MAX_PH_ADJUSTMENTS 5
-
 /obj/machinery/plumbing/reaction_chamber
 	name = "mixing chamber"
 	desc = "Keeps chemicals separated until given conditions are met."
@@ -173,8 +170,7 @@
 	return ..()
 
 /obj/machinery/plumbing/reaction_chamber/chem/handle_reagents(seconds_per_tick)
-	var/ph_balance_attempts = 0
-	while(ph_balance_attempts < MAX_PH_ADJUSTMENTS && (reagents.ph < acidic_limit || reagents.ph > alkaline_limit))
+	while(reagents.ph < acidic_limit || reagents.ph > alkaline_limit)
 		//no power
 		if(machine_stat & NOPOWER)
 			return
@@ -199,9 +195,8 @@
 		if(!buffer.trans_to(reagents, buffer_amount * seconds_per_tick))
 			return
 
-		//some power for accurate ph balancing & keep track of attempts made
+		//some power for accurate ph balancing
 		use_power(active_power_usage * 0.03 * buffer_amount * seconds_per_tick)
-		ph_balance_attempts += 1
 
 /obj/machinery/plumbing/reaction_chamber/chem/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -220,11 +215,11 @@
 
 	switch(action)
 		if("acidic")
-			acidic_limit = clamp(round(text2num(params["target"])), CHEMICAL_MIN_PH, alkaline_limit - 1)
+			acidic_limit = clamp(round(text2num(params["target"])), 0, alkaline_limit)
 		if("alkaline")
-			alkaline_limit = clamp(round(text2num(params["target"])), acidic_limit + 1, CHEMICAL_MAX_PH)
+			alkaline_limit = clamp(round(text2num(params["target"])), acidic_limit + 0.01, 14)
 		else
 			return FALSE
 
+
 #undef HEATER_COEFFICIENT
-#undef MAX_PH_ADJUSTMENTS

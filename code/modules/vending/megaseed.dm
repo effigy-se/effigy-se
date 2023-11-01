@@ -20,7 +20,6 @@
 				/obj/item/seeds/cocoapod = 3,
 				/obj/item/seeds/eggplant = 3,
 				/obj/item/seeds/grape = 3,
-				/obj/item/seeds/lanternfruit = 3,
 				/obj/item/seeds/lemon = 3,
 				/obj/item/seeds/lime = 3,
 				/obj/item/seeds/olive = 3,

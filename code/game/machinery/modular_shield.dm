@@ -1,6 +1,6 @@
 /obj/machinery/modular_shield_generator
 	name = "Modular Shield Generator"
-	desc = "A forcefield generator, it seems more stationary than its cousins. It cant handle G-force and will require frequent reboots when built on mobile craft."
+	desc = "A forcefield generator, it seems more stationary than its cousins."
 	icon = 'icons/obj/machines/modular_shield_generator.dmi'
 	icon_state = "gen_recovering_closed"
 	density = TRUE
@@ -162,10 +162,6 @@
 		return
 	activate_shields()
 
-/obj/machinery/modular_shield_generator/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
-	. = ..()
-	if(active)
-		deactivate_shields()
 
 ///generates the forcefield based on the given radius and calls calculate_regen to update the regen value accordingly
 /obj/machinery/modular_shield_generator/proc/activate_shields()
@@ -442,21 +438,17 @@
 /obj/machinery/modular_shield/module/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 
-	if(!default_change_direction_wrench(user, tool))
-		return FALSE
-
-	if(shield_generator)
-		LAZYREMOVE(shield_generator.connected_modules, (src))
-		shield_generator.calculate_boost()
-		shield_generator = null
-		update_icon_state()
-
-	if(connected_node)
-		LAZYREMOVE(connected_node.connected_through_us, (src))
-		connected_node = null
-
-	connected_turf = get_step(loc, dir)
-	return TRUE
+	if(default_change_direction_wrench(user, tool))
+		if(shield_generator)
+			LAZYREMOVE(shield_generator.connected_modules, (src))
+			shield_generator.calculate_boost()
+			shield_generator = null
+			update_icon_state()
+		if(connected_node)
+			LAZYREMOVE(connected_node.connected_through_us, (src))
+			connected_node = null
+		connected_turf = get_step(loc, dir)
+		return TRUE
 
 /obj/machinery/modular_shield/module/crowbar_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -522,26 +514,16 @@
 		return
 	icon_state = "node_on_[panel_open ? "open" : "closed"]"
 
-
-/obj/machinery/modular_shield/module/node/wrench_act(mob/living/user, obj/item/tool)
-
-	if(!default_change_direction_wrench(user, tool))
-		return FALSE
+/obj/machinery/modular_shield/module/node/setDir(new_dir)
+	. = ..()
 
 	disconnect_connected_through_us()
-
-	if(shield_generator)
-		LAZYREMOVE(shield_generator.connected_modules, (src))
-		shield_generator.calculate_boost()
-		shield_generator = null
-		update_icon_state()
-
-	if(connected_node)
-		LAZYREMOVE(connected_node.connected_through_us, (src))
-		connected_node = null
-
-	connected_turf = get_step(loc, dir)
-	return TRUE
+	if(isnull(shield_generator))
+		return
+	LAZYREMOVE(shield_generator.connected_modules, (src))
+	shield_generator.calculate_boost()
+	shield_generator = null
+	update_icon_state()
 
 //after trying to connect to a machine infront of us, we will try to link anything connected to us to a generator
 /obj/machinery/modular_shield/module/node/try_connect(user)

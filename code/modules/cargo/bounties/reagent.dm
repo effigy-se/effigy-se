@@ -6,22 +6,21 @@
 /datum/bounty/reagent/can_claim()
 	return ..() && shipped_volume >= required_volume
 
-/datum/bounty/reagent/applies_to(obj/shipped)
-	if(!is_reagent_container(shipped))
+/datum/bounty/reagent/applies_to(obj/O)
+	if(!is_reagent_container(O))
 		return FALSE
-	if(!shipped.reagents || !shipped.reagents.has_reagent(wanted_reagent.type))
+	if(!O.reagents || !O.reagents.has_reagent(wanted_reagent.type))
 		return FALSE
-	if(shipped.flags_1 & HOLOGRAM_1)
+	if(O.flags_1 & HOLOGRAM_1)
 		return FALSE
 	return shipped_volume < required_volume
 
-/datum/bounty/reagent/ship(obj/shipped)
-	if(!applies_to(shipped))
-		return FALSE
-	shipped_volume += shipped.reagents.get_reagent_amount(wanted_reagent.type)
+/datum/bounty/reagent/ship(obj/O)
+	if(!applies_to(O))
+		return
+	shipped_volume += O.reagents.get_reagent_amount(wanted_reagent.type)
 	if(shipped_volume > required_volume)
 		shipped_volume = required_volume
-	return TRUE
 
 /datum/bounty/reagent/simple_drink
 	name = "Simple Drink"
@@ -194,20 +193,19 @@
 /datum/bounty/pill/can_claim()
 	return ..() && shipped_ammount >= required_ammount
 
-/datum/bounty/pill/applies_to(obj/shipped)
-	if(!istype(shipped, /obj/item/reagent_containers/pill))
+/datum/bounty/pill/applies_to(obj/O)
+	if(!istype(O, /obj/item/reagent_containers/pill))
 		return FALSE
-	if(shipped?.reagents.get_reagent_amount(wanted_reagent.type) >= wanted_vol)
+	if(O?.reagents.get_reagent_amount(wanted_reagent.type) >= wanted_vol)
 		return TRUE
 	return FALSE
 
-/datum/bounty/pill/ship(obj/shipped)
-	if(!applies_to(shipped))
-		return FALSE
+/datum/bounty/pill/ship(obj/O)
+	if(!applies_to(O))
+		return
 	shipped_ammount += 1
 	if(shipped_ammount > required_ammount)
 		shipped_ammount = required_ammount
-	return TRUE
 
 /datum/bounty/pill/simple_pill
 	name = "Simple Pill"

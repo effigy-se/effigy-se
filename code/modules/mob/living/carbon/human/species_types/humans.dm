@@ -2,6 +2,7 @@
 	name = "\improper Human"
 	id = SPECIES_HUMAN
 	inherent_traits = list(
+		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_USES_SKINTONES,
 	)
 	mutant_bodyparts = list("wings" = "None")

@@ -18,11 +18,7 @@
 			var/client/client = user
 			user = client.mob
 		else
-			return null
-
-	if(isnull(user.client))
-		return null
-
+			return
 	// A gentle nudge - you should not be using TGUI alert for anything other than a simple message.
 	if(length(buttons) > 3)
 		log_tgui(user, "Error: TGUI Alert initiated with too many buttons. Use a list.", "TguiAlert")

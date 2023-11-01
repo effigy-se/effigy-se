@@ -32,8 +32,6 @@
 	var/datum/worn_feature_offset/worn_suit_offset
 	/// Offset to apply to equipment worn on the neck
 	var/datum/worn_feature_offset/worn_neck_offset
-	/// Which functional (i.e. flightpotion) wing types (if any) does this bodypart support? If count is >1 a radial menu is used to choose between all icons in list
-	var/list/wing_types = list(/obj/item/organ/external/wings/functional/angel)
 
 /obj/item/bodypart/chest/can_dismember(obj/item/item)
 	if(owner.stat < HARD_CRIT || !get_organs())
@@ -83,7 +81,6 @@
 	bodypart_flags = BODYPART_UNREMOVABLE
 	max_damage = 500
 	acceptable_bodytype = BODYTYPE_HUMANOID
-	wing_types = NONE
 
 /obj/item/bodypart/chest/larva
 	icon = 'icons/mob/human/species/alien/bodyparts.dmi'
@@ -96,7 +93,6 @@
 	max_damage = 50
 	bodytype = BODYTYPE_LARVA_PLACEHOLDER | BODYTYPE_ORGANIC
 	acceptable_bodytype = BODYTYPE_LARVA_PLACEHOLDER
-	wing_types = NONE
 
 /// Parent Type for arms, should not appear in game.
 /obj/item/bodypart/arm

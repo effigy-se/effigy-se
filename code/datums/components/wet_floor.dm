@@ -11,11 +11,8 @@
 	var/current_overlay
 	var/permanent = FALSE
 	var/last_process = 0
-	/// Should we display an overlay for this component? Useful mainly for turfs
-	/// that already look wets or just don't need the visuals for any other reason.
-	var/should_display_overlay = TRUE
 
-/datum/component/wet_floor/InheritComponent(datum/newcomp, orig, strength, duration_minimum, duration_add, duration_maximum, _permanent, _should_display_overlay)
+/datum/component/wet_floor/InheritComponent(datum/newcomp, orig, strength, duration_minimum, duration_add, duration_maximum, _permanent)
 	if(!newcomp) //We are getting passed the arguments of a would-be new component, but not a new component
 		add_wet(arglist(args.Copy(3)))
 	else //We are being passed in a full blown component
@@ -25,11 +22,10 @@
 		for(var/i in WF.time_left_list)
 			add_wet(text2num(i), WF.time_left_list[i])
 
-/datum/component/wet_floor/Initialize(strength, duration_minimum, duration_add, duration_maximum, _permanent = FALSE, _should_display_overlay = TRUE)
+/datum/component/wet_floor/Initialize(strength, duration_minimum, duration_add, duration_maximum, _permanent = FALSE)
 	if(!isopenturf(parent))
 		return COMPONENT_INCOMPATIBLE
-	should_display_overlay = _should_display_overlay
-	add_wet(strength, duration_minimum, duration_add, duration_maximum, _permanent, _should_display_overlay)
+	add_wet(strength, duration_minimum, duration_add, duration_maximum)
 	permanent = _permanent
 	if(!permanent)
 		START_PROCESSING(SSwet_floors, src)
@@ -54,15 +50,6 @@
 	return ..()
 
 /datum/component/wet_floor/proc/update_overlay()
-	if(!should_display_overlay)
-		if(!current_overlay)
-			return
-
-		var/turf/parent_turf = parent
-		parent_turf.cut_overlay(current_overlay)
-		current_overlay = null
-		return
-
 	var/intended
 	if(!isfloorturf(parent))
 		intended = generic_turf_overlay
@@ -75,9 +62,9 @@
 			else
 				intended = water_overlay
 	if(current_overlay != intended)
-		var/turf/parent_turf = parent
-		parent_turf.cut_overlay(current_overlay)
-		parent_turf.add_overlay(intended)
+		var/turf/T = parent
+		T.cut_overlay(current_overlay)
+		T.add_overlay(intended)
 		current_overlay = intended
 
 /datum/component/wet_floor/proc/AfterSlip(mob/living/slipped)
@@ -176,7 +163,7 @@
 
 	//NB it's possible we get deleted after this, due to inherit
 
-/datum/component/wet_floor/proc/add_wet(type, duration_minimum = 0, duration_add = 0, duration_maximum = MAXIMUM_WET_TIME, _permanent = FALSE, _should_display_overlay = TRUE)
+/datum/component/wet_floor/proc/add_wet(type, duration_minimum = 0, duration_add = 0, duration_maximum = MAXIMUM_WET_TIME, _permanent = FALSE)
 	var/static/list/allowed_types = list(TURF_WET_WATER, TURF_WET_LUBE, TURF_WET_ICE, TURF_WET_PERMAFROST, TURF_WET_SUPERLUBE)
 	if(duration_minimum <= 0 || !type)
 		return FALSE
@@ -191,8 +178,6 @@
 	if(_permanent)
 		permanent = TRUE
 		STOP_PROCESSING(SSwet_floors, src)
-
-	should_display_overlay = _should_display_overlay
 
 /datum/component/wet_floor/proc/_do_add_wet(type, duration_minimum, duration_add, duration_maximum)
 	var/time = 0

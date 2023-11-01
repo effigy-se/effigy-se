@@ -31,7 +31,6 @@
 /mob/living/basic/construct/juggernaut/hostile
 	ai_controller = /datum/ai_controller/basic_controller/juggernaut
 	smashes_walls = FALSE
-	melee_attack_cooldown = 2 SECONDS
 
 /mob/living/basic/construct/juggernaut/bullet_act(obj/projectile/bullet)
 	if(!istype(bullet, /obj/projectile/energy) && !istype(bullet, /obj/projectile/beam))
@@ -59,3 +58,5 @@
 
 /mob/living/basic/construct/juggernaut/mystic
 	theme = THEME_WIZARD
+
+/mob/living/basic/construct/juggernaut/noncult

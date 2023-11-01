@@ -11,7 +11,6 @@
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 	burn_modifier = 2
-	wing_types = NONE
 
 /obj/item/bodypart/arm/left/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
@@ -56,7 +55,6 @@
 	limb_id = SPECIES_ABDUCTOR
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-	wing_types = NONE
 
 /obj/item/bodypart/arm/left/abductor
 	limb_id = SPECIES_ABDUCTOR
@@ -91,7 +89,6 @@
 	is_dimorphic = TRUE
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
-	wing_types = NONE
 
 /obj/item/bodypart/arm/left/jelly
 	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
@@ -128,7 +125,6 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 	is_dimorphic = TRUE
-	wing_types = NONE
 
 /obj/item/bodypart/arm/left/slime
 	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
@@ -157,7 +153,6 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 	is_dimorphic = TRUE
-	wing_types = NONE
 
 /obj/item/bodypart/arm/left/luminescent
 	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
@@ -186,7 +181,6 @@
 	limb_id = SPECIES_ZOMBIE
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-	wing_types = NONE
 
 /obj/item/bodypart/arm/left/zombie
 	limb_id = SPECIES_ZOMBIE
@@ -225,7 +219,6 @@
 	limb_id = SPECIES_PODPERSON
 	is_dimorphic = TRUE
 	burn_modifier = 1.25
-	wing_types = NONE
 
 /obj/item/bodypart/arm/left/pod
 	limb_id = SPECIES_PODPERSON
@@ -262,7 +255,6 @@
 	limb_id = SPECIES_FLYPERSON
 	is_dimorphic = TRUE
 	should_draw_greyscale = FALSE
-	wing_types = list(/obj/item/organ/external/wings/functional/fly)
 
 /obj/item/bodypart/arm/left/fly
 	limb_id = SPECIES_FLYPERSON
@@ -293,7 +285,6 @@
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	burn_modifier = 1.5
-	wing_types = NONE
 
 /obj/item/bodypart/arm/left/shadow
 	limb_id = SPECIES_SHADOW
@@ -336,7 +327,6 @@
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
-	wing_types = list(/obj/item/organ/external/wings/functional/skeleton)
 
 /obj/item/bodypart/arm/left/skeleton
 	biological_state = (BIO_BONE|BIO_JOINTED)
@@ -374,7 +364,6 @@
 	is_dimorphic = TRUE
 	bodypart_traits = list(TRAIT_NO_JUMPSUIT)
 	burn_modifier = 1.25
-	wing_types = NONE
 
 /obj/item/bodypart/arm/left/mushroom
 	limb_id = SPECIES_MUSHROOM
@@ -475,7 +464,6 @@
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
 	bodypart_traits = list(TRAIT_NO_JUMPSUIT)
-	wing_types = NONE
 
 /obj/item/bodypart/chest/golem/Initialize(mapload)
 	worn_belt_offset = new(
@@ -578,45 +566,3 @@
 	unarmed_damage_low = 7
 	unarmed_damage_high = 21
 	unarmed_stun_threshold = 11
-
-///flesh
-
-/obj/item/bodypart/arm/left/flesh
-	limb_id = BODYPART_ID_MEAT
-	should_draw_greyscale = FALSE
-
-/obj/item/bodypart/arm/left/flesh/Initialize(mapload, dont_spawn_flesh = FALSE)
-	. = ..()
-	if(!dont_spawn_flesh)
-		new /mob/living/basic/living_limb_flesh(src, src)
-	ADD_TRAIT(src, TRAIT_IGNORED_BY_LIVING_FLESH, BODYPART_TRAIT)
-
-/obj/item/bodypart/arm/right/flesh
-	limb_id = BODYPART_ID_MEAT
-	should_draw_greyscale = FALSE
-
-/obj/item/bodypart/arm/right/flesh/Initialize(mapload, dont_spawn_flesh = FALSE)
-	. = ..()
-	if(!dont_spawn_flesh)
-		new /mob/living/basic/living_limb_flesh(src, src)
-	ADD_TRAIT(src, TRAIT_IGNORED_BY_LIVING_FLESH, BODYPART_TRAIT)
-
-/obj/item/bodypart/leg/left/flesh
-	limb_id = BODYPART_ID_MEAT
-	should_draw_greyscale = FALSE
-
-/obj/item/bodypart/leg/left/flesh/Initialize(mapload, dont_spawn_flesh = FALSE)
-	. = ..()
-	if(!dont_spawn_flesh)
-		new /mob/living/basic/living_limb_flesh(src, src)
-	ADD_TRAIT(src, TRAIT_IGNORED_BY_LIVING_FLESH, BODYPART_TRAIT)
-
-/obj/item/bodypart/leg/right/flesh
-	limb_id = BODYPART_ID_MEAT
-	should_draw_greyscale = FALSE
-
-/obj/item/bodypart/leg/right/flesh/Initialize(mapload, dont_spawn_flesh = FALSE)
-	. = ..()
-	if(!dont_spawn_flesh)
-		new /mob/living/basic/living_limb_flesh(src, src)
-	ADD_TRAIT(src, TRAIT_IGNORED_BY_LIVING_FLESH, BODYPART_TRAIT)

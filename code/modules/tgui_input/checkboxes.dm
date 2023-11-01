@@ -14,17 +14,13 @@
 	if (!user)
 		user = usr
 	if(!length(items))
-		return null
+		return
 	if (!istype(user))
 		if (istype(user, /client))
 			var/client/client = user
 			user = client.mob
 		else
-			return null
-
-	if(isnull(user.client))
-		return null
-
+			return
 	if(!user.client.prefs.read_preference(/datum/preference/toggle/tgui_input))
 		return input(user, message, title) as null|anything in items
 	var/datum/tgui_checkbox_input/input = new(user, message, title, items, min_checked, max_checked, timeout, ui_state)
