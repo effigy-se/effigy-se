@@ -98,6 +98,7 @@
 		"sec_dart",
 		"sec_Islug",
 		"sec_rshot",
+		"sec_pen",
 		"servingtray",
 		"shaker",
 		"shot_glass",
@@ -303,6 +304,7 @@
 		"plumbing_rcd_service",
 		"plumbing_rcd_sci",
 		"portable_chem_mixer",
+		"penlight",
 		"retractor",
 		"scalpel",
 		"stethoscope",
@@ -430,6 +432,7 @@
 		"medigel",
 		"medipen_refiller",
 		"pandemic",
+		"penlight_paramedic",
 		"soda_dispenser",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
