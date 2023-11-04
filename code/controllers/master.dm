@@ -349,14 +349,16 @@ GLOBAL_REAL(Master, /datum/controller/master)
 			chat_warning = TRUE
 
 	var/message = "[message_prefix] Completed in [seconds] second[seconds == 1 ? "" : "s"]!"
-	// EffigyEdit Remove START (#2 Splash)
-	/*
+	/* EffigyEdit Remove - Splash
 	var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
-	*/
-	// EffigyEdit Remove END (#2 Splash)
+	*/// EffigyEdit Remove End
 
 	if(result != SS_INIT_NO_MESSAGE)
-		add_startup_message(message_prefix, chat_warning) // EffigyEdit Add (#2 Splash)
+		// EffigyEdit Add - Splash
+		add_startup_message(message_prefix, chat_warning)
+		if(chat_warning)
+		to_chat(world, SPAN_BOX_ALERT(ORANGE, "[message_prefix]"))
+		// EffigyEdit Add End
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
