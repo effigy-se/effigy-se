@@ -13,17 +13,17 @@
 	shuttle_call_time_mod = 1
 
 /**
- * Magenta
+ * Pink
  *
  * Engineering emergency
  */
-/datum/security_level/magenta
-	name = "magenta"
+/datum/security_level/pink
+	name = "pink"
 	announcement_color = "pink"
-	number_level = SEC_LEVEL_MAGENTA
+	number_level = SEC_LEVEL_PINK
 	sound = 'sound/misc/notice2.ogg'
-	lowering_to_configuration_key = /datum/config_entry/string/alert_magenta_downto
-	elevating_to_configuration_key = /datum/config_entry/string/alert_magenta_upto
+	lowering_to_configuration_key = /datum/config_entry/string/alert_pink_downto
+	elevating_to_configuration_key = /datum/config_entry/string/alert_pink_upto
 	shuttle_call_time_mod = 0.75
 
 /**

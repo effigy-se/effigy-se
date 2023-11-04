@@ -5,7 +5,6 @@
 #define BLUE "blue"
 #define PURPLE "purple"
 #define PINK "pink"
-#define MAGENTA "magenta"
 #define WHITE "white"
 
 #define span_emote(str) ("<span class='emote'>" + str + "</span>")
