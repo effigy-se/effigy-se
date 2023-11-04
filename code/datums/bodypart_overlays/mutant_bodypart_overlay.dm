@@ -12,23 +12,6 @@
 	var/color_source = ORGAN_COLOR_INHERIT
 	///Take on the dna/preference from whoever we're gonna be inserted in
 	var/imprint_on_next_insertion = TRUE
-	/// Alpha value associated to the overlay, to be inherited from the parent limb.
-	var/alpha = ALPHA_OPAQUE // EffigyEdit Add - Customization
-	// EffigyEdit Add -
-	/// An associative list of color indexes (i.e. "1") to boolean that says
-	/// whether or not that color should get an emissive overlay. Can be null.
-	var/list/emissive_eligibility_by_color_index
-	/// A simple list of indexes to color (as we don't want to color emissives, MOD overlays or inner ears)
-	var/list/overlay_indexes_to_color
-	/// Whether or not this overlay can be affected by MODsuit-related procs.
-	var/modsuit_affected = FALSE
-	/// Additional information we might want to add to the cache_key, stored into a list.
-	/// Should only ever contain strings.
-	var/list/cache_key_extra_information
-	/// A simple cache of what the last icon_states built were.
-	/// It's really only there to help with debugging what's happening.
-	var/list/last_built_icon_states
-	// EffigyEdit Add End
 
 /datum/bodypart_overlay/mutant/get_overlay(layer, obj/item/bodypart/limb)
 	inherit_color(limb) // If draw_color is not set yet, go ahead and do that
@@ -141,6 +124,7 @@
 
 ///Sprite accessories are singletons, stored list("Big Snout" = instance of /datum/sprite_accessory/snout/big), so here we get that singleton
 /datum/bodypart_overlay/mutant/proc/fetch_sprite_datum(datum/sprite_accessory/accessory_path)
+	//return fetch_sprite_datum_from_name(initial(accessory_path.name)) // EffigyEdit Remove - Customization
 	var/list/feature_list = get_global_feature_list()
 
 	return feature_list[initial(accessory_path.name)]
@@ -148,5 +132,13 @@
 ///Get the singleton from the sprite name
 /datum/bodypart_overlay/mutant/proc/fetch_sprite_datum_from_name(accessory_name)
 	var/list/feature_list = get_global_feature_list()
+	var/found = feature_list[accessory_name]
+	if(found)
+		return found
 
-	return feature_list[accessory_name]
+	if(!length(feature_list))
+		CRASH("External organ [type] returned no sprite datums from get_global_feature_list(), so no accessories could be found!")
+	else if(accessory_name)
+		CRASH("External organ [type] couldn't find sprite accessory [accessory_name]!")
+	else
+		CRASH("External organ [type] had fetch_sprite_datum called with a null accessory name!")

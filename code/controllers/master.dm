@@ -357,7 +357,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		// EffigyEdit Add - Splash
 		add_startup_message(message_prefix, chat_warning)
 		if(chat_warning)
-		to_chat(world, SPAN_BOX_ALERT(ORANGE, "[message_prefix]"))
+			to_chat(world, SPAN_BOX_ALERT(ORANGE, "[message_prefix]"))
 		// EffigyEdit Add End
 	log_world(message)
 
