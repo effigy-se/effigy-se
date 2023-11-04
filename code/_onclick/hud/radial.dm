@@ -111,7 +111,6 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/hudfix_method = TRUE //TRUE to change anchor to user, FALSE to shift by py_shift
 	var/py_shift = 0
 	var/entry_animation = TRUE
-	var/icon_path = 'icons/hud/radial.dmi' // EffigyEdit Add - Customization
 
 	///A replacement icon state for the generic radial slice bg icon. Doesn't affect the next page nor the center buttons
 	var/radial_slice_icon

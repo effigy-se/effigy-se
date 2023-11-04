@@ -604,6 +604,11 @@ SUBSYSTEM_DEF(air)
 
 		log_active_turfs() // invoke this here so we can count the time it takes to run this proc as "wasted time", quite simple honestly.
 
+		/* EffigyEdit Change - Splash Screen
+		var/msg = "HEY! LISTEN! [DisplayTimeText(world.timeofday - timer, 0.00001)] were wasted processing [starting_ats] turf(s) (connected to [ending_ats - starting_ats] other turfs) with atmos differences at round start."
+		to_chat(world, span_boldannounce("[msg]"))
+		*/// EffigyEdit Change End
+
 		var/msg = "HEY! LISTEN! [SSmapping.config?.map_name] has [starting_ats] active turfs connected to [ending_ats - starting_ats] other turfs! You should fix that!"
 		to_chat(world, SPAN_BOX_ALERT(ORANGE, "[msg]"))
 		warning(msg)

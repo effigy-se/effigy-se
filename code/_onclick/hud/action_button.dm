@@ -242,7 +242,7 @@
 
 /atom/movable/screen/button_palette
 	desc = "<b>Drag</b> buttons to move them<br><b>Shift-click</b> any button to reset it<br><b>Alt-click</b> this to reset all buttons"
-	icon = 'local/icons/hud/64x16_actions.dmi' // EffigyEdit Change
+	icon = 'icons/hud/64x16_actions.dmi'
 	icon_state = "screen_gen_palette"
 	screen_loc = ui_action_palette
 	var/datum/hud/our_hud
