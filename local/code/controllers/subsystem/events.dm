@@ -1,6 +1,6 @@
 /datum/controller/subsystem/events
 	///list of previously run events
-	previously_run = list()
+	var/list/previously_run = list()
 	///The lower bound for how soon another random event can be scheduled.
 	frequency_lower = 4 MINUTES
 	///The upper bound for how soon another random event can be scheduled.
