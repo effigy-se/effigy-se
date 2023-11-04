@@ -204,7 +204,7 @@
  * Important note: colors can end up significantly different from the basic html picture, especially when saturated
  */
 /// Bright light used by default in tubes and bulbs
-#define LIGHT_COLOR_DEFAULT "#DEEFFF"
+#define LIGHT_COLOR_DEFAULT "#DEEFFF" // EffigyEdit Change - Lighting
 /// Bright but quickly dissipating neon green. rgb(100, 200, 100)
 #define LIGHT_COLOR_GREEN "#64C864"
 /// Bright, pale "nuclear" green. rgb(120, 255, 120)
@@ -237,8 +237,6 @@
 #define LIGHT_COLOR_DIM_YELLOW "#E1E17D"
 /// Bright yellow. rgb(255, 255, 150)
 #define LIGHT_COLOR_BRIGHT_YELLOW "#FFFF99"
-/// Bright, slightly green yellow. rgb(225, 255, 97)
-#define LIGHT_COLOR_GLOWSTICK_YELLOW "#E2FF61"
 /// Clear brown, mostly dim. rgb(150, 100, 50)
 #define LIGHT_COLOR_BROWN "#966432"
 /// Mostly pure orange. rgb(250, 150, 50)
