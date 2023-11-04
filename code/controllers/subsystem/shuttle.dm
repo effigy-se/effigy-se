@@ -428,7 +428,7 @@ SUBSYSTEM_DEF(shuttle)
 			if(emergency.timeLeft(1) < emergency_call_time * 0.5)
 				return
 		// EffigyEdit Add - Alert Levels
-		if(SEC_LEVEL_MAGENTA)
+		if(SEC_LEVEL_PINK)
 			if(emergency.timeLeft(1) < emergency_call_time * 0.4)
 				return
 		if(SEC_LEVEL_WHITE)

@@ -471,7 +471,7 @@ const PageMain = (props, context) => {
               />
 
               <EngiButton
-                alertLevel="magenta"
+                alertLevel="pink"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
