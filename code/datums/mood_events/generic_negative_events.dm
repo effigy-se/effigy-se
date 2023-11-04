@@ -110,7 +110,7 @@
 	timeout = 2 MINUTES
 
 /datum/mood_event/table/add_effects()
-	if(isfeline(owner)) //Holy snowflake batman!
+	if(isfeline(owner)) //Holy snowflake batman! // EffigyEdit Change - isfelinid to isfeline
 		var/mob/living/carbon/human/H = owner
 		SEND_SIGNAL(H, COMSIG_ORGAN_WAG_TAIL, TRUE, 3 SECONDS)
 		description = "They want to play on the table!"

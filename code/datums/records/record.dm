@@ -28,7 +28,7 @@
 	var/voice
 
 /datum/record/New(
-	age = 21,
+	age = 18,
 	blood_type = "?",
 	character_appearance,
 	dna_string = "Unknown",

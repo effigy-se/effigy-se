@@ -75,8 +75,6 @@
 	var/energy_coeff = -1
 	/// List of strings of valid chromosomes this mutation can accept.
 	var/list/valid_chrom_list = list()
-	/// Is this mutation disabled(can't be got through the DNA console)
-	var/disabled = FALSE // EffigyEdit Add
 
 
 /datum/mutation/human/New(class = MUT_OTHER, timer, datum/mutation/human/copymut)
