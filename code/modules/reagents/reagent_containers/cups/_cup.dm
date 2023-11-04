@@ -247,6 +247,7 @@
 	desc = "A large beaker. Can hold up to 100 units."
 	icon_state = "beakerlarge"
 	custom_materials = list(/datum/material/glass= SHEET_MATERIAL_AMOUNT*1.25)
+	volume = 100
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
