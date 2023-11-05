@@ -21,7 +21,7 @@ export const CommandReport = () => {
     <Window
       title="Create Command Report"
       width={435}
-      height={685}
+      height={778}
       theme="admin">
       <Window.Content>
         <Stack fill vertical>
