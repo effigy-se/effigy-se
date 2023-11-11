@@ -21,6 +21,7 @@
 	/// The default list of reagents upgrade_reagents Tier 4
 	var/static/list/default_upgrade_reagents_t4 = list(
 		/datum/reagent/medicine/mine_salve,
+		/datum/reagent/medicine/rezadone,
 		/datum/reagent/toxin
 	)
 	/// The default list of reagents emagged_reagents
@@ -28,7 +29,7 @@
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin/plasma,
 		/datum/reagent/consumable/frostoil,
-		/datum/reagent/medicine/rezadone,
+		/datum/reagent/toxin/carpotoxin,
 		/datum/reagent/toxin/histamine,
 		/datum/reagent/medicine/morphine
 	)
