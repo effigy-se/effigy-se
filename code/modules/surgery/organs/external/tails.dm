@@ -21,7 +21,6 @@
 	. = ..()
 	if(.)
 		RegisterSignal(receiver, COMSIG_ORGAN_WAG_TAIL, PROC_REF(wag))
-		RegisterSignal(receiver, COMSIG_LIVING_DEATH, PROC_REF(stop_wag))
 		original_owner ||= WEAKREF(receiver)
 
 		receiver.clear_mood_event("tail_lost")
