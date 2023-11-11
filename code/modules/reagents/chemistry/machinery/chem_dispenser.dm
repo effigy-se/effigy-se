@@ -75,6 +75,7 @@
 		/datum/reagent/water,
 		/datum/reagent/fuel
 	)
+	/* EffigyEdit Remove - Moved to local/code/modules/reagents/chemistry/machinery/chem_dispenser.dm
 	/// The default list of reagents upgrade_reagents
 	var/static/list/default_upgrade_reagents = list(
 		/datum/reagent/acetone,
@@ -92,18 +93,29 @@
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin
 	)
+	*/// EffigyEdit Remove End
 /obj/machinery/chem_dispenser/Initialize(mapload)
 	. = ..()
 	if(dispensable_reagents != null && !dispensable_reagents.len)
 		dispensable_reagents = default_dispensable_reagents
 	if(dispensable_reagents)
 		dispensable_reagents = sort_list(dispensable_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+	// EffigyEdit Change - Tiered chem upgrades
+	if(upgrade_reagents_t2 != null && !upgrade_reagents_t2.len)
+		upgrade_reagents_t2 = default_upgrade_reagents_t2
+	if(upgrade_reagents_t2)
+		upgrade_reagents_t2 = sort_list(upgrade_reagents_t2, GLOBAL_PROC_REF(cmp_reagents_asc))
 
-	if(upgrade_reagents != null && !upgrade_reagents.len)
-		upgrade_reagents = default_upgrade_reagents
-	if(upgrade_reagents)
-		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+	if(upgrade_reagents_t3 != null && !upgrade_reagents_t3.len)
+		upgrade_reagents_t3 = default_upgrade_reagents_t3
+	if(upgrade_reagents_t3)
+		upgrade_reagents_t3 = sort_list(upgrade_reagents_t3, GLOBAL_PROC_REF(cmp_reagents_asc))
 
+	if(upgrade_reagents_t4 != null && !upgrade_reagents_t4.len)
+		upgrade_reagents_t4 = default_upgrade_reagents_t4
+	if(upgrade_reagents_t4)
+		upgrade_reagents_t4 = sort_list(upgrade_reagents_t4, GLOBAL_PROC_REF(cmp_reagents_asc))
+	// EffigyEdit Change End
 	if(emagged_reagents != null && !emagged_reagents.len)
 		emagged_reagents = default_emagged_reagents
 	if(emagged_reagents)
@@ -364,6 +376,17 @@
 				recording_recipe = null
 				return TRUE
 
+		// EffigyEdit Add - Custom transfer amount
+		if("custom_amount")
+			if(!beaker)
+				to_chat(usr, span_warning("Insert a container first!"))
+				return
+			if(custom_transfer_amount)
+				transfer_amounts -= custom_transfer_amount
+			custom_transfer_amount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
+			transfer_amounts += custom_transfer_amount
+		// EffigyEdit Add End
+
 		if("cancel_recording")
 			if(is_operational)
 				recording_recipe = null
@@ -392,6 +415,11 @@
 /obj/machinery/chem_dispenser/attackby(obj/item/I, mob/living/user, params)
 	if(is_reagent_container(I) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		var/obj/item/reagent_containers/B = I
+		// EffigyEdit Add - Custom transfer amount
+		if(custom_transfer_amount)
+			transfer_amounts -= custom_transfer_amount
+		transfer_amounts = B.possible_transfer_amounts
+		// EffigyEdit Add End
 		. = TRUE //no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return
@@ -441,10 +469,28 @@
 		recharge_amount *= capacitor.tier
 		parts_rating += capacitor.tier
 	for(var/datum/stock_part/servo/servo in component_parts)
+		// EffigyEdit Change - Tiered chem upgrades
+		/*
 		if (servo.tier > 3)
 			dispensable_reagents |= upgrade_reagents
 		else
 			dispensable_reagents -= upgrade_reagents
+		*/
+		if (servo.tier > 1)
+			dispensable_reagents |= upgrade_reagents_t2
+		else
+			dispensable_reagents -= upgrade_reagents_t2
+
+		if (servo.tier > 2)
+			dispensable_reagents |= upgrade_reagents_t3
+		else
+			dispensable_reagents -= upgrade_reagents_t3
+
+		if (servo.tier > 3)
+			dispensable_reagents |= upgrade_reagents_t4
+		else
+			dispensable_reagents -= upgrade_reagents_t4
+		// EffigyEdit Change End
 		parts_rating += servo.tier
 	powerefficiency = round(newpowereff, 0.01)
 
@@ -522,6 +568,7 @@
 		/datum/reagent/consumable/sol_dry,
 		/datum/reagent/consumable/space_up,
 		/datum/reagent/consumable/sugar,
+		/datum/reagent/consumable/ethanol/synthanol, // EffigyEdit Add
 		/datum/reagent/consumable/tea,
 		/datum/reagent/consumable/tomatojuice,
 		/datum/reagent/consumable/tonic,
