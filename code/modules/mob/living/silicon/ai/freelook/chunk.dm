@@ -152,6 +152,12 @@
 			if(mech.chassis_camera?.can_use())
 				local_cameras += mech.chassis_camera
 
+		// EFFIGY EDIT - Solarlight Cameras //
+		for(var/obj/machinery/solarlight/potential_camera_solarlight in urange(CHUNK_SIZE, locate(x + (CHUNK_SIZE / 2), y + (CHUNK_SIZE / 2), z_level)))
+			if(potential_camera_solarlight.solar_camera?.can_use())
+				local_cameras += potential_camera_solarlight.solar_camera
+		/// EFFIGY EDIT END //
+
 		cameras["[z_level]"] = local_cameras
 
 		var/image/mirror_from = GLOB.cameranet.obscured_images[GET_Z_PLANE_OFFSET(z_level) + 1]
