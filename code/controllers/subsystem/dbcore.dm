@@ -296,6 +296,18 @@ SUBSYSTEM_DEF(dbcore)
 	else
 		log_sql("Database is not enabled in configuration.")
 
+/datum/controller/subsystem/dbcore/proc/InitializeRound()
+	CheckSchemaVersion()
+	if(!Connect())
+		return
+	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
+		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_ip, server_port) VALUES (Now(), INET_ATON(:internet_address), :port)",
+		list("internet_address" = world.internet_address || "0", "port" = "[world.port]")
+	)
+	query_round_initialize.Execute(async = FALSE)
+	GLOB.round_id = "[query_round_initialize.last_insert_id]"
+	qdel(query_round_initialize)
+
 /datum/controller/subsystem/dbcore/proc/SetRoundStart()
 	if(!Connect())
 		return
