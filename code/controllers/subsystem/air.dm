@@ -575,6 +575,7 @@ SUBSYSTEM_DEF(air)
 	if(active_turfs.len)
 		var/starting_ats = active_turfs.len
 		sleep(world.tick_lag)
+		// var/timer = world.timeofday // EffigyEdit Remove - Splash Screen
 
 		log_mapping("There are [starting_ats] active turfs at roundstart caused by a difference of the air between the adjacent turfs. \
 		To locate these active turfs, go into the \"Debug\" tab of your stat-panel. Then hit the verb that says \"Mapping Verbs - Enable\". \

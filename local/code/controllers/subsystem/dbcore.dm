@@ -1,4 +1,4 @@
-/datum/controller/subsystem/dbcore/proc/CheckSchemaVersion()
+/datum/controller/subsystem/dbcore/CheckSchemaVersion()
 	if(CONFIG_GET(flag/sql_enabled))
 		if(Connect())
 			log_world("Database connection established.")
@@ -20,7 +20,7 @@
 	else
 		log_sql("Database is not enabled in configuration.")
 
-/datum/controller/subsystem/dbcore/proc/InitializeRound()
+/datum/controller/subsystem/dbcore/InitializeRound()
 	CheckSchemaVersion()
 
 	if(!Connect())
@@ -37,3 +37,13 @@
 	ev_round_id = num2text(ev_round_id, 6, 16)
 	GLOB.round_hex = ev_round_id
 	qdel(query_round_initialize)
+
+/datum/controller/subsystem/dbcore/SetRoundStart()
+	if(!Connect())
+		return
+	var/datum/db_query/query_round_start = SSdbcore.NewQuery(
+		"UPDATE [format_table_name("round")] SET start_datetime = Now(), effigy_rid = :effigy_rid WHERE id = :round_id",
+		list("round_id" = GLOB.round_id, "effigy_rid" = GLOB.round_hex)
+	)
+	query_round_start.Execute()
+	qdel(query_round_start)
