@@ -20,4 +20,4 @@
 	return ..()
 
 /datum/asset/simple/body_zones/proc/add_limb(limb)
-	assets[SANITIZE_FILENAME("body_zones.[limb].png")] = icon(GENERAL_SCREEN_ICONS, limb)
+	assets[SANITIZE_FILENAME("body_zones.[limb].png")] = icon('icons/hud/screen_gen.dmi', limb)
