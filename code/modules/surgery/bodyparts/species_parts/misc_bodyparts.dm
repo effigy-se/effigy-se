@@ -5,12 +5,14 @@
 	is_dimorphic = FALSE
 	burn_modifier = 2
 	head_flags = HEAD_EYESPRITES|HEAD_DEBRAIN
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/chest/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 	burn_modifier = 2
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	wing_types = NONE
 
 /obj/item/bodypart/arm/left/snail
@@ -20,7 +22,8 @@
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
 	unarmed_damage_low = 1 // EffigyEdit Change
 	unarmed_damage_high = 5 // EffigyEdit Change
-	// unarmed_damage_high = 0.5 //snails are soft and squishy
+	burn_modifier = 2
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/arm/right/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
@@ -29,7 +32,8 @@
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
 	unarmed_damage_low = 1 // EffigyEdit Change
 	unarmed_damage_high = 5 // EffigyEdit Change
-	// unarmed_damage_high = 0.5 //snails are soft and squishy
+	burn_modifier = 2
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/leg/left/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
@@ -37,6 +41,7 @@
 	unarmed_damage_high = 0.5
 	burn_modifier = 2
 	speed_modifier = 3 //disgustingly slow
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/leg/right/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
@@ -44,6 +49,7 @@
 	unarmed_damage_high = 0.5
 	burn_modifier = 2
 	speed_modifier = 3 //disgustingly slow
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 ///ABDUCTOR
 /obj/item/bodypart/head/abductor
@@ -94,25 +100,25 @@
 	wing_types = NONE
 
 /obj/item/bodypart/arm/left/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/arm/right/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/leg/left/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/leg/right/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
@@ -131,11 +137,11 @@
 	wing_types = NONE
 
 /obj/item/bodypart/arm/left/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 
 /obj/item/bodypart/arm/right/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 
 /obj/item/bodypart/leg/left/slime
@@ -143,7 +149,7 @@
 	limb_id = SPECIES_SLIMEPERSON
 
 /obj/item/bodypart/leg/right/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 
 ///LUMINESCENT
@@ -160,19 +166,19 @@
 	wing_types = NONE
 
 /obj/item/bodypart/arm/left/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 
 /obj/item/bodypart/arm/right/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 
 /obj/item/bodypart/leg/left/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 
 /obj/item/bodypart/leg/right/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 
 ///ZOMBIE
@@ -329,6 +335,7 @@
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
 	head_flags = NONE
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 /obj/item/bodypart/chest/skeleton
 	biological_state = BIO_BONE
@@ -336,6 +343,7 @@
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
 	wing_types = list(/obj/item/organ/external/wings/functional/skeleton)
 
 /obj/item/bodypart/arm/left/skeleton
@@ -343,24 +351,28 @@
 	limb_id = SPECIES_SKELETON
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 /obj/item/bodypart/arm/right/skeleton
 	biological_state = (BIO_BONE|BIO_JOINTED)
 	limb_id = SPECIES_SKELETON
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 /obj/item/bodypart/leg/left/skeleton
 	biological_state = (BIO_BONE|BIO_JOINTED)
 	limb_id = SPECIES_SKELETON
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 /obj/item/bodypart/leg/right/skeleton
 	biological_state = (BIO_BONE|BIO_JOINTED)
 	limb_id = SPECIES_SKELETON
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 ///MUSHROOM
 /obj/item/bodypart/head/mushroom
@@ -380,21 +392,21 @@
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 6
 	unarmed_damage_high = 14
-	unarmed_stun_threshold = 14
+	unarmed_effectiveness = 15
 	burn_modifier = 1.25
 
 /obj/item/bodypart/arm/right/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 6
 	unarmed_damage_high = 14
-	unarmed_stun_threshold = 14
+	unarmed_effectiveness = 15
 	burn_modifier = 1.25
 
 /obj/item/bodypart/leg/left/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 9
 	unarmed_damage_high = 21
-	unarmed_stun_threshold = 14
+	unarmed_effectiveness = 20
 	burn_modifier = 1.25
 	speed_modifier = 0.75 //big big fungus
 
@@ -402,7 +414,7 @@
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 9
 	unarmed_damage_high = 21
-	unarmed_stun_threshold = 14
+	unarmed_effectiveness = 20
 	burn_modifier = 1.25
 	speed_modifier = 0.75 //big fungus big fungus
 
@@ -497,7 +509,7 @@
 	bodypart_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_FIST_MINING)
 	unarmed_damage_low = 5
 	unarmed_damage_high = 14
-	unarmed_stun_threshold = 11
+	unarmed_effectiveness = 20
 
 /obj/item/bodypart/arm/left/golem/Initialize(mapload)
 	held_hand_offset =  new(
@@ -531,7 +543,7 @@
 	bodypart_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_FIST_MINING)
 	unarmed_damage_low = 5
 	unarmed_damage_high = 14
-	unarmed_stun_threshold = 11
+	unarmed_effectiveness = 20
 
 /obj/item/bodypart/arm/right/golem/Initialize(mapload)
 	held_hand_offset =  new(
@@ -564,7 +576,7 @@
 	dmg_overlay_type = null
 	unarmed_damage_low = 7
 	unarmed_damage_high = 21
-	unarmed_stun_threshold = 11
+	unarmed_effectiveness = 25
 
 /obj/item/bodypart/leg/right/golem
 	icon = 'icons/mob/human/species/golems.dmi'
@@ -577,7 +589,7 @@
 	dmg_overlay_type = null
 	unarmed_damage_low = 7
 	unarmed_damage_high = 21
-	unarmed_stun_threshold = 11
+	unarmed_effectiveness = 25
 
 ///flesh
 
