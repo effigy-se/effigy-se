@@ -1,4 +1,4 @@
-/*
+/**
  * Some identity blocks (basically pieces of the unique_identity string variable of the dna datum, commonly abbreviated with ui)
  * may have a length that differ from standard length of 3 ASCII characters. This list is necessary
  * for these non-standard blocks to work, as well as the entire unique identity string.
@@ -59,8 +59,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	var/blood_type
 	///The type of mutant race the player is if applicable (i.e. potato-man)
 	var/datum/species/species = new /datum/species/human
-	///first value is mutant color
-	var/list/features = list("FFF")
+	/// Assoc list of feature keys to their value
+	/// Note if you set these manually, and do not update [unique_features] afterwards, it will likely be reset.
+	var/list/features = list("mcolor" = "#FFFFFF")
 	///Stores the hashed values of the person's non-human features
 	var/unique_features
 	///Stores the real name of the person who originally got this dna datum. Used primarely for changelings,
@@ -129,9 +130,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	new_dna.mutant_bodyparts = mutant_bodyparts.Copy()
 	new_dna.body_markings = body_markings.Copy()
 	new_dna.update_body_size()
-	// EffigyEdit Add End
 	new_dna.species = new species.type
 	new_dna.species.inherent_traits = species.inherent_traits
+	// EffigyEdit Add End
 	//if the new DNA has a holder, transform them immediately, otherwise save it
 	if(new_dna.holder)
 		new_dna.holder.set_species(species.type, icon_update = 0)

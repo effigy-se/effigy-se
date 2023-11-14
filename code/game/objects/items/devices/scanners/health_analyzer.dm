@@ -235,6 +235,7 @@
 		var/mob/living/carbon/carbontarget = target
 		var/list/damaged = carbontarget.get_damaged_bodyparts(1,1)
 		if(length(damaged)>0 || oxy_loss>0 || tox_loss>0 || fire_loss>0)
+			// EffigyEdit Change - TGUI Fonts
 			var/dmgreport = "<span class='info ml-1'>General status:</span>\
 							<table class='ml-2'><tr><font face='Chakra Petch'>\
 							<td style='width:7em;'><font color='#ff0000'><b>Damage:</b></font></td>\

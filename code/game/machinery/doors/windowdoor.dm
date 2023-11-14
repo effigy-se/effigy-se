@@ -219,7 +219,7 @@
 
 	do_animate("opening")
 	sleep(0.4 SECONDS) // EffigyEdit Change - Airlocks
-	playsound(src, 'sound/machines/windowdoor.ogg', 100, TRUE)
+	playsound(src, 'sound/machines/windowdoor.ogg', 100, FALSE) // EffigyEdit Change - Airlocks
 	icon_state ="[base_state]open"
 	sleep(0.6 SECONDS) // EffigyEdit Change - Airlocks
 	set_density(FALSE)
@@ -263,7 +263,7 @@
 	operating = TRUE
 	do_animate("closing")
 	sleep(0.7 SECONDS) // EffigyEdit Change - Airlocks
-	playsound(src, 'sound/machines/windowdoor.ogg', 100, TRUE)
+	playsound(src, 'sound/machines/windowdoor.ogg', 100, FALSE) // EffigyEdit Change - Airlocks
 	icon_state = base_state
 
 	set_density(TRUE)

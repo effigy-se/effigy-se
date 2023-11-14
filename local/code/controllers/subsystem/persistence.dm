@@ -29,6 +29,10 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	for(var/mob/living/carbon/human/player in GLOB.human_list)
 		player.save_individual_persistence()
 
+/datum/controller/subsystem/persistence/collect_data()
+	. = ..()
+	save_modular_persistence()
+
 /// Loads the contents of the player's modular_persistence file to their character.
 /datum/controller/subsystem/persistence/proc/load_modular_persistence(obj/item/organ/internal/brain/brain)
 	if(!brain)

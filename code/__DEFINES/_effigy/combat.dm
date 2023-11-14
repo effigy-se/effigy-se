@@ -1,7 +1,9 @@
 #define TRAIT_ALREADYSTAMINAFLOORED    	"alreadystaminafloored" //Trait to keep track whether someone was floored recently by stamina damage.
 #define STAMINA_KNOCKDOWN_COOLDOWN 10 SECONDS
 
-#define MAX_HUMAN_LIFE 135
+#define HUMAN_LIFE_MULTIPLIER 1.15
+#define MAX_HUMAN_HEALTH (MAX_LIVING_HEALTH * HUMAN_LIFE_MULTIPLIER)
+#define MAX_HUMAN_STAMINA (120 * HUMAN_LIFE_MULTIPLIER)
 
 //APPLICATION OF STAM DAMAGE
 //Should maybe wounds do it too?

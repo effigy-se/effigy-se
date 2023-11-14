@@ -28,7 +28,7 @@
 	if(istype(local_turf))
 		if(islava(local_turf))
 			environment_temperature = 5000 //Yuck
-		// EffigyEdit Add -
+		// EffigyEdit Add - Liquids
 		else if (local_turf.liquids && local_turf.liquids.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
 			environment_temperature = local_turf.liquids.temp
 		// EffigyEdit Add End

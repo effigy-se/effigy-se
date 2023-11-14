@@ -217,7 +217,7 @@
 /turf/open/floor/fakebasalt
 	name = "aesthetic volcanic flooring"
 	desc = "Safely recreated turf for your hellplanet-scaping."
-	icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "basalt"
 	floor_tile = /obj/item/stack/tile/basalt
 	flags_1 = NONE
@@ -808,7 +808,7 @@
 	tiled_dirt = FALSE
 
 /turf/open/floor/fakepit/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	underlay_appearance.icon = 'icons/turf/floors.dmi'
 	underlay_appearance.icon_state = "basalt"
 	return TRUE
 

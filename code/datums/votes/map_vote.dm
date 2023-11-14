@@ -12,7 +12,7 @@
 	var/list/maps = shuffle(global.config.maplist)
 	for(var/map in maps)
 		var/datum/map_config/possible_config = config.maplist[map]
-		if(!possible_config.votable || (possible_config.map_name in SSpersistence.blocked_maps) || possible_config.map_name == SSmapping.config?.map_name) // EffigyEdit Change (No map twice)
+		if(!possible_config.votable || (possible_config.map_name in SSpersistence.blocked_maps))
 			continue
 
 		default_choices += possible_config.map_name
