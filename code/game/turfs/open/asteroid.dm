@@ -5,8 +5,8 @@
 	name = "asteroid sand"
 	desc = "It's coarse and rough and gets everywhere."
 	baseturfs = /turf/open/misc/asteroid
-	icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
-	damaged_dmi = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	icon = 'icons/turf/floors.dmi'
+	damaged_dmi = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
 	base_icon_state = "asteroid"
 

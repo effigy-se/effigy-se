@@ -97,7 +97,7 @@
 /turf/open/indestructible
 	name = "floor"
 	desc = "The floor you walk on. It looks near-impervious to damage."
-	icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "floor"
 	footstep = FOOTSTEP_FLOOR
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
@@ -152,7 +152,7 @@
 /turf/open/indestructible/necropolis
 	name = "necropolis floor"
 	desc = "It's regarding you suspiciously."
-	icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "necro1"
 	baseturfs = /turf/open/indestructible/necropolis
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -222,7 +222,6 @@
 
 /turf/open/indestructible/meat
 	icon_state = "meat"
-	icon = 'icons/turf/floors.dmi' // EffigyEdit Change
 	footstep = FOOTSTEP_MEAT
 	barefootstep = FOOTSTEP_MEAT
 	clawfootstep = FOOTSTEP_MEAT

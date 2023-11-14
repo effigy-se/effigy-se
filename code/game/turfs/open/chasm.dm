@@ -50,7 +50,7 @@
 	return FALSE
 
 /turf/open/chasm/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	underlay_appearance.icon = 'icons/turf/floors.dmi'
 	underlay_appearance.icon_state = "basalt"
 	return TRUE
 
@@ -75,9 +75,6 @@
 /// Handles adding the chasm component to the turf (So stuff falls into it!)
 /turf/open/chasm/proc/apply_components(mapload)
 	AddComponent(/datum/component/chasm, GET_TURF_BELOW(src), mapload)
-
-/turf/open/chasm/can_cross_safely(atom/movable/crossing)
-	return HAS_TRAIT(src, TRAIT_CHASM_STOPPED) || HAS_TRAIT(crossing, TRAIT_MOVE_FLYING)
 
 // Chasms for Lavaland, with planetary atmos and lava glow
 /turf/open/chasm/lavaland
