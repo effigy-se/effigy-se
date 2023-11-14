@@ -2,7 +2,7 @@
 	if(CONFIG_GET(flag/sql_enabled))
 		if(Connect())
 			log_world("Database connection established.")
-			var/datum/db_query/query_db_version = NewQuery("SELECT major, minor FROM [format_table_name("schema_revision")] ORDER BY date DESC LIMIT 1")
+			var/datum/db_query/query_db_version = NewQuery("SELECT major, minor, effigy FROM [format_table_name("schema_revision")] ORDER BY date DESC LIMIT 1")
 			query_db_version.Execute()
 			if(query_db_version.NextRow())
 				db_major = text2num(query_db_version.item[1])
