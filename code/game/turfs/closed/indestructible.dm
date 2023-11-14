@@ -31,6 +31,17 @@
 	icon = 'icons/turf/shuttleold.dmi'
 	icon_state = "block"
 
+/turf/closed/indestructible/weeb
+	name = "paper wall"
+	desc = "Reinforced paper walling. Someone really doesn't want you to leave."
+	icon = 'icons/obj/smooth_structures/paperframes.dmi'
+	icon_state = "paperframes-0"
+	base_icon_state = "paperframes"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_PAPERFRAME
+	canSmoothWith = SMOOTH_GROUP_PAPERFRAME
+	var/static/mutable_appearance/indestructible_paper = mutable_appearance('icons/obj/smooth_structures/paperframes.dmi',icon_state = "paper", layer = CLOSED_TURF_LAYER - 0.1)
+
 /turf/closed/indestructible/weeb/Initialize(mapload)
 	. = ..()
 	update_appearance()
