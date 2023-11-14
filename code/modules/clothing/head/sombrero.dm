@@ -12,7 +12,6 @@
 	greyscale_config_worn = /datum/greyscale_config/sombrero/worn
 	greyscale_config_inhand_left = /datum/greyscale_config/sombrero/lefthand
 	greyscale_config_inhand_right = /datum/greyscale_config/sombrero/righthand
-	flags_inv = HIDEHAIR | SHOWSPRITEEARS // EffigyEdit Add
 
 /obj/item/clothing/head/costume/sombrero/green
 	name = "green sombrero"

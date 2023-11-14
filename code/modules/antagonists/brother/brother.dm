@@ -34,7 +34,7 @@
 /datum/antagonist/brother/antag_panel_data()
 	return "Conspirators : [get_brother_names()]"
 
-// EffigyEdit Remove Start - Conforming BB Icon to Skyrat Customization
+// EffigyEdit Remove Start - Customization
 /*
 /datum/antagonist/brother/get_preview_icon()
 	var/mob/living/carbon/human/dummy/consistent/brother1 = new
