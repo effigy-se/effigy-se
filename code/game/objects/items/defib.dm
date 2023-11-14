@@ -578,13 +578,6 @@
 	do_cancel()
 
 /obj/item/shockpaddles/proc/do_help(mob/living/carbon/H, mob/living/user)
-	/// EffigyEdit Add - Synthetic Defibrillator Handling ///
-	var/target_synthetic = (user.mob_biotypes & MOB_ROBOTIC)
-	if (target_synthetic)
-		to_chat(user, span_boldwarning("[H] is a synthetic lifeform! This defibrillator probably isn't calibrated to revive [H.p_them()] properly and could have some serious consequences! \
-		[span_warning("You might want to [span_blue("surgically revive [H.p_them()]")]...")]"))
-		balloon_alert(user, "target is synthetic!") // immediately grabs their attention even if they dont see chat
-	/// EffigyEdit Add End
 	user.visible_message(span_warning("[user] begins to place [src] on [H]'s chest."), span_warning("You begin to place [src] on [H]'s chest..."))
 	busy = TRUE
 	update_appearance()

@@ -76,7 +76,6 @@
 	/// List of strings of valid chromosomes this mutation can accept.
 	var/list/valid_chrom_list = list()
 
-
 /datum/mutation/human/New(class = MUT_OTHER, timer, datum/mutation/human/copymut)
 	. = ..()
 	src.class = class

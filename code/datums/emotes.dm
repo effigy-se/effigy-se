@@ -58,12 +58,6 @@
 	var/can_message_change = FALSE
 	/// How long is the cooldown on the audio of the emote, if it has one?
 	var/audio_cooldown = 2 SECONDS
-	// EffigyEdit Add - Customization
-	var/sound_volume = 25 //Emote volume
-	var/list/allowed_species
-	/// Are silicons explicitely allowed to use this emote?
-	var/silicon_allowed = FALSE
-	// EffigyEdit Add End
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -104,10 +98,10 @@
 		return
 
 	user.log_message(msg, LOG_EMOTE)
-	// EffigyEdit Change START Customization
+	// EffigyEdit Add - Customization
 	var/space = should_have_space_before_emote(html_decode(msg)[1]) ? " " : ""
 	var/dchatmsg = "<b>[user]</b>[space][msg]"
-	// EffigyEdit Change END Customization
+	// EffigyEdit Add End
 
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && should_play_sound(user, intentional) && TIMER_COOLDOWN_FINISHED(user, type))
