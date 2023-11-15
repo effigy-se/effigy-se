@@ -29,7 +29,7 @@
 
 /obj/item/clothing/under/rank/security/detective/runner
 	name = "runner sweater"
-	desc = "<i>\"You look lonely.\"</i>"
+	desc = "You look lonely."
 	icon = 'local/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'local/icons/mob/clothing/under/security.dmi'
 	icon_state = "runner"

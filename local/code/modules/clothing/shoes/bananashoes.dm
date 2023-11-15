@@ -1,3 +1,4 @@
+// SHOG NOTE - side-eyeing this. we cool w/ keeping this SR chicanery?
 // Reasoning behind this: silly? perhaps. Spamming a hundred banana peels being good for RP? not so much
 // This is unfortunately mapped into maps instead of being loot/a spawner, so we're forced to remove it this way
 

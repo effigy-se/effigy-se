@@ -49,7 +49,6 @@
 
 /obj/item/clothing/under/rank/medical/scrubs/skyrat/white
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a cream white colour."
-	icon_state = "scrubswhite"
 
 /*
 *	CHEMIST

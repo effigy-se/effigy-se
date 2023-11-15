@@ -1,3 +1,4 @@
+// SHOG NOTE: None of this appears to even be used. ????
 /datum/action/chameleon_slowdown
 	name = "Toggle Chameleon Slowdown"
 	button_icon_state = "chameleon_outfit"
