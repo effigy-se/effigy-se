@@ -125,7 +125,7 @@
 
 /turf/open/floor/iron/ocean
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/iron/ocean
+	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/iron/ocean/Initialize(mapload)
 	. = ..()
@@ -171,7 +171,7 @@
 
 /turf/open/floor/glass/ocean
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/iron/ocean
+	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/glass/ocean/Initialize(mapload)
 	. = ..()
@@ -185,7 +185,7 @@
 
 /turf/open/floor/glass/reinforced/ocean
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/iron/ocean
+	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/glass/reinforced/ocean/Initialize(mapload)
 	. = ..()
@@ -199,7 +199,7 @@
 
 /turf/open/floor/glass/plasma/ocean
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/iron/ocean
+	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/glass/plasma/ocean/Initialize(mapload)
 	. = ..()
@@ -213,7 +213,7 @@
 
 /turf/open/floor/glass/reinforced/plasma/ocean
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/iron/ocean
+	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/glass/reinforced/plasma/ocean/Initialize(mapload)
 	. = ..()
@@ -227,7 +227,7 @@
 
 /turf/open/floor/mineral/plastitanium/ocean
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/iron/ocean
+	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/mineral/plastitanium/ocean/Initialize(mapload)
 	. = ..()
@@ -241,7 +241,7 @@
 
 /turf/open/floor/mineral/plastitanium/red/ocean
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/iron/ocean
+	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/mineral/plastitanium/red/ocean/Initialize(mapload)
 	. = ..()
