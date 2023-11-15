@@ -58,7 +58,6 @@
 		/obj/item/clothing/suit/brownfurrich/white,
 		/obj/item/clothing/suit/brownfurrich/cream,
 		/obj/item/clothing/suit/modern_winter,
-		/obj/item/clothing/suit/corset, // Surprisingly enough, some ERP clothing's unused too
 		/obj/item/electropack/shockcollar/pacify, // Ditto
 		/// JUMPSUITS SECTION
 		/// Civilian
