@@ -4,6 +4,7 @@
 	actions_types = list()
 	flags_cover = NONE
 
+// SHOG TODO - Redundant?
 /obj/item/clothing/mask/balaclavaadjust
 	name = "adjustable balaclava"
 	desc = "Wider eyed and made of an elastic based material, this one seems like it can contort more."
@@ -71,7 +72,7 @@
 
 /obj/item/clothing/mask/muzzle/ball
 	name = "ballgag"
-	desc = "I'm pretty fuckin far from okay."
+	desc = "Jawbreakers for a discerning customer."
 	icon = 'local/icons/obj/clothing/masks.dmi'
 	worn_icon = 'local/icons/mob/clothing/mask.dmi'
 	icon_state = "ballgag"

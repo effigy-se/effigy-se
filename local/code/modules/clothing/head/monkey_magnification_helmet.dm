@@ -1,3 +1,4 @@
+/// SHOG NOTE - why did we port this. god. no. fuck off. revert to /tg/ asap
 /obj/item/clothing/head/helmet/monkey_sentience
 	name = "monkey mind magnification helmet"
 	desc = "A fragile, circuitry embedded helmet for boosting the intelligence of a monkey to a higher level. You see several warning labels..."
