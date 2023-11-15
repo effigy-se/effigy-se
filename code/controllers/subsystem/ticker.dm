@@ -19,8 +19,6 @@ SUBSYSTEM_DEF(ticker)
 	var/start_immediately = FALSE
 	/// Boolean to track and check if our subsystem setup is done.
 	var/setup_done = FALSE
-	/// Did we broadcast at players to hurry up?
-	var/delay_notified = FALSE
 
 	var/datum/game_mode/mode = null
 
@@ -60,7 +58,6 @@ SUBSYSTEM_DEF(ticker)
 	var/roundend_check_paused = FALSE
 
 	var/round_start_time = 0
-	var/round_start_real_time = 0 // EffigyEdit Add - STATPANEL
 	var/list/round_start_events
 	var/list/round_end_events
 	var/mode_result = "undefined"
@@ -195,6 +192,7 @@ SUBSYSTEM_DEF(ticker)
 				send_tip_of_the_round(world, selected_tip)
 				tipped = TRUE
 
+			// EffigyEdit Add - Wait for players
 			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && !totalPlayersReady)
 				if(!delay_notified)
 					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
@@ -203,12 +201,13 @@ SUBSYSTEM_DEF(ticker)
 					log_game("Game setup delayed due to lack of players.")
 					delay_notified = TRUE
 				return // 'SOON' waiting for players
+			// EffigyEdit Add End
 
 			if(timeLeft <= 0)
 				SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
-				SSevents.reschedule() // EffigyEdit Change
+				SSevents.reschedule() // EffigyEdit Add - Wait for players
 				if(start_immediately)
 					fire()
 
@@ -235,7 +234,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, SPAN_BOX_ALERT(BLUE, "Starting game..."))
+	to_chat(world, SPAN_BOX_ALERT(BLUE, "Starting game...")) // EffigyEdit Change - Custom CSS
 	var/init_start = world.timeofday
 
 	mode = new /datum/game_mode/dynamic
@@ -270,7 +269,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!CONFIG_GET(flag/ooc_during_round))
 		toggle_ooc(FALSE) // Turn it off
 
-	SSnightshift.check_nightshift() // EffigyEdit Add (Reset the lights)
+	SSnightshift.check_nightshift() // EffigyEdit Add - Variable start time
 	CHECK_TICK
 	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
 	create_characters() //Create player characters
@@ -287,8 +286,7 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
-	round_start_real_time = REALTIMEOFDAY // EffigyEdit Add - STATPANEL
-	SSautotransfer.new_shift(round_start_real_time)
+	round_start_real_time = REALTIMEOFDAY // EffigyEdit Add - Stat Panel
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
@@ -321,6 +319,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
 	send2adminchat("Server", "Round [GLOB.round_hex ? "#[GLOB.round_hex]" : ""] has started[allmins.len ? ".":" with no active admins online!"]") // EffigyEdit Change - Logging
+	SSautotransfer.new_shift(round_start_real_time) // EffigyEdit Add - Autotransfer
 	setup_done = TRUE
 
 	for(var/i in GLOB.start_landmarks_list)

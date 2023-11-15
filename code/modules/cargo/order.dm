@@ -204,11 +204,6 @@
 			pack.contains += i
 			pack.contains[i] = new_contents[i]
 	pack.cost += cost_increase
-// EffigyEdit Add -
-/// A proc to be overriden if you want custom code to happen when SSshuttle spawns the order
-/datum/supply_order/proc/on_spawn()
-	return
-// EffigyEdit Add End
 
 /// Custom type of order who's supply pack can be safely deleted
 /datum/supply_order/disposable

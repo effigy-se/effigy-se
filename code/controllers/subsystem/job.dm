@@ -536,6 +536,8 @@ SUBSYSTEM_DEF(job)
 
 //Gives the player the stuff he should have with his rank
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/equipping, datum/job/job, client/player_client)
+	equipping.job = job.title
+
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role_with_greeting(job, player_client)

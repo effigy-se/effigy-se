@@ -67,9 +67,6 @@
 	/// Should we give feedback messages?
 	var/show_visible_message = TRUE
 
-	/// Can it be silent?
-	var/can_be_silent = FALSE // EffigyEdit Add Customization
-
 /// Gets the item from the given source.
 /datum/strippable_item/proc/get_item(atom/source)
 

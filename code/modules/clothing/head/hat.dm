@@ -261,7 +261,6 @@
 	flags_inv = 0
 	armor_type = /datum/armor/hats_centcom_cap
 	strip_delay = (8 SECONDS)
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON // EffigyEdit Add
 
 /datum/armor/hats_centcom_cap
 	melee = 30

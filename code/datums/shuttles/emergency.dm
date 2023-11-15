@@ -38,7 +38,7 @@
 			var/path = pick_weight(events)
 			events -= path
 			mobile.event_list.Add(new path(mobile))
-	
+
 /datum/map_template/shuttle/emergency/backup
 	suffix = "backup"
 	name = "Backup Shuttle"
@@ -129,7 +129,6 @@
 	credit_cost = EMAG_LOCKED_SHUTTLE_COST * 1.8
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
 	occupancy_limit = "70"
-	who_can_purchase = null
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"

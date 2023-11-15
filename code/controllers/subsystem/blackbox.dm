@@ -44,20 +44,17 @@ SUBSYSTEM_DEF(blackbox)
 		return
 	var/playercount = LAZYLEN(GLOB.player_list)
 	var/admincount = GLOB.admins.len
-	// EffigyEdit Change START (#3 Ported from Skyrat)
 	var/datum/db_query/query_record_playercount = SSdbcore.NewQuery({"
-		INSERT INTO [format_table_name("legacy_population")] (playercount, admincount, time, server_name, server_ip, server_port, round_id)
-		VALUES (:playercount, :admincount, :time, :server_name, INET_ATON(:server_ip), :server_port, :round_id)
+		INSERT INTO [format_table_name("legacy_population")] (playercount, admincount, time, server_ip, server_port, round_id)
+		VALUES (:playercount, :admincount, :time, INET_ATON(:server_ip), :server_port, :round_id)
 	"}, list(
 		"playercount" = playercount,
 		"admincount" = admincount,
 		"time" = SQLtime(),
-		"server_name" = CONFIG_GET(string/serversqlname),
 		"server_ip" = world.internet_address || "0",
 		"server_port" = "[world.port]",
 		"round_id" = GLOB.round_id,
 	))
-	// EffigyEdit Change END (#3 Ported from Skyrat)
 	query_record_playercount.Execute()
 	qdel(query_record_playercount)
 
@@ -342,7 +339,11 @@ Versioning
 	if(!SSdbcore.Connect())
 		return
 
-	// EffigyEdit Change START (#3 Ported from Skyrat)
+	// EffigyEdit Change - DB Schema
+	/* Original:
+		INSERT INTO [format_table_name("death")] (pod, x_coord, y_coord, z_coord, mapname, server_ip, server_port, round_id, tod, job, special, name, byondkey, laname, lakey, bruteloss, fireloss, brainloss, oxyloss, toxloss, cloneloss, staminaloss, last_words, suicide)
+		VALUES (:pod, :x_coord, :y_coord, :z_coord, :map, INET_ATON(:internet_address), :port, :round_id, :time, :job, :special, :name, :key, :laname, :lakey, :brute, :fire, :brain, :oxy, :tox, :clone, :stamina, :last_words, :suicide)
+	*/
 	var/datum/db_query/query_report_death = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("death")] (pod, x_coord, y_coord, z_coord, mapname, server_name, server_ip, server_port, round_id, tod, job, special, name, byondkey, laname, lakey, bruteloss, fireloss, brainloss, oxyloss, toxloss, cloneloss, staminaloss, last_words, suicide)
 		VALUES (:pod, :x_coord, :y_coord, :z_coord, :map, :server_name, INET_ATON(:internet_address), :port, :round_id, :time, :job, :special, :name, :key, :laname, :lakey, :brute, :fire, :brain, :oxy, :tox, :clone, :stamina, :last_words, :suicide)
@@ -367,13 +368,12 @@ Versioning
 		"last_words" = L.last_words,
 		"suicide" = did_they_suicide,
 		"map" = SSmapping.config.map_name,
-		"server_name" = CONFIG_GET(string/serversqlname),
+		"server_name" = CONFIG_GET(string/serversqlname), // EffigyEdit Add - DB Schema
 		"internet_address" = world.internet_address || "0",
 		"port" = "[world.port]",
 		"round_id" = GLOB.round_id,
 		"time" = SQLtime(),
 	))
-	// EffigyEdit Change END (#3 Ported from Skyrat)
 	if(query_report_death)
 		query_report_death.Execute(async = TRUE)
 		qdel(query_report_death)

@@ -680,11 +680,11 @@
 		if(has_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy))
 			icon_num = 0
 		if(icon_num)
-			hud_used.healthdoll.add_overlay(mutable_appearance(GENERAL_SCREEN_ICONS, "[body_part.body_zone][icon_num]"))
+			hud_used.healthdoll.add_overlay(mutable_appearance(GENERAL_SCREEN_ICONS, "[body_part.body_zone][icon_num]")) // EffigyEdit Change - Custom HUD
 	for(var/t in get_missing_limbs()) //Missing limbs
-		hud_used.healthdoll.add_overlay(mutable_appearance(GENERAL_SCREEN_ICONS, "[t]6"))
+		hud_used.healthdoll.add_overlay(mutable_appearance(GENERAL_SCREEN_ICONS, "[t]6")) // EffigyEdit Change - Custom HUD
 	for(var/t in get_disabled_limbs()) //Disabled limbs
-		hud_used.healthdoll.add_overlay(mutable_appearance(GENERAL_SCREEN_ICONS, "[t]7"))
+		hud_used.healthdoll.add_overlay(mutable_appearance(GENERAL_SCREEN_ICONS, "[t]7")) // EffigyEdit Change - Custom HUD
 
 /mob/living/carbon/human/fully_heal(heal_flags = HEAL_ALL)
 	if(heal_flags & HEAL_NEGATIVE_MUTATIONS)

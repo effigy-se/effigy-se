@@ -1,5 +1,4 @@
 GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
-GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 
 /datum/objective
 	var/datum/mind/owner //The primary owner of the objective. !!SOMEWHAT DEPRECATED!! Prefer using 'team' for new code.

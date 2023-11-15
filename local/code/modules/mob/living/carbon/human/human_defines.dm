@@ -21,4 +21,8 @@
 	var/oversized_piggyknock = 3 SECONDS
 	/// Alpha of the hair. Takes precedent over species hair_alpha if non-null.
 	var/hair_alpha
-
+	var/datum/scream_type/selected_scream
+	var/datum/laugh_type/selected_laugh
+	maxHealth = MAX_HUMAN_HEALTH
+	health = MAX_HUMAN_HEALTH
+	max_stamina = MAX_HUMAN_STAMINA

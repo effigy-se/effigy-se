@@ -43,9 +43,11 @@ SUBSYSTEM_DEF(dbcore)
 
 	var/db_daemon_started = FALSE
 
+// EffigyEdit Change - DB Schema
+// Original: message_admins("Database schema ([db_major].[db_minor]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION]), this may lead to undefined behaviour or errors")
 /datum/controller/subsystem/dbcore/Initialize()
 	//We send warnings to the admins during subsystem init, as the clients will be New'd and messages
-	//will queue properly with goonchat // EffigyEdit Add - DB Revision
+	//will queue properly with goonchat
 	switch(schema_mismatch)
 		if(1)
 			message_admins("Database schema ([db_major].[db_minor] e[db_effigy]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION] e[DB_EFFIGY_VERSION]), this may lead to undefined behaviour or errors")
@@ -277,15 +279,14 @@ SUBSYSTEM_DEF(dbcore)
 	if(CONFIG_GET(flag/sql_enabled))
 		if(Connect())
 			log_world("Database connection established.")
-			var/datum/db_query/query_db_version = NewQuery("SELECT major, minor, effigy FROM [format_table_name("schema_revision")] ORDER BY date DESC LIMIT 1") // EffigyEdit Change - DB Revision
+			var/datum/db_query/query_db_version = NewQuery("SELECT major, minor FROM [format_table_name("schema_revision")] ORDER BY date DESC LIMIT 1")
 			query_db_version.Execute()
 			if(query_db_version.NextRow())
 				db_major = text2num(query_db_version.item[1])
 				db_minor = text2num(query_db_version.item[2])
-				db_effigy = text2num(query_db_version.item[3])
-				if(db_major != DB_MAJOR_VERSION || db_minor != DB_MINOR_VERSION || db_effigy != DB_EFFIGY_VERSION) // EffigyEdit Add - DB Revision
+				if(db_major != DB_MAJOR_VERSION || db_minor != DB_MINOR_VERSION)
 					schema_mismatch = 1 // flag admin message about mismatch
-					log_sql("Database schema ([db_major].[db_minor] e[db_effigy]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION] e[DB_EFFIGY_VERSION]), this may lead to undefined behaviour or errors")
+					log_sql("Database schema ([db_major].[db_minor]) doesn't match the latest schema version ([DB_MAJOR_VERSION].[DB_MINOR_VERSION]), this may lead to undefined behaviour or errors")
 			else
 				schema_mismatch = 2 //flag admin message about no schema version
 				log_sql("Could not get schema version from database")
@@ -297,30 +298,22 @@ SUBSYSTEM_DEF(dbcore)
 
 /datum/controller/subsystem/dbcore/proc/InitializeRound()
 	CheckSchemaVersion()
-
 	if(!Connect())
 		return
-	// EffigyEdit Change START (Logging)
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
-		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]")
+		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_ip, server_port) VALUES (Now(), INET_ATON(:internet_address), :port)",
+		list("internet_address" = world.internet_address || "0", "port" = "[world.port]")
 	)
-
-	var/ev_round_id = null
 	query_round_initialize.Execute(async = FALSE)
 	GLOB.round_id = "[query_round_initialize.last_insert_id]"
-	ev_round_id = text2num("[GLOB.round_id]999")
-	ev_round_id = num2text(ev_round_id, 6, 16)
-	GLOB.round_hex = ev_round_id
-	// EffigyEdit Change END (Logging)
 	qdel(query_round_initialize)
 
 /datum/controller/subsystem/dbcore/proc/SetRoundStart()
 	if(!Connect())
 		return
 	var/datum/db_query/query_round_start = SSdbcore.NewQuery(
-		"UPDATE [format_table_name("round")] SET start_datetime = Now(), effigy_rid = :effigy_rid WHERE id = :round_id",
-		list("round_id" = GLOB.round_id, "effigy_rid" = GLOB.round_hex)
+		"UPDATE [format_table_name("round")] SET start_datetime = Now() WHERE id = :round_id",
+		list("round_id" = GLOB.round_id)
 	)
 	query_round_start.Execute()
 	qdel(query_round_start)

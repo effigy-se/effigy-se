@@ -213,7 +213,7 @@ DEFINE_BITFIELD(flags_inv, list(
 	"HIDETAIL" = HIDETAIL,
 	"HIDESPINE" = HIDESPINE,
 	"HIDESEXTOY" = HIDESEXTOY,
-	// EffigyEdit Add Customization
+	// EffigyEdit Add End
 ))
 
 DEFINE_BITFIELD(machine_stat, list(

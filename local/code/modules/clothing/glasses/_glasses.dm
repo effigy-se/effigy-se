@@ -1,11 +1,6 @@
 /obj/item/clothing/glasses	//Code to let you switch the side your eyepatch is on! Woo! Just an explanation, this is added to the base glasses so it works on eyepatch-huds too
 	var/can_switch_eye = FALSE	//Having this default to false means that its easy to make sure this doesnt apply to any pre-existing items
-
-
-/obj/item/clothing/glasses/examine(mob/user)
-	. = ..()
-	if(can_switch_eye)
-		. += "Use in hands to wear it over your [icon_state == base_icon_state ? "left" : "right"] eye."
+	supports_variations_flags = CLOTHING_SNOUTED_VOX_VARIATION
 
 // Make sure that these get drawn over the snout layer if the mob has a snout
 /obj/item/clothing/glasses/visual_equipped(mob/living/carbon/human/user, slot)

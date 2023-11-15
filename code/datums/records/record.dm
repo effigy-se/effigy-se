@@ -28,7 +28,7 @@
 	var/voice
 
 /datum/record/New(
-	age = 21,
+	age = 18,
 	blood_type = "?",
 	character_appearance,
 	dna_string = "Unknown",
@@ -84,21 +84,8 @@
 	/// Current arrest status
 	var/wanted_status = WANTED_NONE
 
-	// EffigyEdit Add -
-	/// Contains their background information.
-	var/background_information
-	/// Contains their exploitable information.
-	var/exploitable_information
-	/// Contains their own custom past general records.
-	var/past_general_records
-	/// Contains their own custom past medical records.
-	var/past_medical_records
-	/// Contains their own custom past security records.
-	var/past_security_records
-	// EffigyEdit Add End
-
 /datum/record/crew/New(
-	age = 21,
+	age = 21, // EffigyEdit Change
 	blood_type = "?",
 	character_appearance,
 	dna_string = "Unknown",
@@ -120,7 +107,6 @@
 	quirk_notes,
 	// EffigyEdit Add - Customization
 	background_information = "",
-	exploitable_information = "",
 	past_general_records = "",
 	past_medical_records = "",
 	past_security_records = "",
@@ -137,7 +123,6 @@
 	src.quirk_notes = quirk_notes
 	// EffigyEdit Add - Customization
 	src.background_information = background_information
-	src.exploitable_information = exploitable_information
 	src.past_general_records = past_general_records
 	src.past_medical_records = past_medical_records
 	src.past_security_records = past_security_records

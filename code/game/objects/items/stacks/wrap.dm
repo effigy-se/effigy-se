@@ -83,7 +83,7 @@
 		parcel.base_icon_state = "deliverypackage5"
 		parcel.update_icon()
 		user.forceMove(parcel)
-		parcel.contains_mobs = TRUE // EffigyEdit Change - CARGO BORGS
+		parcel.contains_mobs = TRUE // EffigyEdit Add - CARGO BORGS
 		parcel.add_fingerprint(user)
 		return OXYLOSS
 	else
