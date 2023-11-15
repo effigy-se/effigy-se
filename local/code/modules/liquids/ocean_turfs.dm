@@ -1,3 +1,8 @@
+/// HEY!! LISTEN!!
+/// Not every turf works ATM thanks to some issue we're having trouble identifying. The follow turfs have this issue when making an ocean subtype:
+/// /turf/open/floor/glass, /turf/open/floor/mineral/plastitanium
+/// If you implement these, please try and help uncover what's wrong!
+
 /turf/open/openspace/ocean
 	name = "ocean"
 	planetary_atmos = TRUE
@@ -169,20 +174,6 @@
 	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
 	new_immmutable.add_turf(src)
 
-/turf/open/floor/glass/ocean
-	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/plating/ocean_plating
-
-/turf/open/floor/glass/ocean/Initialize(mapload)
-	. = ..()
-	if(liquids)
-		if(liquids.immutable)
-			liquids.remove_turf(src)
-		else
-			qdel(liquids, TRUE)
-	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
-	new_immmutable.add_turf(src)
-
 /turf/open/floor/glass/reinforced/ocean
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/floor/plating/ocean_plating
@@ -216,34 +207,6 @@
 	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/glass/reinforced/plasma/ocean/Initialize(mapload)
-	. = ..()
-	if(liquids)
-		if(liquids.immutable)
-			liquids.remove_turf(src)
-		else
-			qdel(liquids, TRUE)
-	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
-	new_immmutable.add_turf(src)
-
-/turf/open/floor/mineral/plastitanium/ocean
-	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/plating/ocean_plating
-
-/turf/open/floor/mineral/plastitanium/ocean/Initialize(mapload)
-	. = ..()
-	if(liquids)
-		if(liquids.immutable)
-			liquids.remove_turf(src)
-		else
-			qdel(liquids, TRUE)
-	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
-	new_immmutable.add_turf(src)
-
-/turf/open/floor/mineral/plastitanium/red/ocean
-	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/plating/ocean_plating
-
-/turf/open/floor/mineral/plastitanium/red/ocean/Initialize(mapload)
 	. = ..()
 	if(liquids)
 		if(liquids.immutable)
