@@ -1,3 +1,6 @@
+/area/station/service/janitor/wetworks
+	name = "Wetworks"
+
 /area/station/service/studio
 	name = "\improper Studio Control Room"
 	icon_state = "theatre"
