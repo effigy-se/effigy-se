@@ -476,16 +476,36 @@
   - code_imp: Every(?) unused clothing item is now catalogued in a spawner that sure
       does exist alright.
 2023-11-17:
+  1393F:
+  - bugfix: The Sleeping Carp scroll no longer says deflect using throw mode.
+  ArcaneMusic:
+  - bugfix: The Galactic Material Market now respects quantity of materials purchased,
+      removing them from the market when bought and preventing you from ordering more
+      than are available at a given time.
+  Ben10Omintrix:
+  - refactor: gutlunches have been refactored into basic mobs. please report any bugs
+  - rscadd: ashwalkers have a small ranch they can manage
+  - bugfix: wall tearer compnent wont runtime when interacting with mineral walls
+  - bugfix: bileworms will now attack
   BlueMemesauce:
   - bugfix: Fixed tcomms relays being weird, they should be sabotagable again
+  D4C-420:
+  - spellcheck: hopefully changed all instances of the word 'mjolnir' to 'mjollnir'
   DATA_:
   - spellcheck: The examine message for a carbon with an empty golem stomach now properly
       matches said carbon's gender.
   DaCoolBoss:
   - spellcheck: Fixed typos in the examine text for the lead pipe & lead-acid battery.
+  Danny Boy:
+  - bugfix: Fixed Signer eyebrow raising/lowering indicators and emotes
+  - bugfix: Fixed Signer RuneChat punctuation
+  - bugfix: Signers no longer sign with their species' tongue
   GPeckman:
   - qol: Fixed/improved feedback when failing to apply a direct law change to a cyborg.
   - bugfix: Borgs who are unsynced from a malf AI now lose the zeroth law as intended.
+  Ghommie:
+  - bugfix: Fixed a small issue with disposal outlets leaving contents about to be
+      ejected stuck inside the pipe beneath it if deleted.
   Hatterhat:
   - bugfix: Kronkaine's action speed buff now stops when metabolized out.
   - bugfix: Drug-related moodlets should now time out properly. They still linger
@@ -493,9 +513,19 @@
   Jacquerel:
   - bugfix: Goats will now calm down after getting grumpy without causing a runtime
       error.
+  - balance: Sapient brimdemons can't hurt themselves with their own beams
   JohnFulpWillard:
   - bugfix: '[Mafia] Obsessed now knows who their target is in their role description,
       and people playing on PDA are told in their chat.'
+  - refactor: Destructive Analyzers now have a TGUI menu.
+  - bugfix: PDAs now log that they've been emagged, but will no longer log any further
+      programs they open beyond that. This means Nukies don't sell themselves out
+      by opening their disk tracking app.
+  LT3:
+  - bugfix: Bad luck omen again raises your chance of getting shocked by the tram
+      plate
+  - bugfix: Tram plate checks and energizes when the tram is moving
+  - code_imp: Omen component now applies the cursed trait
   Likteer:
   - rscadd: Green Beer has an overdose effect now. It will permeate your skin.
   MTandi:
@@ -503,6 +533,13 @@
       and Clarke.
   - balance: Mech overclock heating now scales with movespeed, higher speed - faster
       overheat.
+  - bugfix: fixed pipe painter not applying pipe color properly
+  - qol: made spraycans work also as pipe painters
+  - qol: spraycans now have basic color presets for quick selection
+  - image: Crates got new sprites
+  - image: Added more crate styles
+  Majkl-J:
+  - bugfix: You can now eject blank IDs from modular computers
   Melbert:
   - bugfix: AI controlled mobs which are immobilized are now properly immobilized
   - bugfix: Fix being unable to resist out of ice cubes
@@ -510,14 +547,35 @@
       will still increase beyond this, but with diminishing returns. For example,
       at 5,000 K, fire will heat 67x weaker.
   - bugfix: Fixes some potential exploits and issues involving shielded equipment.
+  - code_imp: General heart code cleanup.
+  - bugfix: Heartbeat sound effects are no longer sourced to the exact tile you fell
+      into crit at
+  - bugfix: Abductors glands are less likely to become invisible or look wrong
+  - bugfix: Ethereal hearts are less likely to become invisible or look wrong, and
+      now properly spawn with their shine overlay
+  - image: Adds heartbeat animation to beating Ethereal Hearts
+  - bugfix: Fixes hallucination and encrypted announcements printing to the Newscaster.
   Momo8289:
   - spellcheck: Made the remembrance day greeting message more tasteful.
+  OrionTheFox:
+  - image: Resprites the Reactive Anomaly Armor
+  Rhials:
+  - bugfix: The full mining lockers in the Lavaland Mafia map have been replaced with
+      (empty) mining carts.
   SethLafuente:
   - bugfix: fixes holodeck missing medical tools
+  - bugfix: fixes half-covering glassware protecting eyes from chemicals
   SyncIt21:
   - bugfix: suite storage units can be locked again. Remember to install a card reader
       or set the access levels in the airlock electronics inside its stock parts &
       finally swipe your ID to properly enforce access control.
+  - bugfix: drying rack now shows correct examines & screen tips.
+  - code_imp: tone of code organization for smart fridges overall. changed ui to typescript.
+  - qol: added more detailed examines & screen tips for smart fridges. drying racks
+      can be dismantled with a crowbar and not simply pried open with it.
+  TwistedSilicon:
+  - bugfix: invisimin verb now makes you invisible to all HUDs too! No more floating
+      healthbars or job identifiers giving you away while you sneak around.
   Vishenka0704:
   - bugfix: Now you can refuse the pirates request.
   YesterdaysPromise:
@@ -526,9 +584,25 @@
   distributivgesetz:
   - bugfix: The PDA painter and the emergency shield generator can now be destroyed.
   - bugfix: Removes some roundstart active turfs.
+  - code_imp: Atoms no longer break again after they are hit when broken, making them
+      hopefully more stable in the future.
+  jjpark-kb:
+  - qol: looms will now attempt to loop through stackable items (cotton as an example)
+  larentoun:
+  - rscadd: Emote Panel TGUI added in IC category.
+  - qol: 'Gunpoint: Examining the target will show who is holding them at gunpoint'
+  - qol: 'Gunpoint: Examining the shooter will show who they are holding at gunpoint'
+  - balance: 'Gunpoint: If the target tries to grab, they will trigger the shot'
+  - balance: 'Gunpoint: If the target or the shooter are shoved, it will cancel the
+      gunpoint'
+  - balance: 'Gunpoint: If the target is pulled, it will cancel the gunpoint'
+  - balance: Both the target and the shooter can't be bumped anymore to avoid cheesing
+      charged shot or removing the gunpoint by just moving around
+  - bugfix: Clicking the alert button of the shooter will now correctly remove gunpoint
   mc-oofert:
   - bugfix: tramstation cargo disposals outlet has been repositioned to not softlock
       whoever cannot lay down
+  - bugfix: The plaguebearer can no longer depower virology on Tramstation
   necromanceranne:
   - bugfix: The Dread Disciples of Maint Khan, notorious Tunnel Arts practitioner
       and maintenance warlord, have been driven from Nanotrasen stations within the
@@ -538,6 +612,19 @@
   nikothedude:
   - code_imp: Quirks are now customizable on the quirks page instead of on the character
       prefs page
+  san7890:
+  - bugfix: Gorillas and Regal Rats will no longer show up in the ghost-control menu
+      if they died without anyone ever taking control of them.
+  - qol: You will no longer be added to the list for ghost-orbit role polls if you
+      have opted out of getting antag ghost roles in your preferences.
+  - qol: You will get a tgui_alert to accept the ghost role if you were selected via
+      the orbit poll, instead of it just throwing you intot he role.
+  - bugfix: Safeties in the code have been added to prevent things in disposals going
+      into nullspace whenever they get ejected from a pipe - you will just magically
+      spawn at the turf that you were meant to be flung towards.
+  san7890, Ghommie:
+  - bugfix: The Blessing of Insanity now grants no damage slowdown and free hyperspace
+      movement correctly.
   timothymtorres:
   - rscadd: Add bamboo seeds to ash walker den. This lets them craft blowguns, crude
       syringes, bamboo spears, punji stick traps, and more!
