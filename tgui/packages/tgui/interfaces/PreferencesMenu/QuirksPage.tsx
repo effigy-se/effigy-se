@@ -366,7 +366,7 @@ export const QuirksPage = (props, context) => {
                           },
                         ];
                       })}
-                    serverData={server_data}
+                    serverData={quirks_data} // EffigyEdit Change - Customization
                     randomBodyEnabled={randomBodyEnabled}
                     context={context}
                   />
@@ -423,7 +423,7 @@ export const QuirksPage = (props, context) => {
                           },
                         ];
                       })}
-                    serverData={server_data}
+                    serverData={quirks_data} // EffigyEdit Change - Customization
                     randomBodyEnabled={randomBodyEnabled}
                     context={context}
                   />
