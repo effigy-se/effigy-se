@@ -3,7 +3,8 @@
 	holiday_colors = list(
 		"#00ccff",
 		"#ff0066",
-		"#ffff00"
+		"#ffff00",
+		"#00ff80"
 	)
 
 /datum/holiday/fourtwenty/greet()
