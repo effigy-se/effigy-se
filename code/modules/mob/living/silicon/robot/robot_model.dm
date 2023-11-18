@@ -228,6 +228,7 @@
 
 	// EffigyEdit Add - Borgs
 	new_model.update_dogborg()
+	new_model.update_tallborg()
 	// EffigyEdit Add End
 
 	INVOKE_ASYNC(new_model, PROC_REF(do_transform_animation))
