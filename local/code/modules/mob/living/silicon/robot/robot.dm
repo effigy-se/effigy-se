@@ -13,19 +13,19 @@
 		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
 	density = FALSE // We lose density and stop bumping passable dense things.
 
-if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
-	maptext_height = 32 //Offset base chat-height value
+	if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
+		maptext_height = 32 //Offset base chat-height value
 
 		// Resting effects
 		var/turf/sit_pos = get_turf(src)
 		var/obj/structure/table/tabled = locate(/obj/structure/table) in sit_pos.contents
 		if(!tabled)
 			new /obj/effect/temp_visual/mook_dust/robot(get_turf(src))
-			playsound(src, 'modular_skyrat/master_files/sound/effects/robot_sit.ogg', 25, TRUE)
+			playsound(src, 'local/sound/effects/robot_sit.ogg', 25, TRUE)
 			return
 		else
 			new /obj/effect/temp_visual/mook_dust/robot/table(get_turf(src))
-			playsound(src, 'modular_skyrat/master_files/sound/effects/robot_bump.ogg', 50, TRUE)
+			playsound(src, 'local/sound/effects/robot_bump.ogg', 50, TRUE)
 
 		var/list/items_to_move = list()
 
@@ -43,6 +43,8 @@ if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
 	if(layer == LYING_MOB_LAYER)
 		layer = initial(layer)
 	density = initial(density) // We were prone before, so we become dense and things can bump into us again.
+	if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
+		maptext_height = 48 //Offset value of tallborgs
 
 /mob/living/silicon/robot/proc/rest_style()
 	set name = "Switch Rest Style"
@@ -89,17 +91,6 @@ if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
 		robot_resting = FALSE
 		update_icons()
 
-/**
- * Safe check of the cyborg's model_features list.
- *
- */
-/mob/living/silicon/robot/proc/can_rest()
-	if(model && model.model_features && (R_TRAIT_WIDE in model.model_features))
-		if(TRAIT_IMMOBILIZED in _status_traits)
-			return FALSE
-		return TRUE
-	return FALSE
-
 /mob/living/silicon/robot/proc/toggle_smoke()
 	set name = "Toggle smoke"
 	set category = "AI Commands"
@@ -131,3 +122,14 @@ if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
 			dissipate()
 		else
 			return
+
+/**
+ * Safe check of the cyborg's model_features list.
+ *
+ */
+/mob/living/silicon/robot/proc/can_rest()
+	if(model && model.model_features && ((R_TRAIT_WIDE in model.model_features) || (R_TRAIT_TALL in model.model_features)))
+		if(TRAIT_IMMOBILIZED in _status_traits)
+			return FALSE
+		return TRUE
+	return FALSE

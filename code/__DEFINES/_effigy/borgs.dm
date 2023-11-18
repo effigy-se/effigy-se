@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(cyborg_all_models_icon_list)
 
 #define CYBORG_ICON_MINING 'local/icons/mob/borgs/robots_mine.dmi'
 #define CYBORG_ICON_MINING_WIDE 'local/icons/mob/borgs/widerobot_mine.dmi'
-#define CYBORG_ICON_MINING_TALL 'local/icons/mob/borgs/tallrobot_mime.dmi'
+#define CYBORG_ICON_MINING_TALL 'local/icons/mob/borgs/tallrobot_mine.dmi'
 
 #define CYBORG_ICON_JANI 'local/icons/mob/borgs/robots_jani.dmi'
 #define CYBORG_ICON_JANI_WIDE 'local/icons/mob/borgs/widerobot_jani.dmi'
