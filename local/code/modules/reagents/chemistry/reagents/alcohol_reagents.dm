@@ -695,7 +695,7 @@
 /datum/reagent/consumable/ethanol/hippie_hooch/on_mob_life(mob/living/carbon/drinker, seconds_per_tick, times_fired)
 	for(var/effect in status_effects_to_clear)
 		drinker.remove_status_effect(effect)
-	drinker.reagents.remove_all_type(/datum/reagent/consumable/ethanol, 3 * REM * seconds_per_tick, FALSE, TRUE)
+	drinker.reagents.remove_reagent(/datum/reagent/consumable/ethanol, 3 * REM * seconds_per_tick * normalise_creation_purity(), include_subtypes = TRUE)
 	drinker.adjustToxLoss(-0.2 * REM * seconds_per_tick, FALSE, required_biotype = affected_biotype)
 	drinker.adjust_drunk_effect(-10 * REM * seconds_per_tick)
 	..()
