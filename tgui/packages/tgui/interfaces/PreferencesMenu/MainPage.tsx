@@ -453,7 +453,8 @@ const MainFeature = (
           width: `${CLOTHING_CELL_SIZE}px`,
           'overflow-wrap': 'anywhere',
         }}
-        textAlign="center">
+        textAlign="center"
+        textColor="#bce2f9">
         {catalog.name}
       </Box>
     </Popper>
@@ -484,7 +485,7 @@ export const PreferenceList = (props: {
       basis="50%"
       grow
       style={{
-        background: 'rgba(0, 0, 0, 0.5)',
+        // background: 'rgba(0, 0, 0, 0.5)',
         padding: '4px',
       }}
       overflowX="hidden"

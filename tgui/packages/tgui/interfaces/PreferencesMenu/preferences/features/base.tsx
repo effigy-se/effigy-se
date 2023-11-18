@@ -155,7 +155,6 @@ export const StandardizedDropdown = (props: {
   onSetValue: (newValue: string) => void;
   value: string;
   buttons?: boolean;
-  displayHeight?: string;
 }) => {
   const { choices, disabled, buttons, displayNames, onSetValue, value } = props;
 
@@ -291,7 +290,6 @@ export const FeatureIconnedDropdownInput = (
       displayNames={displayNames}
       onSetValue={props.handleSetValue}
       value={props.value.value}
-      displayHeight="32px"
     />
   );
 };
