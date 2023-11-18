@@ -2,8 +2,6 @@ GLOBAL_LIST_EMPTY(active_turfs_startlist)
 
 GLOBAL_VAR(round_id)
 GLOBAL_PROTECT(round_id)
-GLOBAL_VAR(round_hex) // EffigyEdit Add
-GLOBAL_PROTECT(round_hex) // EffigyEdit Add
 
 /// The directory in which ALL log files should be stored
 GLOBAL_VAR(log_directory)

@@ -63,6 +63,7 @@
 			continue
 		if (isnull(creature.mind))
 			trimmed_list.Remove(creature)
+			continue
 		// EffigyEdit Add - Antag Checks
 		if(is_banned_from(creature.client.ckey, BAN_ANTAGONIST))
 			trimmed_list.Remove(creature)
@@ -186,7 +187,12 @@
 		if(makeBody)
 			new_character = generate_ruleset_body(applicant)
 		finish_setup(new_character, i)
-		notify_ghosts("[applicant.name] has been picked for the ruleset [name]!", source = new_character, action = NOTIFY_ORBIT, header="Something Interesting!")
+		notify_ghosts(
+			"[applicant.name] has been picked for the ruleset [name]!",
+			source = new_character,
+			action = NOTIFY_ORBIT,
+			header = "Something Interesting!",
+		)
 
 /datum/dynamic_ruleset/midround/from_ghosts/proc/generate_ruleset_body(mob/applicant)
 	var/mob/living/carbon/human/new_character = make_body(applicant)
@@ -822,7 +828,7 @@
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-	weight = 0 // EffigyEdit Change #228 - Obsession is cringe. Original: 4
+	weight = 4
 	cost = 3 // Doesn't have the same impact on rounds as revenants, dragons, sentient disease (10) or syndicate infiltrators (5).
 	repeatable = TRUE
 

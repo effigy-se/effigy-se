@@ -232,7 +232,6 @@
 	custom_materials = list(/datum/material/bone = HALF_SHEET_MATERIAL_AMOUNT * 7)
 	force_unwielded = 12
 	force_wielded = 20
-	reach = 2 // EffigyEdit Add - increases bone spear range to 2
 
 /obj/item/spear/bonespear/add_headpike_component()
 	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/headpikebone)

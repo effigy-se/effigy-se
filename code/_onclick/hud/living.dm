@@ -1,5 +1,5 @@
 /datum/hud/living
-	ui_style = GENERAL_SCREEN_ICONS
+	ui_style = 'icons/hud/screen_gen.dmi'
 
 /datum/hud/living/New(mob/living/owner)
 	..()

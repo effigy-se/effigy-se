@@ -24,7 +24,12 @@ SUBSYSTEM_DEF(nightshift)
 	check_nightshift()
 
 /datum/controller/subsystem/nightshift/proc/announce(message)
-	minor_announce(message, title="Automated Lighting System Announcement", sound_override='sound/misc/notice2.ogg') // EffigyEdit Change (Make it minor)
+	priority_announce(
+		text = message,
+		sound = 'sound/misc/notice2.ogg',
+		sender_override = "Automated Lighting System Announcement",
+		color_override = "grey",
+	)
 
 /datum/controller/subsystem/nightshift/proc/check_nightshift()
 	var/emergency = SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED
@@ -35,15 +40,10 @@ SUBSYSTEM_DEF(nightshift)
 		high_security_mode = emergency
 		if(night_time)
 			announcing = FALSE
-			// EffigyEdit Remove START
-			/*
 			if(!emergency)
 				announce("Restoring night lighting configuration to normal operation.")
 			else
 				announce("Disabling night lighting: Station is in a state of emergency.")
-			*/
-			// EffigyEdit Remove END
-
 	if(emergency)
 		night_time = FALSE
 	if(nightshift_active != night_time)

@@ -5,12 +5,15 @@
 	is_dimorphic = FALSE
 	burn_modifier = 2
 	head_flags = HEAD_EYESPRITES|HEAD_DEBRAIN
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/chest/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 	burn_modifier = 2
+	biological_state = (BIO_FLESH|BIO_BLOODED)
+	wing_types = NONE
 
 /obj/item/bodypart/arm/left/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
@@ -19,7 +22,8 @@
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
 	unarmed_damage_low = 1 // EffigyEdit Change
 	unarmed_damage_high = 5 // EffigyEdit Change
-	// unarmed_damage_high = 0.5 //snails are soft and squishy
+	burn_modifier = 2
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/arm/right/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
@@ -28,7 +32,8 @@
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
 	unarmed_damage_low = 1 // EffigyEdit Change
 	unarmed_damage_high = 5 // EffigyEdit Change
-	// unarmed_damage_high = 0.5 //snails are soft and squishy
+	burn_modifier = 2
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/leg/left/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
@@ -36,6 +41,7 @@
 	unarmed_damage_high = 0.5
 	burn_modifier = 2
 	speed_modifier = 3 //disgustingly slow
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/leg/right/snail
 	biological_state = BIO_FLESH // EffigyEdit Change
@@ -43,6 +49,7 @@
 	unarmed_damage_high = 0.5
 	burn_modifier = 2
 	speed_modifier = 3 //disgustingly slow
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 ///ABDUCTOR
 /obj/item/bodypart/head/abductor
@@ -55,6 +62,7 @@
 	limb_id = SPECIES_ABDUCTOR
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
+	wing_types = NONE
 
 /obj/item/bodypart/arm/left/abductor
 	limb_id = SPECIES_ABDUCTOR
@@ -89,27 +97,28 @@
 	is_dimorphic = TRUE
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
+	wing_types = NONE
 
 /obj/item/bodypart/arm/left/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/arm/right/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/leg/left/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 
 /obj/item/bodypart/leg/right/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
@@ -125,13 +134,14 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 	is_dimorphic = TRUE
+	wing_types = NONE
 
 /obj/item/bodypart/arm/left/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 
 /obj/item/bodypart/arm/right/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 
 /obj/item/bodypart/leg/left/slime
@@ -139,7 +149,7 @@
 	limb_id = SPECIES_SLIMEPERSON
 
 /obj/item/bodypart/leg/right/slime
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 
 ///LUMINESCENT
@@ -153,21 +163,22 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 	is_dimorphic = TRUE
+	wing_types = NONE
 
 /obj/item/bodypart/arm/left/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 
 /obj/item/bodypart/arm/right/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 
 /obj/item/bodypart/leg/left/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 
 /obj/item/bodypart/leg/right/luminescent
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JOINTED)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 
 ///ZOMBIE
@@ -181,6 +192,7 @@
 	limb_id = SPECIES_ZOMBIE
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
+	wing_types = NONE
 
 /obj/item/bodypart/arm/left/zombie
 	limb_id = SPECIES_ZOMBIE
@@ -219,6 +231,7 @@
 	limb_id = SPECIES_PODPERSON
 	is_dimorphic = TRUE
 	burn_modifier = 1.25
+	wing_types = NONE
 
 /obj/item/bodypart/arm/left/pod
 	limb_id = SPECIES_PODPERSON
@@ -255,6 +268,7 @@
 	limb_id = SPECIES_FLYPERSON
 	is_dimorphic = TRUE
 	should_draw_greyscale = FALSE
+	wing_types = list(/obj/item/organ/external/wings/functional/fly)
 
 /obj/item/bodypart/arm/left/fly
 	limb_id = SPECIES_FLYPERSON
@@ -285,6 +299,7 @@
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	burn_modifier = 1.5
+	wing_types = NONE
 
 /obj/item/bodypart/arm/left/shadow
 	limb_id = SPECIES_SHADOW
@@ -320,6 +335,7 @@
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
 	head_flags = NONE
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 /obj/item/bodypart/chest/skeleton
 	biological_state = BIO_BONE
@@ -327,30 +343,36 @@
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
+	wing_types = list(/obj/item/organ/external/wings/functional/skeleton)
 
 /obj/item/bodypart/arm/left/skeleton
 	biological_state = (BIO_BONE|BIO_JOINTED)
 	limb_id = SPECIES_SKELETON
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 /obj/item/bodypart/arm/right/skeleton
 	biological_state = (BIO_BONE|BIO_JOINTED)
 	limb_id = SPECIES_SKELETON
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 /obj/item/bodypart/leg/left/skeleton
 	biological_state = (BIO_BONE|BIO_JOINTED)
 	limb_id = SPECIES_SKELETON
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 /obj/item/bodypart/leg/right/skeleton
 	biological_state = (BIO_BONE|BIO_JOINTED)
 	limb_id = SPECIES_SKELETON
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
+	bodypart_flags = BODYPART_UNHUSKABLE
 
 ///MUSHROOM
 /obj/item/bodypart/head/mushroom
@@ -364,26 +386,27 @@
 	is_dimorphic = TRUE
 	bodypart_traits = list(TRAIT_NO_JUMPSUIT)
 	burn_modifier = 1.25
+	wing_types = NONE
 
 /obj/item/bodypart/arm/left/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 6
 	unarmed_damage_high = 14
-	unarmed_stun_threshold = 14
+	unarmed_effectiveness = 15
 	burn_modifier = 1.25
 
 /obj/item/bodypart/arm/right/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 6
 	unarmed_damage_high = 14
-	unarmed_stun_threshold = 14
+	unarmed_effectiveness = 15
 	burn_modifier = 1.25
 
 /obj/item/bodypart/leg/left/mushroom
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 9
 	unarmed_damage_high = 21
-	unarmed_stun_threshold = 14
+	unarmed_effectiveness = 20
 	burn_modifier = 1.25
 	speed_modifier = 0.75 //big big fungus
 
@@ -391,7 +414,7 @@
 	limb_id = SPECIES_MUSHROOM
 	unarmed_damage_low = 9
 	unarmed_damage_high = 21
-	unarmed_stun_threshold = 14
+	unarmed_effectiveness = 20
 	burn_modifier = 1.25
 	speed_modifier = 0.75 //big fungus big fungus
 
@@ -464,6 +487,7 @@
 	should_draw_greyscale = FALSE
 	dmg_overlay_type = null
 	bodypart_traits = list(TRAIT_NO_JUMPSUIT)
+	wing_types = NONE
 
 /obj/item/bodypart/chest/golem/Initialize(mapload)
 	worn_belt_offset = new(
@@ -485,7 +509,7 @@
 	bodypart_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_FIST_MINING)
 	unarmed_damage_low = 5
 	unarmed_damage_high = 14
-	unarmed_stun_threshold = 11
+	unarmed_effectiveness = 20
 
 /obj/item/bodypart/arm/left/golem/Initialize(mapload)
 	held_hand_offset =  new(
@@ -519,7 +543,7 @@
 	bodypart_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_FIST_MINING)
 	unarmed_damage_low = 5
 	unarmed_damage_high = 14
-	unarmed_stun_threshold = 11
+	unarmed_effectiveness = 20
 
 /obj/item/bodypart/arm/right/golem/Initialize(mapload)
 	held_hand_offset =  new(
@@ -552,7 +576,7 @@
 	dmg_overlay_type = null
 	unarmed_damage_low = 7
 	unarmed_damage_high = 21
-	unarmed_stun_threshold = 11
+	unarmed_effectiveness = 25
 
 /obj/item/bodypart/leg/right/golem
 	icon = 'icons/mob/human/species/golems.dmi'
@@ -565,4 +589,46 @@
 	dmg_overlay_type = null
 	unarmed_damage_low = 7
 	unarmed_damage_high = 21
-	unarmed_stun_threshold = 11
+	unarmed_effectiveness = 25
+
+///flesh
+
+/obj/item/bodypart/arm/left/flesh
+	limb_id = BODYPART_ID_MEAT
+	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/arm/left/flesh/Initialize(mapload, dont_spawn_flesh = FALSE)
+	. = ..()
+	if(!dont_spawn_flesh)
+		new /mob/living/basic/living_limb_flesh(src, src)
+	ADD_TRAIT(src, TRAIT_IGNORED_BY_LIVING_FLESH, BODYPART_TRAIT)
+
+/obj/item/bodypart/arm/right/flesh
+	limb_id = BODYPART_ID_MEAT
+	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/arm/right/flesh/Initialize(mapload, dont_spawn_flesh = FALSE)
+	. = ..()
+	if(!dont_spawn_flesh)
+		new /mob/living/basic/living_limb_flesh(src, src)
+	ADD_TRAIT(src, TRAIT_IGNORED_BY_LIVING_FLESH, BODYPART_TRAIT)
+
+/obj/item/bodypart/leg/left/flesh
+	limb_id = BODYPART_ID_MEAT
+	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/leg/left/flesh/Initialize(mapload, dont_spawn_flesh = FALSE)
+	. = ..()
+	if(!dont_spawn_flesh)
+		new /mob/living/basic/living_limb_flesh(src, src)
+	ADD_TRAIT(src, TRAIT_IGNORED_BY_LIVING_FLESH, BODYPART_TRAIT)
+
+/obj/item/bodypart/leg/right/flesh
+	limb_id = BODYPART_ID_MEAT
+	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/leg/right/flesh/Initialize(mapload, dont_spawn_flesh = FALSE)
+	. = ..()
+	if(!dont_spawn_flesh)
+		new /mob/living/basic/living_limb_flesh(src, src)
+	ADD_TRAIT(src, TRAIT_IGNORED_BY_LIVING_FLESH, BODYPART_TRAIT)

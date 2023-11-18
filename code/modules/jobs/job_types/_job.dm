@@ -189,14 +189,14 @@
 
 #define VERY_LATE_ARRIVAL_TOAST_PROB 20
 
-/mob/living/carbon/human/on_job_equipping(datum/job/equipping, datum/preferences/used_pref) //EffigyEdit Change
+/mob/living/carbon/human/on_job_equipping(datum/job/equipping, datum/preferences/used_pref) // EffigyEdit Change - Customization - add used_pref
 	var/datum/bank_account/bank_account = new(real_name, equipping, dna.species.payday_modifier)
 	bank_account.payday(STARTING_PAYCHECKS, TRUE)
 	account_id = bank_account.account_id
 	bank_account.replaceable = FALSE
 	add_mob_memory(/datum/memory/key/account, remembered_id = account_id)
 
-	dress_up_as_job(equipping, FALSE, used_pref) //EffigyEdit Change
+	dress_up_as_job(equipping, FALSE, used_pref) // EffigyEdit Add - Customization
 
 	if(EMERGENCY_PAST_POINT_OF_NO_RETURN && prob(VERY_LATE_ARRIVAL_TOAST_PROB))
 		equip_to_slot_or_del(new /obj/item/food/griddle_toast(src), ITEM_SLOT_MASK)

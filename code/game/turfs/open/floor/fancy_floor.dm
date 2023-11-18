@@ -74,6 +74,9 @@
 /turf/open/floor/wood/airless
 	initial_gas_mix = AIRLESS_ATMOS
 
+/turf/open/floor/wood/lavaland
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+
 /turf/open/floor/wood/tile
 	icon_state = "wood_tile"
 	floor_tile = /obj/item/stack/tile/wood/tile
@@ -214,7 +217,7 @@
 /turf/open/floor/fakebasalt
 	name = "aesthetic volcanic flooring"
 	desc = "Safely recreated turf for your hellplanet-scaping."
-	icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "basalt"
 	floor_tile = /obj/item/stack/tile/basalt
 	flags_1 = NONE
@@ -274,6 +277,9 @@
 	icon_state = "carpetsymbol"
 	smoothing_flags = NONE
 	floor_tile = /obj/item/stack/tile/carpet/symbol
+
+/turf/open/floor/carpet/lone/lavaland
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 
 /turf/open/floor/carpet/lone/star
 	icon_state = "carpetstar"
@@ -802,7 +808,7 @@
 	tiled_dirt = FALSE
 
 /turf/open/floor/fakepit/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	underlay_appearance.icon = 'icons/turf/floors.dmi'
 	underlay_appearance.icon_state = "basalt"
 	return TRUE
 

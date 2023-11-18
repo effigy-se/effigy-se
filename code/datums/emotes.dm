@@ -14,6 +14,8 @@
 	var/key = ""
 	/// This will also call the emote.
 	var/key_third_person = ""
+	/// Needed for more user-friendly emote names, so emotes with keys like "aflap" will show as "flap angry". Defaulted to key.
+	var/name = ""
 	/// Message displayed when emote is used.
 	var/message = ""
 	/// Message displayed if the user is a mime.
@@ -58,12 +60,6 @@
 	var/can_message_change = FALSE
 	/// How long is the cooldown on the audio of the emote, if it has one?
 	var/audio_cooldown = 2 SECONDS
-	// EffigyEdit Add - Customization
-	var/sound_volume = 25 //Emote volume
-	var/list/allowed_species
-	/// Are silicons explicitely allowed to use this emote?
-	var/silicon_allowed = FALSE
-	// EffigyEdit Add End
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -76,6 +72,9 @@
 
 	mob_type_blacklist_typecache = typecacheof(mob_type_blacklist_typecache)
 	mob_type_ignore_stat_typecache = typecacheof(mob_type_ignore_stat_typecache)
+
+	if(!name)
+		name = key
 
 /**
  * Handles the modifications and execution of emotes.
@@ -104,13 +103,13 @@
 		return
 
 	user.log_message(msg, LOG_EMOTE)
-	// EffigyEdit Change START Customization
+	// EffigyEdit Add - Customization
 	var/space = should_have_space_before_emote(html_decode(msg)[1]) ? " " : ""
 	var/dchatmsg = "<b>[user]</b>[space][msg]"
-	// EffigyEdit Change END Customization
+	// EffigyEdit Add End
 
 	var/tmp_sound = get_sound(user)
-	if(tmp_sound && should_play_sound(user, intentional) && !TIMER_COOLDOWN_CHECK(user, type))
+	if(tmp_sound && should_play_sound(user, intentional) && TIMER_COOLDOWN_FINISHED(user, type))
 		TIMER_COOLDOWN_START(user, type, audio_cooldown)
 		playsound(user, tmp_sound, 50, vary)
 

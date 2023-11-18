@@ -97,7 +97,7 @@
 /turf/open/indestructible
 	name = "floor"
 	desc = "The floor you walk on. It looks near-impervious to damage."
-	icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "floor"
 	footstep = FOOTSTEP_FLOOR
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
@@ -123,9 +123,6 @@
 
 /turf/open/indestructible/light
 	icon_state = "light_on-1"
-
-/turf/open/indestructible/plating
-	icon_state = "plating"
 
 /turf/open/indestructible/permalube
 	icon_state = "darkfull"
@@ -155,7 +152,7 @@
 /turf/open/indestructible/necropolis
 	name = "necropolis floor"
 	desc = "It's regarding you suspiciously."
-	icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "necro1"
 	baseturfs = /turf/open/indestructible/necropolis
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
@@ -222,6 +219,29 @@
 	blocks_air = TRUE
 	init_air = FALSE
 	baseturfs = /turf/open/indestructible/airblock
+
+/turf/open/indestructible/meat
+	icon_state = "meat"
+	footstep = FOOTSTEP_MEAT
+	barefootstep = FOOTSTEP_MEAT
+	clawfootstep = FOOTSTEP_MEAT
+	heavyfootstep = FOOTSTEP_MEAT
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	baseturfs = /turf/open/indestructible/meat
+
+/turf/open/indestructible/meat/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/indestructible/plating
+	name = "plating"
+	icon_state = "plating"
+	desc = "The attachment points are all bent to uselessness, looks nigh-impervious to damage."
+	overfloor_placed = FALSE
+	underfloor_accessibility = UNDERFLOOR_INTERACTABLE
+	footstep = FOOTSTEP_PLATING
+
+/turf/open/indestructible/plating/airless
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/Initalize_Atmos(time)
 	excited = FALSE
@@ -329,8 +349,8 @@
 			slipper.AddComponent(/datum/component/force_move, target, FALSE)//spinning would be bad for ice, fucks up the next dir
 	return TRUE
 
-/turf/open/proc/MakeSlippery(wet_setting = TURF_WET_WATER, min_wet_time = 0, wet_time_to_add = 0, max_wet_time = MAXIMUM_WET_TIME, permanent)
-	AddComponent(/datum/component/wet_floor, wet_setting, min_wet_time, wet_time_to_add, max_wet_time, permanent)
+/turf/open/proc/MakeSlippery(wet_setting = TURF_WET_WATER, min_wet_time = 0, wet_time_to_add = 0, max_wet_time = MAXIMUM_WET_TIME, permanent = FALSE, should_display_overlay = TRUE)
+	AddComponent(/datum/component/wet_floor, wet_setting, min_wet_time, wet_time_to_add, max_wet_time, permanent, should_display_overlay)
 
 /turf/open/proc/MakeDry(wet_setting = TURF_WET_WATER, immediate = FALSE, amount = INFINITY)
 	SEND_SIGNAL(src, COMSIG_TURF_MAKE_DRY, wet_setting, immediate, amount)

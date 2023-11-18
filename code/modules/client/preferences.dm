@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Ensures that we always load the last used save, QOL
 	var/default_slot = 1
 	/// The maximum number of slots we're allowed to contain
-	var/max_save_slots = 14 // EffigyEdit Change
+	var/max_save_slots = 3
 
 	/// Bitflags for communications that are muted
 	var/muted = NONE
@@ -411,12 +411,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if (!preference.is_accessible(src))
 			continue
 
-		LAZYINITLIST(preferences[preference.category])
-
 		var/value = read_preference(preference.type)
 		var/data = preference.compile_ui_data(user, value)
 
+		LAZYINITLIST(preferences[preference.category])
 		preferences[preference.category][preference.savefile_key] = data
+
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		var/list/append_character_preferences = preference_middleware.get_character_preferences(user)

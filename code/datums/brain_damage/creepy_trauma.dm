@@ -67,6 +67,7 @@
 /datum/brain_trauma/special/obsessed/on_lose()
 	..()
 	owner.mind.remove_antag_datum(/datum/antagonist/obsessed)
+	owner.clear_mood_event("creeping")
 	if(obsession)
 		UnregisterSignal(obsession, COMSIG_MOB_EYECONTACT)
 
@@ -134,10 +135,6 @@
 			continue
 		if(!(player.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
 			continue
-		/* EffigyEdit Remove - Events
-		if(SSticker.IsRoundInProgress() && istype(get_area(player), /area/centcom/interlink))
-			continue
-		*/ // EffigyEdit Remove End
 		viable_minds += player.mind
 	for(var/datum/mind/possible_target as anything in viable_minds)
 		if(possible_target != owner && ishuman(possible_target.current))

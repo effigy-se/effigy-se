@@ -2,7 +2,7 @@
 #define CIRCUIT_FLOOR_POWERUSE 120
 //Circuit flooring, glows a little
 /turf/open/floor/circuit
-	icon = EFFIGY_TURFS_ICON_FILE // EffigyEdit Change - Floors
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "bcircuit"
 	var/icon_normal = "bcircuit"
 	light_color = LIGHT_COLOR_BABY_BLUE
@@ -157,7 +157,7 @@
 
 /turf/open/floor/noslip/tram/Initialize(mapload)
 	. = ..()
-	var/current_holiday_color = request_holiday_colors(src, PATTERN_VERTICAL_STRIPE)
+	var/current_holiday_color = request_station_colors(src, PATTERN_VERTICAL_STRIPE) || request_holiday_colors(src, PATTERN_VERTICAL_STRIPE)
 	if(current_holiday_color)
 		color = current_holiday_color
 	else

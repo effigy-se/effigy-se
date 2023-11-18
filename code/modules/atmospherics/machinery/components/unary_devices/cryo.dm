@@ -72,7 +72,7 @@
 	density = TRUE
 	max_integrity = 350
 	armor_type = /datum/armor/unary_cryo_cell
-	layer = MOB_LAYER - 0.2 // EffigyEdit Change Fixing the opacity of cryo cells - ORIGINAL: layer = MOB_LAYER
+	layer = MOB_LAYER
 	state_open = FALSE
 	circuit = /obj/item/circuitboard/machine/cryo_tube
 	occupant_typecache = list(/mob/living/carbon, /mob/living/simple_animal)
@@ -322,7 +322,12 @@
 
 	if(air1.total_moles() > CRYO_MIN_GAS_MOLES)
 		if(beaker)
-			beaker.reagents.trans_to(occupant, (CRYO_TX_QTY / (efficiency * CRYO_MULTIPLY_FACTOR)) * seconds_per_tick, efficiency * CRYO_MULTIPLY_FACTOR, methods = VAPOR) // Transfer reagents.
+			beaker.reagents.trans_to(
+				occupant,
+				(CRYO_TX_QTY / (efficiency * CRYO_MULTIPLY_FACTOR)) * seconds_per_tick,
+				efficiency * CRYO_MULTIPLY_FACTOR,
+				methods = VAPOR
+			)
 			consume_gas = TRUE
 	return TRUE
 

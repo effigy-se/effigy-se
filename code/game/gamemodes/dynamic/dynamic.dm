@@ -322,7 +322,7 @@ GLOBAL_LIST_EMPTY(dynamic_forced_rulesets)
 	if(length(SScommunications.command_report_footnotes))
 		. += generate_report_footnote()
 
-	print_command_report(., "Central Command Status Summary", announce=FALSE)
+	print_command_report(., "[command_name()] Status Summary", announce=FALSE)
 	if(greenshift)
 		priority_announce("Thanks to the tireless efforts of our security and intelligence divisions, there are currently no credible threats to [station_name()]. All station construction projects have been authorized. Have a secure shift!", "Security Report", SSstation.announcer.get_rand_report_sound())
 	else
@@ -434,6 +434,8 @@ GLOBAL_LIST_EMPTY(dynamic_forced_rulesets)
 			"server_name" = CONFIG_GET(string/serversqlname),
 			"forced_threat_level" = GLOB.dynamic_forced_threat_level,
 			"threat_level" = threat_level,
+			"max_threat" = (SSticker.totalPlayersReady < low_pop_player_threshold) ? LERP(low_pop_maximum_threat, max_threat_level, SSticker.totalPlayersReady / low_pop_player_threshold) : max_threat_level,
+			"player_count" = SSticker.totalPlayersReady,
 			"round_start_budget" = round_start_budget,
 			"parameters" = list(
 				"threat_curve_centre" = threat_curve_centre,
@@ -458,7 +460,7 @@ GLOBAL_LIST_EMPTY(dynamic_forced_rulesets)
 
 /datum/game_mode/dynamic/pre_setup()
 	if(CONFIG_GET(flag/dynamic_config_enabled))
-		var/json_file = file("[global.config.directory]/dynamic.json")
+		var/json_file = file("[global.config.directory]/dynamic_effigy.json") // EffigyEdit Change - Dynamic - Original: dynamic.json
 		if(fexists(json_file))
 			configuration = json_decode(file2text(json_file))
 			if(configuration["Dynamic"])

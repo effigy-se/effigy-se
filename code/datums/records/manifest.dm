@@ -152,7 +152,6 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
 		// EffigyEdit Add - Customization
 		background_information = person_client?.prefs.read_preference(/datum/preference/text/background) || "",
-		exploitable_information = person_client?.prefs.read_preference(/datum/preference/text/exploitable) || "",
 		past_general_records = person_client?.prefs.read_preference(/datum/preference/text/general) || "",
 		past_medical_records = person_client?.prefs.read_preference(/datum/preference/text/medical) || "",
 		past_security_records = person_client?.prefs.read_preference(/datum/preference/text/security) || "",

@@ -8,15 +8,15 @@
 */
 /atom/movable/screen
 	name = ""
-	icon = GENERAL_SCREEN_ICONS
+	icon = 'icons/hud/screen_gen.dmi'
 	// NOTE: screen objects do NOT change their plane to match the z layer of their owner
 	// You shouldn't need this, but if you ever do and it's widespread, reconsider what you're doing.
 	plane = HUD_PLANE
 	animate_movement = SLIDE_STEPS
 	speech_span = SPAN_ROBOT
 	appearance_flags = APPEARANCE_UI
-	/// A reference to the object in the slot. Grabs or items, generally.
-	var/obj/master = null
+	/// A reference to the object in the slot. Grabs or items, generally, but any datum will do.
+	var/datum/weakref/master_ref = null
 	/// A reference to the owner HUD, if any.
 	VAR_PRIVATE/datum/hud/hud = null
 	/**
@@ -42,7 +42,7 @@
 		hud = hud_owner
 
 /atom/movable/screen/Destroy()
-	master = null
+	master_ref = null
 	hud = null
 	return ..()
 
@@ -196,7 +196,7 @@
 
 /atom/movable/screen/inventory/hand
 	var/mutable_appearance/handcuff_overlay
-	var/static/mutable_appearance/blocked_overlay = mutable_appearance(GENERAL_SCREEN_ICONS, "blocked")
+	var/static/mutable_appearance/blocked_overlay = mutable_appearance(GENERAL_SCREEN_ICONS, "blocked") // EffigyEdit Change - Custom HUD
 	var/held_index = 0
 
 /atom/movable/screen/inventory/hand/update_overlays()
@@ -249,10 +249,12 @@
 
 /atom/movable/screen/close/Initialize(mapload, datum/hud/hud_owner, new_master)
 	. = ..()
-	master = new_master
+	master_ref = WEAKREF(new_master)
 
 /atom/movable/screen/close/Click()
-	var/datum/storage/storage = master
+	var/datum/storage/storage = master_ref?.resolve()
+	if(!storage)
+		return
 	storage.hide_contents(usr)
 	return TRUE
 
@@ -304,7 +306,7 @@
 		return
 
 	if(!flashy)
-		flashy = mutable_appearance(GENERAL_SCREEN_ICONS, "togglefull_flash")
+		flashy = mutable_appearance(GENERAL_SCREEN_ICONS, "togglefull_flash") // EffigyEdit Change - Custom HUD
 		flashy.color = "#C62727"
 	. += flashy
 
@@ -394,10 +396,10 @@
 
 /atom/movable/screen/storage/Initialize(mapload, datum/hud/hud_owner, new_master)
 	. = ..()
-	master = new_master
+	master_ref = WEAKREF(new_master)
 
 /atom/movable/screen/storage/Click(location, control, params)
-	var/datum/storage/storage_master = master
+	var/datum/storage/storage_master = master_ref?.resolve()
 	if(!istype(storage_master))
 		return FALSE
 
@@ -428,7 +430,7 @@
 	name = "damage zone"
 	icon_state = "zone_sel"
 	screen_loc = ui_zonesel
-	var/overlay_icon = GENERAL_SCREEN_ICONS
+	var/overlay_icon = 'icons/hud/screen_gen.dmi'
 	var/static/list/hover_overlays_cache = list()
 	var/hovering
 
@@ -472,7 +474,7 @@
 	vis_contents += overlay_object
 
 /obj/effect/overlay/zone_sel
-	icon = GENERAL_SCREEN_ICONS
+	icon = 'icons/hud/screen_gen.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 128
 	anchored = TRUE

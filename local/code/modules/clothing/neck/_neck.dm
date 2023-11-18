@@ -56,7 +56,7 @@
 	desc = "A plated mantle that one might wrap around the upper torso. The 'scales' of the garment signify the members of security and how you're carrying them on your shoulders."
 	icon = 'local/icons/mob/clothing/neck.dmi'
 	worn_icon = 'local/icons/mob/clothing/neck.dmi'
-	icon_state = "hosmantle_blue" //There's a red version if you remove the _blue, but its not coded in currently.
+	icon_state = "hosmantle" //There's a blue version if you add _blue, and it should probably be cleaned up.
 
 /obj/item/clothing/neck/mantle/bsmantle
 	name = "\proper the blueshield's mantle"

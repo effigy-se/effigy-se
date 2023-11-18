@@ -39,45 +39,6 @@
 	///The config type to use for greyscaled belt overlays. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_belt
 
-	// EffigyEdit Add -
-
-	/// Icon file for mob worn overlays, if the user is digi.
-	var/icon/worn_icon_digi
-	/// The config type to use for greyscaled worn sprites for digitigrade characters. Both this and greyscale_colors must be assigned to work.
-	var/greyscale_config_worn_digi
-	/// Icon file for mob worn overlays, if the user is a monkey.
-	var/icon/worn_icon_monkey
-	/// The config type to use for greyscale worn sprites for monkeys. Both this and greyscale_colors must be assigned to work.
-	var/greyscale_config_worn_monkey
-	/// Icon file for mob worn overlays, if the user is a vox.
-	var/icon/worn_icon_vox
-	/// Icon file for mob worn overlays, if the user is a better vox.
-	var/icon/worn_icon_better_vox
-	/// Icon file for mob worn overlays, if the user is a teshari.
-	var/icon/worn_icon_teshari
-	/// The config type to use for greyscaled worn sprites for Teshari characters. Both this and greyscale_colors must be assigned to work.
-	var/greyscale_config_worn_teshari
-	/// The config type to use for greyscaled worn sprites for vox characters. Both this and greyscale_colors must be assigned to work.
-	var/greyscale_config_worn_vox
-	/// The config type to use for greyscaled worn sprites for vox primalis characters. Both this and greyscale_colors must be assigned to work.
-	var/greyscale_config_worn_better_vox
-
-	var/worn_icon_taur_snake
-	var/worn_icon_taur_paw
-	var/worn_icon_taur_hoof
-	var/worn_icon_muzzled
-
-	var/greyscale_config_worn_taur_snake
-	var/greyscale_config_worn_taur_paw
-	var/greyscale_config_worn_taur_hoof
-
-	/// Used for BODYTYPE_CUSTOM: Needs to follow this syntax: a list() with the x and y coordinates of the pixel you want to get the color from. Colors are filled in as GAGs values for fallback.
-	var/list/species_clothing_color_coords[3]
-	/// Does this use the advanced reskinning setup?
-	var/uses_advanced_reskins = FALSE
-
-	// EffigyEdit Add End
-
 	/* !!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!
 
 		IF YOU ADD MORE ICON CRAP TO THIS
@@ -478,7 +439,7 @@
 	///Separator between the items on the list
 	var/sep = ""
 	///Nodes that can be boosted
-	var/list/boostable_nodes = techweb_item_boost_check(src)
+	var/list/boostable_nodes = techweb_item_unlock_check(src)
 	if (boostable_nodes)
 		for(var/id in boostable_nodes)
 			var/datum/techweb_node/node = SSresearch.techweb_node_by_id(id)
@@ -652,9 +613,6 @@
 		if(!R.low_power_mode) //can't equip modules with an empty cell.
 			R.activate_module(src)
 			R.hud_used.update_robot_modules_display()
-
-/obj/item/proc/GetDeconstructableContents()
-	return get_all_contents() - src
 
 // afterattack() and attack() prototypes moved to _onclick/item_attack.dm for consistency
 
@@ -1250,7 +1208,7 @@
 	return src
 
 /**
- * tryEmbed() is for when you want to try embedding something without dealing with the damage + hit messages of calling hitby() on the item while targetting the target.
+ * tryEmbed() is for when you want to try embedding something without dealing with the damage + hit messages of calling hitby() on the item while targeting the target.
  *
  * Really, this is used mostly with projectiles with shrapnel payloads, from [/datum/element/embed/proc/checkEmbedProjectile], and called on said shrapnel. Mostly acts as an intermediate between different embed elements.
  *
@@ -1403,12 +1361,9 @@
 // Update icons if this is being carried by a mob
 /obj/item/wash(clean_types)
 	. = ..()
-
-	SEND_SIGNAL(src, COMSIG_ATOM_WASHED)
-
 	if(ismob(loc))
 		var/mob/mob_loc = loc
-		mob_loc.regenerate_icons()
+		mob_loc.update_clothing(slot_flags)
 
 /// Called on [/datum/element/openspace_item_click_handler/proc/on_afterattack]. Check the relative file for information.
 /obj/item/proc/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
