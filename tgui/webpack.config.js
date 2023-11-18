@@ -47,6 +47,7 @@ module.exports = (env = {}, argv) => {
       ],
     },
     output: {
+      publicPath: '',
       path: argv.useTmpFolder
         ? path.resolve(__dirname, './public/.tmp')
         : path.resolve(__dirname, './public'),

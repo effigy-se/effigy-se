@@ -18,6 +18,7 @@ export type Feature<
   component: FeatureValue<TReceiving, TSending, TServerData>;
   category?: string;
   description?: string;
+  small_supplemental?: boolean;
 };
 
 /**
@@ -154,6 +155,7 @@ export const StandardizedDropdown = (props: {
   onSetValue: (newValue: string) => void;
   value: string;
   buttons?: boolean;
+  displayHeight?: string;
 }) => {
   const { choices, disabled, buttons, displayNames, onSetValue, value } = props;
 
@@ -173,6 +175,14 @@ export const StandardizedDropdown = (props: {
       })}
     />
   );
+};
+
+export const FeatureButtonedDropdownInput = (
+  props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
+    disabled?: boolean;
+  }
+) => {
+  return <FeatureDropdownInput disabled={props.disabled} buttons {...props} />;
 };
 
 export const FeatureDropdownInput = (
@@ -195,11 +205,19 @@ export const FeatureDropdownInput = (
       ])
     );
 
-  return (
+  return serverData.choices.length > 7 ? (
     <StandardizedDropdown
       choices={sortStrings(serverData.choices)}
       disabled={props.disabled}
       buttons={props.buttons}
+      displayNames={displayNames}
+      onSetValue={props.handleSetValue}
+      value={props.value}
+    />
+  ) : (
+    <StandardizedChoiceButtons
+      choices={sortStrings(serverData.choices)}
+      disabled={props.disabled}
       displayNames={displayNames}
       onSetValue={props.handleSetValue}
       value={props.value}
@@ -220,7 +238,9 @@ export const FeatureIconnedDropdownInput = (
     },
     string,
     FeatureChoicedServerData
-  >
+  > & {
+    buttons?: boolean;
+  }
 ) => {
   const serverData = props.serverData;
   if (!serverData) {
@@ -266,14 +286,43 @@ export const FeatureIconnedDropdownInput = (
 
   return (
     <StandardizedDropdown
+      buttons={props.buttons}
       choices={sortStrings(serverData.choices)}
       displayNames={displayNames}
       onSetValue={props.handleSetValue}
       value={props.value.value}
+      displayHeight="32px"
     />
   );
 };
 
+export const StandardizedChoiceButtons = (props: {
+  choices: string[];
+  disabled?: boolean;
+  displayNames: Record<string, InfernoNode>;
+  onSetValue: (newValue: string) => void;
+  value?: string;
+}) => {
+  const { choices, disabled, displayNames, onSetValue, value } = props;
+  return (
+    <>
+      {choices.map((choice) => (
+        <Button
+          key={choice}
+          content={displayNames[choice]}
+          selected={choice === value}
+          disabled={disabled}
+          onClick={() => onSetValue(choice)}
+        />
+      ))}
+    </>
+  );
+};
+
+export type HexValue = {
+  lightness: number;
+  value: string;
+};
 export type FeatureNumericData = {
   minimum: number;
   maximum: number;

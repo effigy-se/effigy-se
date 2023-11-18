@@ -29,8 +29,8 @@ const CharacterProfiles = (props: {
   const { profiles, activeSlot, onClick } = props;
   // EffigyEdit Change
   return (
-    <Flex align="center" justify="center">
-      <Flex.Item width="25%">
+    <Flex align="center" justify="left">
+      <Flex.Item width="336px">
         <Dropdown
           width="100%"
           selected={activeSlot}
@@ -94,32 +94,30 @@ export const CharacterPreferenceWindow = (props, context) => {
   }
 
   return (
-    <Window title="Character Preferences" width={920} height={877}>
+    <Window title="Character Preferences" width={1320} height={765}>
       <Window.Content scrollable>
         <Stack vertical fill>
-          <Stack.Item>
-            <CharacterProfiles
-              activeSlot={data.active_slot - 1}
-              onClick={(slot) => {
-                act('change_slot', {
-                  slot: slot + 1,
-                });
-              }}
-              profiles={data.character_profiles}
-            />
-          </Stack.Item>
-
           {!data.content_unlocked && (
-            <Stack.Item align="center">
-              Buy BYOND premium for more slots!
+            <Stack.Item align="left">
+              Subscribe to a BYOND Membership to unlock more slots!
+              <Stack.Divider />
             </Stack.Item>
           )}
 
-          <Stack.Divider />
-
           <Stack.Item>
             <Stack fill>
-              <Stack.Item grow>
+              <Stack.Item width="224.5px" fontSize="14px">
+                <CharacterProfiles
+                  activeSlot={data.active_slot - 1}
+                  onClick={(slot) => {
+                    act('change_slot', {
+                      slot: slot + 1,
+                    });
+                  }}
+                  profiles={data.character_profiles}
+                />
+              </Stack.Item>
+              <Stack.Item grow={1} ml="10px">
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Main}
@@ -129,7 +127,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
 
-              <Stack.Item grow>
+              <Stack.Item grow={1}>
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Jobs}
@@ -141,10 +139,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                   Occupations
                 </PageButton>
               </Stack.Item>
-              {
-                // EffigyEdit Change START Customization
-              }
-              <Stack.Item grow>
+              <Stack.Item grow={1}>
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Limbs}
@@ -153,7 +148,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
 
-              <Stack.Item grow>
+              <Stack.Item grow={1}>
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Languages}
@@ -161,10 +156,8 @@ export const CharacterPreferenceWindow = (props, context) => {
                   Languages
                 </PageButton>
               </Stack.Item>
-              {
-                // // EffigyEdit Change END Customization
-              }
-              <Stack.Item grow>
+
+              <Stack.Item grow={1}>
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Antags}
@@ -173,7 +166,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
 
-              <Stack.Item grow>
+              <Stack.Item grow={1}>
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Quirks}
