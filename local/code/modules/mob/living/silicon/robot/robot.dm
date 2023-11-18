@@ -128,4 +128,4 @@
  *
  */
 /mob/living/silicon/robot/proc/can_rest()
-	return model && model.model_features && ((R_TRAIT_WIDE in model.model_features) || (R_TRAIT_TALL in model.model_features)) && !HAS_TRAIT(src, TRAIT_IMMOBILIZED)```
+	return model && model.model_features && ((R_TRAIT_WIDE in model.model_features) || (R_TRAIT_TALL in model.model_features)) && !HAS_TRAIT(src, TRAIT_IMMOBILIZED)
