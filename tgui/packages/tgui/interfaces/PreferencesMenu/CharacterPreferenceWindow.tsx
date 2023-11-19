@@ -94,7 +94,7 @@ export const CharacterPreferenceWindow = (props, context) => {
   }
 
   return (
-    <Window title="Character Preferences" width={1320} height={765}>
+    <Window title="Character Preferences" width={1320} height={762}>
       <Window.Content scrollable>
         <Stack vertical fill>
           {!data.content_unlocked && (

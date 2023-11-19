@@ -407,6 +407,7 @@ const MainFeature = (
           height: `${CLOTHING_CELL_SIZE}px`,
           width: `${CLOTHING_CELL_SIZE}px`,
         }}
+        color="blue"
         position="relative"
         tooltip={catalog.name}
         tooltipPosition="right">
@@ -454,7 +455,7 @@ const MainFeature = (
           'overflow-wrap': 'anywhere',
         }}
         textAlign="center"
-        textColor="#bce2f9">
+        textColor="#eaeaea">
         {catalog.name}
       </Box>
     </Popper>
@@ -486,7 +487,7 @@ export const PreferenceList = (props: {
       grow
       style={{
         // background: 'rgba(0, 0, 0, 0.5)',
-        padding: '4px',
+        padding: '2px',
       }}
       overflowX="hidden"
       overflowY="auto"
@@ -508,7 +509,8 @@ export const PreferenceList = (props: {
             return (
               <LabeledList.Item
                 key={featureId}
-                label={feature.name}
+                // label={feature.name}
+                label={<Box width="136px">{feature.name}</Box>}
                 verticalAlign="middle">
                 <Stack fill>
                   {randomSetting && (
@@ -714,7 +716,7 @@ export const MainPage = (
                 </Stack>
               </Stack.Item>
 
-              <Stack.Item fill width={`${CLOTHING_CELL_SIZE * 2 + 15}px`}>
+              <Stack.Item fill width={`${CLOTHING_CELL_SIZE * 1.95}px`}>
                 <Stack height="100%" vertical wrap>
                   {mainFeatures.map(([clothingKey, clothing]) => {
                     const catalog =
@@ -725,7 +727,11 @@ export const MainPage = (
 
                     return (
                       catalog && (
-                        <Stack.Item key={clothingKey} mt={0.5} px={0.5}>
+                        <Stack.Item
+                          key={clothingKey}
+                          mt={0.5}
+                          mr={1.6}
+                          px={0.5}>
                           <MainFeature
                             catalog={catalog}
                             currentValue={clothing}
