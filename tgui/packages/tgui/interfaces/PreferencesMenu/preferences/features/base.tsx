@@ -475,7 +475,7 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
                   background: props.value[index].startsWith('#')
                     ? props.value[index]
                     : `#${props.value[index]}`,
-                  border: '2px solid white',
+                  border: '2px solid #eaeaea',
                   'box-sizing': 'content-box',
                   height: '11px',
                   width: '11px',

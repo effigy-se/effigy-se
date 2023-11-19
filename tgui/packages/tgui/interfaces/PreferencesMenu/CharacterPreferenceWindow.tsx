@@ -97,13 +97,6 @@ export const CharacterPreferenceWindow = (props, context) => {
     <Window title="Character Preferences" width={1320} height={762}>
       <Window.Content scrollable>
         <Stack vertical fill>
-          {!data.content_unlocked && (
-            <Stack.Item align="left">
-              Subscribe to a BYOND Membership to unlock more slots!
-              <Stack.Divider />
-            </Stack.Item>
-          )}
-
           <Stack.Item>
             <Stack fill>
               <Stack.Item width="224.5px" fontSize="14px">

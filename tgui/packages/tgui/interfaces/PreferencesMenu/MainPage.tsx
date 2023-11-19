@@ -512,7 +512,7 @@ export const PreferenceList = (props: {
                 // label={feature.name}
                 label={<Box width="136px">{feature.name}</Box>}
                 verticalAlign="middle">
-                <Stack fill>
+                <Stack fill mr={1}>
                   {randomSetting && (
                     <Stack.Item>
                       <RandomizationButton
