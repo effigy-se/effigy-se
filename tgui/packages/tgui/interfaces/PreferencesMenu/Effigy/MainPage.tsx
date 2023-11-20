@@ -1,28 +1,33 @@
-/* Replaced by tgui/packages/tgui/interfaces/PreferencesMenu/Effigy/MainPage.tsx
 import { classes } from 'common/react';
-import { sendAct, useBackend, useLocalState } from '../../backend';
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks } from '../../components';
-import { createSetPreference, PreferencesMenuData, RandomSetting, ServerData } from './data';
-import { CharacterPreview } from '../common/CharacterPreview';
-import { RandomizationButton } from './RandomizationButton';
-import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
-import { MultiNameInput, NameInput } from './names';
-import { Gender, GENDERS } from './preferences/gender';
-import features from './preferences/features';
-import { FeatureChoicedServerData, FeatureValueInput } from './preferences/features/base';
+import { sendAct, useBackend, useLocalState } from '../../../backend';
+import { Autofocus, Box, Button, Dropdown, Flex, Icon, Input, LabeledList, Popper, Stack, TrackOutsideClicks } from '../../../components';
+import { createSetPreference, PreferencesMenuData, RandomSetting, ServerData } from '../data';
+import { CharacterPreview } from '../../common/CharacterPreview';
+import { RandomizationButton } from '../RandomizationButton';
+import { ServerPreferencesFetcher } from '../ServerPreferencesFetcher';
+import { MultiNameInput, NameInput } from '../names';
+import { Gender, GENDERS } from '../preferences/gender';
+import features from '../preferences/features';
+import { FeatureChoicedServerData, FeatureValueInput } from '../preferences/features/base';
 import { filterMap, sortBy } from 'common/collections';
-import { useRandomToggleState } from './useRandomToggleState';
+import { useRandomToggleState } from '../useRandomToggleState';
+import { createSearch } from 'common/string';
 
-const CLOTHING_CELL_SIZE = 48;
-const CLOTHING_SIDEBAR_ROWS = 9;
+const CLOTHING_CELL_SIZE = 72;
+const CLOTHING_SIDEBAR_ROWS = 8.05;
 
-const CLOTHING_SELECTION_CELL_SIZE = 48;
-const CLOTHING_SELECTION_WIDTH = 5.4;
-const CLOTHING_SELECTION_MULTIPLIER = 5.2;
+const CLOTHING_SELECTION_CELL_SIZE = 72;
+const CLOTHING_SELECTION_CELL_SIZE_HORIZONTAL = 96;
+const CLOTHING_SELECTION_CELL_SIZE_VERTICAL = 135;
+const ENTRIES_PER_ROW = 4;
+const MAX_ROWS = 2.8;
+const CLOTHING_SELECTION_WIDTH = 5.8;
+const CLOTHING_SELECTION_MULTIPLIER = 5.3;
 
 const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
+  handleLoadout: () => void; // EffigyEdit Add Customization
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -34,6 +39,16 @@ const CharacterControls = (props: {
           onClick={props.handleRotate}
           fontSize="22px"
           icon="undo"
+          tooltip="Rotate"
+          tooltipPosition="top"
+        />
+      </Stack.Item>
+
+      <Stack.Item>
+        <Button
+          onClick={props.handleRotate}
+          fontSize="22px"
+          icon="redo"
           tooltip="Rotate"
           tooltipPosition="top"
         />
@@ -57,6 +72,17 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
+      {props.handleLoadout && (
+        <Stack.Item>
+          <Button
+            onClick={props.handleLoadout}
+            fontSize="22px"
+            icon="suitcase"
+            tooltip="Show Loadout Menu"
+            tooltipPosition="top"
+          />
+        </Stack.Item>
+      )}
     </Stack>
   );
 };
@@ -70,21 +96,49 @@ const ChoicedSelection = (
     supplementalValue?: unknown;
     onClose: () => void;
     onSelect: (value: string) => void;
+    searchText: string;
+    setSearchText: (value: string) => void;
   },
   context
 ) => {
   const { act } = useBackend<PreferencesMenuData>(context);
 
-  const { catalog, supplementalFeature, supplementalValue } = props;
+  const {
+    catalog,
+    supplementalFeature,
+    supplementalValue,
+    searchText,
+    setSearchText,
+  } = props;
 
   if (!catalog.icons) {
     return <Box color="red">Provided catalog had no icons!</Box>;
   }
 
+  let search = createSearch(searchText, (name: string) => {
+    return name;
+  });
+
+  const use_small_supplemental =
+    supplementalFeature &&
+    (features[supplementalFeature].small_supplemental === true ||
+      features[supplementalFeature].small_supplemental === undefined);
+
+  const entryCount = Object.keys(catalog.icons).length;
+
+  const calculatedWidth =
+    CLOTHING_SELECTION_CELL_SIZE_HORIZONTAL *
+    Math.min(entryCount, ENTRIES_PER_ROW);
+  const baseHeight =
+    CLOTHING_SELECTION_CELL_SIZE_VERTICAL *
+    Math.min(Math.ceil(entryCount / ENTRIES_PER_ROW), MAX_ROWS);
+  const calculatedHeight =
+    baseHeight + (supplementalFeature && !use_small_supplemental ? 100 : 0);
+
   return (
     <Box
       style={{
-        background: 'white',
+        background: '#333232',
         padding: '5px',
 
         height: `${
@@ -95,27 +149,16 @@ const ChoicedSelection = (
       <Stack vertical fill>
         <Stack.Item>
           <Stack fill>
-            {supplementalFeature && (
-              <Stack.Item>
-                <FeatureValueInput
-                  act={act}
-                  feature={features[supplementalFeature]}
-                  featureId={supplementalFeature}
-                  shrink
-                  value={supplementalValue}
-                />
-              </Stack.Item>
-            )}
-
             <Stack.Item grow>
               <Box
                 style={{
-                  'border-bottom': '1px solid #888',
+                  // 'border-bottom': '1px solid #888',
                   'font-weight': 'bold',
-                  'font-size': '14px',
+                  'font-size': '24px',
+                  'color': '#eaeaea',
                   'text-align': 'center',
                 }}>
-                Select {props.name.toLowerCase()}
+                {props.name}
               </Box>
             </Stack.Item>
 
@@ -126,43 +169,106 @@ const ChoicedSelection = (
             </Stack.Item>
           </Stack>
         </Stack.Item>
+        {supplementalFeature && use_small_supplemental && (
+          <Stack.Item>
+            <FeatureValueInput
+              act={act}
+              feature={features[supplementalFeature]}
+              featureId={supplementalFeature}
+              shrink
+              value={supplementalValue}
+            />
+          </Stack.Item>
+        )}
+        {Object.keys(catalog.icons).length > 5 && (
+          <Stack.Item>
+            <Box>
+              <Icon mr={1} name="search" />
+              <Input
+                autoFocus
+                width={`${calculatedWidth - 55}px`}
+                placeholder=""
+                value={searchText}
+                onInput={(_, value) => setSearchText(value)}
+              />
+            </Box>
+          </Stack.Item>
+        )}
 
-        <Stack.Item overflowX="hidden" overflowY="scroll">
+        <Stack.Item overflowX="hidden" overflowY="auto">
           <Autofocus>
             <Flex wrap>
-              {Object.entries(catalog.icons).map(([name, image], index) => {
-                return (
-                  <Flex.Item
-                    key={index}
-                    basis={`${CLOTHING_SELECTION_CELL_SIZE}px`}
-                    style={{
-                      padding: '5px',
-                    }}>
-                    <Button
-                      onClick={() => {
-                        props.onSelect(name);
-                      }}
-                      selected={name === props.selected}
-                      tooltip={name}
-                      tooltipPosition="right"
+              {Object.entries(catalog.icons)
+                .filter(([n, _]) => searchText?.length < 1 || search(n))
+                .map(([name, image], index) => {
+                  return (
+                    <Flex.Item
+                      key={index}
+                      basis={`${CLOTHING_SELECTION_CELL_SIZE}px`}
                       style={{
-                        height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
-                        width: `${CLOTHING_SELECTION_CELL_SIZE}px`,
+                        padding: '5px',
                       }}>
+                      <Button
+                        onClick={() => {
+                          props.onSelect(name);
+                        }}
+                        selected={name === props.selected}
+                        tooltip={name}
+                        tooltipPosition="right"
+                        style={{
+                          height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
+                          width: `${CLOTHING_SELECTION_CELL_SIZE}px`,
+                        }}>
+                        <Box
+                          className={classes([
+                            'preferences32x32',
+                            image,
+                            'centered-image',
+                          ])}
+                          style={{
+                            transform:
+                              'translateX(-50%) translateY(-50%) scale(2)',
+                          }}
+                        />
+                      </Button>
                       <Box
-                        className={classes([
-                          'preferences32x32',
-                          image,
-                          'centered-image',
-                        ])}
-                      />
-                    </Button>
-                  </Flex.Item>
-                );
-              })}
+                        textAlign="center"
+                        fontSize="14"
+                        width="86%"
+                        color="#eaeaea">
+                        {name}
+                      </Box>
+                    </Flex.Item>
+                  );
+                })}
             </Flex>
           </Autofocus>
         </Stack.Item>
+        {supplementalFeature && !use_small_supplemental && (
+          <>
+            <Stack.Item mt={0.25}>
+              <Box
+                pb={0.25}
+                style={{
+                  'border-bottom': '1px solid rgba(255, 255, 255, 0.1)',
+                  'font-weight': 'bold',
+                  'font-size': '14px',
+                  'text-align': 'center',
+                }}>
+                {features[supplementalFeature].name}
+              </Box>
+            </Stack.Item>
+            <Stack.Item shrink mt={0.5}>
+              <FeatureValueInput
+                act={act}
+                feature={features[supplementalFeature]}
+                featureId={supplementalFeature}
+                shrink
+                value={supplementalValue}
+              />
+            </Stack.Item>
+          </>
+        )}
       </Stack>
     </Box>
   );
@@ -254,6 +360,15 @@ const MainFeature = (
   } = props;
 
   const supplementalFeature = catalog.supplemental_feature;
+  let [searchText, setSearchText] = useLocalState(
+    context,
+    catalog.name + '_choiced_search',
+    ''
+  );
+  const handleCloseInternal = () => {
+    handleClose();
+    setSearchText('');
+  };
 
   return (
     <Popper
@@ -276,11 +391,14 @@ const MainFeature = (
               }
               onClose={handleClose}
               onSelect={handleSelect}
+              searchText={searchText}
+              setSearchText={setSearchText}
             />
           </TrackOutsideClicks>
         )
       }>
       <Button
+        mt="-3px"
         onClick={() => {
           if (isOpen) {
             handleClose();
@@ -292,6 +410,7 @@ const MainFeature = (
           height: `${CLOTHING_CELL_SIZE}px`,
           width: `${CLOTHING_CELL_SIZE}px`,
         }}
+        color="blue"
         position="relative"
         tooltip={catalog.name}
         tooltipPosition="right">
@@ -303,8 +422,8 @@ const MainFeature = (
           ])}
           style={{
             transform: randomization
-              ? 'translateX(-70%) translateY(-70%) scale(1.1)'
-              : 'translateX(-50%) translateY(-50%) scale(1.3)',
+              ? 'translateX(-70%) translateY(-70%) scale(2)'
+              : 'translateX(-50%) translateY(-50%) scale(2)',
           }}
         />
 
@@ -329,6 +448,19 @@ const MainFeature = (
           />
         )}
       </Button>
+      <Box
+        mt={-0.5}
+        mb={1.1}
+        style={{
+          // Text below feature buttons
+          height: `14px`,
+          width: `${CLOTHING_CELL_SIZE}px`,
+          'overflow-wrap': 'anywhere',
+        }}
+        textAlign="center"
+        textColor="#eaeaea">
+        {catalog.name}
+      </Box>
     </Popper>
   );
 };
@@ -357,8 +489,8 @@ export const PreferenceList = (props: {
       basis="50%"
       grow
       style={{
-        background: 'rgba(0, 0, 0, 0.5)',
-        padding: '4px',
+        // background: 'rgba(0, 0, 0, 0.5)',
+        padding: '2px',
       }}
       overflowX="hidden"
       overflowY="auto"
@@ -380,10 +512,10 @@ export const PreferenceList = (props: {
             return (
               <LabeledList.Item
                 key={featureId}
-                label={feature.name}
-                tooltip={feature.description}
+                // label={feature.name}
+                label={<Box width="136px">{feature.name}</Box>}
                 verticalAlign="middle">
-                <Stack fill>
+                <Stack fill mr={1}>
                   {randomSetting && (
                     <Stack.Item>
                       <RandomizationButton
@@ -538,6 +670,9 @@ export const MainPage = (
                       handleRotate={() => {
                         act('rotate');
                       }}
+                      handleLoadout={() => {
+                        act('open_loadout');
+                      }}
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
                         currentSpeciesData ? !!currentSpeciesData.sexes : true
@@ -547,8 +682,25 @@ export const MainPage = (
 
                   <Stack.Item grow>
                     <CharacterPreview
-                      height="100%"
+                      height="92%"
+                      width="100%"
                       id={data.character_preview_view}
+                    />
+                  </Stack.Item>
+
+                  <Stack.Item
+                    // Preview Mode
+                    position="relative"
+                    mt="-40px">
+                    <Dropdown
+                      width="100%"
+                      selected={data.preview_selection}
+                      options={data.preview_options}
+                      onSelected={(value) =>
+                        act('update_preview', {
+                          updated_preview: value,
+                        })
+                      }
                     />
                   </Stack.Item>
 
@@ -567,7 +719,7 @@ export const MainPage = (
                 </Stack>
               </Stack.Item>
 
-              <Stack.Item fill width={`${CLOTHING_CELL_SIZE * 2 + 15}px`}>
+              <Stack.Item fill width={`${CLOTHING_CELL_SIZE * 2.1}px`}>
                 <Stack height="100%" vertical wrap>
                   {mainFeatures.map(([clothingKey, clothing]) => {
                     const catalog =
@@ -578,7 +730,11 @@ export const MainPage = (
 
                     return (
                       catalog && (
-                        <Stack.Item key={clothingKey} mt={0.5} px={0.5}>
+                        <Stack.Item
+                          key={clothingKey}
+                          mt={0.5}
+                          mr={1.6}
+                          px={0.5}>
                           <MainFeature
                             catalog={catalog}
                             currentValue={clothing}
@@ -639,4 +795,3 @@ export const MainPage = (
     />
   );
 };
-*/

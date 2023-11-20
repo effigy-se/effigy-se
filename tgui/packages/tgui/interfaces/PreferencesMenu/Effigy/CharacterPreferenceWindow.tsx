@@ -6,7 +6,7 @@ import { PreferencesMenuData } from '../data';
 import { PageButton } from '../PageButton';
 import { AntagsPage } from '../AntagsPage';
 import { JobsPage } from '../JobsPage';
-import { MainPage } from '../MainPage';
+import { MainPage } from './MainPage';
 import { SpeciesPage } from '../SpeciesPage';
 import { QuirksPage } from '../QuirksPage';
 import { LanguagesPage } from '../LanguagesMenu';
