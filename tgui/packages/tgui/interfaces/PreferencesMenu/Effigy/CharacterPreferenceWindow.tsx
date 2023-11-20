@@ -1,20 +1,22 @@
-/* Replaced by tgui/packages/tgui/interfaces/PreferencesMenu/Effigy/CharacterPreferenceWindow.tsx
 import { exhaustiveCheck } from 'common/exhaustive';
-import { useBackend, useLocalState } from '../../backend';
-import { Button, Stack } from '../../components';
-import { Window } from '../../layouts';
-import { PreferencesMenuData } from './data';
-import { PageButton } from './PageButton';
-import { AntagsPage } from './AntagsPage';
-import { JobsPage } from './JobsPage';
-import { MainPage } from './MainPage';
-import { SpeciesPage } from './SpeciesPage';
-import { QuirksPage } from './QuirksPage';
-
+import { useBackend, useLocalState } from '../../../backend';
+import { Stack, Dropdown, Flex } from '../../../components';
+import { Window } from '../../../layouts';
+import { PreferencesMenuData } from '../data';
+import { PageButton } from '../PageButton';
+import { AntagsPage } from '../AntagsPage';
+import { JobsPage } from '../JobsPage';
+import { MainPage } from '../MainPage';
+import { SpeciesPage } from '../SpeciesPage';
+import { QuirksPage } from '../QuirksPage';
+import { LanguagesPage } from '../LanguagesMenu';
+import { LimbsPage } from '../LimbsPage';
 enum Page {
   Antags,
   Main,
   Jobs,
+  Limbs,
+  Languages,
   Species,
   Quirks,
 }
@@ -24,23 +26,24 @@ const CharacterProfiles = (props: {
   onClick: (index: number) => void;
   profiles: (string | null)[];
 }) => {
-  const { profiles } = props;
-
+  const { profiles, activeSlot, onClick } = props;
   return (
-    <Stack justify="center" wrap>
-      {profiles.map((profile, slot) => (
-        <Stack.Item key={slot}>
-          <Button
-            selected={slot === props.activeSlot}
-            onClick={() => {
-              props.onClick(slot);
-            }}
-            fluid>
-            {profile ?? 'New Character'}
-          </Button>
-        </Stack.Item>
-      ))}
-    </Stack>
+    <Flex align="center" justify="left">
+      <Flex.Item width="336px">
+        <Dropdown
+          width="100%"
+          selected={activeSlot}
+          displayText={profiles[activeSlot]}
+          options={profiles.map((profile, slot) => ({
+            value: slot,
+            displayText: profile ?? 'New Character',
+          }))}
+          onSelected={(slot) => {
+            onClick(slot);
+          }}
+        />
+      </Flex.Item>
+    </Flex>
   );
 };
 
@@ -62,6 +65,12 @@ export const CharacterPreferenceWindow = (props, context) => {
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
+    case Page.Limbs:
+      pageContents = <LimbsPage />;
+      break;
+    case Page.Languages:
+      pageContents = <LanguagesPage />;
+      break;
     case Page.Main:
       pageContents = (
         <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
@@ -82,32 +91,23 @@ export const CharacterPreferenceWindow = (props, context) => {
   }
 
   return (
-    <Window title="Character Preferences" width={920} height={770}>
+    <Window title="Character Preferences" width={1320} height={762}>
       <Window.Content scrollable>
         <Stack vertical fill>
           <Stack.Item>
-            <CharacterProfiles
-              activeSlot={data.active_slot - 1}
-              onClick={(slot) => {
-                act('change_slot', {
-                  slot: slot + 1,
-                });
-              }}
-              profiles={data.character_profiles}
-            />
-          </Stack.Item>
-
-          {!data.content_unlocked && (
-            <Stack.Item align="center">
-              Buy BYOND premium for more slots!
-            </Stack.Item>
-          )}
-
-          <Stack.Divider />
-
-          <Stack.Item>
             <Stack fill>
-              <Stack.Item grow>
+              <Stack.Item width="224.5px" fontSize="14px">
+                <CharacterProfiles
+                  activeSlot={data.active_slot - 1}
+                  onClick={(slot) => {
+                    act('change_slot', {
+                      slot: slot + 1,
+                    });
+                  }}
+                  profiles={data.character_profiles}
+                />
+              </Stack.Item>
+              <Stack.Item grow={1} ml="10px">
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Main}
@@ -117,20 +117,37 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
 
-              <Stack.Item grow>
+              <Stack.Item grow={1}>
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Jobs}
                   setPage={setCurrentPage}>
-
+                  {/*
                     Fun fact: This isn't "Jobs" so that it intentionally
                     catches your eyes, because it's really important!
-
+                  */}
                   Occupations
                 </PageButton>
               </Stack.Item>
+              <Stack.Item grow={1}>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Limbs}
+                  setPage={setCurrentPage}>
+                  Augments+
+                </PageButton>
+              </Stack.Item>
 
-              <Stack.Item grow>
+              <Stack.Item grow={1}>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Languages}
+                  setPage={setCurrentPage}>
+                  Languages
+                </PageButton>
+              </Stack.Item>
+
+              <Stack.Item grow={1}>
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Antags}
@@ -139,7 +156,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 </PageButton>
               </Stack.Item>
 
-              <Stack.Item grow>
+              <Stack.Item grow={1}>
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Quirks}
@@ -158,4 +175,3 @@ export const CharacterPreferenceWindow = (props, context) => {
     </Window>
   );
 };
-*/
