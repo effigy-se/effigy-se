@@ -34,7 +34,6 @@ export const InputButtons = (props: InputButtonsProps, context) => {
   );
   const cancelButton = (
     <Button
-      color="bad"
       fluid={!!large_buttons}
       height={!!large_buttons && 2}
       onClick={() => act('cancel')}
