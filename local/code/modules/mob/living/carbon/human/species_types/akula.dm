@@ -28,6 +28,7 @@
 	)
 
 /datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
