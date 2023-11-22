@@ -8,13 +8,7 @@
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutanttongue = /obj/item/organ/internal/tongue/xeno
-	mutant_bodyparts = list(
-		"tail" = "Xenomorph Tail",
-		"xenodorsal" = ACC_RANDOM,
-		"xenohead" = ACC_RANDOM,
-		"legs" = DIGITIGRADE_LEGS,
-		"taur" = "None"
-	)
+	mutant_bodyparts = list()
 	external_organs = list()
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -29,6 +23,15 @@
 
 	meat = /obj/item/food/meat/slab/xeno
 	skinned_type = /obj/item/stack/sheet/animalhide/xeno
+
+/datum/species/xeno/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "Xenomorph Tail", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"xenodorsal" = list(MUTANT_INDEX_NAME = "Standard", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"xenohead" = list(MUTANT_INDEX_NAME = "Standard", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"legs" = list(MUTANT_INDEX_NAME = DIGITIGRADE_LEGS, MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"taur" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+	)
 
 /datum/species/xeno/get_species_description()
 	return placeholder_description

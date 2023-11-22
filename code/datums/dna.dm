@@ -111,12 +111,17 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
 	destination.dna.temporary_mutations = temporary_mutations.Copy()
+	// EffigyEdit Add - Customization
+	destination.dna.mutant_bodyparts = mutant_bodyparts.Copy()
+	destination.dna.body_markings = body_markings.Copy()
+	destination.dna.update_body_size()
+	// EffigyEdit Add End
 	if(transfer_SE)
 		destination.dna.mutation_index = mutation_index
 		destination.dna.default_mutation_genes = default_mutation_genes
 	if(transfer_species)
 		//destination.set_species(species.type, icon_update=0) - ORIGINAL
-		destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) // EffigyEdit Change Customization
+		destination.set_species(species.type, TRUE, FALSE, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) // EffigyEdit Change - Customization
 
 /datum/dna/proc/copy_dna(datum/dna/new_dna)
 	new_dna.unique_enzymes = unique_enzymes
@@ -360,7 +365,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(DNA_LIZARD_MARKINGS_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.body_markings_list.Find(features["body_markings"]), GLOB.body_markings_list.len))
 		if(DNA_TAIL_BLOCK)
-			set_uni_feature_block(blocknumber, construct_block(GLOB.tails_list.Find(features["tail_lizard"]), GLOB.tails_list.len))
+			set_uni_feature_block(blocknumber, construct_block(GLOB.tails_list_human.Find(features["tail_cat"]), GLOB.tails_list_human.len))
+		if(DNA_LIZARD_TAIL_BLOCK)
+			set_uni_feature_block(blocknumber, construct_block(GLOB.tails_list_lizard.Find(features["tail_lizard"]), GLOB.tails_list_lizard.len))
 		if(DNA_SNOUT_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.snouts_list.Find(features["snout"]), GLOB.snouts_list.len))
 		if(DNA_HORNS_BLOCK)
@@ -447,21 +454,41 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(message)
 			to_chat(holder, message)
 
-//used to update dna UI, UE, and dna.real_name.
+/// Updates the UI, UE, and UF of the DNA according to the features, appearance, name, etc. of the DNA / holder.
 /datum/dna/proc/update_dna_identity()
 	unique_identity = generate_unique_identity()
 	unique_enzymes = generate_unique_enzymes()
 	unique_features = generate_unique_features()
 
-/datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
+/**
+ * Sets up DNA codes and initializes some features.
+ *
+ * * newblood_type - Optional, the blood type to set the DNA to
+ * * create_mutation_blocks - If true, generate_dna_blocks is called, which is used to set up mutation blocks (what a mob can naturally mutate).
+ * * randomize_features - If true, all entries in the features list will be randomized.
+ */
+/datum/dna/proc/initialize_dna(newblood_type, create_mutation_blocks = TRUE, randomize_features = TRUE)
 	if(newblood_type)
 		blood_type = newblood_type
-	unique_enzymes = generate_unique_enzymes()
-	unique_identity = generate_unique_identity()
-	if(!skip_index) //I hate this
+	if(create_mutation_blocks) //I hate this
 		generate_dna_blocks()
-	mutant_bodyparts = species.get_random_mutant_bodyparts(features) // EffigyEdit Change - Customization
-	unique_features = generate_unique_features()
+	mutant_bodyparts = species.get_mutant_bodyparts(features, existing_mutant_bodyparts = randomize_features ? list() : mutant_bodyparts) // EffigyEdit Add - Customization
+	if(randomize_features)
+		/* EffigyEdit Remove - We don't really want this, do we? We get the same effect from get_mutant_bodyparts() on our end, but without mixing up weird species features.
+		var/static/list/all_species_protoypes
+		if(isnull(all_species_protoypes))
+			all_species_protoypes = list()
+			for(var/species_path in subtypesof(/datum/species))
+				all_species_protoypes += new species_path()
+
+		for(var/datum/species/random_species as anything in all_species_protoypes)
+			features |= random_species.randomize_features()
+		EffigyEdit Remove End */
+		body_markings = species.get_random_body_markings(features) // EffigyEdit Add - Customization
+
+		features["mcolor"] = "#[random_color()]"
+
+	update_dna_identity()
 
 /datum/dna/stored //subtype used by brain mob's stored_dna
 
@@ -493,7 +520,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		else
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
+
+/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings) // EffigyEdit Change - Customization - ORIGINAL: /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
 	if(isnull(mrace))
@@ -534,12 +562,12 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		for(var/feature in dna.features)
 			override_features[feature] = dna.features[feature]
 		dna.features = override_features
-	// EffigyEdit Add End
 
 	apply_customizable_dna_features_to_species()
 	dna.unique_features = dna.generate_unique_features()
 
 	dna.update_body_size()
+	// EffigyEdit Add End
 
 	dna.species.on_species_gain(src, old_species, pref_load)
 	log_mob_tag("TAG: [tag] SPECIES: [key_name(src)] \[[mrace]\]")

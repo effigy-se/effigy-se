@@ -7,10 +7,11 @@
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_EXTERNAL_TAIL
 
-	bodypart_overlay = /datum/bodypart_overlay/mutant/tail
-
 	//dna_block = DNA_TAIL_BLOCK // EffigyEdit Remove Customization
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
+
+	// defaults to cat, but the parent type shouldn't be created regardless
+	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/cat
 
 	///Does this tail have a wagging sprite, and is it currently wagging?
 	var/wag_flags = NONE
@@ -84,7 +85,7 @@
 	organ_owner.update_body_parts()
 	UnregisterSignal(organ_owner, COMSIG_LIVING_DEATH)
 
-///Tail parent type (which is MONKEEEEEEEEEEE by default), with wagging functionality
+///Tail parent type, with wagging functionality
 /datum/bodypart_overlay/mutant/tail
 	layers = EXTERNAL_FRONT|EXTERNAL_BEHIND
 	feature_key = "tail" // EffigyEdit Change Customization ORIGINAL: feature_key = "tail_monkey"
@@ -93,6 +94,7 @@
 /datum/bodypart_overlay/mutant/tail/get_base_icon_state()
 	return (wagging ? "wagging_" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging
 
+// EffigyEdit Add - Customization
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
 	return GLOB.sprite_accessories["tail"] // EffigyEdit Change Customization ORIGINAL: return GLOB.tails_list
 
@@ -124,6 +126,9 @@
 /datum/bodypart_overlay/mutant/tail/monkey
 	color_source = NONE
 	feature_key = "tail" // EffigyEdit Change Customization ORIGINAL: feature_key = "tail_monkey"
+
+/datum/bodypart_overlay/mutant/tail/monkey/get_global_feature_list()
+	return GLOB.sprite_accessories["tail"] // EffigyEdit Change - Customization - ORIGINAL: return GLOB.tails_list_monkey
 
 /obj/item/organ/external/tail/lizard
 	name = "lizard tail"

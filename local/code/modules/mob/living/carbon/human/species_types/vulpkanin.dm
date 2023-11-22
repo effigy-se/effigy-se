@@ -5,12 +5,8 @@
 		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs"
-	)
+	mutant_bodyparts = list()
+	mutanttongue = /obj/item/organ/internal/tongue/vulpkanin
 	species_language_holder = /datum/language_holder/vulpkanin
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -24,7 +20,22 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
-/datum/species/vulpkanin/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/vulpkanin/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "Fox", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"snout" = list(MUTANT_INDEX_NAME = "Mammal, Long", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"ears" = list(MUTANT_INDEX_NAME = "Fox", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+	)
+
+/obj/item/organ/internal/tongue/vulpkanin
+	liked_foodtypes = RAW | MEAT
+	disliked_foodtypes = CLOTH
+	toxic_foodtypes = TOXIC
+
+
+/datum/species/vulpkanin/randomize_features()
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -45,9 +56,10 @@
 		if(5)
 			main_color = "#999999"
 			second_color = "#EEEEEE"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = second_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = second_color
+	return features
 
 /datum/species/vulpkanin/get_random_body_markings(list/passed_features)
 	var/name = pick("Fox", "Floof", "Floofer")

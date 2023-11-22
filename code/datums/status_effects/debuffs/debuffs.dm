@@ -279,7 +279,7 @@
 	if(!.)
 		return
 	// EffigyEdit Change - Stasis Numbing
-	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id))
+	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id))
 	owner.throw_alert("stasis numbed", /atom/movable/screen/alert/numbed)
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	//EffigyEdit Change End
@@ -297,7 +297,7 @@
 
 /datum/status_effect/grouped/stasis/on_remove()
 	// EffigyEdit Change - Stasis Numbing
-	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id))
+	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_STASIS, TRAIT_NUMBED), TRAIT_STATUS_EFFECT(id))
 	owner.clear_alert("stasis numbed")
 	// EffigyEdit Change End
 	update_time_of_death()

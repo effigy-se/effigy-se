@@ -6,17 +6,9 @@
 		TRAIT_WATER_BREATHING,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"ears" = ACC_RANDOM,
-		"legs" = "Normal Legs",
-		"frills" = "None",
-		"horns" = "None",
-		"spines" = "None",
-		"wings" = "None",
-	)
-	payday_modifier = 1
+	mutant_bodyparts = list()
+	mutanttongue = /obj/item/organ/internal/tongue/aquatic
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_AKULA
 	bodypart_overrides = list(
@@ -28,7 +20,24 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
 
+/datum/species/aquatic/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"snout" = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"horns" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"ears" = list(MUTANT_INDEX_NAME = "Hammerhead", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"wings" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+	)
+
+/obj/item/organ/internal/tongue/aquatic
+	liked_foodtypes = SEAFOOD | MEAT | FRUIT | GORE
+	disliked_foodtypes = CLOTH | GROSS
+	toxic_foodtypes = TOXIC
+
+
 /datum/species/aquatic/randomize_features(mob/living/carbon/human/human_mob)
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -49,9 +58,10 @@
 		if(5)
 			main_color = "#444444"
 			second_color = "#DDDDEE"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = second_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = second_color
+	return features
 
 /datum/species/aquatic/get_random_body_markings(list/passed_features)
 	var/name = "Shark"

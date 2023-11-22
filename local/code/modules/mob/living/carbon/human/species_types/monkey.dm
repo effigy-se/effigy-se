@@ -1,3 +1,8 @@
+/datum/species/monkey/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "Monkey", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+	)
+
 /datum/species/monkey/prepare_human_for_preview(mob/living/carbon/human/monke)
 	regenerate_organs(monke, src, visual_only = TRUE)
 	monke.update_body(is_creating = TRUE)

@@ -2,11 +2,14 @@
 	inherent_traits = list(
 		TRAIT_PLANT_SAFE,
 	)
-	mutant_bodyparts = list(
-		"pod_hair" = ACC_RANDOM,
-		"legs" = "Normal Legs"
+	mutant_bodyparts = list()
+	payday_modifier = 1.0
+
+/datum/species/pod/get_default_mutant_bodyparts()
+	return list(
+		"pod_hair" = list(MUTANT_INDEX_NAME = "Ivy", MUTANT_INDEX_CAN_RANDOMIZE = TRUE),
+		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
 	)
-	payday_modifier = 1
 
 /datum/species/pod/podweak
 	name = "Podperson"

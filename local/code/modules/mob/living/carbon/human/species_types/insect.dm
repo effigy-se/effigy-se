@@ -5,17 +5,7 @@
 		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
-	mutant_bodyparts = list(
-		"tail" = "None",
-		"snout" = "None",
-		"horns" = "None",
-		"ears" = "None",
-		"legs" = "Normal Legs",
-		"taur" = "None",
-		"fluff" = "None",
-		"wings" = "Bee",
-		"moth_antennae" = "None"
-	)
+	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/insect
 	payday_modifier = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -29,6 +19,19 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/insect,
 	)
 	eyes_icon = 'local/icons/obj/medical/organs/insect_eyes.dmi'
+
+/datum/species/insect/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"snout" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"horns" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"ears" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"taur" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"fluff" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"wings" = list(MUTANT_INDEX_NAME = "Bee", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"moth_antennae" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+	)
 
 /datum/species/insect/get_species_description()
 	return placeholder_description

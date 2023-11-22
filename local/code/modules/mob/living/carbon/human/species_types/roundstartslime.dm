@@ -1,15 +1,5 @@
 /datum/species/jelly
-	mutant_bodyparts = list(
-		"tail" = "None",
-		"snout" = "None",
-		"ears" = "None",
-		"taur" = "None",
-		"wings" = "None",
-		"legs" = "Normal Legs",
-		"horns" = "None",
-		"spines" = "None",
-		"frills" = "None",
-	)
+	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
@@ -18,6 +8,19 @@
 	hair_alpha = 160 //a notch brighter so it blends better.
 	/// Our internal shapeshifting action. Not initialized until on_species_gain is called.
 	var/datum/action/innate/alter_form/shapeshift_action
+
+/datum/species/jelly/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"snout" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"ears" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"legs" = list(MUTANT_INDEX_NAME = "Normal Legs", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"taur" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"wings" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"horns" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"spines" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+		"frills" = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_CAN_RANDOMIZE = FALSE),
+	)
 
 /datum/species/jelly/get_species_description()
 	return placeholder_description

@@ -101,8 +101,31 @@
 	/// A list of all memories we've stolen through absorbs.
 	var/list/stolen_memories = list()
 
-	///	Keeps track of the currently selected profile.
-	var/datum/changeling_profile/current_profile
+	var/true_form_death // EffigyEdit Add - The time that the horror form died.
+
+	// EffigyEdit Add - Customization
+	var/datum/changeling_profile/current_profile = null
+	var/list/mimicable_quirks_list = list(
+		"Bad Touch",
+		"Sensitive Snout",
+		"Ash aspect (Emotes)",
+		"Canidae Traits",
+		"Excitable!",
+		"Feline Traits",
+		"Floral aspect (Emotes)",
+		"Heterochromatic",
+		"Hydra Heads",
+		"Oversized",
+		"Personal Space",
+		"Pseudobulbar Affect",
+		"Shifty Eyes",
+		"Smooth-Headed",
+		"Sparkle aspect (Emotes)",
+		"Water aspect (Emotes)",
+		"Webbing aspect (Emotes)",
+		"Friendly",
+	)
+	// EffigyEdit Add End
 
 /datum/antagonist/changeling/New()
 	. = ..()
@@ -758,10 +781,38 @@
 	user.underwear_color = chosen_profile.underwear_color
 	user.undershirt = chosen_profile.undershirt
 	user.socks = chosen_profile.socks
-	user.age = chosen_profile.age
-	user.physique = chosen_profile.physique
+	// EffigyEdit Add - Customization
+	user.underwear_color = chosen_profile.underwear_color
+	user.undershirt_color = chosen_profile.undershirt_color
+	user.socks_color = chosen_profile.socks_color
+	user.emissive_eyes = chosen_profile.emissive_eyes
+	user.dna.mutant_bodyparts = chosen_dna.mutant_bodyparts.Copy()
+	user.dna.body_markings = chosen_dna.body_markings.Copy()
 	user.grad_style = LAZYLISTDUPLICATE(chosen_profile.grad_style)
 	user.grad_color = LAZYLISTDUPLICATE(chosen_profile.grad_color)
+
+	user.physique = chosen_profile.physique
+	qdel(user.selected_scream)
+	qdel(user.selected_laugh)
+	user.selected_scream = new chosen_profile.scream_type
+	user.selected_laugh = new chosen_profile.laugh_type
+	user.age = chosen_profile.age
+
+	// Only certain quirks will be copied, to avoid making the changeling blind or wheelchair-bound when they can simply pretend to have these quirks.
+
+	for(var/datum/quirk/target_quirk in user.quirks)
+		for(var/mimicable_quirk in mimicable_quirks_list)
+			if(target_quirk.name == mimicable_quirk)
+				user.remove_quirk(target_quirk.type)
+				break
+
+	for(var/datum/quirk/target_quirk in chosen_profile.quirks)
+		for(var/mimicable_quirk in mimicable_quirks_list)
+			if(target_quirk.name == mimicable_quirk)
+				user.add_quirk(target_quirk.type)
+				break
+
+	// EffigyEdit Add End
 	user.voice = chosen_profile.voice
 	user.voice_filter = chosen_profile.voice_filter
 
@@ -842,6 +893,13 @@
 		new_flesh_item.inhand_icon_state = chosen_profile.inhand_icon_state_list[slot]
 		new_flesh_item.worn_icon = chosen_profile.worn_icon_list[slot]
 		new_flesh_item.worn_icon_state = chosen_profile.worn_icon_state_list[slot]
+		// EffigyEdit Add - Customization
+		new_flesh_item.worn_icon_digi = chosen_profile.worn_icon_digi_list[slot]
+		new_flesh_item.worn_icon_monkey = chosen_profile.worn_icon_monkey_list[slot]
+		new_flesh_item.worn_icon_teshari = chosen_profile.worn_icon_teshari_list[slot]
+		new_flesh_item.worn_icon_vox = chosen_profile.worn_icon_vox_list[slot]
+		new_flesh_item.supports_variations_flags = chosen_profile.supports_variations_flags_list[slot]
+		// EffigyEdit Add End
 
 		if(istype(new_flesh_item, /obj/item/changeling/id) && chosen_profile.id_icon)
 			var/obj/item/changeling/id/flesh_id = new_flesh_item
@@ -858,6 +916,13 @@
 			attempted_fake_scar.fake = TRUE
 
 	user.regenerate_icons()
+	user.name = user.get_visible_name()
+	current_profile = chosen_profile
+	// EffigyEdit Add - Customization
+	chosen_dna.transfer_identity(user, TRUE)
+	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE)
+	user.regenerate_icons()
+	user.name = user.get_visible_name()
 	current_profile = chosen_profile
 
 // Changeling profile themselves. Store a data to store what every DNA instance looked like.
@@ -949,11 +1014,29 @@
 	new_profile.stored_scars = stored_scars.Copy()
 	new_profile.profile_snapshot = profile_snapshot
 	new_profile.id_icon = id_icon
-	new_profile.age = age
-	new_profile.physique = physique
-	new_profile.quirks = quirks.Copy()
+	// EffigyEdit Add - Customization
+	new_profile.underwear_color = underwear_color
+	new_profile.undershirt_color = undershirt_color
+	new_profile.socks_color = socks_color
+	new_profile.bra = bra
+	new_profile.bra_color = bra_color
+	new_profile.eye_color_left = eye_color_left
+	new_profile.eye_color_right = eye_color_right
+	new_profile.emissive_eyes = emissive_eyes
 	new_profile.grad_style = LAZYLISTDUPLICATE(grad_style)
 	new_profile.grad_color = LAZYLISTDUPLICATE(grad_color)
+
+	new_profile.physique = physique
+	new_profile.worn_icon_digi_list = worn_icon_digi_list.Copy()
+	new_profile.worn_icon_monkey_list = worn_icon_monkey_list.Copy()
+	new_profile.worn_icon_teshari_list = worn_icon_teshari_list.Copy()
+	new_profile.worn_icon_vox_list = worn_icon_vox_list.Copy()
+	new_profile.supports_variations_flags_list = supports_variations_flags_list.Copy()
+	new_profile.scream_type = scream_type
+	new_profile.laugh_type = laugh_type
+	new_profile.age = age
+	new_profile.quirks = quirks.Copy()
+	// EffigyEdit Add End
 	new_profile.voice = voice
 	new_profile.voice_filter = voice_filter
 
