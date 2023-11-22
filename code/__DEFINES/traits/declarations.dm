@@ -164,7 +164,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Humans with this trait cannot be turned into zombies
 #define TRAIT_NO_ZOMBIFY "no_zombify"
 /// Humans with this trait cannot be affected by changeling transformation stings
-#define TRAIT_NO_TRANSFORMATION_STING "no_transformation_sting"
+// #define TRAIT_NO_TRANSFORMATION_STING "no_transformation_sting" // EffigyTODO: transformation sting
 /// Carbons with this trait can't have their DNA copied by diseases nor changelings
 #define TRAIT_NO_DNA_COPY "no_dna_copy"
 /// Carbons with this trait cant have their dna scrambled by genetics or a disease retrovirus.
