@@ -49,9 +49,9 @@
 		if(5)
 			main_color = "#444444"
 			second_color = "#DDDDEE"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = second_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = second_color
 
 /datum/species/akula/get_random_body_markings(list/passed_features)
 	var/name = "Shark"
