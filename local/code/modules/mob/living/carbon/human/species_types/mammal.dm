@@ -30,6 +30,7 @@
 	)
 
 /datum/species/mammal/randomize_features(mob/living/carbon/human/human_mob)
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/third_color
@@ -63,9 +64,9 @@
 			main_color = "#[random_color()]"
 			second_color = "#[random_color()]"
 			third_color = "#[random_color()]"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = third_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = third_color
 
 /datum/species/mammal/get_random_body_markings(list/passed_features)
 	var/name = "None"
