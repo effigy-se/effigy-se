@@ -1039,7 +1039,6 @@
 		"borg_upgrade_rped",
 		"borg_upgrade_hypermod",
 		"advanced_materials", // EffigyEdit Add
-		"inducer_module", // EffigyEdit Add
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
