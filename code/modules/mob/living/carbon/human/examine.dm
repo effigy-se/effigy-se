@@ -467,7 +467,7 @@
 	. += "</span>"
 
 	// EffigyEdit Add - Customization
-	for(var/genital in possible_genitals)
+	for(var/genital in GLOB.possible_genitals)
 		if(dna.species.mutant_bodyparts[genital])
 			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
 			if(G)

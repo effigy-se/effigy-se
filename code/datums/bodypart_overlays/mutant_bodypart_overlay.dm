@@ -124,10 +124,7 @@
 
 ///Sprite accessories are singletons, stored list("Big Snout" = instance of /datum/sprite_accessory/snout/big), so here we get that singleton
 /datum/bodypart_overlay/mutant/proc/fetch_sprite_datum(datum/sprite_accessory/accessory_path)
-	//return fetch_sprite_datum_from_name(initial(accessory_path.name)) // EffigyEdit Remove - Customization
-	var/list/feature_list = get_global_feature_list()
-
-	return feature_list[initial(accessory_path.name)]
+	return fetch_sprite_datum_from_name(initial(accessory_path.name))
 
 ///Get the singleton from the sprite name
 /datum/bodypart_overlay/mutant/proc/fetch_sprite_datum_from_name(accessory_name)
