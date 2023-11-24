@@ -95,7 +95,6 @@
 	)
 	*/// EffigyEdit Remove End
 /obj/machinery/chem_dispenser/Initialize(mapload)
-	. = ..()
 	if(dispensable_reagents != null && !dispensable_reagents.len)
 		dispensable_reagents = default_dispensable_reagents
 	if(dispensable_reagents)
@@ -120,6 +119,8 @@
 		emagged_reagents = default_emagged_reagents
 	if(emagged_reagents)
 		emagged_reagents = sort_list(emagged_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
+
+	. = ..() // So that we call RefreshParts() after adjusting the lists
 
 	if(is_operational)
 		begin_processing()
