@@ -768,9 +768,25 @@
   mc-oofert:
   - bugfix: you can climb over more stuff with a climbing hook
 2023-11-23:
+  00-Steven:
+  - balance: signers no longer suffer from social anxiety's speech changes when they
+      go non-verbal. Other effects are maintained.
   DaCoolBoss:
   - spellcheck: Nukie and ERT defibrillators now reference combat mode instead of
       intents.
+  EuSouAFazer:
+  - qol: Slightly moved the universal enzyme on meta's kitchen to a prettier spot.
+  - bugfix: The universal enzyme on meta's kitchen is no longer unecessarely varedited.
+  Ghommie:
+  - bugfix: Fixed the infinite growth serum exploit.
+  - bugfix: Fixed generic nutriment processing even when dead.
+  - bugfix: The aquarium auto-feeding feature now works correctly.
+  - bugfix: Fixed an issue with un-hidden (alien, syndie etc.) nodes not being researchable.
+  Hatterhat:
+  - balance: The SC/FISHER disruptor pistol is now more likely to show up in black
+      market uplinks.
+  - balance: The SC/FISHER now has more range (21 tiles up from 14), and is usable
+      by pacifists.
   Iamgoofball, sqnztb, honkpocket, vinylspiders, Plum-but-gayer for Skyrat 13:
   - qol: You can now rename and describe any loadout item, not just plushies.
   - bugfix: soulcatchers' edit name button correctly displays the host name
@@ -785,11 +801,21 @@
   - rscadd: Infiltrators (Latejoin/Midround traitors) can now buy and use Contract
       kits again.
   - rscdel: Contractor baton can now only be purchased once.
+  - qol: NTNet Downloader now has a search bar, and programs are now better sorted.
   KingkumaArt:
   - bugfix: Stopped a DS crash when shooting a rebar crossbow in specific circumstances.
+  LT3:
+  - bugfix: Delam counter will correctly show 0 the shift after a delam
   MTandi:
   - bugfix: Hydrotrays consume nutrients according to their proportion in the mix,
       instead of randomly picking reagents to consume every cycle.
+  Melbert:
+  - admin: Adds a button to check-antagonists that allows admins to send Nuke Op reinforcements
+      with a single button
+  - admin: Nuke Ops check antagonists now show you full war status (declared / not
+      declared)
+  - bugfix: Fixes multiple nuke teams (or an admin) being able to declare war at once
+  - rscdel: Heretic side path points are gone
   Rhials:
   - rscadd: Nuclear Operatives, in an attempt to appeal to the more "tacticool" members
       of their cause, have begun using callsigns to designate themselves. Check your
@@ -804,18 +830,48 @@
       Now displays input list for adding reagents
   - bugfix: selling large amount of mats in cargo should not give you infinite credits
   - bugfix: runtime when adjusting material market after buying
+  - code_imp: Removes & merges `get_multiple_reagent_amounts()` proc with `get_reagent_amount()`
+      inside reagent holder
+  - code_imp: Removes & merges `get_reagent()` proc with `has_reagent()` inside reagent
+      holder
+  - code_imp: Removes & merges `has_chemical_flag()` proc with `has_reagent()` inside
+      reagent holder
+  - refactor: Reagent holder code has been further compressed. Report bugs on github
+  Tattle:
+  - bugfix: admin painting manager works again
   YakumoChen:
   - balance: Paint cans hold 20x more paint than before, painters rejoice! (Janitors
       cry more)
+  dieamond13:
+  - bugfix: adds back one way exits to Tramstation science's entrance
   jlsnow301:
   - qol: Nearly every ghost alert should now feature a "VIEW" button, even those with
       click interaction.
   - rscdel: Ghost alerts no longer show the entire message in the tooltip, instead
       have been replaced with titles.
   - bugfix: Chat shouldn't bluescreen at the start of the round
+  - bugfix: Admins can spawn bitrunning events (again!)
   lizardqueenlexi:
   - spellcheck: Some roundstart tips have been made clearer regarding "suits" vs.
       "exosuits".
+  - bugfix: Hardcore Random will no longer assign incompatible quirks.
+  necromanceranne:
+  - rscadd: The battle against Maint Khan's forces rages on in the periphery stations
+      of the Spinward Sector. And with it, a new breed of unarmed warrior has emerged;
+      the cybernetic martial artist. Nanotrasen, rather than quell the minor maintenance
+      civil war brewing in their sector, have chosen to exploit this conflict to push
+      their weapons and cybernetics research to new heights!
+  - rscadd: Advanced cybernetic arms can be printed at the Robotics exofabricator
+      once researched. They are unlocked by researching the Advanced Robotics Research
+      node.
+  - rscadd: Advanced cybernetic arms are more durable than standard limbs, and also
+      have higher unarmed potential.
+  - balance: Strongarm implants now utilize the attacking limb's unarmed potential
+      to determine damage and potential armor penetration. It also does additional
+      stamina damage (1.5x punch damage)
+  - balance: Surplus prosthetic limbs contribute more of their carried damage to overall
+      health (AKA they make you actively more vulnerable to damage), and deal less
+      damage with unarmed attacks. Take Quadruple Amputee at your own risk.
   san7890:
   - bugfix: '"Old Chat" (AKA: The old-styled non-TGUI raw-HTMLesque chat that you
       might see when it prods you with the "Failed to load fancy chat!" issue) should
@@ -829,3 +885,11 @@
   - bugfix: fixes bug that was preventing high luminosity eyes' light from turning
       on
   - bugfix: fixes eyes being on the wrong side of the head when facing east/west
+  - bugfix: fixed a race condition with mutations
+  yooriss:
+  - refactor: Icemoon wolves now use the basic mob framework and should act more intelligently,
+      defending their pack.
+  - rscadd: Icemoon wolves can be tamed with slabs of meat and can be ridden as mounts
+      once friendly. Being rather large dogs, they also have access to most of the
+      pet commands you'd expect, such as fetching things, and violently mauling people
+      their owners point at.
