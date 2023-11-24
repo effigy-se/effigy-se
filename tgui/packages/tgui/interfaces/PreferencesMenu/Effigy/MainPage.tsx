@@ -21,7 +21,7 @@ const CLOTHING_SELECTION_CELL_SIZE_HORIZONTAL = 96;
 const CLOTHING_SELECTION_CELL_SIZE_VERTICAL = 135;
 const ENTRIES_PER_ROW = 4;
 const MAX_ROWS = 2.8;
-const CLOTHING_SELECTION_WIDTH = 5.8;
+const CLOTHING_SELECTION_WIDTH = 5.6;
 const CLOTHING_SELECTION_MULTIPLIER = 5.3;
 
 const CharacterControls = (props: {
@@ -149,12 +149,22 @@ const ChoicedSelection = (
       <Stack vertical fill>
         <Stack.Item>
           <Stack fill>
-            <Stack.Item grow>
+            <Stack.Item ml={0.2} mt={0.5}>
+              {supplementalFeature && use_small_supplemental && (
+                <FeatureValueInput
+                  act={act}
+                  feature={features[supplementalFeature]}
+                  featureId={supplementalFeature}
+                  shrink
+                  value={supplementalValue}
+                />
+              )}
+            </Stack.Item>
+            <Stack.Item grow mr={6}>
               <Box
                 style={{
-                  // 'border-bottom': '1px solid #888',
                   'font-weight': 'bold',
-                  'font-size': '24px',
+                  'font-size': '18px',
                   'color': '#eaeaea',
                   'text-align': 'center',
                 }}>
@@ -163,38 +173,32 @@ const ChoicedSelection = (
             </Stack.Item>
 
             <Stack.Item>
-              <Button color="red" onClick={props.onClose}>
-                X
+              <Button
+                style={{
+                  'font-weight': 'bold',
+                  'font-size': '14px',
+                  'text-align': 'center',
+                }}
+                color="grey"
+                onClick={props.onClose}>
+                {' '}
+                x
               </Button>
             </Stack.Item>
           </Stack>
         </Stack.Item>
-        {supplementalFeature && use_small_supplemental && (
-          <Stack.Item>
-            <FeatureValueInput
-              act={act}
-              feature={features[supplementalFeature]}
-              featureId={supplementalFeature}
-              shrink
-              value={supplementalValue}
+        <Stack.Item textColor="#eaeaea" verticalAlign="middle">
+          <Box>
+            <Icon ml={1} mr={1.5} name="search" />
+            <Input
+              autoFocus
+              width={`83.5%`}
+              placeholder=""
+              value={searchText}
+              onInput={(_, value) => setSearchText(value)}
             />
-          </Stack.Item>
-        )}
-        {Object.keys(catalog.icons).length > 5 && (
-          <Stack.Item>
-            <Box>
-              <Icon mr={1} name="search" />
-              <Input
-                autoFocus
-                width={`${calculatedWidth - 55}px`}
-                placeholder=""
-                value={searchText}
-                onInput={(_, value) => setSearchText(value)}
-              />
-            </Box>
-          </Stack.Item>
-        )}
-
+          </Box>
+        </Stack.Item>
         <Stack.Item overflowX="hidden" overflowY="auto">
           <Autofocus>
             <Flex wrap>
