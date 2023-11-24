@@ -493,11 +493,11 @@ export const PreferenceList = (props: {
       basis="50%"
       grow
       style={{
-        // background: 'rgba(0, 0, 0, 0.5)',
         padding: '2px',
       }}
       overflowX="hidden"
       overflowY="auto"
+      ml="-6px"
       maxHeight={props.maxHeight}>
       <LabeledList>
         {sortPreferences(Object.entries(props.preferences)).map(
@@ -517,7 +517,7 @@ export const PreferenceList = (props: {
               <LabeledList.Item
                 key={featureId}
                 // label={feature.name}
-                label={<Box width="136px">{feature.name}</Box>}
+                label={<Box width="144px">{feature.name}</Box>}
                 verticalAlign="middle">
                 <Stack fill mr={1}>
                   {randomSetting && (
