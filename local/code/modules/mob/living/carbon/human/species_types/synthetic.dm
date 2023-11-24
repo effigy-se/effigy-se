@@ -18,7 +18,6 @@
 		TRAIT_LITERATE,
 		TRAIT_NOCRITDAMAGE, // We do our own handling of crit damage.
 		TRAIT_ROBOTIC_DNA_ORGANS,
-		TRAIT_NO_TRANSFORMATION_STING,
 	)
 	mutant_bodyparts = list(
 		MUTANT_SYNTH_ANTENNA = "None",

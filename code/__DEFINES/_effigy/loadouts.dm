@@ -76,6 +76,7 @@
 
 #define INFO_GREYSCALE "greyscale"
 #define INFO_NAMED "name"
+#define INFO_DESCRIBED "description"
 
 /// Max amonut of misc / backpack items that are allowed.
 #define MAX_ALLOWED_MISC_ITEMS 3
