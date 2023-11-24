@@ -1,6 +1,6 @@
 import { exhaustiveCheck } from 'common/exhaustive';
 import { useBackend, useLocalState } from '../../../backend';
-import { Stack, Dropdown, Flex } from '../../../components';
+import { Stack, SideDropdown, Flex } from '../../../components';
 import { Window } from '../../../layouts';
 import { PreferencesMenuData } from '../data';
 import { PageButton } from '../PageButton';
@@ -30,7 +30,7 @@ const CharacterProfiles = (props: {
   return (
     <Flex align="center" justify="left">
       <Flex.Item width="336px">
-        <Dropdown
+        <SideDropdown
           width="100%"
           selected={activeSlot}
           displayText={profiles[activeSlot]}

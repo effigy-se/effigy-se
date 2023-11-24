@@ -37,6 +37,7 @@ export { Popper } from './Popper';
 export { RestrictedInput } from './RestrictedInput';
 export { RoundGauge } from './RoundGauge';
 export { Section } from './Section';
+export { SideDropdown } from './SideDropdown';
 export { Slider } from './Slider';
 export { StyleableSection } from './StyleableSection';
 export { Stack } from './Stack';

@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { sendAct, useBackend, useLocalState } from '../../../backend';
-import { Autofocus, Box, Button, Dropdown, Flex, Icon, Input, LabeledList, Popper, Stack, TrackOutsideClicks } from '../../../components';
+import { Autofocus, Box, Button, SideDropdown, Flex, Icon, Input, LabeledList, Popper, Stack, TrackOutsideClicks } from '../../../components';
 import { createSetPreference, PreferencesMenuData, RandomSetting, ServerData } from '../data';
 import { CharacterPreview } from '../../common/CharacterPreview';
 import { RandomizationButton } from '../RandomizationButton';
@@ -682,7 +682,7 @@ export const MainPage = (
 
                   <Stack.Item grow>
                     <CharacterPreview
-                      height="74%"
+                      height="91%"
                       width="100%"
                       id={data.character_preview_view}
                     />
@@ -692,7 +692,7 @@ export const MainPage = (
                     // Preview Mode
                     position="relative"
                     mt="-40px">
-                    <Dropdown
+                    <SideDropdown
                       width="100%"
                       selected={data.preview_selection}
                       options={data.preview_options}
