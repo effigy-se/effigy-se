@@ -38,13 +38,13 @@ module.exports = (env = {}, argv) => {
       'tgui-say': ['./packages/tgui-polyfill', './packages/tgui-say'],
     },
     output: {
-      publicPath: '',
       path: argv.useTmpFolder
         ? path.resolve(__dirname, './public/.tmp')
         : path.resolve(__dirname, './public'),
       filename: '[name].bundle.js',
       chunkFilename: '[name].bundle.js',
       chunkLoadTimeout: 15000,
+      publicPath: '/',
     },
     resolve: {
       extensions: ['.tsx', '.ts', '.js', '.jsx'],
