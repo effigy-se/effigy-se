@@ -4,7 +4,7 @@ import { PreferencesMenuData, Quirk, RandomSetting, ServerData } from './data';
 import { useBackend, useLocalState } from '../../backend';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 import { filterMap } from 'common/collections';
-import { getRandomization, PreferenceList } from './MainPage';
+import { getRandomization, PreferenceList } from './Effigy/MainPage'; // EffigyEdit Change - SkyyUI
 import { useRandomToggleState } from './useRandomToggleState';
 
 const getValueClass = (value: number): string => {
