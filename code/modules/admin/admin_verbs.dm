@@ -140,7 +140,6 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/toggle_random_events,
 	/client/proc/admin_change_title_screen, // EffigyEdit Add - SPLASH
 	/client/proc/change_title_screen_notice, // EffigyEdit Add - SPLASH
-	/client/proc/change_title_screen_html, // EffigyEdit Add - SPLASH
 	/client/proc/spawn_liquid, // EffigyEdit Add - LIQUID
 	/client/proc/remove_liquid, // EffigyEdit Add - LIQUID
 	))
