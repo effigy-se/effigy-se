@@ -5,7 +5,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 /mob/dead/new_player/proc/get_title_html()
 	var/splash_data = SStitle.title_html
 	if(SSticker.current_state == GAME_STATE_STARTUP)
-		splash_data += {"<img src="loading.gif" class="bg" alt="">"}
+		splash_data += {"<img src="title-x3.png" class="bg" alt="">"}
 		splash_data += {"<div class="container_terminal" id="terminal"></div>"}
 		splash_data += {"<div class="container_progress" id="progress_container"><div class="progress_bar" id="progress"><div class="sub_progress_bar" id="sub_progress"></div></div></div>"}
 
@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		"}
 
 	else
-		splash_data += {"<img src="loading.gif" class="bg" alt="">"}
+		splash_data += {"<img src="title-x3.png" class="bg" alt="">"}
 
 		if(SStitle.current_notice)
 			splash_data += {"
