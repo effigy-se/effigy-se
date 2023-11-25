@@ -97,7 +97,7 @@ export const RADIO_CHANNELS = [
   {
     name: 'CentCom',
     freq: 1337,
-    color: '#1fc7ff',
+    color: '#7df9ff',
   },
   {
     name: 'Supply',
@@ -122,7 +122,7 @@ export const RADIO_CHANNELS = [
   {
     name: 'Medical',
     freq: 1355,
-    color: '#7df9ff',
+    color: '#1fc7ff',
   },
   {
     name: 'Engineering',
