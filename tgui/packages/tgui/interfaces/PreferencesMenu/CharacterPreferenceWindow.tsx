@@ -1,6 +1,7 @@
+/* Replaced by tgui/packages/tgui/interfaces/PreferencesMenu/Effigy/CharacterPreferenceWindow.tsx
 import { exhaustiveCheck } from 'common/exhaustive';
 import { useBackend, useLocalState } from '../../backend';
-import { Stack, Dropdown, Flex } from '../../components';
+import { Button, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { PreferencesMenuData } from './data';
 import { PageButton } from './PageButton';
@@ -9,42 +10,37 @@ import { JobsPage } from './JobsPage';
 import { MainPage } from './MainPage';
 import { SpeciesPage } from './SpeciesPage';
 import { QuirksPage } from './QuirksPage';
-import { LanguagesPage } from './LanguagesMenu'; // EffigyEdit Add Customization
-import { LimbsPage } from './LimbsPage'; // EffigyEdit Add Customization
+
 enum Page {
   Antags,
   Main,
   Jobs,
-  Limbs, // EffigyEdit Add Customization
-  Languages, // EffigyEdit Add Customization
   Species,
   Quirks,
 }
 
 const CharacterProfiles = (props: {
-  activeSlot: number; // EffigyEdit Change
+  activeSlot: number;
   onClick: (index: number) => void;
   profiles: (string | null)[];
 }) => {
-  const { profiles, activeSlot, onClick } = props;
-  // EffigyEdit Change
+  const { profiles } = props;
+
   return (
-    <Flex align="center" justify="center">
-      <Flex.Item width="25%">
-        <Dropdown
-          width="100%"
-          selected={activeSlot}
-          displayText={profiles[activeSlot]}
-          options={profiles.map((profile, slot) => ({
-            value: slot,
-            displayText: profile ?? 'New Character',
-          }))}
-          onSelected={(slot) => {
-            onClick(slot);
-          }}
-        />
-      </Flex.Item>
-    </Flex>
+    <Stack justify="center" wrap>
+      {profiles.map((profile, slot) => (
+        <Stack.Item key={slot}>
+          <Button
+            selected={slot === props.activeSlot}
+            onClick={() => {
+              props.onClick(slot);
+            }}
+            fluid>
+            {profile ?? 'New Character'}
+          </Button>
+        </Stack.Item>
+      ))}
+    </Stack>
   );
 };
 
@@ -66,14 +62,6 @@ export const CharacterPreferenceWindow = (props, context) => {
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
-    // EffigyEdit Add - Customization
-    case Page.Limbs:
-      pageContents = <LimbsPage />;
-      break;
-    case Page.Languages:
-      pageContents = <LanguagesPage />;
-      break;
-    // EffigyEdit Add End
     case Page.Main:
       pageContents = (
         <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
@@ -94,7 +82,7 @@ export const CharacterPreferenceWindow = (props, context) => {
   }
 
   return (
-    <Window title="Character Preferences" width={920} height={877}>
+    <Window title="Character Preferences" width={920} height={770}>
       <Window.Content scrollable>
         <Stack vertical fill>
           <Stack.Item>
@@ -134,36 +122,14 @@ export const CharacterPreferenceWindow = (props, context) => {
                   currentPage={currentPage}
                   page={Page.Jobs}
                   setPage={setCurrentPage}>
-                  {/*
+
                     Fun fact: This isn't "Jobs" so that it intentionally
                     catches your eyes, because it's really important!
-                  */}
+
                   Occupations
                 </PageButton>
               </Stack.Item>
-              {
-                // EffigyEdit Change START Customization
-              }
-              <Stack.Item grow>
-                <PageButton
-                  currentPage={currentPage}
-                  page={Page.Limbs}
-                  setPage={setCurrentPage}>
-                  Augments+
-                </PageButton>
-              </Stack.Item>
 
-              <Stack.Item grow>
-                <PageButton
-                  currentPage={currentPage}
-                  page={Page.Languages}
-                  setPage={setCurrentPage}>
-                  Languages
-                </PageButton>
-              </Stack.Item>
-              {
-                // // EffigyEdit Change END Customization
-              }
               <Stack.Item grow>
                 <PageButton
                   currentPage={currentPage}
@@ -192,3 +158,4 @@ export const CharacterPreferenceWindow = (props, context) => {
     </Window>
   );
 };
+*/

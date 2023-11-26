@@ -18,6 +18,7 @@ export type Feature<
   component: FeatureValue<TReceiving, TSending, TServerData>;
   category?: string;
   description?: string;
+  small_supplemental?: boolean;
 };
 
 /**
@@ -36,14 +37,14 @@ export type FeatureValueProps<
   TReceiving,
   TSending = TReceiving,
   TServerData = undefined
-> = {
+> = Readonly<{
   act: typeof sendAct;
   featureId: string;
   handleSetValue: (newValue: TSending) => void;
   serverData: TServerData | undefined;
   shrink?: boolean;
   value: TReceiving;
-};
+}>;
 
 export const FeatureColorInput = (props: FeatureValueProps<string>) => {
   return (
@@ -175,6 +176,14 @@ export const StandardizedDropdown = (props: {
   );
 };
 
+export const FeatureButtonedDropdownInput = (
+  props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
+    disabled?: boolean;
+  }
+) => {
+  return <FeatureDropdownInput disabled={props.disabled} buttons {...props} />;
+};
+
 export const FeatureDropdownInput = (
   props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
     disabled?: boolean;
@@ -195,11 +204,19 @@ export const FeatureDropdownInput = (
       ])
     );
 
-  return (
+  return serverData.choices.length > 7 ? (
     <StandardizedDropdown
       choices={sortStrings(serverData.choices)}
       disabled={props.disabled}
       buttons={props.buttons}
+      displayNames={displayNames}
+      onSetValue={props.handleSetValue}
+      value={props.value}
+    />
+  ) : (
+    <StandardizedChoiceButtons
+      choices={sortStrings(serverData.choices)}
+      disabled={props.disabled}
       displayNames={displayNames}
       onSetValue={props.handleSetValue}
       value={props.value}
@@ -220,7 +237,9 @@ export const FeatureIconnedDropdownInput = (
     },
     string,
     FeatureChoicedServerData
-  >
+  > & {
+    buttons?: boolean;
+  }
 ) => {
   const serverData = props.serverData;
   if (!serverData) {
@@ -266,6 +285,7 @@ export const FeatureIconnedDropdownInput = (
 
   return (
     <StandardizedDropdown
+      buttons={props.buttons}
       choices={sortStrings(serverData.choices)}
       displayNames={displayNames}
       onSetValue={props.handleSetValue}
@@ -274,6 +294,33 @@ export const FeatureIconnedDropdownInput = (
   );
 };
 
+export const StandardizedChoiceButtons = (props: {
+  choices: string[];
+  disabled?: boolean;
+  displayNames: Record<string, InfernoNode>;
+  onSetValue: (newValue: string) => void;
+  value?: string;
+}) => {
+  const { choices, disabled, displayNames, onSetValue, value } = props;
+  return (
+    <>
+      {choices.map((choice) => (
+        <Button
+          key={choice}
+          content={displayNames[choice]}
+          selected={choice === value}
+          disabled={disabled}
+          onClick={() => onSetValue(choice)}
+        />
+      ))}
+    </>
+  );
+};
+
+export type HexValue = {
+  lightness: number;
+  value: string;
+};
 export type FeatureNumericData = {
   minimum: number;
   maximum: number;
@@ -428,7 +475,7 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
                   background: props.value[index].startsWith('#')
                     ? props.value[index]
                     : `#${props.value[index]}`,
-                  border: '2px solid white',
+                  border: '2px solid #eaeaea',
                   'box-sizing': 'content-box',
                   height: '11px',
                   width: '11px',

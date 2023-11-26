@@ -1,6 +1,7 @@
+/* Replaced by tgui/packages/tgui/interfaces/PreferencesMenu/Effigy/MainPage.tsx
 import { classes } from 'common/react';
 import { sendAct, useBackend, useLocalState } from '../../backend';
-import { Autofocus, Box, Button, Dropdown, Flex, LabeledList, Popper, Stack, TrackOutsideClicks } from '../../components';
+import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks } from '../../components';
 import { createSetPreference, PreferencesMenuData, RandomSetting, ServerData } from './data';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { RandomizationButton } from './RandomizationButton';
@@ -13,7 +14,7 @@ import { filterMap, sortBy } from 'common/collections';
 import { useRandomToggleState } from './useRandomToggleState';
 
 const CLOTHING_CELL_SIZE = 48;
-const CLOTHING_SIDEBAR_ROWS = 13.4; // EffigyEdit Change Customization Original 9
+const CLOTHING_SIDEBAR_ROWS = 9;
 
 const CLOTHING_SELECTION_CELL_SIZE = 48;
 const CLOTHING_SELECTION_WIDTH = 5.4;
@@ -22,7 +23,6 @@ const CLOTHING_SELECTION_MULTIPLIER = 5.2;
 const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
-  handleLoadout: () => void; // EffigyEdit Add Customization
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -54,18 +54,6 @@ const CharacterControls = (props: {
           <GenderButton
             gender={props.gender}
             handleSetGender={props.setGender}
-          />
-        </Stack.Item>
-      )}
-      {props.handleLoadout && (
-        // EffigyEdit Add Customization
-        <Stack.Item>
-          <Button
-            onClick={props.handleLoadout}
-            fontSize="22px"
-            icon="suitcase"
-            tooltip="Show Loadout Menu"
-            tooltipPosition="top"
           />
         </Stack.Item>
       )}
@@ -550,9 +538,6 @@ export const MainPage = (
                       handleRotate={() => {
                         act('rotate');
                       }}
-                      handleLoadout={() => {
-                        act('open_loadout');
-                      }}
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
                         currentSpeciesData ? !!currentSpeciesData.sexes : true
@@ -562,23 +547,8 @@ export const MainPage = (
 
                   <Stack.Item grow>
                     <CharacterPreview
-                      height="80%" // EffigyEdit Change Customization Original 100
+                      height="100%"
                       id={data.character_preview_view}
-                    />
-                  </Stack.Item>
-
-                  <Stack.Item
-                    // EffigyEdit Add Customization
-                    position="relative">
-                    <Dropdown
-                      width="100%"
-                      selected={data.preview_selection}
-                      options={data.preview_options}
-                      onSelected={(value) =>
-                        act('update_preview', {
-                          updated_preview: value,
-                        })
-                      }
                     />
                   </Stack.Item>
 
@@ -669,3 +639,4 @@ export const MainPage = (
     />
   );
 };
+*/

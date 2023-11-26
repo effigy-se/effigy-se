@@ -5,7 +5,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 /mob/dead/new_player/proc/get_title_html()
 	var/splash_data = SStitle.title_html
 	if(SSticker.current_state == GAME_STATE_STARTUP)
-		splash_data += {"<img src="loading.gif" class="bg" alt="">"}
+		splash_data += {"<img src="title-x3.png" class="bg" alt="">"}
 		splash_data += {"<div class="container_terminal" id="terminal"></div>"}
 		splash_data += {"<div class="container_progress" id="progress_container"><div class="progress_bar" id="progress"><div class="sub_progress_bar" id="sub_progress"></div></div></div>"}
 
@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		"}
 
 	else
-		splash_data += {"<img src="loading.gif" class="bg" alt="">"}
+		splash_data += {"<img src="title-x3.png" class="bg" alt="">"}
 
 		if(SStitle.current_notice)
 			splash_data += {"
@@ -99,21 +99,20 @@ GLOBAL_LIST_EMPTY(startup_messages)
 
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
 			splash_data += {"
-				<a id="ready" class="menu_button" href='?src=[text_ref(src)];toggle_ready=1'>[ready == PLAYER_READY_TO_PLAY ? "<span class='checked'>☑</span> READY" : "<span class='unchecked'>☒</span> READY"]</a>
+				<a id="ready" class="menu_button" href='?src=[text_ref(src)];toggle_ready=1'>[ready == PLAYER_READY_TO_PLAY ? "<span class='cta'>Ready</span>" : "Not Ready"]</a>
 			"}
 		else
 			splash_data += {"
-				<a class="menu_button" href='?src=[text_ref(src)];late_join=1'>JOIN GAME</a>
-				<a class="menu_button" href='?src=[text_ref(src)];view_manifest=1'>CREW MANIFEST</a>
+				<a class="menu_button" href='?src=[text_ref(src)];late_join=1'><span class='cta'>Join Game</span></a>
 			"}
 
-		splash_data += {"<a class="menu_button" href='?src=[text_ref(src)];observe=1'>OBSERVE</a>"}
-
 		splash_data += {"
-			<hr>
-			<a id="be_antag" class="menu_button" href='?src=[text_ref(src)];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='checked'>☑</span> BE ANTAGONIST" : "<span class='unchecked'>☒</span> BE ANTAGONIST"]</a>
-			<a class="menu_button" href='?src=[text_ref(src)];character_setup=1'>SETUP CHARACTER (<span id="character_slot">[uppertext(client.prefs.read_preference(/datum/preference/name/real_name))]</span>)</a>
-			<a class="menu_button" href='?src=[text_ref(src)];game_options=1'>GAME OPTIONS</a>
+			<a id="be_antag" class="menu_button" href='?src=[text_ref(src)];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='antag_enabled'>Antag Enabled</span>" : "<span class='antag_disabled'>Antag Disabled</span>"]</a>
+			<br/><br/>
+			<a class="menu_button" href='?src=[text_ref(src)];observe=1'>Observe</a>
+			<a class="menu_button" href='?src=[text_ref(src)];view_manifest=1'>Crew Manifest</a>
+			<a class="menu_button" href='?src=[text_ref(src)];character_setup=1'>Character Setup (<span id="character_slot">[client.prefs.read_preference(/datum/preference/name/real_name)]</span>)</a>
+			<a class="menu_button" href='?src=[text_ref(src)];game_options=1'>Game Options</a>
 		"}
 
 		splash_data += "</div>"
@@ -121,7 +120,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		<script language="JavaScript">
 			var ready_int = 0;
 			var ready_mark = document.getElementById("ready");
-			var ready_marks = \[ "<span class='unchecked'>☒</span> READY", "<span class='checked'>☑</span> READY" \];
+			var ready_marks = \[ "Not Ready", "<span class='cta'>Ready</span>" \];
 			function toggle_ready(setReady) {
 				if(setReady) {
 					ready_int = setReady;
@@ -136,7 +135,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			}
 			var antag_int = 0;
 			var antag_mark = document.getElementById("be_antag");
-			var antag_marks = \[ "<span class='unchecked'>☒</span> BE ANTAGONIST", "<span class='checked'>☑</span> BE ANTAGONIST" \];
+			var antag_marks = \[ "<span class='antag_disabled'>Antag Disabled</span> ", "<span class='antag_enabled'>Antag Enabled</span>" \];
 			function toggle_antag(setAntag) {
 				if(setAntag) {
 					antag_int = setAntag;
@@ -152,7 +151,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 
 			var character_name_slot = document.getElementById("character_slot");
 			function update_current_character(name) {
-				character_name_slot.textContent = name.toUpperCase();
+				character_name_slot.textContent = name;
 			}
 
 			function append_terminal_text() {}

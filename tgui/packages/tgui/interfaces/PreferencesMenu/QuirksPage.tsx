@@ -4,7 +4,7 @@ import { PreferencesMenuData, Quirk, RandomSetting, ServerData } from './data';
 import { useBackend, useLocalState } from '../../backend';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 import { filterMap } from 'common/collections';
-import { getRandomization, PreferenceList } from './MainPage';
+import { getRandomization, PreferenceList } from './Effigy/MainPage'; // EffigyEdit Change - SkyyUI
 import { useRandomToggleState } from './useRandomToggleState';
 
 const getValueClass = (value: number): string => {
@@ -210,7 +210,11 @@ const QuirkList = (props: {
         );
 
         if (quirk.failTooltip) {
-          return <Tooltip content={quirk.failTooltip}>{child}</Tooltip>;
+          return (
+            <Tooltip key={quirkKey} content={quirk.failTooltip}>
+              {child}
+            </Tooltip>
+          );
         } else {
           return child;
         }

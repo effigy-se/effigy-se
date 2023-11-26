@@ -15,9 +15,9 @@
 				html {
 					margin: 0;
 					overflow: hidden;
-					font-family: 'Segoe UI';
+					font-family: 'Chakra Petch';
 					text-align: center;
-					background-color: #000000;
+					background-color: #202020;
 					padding-top: 5vmin;
 					-ms-user-select: none;
 					cursor: default;
@@ -41,10 +41,10 @@
 
 				.container_terminal {
 					position: absolute;
-					top: calc(90% - 3vmin);
-					left: 21vmin;
+					top: calc(84% - 3vmin);
+					left: calc(50% - 456px);
 					height: 3vmin;
-					width: calc(100% - 42vmin);
+					width: 915px;
 					overflow: clip;
 					box-sizing: border-box;
 					z-index: 1;
@@ -58,7 +58,7 @@
 					text-decoration: none;
 					width: 100%;
 					text-align: left;
-					color:#FCFCFC;
+					color:#EAEAEA;
 					margin-right: 0%;
 					margin-top: 0px;
 					font-size: 2vmin;
@@ -67,22 +67,19 @@
 				.container_progress {
 					position: absolute;
 					box-sizing: border-box;
-					top: 90%;
-					left: 21vmin;
-					height: 4vmin;
-					width: calc(100% - 42vmin);
-					border-top: 4px solid #FCFCFC;
-					border-bottom: 4px solid #FCFCFC;
-					border-left: 4px solid #FCFCFC;
-					border-right: 4px solid #FCFCFC;
-					padding: 4px;
-					background-color: #000000;
+					top: 84%;
+					left: calc(50% - 456px);
+					height: 48px;
+					width: 915px;
+					background-color: #202020;
 				}
 
 				.progress_bar {
 					width: 0%;
 					height: 100%;
-					background-color: #FCFCFC;
+					background-color: #202020;
+					background-image: url("https://cdn.effigy.se/live/rsc/loading-pets-x2.gif");
+					background-position: center right;
 				}
 
 				@keyframes fade_out {
@@ -104,19 +101,16 @@
 					left:50%;
 					transform: translate(-50%, -50%);
 					z-index: 1;
-					border: 2px solid white;
 					border-radius: 0;
-					box-shadow: 2px 2px #333, inset 1px 1px #333;
-					background: linear-gradient(175deg, #606060, #cccccc);
+					background: #202020;
 					opacity: 75%;
 					padding: 1em;
 				}
 
 				.container_nav hr {
 					height: 2px;
-					background-color: #FCFCFC;
+					background-color: #EAEAEA;
 					border: none;
-					box-shadow: 2px 2px black;
 				}
 
 				.menu_button {
@@ -126,11 +120,10 @@
 					font-weight: 600;
 					text-decoration: none;
 					font-size: 4vmin;
-					text-shadow: 2px 2px black;
 					line-height: 4vmin;
 					width: 100%;
 					text-align: left;
-					color: #FCFCFC;
+					color: #EAEAEA;
 					height: 4.5vmin;
 					padding-left: 1vmin;
 					letter-spacing: 1px;
@@ -140,11 +133,12 @@
 				}
 
 				.menu_button:hover {
-					color: #dddddd;
+					color: #202020;
+					background-color: #1FC7FF;
 				}
 
 				@keyframes pollsbox {
-					0% {color: #FCFCFC;}
+					0% {color: #EAEAEA;}
 					50% {color: #f80;}
 				}
 
@@ -162,10 +156,8 @@
 					left:50%;
 					transform: translate(-50%, -50%);
 					z-index: 1;
-					border: 2px solid white;
 					border-radius: 0;
-					box-shadow: 2px 2px #333, inset 1px 1px #333;
-					background: linear-gradient(175deg, #75005a, #8f004a);
+					background-color: #F02D7F;
 					opacity: 75%;
 					padding: 1em;
 				}
@@ -177,23 +169,31 @@
 					font-weight: 600;
 					text-decoration: none;
 					font-size: 4vmin;
-					text-shadow: 2px 2px black;
 					line-height: 4vmin;
 					width: 100%;
 					text-align: left;
-					color: #FCFCFC;
+					color: #202020;
 					height: 4.5vmin;
 					padding-left: 1vmin;
 					letter-spacing: 1px;
 					white-space: nowrap;
 				}
 
-				.unchecked {
-					color: #ff0059;
+				.antag_disabled {
+					color: #F02D7F;
 				}
 
-				.checked {
-					color: #66ff00;
+				.antag_enabled {
+					color: #23FA92;
+				}
+
+				.cta {
+					color: #1FC7FF;
+				}
+
+				.cta:hover {
+					color: #202020;
+					background-color: #1FC7FF;
 				}
 			</style>
 		</head>
