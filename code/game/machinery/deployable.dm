@@ -129,6 +129,7 @@
 /obj/structure/barricade/sandbags/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/climbable)
+	AddElement(/datum/element/elevation, pixel_shift = 12)
 	AddElement(/datum/element/liquids_height, 20) // EffigyEdit Add
 
 /obj/structure/barricade/security
