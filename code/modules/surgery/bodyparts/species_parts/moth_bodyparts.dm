@@ -25,6 +25,7 @@
 	limb_id = SPECIES_MOTH
 	should_draw_greyscale = FALSE
 	unarmed_attack_verb = "slash"
+	grappled_attack_verb = "lacerate"
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'sound/weapons/slash.ogg'
 	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -36,6 +37,7 @@
 	limb_id = SPECIES_MOTH
 	should_draw_greyscale = FALSE
 	unarmed_attack_verb = "slash"
+	grappled_attack_verb = "lacerate"
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'sound/weapons/slash.ogg'
 	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'

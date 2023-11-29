@@ -167,11 +167,11 @@ const EngiButton = (props, context) => {
   );
 };
 
-const MessageModal = (props, context) => {
-  const { data } = useBackend(context);
+const MessageModal = (props) => {
+  const { data } = useBackend();
   const { maxMessageLength } = data;
 
-  const [input, setInput] = useLocalState(context, props.label, '');
+  const [input, setInput] = useLocalState(props.label, '');
 
   const longEnough =
     props.minLength === undefined || input.length >= props.minLength;
@@ -259,8 +259,8 @@ const NoConnectionModal = () => {
   );
 };
 
-const PageBuyingShuttle = (props, context) => {
-  const { act, data } = useBackend(context);
+const PageBuyingShuttle = (props) => {
+  const { act, data } = useBackend();
 
   return (
     <Box>
@@ -323,8 +323,8 @@ const PageBuyingShuttle = (props, context) => {
   );
 };
 
-const PageChangingStatus = (props, context) => {
-  const { act } = useBackend(context);
+const PageChangingStatus = (props) => {
+  const { act } = useBackend();
 
   return (
     <Box>
@@ -341,8 +341,8 @@ const PageChangingStatus = (props, context) => {
   );
 };
 
-const PageMain = (props, context) => {
-  const { act, data } = useBackend(context);
+const PageMain = (props) => {
+  const { act, data } = useBackend();
   const {
     alertLevel,
     alertLevelTick,
@@ -371,22 +371,18 @@ const PageMain = (props, context) => {
   } = data;
 
   const [callingShuttle, setCallingShuttle] = useLocalState(
-    context,
     'calling_shuttle',
     false
   );
   const [messagingAssociates, setMessagingAssociates] = useLocalState(
-    context,
     'messaging_associates',
     false
   );
   const [messagingSector, setMessagingSector] = useLocalState(
-    context,
     'messaing_sector',
     null
   );
   const [requestingNukeCodes, setRequestingNukeCodes] = useLocalState(
-    context,
     'requesting_nuke_codes',
     false
   );
@@ -394,7 +390,7 @@ const PageMain = (props, context) => {
   const [
     [showAlertLevelConfirm, confirmingAlertLevelTick],
     setShowAlertLevelConfirm,
-  ] = useLocalState(context, 'showConfirmPrompt', [null, null]);
+  ] = useLocalState('showConfirmPrompt', [null, null]);
 
   return (
     <Box>
@@ -712,8 +708,8 @@ const PageMain = (props, context) => {
   );
 };
 
-const PageMessages = (props, context) => {
-  const { act, data } = useBackend(context);
+const PageMessages = (props) => {
+  const { act, data } = useBackend();
   const messages = data.messages || [];
 
   const children = [];
@@ -788,8 +784,8 @@ const PageMessages = (props, context) => {
   return children;
 };
 
-export const CommunicationsConsole = (props, context) => {
-  const { act, data } = useBackend(context);
+export const CommunicationsConsole = (props) => {
+  const { act, data } = useBackend();
   const {
     authenticated,
     authorizeName,
