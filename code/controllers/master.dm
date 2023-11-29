@@ -345,7 +345,7 @@ GLOBAL_REAL(Master, /datum/controller/master)
 			return
 		else
 			// SS_INIT_NONE or an invalid value.
-			message_prefix = "[subsystem.name] Subsystem Error!" // EffigyEdit Change - Splash
+			message_prefix = "[subsystem.name] initialized with [result ? "response code [result]" : "no response code"]." // EffigyEdit Change - Splash
 			chat_warning = TRUE
 
 	var/message = "[message_prefix] Completed in [seconds] second[seconds == 1 ? "" : "s"]!"
