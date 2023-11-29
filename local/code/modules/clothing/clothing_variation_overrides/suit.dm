@@ -19,7 +19,7 @@
 /obj/item/clothing/suit/toggle/suspenders
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/labcoat/paramedic
+/obj/item/clothing/suit/toggle/labcoat
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/jacket/miljacket
