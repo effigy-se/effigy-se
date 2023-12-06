@@ -288,6 +288,7 @@
 	mob_trait = TRAIT_ROPEBUNNY
 	gain_text = span_danger("You really want to be restrained for some reason.")
 	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
+	medical_record_text = "Patient's seems comfortable while restrained."
 	icon = FA_ICON_HANDCUFFS
 	erp_quirk = TRUE
 
