@@ -27,7 +27,6 @@
 	burn_damage = tracked_mob.getFireLoss()
 	toxin_damage = tracked_mob.getToxLoss()
 	oxygen_damage = tracked_mob.getOxyLoss()
-	clone_damage = tracked_mob.getCloneLoss()
 	stored_blood_volume = tracked_mob.blood_volume
 
 	return TRUE
@@ -42,7 +41,6 @@
 	tracked_mob.setFireLoss(burn_damage)
 	tracked_mob.setToxLoss(toxin_damage)
 	tracked_mob.setOxyLoss(oxygen_damage)
-	tracked_mob.setCloneLoss(clone_damage)
 	tracked_mob.blood_volume = stored_blood_volume
 
 	return TRUE

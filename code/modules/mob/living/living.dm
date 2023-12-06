@@ -62,9 +62,9 @@
 	. = SEND_SIGNAL(src, COMSIG_LIVING_Z_IMPACT, levels, impacted_turf)
 	if(. & ZIMPACT_CANCEL_DAMAGE)
 		return .
-		
+
 	// EffigyEdit Add -
-	if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_WAIST)
+	if(impacted_turf.liquids && impacted_turf.liquids.liquid_state >= LIQUID_STATE_WAIST)
 		Knockdown(20)
 		return . | ZIMPACT_NO_MESSAGE
 	// EffigyEdit Add End
