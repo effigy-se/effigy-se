@@ -274,7 +274,7 @@
 /obj/item/clothing/suit/corgisuit/en/process()
 	if(prob(2))
 		for(var/obj/M in orange(2,src))
-			if(!M.anchored && (M.flags_1 & CONDUCT_1))
+			if(!M.anchored && (M.obj_flags & CONDUCTS_ELECTRICITY))
 				step_towards(M,src)
 		for(var/mob/living/silicon/S in orange(2,src))
 			if(istype(S, /mob/living/silicon/ai)) continue

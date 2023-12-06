@@ -128,6 +128,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 
 		assigned += candidate.mind
 		candidate.mind.restricted_roles = restricted_roles
+		candidate.mind.special_role = ROLE_BROTHER
 		GLOB.pre_setup_antags += candidate.mind
 
 	return TRUE
@@ -604,9 +605,9 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 	. = ..()
 	message_admins("Starting a round of extended.")
 	log_game("Starting a round of extended.")
-	mode.spend_roundstart_budget(mode.round_start_budget)
-	mode.spend_midround_budget(mode.mid_round_budget)
-	mode.threat_log += "[worldtime2text()]: Extended ruleset set threat to 0."
+	SSdynamic.spend_roundstart_budget(SSdynamic.round_start_budget)
+	SSdynamic.spend_midround_budget(SSdynamic.mid_round_budget)
+	SSdynamic.threat_log += "[worldtime2text()]: Extended ruleset set threat to 0."
 	return TRUE
 
 //////////////////////////////////////////////
