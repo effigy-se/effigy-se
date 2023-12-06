@@ -29,32 +29,24 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 /mob/dead/canUseStorage()
 	return FALSE
 
+/* EffigyEdit Remove - moved to local/code/modules/mob/dead/dead.dm
 /mob/dead/get_status_tab_items()
 	. = ..()
 	if(SSticker.HasRoundStarted())
 		return
 	var/time_remaining = SSticker.GetTimeLeft()
-	/* EffigyEdit Change - Round Timers
 	if(time_remaining > 0)
 		. += "Time To Start: [round(time_remaining/10)]s"
 	else if(time_remaining == -10)
 		. += "Time To Start: DELAYED"
 	else
 		. += "Time To Start: SOON"
-	*/
-	if(time_remaining > 0)
-		. += "Status: Game Start in [round(time_remaining/10)]s"
-	else if(time_remaining == -10)
-		. += "Status: Game Start DELAYED"
-	else if(SSticker.totalPlayersReady == 0)
-		. += "Status: Waiting for players to hit READY"
-	else
-		. += "Status: WARNING, INCOMING GAME"
 
 	. += "Players: [LAZYLEN(GLOB.clients)]"
 	if(client.holder)
 		. += "Players Ready: [SSticker.totalPlayersReady]"
 		. += "Admins Ready: [SSticker.total_admins_ready] / [length(GLOB.admins)]"
+*/// EffigyEdit Remove End
 
 #define SERVER_HOPPER_TRAIT "server_hopper"
 
