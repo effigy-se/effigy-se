@@ -7,7 +7,7 @@
 	icon = 'local/icons/lewd/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
 	max_integrity = 50
-	flags_1 = NODECONSTRUCT_1
+	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
