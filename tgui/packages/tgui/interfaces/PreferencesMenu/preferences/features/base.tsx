@@ -297,7 +297,7 @@ export const FeatureIconnedDropdownInput = (
 export const StandardizedChoiceButtons = (props: {
   choices: string[];
   disabled?: boolean;
-  displayNames: Record<string, InfernoNode>;
+  displayNames: Record<string, ReactNode>;
   onSetValue: (newValue: string) => void;
   value?: string;
 }) => {
