@@ -6,12 +6,12 @@
 
 import { Color } from 'common/color';
 import { toFixed } from 'common/math';
-import { useSelector } from 'common/redux';
+import { useSelector } from 'tgui/backend';
 import { Box } from 'tgui/components';
 import { selectPing } from './selectors';
 
-export const PingIndicator = (props, context) => {
-  const ping = useSelector(context, selectPing);
+export const PingIndicator = (props) => {
+  const ping = useSelector(selectPing);
   const color = Color.lookup(ping.networkQuality, [
     new Color(209, 17, 65),
     new Color(235, 160, 37),

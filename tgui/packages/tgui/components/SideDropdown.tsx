@@ -1,33 +1,38 @@
 import { createPopper, VirtualElement } from '@popperjs/core';
 import { classes } from 'common/react';
-import { Component, findDOMfromVNode, InfernoNode, render } from 'inferno';
+import { Component, ReactNode } from 'react';
+import { findDOMNode, render } from 'react-dom';
 import { Box, BoxProps } from './Box';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { Stack } from './Stack';
 
-export interface DropdownEntry {
-  displayText: string | number | InfernoNode;
+export interface SideDropdownEntry {
+  displayText: string | number | ReactNode;
   value: string | number | Enumerator;
 }
 
 type SideDropdownUniqueProps = {
-  options: string[] | DropdownEntry[];
-  icon?: string;
-  iconRotation?: number;
-  clipSelectedText?: boolean;
-  width?: string;
-  menuWidth?: string;
-  over?: boolean;
-  color?: string;
-  nochevron?: boolean;
-  displayText?: string | number | InfernoNode;
-  onClick?: (event) => void;
+  options: string[] | SideDropdownEntry[];
+} & Partial<{
+  buttons: boolean;
+  clipSelectedText: boolean;
+  color: string;
+  disabled: boolean;
+  displayText: string | number | ReactNode;
+  dropdownStyle: any;
+  icon: string;
+  iconRotation: number;
+  iconSpin: boolean;
+  menuWidth: string;
+  nochevron: boolean;
+  onClick: (event) => void;
+  onSelected: (selected: any) => void;
+  over: boolean;
   // you freaks really are just doing anything with this shit
-  selected?: any;
-  onSelected?: (selected: any) => void;
-  buttons?: boolean;
-};
+  selected: any;
+  width: string;
+}>;
 
 export type SideDropdownProps = BoxProps & SideDropdownUniqueProps;
 
@@ -84,7 +89,8 @@ export class SideDropdown extends Component<
   };
 
   getDOMNode() {
-    return findDOMfromVNode(this.$LI, true);
+    // eslint-disable-next-line react/no-find-dom-node
+    return findDOMNode(this) as Element;
   }
 
   componentDidMount() {
@@ -108,11 +114,7 @@ export class SideDropdown extends Component<
     SideDropdown.currentOpenMenu = domNode;
 
     renderedMenu.scrollTop = 0;
-    renderedMenu.style.width =
-      this.props.menuWidth ||
-      // Hack, but domNode should *always* be the parent control meaning it will have width
-      // @ts-ignore
-      `${domNode.offsetWidth}px`;
+    renderedMenu.style.width = this.props.menuWidth || '15rem';
     renderedMenu.style.opacity = '1';
     renderedMenu.style.pointerEvents = 'auto';
 
@@ -183,33 +185,28 @@ export class SideDropdown extends Component<
 
     const to_render = ops.length ? ops : 'No Options Found';
 
-    render(
-      <div>{to_render}</div>,
-      renderedMenu,
-      () => {
-        let singletonPopper = SideDropdown.singletonPopper;
-        if (singletonPopper === undefined) {
-          singletonPopper = createPopper(
-            SideDropdown.virtualElement,
-            renderedMenu!,
-            {
-              ...DEFAULT_OPTIONS,
-              placement: 'right-end',
-            }
-          );
-
-          SideDropdown.singletonPopper = singletonPopper;
-        } else {
-          singletonPopper.setOptions({
+    render(<div>{to_render}</div>, renderedMenu, () => {
+      let singletonPopper = SideDropdown.singletonPopper;
+      if (singletonPopper === undefined) {
+        singletonPopper = createPopper(
+          SideDropdown.virtualElement,
+          renderedMenu!,
+          {
             ...DEFAULT_OPTIONS,
             placement: 'right-end',
-          });
+          }
+        );
 
-          singletonPopper.update();
-        }
-      },
-      this.context
-    );
+        SideDropdown.singletonPopper = singletonPopper;
+      } else {
+        singletonPopper.setOptions({
+          ...DEFAULT_OPTIONS,
+          placement: 'right-end',
+        });
+
+        singletonPopper.update();
+      }
+    });
   }
 
   setOpen(open: boolean) {
