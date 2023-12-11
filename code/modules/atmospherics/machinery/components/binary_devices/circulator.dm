@@ -1,3 +1,4 @@
+/*
 //node2, air2, network2 correspond to input
 //node1, air1, network1 correspond to output
 
@@ -192,3 +193,4 @@
 	flipped = !flipped
 	to_chat(usr, span_notice("You flip [src]."))
 	update_appearance()
+*/
