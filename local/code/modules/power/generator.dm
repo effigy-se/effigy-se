@@ -123,11 +123,11 @@
 
 		t += "<BR>"
 
-		t += "<B><font color='blue'>Cold loop</font></B><BR>"
+		t += "<B><font color='#1fc7ff'>Cold loop</font></B><BR>"
 		t += "Temperature Inlet: [round(cold_circ_air2.temperature, 0.1)] K / Outlet: [round(cold_circ_air1.temperature, 0.1)] K<BR>"
 		t += "Pressure Inlet: [round(cold_circ_air2.return_pressure(), 0.1)] kPa /  Outlet: [round(cold_circ_air1.return_pressure(), 0.1)] kPa<BR>"
 
-		t += "<B><font color='red'>Hot loop</font></B><BR>"
+		t += "<B><font color='#f02d7f'>Hot loop</font></B><BR>"
 		t += "Temperature Inlet: [round(hot_circ_air2.temperature, 0.1)] K / Outlet: [round(hot_circ_air1.temperature, 0.1)] K<BR>"
 		t += "Pressure Inlet: [round(hot_circ_air2.return_pressure(), 0.1)] kPa / Outlet: [round(hot_circ_air1.return_pressure(), 0.1)] kPa<BR>"
 
