@@ -96,6 +96,9 @@ jobs:
         run: |
           tools/bootstrap/python -m mapmerge2.dmm_test
           tools/bootstrap/python -m tools.maplint.source
+      - name: Check Cutter
+        if: steps.linter-setup.conclusion == 'success' && !cancelled()
+        run: tools/bootstrap/python -m tools.icon_cutter.check
       - name: Run DMI Tests
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: tools/bootstrap/python -m dmi.test
@@ -116,7 +119,7 @@ jobs:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Compile Maps
     needs: [collect_data]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     concurrency:
       group: compile_all_maps-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
@@ -141,7 +144,7 @@ jobs:
   collect_data:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Collect data for other tasks
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     outputs:
       maps: ${{ steps.map_finder.outputs.maps }}
       alternate_tests: ${{ steps.alternate_test_finder.outputs.alternate_tests }}
@@ -207,7 +210,7 @@ jobs:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]' )
     name: Check Alternate Tests
     needs: [run_alternate_tests]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - run: echo Alternate tests passed.
 
