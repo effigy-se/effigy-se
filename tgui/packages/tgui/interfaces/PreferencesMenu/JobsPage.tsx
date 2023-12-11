@@ -110,7 +110,7 @@ const PriorityButtons = (props: {
         alignItems: 'center',
         height: '100%',
         justifyContent: 'flex-end',
-        paddingLeft: '0.3em',
+        padding: '0.33em',
       }}>
       {isOverflow ? (
         <>
