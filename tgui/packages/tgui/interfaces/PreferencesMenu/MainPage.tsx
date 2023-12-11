@@ -107,10 +107,10 @@ const ChoicedSelection = (props: {
             <Stack.Item grow>
               <Box
                 style={{
-                  'border-bottom': '1px solid #888',
-                  'font-weight': 'bold',
-                  'font-size': '14px',
-                  'text-align': 'center',
+                  borderBottom: '1px solid #888',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  textAlign: 'center',
                 }}>
                 Select {props.name.toLowerCase()}
               </Box>
@@ -180,7 +180,7 @@ const GenderButton = (props: {
         placement: 'right-end',
       }}
       popperContent={
-        genderMenuOpen && (
+        genderMenuOpen ? (
           <Stack backgroundColor="white" ml={0.5} p={0.3}>
             {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
               (gender) => {
@@ -202,6 +202,8 @@ const GenderButton = (props: {
               }
             )}
           </Stack>
+        ) : (
+          <> </>
         )
       }>
       <Button
@@ -251,7 +253,7 @@ const MainFeature = (props: {
         placement: 'bottom-start',
       }}
       popperContent={
-        isOpen && (
+        isOpen ? (
           <TrackOutsideClicks onOutsideClick={props.handleClose}>
             <ChoicedSelection
               name={catalog.name}
@@ -268,6 +270,8 @@ const MainFeature = (props: {
               onSelect={handleSelect}
             />
           </TrackOutsideClicks>
+        ) : (
+          <> </>
         )
       }>
       <Button
@@ -511,7 +515,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
             )}
 
             <Stack height={`${CLOTHING_SIDEBAR_ROWS * CLOTHING_CELL_SIZE}px`}>
-              <Stack.Item fill>
+              <Stack.Item>
                 <Stack vertical fill>
                   <Stack.Item>
                     <CharacterControls
@@ -549,7 +553,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                 </Stack>
               </Stack.Item>
 
-              <Stack.Item fill width={`${CLOTHING_CELL_SIZE * 2 + 15}px`}>
+              <Stack.Item width={`${CLOTHING_CELL_SIZE * 2 + 15}px`}>
                 <Stack height="100%" vertical wrap>
                   {mainFeatures.map(([clothingKey, clothing]) => {
                     const catalog =
