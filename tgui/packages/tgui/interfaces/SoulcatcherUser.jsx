@@ -1,6 +1,15 @@
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { BlockQuote, Button, Divider, Box, Flex, Collapsible, LabeledList, Section } from '../components';
+import {
+  BlockQuote,
+  Button,
+  Divider,
+  Box,
+  Flex,
+  Collapsible,
+  LabeledList,
+  Section,
+} from '../components';
 
 export const SoulcatcherUser = (props, context) => {
   const { act, data } = useBackend(context);
@@ -15,7 +24,8 @@ export const SoulcatcherUser = (props, context) => {
             <span style={{ color: current_room.color }}>
               {current_room.name}
             </span>
-          }>
+          }
+        >
           <BlockQuote preserveWhitespace>
             {' '}
             {current_room.description}

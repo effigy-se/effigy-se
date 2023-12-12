@@ -97,7 +97,7 @@ class SurgeryInitiatorInner extends Component<
                     tooltip={
                       surgery.blocked
                         ? surgery.blocked_reason ??
-                        'That surgery is unavailable!'
+                          'That surgery is unavailable!'
                         : undefined
                     } // EffigyEdit Change (#3 Medical - Ported from Skyrat) Original tooltip={surgery.blocked ? "Their body is covered!" : undefined}
                     key={surgery.name}

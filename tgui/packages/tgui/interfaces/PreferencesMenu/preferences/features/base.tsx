@@ -186,7 +186,7 @@ export const StandardizedDropdown = (props: {
 export const FeatureButtonedDropdownInput = (
   props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
     disabled?: boolean;
-  }
+  },
 ) => {
   return <FeatureDropdownInput disabled={props.disabled} buttons {...props} />;
 };
@@ -246,7 +246,7 @@ export const FeatureIconnedDropdownInput = (
     FeatureChoicedServerData
   > & {
     buttons?: boolean;
-  }
+  },
 ) => {
   const serverData = props.serverData;
   if (!serverData) {
@@ -440,7 +440,7 @@ export const FeatureShortTextInput = (
 // EffigyEdit Add - Customization
 
 export const FeatureTextInput = (
-  props: FeatureValueProps<string, string, FeatureShortTextData>
+  props: FeatureValueProps<string, string, FeatureShortTextData>,
 ) => {
   if (!props.serverData) {
     return <Box>Loading...</Box>;
@@ -466,7 +466,8 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
               preference: props.featureId,
               value: index + 1,
             });
-          }}>
+          }}
+        >
           <Stack align="center" fill>
             <Stack.Item>
               <Box
@@ -480,8 +481,8 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
                   width: '11px',
                   ...(props.shrink
                     ? {
-                      'margin': '1px',
-                    }
+                        margin: '1px',
+                      }
                     : {}),
                 }}
               />
