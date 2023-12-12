@@ -124,7 +124,7 @@ export const CharacterPreferenceWindow = (props) => {
                   {/*
                     Fun fact: This isn't "Jobs" so that it intentionally
                     catches your eyes, because it's really important!
-				  */}
+
                   Occupations
                 </PageButton>
               </Stack.Item>
