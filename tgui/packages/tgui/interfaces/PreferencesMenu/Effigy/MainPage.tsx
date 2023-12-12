@@ -428,7 +428,8 @@ const MainFeature = (props: {
     >
       <Button
         mt="-3px"
-        onClick={() => {
+        onClick={(event) => {
+          event.stopPropagation();
           if (isOpen) {
             handleClose();
           } else {
