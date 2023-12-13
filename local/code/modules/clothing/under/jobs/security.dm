@@ -9,6 +9,9 @@
 	icon = 'local/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'local/icons/mob/clothing/under/security.dmi'
 
+/obj/item/clothing/under/rank/prisoner
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/prison/worn/digi
+
 //DEBATE MOVING *ALL* SECURITY STUFF HERE? Even overrides, at least as a like, sub-file?
 
 /*
