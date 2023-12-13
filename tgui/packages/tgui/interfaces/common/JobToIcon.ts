@@ -11,6 +11,7 @@ export const JOB2ICON = {
   Botanist: 'seedling',
   'Broadcast Team': 'video-camera', // EffigyEdit Add (Broadcast Team)
   Captain: 'crown',
+  'Cargo Gorilla': 'paw',
   'Cargo Technician': 'box',
   'CentCom Commander': 'star',
   'CentCom Head Intern': 'pen-fancy',
