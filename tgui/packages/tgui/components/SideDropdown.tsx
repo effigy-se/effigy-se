@@ -177,7 +177,8 @@ export class SideDropdown extends Component<
           ])}
           onClick={() => {
             this.setSelected(value);
-          }}>
+          }}
+        >
           {displayText}
         </div>
       );
@@ -194,7 +195,7 @@ export class SideDropdown extends Component<
           {
             ...DEFAULT_OPTIONS,
             placement: 'right-end',
-          }
+          },
         );
 
         SideDropdown.singletonPopper = singletonPopper;
@@ -334,7 +335,8 @@ export class SideDropdown extends Component<
                 onClick(event);
               }
             }}
-            {...rest}>
+            {...rest}
+          >
             {icon && (
               <Icon
                 name={icon}
@@ -347,7 +349,8 @@ export class SideDropdown extends Component<
               className="SideDropdown__selected-text"
               style={{
                 overflow: clipSelectedText ? 'hidden' : 'visible',
-              }}>
+              }}
+            >
               {displayText || this.state.selected}
             </span>
             {nochevron || (

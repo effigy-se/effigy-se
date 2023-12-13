@@ -1,5 +1,13 @@
 import { useBackend } from '../backend';
-import { Button, Collapsible, Icon, NoticeBox, Section, Stack, Box } from '../components';
+import {
+  Button,
+  Collapsible,
+  Icon,
+  NoticeBox,
+  Section,
+  Stack,
+  Box,
+} from '../components';
 import { Window } from '../layouts';
 
 class Interaction {
@@ -86,13 +94,15 @@ export const InteractionMenu = (props) => {
                           userref: ref_user,
                         })
                       }
-                      tooltip={element.name}>
+                      tooltip={element.name}
+                    >
                       <Box
                         style={{
                           width: '32px',
                           height: '32px',
                           margin: '0.5em 0',
-                        }}>
+                        }}
+                      >
                         {element.img ? (
                           <img
                             src={'data:image/png;base64,' + element.img}

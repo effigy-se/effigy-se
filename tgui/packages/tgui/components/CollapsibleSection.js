@@ -16,7 +16,7 @@ export const CollapsibleSection = (props, context) => {
   const [isOpen, setOpen] = useLocalState(
     context,
     `open_collapsible_${sectionKey}`,
-    startOpen
+    startOpen,
   );
   return (
     <Section
@@ -36,7 +36,8 @@ export const CollapsibleSection = (props, context) => {
           </>
         )
       }
-      {...rest}>
+      {...rest}
+    >
       {forceOpen || isOpen ? children : null}
     </Section>
   );

@@ -118,7 +118,8 @@ const HoboPanel = (props) => {
             zIndex: 1000,
           }}
           selected={settings.visible}
-          onClick={() => settings.toggle()}>
+          onClick={() => settings.toggle()}
+        >
           Settings
         </Button>
         {(settings.visible && <SettingsPanel />) || (
