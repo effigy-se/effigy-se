@@ -102,7 +102,7 @@
 	if(draw_color && !force)
 		return FALSE
 
-	alpha = ownerlimb.alpha // EffigyEdit Add - Customization
+	alpha = bodypart_owner.alpha // EffigyEdit Add - Customization
 
 	switch(color_source)
 		if(ORGAN_COLOR_OVERRIDE)

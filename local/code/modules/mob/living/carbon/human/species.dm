@@ -39,7 +39,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/custom_worn_icons = list()
 	///Is this species restricted from changing their body_size in character creation?
 	var/body_size_restricted = FALSE
-	
+
 
 /// Returns a list of the default mutant bodyparts, and whether or not they can be randomized or not
 /datum/species/proc/get_default_mutant_bodyparts()
@@ -208,7 +208,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 				replacement.build_from_dna(target.dna, key)
 				// organ.Insert will qdel any current organs in that slot, so we don't need to.
-				replacement.Insert(target, special = TRUE, drop_if_replaced = FALSE)
+				replacement.Insert(target, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 
 			// var/obj/item/organ/path = new SA.organ_type
 			// var/obj/item/organ/oldorgan = C.get_organ_slot(path.slot)
