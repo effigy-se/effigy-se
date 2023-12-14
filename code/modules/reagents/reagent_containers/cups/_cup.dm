@@ -225,7 +225,6 @@
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
-	volume = 50
 	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT*5)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
@@ -390,34 +389,23 @@
 	melee = 10
 	acid = 50
 
-// EffigyEdit Change START (TODO move to overrides)
-/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) // EffigyEdit Change
+/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/mop))
-		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
-		if(is_right_clicking)
-			if(O.reagents.total_volume == 0)
-				to_chat(user, "<span class='warning'>[O] is dry, you can't squeeze anything out!</span>")
-				return
-			if(reagents.total_volume == reagents.maximum_volume)
-				to_chat(user, "<span class='warning'>[src] is full!</span>")
-				return
-			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
-			O.reagents.trans_to(src, O.reagents.total_volume, transferred_by = user)
-			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
+		if(reagents.total_volume < 1)
+			user.balloon_alert(user, "empty!")
 		else
-			if(reagents.total_volume < 1)
-				to_chat(user, "<span class='warning'>[src] is out of water!</span>")
-			else
-				reagents.trans_to(O, 5, transferred_by = user)
-				to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
-				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+			reagents.trans_to(O, 5, transferred_by = user)
+			user.balloon_alert(user, "doused [O]")
+			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+		return
 	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
 		to_chat(user, span_notice("You add [O] to [src]."))
 		qdel(O)
 		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
 		user.put_in_hands(new_cleanbot_ass)
 		return
-// EffigyEdit Change END
+
+	return ..()
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()
