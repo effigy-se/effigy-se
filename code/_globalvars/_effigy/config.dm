@@ -79,17 +79,11 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/string/alert_blue_downto
 	default = "Elevated security alert. Security staff may have weapons visible and are permitted to search crew members with authorization from the Captain or Head of Personnel."
 
-/datum/config_entry/string/alert_yellow_upto
+/datum/config_entry/string/alert_amber_upto
 	default = "Security incident developing. Random searches of crew are permitted with probable cause. All security personnel are required to disengage personal activities and come to active duty. Non-security personnel are advised to comply with relevant instructions from security staff."
 
-/datum/config_entry/string/alert_yellow_downto
+/datum/config_entry/string/alert_amber_downto
 	default = "Active security incident in progress. Non-security personnel are advised to comply with relevant instructions from security staff and submit to requested searches."
-
-/datum/config_entry/string/alert_orange_upto
-	default = "Major security emergency has developed. All random searches are permitted. All security personnel are required to disengage personal activities and come to active duty. Non-security personnel are advised to comply with security instructions."
-
-/datum/config_entry/string/alert_orange_downto
-	default = "Major security emergency in progress. All random searches are permitted. Non-security personnel are advised to comply with security instructions."
 
 /datum/config_entry/string/alert_red_upto
 	default = "Immediate serious threat to the station. Security may use all weapons available. All random searches are permitted. Non-security personnel are required to obey all relevant instructions from security staff."
@@ -100,16 +94,16 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/string/alert_delta
 	default = "Station destruction imminent. All crew are instructed to obey all instructions given by heads of staff or security. Any violations of these orders can be punished by death."
 
-/datum/config_entry/string/alert_pink_upto
+/datum/config_entry/string/alert_orange_upto
 	default = "Engineering emergency in progress. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas. Engineering staff will have expanded station access during this incident."
 
-/datum/config_entry/string/alert_pink_downto
+/datum/config_entry/string/alert_orange_downto
 	default = "Engineering emergency in progress. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas. Engineering staff will have expanded station access during this incident."
 
-/datum/config_entry/string/alert_white_upto
+/datum/config_entry/string/alert_violet_upto
 	default = "Medical emergency in progress. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
 
-/datum/config_entry/string/alert_white_downto
+/datum/config_entry/string/alert_violet_downto
 	default = "Medical emergency in progress. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
 
 /datum/config_entry/number/jungle_budget
