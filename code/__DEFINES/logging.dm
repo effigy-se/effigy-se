@@ -55,8 +55,7 @@
 
 // Effigy logging types
 #define LOG_SUBTLE (1 << 23)
-#define LOG_SUBTLER (1 << 24)
-#define LOG_EFFIGY_API (1 << 25)
+#define LOG_EFFIGY_API (1 << 24)
 
 //Individual logging panel pages
 #define INDIVIDUAL_GAME_LOG (LOG_GAME)
