@@ -1,5 +1,5 @@
 /// When sending mutiple assets, how many before we give the client a quaint little sending resources message
-#define ASSET_CACHE_TELL_CLIENT_AMOUNT 6
+#define ASSET_CACHE_TELL_CLIENT_AMOUNT 8
 
 /// Base browse_rsc asset transport
 /datum/asset_transport

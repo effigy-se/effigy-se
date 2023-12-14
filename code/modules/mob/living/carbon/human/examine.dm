@@ -22,7 +22,7 @@
 			obscure_name = TRUE
 			obscure_examine = TRUE
 
-	//EffigyEdit Change START Customization
+	//EffigyEdit Change - Customization
 
 	var/species_visible
 	var/species_name_string
@@ -47,10 +47,10 @@
 			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
 	else
 		. += "You can't make out what species they are."
-	// EffigyEdit Change END
+	// EffigyEdit Change End
 
 
-	// EffigyEdit Remove START Customization
+	// EffigyEdit Remove - Customization
 	/*
 	var/apparent_species
 	if(dna?.species && !skipface)
@@ -65,7 +65,7 @@
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	*/
-	// EffigyEdit Remove END
+	// EffigyEdit Remove End
 
 
 	//uniform

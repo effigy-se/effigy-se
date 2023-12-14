@@ -384,7 +384,7 @@
 	name = PRIDE_WEEK
 	begin_month = JUNE
 	// Stonewall was June 28th, this captures its week.
-	begin_day = 1
+	begin_day = 23
 	end_day = 29
 	holiday_colors = list(
 		COLOR_PRIDE_PURPLE,

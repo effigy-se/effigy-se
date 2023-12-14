@@ -157,7 +157,9 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
 		var/icon_file = 'icons/mob/clothing/id.dmi'
+
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = icon_file)
+
 		if(!id_overlay)
 			return
 
@@ -166,6 +168,7 @@ There are several things that need to be remembered:
 		overlays_standing[ID_LAYER] = id_overlay
 
 	apply_overlay(ID_LAYER)
+
 
 /mob/living/carbon/human/update_worn_gloves()
 	remove_overlay(GLOVES_LAYER)
@@ -258,6 +261,7 @@ There are several things that need to be remembered:
 		overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
 
+
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
 
@@ -290,7 +294,6 @@ There are several things that need to be remembered:
 		var/mutable_appearance/ears_overlay = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null)
 		if(!mutant_override) // EffigyEdit Add Customization
 			my_head.worn_ears_offset?.apply_offset(ears_overlay)
-
 		overlays_standing[EARS_LAYER] = ears_overlay
 	apply_overlay(EARS_LAYER)
 
@@ -856,7 +859,6 @@ mutant_styles: The mutant style - taur bodytype, STYLE_TESHARI, etc. // EffigyEd
 	standing.color = color
 
 	return standing
-
 
 /// Returns offsets used for equipped item overlays in list(px_offset,py_offset) form.
 /obj/item/proc/get_worn_offsets(isinhands)

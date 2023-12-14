@@ -104,7 +104,7 @@
 	if(!mod.active || mod.activating || !mod.get_charge())
 		balloon_alert(mod.wearer, "unpowered!")
 		return FALSE
-	// EffigyEdit Add - - No using modules when not all parts are deployed.
+	// EffigyEdit Add - No using modules when not all parts are deployed.
 	if(!(allow_flags & MODULE_ALLOW_INACTIVE))
 		for(var/obj/item/part as anything in mod.mod_parts)
 			if(part.loc == mod)

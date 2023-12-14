@@ -100,7 +100,7 @@
 	. = ..()
 
 	// Traitor steal objective
-	new /obj/item/storage/hypospraykit/cmo(src)
+	new /obj/item/hypospray/mkii/cmo(src) // EffigyEdit Change - Original: /obj/item/reagent_containers/hypospray/cmo
 
 /obj/structure/closet/secure_closet/animal
 	name = "animal control locker"

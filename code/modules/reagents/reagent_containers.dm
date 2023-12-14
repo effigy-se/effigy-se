@@ -244,7 +244,7 @@
 		return
 
 	else
-		// EffigyEdit Change START - Liquids
+		// EffigyEdit Change - Liquids
 		if(target.can_liquid_spill_on_hit())
 			target.add_liquid_from_reagents(reagents, thrown_from = src, thrown_to = target)
 			if(reagents.reagent_list.len && thrown_by)
@@ -253,7 +253,7 @@
 				message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
 		else
 			reagents.expose(target, TOUCH)
-		// EffigyEdit Change END
+		// EffigyEdit Change End
 		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
 		if(QDELETED(src))
 			return

@@ -1,3 +1,9 @@
+/obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize(mapload)
+	. = ..()
+	allowed += list(
+		/obj/item/storage/medkit,
+	)
+
 /obj/item/clothing/suit/toggle/labcoat/effigy
 	name = "debug labcoat"
 	desc = "someone screwed up"

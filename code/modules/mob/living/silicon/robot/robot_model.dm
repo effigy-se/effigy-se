@@ -259,7 +259,7 @@
 		if(cyborg.hasExpanded && (((R_TRAIT_WIDE in details[SKIN_FEATURES]) && (R_TRAIT_WIDE in model_features)) || ((R_TRAIT_TALL in details[SKIN_FEATURES]) && (R_TRAIT_TALL in model_features))))
 			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
 			return FALSE
-		// EffigyEdit Add En
+		// EffigyEdit Add End
 		if(!isnull(details[SKIN_ICON_STATE]))
 			cyborg_base_icon = details[SKIN_ICON_STATE]
 		// EffigyEdit Change - Borgs
@@ -382,14 +382,14 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		// EffigyEdit Change (Borgs) - Removed standard tools for these.
+		// EffigyEdit Change - (Borgs) - Removed standard tools for these.
 		/obj/item/screwdriver/cyborg/power,
 		/obj/item/crowbar/cyborg/power,
-		// EffigyEdit Change (Borgs) - Removed standard tools for these.
+		// EffigyEdit Change End
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
-		/obj/item/holosign_creator/atmos, // EffigyEdit Change (Borgs)
+		/obj/item/holosign_creator/atmos, // EffigyEdit Change - (Borgs)
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -399,10 +399,10 @@
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil,
-		//EFFIGY ADDITION (Borgs) - Adds cyborg painter
+		// EffigyEdit Add - (Borgs) - Adds cyborg painter
 		/obj/item/airlock_painter/decal/cyborg,
 		/obj/item/lightreplacer/cyborg,
-		//EFFIGY ADDITION (Borgs) - Adds cyborg painter
+		// EffigyEdit Add End
 	)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(

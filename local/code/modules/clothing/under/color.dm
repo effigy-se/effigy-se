@@ -1,5 +1,9 @@
 /obj/item/clothing/under/color
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/worn/digi
 	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit/worn/monkey
+
+/obj/item/clothing/under/color/jumpskirt
+	greyscale_config_worn_digi = null
 
 /**
  * Random jumpsuit is the preferred style of the wearer if loaded as an outfit.
