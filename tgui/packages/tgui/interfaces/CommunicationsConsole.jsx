@@ -42,7 +42,7 @@ const GreenshiftButton = (props, context) => {
   return (
     <Button
       icon="check-square"
-      color={thisIsCurrent && 'good'}
+      color={thisIsCurrent && 'green'}
       content={capitalize(alertLevel)}
       onClick={() => {
         if (thisIsCurrent) {
@@ -129,7 +129,7 @@ const MedicalButton = (props, context) => {
   return (
     <Button
       icon="kit-medical"
-      color={thisIsCurrent && 'white'}
+      color={thisIsCurrent && 'violet'}
       content={capitalize(alertLevel)}
       onClick={() => {
         if (thisIsCurrent) {
@@ -158,7 +158,7 @@ const EngiButton = (props, context) => {
   return (
     <Button
       icon="wrench"
-      color={thisIsCurrent && 'pink'}
+      color={thisIsCurrent && 'orange'}
       content={capitalize(alertLevel)}
       onClick={() => {
         if (thisIsCurrent) {
@@ -473,25 +473,19 @@ const PageMain = (props) => {
               />
 
               <MedicalButton
-                alertLevel="white"
+                alertLevel="violet"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
 
               <EngiButton
-                alertLevel="pink"
-                showAlertLevelConfirm={showAlertLevelConfirm}
-                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
-              />
-
-              <AlertButton
-                alertLevel="yellow"
-                showAlertLevelConfirm={showAlertLevelConfirm}
-                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
-              />
-
-              <AlertButton
                 alertLevel="orange"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <AlertButton
+                alertLevel="amber"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
                 // EffigyEdit Add End
