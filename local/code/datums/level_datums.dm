@@ -39,3 +39,6 @@
 	lowering_to_configuration_key = /datum/config_entry/string/alert_amber_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_amber_upto
 	shuttle_call_time_mod = 0.5
+
+/datum/security_level/delta
+	announcement_color = "default"
