@@ -18,6 +18,8 @@
 
 	no_equip_flags = ITEM_SLOT_MASK | ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_FEET | ITEM_SLOT_ICLOTHING
 
+	heatmod = 1.5
+
 	mutanttongue = /obj/item/organ/internal/tongue/mush
 	mutanteyes = /obj/item/organ/internal/eyes/night_vision/mushroom
 	mutantlungs = null
@@ -40,11 +42,11 @@
 	. = ..()
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		// EffigyEdit Change START
+		// EffigyEdit Change
 		if(!H.dna.mutant_bodyparts["caps"] || H.dna.mutant_bodyparts["caps"][MUTANT_INDEX_NAME] != "None")
 			H.dna.mutant_bodyparts["caps"] = list(MUTANT_INDEX_NAME = "Round", MUTANT_INDEX_COLOR_LIST = list(H.hair_color))
 			handle_mutant_bodyparts(H)
-		// EffigyEdit Change END
+		// EffigyEdit Change End
 		mush = new(null)
 		mush.teach(H)
 

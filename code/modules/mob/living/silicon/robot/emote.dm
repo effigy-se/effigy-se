@@ -1,4 +1,4 @@
-// EffigyEdit Remove START
+// EffigyEdit Remove - Emotes
 /*
 /datum/emote/silicon
 	mob_type_allowed_typecache = list(/mob/living/silicon, /mob/living/simple_animal/bot, /mob/living/basic/bot)
@@ -65,4 +65,4 @@
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/slowclap.ogg'
 */
-// EffigyEdit Remove END
+// EffigyEdit Remove End

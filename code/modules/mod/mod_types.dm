@@ -71,7 +71,6 @@
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/magboot,
 		/obj/item/mod/module/t_ray,
-		/obj/item/mod/module/tether, // EffigyEdit Add - Tether
 		/obj/item/mod/module/quick_carry,
 	)
 	default_pins = list(

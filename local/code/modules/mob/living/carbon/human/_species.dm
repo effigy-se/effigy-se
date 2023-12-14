@@ -39,7 +39,11 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/custom_worn_icons = list()
 	///Is this species restricted from changing their body_size in character creation?
 	var/body_size_restricted = FALSE
-	
+	/// Allows the species to equip items that normally require a jumpsuit without having one equipped. Used by golems.
+	var/nojumpsuit = FALSE
+	///Affects the speech message, for example: Motharula flutters, "My speech message is flutters!"
+	var/say_mod = "says"
+
 
 /// Returns a list of the default mutant bodyparts, and whether or not they can be randomized or not
 /datum/species/proc/get_default_mutant_bodyparts()

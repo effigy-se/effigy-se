@@ -306,12 +306,8 @@ GLOBAL_LIST_INIT(prototype_language_holders, init_language_holder_prototypes())
 		/datum/language/draconic = list(LANGUAGE_ATOM),
 	)
 
-// EffigyEdit Change START
 /datum/language_holder/lizard/ash
-	understood_languages = list(/datum/language/ashtongue = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/ashtongue = list(LANGUAGE_ATOM))
-	selected_language = /datum/language/ashtongue
-// EffigyEdit Change END
+	selected_language = /datum/language/draconic
 
 /datum/language_holder/lizard/silver
 	understood_languages = list(
