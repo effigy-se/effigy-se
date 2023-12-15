@@ -98,7 +98,7 @@
 
 	if (!(flags & CALTROP_BYPASS_SHOES))
 		// EffigyEdit Add - Customization
-		if(HAS_TRAIT(H, TRAIT_HARD_SOLES))
+		if(HAS_TRAIT(digitigrade_fan, TRAIT_HARD_SOLES))
 			return
 		// EffigyEdit Add End
 		if ((digitigrade_fan.wear_suit?.body_parts_covered | digitigrade_fan.w_uniform?.body_parts_covered | digitigrade_fan.shoes?.body_parts_covered) & FEET)
