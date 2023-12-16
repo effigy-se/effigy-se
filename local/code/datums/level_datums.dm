@@ -1,55 +1,44 @@
 /**
- * White
+ * Violet
  *
  * Medical emergency
  */
-/datum/security_level/white
-	name = "white"
-	announcement_color = "default"
-	number_level = SEC_LEVEL_WHITE
+/datum/security_level/violet
+	name = "violet"
+	announcement_color = "purple"
+	number_level = SEC_LEVEL_VIOLET
 	sound = 'sound/misc/notice2.ogg'
-	lowering_to_configuration_key = /datum/config_entry/string/alert_white_downto
-	elevating_to_configuration_key = /datum/config_entry/string/alert_white_upto
-	shuttle_call_time_mod = 1
-
-/**
- * Pink
- *
- * Engineering emergency
- */
-/datum/security_level/pink
-	name = "pink"
-	announcement_color = "pink"
-	number_level = SEC_LEVEL_PINK
-	sound = 'sound/misc/notice2.ogg'
-	lowering_to_configuration_key = /datum/config_entry/string/alert_pink_downto
-	elevating_to_configuration_key = /datum/config_entry/string/alert_pink_upto
+	lowering_to_configuration_key = /datum/config_entry/string/alert_violet_downto
+	elevating_to_configuration_key = /datum/config_entry/string/alert_violet_upto
 	shuttle_call_time_mod = 0.75
-
-/**
- * Yellow
- *
- * Securty emergency
- */
-/datum/security_level/yellow
-	name = "yellow"
-	announcement_color = "yellow"
-	number_level = SEC_LEVEL_YELLOW
-	sound = 'sound/misc/notice1.ogg'
-	lowering_to_configuration_key = /datum/config_entry/string/alert_yellow_downto
-	elevating_to_configuration_key = /datum/config_entry/string/alert_yellow_upto
-	shuttle_call_time_mod = 0.5
 
 /**
  * Orange
  *
- * Big securty emergency
+ * Engineering emergency
  */
 /datum/security_level/orange
 	name = "orange"
-	announcement_color = "orange"
+	announcement_color = "pink"
 	number_level = SEC_LEVEL_ORANGE
-	sound = 'sound/misc/notice1.ogg'
+	sound = 'sound/misc/notice2.ogg'
 	lowering_to_configuration_key = /datum/config_entry/string/alert_orange_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_orange_upto
+	shuttle_call_time_mod = 0.75
+
+/**
+ * Amber
+ *
+ * Securty emergency
+ */
+/datum/security_level/amber
+	name = "amber"
+	announcement_color = "orange"
+	number_level = SEC_LEVEL_AMBER
+	sound = 'sound/misc/notice1.ogg'
+	lowering_to_configuration_key = /datum/config_entry/string/alert_amber_downto
+	elevating_to_configuration_key = /datum/config_entry/string/alert_amber_upto
 	shuttle_call_time_mod = 0.5
+
+/datum/security_level/delta
+	announcement_color = "default"

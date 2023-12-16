@@ -28,19 +28,16 @@
 	QDEL_NULL(dna)
 	GLOB.carbon_list -= src
 
-/mob/living/carbon/attackby(obj/item/item, mob/living/user, params)
-	if(!all_wounds || !(!user.combat_mode || user == src))
-		return ..()
+/mob/living/carbon/item_tending(mob/living/user, obj/item/tool, list/modifiers)
+	. = ..()
+	if(. & ITEM_INTERACT_ANY_BLOCKER)
+		return .
 
-	if(can_perform_surgery(user, params))
-		return TRUE
+	for(var/datum/wound/wound as anything in shuffle(all_wounds))
+		if(wound.try_treating(tool, user))
+			return ITEM_INTERACT_SUCCESS
 
-	for(var/i in shuffle(all_wounds))
-		var/datum/wound/wound = i
-		if(wound.try_treating(item, user))
-			return TRUE
-
-	return ..()
+	return .
 
 /mob/living/carbon/CtrlShiftClick(mob/user)
 	..()
@@ -518,7 +515,7 @@
 		var/obj/item/bodypart/BP = X
 		total_brute += (BP.brute_dam * BP.body_damage_coeff)
 		total_burn += (BP.burn_dam * BP.body_damage_coeff)
-	set_health(round(maxHealth - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute, DAMAGE_PRECISION))
+	set_health(round(maxHealth - getOxyLoss() - getToxLoss() - total_burn - total_brute, DAMAGE_PRECISION))
 	update_stat()
 	update_stamina()
 	if(((maxHealth - total_burn) < HEALTH_THRESHOLD_DEAD*2) && stat == DEAD )
@@ -797,7 +794,6 @@
 	if(hud_used?.spacesuit)
 		hud_used.spacesuit.icon_state = "spacesuit_[cell_state]"
 
-
 /mob/living/carbon/set_health(new_value)
 	. = ..()
 	if(. > hardcrit_threshold)
@@ -963,6 +959,9 @@
 
 	return DEFIB_POSSIBLE
 
+/mob/living/carbon/proc/can_defib_client()
+	return (key || get_ghost(FALSE, TRUE)) && (can_defib() & DEFIB_REVIVABLE_STATES)
+
 /mob/living/carbon/harvest(mob/living/user)
 	if(QDELETED(src))
 		return
@@ -1060,6 +1059,10 @@
 
 /mob/living/carbon/vv_do_topic(list/href_list)
 	. = ..()
+
+	if(!.)
+		return
+
 	if(href_list[VV_HK_MODIFY_BODYPART])
 		if(!check_rights(R_SPAWN))
 			return
@@ -1101,7 +1104,6 @@
 				if("replace")
 					var/limb2add = input(usr, "Select a bodypart type to add", "Add/Replace Bodypart") as null|anything in sort_list(limbtypes)
 					var/obj/item/bodypart/new_bp = new limb2add()
-
 					if(new_bp.replace_limb(src, special = TRUE))
 						admin_ticket_log("key_name_admin(usr)] has replaced [src]'s [BP.type] with [new_bp.type]")
 						qdel(BP)
@@ -1113,6 +1115,7 @@
 		if(!check_rights(NONE))
 			return
 		usr.client.manipulate_organs(src)
+
 	if(href_list[VV_HK_MARTIAL_ART])
 		if(!check_rights(NONE))
 			return
@@ -1133,6 +1136,7 @@
 			MA.teach(src)
 			log_admin("[key_name(usr)] has taught [MA] to [key_name(src)].")
 			message_admins(span_notice("[key_name_admin(usr)] has taught [MA] to [key_name_admin(src)]."))
+
 	if(href_list[VV_HK_GIVE_TRAUMA])
 		if(!check_rights(NONE))
 			return
@@ -1149,6 +1153,7 @@
 		if(BT)
 			log_admin("[key_name(usr)] has traumatized [key_name(src)] with [BT.name]")
 			message_admins(span_notice("[key_name_admin(usr)] has traumatized [key_name_admin(src)] with [BT.name]."))
+
 	if(href_list[VV_HK_CURE_TRAUMA])
 		if(!check_rights(NONE))
 			return
@@ -1420,3 +1425,8 @@
 	our_splatter.blood_dna_info = get_blood_dna_list()
 	var/turf/targ = get_ranged_target_turf(src, splatter_direction, splatter_strength)
 	our_splatter.fly_towards(targ, splatter_strength)
+
+/mob/living/carbon/dropItemToGround(obj/item/item, force = FALSE, silent = FALSE, invdrop = TRUE)
+	if(item && ((item in organs) || (item in bodyparts))) //let's not do this, aight?
+		return FALSE
+	return ..()

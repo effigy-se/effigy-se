@@ -31,7 +31,8 @@ export const Signalvib = (props, context) => {
                     })
                   }
                 />
-              }>
+              }
+            >
               <NumberInput
                 animate
                 unit="kHz"
@@ -61,7 +62,8 @@ export const Signalvib = (props, context) => {
                     })
                   }
                 />
-              }>
+              }
+            >
               <NumberInput
                 animate
                 step={1}

@@ -8,13 +8,13 @@
  **/
 /obj/item/robot_model
 	name = "Default"
-	icon = 'icons/obj/assemblies/circuitry_n_data.dmi'
+	icon = 'icons/obj/devices/circuitry_n_data.dmi'
 	icon_state = "std_mod"
 	w_class = WEIGHT_CLASS_GIGANTIC
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	///Host of this model
 	var/mob/living/silicon/robot/robot
 	///Icon of the module selection screen
@@ -259,7 +259,7 @@
 		if(cyborg.hasExpanded && (((R_TRAIT_WIDE in details[SKIN_FEATURES]) && (R_TRAIT_WIDE in model_features)) || ((R_TRAIT_TALL in details[SKIN_FEATURES]) && (R_TRAIT_TALL in model_features))))
 			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
 			return FALSE
-		// EffigyEdit Add En
+		// EffigyEdit Add End
 		if(!isnull(details[SKIN_ICON_STATE]))
 			cyborg_base_icon = details[SKIN_ICON_STATE]
 		// EffigyEdit Change - Borgs
@@ -382,14 +382,14 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		// EffigyEdit Change (Borgs) - Removed standard tools for these.
+		// EffigyEdit Change - (Borgs) - Removed standard tools for these.
 		/obj/item/screwdriver/cyborg/power,
 		/obj/item/crowbar/cyborg/power,
-		// EffigyEdit Change (Borgs) - Removed standard tools for these.
+		// EffigyEdit Change End
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
-		/obj/item/holosign_creator/atmos, // EffigyEdit Change (Borgs)
+		/obj/item/holosign_creator/atmos, // EffigyEdit Change - (Borgs)
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -399,10 +399,10 @@
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil,
-		//EFFIGY ADDITION (Borgs) - Adds cyborg painter
+		// EffigyEdit Add - (Borgs) - Adds cyborg painter
 		/obj/item/airlock_painter/decal/cyborg,
 		/obj/item/lightreplacer/cyborg,
-		//EFFIGY ADDITION (Borgs) - Adds cyborg painter
+		// EffigyEdit Add End
 	)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(

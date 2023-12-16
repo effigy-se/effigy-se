@@ -133,12 +133,12 @@
 
 	if(gib_on_success)
 		new_xeno.visible_message(span_danger("[new_xeno] bursts out of [owner] in a shower of gore!"), span_userdanger("You exit [owner], your previous host."), span_hear("You hear organic matter ripping and tearing!"))
-		// EffigyEdit Change START (No gib)
+		// EffigyEdit Change - no gib
 		owner.apply_damage(150, BRUTE, BODY_ZONE_CHEST, wound_bonus = 30, sharpness = SHARP_POINTY)
 		owner.spawn_gibs()
 		owner.cut_overlay(overlay)
 		owner.investigate_log("has been chestbursted.", INVESTIGATE_DEATHS)
-		// EffigyEdit Change END (No gib)
+		// EffigyEdit Change End
 	else
 		new_xeno.visible_message(span_danger("[new_xeno] wriggles out of [owner]!"), span_userdanger("You exit [owner], your previous host."))
 		owner.log_message("had an alien larva within them escape (without being gibbed).", LOG_ATTACK, log_globally = FALSE)

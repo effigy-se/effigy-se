@@ -15,6 +15,7 @@ GLOBAL_LIST_INIT(dangerous_turfs, typecacheof(list(
 /// List of types of abstract mob which shouldn't usually exist in the world on its own if we're spawning random mobs
 GLOBAL_LIST_INIT(abstract_mob_types, list(
 	/mob/living/basic/blob_minion,
+	/mob/living/basic/bot,
 	/mob/living/basic/construct,
 	/mob/living/basic/guardian,
 	/mob/living/basic/heretic_summon,

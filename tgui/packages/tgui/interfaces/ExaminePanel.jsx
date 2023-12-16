@@ -66,7 +66,8 @@ export const ExaminePanel = (props, context) => {
                   scrollable
                   fill
                   title={character_name + "'s Flavor Text:"}
-                  preserveWhitespace>
+                  preserveWhitespace
+                >
                   {flavor_text}
                 </Section>
               </Stack.Item>
@@ -77,7 +78,8 @@ export const ExaminePanel = (props, context) => {
                       scrollable
                       fill
                       title="OOC Notes"
-                      preserveWhitespace>
+                      preserveWhitespace
+                    >
                       {ooc_notes}
                     </Section>
                   </Stack.Item>
@@ -90,7 +92,8 @@ export const ExaminePanel = (props, context) => {
                           ? 'Species: ' + custom_species
                           : 'No Custom Species!'
                       }
-                      preserveWhitespace>
+                      preserveWhitespace
+                    >
                       {custom_species
                         ? custom_species_lore
                         : 'Just a normal space dweller.'}

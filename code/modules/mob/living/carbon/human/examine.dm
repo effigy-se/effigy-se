@@ -22,7 +22,7 @@
 			obscure_name = TRUE
 			obscure_examine = TRUE
 
-	//EffigyEdit Change START Customization
+	//EffigyEdit Change - Customization
 
 	var/species_visible
 	var/species_name_string
@@ -47,10 +47,10 @@
 			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
 	else
 		. += "You can't make out what species they are."
-	// EffigyEdit Change END
+	// EffigyEdit Change End
 
 
-	// EffigyEdit Remove START Customization
+	// EffigyEdit Remove - Customization
 	/*
 	var/apparent_species
 	if(dna?.species && !skipface)
@@ -65,7 +65,7 @@
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	*/
-	// EffigyEdit Remove END
+	// EffigyEdit Remove End
 
 
 	//uniform
@@ -248,16 +248,6 @@
 				msg += "[t_He] [t_has] <b>moderate</b> [damage_desc[BURN]]!\n"
 			else
 				msg += "<B>[t_He] [t_has] severe [damage_desc[BURN]]!</B>\n"
-
-		temp = getCloneLoss()
-		if(temp)
-			if(temp < 25)
-				msg += "[t_He] [t_has] minor [damage_desc[CLONE]].\n"
-			else if(temp < 50)
-				msg += "[t_He] [t_has] <b>moderate</b> [damage_desc[CLONE]]!\n"
-			else
-				msg += "<b>[t_He] [t_has] severe [damage_desc[CLONE]]!</b>\n"
-
 
 	if(has_status_effect(/datum/status_effect/fire_handler/fire_stacks))
 		msg += "[t_He] [t_is] covered in something flammable.\n"

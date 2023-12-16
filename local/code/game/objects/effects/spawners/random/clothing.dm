@@ -51,7 +51,7 @@
 		/obj/item/clothing/suit/armor/vest/warden/syndicate, // Interdyne/DS-2 Leftover
 		/obj/item/clothing/suit/toggle/hop_parade,
 		/obj/item/clothing/suit/armor/vest/capcarapace/jacket,
-		/obj/item/clothing/suit/toggle/labcoat/skyrat/rd,
+		/obj/item/clothing/suit/toggle/labcoat/effigy/rd,
 		/obj/item/clothing/suit/kimjacket,
 		/obj/item/clothing/suit/brownfurrich,
 		/obj/item/clothing/suit/brownfurrich/public,

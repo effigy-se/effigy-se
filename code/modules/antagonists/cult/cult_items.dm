@@ -64,7 +64,7 @@ Striking a noncultist, however, will tear their flesh."}
 	righthand_file = 'icons/mob/inhands/64x64_righthand.dmi'
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_BULKY
 	force = 30 // whoever balanced this got beat in the head by a bible too many times good lord
@@ -528,6 +528,12 @@ Striking a noncultist, however, will tear their flesh."}
 				set_coefficient = 2
 			if(SEC_LEVEL_BLUE)
 				set_coefficient = 1
+			// EffigyEdit Add - Alert levels
+			if(SEC_LEVEL_VIOLET)
+				set_coefficient = 0.75
+			if(SEC_LEVEL_ORANGE)
+				set_coefficient = 0.75
+			// EffigyEdit Add End
 			else
 				set_coefficient = 0.5
 		var/surplus = timer - (SSshuttle.emergency_call_time * set_coefficient)

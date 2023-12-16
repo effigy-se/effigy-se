@@ -28,7 +28,6 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	var/cable_color = CABLE_COLOR_YELLOW
 	var/is_fully_initialized = FALSE
 
-
 /obj/structure/cable/layer1
 	color = CABLE_HEX_COLOR_RED
 	cable_color = CABLE_COLOR_RED
@@ -42,12 +41,6 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	cable_layer = CABLE_LAYER_3
 	layer = WIRE_LAYER + 0.01
 	icon_state = "l4-1-2-4-8-node"
-
-/obj/item/stack/cable_coil
-	/// How long it takes to apply cable to your own robotic limbs to heal their burns.
-	var/self_delay = 5 SECONDS // EffigyEdit Add
-	/// How long it takes to apply cable to someone else's robotic limbs to heal their burns.
-	var/other_delay = 1 SECONDS // EffigyEdit Add
 
 /obj/structure/cable/Initialize(mapload)
 	. = ..()
@@ -149,7 +142,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	return ..() // then go ahead and delete the cable
 
 /obj/structure/cable/deconstruct(disassembled = TRUE)
-	if(!(flags_1 & NODECONSTRUCT_1))
+	if(!(obj_flags & NO_DECONSTRUCTION))
 		var/obj/item/stack/cable_coil/cable = new(drop_location(), 1)
 		cable.set_cable_color(cable_color)
 	qdel(src)
@@ -462,7 +455,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	throw_speed = 3
 	throw_range = 5
 	mats_per_unit = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.1, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.1)
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	slot_flags = ITEM_SLOT_BELT
 	attack_verb_continuous = list("whips", "lashes", "disciplines", "flogs")
 	attack_verb_simple = list("whip", "lash", "discipline", "flog")
@@ -487,7 +480,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 
 /obj/item/stack/cable_coil/examine(mob/user)
 	. = ..()
-	. += "<b>Ctrl+Click</b> to change the layer you are placing on."
+	. += "<b>Use it in hand</b> to change the layer you are placing on, amongst other things."
 
 /obj/item/stack/cable_coil/update_name()
 	. = ..()

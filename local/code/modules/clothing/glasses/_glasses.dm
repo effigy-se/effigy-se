@@ -96,3 +96,6 @@
 	desc = "A cheaper brand of sunglasses rated for much lower UV levels. Offers the user no protection against bright lights."
 	icon_state = "sun"
 	inhand_icon_state = "sunglasses"
+
+/obj/item/clothing/glasses/welding
+	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER

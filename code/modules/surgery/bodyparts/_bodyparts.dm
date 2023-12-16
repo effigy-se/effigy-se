@@ -6,6 +6,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/mob/human/bodyparts.dmi'
 	icon_state = "" //Leave this blank! Bodyparts are built using overlays
+	flags_1 = PREVENT_CONTENTS_EXPLOSION_1 //actually mindblowing
 	/// The icon for Organic limbs using greyscale
 	VAR_PROTECTED/icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 	///The icon for non-greyscale limbs
@@ -126,7 +127,6 @@
 	var/list/damage_examines = list(
 		BRUTE = DEFAULT_BRUTE_EXAMINE_TEXT,
 		BURN = DEFAULT_BURN_EXAMINE_TEXT,
-		CLONE = DEFAULT_CLONE_EXAMINE_TEXT,
 	)
 
 	// Wounds related variables
@@ -153,12 +153,10 @@
 	var/generic_bleedstacks
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/medical/gauze/current_gauze
-	/// Do we use an organic render for this robotic limb?
-	// var/organic_render = TRUE // EffigyEdit Add - Customization
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/hand_item/self_grasp])
 	var/obj/item/hand_item/self_grasp/grasped_by
 
-	///A list of all the external organs we've got stored to draw horns, wings and stuff with (special because we are actually in the limbs unlike normal organs :/ )
+///A list of all the external organs we've got stored to draw horns, wings and stuff with (special because we are actually in the limbs unlike normal organs :/ )
 	///If someone ever comes around to making all organs exist in the bodyparts, you can just remove this and use a typed loop
 	var/list/obj/item/organ/external/external_organs = list()
 	///A list of all bodypart overlays to draw
@@ -168,6 +166,8 @@
 	var/attack_type = BRUTE
 	/// the verb used for an unarmed attack when using this limb, such as arm.unarmed_attack_verb = punch
 	var/unarmed_attack_verb = "bump"
+	/// if we have a special attack verb for hitting someone who is grappled by us, it goes here.
+	var/grappled_attack_verb
 	/// what visual effect is used when this limb is used to strike someone.
 	var/unarmed_attack_effect = ATTACK_EFFECT_PUNCH
 	/// Sounds when this bodypart is used in an umarmed attack

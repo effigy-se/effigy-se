@@ -1,4 +1,3 @@
-// EFFIGY LOCAL FILE - local/code/modules/recycling/disposal/pipe.dm
 // Disposal pipes
 
 /obj/structure/disposalpipe
@@ -22,10 +21,6 @@
 	var/obj/structure/disposalconstruct/stored
 	/// Should we create a pipe on destroy?
 	var/spawn_pipe = TRUE
-
-	// EFFIGY VARIABLES
-	/// Whether a disposal pipe will hurt if a person changes direction. `FALSE` for hurting, `TRUE` to prevent making them hurt.
-	var/padded_corners = FALSE
 
 /datum/armor/structure_disposalpipe
 	melee = 25
@@ -176,7 +171,7 @@
 
 // called when pipe is cut with welder
 /obj/structure/disposalpipe/deconstruct(disassembled = TRUE)
-	if(!(flags_1 & NODECONSTRUCT_1))
+	if(!(obj_flags & NO_DECONSTRUCTION))
 		if(disassembled)
 			if(spawn_pipe)
 				var/obj/structure/disposalconstruct/construct = stored

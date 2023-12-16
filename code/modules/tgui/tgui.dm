@@ -98,7 +98,7 @@
 		window.initialize(
 			strict_mode = TRUE,
 			fancy = user.client.prefs.read_preference(/datum/preference/toggle/tgui_fancy),
-			inline_css = file('local/interface/effigy.css'),
+			inline_css = file('local/interface/effigy.css'), // EffigyEdit Add - TGUI
 			assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
 			))

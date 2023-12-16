@@ -6,7 +6,6 @@
 	throw_speed = 3
 	throw_range = 5
 	layer = ABOVE_MOB_LAYER
-	plane = GAME_PLANE_UPPER
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_BRAIN
 	organ_flags = ORGAN_ORGANIC | ORGAN_VITAL
@@ -46,6 +45,13 @@
 	. = ..()
 	// Brain size logic
 	transform = transform.Scale(brain_size)
+
+/obj/item/organ/internal/brain/examine()
+	. = ..()
+	if(brain_size < 1)
+		. += span_notice("It is a bit on the smaller side...")
+	if(brain_size > 1)
+		. += span_notice("It is bigger than average...")
 
 /obj/item/organ/internal/brain/Insert(mob/living/carbon/brain_owner, special = FALSE, drop_if_replaced = TRUE, no_id_transfer = FALSE)
 	. = ..()

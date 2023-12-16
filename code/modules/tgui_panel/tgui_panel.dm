@@ -44,7 +44,7 @@
 	// Perform a clean initialization
 	window.initialize(
 		strict_mode = TRUE,
-		inline_css = file('local/interface/effigy.css'),
+		inline_css = file('local/interface/effigy.css'), // EffigyEdit Add - TGUI
 		assets = list(
 			get_asset_datum(/datum/asset/simple/tgui_panel),
 		))

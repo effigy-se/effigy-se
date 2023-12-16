@@ -50,6 +50,14 @@
 			else if((methods & TOUCH) && (strain.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS))
 				exposed_mob.ContactContractDisease(strain)
 
+	if(data && data["resistances"])
+		if(methods & (INGEST|INJECT)) //have to inject or ingest it. no curefoam/cheap curesprays
+			for(var/stuff in exposed_mob.diseases)
+				var/datum/disease/infection = stuff
+				if(infection.GetDiseaseID() in data["resistances"])
+					if(!infection.bypasses_immunity)
+						infection.cure(add_resistance = FALSE)
+
 	if(iscarbon(exposed_mob))
 		var/mob/living/carbon/exposed_carbon = exposed_mob
 		if(exposed_carbon.get_blood_id() == type && ((methods & INJECT) || ((methods & INGEST) && HAS_TRAIT(exposed_carbon, TRAIT_DRINKS_BLOOD))))
@@ -154,7 +162,7 @@
 	for(var/thing in exposed_mob.diseases)
 		var/datum/disease/infection = thing
 		if(infection.GetDiseaseID() in data)
-			infection.cure()
+			infection.cure(add_resistance = TRUE)
 	LAZYOR(exposed_mob.disease_resistances, data)
 
 /datum/reagent/vaccine/on_merge(list/data)
@@ -182,7 +190,6 @@
 	var/cooling_temperature = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
 	default_container = /obj/item/reagent_containers/cup/glass/waterbottle
-	evaporates = TRUE // EffigyEdit Add
 
 /datum/glass_style/shot_glass/water
 	required_drink_type = /datum/reagent/water
@@ -260,7 +267,7 @@
 	if(methods & VAPOR)
 		exposed_mob.adjust_wet_stacks(reac_volume * WATER_TO_WET_STACKS_FACTOR_VAPOR) // Spraying someone with water with the hope to put them out is just simply too funny to me not to add it.
 
-		if(!isfeline(exposed_mob))
+		if(!isfelinid(exposed_mob))
 			return
 
 		exposed_mob.incapacitate(1) // startles the felinid, canceling any do_after

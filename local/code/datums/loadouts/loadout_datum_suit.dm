@@ -587,7 +587,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 // LABCOATS
 /datum/loadout_item/suit/labcoat_highvis
 	name = "High-Vis Labcoat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
+	item_path = /obj/item/clothing/suit/toggle/labcoat/effigy/highvis
 	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_CHIEF_ENGINEER, JOB_CHEMIST)
 
 /*

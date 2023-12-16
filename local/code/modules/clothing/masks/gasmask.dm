@@ -1,3 +1,6 @@
+/obj/item/clothing/mask/gas/atmos
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION
+
 /obj/item/clothing/mask/gas/glass
 	icon = 'local/icons/obj/clothing/masks.dmi'
 	worn_icon = 'local/icons/mob/clothing/mask.dmi'

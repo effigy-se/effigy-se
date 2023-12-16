@@ -22,22 +22,17 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	flags_1 = SUPERMATTER_IGNORES_1
 
-// EffigyEdit Change START
 /obj/boh_tear/Initialize(mapload)
 	. = ..()
-	QDEL_IN(src, 10 SECONDS) // vanishes after 10 seconds
-	addtimer(CALLBACK(src, PROC_REF(add_singularity)), 5 SECONDS)
+	QDEL_IN(src, 5 SECONDS) // vanishes after 5 seconds
 
-/obj/boh_tear/proc/add_singularity()
-	// the grav_pull was BOH_TEAR_GRAV_PULL (25), but that is a whole lot
 	AddComponent(
 		/datum/component/singularity, \
 		consume_range = BOH_TEAR_CONSUME_RANGE, \
-		grav_pull = 4, \
+		grav_pull = BOH_TEAR_GRAV_PULL, \
 		roaming = FALSE, \
 		singularity_size = STAGE_SIX, \
 	)
-// EffigyEdit Change END
 
 /obj/boh_tear/attack_tk(mob/user)
 	if(!isliving(user))

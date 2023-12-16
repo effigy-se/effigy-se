@@ -22,3 +22,7 @@
 
 /obj/item/clothing/under/suit/black_really/skirt
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+
+/obj/item/clothing/under/suit/waiter
+	sensor_mode = SENSOR_OFF
+	random_sensor = FALSE

@@ -145,42 +145,6 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
-	// EffigyEdit Add -
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Greatcoat" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
-			RESKIN_ICON_STATE = "hos",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
-			RESKIN_WORN_ICON_STATE = "hos"
-		),
-		"Trenchcoat" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
-			RESKIN_ICON_STATE = "hostrench",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
-			RESKIN_WORN_ICON_STATE = "hostrench"
-		),
-		"Navy Blue Jacket" = list(
-			RESKIN_ICON = 'local/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "hosbluejacket",
-			RESKIN_WORN_ICON = 'local/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "hosbluejacket"
-		),
-		"Trenchcloak" = list(
-			RESKIN_ICON = 'local/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "trenchcloak",
-			RESKIN_WORN_ICON = 'local/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "trenchcloak"
-		),
-		"Black" = list(
-			RESKIN_ICON = 'local/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "hos_black",
-			RESKIN_WORN_ICON = 'local/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "hos_black",
-			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
-		)
-	)
-	// EffigyEdit Add End
 
 /datum/armor/armor_hos
 	melee = 30

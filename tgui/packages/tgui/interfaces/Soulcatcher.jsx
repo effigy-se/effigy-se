@@ -1,6 +1,16 @@
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledList, ProgressBar } from '../components';
+import {
+  BlockQuote,
+  Button,
+  Divider,
+  Section,
+  Box,
+  Flex,
+  Collapsible,
+  LabeledList,
+  ProgressBar,
+} from '../components';
 
 export const Soulcatcher = (props, context) => {
   const { act, data } = useBackend(context);
@@ -29,7 +39,8 @@ export const Soulcatcher = (props, context) => {
                   tooltip="Change the color of the room"
                   onClick={() =>
                     act('change_room_color', { room_ref: room.reference })
-                  }>
+                  }
+                >
                   Recolor
                 </Button>
                 <Button
@@ -37,7 +48,8 @@ export const Soulcatcher = (props, context) => {
                   tooltip="Change the name of the room"
                   onClick={() =>
                     act('rename_room', { room_ref: room.reference })
-                  }>
+                  }
+                >
                   Rename
                 </Button>
                 <Button
@@ -46,11 +58,13 @@ export const Soulcatcher = (props, context) => {
                   color="red"
                   onClick={() =>
                     act('delete_room', { room_ref: room.reference })
-                  }>
+                  }
+                >
                   Delete
                 </Button>
               </>
-            }>
+            }
+          >
             <BlockQuote preserveWhitespace> {room.description}</BlockQuote>
             <Box>
               <Button
@@ -62,7 +76,8 @@ export const Soulcatcher = (props, context) => {
                     emote: true,
                     narration: true,
                   })
-                }>
+                }
+              >
                 Narrate
               </Button>
 
@@ -74,7 +89,8 @@ export const Soulcatcher = (props, context) => {
                     room_ref: room.reference,
                     emote: false,
                   })
-                }>
+                }
+              >
                 Say
               </Button>
 
@@ -86,7 +102,8 @@ export const Soulcatcher = (props, context) => {
                     room_ref: room.reference,
                     emote: true,
                   })
-                }>
+                }
+              >
                 Emote
               </Button>
 
@@ -97,7 +114,8 @@ export const Soulcatcher = (props, context) => {
                   act('modify_name', {
                     room_ref: room.reference,
                   })
-                }>
+                }
+              >
                 Edit Name
               </Button>
               <Button
@@ -105,7 +123,8 @@ export const Soulcatcher = (props, context) => {
                 tooltip="Changes the description of the room"
                 onClick={() =>
                   act('redescribe_room', { room_ref: room.reference })
-                }>
+                }
+              >
                 Redecorate
               </Button>
               <Button
@@ -113,7 +132,8 @@ export const Soulcatcher = (props, context) => {
                 icon={room.joinable ? 'door-open' : 'door-closed'}
                 onClick={() =>
                   act('toggle_joinable_room', { room_ref: room.reference })
-                }>
+                }
+              >
                 {room.joinable ? 'Room joinable' : 'Room unjoinable'}
               </Button>
               <Button
@@ -122,7 +142,8 @@ export const Soulcatcher = (props, context) => {
                 color={room.currently_targeted ? 'green' : 'red'}
                 onClick={() =>
                   act('change_targeted_room', { room_ref: room.reference })
-                }>
+                }
+              >
                 {room.currently_targeted ? 'Targeted' : 'Untargeted'}
               </Button>
             </Box>
@@ -179,7 +200,8 @@ export const Soulcatcher = (props, context) => {
                               }
                             />
                           </>
-                        }>
+                        }
+                      >
                         <Box textAlign="center" fontSize="13px" opacity={0.8}>
                           <b>Flavor Text</b>
                         </Box>
@@ -208,7 +230,8 @@ export const Soulcatcher = (props, context) => {
                                   sense_to_change: 'hearing',
                                   room_ref: room.reference,
                                 })
-                              }>
+                              }
+                            >
                               {soul.outside_hearing ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
@@ -223,7 +246,8 @@ export const Soulcatcher = (props, context) => {
                                   sense_to_change: 'sight',
                                   room_ref: room.reference,
                                 })
-                              }>
+                              }
+                            >
                               {soul.outside_sight ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
@@ -238,7 +262,8 @@ export const Soulcatcher = (props, context) => {
                                   sense_to_change: 'hearing',
                                   room_ref: room.reference,
                                 })
-                              }>
+                              }
+                            >
                               {soul.internal_hearing ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
@@ -253,7 +278,8 @@ export const Soulcatcher = (props, context) => {
                                   sense_to_change: 'sight',
                                   room_ref: room.reference,
                                 })
-                              }>
+                              }
+                            >
                               {soul.internal_sight ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
@@ -268,7 +294,8 @@ export const Soulcatcher = (props, context) => {
                                   communication_type: 'speech',
                                   room_ref: room.reference,
                                 })
-                              }>
+                              }
+                            >
                               {soul.able_to_speak ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
@@ -283,7 +310,8 @@ export const Soulcatcher = (props, context) => {
                                   communication_type: 'emote',
                                   room_ref: room.reference,
                                 })
-                              }>
+                              }
+                            >
                               {soul.able_to_emote ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
@@ -304,7 +332,8 @@ export const Soulcatcher = (props, context) => {
                                       communication_type: 'speech',
                                       room_ref: room.reference,
                                     })
-                                  }>
+                                  }
+                                >
                                   {soul.able_to_speak_as_container
                                     ? 'Enabled'
                                     : 'Disabled'}
@@ -325,7 +354,8 @@ export const Soulcatcher = (props, context) => {
                                       communication_type: 'emote',
                                       room_ref: room.reference,
                                     })
-                                  }>
+                                  }
+                                >
                                   {soul.able_to_emote_as_container
                                     ? 'Enabled'
                                     : 'Disabled'}
@@ -345,7 +375,8 @@ export const Soulcatcher = (props, context) => {
                                   target_soul: soul.reference,
                                   room_ref: room.reference,
                                 })
-                              }>
+                              }
+                            >
                               {soul.able_to_rename ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
@@ -360,7 +391,8 @@ export const Soulcatcher = (props, context) => {
                               target_soul: soul.reference,
                               room_ref: room.reference,
                             })
-                          }>
+                          }
+                        >
                           Remove Soul
                         </Button>
                       </Collapsible>
@@ -380,7 +412,8 @@ export const Soulcatcher = (props, context) => {
               minValue={0}
               color="blue"
               maxValue={max_souls}
-              value={max_souls - current_soul_count}>
+              value={max_souls - current_soul_count}
+            >
               Remaining soul capacity: {max_souls - current_soul_count}
             </ProgressBar>
           </Section>
@@ -391,21 +424,24 @@ export const Soulcatcher = (props, context) => {
           fluid
           color="green"
           icon="plus"
-          onClick={() => act('create_room', {})}>
+          onClick={() => act('create_room', {})}
+        >
           Create new room
         </Button>
         <Button
           fluid
           color={ghost_joinable ? 'green' : 'red'}
           icon={ghost_joinable ? 'door-open' : 'door-closed'}
-          onClick={() => act('toggle_joinable', {})}>
+          onClick={() => act('toggle_joinable', {})}
+        >
           {ghost_joinable ? 'Opened' : 'Closed'} to ghosts
         </Button>
         <Button
           fluid
           color={require_approval ? 'green' : 'red'}
           icon={require_approval ? 'lock' : 'lock-open'}
-          onClick={() => act('toggle_approval', {})}>
+          onClick={() => act('toggle_approval', {})}
+        >
           Approval is {require_approval ? '' : 'not'} required to join
         </Button>
         {removable ? (
@@ -414,7 +450,8 @@ export const Soulcatcher = (props, context) => {
             fluid
             color="red"
             icon="eject"
-            onClick={() => act('delete_self', {})}>
+            onClick={() => act('delete_self', {})}
+          >
             Remove soulcatcher from parent object
           </Button>
         ) : (

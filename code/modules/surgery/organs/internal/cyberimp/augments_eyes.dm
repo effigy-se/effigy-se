@@ -16,7 +16,7 @@
 	var/HUD_type = 0
 	var/HUD_trait = null
 	/// Whether the HUD implant is on or off
-	var/toggled_on = TRUE 
+	var/toggled_on = TRUE
 
 
 /obj/item/organ/internal/cyberimp/eyes/hud/proc/toggle_hud(mob/living/carbon/eye_owner)

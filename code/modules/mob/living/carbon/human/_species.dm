@@ -53,10 +53,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/skinned_type
 	///flags for inventory slots the race can't equip stuff to. Golems cannot wear jumpsuits, for example.
 	var/no_equip_flags
-	/// Allows the species to equip items that normally require a jumpsuit without having one equipped. Used by golems.
-	var/nojumpsuit = FALSE
-	///Affects the speech message, for example: Motharula flutters, "My speech message is flutters!"
-	var/say_mod = "says"
 	/// What languages this species can understand and say.
 	/// Use a [language holder datum][/datum/language_holder] typepath in this var.
 	/// Should never be null.
@@ -1226,6 +1222,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		playsound(target.loc, attacking_bodypart.unarmed_attack_sound || get_sfx("punch"), 25, TRUE, -1) // EffigyEdit Change Customization
 		//ORIGINAL: playsound(target.loc, attacking_bodypart.unarmed_attack_sound, 25, TRUE, -1)
 
+		if(grappled && attacking_bodypart.grappled_attack_verb)
+			atk_verb = attacking_bodypart.grappled_attack_verb
 		target.visible_message(span_danger("[user] [atk_verb]ed [target]!"), \
 						span_userdanger("You're [atk_verb]ed by [user]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, span_danger("You [atk_verb] [target]!"))

@@ -265,7 +265,7 @@
 	data["user_is_donator"] = !!(GLOB.donator_list[owner.ckey] || is_admin(owner))
 	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
 	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
-	data["preivew_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
+	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
 	data["preview_selection"] = owner?.prefs.preview_pref
 
 	return data
@@ -278,7 +278,7 @@
 	// [contents] is a formatted list of all the possible items for that slot.
 	//  - [contents.path] is the path the singleton datum holds
 	//  - [contents.name] is the name of the singleton datum
-	//  - [contents.is_renamable], whether the item can be renamed in the UI
+	//  - [contents.is_renameable], whether the item can be renamed in the UI
 	//  - [contents.is_greyscale], whether the item can be greyscaled in the UI
 	//  - [contents.tooltip_text], any additional tooltip text that hovers over the item's select button
 
@@ -337,7 +337,7 @@
 		formatted_item["name"] = item.name
 		formatted_item["path"] = item.item_path
 		formatted_item["is_greyscale"] = !!(initial(loadout_atom.greyscale_config) && initial(loadout_atom.greyscale_colors) && (initial(loadout_atom.flags_1) & IS_PLAYER_COLORABLE_1))
-		formatted_item["is_renamable"] = item.can_be_named
+		formatted_item["is_renameable"] = item.can_be_named
 		formatted_item["is_job_restricted"] = !isnull(item.restricted_roles)
 		formatted_item["is_donator_only"] = !isnull(item.donator_only)
 		formatted_item["is_ckey_whitelisted"] = !isnull(item.ckeywhitelist)
