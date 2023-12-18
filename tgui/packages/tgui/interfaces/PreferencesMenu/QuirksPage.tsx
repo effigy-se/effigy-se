@@ -1,3 +1,6 @@
+import { filterMap } from 'common/collections';
+
+import { useBackend, useLocalState } from '../../backend';
 import { Box, Button, Icon, Popper, Stack, Tooltip } from '../../components';
 import { PreferencesMenuData, Quirk, RandomSetting, ServerData } from './data';
 import { useBackend, useLocalState } from '../../backend';
