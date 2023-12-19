@@ -127,9 +127,11 @@
 	. = ..()
 	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(add_coffeemaker))
 
+/*
 /datum/station_trait/job/bridge_assistant/on_lobby_button_update_overlays(atom/movable/screen/lobby/button/sign_up/lobby_button, list/overlays)
 	. = ..()
 	overlays += "bridge_assistant"
+*/
 
 /// Creates a coffeemaker in the bridge, if we don't have one yet.
 /datum/station_trait/job/bridge_assistant/proc/add_coffeemaker(datum/source)

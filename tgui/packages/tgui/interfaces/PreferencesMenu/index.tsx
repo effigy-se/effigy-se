@@ -1,7 +1,6 @@
 import { exhaustiveCheck } from 'common/exhaustive';
 
 import { useBackend } from '../../backend';
-import { CharacterPreferenceWindow } from './CharacterPreferenceWindow';
 import {
   GamePreferencesSelectedPage,
   PreferencesMenuData,
