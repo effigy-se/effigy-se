@@ -14,7 +14,6 @@ export const CollapsibleSection = (props, context) => {
     ...rest
   } = props;
   const [isOpen, setOpen] = useLocalState(
-    context,
     `open_collapsible_${sectionKey}`,
     startOpen,
   );
