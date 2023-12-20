@@ -1,13 +1,13 @@
 import {
-  FeatureDropdownInput,
-  Feature,
-  FeatureNumberInput,
   CheckboxInput,
-  FeatureTriColorInput,
-  FeatureTriBoolInput,
+  Feature,
+  FeatureChoiced,
+  FeatureDropdownInput,
+  FeatureNumberInput,
   FeatureNumeric,
   FeatureToggle,
-  FeatureChoiced,
+  FeatureTriBoolInput,
+  FeatureTriColorInput,
 } from '../../base';
 
 export const feature_penis: Feature<string> = {
