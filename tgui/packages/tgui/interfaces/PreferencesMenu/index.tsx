@@ -1,4 +1,5 @@
 import { exhaustiveCheck } from 'common/exhaustive';
+
 import { useBackend } from '../../backend';
 import {
   GamePreferencesSelectedPage,

@@ -1,16 +1,17 @@
 import { exhaustiveCheck } from 'common/exhaustive';
+
 import { useBackend, useLocalState } from '../../../backend';
-import { Stack, SideDropdown, Flex } from '../../../components';
+import { Flex, SideDropdown, Stack } from '../../../components';
 import { Window } from '../../../layouts';
-import { PreferencesMenuData } from '../data';
-import { PageButton } from '../PageButton';
 import { AntagsPage } from '../AntagsPage';
+import { PreferencesMenuData } from '../data';
 import { JobsPage } from '../JobsPage';
-import { MainPage } from './MainPage';
-import { SpeciesPage } from '../SpeciesPage';
-import { QuirksPage } from '../QuirksPage';
 import { LanguagesPage } from '../LanguagesMenu';
 import { LimbsPage } from '../LimbsPage';
+import { PageButton } from '../PageButton';
+import { QuirksPage } from '../QuirksPage';
+import { SpeciesPage } from '../SpeciesPage';
+import { MainPage } from './MainPage';
 enum Page {
   Antags,
   Main,
