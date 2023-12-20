@@ -5,5 +5,6 @@ export const scaling_method: Feature<string> = {
   category: 'UI',
   component: createDropdownInput({
     normal: 'Enabled',
+    distort: 'Disabled',
   }),
 };
