@@ -1,15 +1,15 @@
 import { useBackend } from '../backend';
-import { Window } from '../layouts';
 import {
-  Section,
+  BlockQuote,
+  Box,
+  Button,
   Divider,
   Flex,
-  Box,
-  BlockQuote,
   Input,
   LabeledList,
-  Button,
+  Section,
 } from '../components';
+import { Window } from '../layouts';
 
 export const NifSoulPoem = (props, context) => {
   const { act, data } = useBackend(context);

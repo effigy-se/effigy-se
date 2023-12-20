@@ -1,20 +1,20 @@
 import { useBackend, useLocalState } from '../backend';
-import { Window } from '../layouts';
 import {
+  BlockQuote,
   Box,
+  Button,
+  Collapsible,
   Dropdown,
+  Flex,
+  Icon,
+  Input,
   LabeledList,
   ProgressBar,
   Section,
-  Button,
-  Input,
-  BlockQuote,
-  Flex,
-  Collapsible,
   Table,
-  Icon,
 } from '../components';
 import { TableCell, TableRow } from '../components/Table';
+import { Window } from '../layouts';
 
 export const NifPanel = (props, context) => {
   const { act, data } = useBackend(context);

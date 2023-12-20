@@ -1,5 +1,6 @@
 import { binaryInsertWith, sortBy } from 'common/collections';
 import { ReactNode } from 'react';
+
 import { useBackend } from '../../backend';
 import { Box, Flex, Tooltip } from '../../components';
 import { PreferencesMenuData } from './data';
@@ -101,7 +102,7 @@ export const GamePreferencesPage = (props) => {
     <TabbedMenu
       categoryEntries={gamePreferenceEntries}
       contentProps={{
-        fontSize: 1.5,
+        fontSize: 1.25,
       }}
     />
   );

@@ -1,17 +1,17 @@
 import {
-  FeatureChoiced,
-  FeatureDropdownInput,
+  CheckboxInput,
   Feature,
+  FeatureChoiced,
   FeatureChoicedServerData,
   FeatureColorInput,
-  FeatureTextInput,
-  FeatureShortTextInput,
-  CheckboxInput,
-  FeatureTriColorInput,
-  FeatureTriBoolInput,
-  FeatureToggle,
-  FeatureValueProps,
+  FeatureDropdownInput,
   FeatureNumberInput,
+  FeatureShortTextInput,
+  FeatureTextInput,
+  FeatureToggle,
+  FeatureTriBoolInput,
+  FeatureTriColorInput,
+  FeatureValueProps,
 } from '../../base';
 
 export const feature_leg_type: FeatureChoiced = {

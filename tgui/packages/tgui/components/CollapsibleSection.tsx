@@ -1,6 +1,6 @@
 import { useLocalState } from '../backend';
-import { Section } from './Section';
 import { Button } from './Button';
+import { Section } from './Section';
 
 export const CollapsibleSection = (props, context) => {
   const {
@@ -14,7 +14,6 @@ export const CollapsibleSection = (props, context) => {
     ...rest
   } = props;
   const [isOpen, setOpen] = useLocalState(
-    context,
     `open_collapsible_${sectionKey}`,
     startOpen,
   );

@@ -1,16 +1,16 @@
 import { useBackend, useSharedState } from '../backend';
-import { NtosWindow } from '../layouts';
 import {
   BlockQuote,
+  Box,
   Button,
   Collapsible,
   Flex,
+  Icon,
+  LabeledList,
   Section,
   Tabs,
-  LabeledList,
-  Box,
-  Icon,
 } from '../components';
+import { NtosWindow } from '../layouts';
 
 export const NtosNifsoftCatalog = (props, context) => {
   const { act, data } = useBackend(context);

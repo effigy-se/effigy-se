@@ -1,14 +1,14 @@
+import { useBackend } from '../../backend';
 import {
   Box,
-  Stack,
-  Section,
-  Dropdown,
   Button,
   ColorBox,
+  Dropdown,
+  Section,
+  Stack,
 } from '../../components';
-import { useBackend } from '../../backend';
-import { PreferencesMenuData } from './data';
 import { CharacterPreview } from '../common/CharacterPreview';
+import { PreferencesMenuData } from './data';
 
 const Gap = (props: { amount: number }) => {
   // 0.2em comes from the padding-bottom in the department listing
