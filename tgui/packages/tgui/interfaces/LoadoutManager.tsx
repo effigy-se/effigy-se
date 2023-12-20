@@ -1,6 +1,7 @@
-import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Section, Stack, Dropdown } from '../components';
 import { BooleanLike } from 'common/react';
+
+import { useBackend, useSharedState } from '../backend';
+import { Box, Button, Dropdown, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type LoadoutTabData = {
