@@ -1,5 +1,3 @@
-// EffigyEdit Remove START Customization
-/*
 //monkey sentience caps
 
 /obj/item/clothing/head/helmet/monkey_sentience
@@ -109,6 +107,3 @@
 	if(magnification)
 		visible_message(span_warning("[src] falls off of [magnification]'s head as it changes shape!"))
 		magnification.dropItemToGround(src)
-
-*/
-// EffigyEdit Remove END Customization
