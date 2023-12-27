@@ -5,11 +5,11 @@
 
 /**
  * Converts a given color to comply within a smaller subset of colors to be used in runechat.
+ * If a color is outside the min/max saturation or value/lum, it will be set at the nearest
+ * value that passes validation.
  *
  * Arguments:
  * * color - The color to process
- * * sat_shift - A value between 0 and 1 that will be multiplied against the saturation
- * * lum_shift - A value between 0 and 1 that will be multiplied against the luminescence
  */
 /proc/process_chat_color(color)
 	if(isnull(color))
