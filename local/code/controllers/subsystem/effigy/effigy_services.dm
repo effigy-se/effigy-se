@@ -178,7 +178,7 @@ SUBSYSTEM_DEF(effigy)
 	message_admins(span_info("Searching Effigy for [ckeytomatch]"))
 	SSeffigy.link_effigy_id_to_ckey(ckeytomatch, effigyid)
 
-/proc/generate_effigy_event_id()
+/proc/generate_evid()
 	var/evid
 	if(GLOB.current_effigy_evid > GLOB.round_id + 1023)
 		CRASH("Run out of EVIDs to allocate in round.")
