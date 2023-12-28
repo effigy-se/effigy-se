@@ -61,10 +61,8 @@
 			continue
 		if(length(candidate.diseases)) //Is our candidate already sick?
 			continue
-		// EffigyEdit Add - Event Station Filtering
-		if(engaged_role_play_check(candidate, station = TRUE, dorms = TRUE))
+		if(!is_station_level(candidate.z) && !is_mining_level(candidate.z)) //Diseases can't really spread if the vector is in deep space.
 			continue
-		// EffigyEdit Add End
 		disease_candidates += candidate
 
 ///Handles checking and alerting admins about the number of valid candidates
