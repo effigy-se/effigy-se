@@ -181,7 +181,7 @@
 			hud_list[hud] = list()
 
 		else
-			var/image/I = image('local/icons/mob/hud.dmi', src, "")
+			var/image/I = image('local/icons/mob/hud.dmi', src, "") // EffigyEdit Change - Custom HUD
 			I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 			hud_list[hud] = I
 		set_hud_image_active(hud, update_huds = FALSE) //by default everything is active. but dont add it to huds to keep control.
@@ -1384,10 +1384,6 @@
 	if(!pen_info || (pen_info["interaction_mode"] != MODE_WRITING))
 		if(!silent_if_not_writing_tool)
 			to_chat(src, span_warning("You can't write with the [writing_instrument]!"))
-		return FALSE
-
-	if(HAS_MIND_TRAIT(src, TRAIT_MIMING) && !istype(writing_instrument, /obj/item/toy/crayon/mime))
-		to_chat(src, span_warning("Your vow of silence is preventing you from talking with text."))
 		return FALSE
 
 	if(!is_literate())

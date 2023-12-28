@@ -85,7 +85,6 @@
 	icon_state = "waiter"
 	inhand_icon_state = "waiter"
 	supports_variations_flags = CLOTHING_MONKEY_VARIATION
-	random_sensor = FALSE // EffigyEdit Change
 
 /obj/item/clothing/under/suit/black_really
 	name = "executive suit"

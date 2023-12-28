@@ -1,14 +1,16 @@
+import { shallowDiffers } from 'common/react';
+import { multiline } from 'common/string';
+import { Component } from 'react';
+
 import {
   Box,
-  Stack,
-  Section,
   Button,
-  Input,
   Dropdown,
   Icon,
+  Input,
+  Section,
+  Stack,
 } from '../../components';
-import { Component } from 'react';
-import { shallowDiffers } from 'common/react';
 import {
   VARIABLE_ASSOC_LIST,
   VARIABLE_LIST,

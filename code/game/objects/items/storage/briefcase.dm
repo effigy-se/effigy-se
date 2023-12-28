@@ -73,9 +73,6 @@
 	new /obj/item/ammo_box/magazine/sniper_rounds(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/disruptor(src)
 
-// EffigyEdit Add e2879c1 - Loadouts
-/obj/item/storage/briefcase/empty/PopulateContents()
-	return
 /**
  * Secure briefcase
  * Uses the lockable storage component to give it a lock.

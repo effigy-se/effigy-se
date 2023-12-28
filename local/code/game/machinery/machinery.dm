@@ -66,6 +66,3 @@
 
 /obj/machinery/firealarm
 	icon = 'local/icons/obj/firealarm.dmi'
-
-/obj/machinery/camera
-	icon = 'local/icons/obj/machine/camera.dmi'

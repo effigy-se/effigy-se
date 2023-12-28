@@ -11,7 +11,7 @@
 	nightshift_enabled = FALSE
 
 /obj/machinery/light/warm
-	bulb_colour = "#ccccff"
+	bulb_colour = "#fae5c1"
 
 /obj/machinery/light/warm/no_nightlight
 	nightshift_allowed = FALSE
@@ -21,8 +21,8 @@
 	bulb_power = 0.6
 
 /obj/machinery/light/cold
-	bulb_colour = "#ccccff"
-	nightshift_light_color = null
+	bulb_colour = LIGHT_COLOR_FAINT_BLUE
+	nightshift_light_color = LIGHT_COLOR_FAINT_BLUE
 
 /obj/machinery/light/cold/no_nightlight
 	nightshift_allowed = FALSE
@@ -39,7 +39,7 @@
 /obj/machinery/light/red/dim
 	brightness = 4
 	bulb_power = 0.7
-	fire_brightness = 2
+	fire_brightness = 4.5
 
 /obj/machinery/light/blacklight
 	bulb_colour = "#A700FF"
@@ -58,7 +58,7 @@
 	fitting = "bulb"
 	brightness = 4
 	nightshift_brightness = 4
-	fire_brightness = 3
+	fire_brightness = 4.5
 	bulb_colour = "#ccccff"
 	fire_colour = "#bd3f46"
 	desc = "A small lighting fixture."
@@ -85,13 +85,13 @@
 /obj/machinery/light/small/red/dim
 	brightness = 2
 	bulb_power = 0.8
-	fire_brightness = 2
+	fire_brightness = 2.5
 
 /obj/machinery/light/small/blacklight
 	bulb_colour = "#A700FF"
 	nightshift_allowed = FALSE
 	brightness = 4
-	fire_brightness = 3
+	fire_brightness = 4.5
 	fire_colour = "#d400ff"
 
 // -------- Directional presets

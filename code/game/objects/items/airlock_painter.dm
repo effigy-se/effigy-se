@@ -327,7 +327,6 @@
 
 /datum/asset/spritesheet/decals
 	name = "floor_decals"
-	cross_round_cachable = TRUE
 
 	/// The floor icon used for blend_preview_floor()
 	var/preview_floor_icon = 'icons/turf/floors.dmi'
@@ -374,23 +373,6 @@
 				insert_state(decal[2], dir[2], "custom")
 
 	qdel(painter)
-
-//EFFIGY ADDITION - START
-/obj/item/airlock_painter/decal/cyborg
-	name = "cyborg decal painter"
-	desc = "A mechnically installed painter with molecular printer to supply any and all of a painter's needs!"
-	desc_controls = ""
-
-/obj/item/airlock_painter/decal/cyborg/use_paint(mob/user)
-	if(can_use(user))
-		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
-		return TRUE
-	else
-		return FALSE
-
-/obj/item/airlock_painter/decal/cyborg/AltClick(mob/user)
-	return
-//EFFIGY ADDITION - END
 
 /obj/item/airlock_painter/decal/debug
 	name = "extreme decal painter"

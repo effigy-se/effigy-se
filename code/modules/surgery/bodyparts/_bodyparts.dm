@@ -153,8 +153,6 @@
 	var/generic_bleedstacks
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/medical/gauze/current_gauze
-	/// Do we use an organic render for this robotic limb?
-	// var/organic_render = TRUE // EffigyEdit Add - Customization
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/hand_item/self_grasp])
 	var/obj/item/hand_item/self_grasp/grasped_by
 

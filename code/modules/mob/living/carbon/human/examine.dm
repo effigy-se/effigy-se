@@ -22,7 +22,7 @@
 			obscure_name = TRUE
 			obscure_examine = TRUE
 
-	//EffigyEdit Change START Customization
+	//EffigyEdit Change - Customization
 
 	var/species_visible
 	var/species_name_string
@@ -47,10 +47,10 @@
 			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
 	else
 		. += "You can't make out what species they are."
-	// EffigyEdit Change END
+	// EffigyEdit Change End
 
 
-	// EffigyEdit Remove START Customization
+	// EffigyEdit Remove - Customization
 	/*
 	var/apparent_species
 	if(dna?.species && !skipface)
@@ -65,7 +65,7 @@
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	*/
-	// EffigyEdit Remove END
+	// EffigyEdit Remove End
 
 
 	//uniform
@@ -372,7 +372,7 @@
 				msg += "[span_deadsay("[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.")]\n"
 			else if(!client)
 			//	msg += "[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.\n"
-				msg += "[t_He] [t_has] a blank, absent-minded stare and [t_has] been completely unresponsive to anything for [round(((world.time - lastclienttime) / (1 MINUTES)),1)] minutes. [t_He] may snap out of it soon.\n" // EffigyEdit Add (#46 - Cryo)
+				msg += "[span_deadsay("[t_He] [t_has] a blank, absent-minded stare and [t_has] been completely unresponsive to anything for [round(((world.time - lastclienttime) / (1 MINUTES)),1)] minutes. [t_He] may snap out of it soon.")]\n" // EffigyEdit Add (#46 - Cryo)
 
 	var/scar_severity = 0
 	for(var/i in all_scars)

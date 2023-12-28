@@ -1,6 +1,5 @@
 ///SNAIL
 /obj/item/bodypart/head/snail
-	biological_state = BIO_FLESH // EffigyEdit Change
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 	burn_modifier = 2
@@ -8,7 +7,6 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/chest/snail
-	biological_state = BIO_FLESH // EffigyEdit Change
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 	burn_modifier = 2
@@ -16,27 +14,24 @@
 	wing_types = NONE
 
 /obj/item/bodypart/arm/left/snail
-	biological_state = BIO_FLESH // EffigyEdit Change
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	unarmed_damage_low = 1 // EffigyEdit Change
-	unarmed_damage_high = 5 // EffigyEdit Change
+	unarmed_damage_low = 1
+	unarmed_damage_high = 2 //snails are soft and squishy
 	burn_modifier = 2
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/arm/right/snail
-	biological_state = BIO_FLESH // EffigyEdit Change
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	unarmed_damage_low = 1 // EffigyEdit Change
-	unarmed_damage_high = 5 // EffigyEdit Change
+	unarmed_damage_low = 1
+	unarmed_damage_high = 2 //snails are soft and squishy
 	burn_modifier = 2
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/leg/left/snail
-	biological_state = BIO_FLESH // EffigyEdit Change
 	limb_id = SPECIES_SNAIL
 	unarmed_damage_low = 1
 	unarmed_damage_high = 2 //snails are soft and squishy
@@ -45,7 +40,6 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 
 /obj/item/bodypart/leg/right/snail
-	biological_state = BIO_FLESH // EffigyEdit Change
 	limb_id = SPECIES_SNAIL
 	unarmed_damage_low = 1
 	unarmed_damage_high = 2 //snails are soft and squishy
@@ -99,7 +93,7 @@
 	is_dimorphic = TRUE
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
-	wing_types = NONE
+	wing_types = NONE // EffigyEdit Change - Customization
 
 /obj/item/bodypart/arm/left/jelly
 	biological_state = (BIO_FLESH|BIO_BLOODED)
@@ -136,7 +130,7 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_SLIMEPERSON
 	is_dimorphic = TRUE
-	wing_types = NONE
+	wing_types = NONE // EffigyEdit Change - Customization
 
 /obj/item/bodypart/arm/left/slime
 	biological_state = (BIO_FLESH|BIO_BLOODED)
@@ -165,7 +159,7 @@
 	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_LUMINESCENT
 	is_dimorphic = TRUE
-	wing_types = NONE
+	wing_types = NONE // EffigyEdit Change - Customization
 
 /obj/item/bodypart/arm/left/luminescent
 	biological_state = (BIO_FLESH|BIO_BLOODED)

@@ -23,7 +23,7 @@
 
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, PROC_REF(clean_face))
 	AddComponent(/datum/component/personal_crafting)
-	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) // EffigyEdit Change
+	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 1, -6)
 	AddComponent(/datum/component/bloodysoles/feet)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/human)
 	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human/, should_strip))
@@ -897,12 +897,19 @@
 		return
 
 	var/carrydelay = 5 SECONDS //if you have latex you are faster at grabbing
-	var/skills_space = "" //cobby told me to do this
+	var/skills_space
+	var/fitness_level = mind.get_skill_level(/datum/skill/fitness) - 1
 	if(HAS_TRAIT(src, TRAIT_QUICKER_CARRY))
-		carrydelay = 3 SECONDS
-		skills_space = " very quickly"
+		carrydelay -= 2 SECONDS
 	else if(HAS_TRAIT(src, TRAIT_QUICK_CARRY))
-		carrydelay = 4 SECONDS
+		carrydelay -= 1 SECONDS
+
+	// can remove up to 2 seconds at legendary
+	carrydelay -= fitness_level * (1/3) SECONDS
+
+	if(carrydelay <= 3 SECONDS)
+		skills_space = " very quickly"
+	else if(carrydelay <= 4 SECONDS)
 		skills_space = " quickly"
 
 	visible_message(span_notice("[src] starts[skills_space] lifting [target] onto [p_their()] back..."),

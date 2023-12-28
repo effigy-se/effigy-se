@@ -70,12 +70,12 @@
 	/// How far the computer's light can reach, is not editable by players.
 	var/comp_light_luminosity = 3
 	/// The built-in light's color, editable by players.
-	var/comp_light_color = LIGHT_COLOR_FAINT_BLUE // EffigyEdit Change - PDA consumption
+	var/comp_light_color = "#FFFFFF"
 
 	///Power usage when the computer is open (screen is active) and can be interacted with.
-	var/base_active_power_usage = 45 // EffigyEdit Change - PDA consumption
+	var/base_active_power_usage = 125
 	///Power usage when the computer is idle and screen is off.
-	var/base_idle_power_usage = 2 // EffigyEdit Change - PDA consumption
+	var/base_idle_power_usage = 5
 
 	// Modular computers can run on various devices. Each DEVICE (Laptop, Console & Tablet)
 	// must have it's own DMI file. Icon states must be called exactly the same in all files, but may look differently
@@ -640,9 +640,9 @@
 	return SSmodular_computers.add_log("[src]: [text]")
 
 /obj/item/modular_computer/proc/close_all_programs()
-	active_program = null
+	active_program?.kill_program()
 	for(var/datum/computer_file/program/idle as anything in idle_threads)
-		idle_threads.Remove(idle)
+		idle.kill_program()
 
 /obj/item/modular_computer/proc/shutdown_computer(loud = TRUE)
 	close_all_programs()

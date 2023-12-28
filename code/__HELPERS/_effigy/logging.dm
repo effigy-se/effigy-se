@@ -2,9 +2,6 @@
 /proc/log_subtle(text, list/data)
 	logger.Log(LOG_CATEGORY_EMOTE_SUBTLE, text, data)
 
-/proc/log_subtler(text, list/data)
-	logger.Log(LOG_CATEGORY_EMOTE_SUBTLER, text, data)
-
 /proc/log_effigy_api(text, list/data, notify_admins = FALSE, notify_span = "adminnotice")
 	logger.Log(LOG_CATEGORY_EFFIGY_API, text, data)
 	if(notify_admins)

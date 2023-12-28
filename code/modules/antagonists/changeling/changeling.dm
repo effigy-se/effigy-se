@@ -415,7 +415,8 @@
 
 	purchased_powers[power_path] = new_action
 	new_action.on_purchase(owner.current) // Grant() is ran in this proc, see changeling_powers.dm.
-	log_changeling_power("[key_name(owner)] adapted the [new_action] power")
+	log_changeling_power("[key_name(owner)] adapted the [new_action.name] power")
+	SSblackbox.record_feedback("tally", "changeling_power_purchase", 1, new_action.name)
 
 	return TRUE
 
@@ -862,9 +863,6 @@
 		if(attempted_fake_scar)
 			attempted_fake_scar.fake = TRUE
 
-	user.regenerate_icons()
-	user.name = user.get_visible_name()
-	current_profile = chosen_profile
 	// EffigyEdit Change - Customization
 	chosen_dna.transfer_identity(user, TRUE)
 	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE)

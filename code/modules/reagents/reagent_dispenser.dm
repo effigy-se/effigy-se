@@ -74,10 +74,10 @@
 	. = ..()
 	if(. && atom_integrity > 0)
 		if(tank_volume && (damage_flag == BULLET || damage_flag == LASER))
-			// EffigyEdit Change START
+			// EffigyEdit Change
 			var/guaranteed_violent = (damage_flag == BULLET || damage_flag == LASER)
 			boom(damage_type, guaranteed_violent)
-			// EffigyEdit Change END
+			// EffigyEdit Change End
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user, params)
 	if(W.is_refillable())

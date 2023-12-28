@@ -453,7 +453,6 @@
 	tint = 2
 	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	glass_colour_type = /datum/client_colour/glass_colour/gray
-	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER // EffigyEdit Change
 
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
 	weldingvisortoggle(user)

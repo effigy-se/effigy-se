@@ -190,7 +190,6 @@
 	var/cooling_temperature = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
 	default_container = /obj/item/reagent_containers/cup/glass/waterbottle
-	evaporates = TRUE // EffigyEdit Add
 
 /datum/glass_style/shot_glass/water
 	required_drink_type = /datum/reagent/water
@@ -268,7 +267,7 @@
 	if(methods & VAPOR)
 		exposed_mob.adjust_wet_stacks(reac_volume * WATER_TO_WET_STACKS_FACTOR_VAPOR) // Spraying someone with water with the hope to put them out is just simply too funny to me not to add it.
 
-		if(!isfeline(exposed_mob))
+		if(!isfelinid(exposed_mob))
 			return
 
 		exposed_mob.incapacitate(1) // startles the felinid, canceling any do_after
@@ -384,7 +383,6 @@
 		to_chat(affected_mob, span_userdanger("A vile holiness begins to spread its shining tendrils through your mind, purging the Geometer of Blood's influence!"))
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
-	. = ..()
 	. = ..()
 
 	data["deciseconds_metabolized"] += (seconds_per_tick * 1 SECONDS * REM)

@@ -62,6 +62,7 @@
 		to_chat(target, span_warning("You feel a tiny prick."))
 	return 1
 
+
 /datum/action/changeling/sting/transformation
 	name = "Transformation Sting"
 	desc = "We silently sting an organism, injecting a retrovirus that forces them to transform."

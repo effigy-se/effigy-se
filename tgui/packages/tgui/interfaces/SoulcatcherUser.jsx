@@ -1,15 +1,15 @@
 import { useBackend } from '../backend';
-import { Window } from '../layouts';
 import {
   BlockQuote,
-  Button,
-  Divider,
   Box,
-  Flex,
+  Button,
   Collapsible,
+  Divider,
+  Flex,
   LabeledList,
   Section,
 } from '../components';
+import { Window } from '../layouts';
 
 export const SoulcatcherUser = (props, context) => {
   const { act, data } = useBackend(context);

@@ -10,7 +10,6 @@
 /obj/item/clothing/glasses/changeling
 	name = "flesh"
 	item_flags = DROPDEL
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON // EffigyEdit Add
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/glasses/changeling/attack_hand(mob/user, list/modifiers)

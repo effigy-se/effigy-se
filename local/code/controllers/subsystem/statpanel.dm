@@ -5,11 +5,13 @@
 		var/datum/map_config/cached = SSmapping.next_map_config
 		var/server_rev = copytext(GLOB.revdata.originmastercommit, 1, 8)
 		var/round_real_time = REALTIMEOFDAY - SSticker.round_start_real_time
+		var/active_players = get_active_player_count(alive_check = FALSE, afk_check = TRUE, human_check = FALSE) //This is a list of all active players, including players who are dead
+		var/observing_players = length(GLOB.current_observers_list) //This is a list of all players that started as an observer-- dead and lobby players are not included.
 		global_data = list(
 			"Server Rev: [server_rev ? server_rev : "N/A"]",
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
-			"Connected Players: [GLOB.clients.len]",
+			"Connected: [GLOB.clients.len] | Active: [active_players] | Observing: [observing_players]",
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% (Average: [round(SStime_track.time_dilation_avg_fast,1)]% / [round(SStime_track.time_dilation_avg,1)]% / [round(SStime_track.time_dilation_avg_slow,1)]%)",
 			" ",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",

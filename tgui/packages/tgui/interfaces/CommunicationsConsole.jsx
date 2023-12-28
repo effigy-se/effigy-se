@@ -1,5 +1,6 @@
 import { sortBy } from 'common/collections';
 import { capitalize } from 'common/string';
+
 import { useBackend, useLocalState } from '../backend';
 import {
   Blink,
@@ -12,9 +13,9 @@ import {
   Section,
   TextArea,
 } from '../components';
-import { StatusDisplayControls } from './common/StatusDisplayControls';
 import { Window } from '../layouts';
 import { sanitizeText } from '../sanitize';
+import { StatusDisplayControls } from './common/StatusDisplayControls';
 
 const STATE_BUYING_SHUTTLE = 'buying_shuttle';
 const STATE_CHANGING_STATUS = 'changing_status';
@@ -42,7 +43,7 @@ const GreenshiftButton = (props, context) => {
   return (
     <Button
       icon="check-square"
-      color={thisIsCurrent && 'good'}
+      color={thisIsCurrent && 'green'}
       content={capitalize(alertLevel)}
       onClick={() => {
         if (thisIsCurrent) {
@@ -129,7 +130,7 @@ const MedicalButton = (props, context) => {
   return (
     <Button
       icon="kit-medical"
-      color={thisIsCurrent && 'white'}
+      color={thisIsCurrent && 'violet'}
       content={capitalize(alertLevel)}
       onClick={() => {
         if (thisIsCurrent) {
@@ -158,7 +159,7 @@ const EngiButton = (props, context) => {
   return (
     <Button
       icon="wrench"
-      color={thisIsCurrent && 'pink'}
+      color={thisIsCurrent && 'orange'}
       content={capitalize(alertLevel)}
       onClick={() => {
         if (thisIsCurrent) {
@@ -200,7 +201,7 @@ const MessageModal = (props) => {
             width="80vw"
             backgroundColor="black"
             textColor="white"
-            onInput={(_, value) => {
+            onChange={(_, value) => {
               setInput(value.substring(0, maxMessageLength));
             }}
             value={input}
@@ -473,25 +474,19 @@ const PageMain = (props) => {
               />
 
               <MedicalButton
-                alertLevel="white"
+                alertLevel="violet"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
 
               <EngiButton
-                alertLevel="pink"
-                showAlertLevelConfirm={showAlertLevelConfirm}
-                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
-              />
-
-              <AlertButton
-                alertLevel="yellow"
-                showAlertLevelConfirm={showAlertLevelConfirm}
-                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
-              />
-
-              <AlertButton
                 alertLevel="orange"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <AlertButton
+                alertLevel="amber"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
                 // EffigyEdit Add End

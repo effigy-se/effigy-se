@@ -1,7 +1,7 @@
-import { useBackend } from '../backend';
-import { Stack, Section, ByondUi } from '../components';
-import { Window } from '../layouts';
 import { resolveAsset } from '../assets';
+import { useBackend } from '../backend';
+import { ByondUi, Section, Stack } from '../components';
+import { Window } from '../layouts';
 
 export const ExaminePanel = (props, context) => {
   const { act, data } = useBackend(context);
