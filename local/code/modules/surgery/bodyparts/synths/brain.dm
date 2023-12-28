@@ -6,7 +6,7 @@
 /obj/item/organ/internal/brain/synth
 	name = "compact positronic brain"
 	slot = ORGAN_SLOT_BRAIN
-	zone = BODY_ZONE_CHEST
+	zone = BODY_ZONE_HEAD
 	organ_flags = ORGAN_ROBOTIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
 	icon = 'local/icons/obj/medical/surgery.dmi'
@@ -14,13 +14,13 @@
 	/// The last time (in ticks) a message about brain damage was sent. Don't touch.
 	var/last_message_time = 0
 
-/obj/item/organ/internal/brain/synth/Insert(mob/living/carbon/user, special = FALSE, drop_if_replaced = TRUE, no_id_transfer = FALSE)
+/obj/item/organ/internal/brain/synth/on_mob_insert(mob/living/carbon/brain_owner, movement_flags = NO_ID_TRANSFER)
 	. = ..()
 
-	if(user.stat != DEAD || !ishuman(user))
+	if(brain_owner.stat != DEAD || !ishuman(brain_owner))
 		return
 
-	var/mob/living/carbon/human/user_human = user
+	var/mob/living/carbon/human/user_human = brain_owner
 	if(user_human?.dna?.species && (TRAIT_REVIVES_BY_HEALING in user_human.dna.species.inherent_traits) && user_human.health > SYNTH_BRAIN_WAKE_THRESHOLD)
 		user_human.revive(FALSE)
 
