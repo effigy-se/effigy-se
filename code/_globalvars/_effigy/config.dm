@@ -34,6 +34,10 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/flag/allow_vote_transfer
 
 // EFFIGY API STUFF
+/// Enable API features specific to Effigy Live. Disable for downstreams, self-hosted, development etc.
+/datum/config_entry/flag/effigy_live_revision
+	default = FALSE
+
 /// Use the Effigy API
 /datum/config_entry/flag/use_effigy_api
 	default = FALSE

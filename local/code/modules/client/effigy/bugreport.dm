@@ -3,7 +3,7 @@
 	set desc = "Report an issue"
 	set hidden = TRUE
 	/// Unique ID of the report
-	var/event_id = generate_effigy_event_id()
+	var/event_id = generate_evid()
 	/// API endpoint required
 	var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
 	/// What kind of message we're sendsing

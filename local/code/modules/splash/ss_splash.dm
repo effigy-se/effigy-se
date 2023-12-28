@@ -24,6 +24,10 @@ SUBSYSTEM_DEF(title)
 	var/progress_reference_time = 0
 
 /datum/controller/subsystem/title/Initialize()
+	if(CONFIG_GET(flag/effigy_live_revision))
+		set_effigy_live()
+	if(fexists(".effigy_live"))
+		GLOB.effigy_live_ver = file2text(".effigy_live")
 	var/splash_data
 	if(!fexists("[global.config.directory]/splash_html.txt"))
 		to_chat(world, span_boldwarning("CRITICAL ERROR: Unable to read splash_html.txt, reverting to backup title html, please check your server config and ensure this file exists."))

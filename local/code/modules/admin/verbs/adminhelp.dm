@@ -227,7 +227,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	initiator_ckey = initiator.ckey
 
 	effigy_player_id = SSeffigy.ckey_to_effigy_id(initiator_ckey)
-	id = generate_effigy_event_id()
+	id = generate_evid()
 
 	if(!effigy_player_id)
 		effigy_linked = LINK_FAIL

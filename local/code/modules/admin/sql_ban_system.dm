@@ -618,7 +618,7 @@
 			"server_ip" = world.internet_address || 0,
 			"server_port" = world.port,
 			"round_id" = GLOB.round_hex,
-			"effigy_evid" = generate_effigy_event_id(),
+			"effigy_evid" = generate_evid(),
 			"server_name" = CONFIG_GET(string/serversqlname),
 			"role" = role,
 			"expiration_time" = duration,
