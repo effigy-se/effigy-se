@@ -22,22 +22,23 @@
 
 /datum/controller/subsystem/dbcore/InitializeRound()
 	CheckSchemaVersion()
-
+	// EffigyEdit Change - DB Schema
 	if(!Connect())
+		GLOB.round_id = 1024
+		GLOB.round_hex = num2text(GLOB.round_id, 8, 16)
+		GLOB.current_effigy_evid = GLOB.round_id + 1
 		return
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
 		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
 		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]")
 	)
 
-	var/ev_round_id = null
 	query_round_initialize.Execute(async = FALSE)
-	GLOB.round_id = "[query_round_initialize.last_insert_id]"
-	ev_round_id = text2num("[GLOB.round_id]999")
-	ev_round_id = num2text(ev_round_id, 6, 16)
-	GLOB.round_hex = ev_round_id
+	GLOB.round_id = "[query_round_initialize.last_insert_id + 1024]"
+	GLOB.round_hex = num2text(GLOB.round_id, 8, 16)
+	GLOB.current_effigy_evid = GLOB.round_id + 1
 	qdel(query_round_initialize)
-
+	// EffigyEdit Change End
 /datum/controller/subsystem/dbcore/SetRoundStart()
 	if(!Connect())
 		return
