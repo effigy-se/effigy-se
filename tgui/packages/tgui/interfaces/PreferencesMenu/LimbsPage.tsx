@@ -61,7 +61,6 @@ export const Markings = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                fill
                 onClick={() =>
                   act('color_marking', {
                     limb_slot: props.limb.slot,
@@ -74,7 +73,6 @@ export const Markings = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                fill
                 color={marking.emissive ? 'good' : 'bad'}
                 tooltip="The 'E' is for 'Emissive', meaning does it glow or not. Green for glow, red for no glow."
                 onClick={() =>
@@ -90,7 +88,6 @@ export const Markings = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                fill
                 color="bad"
                 onClick={() =>
                   act('remove_marking', {
@@ -107,7 +104,6 @@ export const Markings = (props) => {
       ))}
       <Stack.Item>
         <Button
-          fill
           color="good"
           onClick={() => act('add_marking', { limb_slot: props.limb.slot })}
         >
@@ -147,7 +143,6 @@ export const AugmentationPage = (props) => {
                 <Stack.Item>Augumentation:</Stack.Item>
                 <Stack.Item grow>
                   <Dropdown
-                    grow
                     width="100%"
                     options={Object.values(props.limb.aug_choices) as string[]}
                     displayText={props.limb.chosen_aug}
@@ -171,7 +166,6 @@ export const AugmentationPage = (props) => {
                 <Stack.Item>Style:</Stack.Item>
                 <Stack.Item grow>
                   <Dropdown
-                    grow
                     width="100%"
                     options={props.data.robotic_styles}
                     displayText={props.limb.chosen_style}
@@ -234,7 +228,6 @@ export const LimbsPage = () => {
         <Section fill scrollable title="Markings" height="222%">
           <div>
             <Dropdown
-              grow
               width="100%"
               options={Object.values(markings)}
               displayText="Pick a preset:"

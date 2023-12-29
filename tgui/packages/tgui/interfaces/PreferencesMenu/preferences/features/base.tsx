@@ -476,7 +476,7 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
                     ? props.value[index]
                     : `#${props.value[index]}`,
                   border: '2px solid #eaeaea',
-                  'box-sizing': 'content-box',
+                  boxSizing: 'content-box',
                   height: '11px',
                   width: '11px',
                   ...(props.shrink
@@ -506,7 +506,7 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
 export const FeatureTriBoolInput = (props: FeatureValueProps<boolean[]>) => {
   const buttonFromValue = (index) => {
     return (
-      <Stack.Item align="center" fill>
+      <Stack.Item align="center">
         <Button.Checkbox
           checked={!!props.value[index]}
           onClick={() => {

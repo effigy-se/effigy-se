@@ -185,10 +185,10 @@ const ChoicedSelection = (
             <Stack.Item grow mr={6}>
               <Box
                 style={{
-                  'font-weight': 'bold',
-                  'font-size': '18px',
+                  fontWeight: 'bold',
+                  fontSize: '18px',
                   color: '#eaeaea',
-                  'text-align': 'center',
+                  textAlign: 'center',
                 }}
               >
                 {props.name}
@@ -198,9 +198,9 @@ const ChoicedSelection = (
             <Stack.Item>
               <Button
                 style={{
-                  'font-weight': 'bold',
-                  'font-size': '14px',
-                  'text-align': 'center',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  textAlign: 'center',
                 }}
                 color="grey"
                 onClick={props.onClose}
@@ -281,10 +281,10 @@ const ChoicedSelection = (
               <Box
                 pb={0.25}
                 style={{
-                  'border-bottom': '1px solid rgba(255, 255, 255, 0.1)',
-                  'font-weight': 'bold',
-                  'font-size': '14px',
-                  'text-align': 'center',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  textAlign: 'center',
                 }}
               >
                 {features[supplementalFeature].name}
@@ -487,7 +487,7 @@ const MainFeature = (props: {
           // Text below feature buttons
           height: `14px`,
           width: `${CLOTHING_CELL_SIZE}px`,
-          'overflow-wrap': 'anywhere',
+          overflowWrap: 'anywhere',
         }}
         textAlign="center"
         textColor="#eaeaea"
@@ -688,7 +688,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
             )}
 
             <Stack height={`${CLOTHING_SIDEBAR_ROWS * CLOTHING_CELL_SIZE}px`}>
-              <Stack.Item fill>
+              <Stack.Item>
                 <Stack vertical fill>
                   <Stack.Item>
                     <CharacterControls
@@ -747,7 +747,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                 </Stack>
               </Stack.Item>
 
-              <Stack.Item fill width={`${CLOTHING_CELL_SIZE * 2.1}px`}>
+              <Stack.Item width={`${CLOTHING_CELL_SIZE * 2.1}px`}>
                 <Stack height="100%" vertical wrap>
                   {mainFeatures.map(([clothingKey, clothing]) => {
                     const catalog =
