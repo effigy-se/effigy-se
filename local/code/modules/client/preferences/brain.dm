@@ -24,7 +24,7 @@
 
 	new_brain = new new_brain()
 
-	new_brain.Insert(target, drop_if_replaced = FALSE)
+	new_brain.on_mob_insert(target, movement_flags = DELETE_IF_REPLACED)
 
 	// Prefs can be applied to mindless mobs, let's not try to move the non-existent mind back in!
 	if(!keep_me_safe)
