@@ -94,7 +94,7 @@ export const LoadoutManager = (props, context) => {
                       />
                     }
                   >
-                    <Stack grow vertical>
+                    <Stack vertical>
                       {selectedTab.contents.map((item) => (
                         <Stack.Item key={item.name}>
                           <Stack fontSize="15px">
