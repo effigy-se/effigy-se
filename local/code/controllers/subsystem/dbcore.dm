@@ -24,7 +24,7 @@
 	CheckSchemaVersion()
 
 	if(!Connect())
-		GLOB.round_id = 1024
+		GLOB.round_id = "1024"
 		GLOB.round_hex = num2text(GLOB.round_id, 8, 16)
 		GLOB.current_effigy_evid = GLOB.round_id + 1
 		return
@@ -34,7 +34,7 @@
 	)
 
 	query_round_initialize.Execute(async = FALSE)
-	GLOB.round_id = text2num("[query_round_initialize.last_insert_id + 1024]")
+	GLOB.round_id = num2text(text2num("[query_round_initialize.last_insert_id + 1024]"))
 	GLOB.round_hex = num2text(GLOB.round_id, 8, 16)
 	GLOB.current_effigy_evid = GLOB.round_id + 1
 	qdel(query_round_initialize)
