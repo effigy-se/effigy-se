@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Icon, LabeledList, Section, Table } from '../components';
+import { Box, Button, Icon, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 const erpTagColor = {
@@ -18,13 +18,7 @@ const erpTagColor = {
 export const CharacterDirectory = (props) => {
   const { act, data } = useBackend();
 
-  const {
-    personalVisibility,
-    personalAttraction,
-    personalGender,
-    personalErpTag,
-    prefsOnly,
-  } = data;
+  const { prefsOnly } = data;
 
   const [overlay, setOverlay] = useState(null);
 
@@ -33,39 +27,7 @@ export const CharacterDirectory = (props) => {
   return (
     <Window width={778} height={512} resizeable>
       <Window.Content scrollable>
-        {(overlay && <ViewCharacter />) || (
-          <>
-            <Section title="Controls">
-              <LabeledList>
-                <LabeledList.Item label="Visibility">
-                  <Button
-                    fluid
-                    content={personalVisibility ? 'Shown' : 'Not Shown'}
-                    onClick={() =>
-                      act('setVisible', { overwrite_prefs: overwritePrefs })
-                    }
-                  />
-                </LabeledList.Item>
-                <LabeledList.Item label="Attraction">
-                  <Button fluid content={personalAttraction} />
-                </LabeledList.Item>
-                <LabeledList.Item label="Gender">
-                  <Button fluid content={personalGender} />
-                </LabeledList.Item>
-                <LabeledList.Item label="ERP">
-                  <Button
-                    fluid
-                    content={personalErpTag}
-                    onClick={() =>
-                      act('setErpTag', { overwrite_prefs: overwritePrefs })
-                    }
-                  />
-                </LabeledList.Item>
-              </LabeledList>
-            </Section>
-            <CharacterDirectoryList />
-          </>
-        )}
+        {(overlay && <ViewCharacter />) || <CharacterDirectoryList />}
       </Window.Content>
     </Window>
   );
@@ -146,9 +108,7 @@ const CharacterDirectoryList = (props) => {
           <SortButton id="attraction">Attraction</SortButton>
           <SortButton id="gender">Gender</SortButton>
           <SortButton id="erp">ERP</SortButton>
-          <Table.Cell collapsing textAlign="right">
-            Advert
-          </Table.Cell>
+          <Table.Cell textAlign="right" />
         </Table.Row>
         {directory
           .sort((a, b) => {
