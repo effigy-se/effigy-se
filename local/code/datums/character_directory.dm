@@ -28,9 +28,7 @@
 	return data
 
 /datum/character_directory/ui_static_data(mob/user)
-	. = ..()
-	var/list/data = .
-
+	var/list/data = list()
 	var/list/directory_mobs = list()
 	//We want the directory to display only alive players, not observers or people in the lobby
 	for(var/mob/mob in GLOB.alive_player_list)
@@ -68,7 +66,8 @@
 			//Load silicon flavor text in place of normal flavor text
 			flavor_text = READ_PREFS(silicon, text/silicon_flavor_text)
 		//Don't show if they are not a human or a silicon
-		else continue
+		else
+			continue
 		//List of all the shown ERP preferences in the Directory. If there is none, return "Unset"
 		attraction = READ_PREFS(mob, choiced/attraction)
 		gender = READ_PREFS(mob, choiced/display_gender)
