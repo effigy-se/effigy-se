@@ -180,9 +180,9 @@ SUBSYSTEM_DEF(effigy)
 
 /proc/generate_evid()
 	var/evid
-	if(GLOB.current_effigy_evid > GLOB.round_id + 1023)
+	if(GLOB.current_effigy_evid > 1023)
 		CRASH("Run out of EVIDs to allocate in round.")
-	evid = GLOB.current_effigy_evid
+	evid = text2num(GLOB.round_id) * 1024 + GLOB.current_effigy_evid
 	GLOB.current_effigy_evid++
 	return num2text(evid, 9, 16)
 
