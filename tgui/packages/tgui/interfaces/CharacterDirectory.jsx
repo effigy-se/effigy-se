@@ -6,17 +6,17 @@ import { Window } from '../layouts';
 
 const erpTagColor = {
   Unset: 'label',
-  'Yes - Dom': '#570000',
-  'Yes - Sub': '#002B57',
-  'Yes - Switch': '#022E00',
-  Yes: '#022E00',
+  'Yes - Dom': '#43051f',
+  'Yes - Sub': '#003647',
+  'Yes - Switch': '#014625',
+  Yes: '#014625',
   'Check OOC': '#222222',
   Ask: '#222222',
   No: '#000000',
 };
 
-export const CharacterDirectory = (props, context) => {
-  const { act, data } = useBackend(context);
+export const CharacterDirectory = (props) => {
+  const { act, data } = useBackend();
 
   const {
     personalVisibility,
@@ -31,7 +31,7 @@ export const CharacterDirectory = (props, context) => {
   const [overwritePrefs, setOverwritePrefs] = useState(prefsOnly);
 
   return (
-    <Window width={640} height={480} resizeable>
+    <Window width={778} height={512} resizeable>
       <Window.Content scrollable>
         {(overlay && <ViewCharacter />) || (
           <>
@@ -71,7 +71,7 @@ export const CharacterDirectory = (props, context) => {
   );
 };
 
-const ViewCharacter = (props, context) => {
+const ViewCharacter = (props) => {
   const [overlay, setOverlay] = useState(null);
 
   return (
@@ -123,8 +123,8 @@ const ViewCharacter = (props, context) => {
   );
 };
 
-const CharacterDirectoryList = (props, context) => {
-  const { act, data } = useBackend(context);
+const CharacterDirectoryList = (props) => {
+  const { act, data } = useBackend();
 
   const { directory, canOrbit } = data;
 
@@ -190,8 +190,8 @@ const CharacterDirectoryList = (props, context) => {
   );
 };
 
-const SortButton = (props, context) => {
-  const { act, data } = useBackend(context);
+const SortButton = (props) => {
+  const { act, data } = useBackend();
 
   const { id, children } = props;
 
