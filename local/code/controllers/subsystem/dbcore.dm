@@ -25,8 +25,7 @@
 
 	if(!Connect())
 		GLOB.round_id = "1024" // who made round_id a string, seriously
-		GLOB.round_hex = num2text(text2num(GLOB.round_id), 8, 16)
-		GLOB.current_effigy_evid = GLOB.round_id + 1
+		GLOB.round_hex = truncate(num2text(text2num(GLOB.round_id) * 1024, 9, 16), 8)
 		return
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
 		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
@@ -34,9 +33,8 @@
 	)
 
 	query_round_initialize.Execute(async = FALSE)
-	GLOB.round_id = num2text(text2num("[query_round_initialize.last_insert_id + 1024]"))
-	GLOB.round_hex = num2text(text2num(GLOB.round_id), 8, 16)
-	GLOB.current_effigy_evid = GLOB.round_id + 1
+	GLOB.round_id = "[query_round_initialize.last_insert_id]"
+	GLOB.round_hex = truncate(num2text(text2num(GLOB.round_id) * 1024, 9, 16), 8)
 	qdel(query_round_initialize)
 
 /datum/controller/subsystem/dbcore/SetRoundStart()
