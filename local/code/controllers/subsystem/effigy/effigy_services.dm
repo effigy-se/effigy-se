@@ -184,7 +184,7 @@ SUBSYSTEM_DEF(effigy)
 		CRASH("Run out of EVIDs to allocate in round.")
 	evid = GLOB.current_effigy_evid
 	GLOB.current_effigy_evid++
-	return num2text(evid, 8, 16)
+	return num2text(evid, 9, 16)
 
 /proc/find_byond_age(ckey)
 	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
