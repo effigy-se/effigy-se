@@ -1431,9 +1431,8 @@
 		Robot.notify_ai(AI_NOTIFICATION_NEW_BORG)
 	else
 		for(var/obj/item/item in src)
-			if(!dropItemToGround(item))
-				if(!(item.item_flags & ABSTRACT))
-					qdel(item)
+			if(!dropItemToGround(item) && !(item.item_flags & ABSTRACT))
+				qdel(item)
 				continue
 			item_contents += item
 

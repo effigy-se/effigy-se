@@ -6,7 +6,7 @@ import { useRandomToggleState } from '../../useRandomToggleState';
 import { CheckboxInput, Feature, FeatureToggle } from './base';
 
 export const random_body: Feature<RandomSetting> = {
-  name: 'Random body',
+  name: 'Random Body', // EffigyEdit Change - Capitalization
   component: (props) => {
     const [randomToggle, setRandomToggle] = useRandomToggleState();
 
@@ -50,7 +50,7 @@ export const random_body: Feature<RandomSetting> = {
 };
 
 export const random_hardcore: FeatureToggle = {
-  name: 'Hardcore random',
+  name: 'Hardcore Random', // EffigyEdit Change - Capitalization
   component: CheckboxInput,
 };
 
