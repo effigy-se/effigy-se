@@ -64,7 +64,7 @@
 	inhand_icon_state = "explorer_gasmask"
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
-	visor_flags_inv = HIDEFACIALHAIR|HIDESNOUT // EffigyEdit Change
+	visor_flags_inv = HIDEFACIALHAIR
 	visor_flags_cover = MASKCOVERSMOUTH
 	actions_types = list(/datum/action/item_action/adjust)
 	armor_type = /datum/armor/gas_explorer

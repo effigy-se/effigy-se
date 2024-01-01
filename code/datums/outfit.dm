@@ -122,9 +122,6 @@
 	var/datum/sprite_accessory/underwear = null
 	var/datum/sprite_accessory/socks = null
 
-	/// Bitflag-based variable to store which parts of the uniform have been modified by the loadout, to avoid them being overriden again.
-	var/modified_outfit_slots = NONE // EffigyEdit Add
-
 /**
  * Called at the start of the equip proc
  *
@@ -541,5 +538,11 @@
 
 /datum/outfit/vv_do_topic(list/href_list)
 	. = ..()
+
+	if(!.)
+		return
+
 	if(href_list[VV_HK_TO_OUTFIT_EDITOR])
+		if(!check_rights(NONE))
+			return
 		usr.client.open_outfit_editor(src)

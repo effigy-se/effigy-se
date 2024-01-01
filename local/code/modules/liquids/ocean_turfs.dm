@@ -1,3 +1,8 @@
+/// HEY!! LISTEN!!
+/// Not every turf works ATM thanks to some issue we're having trouble identifying. The follow turfs have this issue when making an ocean subtype:
+/// /turf/open/floor/glass, /turf/open/floor/mineral/plastitanium
+/// If you implement these, please try and help uncover what's wrong!
+
 /turf/open/openspace/ocean
 	name = "ocean"
 	planetary_atmos = TRUE
@@ -125,9 +130,83 @@
 
 /turf/open/floor/iron/ocean
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/iron/ocean
+	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/iron/ocean/Initialize(mapload)
+	. = ..()
+	if(liquids)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
+	new_immmutable.add_turf(src)
+
+/turf/open/floor/engine/hull/ocean
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	temperature = T20C
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/misc/ocean
+
+/turf/open/floor/engine/hull/ocean/Initialize(mapload)
+	. = ..()
+	if(liquids)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
+	new_immmutable.add_turf(src)
+
+/turf/open/floor/engine/hull/reinforced/ocean
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	temperature = T20C
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/misc/ocean
+
+/turf/open/floor/engine/hull/reinforced/ocean/Initialize(mapload)
+	. = ..()
+	if(liquids)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
+	new_immmutable.add_turf(src)
+
+/turf/open/floor/glass/reinforced/ocean
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/floor/plating/ocean_plating
+
+/turf/open/floor/glass/reinforced/ocean/Initialize(mapload)
+	. = ..()
+	if(liquids)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
+	new_immmutable.add_turf(src)
+
+/turf/open/floor/glass/plasma/ocean
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/floor/plating/ocean_plating
+
+/turf/open/floor/glass/plasma/ocean/Initialize(mapload)
+	. = ..()
+	if(liquids)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
+	new_immmutable.add_turf(src)
+
+/turf/open/floor/glass/reinforced/plasma/ocean
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/floor/plating/ocean_plating
+
+/turf/open/floor/glass/reinforced/plasma/ocean/Initialize(mapload)
 	. = ..()
 	if(liquids)
 		if(liquids.immutable)

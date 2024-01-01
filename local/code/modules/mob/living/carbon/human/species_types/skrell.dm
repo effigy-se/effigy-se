@@ -41,6 +41,7 @@
 	return list(placeholder_lore)
 
 /datum/species/skrell/randomize_features(mob/living/carbon/human/human_mob)
+	var/list/features = ..()
 	var/main_color
 	var/random = rand(1,6)
 	//Choose from a range of green-blue colors
@@ -57,9 +58,9 @@
 			main_color = "#22BBFF"
 		if(6)
 			main_color = "#2266FF"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = main_color
-	human_mob.dna.features["mcolor3"] = main_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = main_color
+	features["mcolor3"] = main_color
 
 /datum/species/skrell/prepare_human_for_preview(mob/living/carbon/human/skrell)
 	var/skrell_color = "#22BBFF"

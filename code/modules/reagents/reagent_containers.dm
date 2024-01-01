@@ -61,13 +61,16 @@
 		reagents.add_reagent(/datum/reagent/blood, disease_amount, data)
 	add_initial_reagents()
 
-/obj/item/reagent_containers/examine()
+/obj/item/reagent_containers/examine(mob/user)
 	. = ..()
 	if(has_variable_transfer_amount)
 		if(possible_transfer_amounts.len > 1)
 			. += span_notice("Left-click or right-click in-hand to increase or decrease its transfer amount.")
 		else if(possible_transfer_amounts.len)
 			. += span_notice("Left-click or right-click in-hand to view its transfer amount.")
+	if(isliving(user) && HAS_TRAIT(user, TRAIT_REMOTE_TASTING))
+		var/mob/living/living_user = user
+		living_user.taste(reagents)
 
 /obj/item/reagent_containers/create_reagents(max_vol, flags)
 	. = ..()
@@ -241,7 +244,7 @@
 		return
 
 	else
-		// EffigyEdit Change START - Liquids
+		// EffigyEdit Change - Liquids
 		if(target.can_liquid_spill_on_hit())
 			target.add_liquid_from_reagents(reagents, thrown_from = src, thrown_to = target)
 			if(reagents.reagent_list.len && thrown_by)
@@ -250,7 +253,7 @@
 				message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
 		else
 			reagents.expose(target, TOUCH)
-		// EffigyEdit Change END
+		// EffigyEdit Change End
 		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
 		if(QDELETED(src))
 			return

@@ -124,7 +124,7 @@
 			return
 
 		var/trans = reagents.trans_to(target, amount_per_transfer_from_this, transferred_by = user)
-		to_chat(user, span_notice("You transfer [round(trans, 0.01)] unit\s of the solution to [target]."))
+		to_chat(user, span_notice("You transfer [trans] unit\s of the solution to [target]."))
 
 	else if(target.is_drainable()) //A dispenser. Transfer FROM it TO us.
 		if(!target.reagents.total_volume)
@@ -136,7 +136,7 @@
 			return
 
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user)
-		to_chat(user, span_notice("You fill [src] with [round(trans, 0.01)] unit\s of the contents of [target]."))
+		to_chat(user, span_notice("You fill [src] with [trans] unit\s of the contents of [target]."))
 
 	target.update_appearance()
 
@@ -157,7 +157,7 @@
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this, transferred_by = user)
-		to_chat(user, span_notice("You fill [src] with [round(trans, 0.01)] unit\s of the contents of [target]."))
+		to_chat(user, span_notice("You fill [src] with [trans] unit\s of the contents of [target]."))
 
 	target.update_appearance()
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
@@ -167,34 +167,34 @@
 	if(hotness && reagents)
 		reagents.expose_temperature(hotness)
 		to_chat(user, span_notice("You heat [name] with [attacking_item]!"))
-		return
+		return TRUE
 
 	//Cooling method
 	if(istype(attacking_item, /obj/item/extinguisher))
 		var/obj/item/extinguisher/extinguisher = attacking_item
 		if(extinguisher.safety)
-			return
+			return TRUE
 		if (extinguisher.reagents.total_volume < 1)
 			to_chat(user, span_warning("\The [extinguisher] is empty!"))
-			return
+			return TRUE
 		var/cooling = (0 - reagents.chem_temp) * extinguisher.cooling_power * 2
 		reagents.expose_temperature(cooling)
 		to_chat(user, span_notice("You cool the [name] with the [attacking_item]!"))
 		playsound(loc, 'sound/effects/extinguish.ogg', 75, TRUE, -3)
 		extinguisher.reagents.remove_all(1)
-		return
+		return TRUE
 
 	if(istype(attacking_item, /obj/item/food/egg)) //breaking eggs
 		var/obj/item/food/egg/attacking_egg = attacking_item
 		if(!reagents)
-			return
-		if(reagents.total_volume >= reagents.maximum_volume)
+			return TRUE
+		if(reagents.holder_full())
 			to_chat(user, span_notice("[src] is full."))
 		else
 			to_chat(user, span_notice("You break [attacking_egg] in [src]."))
 			attacking_egg.reagents.trans_to(src, attacking_egg.reagents.total_volume, transferred_by = user)
 			qdel(attacking_egg)
-		return
+		return TRUE
 
 	return ..()
 
@@ -225,7 +225,6 @@
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
-	volume = 50
 	custom_materials = list(/datum/material/glass=SMALL_MATERIAL_AMOUNT*5)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
 
@@ -351,11 +350,8 @@
 	inhand_icon_state = "bucket"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
-	greyscale_colors = "#0085e5" //matches 1:1 with the original sprite color before gag-ification.
-	greyscale_config = /datum/greyscale_config/buckets
-	greyscale_config_worn = /datum/greyscale_config/buckets_worn
-	greyscale_config_inhand_left = /datum/greyscale_config/buckets_inhands_left
-	greyscale_config_inhand_right = /datum/greyscale_config/buckets_inhands_right
+	fill_icon_state = "bucket"
+	fill_icon_thresholds = list(50, 90)
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 2)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
@@ -381,20 +377,10 @@
 	fire = 75
 	acid = 50
 
-/obj/item/reagent_containers/cup/bucket/Initialize(mapload, vol)
-	if(greyscale_colors == initial(greyscale_colors))
-		set_greyscale(pick(list("#0085e5", COLOR_OFF_WHITE, COLOR_ORANGE_BROWN, COLOR_SERVICE_LIME, COLOR_MOSTLY_PURE_ORANGE, COLOR_FADED_PINK, COLOR_RED, COLOR_YELLOW, COLOR_VIOLET, COLOR_WEBSAFE_DARK_GRAY)))
-	return ..()
-
 /obj/item/reagent_containers/cup/bucket/wooden
 	name = "wooden bucket"
 	icon_state = "woodbucket"
 	inhand_icon_state = "woodbucket"
-	greyscale_colors = null
-	greyscale_config = null
-	greyscale_config_worn = null
-	greyscale_config_inhand_left = null
-	greyscale_config_inhand_right = null
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
 	resistance_flags = FLAMMABLE
 	armor_type = /datum/armor/bucket_wooden
@@ -403,34 +389,23 @@
 	melee = 10
 	acid = 50
 
-// EffigyEdit Change START (TODO move to overrides)
-/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) // EffigyEdit Change
+/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/mop))
-		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
-		if(is_right_clicking)
-			if(O.reagents.total_volume == 0)
-				to_chat(user, "<span class='warning'>[O] is dry, you can't squeeze anything out!</span>")
-				return
-			if(reagents.total_volume == reagents.maximum_volume)
-				to_chat(user, "<span class='warning'>[src] is full!</span>")
-				return
-			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
-			O.reagents.trans_to(src, O.reagents.total_volume, transferred_by = user)
-			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
+		if(reagents.total_volume < 1)
+			user.balloon_alert(user, "empty!")
 		else
-			if(reagents.total_volume < 1)
-				to_chat(user, "<span class='warning'>[src] is out of water!</span>")
-			else
-				reagents.trans_to(O, 5, transferred_by = user)
-				to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
-				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+			reagents.trans_to(O, 5, transferred_by = user)
+			user.balloon_alert(user, "doused [O]")
+			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+		return
 	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
 		to_chat(user, span_notice("You add [O] to [src]."))
 		qdel(O)
 		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
 		user.put_in_hands(new_cleanbot_ass)
 		return
-// EffigyEdit Change END
+
+	return ..()
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()
@@ -520,6 +495,11 @@
 	to_chat(user, span_warning("You can't grind this!"))
 
 /obj/item/reagent_containers/cup/mortar/proc/grind_item(obj/item/item, mob/living/carbon/human/user)
+	if(item.flags_1 & HOLOGRAM_1)
+		to_chat(user, span_notice("You try to grind [item], but it fades away!"))
+		qdel(item)
+		return
+
 	if(!item.grind(reagents, user))
 		if(isstack(item))
 			to_chat(usr, span_notice("[src] attempts to grind as many pieces of [item] as possible."))
@@ -531,6 +511,11 @@
 	QDEL_NULL(item)
 
 /obj/item/reagent_containers/cup/mortar/proc/juice_item(obj/item/item, mob/living/carbon/human/user)
+	if(item.flags_1 & HOLOGRAM_1)
+		to_chat(user, span_notice("You try to juice [item], but it fades away!"))
+		qdel(item)
+		return
+
 	if(!item.juice(reagents, user))
 		to_chat(user, span_notice("You fail to juice [item]."))
 		return

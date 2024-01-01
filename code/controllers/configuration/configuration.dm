@@ -104,8 +104,8 @@
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
 
-	populate_interaction_instances() // EffigyEdit Add Customization
-	remove_erp_things() // EffigyEdit Add Customization
+	populate_interaction_instances() // EffigyEdit Add - Customization
+	remove_erp_things() // EffigyEdit Add - Customization
 
 	loaded = TRUE
 

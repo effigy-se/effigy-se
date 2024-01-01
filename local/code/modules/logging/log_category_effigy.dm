@@ -3,12 +3,6 @@
 	config_flag = /datum/config_entry/flag/log_subtle
 	secret = TRUE
 
-/datum/log_category/emote_subtler
-	category = LOG_CATEGORY_EMOTE_SUBTLER
-	master_category = /datum/log_category/emote_subtle
-	config_flag = /datum/config_entry/flag/log_subtler
-	secret = TRUE
-
 /datum/log_category/effigy_api
 	category = LOG_CATEGORY_EFFIGY_API
 	config_flag = /datum/config_entry/flag/log_effigy_api

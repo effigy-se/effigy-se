@@ -145,6 +145,9 @@
 	. = ..()
 
 	var/obj/item/bodypart/head/our_head = target.get_bodypart(BODY_ZONE_HEAD)
+	if(isnull(our_head)) // dullahans.
+		return
+
 	if(.)
 		our_head.bodytype |= BODYTYPE_SNOUTED
 	else
@@ -428,7 +431,7 @@
 
 /datum/preference/choiced/mutant_choice/ipc_screen
 	savefile_key = "feature_ipc_screen"
-	main_feature_name = "IPC Screen"
+	main_feature_name = "Screen"
 	category = PREFERENCE_CATEGORY_FEATURES
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
 	default_accessory_type = /datum/sprite_accessory/screen/none
@@ -502,7 +505,7 @@
 
 /datum/preference/choiced/mutant_choice/synth_chassis
 	savefile_key = "feature_ipc_chassis"
-	main_feature_name = "Chassis Appearance"
+	main_feature_name = "Chassis"
 	category = PREFERENCE_CATEGORY_FEATURES
 	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
 	default_accessory_type = /datum/sprite_accessory/synth_chassis/default
@@ -536,7 +539,7 @@
 
 /datum/preference/choiced/mutant_choice/synth_head
 	savefile_key = "feature_ipc_head"
-	main_feature_name = "Head Appearance"
+	main_feature_name = "Head"
 	category = PREFERENCE_CATEGORY_FEATURES
 	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
 	default_accessory_type = /datum/sprite_accessory/synth_head/default

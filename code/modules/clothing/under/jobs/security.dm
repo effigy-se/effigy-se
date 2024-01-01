@@ -237,7 +237,6 @@
 	greyscale_colors = "#ff8300"
 	greyscale_config = /datum/greyscale_config/jumpsuit/prison
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit/prison/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit/prison/worn/digi // EffigyEdit Add (Digi)
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit/prison/inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit/prison/inhand_right
 	has_sensor = LOCKED_SENSORS

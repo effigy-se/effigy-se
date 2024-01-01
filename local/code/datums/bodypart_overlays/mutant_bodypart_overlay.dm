@@ -1,6 +1,20 @@
 /// The greatest amount of colors that can be in a matrixed bodypart_overlay.
 #define MAX_MATRIXED_COLORS 3
 
+/datum/bodypart_overlay/mutant
+	/// Alpha value associated to the overlay, to be inherited from the parent limb.
+	var/alpha = ALPHA_OPAQUE // EffigyEdit Add - Customization
+	/// An associative list of color indexes (i.e. "1") to boolean that says whether or not that color should get an emissive overlay. Can be null.
+	var/list/emissive_eligibility_by_color_index
+	/// A simple list of indexes to color (as we don't want to color emissives, MOD overlays or inner ears)
+	var/list/overlay_indexes_to_color
+	/// Whether or not this overlay can be affected by MODsuit-related procs.
+	var/modsuit_affected = FALSE
+	/// Additional information we might want to add to the cache_key, stored into a list.
+	/// Should only ever contain strings.
+	var/list/cache_key_extra_information
+	/// A simple cache of what the last icon_states built were. It's really only there to help with debugging what's happening.
+	var/list/last_built_icon_states
 
 /**
  * Allows us to set the appearance from data that's located within the provided DNA,

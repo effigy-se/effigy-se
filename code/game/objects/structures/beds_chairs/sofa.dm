@@ -36,7 +36,6 @@ path/corner/color_name {\
 
 /obj/structure/chair/sofa/proc/gen_armrest()
 	armrest = mutable_appearance(initial(icon), "[icon_state]_armrest", ABOVE_MOB_LAYER)
-	SET_PLANE_EXPLICIT(armrest, GAME_PLANE_UPPER, src)
 	update_armrest()
 
 /obj/structure/chair/sofa/electrify_self(obj/item/assembly/shock_kit/input_shock_kit, mob/user, list/overlays_from_child_procs)
@@ -100,7 +99,7 @@ COLORED_SOFA(/obj/structure/chair/sofa, maroon, SOFA_MAROON)
 	desc = "Perfectly designed to be comfortable to sit on, and hellish to sleep on."
 	icon_state = "bench_middle"
 	greyscale_config = /datum/greyscale_config/bench_middle
-	greyscale_colors = COLOR_TRAM_BLUE // EffigyEdit Change - Bench color
+	greyscale_colors = "#af7d28"
 
 /obj/structure/chair/sofa/bench/left
 	icon_state = "bench_left"

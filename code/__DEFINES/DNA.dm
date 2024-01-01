@@ -60,16 +60,9 @@
 */
 // EffigyEdit Remove End
 
-#define DNA_MANDATORY_COLOR_BLOCKS 5
-#define DNA_MUTANT_COLOR_BLOCK 1
-#define DNA_MUTANT_COLOR_2_BLOCK 2
-#define DNA_MUTANT_COLOR_3_BLOCK 3
-#define DNA_ETHEREAL_COLOR_BLOCK 4
-#define DNA_SKIN_COLOR_BLOCK 5
-
 #define DNA_POD_HAIR_BLOCK 15
 
-#define DNA_FEATURE_BLOCKS GLOB.dna_total_feature_blocks
+#define DNA_FEATURE_BLOCKS GLOB.dna_total_feature_blocks // EffigyEdit Change - Customization
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
@@ -110,7 +103,6 @@
 #define ORGAN_SLOT_EXTERNAL_ANTENNAE "antennae"
 #define ORGAN_SLOT_EXTERNAL_BODYMARKINGS "bodymarkings"
 #define ORGAN_SLOT_EXTERNAL_POD_HAIR "pod_hair"
-
 
 /// Xenomorph organ slots
 #define ORGAN_SLOT_XENO_ACIDGLAND "acid_gland"

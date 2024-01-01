@@ -1,3 +1,6 @@
+/obj/item/clothing/mask
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EffigyEdit Add
+
 // Make sure that these get drawn over the snout layer if the mob has a snout
 /obj/item/clothing/mask/visual_equipped(mob/living/carbon/human/user, slot)
 	. = ..()

@@ -273,14 +273,14 @@
 	level = 6
 	passive_message = span_notice("You feel tingling on your skin as light passes over it.")
 	threshold_descs = list(
-		"Stage Speed 7" = "Doubles healing speed.",
+		"Stage Speed 8" = "Doubles healing speed.",
 	)
 
 /datum/symptom/heal/darkness/Start(datum/disease/advance/A)
 	. = ..()
 	if(!.)
 		return
-	if(A.totalStageSpeed() >= 7)
+	if(A.totalStageSpeed() >= 8)
 		power = 2
 
 /datum/symptom/heal/darkness/CanHeal(datum/disease/advance/A)
@@ -378,7 +378,7 @@
 			return power * 0.9
 		if(SOFT_CRIT)
 			return power * 0.5
-	if(M.getBruteLoss() + M.getFireLoss() >= 103 && !active_coma) // EffigyEdit Change - Original 70
+	if(M.getBruteLoss() + M.getFireLoss() >= (70 * HUMAN_LIFE_MULTIPLIER) && !active_coma) // EffigyEdit Change - add HUMAN_LIFE_MULTIPLIER
 		to_chat(M, span_warning("You feel yourself slip into a regenerative coma..."))
 		active_coma = TRUE
 		addtimer(CALLBACK(src, PROC_REF(coma), M), 60)
@@ -616,7 +616,6 @@
 	symptom_delay_min = 1
 	symptom_delay_max = 1
 	passive_message = span_notice("Your skin glows faintly for a moment.")
-	var/cellular_damage = FALSE
 	threshold_descs = list(
 		"Transmission 6" = "Additionally heals cellular damage.",
 		"Resistance 7" = "Increases healing speed.",
@@ -628,8 +627,6 @@
 		return
 	if(A.totalResistance() >= 7)
 		power = 2
-	if(A.totalTransmittable() >= 6)
-		cellular_damage = TRUE
 
 /datum/symptom/heal/radiation/CanHeal(datum/disease/advance/A)
 	return HAS_TRAIT(A.affected_mob, TRAIT_IRRADIATED) ? power : 0
@@ -637,12 +634,7 @@
 /datum/symptom/heal/radiation/Heal(mob/living/carbon/M, datum/disease/advance/A, actual_power)
 	var/heal_amt = actual_power
 
-	var/need_mob_update = FALSE
-	if(cellular_damage)
-		need_mob_update += M.adjustCloneLoss(-heal_amt * 0.5, updating_health = FALSE)
-
-	need_mob_update += M.adjustToxLoss(-(2 * heal_amt), updating_health = FALSE)
-	if(need_mob_update)
+	if(M.adjustToxLoss(-(2 * heal_amt), updating_health = FALSE))
 		M.updatehealth()
 
 	var/list/parts = M.get_damaged_bodyparts(1,1, BODYTYPE_ORGANIC)

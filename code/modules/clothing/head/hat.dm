@@ -180,6 +180,15 @@
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	dog_fashion = /datum/dog_fashion/head/santa
 
+/obj/item/clothing/head/costume/santa/gags
+	name = "santa hat"
+	desc = "On the first day of christmas my employer gave to me!"
+	icon_state = "santa_hat"
+	greyscale_colors = "#cc0000#f8f8f8"
+	greyscale_config = /datum/greyscale_config/santa_hat
+	greyscale_config_worn = /datum/greyscale_config/santa_hat/worn
+	flags_1 = IS_PLAYER_COLORABLE_1
+
 /obj/item/clothing/head/costume/jester
 	name = "jester hat"
 	desc = "A hat with bells, to add some merriness to the suit."
@@ -261,7 +270,6 @@
 	flags_inv = 0
 	armor_type = /datum/armor/hats_centcom_cap
 	strip_delay = (8 SECONDS)
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON // EffigyEdit Add
 
 /datum/armor/hats_centcom_cap
 	melee = 30
@@ -283,7 +291,7 @@
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"
 	inhand_icon_state = null
-	flags_inv = HIDEEARS // EffigyEdit Change
+	flags_inv = HIDEEARS|HIDEHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	dog_fashion = /datum/dog_fashion/head/ushanka

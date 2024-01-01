@@ -19,12 +19,11 @@ SUBSYSTEM_DEF(statpanels)
 	///how many full runs this subsystem has completed. used for variable rate refreshes.
 	var/num_fires = 0
 
+/* EffigyEdit Remove - moved to local/code/controllers/subsystem/statpanel.dm
 /datum/controller/subsystem/statpanels/fire(resumed = FALSE)
 	if (!resumed)
 		num_fires++
 		var/datum/map_config/cached = SSmapping.next_map_config
-		// EffigyEdit Change - Statpanel
-		/* Original:
 		global_data = list(
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
@@ -34,22 +33,6 @@ SUBSYSTEM_DEF(statpanels)
 			"Station Time: [station_time_timestamp()]",
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
 		)
-		*/
-		//var/real_round_time = world.timeofday - SSticker.real_round_start_time
-		var/server_rev = copytext(GLOB.revdata.commit, 1, 8)
-		var/round_real_time = REALTIMEOFDAY - SSticker.round_start_real_time
-		global_data = list(
-			"Server Rev: [server_rev ? server_rev : "N/A"]",
-			"Map: [SSmapping.config?.map_name || "Loading..."]",
-			cached ? "Next Map: [cached.map_name]" : null,
-			"Connected Players: [GLOB.clients.len]",
-			" ",
-			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
-			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% (Average: [round(SStime_track.time_dilation_avg_fast,1)]% / [round(SStime_track.time_dilation_avg,1)]% / [round(SStime_track.time_dilation_avg_slow,1)]%)",
-			"[SSticker.HasRoundStarted() ? "Round Time: [time2text(round_real_time, "hh:mm:ss", 0)]" : ""]",
-			"[SSticker.HasRoundStarted() ? "Station Time: [station_time_timestamp()]" : ""]"
-		)
-		// EffigyEdit Change End
 
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()
@@ -114,6 +97,7 @@ SUBSYSTEM_DEF(statpanels)
 
 		if(MC_TICK_CHECK)
 			return
+*/// EffigyEdit Remove End
 
 /datum/controller/subsystem/statpanels/proc/set_status_tab(client/target)
 	if(!global_data)//statbrowser hasnt fired yet and we were called from immediate_send_stat_data()

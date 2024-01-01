@@ -55,7 +55,7 @@
 
 /obj/item/clothing/suit/toggle/jacket/supply/head
 	name = "quartermaster's jacket"
-	desc = "Even if people refuse to recognize you as a head, they can recognize you as a badass."
+	desc = "They all laughed, but now you're the boss."
 	icon_state = "qmjacket"
 
 /obj/item/clothing/suit/toggle/jacket/sec

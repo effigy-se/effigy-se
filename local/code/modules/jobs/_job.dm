@@ -15,6 +15,8 @@
 	var/list/required_languages = list(/datum/language/common = LANGUAGE_SPOKEN)
 
 	var/vox_outfit = null
+	/// Job title to use for spawning. Allows a job to spawn without needing map edits.
+	var/job_spawn_title // EffigyEdit Add Customization
 
 
 /datum/job/proc/has_banned_quirk(datum/preferences/pref)

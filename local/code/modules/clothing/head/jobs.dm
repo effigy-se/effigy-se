@@ -1,11 +1,6 @@
 // This is for all the berets that /tg/ didn't want. You're welcome, they should look better.
-
+// SHOG NOTE - what the fuck is this comment above me and why the fuck are these colors adjusted 4noraisin. LT3?? hgalp????
 /obj/item/clothing/head/hats/hos/beret
-	name = "head of security beret"
-	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
-	icon_state = "beret_badge"
-	greyscale_config = /datum/greyscale_config/beret_badge
-	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#3F3C40#FFCE5B"
 
 /obj/item/clothing/head/hats/hos/beret/syndicate
@@ -13,18 +8,7 @@
 	desc = "A black beret with thick armor padding inside. Stylish and robust."
 	greyscale_colors = "#3F3C40#DB2929"
 
-/datum/armor/sec_navywarden
-	melee = 40
-	bullet = 30
-	laser = 30
-	energy = 40
-	bomb = 25
-	fire = 30
-	acid = 50
-	wound = 6
-
 /obj/item/clothing/head/beret/sec/navyofficer
-	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
 	icon_state = "beret_badge_bolt"
 	greyscale_colors = "#3C485A#FF0000"
 
@@ -32,17 +16,12 @@
 //Medical
 
 /obj/item/clothing/head/beret/medical
-	name = "medical beret"
-	desc = "A medical-flavored beret for the doctor in you!"
 	icon_state = "beret_badge_med"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#FFFFFF#5FA4CC"
-	flags_1 = NONE
 
 /obj/item/clothing/head/beret/medical/paramedic
-	name = "paramedic beret"
-	desc = "For finding corpses in style!"
 	greyscale_colors = "#364660#5FA4CC"
 
 /obj/item/clothing/head/beret/medical/chemist
@@ -59,13 +38,10 @@
 //Engineering
 
 /obj/item/clothing/head/beret/engi
-	name = "engineering beret"
-	desc = "Might not protect you from radiation, but definitely will protect you from looking unfashionable!"
 	icon_state = "beret_badge_engi"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#ff8200#ffe12f"
-	flags_1 = NONE
 
 /obj/item/clothing/head/beret/atmos
 	name = "atmospheric beret"
@@ -113,7 +89,7 @@
 
 /obj/item/clothing/head/beret/cargo/qm
 	name = "quartermaster's beret"
-	desc = "A beret that helps the QM keep telling themselves that they're an official head of staff."
+	desc = "A beret that helps the QM keep telling themselves that they're the best head of staff."
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	icon_state = "beret_badge"
@@ -121,12 +97,12 @@
 
 /obj/item/clothing/head/beret/cargo/qm/alt
 	name = "quartermaster's beret"
-	desc = "A beret that helps the QM keep telling themselves that they're an official head of staff. This one is made out of white fabric. Fancy"
+	desc = "A beret that helps the QM keep telling themselves that they're the best head of staff. This one is made out of white fabric. Fancy"
 	greyscale_colors = "#FFFFFF#FFCE5B"
 
 /obj/item/clothing/head/caphat/beret/alt
 	name = "captain's beret"
-	desc = "For the Captains known for their sense of fashion. This one is made out of white fabric. Fancy"
+	desc = "For the Captains known for their sense of fashion. This one is made out of white fabric. Fancy."
 	greyscale_colors = "#FFFFFF#FFCE5B"
 
 /obj/item/clothing/head/hopcap/beret

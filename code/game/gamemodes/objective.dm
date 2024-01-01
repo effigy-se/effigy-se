@@ -1,5 +1,4 @@
 GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
-GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 
 /datum/objective
 	var/datum/mind/owner //The primary owner of the objective. !!SOMEWHAT DEPRECATED!! Prefer using 'team' for new code.
@@ -125,6 +124,19 @@ GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 /datum/objective/proc/get_target()
 	return target
 
+/datum/objective/proc/is_valid_target(datum/mind/possible_target)
+	if(!ishuman(possible_target.current))
+		return FALSE
+
+	if(possible_target.current.stat == DEAD)
+		return FALSE
+
+	var/target_area = get_area(possible_target.current)
+	if(!HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS) && istype(target_area, /area/shuttle/arrival))
+		return FALSE
+
+	return TRUE
+
 //dupe_search_range is a list of antag datums / minds / teams
 /datum/objective/proc/find_target(dupe_search_range, list/blacklist)
 	var/list/datum/mind/owners = get_owners()
@@ -137,18 +149,13 @@ GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 		if(O.late_joiner)
 			try_target_late_joiners = TRUE
 	for(var/datum/mind/possible_target in get_crewmember_minds())
-		var/target_area = get_area(possible_target.current)
 		if(possible_target in owners)
-			continue
-		if(!ishuman(possible_target.current))
-			continue
-		if(possible_target.current.stat == DEAD)
 			continue
 		if(!is_unique_objective(possible_target,dupe_search_range))
 			continue
-		if(!HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS) && istype(target_area, /area/shuttle/arrival))
-			continue
 		if(possible_target in blacklist)
+			continue
+		if(!is_valid_target(possible_target))
 			continue
 		possible_targets += possible_target
 	if(try_target_late_joiners)
@@ -163,7 +170,6 @@ GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 		target = pick(possible_targets)
 	update_explanation_text()
 	return target
-
 
 /datum/objective/proc/update_explanation_text()
 	if(team_explanation_text && LAZYLEN(get_owners()) > 1)
@@ -185,7 +191,7 @@ GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 /datum/action/special_equipment_fallback
 	name = "Request Objective-specific Equipment"
 	desc = "Call down a supply pod containing the equipment required for specific objectives."
-	button_icon = 'icons/obj/device.dmi'
+	button_icon = 'icons/obj/devices/tracker.dmi'
 	button_icon_state = "beacon"
 
 /datum/action/special_equipment_fallback/Trigger(trigger_flags)
@@ -210,7 +216,7 @@ GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 	return TRUE
 
 /datum/objective/assassinate
-	name = "assasinate"
+	name = "assassinate"
 	martyr_compatible = TRUE
 	admin_grantable = TRUE
 	var/target_role_type = FALSE
@@ -509,6 +515,11 @@ GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 	target = ..()
 	update_explanation_text()
 
+/datum/objective/escape/escape_with_identity/is_valid_target(datum/mind/possible_target)
+	if(HAS_TRAIT(possible_target.current, TRAIT_NO_DNA_COPY))
+		return FALSE
+	return ..()
+
 /datum/objective/escape/escape_with_identity/update_explanation_text()
 	if(target?.current)
 		target_real_name = target.current.real_name
@@ -523,12 +534,12 @@ GLOBAL_LIST_EMPTY(objectives) // EffigyEdit Add (#46 - Cryo)
 		explanation_text += "." //Proper punctuation is important!
 
 	else
-		explanation_text = "Free objective."
+		explanation_text = "Escape on the shuttle or an escape pod alive and without being in custody."
 
 /datum/objective/escape/escape_with_identity/check_completion()
-	if(!target || !target_real_name)
-		return TRUE
 	var/list/datum/mind/owners = get_owners()
+	if(!target || !target_real_name)
+		return ..()
 	for(var/datum/mind/M in owners)
 		if(!ishuman(M.current) || !considered_escaped(M))
 			continue

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/weapons/guns/ammo.dmi'
 	icon_state = "s-casing"
 	worn_icon_state = "bullet"
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	slot_flags = ITEM_SLOT_BELT
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
@@ -32,8 +32,6 @@
 	var/firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect
 	///pacifism check for boolet, set to FALSE if bullet is non-lethal
 	var/harmful = TRUE
-	///Can this bullet casing be printed at an ammuniton workbench?
-	var/can_be_printed = TRUE // EffigyEdit Add
 
 /obj/item/ammo_casing/spent
 	name = "spent bullet casing"

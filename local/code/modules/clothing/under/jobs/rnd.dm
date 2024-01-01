@@ -72,6 +72,7 @@
 /*
 *	OVERRIDES
 *	ORION TODO: look over these when TG finishes their science resprites (any day now...)
+*	SHOG NOTE: Orion did not in fact look over this. We should get rid of these sprites yoinked from bee methinks
 */
 
 /obj/item/clothing/under/rank/rnd/scientist

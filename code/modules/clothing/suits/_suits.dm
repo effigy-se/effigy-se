@@ -3,7 +3,6 @@
 	icon = 'icons/obj/clothing/suits/default.dmi'
 	lefthand_file = 'icons/mob/inhands/clothing/suits_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION // EffigyEdit Add
 	var/fire_resist = T0C+100
 	allowed = list(
 		/obj/item/tank/internals/emergency_oxygen,
@@ -17,10 +16,6 @@
 	slot_flags = ITEM_SLOT_OCLOTHING
 	var/blood_overlay_type = "suit"
 	limb_integrity = 0 // disabled for most exo-suits
-
-/obj/item/clothing/suit/Initialize(mapload)
-	. = ..()
-	setup_shielding()
 
 // EffigyEdit Change START (Customization)
 // /obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE) // ORIGINAL
@@ -57,12 +52,3 @@
 	if(ismob(loc))
 		var/mob/M = loc
 		M.update_worn_oversuit()
-
-/**
- * Wrapper proc to apply shielding through AddComponent().
- * Called in /obj/item/clothing/Initialize().
- * Override with an AddComponent(/datum/component/shielded, args) call containing the desired shield statistics.
- * See /datum/component/shielded documentation for a description of the arguments
- **/
-/obj/item/clothing/suit/proc/setup_shielding()
-	return

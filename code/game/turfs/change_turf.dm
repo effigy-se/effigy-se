@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_lighting_corner_NW = lighting_corner_NW
 	var/old_directional_opacity = directional_opacity
 	var/old_dynamic_lumcount = dynamic_lumcount
-	// EffigyEdit Add -
+	// EffigyEdit Add - Liquids
 	var/obj/effect/abstract/liquid_turf/old_liquids = liquids
 	if(lgroup)
 		lgroup.remove_from_group(src)

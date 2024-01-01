@@ -48,6 +48,7 @@
 	icon_state = "skirtleneck"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
+/// I hate this duplicate with all of my passion
 /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
 	name = "black cargo uniform"
 	desc = "A standard cargo uniform with a more... Venerable touch to it."

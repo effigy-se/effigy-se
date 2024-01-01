@@ -100,7 +100,6 @@
 #define ui_spacesuit "EAST-1:28,CENTER-4:14"
 #define ui_stamina "EAST-1:28,CENTER-3:14"
 
-// EffigyEdit Change START (Variable Sized UI)
 //Pop-up inventory
 #define ui_shoes "WEST+1:8,SOUTH:5"
 #define ui_iclothing "WEST:6,SOUTH+1:7"
@@ -124,7 +123,7 @@
 
 //Drones
 #define ui_drone_drop "CENTER+1:18,SOUTH:5"
-#define ui_drone_pull "CENTER+2:2,SOUTH:5"
+#define ui_drone_pull "CENTER+1.5:2,SOUTH:5"
 #define ui_drone_storage "CENTER-2:14,SOUTH:5"
 #define ui_drone_head "CENTER-3:14,SOUTH:5"
 

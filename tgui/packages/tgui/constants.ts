@@ -22,26 +22,26 @@ export const UI_CLOSE = -1;
 export const COLORS = {
   // Department colors
   department: {
-    captain: '#c06616',
-    security: '#e74c3c',
+    captain: '#ff7f50',
+    security: '#f02d7f',
     medbay: '#3498db',
-    science: '#9b59b6',
-    engineering: '#f1c40f',
-    cargo: '#f39c12',
-    centcom: '#00c100',
-    other: '#c38312',
+    science: '#b81fff',
+    engineering: '#ffe45e',
+    cargo: '#936d62',
+    centcom: '#04c869',
+    other: '#ff7f50',
   },
   // Damage type colors
   damageType: {
-    oxy: '#3498db',
-    toxin: '#2ecc71',
-    burn: '#e67e22',
-    brute: '#e74c3c',
+    oxy: '#1fc7ff',
+    toxin: '#23fb92',
+    burn: '#ff7f50',
+    brute: '#f02d7f',
   },
   // reagent / chemistry related colours
   reagent: {
-    acidicbuffer: '#fbc314',
-    basicbuffer: '#3853a4',
+    acidicbuffer: '#ffe45e',
+    basicbuffer: '#21649f',
   },
 } as const;
 
@@ -72,57 +72,57 @@ export const RADIO_CHANNELS = [
   {
     name: 'Syndicate',
     freq: 1213,
-    color: '#8f4a4b',
+    color: '#e75555',
   },
   {
     name: 'Red Team',
     freq: 1215,
-    color: '#ff4444',
+    color: '#f2458e',
   },
   {
     name: 'Blue Team',
     freq: 1217,
-    color: '#3434fd',
+    color: '#1fc7ff',
   },
   {
     name: 'Green Team',
     freq: 1219,
-    color: '#34fd34',
+    color: '#23fb92',
   },
   {
     name: 'Yellow Team',
     freq: 1221,
-    color: '#fdfd34',
+    color: '#ffe45e',
   },
   {
     name: 'CentCom',
     freq: 1337,
-    color: '#2681a5',
+    color: '#7df9ff',
   },
   {
     name: 'Supply',
     freq: 1347,
-    color: '#b88646',
+    color: '#c27761',
   },
   {
     name: 'Service',
     freq: 1349,
-    color: '#6ca729',
+    color: '#04c869',
   },
   {
     name: 'Science',
     freq: 1351,
-    color: '#c68cfa',
+    color: '#c852ff',
   },
   {
     name: 'Command',
     freq: 1353,
-    color: '#fcdf03',
+    color: '#ffe45e',
   },
   {
     name: 'Medical',
     freq: 1355,
-    color: '#57b8f0',
+    color: '#1fc7ff',
   },
   {
     name: 'Engineering',
@@ -132,17 +132,17 @@ export const RADIO_CHANNELS = [
   {
     name: 'Security',
     freq: 1359,
-    color: '#dd3535',
+    color: '#f2458e',
   },
   {
     name: 'AI Private',
     freq: 1447,
-    color: '#d65d95',
+    color: '#f245db',
   },
   {
     name: 'Common',
     freq: 1459,
-    color: '#1ecc43',
+    color: '#23fb92',
   },
 ] as const;
 

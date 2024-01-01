@@ -6,7 +6,7 @@
 /obj/item/wallframe/camera
 	name = "camera assembly"
 	desc = "The basic construction for Nanotrasen-Always-Watching-You cameras."
-	icon = 'local/icons/obj/machine/camera.dmi' // EffigyEdit Change - Custom Icon
+	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "cameracase"
 	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT * 4, /datum/material/glass= SMALL_MATERIAL_AMOUNT * 2.5)
 	result_path = /obj/structure/camera_assembly
@@ -269,7 +269,7 @@
 
 
 /obj/structure/camera_assembly/deconstruct(disassembled = TRUE)
-	if(!(flags_1 & NODECONSTRUCT_1))
+	if(!(obj_flags & NO_DECONSTRUCTION))
 		new /obj/item/stack/sheet/iron(loc)
 	qdel(src)
 

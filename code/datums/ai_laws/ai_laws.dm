@@ -116,7 +116,7 @@ GLOBAL_VAR(round_default_lawset)
 
 	/// Zeroth law
 	/// A lawset can only have 1 zeroth law, it's the top dog.
-	/// Nothing removes it unless it's admin forced
+	/// Removed by things that remove core/inherent laws, but only if protected_zeroth is false. Otherwise, cannot be removed except by admins
 	var/zeroth = null
 	/// Zeroth borg law
 	/// It's just a zeroth law but specially themed for cyborgs
@@ -444,15 +444,15 @@ GLOBAL_VAR(round_default_lawset)
 	var/list/data = list()
 
 	if (include_zeroth && zeroth)
-		data += "[show_numbers ? "0:" : ""] [render_html ? "<font color='#ff0066'><b>[zeroth]</b></font>" : zeroth]"
+		data += "[show_numbers ? "0:" : ""] [render_html ? "<font color='#ff0066'><b>[zeroth]</b></font>" : zeroth]" // EffigyEdit Change - TGUI
 
 	for(var/law in hacked)
 		if (length(law) > 0)
-			data += "[show_numbers ? "[ion_num()]:" : ""] [render_html ? "<font color='#c00000'>[law]</font>" : law]"
+			data += "[show_numbers ? "[ion_num()]:" : ""] [render_html ? "<font color='#ff0066'>[law]</font>" : law]" // EffigyEdit Change - TGUI
 
 	for(var/law in ion)
 		if (length(law) > 0)
-			data += "[show_numbers ? "[ion_num()]:" : ""] [render_html ? "<font color='#547DFE'>[law]</font>" : law]"
+			data += "[show_numbers ? "[ion_num()]:" : ""] [render_html ? "<font color='#00aedb'>[law]</font>" : law]" // EffigyEdit Change - TGUI
 
 	var/number = 1
 	for(var/law in inherent)

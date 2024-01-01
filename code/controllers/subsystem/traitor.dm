@@ -24,11 +24,11 @@ SUBSYSTEM_DEF(traitor)
 	var/current_global_progression = 0
 	/// The amount of deviance from the current global progression before you start getting 2x the current scaling or no scaling at all
 	/// Also affects objectives, so -50% progress reduction or 50% progress boost.
-	var/progression_scaling_deviance = 24 MINUTES // EffigyEdit Change (Antags)
+	var/progression_scaling_deviance = 20 MINUTES
 	/// The current uplink handlers being managed
 	var/list/datum/uplink_handler/uplink_handlers = list()
 	/// The current scaling per minute of progression. Has a maximum value of 1 MINUTES.
-	var/current_progression_scaling = 21 SECONDS // EffigyEdit Change (Antags)
+	var/current_progression_scaling = 1 MINUTES
 	/// Used to handle the probability of getting an objective.
 	var/datum/traitor_category_handler/category_handler
 	/// The current debug handler for objectives. Used for debugging objectives

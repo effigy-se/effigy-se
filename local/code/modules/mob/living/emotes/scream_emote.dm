@@ -8,7 +8,7 @@
 		return
 	if(!user.is_muzzled() && !HAS_TRAIT(user, TRAIT_MIMING))
 		var/sound = get_sound(user, TRUE)
-		playsound(user.loc, sound, sound_volume, vary, 4, 1.2)
+		playsound(user.loc, sound, 50, vary, 4, 1.2)
 
 /datum/emote/living/scream/select_message_type(mob/user, intentional)
 	if(!intentional && isanimal(user))

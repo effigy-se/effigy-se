@@ -190,7 +190,6 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		if(count <= 3) // Their sprite is the top part of the generator
 			part.set_density(FALSE)
 			part.layer = WALL_OBJ_LAYER
-			SET_PLANE(part, GAME_PLANE_UPPER, our_turf)
 		part.sprite_number = count
 		part.main_part = src
 		generator_parts += part
@@ -420,14 +419,6 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		if(mobs.client)
 			shake_camera(mobs, 15, 1)
 			mobs.playsound_local(T, null, 100, 1, 0.5, sound_to_use = alert_sound)
-	// EffigyEdit Add -
-	if(!SSmapping.level_has_any_trait(z, ZTRAIT_STATION)) // SHUT THE FUCK UP ABANDONED STATIONS, I DON'T CARE
-		return
-	if(on)
-		priority_announce("A gravity generator has successfully restarted its graviton field, artificial gravity is online.", "Gravity Generator")
-	else
-		priority_announce("A gravity generator has lost its graviton field integrity ballast, artificial gravity is offline.", "Gravity Generator")
-	// EffigyEdit Add End
 
 /obj/machinery/gravity_generator/main/proc/gravity_in_level()
 	var/turf/T = get_turf(src)

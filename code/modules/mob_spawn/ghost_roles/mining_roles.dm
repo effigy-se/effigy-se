@@ -14,8 +14,6 @@
 	the hostile creatures, and the ash drakes swooping down from the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
 	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here... "
 	spawner_job_path = /datum/job/hermit
-	quirks_enabled = TRUE // EffigyEdit Add - ghost role loadouts
-	random_appearance = FALSE // EffigyEdit Add
 
 /obj/effect/mob_spawn/ghost_role/human/hermit/Initialize(mapload)
 	. = ..()
@@ -81,8 +79,6 @@
 	flavour_text = "Ch'yea. You came here, like, on spring break, hopin' to pick up some bangin' hot chicks, y'knaw?"
 	spawner_job_path = /datum/job/beach_bum
 	outfit = /datum/outfit/beachbum
-	quirks_enabled = TRUE // EffigyEdit Add - ghost role loadouts
-	random_appearance = FALSE // EffigyEdit Add
 
 /obj/effect/mob_spawn/ghost_role/human/beach/lifeguard
 	you_are_text = "You're a spunky lifeguard!"
@@ -123,7 +119,6 @@
 	flavour_text = "Time to mix drinks and change lives. Smoking space drugs makes it easier to understand your patrons' odd dialect."
 	spawner_job_path = /datum/job/space_bartender
 	outfit = /datum/outfit/spacebartender
-	random_appearance = FALSE // EffigyEdit Add
 
 /datum/outfit/spacebartender
 	name = "Space Bartender"
@@ -159,8 +154,6 @@
 	and eventually bring life to this desolate planet while waiting for contact from your creators. \
 	Estimated time of last contact: Deployment, 5000 millennia ago."
 	spawner_job_path = /datum/job/lifebringer
-	restricted_species = list(/datum/species/pod) // EffigyEdit Add
-	random_appearance = FALSE // EffigyEdit Add
 
 /obj/effect/mob_spawn/ghost_role/human/seed_vault/Initialize(mapload)
 	. = ..()
@@ -228,8 +221,6 @@
 	spawner_job_path = /datum/job/ash_walker
 	var/datum/team/ashwalkers/team
 	var/obj/structure/ash_walker_eggshell/eggshell
-	restricted_species = list(/datum/species/lizard/ashwalker) // EffigyEdit Add
-	random_appearance = FALSE // EffigyEdit Add
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/Destroy()
 	eggshell = null
@@ -243,12 +234,11 @@
 	return FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/special(mob/living/carbon/human/spawned_human)
-	// EffigyEdit Change START
-	// Moved lizard name randomizer before parent call (so character names are preserved)
+	// EffigyEdit Change - Moved lizard name randomizer before parent call (so character names are preserved)
 	spawned_human.fully_replace_character_name(null,random_unique_lizard_name(gender))
-	quirks_enabled = TRUE //EffigyEdit Add
+	quirks_enabled = TRUE
 	. = ..()
-	// EffigyEdit Change END
+	// EffigyEdit Change End
 	to_chat(spawned_human, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Invade the strange structure of the outsiders if you must. Do not cause unnecessary destruction, as littering the wastes with ugly wreckage is certain to not gain you favor. Glory to the Necropolis!</b>")
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
@@ -266,7 +256,14 @@
 	eggshell.egg = src
 	src.forceMove(eggshell)
 	if(spawner_area)
-		notify_ghosts("An ash walker egg is ready to hatch in \the [spawner_area.name].", source = src, action = NOTIFY_PLAY, flashwindow = FALSE, ignore_key = POLL_IGNORE_ASHWALKER)
+		notify_ghosts(
+			"An ash walker egg is ready to hatch in \the [spawner_area.name].",
+			source = src,
+			header = "Ash Walker Egg",
+			click_interact = TRUE,
+			ignore_key = POLL_IGNORE_ASHWALKER,
+			notify_flags = NOTIFY_CATEGORY_NOFLASH,
+		)
 
 /datum/outfit/ashwalker
 	name = "Ash Walker"
@@ -289,9 +286,6 @@
 	important_text = "The base is rigged with explosives, DO NOT abandon it or let it fall into enemy hands!"
 	outfit = /datum/outfit/lavaland_syndicate
 	spawner_job_path = /datum/job/lavaland_syndicate
-	loadout_enabled = TRUE // EffigyEdit Add - ghost role loadouts
-	quirks_enabled = TRUE // EffigyEdit Add - ghost role loadouts
-	random_appearance = FALSE // EffigyEdit Add
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/special(mob/living/new_spawn)
 	. = ..()

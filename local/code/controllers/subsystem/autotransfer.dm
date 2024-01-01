@@ -31,15 +31,7 @@ SUBSYSTEM_DEF(autotransfer)
 /datum/controller/subsystem/autotransfer/fire()
 	if(REALTIMEOFDAY < targettime)
 		return
-	if(maxvotes == NO_MAXVOTES_CAP || maxvotes > curvotes)
-		SSvote.initiate_vote(/datum/vote/transfer_vote, "automatic transfer", forced = TRUE)
-		targettime = targettime + voteinterval
-		curvotes++
-	else
-		SSshuttle.autoEnd()
-
-/datum/controller/subsystem/autotransfer/fire()
-	if(REALTIMEOFDAY < targettime)
+	if(world.time < voteinterval)
 		return
 	if(maxvotes == NO_MAXVOTES_CAP || maxvotes > curvotes)
 		SSvote.initiate_vote(/datum/vote/transfer_vote, "automatic transfer", forced = TRUE)

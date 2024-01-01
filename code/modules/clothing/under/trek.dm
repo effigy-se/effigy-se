@@ -15,7 +15,6 @@
 	inhand_icon_state = "y_suit"
 	greyscale_config = /datum/greyscale_config/trek
 	greyscale_config_worn = /datum/greyscale_config/trek/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/trek/worn/digi // EffigyEdit Add
 	greyscale_colors = "#fab342"
 
 /obj/item/clothing/under/trek/engsec
@@ -25,7 +24,6 @@
 	inhand_icon_state = "r_suit"
 	greyscale_config = /datum/greyscale_config/trek
 	greyscale_config_worn = /datum/greyscale_config/trek/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/trek/worn/digi // EffigyEdit Add
 	greyscale_colors = "#B72B2F"
 
 /obj/item/clothing/under/trek/medsci
@@ -35,7 +33,6 @@
 	inhand_icon_state = "b_suit"
 	greyscale_config = /datum/greyscale_config/trek
 	greyscale_config_worn = /datum/greyscale_config/trek/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/trek/worn/digi // EffigyEdit Add
 	greyscale_colors = "#5FA4CC"
 
 /*
@@ -68,7 +65,6 @@
 /obj/item/clothing/under/trek/command/ent
 	icon_state = "trek_ent"
 	//Greyscale sprite note, the base of it can't be greyscaled lest I make a whole new .json, but the color bands are greyscale at least.
-	//I've left a greyscale version of it in color.dmi in case someone wants a pocketed-jumpsuit/'coveralls' without the color bands - Orion_the_Fox
 	inhand_icon_state = "bl_suit"
 
 /obj/item/clothing/under/trek/engsec/ent

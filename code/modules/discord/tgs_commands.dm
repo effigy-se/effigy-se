@@ -4,7 +4,10 @@
 
 /datum/tgs_chat_command/tgscheck/Run(datum/tgs_chat_user/sender, params)
 	var/server = CONFIG_GET(string/server)
-	return new /datum/tgs_message_content("[GLOB.round_hex ? "Round #[GLOB.round_hex]: " : ""][GLOB.clients.len] players on [SSmapping.config.map_name]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]") // EffigyEdit Change - Logging
+	//EffigyEdit Change - Original: return new /datum/tgs_message_content("[GLOB.round_id ? "Round #[GLOB.round_id]: " : ""][GLOB.clients.len] players on [SSmapping.config.map_name]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]")
+	var/active_players = get_active_player_count(alive_check = FALSE, afk_check = TRUE, human_check = FALSE) //This is a list of all active players, including players who are dead
+	var/observing_players = length(GLOB.current_observers_list) //This is a list of all players that started as an observer-- dead and lobby players are not included.
+	return new /datum/tgs_message_content("[GLOB.round_hex ? "Round [GLOB.round_hex] " : ""]on [SSmapping.config.map_name]; Connected: [GLOB.clients.len] - Active: [active_players] - Observing: [observing_players]; Shift [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "active" : "ending") : "pending in lobby"] -- [server ? server : "[world.internet_address]:[world.port]"]")
 
 /datum/tgs_chat_command/gameversion
 	name = "gameversion"

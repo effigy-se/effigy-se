@@ -165,6 +165,7 @@
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/processor_overload
+	min_players = 0
 	max_occurrences = 2
 	weight = LOW_EVENT_FREQ
 

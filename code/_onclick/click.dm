@@ -453,6 +453,7 @@
 /**
  * Control+Shift click
  * Unused except for AI
+ * EffigyEdit Note - CtrlShiftClick for HUMANS has been overriden in click.dm in the interaction module.
  */
 /mob/proc/CtrlShiftClickOn(atom/A)
 	A.CtrlShiftClick(src)
@@ -461,7 +462,7 @@
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	src.pointed(A)
 	return
-// NOTE: CtrlShiftClick for HUMANS has been overriden in click.dm in the interaction module.
+
 /atom/proc/CtrlShiftClick(mob/user)
 	if(!can_interact(user))
 		return FALSE
@@ -510,7 +511,7 @@
 	transform = M
 
 /atom/movable/screen/click_catcher
-	icon = GENERAL_SCREEN_ICONS
+	icon = 'icons/hud/screen_gen.dmi'
 	icon_state = "catcher"
 	plane = CLICKCATCHER_PLANE
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
@@ -520,7 +521,7 @@
 #define MAX_SAFE_BYOND_ICON_SCALE_PX (33 * 32) //Not using world.icon_size on purpose.
 
 /atom/movable/screen/click_catcher/proc/UpdateGreed(view_size_x = 15, view_size_y = 15)
-	var/icon/newicon = icon(GENERAL_SCREEN_ICONS, "catcher")
+	var/icon/newicon = icon(GENERAL_SCREEN_ICONS, "catcher") // EffigyEdit Change - Custom HUD
 	var/ox = min(MAX_SAFE_BYOND_ICON_SCALE_TILES, view_size_x)
 	var/oy = min(MAX_SAFE_BYOND_ICON_SCALE_TILES, view_size_y)
 	var/px = view_size_x * world.icon_size

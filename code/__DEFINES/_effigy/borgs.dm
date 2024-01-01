@@ -34,32 +34,43 @@ GLOBAL_LIST_EMPTY(cyborg_all_models_icon_list)
 
 #define CYBORG_ICON_MED 'local/icons/mob/borgs/robots_med.dmi'
 #define CYBORG_ICON_MED_WIDE 'local/icons/mob/borgs/widerobot_med.dmi'
+#define CYBORG_ICON_MED_TALL 'local/icons/mob/borgs/tallrobot_med.dmi'
 
 #define CYBORG_ICON_CARGO 'local/icons/mob/borgs/robots_cargo.dmi'
 #define CYBORG_ICON_CARGO_WIDE 'local/icons/mob/borgs/widerobots_cargo.dmi'
+#define CYBORG_ICON_CARGO_TALL 'local/icons/mob/borgs/tallrobot_cargo.dmi'
 
 #define CYBORG_ICON_SEC 'local/icons/mob/borgs/robots_sec.dmi'
 #define CYBORG_ICON_SEC_WIDE 'local/icons/mob/borgs/widerobot_sec.dmi'
+#define CYBORG_ICON_SEC_TALL 'local/icons/mob/borgs/tallrobot_sec.dmi'
 
 #define CYBORG_ICON_ENG 'local/icons/mob/borgs/robots_eng.dmi'
 #define CYBORG_ICON_ENG_WIDE 'local/icons/mob/borgs/widerobot_eng.dmi'
+#define CYBORG_ICON_ENG_TALL 'local/icons/mob/borgs/tallrobot_eng.dmi'
 
 #define CYBORG_ICON_PEACEKEEPER 'local/icons/mob/borgs/robots_pk.dmi'
 #define CYBORG_ICON_PEACEKEEPER_WIDE 'local/icons/mob/borgs/widerobot_pk.dmi'
+#define CYBORG_ICON_PEACEKEEPER_TALL 'local/icons/mob/borgs/tallrobot_pk.dmi'
 
 #define CYBORG_ICON_SERVICE 'local/icons/mob/borgs/robots_serv.dmi'
 #define CYBORG_ICON_SERVICE_WIDE 'local/icons/mob/borgs/widerobot_serv.dmi'
+#define CYBORG_ICON_SERVICE_TALL 'local/icons/mob/borgs/tallrobot_serv.dmi'
 
 #define CYBORG_ICON_MINING 'local/icons/mob/borgs/robots_mine.dmi'
 #define CYBORG_ICON_MINING_WIDE 'local/icons/mob/borgs/widerobot_mine.dmi'
+#define CYBORG_ICON_MINING_TALL 'local/icons/mob/borgs/tallrobot_mine.dmi'
 
 #define CYBORG_ICON_JANI 'local/icons/mob/borgs/robots_jani.dmi'
 #define CYBORG_ICON_JANI_WIDE 'local/icons/mob/borgs/widerobot_jani.dmi'
+#define CYBORG_ICON_JANI_TALL 'local/icons/mob/borgs/tallrobot_jani.dmi'
 
 #define CYBORG_ICON_SYNDIE 'local/icons/mob/borgs/robots_syndi.dmi'
 #define CYBORG_ICON_SYNDIE_WIDE 'local/icons/mob/borgs/widerobot_syndi.dmi'
+#define CYBORG_ICON_SYNDIE_TALL 'local/icons/mob/borgs/tallrobot_syndi.dmi'
 
 #define CYBORG_ICON_CLOWN 'local/icons/mob/borgs/robots_clown.dmi'
 #define CYBORG_ICON_CLOWN_WIDE 'local/icons/mob/borgs/widerobot_clown.dmi'
+#define CYBORG_ICON_CLOWN_TALL 'local/icons/mob/borgs/tallrobot_clown.dmi'
 
 #define CYBORG_ICON_NINJA 'local/icons/mob/borgs/robots_ninja.dmi'
+#define CYBORG_ICON_NINJA_TALL 'local/icons/mob/borgs/tallrobot_ninja.dmi'

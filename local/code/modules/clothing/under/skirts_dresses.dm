@@ -6,6 +6,9 @@
 	gets_cropped_on_taurs = FALSE
 	//God bless the skirt being a subtype of the dress, only need one worn_digi_icon definition
 
+/obj/item/clothing/under/dress/skirt/plaid
+	greyscale_config_worn_digi = /datum/greyscale_config/plaidskirt/worn/digi
+
 /obj/item/clothing/under/dress/skyrat
 	icon = 'local/icons/obj/clothing/under/skirts_dresses.dmi'
 	worn_icon = 'local/icons/mob/clothing/under/skirts_dresses.dmi'

@@ -8,14 +8,12 @@ SUBSYSTEM_DEF(events)
 	var/list/running = list()
 	///cache of currently running events, for lag checking.
 	var/list/currentrun = list()
-	///list of previously run events
-	var/list/previously_run = list() // EffigyEdit Add
 	///The next world.time that a naturally occuring random event can be selected.
 	var/scheduled = 0
 	///The lower bound for how soon another random event can be scheduled.
-	var/frequency_lower = 4 MINUTES // EffigyEdit Change
+	var/frequency_lower = 2.5 MINUTES
 	///The upper bound for how soon another random event can be scheduled.
-	var/frequency_upper = 14 MINUTES // EffigyEdit Change
+	var/frequency_upper = 7 MINUTES
 	///Will wizard events be included in the event pool?
 	var/wizardmode = FALSE
 
@@ -60,7 +58,7 @@ SUBSYSTEM_DEF(events)
 	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
-/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) // EffigyEdit Add (#3 Events - Ported from Skyrat)
+/datum/controller/subsystem/events/proc/spawnEvent()
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
@@ -73,10 +71,6 @@ SUBSYSTEM_DEF(events)
 	for(var/datum/round_event_control/event_to_check in control)
 		if(!event_to_check.can_spawn_event(players_amt))
 			continue
-		// EffigyEdit Add - Events
-		if(threat_override && !event_to_check.alert_observers)
-			continue
-		// EffigyEdit Add End
 		if(event_to_check.weight < 0) //for round-start events etc.
 			var/res = TriggerEvent(event_to_check)
 			if(res == EVENT_INTERRUPTED)

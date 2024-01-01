@@ -29,7 +29,7 @@
 	)
 	slowdown = 1
 	armor_type = /datum/armor/utility_fire
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL // EffigyEdit Change
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
@@ -38,7 +38,6 @@
 	strip_delay = 60
 	equip_delay_other = 60
 	resistance_flags = FIRE_PROOF
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION // EffigyEdit Add
 
 /datum/armor/utility_fire
 	melee = 15
@@ -119,7 +118,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	slowdown = 2
 	armor_type = /datum/armor/utility_bomb_suit
-	flags_inv = HIDEJUMPSUIT|HIDETAIL // EffigyEdit Change
+	flags_inv = HIDEJUMPSUIT
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -196,7 +195,7 @@
 	armor_type = /datum/armor/utility_radiation
 	strip_delay = 60
 	equip_delay_other = 60
-	flags_inv = HIDEJUMPSUIT|HIDETAIL // EffigyEdit Change
+	flags_inv = HIDEJUMPSUIT
 	resistance_flags = NONE
 
 /obj/item/clothing/suit/utility/radiation/Initialize(mapload)

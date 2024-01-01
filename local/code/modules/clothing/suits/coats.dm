@@ -1,4 +1,5 @@
 /obj/item/clothing/suit/hooded/wintercoat/medical/paramedic
+	/// SHOG Note - Side-eyeing this too. Do parameds really need some of the strongest non-biosuit bio/acid gear??
 	allowed = list(
 		/obj/item/analyzer,
 		/obj/item/stack/medical,
@@ -54,7 +55,7 @@
 	worn_icon = 'local/icons/mob/clothing/head.dmi'
 	name = "red cloak hood"
 	icon_state = "golhood"
-	desc = "conceal your face in shame with this nanotrasen brand hood"
+	desc = "Conceal your face (in shame) with this nanotrasen brand hood!"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
@@ -117,6 +118,7 @@
 	greyscale_colors = "#61618a"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/// Shog Note: Redundant? Maybe?
 /obj/item/clothing/suit/toggle/lawyer/black/better
 	icon = 'local/icons/obj/clothing/suits.dmi'
 	worn_icon = 'local/icons/mob/clothing/suit.dmi'
@@ -139,7 +141,7 @@
 
 /obj/item/clothing/suit/armor/vest/det_suit/runner
 	name = "joyful coat"
-	desc = "<i>\"You look like a good Joe.\"</i>"
+	desc = "You look like a good Joe."
 	icon_state = "bladerunner_neue"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	cold_protection = CHEST|GROIN|ARMS|LEGS

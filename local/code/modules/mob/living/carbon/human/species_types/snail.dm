@@ -1,3 +1,7 @@
+/datum/species/snail
+	eyes_icon = 'local/icons/obj/medical/organs/snail_eyes.dmi'
+	mutantliver = /obj/item/organ/internal/liver/snail
+
 /obj/item/storage/backpack/snail/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = 30

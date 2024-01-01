@@ -75,9 +75,6 @@
 	var/energy_coeff = -1
 	/// List of strings of valid chromosomes this mutation can accept.
 	var/list/valid_chrom_list = list()
-	/// Is this mutation disabled(can't be got through the DNA console)
-	var/disabled = FALSE // EffigyEdit Add
-
 
 /datum/mutation/human/New(class = MUT_OTHER, timer, datum/mutation/human/copymut)
 	. = ..()
@@ -88,6 +85,12 @@
 	if(copymut && istype(copymut, /datum/mutation/human))
 		copy_mutation(copymut)
 	update_valid_chromosome_list()
+
+/datum/mutation/human/Destroy()
+	power_path = null
+	dna = null
+	owner = null
+	return ..()
 
 /datum/mutation/human/proc/on_acquiring(mob/living/carbon/human/acquirer)
 	if(!acquirer || !istype(acquirer) || acquirer.stat == DEAD || (src in acquirer.dna.mutations))
@@ -140,11 +143,6 @@
 		mut_overlay.Remove(get_visual_indicator())
 		owner.overlays_standing[layer_used] = mut_overlay
 		owner.apply_overlay(layer_used)
-	if(power_path)
-		// Any powers we made are linked to our mutation datum,
-		// so deleting ourself will also delete it and remove it
-		// ...Why don't all mutations delete on loss? Not sure.
-		qdel(src)
 
 /mob/living/carbon/proc/update_mutations_overlay()
 	return
@@ -176,7 +174,7 @@
  * returns an instance of a power if modification was complete
  */
 /datum/mutation/human/proc/modify()
-	if(modified || !power_path || !owner)
+	if(modified || !power_path || QDELETED(owner))
 		return
 	var/datum/action/cooldown/modified_power = locate(power_path) in owner.actions
 	if(!modified_power)

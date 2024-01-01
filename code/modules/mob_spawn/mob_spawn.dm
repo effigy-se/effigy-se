@@ -142,20 +142,6 @@
 	/// Typepath indicating the kind of job datum this ghost role will have. PLEASE inherit this with a new job datum, it's not hard. jobs come with policy configs.
 	var/spawner_job_path = /datum/job/ghost_role
 
-	// EffigyEdit Add - Customization
-	/// Do we use a random appearance for this ghost role?
-	var/random_appearance = TRUE
-	/// Can we use our loadout for this role?
-	var/loadout_enabled = FALSE
-	/// Can we use our quirks for this role?
-	var/quirks_enabled = FALSE
-	/// Are we limited to a certain species type? LISTED TYPE
-	var/restricted_species
-	/// set this to make the spawner use the outfit.name instead of its name var for things like cryo announcements and ghost records
-	/// modifying the actual name during the game will cause issues with the GLOB.mob_spawners associative list
-	var/use_outfit_name
-	// EffigyEdit Add End
-
 /obj/effect/mob_spawn/ghost_role/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)

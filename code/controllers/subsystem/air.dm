@@ -575,6 +575,7 @@ SUBSYSTEM_DEF(air)
 	if(active_turfs.len)
 		var/starting_ats = active_turfs.len
 		sleep(world.tick_lag)
+		// var/timer = world.timeofday // EffigyEdit Remove - Splash Screen
 
 		log_mapping("There are [starting_ats] active turfs at roundstart caused by a difference of the air between the adjacent turfs. \
 		To locate these active turfs, go into the \"Debug\" tab of your stat-panel. Then hit the verb that says \"Mapping Verbs - Enable\". \
@@ -603,6 +604,11 @@ SUBSYSTEM_DEF(air)
 			CHECK_TICK
 
 		log_active_turfs() // invoke this here so we can count the time it takes to run this proc as "wasted time", quite simple honestly.
+
+		/* EffigyEdit Change - Splash Screen
+		var/msg = "HEY! LISTEN! [DisplayTimeText(world.timeofday - timer, 0.00001)] were wasted processing [starting_ats] turf(s) (connected to [ending_ats - starting_ats] other turfs) with atmos differences at round start."
+		to_chat(world, span_boldannounce("[msg]"))
+		*/// EffigyEdit Change End
 
 		var/msg = "HEY! LISTEN! [SSmapping.config?.map_name] has [starting_ats] active turfs connected to [ending_ats - starting_ats] other turfs! You should fix that!"
 		to_chat(world, SPAN_BOX_ALERT(ORANGE, "[msg]"))
