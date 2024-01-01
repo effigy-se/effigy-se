@@ -84,7 +84,6 @@
 
 /obj/machinery/solarlight/camera_installed/Initialize(mapload)
 	. = ..()
-	solar_camera = new
+	solar_camera = new (src)
 	if(c_tag)
 		solar_camera.c_tag = c_tag
-	solar_camera.forceMove(src)
