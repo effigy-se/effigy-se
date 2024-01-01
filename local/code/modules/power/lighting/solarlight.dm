@@ -73,7 +73,7 @@
 	balloon_alert_to_viewers("removing camera")
 	if(do_after(user, 3 SECONDS, src))
 		solar_camera.deconstruct(FALSE)
-		solar_camera = NULL
+		solar_camera = null
 		update_camera_chunk()
 		I.play_tool_sound(src)
 
