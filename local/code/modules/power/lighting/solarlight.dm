@@ -72,8 +72,8 @@
 		return
 	balloon_alert_to_viewers("removing camera")
 	if(do_after(user, 3 SECONDS, src))
-		new /obj/item/wallframe/camera(user.loc)
-		QDEL_NULL(solar_camera)
+		solar_camera.deconstruct(FALSE)
+		solar_camera = NULL
 		update_camera_chunk()
 		I.play_tool_sound(src)
 
