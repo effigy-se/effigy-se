@@ -178,16 +178,13 @@ SUBSYSTEM_DEF(effigy)
 	message_admins(span_info("Searching Effigy for [ckeytomatch]"))
 	SSeffigy.link_effigy_id_to_ckey(ckeytomatch, effigyid)
 
-/proc/generate_effigy_event_id()
-	var/evid = null
-	if(!GLOB.round_id)
-		evid = text2num("[rand(0,999)][rand(0,9999)]")
-		evid = num2text(evid, 7, 16)
-		return evid
-	evid = text2num("[GLOB.round_id][num2text(GLOB.current_effigy_evid, 3, 10)]")
-	evid = num2text(evid, 7, 16)
+/proc/generate_evid()
+	var/evid
+	if(GLOB.current_effigy_evid > 1023)
+		CRASH("Run out of EVIDs to allocate in round.")
+	evid = text2num(GLOB.round_id) * 1024 + GLOB.current_effigy_evid
 	GLOB.current_effigy_evid++
-	return evid
+	return num2text(evid, 9, 16)
 
 /proc/find_byond_age(ckey)
 	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
@@ -201,3 +198,11 @@ SUBSYSTEM_DEF(effigy)
 			. = R.group[1]
 		else
 			CRASH("Age check regex failed for [ckey]")
+
+/proc/set_effigy_live()
+	var/local_ref
+	if(GLOB.revdata.commit && GLOB.revdata.commit != GLOB.revdata.originmastercommit)
+		local_ref = copytext(GLOB.revdata.commit, 1, 8)
+	else
+		local_ref = copytext(GLOB.revdata.originmastercommit, 1, 8)
+	rustg_file_write(local_ref, ".effigy_live")

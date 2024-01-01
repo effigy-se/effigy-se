@@ -677,3 +677,155 @@
   zeroisthebiggay:
   - bugfix: '''A whole bunch of spiders in a SWAT suit'' to ''A whole bunch of spiders
       in a MODsuit'''
+2023-12-27:
+  Melbert:
+  - bugfix: Fixed some occasions in which heartbeat SFX will continue on revival for
+      longer than expected
+  Mothblocks:
+  - bugfix: Fixed the surgery menu spamming chat messages when on the eyes section
+      of a player with no eyes.
+  Ryll/Shaps:
+  - balance: Yawns are less likely to propagate
+  jlsnow301:
+  - bugfix: NTOS Messenger should search as you type now
+  timothymtorres:
+  - qol: Add UI screentips to spraycans
+2023-12-28:
+  Ben10Omintrix:
+  - rscadd: basic bots can now display their paths on huds
+  - bugfix: medbots can research healing again
+  Ghommie:
+  - rscadd: Added a "postal workers strike" negative station trait. In the case of
+      holidays and sunday though, it'll be a "postal system overtime" instead.
+  LemonInTheDark:
+  - rscdel: Removes the wires from canisters. It's a cool idea, but cheap controlled
+      maxcaps are bad actually
+  SyncIt21:
+  - bugfix: mercury & lithium will no longer make you randomly move outside of cryotubes
+      or in ground less turfs (space, water, lava etc)
+  necromanceranne:
+  - spellcheck: Fixes a typo in chat message when starting a Death Knell with the
+      Vorpal Scythe
+  - admin: Adds logging for the death knell, both when starts and when it is completed
+      successfully.
+2023-12-29:
+  00-Steven:
+  - bugfix: Camera circuits actually print pictures again!
+  - qol: Camera circuits can now take pictures while on a carbon, whether held, hung
+      around the neck, or sneakily hidden in either pocket. When held they try to
+      deposit their pictures into the holder's hands if possible.
+  - bugfix: Camera circuits should now actually use the camera's x axis picture size,
+      rather than using the camera's y axis picture size setting for both axis.
+  13spacemen:
+  - qol: You can now build multiple pipe layers with the RPD, with just 1 click!
+  - rscadd: Canisters now have wires! You can pulse wires to do various canister functions
+      like opening/closing the valve. Make sure it has a cell though.
+  - rscadd: You can rig assembly combos (igniter-timer, prox-signaler, etc.) onto
+      canisters
+  - qol: Canisters now have screentips
+  A.C.M.O.:
+  - bugfix: Fixed Personal AI cards, allowing them to wake up from sleep.
+  Diamond-74:
+  - bugfix: ai can now tell if it is in a do_after for resisting and will not interrupt
+      it. monkeys also now don't freeze up when aggressively grabbed and will resist
+      out of those and cuffs.
+  Fikou:
+  - spellcheck: changes mutiline text to multiline text in vv
+  Ghommie:
+  - rscadd: Added the 'Coupon Master' program for the PDA. Install it to receive periodical,
+      redeemable coupons for several cargo packs. Requires NTnet connection and the
+      messenger enabled to work.
+  - rscadd: Coupons are no longer only limited to goodies, but may also apply discount
+      to some other packs as well.
+  - bugfix: fixing damaged sandy dirt lacking an icon
+  - bugfix: Regal rats (and others), won't be punished by the automute system for
+      repeating the same command several times.
+  Ghommie, 13spacemen:
+  - bugfix: Signing or removing your candidature from ghost roles now properly updates
+      the screen button for it.
+  Ical92:
+  - qol: Wendigo Cave ruin gets an aesthetic refresh
+  - bugfix: Wendigos (Wendigi?) no longer attack corpses
+  KathrinBailey, LT3:
+  - image: Official Cat stamp
+  LT3:
+  - rscadd: Runechat message colour is now a character preference
+  - rscadd: Auto-punctuation at the end of chat messages
+  - bugfix: Obscured players no longer use preference runechat color
+  LemonInTheDark:
+  - bugfix: Dear mappers, the light debugger tool no longer deletes dragged wall lights
+  Melbert:
+  - bugfix: Fixed some occasions in which heartbeat SFX will continue on revival for
+      longer than expected
+  MelokGleb and KREKS:
+  - image: modified wizard weapon textures
+  Mothblocks:
+  - refactor: Photo albums and photo frames are now more resilient to data loss, especially
+      when a server crashes.
+  - bugfix: Fixed the surgery menu spamming chat messages when on the eyes section
+      of a player with no eyes.
+  - bugfix: Fixed a lot of missing/broken images, such as emojis, language icons,
+      commendation hearts, icons in R&D menu, etc.
+  - bugfix: Fixed "was shocked by /datum/component/energized" message.
+  ReinaCoder:
+  - rscadd: Adds a brown suit jacket to the detective's vendor
+  - image: 'Adds a new sprite for the a brown detective suit jacket
+
+      :cl:'
+  ReturnToZender:
+  - bugfix: JSX files, when edited, cause TGUI to recompile on build
+  Ryll/Shaps:
+  - balance: Yawns are less likely to propagate
+  SyncIt21:
+  - bugfix: mat container displays correct number of sheets inserted for alloy materials.
+  - bugfix: remote materials now properly respect the `MATCONTAINER_NO_INSERT` flag.
+  - code_imp: removes material breakdown flags and related traits.
+  - code_imp: adds helper proc to insert materials via the remote material component
+      with proper context.
+  - bugfix: debug chem heater now withdraws more than 100 units from its inserted
+      beaker.
+  - bugfix: chem heater has correct overlay when its panel is closed with a screwdriver
+      while a beaker is inside.
+  - qol: added more examines and tooltips for the chem heater.
+  - code_imp: converted chem heater UI to typescript. removed unused procs, vars,
+      ui tracking code. Added auto doc for everything.
+  - refactor: removed chem heater tutorial help button & its related reward, chem
+      heater code has been optimized as a whole.
+  - code_imp: removed excess calls to `update_total()` making reaction code slightly
+      faster.
+  - code_imp: removed excessive use of chemical constants (quantisation & rounding
+      constants) in places where they were not needed i.e. plumbing buffer, reaction
+      chamber, pyrotechnics & the liver.
+  - bugfix: plumbing rcd ui no longer has any graphical glitches
+  - bugfix: Off station ORM's can redeem points again.
+  - bugfix: reaction chamber open its UI when inserting/removing beakers from it
+  - bugfix: reaction chamber triggers new reactions & updates UI more often during
+      heating
+  - bugfix: instant and  normal reactions now get triggered more often so for e.g.
+      more plastic sheets from polymer reactions or more reactions occur when there
+      are multiple reagents present
+  Timberpoes:
+  - bugfix: Fixed an issue with polling ghost roles to control multiple mobs that
+      prevented Sentience Fun Balloons from working as intended.
+  Watermelon914:
+  - bugfix: Fixed integrated circuit UI breaking.
+  jlsnow301:
+  - bugfix: AI voice changer UI should show defaults properly
+  - bugfix: NTOS Software Hub should focus on the input immediately now
+  - bugfix: Ore container UI should autofocus on the search bar now
+  - bugfix: Vend-a-tray registration text should display as intended
+  - bugfix: LUA editor should be usable again
+  - bugfix: NTOS Messenger should search as you type now
+  - bugfix: NTOS Messenger should clear on enter now
+  timothymtorres:
+  - qol: Add UI screentips to spraycans
+  - rscadd: Add 50% graffiti speed boost to tagger quirk
+  - bugfix: Fix time duration of large graffiti not applying properly
+  vinylspiders:
+  - bugfix: fixes a potential mob hard del with cardboard boxes
+  - bugfix: fixes a hard del with thrown items
+  - spellcheck: changes some let's to lets
+  - bugfix: reduces lag in the tgui textarea input boxes
+2023-12-30:
+  LT3:
+  - rscadd: Colorable jean skirt is now adjustable
