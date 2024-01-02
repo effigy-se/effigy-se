@@ -20,32 +20,34 @@ export const CharacterDirectory = (props) => {
 
   const { prefsOnly } = data;
 
-  const [overlay, setOverlay] = useState(null);
-
   const [overwritePrefs, setOverwritePrefs] = useState(prefsOnly);
+
+  const [overlay, setOverlay] = useState(null);
+  const sortIdState = useState('name');
+  const sortOrderState = useState('name');
 
   return (
     <Window width={778} height={512} resizeable>
       <Window.Content scrollable>
-        {(overlay && <ViewCharacter />) || <CharacterDirectoryList />}
+        {(overlay && <ViewCharacter onReturn={() => setOverlay(null)} />) || (
+          <CharacterDirectoryList
+            setOverlay={setOverlay}
+            sortIdState={sortIdState}
+            sortOrderState={sortOrderState}
+          />
+        )}
       </Window.Content>
     </Window>
   );
 };
 
 const ViewCharacter = (props) => {
-  const [overlay, setOverlay] = useState(null);
+  const { onReturn } = props;
 
   return (
     <Section
       title={overlay.name}
-      buttons={
-        <Button
-          icon="arrow-left"
-          content="Back"
-          onClick={() => setOverlay(null)}
-        />
-      }
+      buttons={<Button icon="arrow-left" content="Back" onClick={onReturn} />}
     >
       <Section level={2} title="Species">
         <Box>{overlay.species}</Box>
@@ -87,12 +89,12 @@ const ViewCharacter = (props) => {
 
 const CharacterDirectoryList = (props) => {
   const { act, data } = useBackend();
+  const { setOverlay, sortIdState, sortOrderState } = props;
 
   const { directory, canOrbit } = data;
 
-  const [sortId, _setSortId] = useState('name');
-  const [sortOrder, _setSortOrder] = useState('name');
-  const [overlay, setOverlay] = useState(null);
+  const [sortId] = sortIdState;
+  const [sortOrder] = sortOrderState;
 
   return (
     <Section
@@ -103,11 +105,41 @@ const CharacterDirectoryList = (props) => {
     >
       <Table>
         <Table.Row bold>
-          <SortButton id="name">Name</SortButton>
-          <SortButton id="species">Species</SortButton>
-          <SortButton id="attraction">Attraction</SortButton>
-          <SortButton id="gender">Gender</SortButton>
-          <SortButton id="erp">ERP</SortButton>
+          <SortButton
+            id="name"
+            sortIdState={sortIdState}
+            sortOrderState={sortOrderState}
+          >
+            Name
+          </SortButton>
+          <SortButton
+            id="species"
+            sortIdState={sortIdState}
+            sortOrderState={sortOrderState}
+          >
+            Species
+          </SortButton>
+          <SortButton
+            id="attraction"
+            sortIdState={sortIdState}
+            sortOrderState={sortOrderState}
+          >
+            Attraction
+          </SortButton>
+          <SortButton
+            id="gender"
+            sortIdState={sortIdState}
+            sortOrderState={sortOrderState}
+          >
+            Gender
+          </SortButton>
+          <SortButton
+            id="erp"
+            sortIdState={sortIdState}
+            sortOrderState={sortOrderState}
+          >
+            ERP
+          </SortButton>
           <Table.Cell textAlign="right" />
         </Table.Row>
         {directory
@@ -153,11 +185,11 @@ const CharacterDirectoryList = (props) => {
 const SortButton = (props) => {
   const { act, data } = useBackend();
 
-  const { id, children } = props;
+  const { id, children, sortIdState, sortOrderState } = props;
 
   // Hey, same keys mean same data~
-  const [sortId, setSortId] = useState('name');
-  const [sortOrder, setSortOrder] = useState('name');
+  const [sortId, setSortId] = sortIdState;
+  const [sortOrder, setSortOrder] = sortOrderState;
 
   return (
     <Table.Cell collapsing>
