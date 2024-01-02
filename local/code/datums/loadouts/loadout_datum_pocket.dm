@@ -161,3 +161,11 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/newspaper
 	name = "Newspaper"
 	item_path = /obj/item/newspaper
+
+/datum/loadout_item/pocket_items/clipboard
+	name = "Clipboard"
+	item_path = /obj/item/clipboard
+
+/datum/loadout_item/pocket_items/folder
+	name = "Folder"
+	item_path = /obj/item/folder

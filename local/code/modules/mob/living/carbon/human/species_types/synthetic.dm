@@ -1,7 +1,6 @@
 /datum/species/synthetic
 	name = "Synthetic Humanoid"
 	id = SPECIES_SYNTH
-	say_mod = "beeps"
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
@@ -9,7 +8,6 @@
 		TRAIT_RADIMMUNE,
 		TRAIT_NOBREATH,
 		TRAIT_TOXIMMUNE,
-		TRAIT_NOCLONELOSS,
 		TRAIT_GENELESS,
 		TRAIT_STABLEHEART,
 		TRAIT_LIMBATTACHMENT,
@@ -18,7 +16,6 @@
 		TRAIT_LITERATE,
 		TRAIT_NOCRITDAMAGE, // We do our own handling of crit damage.
 		TRAIT_ROBOTIC_DNA_ORGANS,
-		TRAIT_NO_TRANSFORMATION_STING,
 	)
 	mutant_bodyparts = list(
 		MUTANT_SYNTH_ANTENNA = "None",

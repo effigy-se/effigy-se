@@ -72,13 +72,14 @@
 
 	return randname
 
-// EffigyEdit Remove START Customization
+// EffigyEdit Remove - Customization
 /*
 /datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["body_markings"] = pick(GLOB.body_markings_list)
-	randomize_external_organs(human_mob)
+	var/list/features = ..()
+	features["body_markings"] = pick(GLOB.body_markings_list)
+	return features
 */
-// EffigyEdit Remove END Customization
+// EffigyEdit Remove End
 
 /datum/species/lizard/get_scream_sound(mob/living/carbon/human/lizard)
 	return pick(

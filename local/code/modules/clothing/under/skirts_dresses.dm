@@ -6,6 +6,9 @@
 	gets_cropped_on_taurs = FALSE
 	//God bless the skirt being a subtype of the dress, only need one worn_digi_icon definition
 
+/obj/item/clothing/under/dress/skirt/plaid
+	greyscale_config_worn_digi = /datum/greyscale_config/plaidskirt/worn/digi
+
 /obj/item/clothing/under/dress/skyrat
 	icon = 'local/icons/obj/clothing/under/skirts_dresses.dmi'
 	worn_icon = 'local/icons/mob/clothing/under/skirts_dresses.dmi'
@@ -61,6 +64,7 @@
 	name = "jean skirt"
 	desc = "Technically, is there much difference between these and jorts? It's just one big hole instead of two. Does that make this a jirt?"
 	icon_state = "jean_skirt"
+	can_adjust = TRUE
 	female_sprite_flags = NO_FEMALE_UNIFORM
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	greyscale_config = /datum/greyscale_config/jean_skirt

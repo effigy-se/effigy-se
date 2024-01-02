@@ -179,12 +179,12 @@
 			if(gloves)
 				return
 			gloves = equipping
-			// EffigyEdit Add - - ERP
+			// EffigyEdit Add - ERP
 			if(gloves.breakouttime)
 				ADD_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 				stop_pulling()
 				update_mob_action_buttons()
-			// EFFIGKY EDIT ADD END
+			// EffigyEdit Add End
 			update_worn_gloves()
 		if(ITEM_SLOT_FEET)
 			if(shoes)

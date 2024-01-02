@@ -15,7 +15,7 @@
 		var/datum/preference/preference = GLOB.preference_entries[preference_type]
 
 		if ( \
-			(preference.relevant_mutant_bodypart in default_mutant_bodyparts) \
+			(preference.relevant_mutant_bodypart in GLOB.default_mutant_bodyparts[name]) \
 			|| (preference.relevant_inherent_trait in inherent_traits) \
 		)
 			features += preference.savefile_key

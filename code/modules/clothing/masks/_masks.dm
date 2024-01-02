@@ -18,7 +18,6 @@
 	var/use_radio_beeps_tts = FALSE
 	/// The unique sound effect of dying while wearing this
 	var/unique_death
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION // EffigyEdit Add
 
 /obj/item/clothing/mask/attack_self(mob/user)
 	if((clothing_flags & VOICEBOX_TOGGLABLE))

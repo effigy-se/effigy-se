@@ -32,9 +32,3 @@
 
 /obj/structure/reagent_dispensers/water_cooler
 	icon = 'local/icons/obj/medical/chemical_tanks.dmi'
-
-/obj/structure/camera_assembly
-	icon = 'local/icons/obj/machine/camera.dmi'
-
-/obj/structure/dresser
-	icon = 'local/icons/obj/fluff/general.dmi'

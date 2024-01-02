@@ -6,7 +6,7 @@
 	inhand_icon_state = "briefcase"
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
-	flags_1 = CONDUCT_1
+	obj_flags = CONDUCTS_ELECTRICITY
 	force = 8
 	hitsound = SFX_SWING_HIT
 	throw_speed = 2
@@ -73,9 +73,6 @@
 	new /obj/item/ammo_box/magazine/sniper_rounds(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/disruptor(src)
 
-// EffigyEdit Add e2879c1 - Loadouts
-/obj/item/storage/briefcase/empty/PopulateContents()
-	return
 /**
  * Secure briefcase
  * Uses the lockable storage component to give it a lock.

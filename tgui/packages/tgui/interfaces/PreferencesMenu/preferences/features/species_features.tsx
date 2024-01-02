@@ -1,52 +1,59 @@
-import { FeatureColorInput, Feature, FeatureChoiced, FeatureDropdownInput, FeatureValueProps, FeatureChoicedServerData } from './base';
+import {
+  Feature,
+  FeatureChoiced,
+  FeatureChoicedServerData,
+  FeatureColorInput,
+  FeatureDropdownInput,
+  FeatureValueProps,
+} from './base';
 
 export const eye_color: Feature<string> = {
-  name: 'Eye Color',
+  name: 'Eye Colour',
   component: FeatureColorInput,
 };
 
 export const facial_hair_color: Feature<string> = {
-  name: 'Facial hair color',
+  name: 'Facial Hair Colour',
   component: FeatureColorInput,
 };
 
 export const facial_hair_gradient: FeatureChoiced = {
   name: 'Facial Hair Gradient',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
 };
 
 export const facial_hair_gradient_color: Feature<string> = {
-  name: 'Facial Hair Gradient Color',
+  name: 'Facial Hair Gradient Colour',
   component: FeatureColorInput,
 };
 
 export const hair_color: Feature<string> = {
-  name: 'Hair color',
+  name: 'Hair Colour',
   component: FeatureColorInput,
 };
 
 export const hair_gradient: FeatureChoiced = {
-  name: 'Hair gradient',
+  name: 'Hair Gradient',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
 };
 
 export const hair_gradient_color: Feature<string> = {
-  name: 'Hair gradient color',
+  name: 'Hair Gradient Colour',
   component: FeatureColorInput,
 };
 
 export const feature_human_ears: FeatureChoiced = {
   name: 'Ears',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -55,7 +62,7 @@ export const feature_human_ears: FeatureChoiced = {
 export const feature_human_tail: FeatureChoiced = {
   name: 'Tail',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -64,7 +71,7 @@ export const feature_human_tail: FeatureChoiced = {
 export const feature_lizard_legs: FeatureChoiced = {
   name: 'Legs',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -73,7 +80,7 @@ export const feature_lizard_legs: FeatureChoiced = {
 export const feature_lizard_spines: FeatureChoiced = {
   name: 'Spines',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
@@ -82,23 +89,23 @@ export const feature_lizard_spines: FeatureChoiced = {
 export const feature_lizard_tail: FeatureChoiced = {
   name: 'Tail',
   component: (
-    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
 };
 
 export const underwear_color: Feature<string> = {
-  name: 'Underwear color',
+  name: 'Underwear Colour',
   component: FeatureColorInput,
 };
 
 export const feature_vampire_status: Feature<string> = {
-  name: 'Vampire status',
+  name: 'Vampire Status',
   component: FeatureDropdownInput,
 };
 
 export const heterochromatic: Feature<string> = {
-  name: 'Heterochromatic (Right Eye) color',
+  name: 'Heterochromatic (Right Eye) Colour',
   component: FeatureColorInput,
 };

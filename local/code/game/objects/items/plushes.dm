@@ -1,3 +1,7 @@
+// Because plushes have a second desc var that needs to be updated
+/obj/item/toy/plush/on_loadout_custom_described()
+	normal_desc = desc
+
 /obj/item/toy/plush/effigy
 	icon = 'local/icons/obj/toys/plushes.dmi'
 	inhand_icon_state = null

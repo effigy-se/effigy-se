@@ -1,6 +1,16 @@
 /datum/asset/spritesheet/simple/paper
 	name = "paper"
 	assets = list(
+		// EffigyEdit Add - Cat stamp
+		"stamp-cat_blue" = 'local/icons/stamp_icons/cat_blue.png',
+		"stamp-paw_blue" = 'local/icons/stamp_icons/paw_blue.png',
+		"stamp-cat_red" = 'local/icons/stamp_icons/cat_red.png',
+		"stamp-paw_red" = 'local/icons/stamp_icons/paw_red.png',
+		"stamp-cat_orange" = 'local/icons/stamp_icons/cat_orange.png',
+		"stamp-paw_orange" = 'local/icons/stamp_icons/paw_orange.png',
+		"stamp-cat_green" = 'local/icons/stamp_icons/cat_green.png',
+		"stamp-paw_green" = 'local/icons/stamp_icons/paw_green.png',
+		// EffigyEdit Add End
 		"stamp-clown" = 'icons/stamp_icons/large_stamp-clown.png',
 		"stamp-deny" = 'icons/stamp_icons/large_stamp-deny.png',
 		"stamp-ok" = 'icons/stamp_icons/large_stamp-ok.png',

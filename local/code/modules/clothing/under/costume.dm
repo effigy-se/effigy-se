@@ -14,6 +14,31 @@
 /*
 *	UNSORTED
 */
+
+/obj/item/clothing/under/costume/buttondown/slacks
+	greyscale_config_worn_digi = /datum/greyscale_config/buttondown_slacks/worn/digi
+
+/obj/item/clothing/under/costume/buttondown/shorts
+	greyscale_config_worn_digi = /datum/greyscale_config/buttondown_shorts/worn/digi
+
+/obj/item/clothing/under/costume/football_suit
+	greyscale_config_worn_digi = /datum/greyscale_config/football_suit/worn/digi
+
+/obj/item/clothing/under/costume/cybersleek
+	name = "sleek modern coat"
+	desc = "A modern-styled coat typically worn on more urban planets, made with a neo-laminated fiber lining."
+	icon = 'local/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'local/icons/mob/clothing/uniform.dmi'
+	icon_state = "cyberpunksleek"
+	body_parts_covered = CHEST|ARMS|GROIN|LEGS
+	supports_variations_flags = NONE
+	can_adjust = FALSE
+
+/obj/item/clothing/under/costume/cybersleek/long
+	name = "long modern coat"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	icon_state = "cyberpunksleek_long"
+
 /obj/item/clothing/under/costume/skyrat/cavalry
 	name = "cavalry uniform"
 	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."

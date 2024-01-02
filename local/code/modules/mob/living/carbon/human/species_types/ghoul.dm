@@ -38,26 +38,6 @@
 	if(inFeatures["ghoulcolor"] == null || inFeatures["ghoulcolor"] == "")
 		inFeatures["ghoulcolor"] = GLOB.color_list_ghoul[pick(GLOB.color_list_ghoul)]
 
-/datum/species/ghoul/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
-	// Missing Defaults in DNA? Randomize!
-	proof_ghoul_features(C.dna.features)
-
-	. = ..()
-
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-
-		set_ghoul_color(H)
-
-		// 2) BODYPARTS
-		C.part_default_head = /obj/item/bodypart/head/mutant/ghoul
-		C.part_default_chest = /obj/item/bodypart/chest/mutant/ghoul
-		C.part_default_l_arm = /obj/item/bodypart/arm/left/mutant/ghoul
-		C.part_default_r_arm = /obj/item/bodypart/arm/right/mutant/ghoul
-		C.part_default_l_leg = /obj/item/bodypart/leg/left/mutant/ghoul
-		C.part_default_r_leg = /obj/item/bodypart/leg/right/mutant/ghoul
-		C.ReassignForeignBodyparts()
-
 /datum/species/proc/set_ghoul_color(mob/living/carbon/human/H)
 	return // Do Nothing
 
@@ -65,55 +45,36 @@
 	// Called on Assign, or on Color Change (or any time proof_ghoul_features() is used)
 	fixed_mut_color = H.dna.features["ghoulcolor"]
 
-/mob/living/carbon/proc/ReassignForeignBodyparts()
-	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
-	if (head?.type != part_default_head)
-		qdel(head)
-		var/obj/item/bodypart/limb = new part_default_head
-		limb.replace_limb(src, TRUE)
+/datum/species/ghoul/on_species_gain(mob/living/carbon/new_ghoul, datum/species/old_species, pref_load)
+	// Missing Defaults in DNA? Randomize!
+	proof_ghoul_features(new_ghoul.dna.features)
 
-	var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
-	if (chest?.type != part_default_chest)
-		qdel(chest)
-		var/obj/item/bodypart/limb = new part_default_chest
-		limb.replace_limb(src, TRUE)
+	. = ..()
 
-	var/obj/item/bodypart/arm/left/left_arm = get_bodypart(BODY_ZONE_L_ARM)
-	if (left_arm?.type != part_default_l_arm)
-		qdel(left_arm)
-		var/obj/item/bodypart/limb = new part_default_l_arm
-		limb.replace_limb(src, TRUE)
+	if(ishuman(new_ghoul))
+		var/mob/living/carbon/human/human_ghoul = new_ghoul
 
-	var/obj/item/bodypart/arm/right/right_arm = get_bodypart(BODY_ZONE_R_ARM)
-	if (right_arm?.type != part_default_r_arm)
-		qdel(right_arm)
-		var/obj/item/bodypart/limb = new part_default_r_arm
-		limb.replace_limb(src, TRUE)
+		set_ghoul_color(human_ghoul)
 
-	var/obj/item/bodypart/leg/left/left_leg = get_bodypart(BODY_ZONE_L_LEG)
-	if (left_leg?.type != part_default_l_leg)
-		qdel(left_leg)
-		var/obj/item/bodypart/limb = new part_default_l_leg
-		limb.replace_limb(src, TRUE)
+		// 2) BODYPARTS
+		RegisterSignal(src, COMSIG_ITEM_ATTACK, PROC_REF(attach_meat))
+		human_ghoul.part_default_head = /obj/item/bodypart/head/mutant/ghoul
+		human_ghoul.part_default_chest = /obj/item/bodypart/chest/mutant/ghoul
+		human_ghoul.part_default_l_arm = /obj/item/bodypart/arm/left/mutant/ghoul
+		human_ghoul.part_default_r_arm = /obj/item/bodypart/arm/right/mutant/ghoul
+		human_ghoul.part_default_l_leg = /obj/item/bodypart/leg/left/mutant/ghoul
+		human_ghoul.part_default_r_leg = /obj/item/bodypart/leg/right/mutant/ghoul
 
-	var/obj/item/bodypart/leg/right/right_leg = get_bodypart(BODY_ZONE_R_LEG)
-	if (right_leg?.type != part_default_r_leg)
-		qdel(right_leg)
-		var/obj/item/bodypart/limb = new part_default_r_leg
-		limb.replace_limb(src, TRUE)
+/datum/species/ghoul/on_species_loss(mob/living/carbon/human/former_ghoul, datum/species/new_species, pref_load)
+	. = ..()
 
-
-/datum/species/ghoul/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
-	..()
-
-	// 2) BODYPARTS
-	C.part_default_head = /obj/item/bodypart/head
-	C.part_default_chest = /obj/item/bodypart/chest
-	C.part_default_l_arm = /obj/item/bodypart/arm/left
-	C.part_default_r_arm = /obj/item/bodypart/arm/right
-	C.part_default_l_leg = /obj/item/bodypart/leg/left
-	C.part_default_r_leg = /obj/item/bodypart/leg/right
-	C.ReassignForeignBodyparts()
+	UnregisterSignal(src, COMSIG_ITEM_ATTACK)
+	former_ghoul.part_default_head = /obj/item/bodypart/head
+	former_ghoul.part_default_chest = /obj/item/bodypart/chest
+	former_ghoul.part_default_l_arm = /obj/item/bodypart/arm/left
+	former_ghoul.part_default_r_arm = /obj/item/bodypart/arm/right
+	former_ghoul.part_default_l_leg = /obj/item/bodypart/leg/left
+	former_ghoul.part_default_r_leg = /obj/item/bodypart/leg/right
 
 /*
 *	ATTACK PROCS
@@ -154,40 +115,43 @@
 			target.add_splatter_floor(target.loc)
 			target.bleed(60)
 
-			return TRUE
-	return ..()
+			return COMPONENT_CANCEL_ATTACK_CHAIN
 
-/datum/species/ghoul/proc/handle_limb_mashing()
+/datum/species/ghoul/proc/attach_meat(obj/item/attacking_item, mob/living/carbon/human/target, mob/living/user, params)
 	SIGNAL_HANDLER
 
-/datum/species/ghoul/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, mob/living/carbon/human/H, modifiers)
-	handle_limb_mashing()
-	// MEAT LIMBS: If our limb is missing, and we're using meat, stick it in!
-	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+	if(!istype(target))
 		return
-	if(H.stat < DEAD && !affecting && istype(I, /obj/item/food/meat/slab))
+
+	if(LAZYACCESS(params2list(params), RIGHT_CLICK))
+		return
+
+	// MEAT LIMBS: If our limb is missing, and we're using meat, stick it in!
+	if(target.stat < DEAD && istype(attacking_item, /obj/item/food/meat/slab))
 		var/target_zone = user.zone_selected
+
+		if(target.get_bodypart(target_zone)) // we already have a limb here
+			return
+
 		var/list/limbs = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 
 		if((target_zone in limbs))
-			if(user == H)
-				user.visible_message("[user] begins mashing [I] into [H]'s torso.", span_notice("You begin mashing [I] into your torso."))
+			if(user == target)
+				user.visible_message("[user] begins mashing [attacking_item] into [target]'s torso.", span_notice("You begin mashing [attacking_item] into your torso."))
 			else
-				user.visible_message("[user] begins mashing [I] into [H]'s torso.", span_notice("You begin mashing [I] into [H]'s torso."))
+				user.visible_message("[user] begins mashing [attacking_item] into [target]'s torso.", span_notice("You begin mashing [attacking_item] into [target]'s torso."))
 
 			// Leave Melee Chain (so deleting the meat doesn't throw an error) <--- aka, deleting the meat that called this very proc.
 			spawn(1)
-				if(do_after(user, 3 SECONDS, H))
+				if(do_after(user, 3 SECONDS, target))
 					// Attach the part!
-					var/obj/item/bodypart/newBP = H.newBodyPart(target_zone, FALSE)
-					H.visible_message("The meat sprouts digits and becomes [H]'s new [newBP.name]!", span_notice("The meat sprouts digits and becomes your new [newBP.name]!"))
-					newBP.try_attach_limb(H)
-					qdel(I)
-					playsound(get_turf(H), 'sound/effects/meatslap.ogg', 50, 1)
+					var/obj/item/bodypart/newBP = target.newBodyPart(target_zone, FALSE)
+					target.visible_message("The meat sprouts digits and becomes [target]'s new [newBP.name]!", span_notice("The meat sprouts digits and becomes your new [newBP.name]!"))
+					newBP.try_attach_limb(target)
+					qdel(attacking_item)
+					playsound(get_turf(target), 'sound/effects/meatslap.ogg', 50, 1)
 
-			return TRUE // True CANCELS the sequence.
-
-	return ..() // TRUE FALSE
+			return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /mob/living/carbon
 	// Type References for Bodyparts

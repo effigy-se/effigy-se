@@ -31,6 +31,7 @@
 	)
 
 /datum/species/unathi/randomize_features(mob/living/carbon/human/human_mob)
+	var/list/features = ..()
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -51,9 +52,9 @@
 		if(5)
 			main_color = "#33BB11"
 			second_color = "#339911"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = second_color
+	features["mcolor"] = main_color
+	features["mcolor2"] = second_color
+	features["mcolor3"] = second_color
 
 /datum/species/unathi/get_species_description()
 	return placeholder_description

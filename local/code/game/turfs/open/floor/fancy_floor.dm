@@ -7,7 +7,7 @@
 	canSmoothWith = SMOOTH_GROUP_CARPET_PURPLE
 
 /turf/open/floor/carpet/lone
-	icon = 'icons/turf/floors/carpet.dmi'
+	icon = 'icons/turf/floors/floor_variations.dmi'
 
 /turf/open/floor/fakebasalt
 	icon = EFFIGY_TURFS_ICON_FILE

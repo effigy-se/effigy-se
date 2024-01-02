@@ -104,7 +104,7 @@
 	if(!mod.active || mod.activating || !mod.get_charge())
 		balloon_alert(mod.wearer, "unpowered!")
 		return FALSE
-	// EffigyEdit Add - - No using modules when not all parts are deployed.
+	// EffigyEdit Add - No using modules when not all parts are deployed.
 	if(!(allow_flags & MODULE_ALLOW_INACTIVE))
 		for(var/obj/item/part as anything in mod.mod_parts)
 			if(part.loc == mod)
@@ -249,7 +249,7 @@
 	return list()
 
 /// Creates a list of configuring options for this module
-/obj/item/mod/module/proc/get_configuration()
+/obj/item/mod/module/proc/get_configuration(mob/user)
 	return list()
 
 /// Generates an element of the get_configuration list with a display name, type and value
@@ -324,12 +324,12 @@
 	if(module_type == MODULE_PASSIVE)
 		return
 
-	var/datum/action/item_action/mod/pinned_module/existing_action = pinned_to[REF(user)]
+	var/datum/action/item_action/mod/pinnable/module/existing_action = pinned_to[REF(user)]
 	if(existing_action)
 		mod.remove_item_action(existing_action)
 		return
 
-	var/datum/action/item_action/mod/pinned_module/new_action = new(mod, src, user)
+	var/datum/action/item_action/mod/pinnable/module/new_action = new(mod, user, src)
 	mod.add_item_action(new_action)
 
 /// On drop key, concels a device item.

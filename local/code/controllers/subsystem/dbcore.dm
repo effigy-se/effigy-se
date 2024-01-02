@@ -24,18 +24,17 @@
 	CheckSchemaVersion()
 
 	if(!Connect())
+		GLOB.round_id = "1024" // who made round_id a string, seriously
+		GLOB.round_hex = truncate(num2text(text2num(GLOB.round_id) * 1024, 9, 16), 8)
 		return
 	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
 		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
 		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]")
 	)
 
-	var/ev_round_id = null
 	query_round_initialize.Execute(async = FALSE)
 	GLOB.round_id = "[query_round_initialize.last_insert_id]"
-	ev_round_id = text2num("[GLOB.round_id]999")
-	ev_round_id = num2text(ev_round_id, 6, 16)
-	GLOB.round_hex = ev_round_id
+	GLOB.round_hex = truncate(num2text(text2num(GLOB.round_id) * 1024, 9, 16), 8)
 	qdel(query_round_initialize)
 
 /datum/controller/subsystem/dbcore/SetRoundStart()

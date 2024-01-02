@@ -44,13 +44,6 @@
 	/// Datum level flags
 	var/datum_flags = NONE
 
-#ifndef EXPERIMENT_515_DONT_CACHE_REF
-	/// A cached version of our \ref
-	/// The brunt of \ref costs are in creating entries in the string tree (a tree of immutable strings)
-	/// This avoids doing that more then once per datum by ensuring ref strings always have a reference to them after they're first pulled
-	var/cached_ref
-#endif
-
 	/// A weak reference to another datum
 	var/datum/weakref/weak_reference
 
@@ -108,7 +101,7 @@
  *
  * Returns [QDEL_HINT_QUEUE]
  */
-/datum/proc/Destroy(force=FALSE, ...)
+/datum/proc/Destroy(force = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	tag = null
@@ -136,10 +129,10 @@
 			var/component_or_list = dc[component_key]
 			if(islist(component_or_list))
 				for(var/datum/component/component as anything in component_or_list)
-					qdel(component, FALSE, TRUE)
+					qdel(component, FALSE)
 			else
 				var/datum/component/C = component_or_list
-				qdel(C, FALSE, TRUE)
+				qdel(C, FALSE)
 		dc.Cut()
 
 	_clear_signal_refs()

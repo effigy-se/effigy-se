@@ -33,15 +33,15 @@
 
 	return FALSE
 
-/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer, ignore_suit = FALSE)
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return ..()
 
 	// Can hide if wearing uniform
-	if("wings" in wearer.try_hide_mutant_parts)
+	if(feature_key in wearer.try_hide_mutant_parts)
 		return FALSE
 
-	if(wearer.wear_suit)
+	if(!ignore_suit && wearer.wear_suit)
 		// Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return TRUE
@@ -299,7 +299,7 @@
 	icon_state = "brown"
 
 /datum/sprite_accessory/wings/moth/burnt
-	name = "Moth (Burnt)"
+	name = "Burnt Off"
 	icon_state = "burnt_off"
 	locked = TRUE
 

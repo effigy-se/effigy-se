@@ -227,7 +227,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	initiator_ckey = initiator.ckey
 
 	effigy_player_id = SSeffigy.ckey_to_effigy_id(initiator_ckey)
-	id = generate_effigy_event_id()
+	id = generate_evid()
 
 	if(!effigy_player_id)
 		effigy_linked = LINK_FAIL
@@ -621,7 +621,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	Resolve(silent = TRUE)
 
 /datum/admin_help/proc/send_ticket_url(initiator)
-	to_chat(initiator, SPAN_BOX_ALERT(WHITE, "You can view this ticket in the portal at: <a href=\"https://effigy.se/ticket/[effigy_ticket_id]/\">https://effigy.se/ticket/[effigy_ticket_id]/</a>"), confidential = TRUE)
+	to_chat(initiator, SPAN_BOX_ALERT(PINK, "You can view this ticket in the portal at: <a href=\"https://effigy.se/ticket/[effigy_ticket_id]/\">https://effigy.se/ticket/[effigy_ticket_id]/</a>"), confidential = TRUE)
 
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
