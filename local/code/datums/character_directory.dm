@@ -123,8 +123,14 @@
 			var/ref = params["ref"]
 			var/mob/dead/observer/ghost = user
 			var/atom/movable/poi = (locate(ref) in GLOB.mob_list)
-			if (poi == null)
+			if(isnull(poi))
 				return TRUE
 			ghost.ManualFollow(poi)
 			ghost.reset_perspective(null)
 			return TRUE
+		if("view")
+			var/ref = params["ref"]
+			var/mob/living/carbon/human/target = (locate(ref) in GLOB.mob_list)
+			var/datum/examine_panel/panel = target.tgui
+			panel.holder = target
+			panel.ui_interact(user)

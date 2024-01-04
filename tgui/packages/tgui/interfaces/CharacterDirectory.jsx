@@ -43,6 +43,7 @@ export const CharacterDirectory = (props) => {
 
 const ViewCharacter = (props) => {
   const { onReturn } = props;
+  const [overlay] = useState(props);
 
   return (
     <Section
@@ -168,7 +169,7 @@ const CharacterDirectoryList = (props) => {
               <Table.Cell>{character.erp}</Table.Cell>
               <Table.Cell collapsing textAlign="right">
                 <Button
-                  onClick={() => setOverlay(character)}
+                  onClick={() => act('view', { ref: character.ref })}
                   color="transparent"
                   icon="sticky-note"
                   mr={1}
