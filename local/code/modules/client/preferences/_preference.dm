@@ -240,3 +240,59 @@
 	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(sanitize_integer(value), sanitize_integer(value), sanitize_integer(value))
 
 #undef REQUIRED_CROP_LIST_SIZE
+
+//We want players to be able to decide whether they show up in the directory or not
+/datum/preference/toggle/show_in_directory
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	default_value = TRUE
+	savefile_key = "show_in_directory"
+	savefile_identifier = PREFERENCE_PLAYER
+
+//The advertisement that you show to people looking through the directory
+/datum/preference/text/character_ad
+	savefile_key = "character_ad"
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	maximum_value_length = MAX_FLAVOR_LEN
+
+//TGUI gets angry if you don't define a default on text preferences
+/datum/preference/text/character_ad/create_default_value()
+	return ""
+
+//Any text preference needs this for some reason
+/datum/preference/text/character_ad/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/choiced/attraction
+	savefile_key = "attraction"
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+
+/datum/preference/choiced/attraction/init_possible_values()
+	return list("Gay", "Lesbian", "Straight", "Skolio", "Bi", "Pan", "Poly", "Omni", "Ace", "Unset", "Check OOC")
+
+/datum/preference/choiced/attraction/create_default_value()
+	return "Unset"
+
+/datum/preference/choiced/attraction/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/choiced/display_gender
+	savefile_key = "display_gender"
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+
+/datum/preference/choiced/display_gender/init_possible_values()
+	return list("Male", "Female", "Null", "Plural", "Nonbinary", "Omni", "Trans", "Andro", "Gyno", "Fluid", "Unset", "Check OOC")
+
+/datum/preference/choiced/display_gender/create_default_value()
+	return "Unset"
+
+/datum/preference/choiced/display_gender/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/toggle/obscure_on_examine
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	default_value = TRUE
+	savefile_key = "obscure_on_examine"
+	savefile_identifier = PREFERENCE_PLAYER
