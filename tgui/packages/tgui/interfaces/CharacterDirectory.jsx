@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Icon, Section, Table } from '../components';
+import { Button, Icon, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 const erpTagColor = {
@@ -22,75 +22,24 @@ export const CharacterDirectory = (props) => {
 
   const [overwritePrefs, setOverwritePrefs] = useState(prefsOnly);
 
-  const [overlay, setOverlay] = useState(null);
   const sortIdState = useState('name');
   const sortOrderState = useState('name');
 
   return (
     <Window width={778} height={512} resizeable>
       <Window.Content scrollable>
-        {(overlay && <ViewCharacter onReturn={() => setOverlay(null)} />) || (
-          <CharacterDirectoryList
-            setOverlay={setOverlay}
-            sortIdState={sortIdState}
-            sortOrderState={sortOrderState}
-          />
-        )}
+        <CharacterDirectoryList
+          sortIdState={sortIdState}
+          sortOrderState={sortOrderState}
+        />
       </Window.Content>
     </Window>
   );
 };
 
-const ViewCharacter = (props) => {
-  const { onReturn } = props;
-  const [overlay] = useState(props);
-
-  return (
-    <Section
-      title={overlay.name}
-      buttons={<Button icon="arrow-left" content="Back" onClick={onReturn} />}
-    >
-      <Section level={2} title="Species">
-        <Box>{overlay.species}</Box>
-      </Section>
-      <Section level={2} title="Attraction">
-        <Box>{overlay.attraction}</Box>
-      </Section>
-      <Section level={2} title="Gender">
-        <Box>{overlay.gender}</Box>
-      </Section>
-      <Section level={2} title="ERP">
-        <Box p={1} backgroundColor={erpTagColor[overlay.erp]}>
-          {overlay.erp}
-        </Box>
-      </Section>
-      <Section level={2} title="Character Ad">
-        <Box style={{ 'word-break': 'break-all' }} preserveWhitespace>
-          {overlay.character_ad || 'Unset.'}
-        </Box>
-      </Section>
-      <Section level={2} title="Exploitable">
-        <Box style={{ 'word-break': 'break-all' }} preserveWhitespace>
-          {overlay.exploitable || 'Unset.'}
-        </Box>
-      </Section>
-      <Section level={2} title="OOC Notes">
-        <Box style={{ 'word-break': 'break-all' }} preserveWhitespace>
-          {overlay.ooc_notes || 'Unset.'}
-        </Box>
-      </Section>
-      <Section level={2} title="Flavor Text">
-        <Box style={{ 'word-break': 'break-all' }} preserveWhitespace>
-          {overlay.flavor_text || 'Unset.'}
-        </Box>
-      </Section>
-    </Section>
-  );
-};
-
 const CharacterDirectoryList = (props) => {
   const { act, data } = useBackend();
-  const { setOverlay, sortIdState, sortOrderState } = props;
+  const { sortIdState, sortOrderState } = props;
 
   const { directory, canOrbit } = data;
 
@@ -99,7 +48,7 @@ const CharacterDirectoryList = (props) => {
 
   return (
     <Section
-      title="Directory"
+      title="Character Directory"
       buttons={
         <Button icon="sync" content="Refresh" onClick={() => act('refresh')} />
       }
