@@ -1,8 +1,9 @@
 /* Replaced by tgui/packages/tgui/interfaces/PreferencesMenu/Effigy/MainPage.tsx
 import { filterMap, sortBy } from 'common/collections';
 import { classes } from 'common/react';
+import { useState } from 'react';
 
-import { sendAct, useBackend, useLocalState } from '../../backend';
+import { sendAct, useBackend } from '../../backend';
 import {
   Autofocus,
   Box,
@@ -190,10 +191,7 @@ const GenderButton = (props: {
   handleSetGender: (gender: Gender) => void;
   gender: Gender;
 }) => {
-  const [genderMenuOpen, setGenderMenuOpen] = useLocalState(
-    'genderMenuOpen',
-    false,
-  );
+  const [genderMenuOpen, setGenderMenuOpen] = useState(false);
 
   return (
     <Popper
@@ -453,13 +451,10 @@ export const getRandomization = (
 
 export const MainPage = (props: { openSpecies: () => void }) => {
   const { act, data } = useBackend<PreferencesMenuData>();
-  const [currentClothingMenu, setCurrentClothingMenu] = useLocalState<
-    string | null
-  >('currentClothingMenu', null);
-  const [multiNameInputOpen, setMultiNameInputOpen] = useLocalState(
-    'multiNameInputOpen',
-    false,
+  const [currentClothingMenu, setCurrentClothingMenu] = useState<string | null>(
+    null,
   );
+  const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
   const [randomToggleEnabled] = useRandomToggleState();
 
   return (
