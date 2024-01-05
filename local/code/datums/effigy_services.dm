@@ -32,7 +32,7 @@
 		"forum=[raw_content["box"]]",
 		"author=[raw_content["link_id"]]",
 		"topic=[raw_content["ticket_id"]]",
-		"title=\[[GLOB.round_hex]-[raw_content["int_id"]]] [raw_content["title"]]",
+		"title=\[[raw_content["int_id"]]] [raw_content["title"]]",
 		"post=[jointext(raw_content["message"], "<br>")]"
 	)
 

@@ -469,7 +469,13 @@
 	/// The first 1-FLAVOR_PREVIEW_LIMIT characters in the mob's "flavor_text" DNA feature. FLAVOR_PREVIEW_LIMIT is defined in flavor_defines.dm.
 	var/preview_text = copytext_char((dna.features["flavor_text"]), 1, FLAVOR_PREVIEW_LIMIT)
 	// What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
+	/* EffigyEdit Change Start - Character directory
+	Original:
 	var/face_obscured = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	*/
+	var/obscure_on_examine = (client?.prefs?.read_preference(/datum/preference/toggle/obscure_on_examine))
+	var/face_obscured = (wear_mask && (wear_mask.flags_inv & HIDEFACE) && obscure_on_examine) || (head && (head.flags_inv & HIDEFACE) && obscure_on_examine)
+	// EffigyEdit Change End
 
 	if (!(face_obscured))
 		flavor_text_link = span_notice("[preview_text]... <a href='?src=[REF(src)];lookup_info=open_examine_panel'>Look closer?</a>")

@@ -22,3 +22,6 @@
 #define YES_KILL 2
 #define YES_ROUND_REMOVE 3
 #define NOT_TARGET 0
+
+#define READ_PREFS(target, pref) (target.client.prefs.read_preference(/datum/preference/pref) || "Unset")
+GLOBAL_DATUM(character_directory, /datum/character_directory)
