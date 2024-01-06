@@ -130,7 +130,14 @@
 			return TRUE
 		if("view")
 			var/ref = params["ref"]
-			var/mob/living/carbon/human/target = (locate(ref) in GLOB.mob_list)
-			var/datum/examine_panel/panel = target.tgui
-			panel.holder = target
+			var/datum/examine_panel/panel
+			var/mob/living/target = (locate(ref) in GLOB.mob_list)
+			if(issilicon(target))
+				var/mob/living/silicon/typed_target = target
+				panel = typed_target.examine_panel
+				panel.holder = typed_target
+			else
+				var/mob/living/carbon/human/typed_target = target
+				panel = typed_target.tgui
+				panel.holder = typed_target
 			panel.ui_interact(user)
