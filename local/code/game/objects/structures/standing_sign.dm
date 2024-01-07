@@ -5,6 +5,8 @@
 	max_integrity = 20
 	icon = 'local/icons/obj/standing_sign.dmi'
 	icon_state = "generic"
+	density = TRUE
+	anchored = TRUE
 
 /obj/structure/standing_sign/hotspring
 	name = "Hotspring"
