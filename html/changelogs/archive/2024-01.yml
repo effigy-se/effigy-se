@@ -17,12 +17,21 @@
   - qol: The "Explosive Planted" alert for C4 actually shows the C4
   - qol: Gas analyzer can scan adjacent turfs. No more roasting yourself just to scan
       your burn mix.
+  - qol: Ghosts can now view Wanted Status and Sec Records by examining people
+  - qol: The hub entry shows the next map and shuttle time, and no longer shows the
+      alert
+  - bugfix: Jumping to C4 via ghost notification works again
+  - bugfix: Hub shuttle time works correctly
   Ben10Omintrix:
   - refactor: hygeinebots are now basic bots. please report all the bugs
   - bugfix: fixes hygenebots not being able to patrol
   - rscadd: hygeinebots can now be controlled by Players
   - bugfix: stationary medbots will no longer ignore u for a while if u move out of
       their way while healing
+  DrDiasyl:
+  - qol: It is now possible to craft more Security bio suits
+  - qol: Bio-emergency crate from Cargo now contains a box of latex gloves and sterile
+      masks
   Echomori:
   - bugfix: trying to move up or down while controlling an advanced camera console
       now properly moves the camera up or down, not your body
@@ -40,6 +49,8 @@
   - qol: Using a scope (and now binocs or moth cap) won't hide your mouse pointer
       away now, so that you won't slip out of the game screen and close the game tab
       by accident.
+  - bugfix: fixed coupon codes with expiration times.
+  - bugfix: Fixed H.A.R.S. fucking up the brains a little.
   GoldenAlpharex:
   - bugfix: Vending machines now display the proper color customization options and
       item quantities again!
@@ -52,11 +63,15 @@
   LT3:
   - bugfix: OOC announcements will now be in shown in OOC colors
   - bugfix: Alternate carpet colors will no longer reskin to normal carpet
+  - bugfix: Morgue trays and freezing temperatures will no longer husk bodies
+  - bugfix: Organs outside bodies will properly receive cold damage
   LT3, ReturnToZender, Waterpig, Nevimer:
   - rscadd: Character directory listing
   Majkl-J:
   - bugfix: Having an inorganic chest/legs no longer makes you drop your ID, belt
       or pocketed stuff upon losing your jumpsuit
+  - bugfix: spasm_animation now correctly resets the transform, as it should
+  - bugfix: Spamming the weld on a robotic part no longer drains the fuel
   Melbert:
   - bugfix: Lizards now show a proper description in the magic mirror
   - refactor: Refactored the area transformation colossus crystal effect to use the
@@ -67,8 +82,16 @@
       lights are broken" station trait especially
   - bugfix: Fixed Fugu Gland applying to mobs incorrectly
   - bugfix: Fixed runtime from blobbernauts attacking non-living things
+  - bugfix: Strong arm implant users can shove more correctly.
   Mothblocks:
   - bugfix: Fixed footstep sounds.
+  - balance: Instead of too much damage to the head beheading someone, it will now
+      split their skull in half. While their skull is open, you can rip out their
+      eyes with your hands. and they will spill their brain out of their head if they
+      slip.
+  - balance: The Path of Blades ascension will accept either a beheaded person, or
+      someone with their skull split open.
+  - rscdel: Removed the beheading objectives from traitor.
   OrionTheFox:
   - image: resprited the Pirate/Sailor costumes, the pirate jacket, and the pirate
       spacesuit
@@ -97,6 +120,12 @@
   - bugfix: the moon heretic ascension now produces lunatics again
   Rhials:
   - code_imp: Unholy water no longer calls parent twice in on_mob_life().
+  Sightld2:
+  - bugfix: Cyborgs no longer think they're hitting themselves when stunned with a
+      stun baton
+  SomeRandomOwl:
+  - bugfix: Build Mode Export's options menu now knows when you want to cancel and
+      not change the options
   SyncIt21:
   - bugfix: chem heater now shows the new value of its buffer dispense volume immediately
       when it gets changed.
@@ -120,6 +149,8 @@
   - bugfix: Gibtonite ore on ice planet gulags no longer spawns as lavaland rock.
   - bugfix: 'Birdshot: Released gulag prisoners can now get off the gulag shuttle.'
   - bugfix: 'Birdshot: The gulag shuttle airlocks will now cycle like other airlocks.'
+  - bugfix: The clown planet biodome and virtual domain can now be completed without
+      slipping directly into the exit.
   Time-Green:
   - rscadd: Adds a geared assistant station trait! Spawn with a skateboard, toolbelt
       or in your favorite bee suit!
@@ -136,11 +167,20 @@
       described as "flimsily".
   Vishenka0704:
   - admin: The ability to export a part(or z-level) of the map has been added.
+  WarlockD:
+  - bugfix: Queen bee's made with cytology now work
   Watermelon914:
   - bugfix: Fixed integrated circuit speech logging
   YakumoChen:
   - qol: Toggling an armour booster module on a MODsuit now gives a balloon alert
       making the tradeoffs more clear.
+  exdal:
+  - bugfix: Papers no longer crash tgui
+  - bugfix: Biogenerator no longer crash tgui
+  fIoppie:
+  - qol: Cargo techs can now access the windoor in the delivery office on Delta.
+  intercepti0n:
+  - image: resprited onmob cone icon.
   jlsnow301:
   - bugfix: Dropdowns and pop-up menus have been rewritten. This should fix an issue
       where dropdown text was accidentally scrolling if hovered. Please report any
@@ -148,11 +188,26 @@
   - bugfix: Protolathe input should feel more responsive.
   - bugfix: Fixed redundant "Integrity:" in air alarms
   - bugfix: 'TGUI: Sections should be scrollable on mouse hover'
+  - bugfix: Having a netpod destroyed will no longer grant you permanent healing.
+  - bugfix: Comms console should now update as you type.
+  - bugfix: Search bars for smaller lists should return to their former responsiveness.
+  - bugfix: Randomization button in prefs should look normal again.
+  - bugfix: Quirk customization shouldn't close immediately.
   kawoppi:
   - qol: added screentips to the janicart (pimpin' ride)
   mc-oofert:
   - rscadd: 69(roughly?) new vox phrases
   - bugfix: you no longer fall down cliffs if you dont have gravity
+  - bugfix: conveyor belts no longer maintain movement if whatever is on them suddenly
+      leaves their z level
+  - bugfix: After a raid on the local drug mafia in the sector by TerraGov, the Russian
+      Mobsters no longer have access to easy drugs and as a result are no longer 24/7
+      running faster than the average spaceman.
+  - bugfix: you can use your hand to make minebots go into combat mode again
+  - bugfix: the eZ-13 MK2 heavy pulse rifle does damage again
+  - bugfix: adds missing navigation landmarks to tramstation
+  - bugfix: vents that are turned off dont replay their animation if you go out of
+      sight and back in
   mogeoko:
   - bugfix: Atmospherics components will now move air into connected pipeline on deconstruction
       if possible. Otherwise, air will be released to the outside from open nodes.
@@ -161,6 +216,11 @@
   - bugfix: The HFR user interface would close when the machine is shut down.
   - bugfix: Atmospherics machinery will now share air from nodes after being rotated
       and reconnected to pipenet.
+  necromanceranne:
+  - spellcheck: Corrects every misspelled 'kenetic' in the codebase.
+  scriptis:
+  - refactor: some very large tgui lists (air alarms, all recipes techfab view, techweb
+      view) are loaded on-demand as you scroll, making them not lag so hard
   uaioy:
   - bugfix: The sustenance vendor in perma actually serves food now
   - bugfix: Cyborgs do not deathgasp twice when dying anymore
@@ -177,6 +237,10 @@
   - code_imp: progressbars no longer qdel their /image
   - bugfix: fixed a runtime in datum/thrownthing
   - bugfix: fixed an /image hard del in ghost code
+  - bugfix: fixes an image hard del
+  - code_imp: adds context to image hard dels to make them easier to track
+  - bugfix: fixes an /image harddel in station blueprints
+  - code_imp: cleaned up some more /image qdels
   xXPawnStarrXx:
   - rscadd: Added new lizard variants of existing foods for equality of edibility.
   - qol: made pickle jars reusable and vinegar craftable.
