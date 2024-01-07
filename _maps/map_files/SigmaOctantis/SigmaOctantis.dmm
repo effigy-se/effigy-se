@@ -1057,6 +1057,7 @@
 /obj/effect/turf_decal/siding/thinplating_new/corner{
 	dir = 1
 	},
+/obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "aPM" = (
@@ -3722,6 +3723,17 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/station/command/meeting_room)
+"cDm" = (
+/obj/effect/turf_decal/siding/wideplating_new,
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 1
+	},
+/obj/machinery/door/poddoor{
+	elevator_mode = 1;
+	transport_linked_id = "sec_lift"
+	},
+/turf/open/floor/iron/smooth_large,
+/area/ocean/generated)
 "cDI" = (
 /obj/machinery/teleport/hub,
 /obj/effect/turf_decal/tile/dark_blue/fourcorners,
@@ -3839,6 +3851,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/smooth_half,
 /area/station/command/heads_quarters/hop)
+"cIW" = (
+/obj/structure/transport/linear/public,
+/obj/machinery/elevator_control_panel/directional/east{
+	linked_elevator_id = "cargo_lift"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/cargo/storage)
 "cIZ" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -4732,6 +4751,9 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine/atmos)
+"dkO" = (
+/turf/open/floor/iron/dark,
+/area/station/cargo/storage)
 "dlp" = (
 /obj/machinery/computer/security{
 	dir = 4
@@ -15873,6 +15895,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/miningoffice)
 "kFF" = (
+/obj/structure/transport/linear/public,
 /turf/open/floor/plating/elevatorshaft,
 /area/station/security/brig)
 "kFI" = (
@@ -16360,6 +16383,13 @@
 "kVS" = (
 /turf/closed/wall/r_wall,
 /area/station/security/mechbay)
+"kVU" = (
+/obj/structure/transport/linear/public,
+/obj/effect/landmark/transport/transport_id{
+	specific_transport_id = "sec_lift"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/security/brig)
 "kVV" = (
 /turf/closed/wall/r_wall,
 /area/station/command/heads_quarters/captain)
@@ -16450,6 +16480,13 @@
 /obj/item/stack/medical/mesh,
 /turf/open/floor/iron/white/diagonal,
 /area/station/medical/treatment_center)
+"kYq" = (
+/obj/structure/transport/linear/public,
+/obj/machinery/elevator_control_panel/directional/west{
+	linked_elevator_id = "Engilift"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/engineering/main)
 "kYs" = (
 /obj/effect/turf_decal/siding/wideplating_new/end{
 	dir = 4
@@ -19442,6 +19479,7 @@
 /obj/effect/turf_decal/siding/thinplating_new{
 	dir = 1
 	},
+/obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "mWS" = (
@@ -22479,6 +22517,7 @@
 /obj/effect/turf_decal/siding/thinplating_new/corner{
 	dir = 4
 	},
+/obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "oWf" = (
@@ -24725,6 +24764,15 @@
 	},
 /turf/open/floor/plating,
 /area/station/cargo/storage)
+"qBx" = (
+/obj/machinery/lift_indicator/directional/north{
+	linked_elevator_id = "sec_lift"
+	},
+/obj/machinery/button/elevator/directional/north{
+	id = "sec_lift"
+	},
+/turf/open/floor/iron,
+/area/ocean/generated)
 "qBO" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/spawner/random/structure/tank_holder,
@@ -26526,6 +26574,11 @@
 /obj/effect/turf_decal/siding/wideplating_new,
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 1
+	},
+/obj/machinery/door/poddoor/preopen{
+	elevator_mode = 1;
+	name = "Elevator Door";
+	transport_linked_id = "sec_lift"
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/security/brig)
@@ -30372,6 +30425,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/small,
 /area/station/medical/medbay/central)
+"uzr" = (
+/obj/machinery/lift_indicator/directional/south{
+	linked_elevator_id = "sec_lift"
+	},
+/obj/machinery/button/elevator/directional/south{
+	id = "sec_lift"
+	},
+/turf/open/floor/glass/reinforced,
+/area/station/security/brig)
 "uzX" = (
 /obj/structure/closet/l3closet/scientist,
 /obj/effect/turf_decal/tile/purple{
@@ -34117,6 +34179,13 @@
 /obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/iron/diagonal,
 /area/station/command/heads_quarters/hos)
+"xdM" = (
+/obj/structure/transport/linear/public,
+/obj/machinery/elevator_control_panel/directional/east{
+	linked_elevator_id = "sec_lift"
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/station/security/brig)
 "xdX" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -50709,8 +50778,8 @@ hxh
 hxh
 hxh
 rHQ
-kFF
-kFF
+kVU
+xdM
 fEP
 tZJ
 wfC
@@ -50964,7 +51033,7 @@ uTw
 kGr
 hxh
 hxh
-hxh
+uzr
 ekI
 ekI
 ekI
@@ -71826,7 +71895,7 @@ lPX
 jNI
 mWj
 hMI
-hMI
+kYq
 hMI
 miU
 jZm
@@ -80758,7 +80827,7 @@ vdB
 iuS
 vyN
 aUk
-aUk
+cIW
 kJd
 oQd
 aCp
@@ -115730,10 +115799,10 @@ sXd
 sXd
 sXd
 sXd
-sXd
-sXd
-sXd
-sXd
+qSN
+qSN
+qSN
+qSN
 sXd
 sXd
 sXd
@@ -115987,12 +116056,12 @@ sXd
 sXd
 sXd
 sXd
-sXd
+qSN
 gQj
 gQj
-sXd
-sXd
-sXd
+cDm
+tQO
+tQO
 sXd
 sXd
 sXd
@@ -116244,12 +116313,12 @@ sXd
 sXd
 sXd
 sXd
-sXd
+qSN
 gQj
 gQj
-sXd
-sXd
-sXd
+cDm
+tQO
+tQO
 sXd
 sXd
 sXd
@@ -116501,12 +116570,12 @@ sXd
 sXd
 sXd
 sXd
-sXd
-sXd
-sXd
-sXd
-sXd
-sXd
+qSN
+qSN
+qSN
+qSN
+qBx
+tQO
 sXd
 sXd
 sXd
@@ -116762,8 +116831,8 @@ sXd
 gQj
 gQj
 gQj
-sXd
-sXd
+tQO
+tQO
 sXd
 sXd
 sXd
@@ -117019,8 +117088,8 @@ sXd
 gQj
 gQj
 gQj
-sXd
-sXd
+tQO
+tQO
 sXd
 sXd
 sXd
@@ -117273,11 +117342,11 @@ sXd
 sXd
 sXd
 sXd
-sXd
-sXd
-sXd
-sXd
-sXd
+tQO
+tQO
+tQO
+tQO
+tQO
 sXd
 sXd
 sXd
@@ -117530,11 +117599,11 @@ sXd
 sXd
 sXd
 sXd
-sXd
-sXd
-sXd
-sXd
-sXd
+tQO
+tQO
+tQO
+tQO
+tQO
 sXd
 sXd
 sXd
@@ -145784,8 +145853,8 @@ oTO
 ljo
 kqP
 oWb
+dkO
 iTK
-hEP
 hEP
 iTK
 jAa
@@ -146041,8 +146110,8 @@ oTO
 qgQ
 meh
 mWp
+dkO
 lxO
-ixk
 ixk
 lxO
 jAa
@@ -146298,8 +146367,8 @@ oTO
 fxZ
 apZ
 aPy
+dkO
 iTK
-hEP
 hEP
 iTK
 jAa
@@ -146550,12 +146619,12 @@ sXd
 sXd
 sXd
 gcm
-qic
-qic
+gcm
+gcm
 gcm
 sGg
 gcm
-gcm
+qic
 gcm
 gcm
 nDm
@@ -147071,7 +147140,7 @@ lWA
 czE
 czE
 czE
-gcm
+qic
 jAa
 jAa
 jAa
@@ -147328,7 +147397,7 @@ kcH
 tMT
 qqJ
 cbx
-gcm
+qic
 jAa
 jAa
 jAa
