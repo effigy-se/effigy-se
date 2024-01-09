@@ -145,7 +145,7 @@
 /obj/machinery/firealarm/update_appearance(updates)
 	. = ..()
 	if((my_area?.fire || LAZYLEN(my_area?.active_firelocks)) && !(obj_flags & EMAGGED) && !(machine_stat & (BROKEN|NOPOWER)))
-		set_light(l_range = 2.5, l_power = 1.5)
+		set_light(l_range = 2.5, l_power = 6) // EffigyEdit Change
 	else
 		set_light(l_range = 1.6, l_power = 1)
 
@@ -194,16 +194,16 @@
 		else
 			. += mutable_appearance(icon, "fire_disabled")
 			. += emissive_appearance(icon, "fire_level_e", src, alpha = src.alpha)
-			set_light(l_color = COLOR_WHITE)
+			set_light(l_color = COLOR_LIGHT_FIXTURE_NORMAL) // EffigyEdit Change
 
 	else if(my_area?.fire_detect && my_area?.fire)
 		. += mutable_appearance(icon, "fire_alerting")
 		. += emissive_appearance(icon, "fire_alerting_e", src, alpha = src.alpha)
-		set_light(l_color = LIGHT_COLOR_INTENSE_RED)
+		set_light(l_color = COLOR_WHITE)
 	else
 		. += mutable_appearance(icon, "fire_alerting")
 		. += emissive_appearance(icon, "fire_alerting_e", src, alpha = src.alpha)
-		set_light(l_color = LIGHT_COLOR_INTENSE_RED)
+		set_light(l_color = COLOR_WHITE)
 
 /obj/machinery/firealarm/emp_act(severity)
 	. = ..()
