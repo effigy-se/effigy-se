@@ -347,6 +347,7 @@ const GenderButton = (props: {
           <> </>
         )
       }
+      isOpen={false}
     >
       <Button
         onClick={() => {
@@ -426,6 +427,7 @@ const MainFeature = (props: {
           <> </>
         )
       }
+      isOpen={false}
     >
       <Button
         mt="-3px"
