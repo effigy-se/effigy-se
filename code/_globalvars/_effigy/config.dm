@@ -55,6 +55,10 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/string/effigy_api_key
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
+/// New account registration URL
+/datum/config_entry/string/account_registration_url
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
 /datum/config_entry/number/cryo_min_ssd_time
 	default = 15
 

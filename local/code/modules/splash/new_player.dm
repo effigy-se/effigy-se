@@ -12,6 +12,14 @@
 	if(client.interviewee)
 		return FALSE
 
+	if(SSdbcore.IsConnected() && !client.client_authenticated)
+		sleep(3 SECONDS)
+		if(!client.client_authenticated) // retry
+			if(!GLOB.account_alert)
+				GLOB.account_alert = new
+			GLOB.account_alert.ui_interact(client.mob)
+			return FALSE
+
 	if(href_list["observe"])
 		play_lobby_button_sound()
 		make_me_an_observer()

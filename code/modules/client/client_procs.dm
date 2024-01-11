@@ -681,15 +681,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/client_is_in_db = query_client_in_db.NextRow()
 
 	if(!client_is_in_db)
-		// EffigyEdit Add - PANICBUNKER
+		// EffigyEdit Add - Whitelist enforcement
 		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
 			log_access("Failed Login: [key] - [address] - Non-verified account attempting to connect.")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - [address] - Non-verified account attempting to connect</span>")
-			to_chat_immediate(src, {"<div class='efchatalert_6'>[EFSPAN_ANNOUNCE_MIN_TITLE("Not Authorized \[2F173/2]")]<br>[EFSPAN_ANNOUNCE_MIN_TEXT("Effigy uses a player whitelist and your account was not found! Please visit <a href=\"https://effigy.se\">https://effigy.se</a> for details and to submit an application for the server.")]</div>"})
-			qdel(query_client_in_db)
+			to_chat_immediate(src, {"<div class='efchatalert_6'>[EFSPAN_ANNOUNCE_MIN_TITLE("Not Authorized \[2F173/2]")]<br>[EFSPAN_ANNOUNCE_MIN_TEXT("Effigy uses a player whitelist and your account was not found! Please visit <a href=\"https://effigy.se/new-players/\">https://effigy.se/new-players/</a> for details and to submit an application for the server.")]</div>"})
+			//Check if there's not already shared alert window open; open a new one if one is not present
+			if(!GLOB.account_alert)
+				GLOB.account_alert = new
 			sleep(3 SECONDS)
-			to_chat_immediate(src, SPAN_BOX_ALERT(ORANGE, "2F173/2: Disconnecting player"))
-			qdel(src)
+			GLOB.account_alert.ui_interact(mob)
+			qdel(query_client_in_db)
 			return
 		// EffigyEdit Add End
 		new_player = 1
@@ -711,6 +713,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			GLOB.bunker_passthrough -= ckey
 		// EffigyEdit Add End
 	qdel(query_client_in_db)
+	client_authenticated = TRUE // EffigyEdit Add - Client Auth
 	var/datum/db_query/query_get_client_age = SSdbcore.NewQuery(
 		"SELECT firstseen, DATEDIFF(Now(),firstseen), accountjoindate, DATEDIFF(Now(),accountjoindate) FROM [format_table_name("player")] WHERE ckey = :ckey",
 		list("ckey" = ckey)
