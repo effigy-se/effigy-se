@@ -685,12 +685,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
 			log_access("Failed Login: [key] - [address] - Non-verified account attempting to connect.")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - [address] - Non-verified account attempting to connect</span>")
-			to_chat_immediate(src, {"<div class='efchatalert_6'>[EFSPAN_ANNOUNCE_MIN_TITLE("Not Authorized \[2F173/2]")]<br>[EFSPAN_ANNOUNCE_MIN_TEXT("Effigy uses a player whitelist and your account was not found! Please visit <a href=\"https://effigy.se/new-players/\">https://effigy.se/new-players/</a> for details and to submit an application for the server.")]</div>"})
-			//Check if there's not already shared alert window open; open a new one if one is not present
-			if(!GLOB.account_alert)
-				GLOB.account_alert = new
-			sleep(3 SECONDS)
-			GLOB.account_alert.ui_interact(mob)
 			qdel(query_client_in_db)
 			return
 		// EffigyEdit Add End
