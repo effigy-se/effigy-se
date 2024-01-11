@@ -13,9 +13,11 @@ export const EffigyAccountRestricted = (props) => {
     >
       <Window.Content>
         <NoticeBox info fontSize="2em">
-          Account not on whitelist
+          Whitelisting Required
         </NoticeBox>
-        <Section title="New player information" fontSize="1.25em">
+      </Window.Content>
+      <Window.Content scrollable mt={10}>
+        <Section title="New Player Information" fontSize="1.25em">
           Effigy uses a player whitelist and your account was not found!
           <br />
           <br />
