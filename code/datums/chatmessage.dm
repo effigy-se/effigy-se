@@ -159,8 +159,8 @@
 
 	// Calculate target color if not already present
 	if (!target.chat_color || target.chat_color_name != chat_color_name_to_use)
-		target.chat_color = colorize_string(chat_color_name_to_use)
-		target.chat_color_darkened = colorize_string(chat_color_name_to_use, 0.85, 0.85)
+		target.chat_color = get_chat_color_string(chat_color_name_to_use) // EffigyEdit Change - Chat Colors - Original: target.chat_color = colorize_string(chat_color_name_to_use)
+		target.chat_color_darkened = get_chat_color_string(chat_color_name_to_use, darkened = TRUE) // EffigyEdit Change - Chat Colors - Original: target.chat_color_darkened = colorize_string(chat_color_name_to_use, 0.85, 0.85)
 		target.chat_color_name = chat_color_name_to_use
 
 	// Append language icon if the language uses one
@@ -176,13 +176,8 @@
 	text = "[prefixes?.Join("&nbsp;")][text]"
 
 	// We dim italicized text to make it more distinguishable from regular text
-	// EffigyEdit Change - Chat color preference - Original: var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
-	var/tgt_color
-	if(obscured)
-		tgt_color = target.chat_color_darkened ? "#d8d8d8" : "#ffffff"
-	else
-		tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
-	// EffigyEdit Change End
+	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
+
 	// Approximate text height
 	var/complete_text = "<span style='color: [tgt_color]'><span class='center [extra_classes.Join(" ")]'>[owner.say_emphasis(text)]</span></span>"
 
