@@ -1,6 +1,7 @@
 import { filterMap, sortBy } from 'common/collections';
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
+import { Popover } from 'react-tiny-popover';
 
 import { sendAct, useBackend, useLocalState } from '../../../backend';
 import {
@@ -11,10 +12,8 @@ import {
   Icon,
   Input,
   LabeledList,
-  Popper,
   SideDropdown,
   Stack,
-  TrackOutsideClicks,
 } from '../../../components';
 import { CharacterPreview } from '../../common/CharacterPreview';
 import {
@@ -316,38 +315,33 @@ const GenderButton = (props: {
   );
 
   return (
-    <Popper
-      options={{
-        placement: 'right-end',
-      }}
-      popperContent={
-        genderMenuOpen ? (
-          <Stack backgroundColor="white" ml={0.5} p={0.3}>
-            {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
-              (gender) => {
-                return (
-                  <Stack.Item key={gender}>
-                    <Button
-                      selected={gender === props.gender}
-                      onClick={() => {
-                        props.handleSetGender(gender);
-                        setGenderMenuOpen(false);
-                      }}
-                      fontSize="22px"
-                      icon={GENDERS[gender].icon}
-                      tooltip={GENDERS[gender].text}
-                      tooltipPosition="top"
-                    />
-                  </Stack.Item>
-                );
-              },
-            )}
-          </Stack>
-        ) : (
-          <> </>
-        )
+    <Popover
+      isOpen={genderMenuOpen}
+      onClickOutside={() => setGenderMenuOpen(false)}
+      positions="right"
+      content={
+        <Stack backgroundColor="white" ml={0.5} p={0.3}>
+          {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
+            (gender) => {
+              return (
+                <Stack.Item key={gender}>
+                  <Button
+                    selected={gender === props.gender}
+                    onClick={() => {
+                      props.handleSetGender(gender);
+                      setGenderMenuOpen(false);
+                    }}
+                    fontSize="22px"
+                    icon={GENDERS[gender].icon}
+                    tooltip={GENDERS[gender].text}
+                    tooltipPosition="top"
+                  />
+                </Stack.Item>
+              );
+            },
+          )}
+        </Stack>
       }
-      isOpen={false}
     >
       <Button
         onClick={() => {
@@ -358,7 +352,7 @@ const GenderButton = (props: {
         tooltip="Gender"
         tooltipPosition="top"
       />
-    </Popper>
+    </Popover>
   );
 };
 
@@ -399,35 +393,28 @@ const MainFeature = (props: {
   };
 
   return (
-    <Popper
-      options={{
-        placement: 'bottom-start',
-      }}
-      popperContent={
-        isOpen ? (
-          <TrackOutsideClicks onOutsideClick={props.handleClose}>
-            <ChoicedSelection
-              name={catalog.name}
-              catalog={catalog}
-              selected={currentValue}
-              supplementalFeature={supplementalFeature}
-              supplementalValue={
-                supplementalFeature &&
-                data.character_preferences.supplemental_features[
-                  supplementalFeature
-                ]
-              }
-              onClose={handleClose}
-              onSelect={handleSelect}
-              searchText={searchText}
-              setSearchText={setSearchText}
-            />
-          </TrackOutsideClicks>
-        ) : (
-          <> </>
-        )
+    <Popover
+      positions="bottom"
+      onClickOutside={() => handleClose()}
+      isOpen={isOpen}
+      content={
+        <ChoicedSelection
+          name={catalog.name}
+          catalog={catalog}
+          selected={currentValue}
+          supplementalFeature={supplementalFeature}
+          supplementalValue={
+            supplementalFeature &&
+            data.character_preferences.supplemental_features[
+              supplementalFeature
+            ]
+          }
+          onClose={handleClose}
+          onSelect={handleSelect}
+          searchText={searchText}
+          setSearchText={setSearchText}
+        />
       }
-      isOpen={false}
     >
       <Button
         mt="-3px"
@@ -482,21 +469,7 @@ const MainFeature = (props: {
           />
         )}
       </Button>
-      <Box
-        mt={-0.5}
-        mb={1.1}
-        style={{
-          // Text below feature buttons
-          height: `14px`,
-          width: `${CLOTHING_CELL_SIZE}px`,
-          overflowWrap: 'anywhere',
-        }}
-        textAlign="center"
-        textColor="#eaeaea"
-      >
-        {catalog.name}
-      </Box>
-    </Popper>
+    </Popover>
   );
 };
 
