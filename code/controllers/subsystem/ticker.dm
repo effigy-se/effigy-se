@@ -217,6 +217,7 @@ SUBSYSTEM_DEF(ticker)
 				CONFIG_SET(flag/setup_bypass_player_check, TRUE)
 
 			if(timeLeft <= 0 && launch_queued && totalPlayersReady > 0)
+				CONFIG_SET(flag/setup_bypass_player_check, TRUE)
 				SSticker.queue_game_start(94 SECONDS)
 			// EffigyEdit Add End
 
