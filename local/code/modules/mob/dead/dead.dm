@@ -7,7 +7,7 @@
 		. += "Game starting in [round(time_remaining/10)]s"
 	else if(time_remaining == -10)
 		. += "Game start delayed by an administrator"
-	else if(SSticker.launch_queued)
+	else if(SSticker.launch_queued && !SSticker.totalPlayersReady)
 		. += "Game will start when players are ready"
 	else
 		. += pick(SSticker.fluff_status)
