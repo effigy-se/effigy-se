@@ -32,6 +32,9 @@ SUBSYSTEM_DEF(ticker)
 
 	var/tipped = FALSE //Did we broadcast the tip of the day yet?
 	var/selected_tip // What will be the tip of the day?
+	var/lobby_track_fired = FALSE //Have we started the lobby music // EffigyEdit Add - Lobby Music
+	var/lobby_track_id //What is the lobby track this round // EffigyEdit Add - Lobby Music
+	var/lobby_track_duration //how long is the lobby track // EffigyEdit Add - Lobby Music
 
 	var/timeLeft //pregame timer
 	var/start_at
@@ -123,6 +126,15 @@ SUBSYSTEM_DEF(ticker)
 	else
 		login_music = "[global.config.directory]/title_music/sounds/[pick(music)]"
 
+	// EffigyEdit Add - Lobby Music
+	lobby_track_id = CONFIG_GET(string/pregame_lobby_track)
+	if(isnull(lobby_track_id))
+		lobby_track_fired = TRUE
+		lobby_track_duration = -2
+	lobby_track_duration = CONFIG_GET(number/pregame_lobby_duration) - 10 SECONDS
+	if(isnull(lobby_track_duration))
+		lobby_track_duration = -3
+	// EffigyEdit Add End
 
 	if(!GLOB.syndicate_code_phrase)
 		GLOB.syndicate_code_phrase = generate_code_phrase(return_list=TRUE)
@@ -186,7 +198,13 @@ SUBSYSTEM_DEF(ticker)
 				return // 'DELAYED' delayed by an admin
 			timeLeft -= wait
 
-			if(timeLeft <= 450 && !tipped) // EffigyEdit Change
+			// EffigyEdit Add - Lobby Music
+			if(timeLeft <= lobby_track_duration && lobby_track_duration > 0 && !lobby_track_fired)
+				play_lobby_track(lobby_track_id)
+				lobby_track_fired = TRUE
+			// EffigyEdit Add End
+
+			if(timeLeft <= 300 && !tipped)
 				send_tip_of_the_round(world, selected_tip)
 				tipped = TRUE
 

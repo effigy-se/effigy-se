@@ -55,6 +55,13 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/string/effigy_api_key
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
+/// Lobby music track ID
+/datum/config_entry/string/pregame_lobby_track
+
+/// Lobby music track duration
+/datum/config_entry/number/pregame_lobby_duration
+	default = -1
+
 /datum/config_entry/number/cryo_min_ssd_time
 	default = 15
 

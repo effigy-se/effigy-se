@@ -6,7 +6,7 @@
 /proc/play_lobby_track(selected_track)
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
-		log_game("Youtube-dl was not configured, action unavailable") //Check config.txt for the INVOKE_YOUTUBEDL value
+		log_game("Youtube-dl was not configured, lobby music unavailable") //Check config.txt for the INVOKE_YOUTUBEDL value
 		return
 
 	if(S_TIMER_COOLDOWN_TIMELEFT(SStimer, COOLDOWN_INTERNET_SOUND))
@@ -17,7 +17,7 @@
 		selected_track = trim(selected_track)
 		selected_track = shell_url_scrub(selected_track)
 		if(findtext(selected_track, ":") && !findtext(selected_track, GLOB.is_http_protocol))
-			message_admins("Error in attempt to start lobby music track: Invalid URL [selected_track]")
+			log_game("Error in attempt to start lobby music track: Invalid URL [selected_track]")
 			return
 
 	var/web_sound_url = ""
@@ -31,7 +31,7 @@
 	var/stdout = output[SHELLEO_STDOUT]
 	var/stderr = output[SHELLEO_STDERR]
 	if(errorlevel)
-		message_admins("Error in attempt to start lobby music track: [stderr]")
+		log_game("Error in attempt to start lobby music track: [stderr]")
 		return
 	var/list/data
 	try
@@ -42,14 +42,6 @@
 		return
 	if(data["url"])
 		web_sound_url = data["url"]
-	var/title = "[data["title"]]"
-	var/webpage_url = title
-	music_extra_data["duration"] = DisplayTimeText(data["duration"] * 1 SECONDS)
-	music_extra_data["link"] = data["webpage_url"]
-	music_extra_data["artist"] = data["artist"]
-	music_extra_data["upload_date"] = data["upload_date"]
-	music_extra_data["album"] = data["album"]
-	duration = data["duration"] * 1 SECONDS
 	music_extra_data["title"] = data["title"]
 
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
