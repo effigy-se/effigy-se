@@ -1,9 +1,10 @@
 import { filterMap, sortBy } from 'common/collections';
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
+import { useState } from 'react';
 import { Popover } from 'react-tiny-popover';
 
-import { sendAct, useBackend, useLocalState } from '../../../backend';
+import { sendAct, useBackend } from '../../../backend';
 import {
   Autofocus,
   Box,
@@ -47,7 +48,7 @@ const CLOTHING_SELECTION_MULTIPLIER = 5.3;
 const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
-  handleLoadout: () => void; // EffigyEdit Add Customization
+  handleLoadout: () => void;
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -107,20 +108,17 @@ const CharacterControls = (props: {
   );
 };
 
-const ChoicedSelection = (
-  props: {
-    name: string;
-    catalog: FeatureChoicedServerData;
-    selected: string;
-    supplementalFeature?: string;
-    supplementalValue?: unknown;
-    onClose: () => void;
-    onSelect: (value: string) => void;
-    searchText: string;
-    setSearchText: (value: string) => void;
-  },
-  context,
-) => {
+const ChoicedSelection = (props: {
+  name: string;
+  catalog: FeatureChoicedServerData;
+  selected: string;
+  supplementalFeature?: string;
+  supplementalValue?: unknown;
+  onClose: () => void;
+  onSelect: (value: string) => void;
+  searchText: string;
+  setSearchText: (value: string) => void;
+}) => {
   const { act } = useBackend<PreferencesMenuData>();
 
   const {
@@ -309,10 +307,7 @@ const GenderButton = (props: {
   handleSetGender: (gender: Gender) => void;
   gender: Gender;
 }) => {
-  const [genderMenuOpen, setGenderMenuOpen] = useLocalState(
-    'genderMenuOpen',
-    false,
-  );
+  const [genderMenuOpen, setGenderMenuOpen] = useState(false);
 
   return (
     <Popover
@@ -383,10 +378,7 @@ const MainFeature = (props: {
   } = props;
 
   const supplementalFeature = catalog.supplemental_feature;
-  let [searchText, setSearchText] = useLocalState(
-    catalog.name + '_choiced_search',
-    '',
-  );
+  let [searchText, setSearchText] = useState('');
   const handleCloseInternal = () => {
     handleClose();
     setSearchText('');
@@ -585,13 +577,10 @@ export const getRandomization = (
 
 export const MainPage = (props: { openSpecies: () => void }) => {
   const { act, data } = useBackend<PreferencesMenuData>();
-  const [currentClothingMenu, setCurrentClothingMenu] = useLocalState<
-    string | null
-  >('currentClothingMenu', null);
-  const [multiNameInputOpen, setMultiNameInputOpen] = useLocalState(
-    'multiNameInputOpen',
-    false,
+  const [currentClothingMenu, setCurrentClothingMenu] = useState<string | null>(
+    null,
   );
+  const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
   const [randomToggleEnabled] = useRandomToggleState();
 
   return (
