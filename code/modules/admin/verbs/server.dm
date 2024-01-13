@@ -105,11 +105,16 @@
 	set name = "Start Now"
 	if(SSticker.current_state == GAME_STATE_PREGAME || SSticker.current_state == GAME_STATE_STARTUP)
 		if(!SSticker.start_immediately)
-			var/localhost_addresses = list("127.0.0.1", "::1")
-			if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
-				if(tgui_alert(usr, "Are you sure you want to start the round?","Start Now",list("Start Now","Cancel")) != "Start Now")
+			// EffigyEdit Change Start - Lobby Music
+			switch(tgui_alert(usr, "Are you sure you want to force the round start countdown?","Start Now",list("Start Now", "Debug", "Cancel")))
+				if("Start Now")
+					CONFIG_SET(flag/setup_bypass_player_check, TRUE)
+					SSticker.queue_game_start(94 SECONDS)
+				if("Debug")
+					SSticker.start_immediately = TRUE
+				else
 					return FALSE
-			SSticker.start_immediately = TRUE
+			// EffigyEdit Change End
 			log_admin("[usr.key] has started the game.")
 			var/msg = ""
 			if(SSticker.current_state == GAME_STATE_STARTUP)
@@ -234,7 +239,7 @@
 		return tgui_alert(usr, "Too late... The game has already started!")
 	newtime = newtime*10
 	CONFIG_SET(flag/setup_bypass_player_check, TRUE)
-	SSticker.SetTimeLeft(newtime)
+	SSticker.queue_game_start(newtime) // EffigyEdit Change - Game Lobby - Original: SSticker.SetTimeLeft(newtime)
 	SSticker.start_immediately = FALSE
 	if(newtime < 0)
 		to_chat(world, "<span class='infoplain'><b>The game start has been delayed.</b></span>", confidential = TRUE)
