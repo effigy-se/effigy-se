@@ -2,7 +2,6 @@ import { filterMap, sortBy } from 'common/collections';
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { useState } from 'react';
-import { Popover } from 'react-tiny-popover';
 
 import { sendAct, useBackend } from '../../../backend';
 import {
@@ -13,6 +12,7 @@ import {
   Icon,
   Input,
   LabeledList,
+  Popper,
   SideDropdown,
   Stack,
 } from '../../../components';
@@ -310,10 +310,10 @@ const GenderButton = (props: {
   const [genderMenuOpen, setGenderMenuOpen] = useState(false);
 
   return (
-    <Popover
+    <Popper
       isOpen={genderMenuOpen}
       onClickOutside={() => setGenderMenuOpen(false)}
-      positions="right"
+      placement="right-end"
       content={
         <Stack backgroundColor="white" ml={0.5} p={0.3}>
           {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
@@ -347,7 +347,7 @@ const GenderButton = (props: {
         tooltip="Gender"
         tooltipPosition="top"
       />
-    </Popover>
+    </Popper>
   );
 };
 
@@ -385,9 +385,9 @@ const MainFeature = (props: {
   };
 
   return (
-    <Popover
-      positions="bottom"
-      onClickOutside={() => handleClose()}
+    <Popper
+      placement="bottom-start"
+      onClickOutside={handleClose}
       isOpen={isOpen}
       content={
         <ChoicedSelection
@@ -461,7 +461,21 @@ const MainFeature = (props: {
           />
         )}
       </Button>
-    </Popover>
+      <Box
+        mt={-0.5}
+        mb={1.1}
+        style={{
+          // Text below feature buttons
+          height: `14px`,
+          width: `${CLOTHING_CELL_SIZE}px`,
+          overflowWrap: 'anywhere',
+        }}
+        textAlign="center"
+        textColor="#eaeaea"
+      >
+        {catalog.name}
+      </Box>
+    </Popper>
   );
 };
 
