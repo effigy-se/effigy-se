@@ -243,6 +243,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/validate_puzzgrids,
 	/client/proc/GeneratePipeSpritesheet,
 	/client/proc/view_runtimes,
+	/client/proc/stop_weather,
 	// EffigyEdit Add -
 	/client/proc/reload_interactions, // Interactions
 	/client/proc/test_area_spawner,	// Automapper

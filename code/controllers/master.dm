@@ -279,6 +279,8 @@ GLOBAL_REAL(Master, /datum/controller/master)
 		world.sleep_offline = FALSE
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
 
+	SSticker.timeLeft = (CONFIG_GET(number/lobby_countdown) * 10) // EffigyEdit Add - Custom Lobby
+
 /**
  * Initialize a given subsystem and handle the results.
  *
