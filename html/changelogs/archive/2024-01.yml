@@ -251,11 +251,123 @@
 2024-01-10:
   LT3:
   - bugfix: Light range increased corresponding to upstream changes
-2024-01-12:
+2024-01-14:
   LT3:
+  - bugfix: Tramstation east APC will no longer be destroyed when the tram crashes
+  - qol: Tramstation central power and disposals moved out of the wall
+  - bugfix: Unencoded server admin announcements will now actually broadcast
+  - bugfix: Icebox kitchen has its light switch again
+  - bugfix: Icebox medbay hallway now has a fire alarm
   - bugfix: Autotransfer should no longer call a vote as soon as the shift starts
   - rscadd: Press any key to start
-2024-01-16:
-  LT3:
   - rscadd: New crew manifest announcement
   - code_imp: Delayed game start will now give players time to ready up before starting
+  13spacemen:
+  - qol: If you can't heal a body part, you won't get a healing time delay. No more
+      spending 5 seconds healing a body part only to get a "can't heal that" message.
+  - image: New liquid plasma sprites from SS14!
+  - bugfix: Healing simplemobs with sutures and other stacks works again
+  - spellcheck: Healing mobs with medical stacks like suture and mesh give better
+      user feedback messages
+  Absolucy:
+  - bugfix: Fixed the Codex Cicatrix always requiring a dead body, despite the description
+      saying leather or a hide would work too.
+  ArcaneMusic:
+  - admin: Added a new admin verb that ends all active weather within the weather
+      subsystem.
+  - qol: ID cards now set their accounts with Alt-Right click.
+  - bugfix: ID cards now once again have contextual screen tips showing what buttons
+      do what actions.
+  Chubbygummibear:
+  - bugfix: popup screen locs will work on clients >1614. Security cameras and Spyglass
+      will work
+  FlufflesTheDog:
+  - bugfix: Certain areas are now properly protected against grid check. Namely the
+      supermatter should consistently be protected.
+  Ghommie:
+  - bugfix: Fixed misfiring for firearms like tinkered detective revolvers.
+  IndieanaJones:
+  - balance: Nightmare's Light Eater can now stun targets under certain conditions.
+  - bugfix: Dynamic midround rolls will properly consider roundstart players as part
+      of the living population again, allowing antagonists with a minimum population
+      value to spawn when they should be able to.
+  - bugfix: Players who observe before roundstart can be considered for midround ghost
+      roles again.
+  - bugfix: Some antagonists which had elements that scale with living station population
+      now function properly again.
+  JohnFulpWillard:
+  - bugfix: The HoP's cartridge vending machine now sells regular PDAs instead of
+      base command ones.
+  - bugfix: Eldritch reagent (the one that heals heretics) now heal heretic monsters
+      rather than kill them.
+  - bugfix: Refried beans and Spanish rice now lets you take the bowl back after eating
+      it.
+  Majkl-J:
+  - code_imp: The check that prevents your stuff from dropping when you have robotic
+      parts is now more robust
+  Melbert:
+  - balance: Blood cultists can now convert a Null Rod into a cult weapon on an offer
+      rune. The strength of the weapon it is converted into depends on how many cultists
+      the Chaplain crit / killed with it. At five or more, it will turn into a Bastard
+      Sword. Note, sacrificing someone holding a Null Rod will automatically convert
+      it after they are gibbed.
+  - balance: Heretics no longer produce a Bastard Sword upon cult conversion. They
+      are still immune to cult stun and cannot be converted by blood cultists.
+  - bugfix: Lunar Parade has the potential to break less.
+  - bugfix: Carps now migrate slightly better, probably.
+  - bugfix: And Poly now talks better, probably.
+  - admin: Several types are now more accessible via the "spawn" verb (and friends),
+      meaning you can type 'Spawn" Modsuit' or 'Spawn "Jumpsuit' in the command bar
+      and it'll just give you a list of modsuits or jumpsuits to pick from.
+  - bugfix: Lionhunter Rifle is now available at the same point as Mawed Crucible,
+      making it available to all paths again.
+  - bugfix: Lock knowledge now goes the correct order. Mark -> Ritual -> Unique item,
+      rather than backwards.
+  - bugfix: Chameleon Suits will now automatically set your helmet into a hood if
+      using a hooded suit again
+  - bugfix: Blood Drunk Miner (Hunter version) should dash a bit more.
+  - bugfix: Fix Ringleader's Rise not causing as many hallucinations as expected
+  - bugfix: Fixes some cult spells being unable to heal constructs (blood rites particularly)
+  - bugfix: Ghost alert for buying a badass balloon should have a proper icon
+  OrionTheFox:
+  - image: Resprited a majority of undershirts
+  Paxilmaniac:
+  - qol: The heat-proof catwalk made by heat-proof rods will go away when a tile is
+      placed on it, rather than sticking around and needing to be removed manually
+  - bugfix: The lighting will not irreparably break on tiles where plating was placed
+      on lava-proof catwalks
+  - code_imp: Some single letter variables and the structure of the code around placing
+      tiles on lava-proof catwalks has been improved
+  - bugfix: The deployable component will now actually stop rotating things when the
+      variable to not do that is set
+  - bugfix: The "required_container_accepts_subtypes" variable on chemical reactions
+      now actually works again
+  Rhials:
+  - bugfix: Specialty drinks crafted in the crafting menu will now create the intended
+      reagents, instead of containing the reagents used to craft it.
+  SyncIt21:
+  - bugfix: ejecting cells from microwaves via ctrl click now requires player proximity.
+  - code_imp: smart fridge content overlay now uses `base_icon_state` instead of a
+      separate var
+  TheVekter:
+  - admin: Made logging for BSA targeting and firing easier to find for admins.
+  Thunder12345:
+  - bugfix: Pipeguns no longer have floating bayonets
+  Watermelon914:
+  - bugfix: Fixed being able to download the contractor program on the syndie store.
+  jlsnow301:
+  - admin: Fixed the bluescreen in the centcom pod launcher.
+  - bugfix: Medical records console should be useable again
+  - bugfix: Dropdowns should be more performant
+  vinylspiders:
+  - bugfix: if your voice changes (e.g. through a voice changer or changeling mimicry)
+      your runechat will now appear as the mob you are speaking in the voice of
+  - bugfix: when doing emotes with your face obscured, your runechat color will now
+      appear as either that of Unknown or the mob you are wearing the id of (if you
+      are wearing a mask with someone else's id)
+  - code_imp: removed a dupe trait entry in the traits_by_type list
+  zxaber:
+  - bugfix: The various borg apparatuses can no longer pick up other internal borg
+      tools.
+  - bugfix: Ripley MK-Is and Paddys now correctly make incoming projectiles hit the
+      pilot again.
