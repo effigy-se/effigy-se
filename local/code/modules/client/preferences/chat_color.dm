@@ -9,13 +9,13 @@
 	return
 
 /datum/preference/color/chat_color/deserialize(input, datum/preferences/preferences)
-	return process_chat_color(input)
+	return process_chat_color(sanitize_hexcolor(input))
 
 /datum/preference/color/chat_color/create_default_value()
 	return process_chat_color("#[random_color()]")
 
 /datum/preference/color/chat_color/serialize(input)
-	return process_chat_color(input)
+	return process_chat_color(sanitize_hexcolor(input))
 
 /mob/living/carbon/human/proc/apply_preference_chat_color(value)
 	if(isnull(value))
@@ -25,6 +25,22 @@
 	chat_color_darkened = process_chat_color(value, sat_shift = 0.85, lum_shift = 0.85)
 	chat_color_name = name
 	return TRUE
+
+#define CHAT_COLOR_NORMAL 1
+#define CHAT_COLOR_DARKENED 2
+
+/// Get the mob's chat color by looking up their name in the cached list, if no match is found default to colorize_string().
+/datum/chatmessage/proc/get_chat_color_string(name, darkened)
+	var/chat_color_strings = GLOB.chat_colors_by_mob_name[name]
+	if(chat_color_strings)
+		return darkened ? chat_color_strings[CHAT_COLOR_DARKENED] : chat_color_strings[CHAT_COLOR_NORMAL]
+	if(darkened)
+		return colorize_string(name, 0.85, 0.85)
+
+	return colorize_string(name)
+
+#undef CHAT_COLOR_NORMAL
+#undef CHAT_COLOR_DARKENED
 
 #define CM_COLOR_HUE 1
 #define CM_COLOR_SATURATION 2
@@ -41,7 +57,7 @@
 
 /**
  * Converts a given color to comply within a smaller subset of colors to be used in runechat.
- * If a color is outside the min/max saturation or value/lum, it will be set at the nearest
+ * If a color is outside the min/max saturation or lum, it will be set at the nearest
  * value that passes validation.
  *
  * Arguments:
