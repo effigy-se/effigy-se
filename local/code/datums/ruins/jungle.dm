@@ -49,3 +49,9 @@
 	suffix = "caves_generator_right_here.dmm"
 	name = "Generator, Right Here!"
 	description = "I knew transferring to power recovery was a fuckin' bad idea. I'm going back to scouting, on god!"
+
+/datum/map_template/ruin/jungle_cave/hut
+	id = "caves_hut"
+	suffix = "caves_hut.dmm"
+	name = "Underground Hut"
+	description = "Maybe it'll have a neat trinket or accessory?"
