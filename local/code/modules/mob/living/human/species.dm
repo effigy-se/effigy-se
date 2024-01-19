@@ -1,4 +1,3 @@
-/*
 /**
  * Returns a list of strings representing features this species has.
  *
@@ -28,4 +27,3 @@
 	GLOB.features_by_species[type] = features
 
 	return features
-*/
