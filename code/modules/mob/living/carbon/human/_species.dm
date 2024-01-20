@@ -1658,6 +1658,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	former_tail_owner.clear_mood_event("tail_balance_lost")
 	former_tail_owner.clear_mood_event("wrong_tail_regained")
 
+/* EffigyEdit Remove - moved to local/code/modules/mob/living/human/species.dm
 /// Returns a list of strings representing features this species has.
 /// Used by the preferences UI to know what buttons to show.
 /datum/species/proc/get_features()
@@ -1686,6 +1687,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	GLOB.features_by_species[type] = features
 
 	return features
+*/// EffigyEdit Remove End
 
 // EffigyEdit Add - Customization
 /datum/species/proc/apply_supplementary_body_changes(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
