@@ -51,8 +51,8 @@ export const EffigyAccountRestricted = (props) => {
           member of the community.
           <br />
           <br />
-          Hit the button to verify your Discord account, read a summary of the
-          server and Discord rules, and create an Effigy profile.
+          Hit the button to verify your Discord account and create an Effigy
+          profile.
           <br />
           <br />
           <Button
