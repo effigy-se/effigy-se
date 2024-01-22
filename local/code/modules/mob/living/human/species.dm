@@ -1,4 +1,3 @@
-/*
 /**
  * Returns a list of strings representing features this species has.
  *
@@ -17,6 +16,7 @@
 		if ( \
 			(preference.relevant_mutant_bodypart in GLOB.default_mutant_bodyparts[name]) \
 			|| (preference.relevant_inherent_trait in inherent_traits) \
+			|| (preference.relevant_head_flag && check_head_flags(preference.relevant_head_flag)) \
 		)
 			features += preference.savefile_key
 
@@ -28,4 +28,3 @@
 	GLOB.features_by_species[type] = features
 
 	return features
-*/
