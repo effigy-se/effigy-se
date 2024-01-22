@@ -15,6 +15,12 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	VALIDATE_CLIENT(src)
 
+	// EffigyEdit Add - Whitelist enforcement
+	if(!client_authenticated)
+		to_chat(usr, span_danger("You are not authenticated on the server."))
+		return
+	// EffigyEdit Add End
+
 	if(!holder)
 		if(!GLOB.ooc_allowed)
 			to_chat(src, span_danger("OOC is globally muted."))
