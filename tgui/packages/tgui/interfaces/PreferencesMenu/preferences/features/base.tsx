@@ -399,6 +399,10 @@ export const FeatureValueInput = (props: {
     createSetPreference(props.act, props.featureId)(newValue);
   };
 
+  useEffect(() => {
+    setPredictedValue(props.value);
+  }, [data.active_slot]);
+
   return (
     <ServerPreferencesFetcher
       render={(serverData) => {
