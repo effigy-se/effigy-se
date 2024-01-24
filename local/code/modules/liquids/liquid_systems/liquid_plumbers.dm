@@ -294,6 +294,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on, 0)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply, 0)
 
+// Stops at 30 height - perfect for automatically refilling pools and other water fixtures. SHOG TODO: Standardize liquid heights into defines (or use ""::"?)
+/obj/machinery/plumbing/floor_pump/output/on/supply/waist_deep
+	height_regulator = 30
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply/waist_deep, 0)
+
 /obj/item/construction/plumbing/engineering
 	name = "engineering plumbing constructor"
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed for logistics regarding fluids."

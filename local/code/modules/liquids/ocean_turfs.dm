@@ -1,6 +1,7 @@
 /// HEY!! LISTEN!!
 /// Not every turf works ATM thanks to some issue we're having trouble identifying. The follow turfs have this issue when making an ocean subtype:
 /// /turf/open/floor/glass, /turf/open/floor/mineral/plastitanium
+/// This does not, oddly, seems to affect some subtypes?
 /// If you implement these, please try and help uncover what's wrong!
 
 /turf/open/openspace/ocean
