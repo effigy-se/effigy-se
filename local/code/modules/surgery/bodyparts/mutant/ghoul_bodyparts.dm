@@ -41,7 +41,7 @@
 
 // LIMBS
 
-/obj/item/bodypart/arm/right/mutant/ghoul/drop_limb(special)
+/obj/item/bodypart/arm/right/mutant/ghoul/drop_limb(special, dismembered, move_to_floor = TRUE)
 	..() // Create Meat, Remove Limb
 	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
 	if (percentHealth > 0)
@@ -52,7 +52,7 @@
 
 	qdel(src)
 
-/obj/item/bodypart/arm/left/mutant/ghoul/drop_limb(special)
+/obj/item/bodypart/arm/left/mutant/ghoul/drop_limb(special, dismembered, move_to_floor = TRUE)
 	..() // Create Meat, Remove Limb
 	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
 	if (percentHealth > 0)
@@ -63,7 +63,7 @@
 
 	qdel(src)
 
-/obj/item/bodypart/leg/right/mutant/ghoul/drop_limb(special)
+/obj/item/bodypart/leg/right/mutant/ghoul/drop_limb(special, dismembered, move_to_floor = TRUE)
 	..() // Create Meat, Remove Limb
 	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
 	if (percentHealth > 0)
@@ -74,7 +74,7 @@
 
 	qdel(src)
 
-/obj/item/bodypart/leg/left/mutant/ghoul/drop_limb(special)
+/obj/item/bodypart/leg/left/mutant/ghoul/drop_limb(special, dismembered, move_to_floor = TRUE)
 	..() // Create Meat, Remove Limb
 	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
 	if (percentHealth > 0)
