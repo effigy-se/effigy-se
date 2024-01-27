@@ -6,8 +6,9 @@
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
+	examine_limb_id = SPECIES_HUMAN
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	payday_modifier = 1.0
+	payday_modifier = 1
 	examine_limb_id = SPECIES_HUMAN
 
 /datum/species/humanoid/get_default_mutant_bodyparts()
@@ -20,9 +21,6 @@
 		"taur" = list("None", FALSE),
 		"horns" = list("None", FALSE),
 	)
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	payday_modifier = 1
-	examine_limb_id = SPECIES_HUMAN
 
 /datum/species/humanoid/get_species_description()
 	return "This is a template species for your own creations!"
