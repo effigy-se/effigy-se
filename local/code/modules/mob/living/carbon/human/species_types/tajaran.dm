@@ -30,7 +30,20 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
-/datum/species/tajaran/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/tajaran/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Cat (Big)", TRUE),
+		"snout" = list("Cat, normal", TRUE),
+		"ears" = list("Cat, normal", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+	)
+
+/obj/item/organ/internal/tongue/cat/tajaran
+	liked_foodtypes = GRAIN | MEAT
+	disliked_foodtypes = CLOTH
+
+
+/datum/species/tajaran/randomize_features()
 	var/list/features = ..()
 	var/main_color
 	var/second_color

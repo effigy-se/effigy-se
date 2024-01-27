@@ -28,6 +28,16 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
 
+/datum/species/aquatic/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Shark", TRUE),
+		"snout" = list("Shark", TRUE),
+		"horns" = list("None", FALSE),
+		"ears" = list("Hammerhead", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+		"wings" = list("None", FALSE),
+	)
+
 /datum/species/aquatic/randomize_features(mob/living/carbon/human/human_mob)
 	var/list/features = ..()
 	var/main_color

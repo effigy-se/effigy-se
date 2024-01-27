@@ -24,7 +24,15 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
-/datum/species/vulpkanin/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/vulpkanin/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Fox", TRUE),
+		"snout" = list("Mammal, Long", TRUE),
+		"ears" = list("Fox", TRUE),
+		"legs" = list("Normal Legs", FALSE),
+	)
+
+/datum/species/vulpkanin/randomize_features()
 	var/list/features = ..()
 	var/main_color
 	var/second_color

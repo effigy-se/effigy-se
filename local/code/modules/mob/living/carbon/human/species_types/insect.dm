@@ -30,6 +30,19 @@
 	)
 	eyes_icon = 'local/icons/obj/medical/organs/insect_eyes.dmi'
 
+/datum/species/insect/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("None", FALSE),
+		"snout" = list("None", FALSE),
+		"horns" = list("None", FALSE),
+		"ears" = list("None", FALSE),
+		"legs" = list("Normal Legs", FALSE),
+		"taur" = list("None", FALSE),
+		"fluff" = list("None", FALSE),
+		"wings" = list("Bee", FALSE),
+		"moth_antennae" = list("None", FALSE),
+	)
+
 /datum/species/insect/get_species_description()
 	return placeholder_description
 

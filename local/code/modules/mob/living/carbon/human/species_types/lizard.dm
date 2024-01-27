@@ -1,9 +1,19 @@
 /datum/species/lizard
 	mutant_bodyparts = list()
 	external_organs = list()
-	inherent_traits = list(
-		TRAIT_MUTANT_COLORS,
-		TRAIT_TACKLING_TAILED_DEFENDER,
+	payday_modifier = 1.0
+
+/datum/species/lizard/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Smooth", TRUE),
+		"snout" = list("Sharp + Light", TRUE),
+		"spines" = list("Long + Membrane", TRUE),
+		"frills" = list("Short", TRUE),
+		"horns" = list("Curled", TRUE),
+		"body_markings" = list("Light Belly", TRUE),
+		"legs" = list(DIGITIGRADE_LEGS, FALSE),
+		"taur" = list("None", FALSE),
+		"wings" = list("None", FALSE),
 	)
 	mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
