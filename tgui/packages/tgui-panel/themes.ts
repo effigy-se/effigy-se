@@ -99,7 +99,7 @@ export const setClientTheme = (name) => {
       'infowindow.text-color': COLOR_DARK_TEXT,
       'info.background-color': COLOR_DARK_BG,
       'info.text-color': COLOR_DARK_TEXT,
-      'browseroutput.background-color': COLOR_DARK_BG,
+      'browseroutput.background-color': COLOR_DARK_TEXT,
       'browseroutput.text-color': COLOR_DARK_TEXT,
       'outputwindow.background-color': COLOR_DARK_BG,
       'outputwindow.text-color': COLOR_DARK_TEXT,
