@@ -1,6 +1,3 @@
-#define PERSONAL_SPACE_DAMAGE 2
-#define ASS_SLAP_EXTRA_RANGE -1
-
 // Ass Slap
 /mob/living/carbon/disarm(mob/living/carbon/target)
 	if(zone_selected == BODY_ZONE_PRECISE_MOUTH)
@@ -41,6 +38,3 @@
 			to_chat(target, "<span class='danger'>[src] slaps your ass!")
 			return
 	return ..()
-
-#undef PERSONAL_SPACE_DAMAGE
-#undef ASS_SLAP_EXTRA_RANGE
