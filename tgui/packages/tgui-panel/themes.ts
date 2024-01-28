@@ -149,7 +149,7 @@ export const setClientTheme = (name) => {
       'asset_cache_browser.text-color': COLOR_DARK_TEXT,
       'tooltip.background-color': COLOR_DARK_BG,
       'tooltip.text-color': COLOR_DARK_TEXT,
-      'input.background-color': COLOR_DARK_BG_DARKER,
+      'input.background-color': COLOR_DARK_BG,
       'input.text-color': COLOR_DARK_TEXT,
     });
   }
