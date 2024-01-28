@@ -6,9 +6,9 @@
 
 export const THEMES = ['light', 'dark'];
 
-const COLOR_DARK_BG = '#252525';
-const COLOR_DARK_BG_DARKER = '#171717';
-const COLOR_DARK_TEXT = '#a4bad6';
+const COLOR_DARK_BG = '#1c1d22';
+const COLOR_DARK_BG_DARKER = '#121316';
+const COLOR_DARK_TEXT = '#e6f1ff';
 
 let setClientThemeTimer: NodeJS.Timeout;
 
