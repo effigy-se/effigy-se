@@ -1,8 +1,7 @@
 /datum/map_generator/cave_generator/icemoon
 	weighted_open_turf_types = list(/turf/open/misc/asteroid/snow/icemoon = 19, /turf/open/misc/ice/icemoon = 1)
 	weighted_closed_turf_types = list(
-		/turf/closed/mineral/snowmountain/icemoon = 100,
-		/turf/closed/mineral/gibtonite/ice/icemoon = 4,
+		/turf/closed/mineral/random/snow = 1, // Effigy Edit: Icemoon cometh again
 	)
 
 
@@ -42,7 +41,7 @@
 
 /// Surface snow generator variant for forested station trait, WITH FORESTSSSS
 /datum/map_generator/cave_generator/icemoon/surface/forested
-	weighted_open_turf_types = list(/turf/open/misc/asteroid/snow/icemoon = 1)
+	weighted_open_turf_types = list(/turf/closed/mineral/random/snow/underground = 1) // Effigy Edit: Icemoon cometh again
 	initial_closed_chance = 10
 
 	flora_spawn_chance = 80
