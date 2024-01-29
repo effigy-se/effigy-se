@@ -136,7 +136,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	restricted_roles = list(JOB_PARAMEDIC)
 
 /datum/loadout_item/under/jumpsuit/paramed_light_skirt
-	name = "Light Paramedic Uniform"
+	name = "Light Paramedic Skirt"
 	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/light/skirt
 	restricted_roles = list(JOB_PARAMEDIC)
 
