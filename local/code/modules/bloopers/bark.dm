@@ -1,5 +1,21 @@
 GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 
+// we let borgs have some bark too
+/mob/living/silicon/Login()
+	// This is the only found function that updates the client for borgs.
+	set_blooper(client.prefs.read_preference(/datum/preference/choiced/blooper))
+	blooper_pitch = client.prefs.read_preference(/datum/preference/numeric/blooper_speech_pitch)
+	blooper_speed = client.prefs.read_preference(/datum/preference/numeric/blooper_speech_speed)
+	blooper_pitch_range = client.prefs.read_preference(/datum/preference/numeric/blooper_pitch_range)
+	. = ..()
+
+// Mechanics for Changelings
+/datum/changeling_profile
+	var/blooper_id
+	var/blooper_pitch
+	var/blooper_pitch_range
+	var/blooper_speed
+
 /datum/smite/normalblooper
 	name = "Normal blooper"
 
@@ -43,7 +59,7 @@ GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 /datum/preference/choiced/blooper/init_possible_values()
 	return assoc_to_keys(GLOB.blooper_list)
 
-/datum/preference/choiced/blooper/apply_to_human(mob/living/carbon/human/target, value, /datum/preference/numeric/blooper_speech_speed)
+/datum/preference/choiced/blooper/apply_to_human(mob/living/carbon/human/target, value)
 	target.set_blooper(value)
 
 /datum/preference_middleware/blooper
@@ -132,7 +148,7 @@ GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 	savefile_key = "sound_blooper_volume"
 	savefile_identifier = PREFERENCE_PLAYER
 	minimum = 0
-	maximum = 100
+	maximum = 60
 	step = 5
 
 /// It's was stoolen from Splurt build >:3 and from fluffySTG!! nyeehehehheee!~
