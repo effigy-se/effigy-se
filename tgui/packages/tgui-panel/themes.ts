@@ -139,18 +139,18 @@ export const setClientTheme = (name) => {
       'stat.prefix-color': COLOR_DARK_TEXT,
       'stat.suffix-color': COLOR_DARK_TEXT,
       // Say, OOC, me Buttons etc.
-      'saybutton.background-color': COLOR_DARK_BG,
-      'saybutton.text-color': COLOR_DARK_TEXT,
-      'oocbutton.background-color': COLOR_DARK_BG,
-      'oocbutton.text-color': COLOR_DARK_TEXT,
-      'mebutton.background-color': COLOR_DARK_BG,
-      'mebutton.text-color': COLOR_DARK_TEXT,
+      'saybutton.background-color': '#a4bad6',
+      'saybutton.text-color': COLOR_DARK_BG_DARKER,
+      'oocbutton.background-color': '#cca300',
+      'oocbutton.text-color': COLOR_DARK_BG_DARKER,
+      'mebutton.background-color': '#5975da',
+      'mebutton.text-color': COLOR_DARK_BG_DARKER,
       'asset_cache_browser.background-color': COLOR_DARK_BG,
       'asset_cache_browser.text-color': COLOR_DARK_TEXT,
       'tooltip.background-color': COLOR_DARK_BG,
       'tooltip.text-color': COLOR_DARK_TEXT,
-      'input.background-color': COLOR_DARK_BG,
-      'input.text-color': COLOR_DARK_TEXT,
+      'input.background-color': '#25272d',
+      'input.text-color': '#eaeaea',
     });
   }
 };
