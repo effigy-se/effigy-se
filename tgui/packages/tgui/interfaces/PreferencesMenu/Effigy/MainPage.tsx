@@ -184,7 +184,7 @@ const ChoicedSelection = (props: {
                 style={{
                   fontWeight: 'bold',
                   fontSize: '18px',
-                  color: '#eaeaea',
+                  color: '#e9eaed',
                   textAlign: 'center',
                 }}
               >
@@ -208,7 +208,7 @@ const ChoicedSelection = (props: {
             </Stack.Item>
           </Stack>
         </Stack.Item>
-        <Stack.Item textColor="#eaeaea" verticalAlign="middle">
+        <Stack.Item textColor="#e9eaed" verticalAlign="middle">
           <Box>
             <Icon ml={1} mr={1.5} name="search" />
             <Input
@@ -262,7 +262,7 @@ const ChoicedSelection = (props: {
                         textAlign="center"
                         fontSize="14"
                         width="86%"
-                        color="#eaeaea"
+                        color="#e9eaed"
                       >
                         {name}
                       </Box>
@@ -471,7 +471,7 @@ const MainFeature = (props: {
           overflowWrap: 'anywhere',
         }}
         textAlign="center"
-        textColor="#eaeaea"
+        textColor="#e9eaed"
       >
         {catalog.name}
       </Box>
