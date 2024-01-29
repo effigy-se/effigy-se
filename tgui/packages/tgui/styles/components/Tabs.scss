@@ -105,11 +105,6 @@ $fg-map: colors.$fg-map !default;
 }
 
 .Tabs--horizontal {
-  .Tab {
-    border-top: math.div(1em, 6) solid transparent;
-    border-bottom: math.div(1em, 6) solid transparent;
-  }
-
   .Tab--selected {
     color: #202020;
   }
@@ -118,25 +113,9 @@ $fg-map: colors.$fg-map !default;
 .Tabs--vertical {
   .Tab {
     min-height: 2em;
-    border-left: math.div(1em, 6) solid transparent;
-    border-right: math.div(1em, 6) solid transparent;
   }
 
   .Tab--selected {
-    border-right: math.div(1em, 6) solid $color-default;
-  }
-}
-
-@each $color-name, $color-value in $fg-map {
-  .Tab--selected.Tab--color--#{$color-name} {
-    color: color.scale($color-value, $lightness: 25%);
-  }
-
-  .Tabs--horizontal .Tab--selected.Tab--color--#{$color-name} {
-    border-bottom-color: $color-value;
-  }
-
-  .Tabs--vertical .Tab--selected.Tab--color--#{$color-name} {
-    border-right-color: $color-value;
+    color: #202020;
   }
 }
