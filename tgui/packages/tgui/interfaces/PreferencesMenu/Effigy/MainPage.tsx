@@ -156,7 +156,7 @@ const ChoicedSelection = (props: {
   return (
     <Box
       style={{
-        background: '#333232',
+        background: '#424651',
         padding: '5px',
 
         height: `${
@@ -199,7 +199,7 @@ const ChoicedSelection = (props: {
                   fontSize: '14px',
                   textAlign: 'center',
                 }}
-                color="grey"
+                color="#424651"
                 onClick={props.onClose}
               >
                 {' '}
