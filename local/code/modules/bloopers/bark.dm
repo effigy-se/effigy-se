@@ -135,12 +135,18 @@ GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 	savefile_identifier = PREFERENCE_PLAYER
 	default_value = TRUE
 
+/datum/preference/toggle/send_sound_blooper/create_default_value()
+	return TRUE
+
 /// Can I hear everyone else's bloops?
 /datum/preference/toggle/hear_sound_blooper
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_key = "hear_sound_blooper"
 	savefile_identifier = PREFERENCE_PLAYER
 	default_value = TRUE
+
+/datum/preference/toggle/hear_sound_blooper/create_default_value()
+	return TRUE
 
 /// Can I have a slider to adjust the volume of the barks?
 /datum/preference/numeric/sound_blooper_volume
