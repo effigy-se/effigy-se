@@ -74,7 +74,6 @@
 				/obj/item/clothing/head/costume/skyrat/maid = 5,
 				/obj/item/clothing/under/costume/maid = 5,
 				/obj/item/clothing/under/rank/civilian/janitor/maid = 5,
-				/obj/item/clothing/under/costume/lewdmaid = 5,
 
 				/obj/item/clothing/under/stripper_outfit = 5,
 				/obj/item/clothing/glasses/nice_goggles = 1, //easter egg, don't touch plz
@@ -105,7 +104,6 @@
 				/obj/item/clothing/neck/kink_collar = 8,
 				/obj/item/clothing/neck/human_petcollar = 8,
 				/obj/item/clothing/neck/human_petcollar/choker = 8,
-				/obj/item/clothing/neck/human_petcollar/thinchoker = 8,
 				/obj/item/clothing/neck/human_petcollar/locked/bell = 8,
 				/obj/item/clothing/neck/human_petcollar/locked/cow = 8,
 				/obj/item/clothing/neck/human_petcollar/locked/cross = 8,
