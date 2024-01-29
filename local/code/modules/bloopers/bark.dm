@@ -126,10 +126,19 @@ GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 	savefile_identifier = PREFERENCE_PLAYER
 	default_value = TRUE
 
+/// Can I have a slider to adjust the volume of the barks?
+/datum/preference/numeric/sound_blooper_volume
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_key = "sound_blooper_volume"
+	savefile_identifier = PREFERENCE_PLAYER
+	minimum = 0
+	maximum = 100
+	step = 5
+
 /// It's was stoolen from Splurt build >:3 and from fluffySTG!! nyeehehehheee!~
 /datum/blooper
 	var/name = "None"
-	var/id = "Default"
+	var/id = "No Voice"
 	var/soundpath
 
 	var/minpitch = BLOOPER_DEFAULT_MINPITCH
