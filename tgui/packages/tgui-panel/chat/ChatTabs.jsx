@@ -56,7 +56,7 @@ export const ChatTabs = (props) => {
           ))}
         </Tabs>
       </Flex.Item>
-      <Flex.Item ml={1}>
+      <Flex.Item mt={0.7}>
         <Button
           color="transparent"
           icon="plus"
