@@ -11,8 +11,19 @@
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
 	icon = 'local/icons/obj/medical/surgery.dmi'
 	icon_state = "posibrain-ipc"
+	actions_types = list(/datum/action/item_action/synth/open_internal_computer)
 	/// The last time (in ticks) a message about brain damage was sent. Don't touch.
 	var/last_message_time = 0
+	/// Our internal PDA
+	var/obj/item/modular_computer/pda/synth/internal_computer
+
+/obj/item/organ/internal/brain/synth/Initialize(mapload)
+	. = ..()
+	internal_computer = new(src)
+
+/obj/item/organ/internal/brain/synth/Destroy()
+	QDEL_NULL(internal_computer)
+	return ..()
 
 /obj/item/organ/internal/brain/synth/on_mob_insert(mob/living/carbon/brain_owner, movement_flags = NO_ID_TRANSFER)
 	. = ..()
