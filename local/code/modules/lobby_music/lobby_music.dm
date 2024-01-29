@@ -42,7 +42,7 @@
 		return
 	if(data["url"])
 		web_sound_url = data["url"]
-	music_extra_data["title"] = data["title"]
+	music_extra_data["title"] = "Lobby Music Track"
 
 	if(web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
 		log_game("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol. This is a security risk and the sound will not be played.")

@@ -12,6 +12,15 @@
 	if(client.interviewee)
 		return FALSE
 
+	if(SSdbcore.IsConnected() && !client.client_authenticated)
+		sleep(3 SECONDS)
+		if(!client.client_authenticated) // retry
+			to_chat_immediate(src, SPAN_BOX_ALERT(PINK, "Not Authorized \[2F173/2]<br><br>Effigy uses a player whitelist and your account was not found!<br><br>Please visit <a href=\"https://effigy.se/new-players/\">https://effigy.se/new-players/</a> for details and to submit your application and perform verification."))
+			if(!GLOB.account_alert)
+				GLOB.account_alert = new
+			GLOB.account_alert.ui_interact(client.mob)
+			return FALSE
+
 	if(href_list["observe"])
 		play_lobby_button_sound()
 		make_me_an_observer()

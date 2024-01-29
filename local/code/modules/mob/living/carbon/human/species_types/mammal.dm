@@ -29,7 +29,21 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
-/datum/species/mammal/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/mammal/get_default_mutant_bodyparts()
+	return list(
+		"tail" = list("Husky", TRUE),
+		"snout" = list("Husky", TRUE),
+		"horns" = list("None", FALSE),
+		"ears" = list("Husky", TRUE),
+		"legs" = list("Normal Legs", TRUE),
+		"taur" = list("None", FALSE),
+		"fluff" = list("None", FALSE),
+		"wings" = list("None", FALSE),
+		"head_acc" = list("None", FALSE),
+		"neck_acc" = list("None", FALSE),
+	)
+
+/datum/species/mammal/randomize_features()
 	var/list/features = ..()
 	var/main_color
 	var/second_color
