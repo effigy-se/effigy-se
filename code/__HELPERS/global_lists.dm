@@ -53,6 +53,14 @@
 	sort_list(GLOB.laugh_types, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	// EffigyEdit Add End
 
+	// EffigyEdit Add - Vocal Bloopers
+	for(var/blooper_path in subtypesof(/datum/blooper))
+		var/datum/blooper/bloop = new blooper_path()
+		GLOB.blooper_list[bloop.id] = blooper_path
+		if(bloop.allow_random)
+			GLOB.blooper_random_list[bloop.id] = blooper_path
+	// EffigyEdit Add End
+
 /// Inits GLOB.species_list. Not using GLOBAL_LIST_INIT b/c it depends on GLOB.string_lists
 /proc/init_species_list()
 	for(var/species_path in subtypesof(/datum/species))
