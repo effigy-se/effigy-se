@@ -31,7 +31,7 @@ export const ChatTabs = (props) => {
   const currentPage = useSelector(selectCurrentChatPage);
   const dispatch = useDispatch();
   return (
-    <Flex align="center">
+    <Flex align="center" mb={1}>
       <Flex.Item>
         <Tabs textAlign="center">
           {pages.map((page) => (
