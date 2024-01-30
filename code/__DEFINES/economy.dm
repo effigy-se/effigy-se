@@ -15,10 +15,7 @@
 ///Paygrade for Heads of Staff.
 #define PAYCHECK_COMMAND 60 // EffigyEdit Change - Pay equalization
 
-//How many credits a player is charged if they print something from a departmental lathe they shouldn't have access to.
-#define LATHE_TAX 5 // EffigyEdit Change - Pay equalization
-//How much POWER a borg's cell is taxed if they print something from a departmental lathe.
-#define SILICON_LATHE_TAX 2000
+
 
 #define STATION_TARGET_BUFFER 25
 
