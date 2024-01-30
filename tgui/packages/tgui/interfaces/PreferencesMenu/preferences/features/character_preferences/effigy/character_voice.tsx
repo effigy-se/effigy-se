@@ -1,13 +1,11 @@
 import { Button, Stack } from '../../../../../../components';
 import {
   CheckboxInput,
-  Feature,
   FeatureChoiced,
   FeatureChoicedServerData,
   FeatureDropdownInput,
   FeatureNumberInput,
   FeatureNumeric,
-  FeatureSliderInput,
   FeatureToggle,
   FeatureValueProps,
 } from '../../base';
@@ -61,20 +59,7 @@ export const blooper_pitch_range: FeatureNumeric = {
 };
 
 export const hear_sound_blooper: FeatureToggle = {
-  name: 'Enable Vocal Bloopers hearing',
+  name: 'Enable vocal bloopers',
   category: 'SOUND',
   component: CheckboxInput,
-};
-
-export const send_sound_blooper: FeatureToggle = {
-  name: 'Enable Vocal Bloopers sending',
-  category: 'SOUND',
-  component: CheckboxInput,
-};
-
-export const sound_blooper_volume: Feature<number> = {
-  name: 'Vocal Bloopers Volume',
-  category: 'SOUND',
-  description: 'The volume that the Vocal Bloopers sounds will play at.',
-  component: FeatureSliderInput,
 };

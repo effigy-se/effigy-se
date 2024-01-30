@@ -128,16 +128,6 @@ GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 /datum/preference/numeric/blooper_pitch_range/create_default_value()
 	return 0.2
 
-/// Can I use the blooper?
-/datum/preference/toggle/send_sound_blooper
-	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
-	savefile_key = "send_sound_blooper"
-	savefile_identifier = PREFERENCE_PLAYER
-	default_value = TRUE
-
-/datum/preference/toggle/send_sound_blooper/create_default_value()
-	return TRUE
-
 /// Can I hear everyone else's bloops?
 /datum/preference/toggle/hear_sound_blooper
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
@@ -147,15 +137,6 @@ GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 
 /datum/preference/toggle/hear_sound_blooper/create_default_value()
 	return TRUE
-
-/// Can I have a slider to adjust the volume of the barks?
-/datum/preference/numeric/sound_blooper_volume
-	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
-	savefile_key = "sound_blooper_volume"
-	savefile_identifier = PREFERENCE_PLAYER
-	minimum = 0
-	maximum = 60
-	step = 5
 
 /// It's was stoolen from Splurt build >:3 and from fluffySTG!! nyeehehehheee!~
 /datum/blooper

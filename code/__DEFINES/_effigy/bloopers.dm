@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(blooper_random_list)
 
 #define BLOOPER_SPEED_BASELINE 4 //Used to calculate delay between BLOOPERs, any BLOOPER speeds below this feature higher BLOOPER density, any speeds above feature lower BLOOPER density. Keeps BLOOPERing length consistent
 
+#define BLOOPER_TRANSMIT_VOLUME 45
 #define BLOOPER_MAX_BLOOPERS 24
 #define BLOOPER_MAX_TIME (1.5 SECONDS) // More or less the amount of time the above takes to process through with a BLOOPER speed of 2.
 
