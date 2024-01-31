@@ -630,6 +630,14 @@
 	vary = TRUE
 	sound = 'sound/effects/glassbash.ogg'
 
+/datum/emote/living/mggaow
+	key = "mggaow"
+	key_third_person = "meows loudly"
+	message = "meows loudly!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'local/sound/emotes/voice/mggaow.ogg'
+
 /**
  * Returns a boolean based on whether or not the string contains a comma or an apostrophe,
  * to be used for emotes to decide whether or not to have a space between the name of the user
