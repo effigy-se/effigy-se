@@ -4,8 +4,8 @@ import {
   FeatureChoiced,
   FeatureChoicedServerData,
   FeatureDropdownInput,
-  FeatureNumberInput,
   FeatureNumeric,
+  FeatureSliderInput,
   FeatureToggle,
   FeatureValueProps,
 } from '../../base';
@@ -39,23 +39,20 @@ export const blooper_speech: FeatureChoiced = {
 
 export const blooper_speech_speed: FeatureNumeric = {
   name: 'Character Voice Speed',
-  description:
-    '[2 - 16] Lower number, faster speed. Higher number, slower voice.',
-  component: FeatureNumberInput,
+  description: 'Lower number, faster speed. Higher number, slower voice.',
+  component: FeatureSliderInput,
 };
 
 export const blooper_speech_pitch: FeatureNumeric = {
   name: 'Character Voice Pitch',
-  description:
-    '[0.4 - 2] Lower number, deeper pitch. Higher number, higher pitch.',
-  component: FeatureNumberInput,
+  description: 'Lower number, deeper pitch. Higher number, higher pitch.',
+  component: FeatureSliderInput,
 };
 
 export const blooper_pitch_range: FeatureNumeric = {
   name: 'Character Voice Range',
-  description:
-    '[0.1 - 0.8] Lower number, less range. Higher number, more range.',
-  component: FeatureNumberInput,
+  description: 'Lower number, less range. Higher number, more range.',
+  component: FeatureSliderInput,
 };
 
 export const hear_sound_blooper: FeatureToggle = {

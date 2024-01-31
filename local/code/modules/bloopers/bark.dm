@@ -92,7 +92,7 @@ GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 	savefile_key = "blooper_speech_speed"
 	minimum = BLOOPER_DEFAULT_MINSPEED
 	maximum = BLOOPER_DEFAULT_MAXSPEED
-	step = 0.01
+	step = 0.5
 
 /datum/preference/numeric/blooper_speech_speed/apply_to_human(mob/living/carbon/human/target, value)
 	target.blooper_speed = value
@@ -106,7 +106,7 @@ GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 	savefile_key = "blooper_speech_pitch"
 	minimum = BLOOPER_DEFAULT_MINPITCH
 	maximum = BLOOPER_DEFAULT_MAXPITCH
-	step = 0.01
+	step = 0.05
 
 /datum/preference/numeric/blooper_speech_pitch/apply_to_human(mob/living/carbon/human/target, value)
 	target.blooper_pitch = value
@@ -120,7 +120,7 @@ GLOBAL_VAR_INIT(bloopers_allowed, TRUE) // For administrators
 	savefile_key = "blooper_pitch_range"
 	minimum = BLOOPER_DEFAULT_MINVARY
 	maximum = BLOOPER_DEFAULT_MAXVARY
-	step = 0.01
+	step = 0.05
 
 /datum/preference/numeric/blooper_pitch_range/apply_to_human(mob/living/carbon/human/target, value)
 	target.blooper_pitch_range = value
