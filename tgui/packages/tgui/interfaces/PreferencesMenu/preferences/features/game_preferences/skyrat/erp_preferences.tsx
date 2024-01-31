@@ -13,7 +13,7 @@ export const master_erp_pref: FeatureToggle = {
 };
 
 export const erp_pref: FeatureToggle = {
-  name: 'Erotic Roleplay Interaction',
+  name: 'Erotic roleplay interaction',
   category: 'ERP',
   description: 'This informs players of if you wish to engage in ERP.',
   component: CheckboxInput,
