@@ -260,7 +260,6 @@ SUBSYSTEM_DEF(ticker)
 		return TRUE
 	return FALSE
 
-
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, SPAN_BOX_ALERT(BLUE, "Starting game...")) // EffigyEdit Change - Custom CSS
 	var/init_start = world.timeofday
