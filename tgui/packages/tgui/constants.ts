@@ -23,7 +23,7 @@ export const COLORS = {
   // Department colors
   department: {
     captain: '#ff7f50',
-    security: '#f02d7f',
+    security: '#f0197d',
     medbay: '#3498db',
     science: '#b81fff',
     engineering: '#ffe45e',
@@ -33,10 +33,10 @@ export const COLORS = {
   },
   // Damage type colors
   damageType: {
-    oxy: '#1fc7ff',
+    oxy: '#2ccaff',
     toxin: '#23fb92',
     burn: '#ff7f50',
-    brute: '#f02d7f',
+    brute: '#f0197d',
   },
   // reagent / chemistry related colours
   reagent: {
@@ -85,7 +85,7 @@ export const RADIO_CHANNELS = [
   {
     name: 'Blue Team',
     freq: 1217,
-    color: '#1fc7ff',
+    color: '#2ccaff',
   },
   {
     name: 'Green Team',
@@ -125,7 +125,7 @@ export const RADIO_CHANNELS = [
   {
     name: 'Medical',
     freq: 1355,
-    color: '#1fc7ff',
+    color: '#2ccaff',
   },
   {
     name: 'Engineering',
