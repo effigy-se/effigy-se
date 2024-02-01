@@ -29,6 +29,9 @@
 /obj/machinery/door/airlock/shuttle
 	external = TRUE
 
+/obj/machinery/door/airlock/multi_tile
+	has_environment_lights = FALSE
+
 /obj/machinery/door/airlock/power_change()
 	..()
 	update_icon()
