@@ -51,7 +51,7 @@
 	minimum = 0
 	maximum = 100
 
-/datum/preference/choiced/sound_tts_volume/is_accessible(datum/preferences/preferences)
+/datum/preference/numeric/sound_tts_volume/is_accessible(datum/preferences/preferences)
 	. = ..()
 	return FALSE
 
