@@ -814,6 +814,17 @@
 /obj/effect/baseturf_helper/reinforced_plating/ceiling,
 /turf/closed/wall,
 /area/station/security/medical)
+"atq" = (
+/obj/effect/turf_decal/tile/red/full,
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 9
+	},
+/obj/item/toy/plush/rouny{
+	desc = "Probably more conveinent to carry than a real flag. Definitely hostile, though.";
+	name = "red flag"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/station/commons/fitness/recreation/entertainment)
 "atB" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
@@ -1776,6 +1787,10 @@
 /obj/item/pushbroom,
 /turf/open/floor/iron/textured,
 /area/station/medical/morgue)
+"aRU" = (
+/obj/structure/sign/warning/hot_temp/directional/west,
+/turf/open/floor/plating,
+/area/station/maintenance/floor2/starboard/fore)
 "aSA" = (
 /obj/item/stack/tile/iron/base,
 /turf/open/floor/plating,
@@ -2173,6 +2188,10 @@
 /obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/chem_storage)
+"bbX" = (
+/obj/structure/ladder,
+/turf/open/floor/plating,
+/area/station/maintenance/floor2/starboard/fore)
 "bbZ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -6546,7 +6565,6 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 1
 	},
@@ -7874,6 +7892,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/siding/wideplating_new,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
 "dFK" = (
@@ -8605,17 +8624,6 @@
 /obj/machinery/smartfridge,
 /turf/open/floor/iron/smooth_large,
 /area/station/service/hydroponics)
-"dXv" = (
-/obj/effect/turf_decal/tile/red/full,
-/obj/effect/turf_decal/siding/dark_red{
-	dir = 10
-	},
-/obj/item/toy/plush/rouny{
-	desc = "Probably more conveinent to carry than a real flag. Definitely hostile, though.";
-	name = "red flag"
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/station/commons/fitness/recreation/entertainment)
 "dXw" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -11510,6 +11518,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/parquet,
 /area/station/service/library/abandoned)
+"fjJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/ladder,
+/turf/open/floor/plating,
+/area/station/service/janitor/wetworks)
 "fjK" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/siding/purple/corner{
@@ -13731,6 +13744,14 @@
 	},
 /turf/open/floor/iron/diagonal,
 /area/station/hallway/floor2/fore)
+"gib" = (
+/obj/effect/mapping_helpers/mail_sorting/service/dormitories,
+/obj/item/mod/module/disposal_connector{
+	name = "MAPPING PLACEHOLDER";
+	desc = "Mapping Placeholder. Yell at the server's sharkdog (shuppy?) to fix this!!"
+	},
+/turf/open/floor/iron/diagonal,
+/area/station/hallway/floor2/aft)
 "gie" = (
 /obj/effect/turf_decal/siding/thinplating_new{
 	dir = 1
@@ -14537,10 +14558,6 @@
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/security/prison/mess)
-"gBN" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/closed/wall,
-/area/station/service/abandoned_gambling_den)
 "gBP" = (
 /obj/structure/closet/wardrobe/black,
 /obj/effect/turf_decal/tile/dark_blue/fourcorners,
@@ -21064,10 +21081,6 @@
 /obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/engine/hull/ocean,
 /area/ocean)
-"jHF" = (
-/obj/effect/mapping_helpers/mail_sorting/service/dormitories,
-/turf/open/openspace/ocean,
-/area/ocean)
 "jHV" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/poddoor/massdriver_ordnance,
@@ -22490,6 +22503,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine/atmos)
+"kps" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/floor2/starboard/fore)
 "kpt" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -39219,7 +39236,7 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "rYR" = (
-/obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+/obj/machinery/atmospherics/pipe/bridge_pipe/green/visible{
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/binary/pump/off/yellow/visible{
@@ -50126,7 +50143,7 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/security/prison/rec)
 "xje" = (
-/obj/machinery/door/airlock/public/glass/incinerator/atmos_interior,
+/obj/machinery/door/airlock/public/glass/incinerator/atmos_exterior,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
@@ -50591,6 +50608,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
 "xtM" = (
@@ -51873,6 +51891,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
+"xZc" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/open/floor/plating,
+/area/station/maintenance/floor2/starboard/fore)
 "xZo" = (
 /obj/effect/turf_decal/tile/dark_red/opposingcorners,
 /obj/effect/turf_decal/siding/wideplating_new/dark{
@@ -72801,7 +72826,7 @@ jYC
 hcg
 eQa
 ljV
-gBN
+cws
 jQb
 uWp
 jgh
@@ -104661,7 +104686,7 @@ eVr
 imI
 aVh
 eJF
-nJf
+fjJ
 rBD
 rBD
 rBD
@@ -146522,7 +146547,7 @@ gNh
 gNh
 gNh
 ylz
-aUP
+gib
 kCl
 wsu
 jsF
@@ -152453,11 +152478,11 @@ lzF
 faG
 pxR
 srQ
-dXv
 ucS
 ucS
 ucS
 ucS
+atq
 srQ
 gNh
 gNh
@@ -168404,7 +168429,7 @@ pBj
 tYd
 xtK
 dFa
-dvO
+lJJ
 dvO
 lJJ
 lJJ
@@ -168659,7 +168684,7 @@ gvk
 vtZ
 nXF
 nXF
-nXF
+xZc
 nXF
 mDE
 rER
@@ -168915,8 +168940,8 @@ gDY
 bSk
 afl
 nXF
-vzh
-vzh
+aRU
+kps
 nXF
 tuy
 gQT
@@ -170197,7 +170222,7 @@ vzh
 vzh
 vzh
 vzh
-vzh
+bbX
 vUv
 vUv
 vUv
@@ -174284,7 +174309,7 @@ wVE
 wVE
 wVE
 wVE
-jHF
+wVE
 wVE
 wVE
 wVE
