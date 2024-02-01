@@ -37,7 +37,7 @@
 	. = ..()
 	var/pre_light_range = 0
 	var/pre_light_power = 0
-	var/pre_light_color = ""
+	var/pre_light_color = COLOR_STARLIGHT
 	var/lights_overlay = ""
 
 	var/frame_state
