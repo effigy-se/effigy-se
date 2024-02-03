@@ -143,6 +143,20 @@
 	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
 	new_immmutable.add_turf(src)
 
+/turf/open/floor/iron/solarpanel/ocean
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/floor/plating/ocean_plating
+
+/turf/open/floor/iron/solarpanel/ocean/Initialize(mapload)
+	. = ..()
+	if(liquids)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
+	new_immmutable.add_turf(src)
+
 /turf/open/floor/engine/hull/ocean
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	temperature = T20C
