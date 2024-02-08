@@ -28,7 +28,7 @@ export const COLORS = {
     science: '#b81fff',
     engineering: '#ffe45e',
     cargo: '#936d62',
-    service: '#7cc46a',
+    service: '#23fb92',
     centcom: '#04c869',
     other: '#ff7f50',
   },
