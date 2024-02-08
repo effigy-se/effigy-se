@@ -57,9 +57,16 @@
   - bugfix: Icebox should have it's ore distribution and it's ore vents fixed, so
       that vents should now produce ore.
   - spellcheck: Boulder processing machines now don't mention things they don't do.
+  EEASAS:
+  - bugfix: Fixed some things in Ice Box's gas station ruin
+  - rscadd: Adds some things in Ice Box's gas station ruin
   FernandoJ8:
   - sound: The Guide to Advanced Mimery book series now only make a very faint noise
       when turning their pages, in order to match their description
+  Ghommie:
+  - bugfix: Fixed text effects for runechat messages (the stuff enclosed in +, | and
+      _ characters).
+  - spellcheck: Improved the tip for say/text effects.
   Higgin:
   - qol: portable air pumps, scrubbers, heaters, canisters, liquid tanks, and racks
       are now climbable.
@@ -70,6 +77,11 @@
       and slimes.
   - bugfix: fixes ghetto surgery by gently adjusting time sensitivity cap and making
       the cleaver not unintuitively bad at bone-sawing.
+  IndieanaJones:
+  - bugfix: Regenerative Materia blobs can no longer drug non-carbons.
+  - bugfix: Xenomorphs now have legcuffs applied to them properly.
+  - bugfix: Alien Hunter's pounce ability no longer has any weird offset issues once
+      the pounce is completed.
   Jacquerel:
   - bugfix: Being consumed by the flesh of the necropolis while inside a cryo tube
       will no longer convert the tube into a legion spawn point until the tube is
@@ -84,12 +96,20 @@
   - spellcheck: Mechs that have been renamed now are proper names, so are not described
       as 'the' mech.
   - bugfix: Science Xenos no longer turn the entire roundend report into bold letters.
+  - bugfix: Species that can eat mice don't get disgusted from seeing one in the toilet
+      bong.
+  - rscadd: Grabbing an unwrenched statue/mannequin/skeleton model will now move its
+      direction as you move yours, and you can talk through it.
+  - qol: Service personnel now show up in green in the crew monitor console.
+  - qol: The barcode scanner is now part of computer tech and can be printed at the
+      service techfab.
   Justavidya:
   - image: modified the cherry cupcake and blue-cherry cupcake sprites
   Justice12354:
   - qol: You no longer need to manually set the CC Commander's Headset to high-volume.
   LT3:
   - bugfix: Fixed alt-click validation for tram interactions
+  - bugfix: SM cascade delam messages no longer display to clients not in game
   LemonInTheDark:
   - rscadd: Ghost hair looks better now. Insert nerd shit about RGB vs HSL color space
       here, go watch a youtube video or whatever.
@@ -102,28 +122,57 @@
   - bugfix: Tinacusiate should break less, and break less things
   - bugfix: Speaking to a Sign Languager with Tinacusiate in your system doesn't mess
       with their text, because they're not speaking.
+  - bugfix: Fixed Puncture Repair surgery not having surgical sounds
+  - bugfix: Fixed Surgery Initiator potentially showing invalid surgeries
+  - bugfix: The object overlay circuit component will no longer take things with it.
+  - bugfix: Krav Maga users can shove again
   Momo8289:
   - bugfix: Automated IV drips will now be on the layer set by the plumbing constructor
       when created.
   OrionTheFox:
   - image: fixed some minor icon inconsistencies on the White Suit and Tan Suit
+  PapaMichael:
+  - bugfix: tramstation isolation cells now properly open on their timer.
   Rhials:
   - qol: Spider eggs will now close their spawn menu when you move away from them.
   - bugfix: You can no longer convert assassination targets to your blood brother
       team.
+  - balance: Wallmounts now respect cameranets, and cannot be accessed from a view
+      of the adjacent wall.
   SapphicOverload:
   - code_imp: Removes /obj/item/onetankbomb, assembly bombs are now handled by the
       tank itself.
   Swiftfeather:
   - qol: Increased threshold of trace n2o required to make euphoria and giggles happen.
+  - qol: Added a new head-only target hotkey, unbound by default.
   SyncIt21:
   - bugfix: reactions now compute purity of reagents based on their volume, meaning
       larger amounts of reagents created will have more significant effects on the
       final purity of the solution
   - bugfix: deleting objects with local material storage(autolathe, drone dispenser
       etc) no longer drops sheets, they only drop materials when deconstructed
+  - qol: adds screentips & examines for screwdriver & crowbar acts & alt click.
+  - qol: techfabs can now use the mouse drop functionality to set drop target.
+  - qol: lathe printing animation plays on loop while printing rather than flicking
+      once for more visual feedback
+  - bugfix: lathe sheet insertion animations are now linked & work again for all material
+      types inserted via remote silo/local storage
+  - bugfix: printing custom materials items from autolathe works again.
+  - bugfix: printing multiple items from lathes will actually print that correct quantity
+      of items requested.
+  - bugfix: printing items the 2nd time around from lathes won't cause the UI to reload
+      each time.
+  - code_imp: autodoc for some vars & procs, merges procs.
+  - refactor: Optimized code for autolathe & techfabs in general. Report bugs on github
+  - bugfix: Instant reactions yield reagent results again
   ViktorKoL:
   - bugfix: smoothed out a few asymmetries in the heretic research tree
+  - bugfix: ash mark now properly lowers the cooldown of mansus grasp when triggered
+  - bugfix: fix heretic's rust mark failing to damage any items if the victim has
+      any container on them with another item inside, and maybe other bugs of similar
+      nature
+  Wallem:
+  - rscadd: Adds a new suicide_act() to the smite spell
   Whoneedspacee:
   - bugfix: Ash drake's fire breath attack has proper cooldowns again
   Xander3359:
@@ -133,6 +182,19 @@
   - bugfix: Midroll/Latejoin traitors no longer have access to roundstart traitor
       exclusive items
   - bugfix: burning a bible no longer gives you INFINITY curses
+  Zargoar:
+  - rscadd: 'Adds in the Red Mons, The Wizard, The Rune and MOTHS-MOTHS-MOTHS bar
+      signs from the bar sign contest.
+
+      Congratulations to the winners!'
+  - image: Adds in the Red Mons, The Wizard, The Rune and MOTHS-MOTHS-MOTHS bar signs
+      from the bar sign contest.
+  Zergspower:
+  - bugfix: icebox ore generation underground is normal again
+  cnleth:
+  - balance: RD and QM coats can hold telebatons now
+  - qol: Quartermaster's coat can hold items that a normal jacket can hold, such as
+      small oxygen tanks
   dragomagol:
   - bugfix: blood brothers should now properly succeed in converting non-targets
   mc-oofert:
@@ -143,5 +205,9 @@
       or any other time you shouldnt be capable of it
   - bugfix: you may no longer altclick ethereal disco balls while unconscious to anchor/unanchor
   - bugfix: you may no longer altclick tape recorders at range to play them
+  - bugfix: you may no longer reset autolathe drop direction at times when you shouldnt
+      be able to
+  optimumtact, whomst didn't write this CL entry.:
+  - bugfix: Fixed the colorful lights of the ethereal disco ball.
   vinylspiders:
   - bugfix: fixes a runtime in AI search_tactic
