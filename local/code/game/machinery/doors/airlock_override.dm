@@ -145,7 +145,7 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 
 	if(!status)
 		engineering_override = FALSE
-		if(!door_area.fire)
+		if(!fire_override)
 			normalspeed = TRUE
 		update_appearance()
 		return
@@ -162,7 +162,7 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 
 	if(!fire)
 		fire_override = FALSE
-		if(SSsecurity_level.get_current_level_as_number() != SEC_LEVEL_ORANGE)
+		if(!engineering_override)
 			normalspeed = TRUE
 		update_appearance()
 		return
