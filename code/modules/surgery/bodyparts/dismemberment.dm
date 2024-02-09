@@ -68,6 +68,10 @@
 		chest_owner.add_splatter_floor(chest_owner.loc)
 	playsound(get_turf(chest_owner), 'sound/misc/splort.ogg', 80, TRUE)
 	for(var/obj/item/organ/organ in contents)
+		/// Effigy Edit - Unspillable Organs (Admittedly Bad Practice)
+		if(!organ.drop_when_organ_spilling)
+			continue
+		/// Effigy Edit End
 		var/org_zone = check_zone(organ.zone)
 		if(org_zone != BODY_ZONE_CHEST)
 			continue

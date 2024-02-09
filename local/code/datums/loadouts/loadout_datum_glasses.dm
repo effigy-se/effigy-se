@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 
 /datum/loadout_item/glasses/prescription_glasses/better
 	name = "Modern Glasses"
-	item_path = /obj/item/clothing/glasses/betterunshit
+	item_path = /obj/item/clothing/glasses/regular/betterunshit
 
 /*
 *	COSMETIC GLASSES
@@ -144,22 +144,22 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 */
 
 /datum/loadout_item/glasses/medicpatch
-	name = "Medical Eyepatch"
+	name = "Medical Eyepatch HUD"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/med
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST, JOB_PARAMEDIC)
 
 /datum/loadout_item/glasses/robopatch
-	name = "Diagnostic Eyepatch"
+	name = "Diagnostic Eyepatch HUD"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/diagnostic
 	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR)
 
 /datum/loadout_item/glasses/scipatch
-	name = "Science Eyepatch"
+	name = "Science Eyepatch HUD"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/sci
 	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_CHEMIST, JOB_VIROLOGIST)
 
 /datum/loadout_item/glasses/mesonpatch
-	name = "Meson Eyepatch"
+	name = "Meson Eyepatch HUD"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/meson
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN)
 

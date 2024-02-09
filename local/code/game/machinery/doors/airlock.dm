@@ -29,6 +29,9 @@
 /obj/machinery/door/airlock/shuttle
 	external = TRUE
 
+/obj/machinery/door/airlock/multi_tile
+	has_environment_lights = FALSE
+
 /obj/machinery/door/airlock/power_change()
 	..()
 	update_icon()
@@ -53,7 +56,7 @@
 				light_state = AIRLOCK_LIGHT_EMERGENCY
 				lights_overlay = "lights_emergency"
 				pre_light_color = light_color_emergency
-			else if(engineering_override)
+			else if(engineering_override || fire_override)
 				light_state = AIRLOCK_LIGHT_ENGINEERING
 				lights_overlay = "lights_engineering"
 				pre_light_color = light_color_engineering

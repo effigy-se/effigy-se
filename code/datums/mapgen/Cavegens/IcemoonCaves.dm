@@ -38,6 +38,13 @@
 	birth_limit = 5
 	death_limit = 4
 	smoothing_iterations = 10
+	weighted_feature_spawn_list = list(
+		/obj/structure/geyser/hollowwater = 10,
+		/obj/structure/geyser/plasma_oxide = 10,
+		/obj/structure/geyser/protozine = 10,
+		/obj/structure/geyser/random = 2,
+		/obj/structure/geyser/wittel = 10,
+	)
 
 /// Surface snow generator variant for forested station trait, WITH FORESTSSSS
 /datum/map_generator/cave_generator/icemoon/surface/forested
@@ -62,7 +69,7 @@
 /datum/map_generator/cave_generator/icemoon/surface/noruins //use this for when you don't want ruins to spawn in a certain area
 
 /datum/map_generator/cave_generator/icemoon/deep
-	weighted_closed_turf_types = list(/turf/closed/mineral/snowmountain/icemoon = 1)
+	weighted_closed_turf_types = list(/turf/closed/mineral/random/snow = 1)
 	weighted_mob_spawn_list = list(
 		SPAWN_MEGAFAUNA = 1,
 		/mob/living/basic/mining/ice_demon = 100,
