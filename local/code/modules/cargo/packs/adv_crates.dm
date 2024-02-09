@@ -44,6 +44,15 @@
 	cost = CARGO_CRATE_VALUE * 15
 	crate_name = "double extended emergency tank crate"
 
+/datum/supply_pack/engineering/gas_miner
+	name = "Gas Miner Delivery Beacon Crate"
+	desc = "Contains a single gas miner delivery beacon, for the ordering of one gas miner."
+	access = ACCESS_ATMOSPHERICS
+	contains = list(/obj/item/summon_beacon/gas_miner)
+	cost = CARGO_CRATE_VALUE * 50
+	crate_name = "gas miner delivery beacon crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
+
 /datum/supply_pack/engineering/advanced_extinguisher
 	name = "Advanced Foam Extinguisher Crate"
 	desc = "Contains advanced fire extinguishers which use foam as extinguishing agent."
