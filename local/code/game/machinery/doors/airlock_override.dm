@@ -6,6 +6,7 @@
 /area
 	/// Is this area eligible for engineer override?
 	var/engineering_override_eligible = FALSE
+	var/fire_override_eligible = TRUE
 
 /**
  * Set the areas that will receive expanded access for the engineers on an orange alert
@@ -73,12 +74,16 @@
 /obj/machinery/door/airlock
 	/// Determines if engineers get access to this door on orange alert
 	var/engineering_override = FALSE
+	var/fire_override = FALSE
+	var/area/door_area
 
 /obj/machinery/door/airlock/Initialize(mapload)
 	. = ..()
+	door_area = get_area(src)
+	RegisterSignal(door_area, COMSIG_AREA_FIRE_CHANGED, PROC_REF(update_fire_status))
 	RegisterSignal(SSdcs, COMSIG_GLOB_FORCE_ENG_OVERRIDE, PROC_REF(force_eng_override))
 
-///Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
+///Check for the three states of open access. Emergency, Unrestricted, and Engineering/Fire Override
 /obj/machinery/door/airlock/allowed(mob/user)
 	if(emergency)
 		return TRUE
@@ -86,7 +91,7 @@
 	if(unrestricted_side(user))
 		return TRUE
 
-	if(engineering_override)
+	if(engineering_override || fire_override)
 		var/mob/living/carbon/human/interacting_human = user
 		if(!istype(interacting_human))
 			return ..()
@@ -140,14 +145,31 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 
 	if(!status)
 		engineering_override = FALSE
-		normalspeed = TRUE
+		if(!fire_override)
+			normalspeed = TRUE
 		update_appearance()
 		return
 
-	var/area/source_area = get_area(src)
-	if(!source_area.engineering_override_eligible)
+	if(!door_area.engineering_override_eligible)
 		return
 
 	engineering_override = TRUE
+	normalspeed = FALSE
+	update_appearance()
+
+/obj/machinery/door/airlock/proc/update_fire_status(datum/source, fire)
+	SIGNAL_HANDLER
+
+	if(!fire)
+		fire_override = FALSE
+		if(!engineering_override)
+			normalspeed = TRUE
+		update_appearance()
+		return
+
+	if(!door_area.fire_override_eligible)
+		return
+
+	fire_override = TRUE
 	normalspeed = FALSE
 	update_appearance()
