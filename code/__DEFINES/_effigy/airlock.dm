@@ -8,6 +8,7 @@
 #define AIRLOCK_LIGHT_CLOSING "closing"
 #define AIRLOCK_LIGHT_OPENING "opening"
 #define AIRLOCK_LIGHT_ENGINEERING "engineering"
+#define AIRLOCK_LIGHT_FIRE "fire"
 
 // Airlock physical states
 #define AIRLOCK_CLOSED 1
