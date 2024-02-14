@@ -39,7 +39,7 @@
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
 	var/frame_state
-	var/light_state
+	var/light_state = AIRLOCK_LIGHT_POWERON
 	var/pre_light_color
 	switch(airlock_state)
 		if(AIRLOCK_CLOSED)
@@ -57,7 +57,6 @@
 				light_state = AIRLOCK_LIGHT_ENGINEERING
 				pre_light_color = AIRLOCK_ENGINEERING_LIGHT_COLOR
 			else
-				light_state = AIRLOCK_LIGHT_POWERON
 				pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
 		if(AIRLOCK_DENY)
 			frame_state = AIRLOCK_FRAME_CLOSED
@@ -84,7 +83,6 @@
 				light_state = AIRLOCK_LIGHT_ENGINEERING
 				pre_light_color = AIRLOCK_ENGINEERING_LIGHT_COLOR
 			else
-				light_state = AIRLOCK_LIGHT_POWERON
 				pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
 			light_state += "_open"
 		if(AIRLOCK_OPENING)
@@ -100,6 +98,7 @@
 
 	if(lights && hasPower() && has_environment_lights)
 		. += get_airlock_overlay("lights_[light_state]", overlays_file, src, em_block = FALSE)
+		. += emissive_appearance(overlays_file, "lights_[light_state]", src, alpha = src.alpha)
 
 		if(multi_tile)
 			filler.set_light(l_range = AIRLOCK_LIGHT_RANGE, l_power = AIRLOCK_LIGHT_POWER, l_color = pre_light_color, l_on = TRUE)
