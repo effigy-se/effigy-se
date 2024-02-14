@@ -612,6 +612,7 @@
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
+	/* EffigyEdit Remove - moved to local/code/game/machinery/doors/firedoor.dm
 	if(welded)
 		. += density ? "welded" : "welded_open"
 	if(alarm_type && powered() && !ignore_alarms)
@@ -624,6 +625,7 @@
 		hazards.pixel_x = light_xoffset
 		hazards.pixel_y = light_yoffset
 		. += hazards
+	*/// EffigyEdit Remove End
 
 /**
  * Corrects the current state of the door, based on its activity.
