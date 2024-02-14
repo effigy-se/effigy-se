@@ -38,67 +38,59 @@
 
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
-	var/pre_light_range = 0
-	var/pre_light_power = 0
-	var/pre_light_color = ""
-	var/lights_overlay = ""
-
 	var/frame_state
 	var/light_state
+	var/pre_light_color
 	switch(airlock_state)
 		if(AIRLOCK_CLOSED)
 			frame_state = AIRLOCK_FRAME_CLOSED
 			if(locked)
 				light_state = AIRLOCK_LIGHT_BOLTS
-				lights_overlay = "lights_bolts"
-				pre_light_color = light_color_bolts
+				pre_light_color = AIRLOCK_BOLTS_LIGHT_COLOR
 			else if(emergency)
 				light_state = AIRLOCK_LIGHT_EMERGENCY
-				lights_overlay = "lights_emergency"
-				pre_light_color = light_color_emergency
-			else if(fire_override)
+				pre_light_color = AIRLOCK_EMERGENCY_LIGHT_COLOR
+			else if(fire_active)
 				light_state = AIRLOCK_LIGHT_FIRE
-				lights_overlay = "lights_fire"
-				pre_light_color = light_color_engineering
+				pre_light_color = AIRLOCK_FIRE_LIGHT_COLOR
 			else if(engineering_override)
 				light_state = AIRLOCK_LIGHT_ENGINEERING
-				lights_overlay = "lights_engineering"
-				pre_light_color = light_color_engineering
+				pre_light_color = AIRLOCK_ENGINEERING_LIGHT_COLOR
 			else
-				lights_overlay = "lights_poweron"
-				pre_light_color = light_color_poweron
+				light_state = AIRLOCK_LIGHT_POWERON
+				pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
 		if(AIRLOCK_DENY)
 			frame_state = AIRLOCK_FRAME_CLOSED
 			light_state = AIRLOCK_LIGHT_DENIED
-			lights_overlay = "lights_denied"
-			pre_light_color = light_color_deny
+			pre_light_color = AIRLOCK_DENY_LIGHT_COLOR
 		if(AIRLOCK_EMAG)
 			frame_state = AIRLOCK_FRAME_CLOSED
 		if(AIRLOCK_CLOSING)
 			frame_state = AIRLOCK_FRAME_CLOSING
 			light_state = AIRLOCK_LIGHT_CLOSING
-			lights_overlay = "lights_closing"
-			pre_light_color = light_color_warn
+			pre_light_color = AIRLOCK_ACCESS_LIGHT_COLOR
 		if(AIRLOCK_OPEN)
 			frame_state = AIRLOCK_FRAME_OPEN
 			if(locked)
-				lights_overlay = "lights_bolts_open"
-				pre_light_color = light_color_bolts
-			else if(!normalspeed)
-				lights_overlay = "lights_engineering_open"
-				pre_light_color = light_color_warn
+				light_state = AIRLOCK_LIGHT_BOLTS
+				pre_light_color = AIRLOCK_BOLTS_LIGHT_COLOR
+			else if(emergency)
+				light_state = AIRLOCK_LIGHT_EMERGENCY
+				pre_light_color = AIRLOCK_EMERGENCY_LIGHT_COLOR
+			else if(fire_active)
+				light_state = AIRLOCK_LIGHT_FIRE
+				pre_light_color = AIRLOCK_FIRE_LIGHT_COLOR
+			else if(engineering_override)
+				light_state = AIRLOCK_LIGHT_ENGINEERING
+				pre_light_color = AIRLOCK_ENGINEERING_LIGHT_COLOR
 			else
-				lights_overlay = "lights_poweron_open"
-				pre_light_color = light_color_poweron
+				light_state = AIRLOCK_LIGHT_POWERON
+				pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
+			light_state += "_open"
 		if(AIRLOCK_OPENING)
 			frame_state = AIRLOCK_FRAME_OPENING
 			light_state = AIRLOCK_LIGHT_OPENING
-			if(!normalspeed)
-				lights_overlay = "lights_engineering_opening"
-				pre_light_color = light_color_warn
-			else
-				lights_overlay = "lights_opening"
-				pre_light_color = light_color_permit
+			pre_light_color = AIRLOCK_ACCESS_LIGHT_COLOR
 
 	. += get_airlock_overlay(frame_state, icon, src, em_block = TRUE)
 	if(airlock_material)
@@ -106,25 +98,18 @@
 	else
 		. += get_airlock_overlay("fill_[frame_state + fill_state_suffix]", icon, src, em_block = TRUE)
 
-	if(greyscale_lights_color && !light_state)
-		lights_overlay += "_greyscale"
-
-	if(lights && hasPower())
+	if(lights && hasPower() && has_environment_lights)
 		. += get_airlock_overlay("lights_[light_state]", overlays_file, src, em_block = FALSE)
-		pre_light_range = door_light_range
-		pre_light_power = door_light_power
-		if(has_environment_lights)
-			set_light(l_range = pre_light_range, l_power = pre_light_power, l_color = pre_light_color, l_on = TRUE)
+
+		if(multi_tile)
+			filler.set_light(l_range = AIRLOCK_LIGHT_RANGE, l_power = AIRLOCK_LIGHT_POWER, l_color = pre_light_color, l_on = TRUE)
+
+		set_light(l_range = AIRLOCK_LIGHT_RANGE, l_power = AIRLOCK_LIGHT_POWER, l_color = pre_light_color, l_on = TRUE)
 	else
-		lights_overlay = ""
 		set_light(l_on = FALSE)
 
-	var/mutable_appearance/lights_appearance = mutable_appearance(overlays_file, lights_overlay, FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
-
-	if(greyscale_lights_color && !light_state)
-		lights_appearance.color = greyscale_lights_color
-
-	. += lights_appearance
+	if(greyscale_accent_color)
+		. += get_airlock_overlay("[frame_state]_accent", overlays_file, src, em_block = TRUE, state_color = greyscale_accent_color)
 
 	if(panel_open)
 		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, src, em_block = TRUE)
