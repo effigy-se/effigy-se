@@ -173,20 +173,3 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 
 	normalspeed = FALSE
 	update_appearance()
-
-/obj/machinery/door/airlock/proc/update_fire_status(datum/source, fire)
-	SIGNAL_HANDLER
-
-	if(!fire)
-		fire_override = FALSE
-		if(!engineering_override)
-			normalspeed = TRUE
-		update_appearance()
-		return
-
-	if(!door_area.fire_override_eligible)
-		return
-
-	fire_override = TRUE
-	normalspeed = FALSE
-	update_appearance()
