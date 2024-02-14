@@ -81,12 +81,16 @@
 	only_forced_audio = TRUE
 	vary = TRUE
 
+/datum/emote/carbon/human/scream/run_emote(mob/user, params, type_override, intentional = FALSE)
+	if(!intentional && HAS_TRAIT(user, TRAIT_ANALGESIA))
+		return
+	return ..()
+
 // EffigyEdit Remove START (Emotes)
 /*
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-
 	return user.dna.species.get_scream_sound(user)
 */
 // EffigyEdit Remove END
