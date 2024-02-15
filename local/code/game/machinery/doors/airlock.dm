@@ -240,7 +240,7 @@
 
 /obj/machinery/door/airlock/vault
 	icon = 'icons/obj/doors/airlocks/vault/vault.dmi'
-	overlays_file = 'icons/obj/doors/airlocks/vault/overlays.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/vault/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
 
