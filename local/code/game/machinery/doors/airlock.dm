@@ -313,6 +313,12 @@
 	greyscale_config = null
 	greyscale_colors = null
 
+/obj/machinery/door/airlock/survival_pod
+	icon = 'local/icons/obj/doors/airlocks/external/external.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/external/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
+
 /**
  * Tram
  */
