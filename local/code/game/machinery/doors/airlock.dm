@@ -383,6 +383,12 @@
 	greyscale_config = null
 	greyscale_colors = null
 
+/obj/machinery/door/airlock/bronze
+	icon = 'icons/obj/doors/airlocks/clockwork/pinion_airlock.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/clockwork/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
+
 /**
  * Effigy
  */
