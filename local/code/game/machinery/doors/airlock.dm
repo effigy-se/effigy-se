@@ -291,6 +291,12 @@
 	icon = 'icons/obj/doors/airlocks/cult/unruned/cult.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/cult/unruned/overlays.dmi'
 
+/obj/machinery/door/airlock/centcom
+	icon = 'icons/obj/doors/airlocks/centcom/centcom.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/centcom/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
+
 /obj/machinery/door/airlock/grunge
 	icon = 'icons/obj/doors/airlocks/centcom/centcom.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/centcom/overlays.dmi'
