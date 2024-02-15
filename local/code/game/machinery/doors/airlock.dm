@@ -134,7 +134,7 @@
 	if(frame_state == AIRLOCK_FRAME_CLOSED && seal)
 		. += get_airlock_overlay("sealed", overlays_file, src, em_block = TRUE)
 
-	if(hasPower() && unres_sides && frame_state == AIRLOCK_FRAME_CLOSED && !light_state)
+	if(hasPower() && unres_sides && frame_state == AIRLOCK_FRAME_CLOSED && light_state == AIRLOCK_LIGHT_POWERON)
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
 			if(!(unres_sides & heading))
 				continue
