@@ -77,8 +77,9 @@
 
 	var/datum/bodypart_overlay/mutant/tail/tail_overlay = bodypart_overlay
 	tail_overlay.wagging = FALSE
-	if(tail_spines_overlay) //if there are spines, they should stop wagging with the tail
-		tail_spines_overlay.wagging = FALSE
+	// EffigyEdit TODO: https://github.com/effigy-se/effigy-se/issues/638
+	//if(tail_spines_overlay) //if there are spines, they should stop wagging with the tail
+	//	tail_spines_overlay.wagging = FALSE
 	if(isnull(organ_owner))
 		return succeeded
 
