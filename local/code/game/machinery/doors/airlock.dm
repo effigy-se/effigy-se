@@ -237,10 +237,15 @@
 	greyscale_config = null
 	greyscale_colors = null
 
-
 /obj/machinery/door/airlock/vault
 	icon = 'icons/obj/doors/airlocks/vault/vault.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/vault/overlays.dmi'
+	greyscale_config = null
+	greyscale_colors = null
+
+/obj/machinery/door/airlock/survival_pod
+	icon = 'local/icons/obj/doors/airlocks/external/external.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/external/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
 
@@ -308,14 +313,8 @@
  */
 
 /obj/machinery/door/airlock/multi_tile
-	icon = 'icons/obj/doors/airlocks/multi_tile/public/glass.dmi'
-	overlays_file = 'local/icons/obj/doors/airlocks/multi_tile/public/overlays.dmi'
-	greyscale_config = null
-	greyscale_colors = null
-
-/obj/machinery/door/airlock/survival_pod
-	icon = 'local/icons/obj/doors/airlocks/external/external.dmi'
-	overlays_file = 'local/icons/obj/doors/airlocks/external/overlays.dmi'
+	icon = 'icons/obj/doors/airlocks/tram/tram.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/tram/tram-overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
 
@@ -329,7 +328,6 @@
 	greyscale_config = null
 	greyscale_colors = null
 	has_environment_lights = FALSE
-
 
 /**
  * Mineral/Material
