@@ -62,6 +62,7 @@
 #define COLOR_VERY_SOFT_YELLOW "#FAE48E"
 #define COLOR_GOLD "#FFD700"
 #define COLOR_ETHIOPIA_YELLOW "#FCDD09"
+#define COLOR_LIGHT_YELLOW "#FFFEE0"
 
 #define COLOR_OLIVE "#808000"
 #define COLOR_ASSISTANT_OLIVE "#828163"
@@ -217,6 +218,7 @@
 
 /// Starlight!
 #define COLOR_STARLIGHT "#8589fa"
+#define COLOR_CYAN_STARLIGHT "#88c4cb"
 /**
  * Some defines to generalise colours used in lighting.
  *

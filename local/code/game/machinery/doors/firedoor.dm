@@ -13,15 +13,21 @@
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
+	if(welded)
+		. += density ? "welded" : "welded_open"
 	if(istype(src, /obj/machinery/door/firedoor/border_only))
-		return
-	if(!density)
-		set_light(l_color = light_color_idle, l_on = FALSE)
 		return
 	if(operating)
 		set_light(l_color = light_color_operating, l_on = TRUE)
+		. += mutable_appearance(icon, "firelock_[icon_state]")
+		. += emissive_appearance(icon, "firelock_[icon_state]", src, alpha = src.alpha)
 		return
-	if(powered() && !ignore_alarms) // if the door is closed, add the bottom blinking overlay -- and only if it's closed
+	if(!density)
+		set_light(l_color = light_color_idle, l_on = TRUE)
+		return
+	if(powered() && !ignore_alarms)
+		. += mutable_appearance(icon, "firelock_alarm_solid")
+		. += emissive_appearance(icon, "firelock_alarm_solid", src, alpha = src.alpha)
 		if(obj_flags & EMAGGED)
 			. += mutable_appearance(icon, "em_firelock_alarm_type_emag")
 			. += emissive_appearance(icon, "em_firelock_alarm_type_emag", src, alpha = src.alpha)
@@ -43,7 +49,7 @@
 	else
 		. += mutable_appearance(icon, "em_firelock_no_power")
 		. += emissive_appearance(icon, "em_firelock_no_power", src, alpha = src.alpha)
-		set_light(l_color = light_color_generic, l_on = TRUE)
+		set_light(l_color = light_color_generic, l_on = FALSE)
 
 /obj/machinery/door/firedoor/heavy
 	name = "heavy emergency shutter"
