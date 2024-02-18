@@ -448,3 +448,69 @@
   - bugfix: Gaining or losing an arm now correctly updates your hand overlays
   vinylspiders:
   - bugfix: '*wag emote is now functional again'
+2024-02-17:
+  1393F:
+  - bugfix: The crystallizer screentip for rotating it has been updated with the correct
+      button
+  Ghommie:
+  - rscadd: Players holding cardboard cutouts will now assume their appearance, just
+      like for potted plants.
+  GoldenAlpharex:
+  - bugfix: The Spawners menu now accurately displays the amount of uses left in each
+      spawner option, taking into account individual spawners that either allow more
+      than one use, or an infinite amount of uses.
+  LT3:
+  - qol: Airlocks don't flash constantly on engineering override, override/overlay
+      added for fire alarm
+  - bugfix: Airlock lighting should no longer render on top of player characters
+  - bugfix: Airlock emissives no longer overlap firedoors
+  - bugfix: Fixed missing overlays on various airlock types
+  - rscadd: The tram has been equipped with enhanced safety glass to reduce the severity
+      of crew injuries
+  LemonInTheDark:
+  - bugfix: Maps loaded in after roundstart will no longer have broken smoothing
+  Melbert:
+  - bugfix: Lifeline can no longer track mobs with suit sensors off
+  - bugfix: Fixes AI double-click tracking
+  - admin: You can now set someone's TC to 0
+  - admin: Removing Traitor from automatically removes the uplink from them
+  - admin: Removing Uplink from someone no longer wipes ALL of their memories
+  Rhials:
+  - bugfix: Removes the double-newscaster from the arrivals sec post.
+  Roastglue:
+  - bugfix: Crafting Bulgogi no longer makes Bibimbap. It instead makes Bulgogi.
+  SyncIt21:
+  - qol: adds examines & screentips for crowbar, screwdriver acts to BRM & refinery
+      machines
+  - qol: adds examines about the number of boulders stored & processed to BRM & refinery
+      machines
+  - qol: BRM now has its lights turn on/off depending on wether automatic boulder
+      retrieval is on/off for visual clarity along with examines
+  - qol: refinery machines now display ballon alerts & plays sounds more frequently
+      when processing boulders for better feedback
+  - bugfix: vents now spawn boulders of all sizes & not just small ones
+  - bugfix: expanded gulag boulders now have correct materials in them.
+  - bugfix: manual tapping of vents now has a cooldown applied as intended.
+  - bugfix: BRM has its light turned off when area power goes off
+  - bugfix: boulders ejected from refineries by hand no longer teleport all over the
+      place occasionally.
+  - bugfix: refineries no longer eject boulders with 0 durability
+  - bugfix: Boulders & refineries no longer pile up on top of BRM's & refineries in
+      long rounds. Their locs have to be clear of boulders before they spit out more
+      boulders to prevent a large pile of boulders from causing lag
+  - bugfix: sheets ejected from lathes no longer get rejected when inserted back which
+      could happen at random, no more boulders with empty materials
+  - code_imp: splits boulder types into its own file along with other items
+  - code_imp: merges & autodocs procs, vars related to boulders
+  - refactor: repaths BRM to a simpler subtype
+  - refactor: BRM now spawns boulders in batches(batch size can be increased with
+      upgraded parts) with a boulder appearing every second. After a batch is processed
+      a 3 second cooldown is applied to stop the conveyer belt from clogging up, With
+      this BRM wires are removed as there is no need for timers to be attached to
+      wires which intefers without our batch processing timings.
+  mc-oofert:
+  - qol: you may altclick action buttons to bind them to a key
+  - rscadd: deathmatch minigame
+  rageguy505:
+  - bugfix: The door above tool storage on birdshot now has maintenance access on
+      it and officials can now enter the CC dock room.
