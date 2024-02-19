@@ -313,8 +313,7 @@
  */
 
 /obj/machinery/door/airlock/multi_tile
-	icon = 'icons/obj/doors/airlocks/tram/tram.dmi'
-	overlays_file = 'local/icons/obj/doors/airlocks/tram/tram-overlays.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/multi_tile/public/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
 
