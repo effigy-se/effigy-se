@@ -24,8 +24,8 @@
 	bound_width = 64
 
 /obj/machinery/door/airlock/tram/half
-	icon = 'icons/obj/doors/airlocks/tram/tram-half.dmi'
-	overlays_file = 'icons/obj/doors/airlocks/tram/tram-half-overlays.dmi'
+	icon = 'local/icons/obj/doors/airlocks/tram/tram-half.dmi'
+	overlays_file = 'loca/icons/obj/doors/airlocks/tram/tram-half-overlays.dmi'
 	multi_tile = FALSE
 	bound_width = 32
 
