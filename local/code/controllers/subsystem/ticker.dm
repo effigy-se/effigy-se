@@ -11,7 +11,6 @@
 	var/lobby_track_id
 	/// How long is the lobby track
 	var/lobby_track_duration
-	var/list/static/fluff_status = world.file2list("config/effigy_splash_fluff.txt")
 
 /proc/discord_new_game_alert()
 	send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/game_notify_role_id)]> Round **[GLOB.round_hex]** starting on [SSmapping.config.map_name]! \nTo subscribe to game related pings, go to <#[CONFIG_GET(string/channel_role_assignment)]> and pick your roles."), CONFIG_GET(string/channel_announce_new_game))

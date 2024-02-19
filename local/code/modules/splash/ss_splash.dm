@@ -22,6 +22,7 @@ SUBSYSTEM_DEF(title)
 	var/list/progress_json = list()
 	/// The reference realtime that we're treating as 0 for this run
 	var/progress_reference_time = 0
+	var/list/static/fluff_status = world.file2list("config/effigy_splash_fluff.txt")
 
 /datum/controller/subsystem/title/Initialize()
 	if(CONFIG_GET(flag/effigy_live_revision))
@@ -196,7 +197,7 @@ SUBSYSTEM_DEF(title)
 	var/static/regex/msg_key_regex = new(@"[0-9.]+( second)?s?!", "ig")
 
 	// HTML displayed to user
-	var/msg_html = {"<p class="terminal_text">[warning ? "☒ " : ""][msg]</p>"}
+	var/msg_html = {"<p class="terminal_text">[warning ? "☒ " : ""][pick(SStitle.fluff_status)]...</p>"}
 	// Key used to cache the timing info
 	var/msg_key = msg_key_regex.Replace(msg, "#")
 
