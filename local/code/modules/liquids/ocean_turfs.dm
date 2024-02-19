@@ -1,6 +1,7 @@
 /// HEY!! LISTEN!!
 /// Not every turf works ATM thanks to some issue we're having trouble identifying. The follow turfs have this issue when making an ocean subtype:
 /// /turf/open/floor/glass, /turf/open/floor/mineral/plastitanium
+/// This does not, oddly, seems to affect some subtypes?
 /// If you implement these, please try and help uncover what's wrong!
 
 /turf/open/openspace/ocean
@@ -133,6 +134,20 @@
 	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/iron/ocean/Initialize(mapload)
+	. = ..()
+	if(liquids)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
+	new_immmutable.add_turf(src)
+
+/turf/open/floor/iron/solarpanel/ocean
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/floor/plating/ocean_plating
+
+/turf/open/floor/iron/solarpanel/ocean/Initialize(mapload)
 	. = ..()
 	if(liquids)
 		if(liquids.immutable)
