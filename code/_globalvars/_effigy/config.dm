@@ -33,6 +33,9 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /// Determines if the transfer vote can be started by anyone or not.
 /datum/config_entry/flag/allow_vote_transfer
 
+/// File where fluff status messages are stored
+/datum/config_entry/string/fluff_status_file
+
 // EFFIGY API STUFF
 /// Enable API features specific to Effigy Live. Disable for downstreams, self-hosted, development etc.
 /datum/config_entry/flag/effigy_live_revision
