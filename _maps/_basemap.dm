@@ -12,7 +12,7 @@
 		#include "map_files\Mining\Lavaland.dmm"
 		#include "map_files\tramstation\tramstation.dmm"
 		// EFFIGY EDIT START
-		#include "map_files\debug\effigy_liquids.dmm"
+		#include "map_files\SigmaOctantis\SigmaOctantis.dmm"
 		#include "map_files\FoxHoleStation\foxholestation.dmm"
 		#include "map_files\RimPoint\RimPoint.dmm"
 		// EFFIGY EDIT END
