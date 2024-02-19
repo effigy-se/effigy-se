@@ -54,6 +54,7 @@
 
 /turf/open/misc/ocean/rock
 	name = "rock"
+	desc = "Polished over centuries of undersea weather conditions and a distinct lack of light."
 	baseturfs = /turf/open/misc/ocean/rock
 	icon = 'local/code/modules/liquids/assets/turf/seafloor.dmi'
 	icon_state = "seafloor"
@@ -65,6 +66,7 @@
 
 /turf/open/misc/ocean/rock/warm/fissure
 	name = "fissure"
+	desc = "A comfortable, warm tempature eminates from these - followed immediately after by toxic chemicals in liquid or gaseous forms; but warmth all the same!"
 	icon = 'local/code/modules/liquids/assets/turf/fissure.dmi'
 	icon_state = "fissure-0"
 	base_icon_state = "fissure"
@@ -87,6 +89,7 @@
 /turf/open/misc/ocean
 	gender = PLURAL
 	name = "ocean sand"
+	desc = "If you can't escape sandstorms underwater, is anywhere safe?"
 	baseturfs = /turf/open/misc/ocean
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
@@ -257,6 +260,7 @@
 /turf/open/misc/canal
 	gender = PLURAL
 	name = "canal"
+	desc = "A section of the earth given way to form a natural aqueduct."
 	baseturfs = /turf/open/misc/canal
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
@@ -281,6 +285,7 @@
 /turf/open/misc/canal_mutable
 	gender = PLURAL
 	name = "canal"
+	desc = "A section of the earth given way to form a natural aqueduct."
 	baseturfs = /turf/open/misc/canal_mutable
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
