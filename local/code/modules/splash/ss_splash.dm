@@ -25,7 +25,9 @@ SUBSYSTEM_DEF(title)
 	var/list/static/fluff_status
 
 /datum/controller/subsystem/title/Initialize()
-	fluff_status = world.file2list("config/effigy_splash_fluff.txt")
+	var/fluff_file = CONFIG_GET(string/fluff_status_file)
+	if(!isnull(fluff_file))
+		fluff_status = world.file2list(fluff_file)
 	if(CONFIG_GET(flag/effigy_live_revision))
 		set_effigy_live()
 	if(fexists(".effigy_live"))
@@ -197,8 +199,10 @@ SUBSYSTEM_DEF(title)
 	// Remove the # second(s) / #s part of the message.
 	var/static/regex/msg_key_regex = new(@"[0-9.]+( second)?s?!", "ig")
 
+	// Fluff status text, if available
+	var/fluff_message = pick(SStitle.fluff_status)
 	// HTML displayed to user
-	var/msg_html = {"<p class="terminal_text">[warning ? "☒ " : ""][pick(SStitle.fluff_status)]...</p>"}
+	var/msg_html = {"<p class="terminal_text">[warning ? "☒ " : ""][fluff_message ? fluff_message : msg]</p>"}
 	// Key used to cache the timing info
 	var/msg_key = msg_key_regex.Replace(msg, "#")
 

@@ -34,7 +34,7 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/flag/allow_vote_transfer
 
 /// File where fluff status messages are stored
-/datum/config_entry/string/fluff_status_messages
+/datum/config_entry/string/fluff_status_file
 
 // EFFIGY API STUFF
 /// Enable API features specific to Effigy Live. Disable for downstreams, self-hosted, development etc.
