@@ -22,9 +22,10 @@ SUBSYSTEM_DEF(title)
 	var/list/progress_json = list()
 	/// The reference realtime that we're treating as 0 for this run
 	var/progress_reference_time = 0
-	var/list/static/fluff_status = world.file2list("config/effigy_splash_fluff.txt")
+	var/list/static/fluff_status
 
 /datum/controller/subsystem/title/Initialize()
+	fluff_status = world.file2list("config/effigy_splash_fluff.txt")
 	if(CONFIG_GET(flag/effigy_live_revision))
 		set_effigy_live()
 	if(fexists(".effigy_live"))
