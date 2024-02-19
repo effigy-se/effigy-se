@@ -22,12 +22,16 @@ SUBSYSTEM_DEF(title)
 	var/list/progress_json = list()
 	/// The reference realtime that we're treating as 0 for this run
 	var/progress_reference_time = 0
-	var/list/static/fluff_status
+	/// Use fluff status messages
+	var/fluff_enabled = FALSE
+	var/list/static/fluff_messages
 
 /datum/controller/subsystem/title/Initialize()
 	var/fluff_file = CONFIG_GET(string/fluff_status_file)
 	if(!isnull(fluff_file))
-		fluff_status = world.file2list(fluff_file)
+		fluff_messages = world.file2list(fluff_file)
+		if(LAZYLEN(fluff_messages))
+			fluff_enabled = TRUE
 	if(CONFIG_GET(flag/effigy_live_revision))
 		set_effigy_live()
 	if(fexists(".effigy_live"))
@@ -188,6 +192,12 @@ SUBSYSTEM_DEF(title)
 
 	user.client << output(name, "title_browser:update_current_character")
 
+/proc/get_fluff_message()
+	if(!SStitle.fluff_enabled)
+		return
+
+	return pick(SStitle.fluff_messages)
+
 /**
  * Adds a startup message to the splashscreen.
  *
@@ -200,7 +210,7 @@ SUBSYSTEM_DEF(title)
 	var/static/regex/msg_key_regex = new(@"[0-9.]+( second)?s?!", "ig")
 
 	// Fluff status text, if available
-	var/fluff_message = pick(SStitle.fluff_status)
+	var/fluff_message = get_fluff_message()
 	// HTML displayed to user
 	var/msg_html = {"<p class="terminal_text">[warning ? "☒ " : ""][fluff_message ? fluff_message : msg]</p>"}
 	// Key used to cache the timing info
