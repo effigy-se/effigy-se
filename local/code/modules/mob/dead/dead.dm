@@ -10,7 +10,7 @@
 	else if(SSticker.launch_queued && !SSticker.totalPlayersReady)
 		. += "Game will start when players are ready"
 	else
-		. += pick(SStitle.fluff_status)
+		. += get_fluff_message()
 	. += ""
 	. += "Players Ready: [SSticker.totalPlayersReady]"
 	if(client.holder)

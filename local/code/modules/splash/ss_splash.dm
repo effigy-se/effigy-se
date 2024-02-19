@@ -22,9 +22,16 @@ SUBSYSTEM_DEF(title)
 	var/list/progress_json = list()
 	/// The reference realtime that we're treating as 0 for this run
 	var/progress_reference_time = 0
-	var/list/static/fluff_status = world.file2list("config/effigy_splash_fluff.txt")
+	/// Use fluff status messages
+	var/fluff_enabled = FALSE
+	var/list/static/fluff_messages
 
 /datum/controller/subsystem/title/Initialize()
+	var/fluff_file = CONFIG_GET(string/fluff_status_file)
+	if(!isnull(fluff_file))
+		fluff_messages = world.file2list(fluff_file)
+		if(LAZYLEN(fluff_messages))
+			fluff_enabled = TRUE
 	if(CONFIG_GET(flag/effigy_live_revision))
 		set_effigy_live()
 	if(fexists(".effigy_live"))
@@ -185,6 +192,12 @@ SUBSYSTEM_DEF(title)
 
 	user.client << output(name, "title_browser:update_current_character")
 
+/proc/get_fluff_message()
+	if(!SStitle.fluff_enabled)
+		return
+
+	return pick(SStitle.fluff_messages)
+
 /**
  * Adds a startup message to the splashscreen.
  *
@@ -196,8 +209,10 @@ SUBSYSTEM_DEF(title)
 	// Remove the # second(s) / #s part of the message.
 	var/static/regex/msg_key_regex = new(@"[0-9.]+( second)?s?!", "ig")
 
+	// Fluff status text, if available
+	var/fluff_message = get_fluff_message()
 	// HTML displayed to user
-	var/msg_html = {"<p class="terminal_text">[warning ? "☒ " : ""][pick(SStitle.fluff_status)]...</p>"}
+	var/msg_html = {"<p class="terminal_text">[warning ? "☒ " : ""][fluff_message ? fluff_message : msg]</p>"}
 	// Key used to cache the timing info
 	var/msg_key = msg_key_regex.Replace(msg, "#")
 
