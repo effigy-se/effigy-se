@@ -326,6 +326,7 @@
 		if(!ignore_alarms)
 			start_deactivation_process()
 
+
 /**
  * Begins activation process of us and our neighbors.
  *
