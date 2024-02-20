@@ -64,7 +64,8 @@
 
 /obj/machinery/door/firedoor/heavy
 	name = "heavy emergency shutter"
-	icon = 'local/icons/obj/doors/firedoor_glass.dmi'
+	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
+	icon = 'local/icons/obj/doors/firedoor.dmi'
 
 /obj/effect/spawner/structure/window/reinforced/no_firelock
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)
@@ -74,4 +75,5 @@
 
 /obj/machinery/door/firedoor/water_sensor
 	name = "environmental shutter"
+	icon = 'local/icons/obj/doors/firedoor.dmi'
 	water_sensor = TRUE
