@@ -59,7 +59,6 @@
 
 	to_chat(world, span_danger("[name] has liquids. height [liquids.liquid_state]"))
 	if(liquids.liquid_state >= LIQUID_STATE_ANKLES)
-		message_admins(span_info("LIQUIDS: [name] triggering due to liquids state [liquids.liquid_state]"))
 		return FIRELOCK_ALARM_TYPE_COLD
 
 /obj/machinery/door/firedoor/heavy
