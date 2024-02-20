@@ -10,6 +10,7 @@
 	var/light_color_generic = LIGHT_COLOR_GLOWSTICK_YELLOW
 	var/light_color_emag = LIGHT_COLOR_FAINT_BLUE
 	var/light_color_operating = LIGHT_COLOR_FAINT_BLUE
+	var/water_sensor = FALSE
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
@@ -61,3 +62,7 @@
 
 /obj/machinery/door/firedoor/closed
 	alarm_type = FIRELOCK_ALARM_TYPE_GENERIC
+
+/obj/machinery/door/firedoor/water_sensor
+	name = "environmental shutter"
+	water_sensor = TRUE
