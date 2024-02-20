@@ -10,6 +10,7 @@
 	var/light_color_generic = LIGHT_COLOR_GLOWSTICK_YELLOW
 	var/light_color_emag = LIGHT_COLOR_FAINT_BLUE
 	var/light_color_operating = LIGHT_COLOR_FAINT_BLUE
+	var/water_sensor = FALSE
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
@@ -54,10 +55,15 @@
 /obj/machinery/door/firedoor/heavy
 	name = "heavy emergency shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
-	icon = 'local/icons/obj/doors/firedoor_glass.dmi'
+	icon = 'local/icons/obj/doors/firedoor.dmi'
 
 /obj/effect/spawner/structure/window/reinforced/no_firelock
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)
 
 /obj/machinery/door/firedoor/closed
 	alarm_type = FIRELOCK_ALARM_TYPE_GENERIC
+
+/obj/machinery/door/firedoor/water_sensor
+	name = "environmental shutter"
+	icon = 'local/icons/obj/doors/firedoor.dmi'
+	water_sensor = TRUE
