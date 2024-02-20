@@ -57,7 +57,6 @@
 	if(isnull(liquids))
 		return
 
-	to_chat(world, span_danger("[name] has liquids. height [liquids.liquid_state]"))
 	if(liquids.liquid_state >= LIQUID_STATE_ANKLES)
 		return FIRELOCK_ALARM_TYPE_COLD
 
