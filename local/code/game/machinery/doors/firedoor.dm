@@ -73,5 +73,4 @@
 
 /obj/machinery/door/firedoor/water_sensor
 	name = "environmental shutter"
-	icon = 'local/icons/obj/doors/firedoor.dmi'
 	water_sensor = TRUE
