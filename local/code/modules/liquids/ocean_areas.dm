@@ -28,17 +28,8 @@
 	has_gravity = TRUE
 	area_flags = UNIQUE_AREA
 
-/area/ruin/ocean/listening_outpost
-	name = "Listening Station"
-
-/area/ruin/ocean/bunker
-	name = "Bunker"
-
 /area/ruin/ocean/bioweapon_research
 	name = "Syndicate Ocean Base"
-
-/area/ruin/ocean/mining_site
-	name = "Mining Site"
 
 /area/ruin/ocean/saddam_hole
 	name = "Cave Hideout"
