@@ -430,6 +430,25 @@
 	glass_type = /obj/machinery/door/airlock/service/studio/glass
 	airlock_type = /obj/machinery/door/airlock/service/studio
 
+/obj/machinery/door/airlock/syndicate
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/airlock_effigy
+	greyscale_colors = "#950404#4d4d4d"
+
+/obj/machinery/door/airlock/syndicate/glass
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/door_assembly/door_assembly_syn
+	name = "syndicate airlock assembly"
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	greyscale_config = /obj/machinery/door/airlock/syndicate::greyscale_config
+	greyscale_colors = /obj/machinery/door/airlock/syndicate::greyscale_colors
+	base_name = "syndicate airlock"
+	glass_type = /obj/machinery/door/airlock/syndicate/glass
+	airlock_type = /obj/machinery/door/airlock/syndicate
+
 /**
  * Effigy Door Assemblies
  */
