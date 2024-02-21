@@ -15,22 +15,6 @@
 	description = "A horizontal tear in the ocean."
 	suffix = "ocean_fissure_diag.dmm"
 
-/datum/map_template/ruin/ocean/saddam_hole
-	name = "Ocean Hideout"
-	id = "ocean-hideout"
-	description = "Ocean hideout."
-	suffix = "ocean_hideout_above.dmm"
-	cost = 2
-	allow_duplicates = FALSE
-	always_spawn_with = list(/datum/map_template/ruin/ocean/saddam_hole_below = PLACE_BELOW)
-
-/datum/map_template/ruin/ocean/saddam_hole_below
-	name = "Ocean Hideout Underground"
-	id = "ocean-hideout-ug"
-	description = "Ocean hideout... one floor down."
-	suffix = "ocean_hideout_below.dmm"
-	unpickable = TRUE
-
 //Some copypastas ahead, but it's how our ruins spawning system works
 
 /datum/map_template/ruin/trench
