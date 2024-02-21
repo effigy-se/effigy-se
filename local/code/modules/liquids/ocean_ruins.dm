@@ -1,3 +1,5 @@
+// Hey! Listen! Update \config\oceanruinblacklist.txt with your new ruins!
+
 /datum/map_template/ruin/ocean
 	ruin_type = ZTRAIT_OCEAN_RUINS
 	prefix = "_maps/RandomRuins/OceanRuins/"
