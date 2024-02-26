@@ -128,6 +128,7 @@
 			note = target.security_note,
 			rank = target.rank,
 			species = target.species,
+			trim = target.trim,
 			wanted_status = target.wanted_status,
 			past_general_records = target.past_general_records, // EffigyEdit Add (Records)
 			past_security_records = target.past_security_records, // EffigyEdit Add (Records)
