@@ -235,6 +235,8 @@
 
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state
+	if(!isnull(my_turf))
+		my_turf.liquids_change(new_state)
 	update_icon(UPDATE_OVERLAYS)
 
 /obj/effect/abstract/liquid_turf/update_overlays()
