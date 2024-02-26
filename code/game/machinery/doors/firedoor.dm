@@ -293,10 +293,10 @@
 		stack_trace("We tried to check a gas_mixture that doesn't exist for its firetype, what are you DOING")
 		return
 
-	var/pressure = environment?.return_pressure() // EffigyEdit Add
+	var/pressure = environment.return_pressure() // EffigyEdit Add
 	if(environment.temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
 		return FIRELOCK_ALARM_TYPE_HOT
-	if(environment.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE || pressure < WARNING_LOW_PRESSURE) // EffigyEdit Change (Add pressure)
+	if(environment.temperature <= BODYTEMP_COLD_WARNING_2 || pressure > HAZARD_HIGH_PRESSURE || pressure < HAZARD_LOW_PRESSURE) // EffigyEdit Change (Add pressure)
 		return FIRELOCK_ALARM_TYPE_COLD
 	return
 
@@ -577,8 +577,10 @@
 
 	if(density)
 		open()
+		/* EffigyEdit Remove - Firedoors stay open
 		if(active)
 			addtimer(CALLBACK(src, PROC_REF(correct_state)), 2 SECONDS, TIMER_UNIQUE)
+		*/// EffigyEdit Remove End
 	else
 		close()
 
