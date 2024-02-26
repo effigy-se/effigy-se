@@ -53,7 +53,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 	data["eng_override"] = GLOB.force_eng_override // EffigyEdit Add (Airlock Override)
 	return data
 
-/obj/machinery/keycard_auth/ui_status(mob/user)
+/obj/machinery/keycard_auth/ui_status(mob/user, datum/ui_state/state)
 	if(isdrone(user))
 		return UI_CLOSE
 	if(!isanimal_or_basicmob(user))
