@@ -149,9 +149,9 @@
 		return
 
 	if(.)
-		our_head.bodytype |= BODYTYPE_SNOUTED
+		our_head.bodytype |= BODYSHAPE_SNOUTED
 	else
-		our_head.bodytype &= ~BODYTYPE_SNOUTED
+		our_head.bodytype &= ~BODYSHAPE_SNOUTED
 	target.synchronize_bodytypes()
 
 /datum/preference/tri_color/snout

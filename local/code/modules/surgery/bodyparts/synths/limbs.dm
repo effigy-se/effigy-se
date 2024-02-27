@@ -6,7 +6,7 @@
 	icon_greyscale = BODYPART_ICON_IPC
 	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
+	bodytype = BODYSHAPE_HUMANOID | BODYTYPE_ROBOTIC
 	change_exempt_flags = NONE
 	brute_modifier = SYNTH_BRUTE_MODIFIER
 	burn_modifier = SYNTH_BURN_MODIFIER
@@ -58,7 +58,7 @@
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	should_draw_greyscale = TRUE
 	limb_id = BODYPART_ID_DIGITIGRADE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
+	bodytype = BODYSHAPE_HUMANOID | BODYTYPE_ROBOTIC | BODYSHAPE_DIGITIGRADE
 	base_limb_id = BODYPART_ID_DIGITIGRADE
 	change_exempt_flags = NONE
 	brute_modifier = SYNTH_BRUTE_MODIFIER
@@ -72,7 +72,7 @@
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	should_draw_greyscale = TRUE
 	limb_id = BODYPART_ID_DIGITIGRADE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
+	bodytype = BODYSHAPE_HUMANOID | BODYTYPE_ROBOTIC | BODYSHAPE_DIGITIGRADE
 	base_limb_id = BODYPART_ID_DIGITIGRADE
 	change_exempt_flags = NONE
 	brute_modifier = SYNTH_BRUTE_MODIFIER

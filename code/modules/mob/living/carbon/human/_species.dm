@@ -676,7 +676,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/mutable_appearance/underwear_overlay
 			if(underwear)
 				var/icon_state = underwear.icon_state
-				if(underwear.has_digitigrade && (species_human.bodytype & BODYTYPE_DIGITIGRADE))
+				if(underwear.has_digitigrade && (species_human.bodytype & BODYSHAPE_DIGITIGRADE))
 					icon_state += "_d"
 				underwear_overlay = mutable_appearance(underwear.icon, icon_state, -BODY_LAYER)
 				if(!underwear.use_static)
@@ -700,7 +700,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(socks)
 				var/mutable_appearance/socks_overlay
 				var/icon_state = socks.icon_state
-				if((species_human.bodytype & BODYTYPE_DIGITIGRADE))
+				if((species_human.bodytype & BODYSHAPE_DIGITIGRADE))
 					icon_state += "_d"
 				socks_overlay = mutable_appearance(socks.icon, icon_state, -BODY_LAYER)
 				if(!socks.use_static)
@@ -945,7 +945,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				return FALSE
 			// EffigyEdit Remove START Customization
 			/*
-			if((H.bodyshape & BODYTYPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
+			if((H.bodyshape & BODYSHAPE_DIGITIGRADE) && !(I.item_flags & IGNORE_DIGITIGRADE))
 				if(!(I.supports_variations_flags & (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON)))
 					if(!disable_warning)
 						to_chat(H, span_warning("The footwear around here isn't compatible with your feet!"))
