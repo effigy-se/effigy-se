@@ -179,9 +179,11 @@
 	can_roll_antag = CAN_ROLL_PROTECTED
 	job_to_add = /datum/job/veteran_advisor
 
+/* EffigyEdit Remove - Station Trait Jobs
 /datum/station_trait/job/veteran_advisor/on_lobby_button_update_overlays(atom/movable/screen/lobby/button/sign_up/lobby_button, list/overlays)
 	. = ..()
-	overlays += "veteran_advisor"
+	overlays += "veteran_advisor
+*/// EffigyEdit Remove End
 
 #undef CAN_ROLL_ALWAYS
 #undef CAN_ROLL_PROTECTED
