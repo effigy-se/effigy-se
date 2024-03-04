@@ -20,23 +20,23 @@
 
 	var/find_index = findtext(value, "https://")
 	if(find_index != 1)
-		to_chat(usr, span_warning("Your link must be https!"))
+		to_chat(usr, SPAN_BOX_ALERT(RED, "Your headshot link must be https!"))
 		return
 
 	if(!findtext(value, "."))
-		to_chat(usr, span_warning("Invalid link!"))
+		to_chat(usr, SPAN_BOX_ALERT(RED, "Invalid headshot link!"))
 		return
 	var/list/value_split = splittext(value, ".")
 
 	// extension will always be the last entry
 	var/extension = value_split[length(value_split)]
 	if(!(extension in valid_extensions))
-		to_chat(usr, span_warning("The image must be one of the following extensions: '[english_list(valid_extensions)]'"))
+		to_chat(usr, SPAN_BOX_ALERT(RED, "Headshot image must be one of the following extensions: '[english_list(valid_extensions)]'"))
 		return
 
 	find_index = findtext(value, link_regex)
 	if(find_index != 9)
-		to_chat(usr, span_warning("The image must be hosted on one of the following sites: 'Gyazo, Discord'"))
+		to_chat(usr, SPAN_BOX_ALERT(RED, "Headshot image must be hosted on one of the following sites: Effigy, F-List, Discord, Lensdump, Gyazo"))
 		return
 
 	if(stored_link[usr.ckey] != value)
