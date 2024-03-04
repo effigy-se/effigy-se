@@ -201,7 +201,7 @@ GLOBAL_VAR(restart_counter)
 		GLOB.log_directory = "data/logs/[texttime]/round-"
 		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD")]_"
 		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
-		if(GLOB.round_hex) // EffigyEdit Change - Logging
+		if(GLOB.round_hex && GLOB.round_hex != "0001000") // EffigyEdit Change - Logging
 			GLOB.log_directory += "[GLOB.round_hex]" // EffigyEdit Change - Logging
 			GLOB.picture_logging_prefix += "R_[GLOB.round_hex]_" // EffigyEdit Change - Logging
 			GLOB.picture_log_directory += "[GLOB.round_hex]" // EffigyEdit Change - Logging
