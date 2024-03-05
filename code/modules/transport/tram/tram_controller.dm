@@ -173,7 +173,6 @@
 		CRASH("a tram lift_master was initialized without the required landmarks to give it direction!")
 
 	SStransport.can_fire = TRUE
-	cycle_doors(CYCLE_OPEN) // EffigyEdit Add
 
 	return TRUE
 
