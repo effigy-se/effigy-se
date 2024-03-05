@@ -5942,7 +5942,7 @@
 /turf/open/floor/catwalk_floor/flat_white,
 /area/station/medical/medbay/central)
 "bty" = (
-/obj/structure/transport/linear/tram/corner/southeast,
+/obj/structure/transport/linear/tram/corner/northeast,
 /obj/structure/tram/spoiler{
 	dir = 4
 	},
@@ -10083,7 +10083,9 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 8
 	},
-/obj/machinery/door/window/right/directional/east{
+/obj/machinery/door/window/tram/platform/right/directional/east{
+	transport_linked_id = "sigma_1";
+	platform_linked_code = 2;
 	name = "Engineering Tram Platform";
 	req_access = list("engineering")
 	},
@@ -16174,11 +16176,9 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/machinery/transport/crossing_signal/southeast{
-	dir = 4;
+/obj/machinery/transport/crossing_signal/northeast{
 	configured_transport_id = "sigma_1";
-	icon_state = "crossing-outbound";
-	base_icon_state = "crossing-outbound"
+	dir = 8
 	},
 /obj/machinery/transport/guideway_sensor{
 	dir = 8
@@ -25298,7 +25298,8 @@
 	configured_transport_id = "sigma_1"
 	},
 /obj/machinery/button/transport/tram/directional/west{
-	specific_transport_id = "sigma_1"
+	specific_transport_id = "sigma_1";
+	id = 2
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
 /obj/machinery/meter,
@@ -27188,10 +27189,9 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/machinery/transport/crossing_signal/southeast{
-	sign_dir = -1;
-	dir = 4;
-	configured_transport_id = "sigma_1"
+/obj/machinery/transport/crossing_signal/northwest{
+	configured_transport_id = "sigma_1";
+	dir = 8
 	},
 /obj/machinery/transport/guideway_sensor{
 	dir = 4
@@ -33039,7 +33039,8 @@
 	configured_transport_id = "sigma_1"
 	},
 /obj/machinery/button/transport/tram/directional/east{
-	specific_transport_id = "sigma_1"
+	specific_transport_id = "sigma_1";
+	id = 2
 	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 1
@@ -37280,7 +37281,9 @@
 "iTI" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/tram/alt/titanium,
-/obj/machinery/transport/tram_controller,
+/obj/machinery/transport/tram_controller{
+	configured_transport_id = "sigma_1"
+	},
 /turf/open/floor/tram,
 /area/station/engineering/hallway)
 "iTK" = (
@@ -38464,7 +38467,9 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
-/obj/machinery/door/window/left/directional/west{
+/obj/machinery/door/window/tram/platform/left/directional/west{
+	transport_linked_id = "sigma_1";
+	platform_linked_code = 1;
 	name = "Engineering Tram Platform";
 	req_access = list("engineering")
 	},
@@ -39090,7 +39095,9 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 8
 	},
-/obj/machinery/door/window/left/directional/east{
+/obj/machinery/door/window/tram/platform/left/directional/east{
+	transport_linked_id = "sigma_1";
+	platform_linked_code = 2;
 	name = "Engineering Tram Platform";
 	req_access = list("engineering")
 	},
@@ -40996,7 +41003,9 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
-/obj/machinery/door/window/right/directional/west{
+/obj/machinery/door/window/tram/platform/right/directional/west{
+	transport_linked_id = "sigma_1";
+	platform_linked_code = 1;
 	name = "Engineering Tram Platform";
 	req_access = list("engineering")
 	},
@@ -42903,7 +42912,8 @@
 	dir = 1
 	},
 /obj/machinery/button/transport/tram/directional/west{
-	specific_transport_id = "sigma_1"
+	specific_transport_id = "sigma_1";
+	id = 1
 	},
 /obj/machinery/transport/destination_sign/indicator/directional/west{
 	configured_transport_id = "sigma_1"
@@ -47617,7 +47627,9 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
-/obj/machinery/door/window/left/directional/west{
+/obj/machinery/door/window/tram/platform/left/directional/west{
+	transport_linked_id = "sigma_1";
+	platform_linked_code = 2;
 	name = "Engineering Tram Platform";
 	req_access = list("engineering")
 	},
@@ -62564,7 +62576,9 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
-/obj/machinery/door/window/right/directional/west{
+/obj/machinery/door/window/tram/platform/right/directional/west{
+	transport_linked_id = "sigma_1";
+	platform_linked_code = 2;
 	name = "Engineering Tram Platform";
 	req_access = list("engineering")
 	},
