@@ -110,7 +110,15 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			<a id="be_antag" class="menu_button" href='?src=[text_ref(src)];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='antag_enabled'>Antag Enabled</span>" : "<span class='antag_disabled'>Antag Disabled</span>"]</a>
 			<br/><br/>
 			<a class="menu_button" href='?src=[text_ref(src)];observe=1'>Observe</a>
-			<a class="menu_button" href='?src=[text_ref(src)];view_manifest=1'>Crew Manifest</a>
+		"}
+
+		if(SSticker.current_state > GAME_STATE_PREGAME)
+			splash_data += {"
+				<a class="menu_button" href='?src=[text_ref(src)];view_manifest=1'>Crew Manifest</a>
+				<a class="menu_button" href='?src=[text_ref(src)];character_directory=1'>Character Directory</a>
+			"}
+
+		splash_data += {"
 			<a class="menu_button" href='?src=[text_ref(src)];character_setup=1'>Character Setup (<span id="character_slot">[client.prefs.read_preference(/datum/preference/name/real_name)]</span>)</a>
 			<a class="menu_button" href='?src=[text_ref(src)];game_options=1'>Game Options</a>
 		"}
