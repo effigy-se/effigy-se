@@ -715,8 +715,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	qdel(query_client_in_db)
 	client_authenticated = TRUE // EffigyEdit Add - Client Auth
 	var/datum/db_query/query_get_client_age = SSdbcore.NewQuery(
-		"SELECT firstseen, DATEDIFF(Now(),firstseen), accountjoindate, DATEDIFF(Now(),accountjoindate) FROM [format_table_name("player")] WHERE ckey = :ckey",
-		list("ckey" = ckey)
+		"SELECT firstseen, DATEDIFF(Now(),firstseen), accountjoindate, DATEDIFF(Now(),accountjoindate), age_verification_status FROM [format_table_name("player")] WHERE ckey = :ckey",
+		list("ckey" = ckey) // EffigyEdit Change - Age Verification
 	)
 	if(!query_get_client_age.Execute())
 		qdel(query_get_client_age)
@@ -724,6 +724,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(query_get_client_age.NextRow())
 		player_join_date = query_get_client_age.item[1]
 		player_age = text2num(query_get_client_age.item[2])
+		client_verified = query_get_client_age.item[5] // EffigyEdit Add - Age Verification
 		if(!account_join_date)
 			account_join_date = query_get_client_age.item[3]
 			account_age = text2num(query_get_client_age.item[4])
