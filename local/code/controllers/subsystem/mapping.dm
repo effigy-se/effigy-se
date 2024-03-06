@@ -19,3 +19,8 @@
 	if(trench_ruins.len)
 		seedRuins(trench_ruins, CONFIG_GET(number/trench_budget), list(/area/ocean/trench/generated), themed_ruins[ZTRAIT_TRENCH_RUINS], clear_below = TRUE)
 	return ..()
+
+/datum/controller/subsystem/mapping/loadWorld()
+	. = ..()
+	var/list/FailedZsEffigy = list()
+	LoadGroup(FailedZsEffigy, "The Interlink", "map_files/generic", "CentCom_z2_effigy.dmm", default_traits = ZTRAITS_CENTCOM)
