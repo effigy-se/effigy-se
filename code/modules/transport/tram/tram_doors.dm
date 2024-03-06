@@ -23,6 +23,12 @@
 	var/crushing_in_progress = FALSE
 	bound_width = 64
 
+/obj/machinery/door/airlock/tram/half
+	icon = 'local/icons/obj/doors/airlocks/tram/tram-half.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/tram/tram-half-overlays.dmi'
+	multi_tile = FALSE
+	bound_width = 32
+
 /obj/machinery/door/airlock/tram/Initialize(mapload)
 	. = ..()
 	if(!id_tag)
@@ -186,7 +192,7 @@
 
 /obj/machinery/door/airlock/tram/LateInitialize(mapload)
 	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(open))
+	// INVOKE_ASYNC(src, PROC_REF(open)) // EffigyEdit Remove
 	SStransport.doors += src
 	find_tram()
 

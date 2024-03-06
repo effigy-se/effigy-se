@@ -12,25 +12,34 @@
 	if(client.interviewee)
 		return FALSE
 
+	if(SSdbcore.IsConnected() && !client.client_authenticated)
+		sleep(3 SECONDS)
+		if(!client.client_authenticated) // retry
+			to_chat_immediate(src, SPAN_BOX_ALERT(PINK, "Not Authorized \[2F173/2]<br><br>Effigy uses a player whitelist and your account was not found!<br><br>Please visit <a href=\"https://effigy.se/new-players/\">https://effigy.se/new-players/</a> for details and to submit your application and perform verification."))
+			if(!GLOB.account_alert)
+				GLOB.account_alert = new
+			GLOB.account_alert.ui_interact(client.mob)
+			return FALSE
+
 	if(href_list["observe"])
-		play_lobby_button_sound()
 		make_me_an_observer()
 		return
 
 	if(href_list["view_manifest"])
-		play_lobby_button_sound()
 		ViewManifest()
 		return
 
+	if(href_list["character_directory"])
+		client.show_character_directory()
+		return
+
 	if(href_list["toggle_antag"])
-		play_lobby_button_sound()
 		var/datum/preferences/preferences = client.prefs
 		preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], !preferences.read_preference(/datum/preference/toggle/be_antag))
 		client << output(preferences.read_preference(/datum/preference/toggle/be_antag), "title_browser:toggle_antag")
 		return
 
 	if(href_list["character_setup"])
-		play_lobby_button_sound()
 		var/datum/preferences/preferences = client.prefs
 		preferences.current_window = PREFERENCE_TAB_CHARACTER_PREFERENCES
 		preferences.update_static_data(src)
@@ -38,7 +47,6 @@
 		return
 
 	if(href_list["game_options"])
-		play_lobby_button_sound()
 		var/datum/preferences/preferences = client.prefs
 		preferences.current_window = PREFERENCE_TAB_GAME_PREFERENCES
 		preferences.update_static_data(usr)
@@ -46,8 +54,6 @@
 		return
 
 	if(href_list["toggle_ready"])
-		play_lobby_button_sound()
-
 		if(!is_admin(client) && length_char(client?.prefs?.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
 			to_chat(src, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 			return
@@ -57,7 +63,6 @@
 		return
 
 	if(href_list["late_join"])
-		play_lobby_button_sound()
 		GLOB.latejoin_menu.ui_interact(usr)
 
 	if(href_list["title_is_ready"])

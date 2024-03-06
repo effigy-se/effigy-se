@@ -1,8 +1,9 @@
 import { filterMap, sortBy } from 'common/collections';
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
+import { useState } from 'react';
 
-import { sendAct, useBackend, useLocalState } from '../../../backend';
+import { sendAct, useBackend } from '../../../backend';
 import {
   Autofocus,
   Box,
@@ -14,7 +15,6 @@ import {
   Popper,
   SideDropdown,
   Stack,
-  TrackOutsideClicks,
 } from '../../../components';
 import { CharacterPreview } from '../../common/CharacterPreview';
 import {
@@ -48,7 +48,7 @@ const CLOTHING_SELECTION_MULTIPLIER = 5.3;
 const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
-  handleLoadout: () => void; // EffigyEdit Add Customization
+  handleLoadout: () => void;
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -108,20 +108,17 @@ const CharacterControls = (props: {
   );
 };
 
-const ChoicedSelection = (
-  props: {
-    name: string;
-    catalog: FeatureChoicedServerData;
-    selected: string;
-    supplementalFeature?: string;
-    supplementalValue?: unknown;
-    onClose: () => void;
-    onSelect: (value: string) => void;
-    searchText: string;
-    setSearchText: (value: string) => void;
-  },
-  context,
-) => {
+const ChoicedSelection = (props: {
+  name: string;
+  catalog: FeatureChoicedServerData;
+  selected: string;
+  supplementalFeature?: string;
+  supplementalValue?: unknown;
+  onClose: () => void;
+  onSelect: (value: string) => void;
+  searchText: string;
+  setSearchText: (value: string) => void;
+}) => {
   const { act } = useBackend<PreferencesMenuData>();
 
   const {
@@ -159,7 +156,7 @@ const ChoicedSelection = (
   return (
     <Box
       style={{
-        background: '#333232',
+        background: '#424651',
         padding: '5px',
 
         height: `${
@@ -187,7 +184,7 @@ const ChoicedSelection = (
                 style={{
                   fontWeight: 'bold',
                   fontSize: '18px',
-                  color: '#eaeaea',
+                  color: '#e6e7eb',
                   textAlign: 'center',
                 }}
               >
@@ -202,7 +199,7 @@ const ChoicedSelection = (
                   fontSize: '14px',
                   textAlign: 'center',
                 }}
-                color="grey"
+                color="#424651"
                 onClick={props.onClose}
               >
                 {' '}
@@ -211,7 +208,7 @@ const ChoicedSelection = (
             </Stack.Item>
           </Stack>
         </Stack.Item>
-        <Stack.Item textColor="#eaeaea" verticalAlign="middle">
+        <Stack.Item textColor="#e6e7eb" verticalAlign="middle">
           <Box>
             <Icon ml={1} mr={1.5} name="search" />
             <Input
@@ -265,7 +262,7 @@ const ChoicedSelection = (
                         textAlign="center"
                         fontSize="14"
                         width="86%"
-                        color="#eaeaea"
+                        color="#e6e7eb"
                       >
                         {name}
                       </Box>
@@ -310,42 +307,35 @@ const GenderButton = (props: {
   handleSetGender: (gender: Gender) => void;
   gender: Gender;
 }) => {
-  const [genderMenuOpen, setGenderMenuOpen] = useLocalState(
-    'genderMenuOpen',
-    false,
-  );
+  const [genderMenuOpen, setGenderMenuOpen] = useState(false);
 
   return (
     <Popper
-      options={{
-        placement: 'right-end',
-      }}
-      popperContent={
-        genderMenuOpen ? (
-          <Stack backgroundColor="white" ml={0.5} p={0.3}>
-            {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
-              (gender) => {
-                return (
-                  <Stack.Item key={gender}>
-                    <Button
-                      selected={gender === props.gender}
-                      onClick={() => {
-                        props.handleSetGender(gender);
-                        setGenderMenuOpen(false);
-                      }}
-                      fontSize="22px"
-                      icon={GENDERS[gender].icon}
-                      tooltip={GENDERS[gender].text}
-                      tooltipPosition="top"
-                    />
-                  </Stack.Item>
-                );
-              },
-            )}
-          </Stack>
-        ) : (
-          <> </>
-        )
+      isOpen={genderMenuOpen}
+      onClickOutside={() => setGenderMenuOpen(false)}
+      placement="right-end"
+      content={
+        <Stack backgroundColor="white" ml={0.5} p={0.3}>
+          {[Gender.Male, Gender.Female, Gender.Other, Gender.Other2].map(
+            (gender) => {
+              return (
+                <Stack.Item key={gender}>
+                  <Button
+                    selected={gender === props.gender}
+                    onClick={() => {
+                      props.handleSetGender(gender);
+                      setGenderMenuOpen(false);
+                    }}
+                    fontSize="22px"
+                    icon={GENDERS[gender].icon}
+                    tooltip={GENDERS[gender].text}
+                    tooltipPosition="top"
+                  />
+                </Stack.Item>
+              );
+            },
+          )}
+        </Stack>
       }
     >
       <Button
@@ -388,10 +378,7 @@ const MainFeature = (props: {
   } = props;
 
   const supplementalFeature = catalog.supplemental_feature;
-  let [searchText, setSearchText] = useLocalState(
-    catalog.name + '_choiced_search',
-    '',
-  );
+  let [searchText, setSearchText] = useState('');
   const handleCloseInternal = () => {
     handleClose();
     setSearchText('');
@@ -399,32 +386,26 @@ const MainFeature = (props: {
 
   return (
     <Popper
-      options={{
-        placement: 'bottom-start',
-      }}
-      popperContent={
-        isOpen ? (
-          <TrackOutsideClicks onOutsideClick={props.handleClose}>
-            <ChoicedSelection
-              name={catalog.name}
-              catalog={catalog}
-              selected={currentValue}
-              supplementalFeature={supplementalFeature}
-              supplementalValue={
-                supplementalFeature &&
-                data.character_preferences.supplemental_features[
-                  supplementalFeature
-                ]
-              }
-              onClose={handleClose}
-              onSelect={handleSelect}
-              searchText={searchText}
-              setSearchText={setSearchText}
-            />
-          </TrackOutsideClicks>
-        ) : (
-          <> </>
-        )
+      placement="bottom-start"
+      onClickOutside={handleClose}
+      isOpen={isOpen}
+      content={
+        <ChoicedSelection
+          name={catalog.name}
+          catalog={catalog}
+          selected={currentValue}
+          supplementalFeature={supplementalFeature}
+          supplementalValue={
+            supplementalFeature &&
+            data.character_preferences.supplemental_features[
+              supplementalFeature
+            ]
+          }
+          onClose={handleClose}
+          onSelect={handleSelect}
+          searchText={searchText}
+          setSearchText={setSearchText}
+        />
       }
     >
       <Button
@@ -490,7 +471,7 @@ const MainFeature = (props: {
           overflowWrap: 'anywhere',
         }}
         textAlign="center"
-        textColor="#eaeaea"
+        textColor="#e6e7eb"
       >
         {catalog.name}
       </Box>
@@ -610,13 +591,10 @@ export const getRandomization = (
 
 export const MainPage = (props: { openSpecies: () => void }) => {
   const { act, data } = useBackend<PreferencesMenuData>();
-  const [currentClothingMenu, setCurrentClothingMenu] = useLocalState<
-    string | null
-  >('currentClothingMenu', null);
-  const [multiNameInputOpen, setMultiNameInputOpen] = useLocalState(
-    'multiNameInputOpen',
-    false,
+  const [currentClothingMenu, setCurrentClothingMenu] = useState<string | null>(
+    null,
   );
+  const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
   const [randomToggleEnabled] = useRandomToggleState();
 
   return (

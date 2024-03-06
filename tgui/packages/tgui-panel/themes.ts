@@ -6,9 +6,9 @@
 
 export const THEMES = ['light', 'dark'];
 
-const COLOR_DARK_BG = '#252525';
-const COLOR_DARK_BG_DARKER = '#171717';
-const COLOR_DARK_TEXT = '#a4bad6';
+const COLOR_DARK_BG = '#1c1d22';
+const COLOR_DARK_BG_DARKER = '#121316';
+const COLOR_DARK_TEXT = '#e6f1ff';
 
 let setClientThemeTimer: NodeJS.Timeout;
 
@@ -51,19 +51,19 @@ export const setClientTheme = (name) => {
       'rules.background-color': 'none',
       'rules.text-color': '#202020',
       'rules.border': 0,
-      'wiki.background-color': '#0047a5',
-      'wiki.text-color': '#eaeaea',
+      'wiki.background-color': '#2ccaff',
+      'wiki.text-color': '#202020',
       'wiki.border': 0,
       'forum.background-color': 'none',
       'forum.text-color': '#202020',
       'forum.border': 0,
-      'webmap.background-color': '#0047a5',
-      'webmap.text-color': '#eaeaea',
+      'webmap.background-color': '#2ccaff',
+      'webmap.text-color': '#202020',
       'webmap.border': 0,
-      'ahelp.background-color': '#d11141',
+      'ahelp.background-color': '#f0197d',
       'ahelp.text-color': '#eaeaea',
       'ahelp.border': 0,
-      'report-issue.background-color': '#d11141',
+      'report-issue.background-color': '#f0197d',
       'report-issue.text-color': '#eaeaea',
       'report-issue.border': 0,
       // Status and verb tabs
@@ -99,7 +99,7 @@ export const setClientTheme = (name) => {
       'infowindow.text-color': COLOR_DARK_TEXT,
       'info.background-color': COLOR_DARK_BG,
       'info.text-color': COLOR_DARK_TEXT,
-      'browseroutput.background-color': COLOR_DARK_BG,
+      'browseroutput.background-color': COLOR_DARK_TEXT,
       'browseroutput.text-color': COLOR_DARK_TEXT,
       'outputwindow.background-color': COLOR_DARK_BG,
       'outputwindow.text-color': COLOR_DARK_TEXT,
@@ -112,20 +112,20 @@ export const setClientTheme = (name) => {
       'rules.background-color': '#e6f1ff',
       'rules.text-color': '#333333',
       'rules.border': 0,
-      'wiki.background-color': '#0047a5',
-      'wiki.text-color': '#eaeaea',
+      'wiki.background-color': '#2ccaff',
+      'wiki.text-color': '#333333',
       'wiki.border': 0,
       'forum.background-color': '#e6f1ff',
       'forum.text-color': '#333333',
       'forum.border': 0,
-      'webmap.background-color': '#0047a5',
-      'webmap.text-color': '#eaeaea',
+      'webmap.background-color': '#2ccaff',
+      'webmap.text-color': '#333333',
       'webmap.border': 0,
-      'ahelp.background-color': '#d11141',
-      'ahelp.text-color': '#eaeaea',
+      'ahelp.background-color': '#f0197d',
+      'ahelp.text-color': '#333333',
       'ahelp.border': 0,
-      'report-issue.background-color': '#d11141',
-      'report-issue.text-color': '#eaeaea',
+      'report-issue.background-color': '#f0197d',
+      'report-issue.text-color': '#333333',
       'report-issue.border': 0,
       // Status and verb tabs
       'output.background-color': COLOR_DARK_BG_DARKER,
@@ -139,18 +139,18 @@ export const setClientTheme = (name) => {
       'stat.prefix-color': COLOR_DARK_TEXT,
       'stat.suffix-color': COLOR_DARK_TEXT,
       // Say, OOC, me Buttons etc.
-      'saybutton.background-color': COLOR_DARK_BG,
-      'saybutton.text-color': COLOR_DARK_TEXT,
-      'oocbutton.background-color': COLOR_DARK_BG,
-      'oocbutton.text-color': COLOR_DARK_TEXT,
-      'mebutton.background-color': COLOR_DARK_BG,
-      'mebutton.text-color': COLOR_DARK_TEXT,
+      'saybutton.background-color': '#a4bad6',
+      'saybutton.text-color': COLOR_DARK_BG_DARKER,
+      'oocbutton.background-color': '#cca300',
+      'oocbutton.text-color': COLOR_DARK_BG_DARKER,
+      'mebutton.background-color': '#5975da',
+      'mebutton.text-color': COLOR_DARK_BG_DARKER,
       'asset_cache_browser.background-color': COLOR_DARK_BG,
       'asset_cache_browser.text-color': COLOR_DARK_TEXT,
       'tooltip.background-color': COLOR_DARK_BG,
       'tooltip.text-color': COLOR_DARK_TEXT,
-      'input.background-color': COLOR_DARK_BG_DARKER,
-      'input.text-color': COLOR_DARK_TEXT,
+      'input.background-color': '#25272d',
+      'input.text-color': '#eaeaea',
     });
   }
 };

@@ -1,8 +1,14 @@
 import { sortBy, sortStrings } from 'common/collections';
 import { BooleanLike, classes } from 'common/react';
-import { ComponentType, createElement, ReactNode } from 'react';
+import {
+  ComponentType,
+  createElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 
-import { sendAct, useBackend, useLocalState } from '../../../../backend';
+import { sendAct, useBackend } from '../../../../backend';
 import {
   Box,
   Button,
@@ -12,7 +18,7 @@ import {
   Slider,
   Stack,
   TextArea,
-} from '../../../../components';
+} from '../../../../components'; // EffigyEdit Add
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
@@ -389,15 +395,16 @@ export const FeatureValueInput = (props: {
 
   const feature = props.feature;
 
-  const [predictedValue, setPredictedValue] = useLocalState(
-    `${props.featureId}_predictedValue_${data.active_slot}`,
-    props.value,
-  );
+  const [predictedValue, setPredictedValue] = useState(props.value);
 
   const changeValue = (newValue: unknown) => {
     setPredictedValue(newValue);
     createSetPreference(props.act, props.featureId)(newValue);
   };
+
+  useEffect(() => {
+    setPredictedValue(props.value);
+  }, [data.active_slot, props.value]);
 
   return (
     <ServerPreferencesFetcher
@@ -475,7 +482,7 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
                   background: props.value[index].startsWith('#')
                     ? props.value[index]
                     : `#${props.value[index]}`,
-                  border: '2px solid #eaeaea',
+                  border: '2px solid #e6e7eb',
                   boxSizing: 'content-box',
                   height: '11px',
                   width: '11px',

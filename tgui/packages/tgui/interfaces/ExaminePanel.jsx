@@ -16,7 +16,7 @@ export const ExaminePanel = (props, context) => {
     headshot,
   } = data;
   return (
-    <Window title="Examine Panel" width={900} height={670} theme="admin">
+    <Window title="Examine Panel" width={900} height={710}>
       <Window.Content>
         <Stack fill>
           <Stack.Item width="30%">

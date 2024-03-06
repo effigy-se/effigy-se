@@ -34,8 +34,6 @@
 	bodytemp_heat_damage_limit = BODYTEMP_HEAT_LAVALAND_SAFE
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 10)
 
-	ass_image = 'icons/ass/asslizard.png'
-
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/lizard,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/lizard,
@@ -158,7 +156,7 @@ Lizard subspecies: ASHWALKERS
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/lizard,
 	)
 
-/datum/species/lizard/get_physical_attributes()
+/datum/species/lizard/ashwalker/get_physical_attributes()
 	return "Ash Walkers are identical to lizardpeople in almost all aspects. \
 		Unlike them, they're always digitigrade, they can breathe Lavaland's often noxious atmosphere and resist viruses. They are usually illiterate."
 

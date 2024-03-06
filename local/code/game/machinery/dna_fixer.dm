@@ -15,7 +15,7 @@
 /obj/machinery/dna_fixer
 	name = "Healixir"
 	desc = "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Veymed Corporation \
-	has teamed up with Nanotrasen Human Resources (and elsewise) to bring you the Healixir! \
+	has teamed up with Nanotrasen Organic Resources (and elsewise) to bring you the Healixir! \
 	Ever revived a patient and had them file a malpractice lawsuit because their head got attached to the wrong body? \
 	Just slap 'em in the Healixir and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
 	via the magic technology of DNA regeneration! Just don't call it cloning. Wink wink. Within a few short moments, they'll be popped out as their ideal self, \

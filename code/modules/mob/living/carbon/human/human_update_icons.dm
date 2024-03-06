@@ -94,34 +94,34 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/uniform_overlay
 		//This is how non-humanoid clothing works. You check if the mob has the right bodyflag, and the clothing has the corresponding clothing flag.
-		//handled_by_bodytype is used to track whether or not we successfully used an alternate sprite. It's set to TRUE to ease up on copy-paste.
+		//handled_by_bodyshape is used to track whether or not we successfully used an alternate sprite. It's set to TRUE to ease up on copy-paste.
 		//icon_file MUST be set to null by default, or it causes issues.
-		//handled_by_bodytype MUST be set to FALSE under the if(!icon_exists()) statement, or everything breaks.
-		//"override_file = handled_by_bodytype ? icon_file : null" MUST be added to the arguments of build_worn_icon()
+		//handled_by_bodyshape MUST be set to FALSE under the if(!icon_exists()) statement, or everything breaks.
+		//"override_file = handled_by_bodyshape ? icon_file : null" MUST be added to the arguments of build_worn_icon()
 		//Friendly reminder that icon_exists(file, state, scream = TRUE) is your friend when debugging this code.
-		var/handled_by_bodytype = TRUE
+		var/handled_by_bodyshape = TRUE
 		var/icon_file
 		var/woman
 		var/mutant_styles = NONE // EffigyEdit Add Customization mutant styles to pass down to build_worn_icon.
 		//BEGIN SPECIES HANDLING
-		if((bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
+		if((bodyshape & BODYSHAPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // EffigyEdit Change - Customization
-		else if((bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+		else if((bodyshape & BODYSHAPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // EffigyEdit Change - Customization
 		// EffigyEdit Add - Birbs
-		else if(bodytype & BODYTYPE_CUSTOM)
+		else if(bodyshape & BODYSHAPE_CUSTOM)
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // Might have to refactor how this works eventually, maybe.
 
 		//Female sprites have lower priority than digitigrade sprites
-		else if(dna.species.sexes && (bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh
+		else if(dna.species.sexes && (bodyshape & BODYSHAPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh
 			woman = TRUE
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(uniform)))
 			icon_file = DEFAULT_UNIFORM_FILE
-			handled_by_bodytype = FALSE
+			handled_by_bodyshape = FALSE
 
 		// EffigyEdit Add - Customization Taur-friendly suits!
-		if(bodytype & BODYTYPE_TAUR)
+		if(bodyshape & BODYSHAPE_TAUR)
 			if(istype(uniform) && uniform.gets_cropped_on_taurs)
 				mutant_styles |= get_taur_mode()
 		// EffigyEdit Add End
@@ -133,7 +133,7 @@ There are several things that need to be remembered:
 			isinhands = FALSE,
 			female_uniform = woman ? uniform.female_sprite_flags : null,
 			override_state = target_overlay,
-			override_file = handled_by_bodytype ? icon_file : null,
+			override_file = handled_by_bodyshape ? icon_file : null,
 			mutant_styles = mutant_styles, // EffigyEdit Add Customization Taur-friendly uniforms!
 		)
 
@@ -178,18 +178,16 @@ There are several things that need to be remembered:
 		inv.update_icon()
 
 	//Bloody hands begin
-	var/mutable_appearance/bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands", -GLOVES_LAYER)
-	cut_overlay(bloody_overlay)
+	var/mutable_appearance/bloody_lefthand_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands_left", -GLOVES_LAYER)
+	var/mutable_appearance/bloody_righthand_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands_right", -GLOVES_LAYER)
+	cut_overlay(bloody_lefthand_overlay)
+	cut_overlay(bloody_righthand_overlay)
 	if(!gloves && blood_in_hands && (num_hands > 0))
-		bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands", -GLOVES_LAYER)
-		if(num_hands < 2)
-			if(has_left_hand(FALSE))
-				bloody_overlay.icon_state = "bloodyhands_left"
-			else if(has_right_hand(FALSE))
-				bloody_overlay.icon_state = "bloodyhands_right"
-
-		add_overlay(bloody_overlay)
-	//Bloody hands end
+		if(has_left_hand(check_disabled = FALSE))
+			add_overlay(bloody_lefthand_overlay)
+		if(has_right_hand(check_disabled = FALSE))
+			add_overlay(bloody_righthand_overlay)
+	// Bloody hands end
 
 	if(gloves)
 		var/obj/item/worn_item = gloves
@@ -202,7 +200,7 @@ There are several things that need to be remembered:
 
 		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
-		if(bodytype & BODYTYPE_CUSTOM)
+		if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLOVES, gloves, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -245,7 +243,7 @@ There are several things that need to be remembered:
 
 		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
-		if(bodytype & BODYTYPE_CUSTOM)
+		if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_GLASSES, glasses, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -284,7 +282,7 @@ There are several things that need to be remembered:
 
 		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
-		if(bodytype & BODYTYPE_CUSTOM)
+		if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_EARS, ears, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -315,7 +313,7 @@ There are several things that need to be remembered:
 
 		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
-		if(bodytype & BODYTYPE_CUSTOM)
+		if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_NECK, wear_neck, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -352,17 +350,17 @@ There are several things that need to be remembered:
 		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
 
-		if((bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+		if((bodyshape & BODYSHAPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
 			if(leg.limb_id == "digitigrade")//Snowflakey and bad. But it makes it look consistent.
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SHOES_FILE // EffigyEdit Change
 				mutant_override = TRUE // EffigyEdit AddITION
-		else if(bodytype & BODYTYPE_CUSTOM)
+		else if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		else if(bodytype & BODYTYPE_HIDE_SHOES)
+		else if(bodyshape & BODYSHAPE_HIDE_SHOES)
 			return // We just don't want shoes that float if we're not displaying legs (useful for taurs, for now)
 		// EffigyEdit Add End
 
@@ -424,12 +422,12 @@ There are several things that need to be remembered:
 
 		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
-		if(bodytype & BODYTYPE_CUSTOM)
+		if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		if((icon_file == 'icons/mob/clothing/head/default.dmi') && (bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if((icon_file == 'icons/mob/clothing/head/default.dmi') && (bodyshape & BODYSHAPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			var/snout_icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
 			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = snout_icon_file
@@ -463,7 +461,7 @@ There are several things that need to be remembered:
 
 		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
-		if(bodytype & BODYTYPE_CUSTOM)
+		if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_BELT, belt, src)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -493,13 +491,13 @@ There are several things that need to be remembered:
 		var/mutant_override = FALSE // EffigyEdit Add Customization
 		var/mutant_styles = NONE // EffigyEdit Add Customization
 		//More currently unused digitigrade handling
-		if(bodytype & BODYTYPE_DIGITIGRADE)
+		if(bodyshape & BODYSHAPE_DIGITIGRADE)
 			if(worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION)
 				icon_file = worn_item.worn_icon_digi || DIGITIGRADE_SUIT_FILE // EffigyEdit Change
 				mutant_override = TRUE // EffigyEdit Add Customization
 
 		// EffigyEdit Add - Customization
-		else if(bodytype & BODYTYPE_CUSTOM)
+		else if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SUIT, wear_suit)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -507,7 +505,7 @@ There are several things that need to be remembered:
 		// EffigyEdit Add End
 
 		// EffigyEdit Add - Customization
-		if(bodytype & BODYTYPE_TAUR)
+		if(bodyshape & BODYSHAPE_TAUR)
 			var/obj/item/clothing/suit/worn_suit = wear_suit
 			if(istype(worn_suit) && worn_suit.gets_cropped_on_taurs)
 				mutant_styles |= get_taur_mode()
@@ -568,12 +566,12 @@ There are several things that need to be remembered:
 
 		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
-		if(bodytype & BODYTYPE_CUSTOM)
+		if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MASK, wear_mask)
 			if(species_icon_file)
 				icon_file = species_icon_file
 				mutant_override = TRUE
-		if((icon_file == 'icons/mob/clothing/mask.dmi') && (bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if((icon_file == 'icons/mob/clothing/mask.dmi') && (bodyshape & BODYSHAPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			var/snout_icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
 			if(snout_icon_file && icon_exists(snout_icon_file, RESOLVE_ICON_STATE(worn_item)))
 				icon_file = snout_icon_file
@@ -604,7 +602,7 @@ There are several things that need to be remembered:
 
 		// EffigyEdit Add - Customization
 		var/mutant_override = FALSE
-		if(bodytype & BODYTYPE_CUSTOM)
+		if(bodyshape & BODYSHAPE_CUSTOM)
 			var/species_icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MISC, back)
 			if(species_icon_file)
 				icon_file = species_icon_file
@@ -621,14 +619,6 @@ There are several things that need to be remembered:
 			my_chest?.worn_back_offset?.apply_offset(back_overlay)
 		overlays_standing[BACK_LAYER] = back_overlay
 	apply_overlay(BACK_LAYER)
-
-/mob/living/carbon/human/update_worn_legcuffs()
-	remove_overlay(LEGCUFF_LAYER)
-	clear_alert("legcuffed")
-	if(legcuffed)
-		overlays_standing[LEGCUFF_LAYER] = mutable_appearance('icons/mob/simple/mob.dmi', "legcuff1", -LEGCUFF_LAYER)
-		apply_overlay(LEGCUFF_LAYER)
-		throw_alert("legcuffed", /atom/movable/screen/alert/restrained/legcuffed, new_master = src.legcuffed)
 
 /mob/living/carbon/human/get_held_overlays()
 	var/list/hands = list()

@@ -20,19 +20,24 @@
 	var/list/possible_locs = list()
 	///Mobs that are valid to have surgery performed on them.
 	var/list/target_mobtypes = list(/mob/living/carbon/human)
+
 	///The person the surgery is being performed on. Funnily enough, it isn't always a carbon.
-	var/mob/living/carbon/target
+	VAR_FINAL/mob/living/carbon/target
 	///The specific bodypart being operated on.
-	var/obj/item/bodypart/operated_bodypart
+	VAR_FINAL/obj/item/bodypart/operated_bodypart
 	///The wound datum that is being operated on.
-	var/datum/wound/operated_wound
+	VAR_FINAL/datum/wound/operated_wound
+
 	///Types of wounds this surgery can target.
-	var/datum/wound/targetable_wound
+	var/targetable_wound
+	
 	/// Whether this surgery aims to remove or replace the target bodypart, with the goal of being used
 	/// with a bodypart's `can_be_surgically_removed` variable. Defaults to FALSE.
-	var/removes_target_bodypart = FALSE // EffigyEdit Add (#3 Medical - Ported from Skyrat)
+	var/removes_target_bodypart = FALSE // EffigyEdit Add - #3 Medical
+
 	///The types of bodyparts that this surgery can have performed on it. Used for augmented surgeries.
 	var/requires_bodypart_type = BODYTYPE_ORGANIC
+
 	///The speed modifier given to the surgery through external means.
 	var/speed_modifier = 0
 	///Whether the surgery requires research to do. You need to add a design if using this!
@@ -71,6 +76,8 @@
 
 
 /datum/surgery/proc/can_start(mob/user, mob/living/patient) //FALSE to not show in list
+	SHOULD_CALL_PARENT(TRUE)
+
 	. = TRUE
 	if(replaced_by == /datum/surgery)
 		return FALSE
@@ -104,6 +111,7 @@
 		return FALSE
 	if(type in opcomputer.advanced_surgeries)
 		return TRUE
+	return .
 
 /datum/surgery/proc/next_step(mob/living/user, modifiers)
 	if(location != user.zone_selected)

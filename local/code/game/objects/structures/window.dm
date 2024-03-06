@@ -13,6 +13,12 @@
 /turf/closed/indestructible/fakeglass
 	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
 
+/obj/structure/window/plasma/fulltile
+	icon = 'local/icons/obj/smooth_structures/plasma_window.dmi'
+
+/obj/structure/window/reinforced/plasma/fulltile
+	icon = 'local/icons/obj/smooth_structures/rplasma_window.dmi'
+
 /obj/structure/window/reinforced/titanium
 	name = "titanium window"
 	desc = "A window made out of a titanium-silicate alloy. It looks tough to break. Is that a challenge?"

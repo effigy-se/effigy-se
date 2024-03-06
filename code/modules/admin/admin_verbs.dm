@@ -215,6 +215,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/get_dynex_range, /*debug verbs for dynex explosions.*/
 	/client/proc/jump_to_ruin,
 	/client/proc/load_circuit,
+	/client/proc/map_export,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/modify_goals,
@@ -242,6 +243,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/validate_puzzgrids,
 	/client/proc/GeneratePipeSpritesheet,
 	/client/proc/view_runtimes,
+	/client/proc/stop_weather,
 	// EffigyEdit Add -
 	/client/proc/reload_interactions, // Interactions
 	/client/proc/test_area_spawner,	// Automapper
@@ -1185,8 +1187,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 
 	var/desired_mob = text2path(attempted_target_path)
 	if(!ispath(desired_mob))
-		var/static/list/mob_paths = make_types_fancy(subtypesof(/mob/living))
-		desired_mob = pick_closest_path(attempted_target_path, mob_paths)
+		desired_mob = pick_closest_path(attempted_target_path, make_types_fancy(subtypesof(/mob/living)))
 	if(isnull(desired_mob) || !ispath(desired_mob) || QDELETED(head))
 		return //The user pressed "Cancel"
 

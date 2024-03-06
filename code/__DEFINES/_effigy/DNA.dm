@@ -49,9 +49,12 @@
 
 // Defines for mutant bodyparts indexes
 #define MUTANT_INDEX_NAME			"name"
-#define MUTANT_INDEX_CAN_RANDOMIZE   "can_randomize"
 #define MUTANT_INDEX_COLOR_LIST		"color"
 #define MUTANT_INDEX_EMISSIVE_LIST	"emissive"
+
+// Defines for default mutant bodyparts indexes
+#define MUTANTPART_NAME 1
+#define MUTANTPART_CAN_RANDOMIZE 2
 
 // Defines for markings indexes
 #define MARKING_INDEX_COLOR 1
@@ -80,8 +83,8 @@
 #define MAXIMUM_MARKINGS_PER_LIMB 3
 
 #define BODY_SIZE_NORMAL 1.00
-#define BODY_SIZE_MAX 1.5
-#define BODY_SIZE_MIN 0.8
+#define BODY_SIZE_MAX 150
+#define BODY_SIZE_MIN 80
 
 //In inches
 #define PENIS_MAX_GIRTH 15

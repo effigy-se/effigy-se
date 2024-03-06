@@ -33,6 +33,9 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /// Determines if the transfer vote can be started by anyone or not.
 /datum/config_entry/flag/allow_vote_transfer
 
+/// File where fluff status messages are stored
+/datum/config_entry/string/fluff_status_file
+
 // EFFIGY API STUFF
 /// Enable API features specific to Effigy Live. Disable for downstreams, self-hosted, development etc.
 /datum/config_entry/flag/effigy_live_revision
@@ -54,6 +57,17 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /// API key
 /datum/config_entry/string/effigy_api_key
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
+/// New account registration URL
+/datum/config_entry/string/account_registration_url
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
+/// Lobby music track ID
+/datum/config_entry/string/pregame_lobby_track
+
+/// Lobby music track duration
+/datum/config_entry/number/pregame_lobby_duration
+	default = -1
 
 /datum/config_entry/number/cryo_min_ssd_time
 	default = 15
@@ -111,7 +125,23 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 	default = "Medical emergency in progress. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to minimize unecessary contact when possible and proceed to medbay for vaccination when advised."
 
 /datum/config_entry/number/jungle_budget
-	default = 4
+	default = 2
 	integer = FALSE
 	min_val = 0
 
+// Please note the intended jungle caves budget will be ~8 depending on how many ruins there are - this is to avoid issues atm.
+/datum/config_entry/number/jungle_cave_budget
+	default = 2
+	integer = FALSE
+	min_val = 0
+
+/datum/config_entry/number/ocean_budget
+	default = 6
+	integer = FALSE
+	min_val = 0
+
+// Please note the intended jungle caves budget will be ~8 depending on how many ruins there are - this is to avoid issues atm.
+/datum/config_entry/number/trench_budget
+	default = 6
+	integer = FALSE
+	min_val = 0

@@ -29,7 +29,7 @@
 			"products" = list(
 				/obj/item/clothing/neck/ranger_poncho = 5,
 				/obj/item/clothing/neck/mantle/recolorable = 5,
-				/obj/item/clothing/glasses/betterunshit = 5,
+				/obj/item/clothing/glasses/regular/betterunshit = 5,
 				/obj/item/clothing/glasses/thin = 5,
 				/obj/item/clothing/glasses/hud/ar/projector = 5,
 			),

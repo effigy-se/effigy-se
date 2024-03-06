@@ -65,6 +65,7 @@
 			quirk_notes = target.quirk_notes,
 			rank = target.rank,
 			species = target.species,
+			trim = target.trim,
 			past_medical_records = target.past_medical_records, // EffigyEdit Add (Records)
 			past_general_records = target.past_general_records, // EffigyEdit Add (Records)
 		))

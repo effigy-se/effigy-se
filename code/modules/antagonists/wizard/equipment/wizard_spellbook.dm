@@ -254,11 +254,13 @@
 			)
 		if(WIZARD_LOADOUT_WIZARMY) //(Soulstones>2, Staff of Change>2, A Necromantic Stone>2, Teleport>2, Ethereal Jaunt>2) = 10
 			wanted_spells = list(
-				/datum/spellbook_entry/item/soulstones = 1,
-				/datum/spellbook_entry/item/staffchange = 1,
+				///datum/spellbook_entry/item/soulstones = 1, // EffigyEdit Remove - Antag Balance
+				///datum/spellbook_entry/item/staffchange = 1, // EffigyEdit Remove - Antag Balance
 				/datum/spellbook_entry/item/necrostone = 1,
 				/datum/spellbook_entry/teleport = 1,
 				/datum/spellbook_entry/jaunt = 1,
+				/datum/spellbook_entry/lichdom = 1, // EffigyEdit Add - Antag Balance
+				/datum/spellbook_entry/item/vendormancer = 1, // EffigyEdit Add - Antag Balance
 			)
 		if(WIZARD_LOADOUT_SOULTAP) //(Soul Tap>1, Smite>2, Flesh to Stone>2, Mindswap>2, Knock>1, Teleport>2) = 10
 			wanted_spells = list(

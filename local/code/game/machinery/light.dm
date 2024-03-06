@@ -9,11 +9,11 @@
 /obj/machinery/light
 	icon = 'local/icons/obj/lighting.dmi'
 	overlay_icon = 'local/icons/obj/lighting_overlay.dmi'
-	brightness = 6
-	fire_brightness = 6
-	fire_colour = "#D47F9B"
-	bulb_colour = "#d4d4ff"
-	bulb_power = 1.4
+	brightness = 7
+	fire_brightness = 9
+	fire_colour = "#E85888"
+	bulb_colour = LIGHT_COLOR_DEFAULT
+	bulb_power = 1.2
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
 	bulb_low_power_colour = COLOR_STRONG_BLUE
 	bulb_low_power_brightness_mul = 0.75
@@ -49,9 +49,10 @@
 			new_color = color
 		else // Adjust light values to be warmer. I doubt caching would speed this up by any worthwhile amount, as it's all very fast number and string operations.
 			// Convert to numbers for easier manipulation.
-			var/red = GETREDPART(bulb_colour)
-			var/green = GETGREENPART(bulb_colour)
-			var/blue = GETBLUEPART(bulb_colour)
+			var/list/color_parts = rgb2num(bulb_colour)
+			var/red = color_parts[1]
+			var/green = color_parts[2]
+			var/blue = color_parts[3]
 
 			red += round(red * NIGHTSHIFT_COLOR_MODIFIER)
 			green -= round(green * NIGHTSHIFT_COLOR_MODIFIER * 0.3)
@@ -71,22 +72,27 @@
 			set_light(new_brightness, new_power, new_color)
 
 /obj/machinery/light/dim
-	brightness = 3.5
-	nightshift_brightness = 3
-	bulb_colour = "#d4d4ff"
-	bulb_power = 1.15
+	bulb_colour = LIGHT_COLOR_DEFAULT
+	bulb_power = 0.8
+
+/obj/machinery/light/cold/dim
+	bulb_power = 0.8
+
+/obj/machinery/light/warm/dim
+	bulb_power = 0.8
 
 /obj/machinery/light/small
 	brightness = 3.5
 	nightshift_brightness = 3
-	bulb_colour = "#d4d4ff"
-	bulb_power = 1.3
+	bulb_colour = LIGHT_COLOR_DEFAULT
+	bulb_power = 1
+	fire_colour = "#E85888"
 
 /obj/machinery/light/cold
 	nightshift_light_color = null
 
 /obj/machinery/light/warm
-	bulb_colour = "#d4d4ff"
+	bulb_colour = LIGHT_COLOR_DEFAULT
 	nightshift_light_color = null
 
 

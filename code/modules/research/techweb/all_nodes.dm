@@ -121,6 +121,8 @@
 		"toy_armblade",
 		"toy_balloon",
 		"toygun",
+		"tram_floor_dark",
+		"tram_floor_light",
 		"trapdoor_electronics",
 		"turbine_part_compressor",
 		"turbine_part_rotor",
@@ -211,6 +213,7 @@
 		"mod_plating_standard",
 		"mod_storage",
 		"mod_welding",
+		"mod_safety",
 		"mod_mouthhole",
 		"mod_flashlight",
 		"mod_longfall",
@@ -1203,10 +1206,11 @@
 	description = "Computers and how they work."
 	prereq_ids = list("datatheory")
 	design_ids = list(
+		"bankmachine",
+		"barcode_scanner",
 		"cargo",
 		"cargorequest",
 		"comconsole",
-		"bankmachine",
 		"crewconsole",
 		"idcard",
 		"libraryconsole",
@@ -1366,9 +1370,21 @@
 		"c38_trac",
 		"implant_chem",
 		"implant_tracking",
+		"implant_exile",
 		"implantcase",
 		"implanter",
 		"locator",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+
+/datum/techweb_node/advanced_implants
+	id = "adv_subdermal_implants"
+	display_name = "Advanced Subdermal Implants"
+	description = "Subdermal implants that leverage bluespace research to control their bluespace signature."
+	prereq_ids = list("subdermal_implants", "micro_bluespace")
+	design_ids = list(
+		"implant_beacon",
+		"implant_bluespace",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1496,6 +1512,9 @@
 		"superresonator",
 		"triggermod",
 		"mining_scanner",
+		"brm",
+		"b_smelter",
+		"b_refinery",
 	)//e a r l y    g a  m e)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1558,6 +1577,7 @@
 	design_ids = list(
 		"fishing_rod_tech",
 		"stabilized_hook",
+		"auto_reel",
 		"fish_analyzer",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
@@ -1633,6 +1653,7 @@
 	description = "Our researchers have found new ways to weaponize just about everything now."
 	prereq_ids = list("engineering")
 	design_ids = list(
+		"ballistic_shield",
 		"pin_testing",
 		"tele_shield",
 		"lasershell",

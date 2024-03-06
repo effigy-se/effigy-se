@@ -2,10 +2,12 @@
 
 # Local overrides--you can use this to change the config for your dev environment (like setting up SQL) without worrying about committing it
 /config/dev_overrides.txt
+/config/effigy_splash_fluff.txt
 
 #Ignore everything in datafolder and subdirectories
 /data/**/*
 /tmp/**/*
+/cache/**/*
 
 #Ignore byond config folder.
 /cfg/**/*
@@ -190,6 +192,9 @@ Temporary Items
 #extra map stuff
 /_maps/**/backup/
 /_maps/templates.dm
+
+#dmm palette file. You really should be using StrongDMM instead.
+*.dmm-pal
 
 #dmdoc default folder
 /dmdoc

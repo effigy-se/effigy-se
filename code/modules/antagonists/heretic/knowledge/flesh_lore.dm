@@ -13,7 +13,6 @@
  * Imperfect Ritual
  * > Sidepaths:
  *   Void Cloak
- *   Ashen Eyes
  *
  * Mark of Flesh
  * Ritual of Knowledge
@@ -21,13 +20,13 @@
  * Raw Ritual
  * > Sidepaths:
  *   Blood Siphon
- *   Curse of Paralysis
+ *   Opening Blast
  *
  * Bleeding Steel
  * Lonely Ritual
  * > Sidepaths:
- *   Ashen Ritual
  *   Cleave
+ *   Aptera Vulnera
  *
  * Priest's Final Hymn
  */
@@ -123,13 +122,13 @@
 /datum/heretic_knowledge/limited_amount/flesh_ghoul
 	name = "Imperfect Ritual"
 	desc = "Allows you to transmute a corpse and a poppy to create a Voiceless Dead. \
+		The corpse does not need to have a soul. \
 		Voiceless Dead are mute ghouls and only have 50 health, but can use Bloody Blades effectively. \
 		You can only create two at a time."
 	gain_text = "I found notes of a dark ritual, unfinished... yet still, I pushed forward."
 	next_knowledge = list(
 		/datum/heretic_knowledge/mark/flesh_mark,
 		/datum/heretic_knowledge/void_cloak,
-		/datum/heretic_knowledge/medallion,
 	)
 	required_atoms = list(
 		/mob/living/carbon/human = 1,
@@ -242,7 +241,7 @@
 		/datum/heretic_knowledge/blade_upgrade/flesh,
 		/datum/heretic_knowledge/reroll_targets,
 		/datum/heretic_knowledge/spell/blood_siphon,
-		/datum/heretic_knowledge/curse/paralysis,
+		/datum/heretic_knowledge/spell/opening_blast,
 	)
 	required_atoms = list(
 		/obj/item/organ/internal/eyes = 1,
@@ -281,7 +280,7 @@
 		An ever shapeshifting mass of flesh, it knew well my goals. The Marshal approved."
 	next_knowledge = list(
 		/datum/heretic_knowledge/ultimate/flesh_final,
-		/datum/heretic_knowledge/summon/ashy,
+		/datum/heretic_knowledge/spell/apetra_vulnera,
 		/datum/heretic_knowledge/spell/cleave,
 	)
 	required_atoms = list(

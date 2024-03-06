@@ -123,6 +123,7 @@ SUBSYSTEM_DEF(ticker)
 	else
 		login_music = "[global.config.directory]/title_music/sounds/[pick(music)]"
 
+	load_effigy_lobby_tracks() // EffigyEdit Add - Lobby Music
 
 	if(!GLOB.syndicate_code_phrase)
 		GLOB.syndicate_code_phrase = generate_code_phrase(return_list=TRUE)
@@ -140,7 +141,7 @@ SUBSYSTEM_DEF(ticker)
 
 		GLOB.syndicate_code_response_regex = codeword_match
 
-	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+	start_at = COUNTDOWN_GAME_INIT // EffigyEdit Change - Custom Lobby - Original: start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 	if(CONFIG_GET(flag/randomize_shift_time))
 		gametime_offset = rand(0, 23) HOURS
 	else if(CONFIG_GET(flag/shift_time_realtime))
@@ -152,8 +153,8 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
 		if(GAME_STATE_STARTUP)
-			if(Master.initializations_finished_with_no_players_logged_in)
-				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+			//if(Master.initializations_finished_with_no_players_logged_in)
+			//	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
@@ -167,7 +168,7 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_PREGAME)
 				//lobby stats for statpanels
 			if(isnull(timeLeft))
-				timeLeft = max(0,start_at - world.time)
+				timeLeft = COUNTDOWN_GAME_INIT // EffigyEdit Change - Custom Lobby - Original: max(0,start_at - world.time)
 			totalPlayers = LAZYLEN(GLOB.new_player_list)
 			totalPlayersReady = 0
 			total_admins_ready = 0
@@ -176,6 +177,9 @@ SUBSYSTEM_DEF(ticker)
 					++totalPlayersReady
 					if(player.client?.holder)
 						++total_admins_ready
+
+			if(timeLeft == COUNTDOWN_GAME_INIT)
+				return // server isn't finished init
 
 			if(start_immediately)
 				timeLeft = 0
@@ -186,19 +190,34 @@ SUBSYSTEM_DEF(ticker)
 				return // 'DELAYED' delayed by an admin
 			timeLeft -= wait
 
-			if(timeLeft <= 450 && !tipped) // EffigyEdit Change
+			// EffigyEdit Add - Lobby Music
+			if(timeLeft <= lobby_track_duration && lobby_track_duration > 0 && !lobby_track_fired)
+				if(timeLeft >= lobby_track_duration - 4 SECONDS)
+					play_lobby_track(lobby_track_id)
+				lobby_track_fired = TRUE
+			// EffigyEdit Add End
+
+			if(timeLeft <= 300 && !tipped)
 				send_tip_of_the_round(world, selected_tip)
 				tipped = TRUE
 
 			// EffigyEdit Add - Wait for players
 			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && !totalPlayersReady)
-				if(!delay_notified)
+				if(!launch_queued)
 					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
 					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
 					message_admins("Game setup delayed due to lack of players.")
 					log_game("Game setup delayed due to lack of players.")
-					delay_notified = TRUE
+					launch_queued = TRUE
 				return // 'SOON' waiting for players
+
+			if(timeLeft <= 94 SECONDS && timeLeft > 0 && !hr_announce_fired && totalPlayersReady > 0 && !CONFIG_GET(flag/setup_bypass_player_check))
+				queue_game_start_announcement()
+				hr_announce_fired = TRUE
+
+			if(timeLeft <= 0 && launch_queued && totalPlayersReady > 0)
+				SSticker.queue_game_start(94 SECONDS)
+				launch_queued = FALSE
 			// EffigyEdit Add End
 
 			if(timeLeft <= 0)
@@ -240,7 +259,6 @@ SUBSYSTEM_DEF(ticker)
 	if(GLOB.revolutionary_win)
 		return TRUE
 	return FALSE
-
 
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, SPAN_BOX_ALERT(BLUE, "Starting game...")) // EffigyEdit Change - Custom CSS
@@ -344,7 +362,8 @@ SUBSYSTEM_DEF(ticker)
 
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
-		SSpersistence.load_modular_persistence(iter_human.get_organ_slot(ORGAN_SLOT_BRAIN)) // EffigyEdit AddITION - (#184 Modular Persistence - Ported From Skyrat)
+		SSpersistence.load_modular_persistence(iter_human.get_organ_slot(ORGAN_SLOT_BRAIN)) // EffigyEdit Add - Modular Persistence
+		iter_human.add_to_player_list() // EffigyEdit Add - Character Directory
 
 		if(!iter_human.hardcore_survival_score)
 			continue

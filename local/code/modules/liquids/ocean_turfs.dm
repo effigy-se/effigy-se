@@ -1,6 +1,7 @@
 /// HEY!! LISTEN!!
 /// Not every turf works ATM thanks to some issue we're having trouble identifying. The follow turfs have this issue when making an ocean subtype:
 /// /turf/open/floor/glass, /turf/open/floor/mineral/plastitanium
+/// This does not, oddly, seems to affect some subtypes?
 /// If you implement these, please try and help uncover what's wrong!
 
 /turf/open/openspace/ocean
@@ -53,6 +54,7 @@
 
 /turf/open/misc/ocean/rock
 	name = "rock"
+	desc = "Polished over centuries of undersea weather conditions and a distinct lack of light."
 	baseturfs = /turf/open/misc/ocean/rock
 	icon = 'local/code/modules/liquids/assets/turf/seafloor.dmi'
 	icon_state = "seafloor"
@@ -64,6 +66,7 @@
 
 /turf/open/misc/ocean/rock/warm/fissure
 	name = "fissure"
+	desc = "A comfortable, warm tempature eminates from these - followed immediately after by toxic chemicals in liquid or gaseous forms; but warmth all the same!"
 	icon = 'local/code/modules/liquids/assets/turf/fissure.dmi'
 	icon_state = "fissure-0"
 	base_icon_state = "fissure"
@@ -86,6 +89,7 @@
 /turf/open/misc/ocean
 	gender = PLURAL
 	name = "ocean sand"
+	desc = "If you can't escape sandstorms underwater, is anywhere safe?"
 	baseturfs = /turf/open/misc/ocean
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
@@ -133,6 +137,20 @@
 	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/iron/ocean/Initialize(mapload)
+	. = ..()
+	if(liquids)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
+	new_immmutable.add_turf(src)
+
+/turf/open/floor/iron/solarpanel/ocean
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/floor/plating/ocean_plating
+
+/turf/open/floor/iron/solarpanel/ocean/Initialize(mapload)
 	. = ..()
 	if(liquids)
 		if(liquids.immutable)
@@ -242,6 +260,7 @@
 /turf/open/misc/canal
 	gender = PLURAL
 	name = "canal"
+	desc = "A section of the earth given way to form a natural aqueduct."
 	baseturfs = /turf/open/misc/canal
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
@@ -266,6 +285,7 @@
 /turf/open/misc/canal_mutable
 	gender = PLURAL
 	name = "canal"
+	desc = "A section of the earth given way to form a natural aqueduct."
 	baseturfs = /turf/open/misc/canal_mutable
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"

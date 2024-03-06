@@ -40,7 +40,7 @@
 /obj/machinery/plumbing/floor_pump/update_appearance(updates)
 	. = ..()
 	layer = tile_placed ? GAS_SCRUBBER_LAYER : BELOW_OBJ_LAYER
-	plane = tile_placed ? FLOOR_PLANE : GAME_PLANE
+	SET_PLANE_IMPLICIT(src, tile_placed ? FLOOR_PLANE : GAME_PLANE)
 
 /obj/machinery/plumbing/floor_pump/update_icon_state()
 	. = ..()
@@ -294,6 +294,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on, 0)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply, 0)
 
+// Stops at 30 height - perfect for automatically refilling pools and other water fixtures. SHOG TODO: Standardize liquid heights into defines (or use ""::"?)
+/obj/machinery/plumbing/floor_pump/output/on/supply/waist_deep
+	height_regulator = 30
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply/waist_deep, 0)
+
 /obj/item/construction/plumbing/engineering
 	name = "engineering plumbing constructor"
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed for logistics regarding fluids."
@@ -337,9 +343,35 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply,
 
 // Helpers for maps
 /obj/machinery/duct/supply
+	color = COLOR_CYAN
 	duct_color = COLOR_CYAN
 	duct_layer = FOURTH_DUCT_LAYER
+	pixel_x = 5
+	pixel_y = 5
+
+/obj/machinery/duct/supply/Initialize(mapload)
+	pixel_x = 0
+	pixel_y = 0
+	. = ..()
 
 /obj/machinery/duct/waste
+	color = COLOR_BROWN
 	duct_color = COLOR_BROWN
 	duct_layer = SECOND_DUCT_LAYER
+	pixel_x = -5
+	pixel_y = -5
+
+/obj/machinery/duct/waste/Initialize(mapload)
+	pixel_x = 0
+	pixel_y = 0
+	. = ..()
+
+/obj/machinery/plumbing/filter/water_filter
+	left = list(/datum/reagent/water)
+	english_left = list("Water")
+
+/obj/machinery/plumbing/filter/water_filter/right_output
+	left = list()
+	right = list(/datum/reagent/water)
+	english_left = list()
+	english_right = list("Water")
