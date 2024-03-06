@@ -17,8 +17,6 @@ SUBSYSTEM_DEF(autotransfer)
 		return SS_INIT_NO_NEED
 
 	var/init_vote = CONFIG_GET(number/vote_autotransfer_initial)
-	starttime = REALTIMEOFDAY
-	targettime = starttime + init_vote
 	voteinterval = CONFIG_GET(number/vote_autotransfer_interval)
 	maxvotes = CONFIG_GET(number/vote_autotransfer_maximum)
 	return SS_INIT_SUCCESS
@@ -34,8 +32,10 @@ SUBSYSTEM_DEF(autotransfer)
 	if(world.time - SSticker.round_start_time < voteinterval)
 		return
 	if(maxvotes == NO_MAXVOTES_CAP || maxvotes > curvotes)
+		log_game("Autotransfer: Vote initiated. RT:[REALTIMEOFDAY] RSRT:[SSticker.round_start_real_time] ST:[starttime] TT:[targettime] VI:[voteinterval] CV:[curvotes] MV:[maxvotes] WT:[world.time] RST:[SSticker.round_start_time]")
 		SSvote.initiate_vote(/datum/vote/transfer_vote, "automatic transfer", forced = TRUE)
 		targettime = targettime + voteinterval
+		log_game("Autotransfer: New target time is [targettime]")
 		curvotes++
 	else
 		SSshuttle.autoEnd()
@@ -44,7 +44,9 @@ SUBSYSTEM_DEF(autotransfer)
 	var/init_vote = CONFIG_GET(number/vote_autotransfer_initial)
 	starttime = round_start_real_time
 	targettime = starttime + init_vote
-	log_game("Autotransfer enabled, first vote in [DisplayTimeText(targettime - starttime)]")
+	log_game("Autotransfer: Autotransfer enabled, first vote in [DisplayTimeText(targettime - starttime)]")
+	log_game("Autotransfer: RT:[REALTIMEOFDAY] RSRT:[SSticker.round_start_real_time] ST:[starttime] TT:[targettime] VI:[voteinterval] CV:[curvotes] MV:[maxvotes] WT:[world.time] RST:[SSticker.round_start_time]")
 	message_admins("Autotransfer enabled, first vote in [DisplayTimeText(targettime - starttime)]")
+	can_fire = TRUE
 
 #undef NO_MAXVOTES_CAP
