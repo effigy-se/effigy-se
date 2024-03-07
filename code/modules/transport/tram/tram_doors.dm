@@ -192,7 +192,7 @@
 
 /obj/machinery/door/airlock/tram/LateInitialize(mapload)
 	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(open))
+	// INVOKE_ASYNC(src, PROC_REF(open)) // EffigyEdit Remove
 	SStransport.doors += src
 	find_tram()
 

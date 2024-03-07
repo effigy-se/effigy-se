@@ -19,7 +19,7 @@
  */
 /datum/security_level/orange
 	name = "orange"
-	announcement_color = "pink"
+	announcement_color = "orange"
 	number_level = SEC_LEVEL_ORANGE
 	sound = 'sound/misc/notice2.ogg'
 	lowering_to_configuration_key = /datum/config_entry/string/alert_orange_downto
@@ -33,7 +33,7 @@
  */
 /datum/security_level/amber
 	name = "amber"
-	announcement_color = "orange"
+	announcement_color = "yellow"
 	number_level = SEC_LEVEL_AMBER
 	sound = 'sound/misc/notice1.ogg'
 	lowering_to_configuration_key = /datum/config_entry/string/alert_amber_downto
