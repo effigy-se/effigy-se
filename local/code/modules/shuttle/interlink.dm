@@ -25,6 +25,8 @@
 	if(!level)
 		return
 	if(searched_trait in level.traits)
-		secure_open()
+		open()
+		unbolt()
 	else
-		secure_close()
+		close()
+		bolt()
