@@ -237,6 +237,38 @@ export const FeatureDropdownInput = (
   );
 };
 
+export const FeatureForcedDropdownInput = (
+  props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
+    disabled?: boolean;
+    buttons?: boolean;
+  },
+) => {
+  const serverData = props.serverData;
+  if (!serverData) {
+    return null;
+  }
+
+  const displayNames =
+    serverData.display_names ||
+    Object.fromEntries(
+      serverData.choices.map((choice) => [
+        choice,
+        capitalizeFirstLetter(choice),
+      ]),
+    );
+
+  return (
+    <StandardizedDropdown
+      choices={sortStrings(serverData.choices)}
+      disabled={props.disabled}
+      buttons={props.buttons}
+      displayNames={displayNames}
+      onSetValue={props.handleSetValue}
+      value={props.value}
+    />
+  );
+};
+
 export type FeatureWithIcons<T> = Feature<
   { value: T },
   T,
