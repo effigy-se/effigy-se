@@ -5256,6 +5256,10 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/engineering/atmos/upper)
+"bld" = (
+/obj/machinery/transport/destination_sign/indicator/sigma_octanis,
+/turf/closed/wall/r_wall,
+/area/station/engineering/hallway)
 "ble" = (
 /obj/effect/turf_decal/trimline/blue/arrow_cw{
 	dir = 4
@@ -25294,9 +25298,6 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/commons/dorms/apartment1)
 "fXZ" = (
-/obj/machinery/transport/destination_sign/indicator/directional/west{
-	configured_transport_id = "sigma_1"
-	},
 /obj/machinery/button/transport/tram/directional/west{
 	specific_transport_id = "sigma_1";
 	id = 2
@@ -33035,9 +33036,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/lockers)
 "hQH" = (
-/obj/machinery/transport/destination_sign/indicator/directional/east{
-	configured_transport_id = "sigma_1"
-	},
 /obj/machinery/button/transport/tram/directional/east{
 	specific_transport_id = "sigma_1";
 	id = 2
@@ -37281,9 +37279,7 @@
 "iTI" = (
 /obj/structure/transport/linear/tram,
 /obj/structure/tram/alt/titanium,
-/obj/machinery/transport/tram_controller{
-	configured_transport_id = "sigma_1"
-	},
+/obj/machinery/transport/tram_controller/sigma_octanis,
 /turf/open/floor/tram,
 /area/station/engineering/hallway)
 "iTK" = (
@@ -42914,9 +42910,6 @@
 /obj/machinery/button/transport/tram/directional/west{
 	specific_transport_id = "sigma_1";
 	id = 1
-	},
-/obj/machinery/transport/destination_sign/indicator/directional/west{
-	configured_transport_id = "sigma_1"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
@@ -71333,6 +71326,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/floor1/fore)
+"rjF" = (
+/obj/structure/transport/linear/tram,
+/obj/structure/tram,
+/obj/machinery/computer/tram_controls/sigma_octanis,
+/obj/machinery/transport/destination_sign/sigma_octanis,
+/turf/open/floor/tram,
+/area/station/engineering/hallway)
 "rjP" = (
 /obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/iron/half,
@@ -98850,15 +98850,9 @@
 	},
 /area/station/medical/chemistry)
 "xXw" = (
-/obj/structure/transport/linear/tram,
-/obj/structure/thermoplastic,
-/obj/machinery/computer/tram_controls{
-	icon_state = "tram_alt_controls";
-	specific_transport_id = "sigma_1";
-	pixel_y = -26
-	},
-/turf/open/floor/tram,
-/area/station/engineering/hallway)
+/obj/machinery/transport/destination_sign/indicator/sigma_octanis,
+/turf/closed/wall/r_wall,
+/area/station/engineering/main)
 "xXM" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -133224,7 +133218,7 @@ aLE
 jmY
 ivo
 jrf
-mWj
+xXw
 ctg
 byJ
 ftE
@@ -133967,8 +133961,8 @@ pWB
 fur
 vFF
 fbF
-xXw
-ngq
+pWB
+rjF
 frP
 fnH
 dVc
@@ -134736,7 +134730,7 @@ fTP
 azB
 lBn
 jPQ
-nnR
+bld
 jjw
 lBn
 imq
@@ -134766,7 +134760,7 @@ aLE
 bpd
 mWS
 pga
-mWj
+xXw
 luW
 tYu
 vsE
