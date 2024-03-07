@@ -430,6 +430,7 @@
 	glass_type = /obj/machinery/door/airlock/service/studio/glass
 	airlock_type = /obj/machinery/door/airlock/service/studio
 
+/// Syndicate
 /obj/machinery/door/airlock/syndicate
 	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
@@ -448,6 +449,26 @@
 	base_name = "syndicate airlock"
 	glass_type = /obj/machinery/door/airlock/syndicate/glass
 	airlock_type = /obj/machinery/door/airlock/syndicate
+
+/// Central Command
+/obj/machinery/door/airlock/central_command
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	greyscale_config = /datum/greyscale_config/airlock_effigy
+	greyscale_colors = "#449455#39393F"
+
+/obj/machinery/door/airlock/central_command/glass
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/door_assembly/door_assembly_cce
+	name = "central command airlock assembly"
+	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
+	greyscale_config = /obj/machinery/door/airlock/central_command::greyscale_config
+	greyscale_colors = /obj/machinery/door/airlock/central_command::greyscale_colors
+	base_name = "central command airlock"
+	glass_type = /obj/machinery/door/airlock/central_command/glass
+	airlock_type = /obj/machinery/door/airlock/central_command
 
 /**
  * Effigy Door Assemblies

@@ -1,3 +1,10 @@
+/// INTERLINK BLASTER ///
+/datum/map_template/shuttle/interlink_blaster
+	port_id = "interlink"
+	name = "Interlink Blaster"
+	suffix = "blaster"
+	description = "Standard issue Interlink ferry."
+
 /// FOXHOLE ///
 
 /datum/map_template/shuttle/arrival/foxhole
