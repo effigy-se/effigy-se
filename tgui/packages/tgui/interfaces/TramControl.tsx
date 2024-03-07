@@ -38,6 +38,8 @@ const DEPARTMENT2COLOR = {
   Ordnance: 'yellow',
   Office: 'red',
   Dormitories: 'black',
+  // EffigyEdit Add - Sigma Octanis
+  'Supermatter Satellite': 'purple',
 } as const;
 
 const COLOR2BLURB = {
