@@ -24,25 +24,12 @@
 	glow_overlay_icon = 'local/icons/effects/glow_weather.dmi'
 	weather_overlay_icon = 'local/icons/effects/weather_effects.dmi'
 
-// since rainstorm is on a station z level, add extra checks to not annoy everyone
+// this sucks. anyways, only alert if you're outside
 /datum/weather/rain_storm/can_get_alert(mob/player)
 	if(!..())
 		return FALSE
 
-	if(!is_station_level(player.z))
-		return TRUE  // bypass checks
-
-	if(isobserver(player))
+	if(istype(get_area(player), /area/taeloth))
 		return TRUE
-
-	if(HAS_MIND_TRAIT(player, TRAIT_DETECT_STORM))
-		return TRUE
-
-	if(istype(get_area(player), /area/mine))
-		return TRUE
-
-	for(var/area/rain_area in impacted_areas)
-		if(locate(rain_area) in view(player))
-			return TRUE
 
 	return FALSE
