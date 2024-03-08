@@ -58,7 +58,7 @@
 			to_chat(src, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 			return
 
-		ready = !ready
+		set_ready_status(!ready) // EffigyEdit Change - Ready Logging
 		client << output(ready, "title_browser:toggle_ready")
 		return
 

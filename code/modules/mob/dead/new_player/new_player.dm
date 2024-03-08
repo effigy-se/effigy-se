@@ -71,7 +71,7 @@
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
 	if(QDELETED(src) || !src.client)
-		ready = PLAYER_NOT_READY
+		set_ready_status(PLAYER_NOT_READY) // EffigyEdit Change - Ready Logging
 		return FALSE
 
 	var/less_input_message
