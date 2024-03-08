@@ -118,7 +118,7 @@ export function SideDropdown(props: Props) {
     <Popper
       isOpen={open}
       onClickOutside={() => setOpen(false)}
-      placement="left-start"
+      placement="right-end"
       content={
         <div
           className="Layout Dropdown__menu"
