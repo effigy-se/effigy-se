@@ -778,7 +778,7 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                       randomBodyEnabled,
                     )}
                     preferences={contextualPreferences}
-                    maxHeight="auto"
+                    maxHeight="270px"
                   />
 
                   <PreferenceList
