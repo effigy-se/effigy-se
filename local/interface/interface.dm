@@ -7,8 +7,8 @@
 	switch(SSmapping.config.map_name)
 		if("TramStation")
 			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/TramStation/"
-		if("Birdshot Station")
-			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/Birdshot/"
+		if("Sigma Octantis")
+			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/SigmaOctantis/"
 		if("FoxHoleStation")
 			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/FoxHoleStation/"
 		if("Ice Box Station")
