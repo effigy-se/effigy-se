@@ -8,6 +8,6 @@
 	cycle_doors(CYCLE_OPEN)
 	UnregisterSignal(SSticker, COMSIG_TICKER_ROUND_STARTING)
 
-/obj/machinery/transport/tram_controller/sigma_octanis
+/obj/machinery/transport/tram_controller/sigma_octantis
 	configured_transport_id = SIGMA_OCTANTIS_LINE_1
 	obj_flags = parent_type::obj_flags | NO_DECONSTRUCTION
