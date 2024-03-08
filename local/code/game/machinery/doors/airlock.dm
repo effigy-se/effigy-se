@@ -145,7 +145,7 @@
 	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
 	greyscale_config = /datum/greyscale_config/airlock_effigy
-	greyscale_colors = "#46c26d#757278"
+	greyscale_colors = "#757278#757278"
 
 /obj/machinery/door/airlock/atmos
 	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
@@ -226,7 +226,7 @@
 	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
 	greyscale_config = /datum/greyscale_config/airlock_effigy
-	greyscale_colors = "#757278#757278"
+	greyscale_colors = "#D1D0D2#D1D0D2"
 
 /**
  * External
