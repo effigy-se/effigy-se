@@ -21,15 +21,49 @@ SUBSYSTEM_DEF(effigy)
 	efapi_auth = CONFIG_GET(string/effigy_api_auth)
 	efapi_key = CONFIG_GET(string/effigy_api_key)
 
-	if(!efapi_key || !efapi_key)
+	if(!efapi_key)
 		return SS_INIT_NO_NEED
 
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/effigy/Destroy()
-	return ..()
+/datum/controller/subsystem/effigy/proc/make_request(datum/effigy_message/message)
+	// Set up the required headers for the Effigy API
+	var/list/headers = list(
+		"Authorization" = "[efapi_auth] [efapi_key]",
+		"content-type" = "application/x-www-form-urlencoded"
+		)
 
-/datum/controller/subsystem/effigy/proc/create_message_request(msg_type, int_id, link_id, ticket_id, box, title, message)
+	headers += message.construct_extra_headers()
+
+	// Create the JSON body for the request
+	var/body = message.construct_api_message_body()
+
+	// Make the API URL
+	var/url = "[efapi_url][message.endpoint]"
+
+	// Create a new HTTP request
+	var/datum/http_request/request = new()
+
+	// Set up the HTTP request
+	request.prepare(message.method, url, body, headers)
+
+	return request
+
+/datum/controller/subsystem/effigy/proc/send_request(datum/effigy_message/message)
+	var/datum/http_request/request = make_request(message)
+	request.begin_async()
+	UNTIL(request.is_complete())
+	var/datum/http_response/response = request.into_response()
+	if(response.errored)
+		log_effigy_api("ERROR: [response.error] received for request")
+	SEND_SIGNAL(src, COMSIG_EFFIGY_API_RESPONSE, json_decode(response.body))
+	return response
+
+/datum/controller/subsystem/effigy/proc/send_request_async(datum/effigy_message/message)
+	set waitfor = FALSE
+	send_request(message)
+
+/* /datum/controller/subsystem/effigy/proc/create_message_request(msg_type, int_id, link_id, ticket_id, box, title, message)
 	if(!efapi_key)
 		return
 
@@ -43,43 +77,7 @@ SUBSYSTEM_DEF(effigy)
 		message = message,
 	)
 
-	return effigy_request
-
-/datum/effigy_message
-	/// The endpoint we're using
-	var/datum/effigy_message_type/endpoint
-	/// API message content
-	var/list/message_content
-	/// HTTP message request
-	var/datum/http_request/message_request
-
-/datum/effigy_message/New(msg_type, box, int_id, ticket_id, link_id, title, message)
-	endpoint = msg_type
-	message_content = list(
-		"box" = box,
-		"int_id" = int_id,
-		"link_id" = link_id,
-		"ticket_id" = ticket_id,
-		"title" = title,
-		"message" = message,
-	)
-
-/datum/controller/subsystem/effigy/proc/send_message_request(datum/effigy_message/message, datum/admin_help/ticket)
-	set waitfor = FALSE
-	var/datum/http_request/request = message.endpoint.create_http_request(message.message_content)
-	request.begin_async()
-	UNTIL(request.is_complete())
-	var/datum/http_response/response = request.into_response()
-	if(response.errored)
-		log_effigy_api("ERROR: [response.error] received for ticket [ticket.id]")
-		stack_trace(response.error)
-	SEND_SIGNAL(src, COMSIG_EFFIGY_API_RESPONSE, ticket, json_decode(response.body))
-
-// Cleans up the request object when it is destroyed.
-/datum/effigy_message/Destroy(force, ...)
-	endpoint = null
-	QDEL_NULL(message_request)
-	return ..()
+	return effigy_request */
 
 /**
  * Find Effigy link entry by the passed in user ckey

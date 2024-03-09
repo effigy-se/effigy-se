@@ -235,18 +235,17 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		effigy_player_id = EFFIGY_UNKNOWN_PLAYER
 		GLOB.ahelp_tickets.active_tickets += src
 	else
-		var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
 		var/int_id = id
 		var/link_id = effigy_player_id
 		var/ticket_id = 0
 		var/box = SOCIAL_DISTRICT_AHELP
 		var/title = strip_html_full(copytext_char(msg, 1, 64))
 		var/message = strip_html_full(msg)
-		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
+		var/datum/effigy_message/forum/ticket_interaction/request = new(int_id, link_id, ticket_id, box, title, message)
 		GLOB.ahelp_tickets.active_tickets += src
 		effigy_linked = LINK_PENDING
 		log_effigy_api("Creating new ticket: [id] [effigy_player_id] [ticket_id] [box]")
-		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
+		SSeffigy.send_request_async(request)
 
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket) //This is a bug
@@ -412,7 +411,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	ticket_interactions += "[time_stamp()]: [formatted_message]"
 	if (!isnull(player_message))
 		player_interactions += "[time_stamp()]: [player_message]"
-		var/ef_type = EFFIGY_MESSAGE_TICKET_INTERACTION
 		var/int_id = id
 		var/link_id = SSeffigy.ckey_to_effigy_id(usr.ckey)
 		if(!link_id)
@@ -423,9 +421,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/ticket_id = effigy_ticket_id
 		var/message = strip_html_full(player_message)
 		var/title = strip_html_full(name)
-		var/request = SSeffigy.create_message_request(ef_type, int_id, link_id, ticket_id, box, title, message)
+		var/datum/effigy_message/forum/new_ticket/ticket_msg = new(int_id, link_id, ticket_id, box, title, message)
 		log_effigy_api("Sending ticket interaction: [id] [effigy_player_id] [box]")
-		INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
+		SSeffigy.send_request_async(ticket_msg)
 
 //Removes the ahelp verb and returns it after 1 minute
 /datum/admin_help/proc/TimeoutVerb()

@@ -1,9 +1,6 @@
 #define SOCIAL_DISTRICT_AHELP 8
 #define SOCIAL_DISTRICT_ISSUE_REPORT 9
 
-#define EFFIGY_MESSAGE_NEW_TICKET /datum/effigy_message_type/new_ticket
-#define EFFIGY_MESSAGE_TICKET_INTERACTION /datum/effigy_message_type/ticket_interaction
-
 #define EFFIGY_ENDPOINT_NEW_TICKET "/forums/topics"
 #define EFFIGY_ENDPOINT_TICKET_INTERACTION "/forums/posts"
 
