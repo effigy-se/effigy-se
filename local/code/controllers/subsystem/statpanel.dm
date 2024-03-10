@@ -8,6 +8,7 @@
 		var/active_players = get_active_player_count(alive_check = FALSE, afk_check = TRUE, human_check = FALSE) //This is a list of all active players, including players who are dead
 		var/observing_players = length(GLOB.current_observers_list) //This is a list of all players that started as an observer-- dead and lobby players are not included.
 		global_data = list(
+			"Round ID: [GLOB.round_hex ? GLOB.round_hex : "N/A"]",
 			"Server Rev: [server_rev ? server_rev : "N/A"]",
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
