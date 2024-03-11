@@ -121,7 +121,7 @@
 	conveinently under cross-guard of a blade. Science CAN be metal!"
 	icon_state = "hpa"
 	effect_desc = "shoot a laser beam when right-clicking, in exchange for your stamina - and some blood."
-	hallucination_text = "I remember it clearly. It was.. so white; where I was. So cold. Trees all around me."
+	hallucination_text = "Calm. Safe - A clearing. Trees that stretched on up unto the sky itself; covered in constant falls of new snowflakes on my skin. I wasn't cold."
 
 /obj/item/luna_fragment/blood_beam/apply_upgrade(our_sord, mob/living/user)
 	var/obj/item/claymore/cutlass/luna/upgrade_appliable = our_sord
@@ -141,7 +141,7 @@
 	the comfort of your thumb for a hardlight blade."
 	icon_state = "energy_retrofit"
 	hallucination_sound = 'sound/hallucinations/im_here2.ogg'
-	hallucination_text = "Calm. Safe - A clearing. Trees that stretched on up unto the sky itself; covered in constant falls of new snowflakes on my skin. I wasn't cold."
+	hallucination_text = "The lightest, most beautiful snowflakes I'd ever seen raining down upon me. I wasn't cold. I couldn't be. It couldn't overcome the warmth of my beating heart."
 
 /obj/item/luna_fragment/energy_retrofit/apply_upgrade(our_sord, mob/living/user)
 	var/obj/item/claymore/cutlass/luna/upgrade_appliable = our_sord
@@ -168,11 +168,3 @@
 	armour_penetration = initial(armour_penetration)
 	block_chance = initial(block_chance)
 	return ..()
-
-/// Ninja / Hiero Teleportation
-/obj/item/luna_fragment/bluespace_flower_crystal
-	name = "Bluespace Flower Crystal"
-	desc = "An intricately fused series of bluespace crystals, wired directly to the centre in a mockery of a flower's image. It's designed to slot into something; from looking at the back - and use those crystals for travel."
-	icon_state = "bluespace_flower"
-	hallucination_sound = 'sound/effects/curse1.ogg'
-	hallucination_text = "The lightest, most beautiful snowflakes I'd ever seen raining down upon me. I wasn't cold. I couldn't be. It couldn't overcome the warmth of my beating heart."
