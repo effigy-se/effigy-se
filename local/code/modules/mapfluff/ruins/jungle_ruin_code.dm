@@ -136,16 +136,19 @@
 /// Energy Retrofit
 /// Sets LUNA's stats to be on par with a standard energy blade - for better and worse.
 /obj/item/luna_fragment/energy_retrofit
-	name = "Energy Projection Matrix"
+	name = "\improper energy projection matrix"
 	desc = "A small; egg-shaped device - kitbashed from a hardlight projector, a x-ray focused laser diode, and, of all things - a flashlight; to be applied directly against the grip of a sword - trading \
 	the comfort of your thumb for a hardlight blade."
 	icon_state = "energy_retrofit"
+	effect_desc = "use a hardlight blade as a coating over it's own; trading it's strengths and weaknesses for that of an energy sword."
 	hallucination_sound = 'sound/hallucinations/im_here2.ogg'
 	hallucination_text = "The lightest, most beautiful snowflakes I'd ever seen raining down upon me. I wasn't cold. I couldn't be. It couldn't overcome the warmth of my beating heart."
 
 /obj/item/luna_fragment/energy_retrofit/apply_upgrade(our_sord, mob/living/user)
 	var/obj/item/claymore/cutlass/luna/upgrade_appliable = our_sord
 	upgrade_appliable.icon_state = "luna_energy"
+	upgrade_appliable.inhand_icon_state = "luna_energy"
+	update_inhand_icon(user)
 	upgrade_appliable.set_light_on(TRUE)
 	playsound(upgrade_appliable, 'sound/weapons/saberon.ogg', 35, TRUE)
 	force = /obj/item/melee/energy::force
@@ -159,6 +162,8 @@
 /obj/item/luna_fragment/energy_retrofit/remove_upgrade(our_sord, mob/living/user)
 	var/obj/item/claymore/cutlass/luna/upgrade_appliable = our_sord
 	upgrade_appliable.icon_state = "luna"
+	upgrade_appliable.inhand_icon_state = "luna"
+	update_inhand_icon(user)
 	upgrade_appliable.set_light_on(FALSE)
 	playsound(upgrade_appliable, 'sound/weapons/saberoff.ogg', 35, TRUE)
 	force = initial(force)

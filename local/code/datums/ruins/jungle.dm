@@ -28,6 +28,12 @@
 	name = "Trilogy"
 	description = "They have to sell out at some point, right? If the sequel does well, raise them a third, make a box set... bam. Millions."
 
+/datum/map_template/ruin/jungle/bloodzone
+	id = "surface_bloodzone"
+	suffix = "surface_bloodzone.dmm"
+	name = "Bloodworking Site"
+	description = "For some asinine reason, a lot of blood donor clinics closed when cloning was outlawed. This is one of those."
+
 /datum/map_template/ruin/jungle/fountain
 	name = "Fountain Hall"
 	id = "jungle_fountain"
@@ -55,3 +61,9 @@
 	suffix = "caves_hut.dmm"
 	name = "Underground Hut"
 	description = "Maybe it'll have a neat trinket or accessory?"
+
+/datum/map_template/ruin/jungle_cave/trilogy_research
+	id = "caves_trilogy_research"
+	suffix = "caves_trilogy_research.dmm"
+	name = "Trilogy (Research Department)"
+	description = "We tried making millions; didn't quite work out. Something else had better marketshare."
