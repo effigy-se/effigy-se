@@ -3304,6 +3304,9 @@
 /area/station/command/heads_quarters/captain)
 "aNH" = (
 /obj/machinery/chem_master/condimaster,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/kitchen)
 "aNK" = (
@@ -5015,6 +5018,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/iron/kitchen,
 /area/station/service/kitchen)
@@ -9184,6 +9190,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 10
 	},
 /turf/open/floor/iron/freezer,
 /area/station/service/kitchen/coldroom)
@@ -16569,6 +16578,9 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron/kitchen,
 /area/station/service/kitchen)
 "dVz" = (
@@ -17229,6 +17241,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/iron/kitchen,
@@ -21341,7 +21356,9 @@
 	dir = 10
 	},
 /obj/structure/cable,
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
 /turf/open/floor/iron/freezer,
 /area/station/service/kitchen/coldroom)
 "faE" = (
@@ -23446,6 +23463,9 @@
 	dir = 4
 	},
 /obj/effect/landmark/navigate_destination/kitchen,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/service/kitchen)
 "fAN" = (
@@ -28696,6 +28716,9 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron/kitchen,
 /area/station/service/kitchen)
 "gKs" = (
@@ -30849,9 +30872,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/freezer,
 /area/station/service/kitchen/coldroom)
 "hmQ" = (
@@ -33369,6 +33390,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
 /area/station/service/kitchen)
 "hTg" = (
@@ -35046,6 +35068,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/landmark/navigate_destination,
 /turf/open/floor/iron/smooth_large,
 /area/station/hallway/secondary/service)
 "irm" = (
@@ -42260,6 +42283,10 @@
 /area/station/science/xenobiology)
 "keW" = (
 /obj/structure/table,
+/obj/item/toy/figure/chef,
+/obj/item/holosign_creator/robot_seat/restaurant{
+	pixel_y = -5
+	},
 /turf/open/floor/iron/kitchen,
 /area/station/service/kitchen)
 "keZ" = (
@@ -49112,9 +49139,6 @@
 /area/station/service/chapel)
 "lNy" = (
 /obj/machinery/gibber,
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
 /turf/open/floor/iron/dark/textured,
 /area/station/service/kitchen/coldroom)
 "lNK" = (
@@ -52624,7 +52648,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/sorting/mail/flip{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/mail_sorting/service/kitchen,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -53511,6 +53538,25 @@
 /obj/machinery/duct/supply,
 /turf/open/floor/plating,
 /area/station/maintenance/floor2/starboard)
+"mSi" = (
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 8
+	},
+/obj/machinery/door/airlock/service/studio,
+/obj/effect/mapping_helpers/airlock/access/all/service/studio,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "studio"
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/landmark/navigate_destination,
+/turf/open/floor/iron/smooth_large,
+/area/station/service/studio)
 "mSm" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -57443,10 +57489,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/structure/disposalpipe/sorting/mail/flip{
+/obj/structure/disposalpipe/junction/flip{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/mail_sorting/service/kitchen,
 /turf/open/floor/iron,
 /area/station/hallway/floor2/aft)
 "nQw" = (
@@ -80181,6 +80226,9 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/catwalk_floor/iron,
 /area/station/service/cafeteria)
 "tru" = (
@@ -85685,6 +85733,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/catwalk_floor/iron,
 /area/station/service/cafeteria)
 "uLl" = (
@@ -87939,6 +87990,9 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/catwalk_floor/iron,
 /area/station/service/cafeteria)
 "vnP" = (
@@ -88875,10 +88929,11 @@
 	},
 /obj/machinery/door/airlock/engineering/glass,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/break_room)
 "vAX" = (
@@ -92442,14 +92497,15 @@
 	},
 /obj/machinery/door/airlock/engineering/glass,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable,
 /obj/machinery/duct/supply,
 /obj/machinery/duct/waste,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/effect/landmark/navigate_destination/engineering,
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/landmark/navigate_destination/engineering,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/lobby)
 "wtD" = (
@@ -94266,6 +94322,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/iron/textured_large,
@@ -99073,12 +99132,9 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/department/engine/atmos)
 "xXh" = (
-/obj/structure/rack,
-/obj/item/toy/figure/chef,
-/obj/item/holosign_creator/robot_seat/restaurant{
-	pixel_y = -5
-	},
 /obj/machinery/camera/autoname/directional/west,
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal/bin,
 /turf/open/floor/iron/dark,
 /area/station/service/kitchen)
 "xXj" = (
@@ -100010,6 +100066,9 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/south,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/catwalk_floor/iron,
 /area/station/service/cafeteria)
 "ykI" = (
@@ -218229,7 +218288,7 @@ aLi
 ixq
 sFy
 sFy
-uBD
+mSi
 nLq
 pLK
 sFy
