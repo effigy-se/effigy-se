@@ -77,44 +77,70 @@
 /obj/item/luna_fragment
 	name = "coder's bane"
 	desc = "report this on github! unless you got this from a christmas present!"
-	icon = 'icons/obj/mining_zones/artefacts.dmi'
+	icon = 'local/icons/obj/jungle_items.dmi'
 	var/effect_desc = "Does literally nothing."
 	var/has_spoken = FALSE
 	var/hallucination_sound = 'sound/hallucinations/im_here1.ogg'
 	var/hallucination_text = "Why.. do those stupid smelly nerds... not put an EXE file.. on the github..."
 
-/obj/item/luna_fragment/proc/apply_upgrade(/obj/item/claymore/cutlass/luna/our_sord, mob/living/user)
-	for(var/obj/item/luna_fragment/trophy as anything in our_sord.fragments)
+/obj/item/luna_fragment/proc/apply_upgrade(our_sord, mob/living/user)
+	var/obj/item/claymore/cutlass/luna/upgrade_appliable = our_sord
+	for(var/obj/item/luna_fragment/trophy as anything in upgrade_appliable.fragments)
 		if(istype(src, trophy))
-			to_chat(user, span_warning("You can't seem to attach [src] to [our_sord]."))
+			to_chat(user, span_warning("You can't seem to attach [src] to [upgrade_appliable]."))
 			return FALSE
-	if(!user.transferItemToLoc(src, our_sord))
+	if(!user.transferItemToLoc(src, upgrade_appliable))
 		return
-	our_sord.fragments += src
+	upgrade_appliable.fragments += src
 	balloon_alert(user, "upgrade applied")
-	to_chat(user, span_notice("You attach [src] to [our_sord]."))
+	to_chat(user, span_notice("You attach [src] to [upgrade_appliable]."))
 	if(!has_spoken)
 		var/mob/taylor = user
 		taylor.playsound_local(src.loc, hallucination_sound, 30, FALSE, 3)
 		to_chat(user, span_blue(hallucination_text))
 	return
 
-/obj/item/luna_fragment/proc/remove_upgrade(/obj/item/claymore/cutlass/luna/our_sord, mob/living/user)
+/obj/item/luna_fragment/proc/remove_upgrade(our_sord, mob/living/user)
 	return
+
+/obj/item/luna_fragment/examine(mob/living/user)
+	. = ..()
+	. += span_notice("This device looks rather.. \"home cooked\". You'll likely need a specific sword in order to make use of it.")
+	if(has_spoken)
+		. += span_blue(hallucination_text) // If you're gonna take it back outta the sword, you should at least be able to revisit the text.
 
 /// Blood Beam
 /obj/item/luna_fragment/blood_beam
-	name = "H.P.A."
-	desc = "A \"hemophilic projectile apparatus\". In practice; it trades some of the electrical activity in the user's brain and some of their blood to fire off an armor-piercing laser. \
-	Science CAN be metal!"
-	icon_state = "tail_spike"
+	name = "\improper H.P.A."
+	desc = "A \"hemophilic projectile apparatus\". In practice; it trades some of the electrical activity in the user's brain and some of their blood to fire off an armor-piercing laser, to be attached \
+	conveinently under cross-guard of a blade. Science CAN be metal!"
+	icon_state = "hpa"
 	effect_desc = "shoot a laser beam when right-clicking, in exchange for your stamina - and some blood."
 	hallucination_text = "I remember it clearly. It was.. so white; where I was. So cold. Trees all around me."
 
-/obj/item/luna_fragment/blood_beam/apply_upgrade(/obj/item/claymore/cutlass/luna/our_sord, mob/living/user)
-	our_sord.can_bloodbeam = TRUE
+/obj/item/luna_fragment/blood_beam/apply_upgrade(our_sord, mob/living/user)
+	var/obj/item/claymore/cutlass/luna/upgrade_appliable = our_sord
+	upgrade_appliable.can_bloodbeam = TRUE // This sucks and I'd love to refactor it but I have to brush up a bit more before I'm ready for components;
 	return ..()
 
-/obj/item/luna_fragment/blood_beam/remove_upgrade(/obj/item/claymore/cutlass/luna/our_sord, mob/living/user)
-	our_sord.can_bloodbeam = FALSE
+/obj/item/luna_fragment/blood_beam/remove_upgrade(our_sord, mob/living/user)
+	var/obj/item/claymore/cutlass/luna/upgrade_appliable = our_sord
+	upgrade_appliable.can_bloodbeam = FALSE
 	return ..()
+
+/// Energy Retrofit
+/obj/item/luna_fragment/energy_retrofit
+	name = "Energy Projection Matrix"
+	desc = "A small; egg-shaped device - kitbashed from a hardlight projector, a x-ray focused laser diode, and, of all things - a flashlight; to be applied directly against the grip of a sword - trading \
+	the comfort of your thumb for a hardlight blade."
+	icon = "energy_retrofit"
+	hallucination_sound = 'sound/hallucinations/im_here2.ogg'
+	hallucination_text = "Calm. Safe - A clearing. Trees that stretched on up unto the sky itself; covered in constant falls of new snowflakes on my skin. I wasn't cold."
+
+/// Ninja / Hiero Teleportation
+/obj/item/luna_fragment/bluespace_flower_crystal
+	name = "Bluespace Flower Crystal"
+	desc = "An intricately fused series of bluespace crystals, wired directly to the centre in a mockery of a flower's image. It's designed to slot into something; from looking at the back - and use those crystals for travel."
+	icon = "bluespace_flower"
+	hallucination_sound = 'sound/effects/curse1.ogg'
+	hallucination_text = "The lightest, most beautiful snowflakes I'd ever seen raining down upon me. I wasn't cold. I couldn't be. It couldn't overcome the warmth of my beating heart."
