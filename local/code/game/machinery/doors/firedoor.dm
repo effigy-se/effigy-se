@@ -57,7 +57,7 @@
 	if(isnull(liquids))
 		return
 
-	if(liquids.liquid_state >= LIQUID_STATE_ANKLES)
+	if(liquids.height > 1)
 		return FIRELOCK_ALARM_TYPE_COLD
 
 /obj/machinery/door/firedoor/heavy
