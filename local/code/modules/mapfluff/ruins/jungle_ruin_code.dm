@@ -10,6 +10,11 @@
 	inhand_icon_state = "luna"
 	slot_flags = null // Let's not.
 	w_class = WEIGHT_CLASS_HUGE // This is a SWORD, coward
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+	light_system = OVERLAY_LIGHT
+	light_range = 3
+	light_power = 1
+	light_on = FALSE
 	force = 15
 	throwforce = 10
 	bare_wound_bonus = 10
@@ -129,18 +134,45 @@
 	return ..()
 
 /// Energy Retrofit
+/// Sets LUNA's stats to be on par with a standard energy blade - for better and worse.
 /obj/item/luna_fragment/energy_retrofit
 	name = "Energy Projection Matrix"
 	desc = "A small; egg-shaped device - kitbashed from a hardlight projector, a x-ray focused laser diode, and, of all things - a flashlight; to be applied directly against the grip of a sword - trading \
 	the comfort of your thumb for a hardlight blade."
-	icon = "energy_retrofit"
+	icon_state = "energy_retrofit"
 	hallucination_sound = 'sound/hallucinations/im_here2.ogg'
 	hallucination_text = "Calm. Safe - A clearing. Trees that stretched on up unto the sky itself; covered in constant falls of new snowflakes on my skin. I wasn't cold."
+
+/obj/item/luna_fragment/energy_retrofit/apply_upgrade(our_sord, mob/living/user)
+	var/obj/item/claymore/cutlass/luna/upgrade_appliable = our_sord
+	upgrade_appliable.icon_state = "luna_energy"
+	upgrade_appliable.set_light_on(TRUE)
+	playsound(upgrade_appliable, 'sound/weapons/saberon.ogg', 35, TRUE)
+	force = /obj/item/melee/energy::force
+	throwforce = /obj/item/melee/energy::throwforce
+	bare_wound_bonus = /obj/item/melee/energy::bare_wound_bonus
+	demolition_mod = /obj/item/melee/energy::demolition_mod
+	armour_penetration = /obj/item/melee/energy::armour_penetration
+	block_chance = /obj/item/melee/energy::block_chance
+	return ..()
+
+/obj/item/luna_fragment/energy_retrofit/remove_upgrade(our_sord, mob/living/user)
+	var/obj/item/claymore/cutlass/luna/upgrade_appliable = our_sord
+	upgrade_appliable.icon_state = "luna"
+	upgrade_appliable.set_light_on(FALSE)
+	playsound(upgrade_appliable, 'sound/weapons/saberoff.ogg', 35, TRUE)
+	force = initial(force)
+	throwforce = initial(throwforce)
+	bare_wound_bonus = initial(bare_wound_bonus)
+	demolition_mod = initial(demolition_mod)
+	armour_penetration = initial(armour_penetration)
+	block_chance = initial(block_chance)
+	return ..()
 
 /// Ninja / Hiero Teleportation
 /obj/item/luna_fragment/bluespace_flower_crystal
 	name = "Bluespace Flower Crystal"
 	desc = "An intricately fused series of bluespace crystals, wired directly to the centre in a mockery of a flower's image. It's designed to slot into something; from looking at the back - and use those crystals for travel."
-	icon = "bluespace_flower"
+	icon_state = "bluespace_flower"
 	hallucination_sound = 'sound/effects/curse1.ogg'
 	hallucination_text = "The lightest, most beautiful snowflakes I'd ever seen raining down upon me. I wasn't cold. I couldn't be. It couldn't overcome the warmth of my beating heart."
