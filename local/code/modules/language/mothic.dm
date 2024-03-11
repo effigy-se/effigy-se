@@ -1,6 +1,6 @@
 /datum/language/moffic
 	name = "Mothic"
-	desc = "Spoken colloquially by the Mothfolk of Va Lumla, Mothic conveys using gesticulation through antennas and wings to convey deeper intent, with mandibles providing emotional context through clicks and trills. Human speakers managed to achieve a similar effect from clicking their tongue to roof, and steer the tone with the width of their mouth while using their hands in place of antennae. It is informally spoken, deploying many slangs and shorthands from Common. Has phonetic resemblance to Italian."
+	desc = "Spoken colloquially by Mothfolk, conveys using gesticulation through antennas and wings to convey deeper intent, with mandibles providing emotional context through clicks and trills."
 	space_chance = 40
 	// Syllables derived from Italian.
 	syllables = list(

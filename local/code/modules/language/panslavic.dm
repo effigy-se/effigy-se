@@ -1,6 +1,6 @@
 /datum/language/panslavic
 	name = "Pan-Slavic"
-	desc = "A mish-mash of Eastern European and Balkan languages with similar properties that has since become the official language of the NRI, with a good amount of relevance in SolFed colonies with slavic descendance and trading posts across charted territory."
+	desc = "A mish-mash of Eastern European and Balkan languages local to colonies with slavic descendance and trading posts across charted territory."
 	key = "P"
 	flags = TONGUELESS_SPEECH
 	syllables = list(

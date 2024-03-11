@@ -1,6 +1,6 @@
 /datum/language/siiktajr
 	name = "Siik'tajr"
-	desc = "Overly complicated and with a turbulent history, this tongue comprised of short-form speech mixed with growls and meows is native to the Tajara. Has phonetic resemblance to Finnish with Swedish loan words."
+	desc = "A melodic language comprised of short-form speech mixed with purrs and growls, native to the Tajara."
 	key = "3"
 	flags = TONGUELESS_SPEECH
 	sentence_chance = 9

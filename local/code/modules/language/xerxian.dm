@@ -1,6 +1,6 @@
 /datum/language/xerxian
 	name = "Xerxian"
-	desc = "An evolved form of the language of Arabic from Earth. Despite its ancient origins, it is still spoken by many people in cultures that evolved from the Middle-East."
+	desc = "An evolved form of the language of Arabic from Earth, spoken by many people in cultures that evolved from the Middle-East."
 	key = "a"
 	flags = TONGUELESS_SPEECH
 	syllables = list(

@@ -1,6 +1,6 @@
 /datum/language/common
-	name = "Sol"
-	desc = "A mixture of Esperanto and Modern Latin established as \"The language of Humanity\" by the Sol Federation in its early days. "
+	name = "Common"
+	desc = "A lingua franca (trade language) systematically used to make communication possible between groups of people who do not share a native language or dialect. Developed to facilitate intercommunication in large-scale trade and political matters."
 	space_chance = 60
 	syllables = list(
 		"al", "an", "ar", "as", "at", "ed", "er", "ha", "he", "hi", "is", "le", "me", "on", "se", "ti",
