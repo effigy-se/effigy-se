@@ -1,3 +1,5 @@
+#define SLIME_ACTIONS_ICON_FILE 'local/icons/effects/actions_slime.dmi'
+
 /datum/species/jelly
 	mutant_bodyparts = list(
 		"tail" = "None",
@@ -79,7 +81,7 @@
 	name = "Alter Form"
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "alter_form"
-	button_icon = 'local/icons/effects/actions_slime.dmi'
+	button_icon = SLIME_ACTIONS_ICON_FILE
 	background_icon_state = "bg_alien"
 	/// Do you need to be a slime-person to use this ability?
 	var/slime_restricted = TRUE
@@ -89,9 +91,44 @@
 	var/shapeshift_text = "gains a look of concentration while standing perfectly still. Their body seems to shift and starts getting more goo-like."
 	///List containing all of the avalible parts
 	var/static/list/available_choices
+	/// Icon for "Body Colors" alteration button.
+	var/bodycolours_icon
+	/// Icon for "DNA" alteration button.
+	var/dna_icon
+	/// Icon for "Hair" alteration button.
+	var/hair_icon
+	/// Icon for "Markings" alteration button.
+	var/markings_icon
+	/// Icon for "Primary Colour" alteration button.
+	var/primarycolour_icon
+	/// Icon for "Secondary Colour" alteration button.
+	var/secondarycolour_icon
+	/// Icon for "Tertiary Colour" alteration button.
+	var/tertiarycolour_icon
+	/// Icon for "All Colours" alteration button.
+	var/allcolours_icon
+	/// Icon for "Facial Hair" alteration button.
+	var/facialhair_icon
+	/// Icon for "Hair Colour" alteration button.
+	var/haircolour_icon
+
+
+/datum/action/innate/alter_form/proc/generate_radial_icons()
+	bodycolours_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "slime_rainbow")
+	dna_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "dna")
+	hair_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "scissors")
+	markings_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "rainbow_spraycan")
+	primarycolour_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "slime_red")
+	secondarycolour_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "slime_green")
+	tertiarycolour_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "slime_blue")
+	allcolours_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "slime_rainbow")
+	facialhair_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "straight_razor")
+	haircolour_icon = image(icon = SLIME_ACTIONS_ICON_FILE, icon_state = "rainbow_spraycan")
 
 /datum/action/innate/alter_form/New(Target)
 	. = ..()
+	generate_radial_icons()
+
 	if(length(available_choices))
 		return
 
@@ -308,7 +345,6 @@
 	if(!dna_alteration)
 		return
 	switch(dna_alteration)
-		/*
 		if("Body Size")
 			if(oversized_user && !HAS_TRAIT(alterer, TRAIT_OVERSIZED))
 				var/reset_size = tgui_alert(alterer, "Do you wish to return to being oversized?", "Size Change", list("Yes", "No"))
@@ -334,7 +370,6 @@
 			new_body_size = new_body_size * 0.01
 			alterer.dna.features["body_size"] = new_body_size
 			alterer.dna.update_body_size()
-		*/
 
 		if("Genitals")
 			alter_genitals(alterer)
@@ -531,3 +566,5 @@
 			if(new_size)
 				alterer.dna.features["balls_size"] = avocados.balls_description_to_size(new_size)
 				avocados.set_size(alterer.dna.features["balls_size"])
+
+#undef SLIME_ACTIONS_ICON_FILE
