@@ -15,6 +15,8 @@
 	suffix = "surface_luna.dmm"
 	name = "LUNA"
 	description = "The dream of a dead dreamer."
+	cost = 0
+	always_place = TRUE
 
 /datum/map_template/ruin/jungle/deadorgone
 	id = "surface_deadorgone"
