@@ -19,7 +19,7 @@
 	throwforce = 10
 	bare_wound_bonus = 10
 	var/list/fragments = list()
-	var/can_bloodbeam
+	var/can_bloodbeam = FALSE
 
 /obj/item/claymore/cutlass/luna/examine(mob/living/user)
 	. = ..()
