@@ -1,6 +1,6 @@
 /datum/language/siiktajr
 	name = "Siik'tajr"
-	desc = "Commonly spoken by the Tajara, a language consiting of a series of various feline growls in combination with movement of various body parts, such as the tail."
+	desc = "Overly complicated and with a turbulent history, this tongue comprised of short-form speech mixed with growls and meows is native to the Tajara. Has phonetic resemblance to Finnish with Swedish loan words."
 	key = "3"
 	flags = TONGUELESS_SPEECH
 	sentence_chance = 9
