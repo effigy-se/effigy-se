@@ -39,6 +39,7 @@
 #define PRIDE_WEEK "Pride Month"
 #define MOTH_WEEK "Moth Week"
 #define IAN_HOLIDAY "Ian's Birthday"
+#define HOTDOG_DAY "National Hot Dog Day"
 /*
 
 Days of the week to make it easier to reference them.

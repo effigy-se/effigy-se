@@ -42,7 +42,7 @@
 		)
 	return ..()
 
-/obj/item/modular_computer/pda/synth/RemoveID(mob/user)
+/obj/item/modular_computer/pda/synth/RemoveID(mob/user, silent = FALSE)
 	var/obj/item/organ/internal/brain/synth/brain_loc = loc
 	if(!istype(brain_loc))
 		return ..()
