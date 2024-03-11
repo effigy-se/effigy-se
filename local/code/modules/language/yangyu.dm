@@ -17,6 +17,6 @@
 		"bao", "biao", "ca", "cai", "cheng", "dao", "dian", "deng", "feng", "guai", "guo", "hai", "kang", "kan",
 		"kai", "ka", "ke", "keng", "kong", "kuang", "lang", "nei", "qian", "qiang", "rui", "shuai", "teng", "zu"
 	)
-	icon_state = "torii"
+	icon_state = "hanzi"
 	icon = 'local/icons/misc/language.dmi'
 	default_priority = 94
