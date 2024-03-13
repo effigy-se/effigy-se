@@ -6,13 +6,13 @@
 	cost = 1
 
 /datum/map_template/ruin/ocean/fissure
-	name = "Thermal Fissure"
+	name = "Ocean-Ruin Thermal Fissure"
 	id = "ocean-fissure"
 	description = "A tear in the ocean."
 	suffix = "ocean_fissure.dmm"
 
 /datum/map_template/ruin/ocean/fissure/diag
-	name = "Horizontal Thermal Fissure"
+	name = "Ocean-Ruin Horizontal Thermal Fissure"
 	id = "ocean-fissure-diag"
 	description = "A horizontal tear in the ocean."
 	suffix = "ocean_fissure_diag.dmm"
@@ -24,7 +24,7 @@
 	prefix = "_maps/RandomRuins/OceanRuins/"
 
 /datum/map_template/ruin/trench/biolab_research
-	name = "Ocean Biolab Research Station"
+	name = "Ocean-Ruin Biolab Research Station"
 	id = "ocean-biolab"
 	description = "Biolab in the ocean."
 	suffix = "ocean_bioweapon_lab.dmm"
