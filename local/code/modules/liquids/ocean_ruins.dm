@@ -2,7 +2,7 @@
 
 /datum/map_template/ruin/ocean
 	ruin_type = ZTRAIT_OCEAN_RUINS
-	prefix = "_maps/RandomRuins/OceanRuins/"
+	prefix = "_maps/effigy/RandomRuins/OceanRuins/"
 	cost = 1
 
 /datum/map_template/ruin/ocean/fissure
@@ -21,7 +21,7 @@
 
 /datum/map_template/ruin/trench
 	ruin_type = ZTRAIT_TRENCH_RUINS
-	prefix = "_maps/RandomRuins/OceanRuins/"
+	prefix = "_maps/effigy/RandomRuins/OceanRuins/"
 
 /datum/map_template/ruin/trench/biolab_research
 	name = "Ocean-Ruin Biolab Research Station"

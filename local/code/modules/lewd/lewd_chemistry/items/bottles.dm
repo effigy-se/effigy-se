@@ -5,7 +5,7 @@
 
 /obj/item/reagent_containers/cup/bottle/hexacrocin
 	name = "hexacrocin bottle"
-	desc = "A bottle of strong aphrodisiac. Increases libido. Potentially  dangerous."
+	desc = "A bottle of strong aphrodisiac. Increases libido. Potentially dangerous."
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 30)
 
 /obj/item/reagent_containers/cup/bottle/dopamine

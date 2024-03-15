@@ -5,7 +5,7 @@
 /// Surface ///
 /datum/map_template/ruin/jungle
 	ruin_type = ZTRAIT_JUNGLE_RUINS
-	prefix = "_maps/RandomRuins/JungleRuins/"
+	prefix = "_maps/effigy/RandomRuins/JungleRuins/"
 	default_area = /area/taeloth/unexplored
 	cost = 1
 	allow_duplicates = FALSE
@@ -47,7 +47,7 @@
 
 /datum/map_template/ruin/jungle_cave
 	ruin_type = ZTRAIT_JUNGLE_CAVE_RUINS
-	prefix = "_maps/RandomRuins/JungleRuins/"
+	prefix = "_maps/effigy/RandomRuins/JungleRuins/"
 	default_area = /area/taeloth/underground/unexplored
 	cost = 1
 	allow_duplicates = FALSE
