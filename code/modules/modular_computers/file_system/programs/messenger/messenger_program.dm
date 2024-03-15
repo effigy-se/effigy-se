@@ -477,9 +477,9 @@
 	// EffigyEdit Add - Subtle texting
 	// If "subtle" it wont be sent to ghostchats.
 	// A message is "subtle" if it begins with "#", the below code also removes it from the sent message.
-	if(findtext(message,"#") == 1)
-	subtle = TRUE
-		message = copytext(message,2,0)
+	if(findtext(message,"#", 1) == TRUE)
+		subtle = TRUE
+		message = copytext(message, 2, 0)
 	// EffigyEdit Add End
 
 	// upgrade the image asset to a permanent key
@@ -572,7 +572,8 @@
 
 	return send_message_signal(sender, message, targets, fake_photo, FALSE, TRUE, fake_name, fake_job)
 
-/datum/computer_file/program/messenger/proc/send_message_signal(atom/source, message, list/datum/computer_file/program/messenger/targets, photo_path = null, everyone = FALSE, rigged = FALSE, fake_name = null, fake_job = null, subtle = FALSE) // EffigyEdit Change - Subtle texting - Original: /datum/computer_file/program/messenger/proc/send_message_signal(atom/source, message, list/datum/computer_file/program/messenger/targets, photo_path = null, everyone = FALSE, rigged = FALSE, fake_name = null, fake_job = null)	var/mob/sender
+/datum/computer_file/program/messenger/proc/send_message_signal(atom/source, message, list/datum/computer_file/program/messenger/targets, photo_path = null, everyone = FALSE, rigged = FALSE, fake_name = null, fake_job = null, subtle = FALSE) // EffigyEdit Change - Subtle texting - Original: /datum/computer_file/program/messenger/proc/send_message_signal(atom/source, message, list/datum/computer_file/program/messenger/targets, photo_path = null, everyone = FALSE, rigged = FALSE, fake_name = null, fake_job = null)
+	var/mob/sender
 	if(ismob(source))
 		sender = source
 		if(!sender.can_perform_action(computer, ALLOW_RESTING))
