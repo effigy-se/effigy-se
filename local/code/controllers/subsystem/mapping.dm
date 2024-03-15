@@ -7,7 +7,7 @@
 	// Taeloth Caves / Jungle Cave Ruins, Rimpoint
 	var/list/jungle_cave_ruins = levels_by_trait(ZTRAIT_JUNGLE_CAVE_RUINS)
 	if(jungle_cave_ruins.len)
-		seedRuins(jungle_ruins, CONFIG_GET(number/jungle_cave_budget), list(/area/taeloth/unexplored), themed_ruins[ZTRAIT_JUNGLE_CAVE_RUINS], clear_below = TRUE)
+		seedRuins(jungle_ruins, CONFIG_GET(number/jungle_cave_budget), list(/area/taeloth/underground/unexplored), themed_ruins[ZTRAIT_JUNGLE_CAVE_RUINS], clear_below = TRUE)
 
 	// Ocean Ruins, Sigma Octantis
 	var/list/ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS)
@@ -23,4 +23,4 @@
 /datum/controller/subsystem/mapping/loadWorld()
 	. = ..()
 	var/list/FailedZsEffigy = list()
-	LoadGroup(FailedZsEffigy, "The Interlink", "map_files/generic", "CentCom_z2_effigy.dmm", default_traits = ZTRAITS_CENTCOM)
+	LoadGroup(FailedZsEffigy, "The Interlink", "effigy/map_files/generic", "CentCom_z2_effigy.dmm", default_traits = ZTRAITS_CENTCOM)
