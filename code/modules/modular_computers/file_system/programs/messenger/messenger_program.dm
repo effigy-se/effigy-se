@@ -396,7 +396,7 @@
 		chat.can_reply = FALSE
 		return
 	var/target_name = target.computer.saved_identification
-	var/input_message = tgui_input_text(user, "Enter [mime_mode ? "emojis":"a message"]", "NT Messaging[target_name ? " ([target_name])" : ""]", encode = FALSE)
+	var/input_message = tgui_input_text(user, "Enter [mime_mode ? "emojis":"a message"]. Start with # for subtle.", "NT Messaging[target_name ? " ([target_name])" : ""]", encode = FALSE)
 	send_message(user, input_message, list(chat), subtle = subtle) // EffigyEdit Change - Subtle texting - Original: send_message(user, input_message, list(chat))
 
 /// Helper proc that sends a message to everyone
@@ -632,7 +632,7 @@
 		shell_addendum = "[circuit.parent.get_creator()] "
 
 	// Log in the talk log
-	source.log_talk(message, LOG_PDA, tag="[shell_addendum][rigged ? "Rigged" : ""] PDA[subtle ? "(Subtle)" : ""]: [computer.saved_identification] to [signal.format_target()]") // EffigyEdit Change - Subtle texting - Original: source.log_talk(message, LOG_PDA, tag="[shell_addendum][rigged ? "Rigged" : ""] PDA: [computer.saved_identification] to [signal.format_target()]")
+	source.log_talk(message, subtle ? LOG_SUBTLE : LOG_PDA, tag="[shell_addendum][rigged ? "Rigged" : ""] PDA: [computer.saved_identification] to [signal.format_target()]")// EffigyEdit Change - Subtle texting - Original: source.log_talk(message, LOG_PDA, tag="[shell_addendum][rigged ? "Rigged" : ""] PDA: [computer.saved_identification] to [signal.format_target()]")
 	if(rigged)
 		log_bomber(sender, "sent a rigged PDA message (Name: [fake_name]. Job: [fake_job]) to [english_list(stringified_targets)] [!is_special_character(sender) ? "(SENT BY NON-ANTAG)" : ""]")
 
