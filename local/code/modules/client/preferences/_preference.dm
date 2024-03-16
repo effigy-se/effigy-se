@@ -97,7 +97,8 @@
 
 /datum/preference/toggle/mutant_toggle/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	return passed_initial_check
+	var/allowed = TRUE
+	return passed_initial_check || allowed
 
 /**
  * Base class for choices character features, mainly mutant body parts
