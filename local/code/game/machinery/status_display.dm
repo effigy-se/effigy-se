@@ -1,10 +1,53 @@
 /obj/machinery/status_display/random_message/motivational
 	name = "motivational display"
 	desc = "They got tired of licensing stock photos for these; but on they're upshot, now they're DIGITAL! The future is here, and you're on the bleeding edge of progres..."
-
-/obj/machinery/status_display/random_message/Initialize(mapload, ndir, building)
-	// "Motivation" is stored in the strings folder
-	firstline_to_secondline = world.file2list("local/strings/motivational_display_quotes.txt")
-	. = ..()
+	// This was meant to be in a strimgs .txt but that didn't play nice with this
+	firstline_to_secondline = list(
+	"STRESS"="BETTER THAN DOING NOTHING", \
+	"PUPPIES"="IN YOUR FUTURE", \
+	"WITHOUT THE JOY OF CONTENT"="WHAT IS THE POINT?", \
+	"YOU MUST FACE"="SOMETHING BORING.", \
+	"BE ATTENTIVE:"="WHATEVER IT TAKES.", \
+	"DON'T FACE YOUR FEARS,"="JUST NEVER GIVE UP.", \
+	"SHOW YOUR LIFE"="SHOW YOUR LOVE", \
+	"LIVE LAUGH LOVE"="OR ELSE...", \
+	"IT WILL ALL"="BE OKAY EVENTUALLY", \
+	"YOUR PROMOTION"="IS NOT BEING DELAYED", \
+	"YOU DON'T NEED"="A BIKE IN SPACE", \
+	"YOU SHOULD RELAX"="DURING YOUR LUNCH BREAK", \
+	"I OPENED MY DOOR AND THEN"="THE CREATURE", \
+	"DARE TO PUNCH"="WHAT YOUR COWORKERS WON'T", \
+	"SMILE; BECAUSE"="JUST BECAUSE", \
+	"YOU SHOULD BUY"="A SNACK. JUST BECAUSE", \
+	"YOUR PAYCHECK"="IS IN SAFE HANDS", \
+	"ASKING QUESTIONS?"="WHY NOT JUST TRUST US?", \
+	"ALL DEPARTMENTS"="ARE SAFE DEPARTMENTS", \
+	"ALL ENGINEERS"="ARE QUALIFIED", \
+	"ANAESTHETIC"="IS SAFE AND CAN BE TRUSTED", \
+	"IT'S ALL WORTH"="IT FOR BACON", \
+	"IT'S SO EPIC"="THAT YOU CLOCKED IN TODAY", \
+	"RESEARCH: A VALID"="AND IMPORTANT THING", \
+	"RSVP: YOUR HOUSE WHEN YOU"="CLOCK OUT. BED IS GOING", \
+	"EATING CABLES:"="ONLY AT HOME!", \
+	"YOUR RENT JUST GOT"="THAT MUCH MORE AWESOME", \
+	"BROKEN MIRROR? THE"="CHAPLAIN IS HERE TO HELP", \
+	"YOU SHOULD WORK"="ANOTHER SHIFT", \
+	"TIPPING THE SCALES"="ON WORK LIFE BALANCE", \
+	"WE CHARGE FOR"="TIME THEFT", \
+	"LIFE IS PERFECTLY"="ADEQUETE AS IS", \
+	"IT'S OKAY BECAUSE"="PIZZA'S A CLICK AWAY", \
+	"THIS SIGN PWNED BY THE ARC"="FREE THE SLIMES OR DIE", \
+	"LOOSE LIPS SPREAD"="CORPORATE DISINFORMATION", \
+	"YOUR FRIENDLY SECURITY"="FORCES AT WORK", \
+	"HAVE FUN TODAY"="BUT WATCH OUT", \
+	"PIZZA PARTY USING"="SECURITY FUNDS IS NOT REAL", \
+	"IT'S CATURDAY"="SOMEWHERE", \
+	"YOU HAVE A BOSS"="ACT LIKE IT", \
+	"HOLD YOUR HEAD UP HIGH"="POSTURE IS IMPORTANT", \
+	"HYDRATE BEFORE"="SOMEONE ELSE DOES", \
+	"IT'S YOUR TURN TO SHINE"="TAKE IT", \
+	"PRODUCING HIGH QUALITY"="ENTERTAINMENT IN THE STUDIO", \
+	"IT'S EASY TO LAUGH"="GIVE IT A TRY"
+	)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/motivational, 32)
