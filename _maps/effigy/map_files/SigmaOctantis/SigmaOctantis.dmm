@@ -9918,6 +9918,17 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/hallway/floor1/aft)
+"cni" = (
+/obj/effect/turf_decal/trimline/blue/arrow_cw{
+	dir = 10
+	},
+/obj/machinery/turretid{
+	control_area = "/area/station/ai_monitored/turret_protected/aisat/maint";
+	name = "AI Atmospherics turret control";
+	pixel_x = -26
+	},
+/turf/open/floor/iron/white,
+/area/station/ai_monitored/turret_protected/aisat/equipment)
 "cnk" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
@@ -39767,8 +39778,8 @@
 	id = "cargounload"
 	},
 /obj/machinery/door/poddoor{
-	id = "cargounload";
-	name = "Supply Dock Unloading Door"
+	id = "QMLoaddoor";
+	name = "Supply Dock Loading Door"
 	},
 /turf/open/floor/plating,
 /area/station/cargo/storage)
@@ -46853,6 +46864,11 @@
 	c_tag = "MiniSat Antechamber";
 	network = list("minisat")
 	},
+/obj/machinery/turretid{
+	control_area = "/area/station/ai_monitored/turret_protected/aisat/equipment";
+	name = "AI Equipment turret control";
+	pixel_x = 26
+	},
 /turf/open/floor/mineral/titanium/white,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "kXy" = (
@@ -49101,7 +49117,7 @@
 	id = "cargoload"
 	},
 /obj/machinery/door/poddoor{
-	id = "cargoload";
+	id = "QMLoaddoor2";
 	name = "Supply Dock Loading Door"
 	},
 /turf/open/floor/plating,
@@ -57419,6 +57435,17 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/iron/white,
 /area/station/maintenance/floor1/starboard/aft)
+"nAC" = (
+/obj/effect/turf_decal/trimline/blue/arrow_cw{
+	dir = 6
+	},
+/obj/machinery/turretid{
+	control_area = "/area/station/ai_monitored/turret_protected/aisat/atmos";
+	name = "AI Atmospherics turret control";
+	pixel_x = 26
+	},
+/turf/open/floor/iron/white,
+/area/station/ai_monitored/turret_protected/aisat/equipment)
 "nAD" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/flashlight/lantern,
@@ -66485,6 +66512,14 @@
 "pMe" = (
 /obj/machinery/computer/cargo,
 /obj/machinery/duct/waste,
+/obj/machinery/button/door/directional/north{
+	id = "QMLoaddoor";
+	pixel_x = -6
+	},
+/obj/machinery/button/door/directional/north{
+	id = "QMLoaddoor2";
+	pixel_x = 6
+	},
 /turf/open/floor/iron/half,
 /area/station/cargo/storage)
 "pMh" = (
@@ -69881,8 +69916,8 @@
 	id = "cargounload"
 	},
 /obj/machinery/door/poddoor{
-	id = "cargounload";
-	name = "Supply Dock Unloading Door"
+	id = "QMLoaddoor";
+	name = "Supply Dock Loading Door"
 	},
 /turf/open/floor/plating,
 /area/station/cargo/storage)
@@ -87961,7 +87996,11 @@
 	id = "cargoload"
 	},
 /obj/machinery/door/poddoor{
-	id = "cargoload";
+	id = "cargo_cargoload";
+	name = "Supply Dock Loading Door"
+	},
+/obj/machinery/door/poddoor{
+	id = "QMLoaddoor2";
 	name = "Supply Dock Loading Door"
 	},
 /turf/open/floor/plating,
@@ -200455,7 +200494,7 @@ nJz
 tdk
 pGL
 mXS
-jqk
+cni
 aFw
 exw
 jtY
@@ -203025,7 +203064,7 @@ qnp
 rZQ
 ble
 fvW
-fgd
+nAC
 vUg
 swM
 gjt
