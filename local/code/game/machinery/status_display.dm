@@ -6,3 +6,5 @@
 	// "Motivation" is stored in the strings folder
 	firstline_to_secondline = world.file2list("local/strings/motivational_display_quotes.txt")
 	. = ..()
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/motivational, 32)
