@@ -1,7 +1,9 @@
 /obj/machinery/status_display/random_message/motivational
 	name = "motivational display"
 	desc = "They got tired of licensing stock photos for these; but on they're upshot, now they're DIGITAL! The future is here, and you're on the bleeding edge of progres..."
-	// This was meant to be in a strimgs .txt but that didn't play nice with this
+
+/obj/machinery/status_display/random_message/motivational/Initialize(mapload, ndir, building)
+	// This was meant to be in a strings .txt but that didn't play nice with the formatting
 	firstline_to_secondline = list(
 	"STRESS"="BETTER THAN DOING NOTHING", \
 	"PUPPIES"="IN YOUR FUTURE", \
@@ -47,7 +49,31 @@
 	"HYDRATE BEFORE"="SOMEONE ELSE DOES", \
 	"IT'S YOUR TURN TO SHINE"="TAKE IT", \
 	"PRODUCING HIGH QUALITY"="ENTERTAINMENT IN THE STUDIO", \
-	"IT'S EASY TO LAUGH"="GIVE IT A TRY"
+	"IT'S EASY TO LAUGH"="GIVE IT A TRY", \
+	"LIFE'S A BEACH"="NOT THE HUDSON", \
+	"COMMITED TO SAFE ENERGY"="BY [CURRENT_STATION_YEAR+1]", \
+	"KITTENS"="IN YOUR FUTURE", \
+	"PIZZA PARTY FUNDRAISING GOAL:"="[pick("03%","69%","83%","19%","-2%")] AND COUNTING!", \
+	"ALL YOU NEED TO BUY"="IS RIGHT WHERE YOU ARE", \
+	"YOU CAN BUY A NEW GAMES CONSOLE"="WITH THE MONEY YOU SAVE BY NOT UNIONIZING", \
+	"IT IS OKAY"="TO BE UPSET", \
+	"DREAMS OF CHEESE?"="WHY NOT?", \
+	"BE CAREFUL WHAT YOU WISH FOR"="FOR NO PARTICULAR REASON", \
+	"PHANIC HAD HYPERREALISTIC EYES"="AND THEN HE BLED AT ME AAAAAA", \
+	"WINE O' CLOCK IS NOT A REGISTERED HOLIDAY"="PLEASE STOP ASKING US ABOUT IT", \
+	"YOUR FURNITURE IS NOT FALLING APART"="YET", \
+	"NO TRADEMARK IS BEING VIOLATED"="DON'T WORRY ABOUT IT", \
+	"CERTIFIED SAFE FOR"="A GOOD WHILE AT LEAST", \
+	"PLEASE DO NOT SEXT THE CHIEF"="ENGINEER DURING A DELAMINATION AGAIN", \
+	"YOUR LIFE IS IN GOOD HANDS"="AS FAR AS WE KNOW", \
+	"OUR LEGAL COUNSEL HAS REQUESTED A REMINDER"="THAT YOU HAVE A BREAK AT SOME POINT :3", \
+	"BLOWING THINGS UP IS NOT OKAY"="ON COMPANY PROPERTY ANYWAYS", \
+	"PLEASE STOP MAKING THINGS HARD"="ON OUR FINANCIALS :)", \
+	"YOU CAN TRUST THE AI AND IT'S CYBORGS"="HONEST. WE PROMISE. 100%.", \
+	"SEEING BLUE?"="STEP OUT OF THE WATER!", \
+	"YOU CAN'T SPELL AIR"="WITHOUT I", \
+	"WE CARE ABOUT OUR EMPLOYEES"="TO A POINT"
 	)
+	. = ..()
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/motivational, 32)
