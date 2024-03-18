@@ -17,6 +17,13 @@
 	description = "A horizontal tear in the ocean."
 	suffix = "ocean_fissure_diag.dmm"
 
+/datum/map_template/ruin/ocean/skeleton
+	name = "Ocean-Ruin Skeleton"
+	id = "ocean-skeleton"
+	description = "Sleepin' with the fishies..."
+	suffix = "ocean_skeleton.dmm"
+	allow_duplicates = FALSE
+
 //Some copypastas ahead, but it's how our ruins spawning system works
 
 /datum/map_template/ruin/trench
