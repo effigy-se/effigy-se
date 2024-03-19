@@ -101,8 +101,30 @@
 	/// A list of all memories we've stolen through absorbs.
 	var/list/stolen_memories = list()
 
+	// EffigyEdit Add - Mimicable Quirks
 	///	Keeps track of the currently selected profile.
 	var/datum/changeling_profile/current_profile
+	var/list/mimicable_quirks_list = list(
+		"Bad Touch",
+		"Sensitive Snout",
+		"Ash aspect (Emotes)",
+		"Canidae Traits",
+		"Excitable!",
+		"Feline Traits",
+		"Floral aspect (Emotes)",
+		"Heterochromatic",
+		"Hydra Heads",
+		"Oversized",
+		"Personal Space",
+		"Pseudobulbar Affect",
+		"Shifty Eyes",
+		"Smooth-Headed",
+		"Sparkle aspect (Emotes)",
+		"Water aspect (Emotes)",
+		"Webbing aspect (Emotes)",
+		"Friendly",
+	)
+	// EffigyEdit End
 
 /datum/antagonist/changeling/New()
 	. = ..()

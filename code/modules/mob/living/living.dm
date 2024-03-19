@@ -1201,8 +1201,14 @@
 		var/mob/living/M = pulledby
 		if(M.staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
 			altered_grab_state--
-	// EffigyEdit Change END
 		var/resist_chance = BASE_GRAB_RESIST_CHANCE /// see defines/combat.dm, this should be baseline 60%
+		// EffigyEdit Add Start - Oversized
+		// Oversized grab resist
+		if(HAS_TRAIT(src, TRAIT_OVERSIZED))
+			resist_chance += OVERSIZED_GRAB_RESIST_BONUS
+		if(HAS_TRAIT(pulledby, TRAIT_OVERSIZED))
+			resist_chance -= OVERSIZED_GRAB_RESIST_BONUS
+		// EffigyEdit Add End
 		resist_chance = (resist_chance/altered_grab_state) ///Resist chance divided by the value imparted by your grab state. It isn't until you reach neckgrab that you gain a penalty to escaping a grab.
 		if(prob(resist_chance))
 			visible_message(span_danger("[src] breaks free of [pulledby]'s grip!"), \

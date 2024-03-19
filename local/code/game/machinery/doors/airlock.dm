@@ -141,6 +141,20 @@
 			. += mutable_appearance(overlays_file, "unres_[heading]")
 			. += emissive_appearance(overlays_file, "unres_[heading]", src, alpha = src.alpha)
 
+/obj/machinery/door/airlock/proc/on_entered(datum/source, atom/movable/crossed_atom)
+	SIGNAL_HANDLER
+	if(HAS_TRAIT(crossed_atom, TRAIT_OVERSIZED) && ishuman(crossed_atom))
+		var/mob/living/carbon/human/crossing_human = crossed_atom
+		if(crossing_human.move_intent != MOVE_INTENT_WALK && crossing_human.body_position == STANDING_UP)
+			//We gonna bamf you, you tall fucker
+			var/affecting = crossing_human.get_bodypart(BODY_ZONE_HEAD)
+			crossing_human.apply_damage(15, BRUTE, affecting)
+			crossing_human.Knockdown(20)
+			crossing_human.visible_message(span_warning("[crossing_human] slams their head into the frame of [src] with a sickening thud!"), \
+				span_userdanger("You slam your head against [src]!")
+			)
+			playsound(crossed_atom, 'sound/effects/bang.ogg', 50, TRUE)
+
 /obj/machinery/door/airlock
 	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
