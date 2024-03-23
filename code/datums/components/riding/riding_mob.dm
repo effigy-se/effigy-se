@@ -1,5 +1,12 @@
 // For any mob that can be ridden
 
+// EffigyEdit Add - Oversized
+#define OVERSIZED_OFFSET 18
+#define OVERSIZED_SIDE_OFFSET 11
+#define REGULAR_OFFSET 6
+#define REGULAR_SIDE_OFFSET 4
+// EffigyEdit Add End
+
 /datum/component/riding/creature
 	/// If TRUE, this creature's movements can be controlled by the rider while mounted (as opposed to riding cyborgs and humans, which is passive)
 	var/can_be_driven = TRUE
@@ -283,10 +290,32 @@
 
 /datum/component/riding/creature/human/get_offsets(pass_index)
 	var/mob/living/carbon/human/H = parent
+	// EffigyEdit Change - Oversized Overhaul
 	if(H.buckle_lying)
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(0, 6), TEXT_WEST = list(0, 6))
+		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
+				TEXT_NORTH = list(0, OVERSIZED_OFFSET),
+				TEXT_SOUTH = list(0, OVERSIZED_OFFSET),
+				TEXT_EAST = list(0, OVERSIZED_OFFSET),
+				TEXT_WEST = list(0, OVERSIZED_OFFSET),
+			) : list(
+				TEXT_NORTH = list(0, REGULAR_OFFSET),
+				TEXT_SOUTH = list(0, REGULAR_OFFSET),
+				TEXT_EAST = list(0, REGULAR_OFFSET),
+				TEXT_WEST = list(0, REGULAR_OFFSET),
+			)
 	else
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(-6, 4), TEXT_WEST = list( 6, 4))
+		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
+				TEXT_NORTH = list(0, OVERSIZED_OFFSET),
+				TEXT_SOUTH = list(0, OVERSIZED_OFFSET),
+				TEXT_EAST = list(-OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET),
+				TEXT_WEST = list(OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET),
+			) : list(
+				TEXT_NORTH = list(0, REGULAR_OFFSET),
+				TEXT_SOUTH = list(0, REGULAR_OFFSET),
+				TEXT_EAST = list(-REGULAR_OFFSET, REGULAR_SIDE_OFFSET),
+				TEXT_WEST = list(REGULAR_OFFSET, REGULAR_SIDE_OFFSET)
+			)
+	// EffigyEdit Change End
 
 /datum/component/riding/creature/human/force_dismount(mob/living/dismounted_rider)
 	var/atom/movable/AM = parent
@@ -518,3 +547,10 @@
 /datum/component/riding/leaper/handle_unbuckle(mob/living/rider)
 	. = ..()
 	UnregisterSignal(rider,  COMSIG_MOB_POINTED)
+
+// EffigyEdit Add - Oversized
+#undef OVERSIZED_OFFSET
+#undef OVERSIZED_SIDE_OFFSET
+#undef REGULAR_OFFSET
+#undef REGULAR_SIDE_OFFSET
+// EffigyEdit Add End

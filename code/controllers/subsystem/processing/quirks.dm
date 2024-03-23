@@ -26,11 +26,13 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/item_quirk/settler, /datum/quirk/freerunning),
 	list(/datum/quirk/numb, /datum/quirk/selfaware),
 	// EffigyEdit Add - #3 Customization - Ported from Skyrat
-	list("Nerve Stapled", "Pacifist"),
-	list("Nerve Stapled", "Nearsighted"),
-	list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
-	list("Mute", "Social Anxiety"),
-	list("No Guns", "Pacifist"),
+	list(/datum/quirk/no_guns, /datum/quirk/bighands, /datum/quirk/poor_aim),
+	list(/datum/quirk/no_guns, /datum/quirk/nonviolent),
+	list(/datum/quirk/spacer_born, /datum/quirk/oversized),
+	list(/datum/quirk/feline_aspect, /datum/quirk/item_quirk/canine),
+	list(/datum/quirk/light_drinker, /datum/quirk/drunkhealing),
+	list(/datum/quirk/oversized, /datum/quirk/freerunning),
+	list(/datum/quirk/oversized, /datum/quirk/item_quirk/settler),
 	// EffigyEdit End
 ))
 

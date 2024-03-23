@@ -170,6 +170,12 @@
 		power_throw--
 	if(HAS_TRAIT(thrown_thing, TRAIT_DWARF))
 		power_throw++
+	// EffigyEdit Add Start - Oversized
+	if(HAS_TRAIT(src, TRAIT_OVERSIZED))
+		power_throw++
+	if(HAS_TRAIT(thrown_thing, TRAIT_OVERSIZED))
+		power_throw--
+	// EffigyEdit Add End
 	if(neckgrab_throw)
 		power_throw++
 	do_attack_animation(target, no_effect = 1) // EffigyEdit Add

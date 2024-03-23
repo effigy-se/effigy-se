@@ -20,6 +20,14 @@
 
 #define PUNCH_STAMINA_MULTIPLIER 2.6
 
+/// For those with the oversized trait, they get this.
+#define OVERSIZED_GRAB_RESIST_BONUS 10
+/// Those with the oversized trait do 5 more damage.
+#define OVERSIZED_HARM_DAMAGE_BONUS 5
+/// Increased unarmed_effectiveness/stun threshold on oversized kicks.
+#define OVERSIZED_KICK_EFFECTIVENESS_BONUS 5
+
+
 //STAMINA REGEN
 #define STAMINA_STATIC_REGEN_MULTIPLIER 0.4
 //Flat amount regenerated per 2 seconds, multiplied by a lot of variables
