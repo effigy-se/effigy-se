@@ -6,6 +6,7 @@ export type NtMessage = {
   photo_path?: string;
   everyone: BooleanLike;
   timestamp: string;
+  subtle: BooleanLike; // EffigyEdit Add - Subtle texting
 };
 
 export type NtPicture = {
