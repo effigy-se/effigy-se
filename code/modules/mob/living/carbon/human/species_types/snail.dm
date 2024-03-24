@@ -49,9 +49,6 @@
 		if(new_snailperson.dropItemToGround(bag)) //returns TRUE even if its null
 			new_snailperson.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(new_snailperson), ITEM_SLOT_BACK)
 	new_snailperson.AddElement(/datum/element/snailcrawl)
-	new_snailperson.update_icons() // EffigyEdit Add
-	// if(ishuman(new_snailperson)) // EffigyEdit Remove
-	//	update_mail_goodies(new_snailperson) // EffigyEdit Remove
 
 /datum/species/snail/on_species_loss(mob/living/carbon/former_snailperson, datum/species/new_species, pref_load)
 	. = ..()
@@ -61,17 +58,6 @@
 		bag.emptyStorage()
 		former_snailperson.temporarilyRemoveItemFromInventory(bag, TRUE)
 		qdel(bag)
-
-// EffigyEdit Remove START
-/*
-/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
-	if(istype(quirk, /datum/quirk/blooddeficiency))
-		mail_goodies += list(
-			/obj/item/reagent_containers/blood/snail
-		)
-	return ..()
-*/
-// EffigyEdit Remove END
 
 /obj/item/storage/backpack/snail
 	name = "snail shell"
