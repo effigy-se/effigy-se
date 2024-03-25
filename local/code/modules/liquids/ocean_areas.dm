@@ -31,5 +31,8 @@
 /area/ruin/ocean/bioweapon_research
 	name = "Syndicate Ocean Base"
 
-/area/ruin/ocean/saddam_hole
-	name = "Cave Hideout"
+/area/ruin/ocean/bubble
+	name = "ISV Bubblehead"
+
+/area/ruin/ocean/bubble/titanium
+	name = "ISV Leave A Ship"
