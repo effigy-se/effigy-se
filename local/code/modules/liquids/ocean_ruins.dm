@@ -4,25 +4,33 @@
 	ruin_type = ZTRAIT_OCEAN_RUINS
 	prefix = "_maps/effigy/RandomRuins/OceanRuins/"
 	cost = 1
+	allow_duplicates =  FALSE
 
 /datum/map_template/ruin/ocean/fissure
 	name = "Ocean-Ruin Thermal Fissure"
 	id = "ocean-fissure"
 	description = "A tear in the ocean."
 	suffix = "ocean_fissure.dmm"
+	allow_duplicates = TRUE
 
 /datum/map_template/ruin/ocean/fissure/diag
 	name = "Ocean-Ruin Horizontal Thermal Fissure"
 	id = "ocean-fissure-diag"
 	description = "A horizontal tear in the ocean."
 	suffix = "ocean_fissure_diag.dmm"
+	allow_duplicates = TRUE
+
+/datum/map_template/ruin/ocean/bubble_rally
+	name = "Ocean-Ruin Bubble Rally"
+	id = "ocean-bubble-rally"
+	description = "As it turns out; there IS a market for bubble enthusiasts. Seems these ones bit off more they could chew."
+	suffix = "ocean_bubble_rally.dmm"
 
 /datum/map_template/ruin/ocean/skeleton
 	name = "Ocean-Ruin Skeleton"
 	id = "ocean-skeleton"
 	description = "Sleepin' with the fishies..."
 	suffix = "ocean_skeleton.dmm"
-	allow_duplicates = FALSE
 
 //Some copypastas ahead, but it's how our ruins spawning system works
 
