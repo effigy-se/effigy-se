@@ -7,7 +7,7 @@
 	maximum_value_length = MAX_MESSAGE_LEN
 	/// Assoc list of ckeys and their link, used to cut down on chat spam
 	var/list/stored_link = list()
-	var/static/link_regex = regex("cdn.effigy.se|i.gyazo.com|media.discordapp.net|cdn.discordapp.com|a.l3n.co|b.l3n.co|c.l3n.co|static.f-list.net/images/") //effigy, gyazo, discord, lensdump, f-list
+	var/static/link_regex = regex("i.gyazo.com|a.l3n.co|b.l3n.co|c.l3n.co|static.f-list.net/images/|images2.imgbox.com|thumbs2.imgbox.com|files.catbox.moe") //effigy, gyazo, catbox, imgbox, lensdump, f-list
 	var/static/list/valid_extensions = list("jpg", "png", "jpeg") // Regex works fine, if you know how it works
 
 /datum/preference/text/headshot/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -36,7 +36,7 @@
 
 	find_index = findtext(value, link_regex)
 	if(find_index != 9)
-		to_chat(usr, SPAN_BOX_ALERT(RED, "Headshot image must be hosted on one of the following sites: Effigy, F-List, Discord, Lensdump, Gyazo"))
+		to_chat(usr, SPAN_BOX_ALERT(RED, "Headshot image must be hosted on one of the following sites: Effigy, Catbox, Imgbox, F-List, Lensdump, Gyazo"))
 		return
 
 	if(stored_link[usr.ckey] != value)
