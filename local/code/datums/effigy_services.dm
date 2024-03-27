@@ -1,61 +1,73 @@
-/// Effigy API Endpoint Config
-/datum/effigy_message_type
+/datum/effigy_message
 	/// Message type of request
 	var/endpoint
-	/// API URL of the endpoint
-	var/url
 	/// The HTTP method of this endpoint
 	var/method
 
-/datum/effigy_message_type/new_ticket
-	endpoint = EFFIGY_ENDPOINT_NEW_TICKET
-	method = RUSTG_HTTP_METHOD_POST
-
-/datum/effigy_message_type/ticket_interaction
-	endpoint = EFFIGY_ENDPOINT_TICKET_INTERACTION
-	method = RUSTG_HTTP_METHOD_POST
-
-/datum/effigy_message_type/get
-	method = RUSTG_HTTP_METHOD_GET
-
 /// Generates the request header
-/datum/effigy_message_type/proc/construct_api_message_header(efapi_auth, efapi_key)
-	var/list/processed_content = list(
-		"Authorization" = "[efapi_auth] [efapi_key]",
-		"content-type" = "application/x-www-form-urlencoded"
-		)
-	return processed_content
+/datum/effigy_message/proc/construct_extra_headers()
+	return list()
 
 /// Generates the request body
-/datum/effigy_message_type/proc/construct_api_message_body(list/raw_content)
+/// URI parameters are included here
+/datum/effigy_message/proc/construct_api_message_body()
+	CRASH("construct_api_message_body() not overridden")
+
+/datum/effigy_message/member_list
+	endpoint = "/core/members"
+	method = RUSTG_HTTP_METHOD_GET
+
+	var/active_since
+	var/page
+
+/datum/effigy_message/member_list/New(active_since, page)
+	src.active_since = active_since
+	src.page = page
+
+/datum/effigy_message/member_list/construct_api_message_body()
 	var/list/processed_content = list(
-		"forum=[raw_content["box"]]",
-		"author=[raw_content["link_id"]]",
-		"topic=[raw_content["ticket_id"]]",
-		"title=\[[raw_content["int_id"]]] [raw_content["title"]]",
-		"post=[jointext(raw_content["message"], "<br>")]"
+		"activity_after=[active_since]",
+		"page=[page]",
 	)
 
 	var/joined = jointext(processed_content, "&")
 	return joined
 
-/datum/effigy_message_type/proc/create_http_request(content)
-	// Set up the required headers for the Effigy API
-	var/list/headers = construct_api_message_header(SSeffigy.efapi_auth, SSeffigy.efapi_key)
+/datum/effigy_message/forum
+	var/box
+	var/int_id
+	var/link_id
+	var/ticket_id
+	var/title
+	var/message
 
-	// Create the JSON body for the request
-	var/body = construct_api_message_body(content)
+/datum/effigy_message/forum/New(box, int_id, ticket_id, link_id, title, message)
+	src.box = box
+	src.int_id = int_id
+	src.ticket_id = ticket_id
+	src.link_id = link_id
+	src.title = title
+	src.message = message
 
-	// Make the API URL
-	url = "[SSeffigy.efapi_url][endpoint]"
+/datum/effigy_message/forum/new_ticket
+	endpoint = "/forums/topics"
+	method = RUSTG_HTTP_METHOD_POST
 
-	// Create a new HTTP request
-	var/datum/http_request/request = new()
+/datum/effigy_message/forum/ticket_interaction
+	endpoint = "/forums/posts"
+	method = RUSTG_HTTP_METHOD_POST
 
-	// Set up the HTTP request
-	request.prepare(method, url, body, headers)
+/datum/effigy_message/forum/construct_api_message_body()
+	var/list/processed_content = list(
+		"forum=[box]",
+		"author=[int_id]",
+		"topic=[ticket_id]",
+		"title=\[[int_id]] [title]",
+		"post=[jointext(message, "<br>")]"
+	)
 
-	return request
+	var/joined = jointext(processed_content, "&")
+	return joined
 
 /datum/effigy_account_link
 	var/ckey

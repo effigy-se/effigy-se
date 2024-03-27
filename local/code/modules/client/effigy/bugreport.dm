@@ -4,8 +4,6 @@
 	set hidden = TRUE
 	/// Unique ID of the report
 	var/event_id = generate_evid()
-	/// API endpoint required
-	var/ef_type = EFFIGY_MESSAGE_NEW_TICKET
 	/// What kind of message we're sendsing
 	var/ef_box = SOCIAL_DISTRICT_ISSUE_REPORT
 	/// The title of the report
@@ -71,8 +69,8 @@
 	LAZYADD(processed_content, test_merges)
 	LAZYADD(processed_content, title)
 	LAZYADD(processed_content, content)
-	var/request = SSeffigy.create_message_request(ef_type, event_id, effigy_player_id, effigy_ticket_id, ef_box, title, processed_content)
-	INVOKE_ASYNC(SSeffigy, TYPE_PROC_REF(/datum/controller/subsystem/effigy, send_message_request), request, src)
+	var/datum/effigy_message/forum/new_ticket/message = new(event_id, effigy_player_id, effigy_ticket_id, ef_box, title, processed_content)
+	SSeffigy.send_request_async(message)
 	log_game("Issue report created: [event_id] [content]")
 	to_chat(src, type = MESSAGE_TYPE_SYSTEM, html = SPAN_BOX_ALERT(BLUE, "Issue Report: [event_id] created."))
 
