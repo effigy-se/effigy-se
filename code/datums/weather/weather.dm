@@ -264,6 +264,7 @@
 			glow_overlay.color = weather_color
 			gen_overlay_cache += glow_overlay
 
+		var/mutable_appearance/weather_overlay = mutable_appearance(weather_overlay_icon, weather_state, overlay_layer, plane = overlay_plane, offset_const = offset) // EffigyEdit Change - swapped 'icons/effects/weather_effects.dmi' for weather_overlay_icon, see /local/ counterpart
 		weather_overlay.color = weather_color
 		gen_overlay_cache += weather_overlay
 
