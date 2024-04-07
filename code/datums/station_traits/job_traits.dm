@@ -195,6 +195,7 @@
 	job_to_add = /datum/job/human_ai
 	trait_to_give = STATION_TRAIT_HUMAN_AI
 
+/* EffigyEdit Remove - Station Trait Jobs
 /datum/station_trait/job/human_ai/New()
 	. = ..()
 	RegisterSignal(SSjob, COMSIG_OCCUPATIONS_SETUP, PROC_REF(remove_ai_job))
@@ -251,7 +252,7 @@
 		else
 			qdel(thing_on_table)
 	new /obj/machinery/fax/auto_name(picked_turf)
-
+*/// EffigyEdit Remove End
 #undef CAN_ROLL_ALWAYS
 #undef CAN_ROLL_PROTECTED
 #undef CAN_ROLL_NEVER
