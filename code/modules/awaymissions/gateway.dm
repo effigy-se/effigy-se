@@ -327,7 +327,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	density = TRUE
 	use_power = NO_POWER_USE
 
-/obj/machinery/gateway/away/interact(mob/user, special_state)
+/obj/machinery/gateway/away/interact(mob/user)
 	. = ..()
 	if(!target)
 		if(!GLOB.the_gateway)
