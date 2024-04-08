@@ -435,6 +435,7 @@
 #define SKUB_IDFC "i don't frikkin' care"
 #define RANDOM_SKUB null //This means that if you forgot to opt in/against/out, there's a 50/50 chance to be pro or anti
 
+/* EffigyEdit Remove - Station Lobby Traits
 /// A trait that lets players choose whether they want pro-skub or anti-skub (or neither), and receive the appropriate equipment.
 /datum/station_trait/skub
 	name = "The Great Skub Contention"
@@ -527,6 +528,7 @@
 	var/obj/item/clothing/suit/costume/wellworn_shirt/skub/anti/shirt = new(spawned.loc)
 	if(!spawned.equip_to_slot_if_possible(shirt, ITEM_SLOT_OCLOTHING, indirect_action = TRUE))
 		shirt.forceMove(boxie)
+*/// EffigyEdit Remove End
 
 /// A box containing a skub, for easier carry because skub is a bulky item.
 /obj/item/storage/box/skub
