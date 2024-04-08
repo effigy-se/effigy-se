@@ -9,6 +9,7 @@
 /datum/brain_trauma/very_special
 	abstract_type = /datum/brain_trauma/very_special
 
+/*
 /datum/brain_trauma/very_special/bimbo
 	name = "Permanent hormonal disruption"
 	desc = "The patient has completely lost the ability to form speech and seems extremely aroused."
@@ -174,6 +175,8 @@
 //Mood boost
 /datum/mood_event/bimbo
 	description = span_purple("So-o... Help..less... Lo-ve it!\n")
+
+*/
 
 /*
 *	MASOCHISM
