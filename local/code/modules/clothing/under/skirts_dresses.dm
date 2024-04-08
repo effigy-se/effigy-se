@@ -37,6 +37,9 @@
 	desc = "Formal skirt."
 	icon_state = "skirt_swept"
 	body_parts_covered = GROIN
+	greyscale_config = null
+	greyscale_config_worn = null
+	greyscale_colors = null
 
 /obj/item/clothing/under/dress/skirt/skyrat/lone_skirt
 	name = "skirt"

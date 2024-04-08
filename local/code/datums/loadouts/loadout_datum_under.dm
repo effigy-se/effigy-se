@@ -719,10 +719,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Red Lawyer Suitskirt"
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/red/skirt
 
-/datum/loadout_item/under/formal/red_gown
-	name = "Red Evening Gown"
-	item_path = /obj/item/clothing/under/dress/redeveninggown
-
 /datum/loadout_item/under/formal/sailor
 	name = "Sailor Suit"
 	item_path = /obj/item/clothing/under/costume/sailor
