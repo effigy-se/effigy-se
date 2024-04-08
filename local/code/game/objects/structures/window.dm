@@ -25,8 +25,8 @@
 	icon = 'local/icons/obj/smooth_structures/tram_window.dmi'
 	icon_state = "tram_mid"
 	smoothing_flags = SMOOTH_BITMASK|SMOOTH_BORDER_OBJECT
-	canSmoothWith = SMOOTH_GROUP_WINDOW_DIRECTIONAL_TRAM
-	smoothing_groups = SMOOTH_GROUP_WINDOW_DIRECTIONAL_TRAM
+	canSmoothWith = SMOOTH_GROUP_TRAM_STRUCTURE
+	smoothing_groups = SMOOTH_GROUP_TRAM_STRUCTURE
 	reinf = TRUE
 	heat_resistance = 1600
 	armor_type = /datum/armor/window_titanium
