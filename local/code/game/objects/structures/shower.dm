@@ -1,6 +1,6 @@
 /obj/machinery/shower/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	if(do_after(user, 3 SECONDS, src))
-		reagents.remove_any(reagents.total_volume)
+		reagents.remove_all(reagents.total_volume)
 		balloon_alert(user, "reservoir emptied")
 
 /obj/machinery/shower/supply_layer/Initialize(mapload, ndir = 0, has_water_reclaimer = null)

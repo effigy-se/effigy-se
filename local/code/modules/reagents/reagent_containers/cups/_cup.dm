@@ -8,7 +8,7 @@
 			if(reagents.total_volume == reagents.maximum_volume)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
 				return
-			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
+			O.reagents.remove_all(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
 			O.reagents.trans_to(src, O.reagents.total_volume, transferred_by = user)
 			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
 		else
