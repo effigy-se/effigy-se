@@ -700,7 +700,7 @@
 		part.flags_cover = category[UNSEALED_COVER] || NONE
 		part.visor_flags_cover = category[SEALED_COVER] || NONE
 		part.alternate_worn_layer = category[UNSEALED_LAYER]
-		mod_parts[part] = part.alternate_worn_layer\
+		mod_parts[part] = part.alternate_worn_layer
 		// EffigyEdit Remove START
 		/*
 		if(!category[CAN_OVERSLOT])
