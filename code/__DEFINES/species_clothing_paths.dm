@@ -6,10 +6,6 @@
 ///The dmi for humanoid oversuits
 #define DEFAULT_SUIT_FILE 'icons/mob/clothing/suits/default.dmi'
 
-//MONKEY PATHS
-///The dmi for monkey uniforms
-#define MONKEY_UNIFORM_FILE 'local/icons/mob/clothing/species/monkey/uniform.dmi' // EffigyEdit Change Customization
-
 //DIGITIGRADE PATHS
 ///The dmi containing digitigrade uniforms
 #define DIGITIGRADE_UNIFORM_FILE 'local/icons/mob/clothing/uniform_digi.dmi' // EffigyEdit Change Customization
