@@ -23,7 +23,7 @@
 	. = ..()
 
 	// Traitor steal objective
-	new /obj/item/areaeditor/blueprints(src)
+	new /obj/item/blueprints(src)
 	new /obj/item/pipe_dispenser/bluespace(src) // EffigyEdit Change - Bluespace RPD
 
 /obj/structure/closet/secure_closet/engineering_electrical
