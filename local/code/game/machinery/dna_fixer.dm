@@ -1,23 +1,23 @@
 /datum/design/board/dna_fixer
-	name = "Machine Design (Healixir)"
-	desc = "The circuit board for a Healixir."
-	id = "healixir"
+	name = "Machine Design (DNA Fixer)"
+	desc = "The circuit board for a DNA Fixer."
+	id = "dna_fixer"
 	build_path = /obj/item/circuitboard/machine/dna_fixer
 	category = list(RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_MEDICAL)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /obj/item/circuitboard/machine/dna_fixer
-	name = "Healixir (Machine Board)"
+	name = "DNA Fixer (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/dna_fixer
 	req_components = list(/datum/stock_part/micro_laser = 1)
 
 /obj/machinery/dna_fixer
-	name = "Healixir"
+	name = "DNA Fixer"
 	desc = "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Veymed Corporation \
-	has teamed up with Nanotrasen Organic Resources (and elsewise) to bring you the Healixir! \
+	has teamed up with Nanotrasen Organic Resources (and elsewise) to bring you the DNA Fixer! \
 	Ever revived a patient and had them file a malpractice lawsuit because their head got attached to the wrong body? \
-	Just slap 'em in the Healixir and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
+	Just slap 'em in the DNA Fixer and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
 	via the magic technology of DNA regeneration! Just don't call it cloning. Wink wink. Within a few short moments, they'll be popped out as their ideal self, \
 	ready to continue on with their day lawsuit-free!"
 	icon = 'local/icons/obj/medical/dna_fixer.dmi'
@@ -35,11 +35,11 @@
 	var/next_fact = 10
 	/// A list containing advertisements that the machine says while working.
 	var/static/list/advertisements = list(\
-	"Thank you for using the Healixir, brought to you by Veymed, because you asked for it.", \
-	"The Healixir is not to be used by the elderly without direct adult supervision. Veymed is not liable for any and all injuries sustained under unsupervised usage of the Healixir.", \
-	"Please make sure to clean the Healixir every fifteen minutes! The Healixir is not to be used un-cleaned.", \
-	"Before using the Healixir, remove any and all metal devices, or you might make the term 'ironman' a bit too literal!" , \
-	"Have more questions about the Healixir? Call your nearest Veymed Representative to requisition more information about the Healixir!" \
+	"Thank you for using the DNA Fixer, brought to you by Veymed, because you asked for it.", \
+	"The DNA Fixer is not to be used by the elderly without direct adult supervision. Veymed is not liable for any and all injuries sustained under unsupervised usage of the DNA Fixer.", \
+	"Please make sure to clean the DNA Fixer every fifteen minutes! The DNA Fixer is not to be used un-cleaned.", \
+	"Before using the DNA Fixer, remove any and all metal devices, or you might make the term 'ironman' a bit too literal!" , \
+	"Have more questions about the DNA Fixer? Call your nearest Veymed Representative to requisition more information about the DNA Fixer!" \
 	)
 
 /obj/machinery/dna_fixer/update_appearance(updates)
