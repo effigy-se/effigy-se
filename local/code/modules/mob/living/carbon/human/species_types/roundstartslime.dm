@@ -12,7 +12,6 @@
 		"spines" = "None",
 		"frills" = "None",
 	)
-	hair_color = "mutcolor"
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
 		TRAIT_TOXINLOVER,
