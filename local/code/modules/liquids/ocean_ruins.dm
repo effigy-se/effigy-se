@@ -39,22 +39,22 @@
 	prefix = "_maps/effigy/RandomRuins/OceanRuins/"
 
 /datum/map_template/ruin/trench/biolab_research
-	name = "Ocean-Ruin Biolab Research Station"
-	id = "ocean-biolab"
+	name = "Trench-Ruin Biolab Research Station"
+	id = "trench-biolab"
 	description = "Biolab in the ocean."
-	suffix = "ocean_bioweapon_lab.dmm"
+	suffix = "trench_bioweapon_lab.dmm"
 	cost = 3
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/trench/fissure
-	name = /datum/map_template/ruin/ocean/fissure::name
+	name = "Trench-Ruin Thermal Fissure"
 	id = /datum/map_template/ruin/ocean/fissure::id
 	description = /datum/map_template/ruin/ocean/fissure::description
 	suffix = /datum/map_template/ruin/ocean/fissure::suffix
 	cost = /datum/map_template/ruin/ocean/fissure::cost
 
 /datum/map_template/ruin/trench/fissure/diag
-	name = /datum/map_template/ruin/ocean/fissure/diag::name
+	name = "Trench-Ruin Horizontal Thermal Fissure"
 	id = /datum/map_template/ruin/ocean/fissure/diag::id
 	description = /datum/map_template/ruin/ocean/fissure/diag::description
 	suffix = /datum/map_template/ruin/ocean/fissure/diag::suffix
