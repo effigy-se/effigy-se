@@ -1356,7 +1356,7 @@
 		"dnainfuser",
 		"dnascanner",
 		"scan_console",
-		"healixir", // EffigyEdit AddITION - Medical
+		"dna_fixer", // EffigyEdit Add - DNA Fixer
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
