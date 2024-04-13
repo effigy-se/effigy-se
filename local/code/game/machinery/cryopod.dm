@@ -168,6 +168,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	///Weakref to our controller
 	var/datum/weakref/control_computer_weakref
 	COOLDOWN_DECLARE(last_no_computer_message)
+
+	/// Can we be used as a latejoin spawnpoint?
+	var/latejoin_possible = TRUE
 	/// if false, plays announcement on cryo
 	var/quiet = FALSE
 
@@ -181,14 +184,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	/// The rank (job title) of the mob that entered the cryopod, if it was a human. "N/A" by default.
 	var/stored_rank = "N/A"
 
+/obj/machinery/cryopod/no_latejoin
+	latejoin_possible = FALSE
 
-/obj/machinery/cryopod/quiet
+/obj/machinery/cryopod/ruin
 	quiet = TRUE
+	latejoin_possible = FALSE
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
 	if(!quiet)
 		GLOB.valid_cryopods += src
+	if(latejoin_possible)
+		SSjob.latejoin_cryo_trackers += src
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
 
 /obj/machinery/cryopod/LateInitialize()
@@ -199,6 +207,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 /obj/machinery/cryopod/Destroy()
 	GLOB.valid_cryopods -= src
 	control_computer_weakref = null
+	SSjob.latejoin_cryo_trackers -= src // Prevents spawning in a cryopod that doesn't exist
 	return ..()
 
 /obj/machinery/cryopod/proc/find_control_computer(urgent = FALSE)

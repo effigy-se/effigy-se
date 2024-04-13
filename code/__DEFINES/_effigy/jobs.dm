@@ -1,3 +1,8 @@
+// Latejoin locations
+#define JOB_LATEJOINPREF_ARRIVALS "The Arrivals Shuttle"
+#define JOB_LATEJOINPREF_CRYO "Cryogenic Storage"
+#define JOB_LATEJOINPREF_INTERLINK "The Interlink"
+
 // Just keeping this easy to maintain in the future.
 #define JOB_UNAVAILABLE_QUIRK (JOB_UNAVAILABLE_ANTAG_INCOMPAT + 1)
 #define JOB_UNAVAILABLE_SPECIES (JOB_UNAVAILABLE_QUIRK + 1)

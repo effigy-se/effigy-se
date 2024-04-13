@@ -117,7 +117,7 @@
 	/// RPG job names, for the memes
 	var/rpg_title
 
-	/// Alternate titles to register as pointing to this job. 
+	/// Alternate titles to register as pointing to this job.
 	var/list/alternate_titles
 
 	/// Does this job ignore human authority?
@@ -479,9 +479,24 @@
 		log_mapping("Job [title] ([type]) couldn't find a round start spawn point.")
 
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
-/datum/job/proc/get_latejoin_spawn_point()
+/datum/job/proc/get_latejoin_spawn_point(var/our_joiner) // Effigy Edit - added "var/mob/our_joiner"
 	if(length(GLOB.jobspawn_overrides[title])) //We're doing something special today.
 		return pick(GLOB.jobspawn_overrides[title])
+	/// EFFIGY EDIT BEGIN - SPAWN PREFS ///
+	if(our_joiner && istype(our_joiner, /mob))
+		to_chat(world, "our_joiner found; value is [our_joiner]") // SHOG DEBUG
+		var/mob/dead/new_player/potential_alt_spawner
+		to_chat(world, "potential_alt_spawner found; value is [potential_alt_spawner]") // SHOG DEBUG
+		var/their_latejoin_pref = potential_alt_spawner?.client.prefs.read_preference(/datum/preference/choiced/latejoin_location)
+		to_chat(world, "their_latejoin_pref found; value is [their_latejoin_pref]") // SHOG DEBUG
+		if(length(their_latejoin_pref))
+			if(their_latejoin_pref == JOB_LATEJOINPREF_INTERLINK && length(SSjob.latejoin_interlink_trackers))
+				to_chat(world, "FOUND INTERLINK PREF") // SHOG DEBUG
+				return pick(SSjob.latejoin_interlink_trackers)
+			if(their_latejoin_pref == JOB_LATEJOINPREF_CRYO)
+				to_chat(world, "FOUND CRYO PREF") // SHOG DEBUG
+				return pick(SSjob.latejoin_cryo_trackers)
+	/// EFFIGY EDIT END - SPAWN PREFS ///
 	if(length(SSjob.latejoin_trackers))
 		return pick(SSjob.latejoin_trackers)
 	return SSjob.get_last_resort_spawn_points()
