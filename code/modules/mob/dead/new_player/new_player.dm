@@ -241,7 +241,7 @@
 		// EffigyEdit Change START - CUSTOMIZATION
 		var/chosen_rank = rank // put alt job here
 		GLOB.manifest.inject(humanc, humanc.client)
-		if(SSshuttle.arrivals)
+		if(SSshuttle.arrivals && humanc.client.prefs.read_preference(/datum/preference/choiced/latejoin_location) == JOB_LATEJOINPREF_ARRIVALS) /// EFFIGY EDIT - Latejoin Spawnpref
 			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
 			announce_arrival(humanc, chosen_rank)
