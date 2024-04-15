@@ -168,6 +168,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	///Weakref to our controller
 	var/datum/weakref/control_computer_weakref
 	COOLDOWN_DECLARE(last_no_computer_message)
+
+	/// Can we be used as a latejoin spawnpoint?
+	var/latejoin_possible = TRUE
 	/// if false, plays announcement on cryo
 	var/quiet = FALSE
 
@@ -181,14 +184,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	/// The rank (job title) of the mob that entered the cryopod, if it was a human. "N/A" by default.
 	var/stored_rank = "N/A"
 
+/obj/machinery/cryopod/no_latejoin
+	latejoin_possible = FALSE
 
-/obj/machinery/cryopod/quiet
+/obj/machinery/cryopod/ruin
 	quiet = TRUE
+	latejoin_possible = FALSE
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
 	if(!quiet)
 		GLOB.valid_cryopods += src
+	if(latejoin_possible)
+		SSjob.latejoin_cryo_trackers += src
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
 
 /obj/machinery/cryopod/LateInitialize()
@@ -199,7 +207,33 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 /obj/machinery/cryopod/Destroy()
 	GLOB.valid_cryopods -= src
 	control_computer_weakref = null
+	SSjob.latejoin_cryo_trackers -= src // Prevents spawning in a cryopod that doesn't exist
 	return ..()
+
+/obj/machinery/cryopod/JoinPlayerHere(mob/joining_mob, buckle)
+	. = ..()
+	/// If you're not /mob/living; gtfo, none of this matters
+	if(!isliving(joining_mob))
+		return
+	/// Is someone already in this cryopod? If so; commit to comedy
+	if(stored_name)
+		var/mob/living/comedy_target = joining_mob
+		playsound(get_turf(src), 'sound/effects/meteorimpact.ogg', 100, TRUE)
+		playsound(src, 'sound/effects/smoke.ogg', 50, TRUE, -3)
+		var/datum/effect_system/fluid_spread/smoke/bad/smoke = new
+		smoke.set_up(1, holder = src, location = src)
+		smoke.start()
+		qdel(smoke) // We're done with you
+		comedy_target.Paralyze(8 SECONDS)
+		comedy_target.adjustStaminaLoss(40)
+		step_away(comedy_target, src)
+		shake_camera(comedy_target, 4, 3)
+		comedy_target.visible_message(
+			span_warning("[comedy_target] is suddenly shot out of the [src] in a puff of smoke!"),
+			span_userdanger("Your peaceful awakening is interrupted as [src] sends you flying!"),
+		)
+	else if(buckle)
+		close_machine(joining_mob)
 
 /obj/machinery/cryopod/proc/find_control_computer(urgent = FALSE)
 	for(var/cryo_console as anything in GLOB.cryopod_computers)

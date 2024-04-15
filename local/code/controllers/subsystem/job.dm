@@ -1,3 +1,7 @@
+/datum/controller/subsystem/job
+	var/list/latejoin_interlink_trackers = list()
+	var/list/latejoin_cryo_trackers = list()
+
 /datum/controller/subsystem/job/proc/FreeRole(rank)
 	if(!rank)
 		return
