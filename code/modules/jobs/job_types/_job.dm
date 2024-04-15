@@ -479,7 +479,7 @@
 		log_mapping("Job [title] ([type]) couldn't find a round start spawn point.")
 
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
-/datum/job/proc/get_latejoin_spawn_point(var/our_joiner) // Effigy Edit - added "var/mob/our_joiner"
+/datum/job/proc/get_latejoin_spawn_point(our_joiner) // Effigy Edit - added "our_joiner"
 	if(length(GLOB.jobspawn_overrides[title])) //We're doing something special today.
 		return pick(GLOB.jobspawn_overrides[title])
 	/// EFFIGY EDIT BEGIN - SPAWN PREFS ///
