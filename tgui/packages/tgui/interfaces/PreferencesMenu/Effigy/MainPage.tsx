@@ -1,4 +1,4 @@
-import { filterMap, sortBy } from 'common/collections';
+import { sortBy } from 'common/collections';
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { useState } from 'react';

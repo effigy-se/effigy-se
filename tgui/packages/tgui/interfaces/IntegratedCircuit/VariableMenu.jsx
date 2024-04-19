@@ -145,7 +145,7 @@ export class VariableMenu extends Component {
                 <Stack.Item>
                   <Dropdown
                     options={types}
-                    displayText={variable_type}
+                    selected={variable_type}
                     className="IntegratedCircuit__BlueBorder"
                     color="black"
                     width="100%"

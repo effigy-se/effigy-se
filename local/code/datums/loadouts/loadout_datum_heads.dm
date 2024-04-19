@@ -421,7 +421,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/trekcapmedisci
 	name = "MedSci Officer's Cap (Blue)"
 	item_path = /obj/item/clothing/head/hats/caphat/parade/fedcap/medsci
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_VIROLOGIST, JOB_PSYCHOLOGIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_PSYCHOLOGIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
 
 /datum/loadout_item/head/trekcapeng
 	name = "Eng Officer's Cap (Yellow)"
@@ -511,7 +511,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/nursehat
 	name = "Nurse Hat"
 	item_path = /obj/item/clothing/head/costume/nursehat
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST)
 
 /datum/loadout_item/head/imperial_generic
 	name = "Grey Naval Officer Cap"
@@ -558,7 +558,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/beret_med
 	name = "Medical Beret"
 	item_path = /obj/item/clothing/head/beret/medical
-	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_VIROLOGIST, JOB_CHEMIST, JOB_CHIEF_MEDICAL_OFFICER)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHEMIST, JOB_CHIEF_MEDICAL_OFFICER)
 
 /datum/loadout_item/head/beret_paramedic
 	name = "Paramedic Beret"
@@ -568,7 +568,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/beret_viro
 	name = "Virologist Beret"
 	item_path = /obj/item/clothing/head/beret/medical/virologist
-	restricted_roles = list(JOB_VIROLOGIST, JOB_CHIEF_MEDICAL_OFFICER)
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER)
 
 /datum/loadout_item/head/beret_chem
 	name = "Chemist Beret"
