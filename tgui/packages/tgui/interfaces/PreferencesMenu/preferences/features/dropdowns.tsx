@@ -53,7 +53,7 @@ export function FeatureDropdownInput(props: DropdownInputProps) {
       buttons={buttons}
       disabled={disabled}
       onSelected={handleSetValue}
-      displayText={value && capitalizeFirst(display_text)}
+      displayText={capitalizeFirst(display_text)}
       options={dropdownOptions}
       selected={value}
       width="100%"
@@ -103,7 +103,7 @@ export function FeatureIconnedDropdownInput(props: IconnedDropdownInputProps) {
   return (
     <Dropdown
       buttons
-      displayText={value && capitalizeFirst(display_text)}
+      displayText={capitalizeFirst(display_text)}
       onSelected={handleSetValue}
       options={dropdownOptions}
       selected={value}
