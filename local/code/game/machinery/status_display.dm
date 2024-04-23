@@ -1,6 +1,6 @@
 /obj/machinery/status_display/random_message/motivational
 	name = "motivational display"
-	desc = "They got tired of licensing stock photos for these; but on they're upshot, now they're DIGITAL! The future is here, and you're on the bleeding edge of progres..."
+	desc = "They got tired of licensing stock photos for these; but on they're upshot, now they're DIGITAL! The future is here, and you're on the bleeding edge of progress..."
 
 /obj/machinery/status_display/random_message/motivational/Initialize(mapload, ndir, building)
 	// This was meant to be in a strings .txt but that didn't play nice with the formatting
