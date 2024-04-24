@@ -171,6 +171,7 @@
 
 /datum/beam/leash/Destroy()
 	UnregisterSignal(origin, COMSIG_ATOM_DIR_CHANGE)
+	UnregisterSignal(target, COMSIG_ATOM_DIR_CHANGE)
 	. = ..()
 
 /datum/beam/leash/proc/handle_origin_dir_change(atom/movable/source, olddir, newdir)
