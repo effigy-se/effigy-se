@@ -56,8 +56,8 @@
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, tug_cd))
 		return
-	if(currently_leashed && istype(currently_leashed, /mob/living))
-		var/mob/living/yoinked
+	if(istype(currently_leashed, /mob/living))
+		var/mob/living/yoinked = currently_leashed
 		yoinked.Move(get_step_towards(yoinked,user))
 		yoinked.adjustStaminaLoss(10)
 		yoinked.visible_message(span_warning("[yoinked] is pulled in as [user] tugs the [src]!"),\
@@ -121,7 +121,6 @@
 
 /datum/beam/leash
 	/// Is the leash held in left side hand?
-	/// shog todo: god this is the worst; FIX THIS PART IT NEEDS TO KNOW IF It'S THE LEFT HAND AAAAAAAA
 	var/origin_lefthand = FALSE
 
 	/// Origin Offsets
