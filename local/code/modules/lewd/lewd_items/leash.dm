@@ -17,6 +17,8 @@
 		"Teal" = "neckleash_teal"
 	)
 
+	COOLDOWN_DECLARE(tug_cd)
+
 /// HERE BE DRAGONS ///
 
 /// Checks; leashing start
@@ -50,6 +52,19 @@
 	create_leash(currently_leashed)
 	currently_leashed.balloon_alert(user, "leashed")
 
+/obj/item/clothing/erp_leash/attack_self(mob/user, modifiers)
+	. = ..()
+	if(!COOLDOWN_FINISHED(src, tug_cd))
+		return
+	if(currently_leashed && istype(currently_leashed, /mob/living))
+		var/mob/living/yoinked
+		yoinked.Move(get_step_towards(yoinked,user))
+		yoinked.adjustStaminaLoss(10)
+		yoinked.visible_message(span_warning("[yoinked] is pulled in as [user] tugs the [src]!"),\
+				span_userdanger("[user] suddenly tugs the [src], pulling you closer!"),\
+				span_userdanger("A sudden tug against your neck pulls you ahead!"))
+	COOLDOWN_START(src, tug_cd, 1 SECONDS)
+
 /// Leash Initialization
 /obj/item/clothing/erp_leash/proc/create_leash(mob/ouppy)
 	if(!istype(ouppy))
@@ -61,6 +76,18 @@
 		var/mob/living/carbon/user = src.loc
 		leash_beam.origin_lefthand = user.get_held_index_of_item(src) % 2 == 1
 	leash_beam.Start()
+	RegisterSignal(ouppy, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_leash_zlevel_change))
+	RegisterSignal(src.loc, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_leash_zlevel_change))
+
+/// Have we moved z-levels at any point? If so; remake the beam
+/obj/item/clothing/erp_leash/proc/handle_leash_zlevel_change(mob/user, mob/target)
+	SIGNAL_HANDLER
+
+	if(!istype(user) || !istype(target))
+		return
+	if(user.z == target.z && leash_beam == null)
+		leash_beam = new(user, target, icon_state = "leash", icon = 'local/icons/lewd/effects/beam.dmi', emissive = FALSE)
+		leash_beam.origin_lefthand = user.get_held_index_of_item(src) % 2 == 1
 
 /// Leash Removal
 /obj/item/clothing/erp_leash/proc/remove_leash(mob/free_bird)
@@ -75,10 +102,15 @@
 /// Dropped it
 /obj/item/clothing/erp_leash/dropped(mob/user, silent)
 	. = ..()
+	UnregisterSignal(currently_leashed, COMSIG_MOVABLE_Z_CHANGED)
+	UnregisterSignal(user, COMSIG_MOVABLE_Z_CHANGED)
 	remove_leash(currently_leashed)
 
 /// Clean up when destroyed
 /obj/item/clothing/erp_leash/Destroy()
+	if(istype(src.loc, /mob))
+		UnregisterSignal(src.loc, COMSIG_MOVABLE_Z_CHANGED)
+	UnregisterSignal(currently_leashed, COMSIG_MOVABLE_Z_CHANGED)
 	remove_leash(currently_leashed)
 	. = ..()
 
