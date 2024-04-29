@@ -1223,6 +1223,7 @@
 		"cargo",
 		"cargorequest",
 		"comconsole",
+		"time_clock_frame",
 		"crewconsole",
 		"idcard",
 		"libraryconsole",

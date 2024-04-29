@@ -267,6 +267,7 @@ GLOBAL_LIST_INIT(WALLITEMS_INTERIOR, typecacheof(list(
 	/obj/machinery/status_display,
 	/obj/machinery/ticket_machine,
 	/obj/machinery/turretid,
+	/obj/machinery/time_clock, // EffigyEdit Add - Time Clock
 	/obj/machinery/barsign,
 	/obj/structure/extinguisher_cabinet,
 	/obj/structure/fireaxecabinet,
