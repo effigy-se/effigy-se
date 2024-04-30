@@ -1,4 +1,4 @@
-#define CLOCK_IN_COOLDOWN 15 MINUTES
+#define CLOCK_IN_COOLDOWN 7 SECONDS
 
 /obj/machinery/time_clock
 	name = "time clock"
