@@ -23,8 +23,8 @@
 			departs from port at 5 AM - yes; 5 AM - daily. For the next hour; you're in charge of onboarding the six+ (I'll get to that) guests we pick up; corralling them into getting \
 			changed; explaining the rules and setting the scene; answering questions; the works. Then; you hand them off to the actors; give a mock salute - and head back to your desk. \
 			The actors might need you at some point if the Pilot's busy; so keep an ear out for the door opening - but other than that it should be smooth enough for you to do some papers \
-			and chill out for a while - or sneak off to join; whatever - because we won't return to port until 8PM. About the guest limit; too - by default; we only have the six to keep \
-			the fire marshalls happy (only six beds; and all) - but yes; we have a upcharge that allows more to get on as one of the actors. You'll want to be extra thorough getting them \
+			and chill out for a while - or sneak off to join; whatever - because we won't return to port until 8PM. About the guest limit; too - We only; on paper; have the six to keep \
+			the fire marshalls happy (only six beds; and all) - but yes; we have a upcharge that allows more to get on as one of the actors instead. You'll want to be extra thorough getting them \
 			ready; we've had a few incidents where an Actor flaked their role and we had to figure out arrangements for their paired guest; yaddah yaddah. It's fineeee. Prop guns are in the \
 			Collections room; by the way; and personally; I think you'd look really cute in one of those brimmed hats; aanddd that's all!! also off company time if you want to hang out a bit \
 			maybe uhhh y'know I could fill in for a guest; just saying; bye!!! - Rita J.", \
