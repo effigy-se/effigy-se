@@ -61,13 +61,6 @@
 			GLOB.blooper_random_list[bloop.id] = blooper_path
 	// EffigyEdit Add End
 
-/// Inits GLOB.species_list. Not using GLOBAL_LIST_INIT b/c it depends on GLOB.string_lists
-/proc/init_species_list()
-	for(var/species_path in subtypesof(/datum/species))
-		var/datum/species/species = new species_path()
-		GLOB.species_list[species.id] = species_path
-	sort_list(GLOB.species_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
-
 /// Inits GLOB.surgeries
 /proc/init_surgeries()
 	var/surgeries = list()
@@ -89,7 +82,6 @@
 /proc/make_datum_reference_lists()
 	// I tried to eliminate this proc but I couldn't untangle their init-order interdependencies -Dominion/Cyberboss
 	init_sprite_accessories()
-	init_species_list()
 	init_hair_gradients()
 	init_keybindings()
 
