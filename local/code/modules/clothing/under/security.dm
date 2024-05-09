@@ -120,6 +120,23 @@
 	greyscale_colors = "#992300"
 	supports_variations_flags = NONE
 
+/obj/item/clothing/under/rank/prisoner/lustwish
+	desc = "A customizable prisoner-style jumpsuit for the truly debaucherous. It has LustWish's signature logo stitched into the tag."
+	greyscale_colors = "#4B4669"
+	has_sensor = /obj/item/clothing/under::has_sensor
+	sensor_mode = /obj/item/clothing/under::sensor_mode
+	random_sensor = /obj/item/clothing/under::random_sensor
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/under/rank/prisoner/skirt/lustwish
+	desc = "A customizable prisoner-style jumpskirt for the truly debaucherous. It has LustWish's signature logo stitched into the tag."
+	greyscale_colors = "#4B4669"
+	has_sensor = /obj/item/clothing/under::has_sensor
+	sensor_mode = /obj/item/clothing/under::sensor_mode
+	random_sensor = /obj/item/clothing/under::random_sensor
+	flags_1 = /obj/item/clothing/under/rank/prisoner/lustwish::flags_1
+	supports_variations_flags = NONE
+
 /obj/item/clothing/under/rank/prisoner/classic
 	name = "classic prisoner jumpsuit"
 	desc = "A black and white striped jumpsuit, like something out of a movie."
