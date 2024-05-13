@@ -29,7 +29,7 @@
 
 
 #ifndef UNIT_TESTS
-/obj/machinery/light_switch/LateInitialize()
+/obj/machinery/light_switch/post_machine_initialize()
 	. = ..()
 	if(prob(70) && area.lightswitch) //70% chance for area to start with lights off.
 		turn_off()
