@@ -2,13 +2,13 @@ import {
   CheckboxInput,
   Feature,
   FeatureChoiced,
-  FeatureDropdownInput,
   FeatureNumeric,
   FeatureSliderInput,
   FeatureToggle,
   FeatureTriBoolInput,
   FeatureTriColorInput,
 } from '../../base';
+import { FeatureDropdownInput } from '../../dropdowns';
 
 export const feature_penis: Feature<string> = {
   name: 'Penis',

@@ -1,6 +1,7 @@
-import { FeatureChoiced, FeatureForcedDropdownInput } from '../../base';
+import { FeatureChoiced } from '../../base';
+import { FeatureDropdownInput } from '../../dropdowns';
 
 export const antag_target: FeatureChoiced = {
   name: 'Allow Antagonist Target',
-  component: FeatureForcedDropdownInput,
+  component: FeatureDropdownInput,
 };
