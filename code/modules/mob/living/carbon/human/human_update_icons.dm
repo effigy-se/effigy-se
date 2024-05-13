@@ -104,9 +104,7 @@ There are several things that need to be remembered:
 		var/woman
 		var/mutant_styles = NONE // EffigyEdit Add Customization mutant styles to pass down to build_worn_icon.
 		//BEGIN SPECIES HANDLING
-		if((bodyshape & BODYSHAPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
-			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform, src) // EffigyEdit Change - Customization
-		else if((bodyshape & BODYSHAPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+		if((bodyshape & BODYSHAPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 			icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // EffigyEdit Change - Customization
 		// EffigyEdit Add - Birbs
 		else if(bodyshape & BODYSHAPE_CUSTOM)

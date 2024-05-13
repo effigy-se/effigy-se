@@ -613,16 +613,6 @@
 	name = "Worn Prison Jumpsuit - Digitigrade"
 	icon_file = 'local/icons/mob/clothing/under/color_digi.dmi'
 
-/datum/greyscale_config/jumpsuit/worn/monkey
-	name = "Worn Jumpsuit - Monkey"
-	icon_file = MONKEY_UNIFORM_FILE
-	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit_worn_monkey.json'
-
-/datum/greyscale_config/jumpsuit/prison/worn/monkey
-	name = "Worn Prison Jumpsuit - Monkey"
-	icon_file = MONKEY_UNIFORM_FILE
-	json_config = 'local/code/datums/greyscale/json_configs/jumpsuit/jumpsuit_prison_worn_monkey.json'
-
 /datum/greyscale_config/jumpsuit/worn/vox
 	name = "Worn Jumpsuit - Vox"
 	icon_file = 'local/icons/mob/clothing/greyscale/jumpsuit_vox.dmi'

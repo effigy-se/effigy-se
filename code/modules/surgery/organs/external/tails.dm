@@ -117,7 +117,8 @@
 	wag_flags = WAG_ABLE
 
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
-	return GLOB.tails_list_human
+	//return GLOB.tails_list_human
+	return GLOB.sprite_accessories["tail"] // EffigyEdit Change - Customization
 
 /obj/item/organ/external/tail/cat/get_butt_sprite()
 	return BUTT_SPRITE_CAT
@@ -136,7 +137,7 @@
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/monkey
 
-	dna_block = DNA_MONKEY_TAIL_BLOCK
+	//dna_block = DNA_MONKEY_TAIL_BLOCK // EffigyEdit Remove - Customization
 
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey
