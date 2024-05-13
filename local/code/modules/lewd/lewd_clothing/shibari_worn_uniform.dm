@@ -60,8 +60,7 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
-/obj/item/clothing/under/shibari/AltClick(mob/user)
-	. = ..()
+/obj/item/clothing/under/shibari/click_alt(mob/user)
 	if(!ishuman(loc))
 		return
 	var/mob/living/carbon/human/hooman = loc

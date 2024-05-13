@@ -142,7 +142,7 @@
 	..()
 	icon_state = "joker"
 
-/obj/item/paper/joker/AltClick(mob/living/carbon/user, obj/item/card)
+/obj/item/paper/joker/click_alt(mob/living/carbon/user, obj/item/card)
 	var/list/datum/paper_input/old_raw_text_inputs = raw_text_inputs
 	var/list/datum/paper_stamp/old_raw_stamp_data = raw_stamp_data
 	var/list/datum/paper_stamp/old_raw_field_input_data = raw_field_input_data

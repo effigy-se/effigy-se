@@ -67,7 +67,7 @@
 	atom_storage.show_contents(user)
 	return
 
-/obj/item/storage/belt/crusader/AltClick(mob/user)	//This is basically the same as the normal sheath, but because there's always an item locked in the first slot it uses the second slot for swords
+/obj/item/storage/belt/crusader/click_alt(mob/user)	//This is basically the same as the normal sheath, but because there's always an item locked in the first slot it uses the second slot for swords
 	if(!user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	if(contents.len == 2)

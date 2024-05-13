@@ -49,7 +49,7 @@
 	icon = 'local/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'local/icons/mob/clothing/under/security.dmi'
 	icon_state = "policealt"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 ///HEAD OF SECURITY
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol

@@ -87,8 +87,7 @@
 	attached_tank = used_item
 	update_icon()
 
-/obj/machinery/breath_machine/AltClick(mob/user)
-	. = ..()
+/obj/machinery/breath_machine/click_alt(mob/user)
 	if(!attached_tank)
 		return
 

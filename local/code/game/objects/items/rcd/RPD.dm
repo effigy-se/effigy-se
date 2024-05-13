@@ -47,8 +47,7 @@
 
 	. += span_notice("<b>Alt-Click</b> to toggle remote piping.")
 
-/obj/item/pipe_dispenser/bluespace/AltClick(mob/user)
-	. = ..()
+/obj/item/pipe_dispenser/bluespace/click_alt(mob/user)
 	if(. == FALSE)
 		return // too far away
 	remote_piping_toggle = !remote_piping_toggle

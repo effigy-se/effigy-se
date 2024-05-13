@@ -33,11 +33,8 @@
 		"metal" = image (icon = src.icon, icon_state = "shackles_metal"))
 
 //to change model
-/obj/item/clothing/suit/straight_jacket/shackles/AltClick(mob/user)
+/obj/item/clothing/suit/straight_jacket/shackles/click_alt(mob/user)
 	if(color_changed == FALSE)
-		. = ..()
-		if(.)
-			return
 		var/choice = show_radial_menu(user, src, shackles_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE

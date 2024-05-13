@@ -513,7 +513,7 @@
 	to_chat(patron, span_notice("[user] dispenses [snack] into your empty hand and you reflexively grasp it."))
 	to_chat(user, span_notice("You dispense [snack] into the hand of [user]."))
 
-/obj/item/borg_snack_dispenser/AltClick(mob/user)
+/obj/item/borg_snack_dispenser/click_alt(mob/user)
 	launch_mode = !launch_mode
 	to_chat(user, span_notice("[src] is [(launch_mode ? "now" : "no longer")] launching snacks at a distance."))
 

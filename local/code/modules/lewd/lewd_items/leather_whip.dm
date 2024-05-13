@@ -89,11 +89,8 @@
 	update_overlays()
 
 //to change color
-/obj/item/clothing/mask/leatherwhip/AltClick(mob/user)
+/obj/item/clothing/mask/leatherwhip/click_alt(mob/user)
 	if(!color_changed)
-		. = ..()
-		if(.)
-			return
 		var/choice = show_radial_menu(user, src, whip_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE

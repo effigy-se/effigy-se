@@ -350,8 +350,7 @@
 
 	return .
 
-/obj/item/clothing/suit/apron/overalls/greyscale/AltClick(mob/user)
-	. = ..()
+/obj/item/clothing/suit/apron/overalls/greyscale/click_alt(mob/user)
 	if(!iscarbon(user))
 		return
 	var/mob/living/carbon/carbon_user = user

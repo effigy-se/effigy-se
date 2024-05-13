@@ -34,11 +34,8 @@
 		"square" = image (icon = src.icon, icon_state = "pillow_pink_square"),
 		"round" = image(icon = src.icon, icon_state = "pillow_pink_round"))
 
-/obj/item/fancy_pillow/AltClick(mob/user)
+/obj/item/fancy_pillow/click_alt(mob/user)
 	if(color_changed == FALSE)
-		. = ..()
-		if(.)
-			return
 		var/choice = show_radial_menu(user, src, pillow_colors, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
@@ -185,7 +182,7 @@
 
 //picking up the pillow
 
-/obj/structure/bed/pillow_tiny/AltClick(mob/user)
+/obj/structure/bed/pillow_tiny/click_alt(mob/user)
 	to_chat(user, span_notice("You pick up [src]."))
 	var/obj/item/fancy_pillow/taken_pillow = new()
 	user.put_in_hands(taken_pillow)
@@ -308,7 +305,7 @@
 	icon_state = "[base_icon_state]_[current_color]"
 
 //Removing pillow from a pile
-/obj/structure/chair/pillow_small/AltClick(mob/user)
+/obj/structure/chair/pillow_small/click_alt(mob/user)
 	to_chat(user, span_notice("You take [src] from the pile."))
 	var/obj/item/fancy_pillow/taken_pillow = new()
 	var/obj/structure/bed/pillow_tiny/pillow_pile = new(get_turf(src))
@@ -437,7 +434,7 @@
 	icon_state = "[base_icon_state]_[current_color]"
 
 //Removing pillow from a pile
-/obj/structure/bed/pillow_large/AltClick(mob/user)
+/obj/structure/bed/pillow_large/click_alt(mob/user)
 	to_chat(user, span_notice("You take [src] from the pile."))
 	var/obj/item/fancy_pillow/taken_pillow = new()
 	var/obj/structure/chair/pillow_small/pillow_pile = new(get_turf(src))

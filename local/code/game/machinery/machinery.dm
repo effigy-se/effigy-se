@@ -4,14 +4,14 @@
 /obj/machinery/status_display
 	icon = 'local/icons/obj/status_display.dmi'
 
-/obj/machinery/status_display/LateInitialize()
+/obj/machinery/status_display/post_machine_initialize()
 	. = ..()
 	set_picture("ai_off")
 
 /obj/machinery/status_display/syndie
 	name = "syndicate status display"
 
-/obj/machinery/status_display/syndie/LateInitialize()
+/obj/machinery/status_display/syndie/post_machine_initialize()
 	. = ..()
 	set_picture("synd")
 
@@ -29,7 +29,7 @@
 
 
 #ifndef UNIT_TESTS
-/obj/machinery/light_switch/LateInitialize()
+/obj/machinery/light_switch/post_machine_initialize()
 	. = ..()
 	if(prob(70) && area.lightswitch) //70% chance for area to start with lights off.
 		turn_off()

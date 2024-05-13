@@ -69,7 +69,7 @@
 		to_chat(user, span_notice("You install a cell in [src]."))
 		update_appearance()
 
-/obj/item/kinky_shocker/AltClick(mob/user)
+/obj/item/kinky_shocker/click_alt(mob/user)
 	tryremovecell(user)
 
 /obj/item/kinky_shocker/proc/tryremovecell(mob/user)

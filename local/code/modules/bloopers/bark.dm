@@ -42,10 +42,6 @@ It has also been further modified by Rashcat & other Fluffyfrontier contributors
 	message_admins("[key_name_admin(usr)] toggled Blooper.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Blooper", "[GLOB.bloopers_allowed ? "Enabled" : "Disabled"]")) // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
 
-/world/AVerbsAdmin() // WHAT IS THIS
-	. = ..()
-	return . + /datum/admins/proc/toggle_bloopers
-
 /proc/toggle_bloopers(toggle = null)
 	if(toggle != null)
 		if(toggle != GLOB.bloopers_allowed)

@@ -229,12 +229,7 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 
-/obj/item/towel/AltClick(mob/user)
-	. = ..()
-
-	if(. == FALSE)
-		return
-
+/obj/item/towel/click_alt(mob/user)
 	if(!(shape == TOWEL_FULL || shape == TOWEL_WAIST))
 		return FALSE
 

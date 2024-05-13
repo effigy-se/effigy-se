@@ -97,7 +97,7 @@
 	var/wagging = FALSE
 
 /datum/bodypart_overlay/mutant/tail/get_base_icon_state()
-	return (wagging ? "wagging_" : "") + sprite_datum.icon_state //add the wagging tag if we be wagging
+	return "[wagging ? "wagging_" : ""][sprite_datum.icon_state]" //add the wagging tag if we be wagging
 
 // EffigyEdit Add - Customization
 /datum/bodypart_overlay/mutant/tail/get_global_feature_list()
@@ -116,6 +116,10 @@
 
 	wag_flags = WAG_ABLE
 
+/datum/bodypart_overlay/mutant/tail/get_global_feature_list()
+	//return GLOB.tails_list_human
+	return GLOB.sprite_accessories["tail"] // EffigyEdit Change - Customization
+
 /obj/item/organ/external/tail/cat/get_butt_sprite()
 	return BUTT_SPRITE_CAT
 
@@ -128,7 +132,12 @@
 	return GLOB.sprite_accessories["tail"] // EffigyEdit Change Customization ORIGINAL: return GLOB.tails_list_human
 
 /obj/item/organ/external/tail/monkey
+	name = "monkey tail"
+	preference = "feature_monkey_tail"
+
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/monkey
+
+	//dna_block = DNA_MONKEY_TAIL_BLOCK // EffigyEdit Remove - Customization
 
 ///Monkey tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/monkey

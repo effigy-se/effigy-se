@@ -108,8 +108,7 @@
 	open_flame()
 	update_brightness()
 
-/obj/item/bdsm_candle/AltClick(mob/user)
-	. = ..()
+/obj/item/bdsm_candle/click_alt(mob/user)
 	if(!lit)
 		if(color_changed)
 			return

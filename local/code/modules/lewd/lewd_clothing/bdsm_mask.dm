@@ -72,7 +72,7 @@
 		"cyan" = image(icon = src.icon, icon_state = "mask_cyan_off"))
 
 // Using multitool on pole
-/obj/item/clothing/mask/gas/bdsm_mask/AltClick(mob/user)
+/obj/item/clothing/mask/gas/bdsm_mask/click_alt(mob/user)
 	if(color_changed == FALSE)
 		if(.)
 			return
@@ -335,7 +335,7 @@
 	addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
 
 // I just wanted to add 2th color variation. Because.
-/obj/item/reagent_containers/cup/lewd_filter/AltClick(mob/user)
+/obj/item/reagent_containers/cup/lewd_filter/click_alt(mob/user)
 	// Catch first AltClick and open reskin menu
 	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)

@@ -28,11 +28,8 @@
 		"teal" = image(icon = src.icon, icon_state = "kinkphones_teal_on"))
 
 //to change model
-/obj/item/clothing/ears/kinky_headphones/AltClick(mob/user)
+/obj/item/clothing/ears/kinky_headphones/click_alt(mob/user)
 	if(color_changed)
-		return
-	. = ..()
-	if(.)
 		return
 	var/choice = show_radial_menu(user, src, kinkphones_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
