@@ -31,6 +31,8 @@
 								"green" = COLOR_GREEN,
 								"white" = COLOR_WHITE,
 								)
+	/// Is the pole in use currently?
+	var/pole_in_use
 
 
 /obj/structure/stripper_pole/examine(mob/user)
