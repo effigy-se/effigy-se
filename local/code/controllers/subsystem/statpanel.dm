@@ -77,11 +77,5 @@
 			if(update_actions && num_fires % default_wait == 0)
 				set_action_tabs(target, target_mob)
 
-			// Handle the examined turf of the stat panel, if it's been long enough, or if we've generated new images for it
-			var/turf/listed_turf = target_mob?.listed_turf
-			if(listed_turf && num_fires % default_wait == 0)
-				if(target.stat_tab == listed_turf.name || !(listed_turf.name in target.panel_tabs))
-					set_turf_examine_tab(target, target_mob)
-
 		if(MC_TICK_CHECK)
 			return
