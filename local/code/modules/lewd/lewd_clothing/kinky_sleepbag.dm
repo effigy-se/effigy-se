@@ -48,7 +48,7 @@
 		"deflated" = image(icon = src.icon, icon_state = "sleepbag_teal_deflated_folded"))
 
 //to change model
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/AltClick(mob/user)
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/click_alt(mob/user)
 	var/mob/living/carbon/human/clicking_human = user
 	if(istype(clicking_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		to_chat(user, span_warning("Your hands are stuck, you can't do this!"))

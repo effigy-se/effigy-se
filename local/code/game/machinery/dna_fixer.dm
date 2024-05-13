@@ -71,8 +71,7 @@
 	. = ..()
 	. += span_notice("ALT-Click to turn ON when closed.")
 
-/obj/machinery/dna_fixer/AltClick(mob/user)
-	. = ..()
+/obj/machinery/dna_fixer/click_alt(mob/user)
 	if(!powered() || !occupant || state_open)
 		return FALSE
 

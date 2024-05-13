@@ -39,11 +39,8 @@
 	icon_state = "[base_icon_state]_[current_color]"
 	inhand_icon_state = "[base_icon_state]_[current_color]"
 
-/obj/item/clothing/sextoy/fleshlight/AltClick(mob/user)
+/obj/item/clothing/sextoy/fleshlight/click_alt(mob/user)
 	if(color_changed)
-		return
-	. = ..()
-	if(.)
 		return
 	var/choice = show_radial_menu(user, src, fleshlight_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)

@@ -68,8 +68,7 @@
 
 //reskin code
 
-/obj/item/clothing/neck/kink_collar/AltClick(mob/user)
-	. = ..()
+/obj/item/clothing/neck/kink_collar/click_alt(mob/user)
 	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)
 
@@ -115,8 +114,7 @@
 
 //reskin code
 
-/obj/item/clothing/neck/kink_collar/locked/AltClick(mob/user)
-	. = ..()
+/obj/item/clothing/neck/kink_collar/locked/click_alt(mob/user)
 	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)
 
@@ -194,8 +192,7 @@
 						"Black-teal" = "collar_key_tealblack")
 
 //changing color of key in case if we using multiple collars
-/obj/item/key/kink_collar/AltClick(mob/user)
-	. = ..()
+/obj/item/key/kink_collar/click_alt(mob/user)
 	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)
 

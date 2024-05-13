@@ -22,7 +22,6 @@
 						"Black" = "stripper_black",
 						"Black-teal" = "stripper_tealblack")
 
-/obj/item/clothing/under/stripper_outfit/AltClick(mob/user)
-	. = ..()
+/obj/item/clothing/under/stripper_outfit/click_alt(mob/user)
 	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)

@@ -23,11 +23,8 @@
 		"human" = image (icon = src.icon, icon_state = "strapon_human"))
 
 //to change model
-/obj/item/clothing/strapon/AltClick(mob/user)
+/obj/item/clothing/strapon/click_alt(mob/user)
 	if(type_changed == FALSE)
-		. = ..()
-		if(.)
-			return
 		var/choice = show_radial_menu(user, src, strapon_types, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE

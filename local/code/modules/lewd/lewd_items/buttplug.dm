@@ -40,11 +40,8 @@
 		"medium" = image(icon = src.icon, icon_state = "buttplug_pink_medium"),
 		"big" = image(icon = src.icon, icon_state = "buttplug_pink_big"))
 
-/obj/item/clothing/sextoy/buttplug/AltClick(mob/user)
+/obj/item/clothing/sextoy/buttplug/click_alt(mob/user)
 	if(!color_changed)
-		. = ..()
-		if(.)
-			return
 		var/choice = show_radial_menu(user, src, buttplug_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE

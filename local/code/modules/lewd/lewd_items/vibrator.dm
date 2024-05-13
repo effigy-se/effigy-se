@@ -43,11 +43,8 @@
 		"yellow" = image(icon = src.icon, icon_state = "vibrator_yellow_low"),
 		"green" = image(icon = src.icon, icon_state = "vibrator_green_low"))
 
-/obj/item/clothing/sextoy/vibrator/AltClick(mob/user)
+/obj/item/clothing/sextoy/vibrator/click_alt(mob/user)
 	if(color_changed)
-		return
-	. = ..()
-	if(.)
 		return
 	var/choice = show_radial_menu(user, src, vibrator_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)

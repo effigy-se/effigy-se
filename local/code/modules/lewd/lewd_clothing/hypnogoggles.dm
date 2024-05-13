@@ -58,11 +58,8 @@
 		"teal" = image(icon = src.icon, icon_state = "hypnogoggles_teal"))
 
 //to change model
-/obj/item/clothing/glasses/hypno/AltClick(mob/user)
+/obj/item/clothing/glasses/hypno/click_alt(mob/user)
 	if(color_changed)
-		return
-	. = ..()
-	if(.)
 		return
 	var/choice = show_radial_menu(user, src, hypnogoggles_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)

@@ -41,11 +41,8 @@
 		"human" = image(icon = src.icon, icon_state = "[base_icon_state]_human"),
 		"tentacle" = image(icon = src.icon, icon_state = "[base_icon_state]_tentacle"))
 
-/obj/item/clothing/sextoy/dildo/AltClick(mob/user)
+/obj/item/clothing/sextoy/dildo/click_alt(mob/user)
 	if(color_changed)
-		return
-	. = ..()
-	if(.)
 		return
 	var/choice = show_radial_menu(user, src, dildo_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
@@ -289,7 +286,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/double_dildo/populate_dildo_designs()
 	return
 
-/obj/item/clothing/sextoy/dildo/double_dildo/AltClick(mob/user)
+/obj/item/clothing/sextoy/dildo/double_dildo/click_alt(mob/user)
 	return
 
 /obj/item/clothing/sextoy/dildo/double_dildo/lewd_equipped(mob/living/carbon/human/user, slot, initial)

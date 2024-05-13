@@ -13,5 +13,5 @@
 	else
 		return FALSE
 
-/obj/item/airlock_painter/decal/cyborg/AltClick(mob/user)
+/obj/item/airlock_painter/decal/cyborg/click_alt(mob/user)
 	return

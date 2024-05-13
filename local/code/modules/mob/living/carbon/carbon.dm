@@ -36,10 +36,9 @@
 	return
 
 /// alt-clicking a human as another human while grappling them tightly makes you try for grappling-based maneuvers.
-/mob/living/carbon/human/AltClick(mob/user)
+/mob/living/carbon/human/click_alt(mob/user)
 	if(!ishuman(user))
-		return ..()
+		return
 	var/mob/living/carbon/human/human_user = user
 	if(human_user == src || !human_user.combat_mode || !human_user.dna.species.try_grab_maneuver(user, src))
 		return FALSE
-	. = ..()
