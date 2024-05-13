@@ -23,7 +23,7 @@ ADMIN_VERB(play_sound, R_SOUND, "Play Global Sound", "Play a sound to all connec
 	var/res = tgui_alert(user, "Show the title of this song to the players?",, list("Yes","No", "Cancel"))
 	switch(res)
 		if("Yes")
-			to_chat(world, SPAN_BOX_ALERT(PINK, "An admin played: [S]"), confidential = TRUE)
+			to_chat(world, SPAN_BOX_ALERT(PINK, "An admin played: [sound]"), confidential = TRUE)
 		if("Cancel")
 			return
 

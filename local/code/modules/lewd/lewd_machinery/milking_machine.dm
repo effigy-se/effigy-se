@@ -16,7 +16,7 @@
 	icon_state = "milking_pink_off"
 	max_buckled_mobs = 1
 	item_chair = null
-	obj_flags = CAN_BE_HIT | NO_DECONSTRUCTION
+	obj_flags = CAN_BE_HIT
 	max_integrity = 75
 	var/static/list/milkingmachine_designs
 
@@ -307,7 +307,7 @@
 		return FALSE
 
 	replace_beaker(user, used_container)
-	updateUsrDialog()
+	SStgui.update_uis(src)
 	return TRUE
 
 // Beaker change handler
@@ -583,7 +583,6 @@
 		data["current_vagina"] = current_vagina = null
 
 	data["machine_color"] = machine_color
-	updateUsrDialog()
 	return data
 
 // User action handler in the interface
