@@ -1,4 +1,4 @@
-name: CI Suite (Effigy)
+name: CI Suite Effigy
 on:
   push:
     branches:
@@ -64,7 +64,7 @@ jobs:
       - name: Give Linters A Go
         id: linter-setup
         run: ':'
-      - name: Ticked File Enforcement (Effigy)
+      - name: Ticked File Enforcement
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: |
           tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/effigy_local.json
