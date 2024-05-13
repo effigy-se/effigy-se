@@ -199,7 +199,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		SSjob.latejoin_cryo_trackers += src
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
 
-/obj/machinery/cryopod/LateInitialize()
+/obj/machinery/cryopod/post_machine_initialize()
+	. = ..()
 	update_icon()
 	find_control_computer()
 

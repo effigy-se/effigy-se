@@ -12,7 +12,7 @@
 /obj/machinery/door/airlock/external/ruin/interlink_ferry/opens_at_station
 	searched_trait = ZTRAIT_STATION
 
-/obj/machinery/door/airlock/external/ruin/interlink_ferry/LateInitialize(mapload, ...)
+/obj/machinery/door/airlock/external/ruin/interlink_ferry/post_machine_initialize()
 	. = ..()
 	shuttle_boltcycle()
 
