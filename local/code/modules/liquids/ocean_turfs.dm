@@ -13,22 +13,7 @@
 /turf/open/openspace/ocean/Initialize(mapload)
 	. = ..()
 
-	for(var/obj/structure/flora/plant in contents)
-		qdel(plant)
-	var/turf/T = GET_TURF_BELOW(src)
-	if(T)
-		if(T.turf_flags & NO_RUINS)
-			ChangeTurf(replacement_turf, null, CHANGETURF_IGNORE_AIR)
-			return
-		if(!ismineralturf(T))
-			return
-		var/turf/closed/mineral/M = T
-		M.mineralAmt = 0
-		M.gets_drilled()
-		baseturfs = /turf/open/openspace/ocean //This is to ensure that IF random turf generation produces a openturf, there won't be other turfs assigned other than openspace.
-
-/turf/open/openspace/ocean/Initialize(mapload)
-	. = ..()
+	// Boilerplate Liquid Handling
 	if(liquids)
 		if(liquids.immutable)
 			liquids.remove_turf(src)
@@ -36,6 +21,22 @@
 			qdel(liquids, TRUE)
 	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean, src)
 	new_immmutable.add_turf(src)
+
+	for(var/obj/structure/flora/plant in contents)
+		qdel(plant)
+	var/turf/T = GET_TURF_BELOW(src)
+	if(T)
+		if(T.turf_flags & NO_RUINS)
+			ChangeTurf(replacement_turf, null, CHANGETURF_IGNORE_AIR)
+			return
+			if(!isopenspaceturf(replacement_turf)) // only openspace turfs should be returning INITIALIZE_HINT_LATELOAD
+				return INITIALIZE_HINT_NORMAL
+		if(!ismineralturf(T))
+			return
+		var/turf/closed/mineral/M = T
+		M.mineralAmt = 0
+		M.gets_drilled()
+		baseturfs = /turf/open/openspace/ocean //This is to ensure that IF random turf generation produces a openturf, there won't be other turfs assigned other than openspace.
 
 /turf/open/misc/ironsand/ocean
 	planetary_atmos = TRUE
