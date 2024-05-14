@@ -1,4 +1,4 @@
-import { sortBy } from 'common/collections';
+import { filter, map, sortBy } from 'common/collections';
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { useState } from 'react';
@@ -487,11 +487,11 @@ const createSetRandomization =
     });
   };
 
-  const sortPreferences = (array: [string, unknown][]) =>
-    sortBy(array, ([featureId, _]) => {
-      const feature = features[featureId];
-      return feature?.name;
-    });
+const sortPreferences = (array: [string, unknown][]) =>
+  sortBy(array, ([featureId, _]) => {
+    const feature = features[featureId];
+    return feature?.name;
+  });
 
 export const PreferenceList = (props: {
   act: typeof sendAct;
