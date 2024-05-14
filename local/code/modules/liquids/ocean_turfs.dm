@@ -38,7 +38,7 @@
 	var/turf/closed/mineral/M = T
 	M.mineralAmt = 0
 	M.gets_drilled()
-	baseturfs = /turf/open/openspace/icemoon //This is to ensure that IF random turf generation produces a openturf, there won't be other turfs assigned other than openspace.
+	baseturfs = /turf/open/openspace/ocean //This is to ensure that IF random turf generation produces a openturf, there won't be other turfs assigned other than openspace.
 
 /turf/open/misc/ironsand/ocean
 	planetary_atmos = TRUE
