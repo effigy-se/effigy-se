@@ -37,20 +37,17 @@
 		. += span_notice("Alt-click to toggle [p_their()] colors.")
 
 /obj/item/clothing/glasses/visor_toggling()
-	..()
+	. = ..()
+	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : initial(alternate_worn_layer) // EffigyEdit Change - add initial alternate_worn_layer
 	if(visor_vars_to_toggle & VISOR_VISIONFLAGS)
 		vision_flags ^= initial(vision_flags)
 	if(visor_vars_to_toggle & VISOR_INVISVIEW)
 		invis_view ^= initial(invis_view)
 
-/obj/item/clothing/glasses/weldingvisortoggle(mob/user)
+/obj/item/clothing/glasses/adjust_visor(mob/living/user)
 	. = ..()
-	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : initial(alternate_worn_layer) // EffigyEdit Change
-	if(. && user)
+	if(. && !user.is_holding(src) && (visor_vars_to_toggle & (VISOR_VISIONFLAGS|VISOR_INVISVIEW)))
 		user.update_sight()
-		if(iscarbon(user))
-			var/mob/living/carbon/carbon_user = user
-			carbon_user.head_update(src, forced = TRUE)
 
 //called when thermal glasses are emped.
 /obj/item/clothing/glasses/proc/thermal_overload()
@@ -451,7 +448,7 @@
 	glass_colour_type = /datum/client_colour/glass_colour/gray
 
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
-	weldingvisortoggle(user)
+	adjust_visor(user)
 
 /obj/item/clothing/glasses/welding/up/Initialize(mapload)
 	. = ..()
@@ -482,27 +479,10 @@
 	var/colored_before = FALSE
 
 /obj/item/clothing/glasses/blindfold/white/visual_equipped(mob/living/carbon/human/user, slot)
-	if(ishuman(user) && (slot & ITEM_SLOT_EYES))
-		update_icon(ALL, user)
-		user.update_worn_glasses() //Color might have been changed by update_icon.
-	..()
-
-/obj/item/clothing/glasses/blindfold/white/update_icon(updates=ALL, mob/living/carbon/human/user)
-	. = ..()
-	if(ishuman(user) && !colored_before)
+	if(ishuman(user) && (slot & ITEM_SLOT_EYES) && !colored_before)
 		add_atom_colour(BlendRGB(user.eye_color_left, user.eye_color_right, 0.5), FIXED_COLOUR_PRIORITY)
 		colored_before = TRUE
-
-/obj/item/clothing/glasses/blindfold/white/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use)
-	. = ..()
-	if(isinhands || !ishuman(loc) || colored_before)
-		return
-
-	var/mob/living/carbon/human/H = loc
-	var/mutable_appearance/M = mutable_appearance('icons/mob/clothing/eyes.dmi', "blindfoldwhite")
-	M.appearance_flags |= RESET_COLOR
-	M.color = H.eye_color_left
-	. += M
+	return ..()
 
 /obj/item/clothing/glasses/sunglasses/big
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks flashes."

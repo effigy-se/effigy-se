@@ -1,5 +1,5 @@
-import { sortBy, sortStrings } from 'common/collections';
-import { BooleanLike, classes } from 'common/react';
+import { sortBy } from 'common/collections';
+import { BooleanLike } from 'common/react';
 import {
   ComponentType,
   createElement,
@@ -22,7 +22,8 @@ import {
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
-export const sortChoices = sortBy<[string, ReactNode]>(([name]) => name);
+export const sortChoices = (array: [string, ReactNode][]) =>
+  sortBy(array, ([name]) => name);
 
 export type Feature<
   TReceiving,
@@ -124,16 +125,15 @@ export const CheckboxInputInverse = (
   );
 };
 
-export const createDropdownInput = <T extends string | number = string>(
+export function createDropdownInput<T extends string | number = string>(
   // Map of value to display texts
   choices: Record<T, ReactNode>,
   dropdownProps?: Record<T, unknown>,
-): FeatureValue<T> => {
+): FeatureValue<T> {
   return (props: FeatureValueProps<T>) => {
     return (
       <Dropdown
-        selected={props.value}
-        displayText={choices[props.value]}
+        selected={choices[props.value] as string}
         onSelected={props.handleSetValue}
         width="100%"
         options={sortChoices(Object.entries(choices)).map(
@@ -148,7 +148,7 @@ export const createDropdownInput = <T extends string | number = string>(
       />
     );
   };
-};
+}
 
 export type FeatureChoicedServerData = {
   choices: string[];
@@ -158,214 +158,6 @@ export type FeatureChoicedServerData = {
 
 export type FeatureChoiced = Feature<string, string, FeatureChoicedServerData>;
 
-const capitalizeFirstLetter = (text: string) =>
-  text.toString().charAt(0).toUpperCase() + text.toString().slice(1);
-
-export const StandardizedDropdown = (props: {
-  choices: string[];
-  disabled?: boolean;
-  displayNames: Record<string, ReactNode>;
-  onSetValue: (newValue: string) => void;
-  value: string;
-  buttons?: boolean;
-}) => {
-  const { choices, disabled, buttons, displayNames, onSetValue, value } = props;
-
-  return (
-    <Dropdown
-      disabled={disabled}
-      buttons={buttons}
-      selected={value}
-      onSelected={onSetValue}
-      width="100%"
-      displayText={displayNames[value]}
-      options={choices.map((choice) => {
-        return {
-          displayText: displayNames[choice],
-          value: choice,
-        };
-      })}
-    />
-  );
-};
-
-export const FeatureButtonedDropdownInput = (
-  props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
-    disabled?: boolean;
-  },
-) => {
-  return <FeatureDropdownInput disabled={props.disabled} buttons {...props} />;
-};
-
-export const FeatureDropdownInput = (
-  props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
-    disabled?: boolean;
-    buttons?: boolean;
-  },
-) => {
-  const serverData = props.serverData;
-  if (!serverData) {
-    return null;
-  }
-
-  const displayNames =
-    serverData.display_names ||
-    Object.fromEntries(
-      serverData.choices.map((choice) => [
-        choice,
-        capitalizeFirstLetter(choice),
-      ]),
-    );
-
-  return serverData.choices.length > 7 ? (
-    <StandardizedDropdown
-      choices={sortStrings(serverData.choices)}
-      disabled={props.disabled}
-      buttons={props.buttons}
-      displayNames={displayNames}
-      onSetValue={props.handleSetValue}
-      value={props.value}
-    />
-  ) : (
-    <StandardizedChoiceButtons
-      choices={sortStrings(serverData.choices)}
-      disabled={props.disabled}
-      displayNames={displayNames}
-      onSetValue={props.handleSetValue}
-      value={props.value}
-    />
-  );
-};
-
-export const FeatureForcedDropdownInput = (
-  props: FeatureValueProps<string, string, FeatureChoicedServerData> & {
-    disabled?: boolean;
-    buttons?: boolean;
-  },
-) => {
-  const serverData = props.serverData;
-  if (!serverData) {
-    return null;
-  }
-
-  const displayNames =
-    serverData.display_names ||
-    Object.fromEntries(
-      serverData.choices.map((choice) => [
-        choice,
-        capitalizeFirstLetter(choice),
-      ]),
-    );
-
-  return (
-    <StandardizedDropdown
-      choices={sortStrings(serverData.choices)}
-      disabled={props.disabled}
-      buttons={props.buttons}
-      displayNames={displayNames}
-      onSetValue={props.handleSetValue}
-      value={props.value}
-    />
-  );
-};
-
-export type FeatureWithIcons<T> = Feature<
-  { value: T },
-  T,
-  FeatureChoicedServerData
->;
-
-export const FeatureIconnedDropdownInput = (
-  props: FeatureValueProps<
-    {
-      value: string;
-    },
-    string,
-    FeatureChoicedServerData
-  > & {
-    buttons?: boolean;
-  },
-) => {
-  const serverData = props.serverData;
-  if (!serverData) {
-    return null;
-  }
-
-  const icons = serverData.icons;
-
-  const textNames =
-    serverData.display_names ||
-    Object.fromEntries(
-      serverData.choices.map((choice) => [
-        choice,
-        capitalizeFirstLetter(choice),
-      ]),
-    );
-
-  const displayNames = Object.fromEntries(
-    Object.entries(textNames).map(([choice, textName]) => {
-      let element: ReactNode = textName;
-
-      if (icons && icons[choice]) {
-        const icon = icons[choice];
-        element = (
-          <Stack>
-            <Stack.Item>
-              <Box
-                className={classes(['preferences32x32', icon])}
-                style={{
-                  transform: 'scale(0.8)',
-                }}
-              />
-            </Stack.Item>
-
-            <Stack.Item grow>{element}</Stack.Item>
-          </Stack>
-        );
-      }
-
-      return [choice, element];
-    }),
-  );
-
-  return (
-    <StandardizedDropdown
-      buttons={props.buttons}
-      choices={sortStrings(serverData.choices)}
-      displayNames={displayNames}
-      onSetValue={props.handleSetValue}
-      value={props.value.value}
-    />
-  );
-};
-
-export const StandardizedChoiceButtons = (props: {
-  choices: string[];
-  disabled?: boolean;
-  displayNames: Record<string, ReactNode>;
-  onSetValue: (newValue: string) => void;
-  value?: string;
-}) => {
-  const { choices, disabled, displayNames, onSetValue, value } = props;
-  return (
-    <>
-      {choices.map((choice) => (
-        <Button
-          key={choice}
-          content={displayNames[choice]}
-          selected={choice === value}
-          disabled={disabled}
-          onClick={() => onSetValue(choice)}
-        />
-      ))}
-    </>
-  );
-};
-
-export type HexValue = {
-  lightness: number;
-  value: string;
-};
 export type FeatureNumericData = {
   minimum: number;
   maximum: number;

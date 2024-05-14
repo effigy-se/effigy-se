@@ -154,7 +154,7 @@
 		return PROCESS_KILL
 
 	// Attempt to restart airflow if it was temporarily interrupted after mask adjustment.
-	if(attached_tank && istype(carbon_target) && !carbon_target.external && !attached_mask.mask_adjusted)
+	if(attached_tank && istype(carbon_target) && !carbon_target.external && !attached_mask.up)
 		carbon_target.open_internals(attached_tank, is_external = TRUE)
 
 /obj/machinery/breath_machine/Destroy()
@@ -194,12 +194,12 @@
 		var/obj/machinery/breath_machine/source_machine = attached_machine
 		source_machine.retract_mask()
 
-/obj/item/clothing/mask/breath/retractable/adjustmask(mob/living/carbon/user)
-	..()
+/obj/item/clothing/mask/breath/retractable/adjust_visor(mob/living/carbon/user)
+	. = ..()
 	// Air only goes through the mask, so temporarily pause airflow if mask is getting adjusted.
 	// Since the mask is NODROP, the only possible user is the wearer
 	var/mob/living/carbon/carbon_target = loc
-	if(mask_adjusted && carbon_target.external)
+	if(up && carbon_target.external)
 		carbon_target.close_externals()
 
 /// A boxed version of the Anesthetic Machine. This is what is printed from the medical prolathe.
