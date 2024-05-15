@@ -17,6 +17,11 @@
 /obj/structure/chair/sofa/bench/right,
 /turf/open/floor/iron/diagonal,
 /area/centcom/interlink)
+"aj" = (
+/obj/structure/fluff/fake_transit_tube,
+/obj/effect/spawner/structure/window/reinforced/indestructible,
+/turf/open/floor/plating,
+/area/centcom/interlink/venue)
 "ao" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 8
@@ -317,6 +322,10 @@
 	},
 /turf/open/floor/mineral/titanium/white,
 /area/centcom/interlink)
+"de" = (
+/obj/structure/chair/sofa/bench/solo,
+/turf/open/floor/iron/smooth_large,
+/area/centcom/interlink/venue)
 "dh" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 5
@@ -742,8 +751,14 @@
 	dir = 4;
 	name = "Venue Hall"
 	},
+/obj/machinery/door/poddoor/shutters/indestructible{
+	dir = 8;
+	move_resist = 3001;
+	name = "event venue shutters";
+	id = "interlink_eventvenue_connector"
+	},
 /turf/open/floor/iron/smooth_large,
-/area/centcom/interlink)
+/area/centcom/interlink/venue)
 "hp" = (
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
@@ -874,6 +889,27 @@
 /obj/machinery/solarlight,
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"ih" = (
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/dark,
+/obj/machinery/light/floor,
+/turf/open/floor/iron/textured_large,
+/area/centcom/interlink/venue)
+"in" = (
+/obj/machinery/button/door/indestructible/no_telekinesis/directional/west{
+	id = "interlink_eventvenue_connector";
+	name = "shutter control";
+	req_access = list("ACCESS_CENT_CAPTAIN")
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/dark,
+/obj/machinery/light/floor,
+/turf/open/floor/iron/textured_large,
+/area/centcom/interlink/venue)
 "ir" = (
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 8
@@ -1139,6 +1175,9 @@
 /obj/structure/sign/flag/nanotrasen/directional/north,
 /turf/open/floor/iron/dark/diagonal,
 /area/centcom/interlink)
+"lM" = (
+/turf/closed/indestructible/riveted,
+/area/space)
 "lO" = (
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
@@ -1259,6 +1298,15 @@
 /obj/structure/flora/bush/fullgrass,
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"mL" = (
+/obj/machinery/cryopod/ruin{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating_new{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/centcom/interlink/venue)
 "mM" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 6
@@ -1437,6 +1485,9 @@
 /obj/structure/flora/rock/pile/style_2,
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
+"ok" = (
+/turf/open/floor/iron/dark/smooth_half,
+/area/centcom/interlink/venue)
 "ol" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner{
 	dir = 4
@@ -1498,7 +1549,13 @@
 /turf/open/floor/carpet/red,
 /area/centcom/interlink)
 "oL" = (
-/obj/structure/sign/directions/venue/directional/east,
+/obj/structure/sign/directions/venue/directional/east{
+	pixel_y = -3
+	},
+/obj/structure/sign/directions/station/directional/east{
+	dir = 1;
+	pixel_y = 3
+	},
 /turf/open/floor/iron/dark/small,
 /area/centcom/interlink)
 "oQ" = (
@@ -1527,6 +1584,10 @@
 /obj/effect/turf_decal/siding/wideplating_new/corner,
 /obj/machinery/duct,
 /turf/open/floor/iron/dark/diagonal,
+/area/centcom/interlink)
+"pa" = (
+/obj/structure/fluff/fake_transit_tube,
+/turf/open/floor/catwalk_floor/airless,
 /area/centcom/interlink)
 "pc" = (
 /obj/structure/fluff/fake_vent,
@@ -1736,6 +1797,12 @@
 "qM" = (
 /turf/open/floor/glass/reinforced,
 /area/centcom/interlink)
+"qN" = (
+/obj/effect/mob_spawn/ghost_role/human/interlink_event_venue{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth_large,
+/area/centcom/interlink/venue)
 "qO" = (
 /obj/structure/railing{
 	dir = 4
@@ -1895,6 +1962,9 @@
 	},
 /turf/open/floor/wood/large,
 /area/centcom/interlink)
+"sf" = (
+/turf/open/floor/iron/smooth_large,
+/area/centcom/interlink/venue)
 "so" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/corner{
@@ -2041,6 +2111,14 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/centcom/interlink)
+"tE" = (
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/dark,
+/obj/structure/fluff/fake_vent,
+/turf/open/floor/iron/textured_large,
+/area/centcom/interlink/venue)
 "tF" = (
 /obj/effect/turf_decal/bot_white,
 /obj/effect/landmark/latejoin_interlink,
@@ -2109,6 +2187,10 @@
 /obj/structure/flora/bush/grassy/style_3,
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"uj" = (
+/obj/structure/sign/poster/official/walk/directional/south,
+/turf/open/floor/iron/dark/small,
+/area/centcom/interlink)
 "ut" = (
 /turf/open/floor/wood/large,
 /area/centcom/interlink)
@@ -2129,6 +2211,14 @@
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"uE" = (
+/obj/effect/turf_decal/siding/wideplating_new,
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/iron/textured_large,
+/area/centcom/interlink/venue)
 "uH" = (
 /turf/open/floor/carpet/blue,
 /area/centcom/interlink)
@@ -2327,6 +2417,9 @@
 	},
 /turf/open/floor/wood/large,
 /area/centcom/interlink)
+"wH" = (
+/turf/open/floor/carpet/neon/simple/black,
+/area/space)
 "wM" = (
 /obj/machinery/button/door/directional/south{
 	normaldoorcontrol = 1;
@@ -2504,6 +2597,17 @@
 	},
 /turf/open/floor/iron/large,
 /area/centcom/interlink)
+"yj" = (
+/obj/effect/turf_decal/siding/wideplating_new,
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/machinery/light/floor,
+/obj/structure/fluff/fake_camera{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_large,
+/area/centcom/interlink/venue)
 "yn" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 9
@@ -2522,6 +2626,25 @@
 	},
 /turf/open/floor/carpet/cyan,
 /area/centcom/interlink)
+"yv" = (
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters/indestructible{
+	dir = 8;
+	move_resist = 3001;
+	name = "event venue shutters";
+	id = "interlink_eventvenue_connector"
+	},
+/turf/open/floor/iron/smooth_large,
+/area/centcom/interlink/venue)
+"yx" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/smooth_large,
+/area/centcom/interlink/venue)
 "yB" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 4
@@ -2563,6 +2686,14 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/centcom/interlink)
+"zs" = (
+/obj/effect/turf_decal/siding/wideplating_new,
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/structure/fluff/fake_scrubber,
+/turf/open/floor/iron/textured_large,
+/area/centcom/interlink/venue)
 "zv" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 5
@@ -2602,6 +2733,17 @@
 	pixel_y = 7
 	},
 /turf/open/floor/carpet/black,
+/area/centcom/interlink)
+"zO" = (
+/obj/item/toy/plush/shark{
+	name = "Charact. E. Reference";
+	desc = "Wow, mappers have no shame these days."
+	},
+/obj/item/paper/fluff/interlink/event_venue_howto_admin_only_do_not_fucking_map_this_elsewhere_i_will_find_you{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
 /area/centcom/interlink)
 "zZ" = (
 /obj/structure/chair/sofa/left/brown{
@@ -2910,6 +3052,19 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"DG" = (
+/obj/structure/closet/crate/trashcart/laundry,
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark/mid_joiner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/centcom/interlink/venue)
 "DP" = (
 /obj/structure/table,
 /obj/machinery/microwave{
@@ -2995,6 +3150,10 @@
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/misc/beach/sand,
 /area/centcom/interlink)
+"Ff" = (
+/obj/machinery/computer/cryopod/directional/east,
+/turf/open/floor/iron/diagonal,
+/area/centcom/interlink/venue)
 "Fi" = (
 /obj/effect/turf_decal/siding/wideplating_new/end{
 	dir = 1
@@ -3102,6 +3261,9 @@
 /obj/machinery/computer/station_alert,
 /turf/open/floor/mineral/titanium,
 /area/centcom/interlink)
+"GM" = (
+/turf/open/floor/iron/diagonal,
+/area/centcom/interlink/venue)
 "GN" = (
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
@@ -3163,6 +3325,11 @@
 	},
 /turf/open/floor/mineral/titanium/tiled,
 /area/centcom/interlink)
+"Hm" = (
+/obj/effect/turf_decal/siding/wideplating_new,
+/obj/structure/curtain/bounty,
+/turf/open/floor/iron/smooth_large,
+/area/centcom/interlink/venue)
 "Hn" = (
 /obj/structure/fluff/tram_rail/end{
 	desc = "This probably won't stop a titanium tram from hitting the wall, but it's the thought that counts.";
@@ -3192,6 +3359,9 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"HK" = (
+/turf/closed/indestructible/riveted,
+/area/centcom/interlink/venue)
 "HL" = (
 /obj/effect/turf_decal/siding/wideplating_new/corner{
 	dir = 4
@@ -3328,6 +3498,10 @@
 	},
 /turf/open/floor/wood/large,
 /area/centcom/interlink)
+"IL" = (
+/obj/structure/sign/poster/official/download/directional/west,
+/turf/open/floor/iron/dark/small,
+/area/centcom/interlink)
 "IP" = (
 /obj/structure/fluff/fake_camera{
 	dir = 8
@@ -3402,14 +3576,8 @@
 /turf/open/floor/iron/kitchen/diagonal,
 /area/centcom/interlink)
 "JD" = (
-/obj/item/toy/plush/shark{
-	name = "Charact. E. Reference";
-	desc = "Wow, mappers have no shame these days."
-	},
 /obj/item/paper{
-	default_raw_text = "there was supposed to be some ocean tiles here to feed the duct network but some issues with SSLiquids prevented it from being here. Sad!";
-	pixel_x = -3;
-	pixel_y = -4
+	default_raw_text = "there was supposed to be some ocean tiles here to feed the duct network but some issues with SSLiquids prevented it from being here. Sad!"
 	},
 /turf/open/floor/plating,
 /area/centcom/interlink)
@@ -3492,6 +3660,10 @@
 /obj/structure/table,
 /obj/item/weldingtool/mini/empty,
 /turf/open/floor/plating/reinforced,
+/area/centcom/interlink)
+"KA" = (
+/obj/machinery/status_display/random_message/motivational/directional/south,
+/turf/open/floor/iron/dark/small,
 /area/centcom/interlink)
 "KB" = (
 /obj/structure/railing{
@@ -3620,6 +3792,13 @@
 /obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/iron/half,
 /area/centcom/interlink)
+"LE" = (
+/obj/machinery/vending/autodrobe/all_access,
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/centcom/interlink/venue)
 "LH" = (
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 5
@@ -3696,6 +3875,12 @@
 /obj/effect/turf_decal/trimline/dark/warning,
 /turf/open/floor/wood/tile,
 /area/centcom/interlink)
+"Mx" = (
+/obj/structure/chair/sofa/bench/solo{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth_large,
+/area/centcom/interlink/venue)
 "My" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/tile,
@@ -4067,6 +4252,20 @@
 /obj/machinery/status_display/random_message/motivational/directional/east,
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"PX" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
+	},
+/obj/machinery/light/directional/west,
+/obj/effect/turf_decal/trimline/dark/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark/mid_joiner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/centcom/interlink/venue)
 "PZ" = (
 /turf/open/floor/wood/tile,
 /area/centcom/interlink)
@@ -4340,6 +4539,11 @@
 /obj/structure/aquarium,
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"Se" = (
+/obj/structure/fluff/fake_transit_tube,
+/obj/effect/spawner/structure/window/reinforced/tinted,
+/turf/open/floor/plating,
+/area/centcom/interlink)
 "Sg" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -4384,6 +4588,16 @@
 /obj/machinery/light/floor,
 /turf/open/floor/iron/textured_large,
 /area/centcom/interlink)
+"SA" = (
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 8
+	},
+/obj/structure/fluff/fake_firedoor,
+/turf/open/floor/iron/smooth_large,
+/area/centcom/interlink/venue)
 "SE" = (
 /obj/structure/table/wood,
 /obj/item/phone{
@@ -4470,6 +4684,13 @@
 	},
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"Tj" = (
+/obj/machinery/vending/clothing,
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/centcom/interlink/venue)
 "Tp" = (
 /obj/effect/turf_decal/bot_white,
 /obj/effect/landmark/latejoin_interlink,
@@ -4895,6 +5116,9 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"Xm" = (
+/turf/closed/indestructible/fakedoor/maintenance,
+/area/space)
 "Xn" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -4973,6 +5197,10 @@
 	},
 /obj/machinery/duct,
 /turf/open/floor/iron/dark/diagonal,
+/area/centcom/interlink)
+"XW" = (
+/obj/machinery/status_display/random_message/motivational/directional/north,
+/turf/open/floor/iron/dark/small,
 /area/centcom/interlink)
 "Ye" = (
 /obj/machinery/duct,
@@ -33868,7 +34096,7 @@ qp
 yu
 mA
 nQ
-ju
+IL
 ju
 ju
 mA
@@ -34381,7 +34609,7 @@ mu
 ut
 Rr
 mA
-ju
+XW
 Lg
 ol
 Du
@@ -34402,7 +34630,7 @@ Du
 Du
 Dm
 NJ
-ju
+KA
 mA
 pg
 BY
@@ -35942,7 +36170,7 @@ jg
 YF
 yF
 oB
-ju
+uj
 mA
 pg
 pg
@@ -38750,7 +38978,7 @@ mu
 ut
 Rr
 mA
-ju
+XW
 yn
 lP
 Bv
@@ -38771,7 +38999,7 @@ Bv
 Bv
 fA
 ST
-ju
+KA
 mA
 pg
 BY
@@ -39011,17 +39239,17 @@ ju
 Rn
 NJ
 ju
-ju
 Vs
 ju
-mA
-mA
-mA
-Db
+ju
+HK
+HK
+HK
+yv
 hl
-mA
-mA
-mA
+HK
+HK
+HK
 ju
 Vs
 ju
@@ -39269,19 +39497,19 @@ ju
 ju
 ju
 mA
-mA
-mA
-mA
-BY
-BY
-BY
-BY
-BY
-BY
-mA
-mA
-mA
-mA
+yd
+yd
+HK
+de
+in
+ok
+ok
+uE
+Mx
+HK
+HK
+HK
+HK
 ju
 ju
 ju
@@ -39521,25 +39749,25 @@ mA
 mA
 mA
 mA
+aX
 mA
 mA
 mA
 mA
-mA
 BY
 BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-mA
-mA
+HK
+sf
+tE
+ok
+ok
+zs
+yx
+HK
+DG
+PX
+HK
+HK
 mA
 mA
 mA
@@ -39780,23 +40008,23 @@ pg
 pg
 BY
 BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
+mA
+zO
+Se
+pa
+pa
+aj
+qN
+ih
+ok
+ok
+yj
+sf
+Hm
+GM
+GM
+Tj
+HK
 BY
 BY
 BY
@@ -40036,24 +40264,24 @@ BY
 BY
 BY
 BY
+lM
+mA
+mA
+mA
 BY
 BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
+HK
+HK
+HK
+SA
+SA
+HK
+HK
+HK
+mL
+Ff
+LE
+HK
 BY
 BY
 BY
@@ -40293,24 +40521,24 @@ BY
 BY
 BY
 BY
+lM
 BY
 BY
+lM
+lM
+lM
+lM
 BY
 BY
+wH
+wH
 BY
 BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
-BY
+HK
+HK
+HK
+HK
+HK
 BY
 BY
 BY
@@ -40550,6 +40778,7 @@ BY
 BY
 BY
 BY
+Xm
 BY
 BY
 BY
@@ -40558,9 +40787,8 @@ BY
 BY
 BY
 BY
-BY
-BY
-BY
+wH
+wH
 BY
 BY
 BY
@@ -40807,6 +41035,7 @@ BY
 BY
 BY
 BY
+lM
 BY
 BY
 BY
@@ -40815,9 +41044,8 @@ BY
 BY
 BY
 BY
-BY
-BY
-BY
+wH
+wH
 BY
 BY
 BY
@@ -41073,8 +41301,8 @@ BY
 BY
 BY
 BY
-BY
-BY
+wH
+wH
 BY
 BY
 BY
@@ -41330,8 +41558,8 @@ BY
 BY
 BY
 BY
-BY
-BY
+wH
+wH
 BY
 BY
 BY
@@ -41585,10 +41813,10 @@ BY
 BY
 BY
 BY
-BY
-BY
-BY
-BY
+wH
+wH
+wH
+wH
 BY
 BY
 BY
@@ -41842,10 +42070,10 @@ BY
 BY
 BY
 BY
-BY
-BY
-BY
-BY
+wH
+wH
+wH
+wH
 BY
 BY
 BY
