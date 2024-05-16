@@ -4,6 +4,6 @@
 	req_access = list(ACCESS_CENT_CAPTAIN)
 	anchored = TRUE
 
-/obj/structure/closet/secure_closet/event_venue/PopulateContents()
+/obj/structure/closet/secure_closet/event_venue_do_not_use_off_interlink_event_venue/PopulateContents()
 	..()
 	new /obj/item/door_remote/omni/admin(src)
