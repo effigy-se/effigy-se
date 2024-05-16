@@ -7,7 +7,6 @@
 		- If you enable the ghost spawner; remember you that you can customize which outfit everyone will spawn with the "outfit" variable. Do not edit the spawner_job_path variable. <br>
 		- By default; everyone will spawn in with their loadout. While I'd reccomend working AROUND this; you can disable it via the "loadout_enabled" variable. <br>
 		- Do not give the ghost spawner any CentCom or ERT-Adjacent Outfits. Anyone with the access flag "ACCESS_CENT_CAPTAIN" can jailbreak the venue. <br>
-		- The buttons scattered around control various venue functionality (doors; etc) and are labelled. All are gated behind "ACCESS_CENT_CAPTAIN" unless otherwise specified here. <br>
 		- To enable the spawner; set "uses" to the amount of participants allowed (-1 for infinity). <br>
 		- On the spawner; It's reccomended to edit "flavor_text" to explain the context of the event (wedding; bougie party; etc) and "important_text" to clarify if shitstirring (or worse) was/is allowed."}
 
