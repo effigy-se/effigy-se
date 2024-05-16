@@ -10,3 +10,8 @@
 		- The buttons scattered around control various venue functionality (doors; etc) and are labelled. All are gated behind "ACCESS_CENT_CAPTAIN" unless otherwise specified here. <br>
 		- To enable the spawner; set "uses" to the amount of participants allowed (-1 for infinity). <br>
 		- On the spawner; It's reccomended to edit "flavor_text" to explain the context of the event (wedding; bougie party; etc) and "important_text" to clarify if shitstirring (or worse) was/is allowed."}
+
+/obj/item/paper/fluff/interlink/pizza_party
+	name = "paper - 'pizza party howto'"
+	default_raw_text = {"In an effort to save on kitchen space; we've provided a special pizza box that should remotely order and prepare the favored pizza of whomever opens it each time. Show it to your
+	guests; have them open the box - and take out the pizza provided. Try not to let them order multiple for our budget."}

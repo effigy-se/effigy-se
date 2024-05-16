@@ -484,6 +484,19 @@
 	glass_type = /obj/machinery/door/airlock/central_command/glass
 	airlock_type = /obj/machinery/door/airlock/central_command
 
+// Variant that's indestructible and unhackable. Oorah.
+/obj/machinery/door/airlock/central_command/indestructible_and_unhackable_not_fun_for_players_do_not_map_off_a_centcom_z_level // I'm sensing a pattern with this PR
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	damage_deflection = INFINITY
+	integrity_failure = 0
+	aiControlDisabled = AI_WIRE_DISABLED
+	hackProof = TRUE
+	normalspeed = FALSE
+	move_resist = INFINITY
+
+/obj/machinery/door/airlock/central_command/indestructible_and_unhackable_not_fun_for_players_do_not_map_off_a_centcom_z_level/screwdriver_act(mob/living/user, obj/item/tool)
+	return ITEM_INTERACT_SKIP_TO_ATTACK // Prevents opening the panel. Admins can varedit panel_open to muck with the wires still; if they really want.
+
 /**
  * Effigy Door Assemblies
  */
