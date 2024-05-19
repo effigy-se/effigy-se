@@ -374,6 +374,7 @@
 				ROLE_MIND_TRANSFER,
 				ROLE_POSIBRAIN,
 				ROLE_SENTIENCE,
+				ROLE_EVENTVENUE_GUEST, // Effigy Add - Interlink, Event Venue
 			),
 			"Antagonist Positions" = list(
 				ROLE_ABDUCTOR,
