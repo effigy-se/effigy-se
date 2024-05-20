@@ -178,20 +178,7 @@
 	else
 		CRASH("Emote [type] has no valid emote type set!")
 
-	if(!isnull(user.client))
-		var/dchatmsg = "<b>[user]</b>[space][msg]" // EffigyEdit Change - Original: var/dchatmsg = "<b>[user]</b> [msg]"
-		for(var/mob/ghost as anything in GLOB.dead_mob_list - viewers(get_turf(user)))
-			if(isnull(ghost.client) || isnewplayer(ghost))
-				continue
-			if(!(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT))
-				continue
-			to_chat(ghost, "<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
-
-	return TRUE
-
-
-
-	// EffigyEdit Add - Customization
+		// EffigyEdit Add - Customization
 	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 	if(hologram)
 		if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE))
@@ -204,7 +191,16 @@
 					to_chat(viewer, msg)
 	// EffigyEdit Add End
 
-	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
+	if(!isnull(user.client))
+		var/dchatmsg = "<b>[user]</b>[space][msg]" // EffigyEdit Change - Original: var/dchatmsg = "<b>[user]</b> [msg]"
+		for(var/mob/ghost as anything in GLOB.dead_mob_list - viewers(get_turf(user)))
+			if(isnull(ghost.client) || isnewplayer(ghost))
+				continue
+			if(!(get_chat_toggles(ghost.client) & CHAT_GHOSTSIGHT))
+				continue
+			to_chat(ghost, "<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
+
+	return TRUE
 
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
