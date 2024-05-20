@@ -17,7 +17,7 @@ export const PingIndicator = (props) => {
     new Color(209, 17, 65),
     new Color(235, 160, 37),
     new Color(0, 174, 219),
-  ]);
+  ]).toString();
   const roundtrip = ping.roundtrip ? toFixed(ping.roundtrip) : '--';
   return (
     <div className="Ping">

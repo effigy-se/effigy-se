@@ -22,6 +22,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 /datum/gateway_destination/proc/get_available_reason()
 	. = "Unreachable"
 	if(world.time - SSticker.round_start_time < wait)
+		playsound(src, 'sound/effects/gateway_calibrating.ogg', 80, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		. = "Connection desynchronized. Recalibration in progress."
 
 /* Check if the movable is allowed to arrive at this destination (exile implants mostly) */
@@ -150,6 +151,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		return
 	// EffigyEdit Add End
 	if(get_dir(src,AM) == SOUTH)
+		playsound(src, 'sound/effects/gateway_travel.ogg', 70, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		gateway.Transfer(AM)
 
 /obj/effect/gateway_portal_bumper/Destroy(force)
@@ -214,6 +216,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 /obj/machinery/gateway/proc/deactivate()
 	var/datum/gateway_destination/dest = target
 	target = null
+	playsound(src, 'sound/effects/gateway_close.ogg', 140, TRUE, TRUE, SOUND_RANGE)
 	dest.deactivate(src)
 	QDEL_NULL(portal)
 	update_use_power(IDLE_POWER_USE)
@@ -276,6 +279,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	target.activate(destination)
 	portal_visuals.setup_visuals(target)
 	transport_active = TRUE
+	playsound(src, 'sound/effects/gateway_open.ogg', 140, TRUE, TRUE, SOUND_RANGE)
 	generate_bumper()
 	update_use_power(ACTIVE_POWER_USE)
 	update_appearance()
@@ -318,6 +322,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	if(calibrated)
 		to_chat(user, span_alert("The gate is already calibrated, there is no work for you to do here."))
 	else
+		playsound(src, 'sound/effects/gateway_calibrated.ogg', 80, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		to_chat(user, "[span_boldnotice("Recalibration successful!")]: \black This gate's systems have been fine tuned. Travel to this gate will now be on target.")
 		calibrated = TRUE
 	return TRUE
