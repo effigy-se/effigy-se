@@ -267,8 +267,6 @@
 		qdel(kiss_blower)
 		to_chat(user, span_warning("You're incapable of blowing a kiss in your current state."))
 
-// EffigyEdit Remove START - (Moved to packages)
-/*
 /datum/emote/living/laugh
 	key = "laugh"
 	key_third_person = "laughs"

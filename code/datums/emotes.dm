@@ -101,10 +101,8 @@
 		return TRUE
 
 	user.log_message(msg, LOG_EMOTE)
-	// EffigyEdit Add - Customization
-	var/space = should_have_space_before_emote(html_decode(msg)[1]) ? " " : ""
-	var/dchatmsg = "<b>[user]</b>[space][msg]"
-	// EffigyEdit Add End
+
+	var/space = should_have_space_before_emote(html_decode(msg)[1]) ? " " : "" // EffigyEdit Add - Customization
 
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && should_play_sound(user, intentional) && TIMER_COOLDOWN_FINISHED(user, type))
@@ -181,7 +179,7 @@
 		CRASH("Emote [type] has no valid emote type set!")
 
 	if(!isnull(user.client))
-		var/dchatmsg = "<b>[user]</b> [msg]"
+		var/dchatmsg = "<b>[user]</b>[space][msg]" // EffigyEdit Change - Original: var/dchatmsg = "<b>[user]</b> [msg]"
 		for(var/mob/ghost as anything in GLOB.dead_mob_list - viewers(get_turf(user)))
 			if(isnull(ghost.client) || isnewplayer(ghost))
 				continue
