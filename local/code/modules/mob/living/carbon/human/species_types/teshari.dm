@@ -52,17 +52,6 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/teshari,
 	)
 
-/datum/species/teshari/random_name(gender, unique, lastname)
-	if(unique)
-		return random_unique_teshari_name()
-
-	var/randname = teshari_name()
-
-	if(lastname)
-		randname += " [lastname]"
-
-	return randname
-
 /datum/species/teshari/prepare_human_for_preview(mob/living/carbon/human/tesh)
 	var/base_color = "#c0965f"
 	var/ear_color = "#e4c49b"
