@@ -194,9 +194,9 @@
 /obj/structure/ash_walker_eggshell/Destroy()
 	if(!egg)
 		return ..()
-	var/mob/living/carbon/human/yolk = new /mob/living/carbon/human/(get_turf(src))
-	yolk.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	var/mob/living/carbon/human/yolk = new(get_turf(src))
 	yolk.set_species(/datum/species/lizard/ashwalker)
+	yolk.fully_replace_character_name(null, yolk.generate_random_mob_name(TRUE))
 	yolk.underwear = "Nude"
 	yolk.equipOutfit(/datum/outfit/ashwalker)//this is an authentic mess we're making
 	yolk.update_body()
@@ -235,7 +235,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/ash_walker/special(mob/living/carbon/human/spawned_human)
 	// EffigyEdit Change - Moved lizard name randomizer before parent call (so character names are preserved)
-	spawned_human.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	spawned_human.fully_replace_character_name(null, spawned_human.generate_random_mob_name(TRUE))
 	quirks_enabled = TRUE
 	. = ..()
 	// EffigyEdit Change End
