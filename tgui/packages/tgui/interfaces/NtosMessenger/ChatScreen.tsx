@@ -33,6 +33,7 @@ type ChatScreenState = {
   message: string;
   previewingImage?: string;
   selectingPhoto: boolean;
+  subtleMode: boolean; // EffigyEdit Add - Subtle texting
 };
 
 const READ_UNREADS_TIME_MS = 1000;
@@ -46,6 +47,7 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
     message: '',
     selectingPhoto: false,
     canSend: true,
+    subtleMode: false, // EffigyEdit Add - Subtle texting
   };
 
   constructor(props: ChatScreenProps) {
@@ -60,6 +62,7 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
     this.trySetReadTimeout = this.trySetReadTimeout.bind(this);
     this.tryClearReadTimeout = this.tryClearReadTimeout.bind(this);
     this.clearUnreads = this.clearUnreads.bind(this);
+    this.handleToggleSubtle = this.handleToggleSubtle.bind(this); // EffigyEdit Add - Subtle texting
   }
 
   componentDidMount() {
@@ -152,6 +155,7 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
     act('PDA_sendMessage', {
       ref: ref,
       message: this.state.message,
+      subtle: this.state.subtleMode, // EffigyEdit Add - Subtle texting
     });
 
     this.setState({ message: '', canSend: false });
@@ -161,6 +165,14 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
   handleMessageInput(_: any, val: string) {
     this.setState({ message: val });
   }
+
+  // EffigyEdit Add - Subtle texting
+  handleToggleSubtle() {
+    this.setState((state) => ({
+      subtleMode: !state.subtleMode,
+    }));
+  }
+  // EffigyEdit Add End
 
   render() {
     const { act } = useBackend();
@@ -174,7 +186,9 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
       sendingVirus,
       unreads,
     } = this.props;
-    const { message, canSend, previewingImage, selectingPhoto } = this.state;
+    // EffigyEdit Change - Subtle texting - Original: const { message, canSend, previewingImage, selectingPhoto } = this.state;
+    const { message, canSend, previewingImage, selectingPhoto, subtleMode } =
+      this.state;
 
     let filteredMessages: JSX.Element[] = [];
 
@@ -197,6 +211,7 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
             everyone={message.everyone}
             photoPath={message.photo_path}
             timestamp={message.timestamp}
+            subtle={message.subtle} // EffigyEdit Add - Subtle texting
             onPreviewImage={
               message.photo_path
                 ? () => this.setState({ previewingImage: message.photo_path! })
@@ -269,6 +284,16 @@ export class ChatScreen extends Component<ChatScreenProps, ChatScreenState> {
       const buttons = canReply ? (
         <>
           <Stack.Item>{attachmentButton}</Stack.Item>
+          {/* EffigyEdit Add - Subtle texting */}
+          <Stack.Item>
+            <Button
+              tooltip="Toggle subtle mode; messages sent will be hidden from prying eyes."
+              icon={subtleMode ? 'fa-ear-deaf' : 'fa-ear-listen'}
+              backgroundColor={subtleMode ? `hsl(281, 39%, 59%)` : ''}
+              onClick={this.handleToggleSubtle}
+            />
+          </Stack.Item>
+          {/* EffigyEdit Add End */}
           <Stack.Item>
             <Button
               tooltip="Send"
@@ -396,16 +421,38 @@ type ChatMessageProps = {
   timestamp: string;
   photoPath?: string;
   onPreviewImage?: () => void;
+  subtle: BooleanLike; // EffigyEdit Add - Subtle texting
 };
 
 const ChatMessage = (props: ChatMessageProps) => {
-  const { message, everyone, outgoing, photoPath, timestamp, onPreviewImage } =
-    props;
+  // EffigyEdit Change - Subtle texting - Original: const { message, everyone, outgoing, photoPath, timestamp, onPreviewImage } = props;
+  const {
+    message,
+    everyone,
+    outgoing,
+    photoPath,
+    timestamp,
+    onPreviewImage,
+    subtle,
+  } = props;
+  // EffigyEdit Change End
 
   const displayMessage = decodeHtmlEntities(message);
 
   return (
-    <Box className={`NtosChatMessage${outgoing ? '_outgoing' : ''}`}>
+    // EffigyEdit Change - Subtle texting - Original: <Box className={`NtosChatMessage${outgoing ? '_outgoing' : ''}`}>
+    <Box
+      className={`NtosChatMessage${
+        subtle
+          ? outgoing
+            ? '_subtle_outgoing'
+            : '_subtle'
+          : outgoing
+            ? '_outgoing'
+            : ''
+      }`}
+    >
+      {/* EffigyEdit Change End */}
       <Box className="NtosChatMessage__content">
         <Box as="span">{displayMessage}</Box>
         <Tooltip content={timestamp} position={outgoing ? 'left' : 'right'}>
