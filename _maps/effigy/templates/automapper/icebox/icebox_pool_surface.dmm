@@ -2,21 +2,49 @@
 "a" = (
 /turf/open/openspace,
 /area/station/commons/fitness)
-"e" = (
+"c" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/siding/white{
+/obj/machinery/atmospherics/pipe/multiz/supply/hidden/layer4{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/multiz/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/fore)
+"d" = (
+/obj/structure/cable/multilayer/multiz,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/fore)
+"e" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 1
 	},
 /obj/structure/railing{
-	dir = 4
+	dir = 1
 	},
 /obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/commons/fitness)
+"g" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/cobweb,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/fore)
 "h" = (
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 8
@@ -60,10 +88,8 @@
 /area/station/commons/fitness)
 "m" = (
 /obj/structure/disposalpipe/segment{
-	dir = 10
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/siding/white{
 	dir = 1
 	},
@@ -73,17 +99,28 @@
 /obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/commons/fitness)
+"n" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 6
+	},
+/turf/open/floor/glass/reinforced/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
 "o" = (
-/obj/effect/turf_decal/tile/neutral/anticorner/contrasted,
-/turf/open/floor/iron,
-/area/station/commons/fitness)
+/obj/structure/disposalpipe/sorting/mail,
+/obj/effect/mapping_helpers/mail_sorting/service/bar,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/fore)
 "p" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/neutral{
@@ -95,30 +132,58 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/commons/fitness)
+"t" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/commons/fitness)
 "u" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/maintenance{
+	name = "Fitness Maintenance"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/service/maintenance,
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/fore)
+"v" = (
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 1
 	},
 /obj/structure/railing/corner{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/commons/fitness)
 "y" = (
 /turf/template_noop,
 /area/template_noop)
 "z" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
+/obj/effect/turf_decal/tile/neutral/anticorner/contrasted,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/commons/fitness)
 "A" = (
@@ -130,6 +195,12 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/fitness)
+"B" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
+/turf/open/floor/glass/reinforced/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
 "D" = (
 /obj/effect/landmark/start/hangover,
 /obj/effect/turf_decal/siding/white{
@@ -158,6 +229,30 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/fitness)
+"K" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/fore)
+"M" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/turf/open/floor/glass/reinforced/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
+"P" = (
+/turf/open/floor/plating/snowed/smoothed/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
+"T" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/turf/open/floor/glass/reinforced/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
 "U" = (
 /obj/effect/landmark/start/hangover,
 /obj/effect/turf_decal/siding/white,
@@ -165,17 +260,35 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/open/floor/iron,
 /area/station/commons/fitness)
+"V" = (
+/obj/effect/turf_decal/weather/snow/corner,
+/turf/open/floor/glass/reinforced/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
 "X" = (
 /obj/effect/turf_decal/siding/white,
 /obj/structure/railing,
 /obj/machinery/door/firedoor/border_only,
 /turf/open/floor/iron,
 /area/station/commons/fitness)
+"Y" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light/small/dim/directional/north,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/fore)
+"Z" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 5
+	},
+/turf/open/floor/glass/reinforced/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
 
 (1,1,1) = {"
-y
-y
-y
 y
 y
 y
@@ -192,14 +305,13 @@ i
 j
 j
 k
-e
+t
 p
 y
+y
+d
 "}
 (2,1,1) = {"
-y
-y
-y
 y
 y
 y
@@ -219,6 +331,8 @@ a
 a
 m
 y
+y
+c
 "}
 (3,1,1) = {"
 y
@@ -233,16 +347,15 @@ y
 y
 y
 y
-y
-y
-y
 X
 a
 a
 a
 a
-z
+e
 y
+y
+g
 "}
 (4,1,1) = {"
 y
@@ -257,16 +370,15 @@ y
 y
 y
 y
-y
-y
-y
 X
 a
 a
 a
 a
-z
+e
 y
+y
+K
 "}
 (5,1,1) = {"
 y
@@ -281,21 +393,17 @@ y
 y
 y
 y
-y
-y
-y
 X
 a
 a
 a
 a
-z
+e
 y
+y
+Y
 "}
 (6,1,1) = {"
-E
-E
-E
 y
 y
 y
@@ -313,13 +421,14 @@ D
 H
 A
 A
+v
+z
 u
 o
 "}
 (7,1,1) = {"
-E
-E
-E
+y
+y
 y
 y
 y
@@ -341,9 +450,8 @@ y
 y
 "}
 (8,1,1) = {"
-E
-E
-E
+y
+y
 y
 y
 y
@@ -365,9 +473,6 @@ y
 y
 "}
 (9,1,1) = {"
-E
-E
-E
 y
 y
 y
@@ -375,6 +480,8 @@ y
 y
 y
 y
+T
+B
 y
 y
 y
@@ -389,9 +496,6 @@ y
 y
 "}
 (10,1,1) = {"
-E
-E
-E
 y
 y
 y
@@ -399,6 +503,8 @@ y
 y
 y
 y
+M
+V
 y
 y
 y
@@ -413,16 +519,15 @@ y
 y
 "}
 (11,1,1) = {"
-E
-E
-E
-E
 y
 y
 y
 y
 y
 y
+y
+M
+V
 y
 y
 y
@@ -437,7 +542,52 @@ y
 y
 "}
 (12,1,1) = {"
+y
 E
+E
+y
+y
+y
+y
+Z
+n
+y
+y
+y
+y
+y
+y
+y
+y
+y
+y
+y
+y
+"}
+(13,1,1) = {"
+E
+E
+E
+y
+y
+y
+y
+P
+P
+y
+y
+y
+y
+y
+y
+y
+y
+y
+y
+y
+y
+"}
+(14,1,1) = {"
 E
 E
 E
@@ -460,11 +610,10 @@ y
 y
 y
 "}
-(13,1,1) = {"
+(15,1,1) = {"
 y
 E
-E
-E
+y
 y
 y
 y
