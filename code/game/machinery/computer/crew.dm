@@ -248,14 +248,14 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 				entry["ijob"] = jobs[trim_assignment]
 
 		// EffigyEdit Add - Custom Sensor UI
-		if(uniform.has_sensor == BROKEN_SENSORS)
+		if (uniform.has_sensor == BROKEN_SENSORS)
 			entry["is_robot"] = rand(0,1)
 			entry["life_status"] = rand(0,1)
 			entry["area"] = pick_list (ION_FILE, "ionarea")
-			entry["oxydam"] = rand(0,1000)
-			entry["toxdam"] = rand(0,1000)
-			entry["burndam"] =rand(0,1000)
-			entry["brutedam"] = rand(0,1000)
+			entry["oxydam"] = rand(0,175)
+			entry["toxdam"] = rand(0,225)
+			entry["burndam"] =rand(0,425)
+			entry["brutedam"] = rand(0,325)
 			entry["health"] = -50
 			entry["can_track"] = tracked_living_mob.can_track()
 			results[++results.len] = entry
