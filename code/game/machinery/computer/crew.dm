@@ -44,7 +44,7 @@
 	. += create_table_notices(list(
 		"name",
 		"job",
-		"is_robot", // EffigyEdit Add (Medical)
+		"is_robot", // EffigyEdit Add - Custom Sensor UI
 		"life_status",
 		"suffocation",
 		"toxin",
@@ -65,7 +65,7 @@
 		var/list/entry = list()
 		entry["name"] = player_record["name"]
 		entry["job"] = player_record["assignment"]
-		entry["is_robot"] = player_record["is_robot"] // EffigyEdit Add (Medical)
+		entry["is_robot"] = player_record["is_robot"] // EffigyEdit Add - Custom Sensor UI
 		entry["life_status"] = player_record["life_status"]
 		entry["suffocation"] = player_record["oxydam"]
 		entry["toxin"] = player_record["toxdam"]
@@ -166,7 +166,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 /datum/crewmonitor/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "CrewConsoleEffigy") // EFFIGY EDIT
+		ui = new(user, src, "CrewConsoleEffigy") // EffigyEdit Change - Custom Sensor UI
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)
@@ -225,7 +225,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			continue
 
 		// Check if their uniform is in a compatible mode.
-		if((uniform.has_sensor == NO_SENSORS) || !uniform.sensor_mode) // EFFIGY EDIT CHANGE - ORIGINAL if((uniform.has_sensor <= NO_SENSORS) || !uniform.sensor_mode)
+		if((uniform.has_sensor == NO_SENSORS) || !uniform.sensor_mode) // EffigyEdit Change - Custom Sensor UI - Original: if((uniform.has_sensor <= NO_SENSORS) || !uniform.sensor_mode)
 			stack_trace("Human without active suit sensors is in suit_sensors_list: [tracked_human] ([tracked_human.type]) ([uniform.type])")
 			continue
 
@@ -247,7 +247,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			if (jobs[trim_assignment] != null)
 				entry["ijob"] = jobs[trim_assignment]
 
-		// EFFIGY EDIT ADDITION START - EMP SENSORS
+		// EffigyEdit Add - Custom Sensor UI
 		if(uniform.has_sensor == BROKEN_SENSORS)
 			entry["is_robot"] = rand(0,1)
 			entry["life_status"] = rand(0,1)
@@ -260,10 +260,10 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			entry["can_track"] = tracked_living_mob.can_track()
 			results[++results.len] = entry
 			continue
-		// EFFIGY EDIT ADDITION END
+		// EffigyEdit Add End
 		// Current status
-		if (issynthetic(tracked_human)) // EffigyEdit Add (Medical)
-			entry["is_robot"] = TRUE // EffigyEdit Add (Medical)
+		if (issynthetic(tracked_human)) // EffigyEdit Add - Custom Sensor UI
+			entry["is_robot"] = TRUE // EffigyEdit Add - Custom Sensor UI
 
 		// Binary living/dead status
 		if (sensor_mode >= SENSOR_LIVING)

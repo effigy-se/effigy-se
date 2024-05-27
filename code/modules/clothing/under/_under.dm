@@ -141,13 +141,13 @@
 
 	if(severity <= EMP_HEAVY)
 		has_sensor = BROKEN_SENSORS
-		sensor_mode = SENSOR_LIVING // EFFIGY EDIT ADDITION
+		sensor_mode = SENSOR_LIVING // EffigyEdit Add - Custom Sensor UI
 		if(ismob(loc))
 			var/mob/M = loc
 			to_chat(M,span_warning("[src]'s sensors short out!"))
 
 	else
-		sensor_mode = clamp(sensor_mode + pick(-1,1), SENSOR_OFF, SENSOR_COORDS) // EFFIGY EDIT CHANGE - ORIGINAL: sensor_mode = pick(SENSOR_OFF, SENSOR_OFF, SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS)
+		sensor_mode = clamp(sensor_mode + pick(-1,1), SENSOR_OFF, SENSOR_COORDS) // EffigyEdit Change - Custom Sensor UI - Original: sensor_mode = pick(SENSOR_OFF, SENSOR_OFF, SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS)
 		if(ismob(loc))
 			var/mob/M = loc
 			to_chat(M,span_warning("The sensors on the [src] change rapidly!"))

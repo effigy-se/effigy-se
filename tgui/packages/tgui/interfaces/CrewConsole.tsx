@@ -175,6 +175,7 @@ const CrewTable = () => {
 
   return (
     <Section
+      scrollable
       title={
         <>
           <Button onClick={cycleSortBy}>{SORT_NAMES[sortBy]}</Button>

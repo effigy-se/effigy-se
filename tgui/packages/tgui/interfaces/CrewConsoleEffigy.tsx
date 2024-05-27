@@ -1,4 +1,3 @@
-// THIS IS A FFIGY SECTOR UI FILE
 import { BooleanLike } from 'common/react';
 import { createSearch } from 'common/string';
 import { useState } from 'react';
