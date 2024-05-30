@@ -184,6 +184,20 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	/// The rank (job title) of the mob that entered the cryopod, if it was a human. "N/A" by default.
 	var/stored_rank = "N/A"
 
+	// Social District
+	/// Is this sleeper used for district transfer
+	var/district_transfer_enabled = FALSE
+	/// Is a player waiting to be transferred
+	var/district_transfer_pending = FALSE
+	/// District server ID
+	var/district_id
+	/// District server address
+	var/district_addr
+	/// District friendly name
+	var/district_name
+	/// Message on district change
+	var/district_announce = "<div class='chat_alert_pink'>Changing district...</div>"
+
 /obj/machinery/cryopod/no_latejoin
 	latejoin_possible = FALSE
 
@@ -272,6 +286,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		if(istype(human_occupant) && human_occupant.mind)
 			human_occupant.save_individual_persistence(stored_ckey)
 
+		if(district_transfer_enabled)
+			to_chat(world, span_warning("[occupant.name] entered a sleeper for district transfer to [district_name]. Transfer in [DisplayTimeText(time_till_despawn)]"))
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 
 /obj/machinery/cryopod/open_machine(drop = TRUE, density_to_set = FALSE)
@@ -299,9 +315,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	if(mob_occupant.stat == DEAD)
 		open_machine()
 
-	if(!mob_occupant.client && COOLDOWN_FINISHED(src, despawn_world_time))
+	if(COOLDOWN_FINISHED(src, despawn_world_time))
+		if(mob_occupant.client && !district_transfer_enabled)
+			return
+
 		if(!control_computer_weakref)
 			find_control_computer(urgent = TRUE)
+
+		if(district_transfer_enabled)
+			to_chat(world, span_warning("Processing district transfer of [occupant.name] to [district_name]."))
 
 		despawn_occupant()
 
@@ -420,6 +442,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	GLOB.joined_player_list -= stored_ckey
 
 	handle_objectives()
+	if(district_transfer_enabled)
+		to_chat(world, span_green("District transfer passed final checks for [occupant.name]."))
+		district_transfer_pending = TRUE
+		district_transfer(mob_occupant)
 	mob_occupant.ghostize()
 	QDEL_NULL(occupant)
 	open_machine()
