@@ -7,12 +7,12 @@
 
 /obj/machinery/cryopod/socialdistrict/social
 	name = "social district sleeper"
-	district_id = "effigy_sf"
+	district_id = "effigy_dev"
 	district_name = "Social District"
 
 /obj/machinery/cryopod/socialdistrict/action
 	name = "action district sleeper"
-	district_id = "effigy_sf"
+	district_id = "effigy_dev"
 	district_name = "Action District"
 
 /obj/machinery/cryopod/proc/district_transfer(mob/living/user)
