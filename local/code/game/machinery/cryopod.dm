@@ -191,8 +191,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	var/district_transfer_pending = FALSE
 	/// District server ID
 	var/district_id
-	/// District server address
-	var/district_addr
 	/// District friendly name
 	var/district_name
 	/// Message on district change
