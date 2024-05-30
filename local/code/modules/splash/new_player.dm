@@ -109,6 +109,41 @@
 /mob/dead/new_player/proc/play_lobby_button_sound()
 //	SEND_SOUND(src, sound('local/icons/runtime/save.ogg')) // EffigyEdit TODO
 
+/client/verb/district_select()
+	set category = "OOC"
+	set name = "District Select"
+	set desc = "District Select"
+
+	var/datum/district_select/tgui = new(usr)//create the datum
+	tgui.ui_interact(usr)//datum has a tgui component, here we open the window
+
+/datum/district_select
+	var/client/holder //client of whoever is using this datum
+
+/datum/district_select/New(user)//user can either be a client or a mob due to byondcode(tm)
+	if(istype(user, /client))
+		var/client/user_client = user
+		holder = user_client //if its a client, assign it to holder
+	else
+		var/mob/user_mob = user
+		holder = user_mob.client //if its a mob, assign the mob's client to holder
+
+/datum/district_select/ui_state(mob/user)
+	return GLOB.admin_state
+
+/datum/district_select/ui_close()
+	qdel(src)
+
+/datum/district_select/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "EffigyDistrictSelect")
+		ui.open()
+
+/datum/district_select/ui_data(mob/user)
+	var/list/data = list()
+	return data
+
 /**
  * Shows the player a list of current polls, if any.
  */

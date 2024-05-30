@@ -11,6 +11,7 @@
 		#include "map_files\Mining\Lavaland.dmm"
 		#include "map_files\tramstation\tramstation.dmm"
 		// EffigyEdit Add - Maps
+		#include "effigy\map_files\socialdistrict\socialdistrict.dmm"
 		#include "effigy\map_files\FoxHoleStation\foxholestation.dmm"
 		#include "effigy\map_files\RimPoint\RimPoint.dmm"
 		#include "effigy\map_files\SigmaOctantis\SigmaOctantis.dmm"
