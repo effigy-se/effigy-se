@@ -56,8 +56,8 @@
 	facial_hair_alpha = owner_species.facial_hair_alpha
 	facial_hair_color = human_head_owner.facial_hair_color
 	fixed_hair_color = owner_species.get_fixed_hair_color(human_head_owner) //Can be null
-	gradient_styles = human_head_owner.grad_style?.Copy()
-	gradient_colors = human_head_owner.grad_color?.Copy()
+	gradient_styles = human_head_owner.grad_style.Copy()
+	gradient_colors = human_head_owner.grad_color.Copy()
 
 /obj/item/bodypart/head/proc/get_hair_and_lips_icon(dropped)
 	SHOULD_CALL_PARENT(TRUE)
@@ -276,18 +276,12 @@
 	return
 
 /mob/living/carbon/human/set_hair_gradient_style(new_style, update = TRUE)
-	if(new_style == "None")
-		new_style = null
-	if(LAZYACCESS(grad_style, GRADIENT_HAIR_KEY) == new_style)
+	if(grad_style[GRADIENT_HAIR_KEY] == new_style)
 		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
-	LAZYSETLEN(grad_style, GRADIENTS_LEN)
-	LAZYSETLEN(grad_color, GRADIENTS_LEN)
 	grad_style[GRADIENT_HAIR_KEY] = new_style
 	if(my_head)
-		LAZYSETLEN(my_head.gradient_styles, GRADIENTS_LEN)
-		LAZYSETLEN(my_head.gradient_colors, GRADIENTS_LEN)
 		my_head.gradient_styles[GRADIENT_HAIR_KEY] = new_style
 
 	if(update)
@@ -301,17 +295,12 @@
 	return
 
 /mob/living/carbon/human/set_hair_gradient_color(new_color, update = TRUE)
-	if(LAZYACCESS(grad_color, GRADIENT_HAIR_KEY) == new_color)
+	if(grad_color[GRADIENT_HAIR_KEY] == new_color)
 		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
-
-	LAZYSETLEN(grad_style, GRADIENTS_LEN)
-	LAZYSETLEN(grad_color, GRADIENTS_LEN)
 	grad_color[GRADIENT_HAIR_KEY] = new_color
 	if(my_head)
-		LAZYSETLEN(my_head.gradient_styles, GRADIENTS_LEN)
-		LAZYSETLEN(my_head.gradient_colors, GRADIENTS_LEN)
 		my_head.gradient_colors[GRADIENT_HAIR_KEY] = new_color
 
 	if(update)
@@ -362,18 +351,12 @@
 	return
 
 /mob/living/carbon/human/set_facial_hair_gradient_style(new_style, update = TRUE)
-	if(new_style == "None")
-		new_style = null
-	if(LAZYACCESS(grad_style, GRADIENT_FACIAL_HAIR_KEY) == new_style)
+	if(grad_style[GRADIENT_FACIAL_HAIR_KEY] == new_style)
 		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
-	LAZYSETLEN(grad_style, GRADIENTS_LEN)
-	LAZYSETLEN(grad_color, GRADIENTS_LEN)
 	grad_style[GRADIENT_FACIAL_HAIR_KEY] = new_style
 	if(my_head)
-		LAZYSETLEN(my_head.gradient_styles, GRADIENTS_LEN)
-		LAZYSETLEN(my_head.gradient_colors, GRADIENTS_LEN)
 		my_head.gradient_styles[GRADIENT_FACIAL_HAIR_KEY] = new_style
 
 	if(update)
@@ -387,16 +370,12 @@
 	return
 
 /mob/living/carbon/human/set_facial_hair_gradient_color(new_color, update = TRUE)
-	if(LAZYACCESS(grad_color, GRADIENT_FACIAL_HAIR_KEY) == new_color)
+	if(grad_color[GRADIENT_FACIAL_HAIR_KEY] == new_color)
 		return
 	var/obj/item/bodypart/head/my_head = get_bodypart(BODY_ZONE_HEAD)
 
-	LAZYSETLEN(grad_style, GRADIENTS_LEN)
-	LAZYSETLEN(grad_color, GRADIENTS_LEN)
 	grad_color[GRADIENT_FACIAL_HAIR_KEY] = new_color
 	if(my_head)
-		LAZYSETLEN(my_head.gradient_styles, GRADIENTS_LEN)
-		LAZYSETLEN(my_head.gradient_colors, GRADIENTS_LEN)
 		my_head.gradient_colors[GRADIENT_FACIAL_HAIR_KEY] = new_color
 
 	if(update)
