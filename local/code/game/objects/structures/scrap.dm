@@ -29,7 +29,7 @@
 
 /obj/structure/scrap/examine(mob/user)
 	.=..()
-	to_chat(user, "Some cutting equipment would be ideal to cut through this for valuables, though a shovel will work in a pinch.")
+	. += span_notice("Some cutting equipment would be ideal to cut through this for valuables, though a shovel will work in a pinch.")
 
 /obj/structure/scrap/attackby(obj/item/tool, mob/user, params)
 	// We check here if we have a shovel, OR a valid welding tool.

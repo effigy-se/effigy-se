@@ -1,4 +1,6 @@
 #define SCRAPBEACON_DEBRIS_DAMAGE 25
+#define SCRAPBEACON_IMPACT_PROBABILITY 5
+#define SCRAPBEACON_BASE_COOLDOWN 20 MINUTES
 
 /obj/machinery/scrap_beacon
 	name = "scrap beacon"
@@ -13,11 +15,11 @@
 	// Are we currently pulling scrap in?
 	var/active = FALSE
 	// Our cooldown length - seperate from the actual cooldown
-	var/preset_cooldown_length = 20 MINUTES
+	var/preset_cooldown_length = SCRAPBEACON_BASE_COOLDOWN
 	// How likely is any given turf going to get scrap? In percentage
-	var/impact_probability = 10
-	// Our range
-	var/impact_range = 3
+	var/impact_probability = SCRAPBEACON_IMPACT_PROBABILITY
+	// Our range - not player-malleable.
+	var/impact_range = 2
 	// What are we pulling in from space?
 	var/scrap_path = /obj/structure/scrap
 
@@ -25,7 +27,14 @@
 
 /obj/machinery/scrap_beacon/examine(mob/user)
 	. = ..()
-	to_chat(user, span_warning("It has a [impact_range] tile range, and a [impact_probability]% chance of pulling in debris to any given tile."))
+	. += span_warning("The display reads out that it has a [impact_probability]% chance of pulling in debris to any given tile, and a cooldown time of [DisplayTimeText(preset_cooldown_length)].")
+
+/obj/machinery/scrap_beacon/RefreshParts()
+	. = ..()
+	impact_probability = SCRAPBEACON_IMPACT_PROBABILITY
+	preset_cooldown_length = SCRAPBEACON_BASE_COOLDOWN
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		impact_probability *= capacitor.tier
 
 /obj/machinery/scrap_beacon/attackby(obj/item/weapon, mob/user, params)
 	if(!active && default_deconstruction_screwdriver(user, icon_state, icon_state, weapon))
@@ -49,7 +58,7 @@
 	log_game("[key_name(user)] has activated the [src].")
 	start_scrap_summon()
 
-/obj/machinery/scrap_beacon/proc/start_scrap_summon(mob/living/user)
+/obj/machinery/scrap_beacon/proc/start_scrap_summon()
 	active = TRUE
 	icon_state = "[initial(icon_state)]-on"
 	audible_message(span_boldwarning("An alarm blares as the [src] turns on and begins pulling debris in!"))
@@ -57,7 +66,11 @@
 	COOLDOWN_START(src, active_cd, preset_cooldown_length)
 	var/list/flooring_near_beacon = list()
 	for(var/turf/T in RANGE_TURFS(impact_range, src))
-		if(locate(/obj/structure/scrap) in T || !prob(impact_probability))
+		if(locate(/obj/structure/scrap) in T)
+			continue
+		if(!prob(impact_probability))
+			continue
+		if(!isopenturf(T))
 			continue
 		flooring_near_beacon += T
 	flooring_near_beacon -= loc
@@ -71,10 +84,12 @@
 			"effectStun" = TRUE, \
 			"effectStealth" = TRUE, \
 			"effectLimb" = pick(TRUE, FALSE), \
-			"effectMissile" = TRUE \
+			"delays" = list(POD_TRANSIT = 20, POD_FALLING = 6, POD_OPENING = 0, POD_LEAVING = 0), \
 		))
 		flooring_near_beacon -= newloc
 	active = FALSE
 	icon_state = initial(icon_state)
 
 #undef SCRAPBEACON_DEBRIS_DAMAGE
+#undef SCRAPBEACON_IMPACT_PROBABILITY
+#undef SCRAPBEACON_BASE_COOLDOWN
