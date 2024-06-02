@@ -1,5 +1,5 @@
 #define SCRAPBEACON_DEBRIS_DAMAGE 25
-#define SCRAPBEACON_IMPACT_PROBABILITY 5
+#define SCRAPBEACON_IMPACT_PROBABILITY 20
 #define SCRAPBEACON_BASE_COOLDOWN 20 MINUTES
 
 /obj/machinery/scrap_beacon
@@ -61,6 +61,7 @@
 /obj/machinery/scrap_beacon/proc/start_scrap_summon()
 	active = TRUE
 	icon_state = "[initial(icon_state)]-on"
+	update_icon_state()
 	audible_message(span_boldwarning("An alarm blares as the [src] turns on and begins pulling debris in!"))
 	playsound(loc, "sound/misc/bloblarm.ogg", 100, 1)
 	COOLDOWN_START(src, active_cd, preset_cooldown_length)
@@ -75,20 +76,14 @@
 		flooring_near_beacon += T
 	flooring_near_beacon -= loc
 	for(var/turf/newloc in flooring_near_beacon)
-		podspawn(list( \
-			"target" = get_turf(newloc), \
-			"style" = STYLE_SEETHROUGH, \
-			"spawn" = scrap_path, \
-			"damage" = SCRAPBEACON_DEBRIS_DAMAGE, \
-			"explosionSize" = list(0, 0, 0, 0), \
-			"effectStun" = TRUE, \
-			"effectStealth" = TRUE, \
-			"effectLimb" = pick(TRUE, FALSE), \
-			"delays" = list(POD_TRANSIT = 20, POD_FALLING = 6, POD_OPENING = 0, POD_LEAVING = 0), \
-		))
+		var/atom/movable/new_scrap = new scrap_path(newloc)
+		if(istype(new_scrap, /obj/structure/scrap))
+			var/obj/structure/scrap/actually_scrap = new_scrap
+			actually_scrap.fall_animation()
 		flooring_near_beacon -= newloc
 	active = FALSE
 	icon_state = initial(icon_state)
+	update_icon_state()
 
 #undef SCRAPBEACON_DEBRIS_DAMAGE
 #undef SCRAPBEACON_IMPACT_PROBABILITY

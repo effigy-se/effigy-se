@@ -64,3 +64,19 @@
 				var/trash = pick_n_take(trash_types)
 				new trash(get_turf(src))
 			qdel(src)
+
+/obj/structure/scrap/proc/fall_animation() // Called by the scrap beacon when summoned; not in initialize() for mapper use
+		pixel_x = rand(-150, 150)
+		pixel_y = 500
+		var/potential_seconds = rand(0.7, 2)
+		animate(src, pixel_y = initial(pixel_y), pixel_x = initial(pixel_x), time = potential_seconds SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(end_fall)), potential_seconds SECONDS)
+
+/obj/structure/scrap/proc/end_fall()
+	for(var/atom/movable/AM in loc)
+		if(AM != src)
+			AM.ex_act(1)
+
+	for(var/mob/living/M in oviewers(6, src))
+		shake_camera(M, 2, 2)
+	playsound(loc, 'sound/effects/meteorimpact.ogg', 50, 1)
