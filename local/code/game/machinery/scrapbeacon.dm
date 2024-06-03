@@ -32,7 +32,6 @@
 /obj/machinery/scrap_beacon/RefreshParts()
 	. = ..()
 	impact_probability = SCRAPBEACON_IMPACT_PROBABILITY
-	preset_cooldown_length = SCRAPBEACON_BASE_COOLDOWN
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
 		impact_probability *= capacitor.tier
 

@@ -40,8 +40,8 @@
 			user.visible_message(span_notice("[user] [pick(ways)] what remains of \the [src]."))
 			var/list/trash_types = subtypesof(/obj/item/trash)
 			var/list/part_types = partslist.Copy()
-			// 95% chance to get ore of some sort.
-			if (prob(95))
+			// 99% chance to get ore of some sort.
+			if (prob(99))
 				// An additional 70% chance to get Iron, Glass, and some common ore.
 				if (prob(70))
 					new /obj/item/stack/ore/iron(get_turf(src))
@@ -54,7 +54,7 @@
 					for(var/i in 1 to 2)
 						var/orelootrare = pick(oreslistrare)
 						new orelootrare(get_turf(src))
-			// 5% chance to get some parts instead.
+			// 1% chance to get some parts instead.
 			else
 				for(var/i in 1 to 3)
 					var/parts = pick_n_take(part_types)
