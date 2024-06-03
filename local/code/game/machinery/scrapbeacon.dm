@@ -29,6 +29,10 @@
 	. = ..()
 	. += span_warning("The display reads out that it has a [impact_probability]% chance of pulling in debris to any given tile, and a cooldown time of [DisplayTimeText(preset_cooldown_length)].")
 
+/obj/machinery/scrap_beacon/Initialize(mapload) // To prevent deconstruction being used as a workaround for the cooldown. Mappers: Take this into account roundstart!
+	. = ..()
+	COOLDOWN_START(src, active_cd, preset_cooldown_length)
+
 /obj/machinery/scrap_beacon/RefreshParts()
 	. = ..()
 	impact_probability = SCRAPBEACON_IMPACT_PROBABILITY
