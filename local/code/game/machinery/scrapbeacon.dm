@@ -21,7 +21,7 @@
 	// Our range - not player-malleable.
 	var/impact_range = 2
 	// What are we pulling in from space?
-	var/scrap_path = /obj/structure/scrap
+	var/scrap_path = /obj/structure/scrap/falls_when_spawned
 
 	COOLDOWN_DECLARE(active_cd)
 
@@ -76,10 +76,7 @@
 		flooring_near_beacon += T
 	flooring_near_beacon -= loc
 	for(var/turf/newloc in flooring_near_beacon)
-		var/atom/movable/new_scrap = new scrap_path(newloc)
-		if(istype(new_scrap, /obj/structure/scrap))
-			var/obj/structure/scrap/actually_scrap = new_scrap
-			actually_scrap.fall_animation()
+		new scrap_path(newloc)
 		flooring_near_beacon -= newloc
 	active = FALSE
 	icon_state = initial(icon_state)
