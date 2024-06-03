@@ -20,11 +20,11 @@
 	)
 
 	var/list/partslist = list(
-		/obj/item/stock_parts/capacitor/adv,
-		/obj/item/stock_parts/scanning_module/adv,
-		/obj/item/stock_parts/servo/nano,
-		/obj/item/stock_parts/micro_laser/high,
-		/obj/item/stock_parts/matter_bin/adv
+		/obj/item/stock_parts/capacitor/experimental, \
+		/obj/item/stock_parts/scanning_module/prototype, \
+		/obj/item/stock_parts/servo/atomic, \
+		/obj/item/stock_parts/micro_laser/quintuple_bound, \
+		/obj/item/stock_parts/matter_bin/anomic, \
 	) // SHOG TODO : tier 5
 
 /obj/structure/scrap/examine(mob/user)
