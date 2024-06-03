@@ -64,7 +64,6 @@
 /obj/machinery/scrap_beacon/proc/start_scrap_summon()
 	active = TRUE
 	icon_state = "beacon-on"
-	update_appearance()
 	audible_message(span_boldwarning("An alarm blares as the [src] turns on and begins pulling debris in!"))
 	playsound(loc, "sound/misc/bloblarm.ogg", 100, 1)
 	COOLDOWN_START(src, active_cd, preset_cooldown_length)
@@ -81,9 +80,11 @@
 	for(var/turf/newloc in flooring_near_beacon)
 		new scrap_path(newloc)
 		flooring_near_beacon -= newloc
+	addtimer(CALLBACK(src, PROC_REF(end_scrap_summon)), 6 SECONDS)
+
+/obj/machinery/scrap_beacon/proc/end_scrap_summon()
 	active = FALSE
 	icon_state = initial(icon_state)
-	update_appearance()
 
 #undef SCRAPBEACON_DEBRIS_DAMAGE
 #undef SCRAPBEACON_IMPACT_PROBABILITY
