@@ -34,34 +34,41 @@
 	var/adv_scanned = FALSE
 	///The tier of the item that was chosen, 1-100 then 1-3
 	var/choose_tier
-	/// Low-Value Rewards - Iron ore; a few types of electronics; etc
+	/// Low-Value Rewards - ~61% Chance
 	var/static/list/tier1_reward = list(
 		/obj/item/stack/ore/iron/thirty = 20, \
-		/obj/item/electronics/airlock = 2, \
-		/obj/item/electronics/firelock = 2, \
-		/obj/item/electronics/firealarm = 2, \
-		/obj/item/electronics/airalarm = 2, \
-		/obj/item/electronics/tracker = 2, \
+		/obj/item/electronics/airalarm = 5, \
+		/obj/item/electronics/airlock = 5, \
+		/obj/item/electronics/firealarm = 5, \
+		/obj/item/electronics/firelock = 5, \
+		/obj/item/electronics/tracker = 4, \
+		/obj/effect/spawner/random/bureaucracy/pen = 3, \
+		/obj/effect/spawner/random/maintenance/no_decals = 2, \
+		/obj/effect/spawner/random/contraband = 1, \
+		/obj/effect/spawner/random/engineering/tool = 1, \
+		/obj/effect/spawner/random/engineering/vending_restock = 1, \
 	)
-	/// High-Value Ore Rewards; Advanced Tools
+	/// High-Value Rewards - ~34% Chance
 	var/static/list/tier2_reward = list(
-		/obj/item/stack/ore/plasma/thirty = 20, \
 		/obj/item/stack/ore/silver/thirty = 30, \
-		/obj/item/stack/ore/gold/twentyfive = 10, \
-		/obj/item/stack/ore/diamond/ten = 10, \
 		/obj/item/stack/ore/titanium/thirty = 30, \
+		/obj/item/stack/ore/plasma/thirty = 20, \
+		/obj/item/stack/ore/diamond/ten = 10, \
+		/obj/item/stack/ore/gold/twentyfive = 10, \
+		/obj/item/salvage_handheld_scanner/advanced = 2, \
 		/obj/item/salvaging_hammer/adv = 2, \
 		/obj/item/salvaging_brush/adv = 2, \
-		/obj/item/salvage_handheld_scanner/advanced = 2, \
+		/obj/effect/spawner/random/engineering/tool_advanced = 1, \
 	)
-	/// Tier 5 Part Rewards, Bananium
+	/// Ultimate Rewards - ~5% Chance
 	var/static/list/tier3_reward = list(
+		/obj/item/stock_parts/capacitor/experimental = 10, \
+		/obj/item/stock_parts/matter_bin/anomic = 10, \
+		/obj/item/stock_parts/micro_laser/quintuple_bound = 10, \
+		/obj/item/stock_parts/scanning_module/prototype = 10, \
+		/obj/item/stock_parts/servo/atomic = 10, \
 		/obj/item/stack/ore/bananium = 1, \
-		/obj/item/stock_parts/capacitor/experimental = 25, \
-		/obj/item/stock_parts/scanning_module/prototype = 25, \
-		/obj/item/stock_parts/servo/atomic = 25, \
-		/obj/item/stock_parts/micro_laser/quintuple_bound = 25, \
-		/obj/item/stock_parts/matter_bin/anomic = 25, \
+		/obj/effect/spawner/random/exotic/tool = 1, \
 	)
 
 /obj/item/scrap_chunk/Initialize(mapload)
