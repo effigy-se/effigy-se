@@ -173,7 +173,7 @@
 			spawned_human.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
 /// Return the outfit to use
-/datum/job/proc/get_outfit()
+/datum/job/proc/get_outfit(consistent)
 	return outfit
 
 /// Announce that this job as joined the round to all crew members.
@@ -188,12 +188,12 @@
 	return TRUE
 
 
-/mob/living/proc/on_job_equipping(datum/job/equipping)
+/mob/living/proc/on_job_equipping(datum/job/equipping, client/player_client)
 	return
 
 #define VERY_LATE_ARRIVAL_TOAST_PROB 20
 
-/mob/living/carbon/human/on_job_equipping(datum/job/equipping, datum/preferences/used_pref) // EffigyEdit Change - Customization - add used_pref
+/mob/living/carbon/human/on_job_equipping(datum/job/equipping, datum/preferences/used_pref, client/player_client) // EffigyEdit Change - Customization - add used_pref
 	if(equipping.paycheck_department)
 		var/datum/bank_account/bank_account = new(real_name, equipping, dna.species.payday_modifier)
 		bank_account.payday(STARTING_PAYCHECKS, TRUE)
@@ -208,7 +208,7 @@
 
 #undef VERY_LATE_ARRIVAL_TOAST_PROB
 
-/mob/living/proc/dress_up_as_job(datum/job/equipping, visual_only = FALSE)
+/mob/living/proc/dress_up_as_job(datum/job/equipping, visual_only = FALSE, client/player_client, consistent = FALSE)
 	return
 
 /mob/living/carbon/human/dress_up_as_job(datum/job/equipping, visual_only = FALSE, datum/preferences/used_pref) //EffigyEdit Change
