@@ -561,8 +561,8 @@
 	new_profile.socks = target.socks
 
 	// Hair and facial hair gradients, alongside their colours.
-	new_profile.grad_style = LAZYLISTDUPLICATE(target.grad_style)
-	new_profile.grad_color = LAZYLISTDUPLICATE(target.grad_color)
+	//new_profile.grad_style = LAZYLISTDUPLICATE(target.grad_style)
+	//new_profile.grad_color = LAZYLISTDUPLICATE(target.grad_color)
 
 	// EffigyEdit Add - Vocal Bloopers
 	new_profile.blooper_id = target.blooper_id

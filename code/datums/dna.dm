@@ -231,9 +231,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		L[DNA_SKIN_TONE_BLOCK] = construct_block(GLOB.skin_tones.Find(H.skin_tone), GLOB.skin_tones.len)
 		L[DNA_EYE_COLOR_LEFT_BLOCK] = sanitize_hexcolor(H.eye_color_left, include_crunch = FALSE)
 		L[DNA_EYE_COLOR_RIGHT_BLOCK] = sanitize_hexcolor(H.eye_color_right, include_crunch = FALSE)
-		L[DNA_HAIRSTYLE_GRADIENT_BLOCK] = construct_block(SSaccessories.hair_gradients_list.Find(H.grad_style[GRADIENT_HAIR_KEY]), length(SSaccessories.hair_gradients_list))
+		//L[DNA_HAIRSTYLE_GRADIENT_BLOCK] = construct_block(SSaccessories.hair_gradients_list.Find(H.grad_style[GRADIENT_HAIR_KEY]), length(SSaccessories.hair_gradients_list)) // EffigyEdit Remove - DNA Customization
 		L[DNA_HAIR_COLOR_GRADIENT_BLOCK] = sanitize_hexcolor(H.grad_color[GRADIENT_HAIR_KEY], include_crunch = FALSE)
-		L[DNA_FACIAL_HAIRSTYLE_GRADIENT_BLOCK] = construct_block(SSaccessories.facial_hair_gradients_list.Find(H.grad_style[GRADIENT_FACIAL_HAIR_KEY]), length(SSaccessories.facial_hair_gradients_list))
+		//L[DNA_FACIAL_HAIRSTYLE_GRADIENT_BLOCK] = construct_block(SSaccessories.facial_hair_gradients_list.Find(H.grad_style[GRADIENT_FACIAL_HAIR_KEY]), length(SSaccessories.facial_hair_gradients_list)) // EffigyEdit Remove - DNA Customization
 		L[DNA_FACIAL_HAIR_COLOR_GRADIENT_BLOCK] = sanitize_hexcolor(H.grad_color[GRADIENT_FACIAL_HAIR_KEY], include_crunch = FALSE)
 
 	for(var/blocknum in 1 to DNA_UNI_IDENTITY_BLOCKS)
