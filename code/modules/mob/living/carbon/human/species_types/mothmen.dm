@@ -3,11 +3,12 @@
 	plural_form = "Mothmen"
 	id = SPECIES_MOTH
 	inherent_traits = list(
-		TRAIT_HAS_MARKINGS,
 		TRAIT_TACKLING_WINGED_ATTACKER,
 		TRAIT_ANTENNAE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
+	body_markings = list(/datum/bodypart_overlay/simple/body_marking/moth = "None")
+	external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain")
 	mutant_bodyparts = list("moth_markings" = "None")
 	// external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain") // EffigyEdit Remove Customization
 	meat = /obj/item/food/meat/slab/human/mutant/moth
