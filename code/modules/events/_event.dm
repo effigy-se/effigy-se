@@ -105,29 +105,31 @@
 	// EffigyEdit Remove Start - Events notification
 	/*
 	if(alert_observers)
-		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") // EffigyEdit Change
+		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>) (<a href='?src=[REF(src)];different_event=1'>SOMETHING ELSE</a>)")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!can_spawn_event(players_amt))
-			message_admins("Second pre-condition check for [name] failed, skipping...")
+			message_admins("Second pre-condition check for [name] failed, rerolling...")
+			SSevents.spawnEvent(excluded_event = src)
 			return EVENT_INTERRUPTED
 	*/
 	// EffigyEdit Remove End
 
 	// EffigyEdit Add - Events notification
-	message_admins("<font color='[COLOR_ADMIN_PINK]'>Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (\
-		<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
-		<a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)</font>")
-	for(var/client/staff as anything in GLOB.admins)
-		if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
-			SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
-	sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
-
-	if(triggering)
-		message_admins("<font color='[COLOR_ADMIN_PINK]'>Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)]: [name]. (\
-		<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
-		<a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)</font>")
+	if(alert_observers)
+		message_admins("<font color='[COLOR_ADMIN_PINK]'>Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (\
+			<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
+			<a href='?src=[REF(src)];different_event=1'>SOMETHING ELSE</a>)</font>")
+		for(var/client/staff as anything in GLOB.admins)
+			if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
+				SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
+
+		if(triggering)
+			message_admins("<font color='[COLOR_ADMIN_PINK]'>Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)]: [name]. (\
+			<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | \
+			<a href='?src=[REF(src)];different_event=1'>SOMETHING ELSE</a>)</font>")
+			sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
 	// EffigyEdit Add End
 
 	if(!triggering)
@@ -145,16 +147,15 @@
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
 		log_admin_private("[key_name(usr)] cancelled event [name].")
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
-	// EffigyEdit Add -
-	if(href_list["something_else"])
+	if(href_list["different_event"])
 		if(!triggering)
-			to_chat(usr, span_admin("Too late! The event is running."))
+			to_chat(usr, span_admin("Too late to change events now!"))
 			return
 		triggering = FALSE
-		SSevents.spawnEvent(TRUE)
-		message_admins("[key_name_admin(usr)] requested a new event be spawned instead of [name].")
-		log_admin_private("[key_name(usr)] requested a new event be spawned instead of [name].")
-	// EffigyEdit Add End
+		message_admins("[key_name_admin(usr)] chose to have event [name] rolled into a different event.")
+		log_admin_private("[key_name(usr)] rerolled event [name].")
+		SSblackbox.record_feedback("tally", "event_admin_rerolled", 1, typepath)
+		SSevents.spawnEvent(excluded_event = src)
 
 /*
 Runs the event
