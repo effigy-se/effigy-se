@@ -3,6 +3,7 @@
 	limb_id = SPECIES_LIZARD
 	is_dimorphic = FALSE
 	// head_flags = HEAD_LIPS|HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN // EffigyEdit Remove - Lizards can have hair too
+	teeth_count = 72
 
 /obj/item/bodypart/chest/lizard
 	icon_greyscale = 'icons/mob/human/species/lizard/bodyparts.dmi'
