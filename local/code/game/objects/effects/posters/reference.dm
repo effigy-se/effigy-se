@@ -89,11 +89,3 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/holestation, 32
 	icon_state = "reference_power_recovery"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/power_recovery, 32)
-
-/obj/structure/sign/poster/reference/luna
-	name = "I Remember"
-	desc = "\"I remember the stars and the moons. The suns and the clouds, the air and the water. When I sit my gaze upwards now, I am blinded by the thoughts of what was.\" - Were it not for the color choice and \
-	rambly attempt at a vaguely thought-provoking quote, you could feasibly be forgiven for thinking this was a medieval coat of arms."
-	icon_state = "reference_luna"
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/luna, 32)
