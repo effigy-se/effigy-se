@@ -33,3 +33,10 @@
 		return TRUE
 
 	return FALSE
+
+// This sucks HARDER but not as any fault of it's own.
+/datum/weather/rain_storm/forever_storm
+	telegraph_duration = 0
+	perpetual = TRUE
+
+	probability = 0
