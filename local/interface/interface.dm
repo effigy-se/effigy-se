@@ -6,21 +6,17 @@
 	var/mapurl = null
 	switch(SSmapping.config.map_name)
 		if("TramStation")
-			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/TramStation/"
+			mapurl = "https://webmap.affectedarc07.co.uk/maps/effigy/tramstation/"
 		if("Sigma Octantis")
-			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/SigmaOctantis/"
+			mapurl = "https://webmap.affectedarc07.co.uk/maps/effigy/sigmaoctantis/"
 		if("FoxHoleStation")
-			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/FoxHoleStation/"
+			mapurl = "https://webmap.affectedarc07.co.uk/maps/effigy/foxholestation/"
 		if("Ice Box Station")
-			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/IceBoxStation/"
+			mapurl = "https://webmap.affectedarc07.co.uk/maps/effigy/icebox/"
 		if("MetaStation")
-			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/MetaStation/"
-		if("MiniStation")
-			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/MiniStation/"
-		if("NorthStar")
-			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/NorthStar/"
+			mapurl = "https://webmap.affectedarc07.co.uk/maps/effigy/metastation/"
 		if("RimPoint")
-			mapurl = "https://affectedarc07.github.io/SS13WebMap/Effigy/RimPoint/"
+			mapurl = "https://webmap.affectedarc07.co.uk/maps/effigy/rimpoint/"
 	if(mapurl)
 		src << link(mapurl)
 	else
