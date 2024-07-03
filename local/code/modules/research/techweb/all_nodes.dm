@@ -17,3 +17,40 @@
 		"robotic_heal_surgery_upgrade_2"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1300) // less expensive than the organic surgery research equivalent since its JUST tend wounds
+
+/////////////////////////robotics tech/////////////////////////
+
+/datum/techweb_node/robotics/New()
+	design_ids += list(
+		"borg_upgrade_snacks",
+		"mini_soulcatcher",
+	)
+	return ..()
+
+/datum/techweb_node/passive_implants/New()
+	design_ids += list(
+		"soulcatcher_device",
+		"rsd_interface",
+	)
+	return ..()
+
+/datum/techweb_node/borg_utility/New()
+	design_ids += list(
+		"borg_upgrade_clamp",
+		"borg_upgrade_brush",
+		"borg_upgrade_shrink",
+	)
+	return ..()
+
+/datum/techweb_node/borg_engi/New()
+	design_ids += list(
+		"advanced_materials",
+		"borg_upgrade_welding",
+	)
+	return ..()
+
+/datum/techweb_node/borg_medical/New()
+	design_ids += list(
+		"borg_upgrade_surgicaltools",
+	)
+	return ..()
