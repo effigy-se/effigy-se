@@ -8,7 +8,9 @@
 		/datum/material/glass = SMALL_MATERIAL_AMOUNT*5,
 	)
 	construction_time = 1 SECONDS
-	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL)
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL,
+	)
 
 /datum/design/borg_upgrade_surgicaltools
 	name = "Advanced Surgical Tools Module"
