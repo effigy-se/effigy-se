@@ -187,9 +187,17 @@
 	name = "Long 4"
 	icon_state = "hair_long4"
 
+/datum/sprite_accessory/hair/skyrat/fluffy
+	name = "Fluffy"
+	icon_state = "hair_fluffy"
+
 /datum/sprite_accessory/hair/skyrat/fluffy_short
 	name = "Fluffy Short"
 	icon_state = "hair_fluffy_short"
+
+/datum/sprite_accessory/hair/skyrat/fluffy_bangs
+	name = "Fluffy Bangs"
+	icon_state = "hair_fluffy_bangs"
 
 /datum/sprite_accessory/hair/skyrat/simple_ponytail
 	name = "Simple Ponytail"
@@ -202,6 +210,10 @@
 /datum/sprite_accessory/hair/skyrat/diagonal_bangs
 	name = "Diagonal Bangs"
 	icon_state = "hair_diagonal_bangs"
+
+/datum/sprite_accessory/hair/skyrat/diagonal_bangs_alt
+	name = "Diagonal Bangs Alt"
+	icon_state = "hair_diagonal_bangs_alt"
 
 /datum/sprite_accessory/hair/skyrat/gloomy_medium
 	name = "Medium Gloomy Bangs"
@@ -474,6 +486,10 @@
 /datum/sprite_accessory/hair/skyrat/tri_bun_long
 	name = "Tri Bun Long"
 	icon_state = "hair_tri_bun_long"
+
+/datum/sprite_accessory/hair/skyrat/hairfre // Original sprite from Hyper-Station-13
+	name = "Hairfre"
+	icon_state = "hair_hairfre"
 
 // Facial hair
 
