@@ -1,7 +1,6 @@
 /client/verb/webmap()
-	set name = "webmap"
-	set desc = "View WebMap"
-	set category = "Game"
+	set name = "View Webmap"
+	set category = "OOC"
 	set hidden = FALSE
 	var/mapurl = null
 	switch(SSmapping.config.map_name)
