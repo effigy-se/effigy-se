@@ -33,6 +33,10 @@
 /obj/item/bodypart/chest/Destroy(force)
 	QDEL_NULL(worn_accessory_offset)
 	return ..()
+	
+/obj/item/bodypart/head
+	///Override of the eyes icon file, used for Vox and maybe more in the future - The future is now, with Teshari using it too
+	var/eyes_icon
 
 /// General mutant bodyparts. Used in most mutant species.
 /obj/item/bodypart/head/mutant

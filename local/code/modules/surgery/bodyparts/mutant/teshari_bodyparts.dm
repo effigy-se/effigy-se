@@ -6,6 +6,7 @@
 	icon_greyscale = BODYPART_ICON_TESHARI
 	bodyshape = parent_type::bodyshape | BODYSHAPE_CUSTOM
 	limb_id = SPECIES_TESHARI
+	eyes_icon = 'local/icons/obj/medical/organs/teshari_eyes.dmi'
 
 /obj/item/bodypart/chest/mutant/teshari
 	icon_greyscale = BODYPART_ICON_TESHARI
