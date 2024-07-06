@@ -227,7 +227,7 @@
 	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
 	// EffigyEdit Add - Borgs
-	new_model.update_dogborg()
+	new_model.update_quadborg()
 	new_model.update_tallborg()
 	// EffigyEdit Add End
 
@@ -247,7 +247,7 @@
 			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
 			// EffigyEdit Add - Borgs
 			if (!isnull(details[SKIN_FEATURES]))
-				if (R_TRAIT_WIDE in details[SKIN_FEATURES])
+				if (TRAIT_R_WIDE in details[SKIN_FEATURES])
 					var/image/reskin = reskin_icons[skin]
 					reskin.pixel_x -= 16
 			// EffigyEdit Add End
@@ -256,7 +256,7 @@
 			return FALSE
 		var/list/details = borg_skins[borg_skin]
 		// EffigyEdit Add - Borgs
-		if(cyborg.hasExpanded && (((R_TRAIT_WIDE in details[SKIN_FEATURES]) && (R_TRAIT_WIDE in model_features)) || ((R_TRAIT_TALL in details[SKIN_FEATURES]) && (R_TRAIT_TALL in model_features))))
+		if(cyborg.hasExpanded && (((TRAIT_R_WIDE in details[SKIN_FEATURES]) && (TRAIT_R_WIDE in model_features)) || ((TRAIT_R_TALL in details[SKIN_FEATURES]) && (TRAIT_R_TALL in model_features))))
 			to_chat(cyborg, span_warning("You can't make yourself into a larger frame when you've already used an expander!"))
 			return FALSE
 		// EffigyEdit Add End

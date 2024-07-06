@@ -1,4 +1,5 @@
 /mob/living/silicon/robot
+	var/hasShrunk = FALSE
 	var/hasAffection = FALSE
 	var/hasAdvanced = FALSE
 
@@ -14,7 +15,7 @@
 	if(cyborg.emagged)
 		return ..()
 
-/obj/item/dogborg_tongue
+/obj/item/quadborg_tongue
 	name = "synthetic tongue"
 	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
 	icon = 'local/icons/mob/borgs/robot_items.dmi'
@@ -23,7 +24,7 @@
 	desc = "For giving affectionate kisses."
 	item_flags = NOBLUDGEON
 
-/obj/item/dogborg_tongue/afterattack(atom/target, mob/user, proximity)
+/obj/item/quadborg_tongue/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if(!proximity || !isliving(target))
 		return
@@ -37,7 +38,7 @@
 		borg.visible_message(span_warning("\the [borg] affectionally licks \the [mob]!"), span_notice("You affectionally lick \the [mob]!"))
 		playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
 
-/obj/item/dogborg_nose
+/obj/item/quadborg_nose
 	name = "boop module"
 	desc = "The BOOP module"
 	icon = 'local/icons/mob/borgs/robot_items.dmi'
@@ -46,63 +47,12 @@
 	item_flags = NOBLUDGEON
 	force = 0
 
-/obj/item/dogborg_nose/afterattack(atom/target, mob/user, proximity)
+/obj/item/quadborg_nose/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if(!proximity)
 		return
 	do_attack_animation(target, null, src)
 	user.visible_message(span_notice("[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!"))
-
-/obj/item/crowbar/cyborg/power
-	name = "modular crowbar"
-	desc = "A cyborg fitted module resembling the jaws of life."
-	icon = 'local/icons/mob/borgs/items_cyborg.dmi'
-	icon_state = "jaws_pry_cyborg"
-	usesound = 'sound/items/jaws_pry.ogg'
-	force = 10
-	toolspeed = 0.5
-
-/obj/item/crowbar/cyborg/power/examine()
-	. = ..()
-	. += " It's fitted with a [tool_behaviour == TOOL_CROWBAR ? "prying" : "cutting"] head."
-
-/obj/item/crowbar/cyborg/power/attack_self(mob/user)
-	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, TRUE)
-	if(tool_behaviour == TOOL_CROWBAR)
-		tool_behaviour = TOOL_WIRECUTTER
-		to_chat(user, span_notice("You attach the cutting jaws to [src]."))
-		icon_state = "jaws_cutter_cyborg"
-		usesound = 'sound/items/jaws_cut.ogg'
-	else
-		tool_behaviour = TOOL_CROWBAR
-		to_chat(user, span_notice("You attach the prying jaws to [src]."))
-		icon_state = "jaws_pry_cyborg"
-		usesound = 'sound/items/jaws_pry.ogg'
-
-/obj/item/screwdriver/cyborg/power
-	name =	"automated drill"
-	desc = "A cyborg fitted module resembling the hand drill"
-	icon = 'local/icons/mob/borgs/items_cyborg.dmi'
-	icon_state = "drill_screw_cyborg"
-	hitsound = 'sound/items/drill_hit.ogg'
-	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.5
-	random_color = FALSE
-
-/obj/item/screwdriver/cyborg/power/examine()
-	. = ..()
-	. += " It's fitted with a [tool_behaviour == TOOL_SCREWDRIVER ? "screw" : "bolt"] head."
-
-/obj/item/screwdriver/cyborg/power/attack_self(mob/user)
-	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
-	if(tool_behaviour == TOOL_SCREWDRIVER)
-		tool_behaviour = TOOL_WRENCH
-		to_chat(user, span_notice("You attach the bolt bit to [src]."))
-		icon_state = "drill_bolt_cyborg"
-	else
-		tool_behaviour = TOOL_SCREWDRIVER
-		to_chat(user, span_notice("You attach the screw bit to [src]."))
-		icon_state = "drill_screw_cyborg"
 
 /obj/item/borg/upgrade/surgerytools
 	name = "medical cyborg advanced surgery tools"
@@ -189,14 +139,14 @@
 	if(borg.hasAffection)
 		to_chat(usr, span_warning("This unit already has a affection module installed!"))
 		return FALSE
-	if(!(R_TRAIT_WIDE in borg.model.model_features))
+	if(!(TRAIT_R_WIDE in borg.model.model_features))
 		to_chat(usr, span_warning("This unit's chassis does not support this module."))
 		return FALSE
 
-	var/obj/item/dogborg_tongue/dogtongue = new /obj/item/dogborg_tongue(borg.model)
+	var/obj/item/quadborg_tongue/dogtongue = new /obj/item/quadborg_tongue(borg.model)
 	borg.model.basic_modules += dogtongue
 	borg.model.add_module(dogtongue, FALSE, TRUE)
-	var/obj/item/dogborg_nose/dognose = new /obj/item/dogborg_nose(borg.model)
+	var/obj/item/quadborg_nose/dognose = new /obj/item/quadborg_nose(borg.model)
 	borg.model.basic_modules += dognose
 	borg.model.add_module(dognose, FALSE, TRUE)
 	borg.hasAffection = TRUE
@@ -206,9 +156,9 @@
 	if(.)
 		return
 	borg.hasAffection = FALSE
-	for(var/obj/item/dogborg_tongue/dogtongue in borg.model.modules)
+	for(var/obj/item/quadborg_tongue/dogtongue in borg.model.modules)
 		borg.model.remove_module(dogtongue, TRUE)
-	for(var/obj/item/dogborg_nose/dognose in borg.model.modules)
+	for(var/obj/item/quadborg_nose/dognose in borg.model.modules)
 		borg.model.remove_module(dognose, TRUE)
 
 /*
@@ -280,101 +230,86 @@
 	powertransfer = 250
 	var/power_safety_threshold = 1000
 
+/*
+*	ADVANCED CARGO CYBORG UPGRADES
+*/
+
+/// Better Clamp
+/obj/item/borg/hydraulic_clamp/better
+	name = "improved integrated hydraulic clamp"
+	desc = "A neat way to lift and move around crates for quick and painless deliveries!"
+	storage_capacity = 4
+	whitelisted_item_types = list(/obj/structure/closet/crate, /obj/item/delivery/big, /obj/item/delivery, /obj/item/bounty_cube) // If they want to carry a small package or a bounty cube instead, so be it, honestly.
+	whitelisted_item_description = "wrapped packages"
+	item_weight_limit = NONE
+	clamp_sound_volume = 50
+
+/obj/item/borg/hydraulic_clamp/better/examine(mob/user)
+	. = ..()
+	var/crate_count = contents.len
+	. += "There is currently <b>[crate_count > 0 ? crate_count : "no"]</b> crate[crate_count > 1 ? "s" : ""] stored in the clamp's internal storage."
+
+/obj/item/borg/hydraulic_clamp/mail
+	name = "integrated rapid mail delivery device"
+	desc = "Allows you to carry around a lot of mail, to distribute it around the station like the good little mailbot you are!"
+	icon = 'icons/obj/service/library.dmi'
+	icon_state = "bookbag"
+	storage_capacity = 100
+	loading_time = 0.25 SECONDS
+	unloading_time = 0.25 SECONDS
+	cooldown_duration = 0.25 SECONDS
+	whitelisted_item_types = list(/obj/item/mail)
+	whitelisted_item_description = "envelopes"
+	item_weight_limit = WEIGHT_CLASS_NORMAL
+	clamp_sound_volume = 25
+	clamp_sound = 'sound/items/pshoom.ogg'
+
+/datum/design/borg_upgrade_clamp
+	name = "improved Integrated Hydraulic Clamp Module"
+	id = "borg_upgrade_clamp"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/better_clamp
+	materials = list(
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/bluespace = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	construction_time = 12 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_CARGO,
+	)
 
 
-/obj/item/inducer/cyborg/attackby(obj/item/weapon, mob/user)
-	return
-
-/obj/item/inducer/cyborg/recharge(atom/movable/target_atom, mob/user)
-	if(!iscyborg(user))
-		return
-	var/mob/living/silicon/robot/borg_user = user
-	cell = borg_user.cell
-	if(!isturf(target_atom) && user.loc == target_atom)
-		return FALSE
-	if(recharging)
-		return TRUE
-	else
-		recharging = TRUE
-	var/obj/item/stock_parts/cell/target_cell = target_atom.get_cell()
-	var/obj/target_object
-	var/coefficient = 1
-	if(istype(target_atom, /obj/item/gun/energy))
-		to_chat(user, span_alert("Error unable to interface with device."))
-		return FALSE
-	if(istype(target_atom, /obj/item/clothing/suit/space))
-		to_chat(user, span_alert("Error unable to interface with device."))
-		return FALSE
-	if(cell.charge <= power_safety_threshold ) // Cyborg charge safety. Prevents a borg from inducing themself to death.
-		to_chat(user, span_alert("Unable to charge device. User battery safety engaged."))
-		return
-	if(istype(target_atom, /obj))
-		target_object = target_atom
-	if(target_cell)
-		var/done_any = FALSE
-		if(target_cell.charge >= target_cell.maxcharge)
-			to_chat(user, span_notice("[target_atom] is fully charged!"))
-			recharging = FALSE
-			return TRUE
-		user.visible_message(span_notice("[user] starts recharging [target_atom] with [src]."), span_notice("You start recharging [target_atom] with [src]."))
-		while(target_cell.charge < target_cell.maxcharge)
-			if(do_after(user, 1 SECONDS, target = user) && cell.charge > (power_safety_threshold + powertransfer))
-				done_any = TRUE
-				induce(target_cell, coefficient)
-				do_sparks(1, FALSE, target_atom)
-				if(target_object)
-					target_object.update_appearance()
-			else
-				break
-		if(done_any) // Only show a message if we succeeded at least once
-			user.visible_message(span_notice("[user] recharged [target_atom]!"), span_notice("You recharged [target_atom]!"))
-		recharging = FALSE
-		return TRUE
-	recharging = FALSE
-
-
-/obj/item/inducer/attack(mob/target_mob, mob/living/user)
-	if(user.combat_mode)
-		return ..()
-
-	if(cantbeused(user))
-		return
-
-	if(recharge(target_mob, user))
-		return
-	return ..()
-
-/obj/item/inducer/cyborg/attack_self(mob/user)
-	return
-
-// funny borg inducer upgrade
-/obj/item/borg/upgrade/inducer
-	name = "engineering cyborg inducer upgrade"
-	desc = "An inducer device for the engineering cyborg."
+/obj/item/borg/upgrade/better_clamp
+	name = "improved integrated hydraulic clamp"
+	desc = "An improved hydraulic clamp to allow for bigger packages to be picked up as well!"
 	icon_state = "cyborg_upgrade3"
 	require_model = TRUE
-	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
-	model_flags = BORG_MODEL_ENGINEERING
+	model_type = list(/obj/item/robot_model/cargo)
+	model_flags = BORG_MODEL_CARGO
 
-/obj/item/borg/upgrade/inducer/action(mob/living/silicon/robot/target_robot, user = usr)
+
+/obj/item/borg/upgrade/better_clamp/action(mob/living/silicon/robot/cyborg, user = usr)
 	. = ..()
-	if(.)
+	if(!.)
+		return
+	var/obj/item/borg/hydraulic_clamp/better/big_clamp = locate() in cyborg.model.modules
+	if(big_clamp)
+		to_chat(user, span_warning("This cyborg is already equipped with an improved integrated hydraulic clamp!"))
+		return FALSE
 
-		var/obj/item/inducer/cyborg/inducer = locate() in target_robot
-		if(inducer)
-			to_chat(user, span_warning("This unit is already equipped with an inducer module!"))
-			return FALSE
+	big_clamp = new(cyborg.model)
+	cyborg.model.basic_modules += big_clamp
+	cyborg.model.add_module(big_clamp, FALSE, TRUE)
 
-		inducer = new(target_robot.model)
-		target_robot.model.basic_modules += inducer
-		target_robot.model.add_module(inducer, FALSE, TRUE)
 
-/obj/item/borg/upgrade/inducer/deactivate(mob/living/silicon/robot/target_robot, user = usr)
+/obj/item/borg/upgrade/better_clamp/deactivate(mob/living/silicon/robot/cyborg, user = usr)
 	. = ..()
-	if (.)
-		var/obj/item/inducer/cyborg/inducer = locate() in target_robot.model
-		if (inducer)
-			target_robot.model.remove_module(inducer, TRUE)
+	if(!.)
+		return
+	var/obj/item/borg/hydraulic_clamp/better/big_clamp = locate() in cyborg.model.modules
+	if(big_clamp)
+		cyborg.model.remove_module(big_clamp, TRUE)
 
 // Wirebrush for janiborg
 /datum/design/borg_wirebrush
@@ -382,9 +317,13 @@
 	id = "borg_upgrade_brush"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/wirebrush
-	materials = list(/datum/material/iron = 4000)
-	construction_time = 40
-	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_JANITOR)
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2
+	)
+	construction_time = 4 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_JANITOR,
+	)
 
 /obj/item/borg/upgrade/wirebrush
 	name = "janitor cyborg wire-brush"
@@ -535,3 +474,144 @@
 	snack.throw_at(target, 7, 2, user, TRUE, FALSE)
 	playsound(loc, 'sound/machines/click.ogg', 10, TRUE)
 	user.visible_message(span_notice("[src] launches [snack] at [target]!"))
+
+/*
+*	UNIVERSAL CYBORG UPGRADES
+*/
+
+/// ShapeShifter
+/obj/item/borg/upgrade/borg_shapeshifter
+	name = "Cyborg Shapeshifter Module"
+	desc = "An experimental device which allows a cyborg to disguise themself into another type of cyborg."
+	icon_state = "cyborg_upgrade3"
+
+/obj/item/borg/upgrade/borg_shapeshifter/action(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if(.)
+		var/obj/item/borg_shapeshifter/BS = new /obj/item/borg_shapeshifter(R.model)
+		R.model.basic_modules += BS
+		R.model.add_module(BS, FALSE, TRUE)
+
+/obj/item/borg/upgrade/borg_shapeshifter/deactivate(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if (.)
+		for(var/obj/item/borg_shapeshifter/BS in R.model)
+			R.model.remove_module(BS, TRUE)
+
+/// The Shrinkening
+
+/obj/item/borg/upgrade/shrink
+	name = "borg shrinker"
+	desc = "A cyborg resizer, it makes a cyborg small."
+	icon_state = "cyborg_upgrade3"
+
+/obj/item/borg/upgrade/shrink/action(mob/living/silicon/robot/borg, user = usr)
+	. = ..()
+	if(.)
+
+		if(borg.hasShrunk)
+			to_chat(usr, span_warning("This unit already has a shrink module installed!"))
+			return FALSE
+		if(TRAIT_R_SMALL in borg.model.model_features)
+			to_chat(usr, span_warning("This unit's chassis cannot be shrunk any further."))
+			return FALSE
+		borg.hasShrunk = TRUE
+		ADD_TRAIT(borg, TRAIT_NO_TRANSFORM, REF(src))
+		var/prev_lockcharge = borg.lockcharge
+		borg.SetLockdown(TRUE)
+		borg.set_anchored(TRUE)
+		var/datum/effect_system/fluid_spread/smoke/smoke = new
+		smoke.set_up(1, location = get_turf(borg))
+		smoke.start()
+		sleep(0.2 SECONDS)
+		for(var/i in 1 to 4)
+			playsound(borg, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 80, TRUE, -1)
+			sleep(1.2 SECONDS)
+		if(!prev_lockcharge)
+			borg.SetLockdown(FALSE)
+		borg.set_anchored(FALSE)
+		REMOVE_TRAIT(borg, TRAIT_NO_TRANSFORM, REF(src))
+		borg.update_transform(0.90)
+
+/obj/item/borg/upgrade/shrink/deactivate(mob/living/silicon/robot/borg, user = usr)
+	. = ..()
+	if (.)
+		if (borg.hasShrunk)
+			borg.hasShrunk = FALSE
+			borg.update_transform(4/3)
+
+/// Dominatrix time
+/obj/item/borg/upgrade/dominatrixmodule
+	name = "borg dominatrix module"
+	desc = "A module that greatly upgrades the ability of borgs to display affection."
+	icon_state = "cyborg_upgrade3"
+	custom_price = 0
+
+/obj/item/borg/upgrade/dominatrixmodule/action(mob/living/silicon/robot/borg)
+	. = ..()
+	if(!.)
+		return
+	var/obj/item/kinky_shocker/cur_shocker = locate() in borg.model.modules
+	if(cur_shocker)
+		to_chat(usr, span_warning("This unit already has a dominatrix module installed!"))
+		return FALSE
+
+	var/obj/item/kinky_shocker/shocker = new /obj/item/kinky_shocker()
+	borg.model.basic_modules += shocker
+	borg.model.add_module(shocker, FALSE, TRUE)
+	var/obj/item/clothing/mask/leatherwhip/whipper = new /obj/item/clothing/mask/leatherwhip()
+	borg.model.basic_modules += whipper
+	borg.model.add_module(whipper, FALSE, TRUE)
+	var/obj/item/spanking_pad/spanker = new /obj/item/spanking_pad()
+	borg.model.basic_modules += spanker
+	borg.model.add_module(spanker, FALSE, TRUE)
+	var/obj/item/tickle_feather/tickler = new /obj/item/tickle_feather()
+	borg.model.basic_modules += tickler
+	borg.model.add_module(tickler, FALSE, TRUE)
+
+/obj/item/borg/upgrade/dominatrixmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
+	. = ..()
+	if(!.)
+		return
+
+	for(var/obj/item/kinky_shocker/shocker in borg.model.modules)
+		borg.model.remove_module(shocker, TRUE)
+	for(var/obj/item/clothing/mask/leatherwhip/whipper in borg.model.modules)
+		borg.model.remove_module(whipper, TRUE)
+	for(var/obj/item/spanking_pad/spanker in borg.model.modules)
+		borg.model.remove_module(spanker, TRUE)
+	for(var/obj/item/tickle_feather/tickler in borg.model.modules)
+		borg.model.remove_module(tickler, TRUE)
+
+/*
+*	ADVANCED MINING CYBORG UPGRADES
+*/
+
+/// Welder
+/obj/item/borg/upgrade/welder
+	name = "mining cyborg welder upgrade"
+	desc = "A normal welder with a larger tank for cyborgs."
+	icon_state = "cyborg_upgrade3"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/miner)
+	model_flags = BORG_MODEL_MINER
+
+/obj/item/borg/upgrade/welder/action(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if(.)
+		for(var/obj/item/weldingtool/mini/W in R.model)
+			R.model.remove_module(W, TRUE)
+
+		var/obj/item/weldingtool/largetank/cyborg/WW = new /obj/item/weldingtool/largetank/cyborg(R.model)
+		R.model.basic_modules += WW
+		R.model.add_module(WW, FALSE, TRUE)
+
+/obj/item/borg/upgrade/welder/deactivate(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if (.)
+		for(var/obj/item/weldingtool/largetank/cyborg/WW in R.model)
+			R.model.remove_module(WW, TRUE)
+
+		var/obj/item/weldingtool/mini/W = new (R.model)
+		R.model.basic_modules += W
+		R.model.add_module(W, FALSE, TRUE)

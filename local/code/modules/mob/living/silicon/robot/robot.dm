@@ -13,7 +13,7 @@
 		layer = LYING_MOB_LAYER //so mob lying always appear behind standing mobs
 	density = FALSE // We lose density and stop bumping passable dense things.
 
-	if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
+	if(model && model.model_features && (TRAIT_R_TALL in model.model_features))
 		maptext_height = 32 //Offset base chat-height value
 
 		// Resting effects
@@ -43,7 +43,7 @@
 	if(layer == LYING_MOB_LAYER)
 		layer = initial(layer)
 	density = initial(density) // We were prone before, so we become dense and things can bump into us again.
-	if(model && model.model_features && (R_TRAIT_TALL in model.model_features))
+	if(model && model.model_features && (TRAIT_R_TALL in model.model_features))
 		maptext_height = 48 //Offset value of tallborgs
 
 /mob/living/silicon/robot/proc/rest_style()
@@ -91,6 +91,11 @@
 		robot_resting = FALSE
 		update_icons()
 
+/mob/living/silicon/robot/update_module_innate()
+	..()
+	if(hands)
+		hands.icon = (model.model_select_alternate_icon ? model.model_select_alternate_icon : initial(hands.icon))
+
 /mob/living/silicon/robot/proc/toggle_smoke()
 	set name = "Toggle smoke"
 	set category = "AI Commands"
@@ -128,4 +133,8 @@
  *
  */
 /mob/living/silicon/robot/proc/can_rest()
-	return model && model.model_features && ((R_TRAIT_WIDE in model.model_features) || (R_TRAIT_TALL in model.model_features)) && !HAS_TRAIT(src, TRAIT_IMMOBILIZED)
+	if(model && model.model_features && ((TRAIT_R_WIDE in model.model_features) || (TRAIT_R_TALL in model.model_features)))
+		if(TRAIT_IMMOBILIZED in _status_traits)
+			return FALSE
+		return TRUE
+	return FALSE
