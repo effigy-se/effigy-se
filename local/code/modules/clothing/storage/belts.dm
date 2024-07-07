@@ -159,5 +159,6 @@
 		/obj/item/implanter,
 		/obj/item/hypospray/mkii,
 		/obj/item/reagent_containers/cup/hypovial,
+		/obj/item/storage/hypospraykit,
 		// EFFIGY TODO		/obj/item/weaponcell/medical
 		))
