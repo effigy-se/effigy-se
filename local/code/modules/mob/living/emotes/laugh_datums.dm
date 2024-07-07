@@ -37,5 +37,5 @@ GLOBAL_LIST_EMPTY(laugh_types)
 
 /datum/laugh_type/slugcat
 	name = "Slugcat Laugh"
-	male_laughsounds = list('local/sound/emotes/generic/scuglaugh_1.ogg')
+	male_laughsounds = list('local/sound/emotes/voice/scuglaugh_1.ogg')
 	female_laughsounds = null
