@@ -60,9 +60,8 @@
 
 /*
 * LIMBS AS AUGS ZONE
-* INACTIVE UNTIL THE LIMBS-AS-AUGS PR IS MIRRORED
 */
-/*/datum/augment_item/limb/head/slugcat
+/datum/augment_item/limb/head/slugcat
 	name = "small-eyes slugcat head"
 	path = /obj/item/bodypart/head/mutant/slugcat
 	cost = 0
@@ -106,4 +105,4 @@
 	path = /obj/item/bodypart/leg/right/mutant/slugcat
 	cost = 0
 	uses_robotic_styles = FALSE
-	uses_greyscale = TRUE*/
+	uses_greyscale = TRUE
