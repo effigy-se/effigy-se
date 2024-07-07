@@ -34,6 +34,29 @@
 		return
 	swiping = FALSE
 
+
+/obj/item/scythe/tier1
+	name = "scythe (tier 1)"
+	icon_state = "scythe_t1"
+
+/obj/item/scythe/tier2
+	name = "scythe (tier 2)"
+	icon_state = "scythe_t2"
+	force = 15
+	hit_range = 1
+
+/obj/item/scythe/tier3
+	name = "scythe (tier 3)"
+	icon_state = "scythe_t3"
+	force = 18
+	hit_range = 2
+
+/obj/item/scythe/tier4
+	name = "scythe (tier 4)"
+	icon_state = "scythe_t4"
+	force = 22
+	hit_range = 3
+
 /datum/design/scythe
 	name = "Scythe (Tier 1)"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
