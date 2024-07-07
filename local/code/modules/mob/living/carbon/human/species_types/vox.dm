@@ -2,7 +2,6 @@
 	// Bird-like humanoids
 	name = "Vox"
 	id = SPECIES_VOX
-	eyes_icon = 'local/icons/obj/medical/organs/vox_eyes.dmi'
 	can_augment = FALSE
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,

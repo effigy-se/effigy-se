@@ -18,7 +18,6 @@
 	payday_modifier = 1
 	mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	eyes_icon = 'local/icons/obj/medical/organs/skrell_eyes.dmi'
 	mutantbrain = /obj/item/organ/internal/brain/skrell
 	mutanteyes = /obj/item/organ/internal/eyes/skrell
 	mutantlungs = /obj/item/organ/internal/lungs/skrell

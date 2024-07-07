@@ -90,3 +90,8 @@ GLOBAL_LIST_EMPTY(scream_types)
 	name = "Skeleton Scream"
 	male_screamsounds = list('local/sound/emotes/voice/scream_skeleton.ogg')
 	female_screamsounds = null
+
+/datum/scream_type/slugcat
+	name = "Slugcat Scream"
+	male_screamsounds = list('local/sound/emotes/voice/scugscream_1.ogg')
+	female_screamsounds = null
