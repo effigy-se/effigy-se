@@ -2,6 +2,7 @@ import { classes } from 'common/react';
 import { capitalizeAll } from 'common/string';
 import { useState } from 'react';
 
+import { createSearch } from '../../common/string';
 import { useBackend } from '../backend';
 import {
   Box,
@@ -13,9 +14,6 @@ import {
   Stack,
   Table,
 } from '../components';
-
-import { createSearch } from '../../common/string';
-import { useBackend } from '../backend';
 import { Input } from '../components';
 import { Window } from '../layouts';
 
