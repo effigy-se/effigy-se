@@ -1084,6 +1084,21 @@ TREK
 	icon_file = 'local/icons/mob/clothing/greyscale/id_card.dmi'
 	json_config = 'local/code/datums/greyscale/json_configs/items/id_card.json'
 
+/datum/greyscale_config/hypokit
+	name = "Hypospray Kit"
+	icon_file = 'local/icons/obj/medical/hypokits.dmi'
+	json_config = 'local/code/datums/greyscale/json_configs/items/hypokit.json'
+
+/datum/greyscale_config/hypospray_mkii
+	name = "Hypospray Mk. II"
+	icon_file = 'local/icons/obj/medical/hyposprays.dmi'
+	json_config = 'local/code/datums/greyscale/json_configs/items/hypospray.json'
+
+/datum/greyscale_config/hypovial
+	name = "Hypovial"
+	icon_file = 'local/icons/obj/medical/vials.dmi'
+	json_config = 'local/code/datums/greyscale/json_configs/items/hypovial.json'
+
 /*
 *	AIRLOCKS
 */

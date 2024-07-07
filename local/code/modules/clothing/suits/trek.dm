@@ -21,6 +21,7 @@
 				/obj/item/reagent_containers/cup/hypovial,
 				/obj/item/reagent_containers/cup/beaker,
 				/obj/item/storage/pill_bottle,
+				/obj/item/storage/hypospraykit,
 				/obj/item/taperecorder)
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	body_parts_covered = CHEST|GROIN|ARMS
