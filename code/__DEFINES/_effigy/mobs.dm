@@ -34,6 +34,7 @@
 #define BODYPART_ICON_SYNTHMAMMAL 'local/icons/mob/species/synthmammal_parts_greyscale.dmi'
 #define BODYPART_ICON_IPC 'local/icons/mob/species/ipc_parts.dmi'
 #define BODYPART_ICON_SYNTHLIZARD 'local/icons/mob/species/synthliz_parts_greyscale.dmi'
+#define BODYPART_ICON_SLUGCAT 'local/icons/mob/species/slugcat_parts_greyscale.dmi'
 
 // Oversized
 #define BLOOD_VOLUME_OVERSIZED 1120

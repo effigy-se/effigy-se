@@ -28,7 +28,6 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/insect,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/insect,
 	)
-	eyes_icon = 'local/icons/obj/medical/organs/insect_eyes.dmi'
 
 /datum/species/insect/get_default_mutant_bodyparts()
 	return list(

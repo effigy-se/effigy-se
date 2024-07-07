@@ -2,6 +2,7 @@
 /obj/item/bodypart/head/mutant/skrell
 	icon_greyscale = BODYPART_ICON_SKRELL
 	limb_id = SPECIES_SKRELL
+	eyes_icon = 'local/icons/obj/medical/organs/skrell_eyes.dmi'
 
 /obj/item/bodypart/chest/mutant/skrell
 	icon_greyscale = BODYPART_ICON_SKRELL
