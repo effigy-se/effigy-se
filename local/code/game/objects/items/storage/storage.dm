@@ -1,7 +1,7 @@
 /obj/item/storage/hypospraykit
 	name = "hypospray kit"
 	desc = "A hypospray kit with foam insets for hypovials and a mounting point on the bottom."
-	icon = 'modular_nova/modules/hyposprays/icons/hypokits.dmi'
+	icon = 'local/icons/obj/medical/hypokits.dmi'
 	icon_state = "firstaid-mini"
 	worn_icon_state = "healthanalyzer" // Get a better sprite later
 	inhand_icon_state = "medkit"
@@ -97,20 +97,20 @@
 			var/mutable_appearance/hypo_overlay = mutable_appearance(initial(icon), attached_hypo.icon_state)
 			. += hypo_overlay
 
-/obj/item/storage/hypospraykit/tool_act(mob/living/user, obj/item/tool, list/modifiers)
-	if(!istype(tool, /obj/item/hypospray/mkii) || !LAZYACCESS(modifiers, RIGHT_CLICK))
+/obj/item/storage/hypospraykit/attackby_secondary(obj/item/weapon, mob/user, params)
+	if(!istype(weapon, /obj/item/hypospray/mkii))
 		return ..()
 	if(!isnull(attached_hypo))
 		balloon_alert(user, "Mount point full!  Remove [attached_hypo] first!")
 		return ITEM_INTERACT_BLOCKING
-	tool.moveToNullspace()
-	attached_hypo = tool
-	RegisterSignal(tool, COMSIG_QDELETING, PROC_REF(on_attached_hypo_qdel))
+	weapon.moveToNullspace()
+	attached_hypo = weapon
+	RegisterSignal(weapon, COMSIG_QDELETING, PROC_REF(on_attached_hypo_qdel))
 	balloon_alert(user, "Attached [attached_hypo].")
 	update_appearance()
-	return ITEM_INTERACT_SUCCESS
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/item/storage/hypospraykit/click_alt_secondary(mob/user)
+/obj/item/storage/hypospraykit/alt_click_secondary(mob/user)
 	if(attached_hypo != null)
 		if(user.put_in_hands(attached_hypo))
 			balloon_alert(user, "Removed [attached_hypo].")
@@ -163,7 +163,7 @@
 	return TRUE
 
 
-/obj/item/storage/hypospraykit/click_ctrl_shift(mob/user)
+/obj/item/storage/hypospraykit/CtrlShiftClick(mob/user, obj/item/I)
 	case_menu(user)
 
 //END OF HYPOSPRAY CASE MENU CODE
@@ -235,7 +235,7 @@
 	name = "box of hypovials"
 
 /obj/item/storage/box/hypovials/PopulateContents()
-	for(var/hypovialpath in subtypesof(/obj/item/reagent_containers/cup/hypovial/small/style))
+	for(var/vialpath in subtypesof(/obj/item/reagent_containers/cup/hypovial/small/style))
 		new vialpath(src)
 
 // Ditto, just large vials.
@@ -243,7 +243,7 @@
 	name = "box of deluxe hypovials"
 
 /obj/item/storage/box/hypovials/deluxe/PopulateContents()
-	for(var/hypovialpath in subtypesof(/obj/item/reagent_containers/cup/hypovial/large/style))
+	for(var/vialpath in subtypesof(/obj/item/reagent_containers/cup/hypovial/large/style))
 		new vialpath(src)
 
 // A box of small hypospray kits, pre-skinned to each variant to remind people what styles are available.

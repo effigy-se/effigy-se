@@ -27,7 +27,7 @@
 	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
 	var/small_only = TRUE
 	/// The presently-inserted vial.
-	var/obj/item/reagent_containers/cup/hypovial/hypovial
+	var/obj/item/reagent_containers/cup/hypovial/vial
 	/// If the Hypospray starts with a vial, which vial does it start with?
 	var/obj/item/reagent_containers/cup/hypovial/start_vial
 
@@ -125,7 +125,7 @@
 	if(!vial)
 		return
 	if(vial.reagents.total_volume)
-		var/hypovial_spritetype = "chem-color"
+		var/vial_spritetype = "chem-color"
 		if(!small_only)
 			vial_spritetype += "[vial.type_suffix]"
 		else
@@ -134,13 +134,13 @@
 		chem_loaded.color = vial.chem_color
 		. += chem_loaded
 	if(vial.greyscale_colors != null)
-		var/mutable_appearance/hypovial_overlay = mutable_appearance(initial(icon), "[vial.icon_state]-body")
+		var/mutable_appearance/vial_overlay = mutable_appearance(initial(icon), "[vial.icon_state]-body")
 		vial_overlay.color = vial.greyscale_colors
 		. += vial_overlay
-		var/mutable_appearance/hypovial_overlay_glass = mutable_appearance(initial(icon), "[vial.icon_state]-glass")
+		var/mutable_appearance/vial_overlay_glass = mutable_appearance(initial(icon), "[vial.icon_state]-glass")
 		. += vial_overlay_glass
 	else
-		var/mutable_appearance/hypovial_overlay = mutable_appearance(initial(icon), vial.icon_state)
+		var/mutable_appearance/vial_overlay = mutable_appearance(initial(icon), vial.icon_state)
 		. += vial_overlay
 
 /obj/item/hypospray/mkii/examine(mob/user)
@@ -151,7 +151,7 @@
 		. += "It has no vial loaded in."
 	. += span_notice("Ctrl-Shift-Click to change up the colors or reset them.")
 
-/obj/item/hypospray/mkii/click_ctrl_shift(mob/user)
+/obj/item/hypospray/mkii/CtrlShiftClick(mob/user, obj/item/I)
 	var/choice = tgui_input_list(user, "GAGSify the hypo or reset to default?", "Fashion", list("GAGS", "Nope"))
 	if(choice == "GAGS")
 		icon_state = gags_bodystate
@@ -340,7 +340,7 @@
 /obj/item/reagent_containers/cup/hypovial
 	name = "broken hypovial"
 	desc = "You probably shouldn't be seeing this. Shout at a coder."
-	icon = 'local/icons/obj/medical/hypovials.dmi'
+	icon = 'local/icons/obj/medical/vials.dmi'
 	icon_state = "hypovial"
 	greyscale_config = /datum/greyscale_config/hypovial
 	fill_icon_state = "hypovial_fill"
@@ -377,7 +377,7 @@
 	. = ..()
 	. += span_notice("Ctrl-Shift-Click to reskin or set a custom color.")
 
-/obj/item/reagent_containers/cup/hypovial/click_ctrl_shift(mob/user)
+/obj/item/reagent_containers/cup/hypovial/CtrlShiftClick(mob/user, obj/item/I)
 	current_skin = null
 	icon_state = initial(icon_state)
 	icon = initial(icon)
