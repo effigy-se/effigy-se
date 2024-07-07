@@ -167,6 +167,14 @@
 	name = "Gaster"
 	id = "gaster"
 	soundpath = 'local/sound/voice/bloopers/undertale/voice_gaster_1.ogg'
+	soundpath_list = list(
+		'local/sound/voice/bloopers/undertale/voice_gaster_1.ogg',
+		'local/sound/voice/bloopers/undertale/voice_gaster_2.ogg',
+		'local/sound/voice/bloopers/undertale/voice_gaster_3.ogg',
+		'local/sound/voice/bloopers/undertale/voice_gaster_4.ogg',
+		'local/sound/voice/bloopers/undertale/voice_gaster_5.ogg',
+		'local/sound/voice/bloopers/undertale/voice_gaster_6.ogg',
+		'local/sound/voice/bloopers/undertale/voice_gaster_7.ogg')
 	minvariance = 0
 
 /datum/blooper/mettaton

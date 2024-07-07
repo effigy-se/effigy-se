@@ -2,6 +2,7 @@
 	// Text-to-blooper sounds
 	// yes. all atoms can have a say.
 	var/sound/blooper
+	var/list/blooper_list
 	var/blooper_id
 	var/blooper_pitch = 1
 	var/blooper_pitch_range = 0.2 //Actual pitch is (pitch - (blooper_pitch_range*0.5)) to (pitch + (blooper_pitch_range*0.5))
@@ -15,7 +16,12 @@
 	var/datum/blooper/bloop = GLOB.blooper_list[id]
 	if(!bloop)
 		return FALSE
-	blooper = sound(initial(bloop.soundpath))
+	blooper = sound(bloop.soundpath)
+	var/list/blooplist = bloop.soundpath_list
+	if(blooplist)
+		blooper_list = list()
+		for(var/a_blooper in blooplist)
+			blooper_list += sound(a_blooper)
 	blooper_id = id
 	return blooper
 
@@ -29,8 +35,11 @@
 			return
 	volume = min(volume, 100)
 	var/turf/local_turf = get_turf(src)
+	var/sound/blooper_pick = blooper
+	if(length(blooper_list) > 0)
+		blooper_pick = pick(blooper_list)
 	for(var/mob/target_mob in listeners)
-		target_mob.playsound_local(local_turf, vol = volume, vary = TRUE, frequency = pitch, max_distance = distance, falloff_distance = 0, falloff_exponent = BLOOPER_SOUND_FALLOFF_EXPONENT, sound_to_use = blooper, distance_multiplier = 1)
+		target_mob.playsound_local(local_turf, vol = volume, vary = TRUE, frequency = pitch, max_distance = distance, falloff_distance = 0, falloff_exponent = BLOOPER_SOUND_FALLOFF_EXPONENT, sound_to_use = blooper_pick, distance_multiplier = 1)
 
 /atom/movable/send_speech(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language, list/message_mods = list(), forced = FALSE, tts_message, list/tts_filter)
 	. = ..()
