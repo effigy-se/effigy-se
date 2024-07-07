@@ -56,9 +56,9 @@
 	// EffigyEdit Add - Vocal Bloopers
 	for(var/blooper_path in subtypesof(/datum/blooper))
 		var/datum/blooper/bloop = new blooper_path()
-		GLOB.blooper_list[bloop.id] = blooper_path
+		GLOB.blooper_list[bloop.id] = bloop
 		if(bloop.allow_random)
-			GLOB.blooper_random_list[bloop.id] = blooper_path
+			GLOB.blooper_random_list[bloop.id] = bloop
 	// EffigyEdit Add End
 
 /// Inits GLOB.surgeries
