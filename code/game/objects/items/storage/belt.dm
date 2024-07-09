@@ -288,6 +288,8 @@
 		/obj/item/wrench/medical,
 		/obj/item/knife/ritual,
 		/obj/item/handheld_soulcatcher, // EffigyEdit Add - SOULCATCHERS
+		/obj/item/hypospray/mkii, // EffigyEdit Add - HYPOSPRAYS
+		/obj/item/storage/hypospraykit/, // EffigyEdit Add - HYPOSPRAYS
 	))
 
 /obj/item/storage/belt/medical/paramedic
