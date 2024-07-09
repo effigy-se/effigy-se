@@ -1,3 +1,4 @@
+/* EffigyEdit ISSUE #862
 // Set up the types of items that can be placed in the mask
 /datum/storage/pockets/small/bdsm_mask
 	max_slots = 1
@@ -352,3 +353,5 @@
 		return ..()
 	to_chat(user, span_warning("You can't change the flow rate of the valve while the mask is on!"))
 	return CLICK_ACTION_BLOCKING
+
+*/

@@ -55,6 +55,7 @@
 /obj/item/claymore/cutlass/luna/attack_secondary(atom/target, mob/living/user, clickparams)
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
+/* EffigyEdit ISSUE #863
 /obj/item/claymore/cutlass/luna/afterattack_secondary(atom/target, mob/living/user, proximity_flag, click_parameters)
 	if(!can_bloodbeam)
 		return
@@ -64,6 +65,7 @@
 	send_sword_laser(target, user, click_parameters)
 	user.changeNext_move(CLICK_CD_MELEE)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+*/
 
 /obj/item/claymore/cutlass/luna/proc/send_sword_laser(atom/target, mob/living/user)
 	var/turf/proj_turf = user.loc
