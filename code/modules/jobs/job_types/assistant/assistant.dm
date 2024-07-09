@@ -37,9 +37,7 @@ Assistant
 	rpg_title = "Lout"
 	config_tag = "ASSISTANT"
 
-/datum/job/assistant/get_outfit(consistent)
-	if(consistent)
-		return /datum/outfit/job/assistant/consistent
+/datum/job/assistant/get_outfit()
 	if(!HAS_TRAIT(SSstation, STATION_TRAIT_ASSISTANT_GIMMICKS))
 		return ..()
 
