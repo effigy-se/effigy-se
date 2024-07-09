@@ -956,7 +956,7 @@
 	complexity = 1
 	use_energy_cost = DEFAULT_CHARGE_DRAIN
 	incompatible_modules = list(/obj/item/mod/module/shock_absorber)
-	required_slots = list(ITEM_SLOT_BACK|ITEM_SLOT_BELT)
+	//required_slots = list(ITEM_SLOT_BACK|ITEM_SLOT_BELT)
 
 /obj/item/mod/module/shock_absorber/on_suit_activation()
 	. = ..()
