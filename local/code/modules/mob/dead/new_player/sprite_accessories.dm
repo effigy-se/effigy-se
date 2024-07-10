@@ -191,7 +191,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	color_src = USE_ONE_COLOR
 	organ_type = /obj/item/organ/external/cap
 
-/datum/sprite_accessory/body_markings
+/datum/sprite_accessory/lizard_markings
 	key = "body_markings"
 	generic = "Body Markings"
 	default_color = DEFAULT_TERTIARY

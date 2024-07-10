@@ -2,17 +2,6 @@
 	mutant_bodyparts = list()
 	external_organs = list()
 	payday_modifier = 1
-	mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"spines" = ACC_RANDOM,
-		"frills" = ACC_RANDOM,
-		"horns" = ACC_RANDOM,
-		"body_markings" = ACC_RANDOM,
-		"legs" = DIGITIGRADE_LEGS,
-		"taur" = "None",
-		"wings" = "None",
-	)
 
 /datum/species/lizard/get_default_mutant_bodyparts()
 	return list(
@@ -59,6 +48,7 @@
 
 /datum/species/lizard/ashwalker
 	inherent_traits = list(
+		TRAIT_NO_UNDERWEAR,
 		TRAIT_MUTANT_COLORS,
 	)
 	always_customizable = TRUE
@@ -93,3 +83,13 @@ Lizard subspecies: ASHWALKERS
 	))
 
 	return to_add
+
+/datum/species/lizard/ashwalker/get_default_mutant_bodyparts()
+	var/list/default_parts = ..()
+	default_parts["spines"] = list("None", TRUE)
+	return default_parts
+
+/datum/species/lizard/silverscale/get_default_mutant_bodyparts()
+	var/list/default_parts = ..()
+	default_parts["spines"] = list("None", TRUE)
+	return default_parts
