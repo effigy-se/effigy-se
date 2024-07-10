@@ -337,7 +337,7 @@
 	)
 	hat_offset = 0
 	cyborg_base_icon = "cargo"
-	model_select_icon = "cargo"
+	model_select_icon = "lost"
 	model_select_alternate_icon = 'local/icons/mob/borgs/screen_cyborg.dmi'
 	canDispose = TRUE
 	borg_skins = list(
