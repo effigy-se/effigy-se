@@ -1234,7 +1234,7 @@
 	var/mob/living/carbon/human/exposed_human = exposed_mob
 	exposed_human.set_facial_haircolor(color, update = FALSE)
 	exposed_human.set_haircolor(color, update = TRUE)
-	exposed_human.update_mutant_bodyparts(force_update=TRUE) // EffigyEdit Add
+	exposed_human.update_mutant_bodyparts() // EffigyEdit Add
 
 
 /datum/reagent/medicine/regen_jelly/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
