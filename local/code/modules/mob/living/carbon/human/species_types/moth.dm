@@ -6,7 +6,6 @@
 		"moth_antennae" = ACC_RANDOM,
 	)
 	inherent_traits = list(
-		TRAIT_HAS_MARKINGS,
 		TRAIT_ANTENNAE,
 		TRAIT_MUTANT_COLORS,
 	)
