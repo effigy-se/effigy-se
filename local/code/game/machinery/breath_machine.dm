@@ -130,7 +130,7 @@
 
 	// if we somehow lost the mask, let's just make a brand new one. the wonders of technology!
 	if(QDELETED(attached_mask))
-		attached_mask = new /obj/item/clothing/mask/breath/anesthetic(src)
+		attached_mask = new /obj/item/clothing/mask/breath/retractable(src)
 		update_icon()
 
 	user.visible_message(span_warning("[user] attemps to attach the [attached_mask] to [over]."), span_notice("You attempt to attach the [attached_mask] to [over]"))
