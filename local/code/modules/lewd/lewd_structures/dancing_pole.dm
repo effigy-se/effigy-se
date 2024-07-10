@@ -51,7 +51,7 @@
 	)
 
 
-/obj/structure/stripper_pole/CtrlClick(mob/user)
+/obj/structure/stripper_pole/click_ctrl(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -157,7 +157,7 @@
 		dancer.forceMove(get_turf(src))
 		dancer = null
 
-/obj/structure/stripper_pole/CtrlShiftClick(mob/user)
+/obj/structure/stripper_pole/click_ctrl_shift(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
