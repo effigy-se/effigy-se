@@ -55,24 +55,25 @@
 /obj/item/claymore/cutlass/luna/attack_secondary(atom/target, mob/living/user, clickparams)
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
-/* EffigyEdit ISSUE #863
-/obj/item/claymore/cutlass/luna/afterattack_secondary(atom/target, mob/living/user, proximity_flag, click_parameters)
+/obj/item/claymore/cutlass/luna/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!can_bloodbeam)
 		return
-	if(target == user)
+	if(interacting_with == user)
 		balloon_alert(user, "can't aim at yourself!")
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	send_sword_laser(target, user, click_parameters)
+		return ITEM_INTERACT_BLOCKING
+	send_sword_laser(interacting_with, user, modifiers)
 	user.changeNext_move(CLICK_CD_MELEE)
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-*/
+	return ITEM_INTERACT_SUCCESS
 
-/obj/item/claymore/cutlass/luna/proc/send_sword_laser(atom/target, mob/living/user)
+/obj/item/claymore/cutlass/luna/ranged_interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+	return interact_with_atom_secondary(interacting_with, user, modifiers)
+
+/obj/item/claymore/cutlass/luna/proc/send_sword_laser(atom/target, mob/living/user, list/modifiers)
 	var/turf/proj_turf = user.loc
 	if(!isturf(proj_turf))
 		return
 	var/obj/projectile/beam/weak/penetrator/sord_beam = new(proj_turf)
-	sord_beam.preparePixelProjectile(target, user)
+	sord_beam.preparePixelProjectile(target, user, modifiers)
 	sord_beam.firer = user
 	playsound(user, 'sound/weapons/resonator_blast.ogg', 90, TRUE)
 	sord_beam.fire()
@@ -153,12 +154,12 @@
 	update_inhand_icon(user)
 	upgrade_appliable.set_light_on(TRUE)
 	playsound(upgrade_appliable, 'sound/weapons/saberon.ogg', 35, TRUE)
-	force = /obj/item/melee/energy::force
-	throwforce = /obj/item/melee/energy::throwforce
-	bare_wound_bonus = /obj/item/melee/energy::bare_wound_bonus
-	demolition_mod = /obj/item/melee/energy::demolition_mod
-	armour_penetration = /obj/item/melee/energy::armour_penetration
-	block_chance = /obj/item/melee/energy::block_chance
+	force = /obj/item/melee/energy/sword::active_force
+	throwforce = /obj/item/melee/energy/sword::active_throwforce
+	bare_wound_bonus = /obj/item/melee/energy/sword::bare_wound_bonus
+	demolition_mod = /obj/item/melee/energy/sword::demolition_mod
+	armour_penetration = /obj/item/melee/energy/sword::armour_penetration
+	block_chance = /obj/item/melee/energy/sword::block_chance
 	return ..()
 
 /obj/item/luna_fragment/energy_retrofit/remove_upgrade(our_sord, mob/living/user)
