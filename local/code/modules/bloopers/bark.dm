@@ -144,6 +144,7 @@ It has also been further modified by Rashcat & other Fluffyfrontier contributors
 	var/name = "None"
 	var/id = "No Voice"
 	var/soundpath
+	var/list/soundpath_list
 
 	var/minpitch = BLOOPER_DEFAULT_MINPITCH
 	var/maxpitch = BLOOPER_DEFAULT_MAXPITCH

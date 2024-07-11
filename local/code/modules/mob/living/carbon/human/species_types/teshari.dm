@@ -7,7 +7,6 @@
 /datum/species/teshari
 	name = "Teshari"
 	id = SPECIES_TESHARI
-	eyes_icon = 'local/icons/obj/medical/organs/teshari_eyes.dmi'
 	inherent_traits = list(
 		TRAIT_HAS_MARKINGS,
 		TRAIT_NO_UNDERWEAR,

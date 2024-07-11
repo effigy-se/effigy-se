@@ -99,12 +99,11 @@ DEFINE_BITFIELD(request_flags, list(
 #define XING_STATE_RED 2
 #define XING_STATE_MALF 3
 
-#define AMBER_THRESHOLD_NORMAL 60 // EffigyEdit Change - Run/Walk Speed
-#define RED_THRESHOLD_NORMAL 37 // EffigyEdit Change - Run/Walk Speed
-#define AMBER_THRESHOLD_DEGRADED 45 // EffigyEdit Change - Run/Walk Speed
-#define RED_THRESHOLD_DEGRADED 33 // EffigyEdit Change - Run/Walk Speed
+#define XING_THRESHOLD_AMBER 60
+#define XING_THRESHOLD_RED 37
 
 #define DEFAULT_TRAM_LENGTH 10
+#define DEFAULT_TRAM_MIDPOINT 5
 
 // Tram machinery subtype
 #define TRANSPORT_SYSTEM_NORMAL 0
