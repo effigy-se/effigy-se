@@ -34,7 +34,6 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	//Socks
 	var/list/socks_list //! stores /datum/sprite_accessory/socks indexed by name
 
-	/* EffigyEdit Remove - Customization - Moved to sprite_accessories var
 	//Lizard Bits (all datum lists indexed by name)
 	var/list/lizard_markings_list
 	var/list/snouts_list
@@ -53,27 +52,9 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/wings_open_list
 	var/list/moth_wings_list
 	var/list/moth_antennae_list
-	*/ // EffigyEdit Remove End
 	var/list/moth_markings_list
-	var/list/pod_hair_list
-
-	// EffigyEdit Add - Customization
-	var/list/lizard_markings_list
-	var/list/tails_list_monkey
 	var/list/caps_list
-	var/list/moth_wings_list
-
-	var/list/sprite_accessories = list()
-	var/list/genetic_accessories = list()
-	var/list/generic_accessories = list()
-
-	var/list/cached_mutant_icon_files = list()
-
-	// we are loading them along with sprite_accessories, so they can't be GLOB :(
-	var/dna_total_feature_blocks = DNA_MANDATORY_COLOR_BLOCKS
-	var/list/dna_mutant_bodypart_blocks = list()
-	var/list/features_block_lengths = list()
-	// EffigyEdit Add End
+	var/list/pod_hair_list
 
 /datum/controller/subsystem/accessories/PreInit() // this stuff NEEDS to be set up before GLOB for preferences and stuff to work so this must go here. sorry
 	setup_lists()
@@ -106,7 +87,6 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 
 	socks_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/socks)[DEFAULT_SPRITE_LIST]
 
-	/* // EffigyEdit Remove - Customization
 	lizard_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/lizard_markings)[DEFAULT_SPRITE_LIST]
 	tails_list_human = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	tails_list_lizard = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
@@ -124,22 +104,7 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	moth_wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings)[DEFAULT_SPRITE_LIST]
 	moth_antennae_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae)[DEFAULT_SPRITE_LIST]
 	moth_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings)[DEFAULT_SPRITE_LIST]
-	*/ // EffigyEdit Remove End
 	pod_hair_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair)[DEFAULT_SPRITE_LIST]
-
-	// EffigyEdit Add - Customization
-	tails_list_monkey = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
-	caps_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/caps, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
-	moth_wings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings)[DEFAULT_SPRITE_LIST]
-
-	features_block_lengths = list(
-		"[DNA_MUTANT_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-		"[DNA_MUTANT_COLOR_2_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-		"[DNA_MUTANT_COLOR_3_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-		"[DNA_ETHEREAL_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-		"[DNA_SKIN_COLOR_BLOCK]" = DNA_BLOCK_SIZE_COLOR,
-	)
-	// EffigyEdit Add End
 
 /// This proc just intializes all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
 /datum/controller/subsystem/accessories/proc/init_hair_gradients()

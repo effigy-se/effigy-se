@@ -8,6 +8,7 @@
 	name = "Teshari"
 	id = SPECIES_TESHARI
 	inherent_traits = list(
+		TRAIT_HAS_MARKINGS,
 		TRAIT_NO_UNDERWEAR,
 		TRAIT_MUTANT_COLORS,
 		TRAIT_TACKLING_FRAIL_ATTACKER,
