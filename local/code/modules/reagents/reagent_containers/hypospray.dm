@@ -24,8 +24,6 @@
 	desc = "A new development from DeForest Medical, this hypospray takes 50-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
 	var/list/allowed_containers = list(/obj/item/reagent_containers/cup/hypovial/small)
-	/// Is the hypospray only able to use small vials. Relates to the loaded overlays
-	var/small_only = TRUE
 	/// The presently-inserted vial.
 	var/obj/item/reagent_containers/cup/hypovial/vial
 	/// If the Hypospray starts with a vial, which vial does it start with?
@@ -47,14 +45,6 @@
 	/// Used for GAGS-ified hypos.
 	var/gags_bodystate = "hypo2_normal"
 
-/obj/item/hypospray/mkii/deluxe
-	name = "hypospray Mk.II deluxe"
-	allowed_containers = list(/obj/item/reagent_containers/cup/hypovial/small, /obj/item/reagent_containers/cup/hypovial/large)
-	icon_state = "bighypo2"
-	gags_bodystate = "hypo2_deluxe"
-	desc = "The deluxe variant in the DeForest Hypospray Mk. II series, able to take both 100u and 50u vials."
-	small_only = FALSE
-
 /obj/item/hypospray/mkii/piercing
 	name = "hypospray Mk.II advanced"
 	allowed_containers = list(/obj/item/reagent_containers/cup/hypovial/small)
@@ -70,23 +60,12 @@
 /obj/item/hypospray/mkii/piercing/atropine
 	start_vial = /obj/item/reagent_containers/cup/hypovial/small/atropine
 
-// Deluxe hypo upgrade Kit
-/obj/item/device/custom_kit/deluxe_hypo2
-	name = "hypospray Mk.II deluxe bodykit"
-	desc = "Upgrades the DeForest Hypospray Mk. II to support larger vials."
-	// don't tinker with a loaded (medi)gun. fool
-	from_obj = /obj/item/hypospray/mkii
-	to_obj = /obj/item/hypospray/mkii/deluxe
-
-/obj/item/device/custom_kit/deluxe_hypo2/pre_convert_check(obj/target_obj, mob/user)
-	var/obj/item/hypospray/mkii/our_hypo = target_obj
-	if(our_hypo.type in subtypesof(/obj/item/hypospray/mkii/))
-		balloon_alert(user, "only works on basic mk. ii hypos!")
-		return FALSE
-	if(our_hypo.vial != null)
-		balloon_alert(user, "unload the vial first!")
-		return FALSE
-	return TRUE
+/obj/item/hypospray/mkii/deluxe
+	name = "hypospray Mk.II deluxe"
+	icon_state = "bighypo2"
+	gags_bodystate = "hypo2_deluxe"
+	desc = "The deluxe variant of the Hypospray Mk. II, able to take both 100u and 50u vials."
+	allowed_containers = list(/obj/item/reagent_containers/cup/hypovial/small, /obj/item/reagent_containers/cup/hypovial/large)
 
 /obj/item/hypospray/mkii/deluxe/cmo
 	name = "hypospray Mk.II deluxe: CMO edition"
@@ -126,7 +105,7 @@
 		return
 	if(vial.reagents.total_volume)
 		var/vial_spritetype = "chem-color"
-		if(!small_only)
+		if(istype(vial, /obj/item/reagent_containers/cup/hypovial/large))
 			vial_spritetype += "[vial.type_suffix]"
 		else
 			vial_spritetype += "-s"
@@ -318,6 +297,24 @@
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
 	. += span_notice("<b>Left-Click</b> on patients to spray, <b>Right-Click</b> to inject.")
+
+// Deluxe hypo upgrade Kit
+/obj/item/device/custom_kit/deluxe_hypo2
+	name = "hypospray Mk.II deluxe bodykit"
+	desc = "Upgrades the DeForest Hypospray Mk. II to support larger vials."
+	// don't tinker with a loaded (medi)gun. fool
+	from_obj = /obj/item/hypospray/mkii
+	to_obj = /obj/item/hypospray/mkii/deluxe
+
+/obj/item/device/custom_kit/deluxe_hypo2/pre_convert_check(obj/target_obj, mob/user)
+	var/obj/item/hypospray/mkii/our_hypo = target_obj
+	if(our_hypo.type in subtypesof(/obj/item/hypospray/mkii/))
+		balloon_alert(user, "only works on basic mk. ii hypos!")
+		return FALSE
+	if(our_hypo.vial != null)
+		balloon_alert(user, "unload the vial first!")
+		return FALSE
+	return TRUE
 
 #undef HYPO_INJECT
 #undef HYPO_SPRAY
