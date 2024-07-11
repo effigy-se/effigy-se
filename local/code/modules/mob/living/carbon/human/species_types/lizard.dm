@@ -48,6 +48,7 @@
 
 /datum/species/lizard/ashwalker
 	inherent_traits = list(
+		TRAIT_HAS_MARKINGS,
 		TRAIT_NO_UNDERWEAR,
 		TRAIT_MUTANT_COLORS,
 	)
