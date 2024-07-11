@@ -1,11 +1,7 @@
 /datum/species/moth
 	mutant_bodyparts = list()
-	mutant_bodyparts = list(
-		"fluff" = "None",
-		"wings" = ACC_RANDOM,
-		"moth_antennae" = ACC_RANDOM,
-	)
 	inherent_traits = list(
+		TRAIT_TACKLING_WINGED_ATTACKER,
 		TRAIT_ANTENNAE,
 		TRAIT_MUTANT_COLORS,
 	)
@@ -20,6 +16,7 @@
 /datum/species/moth/randomize_features()
 	var/list/features = ..()
 	features["mcolor"] = "#E5CD99"
+	return features
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"

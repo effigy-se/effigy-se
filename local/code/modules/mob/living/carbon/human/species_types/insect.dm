@@ -2,22 +2,15 @@
 	name = "Anthromorphic Insect"
 	id = SPECIES_INSECT
 	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP,
+		TRAIT_LITERATE,
 		TRAIT_MUTANT_COLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
-	mutant_bodyparts = list(
-		"tail" = "None",
-		"snout" = "None",
-		"horns" = "None",
-		"ears" = "None",
-		"legs" = "Normal Legs",
-		"taur" = "None",
-		"fluff" = "None",
-		"wings" = "Bee",
-		"moth_antennae" = "None"
-	)
+	mutant_bodyparts = list()
 	mutanttongue = /obj/item/organ/internal/tongue/insect
-	payday_modifier = 1
+	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_INSECT
 	bodypart_overrides = list(
@@ -54,5 +47,6 @@
 	human.dna.features["mcolor"] = main_color
 	human.dna.features["mcolor2"] = secondary_color
 	human.dna.features["mcolor3"] = secondary_color
+	human.dna.species.body_markings["head"] = list("Insect Antennae" = list("#644b07", 0))
 	regenerate_organs(human, src, visual_only = TRUE)
 	human.update_body(TRUE)
