@@ -16,26 +16,20 @@
 	icon_state = "bdsm_bed_kit"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/bdsm_bed_kit/CtrlShiftClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
+/obj/item/bdsm_bed_kit/click_ctrl_shift(mob/user)
 	add_fingerprint(user)
 	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
-		return FALSE
+		return
 
 	to_chat(user, span_notice("You fasten the frame to the floor and begin to inflate the latex pillows..."))
 	if(!do_after(user, 8 SECONDS, src))
 		to_chat(user, span_warning("You fail to assemble [src]."))
-		return FALSE
+		return
 
 	to_chat(user, span_notice("You assemble [src]."))
 	var/obj/structure/bed/bdsm_bed/assembled_bed = new
 	assembled_bed.forceMove(loc)
 	qdel(src)
-
-	return TRUE
 
 /obj/item/bdsm_bed_kit/examine(mob/user)
 	. = ..()
