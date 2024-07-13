@@ -293,8 +293,8 @@
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE
 
-/obj/item/mod/control/MouseDrop(atom/over_object)
-	if(usr != wearer || !istype(over_object, /atom/movable/screen/inventory/hand))
+/obj/item/mod/control/mouse_drop_dragged(atom/over)
+	if(usr != wearer || !istype(over, /atom/movable/screen/inventory/hand))
 		return ..()
 	for(var/obj/item/part as anything in mod_parts)
 		if(part.loc != src)
