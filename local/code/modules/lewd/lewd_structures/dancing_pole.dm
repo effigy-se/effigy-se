@@ -50,8 +50,7 @@
 		"white" = image(icon = src.icon, icon_state = "pole_white_on"),
 	)
 
-
-/obj/structure/stripper_pole/CtrlClick(mob/user)
+/obj/structure/stripper_pole/click_ctrl(mob/user)
 	. = ..()
 	if(. == FALSE)
 		return FALSE
@@ -64,7 +63,6 @@
 	update_icon()
 	update_brightness()
 	return TRUE
-
 
 // Alt-click to turn the lights on or off.
 /obj/structure/stripper_pole/click_alt(mob/user)
@@ -157,11 +155,7 @@
 		dancer.forceMove(get_turf(src))
 		dancer = null
 
-/obj/structure/stripper_pole/CtrlShiftClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
+/obj/structure/stripper_pole/click_ctrl_shift(mob/user)
 	add_fingerprint(user)
 	balloon_alert(user, "disassembling...")
 	if(!do_after(user, 8 SECONDS, src))
