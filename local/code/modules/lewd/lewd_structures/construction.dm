@@ -99,10 +99,10 @@
 	. += span_purple("[src]'s color can be customized with <b>Ctrl+Click</b>.")
 
 //to change model
-/obj/item/construction_kit/bdsm/shibari/CtrlClick(mob/user)
+/obj/item/construction_kit/bdsm/shibari/item_ctrl_click(mob/user)
 	. = ..()
 	if(. == FALSE)
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 
 	var/list/allowed_configs = list()
 	allowed_configs += "[greyscale_config]"
@@ -114,4 +114,4 @@
 	)
 	menu.ui_interact(usr)
 	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
-	return TRUE
+	return CLICK_ACTION_SUCCESS

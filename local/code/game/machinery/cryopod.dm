@@ -500,8 +500,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 	return holy_successors
 
-/obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
-	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
+/obj/machinery/cryopod/mouse_drop_receive(mob/living/target, mob/user, params)
+	if(!istype(target) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
 		return
 
 	if(occupant)
