@@ -49,8 +49,38 @@
 	)
 	return ..()
 
+/datum/techweb_node/augmentation/New()
+	design_ids += list(
+		"affection_module",
+	)
+	return ..()
+
 /datum/techweb_node/borg_medical/New()
 	design_ids += list(
 		"borg_upgrade_surgicaltools",
+	)
+	return ..()
+
+/datum/techweb_node/hud/New()
+	design_ids += list(
+		"nifsoft_money_sense",
+	)
+	return ..()
+
+/datum/techweb_node/augmentation/New()
+	design_ids += list(
+		"synth_eyes",
+		"synth_tongue",
+		"synth_liver",
+		"synth_lungs",
+		"synth_stomach",
+		"synth_ears",
+		"synth_heart",
+	)
+	return ..()
+
+/datum/techweb_node/gene_engineering/New()
+	design_ids += list(
+		"dna_fixer",
 	)
 	return ..()
