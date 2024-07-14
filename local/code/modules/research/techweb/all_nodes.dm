@@ -2,7 +2,7 @@
 	id = "improved_robotic_surgery"
 	display_name = "Improved Robotic Repair Surgeries"
 	description = "As it turns out, you don't actually need to cut out entire support rods if it's just scratched!"
-	prereq_ids = list("engineering")
+	prereq_ids = list(TECHWEB_NODE_CONSTRUCTION)
 	design_ids = list(
 		"robotic_heal_surgery_upgrade"
 	)
@@ -49,8 +49,38 @@
 	)
 	return ..()
 
+/datum/techweb_node/augmentation/New()
+	design_ids += list(
+		"affection_module",
+	)
+	return ..()
+
 /datum/techweb_node/borg_medical/New()
 	design_ids += list(
 		"borg_upgrade_surgicaltools",
+	)
+	return ..()
+
+/datum/techweb_node/hud/New()
+	design_ids += list(
+		"nifsoft_money_sense",
+	)
+	return ..()
+
+/datum/techweb_node/augmentation/New()
+	design_ids += list(
+		"synth_eyes",
+		"synth_tongue",
+		"synth_liver",
+		"synth_lungs",
+		"synth_stomach",
+		"synth_ears",
+		"synth_heart",
+	)
+	return ..()
+
+/datum/techweb_node/gene_engineering/New()
+	design_ids += list(
+		"dna_fixer",
 	)
 	return ..()
