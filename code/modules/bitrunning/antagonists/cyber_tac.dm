@@ -32,7 +32,7 @@
 
 /obj/item/mod/control/pre_equipped/glitch
 	theme = /datum/mod_theme/glitch
-	applied_cell = /obj/item/stock_parts/cell/bluespace
+	applied_cell = /obj/item/stock_parts/power_store/cell/bluespace
 	applied_modules = list(
 		/obj/item/mod/module/storage,
 		/obj/item/mod/module/magnetic_harness,
