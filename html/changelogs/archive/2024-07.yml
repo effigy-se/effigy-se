@@ -689,6 +689,10 @@
   - qol: Prisoner IDs show genpop sentence time in hours/minutes/seconds instead of
       seconds.
   - qol: Prisoner IDs have genpop usage tips in their examine.
+  - refactor: Modular computers (PDAs, laptops, etc) and their applications have had
+      their item interaction logic refactored. Please report any issues.
+  - bugfix: You can deposit cash into IDs inside of PDAs by slapping it against the
+      PDA again.
   Absolucy:
   - qol: Prettied up the Chemical Analyzer's output in chat, making it easier to read,
       especially when scanning multiple things.
@@ -699,6 +703,7 @@
       on all consoles, and comes pre-installed on the cargochat cargo computers.
   - balance: Vending machines now offer a bit more credits when missing contents at
       the start of a round after getting restocked.
+  - admin: Admins have a new secret to mass revive and heal all players on the server.
   AyIong:
   - qol: Fullscreen mode can now be toggled by pressing F11 or the button at the top
       right
@@ -708,6 +713,8 @@
   Ben10Omintrix:
   - rscadd: vendrobes may have mothroaches inside them
   - rscadd: mothroaches will now seek out clothes to eat them
+  - refactor: vibebots are not basic bots
+  - rscadd: vibebots will now seek out the depressed and cheer them up
   Bisar:
   - rscadd: Sparks now ignite flammable things. Including you. Keep a fire extinguisher
       handy or stop dousing yourself in welding fuel!
@@ -720,19 +727,64 @@
       traits instead.
   - bugfix: Felinids no longer remember losing their tail and regaining it roundstart;
       you need to do it during the round to get that mood event.
+  - bugfix: The light eater can now again eat lights from things with lights.
+  - balance: Sparks have been heavily adjusted; they only affect items made of plasma,
+      pools of welding fuel, flammable people, cigarettes, and items that contain
+      reagents... for now. Their long-standing behavior of igniting flammable gas
+      has been untouched.
+  DATA, with sounds by Beebblie:
+  - sound: Added sounds for turning on and off internals.
+  DaCoolBoss:
+  - spellcheck: Grapple gun's description has been updated.
+  - spellcheck: fixed typos in a few heretic items
+  - spellcheck: rewrote parts of the lunar heretic's abilities, items and traumas
+  - spellcheck: rewrote GLA device's description for clarity
+  Donglesplonge:
+  - balance: most livestock crates, with some exception, have been made cheaper to
+      facilitate healthier mental states in the crew, go build a farm!
   EdgeLordExe:
   - rscadd: Adds Feast of Owls ritual to heretic which allows one to forsake their
       ascension in exchange for immediate power.
+  Fluffles:
+  - bugfix: emoji show up in the messenger UI
+  - bugfix: emoji show up in the message server monitor UI
+  - bugfix: you can adjust your pda ringtone in-game
+  - bugfix: having an empty pAI in your pda doesn't break ringtones
+  - bugfix: pdas specifically set to not consume power don't constantly switch to
+      messenger
+  - bugfix: you can use the quick-reply button for messages while resting
+  - bugfix: deadchat pda messages show the imprinted sender's name instead of whoever
+      is holding the pda
+  - bugfix: emoji show up in deadchat pda messages
   FlufflesTheDog:
   - bugfix: sanitization on citation pda alerts
   - bugfix: limbs that are both robotic and something else can be repaired properly
+  - bugfix: printed medical beds are no longer randomly offset
   GPeckman:
   - bugfix: When on 'stream' mode, the cleaning spray from a bottle of space cleaner
       should no longer be blocked by just about everything.
   - bugfix: The chaplain altar can once again be buckled to.
+  - bugfix: Analyzers should work on bioscrambler anomalies again.
   Goat:
   - bugfix: Icebox's raptor den is now lined with asbestos and lead and no longer
       gets hit with radiation.
+  - rscadd: Added boards for the library's book binder and scanner, printable at the
+      service fabricator once computer tech is researched. Spritework done by lepiromano.
+  GoblinBackwards:
+  - bugfix: Interacting with an assembly bomb in hand will now allow you to interact
+      with the attached assembly instead of opening the gas tank UI. Right-clicking
+      will display the gas tank UI instead.
+  - rscadd: Breathing nitrium now has a chance to make you burp.
+  - bugfix: Fixed ctrl-click not dragging the bluespace gas sender or hydroponics
+      trays.
+  Guestify:
+  - bugfix: Fixed secbots and mulebots bold text
+  - bugfix: The visor of the welding mask no longer goes down when you enable internals
+  IsaacExists:
+  - spellcheck: Shrapnel removal messages now have closing parenthesis, removed unnecessary
+      punctuation.
+  - spellcheck: The nutriment pump implant's description in the lathes are no longer
+      typo'd.
   JackEnoff:
   - bugfix: Repurposed Glands (Adrenals) now show their correct duration and chemical
       cost in its description.
@@ -741,13 +793,23 @@
   - balance: Items you are holding won't catch fire if your hands cannot catch fire.
   - balance: When you stop being on fire so will items you are holding.
   - balance: If you roll around on your burning items they will stop being on fire.
+  - bugfix: Minebots, Tamed Wolves, and Regal Rat Minions will now give you some space
+      if you start attacking yourself, rather than joining in.
   JupiterJaeden:
   - bugfix: Conga lines of more than 2 no longer break when going up and down stairs.
+  Kocma-san:
+  - bugfix: you can hold Ian in your arms
   LT3:
   - bugfix: Fixed paramedics not having access to the Icebox NanoDrug using the west
       airlock
   - spellcheck: Melon fruit bowl now comes with a side of foreshadowing for people
       who want to experience an explosion of flavour
+  - bugfix: Smartfridge will now correctly respond 'no power' instead of 'forbidden
+      item' when it doesn't have power
+  LucyGrind:
+  - bugfix: crayons interact with washing machine once again
+  MGOOOOOO:
+  - bugfix: Orange balloons are no longer invisible in the hand slot.
   MTandi:
   - bugfix: Made 10 MJ & 20 MJ cells properly correspond to tiers 1 & 2 in lathes.
   - image: Updated cell sprites to correspond to other stock parts of their tiers.
@@ -767,11 +829,26 @@
   - image: New gibber sprite
   - image: New food/slime processor sprite
   - bugfix: Fixed new compressor UI
+  - qol: NT Frontier app now allows to select experiments from inserted data disks
+  - bugfix: Autopsy experiments for techweb can be performed roundstart
   Melbert:
   - bugfix: Fixed hand tele portals being forever
   - bugfix: Enabling or disabling ambience mid round will properly enable or disable
       ambience
   - qol: Added descriptions differentiating "Ship ambience" from "ambience"
+  - rscadd: Adds an effect for emagging a fake emag
+  - bugfix: Touch Spells now apply click CD again
+  - bugfix: Touch Spells now apply fingerprints again
+  - bugfix: Touch Spells now check if your hands are blocked again
+  - bugfix: Bloody footprints now go until you run out of blood on your feet instead
+      if only a single tile
+  - rscadd: Adds an effect for emagging an emag
+  - bugfix: Fixed plate shards not randomizing icon correctly
+  - qol: Gives plate sharts a more fitting hitsound / caltrop sound, gives them a
+      set caltrop stun duration (instead of default)
+  - bugfix: Fix DNA vault probes
+  MelokGleb:
+  - image: added sprite for debug heretic painting
   Metekillot:
   - bugfix: Sparks will no longer turn areas with wooden furniture or similar into
       naught but a field of ashes; they no longer ignite furniture, (unless it's made
@@ -779,6 +856,10 @@
       size.
   Mothblocks:
   - qol: Dramatically improves delete character UI and UX.
+  MrDas:
+  - bugfix: Fixed the duration of wizard's mutate spell.
+  Paxilmaniac:
+  - rscadd: Electric eels now prefer used car batteries for bait.
   Rex9001:
   - bugfix: lunatics now get their hud properly
   - bugfix: lunatics now get objectives
@@ -791,25 +872,72 @@
       the destination for the snare round's teleport ability.
   - balance: The energy bola slowdown has been (roughly) halved, to allow for more
       retaliation when used on a criminal.
+  - bugfix: Drone fabricator subtypes that spawn pre-loaded now actually start with
+      materials inside.
+  - bugfix: The binocular fabriactor on the MediSim shuttle works again.
+  - sound: The abductor team now has their own antag stinger.
+  - bugfix: Admin-only deadchat broadcasts don't append a second "this message is
+      for admins only" string for every admin online.
+  ShizCalev:
+  - image: Foam darts in the magazine of a toy/riot C20R45 will now show the correct
+      color corresponding to the type of said dart loaded in it instead of a generic
+      bullet sprite.
+  - rscadd: The game settings menu can now actually be accessed through the escape
+      menu.
+  - qol: Oven trays now count as valid trays to cut food on.
   SmArtKar:
   - image: Resprited all jetpacks
+  - rscadd: You can now click pens! Clickity clickery click!
+  - bugfix: E-Daggers can now break lockers/other renamable objects, and pendrivers
+      can now extract their electronics.
+  - code_imp: Most pen typechecks now check for writing implements.
+  - bugfix: Fixed crayons not being usable on anything except turfs (including washing
+      machines)
   SyncIt21:
   - bugfix: no more runtimes when dragging turfs onto other stuff
   - code_imp: most actions now properly check for recursive locs & better adjacency
   - bugfix: Techfabs now print 5x cable coil
   - bugfix: You can move around ui buttons in your action bar
   - bugfix: breaking an APC will depower the area
+  - bugfix: you can piggyback on players again
+  - bugfix: you can strip someone while lying down
+  - bugfix: paraplegics can buckle others & themselves to chairs & mobs
+  - qol: improved feedback messages when an action cannot be done
   Thunder12345:
   - rscdel: Locker staffs have been removed from the Ragin' Mages deathmatch lootcrate
       pool.
   Vishenka0704:
   - qol: Ability to delete characters(yourself)
+  Watermelon, Mayhazah:
+  - balance: Drastically reduces the power consumption and max charge of power cells
+  - balance: Added a new stock part called the battery, used primarily in the construction
+      of APCs and SMESs.
+  - rscadd: Suiciding with a cell/battery will shock you and potentially dust you/shock
+      the people around you if the charge is great enough.
   Xander3359:
   - bugfix: Fix rust heretic being unable to rust walls or floors
+  carlarctg:
+  - bugfix: There's now a limit to how many dental implants you can cram into your
+      mouth, which is governed by your species' teeth limit.
+  - refactor: Most species have 32 teeth, due to being based on humans, weirding me
+      out when thinking about their teeth, or lack of enough information
+  - refactor: Moths and flypeople have NO teeth. They CAN'T get dental implants. I'm
+      NERFING moths.
+  - refactor: Lizards have seventy-five (!!!) teeth. Lizards are weird.
   grungussuss:
   - bugfix: mimes can now break their vow while borged or an MMI
   - bugfix: Welding protection module for MODsuits protect flash-sensitives from welding
       arcs
+  jlsnow301:
+  - bugfix: 'Bitrunning made more illegal: Increased the rate at which antags spawn.'
+  - bugfix: '"Temporary" bitrunning antagonists and spawners are made actually temporary.
+      You will return to your original body after death, just like CTF.'
+  - rscadd: Added more examine text for ghosts to bitrunning equipment.
+  - balance: Server cooldown reduced by 1 minute at base level.
+  - rscadd: As an observer, you can now switch views between station and virtual domain
+      by clicking the hololadder and netpod respectively.
+  - rscdel: Removed the starfront saloon BR map.
+  - bugfix: 'Syndicate assault map: Added pistols, reduced exploits.'
   mc-oofert:
   - bugfix: fixed wrong access on one door on wawastation and also made lights on
       elevators not break (On Wawastation)
@@ -821,14 +949,51 @@
   - rscadd: every engineering lobby starts with a flatpacked flatpacker and multitool
   - bugfix: gasping makes sound now
   - bugfix: borg factory gives you your preference borg name
+  - bugfix: durand shield doesnt immediately depower the mech when taking stamina
+      damage
+  - balance: durand shield is a bit stronger
+  - bugfix: wawa ordnance air alarms dont send alerts roundstart
+  - qol: wawa ordnance gets more portable atmos machines to compensate for having
+      next to no actual portable atmos machines
+  - bugfix: wawa ordnance gets 3 random roundstart cores (forgor to add)
+  - rscadd: wawastation stand-in shuttle
   necromanceranne:
   - rscadd: Replaces the Particle Acceleration Rifle with the Event Horizon anti-existential
       beam rifle. It shoots black holes. You can make this in-game. That's right,
       YOU!
   - balance: Only one vortex anomaly can be made in a round.
+  - rscadd: The nullblade, a nullrod variant that is weaker outright, but can inflict
+      severe wounds by performing a sneak attack. Debilitate your target or attack
+      from behind.
+  - bugfix: The shortsword sprite no longer has a misaligned handle.
+  - code_imp: Organized the nullrod file, and removed some unnecessary subtyping on
+      various types of nullrods.
+  - bugfix: The Stimmed mutation now has the appropriate instability value for a largely
+      meaningless mutation.
+  - bugfix: The Infiltrator module now has the same welding protections as the engineering
+      module.
+  - bugfix: The infiltrator module now properly protects you from head impacts. Helpful
+      if you wipe out on your hoverboard while fleeing the cops.
+  - code_imp: Improves the definitions for welding protection values.
+  norsvenska:
+  - bugfix: '[IceBox] The Head of Personnel''s Requests Console announcements now
+      correctly display the HoP as the announcer, rather than "Unknown"'
   projectkepler-ru:
   - bugfix: Wawastation bridge now has the correct access on their suit storage and
       medkit now actually starts filled
   r3dj4ck0424:
   - bugfix: puts tiles under the wawa tool storage doors
   - bugfix: allows you to access a door and a fire alarm on wawa's prison second floor
+  san7890:
+  - bugfix: You should no longer attack mobs that don't have a chest in the chest
+      (bots).
+  the-orange-cow:
+  - bugfix: Medicated suture, advanced regenerative mesh, and mourning poultice reactions
+      should more consistently spawn the items they are meant to produce.
+  uaioy:
+  - spellcheck: fixed typo in raptor emote
+  vinylspiders:
+  - bugfix: fixes an issue that was causing the quirk config tooltips to render behind
+      the window, making them nearly impossible to read.
+  zxaber:
+  - bugfix: Refactored borg omnitool code, fixing most of the unique interaction issues.
