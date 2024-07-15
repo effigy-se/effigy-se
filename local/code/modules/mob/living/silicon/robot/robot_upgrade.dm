@@ -225,10 +225,16 @@
 		qdel(titanium_energy)
 
 /obj/item/inducer/cyborg
-	name = "Cyborg Inducer"
-	desc = "A tool for inductively charging internal power cells using the battery of a cyborg"
-	powertransfer = 250
-	var/power_safety_threshold = 1000
+	name = "Internal inducer"
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "inducer-engi"
+	cell_type = null
+
+/obj/item/inducer/cyborg/get_cell()
+	var/obj/item/robot_model/possible_model = loc
+	var/mob/living/silicon/robot/silicon_friend = istype(possible_model) ? possible_model.robot : possible_model
+	if(istype(silicon_friend))
+		. = silicon_friend.cell
 
 /*
 *	ADVANCED CARGO CYBORG UPGRADES

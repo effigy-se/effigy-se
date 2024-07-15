@@ -1,5 +1,4 @@
 import { BooleanLike } from 'common/react';
-import { decodeHtmlEntities } from 'common/string';
 import { Component, createRef, RefObject } from 'react';
 
 import { useBackend } from '../../backend';
@@ -437,7 +436,9 @@ const ChatMessage = (props: ChatMessageProps) => {
   } = props;
   // EffigyEdit Change End
 
-  const displayMessage = decodeHtmlEntities(message);
+  const messageHTML = {
+    __html: `${message}`,
+  };
 
   return (
     // EffigyEdit Change - Subtle texting - Original: <Box className={`NtosChatMessage${outgoing ? '_outgoing' : ''}`}>
@@ -454,7 +455,7 @@ const ChatMessage = (props: ChatMessageProps) => {
     >
       {/* EffigyEdit Change End */}
       <Box className="NtosChatMessage__content">
-        <Box as="span">{displayMessage}</Box>
+        <Box as="span" dangerouslySetInnerHTML={messageHTML} />
         <Tooltip content={timestamp} position={outgoing ? 'left' : 'right'}>
           <Icon
             className="NtosChatMessage__timestamp"

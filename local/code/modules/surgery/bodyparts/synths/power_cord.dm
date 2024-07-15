@@ -83,7 +83,7 @@
 	if(istype(target, /obj/machinery/power/apc))
 		target_apc = target
 
-	var/obj/item/stock_parts/cell/target_cell = target_apc ? target_apc.cell : target
+	var/obj/item/stock_parts/power_store/cell/target_cell = target_apc ? target_apc.cell : target
 	var/minimum_cell_charge = target_apc ? SYNTH_APC_MINIMUM_PERCENT : 0
 
 	if(!target_cell || target_cell.percent() < minimum_cell_charge)
