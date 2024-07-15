@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 
 /datum/loadout_item/inhand/smokingpipe
 	name = "Smoking Pipe"
-	item_path = /obj/item/clothing/mask/cigarette/pipe
+	item_path = /obj/item/cigarette/pipe
 
 /datum/loadout_item/inhand/catstamp
 	name = "Official Cat Stamp"
