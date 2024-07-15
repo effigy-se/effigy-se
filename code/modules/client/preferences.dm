@@ -238,26 +238,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if ("change_slot")
 			// Save existing character
 			save_character()
-
-			// SAFETY: `load_character` performs sanitization the slot number
-			if (!load_character(params["slot"]))
-				tainted_character_profiles = TRUE
-				randomise_appearance_prefs()
-				save_character()
-
-			// EffigyEdit Add - Customization
-			if(sanitize_languages())
-				save_character()
-			// EffigyEdit Add - Customization
-
-			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
-				preference_middleware.on_new_character(usr)
-
-			character_preview_view.update_body()
-
+			// SAFETY: `switch_to_slot` performs sanitization on the slot number
+			switch_to_slot(params["slot"])
 			return TRUE
-
-
+		if ("remove_current_slot")
+			remove_current_slot()
+			return TRUE
 		if ("rotate")
 			// EffigyEdit Add - Customization
 			var/backwards = params["backwards"]

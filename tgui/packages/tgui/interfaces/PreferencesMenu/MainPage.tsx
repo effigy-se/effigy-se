@@ -2,7 +2,7 @@
 import { filter, map, sortBy } from 'common/collections';
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { sendAct, useBackend } from '../../backend';
 import {
@@ -22,6 +22,7 @@ import {
   RandomSetting,
   ServerData,
 } from './data';
+import { DeleteCharacterPopup } from './DeleteCharacterPopup';
 import { MultiNameInput, NameInput } from './names';
 import features from './preferences/features';
 import {
@@ -384,6 +385,7 @@ export const PreferenceList = (props: {
   preferences: Record<string, unknown>;
   randomizations: Record<string, RandomSetting>;
   maxHeight: string;
+  children?: ReactNode;
 }) => {
   return (
     <Stack.Item
@@ -442,6 +444,8 @@ export const PreferenceList = (props: {
           },
         )}
       </LabeledList>
+
+      {props.children}
     </Stack.Item>
   );
 };
@@ -479,6 +483,8 @@ export const MainPage = (props: { openSpecies: () => void }) => {
   const [currentClothingMenu, setCurrentClothingMenu] = useState<string | null>(
     null,
   );
+  const [deleteCharacterPopupOpen, setDeleteCharacterPopupOpen] =
+    useState(false);
   const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
   const [randomToggleEnabled] = useRandomToggleState();
 
@@ -547,6 +553,12 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                   })
                 }
                 names={data.character_preferences.names}
+              />
+            )}
+
+            {deleteCharacterPopupOpen && (
+              <DeleteCharacterPopup
+                close={() => setDeleteCharacterPopupOpen(false)}
               />
             )}
 
@@ -649,7 +661,21 @@ export const MainPage = (props: { openSpecies: () => void }) => {
                     )}
                     preferences={nonContextualPreferences}
                     maxHeight="auto"
-                  />
+                  >
+                    <Box my={0.5}>
+                      <Button
+                        color="red"
+                        disabled={
+                          Object.values(data.character_profiles).filter(
+                            (name) => name,
+                          ).length < 2
+                        } // check if existing chars more than one
+                        onClick={() => setDeleteCharacterPopupOpen(true)}
+                      >
+                        Delete Character
+                      </Button>
+                    </Box>
+                  </PreferenceList>
                 </Stack>
               </Stack.Item>
             </Stack>
