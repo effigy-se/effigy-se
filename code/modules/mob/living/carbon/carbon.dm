@@ -180,6 +180,8 @@
 	// EffigyEdit Add End
 	if(neckgrab_throw)
 		power_throw++
+	if(HAS_TRAIT(src, TRAIT_TOSS_GUN_HARD) && isgun(thrown_thing))
+		power_throw++
 	do_attack_animation(target, no_effect = 1) // EffigyEdit Add
 	playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) // EffigyEdit Add
 	if(isitem(thrown_thing))
