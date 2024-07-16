@@ -1,6 +1,8 @@
 import { classes } from 'common/react';
 import { capitalizeAll } from 'common/string';
 import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -10,9 +12,7 @@ import {
   Section,
   Stack,
   Table,
-} from 'tgui-core/components';
-
-import { useBackend } from '../backend';
+} from '../components';
 import { Window } from '../layouts';
 
 type VendingData = {

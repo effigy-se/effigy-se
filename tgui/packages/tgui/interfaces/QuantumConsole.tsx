@@ -1,4 +1,6 @@
 import { BooleanLike } from 'common/react';
+
+import { useBackend, useSharedState } from '../backend';
 import {
   Button,
   Collapsible,
@@ -10,9 +12,7 @@ import {
   Table,
   Tabs,
   Tooltip,
-} from 'tgui-core/components';
-
-import { useBackend, useSharedState } from '../backend';
+} from '../components';
 import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 import { LoadingScreen } from './common/LoadingToolbox';
