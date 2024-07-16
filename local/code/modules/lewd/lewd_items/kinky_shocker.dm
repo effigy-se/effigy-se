@@ -11,9 +11,9 @@
 	/// If the shocker is on or not
 	var/shocker_on = FALSE
 	/// Typecasted var that holds the cell placed in the shocker
-	var/obj/item/stock_parts/cell/cell
+	var/obj/item/stock_parts/power_store/cell/cell
 	/// A type of what cell should be put in the shocker on initialize
-	var/preload_cell_type = /obj/item/stock_parts/cell
+	var/preload_cell_type = /obj/item/stock_parts/power_store/cell
 	/// What it should cost the cell to use the shocker once
 	var/cell_hit_cost = 75
 	/// If the user should be able to remove the cell or not
@@ -54,7 +54,7 @@
 	else
 		. += span_warning("\The [src] does not have a power source installed.")
 
-/obj/item/kinky_shocker/attackby(obj/item/stock_parts/cell/powercell, mob/user, params)
+/obj/item/kinky_shocker/attackby(obj/item/stock_parts/power_store/cell/powercell, mob/user, params)
 	if(!istype(powercell))
 		return ..()
 	if(cell)

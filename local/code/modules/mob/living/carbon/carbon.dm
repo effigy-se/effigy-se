@@ -31,10 +31,6 @@
 	if(hardstun)
 		Paralyze((paralyze_amount ? paralyze_amount : stamina_damage))
 
-/mob/living/carbon/human/CtrlShiftClick(mob/user) //We have to remove the can_interact check from humans.
-	SEND_SIGNAL(src, COMSIG_CLICK_CTRL_SHIFT, user)
-	return
-
 /// alt-clicking a human as another human while grappling them tightly makes you try for grappling-based maneuvers.
 /mob/living/carbon/human/click_alt(mob/user)
 	if(!ishuman(user))

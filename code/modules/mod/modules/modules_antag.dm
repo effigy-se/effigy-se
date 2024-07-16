@@ -511,7 +511,7 @@
 
 /obj/item/mod/module/infiltrator/on_suit_activation()
 	mod.wearer.add_traits(traits_to_add, MOD_TRAIT)
-	mod.helmet.flash_protect = FLASH_PROTECTION_WELDER
+	mod.helmet.flash_protect = FLASH_PROTECTION_WELDER_HYPER_SENSITIVE
 
 /obj/item/mod/module/infiltrator/on_suit_deactivation(deleting = FALSE)
 	mod.wearer.remove_traits(traits_to_add, MOD_TRAIT)

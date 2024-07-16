@@ -273,11 +273,10 @@
 	. = ..()
 	. += span_notice("Ctrl-click to activate seed extraction.")
 
-/obj/item/storage/bag/plants/portaseeder/CtrlClick(mob/user)
-	if(user.incapacitated())
-		return
+/obj/item/storage/bag/plants/portaseeder/item_ctrl_click(mob/user)
 	for(var/obj/item/plant in contents)
 		seedify(plant, 1)
+	return CLICK_ACTION_SUCCESS
 
 // -----------------------------
 //        Sheet Snatcher
@@ -364,7 +363,7 @@
 	atom_storage.max_specific_storage = WEIGHT_CLASS_BULKY //Plates are required bulky to keep them out of backpacks
 	atom_storage.set_holdable(
 		can_hold_list = list(
-			/obj/item/clothing/mask/cigarette,
+			/obj/item/cigarette,
 			/obj/item/food,
 			/obj/item/kitchen,
 			/obj/item/lighter,
