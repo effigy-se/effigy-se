@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { toFixed } from 'tgui-core/math';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -11,10 +14,7 @@ import {
   Section,
   Stack,
   Table,
-} from 'tgui-core/components';
-import { toFixed } from 'tgui-core/math';
-
-import { useBackend } from '../backend';
+} from '../components';
 import { Tooltip } from '../components';
 import { Window } from '../layouts';
 import { LoadingScreen } from './common/LoadingToolbox';
