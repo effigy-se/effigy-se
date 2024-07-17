@@ -1,4 +1,4 @@
-/datum/map_generator/cave_generator/jungle
+/datum/map_generator/cave_generator/rimpoint_jungle // The upstream version is so lush it blended too well with the outside. Not what we wanted!
 	weighted_open_turf_types = list(/turf/open/misc/dirt/jungle = 19, /turf/open/misc/dirt/jungle/dark = 1)
 	weighted_closed_turf_types = list(/turf/closed/mineral/random/jungle = 1)
 	weighted_mob_spawn_list = list(
