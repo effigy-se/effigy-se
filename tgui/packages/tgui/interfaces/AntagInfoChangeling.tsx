@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import {
   Button,
   Dimmer,
@@ -6,10 +9,7 @@ import {
   NoticeBox,
   Section,
   Stack,
-} from 'tgui-core/components';
-import { BooleanLike } from 'tgui-core/react';
-
-import { useBackend } from '../backend';
+} from '../components';
 import { Window } from '../layouts';
 import {
   Objective,

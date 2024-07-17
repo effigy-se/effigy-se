@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { createSearch } from 'tgui-core/string';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -8,10 +11,7 @@ import {
   Section,
   Stack,
   Tabs,
-} from 'tgui-core/components';
-import { createSearch } from 'tgui-core/string';
-
-import { useBackend } from '../backend';
+} from '../components';
 import { RADIO_CHANNELS } from '../constants';
 import { Window } from '../layouts';
 

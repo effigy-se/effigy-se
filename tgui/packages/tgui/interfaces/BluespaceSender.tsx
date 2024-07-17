@@ -1,4 +1,8 @@
 import { filter, sortBy } from 'common/collections';
+import { toFixed } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -8,11 +12,7 @@ import {
   ProgressBar,
   Section,
   Stack,
-} from 'tgui-core/components';
-import { toFixed } from 'tgui-core/math';
-import { BooleanLike } from 'tgui-core/react';
-
-import { useBackend } from '../backend';
+} from '../components';
 import { getGasColor } from '../constants';
 import { Window } from '../layouts';
 

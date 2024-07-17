@@ -1,5 +1,8 @@
 import { sortBy } from 'common/collections';
 import { useState } from 'react';
+import { capitalize } from 'tgui-core/string';
+
+import { useBackend, useLocalState } from '../backend';
 import {
   Blink,
   Box,
@@ -10,10 +13,7 @@ import {
   Modal,
   Section,
   TextArea,
-} from 'tgui-core/components';
-import { capitalize } from 'tgui-core/string';
-
-import { useBackend, useLocalState } from '../backend';
+} from '../components';
 import { Window } from '../layouts';
 import { sanitizeText } from '../sanitize';
 import { StatusDisplayControls } from './common/StatusDisplayControls';

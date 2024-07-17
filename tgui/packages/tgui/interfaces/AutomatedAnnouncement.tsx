@@ -1,7 +1,7 @@
-import { Button, Input, LabeledList, Section } from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
+import { Button, Input, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
 const TOOLTIP_TEXT = `

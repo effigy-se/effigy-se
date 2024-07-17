@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { BooleanLike } from 'tgui-core/react';
+import { toTitleCase } from 'tgui-core/string';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -6,11 +10,7 @@ import {
   LabeledList,
   ProgressBar,
   Section,
-} from 'tgui-core/components';
-import { BooleanLike } from 'tgui-core/react';
-import { toTitleCase } from 'tgui-core/string';
-
-import { useBackend } from '../backend';
+} from '../components';
 import { Window } from '../layouts';
 import { Beaker, BeakerDisplay } from './common/BeakerDisplay';
 

@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { BooleanLike, classes } from 'tgui-core/react';
+import { capitalize } from 'tgui-core/string';
+
+import { useBackend } from '../backend';
 import {
   AnimatedNumber,
   Box,
@@ -12,11 +16,7 @@ import {
   Stack,
   Table,
   Tooltip,
-} from 'tgui-core/components';
-import { BooleanLike, classes } from 'tgui-core/react';
-import { capitalize } from 'tgui-core/string';
-
-import { useBackend } from '../backend';
+} from '../components';
 import { Window } from '../layouts';
 import { Beaker, BeakerReagent } from './common/BeakerDisplay';
 

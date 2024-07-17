@@ -1,9 +1,9 @@
 import { KeyboardEvent, useState } from 'react';
-import { Autofocus, Box, Button, Section, Stack } from 'tgui-core/components';
 import { isEscape, KEY } from 'tgui-core/keys';
 import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
+import { Autofocus, Box, Button, Section, Stack } from '../components';
 import { Window } from '../layouts';
 import { Loader } from './common/Loader';
 

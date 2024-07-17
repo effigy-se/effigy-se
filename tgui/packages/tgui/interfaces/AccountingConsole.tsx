@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import {
@@ -8,10 +9,7 @@ import {
   Section,
   Stack,
   Tabs,
-} from 'tgui-core/components';
-import { BooleanLike } from 'tgui-core/react';
-
-import { useBackend } from '../backend';
+} from '../components';
 import { Window } from '../layouts';
 
 type Data = {
