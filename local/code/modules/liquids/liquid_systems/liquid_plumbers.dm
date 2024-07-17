@@ -210,6 +210,7 @@
 	icon_state = "active_input-mapping"
 	anchored = TRUE
 	turned_on = TRUE
+	processing_flags = START_PROCESSING_ON_INIT
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/input/on, 0)
 
@@ -285,6 +286,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/input/on/waste, 0
 	icon_state = "active_output-mapping"
 	anchored = TRUE
 	turned_on = TRUE
+	processing_flags = START_PROCESSING_ON_INIT
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on, 0)
 
