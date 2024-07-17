@@ -23,10 +23,8 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 
 /datum/loadout_item/glasses/post_equip_item(datum/preferences/preference_source, mob/living/carbon/human/equipper)
 	var/obj/item/clothing/glasses/equipped_glasses = locate(item_path) in equipper.get_equipped_items()
-	if (!equipped_glasses)
+	if(!equipped_glasses)
 		return
-	if(equipped_glasses.glass_colour_type)
-		equipper.update_glasses_color(equipped_glasses, TRUE)
 	if(equipped_glasses.tint)
 		equipper.update_tint()
 	if(equipped_glasses.vision_flags \
@@ -34,6 +32,7 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 		|| equipped_glasses.invis_view \
 		|| !isnull(equipped_glasses.color_cutoffs))
 		equipper.update_sight()
+
 /*
 *	PRESCRIPTION GLASSES
 */

@@ -54,7 +54,7 @@
 	module_type = MODULE_ACTIVE
 	complexity = 1
 	use_energy_cost = DEFAULT_CHARGE_DRAIN * 5
-	incompatible_modules = list(/obj/item/mod/module/microwave_beam, /obj/item/mod/module/organ_thrower)
+	incompatible_modules = list(/obj/item/mod/module/microwave_beam, /obj/item/mod/module/organizer)
 	cooldown_time = 10 SECONDS
 
 /obj/item/mod/module/microwave_beam/on_select_use(atom/target)

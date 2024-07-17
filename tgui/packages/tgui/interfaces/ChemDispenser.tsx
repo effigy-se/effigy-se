@@ -1,6 +1,6 @@
-import { BooleanLike } from 'common/react';
-import { toTitleCase } from 'common/string';
 import { useState } from 'react';
+import { BooleanLike } from 'tgui-core/react';
+import { toTitleCase } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import {
@@ -55,7 +55,7 @@ export const ChemDispenser = (props) => {
     }));
 
   return (
-    <Window width={655} height={730}>
+    <Window width={565} height={620}>
       <Window.Content scrollable>
         <Section
           title="Status"
@@ -161,11 +161,6 @@ export const ChemDispenser = (props) => {
             {recipes.length === 0 && <Box color="light-gray">No recipes.</Box>}
           </Box>
         </Section>
-        <Button // EffigyEdit Add
-          icon="pen"
-          content="Custom Amount"
-          onClick={() => act('custom_amount')}
-        />
         <Section
           title="Dispense"
           buttons={beakerTransferAmounts.map((amount) => (

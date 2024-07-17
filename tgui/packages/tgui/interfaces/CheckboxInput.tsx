@@ -1,5 +1,5 @@
-import { createSearch, decodeHtmlEntities } from 'common/string';
 import { useState } from 'react';
+import { createSearch, decodeHtmlEntities } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import {

@@ -1,7 +1,7 @@
-import { classes } from 'common/react';
 import dateformat from 'dateformat';
 import yaml from 'js-yaml';
 import { Component, Fragment } from 'react';
+import { classes } from 'tgui-core/react';
 
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
