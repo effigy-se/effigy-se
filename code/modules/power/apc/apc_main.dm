@@ -8,9 +8,9 @@
 ///Cap for how fast cells charge, as a percentage per second (.01 means cellcharge is capped to 1% per second)
 #define CHARGELEVEL 0.01
 ///Charge percentage at which the lights channel stops working
-#define APC_CHANNEL_LIGHT_TRESHOLD 7 // EffigyEdit Change - Original: 15
+#define APC_CHANNEL_LIGHT_TRESHOLD 15
 ///Charge percentage at which the equipment channel stops working
-#define APC_CHANNEL_EQUIP_TRESHOLD 17 // EffigyEdit Change - Original: 30
+#define APC_CHANNEL_EQUIP_TRESHOLD 30
 ///Charge percentage at which the APC icon indicates discharging
 #define APC_CHANNEL_ALARM_TRESHOLD 75
 
@@ -529,9 +529,6 @@
  * This adds up the total static power usage for the apc's area, then draw that power usage from the grid or APC cell.
  */
 /obj/machinery/power/apc/proc/early_process()
-	if(cell && cell.charge < cell.maxcharge)
-		last_charging = charging
-		charging = APC_NOT_CHARGING
 	if(isnull(area))
 		return
 
@@ -565,7 +562,7 @@
 	lastused_light = APC_CHANNEL_IS_ON(lighting) ? area.energy_usage[AREA_USAGE_LIGHT] + area.energy_usage[AREA_USAGE_STATIC_LIGHT] : 0
 	lastused_equip = APC_CHANNEL_IS_ON(equipment) ? area.energy_usage[AREA_USAGE_EQUIP] + area.energy_usage[AREA_USAGE_STATIC_EQUIP] : 0
 	lastused_environ = APC_CHANNEL_IS_ON(environ) ? area.energy_usage[AREA_USAGE_ENVIRON] + area.energy_usage[AREA_USAGE_STATIC_ENVIRON] : 0
-	lastused_charge = charging == APC_CHARGING ? area.energy_usage[AREA_USAGE_APC_CHARGE] : 0
+	area.clear_usage()
 
 	lastused_total = lastused_light + lastused_equip + lastused_environ + lastused_charge
 
@@ -601,8 +598,8 @@
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
 		else if(cell.percent() < APC_CHANNEL_EQUIP_TRESHOLD) // turn off equipment
-			equipment = autoset(equipment, AUTOSET_ON) // EffigyEdit Change
-			lighting = autoset(lighting, AUTOSET_OFF) // EffigyEdit Change
+			equipment = autoset(equipment, AUTOSET_OFF)
+			lighting = autoset(lighting, AUTOSET_ON)
 			environ = autoset(environ, AUTOSET_ON)
 			alarm_manager.send_alarm(ALARM_POWER)
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
@@ -631,8 +628,43 @@
 		force_update = FALSE
 		queue_icon_update()
 		update()
-	else if(charging != last_charging)
+	if(charging != last_charging)
 		queue_icon_update()
+	// show cell as fully charged if so
+	if(cell.charge >= cell.maxcharge)
+		cell.charge = cell.maxcharge
+		charging = APC_FULLY_CHARGED
+
+// charge until the battery is full or to the treshold of the provided channel
+/obj/machinery/power/apc/proc/charge_channel(channel = null, seconds_per_tick)
+	if(channel == SSMACHINES_APCS_ENVIRONMENT)
+		lastused_charge = 0
+		last_charging = charging
+		charging = APC_NOT_CHARGING
+
+	if(!cell || shorted || !operating || !chargemode || !surplus() || !cell.used_charge())
+		return
+
+	// no overcharge past the next treshold
+	var/need_charge_for_channel
+	switch(channel)
+		if(SSMACHINES_APCS_ENVIRONMENT)
+			need_charge_for_channel = (cell.maxcharge * 0.05) - cell.charge
+		if(SSMACHINES_APCS_LIGHTS)
+			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_LIGHT_TRESHOLD + 5) * 0.01) - cell.charge
+		if(SSMACHINES_APCS_EQUIPMENT)
+			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_EQUIP_TRESHOLD + 5) * 0.01) - cell.charge
+		else
+			need_charge_for_channel = cell.used_charge()
+
+	var/remaining_charge_rate = min(cell.chargerate, cell.maxcharge * CHARGELEVEL) - lastused_charge
+	var/need_charge = min(need_charge_for_channel, remaining_charge_rate) * seconds_per_tick
+	//check if we can charge the battery
+	if(need_charge < 0)
+		return
+
+	lastused_charge += charge_cell(need_charge, cell = cell, grid_only = TRUE, channel = AREA_USAGE_APC_CHARGE)
+	charging = APC_CHARGING
 
 // charge until the battery is full or to the treshold of the provided channel
 /obj/machinery/power/apc/proc/charge_channel(channel = null, seconds_per_tick)
