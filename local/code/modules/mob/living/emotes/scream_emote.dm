@@ -3,20 +3,6 @@
 	mob_type_blacklist_typecache = list(/mob/living/basic/slime, /mob/living/brain)
 	vary = TRUE
 
-/datum/emote/living/scream/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(!user.is_muzzled() && !HAS_TRAIT(user, TRAIT_MIMING))
-		var/sound = get_sound(user, TRUE)
-		playsound(user.loc, sound, 50, vary, 4, 1.2)
-
-/datum/emote/living/scream/select_message_type(mob/user, intentional)
-	if(!intentional && isanimal(user))
-		return "makes a loud and pained whimper."
-	if(user.is_muzzled())
-		return "makes a very loud noise."
-	. = ..()
-
 /datum/emote/living/scream/get_sound(mob/living/user, override = FALSE)
 	if(!override)
 		return

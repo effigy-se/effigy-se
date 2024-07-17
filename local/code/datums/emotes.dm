@@ -3,3 +3,4 @@
 	var/list/allowed_species
 	/// Are silicons explicitly allowed to use this emote
 	var/silicon_allowed = FALSE
+	var/muzzle_ignore = FALSE
