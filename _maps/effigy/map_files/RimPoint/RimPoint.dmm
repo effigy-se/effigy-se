@@ -2337,6 +2337,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/machinery/computer/security/telescreen/interrogation/directional/south,
 /turf/open/floor/iron/checker,
 /area/station/security/interrogation)
 "bah" = (
@@ -2825,14 +2826,8 @@
 /turf/open/floor/wood/large,
 /area/station/service/theater)
 "biZ" = (
-/obj/structure/table/reinforced,
-/obj/item/clipboard,
-/obj/item/folder/blue,
-/obj/item/pen,
-/obj/item/pen,
-/obj/item/pen,
-/obj/item/pen,
 /obj/machinery/light/directional/east,
+/obj/machinery/computer/security/telescreen/minisat/directional/east,
 /turf/open/floor/iron/white,
 /area/station/engineering/transit_tube)
 "bjm" = (
@@ -6363,10 +6358,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
-/obj/machinery/computer/security/telescreen{
-	network = list("xeno");
-	pixel_y = 26
-	},
+/obj/machinery/computer/security/telescreen/test_chamber/directional/north,
 /turf/open/floor/plating,
 /area/station/science/xenobiology)
 "cAZ" = (
@@ -11230,6 +11222,12 @@
 /obj/item/reagent_containers/cup/beaker/large,
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
+"ezL" = (
+/obj/machinery/door/firedoor/heavy,
+/obj/structure/disposalpipe/segment,
+/obj/structure/sign/departments/aisat/directional/west,
+/turf/open/floor/iron/white/textured_large,
+/area/station/science)
 "eAf" = (
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
@@ -17356,13 +17354,10 @@
 /obj/machinery/computer/pod/old/mass_driver_controller/ordnancedriver/longrange{
 	pixel_y = -24
 	},
-/obj/machinery/computer/security/telescreen/ordnance{
-	dir = 8;
-	pixel_x = 26
-	},
 /obj/structure/chair/office/light{
 	dir = 4
 	},
+/obj/machinery/computer/security/telescreen/ordnance/directional/east,
 /turf/open/floor/iron/dark/textured,
 /area/station/science/ordnance/testlab)
 "gYV" = (
@@ -24812,7 +24807,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/engineering/transit_tube)
 "jZD" = (
@@ -31172,10 +31166,6 @@
 /area/station/engineering/atmos/hfr_room)
 "mIF" = (
 /obj/structure/table,
-/obj/machinery/computer/security/telescreen/ordnance{
-	dir = 4;
-	pixel_x = -26
-	},
 /obj/item/assembly/timer{
 	pixel_x = 5;
 	pixel_y = 4
@@ -31192,6 +31182,7 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 8
 	},
+/obj/machinery/computer/security/telescreen/ordnance/directional/west,
 /turf/open/floor/iron/white/textured,
 /area/station/science/ordnance/testlab)
 "mIZ" = (
@@ -35073,11 +35064,7 @@
 /turf/open/misc/dirt/jungle,
 /area/taeloth)
 "orH" = (
-/obj/machinery/computer/security/telescreen{
-	network = list("ss13");
-	dir = 4;
-	pixel_x = -26
-	},
+/obj/machinery/computer/security/telescreen/normal/directional/west,
 /turf/open/floor/carpet/red,
 /area/station/security/detectives_office)
 "orK" = (
@@ -38790,10 +38777,6 @@
 /area/station/science)
 "pQP" = (
 /obj/structure/table,
-/obj/machinery/computer/security/telescreen/broadcast_team{
-	dir = 4;
-	pixel_y = 3
-	},
 /turf/open/floor/iron/dark,
 /area/station/service/studio)
 "pQV" = (
@@ -45291,9 +45274,6 @@
 /area/station/security/checkpoint/supply)
 "sqW" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/security/telescreen/interrogation{
-	dir = 1
-	},
 /obj/structure/cable,
 /turf/open/floor/iron/checker,
 /area/station/security/interrogation)
@@ -47376,6 +47356,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/start/broadcast_team,
+/obj/machinery/computer/security/telescreen/broadcast_team/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/service/studio)
 "tiP" = (
@@ -50774,7 +50755,6 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter)
 "uCa" = (
-/obj/structure/sign/departments/aisat/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/white/side{
 	dir = 9
@@ -53097,11 +53077,12 @@
 /turf/open/floor/iron/white,
 /area/station/science)
 "vAM" = (
-/obj/structure/table/reinforced,
-/obj/machinery/computer/security/telescreen/minisat{
-	dir = 8
-	},
 /obj/machinery/firealarm/directional/north,
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/obj/item/folder/blue,
+/obj/item/pen,
+/obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/white,
 /area/station/engineering/transit_tube)
 "vAY" = (
@@ -86044,7 +86025,7 @@ ucr
 fyJ
 uCa
 mYa
-atd
+ezL
 dlJ
 fLX
 rGH

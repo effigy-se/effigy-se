@@ -1,7 +1,8 @@
 import { classes } from 'common/react';
 import { capitalizeAll } from 'common/string';
 import { useState } from 'react';
-import { useBackend } from 'tgui/backend';
+
+import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -11,8 +12,8 @@ import {
   Section,
   Stack,
   Table,
-} from 'tgui/components';
-import { Window } from 'tgui/layouts';
+} from '../components';
+import { Window } from '../layouts';
 
 type VendingData = {
   onstation: boolean;
