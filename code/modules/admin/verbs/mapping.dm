@@ -212,7 +212,6 @@ ADMIN_VERB(create_mapping_job_icons, R_DEBUG, "Generate job landmarks icons", "G
 				D.dress_up_as_job(
 					equipping = JB,
 					visual_only = TRUE,
-					consistent = TRUE,
 				)
 				var/icon/I = icon(getFlatIcon(D), frame = 1)
 				final.Insert(I, JB.title)
