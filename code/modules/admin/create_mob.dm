@@ -64,10 +64,10 @@
 	var/picked_color = pick(natural_hair_colors)
 	human.set_haircolor(picked_color, update = FALSE)
 	human.set_facial_haircolor(picked_color, update = FALSE)
-	var/datum/sprite_accessory/hairstyle = SSaccessories.hairstyles_list[random_hairstyle(human.gender)]
+	var/datum/sprite_accessory/hairstyle = GLOB.hairstyles_list[random_hairstyle(human.gender)] // EffigyEdit Change - Original: SSaccessories.hairstyles_list
 	if(hairstyle?.natural_spawn)
 		human.set_hairstyle(hairstyle.name, update = FALSE)
-	var/datum/sprite_accessory/facial_hair = SSaccessories.facial_hairstyles_list[random_facial_hairstyle(human.gender)]
+	var/datum/sprite_accessory/facial_hair = GLOB.facial_hairstyles_list[random_facial_hairstyle(human.gender)] // EffigyEdit Change - Original: SSaccessories.facial_hairstyles_list
 	if(facial_hair?.natural_spawn)
 		human.set_facial_hairstyle(facial_hair.name, update = FALSE)
 	// Normal DNA init stuff, these can generally be wacky but we care less, they're aliens after all
