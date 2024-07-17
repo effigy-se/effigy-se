@@ -1,5 +1,5 @@
-import { createSearch } from 'common/string';
 import { useState } from 'react';
+import { createSearch } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import {

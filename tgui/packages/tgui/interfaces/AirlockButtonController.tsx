@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Button, NoticeBox, Section, Stack } from '../components';

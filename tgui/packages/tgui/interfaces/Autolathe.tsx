@@ -1,5 +1,5 @@
-import { BooleanLike, classes } from 'common/react';
-import { capitalize } from 'common/string';
+import { BooleanLike, classes } from 'tgui-core/react';
+import { capitalize } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import {

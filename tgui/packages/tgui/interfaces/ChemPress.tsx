@@ -1,5 +1,5 @@
-import { capitalizeAll } from 'common/string';
 import { useState } from 'react';
+import { capitalizeAll } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import {

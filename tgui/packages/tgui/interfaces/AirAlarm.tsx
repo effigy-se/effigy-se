@@ -1,5 +1,5 @@
-import { BooleanLike } from 'common/react';
 import { Fragment } from 'react';
+import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend, useLocalState } from '../backend';
 import {
