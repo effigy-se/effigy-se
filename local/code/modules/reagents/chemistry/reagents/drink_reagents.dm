@@ -64,6 +64,25 @@
 		to_chat(M, span_notice("[pick("I feel oddly calm.", "I feel relaxed.", "Mew?")]"))
 	..()
 
+/datum/reagent/consumable/tungsten
+	name = "Tungsten"
+	description = "When consumed by synthetics, this silvery metal transforms even the most stoic synths into adorable, joyful companions!"
+	color = "#62708A"
+	taste_description = "beeps and boops"
+	metabolization_rate = REAGENTS_METABOLISM * 0.25
+
+/datum/reagent/consumable/tungsten/on_mob_life(mob/living/carbon/synth)
+	synth.adjustStaminaLoss(min(50 - synth.getStaminaLoss(), 3))
+	if(issynthetic(synth))
+		if(prob(20))
+			synth.emote(pick("beep", "beep2"))
+		if(prob(20))
+			to_chat(synth, span_notice("[pick("SYNTH_TUNGSTEN_TEXT_1", "SYNTH_TUNGSTEN_TEXT_2", "SYNTH_TUNGSTEN_TEXT_3")]"))
+	else
+		to_chat(synth, span_notice("[pick("SYNTH_TUNGSTEN_TEXT_4", "SYNTH_TUNGSTEN_TEXT_5", "SYNTH_TUNGSTEN_TEXT_6")]"))
+	..()
+	. = TRUE
+
 /datum/reagent/consumable/ethanol/beerbatter
 	name = "Beer Batter"
 	description = "Probably not the greatest idea to drink...sludge."
