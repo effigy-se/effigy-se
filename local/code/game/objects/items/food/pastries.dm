@@ -20,7 +20,7 @@
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "sheet-metalhydrogen"
 	food_reagents = list(
-		/datum/reagent/consumable/tungsten = 5,
+		/datum/reagent/consumable/nutriment/tungsten = 5,
 	)
 	tastes = list("beep" = 3, "metal" = 4)
 	foodtypes = GROSS

@@ -32,3 +32,27 @@
 	taste_mult = 3
 	taste_description = "potent seasoning"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/nutriment/tungsten
+	name = "Tungsten"
+	description = "When consumed by synthetics, this silvery metal transforms even the most stoic synths into adorable, joyful companions!"
+	color = "#62708A"
+	taste_description = "beeps and boops"
+	nutriment_factor = 18
+	metabolization_rate = REAGENTS_METABOLISM * 0.25
+	quality = FOOD_AMAZING
+	brute_heal = FALSE
+	burn_heal = FALSE
+
+/datum/reagent/consumable/nutriment/tungsten/on_mob_life(mob/living/carbon/synth)
+	if(!issynthetic(synth))
+		return 0 // not one of your human vitamins and minerals
+
+	if(prob(20))
+		synth.emote(pick("beep", "beep2"))
+	if(prob(20))
+		to_chat(synth, span_notice("[pick("SYNTH_TUNGSTEN_TEXT_1", "SYNTH_TUNGSTEN_TEXT_2", "SYNTH_TUNGSTEN_TEXT_3")]"))
+	else
+		to_chat(synth, span_notice("[pick("SYNTH_TUNGSTEN_TEXT_4", "SYNTH_TUNGSTEN_TEXT_5", "SYNTH_TUNGSTEN_TEXT_6")]"))
+
+	return ..()
