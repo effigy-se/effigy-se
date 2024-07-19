@@ -574,7 +574,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 
 			var/datum/sprite_accessory/markings = GLOB.moth_markings_list[species_human.dna.features["moth_markings"]]
-			var/mutable_appearance/marking = mutable_appearance(layer = -BODY_LAYER, appearance_flags = KEEP_TOGETHER)
+			var/mutable_appearance/marking = mutable_appearance(layer = -(UNIFORM_LAYER + 0.01), appearance_flags = KEEP_TOGETHER)
 			if(noggin && (IS_ORGANIC_LIMB(noggin)))
 				var/mutable_appearance/markings_head_overlay = mutable_appearance(markings.icon, "[markings.icon_state]_head")
 				marking.overlays += markings_head_overlay
@@ -613,7 +613,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				var/icon_state = underwear.icon_state
 				if(underwear.has_digitigrade && (species_human.bodyshape & BODYSHAPE_DIGITIGRADE))
 					icon_state += "_d"
-				underwear_overlay = mutable_appearance(underwear.icon, icon_state, -BODY_LAYER)
+				underwear_overlay = mutable_appearance(underwear.icon, icon_state, -(UNIFORM_LAYER + 0.01))
 				if(!underwear.use_static)
 					underwear_overlay.color = species_human.underwear_color
 				standing += underwear_overlay
@@ -625,7 +625,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				if(species_human.dna.species.sexes && species_human.gender == FEMALE)
 					undershirt_overlay = wear_female_version(undershirt.icon_state, undershirt.icon, BODY_LAYER)
 				else
-					undershirt_overlay = mutable_appearance(undershirt.icon, undershirt.icon_state, -BODY_LAYER)
+					undershirt_overlay = mutable_appearance(undershirt.icon, undershirt.icon_state, -(UNIFORM_LAYER + 0.01))
 				if(!undershirt.use_static)
 					undershirt_overlay.color = species_human.undershirt_color
 				standing += undershirt_overlay
@@ -637,7 +637,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				var/icon_state = socks.icon_state
 				if((species_human.bodyshape & BODYSHAPE_DIGITIGRADE))
 					icon_state += "_d"
-				socks_overlay = mutable_appearance(socks.icon, icon_state, -BODY_LAYER)
+				socks_overlay = mutable_appearance(socks.icon, icon_state, -(UNIFORM_LAYER + 0.02))
 				if(!socks.use_static)
 					socks_overlay.color = species_human.socks_color
 				standing += socks_overlay
