@@ -365,13 +365,13 @@
 	drop_when_organ_spilling = FALSE
 	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/vagina
 
-	/// Lowest-layering thing that affects the crotch
-	layer_above_undies = -(UNIFORM_LAYER - 0.03)
-	layer_below_undies = -(UNIFORM_LAYER + 0.05)
-
 /datum/bodypart_overlay/mutant/genital/vagina
 	feature_key = ORGAN_SLOT_VAGINA
 	layers = EXTERNAL_FRONT_UNDER_CLOTHES | EXTERNAL_BEHIND
+
+	/// Lowest-layering thing that affects the crotch
+	layer_above_undies = -(UNIFORM_LAYER - 0.03)
+	layer_below_undies = -(UNIFORM_LAYER + 0.05)
 
 /datum/bodypart_overlay/mutant/genital/penis/underwear_check()
 	if(!istype(owner))
