@@ -116,6 +116,9 @@
 		return FALSE
 	return TRUE
 
+/datum/bodypart_overlay/mutant/tail/get_global_feature_list()
+	return SSaccessories.tails_list_human
+
 /obj/item/organ/external/tail/cat
 	name = "tail"
 	preference = "feature_human_tail"
@@ -138,6 +141,15 @@
 
 /datum/bodypart_overlay/mutant/tail/cat/get_global_feature_list()
 	return GLOB.sprite_accessories["tail"] // EffigyEdit Change Customization ORIGINAL: return GLOB.tails_list_human
+
+/obj/item/organ/external/tail/cat/fox
+	name = "fox tail"
+	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/cat/fox
+	dna_block = null
+	sprite_accessory_override = /datum/sprite_accessory/tails/human/fox
+
+///Fox tail bodypart overlay
+/datum/bodypart_overlay/mutant/tail/cat/fox
 
 /obj/item/organ/external/tail/monkey
 	name = "monkey tail"
