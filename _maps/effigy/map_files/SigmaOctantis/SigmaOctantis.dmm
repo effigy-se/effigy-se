@@ -7672,6 +7672,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/floor1/aft)
+"bKV" = (
+/obj/effect/spawner/liquids_spawner/fulltile,
+/turf/open/misc/asteroid,
+/area/ocean/trench)
 "bLc" = (
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
@@ -17687,6 +17691,12 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/floor2/starboard/fore)
+"eaU" = (
+/obj/machinery/plumbing/disposer/upgraded{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/service/janitor/wetworks/deck_two)
 "eba" = (
 /obj/machinery/computer/rdconsole{
 	dir = 8
@@ -19881,6 +19891,12 @@
 /obj/machinery/duct/supply,
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/starboard/greater)
+"ezh" = (
+/obj/machinery/plumbing/disposer/upgraded{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/service/janitor/wetworks)
 "ezl" = (
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
@@ -23498,16 +23514,10 @@
 /turf/closed/wall,
 /area/station/service/chapel)
 "fpp" = (
-/obj/machinery/modular_computer/preset/cargochat/medical{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/brown/opposingcorners,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
-	dir = 1
-	},
 /obj/effect/turf_decal/siding/wideplating_new/light{
 	dir = 1
 	},
+/obj/structure/hedge,
 /turf/open/floor/iron,
 /area/station/medical/medbay/aft)
 "fpq" = (
@@ -31779,7 +31789,8 @@
 /area/station/engineering/storage)
 "hgx" = (
 /obj/structure/flora/rock/pile/style_random,
-/turf/open/misc/ocean/rock/heavy,
+/obj/effect/spawner/liquids_spawner/fulltile,
+/turf/open/misc/asteroid,
 /area/ocean/trench)
 "hgy" = (
 /obj/effect/turf_decal/siding/wideplating_new/corner{
@@ -46240,6 +46251,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/effect/landmark/start/paramedic,
 /turf/open/floor/iron/edge{
 	dir = 4
 	},
@@ -47999,6 +48011,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/machinery/vending/drugs,
 /turf/open/floor/catwalk_floor/iron,
 /area/station/medical/storage)
 "kWf" = (
@@ -67733,7 +67746,7 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
-/obj/effect/landmark/start/paramedic,
+/obj/machinery/vending/medical,
 /turf/open/floor/catwalk_floor/iron,
 /area/station/medical/storage)
 "pFM" = (
@@ -77813,9 +77826,9 @@
 /turf/open/floor/iron/diagonal,
 /area/station/command/heads_quarters/rd)
 "rUi" = (
-/obj/machinery/vending/medical,
-/obj/effect/turf_decal/tile/blue/diagonal_centre,
+/obj/effect/turf_decal/tile/brown/diagonal_centre,
 /obj/effect/turf_decal/siding/wideplating_new/light,
+/obj/machinery/modular_computer/preset/cargochat/medical,
 /turf/open/floor/iron/dark/diagonal,
 /area/station/medical/medbay/central)
 "rUj" = (
@@ -81767,7 +81780,8 @@
 /area/station/maintenance/department/engine/atmos)
 "sTP" = (
 /obj/structure/flora/ocean/coral,
-/turf/open/misc/ocean/rock/heavy,
+/obj/effect/spawner/liquids_spawner/fulltile,
+/turf/open/misc/asteroid,
 /area/ocean/trench)
 "sTU" = (
 /turf/closed/wall/r_wall,
@@ -85260,9 +85274,8 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/commons/fitness/recreation)
 "tKJ" = (
-/obj/machinery/vending/drugs,
-/obj/effect/turf_decal/tile/yellow/diagonal_centre,
 /obj/effect/turf_decal/siding/wideplating_new/light,
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark/diagonal,
 /area/station/medical/medbay/central)
 "tKK" = (
@@ -89216,6 +89229,11 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/duct/waste,
+/obj/machinery/door/poddoor/preopen{
+	id = "medsecprivacy";
+	name = "Privacy Shutter"
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/iron/smooth_large,
 /area/station/security/checkpoint/medical)
 "uJq" = (
@@ -90023,7 +90041,7 @@
 	id = "cargoload"
 	},
 /obj/machinery/door/poddoor{
-	id = "cargo_cargoload";
+	id = "QMLoaddoor2";
 	name = "Supply Dock Loading Door"
 	},
 /turf/open/floor/plating,
@@ -141581,7 +141599,7 @@ gmr
 syt
 kVP
 uSK
-psC
+bKV
 vVW
 uRo
 vVW
@@ -141838,7 +141856,7 @@ vMb
 vMb
 xNo
 uSK
-psC
+bKV
 hud
 rdz
 vVW
@@ -142095,7 +142113,7 @@ vMb
 vMb
 kaS
 rbu
-pIi
+bKV
 hud
 qJl
 iOC
@@ -142352,7 +142370,7 @@ aZm
 jjL
 xKV
 uSK
-pIi
+bKV
 vVW
 gqd
 vVW
@@ -152380,9 +152398,9 @@ xPs
 mwP
 jws
 lvn
-pIi
+bKV
 hgx
-ayV
+bKV
 kOb
 qXs
 dWR
@@ -152638,8 +152656,8 @@ eTq
 lvn
 lvn
 sTP
-ayV
-psC
+bKV
+bKV
 kOb
 pkP
 ojI
@@ -156004,7 +156022,7 @@ bSX
 bSX
 bSX
 vRN
-fYe
+ezh
 gWK
 fza
 fYe
@@ -190134,7 +190152,7 @@ iIF
 iIF
 oHC
 gua
-laF
+eaU
 tHN
 isd
 teE
