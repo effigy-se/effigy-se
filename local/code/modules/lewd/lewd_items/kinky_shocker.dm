@@ -30,7 +30,7 @@
 	update_icon()
 	if(!preload_cell_type)
 		return
-	if(!ispath(preload_cell_type, /obj/item/stock_parts/cell))
+	if(!ispath(preload_cell_type, /obj/item/stock_parts/power_store/cell))
 		log_mapping("[src] at [AREACOORD(src)] had an invalid preload_cell_type: [preload_cell_type].")
 	else
 		cell = new preload_cell_type(src)
