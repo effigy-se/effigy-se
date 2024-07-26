@@ -63,9 +63,8 @@
 #define DNA_MUSHROOM_CAPS_BLOCK 14
 
 #define DNA_POD_HAIR_BLOCK 15
-#define DNA_MONKEY_TAIL_BLOCK 16
 
-#define DNA_FEATURE_BLOCKS 16
+#define DNA_FEATURE_BLOCKS 15
 */
 // EffigyEdit Remove End
 #define DNA_FEATURE_BLOCKS GLOB.dna_total_feature_blocks // EffigyEdit Change - Customization
