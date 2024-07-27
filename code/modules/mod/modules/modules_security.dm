@@ -273,10 +273,7 @@
 	dispense_type = /obj/item/grenade/mirage
 
 /obj/item/mod/module/dispenser/mirage/on_use()
-	. = ..()
-	if(!.)
-		return
-	var/obj/item/grenade/mirage/grenade = .
+	var/obj/item/grenade/mirage/grenade = ..()
 	grenade.arm_grenade(mod.wearer)
 
 /obj/item/grenade/mirage

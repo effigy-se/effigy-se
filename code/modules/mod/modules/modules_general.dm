@@ -169,9 +169,6 @@
 	incompatible_modules = list(/obj/item/mod/module/jump_jet)
 
 /obj/item/mod/module/jump_jet/on_use()
-	. = ..()
-	if (!.)
-		return FALSE
 	if (DOING_INTERACTION(mod.wearer, mod.wearer))
 		balloon_alert(mod.wearer, "busy!")
 		return
