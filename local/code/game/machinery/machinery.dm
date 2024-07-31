@@ -55,14 +55,5 @@
 	var/door_open_sound = 'local/icons/obj/doors/shutters_open.ogg'
 	var/door_close_sound = 'local/icons/obj/doors/shutters_close.ogg'
 
-/obj/machinery/door/poddoor/shutters/do_animate(animation)
-	switch(animation)
-		if("opening")
-			flick("opening", src)
-			playsound(src, door_open_sound, 30, TRUE)
-		if("closing")
-			flick("closing", src)
-			playsound(src, door_close_sound, 30, TRUE)
-
 /obj/machinery/firealarm
 	icon = 'local/icons/obj/firealarm.dmi'
