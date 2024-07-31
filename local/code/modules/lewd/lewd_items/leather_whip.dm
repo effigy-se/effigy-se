@@ -15,6 +15,7 @@
 	hitsound = 'sound/weapons/whip.ogg'
 	clothing_flags = INEDIBLE_CLOTHING
 	flags_cover = MASKCOVERSMOUTH
+	var/modifies_speech = TRUE
 	/// If the color of the toy has been changed before
 	var/color_changed = FALSE
 	/// If the form (or size) of the toy has been changed before
