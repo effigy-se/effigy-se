@@ -102,11 +102,12 @@
 	cooldown_time = 0.5 SECONDS
 	overlay_state_inactive = "module_jetpack"
 	overlay_state_active = "module_jetpack_on"
-	required_slots = list(ITEM_SLOT_BACK)
 	/// Do we have stabilizers? If yes the user won't move from inertia.
 	var/stabilize = TRUE
 	/// Callback to see if we can thrust the user.
 	var/thrust_callback
+
+/obj/item/mod/module/jetpack/advanced
 
 /obj/item/mod/module/jetpack/Initialize(mapload)
 	. = ..()
