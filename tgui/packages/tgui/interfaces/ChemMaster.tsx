@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BooleanLike, classes } from 'tgui-core/react';
+import { BooleanLike } from 'tgui-core/react';
 import { capitalize } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
@@ -19,10 +19,6 @@ import {
   Table,
   Tooltip,
 } from '../components';
-import { BooleanLike } from 'tgui-core/react';
-import { capitalize } from 'tgui-core/string';
-
-import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { Beaker, BeakerReagent } from './common/BeakerDisplay';
 

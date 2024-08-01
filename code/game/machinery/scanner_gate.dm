@@ -17,8 +17,7 @@
 #define SCANGATE_POD "pod"
 #define SCANGATE_GOLEM "golem"
 #define SCANGATE_ZOMBIE "zombie"
-
-// EffigyEdit Add -
+// EffigyEdit Change - Scanner gate options
 #define SCANGATE_MAMMAL "mammal"
 #define SCANGATE_VOX "vox"
 #define SCANGATE_AQUATIC "aquatic"
@@ -31,8 +30,9 @@
 #define SCANGATE_TESHARI "teshari"
 #define SCANGATE_HEMOPHAGE "hemophage"
 #define SCANGATE_SNAIL "snail"
+
 #define SCANGATE_GENDER "Gender"
-// EffigyEdit Add End
+// EffigyEdit Change End
 
 /obj/machinery/scanner_gate
 	name = "scanner gate"
@@ -62,6 +62,7 @@
 	var/light_fail = FALSE
 	///Does the scanner ignore light_pass and light_fail for sending signals?
 	var/ignore_signals = FALSE
+	var/detect_gender = "male" // EffigyEdit Change - Scanner gate options
 	///Modifier to the chance of scanner being false positive/negative
 	var/minus_false_beep = 0
 	///Base false positive/negative chance
@@ -69,8 +70,6 @@
 	///Is an n-spect scanner attached to the gate? Enables contraband scanning.
 	var/obj/item/inspector/n_spect = null
 
-	///Detects gender
-	var/detect_gender = "male" // EffigyEdit Add
 
 /obj/machinery/scanner_gate/Initialize(mapload)
 	. = ..()
@@ -250,31 +249,42 @@
 					if(SCANGATE_ZOMBIE)
 						detected_thing = "Zombie"
 						scan_species = /datum/species/zombie
-					// EffigyEdit Add - (Medical)
+					// EffigyEdit Change - Scanner gate options
 					if(SCANGATE_MAMMAL)
+						detected_thing = "Anthromorph"
 						scan_species = /datum/species/mammal
 					if(SCANGATE_VOX)
+						detected_thing = "Vox"
 						scan_species = /datum/species/vox
 					if(SCANGATE_AQUATIC)
+						detected_thing = "Aquatic"
 						scan_species = /datum/species/aquatic
 					if(SCANGATE_INSECT)
+						detected_thing = "Insect"
 						scan_species = /datum/species/insect
 					if(SCANGATE_XENO)
+						detected_thing = "Xeno"
 						scan_species = /datum/species/xeno
 					if(SCANGATE_UNATHI)
+						detected_thing = "Unathi"
 						scan_species = /datum/species/unathi
 					if(SCANGATE_TAJARAN)
+						detected_thing = "Tajaran"
 						scan_species = /datum/species/tajaran
 					if(SCANGATE_VULPKANIN)
+						detected_thing = "Vulpkanin"
 						scan_species = /datum/species/vulpkanin
 					if(SCANGATE_SYNTH)
+						detected_thing = "Synth"
 						scan_species = /datum/species/synthetic
 					if(SCANGATE_TESHARI)
+						detected_thing = "Teshari"
 						scan_species = /datum/species/teshari
 					if(SCANGATE_SNAIL)
+						detected_thing = "Snail"
 						scan_species = /datum/species/snail
-					// EffigyEdit Add End
-				if(is_species(H, scan_species))
+					// EffigyEdit Change End
+				if(is_species(scanned_human, scan_species))
 					beep = TRUE
 				if(detect_species == SCANGATE_ZOMBIE) //Can detect dormant zombies
 					detected_thing = "Romerol infection"
@@ -308,6 +318,15 @@
 				if(scanned_human.nutrition >= detect_nutrition && detect_nutrition == NUTRITION_LEVEL_FAT)
 					beep = TRUE
 					detected_thing = "Obesity"
+		// EffigyEdit Change - Scanner gate options
+		if(SCANGATE_GENDER)
+			detected_thing = detect_gender
+			if(ishuman(thing))
+				var/mob/living/carbon/human/scanned_human = thing
+				if((scanned_human.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
+					if(scanned_human.gender == detect_gender)
+						beep = TRUE
+		// EffigyEdit Change End
 		if(SCANGATE_CONTRABAND)
 			for(var/obj/item/content in thing.get_all_contents_skipping_traits(TRAIT_CONTRABAND_BLOCKER))
 				detected_thing = "Contraband"
@@ -316,14 +335,6 @@
 					break
 			if(!n_spect.scans_correctly)
 				beep = !beep //We do a little trolling
-		// EffigyEdit Add - Medical
-		if(SCANGATE_GENDER)
-			if(ishuman(M))
-				var/mob/living/carbon/human/scanned_human = M
-				if((scanned_human.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
-					if(scanned_human.gender == detect_gender)
-						beep = TRUE
-		// EffigyEdit Add End
 
 	if(reverse)
 		beep = !beep
@@ -378,9 +389,8 @@
 	data["disease_threshold"] = disease_threshold
 	data["target_species"] = detect_species
 	data["target_nutrition"] = detect_nutrition
+	data["target_gender"] = detect_gender // EffigyEdit Change - Scanner gate options
 	data["contraband_enabled"] = !!n_spect
-	data["target_gender"] = detect_gender // EffigyEdit Add (Medical)
-
 	return data
 
 /obj/machinery/scanner_gate/ui_act(action, params)
@@ -422,7 +432,7 @@
 					if("Obese")
 						detect_nutrition = NUTRITION_LEVEL_FAT
 			. = TRUE
-		// EffigyEdit Add - Medical
+		// EffigyEdit Change - Scanner gate options
 		if("set_target_gender")
 			var/new_gender = params["new_gender"]
 			var/gender_list = list(
@@ -436,7 +446,7 @@
 					if("Female")
 						detect_gender = "female"
 			. = TRUE
-		// EffigyEdit Add End
+		// EffigyEdit Change End
 
 /obj/machinery/scanner_gate/preset_guns
 	locked = TRUE
@@ -462,8 +472,7 @@
 #undef SCANGATE_POD
 #undef SCANGATE_GOLEM
 #undef SCANGATE_ZOMBIE
-
-// EffigyEdit Add - Medical
+// EffigyEdit Change - Scanner gate options
 #undef SCANGATE_MAMMAL
 #undef SCANGATE_VOX
 #undef SCANGATE_AQUATIC
@@ -478,4 +487,4 @@
 #undef SCANGATE_SNAIL
 
 #undef SCANGATE_GENDER
-// EffigyEdit Add End
+// EffigyEdit Change End
