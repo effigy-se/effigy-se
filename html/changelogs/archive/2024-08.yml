@@ -8,19 +8,45 @@
   - bugfix: Fixes borgs not being able to place apparatus-held items on tables. As
       a side-effect, they can now combat mode right click splash containers as normal
       instead of having their own right-click floor splash.
+  - bugfix: You no longer render on top of tall enough objects that get vertically
+      offset when anchored to a table when standing on the tile directly to the north
+      of them. Examples are soda and booze dispensers.
+  - bugfix: Removing the vertical offset some objects get when anchored to a table
+      can be done by unanchoring it at any point, rather than only on a table.
+  13spacemen:
+  - balance: TTV bombs can be implanted into people's chest once again
+  ArcaneMusic:
+  - qol: NODE drones summoned to tap a vent within ore vents now display a green status
+      light to show how much longer they need the vent defended for.
+  Axidyuwu:
+  - bugfix: now Justice invisibility turns off in non combat mode as it supposed to
+  - bugfix: fixes a way of duplicating iron with wallmounted sparklers and light switches
   AyIong:
   - bugfix: Announcement subheader will no longer overlap the header if the second
       one is very long
   - qol: Chat notifications are now at the top
   - qol: Photocopier updated their UI
+  - rscadd: Stat Panel now scales like a chat, depends on the font size. Defaults
+      from the chat font size, but you can separate it.
+  - refactor: Refactored Stat Panel styles and Byond skin theme applying. Stat Panel
+      now looks more like a TGUI
   Ben10Omintrix:
   - refactor: mulebot UI has been refactored
   - qol: fish analyzers now have a UI
+  Bisar:
+  - bugfix: All mining mobs now properly listen to the signals sent by attackers and
+      will respond appropriately.
+  - qol: Machines check their parts during initialization now; this will usually apply
+      in cases such as a machine in a prefab having been varedited to be upgraded.
+  - code_imp: All machines check their parts during initialization.
   DaCoolBoss:
   - rscadd: Adds the Haunted Trading Post space ruin.
   - rscadd: Adds 10+ unique items for the Haunted Trading Post
   - rscadd: Adds 5 dangerous mobs for the Haunted Trading Post
   - rscadd: Adds 4 new types of hazardous traps for the Haunted Trading Post.
+  - spellcheck: military javelin's name is now fully uncapitalised
+  Deadgebert:
+  - bugfix: peg limbs can now be amputated
   DrDiasyl aka DrTuxedo:
   - rscadd: Security and Engineering holosigns can now be opened with their projector
       by clicking them from afar
@@ -41,9 +67,18 @@
   - qol: Scanner gates description now tells to what mode they are set
   - bugfix: You no longer can remove N-Spector from scanner gates without unlocking
       them first
+  - sound: Hearing and talking into the radio now produces a sound. Heads get a special
+      sound.
   FeenieRU:
   - qol: Now IDs and PDAs have money-reader module for picking some cash into your
       bank by swiping on money.
+  FlufflesTheDog:
+  - bugfix: Existing gas flow meters have been recalled and replaced due to a faulty
+      screen connection, and once again convey pressure and temperature
+  Gaxeer:
+  - refactor: replace some copypaste code for pod spawn to use `podspawn` proc instead
+  - code_imp: modify  `podspawn` proc to accept amount of item type to spawn in `spawn`
+      specification
   Ghommie:
   - rscadd: You can raise lobstrosities from chasm chrabs inside an aquarium with
       the 'allow breeding' setting on. Keep the fish well fed, healthy and not lonely
@@ -67,6 +102,33 @@
   - bugfix: Centcom technicians have been trained to recognize cargo-bought fish.
       You will no longer be able to trick the economy system by buying fish and sending
       it right back. Also nerfed fish selling price very slightly.
+  - qol: Aquariums start unanchored and don't autoconnect to plumbing. Their reproduction
+      prevention is also disabled by default.
+  - balance: Made it a tad easier to control the bait during the minigame. Buffed
+      the fishing skill. No fishing duds at all when using ANY bait.
+  - balance: Chasm Chrabs take less time to grow into Lobstrosities but need food
+      a bit more frequently.
+  - balance: '"Profound fisher" mobs will have less RNG-dependant time fishing.'
+  - bugfix: You can now ACTUALLY interact with other things while fishing if the fishing
+      rod isn't in your active hand.
+  - config: Added a config for specific gateway delays so locations like the beach
+      and the museum don't have to take 30 minutes to become available like the rest.
+  - rscadd: Added tadpoles, which can be scooped from puddles with right-click. Functionally
+      they're like most fish, which require an aquarium to survive, and also need
+      to be fed fairly frequently, however they quickly become frogs after about 3
+      minutes of care.
+  - rscadd: Every station now has a couple puddles. One at the public garden and the
+      other in prison.
+  - qol: Changed the name of an aquarium UI button from "Reproduction Prevention"
+      to "Reproduction and Growth", as it  controls both fish breeding and growth.
+  - rscadd: Carps, frogs and young lobstrosities now fear people wearing fishing hats!
+      Adults and megacarp favour the 'fight' part of the fear reflex however.
+  - bugfix: The hat stabilizer module now inherits the clothing traits of the attached
+      hat.
+  Helg2:
+  - rscadd: Emergency climbing hooks now spawn in emergency boxes on all of the multi-z
+      level stations.
+  - bugfix: Emergency climbing hooks now shouldn't spawn on non multi-z stations.
   Holoo-1:
   - bugfix: fixed ghost huds
   Ical92:
@@ -76,10 +138,14 @@
   Inari-Whitebear:
   - spellcheck: Fixed a typo in the description for the Syndicate Rebar Crossbow in
       the Uplink.
+  Jackraxxus:
+  - bugfix: AI mech control beacons and malf AI dominate mech work again.
   Jackriip:
   - refactor: refactored global set_basalt_light proc into object proc
+  - refactor: moves the create_all_lighting_objects proc to the lighting subsystem
   Jacquerel:
   - balance: If a bluespace cookie fails to teleport you then you will trip over.
+  - image: Big balls are now much rounder, to more easily slide down into a cannon.
   Jacquerel, Kok0nut, Imaginos:
   - image: Wall-mounted and Table-mounted ID card authorisation machines now use different
       sprites
@@ -93,6 +159,9 @@
       20th Century by providing them with a real fax machine.
 
       :cl:'
+  KazooBard:
+  - rscadd: The heretic's ritual of knowledge no longer requires binoculars
+  - rscadd: Clipboards are craftable using a wood plank, an iron rod and wirecutters
   LT3:
   - bugfix: Fixed delam counter stuck in window near Ice Box bridge
   - bugfix: Fixed elevator panel allowing conflicting inputs
@@ -102,6 +171,10 @@
   - bugfix: Fixed disease outbreak announcement sometimes missing the disease name
   - bugfix: Players now receive a notification when trying to perform surgery steps
       that involve chemicals
+  - bugfix: Scanner gate now detects items thrown through it
+  - bugfix: Scanner gate does not alarm for guns on players with mindshield
+  - bugfix: Scanner gate does not alarm for guns on players with weapons ID card access
+  - sound: Reduced volume of scanner gate alarm
   MTandi:
   - rscadd: 'Charlie: Replaced external cycling airlocks with airlock pumps'
   - qol: Updated smart fridge UI
@@ -112,8 +185,19 @@
   - image: Updated the color palette of Smart Fridge
   - bugfix: Borgs and AI can now use research queue
   - bugfix: Janicart inserts items into the attached trash bag again (manual and vacuumed)
+  - qol: smart fridge UI now groups items by type+name instead of just type
+  - qol: smart fridge UI now shows item names next to the images
+  - qol: smart fridge UI has a list view option (default for chem and viro versions)
+  - bugfix: fixed smart fridge stacking sounds when dispensing multiple items
+  - qol: Renamed seed packs to have the plant name at the beginning
+  - bugfix: Portable atmos machine circuit boards list correct components
+  - bugfix: Portable atmos machine circuit boards accept unwrenched fittings
+  - bugfix: Portable atmos machines are movable on construction
+  - image: Made chem master container icons not blurry
   Majkl-J:
   - bugfix: fixes bitrunning breaking upon repeatedly climbing in and out the pod
+  - bugfix: Fixes the echolocation screen overlay not appearing with default arguments
+      due to using the wrong icon state
   Melbert:
   - bugfix: Fixes xenos being able to do that one mechanic that involves mouse-dragging
       people to you
@@ -132,14 +216,30 @@
   Momo8289:
   - qol: Tweaked the colour of orange atmos pipes to be more distinct from the red
       pipes, especially in darkness.
+  - bugfix: The charge indicators on power cells now work properly.
+  - code_imp: Removed some now redundant power cell appearance updates
   Paxilmaniac:
   - bugfix: Fixes bulldog shotgun unique mag display not working on the sprite
   - image: resprites the bulldog shotgun along with inhands and new worn sprites
   - code_imp: cleans up a little of the code surrounding the bulldog
+  - balance: The nukeops surplus smg, the pp-95, has been reworked into the Abielle
+      Smart-SMG. It performs nearly identically to the pp-95, however it's projectiles
+      get a slight homing ability towards whatever you click on.
+  - sound: New firing sounds for the surplus smg, credit to the m41 sound effects
+      from tgmc
+  - image: New sprites for the surplus smg, made by me
   Rhials:
   - bugfix: Clown Ops gear has been returned to being available only to clown ops.
       Whoops!
   - bugfix: Monkey wizards can now interact with grand ritual runes.
+  - rscadd: Spies can now pick their own custom objectives, if they so choose.
+  - qol: Sentience potions can now be used without a provided summon reason.
+  Sadboysuss:
+  - bugfix: birdshot engineering feedback has been applied
+  - bugfix: rod sounds will now vary in pitch
+  - bugfix: spray can face spraying will no longer work on light-sensitives with eyewear
+      and people wearing eye covering masks
+  - bugfix: The clown planet domain is now completable
   SmArtKar:
   - refactor: Refactored parrying to be projectile-side and not user-side.
   - rscadd: You can now parry crusher projectiles to give them some more range, add
@@ -192,8 +292,46 @@
       them
   - image: Updated gas flow meter sprites
   - bugfix: Mirage grenade dispensers and ionic jump jets now work
+  - rscadd: Mining headsets now allow you to make callouts via pointing. You can use
+      them to communicate with fellow miners or order your army of bots and raptors!
+  - rscadd: Mining headsets keep your voice loud and clear in low-pressure environments
+      (not vacuum!)
+  - bugfix: People with tooltips enabled no longer lag the server when they move their
+      mouse. Oops.
+  - bugfix: Recyclers no longer recycle contents of indestructible items
+  - qol: If you have auto fit viewport enabled, it will trigger upon entering or exiting
+      fullscreen
+  - bugfix: Projectile dampener, recycler and ninja stealth MOD modules now work properly
+  - bugfix: VIM no longer requires hands to enter
+  - bugfix: Grass sheath now holds parsnip sabres like its supposed to
+  - spellcheck: Fixed up parsnip sabre description grammar
+  - bugfix: Mechs can no longer equip infinite amount of weapons
+  - qol: You can now reorder items inside storages by dragging them
+  - bugfix: You can no longer tear peoples arms off with non-killer clamps
+  - bugfix: Mining MODsuits now can store everything that explorer suits can
+  - bugfix: Fixed mapload circuit floors not drawing power and deconstructing circuit
+      floors not reducing power load
+  - bugfix: Silicons and simplemobs can also hear radio chatter now
+  - bugfix: Fixed NT Frontier discounts not applying
+  - balance: Mining MODsuits are now considered thick clothing and gained expanded
+      storage.
+  - image: Mining MODsuits got a slight glowup and hide belts now
+  - bugfix: Heart eater wizard perk no longer works activates on organs that haven't
+      been used before
+  - image: All implants have received a fresh coat of paint
+  - qol: You no longer goofily swap with others trying to move in the same direction
+      as you if you're not faster than them
+  - code_imp: Moved mobswap check logic into a separate proc and made it more readable
+  - admin: Subtype vendor no longer requries an ID
+  - bugfix: Removed a rogue wall grinder on icebox
+  - bugfix: Fixed advanced pods showing up as cultist pods
+  - balance: Discounts now pick 4-6 items each from a unique category
+  - balance: Items that cost below 4 TC cannot get discounted anymore
+  - balance: Elite syndicate MODs for traitors can no longer get discounted
+  - bugfix: Bank cards speak once more
   StrangeWeirdKitten:
   - bugfix: Voidwalker should not run on planetary maps.
+  - rscadd: Cosmic Skull glows purple.
   TheNobodyofimportance:
   - qol: Holofan and two thermomachine and emitter boards in lavaland syndicate base.
   Thedragmeme:
@@ -217,9 +355,24 @@
   - balance: Voided victims get dumped in safer places
   - bugfix: Shuttle events meteors now dont sometimes kill everyone
   - bugfix: Animal/people skin is no longer metallic sounding
+  - bugfix: Fixes void eater not refreshing
+  - bugfix: Fixes planetary gravity not killing voidwalkers and voideds
   Vekter:
   - spellcheck: Reworded Voidwalker's objectives to be more descriptive of their actual
       goals as opposed to just fluff.
+  - bugfix: Fixes an exploit that allowed players to open a Bag of Holding rift in
+      the Heretic dimension.
+  Watermelon914:
+  - bugfix: Fixes SS13.wait not working when called multiple times before it finishes
+      waiting.
+  - admin: Turfs in lua will no longer become invalid on deletion.
+  Xackii:
+  - bugfix: Justice design no longer disappears
+  - bugfix: Mechs can attack other mechs in melee
+  - rscadd: RD can emag mech fabricator(like roboticist).
+  Y0SH1M4S73R:
+  - admin: Admin lua scripting uses a new library that (probably) will not break when
+      BYOND updates.
   YesterdaysPromise:
   - rscadd: All the melons are now sliceable, and have inhands, instead of just watermelon
       and holymelon respectively.
@@ -261,6 +414,9 @@
   - bugfix: Fixed possessed blades being broken
   - code_imp: If testing is enabled everyone is polled in ghost polls.
   - bugfix: HONK mech now waddles
+  - rscdel: Revert "Heretic spell invocations now use one dead language per path"
+  deathrobotpunch:
+  - qol: drones now have soap in their internal storage!
   grungussuss:
   - bugfix: Med sec telescreens are no longer the same item as the CMO telescreen.
   - spellcheck: correcte name for the CMO telescreen mount
@@ -270,12 +426,23 @@
   - sound: the default metal sound has been changed
   - sound: gas tanks now have sound
   - bugfix: birdshot holodeck's lighting has been fixed.
+  - sound: only the scream emote can be heard through walls
+  - bugfix: smuggler satchels will no longer spawn in space
+  - sound: leather, skins and cardboard have their own sound now
+  - sound: added sniff sounds
+  - sound: added sigh sounds
+  - sound: medkits now have sounds
+  - bugfix: the abandoned plasma research facility on icemoon no longer has an item
+      that shouldn't exist
+  grungussuss and Kayozz:
+  - sound: more maintenance ambience has been added
   larentoun:
   - config: Added an entry for TRAITOR_SCALING_MULTIPLIER, disabled by default
   mc-oofert:
   - bugfix: wawastation ordnance no longer has a light fixture on a window and looks
       objectively slightly better
   - bugfix: wawastation engineering water tanks are now highcap
+  - bugfix: wawastation pharmacy now has a hand labeller
   necromanceranne:
   - rscadd: Robotic variants of many of the standard and advanced humanoid surgeries.
       You cannot perform self surgery with these surgeries.
@@ -303,6 +470,17 @@
   - qol: Moving the light bulb removal function from the left mouse button to the
       right one.
   - qol: Added & improved tips related to the light fixture
+  rroqc:
+  - bugfix: plants no longer select reagent genes they already have while cross pollinating
+  - code_imp: 'improves reagent cross pollination code
+
+      :cl:'
+  - rscadd: 'durathread robes can now store botany gear
+
+      :cl:'
+  - bugfix: 'fix a bug where botany reagents would dissapear from existing plants
+
+      :cl:'
   san7890:
   - admin: Ticking "Job Playtime Exempt" on a player's Job Playtime Tracker panel
       will also exempt them from BYOND Account Age restrictions now. It previously
@@ -310,6 +488,8 @@
       Account Age in days.
   thegrb93:
   - qol: Allow custom borg hat placement for custom borg skins
+  - bugfix: Fixes getting permanently hot or cold if wearing thermal insulation as
+      a lizard
   theselfish:
   - rscadd: Bitrunning and (spawn) Miner jumpsuits are now in their drobe.
   - qol: The Coroner Drobe got sorted into less 'shove everything in' and more 'in
