@@ -249,8 +249,6 @@
 	QDEL_NULL(alarm_manager)
 	if(occupier)
 		malfvacate(TRUE)
-	if(wires)
-		QDEL_NULL(wires)
 	if(cell)
 		QDEL_NULL(cell)
 	if(terminal)
@@ -648,39 +646,6 @@
 			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_LIGHT_TRESHOLD + 5) * 0.01) - cell.charge
 		if(SSMACHINES_APCS_EQUIPMENT)
 			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_EQUIP_TRESHOLD + 5) * 0.01) - cell.charge
-		else
-			need_charge_for_channel = cell.used_charge()
-
-	var/charging_used = area ? area.energy_usage[AREA_USAGE_APC_CHARGE] : 0
-	var/remaining_charge_rate = min(cell.chargerate, cell.maxcharge * CHARGELEVEL) - charging_used
-	var/need_charge = min(need_charge_for_channel, remaining_charge_rate) * seconds_per_tick
-	//check if we can charge the battery
-	if(need_charge < 0)
-		return
-
-	charge_cell(need_charge, cell = cell, grid_only = TRUE, channel = AREA_USAGE_APC_CHARGE)
-
-	// show cell as fully charged if so
-	if(cell.charge >= cell.maxcharge)
-		cell.charge = cell.maxcharge
-		charging = APC_FULLY_CHARGED
-	else
-		charging = APC_CHARGING
-
-// charge until the battery is full or to the treshold of the provided channel
-/obj/machinery/power/apc/proc/charge_channel(channel = null, seconds_per_tick)
-	if(!cell || shorted || !operating || !chargemode || !surplus() || !cell.used_charge())
-		return
-
-	// no overcharge past the next treshold
-	var/need_charge_for_channel
-	switch(channel)
-		if(SSMACHINES_APCS_ENVIRONMENT)
-			need_charge_for_channel = (cell.maxcharge * 0.05) - cell.charge
-		if(SSMACHINES_APCS_LIGHTS)
-			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_LIGHT_TRESHOLD + 3) * 0.01) - cell.charge
-		if(SSMACHINES_APCS_EQUIPMENT)
-			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_EQUIP_TRESHOLD + 3) * 0.01) - cell.charge
 		else
 			need_charge_for_channel = cell.used_charge()
 

@@ -114,7 +114,7 @@ SUBSYSTEM_DEF(machines)
 		//cache for sanic speed (lists are references anyways)
 		var/list/currentrun = src.currentrun
 		while(currentrun.len)
-			var/obj/machinery/thing = currentrun[currentrun.len]
+			var/obj/machinery/power/apc/apc = currentrun[currentrun.len]
 			currentrun.len--
 			if(QDELETED(apc))
 				processing_apcs -= apc
