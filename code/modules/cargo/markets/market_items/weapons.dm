@@ -13,15 +13,16 @@
 	availability_prob = 40
 
 /datum/market_item/weapon/shotgun_dart
-	name = "Box of XL Shotgun Darts"
+	name = "Shotgun Dart"
 	desc = "These handy darts can be filled up with any chemical and be shot with a shotgun! \
 	Prank your friends by shooting them with laughter! \
 	Not recommended for comercial use."
-	item = /obj/item/storage/box/large_dart
+	item = /obj/item/ammo_casing/shotgun/dart
 
-	price_min = CARGO_CRATE_VALUE * 1.375
-	price_max = CARGO_CRATE_VALUE * 2.875
-	stock_max = 4
+	price_min = CARGO_CRATE_VALUE * 0.05
+	price_max = CARGO_CRATE_VALUE * 0.25
+	stock_min = 10
+	stock_max = 60
 	availability_prob = 40
 
 /datum/market_item/weapon/bone_spear

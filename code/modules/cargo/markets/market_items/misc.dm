@@ -2,7 +2,7 @@
 	category = "Miscellaneous"
 	abstract_path = /datum/market_item/misc
 
-/datum/market_item/misc/clear_pda
+/datum/market_item/misc/Clear_PDA
 	name = "Clear PDA"
 	desc = "Show off your style with this limited edition clear PDA!."
 	item = /obj/item/modular_computer/pda/clear
@@ -12,7 +12,7 @@
 	stock_max = 2
 	availability_prob = 50
 
-/datum/market_item/misc/jade_lantern
+/datum/market_item/misc/jade_Lantern
 	name = "Jade Lantern"
 	desc = "Found in a box labeled 'Danger: Radioactive'. Probably safe."
 	item = /obj/item/flashlight/lantern/jade
