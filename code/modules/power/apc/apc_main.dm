@@ -8,9 +8,9 @@
 ///Cap for how fast cells charge, as a percentage per second (.01 means cellcharge is capped to 1% per second)
 #define CHARGELEVEL 0.01
 ///Charge percentage at which the lights channel stops working
-#define APC_CHANNEL_LIGHT_TRESHOLD 7 // EffigyEdit Change - Original: 15
+#define APC_CHANNEL_LIGHT_TRESHOLD 15
 ///Charge percentage at which the equipment channel stops working
-#define APC_CHANNEL_EQUIP_TRESHOLD 17 // EffigyEdit Change - Original: 30
+#define APC_CHANNEL_EQUIP_TRESHOLD 30
 ///Charge percentage at which the APC icon indicates discharging
 #define APC_CHANNEL_ALARM_TRESHOLD 75
 
@@ -249,8 +249,6 @@
 	QDEL_NULL(alarm_manager)
 	if(occupier)
 		malfvacate(TRUE)
-	if(wires)
-		QDEL_NULL(wires)
 	if(cell)
 		QDEL_NULL(cell)
 	if(terminal)
@@ -601,8 +599,8 @@
 				low_power_nightshift_lights = TRUE
 				INVOKE_ASYNC(src, PROC_REF(set_nightshift), TRUE)
 		else if(cell.percent() < APC_CHANNEL_EQUIP_TRESHOLD) // turn off equipment
-			equipment = autoset(equipment, AUTOSET_ON) // EffigyEdit Change
-			lighting = autoset(lighting, AUTOSET_OFF) // EffigyEdit Change
+			equipment = autoset(equipment, AUTOSET_OFF)
+			lighting = autoset(lighting, AUTOSET_ON)
 			environ = autoset(environ, AUTOSET_ON)
 			alarm_manager.send_alarm(ALARM_POWER)
 			if(!nightshift_lights || (nightshift_lights && !low_power_nightshift_lights))
@@ -645,9 +643,9 @@
 		if(SSMACHINES_APCS_ENVIRONMENT)
 			need_charge_for_channel = (cell.maxcharge * 0.05) - cell.charge
 		if(SSMACHINES_APCS_LIGHTS)
-			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_LIGHT_TRESHOLD + 3) * 0.01) - cell.charge
+			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_LIGHT_TRESHOLD + 5) * 0.01) - cell.charge
 		if(SSMACHINES_APCS_EQUIPMENT)
-			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_EQUIP_TRESHOLD + 3) * 0.01) - cell.charge
+			need_charge_for_channel = (cell.maxcharge * (APC_CHANNEL_EQUIP_TRESHOLD + 5) * 0.01) - cell.charge
 		else
 			need_charge_for_channel = cell.used_charge()
 

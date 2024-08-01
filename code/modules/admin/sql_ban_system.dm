@@ -398,6 +398,7 @@
 				ROLE_SYNDICATE,
 				ROLE_TRAITOR,
 				ROLE_WIZARD,
+				ROLE_VOIDWALKER,
 			),
 		)
 		for(var/department in long_job_lists)

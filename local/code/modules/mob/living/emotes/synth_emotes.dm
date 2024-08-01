@@ -37,7 +37,7 @@
 	allowed_species = list(/datum/species/synthetic)
 	cooldown = 2 SECONDS
 
-/datum/emote/living/human/buzz
+/datum/emote/silicon/buzz
 	key = "buzz"
 	key_third_person = "buzzes"
 	message = "buzzes."
@@ -48,7 +48,7 @@
 	allowed_species = list(/datum/species/synthetic)
 	cooldown = 2 SECONDS
 
-/datum/emote/living/human/beep
+/datum/emote/silicon/beep
 	key = "beep"
 	key_third_person = "beeps"
 	message = "beeps."
@@ -71,7 +71,7 @@
 	allowed_species = list(/datum/species/synthetic)
 	cooldown = 2 SECONDS
 
-/datum/emote/living/human/buzz2
+/datum/emote/silicon/buzz2
 	key = "buzz2"
 	message = "buzzes twice."
 	emote_type = EMOTE_AUDIBLE
