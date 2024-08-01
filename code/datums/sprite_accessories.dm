@@ -1892,6 +1892,10 @@
 	icon = 'icons/mob/human/species/lizard/lizard_misc.dmi'
 	em_block = TRUE
 
+/datum/sprite_accessory/horns/none
+	name = "None"
+	icon_state = "none"
+
 /datum/sprite_accessory/horns/simple
 	name = "Simple"
 	icon_state = "simple"
@@ -1915,6 +1919,10 @@
 /datum/sprite_accessory/ears
 	icon = 'icons/mob/human/cat_features.dmi'
 	em_block = TRUE
+
+/datum/sprite_accessory/ears/none
+	name = "None"
+	icon_state = "none"
 
 /datum/sprite_accessory/ears/cat
 	name = "Cat"
@@ -2077,6 +2085,10 @@
 
 /datum/sprite_accessory/frills
 	icon = 'icons/mob/human/species/lizard/lizard_misc.dmi'
+
+/datum/sprite_accessory/frills/none
+	name = "None"
+	icon_state = "none"
 
 /datum/sprite_accessory/frills/simple
 	name = "Simple"
@@ -2369,6 +2381,10 @@
 /datum/sprite_accessory/moth_markings // the markings that moths can have. finally something other than the boring tan
 	icon = 'icons/mob/human/species/moth/moth_markings.dmi'
 	color_src = null
+
+/datum/sprite_accessory/moth_markings/none
+	name = "None"
+	icon_state = "none"
 
 /datum/sprite_accessory/moth_markings/reddish
 	name = "Reddish"
