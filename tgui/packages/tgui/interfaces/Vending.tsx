@@ -14,9 +14,6 @@ import {
   Stack,
   Table,
 } from '../components';
-
-import { createSearch } from '../../common/string';
-import { useBackend } from '../backend';
 import { DmIcon, Input } from '../components';
 import { Window } from '../layouts';
 
