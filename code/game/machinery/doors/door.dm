@@ -532,6 +532,7 @@
 	update_appearance()
 	if(visible && !glass)
 		set_opacity(1)
+	operating = FALSE
 	air_update_turf(TRUE, TRUE)
 	update_freelook_sight()
 
