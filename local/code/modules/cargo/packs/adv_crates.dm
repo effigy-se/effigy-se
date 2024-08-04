@@ -224,6 +224,16 @@
 	)
 	crate_name = "anesthetics crate"
 
+/datum/supply_pack/medical/kit_technician
+	name = "Heavy Duty Medical Kit Crate - Technician"
+	crate_name = "technician kit crate"
+	desc = "Contains a pink medical technician kit."
+	access = ACCESS_MEDICAL
+	cost = CARGO_CRATE_VALUE * 5.5
+	contains = list(
+		/obj/item/storage/backpack/duffelbag/deforest_paramedic/stocked,
+	)
+
 /datum/supply_pack/medical/firstaidmixed
 	name = "Mixed Medical Kits"
 	desc = "Contains one of each medical kits for dealing with a variety of injured crewmembers."
