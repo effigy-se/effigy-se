@@ -154,12 +154,12 @@
 	update_inhand_icon(user)
 	upgrade_appliable.set_light_on(TRUE)
 	playsound(upgrade_appliable, 'sound/weapons/saberon.ogg', 35, TRUE)
-	force = /obj/item/melee/energy/sword::active_force
-	throwforce = /obj/item/melee/energy/sword::active_throwforce
-	bare_wound_bonus = /obj/item/melee/energy/sword::bare_wound_bonus
-	demolition_mod = /obj/item/melee/energy/sword::demolition_mod
-	armour_penetration = /obj/item/melee/energy/sword::armour_penetration
-	block_chance = /obj/item/melee/energy/sword::block_chance
+	upgrade_appliable.force = /obj/item/melee/energy/sword::active_force
+	upgrade_appliable.throwforce = /obj/item/melee/energy/sword::active_throwforce
+	upgrade_appliable.bare_wound_bonus = /obj/item/melee/energy/sword::bare_wound_bonus
+	upgrade_appliable.demolition_mod = /obj/item/melee/energy/sword::demolition_mod
+	upgrade_appliable.armour_penetration = /obj/item/melee/energy/sword::armour_penetration
+	upgrade_appliable.block_chance = /obj/item/melee/energy/sword::block_chance
 	return ..()
 
 /obj/item/luna_fragment/energy_retrofit/remove_upgrade(our_sord, mob/living/user)
@@ -169,10 +169,10 @@
 	update_inhand_icon(user)
 	upgrade_appliable.set_light_on(FALSE)
 	playsound(upgrade_appliable, 'sound/weapons/saberoff.ogg', 35, TRUE)
-	force = initial(force)
-	throwforce = initial(throwforce)
-	bare_wound_bonus = initial(bare_wound_bonus)
-	demolition_mod = initial(demolition_mod)
-	armour_penetration = initial(armour_penetration)
-	block_chance = initial(block_chance)
+	upgrade_appliable.force = initial(force)
+	upgrade_appliable.throwforce = initial(throwforce)
+	upgrade_appliable.bare_wound_bonus = initial(bare_wound_bonus)
+	upgrade_appliable.demolition_mod = initial(demolition_mod)
+	upgrade_appliable.armour_penetration = initial(armour_penetration)
+	upgrade_appliable.block_chance = initial(block_chance)
 	return ..()
