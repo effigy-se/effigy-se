@@ -34,8 +34,8 @@
 	var/list/viable_mobtypes = list() //typepaths of viable mobs
 	var/mob/living/carbon/affected_mob = null
 	var/list/cures = list() //list of cures if the disease has the CURABLE flag, these are reagent ids
-	/// The probability of spreading through the air every second
-	var/infectivity = 41
+	/// The probability of spreading through the air every breath
+	var/infectivity = 45
 	/// The probability of this infection being cured every second the cure is present
 	var/cure_chance = 4
 	var/carrier = FALSE //If our host is only a carrier
@@ -70,7 +70,8 @@
 
 	D.after_add()
 	infectee.med_hud_set_status()
-	register_disease_signals()
+	to_chat(world, span_greenteamradio("DIS: +[infectee.name] INFECTED successfully+"))
+	D.register_disease_signals()
 
 	var/turf/source_turf = get_turf(infectee)
 	log_virus("[key_name(infectee)] was infected by virus: [src.admin_details()] at [loc_name(source_turf)]")
@@ -253,26 +254,35 @@
  */
 /datum/disease/proc/airborne_spread(spread_range = 2, force_spread = TRUE, require_facing = FALSE)
 	if(isnull(affected_mob))
+		to_chat(world, span_redteamradio("DIS: [src.name] failed, no affected_mob"))
 		return FALSE
+	to_chat(world, span_yellowteamradio("DIS: [src.name] inspecting target [affected_mob]"))
 	if(!(spread_flags & DISEASE_SPREAD_AIRBORNE) && !force_spread)
+		to_chat(world, span_redteamradio("DIS: [src.name] failed to spread from [affected_mob], not airborne"))
 		return FALSE
-	if(affected_mob.can_spread_airborne_diseases())
+	if(!affected_mob.can_spread_airborne_diseases())
+		to_chat(world, span_redteamradio("DIS: [src.name] failed to spread from [affected_mob], bio protection"))
 		return FALSE
 	if(!has_required_infectious_organ(affected_mob, ORGAN_SLOT_LUNGS)) //also if you lack lungs
+		to_chat(world, span_redteamradio("DIS: [src.name] failed to spread from [affected_mob], no lungs"))
 		return FALSE
 	if(HAS_TRAIT(affected_mob, TRAIT_VIRUS_RESISTANCE) || (affected_mob.satiety > 0 && prob(affected_mob.satiety / 2))) //being full or on spaceacillin makes you less likely to spread a virus
+		to_chat(world, span_redteamradio("DIS: [src.name] failed to spread from [affected_mob], virus resistance"))
 		return FALSE
 	var/turf/mob_loc = affected_mob.loc
 	if(!istype(mob_loc))
 		return FALSE
 	for(var/mob/living/carbon/to_infect in oview(spread_range, affected_mob))
+		to_chat(world, span_yellowteamradio("DIS: [src.name] spreading in range of [spread_range] from [affected_mob]"))
 		var/turf/infect_loc = to_infect.loc
 		if(!istype(infect_loc))
 			continue
 		if(require_facing && !is_source_facing_target(affected_mob, to_infect))
+			to_chat(world, span_redteamradio("DIS: [src.name] failed to spread from [affected_mob], not facing target"))
 			continue
 		if(!disease_air_spread_walk(mob_loc, infect_loc))
 			continue
+		to_chat(world, span_greenteamradio("DIS: [src.name] found valid path from [affected_mob] to [to_infect]"))
 		to_infect.contract_airborne_disease(src)
 	return TRUE
 
@@ -373,8 +383,14 @@
 /datum/disease/proc/on_breath(datum/source, seconds_per_tick, ...)
 	SIGNAL_HANDLER
 
-	if(SPT_PROB(infectivity * 4, seconds_per_tick))
+	//if(SPT_PROB(infectivity * 4, seconds_per_tick))
+	var/random_chance = rand(0, 100)
+	to_chat(world, span_yellowteamradio("DIS: [src.name] [affected_mob] breath signal handler. infectivity is [infectivity]%"))
+	if(random_chance < infectivity)
+		to_chat(world, span_greenteamradio("DIS: [src.name] [affected_mob] breath check PASSED on roll [random_chance]"))
 		airborne_spread()
+	else
+		to_chat(world, span_redteamradio("DIS: [src.name] [affected_mob] breath check FAILED on roll [random_chance]"))
 
 //Use this to compare severities
 /proc/get_disease_severity_value(severity)

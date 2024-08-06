@@ -43,8 +43,12 @@
 	var/hands_chance = 35/2
 	var/feet_chance = 15/2
 
-	if(prob(15/disease.spreading_modifier))
+	var/random_chance = rand(0, 100)
+	to_chat(world, span_yellowteamradio("DIS: [disease] Contact spread called on [src.name] with a chance of [clamp(7 + (disease.spreading_modifier * 7), 14, 35)]% at a spread modifier of [disease.spreading_modifier]"))
+	if(random_chance > (clamp(7 + (disease.spreading_modifier * 7), 14, 35)))
+		to_chat(world, span_redteamradio("DIS: [src.name] [disease] Contact spread init check FAILED on roll [random_chance]"))
 		return
+	to_chat(world, span_greenteamradio("DIS: [src.name] [disease] Contact spread init check PASSED on roll [random_chance]"))
 
 	if(satiety>0 && prob(satiety/2)) // positive satiety makes it harder to contract the disease.
 		return
@@ -91,7 +95,10 @@
 				if(passed && isobj(infecting_human.shoes))
 					passed = prob(100-infecting_human.shoes.get_armor_rating(BIO))
 
+	to_chat(world, span_yellowteamradio("DIS: Contact final spread check is [passed]"))
+
 	if(passed)
+		to_chat(world, span_yellowteamradio("DIS: Contact trying infection..."))
 		disease.try_infect(src)
 
 /**
@@ -102,8 +109,12 @@
 /mob/living/proc/contract_airborne_disease(datum/disease/disease)
 	if(!can_be_spread_airborne_disease())
 		return FALSE
-	if(!prob(min((50 * disease.spreading_modifier - 1), 50)))
+	to_chat(world, span_yellowteamradio("DIS: Airborne spread called on [src] with a chance of [clamp(7 + (disease.spreading_modifier * 7), 14, 35)]% at a spread modifier of [disease.spreading_modifier]"))
+	var/random_chance = rand(0, 100)
+	if(random_chance > (clamp(7 + (disease.spreading_modifier * 7), 14, 35)))
+		to_chat(world, span_redteamradio("DIS: [src.name] Airborne spread init check FAILED on roll [random_chance]"))
 		return FALSE
+	to_chat(world, span_greenteamradio("DIS: [src.name] Airborne spread init check PASSED on roll [random_chance]"))
 	if(!disease.has_required_infectious_organ(src, ORGAN_SLOT_LUNGS))
 		return FALSE
 	return ForceContractDisease(disease)
@@ -172,10 +183,15 @@
 	// Meaning if we're masked up and wearing a dome, we are very likely never getting sick
 	var/obj/item/clothing/hat = is_mouth_covered(ITEM_SLOT_HEAD)
 	var/obj/item/clothing/mask = is_mouth_covered(ITEM_SLOT_MASK)
-	var/total_prot = (hat?.get_armor_rating(BIO) + mask?.get_armor_rating(BIO))
+	var/total_prot = 0 + ((hat?.get_armor_rating(BIO) * 0.75) + mask?.get_armor_rating(BIO))
+	if(mask)
+		total_prot += 20
+	to_chat(world, span_blueteamradio("DIS: [src.name] bio protection is [total_prot]. (hat [hat?.get_armor_rating(BIO)]) (mask [mask?.get_armor_rating(BIO)])"))
 	if(prob(total_prot))
+		to_chat(world, span_redteamradio("DIS: [src.name] bio protection check SAFE ([total_prot]% chance)"))
 		return FALSE
 
+	to_chat(world, span_greenteamradio("DIS: [src.name] bio protection check UNSAFE ([total_prot]% chance)"))
 	return TRUE
 
 /mob/living/carbon/can_be_spread_airborne_disease()

@@ -3,7 +3,7 @@
 /// Advanced virus upper limit for symptoms
 #define ADV_MAX_SYMPTOMS 4
 /// How long the virus stays hidden before announcement
-#define ADV_ANNOUNCE_DELAY 75
+#define ADV_ANNOUNCE_DELAY 5
 /// Numerical define for medium severity advanced virus
 #define ADV_DISEASE_MEDIUM 1
 /// Numerical define for harmful severity advanced virus
@@ -371,7 +371,8 @@
 		if(new_symptom.severity > current_severity)
 			current_severity = new_symptom.severity
 
-	visibility_flags |= HIDDEN_SCANNER
+	//visibility_flags |= HIDDEN_SCANNER
+	visibility_flags &= ~HIDDEN_SCANNER
 	var/transmissibility = requested_transmissibility
 
 	if(isnull(transmissibility))
@@ -430,11 +431,12 @@
 		return
 
 	incubation_time = round(world.time + (((ADV_ANNOUNCE_DELAY * 2) - 10) SECONDS))
-	properties["transmittable"] = rand(4,7)
-	spreading_modifier = max(CEILING(0.4 * properties["transmittable"], 1), 1)
+	properties["transmittable"] = rand(6,9)
+	spreading_modifier = clamp(properties["transmittable"] - 5, 1, 4)
+	infectivity = clamp(7 + (spreading_modifier * 7), 14, 35)
 	cure_chance = clamp(7.5 - (0.5 * properties["resistance"]), 5, 10) // Can be between 5 and 10
 	stage_prob = max(0.4 * properties["stage_rate"], 1)
-	set_severity(properties["severity"])
+	set_severity(round(properties["severity"]))
 
 	//If we have an advanced (high stage) disease, add it to the name.
 	if(properties["stage_rate"] >= 7)
