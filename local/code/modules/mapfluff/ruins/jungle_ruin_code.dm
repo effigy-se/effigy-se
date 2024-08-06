@@ -17,7 +17,9 @@
 	light_on = FALSE
 	force = 15
 	throwforce = 10
-	bare_wound_bonus = 10
+	bare_wound_bonus = 35 // If your target's unarmored; lol. Lmao
+	armour_penetration = 10 // Sharp enough to poke by default; but not exactly cleaving through any armor without the energy upgrade
+	block_chance = 20 // Definitely agile enough to block; but keep in mind it's a rapier and not a bulkier sword
 	var/list/fragments = list()
 	var/can_bloodbeam = FALSE
 
