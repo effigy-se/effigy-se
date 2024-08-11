@@ -1,3 +1,5 @@
+/* // EFFIGY EDIT Start - Hey there friend; you've caught our project at an odd crossroads. We have a prefs rewrite in progress that we'll be rebasing to; but need linters running to avoid techdebt mounting with it
+	// in it's current state. As such this file is ticked; but effectively nulled to mean nothing for us.
 /// For body markings applied on the species, which need some extra code
 /datum/bodypart_overlay/simple/body_marking
 	layers = EXTERNAL_ADJACENT
@@ -29,3 +31,4 @@
 
 /datum/bodypart_overlay/simple/body_marking/lizard/get_accessory(name)
 	return SSaccessories.lizard_markings_list[name]
+*/ // Effigy Edit End

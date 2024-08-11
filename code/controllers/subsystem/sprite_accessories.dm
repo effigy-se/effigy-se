@@ -1,3 +1,5 @@
+/* // EFFIGY EDIT Start - Hey there friend; you've caught our project at an odd crossroads. We have a prefs rewrite in progress that we'll be rebasing to; but need linters running to avoid techdebt mounting with it
+	// in it's current state. As such this file is ticked; but effectively nulled to mean nothing for us.
 /// The non gender specific list that we get from init_sprite_accessory_subtypes()
 #define DEFAULT_SPRITE_LIST "default_sprites"
 /// The male specific list that we get from init_sprite_accessory_subtypes()
@@ -152,3 +154,4 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 #undef DEFAULT_SPRITE_LIST
 #undef MALE_SPRITE_LIST
 #undef FEMALE_SPRITE_LIST
+*/ // Effigy Edit End
