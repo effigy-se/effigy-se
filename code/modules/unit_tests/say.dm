@@ -42,10 +42,6 @@
 /datum/unit_test/speech_modifiers/Run()
 	talking_lizard = allocate(/mob/living/carbon/human/consistent)
 	talking_lizard.set_species(/datum/species/lizard)
-	// EFFIGY EDIT BEGIN - CI FIX
-	var/obj/item/organ/internal/tongue/lizard/our_tongue = new
-	our_tongue.Insert(talking_lizard)
-	// EFFIGY EDIT END
 	var/hissed_quote = "SSShe isss ssso sssasssy"
 	var/unhissed_quote = "She is so sassy"
 
