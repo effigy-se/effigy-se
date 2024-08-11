@@ -43,7 +43,7 @@
 	talking_lizard = allocate(/mob/living/carbon/human/consistent)
 	talking_lizard.set_species(/datum/species/lizard)
 	// EFFIGY EDIT BEGIN - CI FIX
-	var/our_tongue = /obj/item/organ/internal/tongue/lizard
+	var/obj/item/organ/internal/tongue/lizard/our_tongue = new
 	our_tongue.insert(talking_lizard)
 	// EFFIGY EDIT END
 	var/hissed_quote = "SSShe isss ssso sssasssy"
