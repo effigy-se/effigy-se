@@ -52,6 +52,6 @@
 	else if(prob(40))
 		to_chat(synth, span_notice("[pick("SYNTH_TUNGSTEN_TEXT_4", "SYNTH_TUNGSTEN_TEXT_5", "SYNTH_TUNGSTEN_TEXT_6")]"))
 	else
-		synth.emote(pick("beep", "beep2"))
+		synth.emote(pick("beep", "beep2", "dwoop"))
 
 	return ..()
