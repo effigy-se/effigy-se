@@ -1,3 +1,4 @@
+/*
 /obj/machinery/door/airlock
 	/// For those airlocks you might want to have varying "fillings" for, without having to
 	/// have an icon file per door with a different filling.
@@ -407,6 +408,7 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/clockwork/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+*/
 
 /**
  * Effigy
@@ -445,6 +447,8 @@
 	base_name = "service airlock"
 	glass_type = /obj/machinery/door/airlock/service/studio/glass
 	airlock_type = /obj/machinery/door/airlock/service/studio
+
+/*
 
 /// Syndicate
 /obj/machinery/door/airlock/syndicate
@@ -549,3 +553,4 @@
 
 /obj/structure/door_assembly/door_assembly_extmai
 	icon = 'local/icons/obj/doors/airlocks/station/maint-ext.dmi'
+*/
