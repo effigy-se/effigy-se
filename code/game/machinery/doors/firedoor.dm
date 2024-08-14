@@ -688,7 +688,6 @@
 		hazards.pixel_x = light_xoffset
 		hazards.pixel_y = light_yoffset
 		. += hazards
-	*/// EffigyEdit Remove End
 
 /obj/machinery/door/firedoor/animation_length(animation)
 	switch(animation)

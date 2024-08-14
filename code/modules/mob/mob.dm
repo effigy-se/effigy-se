@@ -1648,3 +1648,8 @@
 /mob/key_down(key, client/client, full_key)
 	..()
 	SEND_SIGNAL(src, COMSIG_MOB_KEYDOWN, key, client, full_key)
+
+/// Sets the turf click type this client should use for its next attempted click
+/// See [TURF_CLICK_FLAT]
+/mob/proc/set_turf_click_type(click_type)
+	turf_click_type = click_type
