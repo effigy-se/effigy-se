@@ -190,7 +190,7 @@
 	return ..()
 
 /datum/component/mind_linker/active_linking/link_mob(mob/living/to_link)
-	if(HAS_TRAIT(to_link, TRAIT_MINDSHIELD && linking_protection)) // Mindshield implant - no dice // EffigyEdit Change - "&& linking_protection", #184, NIFS
+	if(HAS_MIND_TRAIT(to_link, TRAIT_UNCONVERTABLE)) // Protected mind, so they can't be added to the mindlink
 		return FALSE
 	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0) && linking_protection) // EffigyEdit Change - "&& linking_protection", #184, NIFS
 		return FALSE
