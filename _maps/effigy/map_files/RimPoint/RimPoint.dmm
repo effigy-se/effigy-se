@@ -48,9 +48,7 @@
 /turf/closed/wall,
 /area/station/security/detectives_office)
 "abJ" = (
-/obj/structure/fence{
-	dir = 4
-	},
+/obj/structure/fence,
 /turf/open/misc/dirt/jungle,
 /area/taeloth)
 "abR" = (
@@ -1682,7 +1680,9 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/recreation)
 "aLU" = (
-/obj/structure/fence,
+/obj/structure/fence{
+	dir = 4
+	},
 /turf/open/floor/engine/hull/reinforced/taeloth,
 /area/taeloth)
 "aLV" = (
@@ -3676,7 +3676,10 @@
 /turf/open/floor/wood/parquet,
 /area/station/service/chapel)
 "bCa" = (
-/obj/structure/tall_stairs/end/directional/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/tall_stairs/start/directional/west,
 /turf/open/floor/plating,
 /area/station/security/brig)
 "bCc" = (
@@ -6162,9 +6165,7 @@
 /area/station/command/heads_quarters/hos)
 "cwc" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/structure/fence{
-	dir = 4
-	},
+/obj/structure/fence,
 /obj/effect/turf_decal/stripes/asteroid/line,
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
@@ -8084,9 +8085,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
 "djr" = (
-/obj/structure/fence{
-	dir = 4
-	},
+/obj/structure/fence,
 /obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/engine/hull/taeloth,
 /area/taeloth)
@@ -8941,12 +8940,9 @@
 /turf/open/floor/wood/large,
 /area/station/service/theater)
 "dCj" = (
-/obj/structure/tall_stairs/start/directional/south,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
+/obj/structure/tall_stairs/end/directional/west,
 /turf/open/floor/plating,
-/area/station/medical/medbay/central)
+/area/station/security/brig)
 "dCq" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -9005,9 +9001,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/fence/post{
-	dir = 4
-	},
+/obj/structure/fence/post,
 /turf/open/floor/plating,
 /area/taeloth)
 "dCQ" = (
@@ -9102,7 +9096,7 @@
 	dir = 4
 	},
 /obj/structure/fence/end{
-	dir = 1
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/taeloth)
@@ -9487,9 +9481,7 @@
 /turf/open/floor/iron/white,
 /area/station/science)
 "dKq" = (
-/obj/structure/fence/post{
-	dir = 4
-	},
+/obj/structure/fence/post,
 /turf/open/misc/dirt/jungle,
 /area/taeloth)
 "dKt" = (
@@ -10096,7 +10088,7 @@
 	dir = 8
 	},
 /obj/structure/fence/end{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/stone,
 /area/taeloth)
@@ -12682,9 +12674,12 @@
 /turf/open/floor/plastic,
 /area/taeloth)
 "eVb" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron,
-/area/station/security/range)
+/obj/structure/tall_stairs/start/directional/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/station/medical/medbay/central)
 "eVj" = (
 /obj/structure/chair/plastic{
 	dir = 4
@@ -13175,7 +13170,7 @@
 	dir = 4
 	},
 /obj/structure/fence/end{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/railing/corner/end{
 	dir = 1
@@ -13489,7 +13484,7 @@
 	dir = 4
 	},
 /obj/structure/fence/end{
-	dir = 1
+	dir = 4
 	},
 /obj/structure/railing/corner/end/flip{
 	dir = 1
@@ -17353,9 +17348,14 @@
 /turf/open/floor/carpet/royalblack,
 /area/station/service/chapel/office)
 "gIJ" = (
-/obj/structure/sign/departments/security/directional/north,
-/turf/open/water,
-/area/taeloth)
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/public/glass,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/iron/textured_large,
+/area/station/security/prison)
 "gIQ" = (
 /obj/structure/cable,
 /obj/effect/landmark/start/prisoner,
@@ -19280,9 +19280,7 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
 	},
-/obj/structure/fence/post{
-	dir = 4
-	},
+/obj/structure/fence/post,
 /turf/open/floor/plating,
 /area/taeloth)
 "hyS" = (
@@ -19651,9 +19649,7 @@
 /area/taeloth)
 "hFC" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/structure/fence/post{
-	dir = 4
-	},
+/obj/structure/fence/post,
 /turf/open/floor/engine/hull/reinforced/taeloth,
 /area/taeloth)
 "hFI" = (
@@ -23004,12 +23000,11 @@
 /turf/open/floor/plating,
 /area/station/science/ordnance/burnchamber)
 "iWa" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
 	},
-/obj/structure/tall_stairs/start/directional/west,
-/turf/open/floor/plating,
-/area/station/security/brig)
+/turf/open/floor/iron,
+/area/station/security/brig/entrance)
 "iWd" = (
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 10
@@ -24095,9 +24090,7 @@
 /area/station/command/heads_quarters/ce)
 "juH" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/structure/fence{
-	dir = 4
-	},
+/obj/structure/fence,
 /turf/open/floor/engine/hull/reinforced/taeloth,
 /area/taeloth)
 "juK" = (
@@ -25386,7 +25379,9 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 4
 	},
-/obj/structure/fence,
+/obj/structure/fence{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/taeloth)
 "jTx" = (
@@ -26466,9 +26461,7 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
 	},
-/obj/structure/fence/cut/medium{
-	dir = 4
-	},
+/obj/structure/fence/cut/medium,
 /turf/open/floor/plating,
 /area/taeloth)
 "knB" = (
@@ -27725,9 +27718,7 @@
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
 "kPl" = (
-/obj/structure/fence{
-	dir = 4
-	},
+/obj/structure/fence,
 /turf/open/misc/dirt/jungle,
 /area/taeloth/underground)
 "kPt" = (
@@ -29101,9 +29092,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/crew_quarters/bar)
 "lrO" = (
-/obj/structure/fence/cut/large{
-	dir = 4
-	},
+/obj/structure/fence/cut/large,
 /turf/open/misc/dirt/jungle,
 /area/taeloth/underground)
 "lsh" = (
@@ -33470,7 +33459,9 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 4
 	},
-/obj/structure/fence/end,
+/obj/structure/fence/end{
+	dir = 8
+	},
 /obj/structure/railing/corner/end,
 /turf/open/floor/plating,
 /area/taeloth)
@@ -34246,9 +34237,11 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/iron/stairs/old{
-	dir = 1
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
 	},
+/obj/structure/tall_stairs/start/directional/south,
+/turf/open/floor/plating,
 /area/station/medical/pharmacy)
 "nxu" = (
 /obj/structure/cable,
@@ -34963,7 +34956,9 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 4
 	},
-/obj/structure/fence/end,
+/obj/structure/fence/end{
+	dir = 8
+	},
 /obj/structure/railing/corner/end/flip,
 /turf/open/floor/plating,
 /area/taeloth)
@@ -35683,13 +35678,6 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/white,
 /area/station/science/robotics/augments)
-"nZA" = (
-/obj/machinery/button/flasher/directional/west{
-	name = "Holding Cell Flasher";
-	id = "holdingflash"
-	},
-/turf/open/floor/iron,
-/area/station/security/brig)
 "nZC" = (
 /obj/effect/landmark/carpspawn,
 /turf/open/misc/dirt/jungle,
@@ -37222,7 +37210,9 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 4
 	},
-/obj/structure/fence/end,
+/obj/structure/fence/end{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/taeloth)
 "oHs" = (
@@ -38296,7 +38286,9 @@
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "pep" = (
-/obj/structure/fence,
+/obj/structure/fence{
+	dir = 4
+	},
 /obj/structure/sign/warning/explosives/directional/south,
 /turf/open/misc/asteroid,
 /area/taeloth/underground)
@@ -38362,9 +38354,7 @@
 /turf/open/openspace,
 /area/station/command/bridge)
 "pgL" = (
-/obj/structure/fence{
-	dir = 4
-	},
+/obj/structure/fence,
 /turf/open/floor/stone,
 /area/taeloth)
 "pgM" = (
@@ -43145,9 +43135,7 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
 	},
-/obj/structure/fence/end{
-	dir = 8
-	},
+/obj/structure/fence/end,
 /obj/structure/railing/corner/end{
 	dir = 4
 	},
@@ -43895,7 +43883,9 @@
 /turf/open/misc/grass/jungle,
 /area/taeloth)
 "rjC" = (
-/obj/structure/fence,
+/obj/structure/fence{
+	dir = 4
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -44425,9 +44415,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/fence{
-	dir = 4
-	},
+/obj/structure/fence,
 /turf/open/floor/plating,
 /area/taeloth)
 "rsd" = (
@@ -46485,7 +46473,9 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 4
 	},
-/obj/structure/fence/post,
+/obj/structure/fence/post{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/taeloth)
 "sfw" = (
@@ -47197,11 +47187,9 @@
 /turf/open/misc/dirt/jungle,
 /area/taeloth)
 "srN" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/station/security/brig/entrance)
+/obj/structure/sign/departments/security/directional/north,
+/turf/open/water,
+/area/taeloth)
 "srV" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 4
@@ -48624,9 +48612,7 @@
 /turf/open/floor/wood/parquet,
 /area/station/command/heads_quarters/rd)
 "sTy" = (
-/obj/structure/fence/post{
-	dir = 4
-	},
+/obj/structure/fence/post,
 /obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/engine/hull/taeloth,
 /area/taeloth)
@@ -49629,9 +49615,7 @@
 /turf/open/floor/iron/dark/small,
 /area/station/medical/medbay/lobby/aft)
 "tni" = (
-/obj/structure/fence{
-	dir = 4
-	},
+/obj/structure/fence,
 /obj/structure/cable,
 /turf/open/misc/dirt/jungle,
 /area/taeloth/underground)
@@ -50188,13 +50172,13 @@
 	},
 /area/station/commons/storage/primary)
 "tBu" = (
-/obj/structure/stairs/south,
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/tall_stairs/end/directional/south,
 /turf/open/floor/plating,
 /area/station/medical/pharmacy)
 "tBG" = (
@@ -51256,14 +51240,12 @@
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/testlab)
 "tYR" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/public/glass,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/turf/open/floor/iron/textured_large,
-/area/station/security/prison)
+/obj/machinery/button/flasher/directional/west{
+	name = "Holding Cell Flasher";
+	id = "holdingflash"
+	},
+/turf/open/floor/iron,
+/area/station/security/brig)
 "tYS" = (
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=2";
@@ -51948,9 +51930,7 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
 	},
-/obj/structure/fence/cut/large{
-	dir = 4
-	},
+/obj/structure/fence/cut/large,
 /turf/open/floor/plating,
 /area/taeloth)
 "ukv" = (
@@ -54166,7 +54146,7 @@
 	dir = 1
 	},
 /obj/structure/fence/end{
-	dir = 4
+	dir = 1
 	},
 /obj/structure/railing/corner/end/flip{
 	dir = 8
@@ -55553,7 +55533,9 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "vDU" = (
-/obj/structure/fence,
+/obj/structure/fence{
+	dir = 4
+	},
 /obj/structure/sign/warning/firing_range/directional/north,
 /turf/open/misc/asteroid,
 /area/taeloth/underground)
@@ -58015,6 +57997,10 @@
 	},
 /turf/open/floor/iron/large,
 /area/station/engineering/storage/tech)
+"wDE" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron,
+/area/station/security/range)
 "wDL" = (
 /obj/structure/railing/corner/end/wooden_fence,
 /turf/open/misc/dirt/jungle,
@@ -60390,9 +60376,7 @@
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
 	},
-/obj/structure/fence{
-	dir = 4
-	},
+/obj/structure/fence,
 /turf/open/floor/plating,
 /area/taeloth)
 "xyR" = (
@@ -62315,9 +62299,7 @@
 /area/station/service/chapel)
 "yjA" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/structure/fence/post{
-	dir = 4
-	},
+/obj/structure/fence/post,
 /obj/effect/turf_decal/stripes/asteroid/line,
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
@@ -82842,14 +82824,14 @@ wvK
 sAb
 sAb
 vpw
-vyl
-vyl
-etf
-vyl
-vyl
-etf
-rQT
-vyl
+fww
+fww
+bjY
+fww
+fww
+bjY
+xCd
+fww
 mhb
 mhb
 giI
@@ -83098,7 +83080,7 @@ sAb
 sAb
 sAb
 sAb
-fww
+vyl
 npe
 sAb
 pyP
@@ -83107,7 +83089,7 @@ rtz
 sAb
 rtz
 sPv
-fww
+vyl
 nDe
 iMG
 giI
@@ -83364,7 +83346,7 @@ sAb
 vSj
 sAb
 sAb
-bjY
+etf
 nDe
 nDe
 uSo
@@ -83621,7 +83603,7 @@ sAb
 rjw
 sAb
 sAb
-xCd
+rQT
 nDe
 nDe
 uSo
@@ -83878,7 +83860,7 @@ mhb
 rtz
 bah
 rtz
-fww
+vyl
 nDe
 nDe
 xOx
@@ -85882,7 +85864,7 @@ tdF
 pWB
 iqx
 nGC
-nZA
+tYR
 sTF
 jBc
 aps
@@ -87433,7 +87415,7 @@ dhX
 hny
 fNY
 kmp
-srN
+iWa
 fYL
 rDj
 cFb
@@ -87690,7 +87672,7 @@ bfB
 iYz
 fNY
 lIQ
-srN
+iWa
 nBo
 cff
 cFb
@@ -88187,7 +88169,7 @@ aam
 aam
 aam
 aam
-eVb
+wDE
 ayK
 qcd
 qcd
@@ -88216,7 +88198,7 @@ lpT
 jos
 izh
 izh
-gIJ
+srN
 leD
 vSj
 sAb
@@ -88447,7 +88429,7 @@ aam
 nrD
 aam
 aam
-bCa
+dCj
 fEJ
 iqx
 iqx
@@ -88508,7 +88490,7 @@ qfp
 vrz
 evU
 tNf
-dCj
+eVb
 qxR
 ewY
 jqt
@@ -88705,7 +88687,7 @@ oJN
 hLu
 aam
 bxm
-iWa
+bCa
 fsL
 iqx
 nGC
@@ -88765,7 +88747,7 @@ evU
 cbe
 txY
 tNf
-dCj
+eVb
 qxR
 ewY
 tKj
@@ -88957,7 +88939,7 @@ gxV
 hwE
 hBp
 hwE
-tYR
+gIJ
 aPQ
 imn
 esh
@@ -92915,7 +92897,7 @@ igU
 igU
 vSj
 sAb
-fww
+vyl
 sAb
 sAb
 sAb
@@ -93172,7 +93154,7 @@ igU
 cRQ
 sAb
 fur
-fww
+vyl
 sAb
 sAb
 xtP
