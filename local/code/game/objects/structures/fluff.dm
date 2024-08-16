@@ -4,6 +4,13 @@
 	icon = /obj/machinery/door/firedoor::icon
 	icon_state = /obj/machinery/door/firedoor::icon_state
 	layer = /obj/machinery/door/firedoor::layer
+	alpha = 64
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/fluff/fake_firedoor/Initialize(mapload)
+	. = ..()
+	icon_state = "door_open_top"
+	. += mutable_appearance(icon, "door_open_bottom", ABOVE_MOB_LAYER, appearance_flags = KEEP_APART)
 
 /obj/structure/fluff/fake_transit_tube
 	name = /obj/structure/transit_tube::name
