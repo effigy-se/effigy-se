@@ -1,6 +1,3 @@
-/obj/machinery/door/window
-	icon = 'local/icons/obj/doors/windoor.dmi'
-
 /obj/machinery/door/window/brigdoor/indestructible
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	move_resist = INFINITY
