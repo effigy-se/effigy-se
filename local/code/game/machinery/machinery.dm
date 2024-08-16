@@ -41,11 +41,9 @@
 	area.power_change()
 
 /obj/machinery/door/poddoor
-	icon = 'local/icons/obj/doors/blast_door.dmi'
-	var/door_sound = 'local/icons/obj/doors/blast_door.ogg'
+	var/door_sound = 'local/icons/obj/doors/blast_door.ogg' //lolwut
 
 /obj/machinery/door/poddoor/shutters
-	icon = 'local/icons/obj/doors/shutters.dmi'
 	var/door_open_sound = 'local/icons/obj/doors/shutters_open.ogg'
 	var/door_close_sound = 'local/icons/obj/doors/shutters_close.ogg'
 
