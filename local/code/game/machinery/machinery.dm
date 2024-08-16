@@ -1,6 +1,3 @@
-/obj/machinery/button
-	icon = 'local/icons/obj/buttons.dmi'
-
 /obj/machinery/status_display
 	icon = 'local/icons/obj/status_display.dmi'
 

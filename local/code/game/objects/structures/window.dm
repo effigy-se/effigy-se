@@ -1,29 +1,8 @@
-/obj/structure/window
-	icon = 'local/icons/obj/structures.dmi'
-
-/obj/structure/window/fulltile
-	icon = 'local/icons/obj/smooth_structures/window.dmi'
-
-/obj/structure/window/reinforced/fulltile
-	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
-
-/obj/structure/window/reinforced/tinted/fulltile
-	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
-
-/turf/closed/indestructible/fakeglass
-	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
-
-/obj/structure/window/plasma/fulltile
-	icon = 'local/icons/obj/smooth_structures/plasma_window.dmi'
-
-/obj/structure/window/reinforced/plasma/fulltile
-	icon = 'local/icons/obj/smooth_structures/rplasma_window.dmi'
-
 /obj/structure/window/reinforced/titanium
 	name = "titanium window"
 	desc = "A window made out of a titanium-silicate alloy. It looks tough to break. Is that a challenge?"
-	icon = 'local/icons/obj/smooth_structures/tram_window.dmi'
-	icon_state = "tram_mid"
+	// EFFIGY TODO icon = 'local/icons/obj/smooth_structures/tram_window.dmi'
+	// EFFIGY TODO icon_state = "tram_mid"
 	smoothing_flags = SMOOTH_BITMASK|SMOOTH_BORDER_OBJECT
 	canSmoothWith = SMOOTH_GROUP_TRAM_STRUCTURE
 	smoothing_groups = SMOOTH_GROUP_TRAM_STRUCTURE
@@ -36,6 +15,7 @@
 	rad_insulation = RAD_MEDIUM_INSULATION
 	glass_material_datum = /datum/material/alloy/titaniumglass
 
+/* // EFFIGY TODO
 /obj/structure/window/reinforced/titanium/Initialize(mapload, direct)
 	. = ..()
 	setDir(dir)
@@ -68,6 +48,8 @@
 		icon_state = "tram_right"
 	else
 		icon_state = "tram_mid"
+
+*/ // EFFIGY TODO
 /datum/armor/window_titanium
 	melee = 80
 	bullet = 5
@@ -75,4 +57,4 @@
 	fire = 99
 	acid = 100
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/titanium, 0)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/titanium)
