@@ -76,4 +76,4 @@
 	)
 	. = ..()
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/motivational, 32)
+WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/motivational)
