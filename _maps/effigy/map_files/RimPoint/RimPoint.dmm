@@ -2600,7 +2600,6 @@
 	dir = 4
 	},
 /obj/machinery/turretid{
-	icon_state = "control_stun";
 	name = "AI Chamber turret control";
 	pixel_y = 25
 	},
@@ -4062,6 +4061,7 @@
 	name = "Privacy Shutter";
 	dir = 8
 	},
+/obj/structure/window_frame/wood,
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room4)
 "bJm" = (
@@ -5715,8 +5715,12 @@
 /area/station/science)
 "cob" = (
 /obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/item/paper_bin{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat/foyer)
 "cod" = (
@@ -10654,9 +10658,6 @@
 	},
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/south,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 10
-	},
 /obj/structure/flora/ocean/coral,
 /obj/effect/spawner/liquids_spawner/fulltile,
 /turf/open/misc/asteroid,
@@ -10975,6 +10976,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	id = "dorm1curtain"
 	},
+/obj/structure/window_frame/wood,
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room1)
 "epn" = (
@@ -12429,9 +12431,6 @@
 /turf/open/floor/iron,
 /area/station/service/janitor)
 "ePV" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 10
-	},
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner{
 	dir = 8
 	},
@@ -12702,11 +12701,9 @@
 /area/taeloth)
 "eWn" = (
 /obj/effect/turf_decal/tile/dark_blue/full,
-/obj/machinery/turretid{
+/obj/machinery/turretid/directional/north{
 	control_area = "/area/station/ai_monitored/turret_protected/ai_upload";
-	icon_state = "control_stun";
-	name = "AI Upload Turret Control";
-	pixel_y = 26
+	name = "AI Upload Turret Control"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -14215,8 +14212,12 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/blue/line,
 /obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/power_store/cell/high,
+/obj/machinery/cell_charger{
+	pixel_y = 8
+	},
+/obj/item/stock_parts/power_store/cell/high{
+	pixel_y = 8
+	},
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat/service)
@@ -14840,7 +14841,7 @@
 /turf/open/floor/wood/parquet,
 /area/taeloth)
 "fME" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/access/any/command/minisat,
 /obj/effect/mapping_helpers/airlock/access/any/command/ai_upload,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -18431,6 +18432,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	id = "dorm2bedcurtain"
 	},
+/obj/structure/window_frame/wood,
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room2)
 "hha" = (
@@ -20619,7 +20621,9 @@
 /area/station/security/brig)
 "hZn" = (
 /obj/structure/table/wood/fancy/green,
-/obj/effect/spawner/random/aimodule/harmless,
+/obj/effect/spawner/random/aimodule/harmless{
+	pixel_y = 8
+	},
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "hZu" = (
@@ -22594,9 +22598,11 @@
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = -3;
-	pixel_y = 3
+	pixel_y = 11
 	},
-/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat/service)
 "iPR" = (
@@ -24712,9 +24718,6 @@
 "jHo" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/south,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 6
-	},
 /obj/item/kirbyplants/organic/plant21,
 /turf/open/floor/glass,
 /area/station/science/robotics)
@@ -25158,7 +25161,9 @@
 /area/station/engineering/main)
 "jOY" = (
 /obj/structure/table/wood/fancy/blue,
-/obj/effect/spawner/random/aimodule/neutral,
+/obj/effect/spawner/random/aimodule/neutral{
+	pixel_y = 8
+	},
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/machinery/door/window/left/directional/south{
@@ -26122,6 +26127,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	id = "dorm3bedcurtain"
 	},
+/obj/structure/window_frame/wood,
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room3)
 "kho" = (
@@ -26285,6 +26291,10 @@
 	},
 /turf/open/misc/grass/jungle,
 /area/taeloth)
+"kjX" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/station/ai_monitored/turret_protected/aisat/foyer)
 "kkd" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
@@ -26723,9 +26733,6 @@
 "kuj" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 5
-	},
 /obj/item/kirbyplants/organic/plant24,
 /turf/open/floor/glass,
 /area/station/science/robotics)
@@ -27249,9 +27256,6 @@
 	},
 /obj/structure/window/reinforced/survival_pod/spawner/directional/east,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/north,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 5
-	},
 /obj/structure/flora/ocean/longseaweed,
 /obj/structure/flora/ocean/seaweed,
 /obj/effect/spawner/liquids_spawner/fulltile,
@@ -30800,7 +30804,9 @@
 /area/station/service/library)
 "mfx" = (
 /obj/structure/table/wood/fancy/red,
-/obj/effect/spawner/random/aimodule/harmful,
+/obj/effect/spawner/random/aimodule/harmful{
+	pixel_y = 8
+	},
 /obj/machinery/door/window/left/directional/east{
 	name = "Dangerous Modules";
 	req_access = list("captain")
@@ -33091,6 +33097,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	id = "dorm3curtain"
 	},
+/obj/structure/window_frame/wood,
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room3)
 "mYT" = (
@@ -37010,9 +37017,6 @@
 "oEg" = (
 /obj/structure/window/reinforced/survival_pod/spawner/directional/west,
 /obj/structure/window/reinforced/survival_pod/spawner/directional/south,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 10
-	},
 /turf/open/floor/glass,
 /area/station/engineering/hallway)
 "oEw" = (
@@ -39146,8 +39150,8 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/station/security/checkpoint/escape)
 "pwF" = (
-/obj/structure/sign/departments/aisat/directional/south,
-/turf/open/misc/dirt/jungle,
+/obj/structure/sign/directions/upload/left/west_arrow/directional/west,
+/turf/open/misc/grass/jungle,
 /area/taeloth)
 "pwL" = (
 /obj/effect/turf_decal/trimline/blue/line{
@@ -39498,9 +39502,6 @@
 /turf/open/floor/iron,
 /area/station/cargo/drone_bay)
 "pBK" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 6
-	},
 /obj/effect/turf_decal/siding/wideplating_new/dark/corner,
 /obj/effect/turf_decal/siding/purple{
 	dir = 9
@@ -39619,6 +39620,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	id = "dorm2curtain"
 	},
+/obj/structure/window_frame/wood,
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room2)
 "pDn" = (
@@ -40556,7 +40558,9 @@
 /area/taeloth)
 "pZf" = (
 /obj/structure/table/wood/fancy/red,
-/obj/item/ai_module/reset/purge,
+/obj/item/ai_module/reset/purge{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
 	},
@@ -45643,6 +45647,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	id = "dorm1bedcurtain"
 	},
+/obj/structure/window_frame/wood,
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room1)
 "rQq" = (
@@ -52317,8 +52322,7 @@
 	},
 /obj/machinery/camera/directional/east{
 	network = list("minisat");
-	c_tag = "AI Satellite - Antechamber, Southeast";
-	dir = 6
+	c_tag = "AI Satellite - Antechamber, Southeast"
 	},
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -52768,10 +52772,14 @@
 /obj/structure/table/reinforced,
 /obj/item/folder/blue{
 	pixel_x = 3;
-	pixel_y = 3
+	pixel_y = 11
 	},
-/obj/item/folder/yellow,
-/obj/item/aicard,
+/obj/item/folder/yellow{
+	pixel_y = 8
+	},
+/obj/item/aicard{
+	pixel_y = 8
+	},
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat/foyer)
 "uzL" = (
@@ -59420,7 +59428,9 @@
 /area/station/medical/treatment_center)
 "xgn" = (
 /obj/structure/table/wood/fancy/green,
-/obj/effect/spawner/round_default_module,
+/obj/effect/spawner/round_default_module{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
 	},
@@ -59884,8 +59894,12 @@
 /area/station/service/theater)
 "xqf" = (
 /obj/structure/table/reinforced,
-/obj/item/clipboard,
-/obj/item/toy/figure/borg,
+/obj/item/clipboard{
+	pixel_y = 8
+	},
+/obj/item/toy/figure/borg{
+	pixel_y = 8
+	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/plating,
@@ -82789,7 +82803,7 @@ wKe
 sAb
 vSj
 hjY
-qjc
+hjY
 hjY
 kxv
 gcZ
@@ -83046,7 +83060,7 @@ sAb
 sAb
 vSj
 fME
-hTH
+kjX
 pcq
 hTH
 kyy
@@ -83301,7 +83315,7 @@ vMS
 rQL
 sAb
 sAb
-pwF
+vSj
 hjY
 qjc
 hjY
@@ -83559,7 +83573,7 @@ rQL
 sAb
 wvK
 sAb
-sAb
+pwF
 sAb
 sAb
 vSj
