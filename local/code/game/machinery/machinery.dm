@@ -15,9 +15,6 @@
 	. = ..()
 	set_picture("synd")
 
-/obj/machinery/door/window
-	icon = 'local/icons/obj/directwindow.dmi'
-
 /obj/machinery/power/emitter
 	icon = 'local/icons/obj/engine/emitter.dmi'
 
