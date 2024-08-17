@@ -3572,6 +3572,10 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/executive,
 /area/station/command/meeting_room/council)
+"bzP" = (
+/obj/structure/sign/warning/hot_temp/directional/north,
+/turf/open/misc/dirt/jungle,
+/area/taeloth/underground)
 "bzV" = (
 /obj/structure/chair/office/light{
 	dir = 8
@@ -11717,21 +11721,19 @@
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "ezL" = (
-/obj/structure/railing{
-	dir = 4
+/obj/effect/turf_decal/siding/wideplating_new/light{
+	dir = 8
 	},
-/obj/effect/turf_decal/siding/wideplating_new{
-	dir = 4
+/obj/structure/table/reinforced/rglass,
+/obj/item/surgery_tray/full{
+	pixel_y = 6
 	},
-/obj/machinery/camera/directional/north{
-	c_tag = "Cargo - Bay, 2F"
+/obj/item/storage/belt/utility/full/engi{
+	pixel_y = 2;
+	pixel_x = -3
 	},
-/obj/machinery/computer/order_console/bitrunning,
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/cargo/storage)
+/turf/open/floor/mineral/titanium/tiled/white,
+/area/station/science/robotics/augments)
 "eAf" = (
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
@@ -11767,19 +11769,21 @@
 /turf/open/floor/catwalk_floor,
 /area/taeloth)
 "eBc" = (
-/obj/effect/turf_decal/siding/wideplating_new/light{
-	dir = 8
+/obj/structure/railing{
+	dir = 4
 	},
-/obj/structure/table/reinforced/rglass,
-/obj/item/surgery_tray/full{
-	pixel_y = 6
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
 	},
-/obj/item/storage/belt/utility/full/engi{
-	pixel_y = 2;
-	pixel_x = -3
+/obj/machinery/camera/directional/north{
+	c_tag = "Cargo - Bay, 2F"
 	},
-/turf/open/floor/mineral/titanium/tiled/white,
-/area/station/science/robotics/augments)
+/obj/machinery/computer/order_console/bitrunning,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage)
 "eBf" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 5
@@ -21592,6 +21596,13 @@
 "isj" = (
 /turf/closed/wall,
 /area/station/service/hydroponics)
+"isk" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
 "isy" = (
 /obj/effect/turf_decal/tile/blue/diagonal_edge,
 /obj/machinery/computer/operating,
@@ -26112,10 +26123,15 @@
 /area/station/security/brig/entrance)
 "kcx" = (
 /obj/structure/table/reinforced,
-/obj/item/folder/yellow,
-/obj/item/paper,
-/obj/item/paper,
-/obj/item/pen,
+/obj/item/folder/yellow{
+	pixel_y = 8
+	},
+/obj/item/paper{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /obj/effect/mapping_helpers/requests_console/supplies,
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/machinery/requests_console/auto_name/directional/east,
@@ -28843,7 +28859,9 @@
 /turf/open/floor/wood,
 /area/station/commons/dorms/room4)
 "lkc" = (
-/obj/machinery/door/firedoor/heavy,
+/obj/machinery/door/firedoor/heavy{
+	dir = 8
+	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -33678,13 +33696,6 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/command/meeting_room/council)
-"ngy" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron,
-/area/station/cargo/storage)
 "ngL" = (
 /obj/machinery/camera/broadcast/directional/north{
 	view_range = 4
@@ -38129,10 +38140,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
-"oXd" = (
-/obj/structure/sign/warning/hot_temp/directional/north,
-/turf/open/misc/dirt/jungle,
-/area/taeloth/underground)
 "oXe" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
@@ -44070,7 +44077,9 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "rip" = (
-/obj/machinery/door/firedoor/heavy,
+/obj/machinery/door/firedoor/heavy{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
@@ -88287,7 +88296,7 @@ qWF
 rVz
 gtR
 hHN
-eBc
+ezL
 cTm
 wWa
 vAM
@@ -92698,7 +92707,7 @@ rnj
 cQG
 rdv
 bVV
-oXd
+bzP
 hUf
 nes
 dmh
@@ -103138,7 +103147,7 @@ lvs
 jKI
 sBD
 vXL
-ngy
+isk
 ylf
 jPA
 uGU
@@ -166359,7 +166368,7 @@ iJD
 dCA
 hXF
 hXF
-ezL
+eBc
 lvT
 aRa
 oUd
