@@ -417,8 +417,11 @@
 /obj/machinery/door/airlock/service
 	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	/* // EFFIGY TODO
 	greyscale_config = /datum/greyscale_config/airlock_effigy/service
 	greyscale_colors = "#46c26d#4d4d4d#369655"
+	*/
+	greyscale_colors = "#d8a81b#d8a81b#c2940d#c2940d#7f292f#6d6565#997715"
 
 /obj/machinery/door/airlock/service/glass
 	opacity = FALSE
@@ -426,7 +429,7 @@
 
 /obj/structure/door_assembly/door_assembly_svc
 	name = "service airlock assembly"
-	icon = 'local/icons/obj/doors/airlocks/station/service.dmi'
+	icon =  /obj/machinery/door/airlock/service::icon
 	base_name = "service airlock"
 	glass_type = /obj/machinery/door/airlock/service/glass
 	airlock_type = /obj/machinery/door/airlock/service
@@ -434,8 +437,11 @@
 /obj/machinery/door/airlock/service/studio
 	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
+	/* // EFFIGY TODO
 	greyscale_config = /datum/greyscale_config/airlock_effigy/studio
 	greyscale_colors = "#4d4d4d#D1D0D2#ffd66e"
+	*/
+	greyscale_colors = "#d8a81b#d8a81b#c2940d#c2940d#7f292f#6d6565#997715"
 
 /obj/machinery/door/airlock/service/studio/glass
 	opacity = FALSE
@@ -443,7 +449,7 @@
 
 /obj/structure/door_assembly/door_assembly_sto
 	name = "studio airlock assembly"
-	icon = 'local/icons/obj/doors/airlocks/station/studio.dmi'
+	icon =  /obj/machinery/door/airlock/service/studio::icon
 	base_name = "service airlock"
 	glass_type = /obj/machinery/door/airlock/service/studio/glass
 	airlock_type = /obj/machinery/door/airlock/service/studio
