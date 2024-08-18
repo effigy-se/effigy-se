@@ -13551,6 +13551,7 @@
 "fka" = (
 /obj/structure/cable,
 /obj/effect/landmark/start/prisoner,
+/obj/structure/sign/poster/random/directional/north,
 /turf/open/floor/iron/dark/small,
 /area/station/security/prison/safe)
 "fko" = (
@@ -13785,16 +13786,6 @@
 	},
 /turf/open/floor/iron/white/smooth_edge,
 /area/station/science/ordnance/office)
-"fpa" = (
-/obj/effect/turf_decal/stripes/white/line{
-	dir = 4
-	},
-/obj/structure/sign/poster/official/random/directional/east,
-/obj/structure/sign/poster/official/random/directional/east,
-/obj/structure/sign/poster/official/random/directional/east,
-/obj/structure/sign/poster/official/random/directional/east,
-/turf/open/floor/iron,
-/area/station/security/prison/workout)
 "fpk" = (
 /turf/closed/wall/r_wall,
 /area/station/maintenance/radshelter/sci)
@@ -18246,7 +18237,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/security/courtroom)
 "gYE" = (
-/obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/command/heads_quarters/hos)
 "gYO" = (
@@ -20110,7 +20100,6 @@
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/rd)
 "hKY" = (
-/obj/structure/sign/warning/rad_shelter/directional/south,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -28337,10 +28326,10 @@
 "kXV" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder{
-	pixel_y = 7
+	pixel_y = 13
 	},
 /obj/item/storage/fancy/egg_box{
-	pixel_y = 3
+	pixel_y = 7
 	},
 /turf/open/floor/glass/reinforced,
 /area/station/security/prison/mess)
@@ -29678,7 +29667,9 @@
 	dir = 1;
 	id = "cargoload"
 	},
-/obj/structure/plasticflaps,
+/obj/structure/plasticflaps{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "lzU" = (
@@ -33558,6 +33549,7 @@
 /area/station/cargo/storage)
 "ncE" = (
 /obj/machinery/atmospherics/components/tank/air,
+/obj/machinery/button/door/incinerator_vent_ordmix/directional/west,
 /turf/open/floor/plating,
 /area/station/science/ordnance)
 "ncN" = (
@@ -37448,12 +37440,6 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark/diagonal,
 /area/station/command/heads_quarters/hos)
-"oGD" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
-/obj/structure/sign/poster/random/directional/south,
-/turf/open/floor/iron/dark/small,
-/area/station/security/prison/safe)
 "oGF" = (
 /obj/machinery/airalarm/directional/east,
 /obj/structure/disposalpipe/segment{
@@ -39479,7 +39465,7 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/station/security/checkpoint/escape)
 "pwF" = (
-/obj/structure/sign/directions/upload/left/west_arrow/directional/west,
+/obj/structure/sign/directions/upload/right/west_arrow/directional/west,
 /turf/open/misc/grass/jungle,
 /area/taeloth)
 "pwL" = (
@@ -55723,7 +55709,7 @@
 /area/station/hallway/secondary/recreation)
 "vyQ" = (
 /obj/structure/table,
-/obj/machinery/button/showtime/broadcast_team,
+/obj/machinery/button/showtime/broadcast_team/table,
 /obj/item/reagent_containers/cup/glass/waterbottle{
 	pixel_y = 12;
 	pixel_x = -8
@@ -57563,15 +57549,8 @@
 /turf/open/floor/wood/tile,
 /area/station/medical/medbay/lobby/fore)
 "wkx" = (
-/obj/machinery/button/door/incinerator_vent_ordmix{
-	pixel_x = -24;
-	pixel_y = 8
-	},
-/obj/machinery/button/ignition/incinerator/ordmix{
-	pixel_x = -24;
-	pixel_y = -6
-	},
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden,
+/obj/machinery/button/ignition/incinerator/ordmix/directional/west,
 /turf/open/floor/plating,
 /area/station/science/ordnance)
 "wkE" = (
@@ -60452,7 +60431,9 @@
 /obj/machinery/conveyor{
 	id = "cargounload"
 	},
-/obj/structure/plasticflaps,
+/obj/structure/plasticflaps{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "xqO" = (
@@ -91999,7 +91980,7 @@ kvr
 gmk
 erf
 erf
-fpa
+erf
 fLu
 lJR
 vZX
@@ -92760,7 +92741,7 @@ aWQ
 tvI
 lfZ
 ues
-oGD
+iYo
 lfZ
 iYo
 kUH
