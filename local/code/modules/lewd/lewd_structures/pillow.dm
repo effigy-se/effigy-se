@@ -163,6 +163,7 @@
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillow_pink_round"
 	base_icon_state = "pillow"
+	elevation = 0 // Realistically, it's just a pillow at the end of the tile
 	var/current_color = "pink"
 	var/current_form = "round"
 
@@ -379,7 +380,7 @@
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_large_pink"
 	base_icon_state = "pillowpile_large"
-	var/elevation = 4
+	elevation = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
 	//Containing pillows that we have here
@@ -402,8 +403,6 @@
 	build_stack_type = /obj/item/stack/sheet/cloth
 
 /obj/structure/bed/pillow_large/Initialize(mapload)
-	if(elevation)
-		AddElement(/datum/element/elevation, pixel_shift = elevation)
 	update_icon()
 	return ..()
 
