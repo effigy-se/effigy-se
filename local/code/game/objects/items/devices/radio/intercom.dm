@@ -11,4 +11,4 @@
 	set_frequency(FREQ_BROADCAST)
 	set_broadcasting(TRUE)
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/broadcast, 26)
+WALL_MOUNT_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/broadcast)
