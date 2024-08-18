@@ -1,3 +1,4 @@
+/* EffigyEdit TODO: Wallening
 /obj/machinery/light/update_overlays()
 	. = ..()
 
@@ -23,3 +24,4 @@
 		return
 	. += mutable_appearance(overlay_icon, "[base_state]")
 	. += emissive_appearance(overlay_icon, "[base_state]", src, alpha = src.alpha)
+*/

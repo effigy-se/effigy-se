@@ -162,16 +162,12 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-			//EffigyEdit Change START (#73 Lighting)
-			/*
 			var/area/local_area = get_room_area(src)
 			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
-			*/
 			icon_state = "[base_state]"
-			// EffigyEdit Change END (#73 Lighting)
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 		if(LIGHT_BURNED)
@@ -180,7 +176,6 @@
 			icon_state = "[base_state]-broken"
 	return ..()
 
-/* EffigyEdit Remove - moved to local
 /obj/machinery/light/update_overlays()
 	. = ..()
 	if(!on || status != LIGHT_OK)
@@ -197,7 +192,6 @@
 		. += mutable_appearance(overlay_icon, "[base_state]_nightshift")
 		return
 	. += mutable_appearance(overlay_icon, base_state)
-*/
 
 // Area sensitivity is traditionally tied directly to power use, as an optimization
 // But since we want it for fire reacting, we disregard that

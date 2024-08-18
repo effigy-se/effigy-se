@@ -1,4 +1,4 @@
-/// EFFIGY TODO - Why do we have this when we don't actually even have temporary flavor text??
+/// EffigyEdit TODO - Why do we have this when we don't actually even have temporary flavor text??
 /mob/living/Topic(href, href_list)
 	. = ..()
 	if(href_list["temporary_flavor"])

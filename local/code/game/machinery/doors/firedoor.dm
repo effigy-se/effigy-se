@@ -2,7 +2,7 @@
 	name = "emergency shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
 	var/water_sensor = FALSE
-	// EFFIGY TODO icon = 'local/icons/obj/doors/firedoor_glass.dmi'
+	// EffigyEdit TODO icon = 'local/icons/obj/doors/firedoor_glass.dmi'
 	/*
 	light_power = 4
 	light_range = 2
@@ -65,7 +65,7 @@
 /obj/machinery/door/firedoor/heavy
 	name = "heavy emergency shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
-	// EFFIGY TODO icon = 'local/icons/obj/doors/firedoor.dmi'
+	// EffigyEdit TODO icon = 'local/icons/obj/doors/firedoor.dmi'
 
 /obj/effect/spawner/structure/window/reinforced/no_firelock
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)

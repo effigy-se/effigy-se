@@ -33,7 +33,5 @@
 	var/door_open_sound = 'local/icons/obj/doors/shutters_open.ogg'
 	var/door_close_sound = 'local/icons/obj/doors/shutters_close.ogg'
 
-/*
 /obj/machinery/firealarm
 	icon = 'local/icons/obj/firealarm.dmi'
-*/ // EFFIGY TODO
