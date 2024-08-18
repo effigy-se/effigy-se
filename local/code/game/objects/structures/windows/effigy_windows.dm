@@ -1,3 +1,21 @@
+/obj/structure/window
+	icon = 'icons/obj/smooth_structures/windows/tram_thindow.dmi'
+
+/obj/structure/window/fulltile
+	icon = 'local/icons/obj/smooth_structures/windows/normal_window.dmi'
+
+/obj/structure/window/half
+	icon = 'local/icons/obj/smooth_structures/windows/half_thindow.dmi'
+
+/obj/structure/window/reinforced/fulltile
+	icon = 'local/icons/obj/smooth_structures/windows/reinforced_window.dmi'
+
+/obj/structure/window/reinforced
+	icon = 'local/icons/obj/smooth_structures/windows/reinforced_thindow.dmi'
+
+/obj/structure/window/reinforced/half
+	icon = 'local/icons/obj/smooth_structures/windows/reinforced_half_thindow.dmi'
+
 /obj/structure/window/reinforced/titanium
 	name = "titanium window"
 	desc = "A window made out of a titanium-silicate alloy. It looks tough to break. Is that a challenge?"

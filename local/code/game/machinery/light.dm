@@ -4,10 +4,10 @@
 #define NIGHTSHIFT_COLOR_MODIFIER 0.15
 
 /obj/machinery/light
-	// EffigyEdit TODO icon = 'local/icons/obj/lighting.dmi'
-	// EffigyEdit TODO overlay_icon = 'local/icons/obj/lighting_overlay.dmi'
+	icon = 'local/icons/obj/lighting.dmi'
+	overlay_icon = 'local/icons/obj/lighting_overlay.dmi'
 	brightness = 7
-	//fire_brightness = 9
+	fire_brightness = 8
 	fire_colour = "#E85888"
 	bulb_colour = LIGHT_COLOR_DEFAULT
 	bulb_power = 1.15
