@@ -379,8 +379,6 @@
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_large_pink"
 	base_icon_state = "pillowpile_large"
-	if(elevation)
-		AddElement(/datum/element/elevation, pixel_shift = elevation)
 	var/elevation = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
@@ -404,6 +402,8 @@
 	build_stack_type = /obj/item/stack/sheet/cloth
 
 /obj/structure/bed/pillow_large/Initialize(mapload)
+	if(elevation)
+		AddElement(/datum/element/elevation, pixel_shift = elevation)
 	update_icon()
 	return ..()
 
