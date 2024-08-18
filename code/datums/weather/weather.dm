@@ -265,17 +265,17 @@
 		// I prefer it to creating 2 extra plane masters however, so it's a cost I'm willing to pay
 		// LU
 		if(use_glow)
-			var/mutable_appearance/glow_overlay = mutable_appearance('icons/effects/glow_weather.dmi', weather_state, overlay_layer, null, WEATHER_GLOW_PLANE, 100, offset_const = offset)
+			var/mutable_appearance/glow_overlay = mutable_appearance(glow_overlay_icon, weather_state, overlay_layer, null, WEATHER_GLOW_PLANE, 100, offset_const = offset) // EffigyEdit Change - swapped 'icons/effects/glow_weather.dmi' for glow_overlay_icon, see /local/ counterpart
 			glow_overlay.color = weather_color
 			gen_overlay_cache += glow_overlay
 			if(has_frills)
-				var/mutable_appearance/glow_frill_overlay = mutable_appearance('icons/effects/glow_weather.dmi', "[weather_state]_top", overlay_layer, null, WEATHER_FRILL_GLOW_PLANE, 100, offset_const = offset)
+				var/mutable_appearance/glow_frill_overlay = mutable_appearance(glow_overlay_icon, "[weather_state]_top", overlay_layer, null, WEATHER_FRILL_GLOW_PLANE, 100, offset_const = offset) // EffigyEdit Change - swapped 'icons/effects/glow_weather.dmi' for glow_overlay_icon, see /local/ counterpart
 				glow_frill_overlay.color = weather_color
 				glow_frill_overlay.pixel_z = 32
 				gen_overlay_cache += glow_frill_overlay
 
 		if(has_frills)
-			var/mutable_appearance/weather_frill_overlay = mutable_appearance('icons/effects/weather_effects.dmi', "[weather_state]_top", overlay_layer, plane = WEATHER_FRILL_PLANE, offset_const = offset)
+			var/mutable_appearance/weather_frill_overlay = mutable_appearance(weather_overlay_icon, "[weather_state]_top", overlay_layer, plane = WEATHER_FRILL_PLANE, offset_const = offset) // EffigyEdit Change - swapped 'icons/effects/weather_effects.dmi' for weather_overlay_icon, see /local/ counterpart
 			weather_frill_overlay.color = weather_color
 			weather_frill_overlay.pixel_z = 32
 			gen_overlay_cache += weather_frill_overlay
