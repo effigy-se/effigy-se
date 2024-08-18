@@ -208,15 +208,6 @@
 /obj/effect/spawner/random/bedsheet/any/double{
 	dir = 1
 	},
-/obj/effect/spawner/random/bedsheet/any/double{
-	dir = 1
-	},
-/obj/effect/spawner/random/bedsheet/any/double{
-	dir = 1
-	},
-/obj/effect/spawner/random/bedsheet/any/double{
-	dir = 1
-	},
 /turf/open/floor/wood,
 /area/ruin/ocean/bubble/titanium)
 "hd" = (
@@ -255,7 +246,9 @@
 /turf/open/floor/plating,
 /area/ruin/ocean/bubble)
 "ih" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
 /obj/structure/frame/machine/secured,
 /turf/open/floor/plating,
 /area/ruin/ocean/bubble/titanium)
@@ -429,7 +422,9 @@
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/firealarm/directional/south,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/mod/module/recycler,
+/obj/item/mod/module/recycler{
+	pixel_y = 8
+	},
 /turf/open/floor/wood,
 /area/ruin/ocean/bubble)
 "oy" = (
@@ -575,7 +570,6 @@
 /obj/machinery/cryopod/ruin{
 	dir = 4
 	},
-/obj/machinery/computer/cryopod/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/ruin/ocean/bubble)
@@ -1056,7 +1050,9 @@
 "FM" = (
 /obj/effect/turf_decal/tile/purple/anticorner/contrasted,
 /obj/structure/table,
-/obj/effect/spawner/random/maintenance/three,
+/obj/effect/spawner/random/maintenance/three{
+	pixel_y = 8
+	},
 /turf/open/floor/mineral/titanium/tiled,
 /area/ruin/ocean/bubble/titanium)
 "FY" = (
@@ -1209,7 +1205,6 @@
 	},
 /obj/effect/spawner/random/bedsheet/any,
 /obj/structure/bed,
-/obj/structure/curtain/bounty,
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
 /area/ruin/ocean/bubble)
@@ -1231,6 +1226,7 @@
 /area/ruin/ocean/bubble/titanium)
 "KR" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/computer/cryopod/directional/north,
 /turf/open/floor/carpet,
 /area/ruin/ocean/bubble)
 "Lb" = (
@@ -1344,7 +1340,9 @@
 "Nw" = (
 /obj/effect/turf_decal/tile/purple/half/contrasted,
 /obj/structure/table,
-/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance{
+	pixel_y = 8
+	},
 /obj/machinery/firealarm/directional/south,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 9
@@ -1471,7 +1469,6 @@
 	},
 /obj/effect/spawner/random/bedsheet/any,
 /obj/structure/bed,
-/obj/structure/curtain/bounty,
 /turf/open/floor/wood,
 /area/ruin/ocean/bubble)
 "Rx" = (
