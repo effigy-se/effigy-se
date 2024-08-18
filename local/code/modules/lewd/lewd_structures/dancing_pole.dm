@@ -1,4 +1,5 @@
 /obj/structure/stripper_pole
+	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "stripper pole"
 	desc = "A pole fastened to the ceiling and floor, used to show of one's goods to company."
 	icon = 'local/icons/lewd/obj/lewd_structures/dancing_pole.dmi'
