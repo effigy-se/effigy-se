@@ -1,4 +1,5 @@
 /obj/structure/standing_sign
+	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "Standing Sign"
 	desc = "A rod, stuck into the ground, affixed with a piece of wood and paper to crute a crude sign. It doesn't read anything."
 	obj_flags = UNIQUE_RENAME
