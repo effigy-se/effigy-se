@@ -677,9 +677,7 @@
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
 	},
-/obj/machinery/button/ticket_machine{
-	pixel_y = -26
-	},
+/obj/machinery/button/ticket_machine/directional/west,
 /turf/open/floor/mineral/plastitanium,
 /area/station/command/heads_quarters/hop)
 "ahw" = (
@@ -18800,11 +18798,10 @@
 "elI" = (
 /obj/machinery/door/firedoor/water_sensor,
 /obj/structure/table/reinforced,
-/obj/machinery/door/window/right/directional/south{
-	name = "Atmospherics Desk";
-	req_access = list("atmospherics")
+/obj/machinery/door/window/half/right/directional/south{
+	req_access = list("atmospherics");
+	name = "Atmospherics Desk"
 	},
-/obj/machinery/door/window/right/directional/north,
 /turf/open/floor/plating,
 /area/station/engineering/atmos/storage/gas)
 "ema" = (
@@ -101900,20 +101897,21 @@
 "xwd" = (
 /obj/machinery/door/firedoor/water_sensor,
 /obj/structure/table/reinforced,
-/obj/machinery/door/window/right/directional/south{
-	name = "Engineering Desk";
-	req_one_access = list("engineering")
-	},
-/obj/machinery/door/window/left/directional/north,
 /obj/structure/desk_bell{
 	pixel_x = 8;
-	pixel_y = 9
+	pixel_y = 18
 	},
 /obj/item/paper_bin{
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 8
 	},
 /obj/item/pen{
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/machinery/door/window/half/right/directional/south{
+	req_access = list("engineering");
+	name = "Engineering Desk"
 	},
 /turf/open/floor/plating,
 /area/station/engineering/lobby)
@@ -158678,7 +158676,7 @@ kMg
 aTu
 aTu
 kqL
-aTu
+kMg
 kMg
 pFE
 pFE
