@@ -96,7 +96,19 @@
 	initialize_actionspeed()
 	update_movespeed(TRUE)
 	become_hearing_sensitive()
+	create_shadow()
 	log_mob_tag("TAG: [tag] CREATED: [key_name(src)] \[[type]\]")
+
+/mob/proc/create_shadow()
+	if (shadow_type == SHADOW_NONE)
+		qdel(GetComponent(/datum/component/drop_shadow))
+		return
+
+	AddComponent(/datum/component/drop_shadow, \
+		icon_state = shadow_type, \
+		shadow_offset_x = shadow_offset_x, \
+		shadow_offset_y = shadow_offset_y, \
+	)
 
 /**
  * Generate the tag for this mob
@@ -1636,3 +1648,8 @@
 /mob/key_down(key, client/client, full_key)
 	..()
 	SEND_SIGNAL(src, COMSIG_MOB_KEYDOWN, key, client, full_key)
+
+/// Sets the turf click type this client should use for its next attempted click
+/// See [TURF_CLICK_FLAT]
+/mob/proc/set_turf_click_type(click_type)
+	turf_click_type = click_type

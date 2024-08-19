@@ -1,1 +1,1 @@
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/broadcast, 0)
+CAMERA_DIRECTIONAL_HELPERS(/obj/machinery/camera/broadcast)

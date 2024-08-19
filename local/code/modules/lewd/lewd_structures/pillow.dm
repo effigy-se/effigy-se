@@ -163,6 +163,7 @@
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillow_pink_round"
 	base_icon_state = "pillow"
+	elevation = 0 // Realistically, it's just a pillow at the end of the tile
 	var/current_color = "pink"
 	var/current_form = "round"
 
@@ -244,12 +245,13 @@
 */
 
 /obj/structure/chair/pillow_small
+	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "small pillow pile"
 	desc = "A small pile of pillows. A comfortable seat, especially for taurs or nagas."
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_small_pink"
 	base_icon_state = "pillowpile_small"
-	pseudo_z_axis = 4
+	var/elevation = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
 
@@ -269,6 +271,8 @@
 	buildstacktype = /obj/item/stack/sheet/cloth
 
 /obj/structure/chair/pillow_small/Initialize(mapload)
+	if(elevation)
+		AddElement(/datum/element/elevation, pixel_shift = elevation)
 	update_icon()
 	return ..()
 
@@ -370,12 +374,13 @@
 */
 
 /obj/structure/bed/pillow_large
+	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "large pillow pile"
 	desc = "A large pile of pillows. Jump on it!"
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_large_pink"
 	base_icon_state = "pillowpile_large"
-	pseudo_z_axis = 4
+	elevation = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
 	//Containing pillows that we have here

@@ -84,10 +84,13 @@
 	door_area = get_area(src)
 	RegisterSignal(door_area, COMSIG_AREA_FIRE_CHANGED, PROC_REF(update_fire_status))
 	RegisterSignal(SSdcs, COMSIG_GLOB_FORCE_ENG_OVERRIDE, PROC_REF(force_eng_override))
+	/*
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
+
 	AddElement(/datum/element/connect_loc, loc_connections)
+	*/
 
 ///Check for the three states of open access. Emergency, Unrestricted, and Engineering/Fire Override
 /obj/machinery/door/airlock/allowed(mob/user)

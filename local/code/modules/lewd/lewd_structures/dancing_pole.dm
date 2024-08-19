@@ -1,4 +1,5 @@
 /obj/structure/stripper_pole
+	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "stripper pole"
 	desc = "A pole fastened to the ceiling and floor, used to show of one's goods to company."
 	icon = 'local/icons/lewd/obj/lewd_structures/dancing_pole.dmi'
@@ -8,7 +9,7 @@
 	anchored = TRUE
 	max_integrity = 75
 	layer = BELOW_MOB_LAYER
-	pseudo_z_axis = 9 //stepping onto the pole makes you raise upwards!
+	var/elevation = 9 //stepping onto the pole makes you raise upwards!
 	density = 0 //easy to step up on
 	light_system = COMPLEX_LIGHT
 	light_range = 3
@@ -38,6 +39,11 @@
 /obj/structure/stripper_pole/examine(mob/user)
 	. = ..()
 	. += "The lights are currently <b>[lights_enabled ? "ON" : "OFF"]</b> and could be [lights_enabled ? "dis" : "en"]abled with <b>Alt-Click</b>."
+
+/obj/structure/stripper_pole/Initialize(mapload)
+	. = ..()
+	if(elevation)
+		AddElement(/datum/element/elevation, pixel_shift = elevation)
 
 
 /// The list of possible designs generated for the radial reskinning menu
@@ -110,7 +116,6 @@
 	dance_animate(user)
 	pole_in_use = FALSE
 	user.pixel_y = 0
-	user.pixel_z = pseudo_z_axis //incase we are off it when we jump on!
 	dancer = null
 
 /// The proc used to make the user 'dance' on the pole. Basically just consists of pixel shifting them around a bunch and sleeping. Could probably be improved a lot.
@@ -150,7 +155,6 @@
 		dancer.SetStun(0)
 		dancer.pixel_y = 0
 		dancer.pixel_x = 0
-		dancer.pixel_z = pseudo_z_axis
 		dancer.layer = layer
 		dancer.forceMove(get_turf(src))
 		dancer = null

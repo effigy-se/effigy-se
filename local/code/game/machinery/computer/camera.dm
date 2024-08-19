@@ -2,7 +2,10 @@
 	name = "broadcast button"
 	desc = "Use this button to allow entertainment monitors to broadcast the show, live on air."
 	device_type = /obj/item/assembly/control/showtime/broadcast_team
+	icon_state = "button"
 	id = "showtime_bt"
+
+BUTTON_DIRECTIONAL_HELPERS(/obj/machinery/button/showtime/broadcast_team)
 
 /obj/machinery/button/showtime/broadcast_team/multitool_act(mob/living/user, obj/item/multitool/I)
 	if(panel_open)
@@ -36,7 +39,7 @@
 	network = list("broadcast")
 	frame_type = /obj/item/wallframe/telescreen/broadcast_team
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/broadcast_team, 32)
+TELESCREEN_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/broadcast_team)
 
 /obj/item/wallframe/telescreen/broadcast_team
 	name = "\improper Broadcast Teams' telescreen frame"

@@ -12,6 +12,7 @@
 	power_channel = AREA_USAGE_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	always_area_sensitive = TRUE
 	light_angle = 170
+	light_flags = LIGHT_IGNORE_OFFSET
 	///What overlay the light should use
 	var/overlay_icon = 'icons/obj/lighting_overlay.dmi'
 	///base description and icon_state
@@ -113,8 +114,7 @@
 	if(is_station_level(z))
 		RegisterSignal(SSdcs, COMSIG_GLOB_GREY_TIDE_LIGHT, PROC_REF(grey_tide)) //Only put the signal on station lights
 
-	// Light projects out backwards from the dir of the light
-	set_light(l_dir = REVERSE_DIR(dir))
+	set_light(l_dir = dir)
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
 	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	AddElement(/datum/element/atmos_sensitive, mapload)
@@ -144,31 +144,30 @@
 
 /obj/machinery/light/setDir(newdir)
 	. = ..()
-	set_light(l_dir = REVERSE_DIR(dir))
+	set_light(l_dir = dir)
 
 // If we're adjacent to the source, we make this sorta indentation for our light to ensure it stays lit (and to make distances look right)
 // By shifting the light position we use forward a bit, towards something that isn't off by 0.5 from being in angle
 // Because angle calculation is kinda harsh it's hard to find a happy point between fulldark and fullbright for the corners behind the light. this is good enough tho
 /obj/machinery/light/get_light_offset()
 	var/list/hand_back = ..()
-	var/list/dir_offset = dir2offset(REVERSE_DIR(dir))
-	hand_back[1] += dir_offset[1] * 0.5
-	hand_back[2] += dir_offset[2] * 0.5
+	if(dir & SOUTH)
+		hand_back[2] -= 1
+	if(dir & EAST)
+		hand_back[1] += 0.5
+	if(dir & WEST)
+		hand_back[1] -= 0.5
 	return hand_back
 
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-			//EffigyEdit Change START (#73 Lighting)
-			/*
 			var/area/local_area = get_room_area(src)
 			if(low_power_mode || major_emergency || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
-			*/
 			icon_state = "[base_state]"
-			// EffigyEdit Change END (#73 Lighting)
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 		if(LIGHT_BURNED)
@@ -177,7 +176,6 @@
 			icon_state = "[base_state]-broken"
 	return ..()
 
-/* EffigyEdit Remove - moved to local
 /obj/machinery/light/update_overlays()
 	. = ..()
 	if(!on || status != LIGHT_OK)
@@ -194,7 +192,6 @@
 		. += mutable_appearance(overlay_icon, "[base_state]_nightshift")
 		return
 	. += mutable_appearance(overlay_icon, base_state)
-*/
 
 // Area sensitivity is traditionally tied directly to power use, as an optimization
 // But since we want it for fire reacting, we disregard that
@@ -766,6 +763,10 @@
 	fitting = "bulb"
 	nightshift_brightness = 3
 	fire_brightness = 4.5
+
+// No hanging for us brother
+/obj/machinery/light/floor/find_and_hang_on_wall(directional, custom_drop_callback)
+	return
 
 /obj/machinery/light/floor/get_light_offset()
 	return list(0, 0)
