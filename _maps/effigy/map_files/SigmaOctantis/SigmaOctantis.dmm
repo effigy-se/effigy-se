@@ -899,8 +899,12 @@
 	},
 /obj/structure/cable,
 /obj/structure/table/reinforced/rglass,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/fifty{
+	pixel_y = 8
+	},
+/obj/item/stack/sheet/glass/fifty{
+	pixel_y = 8
+	},
 /obj/item/stack/sheet/mineral/plasma/thirty,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat/maint)
@@ -1832,6 +1836,10 @@
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/iron,
 /area/station/maintenance/floor1/starboard/aft)
+"auK" = (
+/obj/machinery/incident_display/delam/directional/north,
+/turf/open/floor/iron,
+/area/station/engineering/main)
 "auL" = (
 /obj/machinery/light/directional/east,
 /obj/machinery/navbeacon{
@@ -4651,13 +4659,15 @@
 "baq" = (
 /obj/structure/table,
 /obj/item/clothing/glasses/meson/engine{
-	pixel_y = 6;
+	pixel_y = 12;
 	pixel_x = 4
 	},
-/obj/item/pipe_dispenser,
+/obj/item/pipe_dispenser{
+	pixel_y = 4
+	},
 /obj/effect/turf_decal/siding/wideplating_new,
 /obj/item/holosign_creator/atmos{
-	pixel_y = -4
+	pixel_y = -1
 	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark/smooth_large,
@@ -10200,9 +10210,9 @@
 /obj/effect/turf_decal/trimline/blue/arrow_cw{
 	dir = 10
 	},
-/obj/machinery/turretid/directional/south{
+/obj/machinery/turretid/directional/west{
 	control_area = "/area/station/ai_monitored/turret_protected/aisat/maint";
-	name = "AI Maintenance turret control"
+	name = "AI Maintenance Turret Control"
 	},
 /turf/open/floor/iron/white,
 /area/station/ai_monitored/turret_protected/aisat/equipment)
@@ -12016,9 +12026,11 @@
 /obj/item/stack/sheet/glass{
 	amount = 20;
 	pixel_x = -3;
-	pixel_y = 6
+	pixel_y = 14
 	},
-/obj/item/stack/sheet/iron/twenty,
+/obj/item/stack/sheet/iron/twenty{
+	pixel_y = 13
+	},
 /obj/item/screwdriver,
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 8
@@ -22013,7 +22025,8 @@
 	},
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
 	id = "engsm";
-	name = "Radiation Chamber Shutters"
+	name = "Radiation Chamber Shutters";
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter)
@@ -29240,14 +29253,17 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 10
 	},
-/obj/item/analyzer{
-	pixel_x = 7;
-	pixel_y = 3
-	},
 /obj/structure/table/reinforced,
-/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty{
+	pixel_y = 10;
+	pixel_x = -6
+	},
 /obj/effect/turf_decal/trimline/yellow/corner{
 	dir = 4
+	},
+/obj/item/analyzer{
+	pixel_x = 7;
+	pixel_y = 9
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
@@ -31817,7 +31833,8 @@
 	},
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
 	id = "engsm";
-	name = "Radiation Chamber Shutters"
+	name = "Radiation Chamber Shutters";
+	dir = 4
 	},
 /obj/structure/cable/layer3,
 /turf/open/floor/plating,
@@ -44413,9 +44430,15 @@
 "kdf" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/wideplating_new,
-/obj/item/pipe_dispenser,
-/obj/item/pipe_dispenser,
-/obj/item/pipe_dispenser,
+/obj/item/pipe_dispenser{
+	pixel_y = 7
+	},
+/obj/item/pipe_dispenser{
+	pixel_y = 7
+	},
+/obj/item/pipe_dispenser{
+	pixel_y = 7
+	},
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
 	},
@@ -48522,7 +48545,7 @@
 	c_tag = "MiniSat Antechamber";
 	network = list("minisat")
 	},
-/obj/machinery/turretid/directional/south{
+/obj/machinery/turretid/directional/east{
 	control_area = "/area/station/ai_monitored/turret_protected/aisat/equipment";
 	name = "AI Equipment turret control"
 	},
@@ -52499,7 +52522,8 @@
 	},
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
 	id = "engsm";
-	name = "Radiation Chamber Shutters"
+	name = "Radiation Chamber Shutters";
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter)
@@ -54922,9 +54946,11 @@
 "mzQ" = (
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/item/storage/toolbox/mechanical{
-	pixel_y = 8
+	pixel_y = 14
 	},
-/obj/item/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency{
+	pixel_y = 6
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
@@ -57969,7 +57995,6 @@
 	},
 /obj/effect/turf_decal/bot,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/machinery/incident_display/delam/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "njt" = (
@@ -59459,7 +59484,7 @@
 /obj/effect/turf_decal/trimline/blue/arrow_cw{
 	dir = 6
 	},
-/obj/machinery/turretid/directional/south{
+/obj/machinery/turretid/directional/east{
 	control_area = "/area/station/ai_monitored/turret_protected/aisat/atmos";
 	name = "AI Atmospherics turret control"
 	},
@@ -62268,7 +62293,8 @@
 	},
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
 	id = "engsm";
-	name = "Radiation Chamber Shutters"
+	name = "Radiation Chamber Shutters";
+	dir = 4
 	},
 /obj/structure/cable/layer3,
 /turf/open/floor/plating,
@@ -63461,8 +63487,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south,
-/obj/machinery/turretid/directional/south{
-	icon_state = "control_stun";
+/obj/machinery/turretid/directional/north{
 	name = "AI Chamber turret control"
 	},
 /turf/open/floor/iron/dark,
@@ -70459,9 +70484,11 @@
 	},
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = -3;
-	pixel_y = 3
+	pixel_y = 15
 	},
-/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 7
+	},
 /turf/open/floor/iron/white,
 /area/station/ai_monitored/turret_protected/aisat/maint)
 "qfE" = (
@@ -70547,10 +70574,11 @@
 "qgC" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical{
-	pixel_y = 8
+	pixel_y = 11
 	},
 /obj/item/storage/toolbox/electrical{
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 4
 	},
 /obj/effect/turf_decal/siding/wideplating_new,
 /turf/open/floor/iron/dark/smooth_large,
@@ -79224,12 +79252,16 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/stack/cable_coil/five,
+/obj/item/stack/cable_coil/five{
+	pixel_y = 8
+	},
 /obj/item/multitool{
 	pixel_x = -7;
 	pixel_y = 4
 	},
-/obj/item/t_scanner,
+/obj/item/t_scanner{
+	pixel_y = 5
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 1
 	},
@@ -81544,16 +81576,14 @@
 "sJH" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south,
-/obj/machinery/turretid/directional/south{
-	control_area = "/area/station/ai_monitored/turret_protected/ai_upload";
-	icon_state = "control_stun";
-	name = "AI Upload Turret Control"
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
 /obj/effect/landmark/start/cyborg,
 /obj/machinery/computer/security/telescreen/aiupload/directional/west,
+/obj/machinery/turretid/directional/north{
+	control_area = "/area/station/ai_monitored/turret_protected/ai_upload"
+	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload_foyer)
 "sJL" = (
@@ -90774,7 +90804,6 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/siding/wideplating_new,
-/obj/structure/sign/departments/aisat/directional/south,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
@@ -91860,7 +91889,9 @@
 /turf/open/floor/iron/herringbone,
 /area/station/cargo/storage)
 "viY" = (
-/obj/machinery/door/firedoor/water_sensor,
+/obj/machinery/door/firedoor/water_sensor{
+	dir = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
@@ -100335,7 +100366,9 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/science)
 "xdX" = (
-/obj/machinery/door/firedoor/water_sensor,
+/obj/machinery/door/firedoor/water_sensor{
+	dir = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
@@ -101343,10 +101376,12 @@
 	},
 /obj/structure/table,
 /obj/item/stack/sheet/glass/fifty{
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 10
 	},
 /obj/item/stack/sheet/iron/fifty{
-	pixel_x = -10
+	pixel_x = -10;
+	pixel_y = 10
 	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 1
@@ -104156,8 +104191,12 @@
 /area/station/medical/medbay/central)
 "xWZ" = (
 /obj/structure/table,
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/item/paper_bin{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "xXa" = (
@@ -138106,7 +138145,7 @@ fGX
 mWj
 pZb
 mWj
-sXu
+auK
 gtj
 jju
 bsC
