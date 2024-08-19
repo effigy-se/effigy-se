@@ -8497,10 +8497,9 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "dcs" = (
-/obj/machinery/turretid{
+/obj/machinery/turretid/directional/south{
 	control_area = "/area/station/ai_monitored/turret_protected/aisat_interior";
-	name = "AI Antechamber turret control";
-	pixel_y = 0
+	name = "AI Antechamber turret control"
 	},
 /turf/closed/wall/r_wall,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -28341,12 +28340,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/machinery/turretid{
+/obj/machinery/turretid/directional/east{
 	control_area = "/area/station/ai_monitored/turret_protected/aisat_interior";
-	name = "AI Antechamber turret control";
-	dir = 4;
-	pixel_y = 0;
-	pixel_x = 10
+	name = "AI Antechamber turret control"
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat/foyer)
@@ -41520,11 +41516,9 @@
 	name = "Primary AI Core Access";
 	req_access = list("ai_upload")
 	},
-/obj/machinery/turretid{
+/obj/machinery/turretid/directional/south{
 	icon_state = "control_stun";
-	name = "AI Chamber turret control";
-	pixel_x = 3;
-	pixel_y = -23
+	name = "AI Chamber turret control"
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 4;
@@ -46034,7 +46028,7 @@
 /turf/open/floor/catwalk_floor/iron_dark/telecomms,
 /area/station/ai_monitored/turret_protected/ai)
 "qpj" = (
-/obj/machinery/turretid{
+/obj/machinery/turretid/directional/south{
 	name = "Telecomms turret control";
 	control_area = /area/station/tcommsat/server;
 	req_access = list("tcomms")
@@ -53043,15 +53037,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/station/medical/chemistry/minisat)
-"sHS" = (
-/obj/machinery/turretid{
-	control_area = "/area/station/ai_monitored/turret_protected/aisat_interior";
-	name = "AI Antechamber turret control";
-	pixel_y = 0;
-	dir = 1
-	},
-/turf/closed/wall/r_wall,
-/area/station/ai_monitored/turret_protected/aisat_interior)
 "sIl" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder{
@@ -169209,7 +169194,7 @@ ilq
 ciR
 sIW
 dfd
-sHS
+dcs
 rBZ
 lPi
 meH
