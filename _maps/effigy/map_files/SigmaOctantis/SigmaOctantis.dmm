@@ -270,7 +270,9 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/water_sensor,
+/obj/machinery/door/firedoor/water_sensor{
+	dir = 8
+	},
 /obj/machinery/duct/waste,
 /obj/structure/cable,
 /obj/machinery/duct/supply,
@@ -2667,7 +2669,9 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/water_sensor,
+/obj/machinery/door/firedoor/water_sensor{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
@@ -8905,7 +8909,9 @@
 /turf/open/floor/iron/white,
 /area/station/science/research)
 "bYz" = (
-/obj/machinery/door/firedoor/water_sensor,
+/obj/machinery/door/firedoor/water_sensor{
+	dir = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
@@ -9819,26 +9825,9 @@
 /turf/open/floor/iron,
 /area/station/engineering/engine_smes)
 "cjJ" = (
-/obj/machinery/door/firedoor/water_sensor/heavy{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wideplating_new{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/wideplating_new{
-	dir = 8
-	},
-/obj/machinery/duct/waste,
-/obj/machinery/duct/supply,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron/smooth_large,
-/area/station/hallway/floor1/fore)
+/obj/effect/spawner/random/structure/grille,
+/turf/open/floor/plating,
+/area/station/maintenance/department/medical)
 "cjK" = (
 /obj/effect/turf_decal/siding/wideplating_new/light,
 /obj/machinery/plumbing/floor_pump/input/on/waste/directional/west,
@@ -18729,16 +18718,6 @@
 "emu" = (
 /turf/closed/wall,
 /area/station/service/kitchen)
-"emv" = (
-/obj/machinery/duct/supply,
-/obj/structure/sign/departments/custodian/directional/west,
-/obj/structure/cable,
-/obj/machinery/duct/waste,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/station/maintenance/port/greater)
 "emx" = (
 /turf/open/floor/iron/dark,
 /area/station/hallway/floor1/fore)
@@ -37974,7 +37953,9 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/brig)
 "iDI" = (
-/obj/machinery/door/firedoor/water_sensor,
+/obj/machinery/door/firedoor/water_sensor{
+	dir = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
@@ -42837,9 +42818,11 @@
 /obj/structure/table,
 /obj/item/storage/box/mousetraps{
 	pixel_x = 3;
-	pixel_y = 3
+	pixel_y = 14
 	},
-/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed{
+	pixel_y = 6
+	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/station/maintenance/port/greater)
@@ -58065,7 +58048,9 @@
 	dir = 10
 	},
 /obj/structure/table,
-/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance{
+	pixel_y = 8
+	},
 /turf/open/floor/iron/diagonal,
 /area/station/maintenance/port/greater)
 "nmq" = (
@@ -59407,21 +59392,6 @@
 "nCv" = (
 /turf/closed/wall,
 /area/station/security/prison/garden)
-"nCx" = (
-/obj/machinery/door/firedoor/water_sensor{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wideplating_new{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/wideplating_new{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron/smooth_large,
-/area/station/hallway/floor1/fore)
 "nCJ" = (
 /obj/structure/cable,
 /obj/machinery/duct/waste,
@@ -63508,9 +63478,15 @@
 /area/station/engineering/atmos/upper)
 "oCf" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/cable_coil,
-/obj/item/electronics/airalarm,
-/obj/item/electronics/firealarm,
+/obj/item/stack/cable_coil{
+	pixel_y = 8
+	},
+/obj/item/electronics/airalarm{
+	pixel_y = 8
+	},
+/obj/item/electronics/firealarm{
+	pixel_y = 8
+	},
 /obj/item/stock_parts/power_store/cell/high{
 	pixel_y = 8
 	},
@@ -65245,8 +65221,12 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/clothing/gloves/color/orange,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/clothing/gloves/color/orange{
+	pixel_y = 8
+	},
+/obj/item/grenade/chem_grenade/cleaner{
+	pixel_y = 7
+	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/station/maintenance/port/greater)
@@ -72172,6 +72152,27 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/station/maintenance/department/chapel)
+"qCS" = (
+/obj/machinery/door/firedoor/water_sensor/heavy{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 8
+	},
+/obj/machinery/duct/waste,
+/obj/machinery/duct/supply,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_large,
+/area/station/hallway/floor1/fore)
 "qDc" = (
 /obj/structure/bonfire,
 /obj/effect/decal/cleanable/dirt,
@@ -74574,6 +74575,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/office)
+"rdi" = (
+/obj/structure/sign/flag/nanotrasen/directional/north,
+/turf/open/floor/carpet/red,
+/area/station/command/heads_quarters/hos)
 "rdm" = (
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 8
@@ -76316,10 +76321,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/port/fore)
-"rzt" = (
-/obj/effect/spawner/random/structure/grille,
-/turf/open/floor/plating,
-/area/station/maintenance/department/medical)
 "rzu" = (
 /obj/structure/weightmachine/weightlifter,
 /obj/effect/turf_decal/trimline/dark_green/line,
@@ -76913,8 +76914,12 @@
 /area/station/maintenance/floor1/starboard/aft)
 "rGS" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/sheet/iron/twenty,
-/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/twenty{
+	pixel_y = 8
+	},
+/obj/item/stack/sheet/glass/fifty{
+	pixel_y = 8
+	},
 /obj/item/electronics/apc,
 /obj/item/electronics/airlock,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -84493,7 +84498,9 @@
 /area/station/maintenance/port/greater)
 "twJ" = (
 /obj/structure/table,
-/obj/effect/spawner/random/maintenance,
+/obj/effect/spawner/random/maintenance{
+	pixel_y = 8
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/floor2/port)
 "twN" = (
@@ -85724,10 +85731,14 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/stack/cable_coil{
 	pixel_x = 3;
-	pixel_y = 3
+	pixel_y = 13
 	},
-/obj/item/clothing/suit/hazardvest,
-/obj/item/multitool,
+/obj/item/clothing/suit/hazardvest{
+	pixel_y = 8
+	},
+/obj/item/multitool{
+	pixel_y = 8
+	},
 /turf/open/floor/iron/textured_large,
 /area/station/maintenance/floor2/port)
 "tMv" = (
@@ -92383,9 +92394,20 @@
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/mechbay)
 "vrY" = (
-/obj/structure/sign/flag/nanotrasen/directional/north,
-/turf/open/floor/carpet/red,
-/area/station/command/heads_quarters/hos)
+/obj/machinery/door/firedoor/water_sensor{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating_new{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_large,
+/area/station/hallway/floor1/fore)
 "vsp" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -117418,7 +117440,7 @@ tSz
 oml
 cqp
 uPA
-vrY
+rdi
 dpe
 wPQ
 wPQ
@@ -124876,7 +124898,7 @@ jOj
 eDp
 kFP
 uPc
-rzt
+cjJ
 ovz
 bMx
 lZB
@@ -127467,7 +127489,7 @@ feo
 eDp
 cXr
 iOB
-rzt
+cjJ
 eBG
 eBG
 hcg
@@ -146451,9 +146473,9 @@ vyj
 coi
 qna
 vHr
-nCx
+vrY
 mKF
-nCx
+vrY
 aOS
 ryN
 pnE
@@ -152106,7 +152128,7 @@ sPJ
 lAx
 lwT
 tru
-cjJ
+qCS
 tru
 eiH
 eiH
@@ -194489,7 +194511,7 @@ vNf
 aIM
 cBP
 vOG
-emv
+eMP
 tho
 chu
 wMU
