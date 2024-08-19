@@ -4470,7 +4470,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
 	dir = 6
 	},
-/obj/structure/sign/warning/cold_temp/directional/west,
 /turf/open/floor/catwalk_floor/iron,
 /area/station/tcommsat/computer)
 "aYU" = (
@@ -5428,7 +5427,9 @@
 /area/station/security/brig)
 "bjq" = (
 /obj/structure/table/reinforced,
-/obj/item/aicard,
+/obj/item/aicard{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new,
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 1
@@ -9801,6 +9802,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/engine_smes)
+"cjJ" = (
+/obj/structure/sign/flag/nanotrasen/directional/north,
+/turf/open/floor/carpet/red,
+/area/station/command/heads_quarters/hos)
 "cjK" = (
 /obj/effect/turf_decal/siding/wideplating_new/light,
 /obj/machinery/plumbing/floor_pump/input/on/waste/directional/west,
@@ -20895,10 +20900,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/brig)
-"eKr" = (
-/obj/structure/sign/flag/nanotrasen/directional/north,
-/turf/open/floor/carpet/red,
-/area/station/command/heads_quarters/hos)
 "eKs" = (
 /obj/effect/turf_decal/siding/wideplating_new,
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -40071,9 +40072,15 @@
 /area/station/maintenance/floor2/port)
 "jfR" = (
 /obj/structure/table/reinforced,
-/obj/item/plant_analyzer,
-/obj/item/plant_analyzer,
-/obj/item/radio,
+/obj/item/plant_analyzer{
+	pixel_y = 15
+	},
+/obj/item/plant_analyzer{
+	pixel_y = 15
+	},
+/obj/item/radio{
+	pixel_y = 9
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 9
 	},
@@ -41755,6 +41762,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/tile,
 /area/station/maintenance/department/engine)
+"jym" = (
+/obj/effect/spawner/random/structure/grille,
+/turf/open/floor/plating,
+/area/station/maintenance/department/medical)
 "jyt" = (
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -59287,10 +59298,6 @@
 "nCv" = (
 /turf/closed/wall,
 /area/station/security/prison/garden)
-"nCx" = (
-/obj/effect/spawner/random/structure/grille,
-/turf/open/floor/plating,
-/area/station/maintenance/department/medical)
 "nCJ" = (
 /obj/structure/cable,
 /obj/machinery/duct/waste,
@@ -68363,9 +68370,15 @@
 /area/station/maintenance/floor2/port/aft)
 "pLI" = (
 /obj/structure/table/reinforced,
-/obj/item/ai_module/reset,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
+/obj/item/ai_module/reset{
+	pixel_y = 8
+	},
+/obj/item/assembly/flash/handheld{
+	pixel_y = 8
+	},
+/obj/item/assembly/flash/handheld{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 6
 	},
@@ -75440,14 +75453,18 @@
 /obj/structure/table/reinforced,
 /obj/item/analyzer{
 	pixel_x = 7;
-	pixel_y = 3
+	pixel_y = 17
 	},
 /obj/item/analyzer{
 	pixel_x = 7;
-	pixel_y = 3
+	pixel_y = 17
 	},
-/obj/item/assembly/signaler,
-/obj/item/assembly/signaler,
+/obj/item/assembly/signaler{
+	pixel_y = 8
+	},
+/obj/item/assembly/signaler{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 1
 	},
@@ -78629,9 +78646,16 @@
 /area/station/engineering/lobby)
 "scj" = (
 /obj/structure/table/reinforced,
-/obj/item/clothing/gloves/color/yellow,
-/obj/item/storage/toolbox/electrical,
-/obj/item/multitool,
+/obj/item/clothing/gloves/color/yellow{
+	pixel_y = 17
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 10
+	},
+/obj/item/multitool{
+	pixel_y = 5;
+	pixel_x = 6
+	},
 /obj/effect/turf_decal/siding/wideplating_new,
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 1
@@ -78667,8 +78691,12 @@
 /area/station/maintenance/floor1/starboard/aft)
 "scO" = (
 /obj/structure/table/reinforced,
-/obj/item/folder/yellow,
-/obj/item/electronics/airlock,
+/obj/item/folder/yellow{
+	pixel_y = 8
+	},
+/obj/item/electronics/airlock{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 10
 	},
@@ -94694,7 +94722,6 @@
 "vVM" = (
 /obj/structure/table/wood,
 /obj/item/radio/intercom/directional/north,
-/obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/phone{
 	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
@@ -95921,8 +95948,12 @@
 "wkC" = (
 /obj/structure/table/wood,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/item/paper_bin{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /obj/machinery/light/directional/north,
 /turf/open/floor/carpet/orange,
 /area/station/tcommsat/computer)
@@ -117171,7 +117202,7 @@ tSz
 oml
 cqp
 uPA
-eKr
+cjJ
 dpe
 wPQ
 wPQ
@@ -124629,7 +124660,7 @@ jOj
 eDp
 kFP
 uPc
-nCx
+jym
 ovz
 bMx
 lZB
@@ -127220,7 +127251,7 @@ feo
 eDp
 cXr
 iOB
-nCx
+jym
 eBG
 eBG
 hcg
