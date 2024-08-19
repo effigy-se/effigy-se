@@ -4454,11 +4454,6 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "csq" = (
-/obj/machinery/turretid{
-	control_area = "/area/station/ai_monitored/turret_protected/aisat_interior";
-	name = "Antechamber Turret Control";
-	pixel_x = 28
-	},
 /obj/item/radio/intercom/directional/south{
 	freerange = 1;
 	frequency = 1447;
@@ -4467,6 +4462,10 @@
 	},
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 6
+	},
+/obj/machinery/turretid/directional/east{
+	control_area = "/area/station/ai_monitored/turret_protected/aisat_interior";
+	name = "Antechamber Turret Control"
 	},
 /turf/open/floor/iron/dark/small,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -29784,16 +29783,14 @@
 /turf/open/floor/iron/smooth,
 /area/station/cargo/warehouse)
 "qFJ" = (
-/obj/machinery/turretid{
-	name = "AI Chamber turret control";
-	pixel_x = -28;
-	pixel_y = -4
-	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 8
+	},
+/obj/machinery/turretid/directional/west{
+	name = "AI Chamber turret control"
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
@@ -42592,11 +42589,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/cargo/storage)
 "xhJ" = (
-/obj/machinery/turretid{
-	control_area = "/area/station/ai_monitored/turret_protected/ai_upload";
-	name = "AI Upload turret control";
-	pixel_x = -28
-	},
 /obj/machinery/camera/directional/north{
 	c_tag = "AI Upload Foyer";
 	network = list("aiupload")
@@ -42605,6 +42597,10 @@
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 9
+	},
+/obj/machinery/turretid/directional/west{
+	control_area = "/area/station/ai_monitored/turret_protected/ai_upload";
+	name = "AI Upload turret control"
 	},
 /turf/open/floor/iron/dark/diagonal,
 /area/station/ai_monitored/turret_protected/ai_upload_foyer)

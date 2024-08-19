@@ -327,7 +327,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	playsound(user, 'sound/items/screwdriver2.ogg', 50, TRUE)
 
 /obj/item/claymore/highlander/robot //BLOODTHIRSTY BORGS NOW COME IN PLAID
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'icons/mob/silicon/robot_items.dmi'
 	icon_state = "claymore_cyborg"
 	var/mob/living/silicon/robot/robot
 
@@ -518,21 +518,21 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	attack_verb_simple = list("smash", "slam", "whack", "thwack")
 	icon = 'icons/obj/weapons/staff.dmi'
 	icon_state = "bambostaff0"
+	base_icon_state = "bambostaff"
 	inhand_icon_state = "bambostaff0"
 	worn_icon_state = "bambostaff0"
 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 
-/obj/item/nullrod/bostaff/Initialize(mapload)
+/obj/item/bambostaff/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, \
 		force_unwielded = 10, \
 		force_wielded = 14, \
-		icon_wielded = "[base_icon_state]1", \
 	)
 
-/obj/item/nullrod/bostaff/update_icon_state()
-	icon_state = "[base_icon_state]0"
+/obj/item/bambostaff/update_icon_state()
+	icon_state = inhand_icon_state = "[base_icon_state][HAS_TRAIT(src, TRAIT_WIELDED)]"
 	return ..()
 
 /obj/item/cane

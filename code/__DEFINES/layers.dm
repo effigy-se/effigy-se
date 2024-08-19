@@ -169,9 +169,9 @@
 #define WIRE_LAYER (9 + TOPDOWN_LAYER)
 #define GLASS_FLOOR_LAYER (10 + TOPDOWN_LAYER)
 #define TRAM_RAIL_LAYER (11 + TOPDOWN_LAYER)
+#define ABOVE_OPEN_TURF_LAYER (12 + TOPDOWN_LAYER)
 ///catwalk overlay of /turf/open/floor/plating/catwalk_floor
-#define CATWALK_LAYER (12 + TOPDOWN_LAYER)
-#define ABOVE_OPEN_TURF_LAYER (13 + TOPDOWN_LAYER)
+#define CATWALK_LAYER (13 + TOPDOWN_LAYER)
 
 //GAME_PLANE layers
 #define BELOW_CLOSED_TURF_LAYER 2.053
@@ -205,7 +205,9 @@
 #define WALL_LAYER 2.67
 #define ABOVE_WALL_LAYER 2.68
 #define WALL_CLICKCATCH_LAYER 2.69
-#define ON_WALL_LAYER 2.7
+#define FLAT_ON_WALL_LAYER 2.70 // wall mounts that lie flat against the wall or are generally less important gameplay-wise (such as signs)
+#define ON_WALL_LAYER 2.71 // normal wall mounts
+#define HIGH_ON_WALL_LAYER 2.72 // wall mounts that hang high on the wall (light fixtures)
 
 #define BELOW_OPEN_DOOR_LAYER 2.74
 ///Anything below this layer is to be considered completely (visually) under water by the immerse layer.

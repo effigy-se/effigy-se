@@ -1,6 +1,8 @@
-/obj/effect/mob_spawn/ghost_role
-	/// Do we use a random appearance for this ghost role?
+/obj/effect/mob_spawn
+	/// Do we use a random appearance for this role?
 	var/random_appearance = TRUE
+
+/obj/effect/mob_spawn/ghost_role
 	/// Can we use our loadout for this role?
 	var/loadout_enabled = FALSE
 	/// Can we use our quirks for this role?
