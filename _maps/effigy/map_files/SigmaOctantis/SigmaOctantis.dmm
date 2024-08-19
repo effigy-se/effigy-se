@@ -2071,14 +2071,14 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/assistant,
-/obj/machinery/button/door/directional/south{
+/obj/machinery/light/small/directional/east,
+/obj/machinery/computer/security/telescreen/entertainment/directional/south,
+/obj/machinery/button/door/directional/west{
 	id = "Toilet1";
 	name = "Lock Control";
 	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/obj/machinery/light/small/directional/east,
-/obj/machinery/computer/security/telescreen/entertainment/directional/west,
 /turf/open/floor/iron/textured_large,
 /area/station/commons/toilet/locker)
 "axH" = (
@@ -16466,16 +16466,6 @@
 "dJU" = (
 /turf/open/floor/grass,
 /area/station/maintenance/port/greater)
-"dKb" = (
-/obj/machinery/button/door/directional/south{
-	id = "evashutter";
-	name = "EVA Shutters"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron/diagonal,
-/area/station/hallway/floor1/fore)
 "dKd" = (
 /obj/effect/turf_decal/tile/blue/diagonal_edge,
 /obj/structure/cable,
@@ -30134,11 +30124,6 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/station/ai_monitored/turret_protected/ai)
 "gJO" = (
-/obj/machinery/button/door/directional/south{
-	id = "evashutters2";
-	name = "E.V.A. Shutters";
-	req_access = list("command")
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
@@ -32958,6 +32943,11 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 5
+	},
+/obj/machinery/button/door/directional/west{
+	id = "evashutters2";
+	req_access = list("command");
+	name = "E.V.A. Shutters"
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical)
@@ -37975,6 +37965,12 @@
 	dir = 1
 	},
 /obj/machinery/airalarm/directional/south,
+/obj/machinery/button/door/directional/west{
+	id = "dorm1";
+	name = "Bolt Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
+	},
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room1)
 "iCI" = (
@@ -43280,6 +43276,12 @@
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 4
 	},
+/obj/machinery/button/door/directional/west{
+	id = "broadcastbathroom";
+	name = "Bolt Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
+	},
 /turf/open/floor/iron/freezer,
 /area/station/service/studio)
 "jOa" = (
@@ -43587,12 +43589,6 @@
 	},
 /area/station/service/janitor)
 "jRo" = (
-/obj/machinery/button/door/directional/south{
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	id = "broadcastbathroom";
-	name = "Bolt Control"
-	},
 /obj/structure/toilet{
 	dir = 8
 	},
@@ -50271,12 +50267,6 @@
 /obj/structure/chair/sofa/left/brown{
 	dir = 1
 	},
-/obj/machinery/button/door/directional/south{
-	id = "dorm2";
-	name = "Bolt Control";
-	normaldoorcontrol = 1;
-	specialfunctions = 4
-	},
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room2)
 "lsm" = (
@@ -54558,12 +54548,6 @@
 "mtv" = (
 /obj/structure/chair/sofa/right/brown{
 	dir = 1
-	},
-/obj/machinery/button/door/directional/south{
-	id = "dorm1";
-	name = "Bolt Control";
-	normaldoorcontrol = 1;
-	specialfunctions = 4
 	},
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room1)
@@ -63818,13 +63802,13 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/machinery/button/door/directional/south{
+/obj/machinery/light/small/directional/south,
+/obj/machinery/button/door/directional/north{
 	id = "Arrivals_Toilet1";
 	name = "Lock Control";
 	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/showroomfloor,
 /area/station/commons/toilet/restrooms)
 "oCI" = (
@@ -64239,6 +64223,11 @@
 "oHv" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
+	},
+/obj/machinery/button/door/directional/west{
+	id = "evashutter";
+	req_access = list("command");
+	name = "E.V.A. Shutters"
 	},
 /turf/open/floor/iron/diagonal,
 /area/station/hallway/floor1/fore)
@@ -72284,6 +72273,12 @@
 "qBf" = (
 /obj/structure/chair/sofa/corner/brown{
 	dir = 8
+	},
+/obj/machinery/button/door/directional/east{
+	id = "dorm2";
+	name = "Bolt Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/room2)
@@ -85420,14 +85415,14 @@
 "tEi" = (
 /obj/machinery/recharge_station,
 /obj/effect/landmark/start/hangover,
-/obj/machinery/button/door/directional/south{
+/obj/machinery/light/small/directional/west,
+/obj/machinery/computer/security/telescreen/entertainment/directional/south,
+/obj/machinery/button/door/directional/east{
 	id = "Toilet2";
 	name = "Lock Control";
 	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/obj/machinery/light/small/directional/west,
-/obj/machinery/computer/security/telescreen/entertainment/directional/east,
 /turf/open/floor/iron/textured_large,
 /area/station/commons/toilet/locker)
 "tEj" = (
@@ -90770,13 +90765,13 @@
 /area/station/engineering/atmos/storage/gas)
 "uTG" = (
 /obj/machinery/recharge_station,
-/obj/machinery/button/door/directional/south{
+/obj/machinery/light/small/directional/south,
+/obj/machinery/button/door/directional/north{
 	id = "Arrivals_Toilet3";
 	name = "Lock Control";
 	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/showroomfloor,
 /area/station/commons/toilet/restrooms)
 "uTH" = (
@@ -103103,13 +103098,13 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/machinery/button/door/directional/south{
+/obj/machinery/light/small/directional/south,
+/obj/machinery/button/door/directional/north{
 	id = "Arrivals_Toilet2";
 	name = "Lock Control";
 	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
-/obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/showroomfloor,
 /area/station/commons/toilet/restrooms)
 "xJu" = (
@@ -154595,7 +154590,7 @@ fzX
 sUf
 wOf
 oRP
-dKb
+ohA
 psT
 xrh
 xVk
