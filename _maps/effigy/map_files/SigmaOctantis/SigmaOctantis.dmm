@@ -3198,10 +3198,11 @@
 "aKc" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/table/reinforced,
-/obj/machinery/button/door{
+/obj/machinery/button/table{
+	pixel_y = 16;
 	id = "xenosecure";
-	name = "Containment Control";
-	req_access = list("xenobiology")
+	req_access = list("xenobiology");
+	name = "Containment Control"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/science/xenobiology)
@@ -13488,7 +13489,8 @@
 "dai" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "xenosecure";
-	name = "Secure Pen Shutters"
+	name = "Secure Pen Shutters";
+	dir = 4
 	},
 /obj/effect/turf_decal/delivery/purple,
 /obj/effect/turf_decal/siding/wideplating_new/corner,
@@ -22064,6 +22066,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "eXB" = (
@@ -24656,10 +24659,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/button/door{
+/obj/machinery/button/table{
+	pixel_y = 8;
 	id = "xeno3";
-	name = "Containment Control";
-	req_access = list("xenobiology")
+	req_access = list("xenobiology");
+	name = "Containment Control"
 	},
 /turf/open/floor/iron/textured_large,
 /area/station/science/xenobiology)
@@ -27885,9 +27889,8 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/machinery/button/curtain{
-	id = "mime_sewerlevel";
-	pixel_y = -24
+/obj/machinery/button/curtain/directional/west{
+	id = "mime_sewerlevel"
 	},
 /turf/open/floor/iron/diagonal,
 /area/station/service/theater)
@@ -36600,9 +36603,8 @@
 /turf/open/floor/iron/herringbone,
 /area/station/hallway/floor1/aft)
 "iri" = (
-/obj/machinery/button/curtain{
-	id = "dorm_lux_2_curtains";
-	pixel_y = 24
+/obj/machinery/button/curtain/directional/north{
+	id = "dorm_lux_2_curtains"
 	},
 /turf/open/floor/wood,
 /area/station/commons/dorms/apartment2)
@@ -40338,10 +40340,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/button/door{
+/obj/machinery/button/table{
+	pixel_y = 8;
 	id = "xeno2";
-	name = "Containment Control";
-	req_access = list("xenobiology")
+	req_access = list("xenobiology");
+	name = "Containment Control"
 	},
 /turf/open/floor/iron/textured_large,
 /area/station/science/xenobiology)
@@ -40931,6 +40934,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "jpT" = (
@@ -46159,10 +46163,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/button/door{
+/obj/machinery/button/table{
+	pixel_y = 8;
 	id = "xeno5";
-	name = "Containment Control";
-	req_access = list("xenobiology")
+	req_access = list("xenobiology");
+	name = "Containment Control"
 	},
 /turf/open/floor/iron/textured_large,
 /area/station/science/xenobiology)
@@ -46291,10 +46296,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/button/door{
+/obj/machinery/button/table{
+	pixel_y = 8;
 	id = "xeno1";
-	name = "Containment Control";
-	req_access = list("xenobiology")
+	req_access = list("xenobiology");
+	name = "Containment Control"
 	},
 /turf/open/floor/iron/textured_large,
 /area/station/science/xenobiology)
@@ -46711,7 +46717,9 @@
 /turf/open/floor/iron/diagonal,
 /area/station/command/heads_quarters/ce)
 "kGz" = (
-/obj/machinery/door/firedoor/water_sensor,
+/obj/machinery/door/firedoor/water_sensor{
+	dir = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
@@ -60762,13 +60770,13 @@
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
 "nWb" = (
-/obj/structure/sign/warning/cold_temp/directional/south,
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark/textured_corner{
 	dir = 4
 	},
@@ -61598,6 +61606,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark/textured_corner,
 /area/station/science/xenobiology)
 "ogA" = (
@@ -64605,7 +64614,9 @@
 /area/station/maintenance/floor1/port/aft)
 "oRL" = (
 /obj/item/kirbyplants/random,
-/obj/machinery/light_switch/directional/east,
+/obj/machinery/button/curtain/directional/east{
+	id = "dorm_lux_1_curtains"
+	},
 /turf/open/floor/carpet/red,
 /area/station/commons/dorms/apartment1)
 "oRP" = (
@@ -65883,10 +65894,6 @@
 "phs" = (
 /obj/machinery/vending/wardrobe/law_wardrobe,
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/button/curtain{
-	id = "lawyer_curtains";
-	pixel_x = 24
-	},
 /turf/open/floor/wood/large,
 /area/station/service/lawoffice)
 "phE" = (
@@ -66731,8 +66738,12 @@
 /area/station/science/ordnance)
 "prL" = (
 /obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/item/paper_bin{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
 /obj/machinery/camera/autoname/directional/south,
@@ -67024,10 +67035,6 @@
 /turf/open/floor/iron/textured,
 /area/station/maintenance/solars/starboard/aft)
 "puI" = (
-/obj/machinery/button/curtain{
-	id = "dorm_lux_1_curtains";
-	pixel_y = -24
-	},
 /turf/open/floor/wood,
 /area/station/commons/dorms/apartment1)
 "puJ" = (
@@ -83366,6 +83373,7 @@
 /obj/structure/closet/cabinet,
 /obj/structure/cable,
 /obj/machinery/light/small/directional/north,
+/obj/machinery/light_switch/directional/east,
 /turf/open/floor/carpet/red,
 /area/station/commons/dorms/apartment1)
 "tmR" = (
@@ -84031,15 +84039,6 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/department/medical)
-"tuP" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/preopen{
-	id = "xenosecure";
-	name = "Secure Pen Shutters"
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/science/xenobiology)
 "tuU" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -89145,10 +89144,11 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/button/door{
+/obj/machinery/button/table{
+	pixel_y = 8;
 	id = "xeno4";
-	name = "Containment Control";
-	req_access = list("xenobiology")
+	req_access = list("xenobiology");
+	name = "Containment Control"
 	},
 /turf/open/floor/iron/textured_large,
 /area/station/science/xenobiology)
@@ -98230,6 +98230,16 @@
 /obj/structure/reagent_dispensers/cooking_oil,
 /turf/open/floor/iron/dark/textured,
 /area/station/service/kitchen/coldroom)
+"wNG" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "xenosecure";
+	name = "Secure Pen Shutters";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/science/xenobiology)
 "wNH" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
@@ -98911,9 +98921,11 @@
 "wVn" = (
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/machinery/reagentgrinder{
-	pixel_y = 5
+	pixel_y = 12
 	},
-/obj/item/stack/sheet/mineral/plasma/five,
+/obj/item/stack/sheet/mineral/plasma/five{
+	pixel_y = 2
+	},
 /turf/open/floor/iron/herringbone,
 /area/station/science/xenobiology)
 "wVo" = (
@@ -99088,6 +99100,9 @@
 /area/station/maintenance/floor2/port/aft)
 "wXf" = (
 /obj/machinery/camera/autoname/directional/north,
+/obj/machinery/button/curtain/directional/north{
+	id = "lawyer_curtains"
+	},
 /turf/open/floor/wood/tile,
 /area/station/service/lawoffice)
 "wXm" = (
@@ -102241,7 +102256,9 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/station/engineering/atmospherics_engine)
 "xIO" = (
-/obj/machinery/door/firedoor/water_sensor,
+/obj/machinery/door/firedoor/water_sensor{
+	dir = 8
+	},
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
@@ -127548,11 +127565,11 @@ lol
 lol
 xKJ
 xes
+wNG
 uRv
-tuP
 lel
-tuP
 uRv
+wNG
 uRv
 jVN
 lfr
@@ -127806,9 +127823,9 @@ hRm
 mxi
 xes
 xUH
-tuP
+uRv
 dai
-tuP
+uRv
 xUH
 uRv
 jVc
