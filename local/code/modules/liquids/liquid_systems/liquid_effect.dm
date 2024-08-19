@@ -655,6 +655,7 @@
 
 /obj/effect/abstract/liquid_turf/immutable/ocean
 	smoothing_flags = NONE
+	icon = 'local/code/modules/liquids/assets/obj/effects/liquidtall.dmi'
 	icon_state = "ocean"
 	base_icon_state = "ocean"
 	layer = FLY_LAYER
