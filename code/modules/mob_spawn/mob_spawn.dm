@@ -62,7 +62,11 @@
 		spawned_human.underwear = "Nude"
 		spawned_human.undershirt = "Nude"
 		spawned_human.socks = "Nude"
-		randomize_human_normie(spawned_human)
+		//randomize_human_normie(spawned_human) // EFFIGY EDIT REMOVAL - Puts this behind if(random_appearance) - see below
+		// EFFIGY EDIT ADDITION START
+		if(random_appearance)
+			randomize_human_normie(spawned_human)
+		// EFFIGY EDIT ADDITION END
 		if(hairstyle)
 			spawned_human.set_hairstyle(hairstyle, update = FALSE)
 		if(facial_hairstyle)
