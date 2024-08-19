@@ -8561,13 +8561,12 @@
 /turf/open/floor/iron/showroomfloor,
 /area/station/commons/fitness/recreation)
 "bTp" = (
-/obj/machinery/button/door/directional/south{
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
+/obj/structure/cable/layer3,
+/obj/machinery/button/door/directional/west{
 	id = "engsm";
-	req_access = list("engineering");
-	name = "Radiation Shutters Control"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/cyan/visible{
-	dir = 1
+	name = "Radiation Shutters Control";
+	req_access = list("engineering")
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
@@ -10899,12 +10898,16 @@
 /area/station/engineering/atmos)
 "cvZ" = (
 /obj/structure/table/reinforced,
-/obj/item/bodypart/chest/robot,
+/obj/item/bodypart/chest/robot{
+	pixel_y = 8
+	},
 /obj/item/bodypart/arm/left/robot{
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 8
 	},
 /obj/item/bodypart/arm/right/robot{
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 8
 	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 4
@@ -12765,7 +12768,9 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced/rglass,
-/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 17
+	},
 /obj/item/clothing/glasses/meson/engine/tray,
 /turf/open/floor/iron/white,
 /area/station/ai_monitored/turret_protected/aisat/atmos)
@@ -17718,13 +17723,8 @@
 /turf/open/floor/plating/rust,
 /area/station/maintenance/disposal)
 "dZA" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "aicorewindow";
-	name = "AI Core Shutters"
-	},
-/turf/open/floor/plating,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
 /area/station/ai_monitored/turret_protected/ai)
 "dZF" = (
 /obj/effect/turf_decal/stripes/line{
@@ -19355,9 +19355,15 @@
 /area/station/hallway/floor1/fore)
 "eru" = (
 /obj/structure/table/reinforced,
-/obj/item/folder/blue,
-/obj/item/bodypart/leg/right/robot,
-/obj/item/bodypart/leg/left/robot,
+/obj/item/folder/blue{
+	pixel_y = 8
+	},
+/obj/item/bodypart/leg/right/robot{
+	pixel_y = 8
+	},
+/obj/item/bodypart/leg/left/robot{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 4
 	},
@@ -22151,6 +22157,9 @@
 /area/station/medical/medbay/lobby)
 "eWF" = (
 /obj/structure/cable,
+/obj/machinery/flasher/directional/south{
+	id = "AI"
+	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "eWT" = (
@@ -22999,8 +23008,12 @@
 /area/station/maintenance/floor2/port/fore)
 "fgG" = (
 /obj/structure/table/reinforced,
-/obj/item/folder/blue,
-/obj/item/pen,
+/obj/item/folder/blue{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 1
 	},
@@ -31955,20 +31968,11 @@
 	req_access = list("ai_upload");
 	name = "Primary AI Core Access"
 	},
-/obj/machinery/flasher/directional/north{
-	id = "AI"
-	},
-/obj/machinery/light/small/directional/north,
-/obj/machinery/button/door/directional/south{
+/obj/machinery/light/small/directional/south,
+/obj/machinery/button/door/directional/north{
 	id = "aicoredoor";
 	name = "AI Chamber Access Control";
 	req_access = list("ai_upload")
-	},
-/obj/machinery/button/door/directional/south{
-	id = "aicorewindow";
-	name = "AI Core Shutters";
-	req_access = list("ai_upload");
-	pixel_y = -34
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
@@ -32811,8 +32815,12 @@
 "hqF" = (
 /obj/structure/cable,
 /obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/item/paper_bin{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /turf/open/floor/catwalk_floor/iron,
 /area/station/ai_monitored/turret_protected/ai)
 "hqJ" = (
@@ -34565,9 +34573,15 @@
 /area/station/maintenance/disposal/incinerator)
 "hLz" = (
 /obj/structure/table/reinforced,
-/obj/item/wrench,
-/obj/item/crowbar,
-/obj/item/mmi,
+/obj/item/wrench{
+	pixel_y = 8
+	},
+/obj/item/crowbar{
+	pixel_y = 8
+	},
+/obj/item/mmi{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 4
 	},
@@ -35791,8 +35805,12 @@
 /area/station/commons/fitness/recreation)
 "ide" = (
 /obj/structure/table/reinforced,
-/obj/item/folder/blue,
-/obj/item/pen,
+/obj/item/folder/blue{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 1
 	},
@@ -39064,8 +39082,12 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/folder/blue,
-/obj/item/assembly/flash/handheld,
+/obj/item/folder/blue{
+	pixel_y = 8
+	},
+/obj/item/assembly/flash/handheld{
+	pixel_y = 8
+	},
 /turf/open/floor/catwalk_floor/iron,
 /area/station/ai_monitored/turret_protected/ai)
 "iPI" = (
@@ -41118,7 +41140,9 @@
 "joC" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/table,
-/obj/item/toy/plush/shark,
+/obj/item/toy/plush/shark{
+	pixel_y = 8
+	},
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat/atmos)
 "joK" = (
@@ -42427,8 +42451,12 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced/rglass,
-/obj/item/wrench,
-/obj/item/analyzer,
+/obj/item/wrench{
+	pixel_y = 8
+	},
+/obj/item/analyzer{
+	pixel_y = 6
+	},
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat/atmos)
 "jEn" = (
@@ -43494,12 +43522,6 @@
 /area/station/service/chapel/funeral)
 "jQF" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/machinery/button/door/directional/south{
-	id = "dorms_lux_1_bolts";
-	name = "Luxury Dorm 1 Bolt Control";
-	normaldoorcontrol = 1;
-	specialfunctions = 4
-	},
 /turf/open/floor/wood/large,
 /area/station/commons/dorms/apartment1)
 "jQJ" = (
@@ -44206,7 +44228,11 @@
 "kbl" = (
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible,
 /obj/structure/cable/layer3,
-/obj/machinery/status_display/evac/directional/east,
+/obj/machinery/button/door/directional/east{
+	id = "engsm";
+	name = "Radiation Shutters Control";
+	req_access = list("engineering")
+	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "kbp" = (
@@ -49242,11 +49268,21 @@
 /area/station/engineering/main)
 "lfY" = (
 /obj/structure/table,
-/obj/item/mail/junkmail,
-/obj/item/mail/junkmail,
-/obj/item/mail/junkmail,
-/obj/item/mail/junkmail,
-/obj/item/mail/junkmail,
+/obj/item/mail/junkmail{
+	pixel_y = 10
+	},
+/obj/item/mail/junkmail{
+	pixel_y = 10
+	},
+/obj/item/mail/junkmail{
+	pixel_y = 10
+	},
+/obj/item/mail/junkmail{
+	pixel_y = 10
+	},
+/obj/item/mail/junkmail{
+	pixel_y = 10
+	},
 /obj/item/food/meatball,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat/atmos)
@@ -63910,6 +63946,12 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/button/door/directional/west{
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	id = "dorms_lux_1_bolts";
+	name = "Luxury Dorm 1 Bolt Control"
+	},
 /turf/open/floor/wood/tile,
 /area/station/commons/dorms/apartment1)
 "oEb" = (
@@ -87086,8 +87128,12 @@
 /area/station/medical/medbay/central)
 "uar" = (
 /obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/item/paper_bin{
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 1
 	},
@@ -139700,7 +139746,7 @@ ixS
 rqT
 eKb
 eKb
-bTp
+vky
 kRc
 lsQ
 wxN
@@ -140731,7 +140777,7 @@ bHx
 jmr
 yhr
 jKy
-yhr
+bTp
 yhr
 wju
 oNl
@@ -204992,8 +205038,8 @@ fRo
 rku
 pTp
 eWF
+rku
 dZA
-fUp
 fUp
 oEJ
 rku
