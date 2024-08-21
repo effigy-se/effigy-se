@@ -25,7 +25,7 @@
 	var/list/all_atoms = get_all_contents()
 	for(var/atom/movable/potential_blacklisted_atom in all_atoms)
 		is_type_in_list(potential_blacklisted_atom, SSCondos.item_blacklist)
-			potential_blacklist_atom.forcemove(get_turf(parent_object))
+			potential_blacklist_atom.forceMove(get_turf(parent_object))
 	if(isnull(reservation))
 		return
 	for(var/turf/turf_to_empty as anything in reservation.reserved_turfs) //remove this once clearing turf reservations is actually reliable
