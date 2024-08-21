@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(condos)
 /datum/controller/subsystem/condos/proc/create_and_enter_condo(condo_number, datum/map_template/condo/our_condo, mob/user, parent_object)
 	if(active_condos["[condo_number]"])
 		return // Get sanity'd
-	var/datum/turf_reservation/condo/condo_reservation = SSmapping.request_turf_block_reservation(our_condo.width, our_condo.height, 1)
+	var/datum/turf_reservation/condo/condo_reservation = SSmapping.request_turf_block_reservation(our_condo.width, our_condo.height, 1, reservation_type = /datum/turf_reservation/condo)
 	var/turf/bottom_left = condo_reservation.bottom_left_turfs[1]
 	if(!bottom_left)
 		to_chat(user, span_warning("Failed to reserve a room for you! Contact the technical concierge."))
