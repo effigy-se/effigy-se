@@ -8,5 +8,5 @@
 	var/turf/floor_to_copy = /turf/open/floor/plating
 
 /turf/closed/indestructible/hoteldoor/fakedoor/Initialize(mapload)
-	.. = ..()
+	. = ..()
 	underlays += mutable_appearance(initial(floor_to_copy.icon), initial(floor_to_copy.icon_state), initial(floor_to_copy.layer), offset_spokesman = src, plane = FLOOR_PLANE)
