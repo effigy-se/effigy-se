@@ -13,13 +13,23 @@
 /area/misc/condo/Exited(atom/movable/gone, direction)
 	. = ..()
 	if(ismob(gone))
-		var/stillPopulated = FALSE
-		var/list/currentLivingMobs = get_all_contents_type(/mob/living) //Got to catch anyone hiding in anything
-		for(var/mob/living/L in currentLivingMobs) //Check to see if theres any living mobs, period; left.
-			stillPopulated = TRUE
+		var/condo_still_rockin = FALSE
+		var/list/living_mobs = get_all_contents_type(/mob/living) //Got to catch anyone hiding in anything
+		for(var/mob/living/living_mob in living_mobs) //Check to see if theres any living mobs, period; left.
+			condo_still_rockin = TRUE
 			break
-		if(!stillPopulated)
-			delete_room()
+
+		if(condo_still_rockin)
+			dont_come_knockin()
+		else
+			clean_room()
+
+/area/misc/condo/proc/dont_come_knockin(atom/movable/gone)
+	log_game("[gone] has left condo [condo_number]")
+
+/area/misc/condo/proc/clean_room(atom/movable/gone)
+	log_game("[gone] has left condo [condo_number]")
+	delete_room()
 
 /area/misc/condo/proc/delete_room()
 	var/list/all_atoms = get_all_contents()
