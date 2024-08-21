@@ -30,7 +30,7 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/interlink_condo_teleporter/proc/promptAndCheckIn(mob/user, mob/target)
-	var/chosenRoomNumber = tgui_input_number(target, "What number room will you be checking into?", "Room Number")
+	var/chosenRoomNumber = tgui_input_number(target, "What number room will you be checking into?", "Room Number", 1, min_value = 1)
 	if(!chosenRoomNumber)
 		return
 	if(chosenRoomNumber > SHORT_REAL_LIMIT)
