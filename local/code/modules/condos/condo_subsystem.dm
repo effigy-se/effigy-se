@@ -5,9 +5,15 @@ SUBSYSTEM_DEF(condos)
 	var/list/condo_templates = list()
 	/// List of active reservations we have.
 	var/list/activeRooms = list()
+	// Items we delibrately prevent being deleted. Malleable.
+	var/list/item_blacklist = list(
+		/obj/item/blackbox, \
+	)
 
 /datum/controller/subsystem/condos/Initialize()
 	preload_condo_templates()
+	item_blacklist += typesof(/obj/item/card)
+	item_blacklist += typesof(/obj/item/modular_computer)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/condos/proc/preload_condo_templates()
