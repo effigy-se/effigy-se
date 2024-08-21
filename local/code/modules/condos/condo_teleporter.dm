@@ -56,4 +56,4 @@
 		if(!map)
 			return
 		chosen_condo = SScondos.condo_templates[map]
-		SScondos.sendToNewRoom(requested_condo, chosen_condo, user, src)
+		SScondos.create_and_enter_condo(requested_condo, chosen_condo, user, src)

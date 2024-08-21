@@ -31,49 +31,49 @@ SUBSYSTEM_DEF(condos)
 	if(active_condos["[condo_number]"])
 		var/datum/turf_reservation/condo/target_active_condo = active_condos["[condo_number]"]
 		if(!target_active_condo)
-			to_chat(user, span_redteamradio("CONDO: Room [condo_number] not found!"))
+			to_chat(user, span_warning("Condo [condo_number] error. Unable to find condo reservation!"))
 			return FALSE
 
-		do_sparks(3, FALSE, get_turf(user))
+		do_sparks(3, FALSE, get_turf(user)) // EffigyEdit TODO: Replace with sparks that don't set things on fire, lol I don't remember it off hand
 
-		var/turf/room_bottom_left = target_active_condo.bottom_left_turfs[1]
-		if(!room_bottom_left)
+		var/turf/condo_bottom_left = target_active_condo.bottom_left_turfs[1]
+		if(!condo_bottom_left)
 			to_chat(user, span_warning("Condo [condo_number] error. Unable to find entry turf!"))
 			return FALSE
 
 		if(user.forceMove(locate(
-			room_bottom_left.x + target_active_condo.condo_template.landingZoneRelativeX,
-			room_bottom_left.y + target_active_condo.condo_template.landingZoneRelativeY,
-			room_bottom_left.z,
+			condo_bottom_left.x + target_active_condo.condo_template.landingZoneRelativeX,
+			condo_bottom_left.y + target_active_condo.condo_template.landingZoneRelativeY,
+			condo_bottom_left.z,
 		)))
 			return TRUE
 
 	to_chat(user, span_warning("Condo [condo_number] error. Mystery failure!"))
 	return FALSE
 
-/datum/controller/subsystem/condos/proc/sendToNewRoom(condo_number, datum/map_template/condo/our_condo, mob/user, parent_object)
+/datum/controller/subsystem/condos/proc/create_and_enter_condo(condo_number, datum/map_template/condo/our_condo, mob/user, parent_object)
 	if(active_condos["[condo_number]"])
 		return // Get sanity'd
-	var/datum/turf_reservation/condo/roomReservation = SSmapping.request_turf_block_reservation(our_condo.width, our_condo.height, 1)
-	var/turf/bottom_left = roomReservation.bottom_left_turfs[1]
+	var/datum/turf_reservation/condo/condo_reservation = SSmapping.request_turf_block_reservation(our_condo.width, our_condo.height, 1)
+	var/turf/bottom_left = condo_reservation.bottom_left_turfs[1]
 	if(!bottom_left)
 		to_chat(user, span_warning("Failed to reserve a room for you! Contact the technical concierge."))
 		return
 	our_condo.load(bottom_left)
 	//var/datum/turf_reservation/condo/our_reservation = new
-	roomReservation.condo_template = our_condo
-	active_condos["[condo_number]"] = roomReservation
-	linkTurfs(roomReservation, condo_number, parent_object)
-	do_sparks(3, FALSE, get_turf(user))
+	condo_reservation.condo_template = our_condo
+	active_condos["[condo_number]"] = condo_reservation
+	link_condo_turfs(condo_reservation, condo_number, parent_object)
+	do_sparks(3, FALSE, get_turf(user)) // EffigyEdit TODO: Replace with sparks that don't set things on fire, lol I don't remember it off hand
 	user.forceMove(locate(
 		bottom_left.x + our_condo.landingZoneRelativeX,
 		bottom_left.y + our_condo.landingZoneRelativeY,
 		bottom_left.z,
 	))
 
-/datum/controller/subsystem/condos/proc/linkTurfs(datum/turf_reservation/condo/current_reservation, condo_number, parent_object)
-	var/turf/room_bottom_left = current_reservation.bottom_left_turfs[1]
-	var/area/misc/condo/current_area = get_area(room_bottom_left)
+/datum/controller/subsystem/condos/proc/link_condo_turfs(datum/turf_reservation/condo/current_reservation, condo_number, parent_object)
+	var/turf/condo_bottom_left = current_reservation.bottom_left_turfs[1]
+	var/area/misc/condo/current_area = get_area(condo_bottom_left)
 	current_area.name = "Condo [condo_number]"
 	current_area.parent_object = parent_object
 	current_area.condo_number = condo_number
