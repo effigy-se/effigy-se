@@ -22,16 +22,13 @@
 		if(condo_still_rockin)
 			dont_come_knockin()
 		else
-			clean_room()
+			burn_the_sheets()
 
 /area/misc/condo/proc/dont_come_knockin(atom/movable/gone)
 	log_game("[gone] has left condo [condo_number]")
 
-/area/misc/condo/proc/clean_room(atom/movable/gone)
+/area/misc/condo/proc/burn_the_sheets(atom/movable/gone)
 	log_game("[gone] has left condo [condo_number]")
-	delete_room()
-
-/area/misc/condo/proc/delete_room()
 	var/list/all_atoms = get_all_contents()
 	for(var/atom/movable/potential_blacklisted_atom in all_atoms)
 		if(is_type_in_list(potential_blacklisted_atom, SScondos.item_blacklist))

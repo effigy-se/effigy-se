@@ -18,18 +18,18 @@
 
 /obj/machinery/interlink_condo_teleporter/attack_robot(mob/user)
 	if(user.Adjacent(src))
-		promptAndCheckIn(user, user)
+		prompt_and_check_in(user, user)
 	return TRUE
 
 /obj/machinery/interlink_condo_teleporter/attack_hand(mob/living/user, list/modifiers)
-	promptAndCheckIn(user, user)
+	prompt_and_check_in(user, user)
 	return TRUE
 
 /obj/machinery/interlink_condo_teleporter/attack_tk(mob/user)
 	to_chat(user, span_notice("\The [src] actively rejects your mind as the bluespace energies surrounding it disrupt your telekinesis."))
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
-/obj/machinery/interlink_condo_teleporter/proc/promptAndCheckIn(mob/user, mob/target)
+/obj/machinery/interlink_condo_teleporter/proc/prompt_and_check_in(mob/user, mob/target)
 	var/requested_condo = tgui_input_number(target, "What number room will you be checking into?", "Room Number", 1, min_value = 1)
 	if(!requested_condo)
 		return
@@ -50,7 +50,6 @@
 		SScondos.enter_active_room(requested_condo, target)
 
 	else
-		to_chat(world, span_yellowteamradio("CONDO: Room [requested_condo] not found. Trying to create."))
 		var/datum/map_template/chosen_condo
 		var/map = tgui_input_list(user, "What Condo are you checking into?","Condo Archetypes", sort_list(SScondos.condo_templates))
 		if(!map)
