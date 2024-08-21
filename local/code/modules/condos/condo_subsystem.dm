@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(condos)
 				return TRUE
 	return FALSE
 
-/datum/controller/subsystem/condos/proc/sendToNewRoom(roomNumber, /datum/map_template/condo/our_condo, mob/user, parent_object)
+/datum/controller/subsystem/condos/proc/sendToNewRoom(roomNumber, datum/map_template/condo/our_condo, mob/user, parent_object)
 	if(activeRooms["[roomNumber]"])
 		return // Get sanity'd
 	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(our_condo.width, our_condo.height, 1)
