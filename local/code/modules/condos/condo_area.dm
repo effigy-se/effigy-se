@@ -6,7 +6,7 @@
 	has_gravity = TRUE
 	area_flags = NOTELEPORT | HIDDEN_AREA
 	static_lighting = TRUE
-	var/roomnumber = 0
+	var/condo_number = 0
 	var/obj/machinery/interlink_condo_teleporter/parent_object
 	var/datum/turf_reservation/reservation
 
@@ -30,5 +30,5 @@
 		return
 	for(var/turf/turf_to_empty as anything in reservation.reserved_turfs) //remove this once clearing turf reservations is actually reliable
 		turf_to_empty.empty()
-	SScondos.activeRooms -= "[roomnumber]"
+	SScondos.active_condos -= "[condo_number]"
 	qdel(reservation)

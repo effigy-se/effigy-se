@@ -30,27 +30,30 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/interlink_condo_teleporter/proc/promptAndCheckIn(mob/user, mob/target)
-	var/chosenRoomNumber = tgui_input_number(target, "What number room will you be checking into?", "Room Number", 1, min_value = 1)
-	if(!chosenRoomNumber)
+	var/requested_condo = tgui_input_number(target, "What number room will you be checking into?", "Room Number", 1, min_value = 1)
+	if(!requested_condo)
 		return
-	if(chosenRoomNumber > SHORT_REAL_LIMIT)
-		to_chat(target, span_warning("This network is only hooked up to [SHORT_REAL_LIMIT] rooms!"))
+	if(requested_condo > CONDO_LIMIT)
+		to_chat(target, span_warning("This network is only hooked up to [CONDO_LIMIT] rooms!"))
 		return
-	if((chosenRoomNumber < 1) || (chosenRoomNumber != round(chosenRoomNumber)))
+	if((requested_condo < 1) || (requested_condo != round(requested_condo)))
 		to_chat(target, span_warning("That is not a valid room number!"))
 		return
 	if(!src.Adjacent(target))
 		to_chat(target, span_warning("You too far away from \the [src] to enter it!"))
+		return
 	if(target.incapacitated())
 		to_chat(target, span_warning("You aren't able to activate \the [src] anymore!"))
+		return
 
-	if(chosenRoomNumber in SScondos.activeRooms)
-		SScondos.enterActiveRoom(chosenRoomNumber, target)
+	if(SScondos.active_condos["[requested_condo]"])
+		SScondos.enter_active_room(requested_condo, target)
 
 	else
+		to_chat(world, span_yellowteamradio("CONDO: Room [requested_condo] not found. Trying to create."))
 		var/datum/map_template/chosen_condo
 		var/map = tgui_input_list(user, "What Condo are you checking into?","Condo Archetypes", sort_list(SScondos.condo_templates))
 		if(!map)
 			return
 		chosen_condo = SScondos.condo_templates[map]
-		SScondos.sendToNewRoom(chosenRoomNumber, chosen_condo, user, src)
+		SScondos.sendToNewRoom(requested_condo, chosen_condo, user, src)
