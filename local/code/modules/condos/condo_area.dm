@@ -24,7 +24,7 @@
 /area/misc/condo/proc/delete_room()
 	var/list/all_atoms = get_all_contents()
 	for(var/atom/movable/potential_blacklisted_atom in all_atoms)
-		is_type_in_list(potential_blacklisted_atom, SSCondos.item_blacklist)
+		if(is_type_in_list(potential_blacklisted_atom, SSCondos.item_blacklist))
 			potential_blacklist_atom.forceMove(get_turf(parent_object))
 	if(isnull(reservation))
 		return
