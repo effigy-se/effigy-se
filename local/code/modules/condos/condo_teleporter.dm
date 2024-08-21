@@ -48,8 +48,9 @@
 		SScondos.enterActiveRoom(chosenRoomNumber, target)
 
 	else
-		var/datum/map_template/condo/chosen_condo = tgui_input_list(user, "What Condo are you checking into?","Condo Archetypes", sort_list(SScondos.condo_templates))
-		if(!chosen_condo)
+		var/datum/map_template/chosen_condo
+		var/map = tgui_input_list(user, "What Condo are you checking into?","Condo Archetypes", sort_list(SScondos.condo_templates))
+		if(!map)
 			return
+		chosen_condo = SScondos.condo_templates[map]
 		SScondos.sendToNewRoom(chosenRoomNumber, chosen_condo, user, src)
-

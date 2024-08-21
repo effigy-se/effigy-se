@@ -17,32 +17,33 @@ SUBSYSTEM_DEF(condos)
 			continue
 		var/datum/map_template/condo/condo_template = new condo_type()
 
-		condo_templates[condo_template.condo_id] = condo_template
-		SSmapping.map_templates[condo_template.condo_id] = condo_template
+		condo_templates[condo_template.name] = condo_template
+		SSmapping.map_templates[condo_template.name] = condo_template
 
 
 /datum/controller/subsystem/condos/proc/enterActiveRoom(roomNumber, mob/user)
 	if(activeRooms["[roomNumber]"])
-		for (var/datum/turf_reservation/roomReservation in activeRooms["[roomNumber]"])
-			do_sparks(3, FALSE, get_turf(user))
-			var/turf/room_bottom_left = roomReservation.bottom_left_turfs[1]
-			for (var/datum/map_template/condo/our_condo in activeRooms["[roomNumber]"])
-				user.forceMove(locate(
-					room_bottom_left.x + our_condo.landingZoneRelativeX,
-					room_bottom_left.y + our_condo.landingZoneRelativeY,
-					room_bottom_left.z,
-				))
-				return TRUE
+		var/datum/turf_reservation/condo/target_active_condo = activeRooms["[roomNumber]"]
+		do_sparks(3, FALSE, get_turf(user))
+		var/turf/room_bottom_left = target_active_condo.bottom_left_turfs[1]
+		user.forceMove(locate(
+			room_bottom_left.x + target_active_condo.condo_template.landingZoneRelativeX,
+			room_bottom_left.y + target_active_condo.condo_template.landingZoneRelativeY,
+			room_bottom_left.z,
+		))
+		return TRUE
 	return FALSE
 
 /datum/controller/subsystem/condos/proc/sendToNewRoom(roomNumber, datum/map_template/condo/our_condo, mob/user, parent_object)
 	if(activeRooms["[roomNumber]"])
 		return // Get sanity'd
-	var/datum/turf_reservation/roomReservation = SSmapping.request_turf_block_reservation(our_condo.width, our_condo.height, 1)
+	var/datum/turf_reservation/condo/roomReservation = SSmapping.request_turf_block_reservation(our_condo.width, our_condo.height, 1)
 	var/turf/bottom_left = roomReservation.bottom_left_turfs[1]
 
 	our_condo.load(bottom_left)
-	activeRooms["[roomNumber]"] = list(our_condo, roomReservation)
+	var/datum/turf_reservation/condo/our_reservation = new
+	our_reservation.condo_template = our_condo
+	activeRooms["[roomNumber]"] = our_reservation
 	linkTurfs(roomReservation, roomNumber, parent_object)
 	do_sparks(3, FALSE, get_turf(user))
 	user.forceMove(locate(
@@ -51,7 +52,7 @@ SUBSYSTEM_DEF(condos)
 		bottom_left.z,
 	))
 
-/datum/controller/subsystem/condos/proc/linkTurfs(datum/turf_reservation/currentReservation, currentRoomnumber, parent_object)
+/datum/controller/subsystem/condos/proc/linkTurfs(datum/turf_reservation/condo/currentReservation, currentRoomnumber, parent_object)
 	var/turf/room_bottom_left = currentReservation.bottom_left_turfs[1]
 	var/area/misc/condo/currentArea = get_area(room_bottom_left)
 	currentArea.name = "Condo [currentRoomnumber]"
