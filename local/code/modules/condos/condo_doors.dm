@@ -13,3 +13,9 @@
 /turf/closed/indestructible/hoteldoor/fakedoor/Initialize(mapload)
 	. = ..()
 	underlays += mutable_appearance(initial(floor_to_copy.icon), initial(floor_to_copy.icon_state), initial(floor_to_copy.layer), offset_spokesman = src, plane = FLOOR_PLANE)
+
+/turf/closed/indestructible/hoteldoor/fakedoor/public
+	icon = /obj/machinery/door/airlock/public::icon
+	icon_state = "closed"
+	opacity = FALSE
+	floor_to_copy = /turf/open/floor/iron

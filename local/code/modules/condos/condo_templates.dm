@@ -66,3 +66,9 @@
 	mappath = "_maps/effigy/templates/condos/necropolis.dmm"
 	landing_zone_x_offset = 2
 	landing_zone_y_offset = 11
+
+/datum/map_template/condo/station_arrivals
+	name = "Condo - Arrivals Checkpoint"
+	mappath = "_maps/effigy/templates/condos/station_arrivals.dmm"
+	landing_zone_x_offset = 2
+	landing_zone_y_offset = 2
