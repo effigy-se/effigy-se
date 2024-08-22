@@ -87,7 +87,6 @@ SUBSYSTEM_DEF(condos)
 		to_chat(user, span_warning("Failed to reserve a room for you! Contact the technical concierge."))
 		return
 	our_condo.load(bottom_left)
-	//var/datum/turf_reservation/condo/our_reservation = new
 	condo_reservation.condo_template = our_condo
 	active_condos["[condo_number]"] = condo_reservation
 	link_condo_turfs(condo_reservation, condo_number, parent_object)
