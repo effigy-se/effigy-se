@@ -58,3 +58,9 @@
 	mappath = "_maps/effigy/templates/condos/lodge_pool.dmm"
 	landingZoneRelativeX = 10
 	landingZoneRelativeY = 1
+
+/datum/map_template/condo/necropolis
+	name = "CONDO - Necropolis"
+	mappath = "_maps/effigy/templates/condos/necropolis.dmm"
+	landingZoneRelativeX = 2
+	landingZoneRelativeY = 11
