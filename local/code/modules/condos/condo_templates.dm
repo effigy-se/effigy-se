@@ -72,3 +72,9 @@
 	mappath = "_maps/effigy/templates/condos/station_arrivals.dmm"
 	landing_zone_x_offset = 2
 	landing_zone_y_offset = 2
+
+/datum/map_template/condo/xeno_resin
+	name = "Condo - XenoResin"
+	mappath = "_maps/effigy/templates/condos/xeno_resin.dmm"
+	landing_zone_x_offset = 2
+	landing_zone_y_offset = 1
