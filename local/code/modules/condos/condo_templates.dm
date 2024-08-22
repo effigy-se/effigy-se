@@ -19,3 +19,9 @@
 	mappath = "_maps/effigy/templates/condos/gm_condo.dmm"
 	landingZoneRelativeX = 4
 	landingZoneRelativeY = 2
+
+/datum/map_template/condo/holestation_bridge
+	name = "CONDO - Holestation Bridge"
+	mappath = "_maps/effigy/templates/condos/holestation_bridge.dmm"
+	landingZoneRelativeX = 2
+	landingZoneRelativeY = 4
