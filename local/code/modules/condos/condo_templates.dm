@@ -21,14 +21,22 @@
 	landingZoneRelativeY = 2
 
 /datum/map_template/condo/holestation_bridge
-	name = "CONDO - Holestation Bridge"
+	name = "CONDO - Holestation's Bridge"
 	mappath = "_maps/effigy/templates/condos/holestation_bridge.dmm"
 	landingZoneRelativeX = 2
 	landingZoneRelativeY = 4
 
-// The joke was originally that it was just flatgrass. Now it's a little more.
+/// The joke was originally that it was just flatgrass. Now it's a little more.
 /datum/map_template/condo/planar_soil
 	name = "CONDO - Planar Soil"
 	mappath = "_maps/effigy/templates/condos/planar_soil.dmm"
 	landingZoneRelativeX = 2
 	landingZoneRelativeY = 4
+
+/// This reminds me a bit of the old playerhome mods for a particular wasteland-based title in the early 2000s in how goofily off the theme is.
+/// Just think of it like an IC exorbatantly themed love hotel or something; idk.
+/datum/map_template/condo/dsthree_condo
+	name = "CONDO - Authentic DS-3 Theming"
+	mappath = "_maps/effigy/templates/condos/planar_soil.dmm"
+	landingZoneRelativeX = 7
+	landingZoneRelativeY = 2
