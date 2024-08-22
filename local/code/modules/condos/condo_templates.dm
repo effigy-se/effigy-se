@@ -13,3 +13,9 @@
 	mappath = "_maps/effigy/templates/condos/beach_condo.dmm"
 	landingZoneRelativeX = 7
 	landingZoneRelativeY = 2
+
+/datum/map_template/condo/gm_condo
+	name = "CONDO - Suite"
+	mappath = "_maps/effigy/templates/condos/gm_condo.dmm"
+	landingZoneRelativeX = 4
+	landingZoneRelativeY = 2
