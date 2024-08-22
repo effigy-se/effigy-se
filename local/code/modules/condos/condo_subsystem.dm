@@ -42,8 +42,8 @@ SUBSYSTEM_DEF(condos)
 			return FALSE
 
 		if(user.forceMove(locate(
-			condo_bottom_left.x + target_active_condo.condo_template.landingZoneRelativeX,
-			condo_bottom_left.y + target_active_condo.condo_template.landingZoneRelativeY,
+			condo_bottom_left.x + target_active_condo.condo_template.landing_zone_x_offset,
+			condo_bottom_left.y + target_active_condo.condo_template.landing_zone_y_offset,
 			condo_bottom_left.z,
 		)))
 			return TRUE
