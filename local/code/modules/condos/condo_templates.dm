@@ -25,3 +25,10 @@
 	mappath = "_maps/effigy/templates/condos/holestation_bridge.dmm"
 	landingZoneRelativeX = 2
 	landingZoneRelativeY = 4
+
+// The joke was originally that it was just flatgrass. Now it's a little more.
+/datum/map_template/condo/planar_soil
+	name = "CONDO - Planar Soil"
+	mappath = "_maps/effigy/templates/condos/planar_soil.dmm"
+	landingZoneRelativeX = 2
+	landingZoneRelativeY = 4
