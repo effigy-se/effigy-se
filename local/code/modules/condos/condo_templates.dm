@@ -40,3 +40,9 @@
 	mappath = "_maps/effigy/templates/condos/planar_soil.dmm"
 	landingZoneRelativeX = 7
 	landingZoneRelativeY = 2
+
+/datum/map_template/condo/ocean_view
+	name = "CONDO - Ocean View"
+	mappath = "_maps/effigy/templates/condos/ocean_view.dmm"
+	landingZoneRelativeX = 7
+	landingZoneRelativeY = 1
