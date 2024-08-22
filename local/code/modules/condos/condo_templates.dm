@@ -46,3 +46,9 @@
 	mappath = "_maps/effigy/templates/condos/ocean_view.dmm"
 	landingZoneRelativeX = 7
 	landingZoneRelativeY = 1
+
+/datum/map_template/condo/northstar_dorm
+	name = "CONDO - \"Northstar Style\" Dormitory"
+	mappath = "_maps/effigy/templates/condos/northstar_dorms_four.dmm"
+	landingZoneRelativeX = 3
+	landingZoneRelativeY = 1
