@@ -31,7 +31,7 @@
 	log_game("[gone] has left condo [condo_number]")
 	var/list/all_atoms = get_all_contents()
 	for(var/atom/movable/potential_blacklisted_atom in all_atoms)
-		if(is_type_in_list(potential_blacklisted_atom, SScondos.item_blacklist))
+		if(is_type_in_list(potential_blacklisted_atom, SScondos.item_blacklist) || HAS_TRAIT(potential_blacklisted_atom, TRAIT_CONTRABAND))
 			potential_blacklisted_atom.forceMove(get_turf(parent_object))
 	if(isnull(reservation))
 		return

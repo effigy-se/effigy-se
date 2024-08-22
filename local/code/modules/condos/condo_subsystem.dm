@@ -5,15 +5,42 @@ SUBSYSTEM_DEF(condos)
 	var/list/condo_templates = list()
 	/// List of active reservations we have.
 	var/list/active_condos = list()
-	// Items we delibrately prevent being deleted. Malleable.
+	// Items we delibrately prevent being deleted. Malleable. Try to keep this to only items that cannot be re-obtained without admin interference; with some exceptions.
 	var/list/item_blacklist = list(
 		/obj/item/blackbox, \
+		/obj/item/gun/energy/laser/captain, \
+		/obj/item/gun/energy/e_gun/hos, \
+		/obj/item/hand_tele, \
+		/obj/item/tank/jetpack/oxygen/captain, \
+		/obj/item/clothing/shoes/magboots/advance, \
+		/obj/item/blueprints, \
+		/obj/item/clothing/accessory/medal/gold/captain, \
+		/obj/item/reagent_containers/hypospray/cmo, \
+		/obj/item/fireaxe, \
+		/obj/item/crowbar/mechremoval, \
+		/obj/item/storage/belt/utility/chief, \
+		/obj/item/mod/control/pre_equipped/magnate, \
+		/obj/item/gun/ballistic/shotgun/automatic/combat/compact, \
+		/obj/item/clothing/suit/hooded/ablative, \
+		/obj/item/nuke_core, \
+		/obj/item/nuke_core_container, \
+		/obj/item/computer_disk/hdd_theft, \
+		/obj/item/nuke_core_container/supermatter, \
+		/obj/item/aicard, \
+		/obj/item/gun/energy/temperature/security, \
+		/obj/item/mod/control/pre_equipped/advanced, \
+		/obj/item/mod/control/pre_equipped/research, \
+		/obj/item/mod/control/pre_equipped/rescue, \
+		/obj/item/mod/control/pre_equipped/safeguard, \
+		/obj/item/storage/belt/sabre, \
 	)
 
 /datum/controller/subsystem/condos/Initialize()
 	preload_condo_templates()
 	item_blacklist += typesof(/obj/item/card)
 	item_blacklist += typesof(/obj/item/modular_computer)
+	item_blacklist += typesof(/obj/item/nullrod)
+	item_blacklist += typesof(/obj/item/stamp/head)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/condos/proc/preload_condo_templates()
