@@ -1,10 +1,11 @@
 // Subtype that mimics more traditional airlocks.
-/turf/closed/indestructible/hoteldoor/fakedoor // Keep in mind this still inherits the glow animation from parent. I initially disliked it but.. ehhh not worth fighting
+/turf/closed/indestructible/hoteldoor/fakedoor
 	name = "Condo Door"
 	icon = 'icons/obj/doors/airlocks/tall/centcom.dmi'
 	icon_state = "fake_door"
 	smoothing_flags = NONE
 	leave_message = "Are you ready to leave the Condo? If all occupants vacate; it'll be reset and anything you leave behind'll be lost!"
+	true_wall_turf = FALSE
 	/// What kind of turf should be visually represented under this door?
 	var/turf/floor_to_copy = /turf/open/floor/plating
 
