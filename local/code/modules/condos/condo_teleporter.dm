@@ -12,11 +12,6 @@
 	. += span_notice("You can use this to retire to a private room.")
 	. += span_warning("Beware: once all occupants exit a room; it resets.")
 
-// Shouldn't happen naturally; but just in case.
-/obj/machinery/interlink_condo_teleporter/Destroy()
-	// ejectRooms()
-	return ..()
-
 /obj/machinery/interlink_condo_teleporter/attack_robot(mob/user)
 	if(user.Adjacent(src))
 		prompt_and_check_in(user, user)
