@@ -37,7 +37,7 @@
 /// Just think of it like an IC exorbatantly themed love hotel or something; idk.
 /datum/map_template/condo/dsthree_condo
 	name = "CONDO - Authentic DS-3 Theming"
-	mappath = "_maps/effigy/templates/condos/planar_soil.dmm"
+	mappath = "_maps/effigy/templates/condos/dsthree_condo.dmm"
 	landingZoneRelativeX = 7
 	landingZoneRelativeY = 2
 
