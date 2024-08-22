@@ -92,8 +92,8 @@ SUBSYSTEM_DEF(condos)
 	link_condo_turfs(condo_reservation, condo_number, parent_object)
 	do_sparks(3, FALSE, get_turf(user)) // EffigyEdit TODO: Replace with sparks that don't set things on fire, lol I don't remember it off hand
 	user.forceMove(locate(
-		bottom_left.x + our_condo.landingZoneRelativeX,
-		bottom_left.y + our_condo.landingZoneRelativeY,
+		bottom_left.x + our_condo.landing_zone_x_offset,
+		bottom_left.y + our_condo.landing_zone_y_offset,
 		bottom_left.z,
 	))
 
