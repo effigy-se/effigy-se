@@ -1,3 +1,5 @@
+/// HEY!!! LISTEN!!!
+/// Due to some fuckery with how these templates work; the bottom left turf of your map HAS to touch the rest AND has to be on the same /area/.
 /datum/map_template/condo
 	var/landingZoneRelativeX
 	var/landingZoneRelativeY
@@ -50,8 +52,8 @@
 /datum/map_template/condo/northstar_dorm
 	name = "CONDO - \"Northstar Style\" Dormitory"
 	mappath = "_maps/effigy/templates/condos/northstar_dorms_four.dmm"
-	landingZoneRelativeX = 3
-	landingZoneRelativeY = 1
+	landingZoneRelativeX = 2
+	landingZoneRelativeY = 2
 
 /datum/map_template/condo/lodge_pool
 	name = "CONDO - Lodge's Pool"
