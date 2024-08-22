@@ -30,8 +30,8 @@
 /datum/map_template/condo/planar_soil
 	name = "CONDO - Planar Soil"
 	mappath = "_maps/effigy/templates/condos/planar_soil.dmm"
-	landingZoneRelativeX = 2
-	landingZoneRelativeY = 4
+	landingZoneRelativeX = 7
+	landingZoneRelativeY = 1
 
 /// This reminds me a bit of the old playerhome mods for a particular wasteland-based title in the early 2000s in how goofily off the theme is.
 /// Just think of it like an IC exorbatantly themed love hotel or something; idk.
