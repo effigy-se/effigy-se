@@ -78,3 +78,9 @@
 	mappath = "_maps/effigy/templates/condos/xeno_resin.dmm"
 	landing_zone_x_offset = 2
 	landing_zone_y_offset = 1
+
+/datum/map_template/condo/sigma_lux_dorm
+	name = "Condo - \"Sigma Octantis Style\" Dormitory"
+	mappath = "_maps/effigy/templates/condos/sigma_lux_dorm.dmm"
+	landing_zone_x_offset = 7
+	landing_zone_y_offset = 2
