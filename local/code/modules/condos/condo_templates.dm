@@ -84,3 +84,9 @@
 	mappath = "_maps/effigy/templates/condos/sigma_lux_dorm.dmm"
 	landing_zone_x_offset = 7
 	landing_zone_y_offset = 2
+
+/datum/map_template/condo/alleyway
+	name = "Condo - Alleyway"
+	mappath = "_maps/effigy/templates/condos/alleyway.dmm"
+	landing_zone_x_offset = 2
+	landing_zone_y_offset = 5
