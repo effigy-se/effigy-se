@@ -90,3 +90,9 @@
 	mappath = "_maps/effigy/templates/condos/alleyway.dmm"
 	landing_zone_x_offset = 2
 	landing_zone_y_offset = 5
+
+/datum/map_template/condo/medieval_bog
+	name = "Condo - Medieval Bog"
+	mappath = "_maps/effigy/templates/condos/medieval_bog.dmm"
+	landing_zone_x_offset = 1
+	landing_zone_y_offset = 3

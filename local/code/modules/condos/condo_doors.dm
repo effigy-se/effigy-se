@@ -19,3 +19,9 @@
 	icon_state = "closed"
 	opacity = FALSE
 	floor_to_copy = /turf/open/floor/iron
+
+/turf/closed/indestructible/hoteldoor/fakedoor/travel_tile
+	name = "Travel Tile"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "target_tile"
+	floor_to_copy = /turf/open/misc/dirt/jungle
