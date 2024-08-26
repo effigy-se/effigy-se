@@ -15,9 +15,10 @@
 	if(ismob(gone))
 		var/condo_still_rockin = FALSE
 		var/list/living_mobs = get_all_contents_type(/mob/living) //Got to catch anyone hiding in anything
-		for(var/mob/living/living_mob in living_mobs) //Check to see if theres any living mobs, period; left.
-			condo_still_rockin = TRUE
-			break
+		for(var/mob/living/living_mob in living_mobs) //Check to see if theres any living mobs with a mind left.
+			if(living_mob.mind)
+				condo_still_rockin = TRUE
+				break
 
 		if(condo_still_rockin)
 			dont_come_knockin()
@@ -38,4 +39,5 @@
 	for(var/turf/turf_to_empty as anything in reservation.reserved_turfs) //remove this once clearing turf reservations is actually reliable
 		turf_to_empty.empty()
 	SScondos.active_condos -= "[condo_number]"
-	qdel(reservation)
+	parent_object = null
+	QDEL_NULL(reservation)
