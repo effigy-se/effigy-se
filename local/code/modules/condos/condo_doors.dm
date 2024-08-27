@@ -4,6 +4,8 @@
 	icon = 'icons/obj/doors/airlocks/tall/centcom.dmi'
 	icon_state = "fake_door"
 	smoothing_flags = NONE
+	canSmoothWith = null
+	smoothing_groups = null
 	leave_message = "Are you ready to leave the Condo? If all occupants vacate; it'll be reset and anything you leave behind'll be lost!"
 	true_wall_turf = FALSE
 	use_splitvis = FALSE
