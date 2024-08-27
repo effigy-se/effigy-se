@@ -12,8 +12,17 @@
 //My least favorite file. Just... try to keep it sorted. And nothing over the top (The victorian dresses were way too much)
 
 /*
-*	UNSORTED
+*	UNSORTED // lmfao
 */
+
+/obj/item/clothing/under/maid_costume
+	name = "maid costume"
+	desc = "Maid in China."
+	icon_state = "maid_costume"
+	greyscale_config = /datum/greyscale_config/maid_costume
+	greyscale_config_worn = /datum/greyscale_config/maid_costume/worn
+	greyscale_colors = "#7b9ab5#edf9ff"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/costume/buttondown/slacks
 	greyscale_config_worn_digi = /datum/greyscale_config/buttondown_slacks/worn/digi
