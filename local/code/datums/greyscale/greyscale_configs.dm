@@ -859,6 +859,44 @@
 	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
+//GRAYSCALE MAID COSTUME
+
+/datum/greyscale_config/maid_neck_cover
+	name = "Maid Neck Cover"
+	icon_file = 'local/icons/obj/clothing/greyscale_clothing/maid_costume.dmi'
+	json_config = 'local/code/datums/greyscale/json_configs/costumes/maid_neck_cover.json'
+
+/datum/greyscale_config/maid_neck_cover/worn
+	name = "Maid Neck Cover (Worn)"
+	icon_file = 'local/icons/mob/clothing/greyscale_clothing/maid_costume_worn.dmi'
+
+/datum/greyscale_config/maid_arm_covers
+	name = "Maid Arm Covers"
+	icon_file = 'local/icons/obj/clothing/greyscale_clothing/maid_costume.dmi'
+	json_config = 'local/code/datums/greyscale/json_configs/costumes/maid_arm_covers.json'
+
+/datum/greyscale_config/maid_arm_covers/worn
+	name = "Maid Arm Covers (Worn)"
+	icon_file = 'local/icons/mob/clothing/greyscale_clothing/maid_costume_worn.dmi'
+
+/datum/greyscale_config/maid_costume
+	name = "Maid Costume"
+	icon_file = 'local/icons/obj/clothing/greyscale_clothing/maid_costume.dmi'
+	json_config = 'local/code/datums/greyscale/json_configs/costumes/maid_costume.json'
+
+/datum/greyscale_config/maid_costume/worn
+	name = "Maid Costume (Worn)"
+	icon_file = 'local/icons/mob/clothing/greyscale_clothing/maid_costume_worn.dmi'
+
+/datum/greyscale_config/maid_headband
+	name = "Maid Headband"
+	icon_file = 'local/icons/obj/clothing/greyscale_clothing/maid_costume.dmi'
+	json_config = 'local/code/datums/greyscale/json_configs/costumes/maid_headband.json'
+
+/datum/greyscale_config/maid_headband/worn
+	name = "Maid Headband (Worn)"
+	icon_file = 'local/icons/mob/clothing/greyscale_clothing/maid_costume_worn.dmi'
+
 /*
 TREK
 */

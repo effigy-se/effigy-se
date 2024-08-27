@@ -434,6 +434,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
 
+/datum/loadout_item/under/miscellaneous/maid_costume
+	name = "Colourable Maid Uniform"
+	item_path = /obj/item/clothing/under/maid_costume
+
 /datum/loadout_item/under/miscellaneous/yukata
 	name = "Recolorable Yukata"
 	item_path = /obj/item/clothing/under/costume/skyrat/yukata

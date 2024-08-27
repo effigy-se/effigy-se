@@ -237,6 +237,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Pink Tiger Pelt"
 	item_path = /obj/item/clothing/head/pelt/pink_tiger
 
+/datum/loadout_item/head/maid_headband
+	name = "Colourable Maid Headband"
+	item_path = /obj/item/clothing/head/maid_headband
+
 /*
 *	CHRISTMAS
 */
