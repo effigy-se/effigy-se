@@ -54,6 +54,12 @@
 	landing_zone_x_offset = 10
 	landing_zone_y_offset = 1
 
+/datum/map_template/condo/manor_hall
+	name = "Condo - Manor Hall"
+	mappath = "_maps/effigy/templates/condos/manor_hall.dmm"
+	landing_zone_x_offset = 1
+	landing_zone_y_offset = 3
+
 /datum/map_template/condo/medieval_bog
 	name = "Condo - Medieval Bog"
 	mappath = "_maps/effigy/templates/condos/medieval_bog.dmm"
