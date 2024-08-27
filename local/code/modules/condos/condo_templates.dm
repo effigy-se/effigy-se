@@ -96,3 +96,9 @@
 	mappath = "_maps/effigy/templates/condos/medieval_bog.dmm"
 	landing_zone_x_offset = 1
 	landing_zone_y_offset = 3
+
+/datum/map_template/condo/foxhole_chapel
+	name = "Condo - FoxHoleStation Chapel"
+	mappath = "_maps/effigy/templates/condos/foxhole_chapel.dmm"
+	landing_zone_x_offset = 10
+	landing_zone_y_offset = 2
