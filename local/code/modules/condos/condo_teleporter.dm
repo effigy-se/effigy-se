@@ -35,11 +35,7 @@
 	if((requested_condo < 1) || (requested_condo != round(requested_condo)))
 		to_chat(target, span_warning("That is not a valid room number!"))
 		return
-	if(!src.Adjacent(target))
-		to_chat(target, span_warning("You too far away from \the [src] to enter it!"))
-		return
-	if(target.incapacitated())
-		to_chat(target, span_warning("You aren't able to activate \the [src] anymore!"))
+	if(!check_target_eligibility(target))
 		return
 
 	if(SScondos.active_condos["[requested_condo]"])
@@ -48,7 +44,16 @@
 	else
 		var/datum/map_template/chosen_condo
 		var/map = tgui_input_list(user, "What Condo are you checking into?","Condo Archetypes", sort_list(SScondos.condo_templates))
-		if(!map)
+		if(!map || !check_target_eligibility(target))
 			return
 		chosen_condo = SScondos.condo_templates[map]
 		SScondos.create_and_enter_condo(requested_condo, chosen_condo, user, src)
+
+/obj/machinery/interlink_condo_teleporter/proc/check_target_eligibility(mob/to_be_checked)
+	if(!src.Adjacent(to_be_checked))
+		to_chat(to_be_checked, span_warning("You too far away from \the [src] to enter it!"))
+		return FALSE
+	if(to_be_checked.incapacitated())
+		to_chat(to_be_checked, span_warning("You aren't able to activate \the [src] anymore!"))
+		return FALSE
+	return TRUE
