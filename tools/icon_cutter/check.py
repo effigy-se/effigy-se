@@ -76,10 +76,8 @@ output_hash = {}
 files = []
 if platform.system() == "Windows":
     files = glob.glob(f"{path_to_us}\..\\..\\icons\\**\*.toml", recursive = True)
-    files.append(glob.glob(f"{path_to_us}\..\\..\\local\\**\*.toml", recursive = True)) # EFFIGY EDIT ADD
 else:
     files = glob.glob(f"{path_to_us}/../../icons/**/*.toml", recursive = True)
-    files.append(glob.glob(f"{path_to_us}/../../local/**/*.toml", recursive = True)) # EFFIGY EDIT ADD
 for cutter_template in files:
     resource_name = re.sub(chop_extension, r"\1", cutter_template, count = 1)
     if not os.path.isfile(resource_name):
