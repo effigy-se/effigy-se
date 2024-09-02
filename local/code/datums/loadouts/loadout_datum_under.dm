@@ -33,12 +33,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit
 
-/datum/loadout_item/under/jumpsuit/greyscale
-	name = "Greyscale Jumpsuit"
+/datum/loadout_item/under/jumpsuit/recolorable
+	name = "Recolorable Jumpsuit"
 	item_path = /obj/item/clothing/under/color
 
-/datum/loadout_item/under/jumpsuit/greyscale_skirt
-	name = "Greyscale Jumpskirt"
+/datum/loadout_item/under/jumpsuit/recolorable_skirt
+	name = "Recolorable Jumpskirt"
 	item_path = /obj/item/clothing/under/color/jumpskirt
 
 /datum/loadout_item/under/jumpsuit/random
@@ -58,77 +58,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/rainbow_skirt
 	name = "Rainbow Jumpskirt"
 	item_path = /obj/item/clothing/under/color/jumpskirt/rainbow
-
-/datum/loadout_item/under/jumpsuit/impcap
-	name = "Captain's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial
-	restricted_roles = list(JOB_CAPTAIN)
-
-/datum/loadout_item/under/jumpsuit/imphop
-	name = "Head of Personnel's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/imperial
-	restricted_roles = list(JOB_HEAD_OF_PERSONNEL)
-
-/datum/loadout_item/under/jumpsuit/imphos
-	name = "Head of Security's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/security/head_of_security/skyrat/imperial
-	restricted_roles = list(JOB_HEAD_OF_SECURITY)
-
-/datum/loadout_item/under/jumpsuit/impcmo
-	name = "Chief Medical Officer's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/medical/chief_medical_officer/skyrat/imperial
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER)
-
-/datum/loadout_item/under/jumpsuit/impce
-	name = "Chief Engineer's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/engineering/chief_engineer/skyrat/imperial
-	restricted_roles = list(JOB_CHIEF_ENGINEER)
-
-/datum/loadout_item/under/jumpsuit/imprd
-	name = "Research Director's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/rnd/research_director/skyrat/imperial
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR)
-
-/datum/loadout_item/under/jumpsuit/impcommand
-	name = "Light Grey Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
-
-/datum/loadout_item/under/jumpsuit/impcom
-	name = "Grey Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/grey
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
-
-/datum/loadout_item/under/jumpsuit/impred
-	name = "Red Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/red
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)	//NT Reps would never wear red, it's unbefitting
-
-
-/datum/loadout_item/under/jumpsuit/impcomtrous
-	name = "Grey Officer's Naval Jumpsuit (Trousers)"
-	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
-
-/datum/loadout_item/under/jumpsuit/security_trousers
-	name = "Security Trousers"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
-
-/datum/loadout_item/under/jumpsuit/solofficer
-	name = "Sol Officer Uniform"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
-
-/datum/loadout_item/under/jumpsuit/disco
-	name = "Superstar Cop Uniform"
-	item_path = /obj/item/clothing/under/rank/security/detective/disco
-	restricted_roles = list(JOB_DETECTIVE)
-
-/datum/loadout_item/under/jumpsuit/kim
-	name = "Aerostatic Suit"
-	item_path = /obj/item/clothing/under/rank/security/detective/kim
-	restricted_roles = list(JOB_DETECTIVE)
 
 /datum/loadout_item/under/jumpsuit/paramed_light
 	name = "Light Paramedic Uniform"
@@ -187,6 +116,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Utility Uniform"
 	item_path = /obj/item/clothing/under/misc/skyrat/utility
 
+/datum/loadout_item/under/jumpsuit/utility_com
+	name = "Command Utility Uniform"
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/utility
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
+
 /datum/loadout_item/under/jumpsuit/utility_eng
 	name = "Engineering Utility Uniform"
 	item_path = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
@@ -196,6 +130,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Medical Utility Uniform"
 	item_path = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_PARAMEDIC, JOB_CHEMIST, JOB_GENETICIST, JOB_CHIEF_MEDICAL_OFFICER, JOB_PSYCHOLOGIST)
+
+/datum/loadout_item/under/jumpsuit/utility_sec
+	name = "Security Utility Uniform"
+	item_path = /obj/item/clothing/under/rank/security/skyrat/utility
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, , JOB_HEAD_OF_SECURITY) //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
 
 /datum/loadout_item/under/jumpsuit/utility_sci
 	name = "Science Utility Uniform"
@@ -207,15 +146,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER)
 
-/datum/loadout_item/under/jumpsuit/utility_sec
-	name = "Security Utility Uniform"
-	item_path = /obj/item/clothing/under/rank/security/skyrat/utility
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, , JOB_HEAD_OF_SECURITY) //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
 
-/datum/loadout_item/under/jumpsuit/utility_com
-	name = "Command Utility Uniform"
-	item_path = /obj/item/clothing/under/rank/captain/skyrat/utility
-	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /*
 *	MISC UNDERSUITS
@@ -398,14 +329,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Vice Officer Jumpsuit"
 	item_path = /obj/item/clothing/under/misc/vice_officer
 
-/datum/loadout_item/under/miscellaneous/soviet
-	name = "Soviet Uniform"
-	item_path = /obj/item/clothing/under/costume/soviet
-
-/datum/loadout_item/under/miscellaneous/redcoat
-	name = "Redcoat"
-	item_path = /obj/item/clothing/under/costume/redcoat
-
 /datum/loadout_item/under/miscellaneous/pj_red
 	name = "Red PJs"
 	item_path = /obj/item/clothing/under/misc/pj/red
@@ -429,14 +352,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/tactical_hawaiian_green
 	name = "Tactical Hawaiian Outfit - Green"
 	item_path = /obj/item/clothing/under/tachawaiian/green
-
-/datum/loadout_item/under/miscellaneous/maidcostume
-	name = "Maid Costume"
-	item_path = /obj/item/clothing/under/costume/maid
-
-/datum/loadout_item/under/miscellaneous/maid_costume
-	name = "Colourable Maid Uniform"
-	item_path = /obj/item/clothing/under/maid_costume
 
 /datum/loadout_item/under/miscellaneous/yukata
 	name = "Recolorable Yukata"
@@ -469,14 +384,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/cybersleek_long
 	name = "Long Modern Coat"
 	item_path = /obj/item/clothing/under/costume/cybersleek/long
-
-/datum/loadout_item/under/miscellaneous/dutch
-	name = "Dutch Suit"
-	item_path = /obj/item/clothing/under/costume/dutch
-
-/datum/loadout_item/under/miscellaneous/cavalry
-	name = "Cavalry Uniform"
-	item_path = /obj/item/clothing/under/costume/skyrat/cavalry
 
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
 	name = "Tacticool Turtleneck"
@@ -592,6 +499,27 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/gorka
 	restricted_roles = list(JOB_QUARTERMASTER)
 
+/datum/loadout_item/under/miscellaneous/security_trousers
+	name = "Security Trousers"
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/under/miscellaneous/solofficer
+	name = "Sol Officer Uniform"
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY)
+
+//DISCO ELYSIUM
+/datum/loadout_item/under/miscellaneous/disco
+	name = "Superstar Cop Uniform"
+	item_path = /obj/item/clothing/under/rank/security/detective/disco
+	restricted_roles = list(JOB_DETECTIVE)
+
+/datum/loadout_item/under/miscellaneous/kim
+	name = "Aerostatic Suit"
+	item_path = /obj/item/clothing/under/rank/security/detective/kim
+	restricted_roles = list(JOB_DETECTIVE)
+
 /datum/loadout_item/under/miscellaneous/eve
 	name = "Collection of Leaves"
 	item_path = /obj/item/clothing/under/misc/skyrat/gear_harness/eve
@@ -606,8 +534,8 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 
 /*
-*	FORMAL UNDERSUITS
-*/
+ *	FORMAL UNDERSUITS
+ */
 
 /datum/loadout_item/under/formal
 
@@ -691,8 +619,16 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Navy Suit"
 	item_path = /obj/item/clothing/under/suit/navy
 
-/datum/loadout_item/under/formal/maid_uniform
+/datum/loadout_item/under/formal/maidcostume
 	name = "Maid Uniform"
+	item_path = /obj/item/clothing/under/costume/maid
+
+/datum/loadout_item/under/formal/maid_costume
+	name = "Recolorable Maid Uniform"
+	item_path = /obj/item/clothing/under/maid_costume
+
+/datum/loadout_item/under/formal/maid_uniform
+	name = "Traditional Maid Uniform"
 	item_path = /obj/item/clothing/under/rank/civilian/janitor/maid
 
 /datum/loadout_item/under/formal/purple_suit
@@ -722,6 +658,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/red_lawyer_skirt
 	name = "Red Lawyer Suitskirt"
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/red/skirt
+
+/datum/loadout_item/under/formal/dutch
+	name = "Dutch Suit"
+	item_path = /obj/item/clothing/under/costume/dutch
 
 /datum/loadout_item/under/formal/sailor
 	name = "Sailor Suit"
@@ -763,6 +703,24 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Formal Suitskirt"
 	item_path = /obj/item/clothing/under/suit/skyrat/recolorable/skirt
 
+/datum/loadout_item/under/formal/cavalry
+	name = "Historic U.S. Cavalry Officer's Uniform"
+	item_path = /obj/item/clothing/under/costume/skyrat/cavalry
+
+/datum/loadout_item/under/formal/soviet
+	name = "Historic Soviet Uniform"
+	item_path = /obj/item/clothing/under/costume/soviet
+
+/datum/loadout_item/under/formal/redcoat
+	name = "Napoleonic Era British Redcoat Uniform"
+	item_path = /obj/item/clothing/under/costume/redcoat
+
+//STAR TREK The Next Generation (Q's Napoleon Outfit)
+/datum/loadout_item/under/formal/the_q
+	name = "Napoleonic Era French Marshall's Uniform"
+	item_path = /obj/item/clothing/under/trek/q
+
+//STAR TREK The Original Series
 /datum/loadout_item/under/formal/trek_command
 	name = "Trekkie Command Uniform"
 	item_path = /obj/item/clothing/under/trek/command
@@ -775,6 +733,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Trekkie Medsci Uniform"
 	item_path = /obj/item/clothing/under/trek/medsci
 
+//STAR TREK The Next Generation
 /datum/loadout_item/under/formal/trek_next_command
 	name = "Trekkie TNG Command Uniform"
 	item_path = /obj/item/clothing/under/trek/command/next
@@ -787,6 +746,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Trekkie TNG Medsci Uniform"
 	item_path = /obj/item/clothing/under/trek/medsci/next
 
+//STAR TREK Enterprise
 /datum/loadout_item/under/formal/trek_ent_command
 	name = "Trekkie ENT Command Uniform"
 	item_path = /obj/item/clothing/under/trek/command/ent
@@ -799,9 +759,62 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Trekkie ENT Medsci Uniform"
 	item_path = /obj/item/clothing/under/trek/medsci/ent
 
-/datum/loadout_item/under/formal/the_q
-	name = "French Marshall's Uniform"
-	item_path = /obj/item/clothing/under/trek/q
+
+///////
+
+//STAR WARS Galactic Empire
+/datum/loadout_item/under/jumpsuit/impcap
+	name = "Captain's Naval Uniform"
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial
+	restricted_roles = list(JOB_CAPTAIN)
+
+/datum/loadout_item/under/jumpsuit/imphop
+	name = "Head of Personnel's Naval Uniform"
+	item_path = /obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/imperial
+	restricted_roles = list(JOB_HEAD_OF_PERSONNEL)
+
+/datum/loadout_item/under/jumpsuit/imphos
+	name = "Head of Security's Naval Uniform"
+	item_path = /obj/item/clothing/under/rank/security/head_of_security/skyrat/imperial
+	restricted_roles = list(JOB_HEAD_OF_SECURITY)
+
+/datum/loadout_item/under/jumpsuit/impcmo
+	name = "Chief Medical Officer's Naval Uniform"
+	item_path = /obj/item/clothing/under/rank/medical/chief_medical_officer/skyrat/imperial
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER)
+
+/datum/loadout_item/under/jumpsuit/impce
+	name = "Chief Engineer's Naval Uniform"
+	item_path = /obj/item/clothing/under/rank/engineering/chief_engineer/skyrat/imperial
+	restricted_roles = list(JOB_CHIEF_ENGINEER)
+
+/datum/loadout_item/under/jumpsuit/imprd
+	name = "Research Director's Naval Uniform"
+	item_path = /obj/item/clothing/under/rank/rnd/research_director/skyrat/imperial
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR)
+
+/datum/loadout_item/under/jumpsuit/impcommand
+	name = "Light Grey Officer's Naval Uniform"
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
+
+/datum/loadout_item/under/jumpsuit/impcom
+	name = "Grey Officer's Naval Uniform"
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/grey
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
+
+/datum/loadout_item/under/jumpsuit/impred
+	name = "Red Officer's Naval Uniform"
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/red
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)	//NT Reps would never wear red, it's unbefitting
+
+/datum/loadout_item/under/jumpsuit/impcomtrous
+	name = "Grey Officer's Naval Uniform (Trousers)"
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
+	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
+
+
+///////
 
 //FAMILIES GEAR
 /datum/loadout_item/under/formal/osi
