@@ -517,6 +517,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/costume/nursehat
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST)
 
+//STAR WARS Galactic Empire
 /datum/loadout_item/head/imperial_generic
 	name = "Grey Naval Officer Cap"
 	item_path = /obj/item/clothing/head/hats/imperial
@@ -538,8 +539,8 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /*
-*	JOB BERETS
-*/
+ *	JOB BERETS
+ */
 
 /datum/loadout_item/head/atmos_beret
 	name = "Atmospherics Beret"
@@ -590,8 +591,8 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
 
 /*
-*	FAMILIES
-*/
+ *	FAMILIES
+ */
 
 /datum/loadout_item/head/tmc
 	name = "TMC Hat"
