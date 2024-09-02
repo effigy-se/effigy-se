@@ -66,12 +66,8 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Pack of Nicotine Gum"
 	item_path = /obj/item/storage/box/gum/nicotine
 
-/datum/loadout_item/pocket_items/gum_pack_nicotine
-	name = "Pack of Nicotine Gum"
-	item_path = /obj/item/storage/box/gum/nicotine
-
 /datum/loadout_item/pocket_items/gum_pack_wake_up
-	name = "Pack of Nicotine Gum"
+	name = "Pack of Mothic Activin Gum"
 	item_path = /obj/item/storage/box/gum/wake_up
 
 /*
@@ -155,7 +151,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Flask"
 	item_path = /obj/item/reagent_containers/cup/glass/flask
 
-/datum/loadout_item/pocket_items/flask	// congrats, you can now start with an alcohol
+/datum/loadout_item/pocket_items/hooch	// congrats, you can now start with an alcohol
 	name = "Hooch Bottle"				// bottle to more immersively be the town drunk
 	item_path = /obj/item/reagent_containers/cup/glass/bottle/hooch
 
