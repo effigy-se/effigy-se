@@ -18,11 +18,11 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Carp Plushie"
 	item_path = /obj/item/toy/plush/carpplushie
 
-/datum/loadout_item/toys/lizard
+/datum/loadout_item/toys/lizard/green
 	name = "Lizard Plushie"
 	item_path = /obj/item/toy/plush/lizard_plushie/green
 
-/datum/loadout_item/toys/lizard_greyscale
+/datum/loadout_item/toys/lizard
 	name = "Recolorable Lizard Plushie"
 	item_path = /obj/item/toy/plush/lizard_plushie
 
