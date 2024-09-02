@@ -68,7 +68,7 @@
 	squeak_override = list('local/sound/emotes/voice/caw.ogg' = 1)
 
 /obj/item/toy/plush/effigy/tree_ferret
-	name = "tree ferret plushy"
+	name = "tree ferret plushie"
 	desc = "This plush will always put on a smile to make your day as bright as the sun. Hugging him makes you feel warm and fuzzy. Comes with plush chemical vials to fix your non emotional traumas too!"
 	icon_state = "plushie_sels"
 	attack_verb_continuous = list("hugs", "cackles at", "health analyzes")
@@ -90,7 +90,7 @@
 	squeak_override = list('local/sound/emotes/voice/wurble.ogg' = 1)
 
 /obj/item/toy/plush/effigy/commanding_teshari
-	name = "commanding teshari plushy"
+	name = "commanding teshari plushie"
 	desc = "A very soft plush resembling a certain science-loving, command inclined Teshari. Just holding it makes you feel cared for."
 	icon_state = "plushie_alara"
 	attack_verb_continuous = list("peeps", "wurbles", "hugs")

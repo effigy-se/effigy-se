@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	item_path = /obj/item/toy/plush/effigy/tribal_salamander
 
 /datum/loadout_item/toys/commanding_teshari
-	name = "Commanding Teshari Plushy"
+	name = "Commanding Teshari Plushie"
 	item_path = /obj/item/toy/plush/effigy/commanding_teshari
 
 /datum/loadout_item/toys/breakdancing_bird
