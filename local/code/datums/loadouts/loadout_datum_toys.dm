@@ -120,10 +120,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Edgy Bird Plushie"
 	item_path = /obj/item/toy/plush/effigy/edgy_bird
 
-/datum/loadout_item/toys/tree_ferret
-	name = "Tree Ferret Plushie"
-	item_path = /obj/item/toy/plush/effigy/tree_ferret
-
 /datum/loadout_item/toys/mechanic_fox
 	name = "Mechanist Fox Plushie"
 	item_path = /obj/item/toy/plush/effigy/mechanic_fox
@@ -132,21 +128,21 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Tribal Salamander Plushie"
 	item_path = /obj/item/toy/plush/effigy/tribal_salamander
 
-/datum/loadout_item/toys/commanding_teshari
-	name = "Commanding Teshari Plushie"
-	item_path = /obj/item/toy/plush/effigy/commanding_teshari
+/datum/loadout_item/toys/ianbastardman // this thing is fuckin' creepy; man
+	name = "Ian Plushie"
+	item_path = /obj/item/toy/plush/effigy/ian
+
+/datum/loadout_item/toys/corgiman
+	name = "Corgi Plushie"
+	item_path = /obj/item/toy/plush/effigy/ian/small
+
+/datum/loadout_item/toys/corgiwoman
+	name = "Girly Corgi Plushie"
+	item_path = /obj/item/toy/plush/effigy/ian/lisa
 
 /datum/loadout_item/toys/breakdancing_bird
 	name = "Breakdancing Bird Plushie"
 	item_path = /obj/item/toy/plush/effigy/breakdancing_bird
-
-/datum/loadout_item/toys/skreking_vox
-	name = "Skreking Vox Plushie"
-	item_path = /obj/item/toy/plush/effigy/skreking_vox
-
-/datum/loadout_item/toys/blue_dog
-	name = "Blue Dog Plushie"
-	item_path = /obj/item/toy/plush/effigy/blue_dog
 
 /datum/loadout_item/toys/engi_snek
 	name = "Engineering Snek Plushie"
@@ -155,10 +151,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/glitch_synth
 	name = "Glitching Synthetic Plushie"
 	item_path = /obj/item/toy/plush/effigy/glitch_synth
-
-/datum/loadout_item/toys/boom_bird
-	name = "Boom Bird Plushie"
-	item_path = /obj/item/toy/plush/effigy/boom_bird
 
 /datum/loadout_item/toys/jecca
 	name = "Sexy Snoodle Plushie"
