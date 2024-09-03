@@ -1,6 +1,5 @@
 // Essentially a rewritten version of Hilbert's Hotel that supports multiple map templates; and a reference to GMTower's beautiful condo system. You should play it's successor... :3
 /obj/machinery/interlink_condo_teleporter
-	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "Matrixed Teleportation Unit"
 	desc = "A sub-divided; stable teleportation system with a unseen central processing hub."
 	icon = /obj/machinery/teleport/hub::icon

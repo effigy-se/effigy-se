@@ -22,7 +22,6 @@
 	pass_flags_self = /obj/structure/transit_tube::pass_flags_self
 
 /obj/structure/fluff/standalone_wooden_post
-	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "wooden post"
 	desc = "A sturdy space-wood post; upright, on it's lonesome. Ominous."
 	icon = 'local/icons/obj/fluff/general.dmi'
