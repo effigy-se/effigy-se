@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/medical/scrubs/skyrat/white
 	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_GENETICIST, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER)
 
-/datum/loadout_item/under/jumpsuit/medrscrubs
+/datum/loadout_item/under/jumpsuit/blackscrubs
 	name = "Black Scrubs"
 	item_path = /obj/item/clothing/under/rank/medical/scrubs/coroner
 	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_GENETICIST, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER)
