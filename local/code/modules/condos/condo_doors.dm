@@ -1,7 +1,7 @@
 // Subtype that mimics more traditional airlocks.
 /turf/closed/indestructible/hoteldoor/fakedoor
 	name = "Condo Door"
-	icon = 'icons/obj/doors/airlocks/tall/centcom.dmi'
+	icon = 'icons/obj/doors/airlocks/centcom/centcom.dmi'
 	icon_state = "fake_door"
 	smoothing_flags = NONE
 	canSmoothWith = null
