@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
  *	ARMBANDS
  */
 
- /datum/loadout_item/accessory/armband
+/datum/loadout_item/accessory/armband
 	name = "Armband (red)" //need to make this recolorable at some point, locking it to one color is laaaame
 	item_path = /obj/item/clothing/accessory/armband
 
