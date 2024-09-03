@@ -422,12 +422,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/labcoat/virology
 	name = "Virology Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/virologist
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER, JOB_VIROLOGIST)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER)
 
 /datum/loadout_item/suit/labcoat/interdyne
 	name = "Interdyne Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/interdyne
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER, JOB_VIROLOGIST, JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER, JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
 
 /*
  *	PONCHOS

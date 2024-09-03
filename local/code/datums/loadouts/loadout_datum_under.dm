@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/utility_sec
 	name = "Security Utility Uniform"
 	item_path = /obj/item/clothing/under/rank/security/skyrat/utility
-	restricted_roles = list(JOB_HEAD_OF_SECURITYJOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN) //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
+	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN) //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
 
 /datum/loadout_item/under/jumpsuit/utility_sci
 	name = "Science Utility Uniform"
@@ -108,12 +108,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/virologist
 	name = "Virologist's Jumpsuit"
 	item_path = /obj/item/clothing/under/rank/medical/virologist
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_GENETICIST, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER, JOB_VIROLOGIST)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_GENETICIST, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER)
 
 /datum/loadout_item/under/jumpsuit/virologist_skirt
 	name = "Virologist's Jumpskirt"
 	item_path = /obj/item/clothing/under/rank/medical/virologist/skirt
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_GENETICIST, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER, JOB_VIROLOGIST)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_GENETICIST, JOB_CHEMIST, JOB_PARAMEDIC, JOB_CORONER)
 
 /datum/loadout_item/under/jumpsuit/bluescrubs
 	name = "Blue Scrubs"
