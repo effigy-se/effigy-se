@@ -303,21 +303,11 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	var/obj/item/hilbertshotel/parentSphere
 	/// EFFIGY EDIT BEGIN - MODULARIZED BLURBS
 	var/leave_message = "Hilbert's Hotel would like to remind you that while we will do everything we can to protect the belongings you leave behind, we make no guarantees of their safety while you're gone, especially that of the health of any living creatures. With that in mind, are you ready to leave?"
-	/// Are we actually a "wall" wall?
-	var/true_wall_turf = TRUE
 	/// EFFIGY EDIT END
 
 /turf/closed/indestructible/hoteldoor/Initialize(mapload)
 	. = ..()
 	register_context()
-	/// EFFIGY EDIT BEGIN - MADE ALL WITHIN DEPENDENT ON TRUE_WALL_TURF = TRUE
-	if(true_wall_turf == TRUE)
-		// Build the glow animation
-		var/mutable_appearance/glow_animation = mutable_appearance('icons/turf/walls/hotel_door_glow.dmi', "glow")
-		// Add emissive as a suboverlay, to make working with it easier
-		glow_animation.add_overlay(emissive_appearance('icons/turf/walls/hotel_door_glow.dmi', "glow", src))
-		AddComponent(/datum/component/split_overlay, glow_animation, list(SOUTH_JUNCTION))
-	/// EFFIGY EDIT END
 
 /turf/closed/indestructible/hoteldoor/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()

@@ -7,8 +7,6 @@
 	canSmoothWith = null
 	smoothing_groups = null
 	leave_message = "Are you ready to leave the Condo? If all occupants vacate; it'll be reset and anything you leave behind'll be lost!"
-	true_wall_turf = FALSE
-	use_splitvis = FALSE
 	/// What kind of turf should be visually represented under this door?
 	var/turf/floor_to_copy = /turf/open/floor/plating
 
