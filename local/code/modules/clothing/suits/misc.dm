@@ -90,7 +90,7 @@
 	icon = 'local/icons/obj/clothing/suits.dmi'
 	worn_icon = 'local/icons/mob/clothing/suit.dmi'
 	name = "aerostatic bomber jacket"
-	desc = "A jacket once worn by the Air Force during the Antecentennial Revolution, there are quite a few pockets on the inside, mostly for storing notebooks and compasses."
+	desc = "A noisy, nylon jacket worn by the Air Brigade throughout the Antecentennial Revolution; there are quite a few pockets on the inside, mostly for storing notebooks and handkerchiefs.\nThe bomber is most assuredly orange, and not black."
 	icon_state = "aerostatic_bomber_jacket"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 

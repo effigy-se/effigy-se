@@ -110,6 +110,10 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Brown Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/brown
 
+/datum/loadout_item/shoes/crimson_sneakers
+	name = "Crimson Sneakers"
+	item_path = /obj/item/clothing/shoes/sneakers/crimson
+
 /datum/loadout_item/shoes/green_sneakers
 	name = "Green Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/green
@@ -129,6 +133,7 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/white_sneakers
 	name = "White Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/white
+
 
 /*
 *	LEG WRAPS

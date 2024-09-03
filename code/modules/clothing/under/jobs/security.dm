@@ -280,8 +280,8 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/detective/kim
-	name = "aerostatic suit"
-	desc = "A crisp and well-pressed suit; professional, comfortable and curiously authoritative."
+	name = "airman pants and v-neck shirt"
+	desc = "And those look like airman pants. Good for storing tools in."
 	icon_state = "aerostatic_suit"
 	inhand_icon_state = null
 	can_adjust = FALSE

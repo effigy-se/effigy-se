@@ -93,6 +93,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Fashionable Baseball Cap"
 	item_path = /obj/item/clothing/head/soft/yankee
 
+/datum/loadout_item/head/fashionable_cap
+	name = "Fashionable Baseball Cap, Rimless" // cursed and i sob
+	item_path = /obj/item/clothing/head/soft/yankee
+
 /datum/loadout_item/head/black_cap
 	name = "Black Cap"
 	item_path = /obj/item/clothing/head/soft/black
@@ -163,12 +167,12 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/trekcapeng
 	name = "Eng Officer's Cap (Yellow)"
 	item_path = /obj/item/clothing/head/hats/caphat/parade/fedcap/eng
-	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER)
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_BITRUNNER)
 
 /datum/loadout_item/head/trekcapsec
 	name = "Officer's Cap (Red)"
 	item_path = /obj/item/clothing/head/hats/caphat/parade/fedcap/sec
-	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER)
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_OFFICER, JOB_HEAD_OF_SECURITY, JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_BITRUNNER)
 
 /datum/loadout_item/head/solofficercap
 	name = "Security Officer's Sol Cap"
@@ -214,7 +218,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/cargo_beret
 	name = "Supply Beret"
 	item_path = /obj/item/clothing/head/beret/cargo
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER)
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_BITRUNNER)
 
 /datum/loadout_item/head/beret_med
 	name = "Medical Beret"
@@ -245,6 +249,16 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Robotics Beret"
 	item_path = /obj/item/clothing/head/beret/science/fancy/robo
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_ROBOTICIST)
+
+/datum/loadout_item/head/beret_qm
+	name = "Quartermaster Beret"
+	item_path = /obj/item/clothing/head/beret/cargo/qm
+	restricted_roles = list(JOB_QUARTERMASTER)
+
+/datum/loadout_item/head/beret_qm_alt
+	name = "Quartermaster Beret, White"
+	item_path = /obj/item/clothing/head/beret/cargo/qm/alt
+	restricted_roles = list(JOB_QUARTERMASTER)
 
 /datum/loadout_item/head/navyblueofficerberet
 	name = "Security Naval Beret"
@@ -527,7 +541,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/hats/flakhelm
 
 /datum/loadout_item/head/synde
-	name = "Replica Black Space-Helmet Helmet"
+	name = "Replica Black Space-Helmet"
 	item_path = /obj/item/clothing/head/syndicatefake
 
 /datum/loadout_item/head/plague_doctor
@@ -541,6 +555,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/chicken
 	name = "Chicken Costume Head"
 	item_path = /obj/item/clothing/head/costume/chicken
+
+/datum/loadout_item/head/en
+	name = "Cybernetic Dog Costume Head"
+	item_path = /obj/item/clothing/head/costume/skyrat/en
 
 /datum/loadout_item/head/cardborg
 	name = "Cardborg Costume Head"

@@ -34,8 +34,8 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 		equipper.update_sight()
 
 /*
-*	PRESCRIPTION GLASSES
-*/
+ *	PRESCRIPTION GLASSES
+ */
 
 /datum/loadout_item/glasses/prescription_glasses
 	name = "Glasses"
@@ -63,8 +63,8 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	item_path = /obj/item/clothing/glasses/regular/betterunshit
 
 /*
-*	COSMETIC GLASSES
-*/
+ *	COSMETIC GLASSES
+ */
 
 /datum/loadout_item/glasses/cold_glasses
 	name = "Cold Glasses"
@@ -90,9 +90,13 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Red Glasses"
 	item_path = /obj/item/clothing/glasses/red
 
+/datum/loadout_item/glasses/kim_glasses
+	name = "Diamond-Shaped Glasses" // get this & ur a real one
+	item_path = /obj/item/clothing/glasses/kim
+
 /*
-*	MISC
-*/
+ *	MISC
+ */
 
 /datum/loadout_item/glasses/eyepatch
 	name = "Eyepatch"
@@ -139,8 +143,8 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	item_path = /obj/item/clothing/glasses/hud/ar/projector
 
 /*
-*	JOB-LOCKED
-*/
+ *	JOB-LOCKED
+ */
 
 /datum/loadout_item/glasses/medicpatch
 	name = "Medical Eyepatch HUD"
@@ -268,8 +272,8 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_CHEMIST)
 
 /*
-*	FAMILIES
-*/
+ *	FAMILIES
+ */
 
 /datum/loadout_item/glasses/osi
 	name = "OSI Glasses"

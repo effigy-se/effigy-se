@@ -73,7 +73,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/utility_sec
 	name = "Security Utility Uniform"
 	item_path = /obj/item/clothing/under/rank/security/skyrat/utility
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, , JOB_HEAD_OF_SECURITY) //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
+	restricted_roles = list(JOB_HEAD_OF_SECURITYJOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN) //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
 
 /datum/loadout_item/under/jumpsuit/utility_sci
 	name = "Science Utility Uniform"
@@ -83,7 +83,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/utility_cargo
 	name = "Supply Utility Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
-	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_QUARTERMASTER)
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_BITRUNNER)
 
 /datum/loadout_item/under/jumpsuit/paramed_light
 	name = "Light Paramedic Uniform"
@@ -168,12 +168,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/cargo
 	name = "Cargo Technician's Jumpsuit"
 	item_path = /obj/item/clothing/under/rank/cargo/tech
-	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_QUARTERMASTER)
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_BITRUNNER)
 
 /datum/loadout_item/under/miscellaneous/cargo_black
 	name = "Black Cargo Technician's Jumpsuit"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
-	restricted_roles = list(JOB_CARGO_TECHNICIAN)
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_BITRUNNER)
 
 /datum/loadout_item/under/jumpsuit/cargo/skirt
 	name = "Cargo Technician's Jumpskirt"
@@ -284,10 +284,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Purple Shorts"
 	item_path = /obj/item/clothing/under/shorts/purple
 
-/datum/loadout_item/under/miscellaneous/recolorable_kilt
-	name = "Recolorable Kilt"
-	item_path = /obj/item/clothing/under/pants/skyrat/kilt
-
 //TODO: split loadout's miscellaneous to have "Pants/Shorts" and "Dresses/Skirts" as options too. Misc is stupid.
 
 /datum/loadout_item/under/miscellaneous/dress_striped
@@ -354,12 +350,16 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Ethereal Tunic"
 	item_path = /obj/item/clothing/under/ethereal_tunic
 
+/datum/loadout_item/under/miscellaneous/recolorable_kilt
+	name = "Recolorable Kilt"
+	item_path = /obj/item/clothing/under/pants/skyrat/kilt
+
 /datum/loadout_item/under/miscellaneous/kilt
 	name = "Kilt"
 	item_path = /obj/item/clothing/under/costume/kilt
 
 /datum/loadout_item/under/miscellaneous/treasure_hunter
-	name = "Treasure Hunter"
+	name = "Treasure Hunter Getup"
 	item_path = /obj/item/clothing/under/rank/civilian/curator/treasure_hunter
 
 /datum/loadout_item/under/miscellaneous/overalls
@@ -436,26 +436,46 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/cargo_casual
 	name = "Cargo Tech Casualwear"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
-	restricted_roles = list(JOB_CARGO_TECHNICIAN)
+	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_BITRUNNER)
 
 /datum/loadout_item/under/miscellaneous/cargo_turtle
 	name = "Cargo Turtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck
-	restricted_roles = list(JOB_CARGO_TECHNICIAN)
+	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_BITRUNNER)
 
 /datum/loadout_item/under/miscellaneous/cargo_skirtle
 	name = "Cargo Skirtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt
-	restricted_roles = list(JOB_CARGO_TECHNICIAN)
+	restricted_roles = list(JOB_CARGO_TECHNICIAN, JOB_BITRUNNER)
+
+/datum/loadout_item/under/miscellaneous/qm_turtle
+	name = "Quartermaster's Turtleneck"
+	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck
+	restricted_roles = list(JOB_QUARTERMASTER)
 
 /datum/loadout_item/under/miscellaneous/qm_skirtle
 	name = "Quartermaster's Skirtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck/skirt
 	restricted_roles = list(JOB_QUARTERMASTER)
 
+/datum/loadout_item/under/miscellaneous/qm_formal
+	name = "Quartermaster's Formal Suit"
+	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/formal
+	restricted_roles = list(JOB_QUARTERMASTER)
+
+/datum/loadout_item/under/miscellaneous/qm_formal_skirt
+	name = "Quartermaster's Formal Skirt"
+	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/formal/skirt
+	restricted_roles = list(JOB_QUARTERMASTER)
+
 /datum/loadout_item/under/miscellaneous/qm_gorka
 	name = "Quartermaster's Gorka Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/gorka
+	restricted_roles = list(JOB_QUARTERMASTER)
+
+/datum/loadout_item/under/miscellaneous/qm_casual
+	name = "Quartermaster's Casual Uniform"
+	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/casual
 	restricted_roles = list(JOB_QUARTERMASTER)
 
 /datum/loadout_item/under/miscellaneous/security_trousers
@@ -475,10 +495,9 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	restricted_roles = list(JOB_DETECTIVE)
 
 /datum/loadout_item/under/miscellaneous/kim
-	name = "Aerostatic Suit"
+	name = "Airman Outfit"
 	item_path = /obj/item/clothing/under/rank/security/detective/kim
 	restricted_roles = list(JOB_DETECTIVE)
-
 
 /*
  *	FORMAL UNDERSUITS
@@ -509,6 +528,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/black_suitskirt
 	name = "Black Suitskirt"
 	item_path = /obj/item/clothing/under/suit/black/skirt
+
+/datum/loadout_item/under/formal/black_captain_suit
+	name = "Captain's Black Suit"
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/black
+	restricted_roles = list(JOB_CAPTAIN)
 
 /datum/loadout_item/under/formal/black_lawyer_suit
 	name = "Black Lawyer Suit"
@@ -633,6 +657,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/kimono
 	name = "Fancy Kimono"
 	item_path =  /obj/item/clothing/under/costume/skyrat/kimono
+
+/datum/loadout_item/under/formal/kilt_captain
+	name = "Captain's Blue Kilt"
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/kilt
+	restricted_roles = list(JOB_CAPTAIN)
 
 /datum/loadout_item/under/formal/sailor
 	name = "Sailor Suit"
