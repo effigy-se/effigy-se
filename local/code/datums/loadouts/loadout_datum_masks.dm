@@ -22,8 +22,8 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 		outfit.mask = item_path
 
 /*
-*	BANDANAS
-*/
+ *	BANDANAS
+ */
 
 /datum/loadout_item/mask/black_bandana
 	name = "Black Bandana"
@@ -50,8 +50,8 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	item_path = /obj/item/clothing/mask/bandana/skull
 
 /*
-*	BALACLAVAS
-*/
+ *	BALACLAVAS
+ */
 
 /datum/loadout_item/mask/balaclavaadj
 	name = "Adjustable Balaclava"
@@ -66,8 +66,8 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	item_path = /obj/item/clothing/mask/balaclava/threehole/green
 
 /*
-*	GAS MASKS
-*/
+ *	GAS MASKS
+ */
 
 /datum/loadout_item/mask/gas_mask
 	name = "Gas Mask"
@@ -77,27 +77,33 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Glass Gas Mask"
 	item_path = /obj/item/clothing/mask/gas/glass
 
+/datum/loadout_item/mask/gas_glass
+	name = "Tinted Glass Gas Mask"
+	item_path = /obj/item/clothing/mask/gas/alt
+
 /datum/loadout_item/mask/respirator
 	name = "Half Mask Respirator"
 	item_path = /obj/item/clothing/mask/gas/respirator
 
+
+
 /*
-*	JOB-LOCKED
-*/
+ *	JOB-LOCKED
+ */
 
 // Ain't a damn thing
 
 /*
-*	FAMILIES
-*/
+ *	FAMILIES
+ */
 
 /datum/loadout_item/mask/driscoll
 	name = "Driscoll Mask"
 	item_path = /obj/item/clothing/mask/gas/driscoll
 
 /*
-*	MISC
-*/
+ *	MISC
+ */
 /datum/loadout_item/mask/surgical
 	name = "Recolorable Sterile Mask"
 	item_path = /obj/item/clothing/mask/surgical/greyscale
