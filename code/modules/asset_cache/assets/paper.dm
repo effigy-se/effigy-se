@@ -16,7 +16,7 @@
 		"stamp-chap" = 'icons/stamp_icons/large_stamp-chap.png',
 		"stamp-mime" = 'icons/stamp_icons/large_stamp-mime.png',
 		"stamp-centcom" = 'icons/stamp_icons/large_stamp-centcom.png',
-		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png'
+		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png',
 		// EffigyEdit Add - Cat stamp
 		"stamp-cat_blue" = 'local/icons/stamp_icons/cat_blue.png',
 		"stamp-paw_blue" = 'local/icons/stamp_icons/paw_blue.png',
