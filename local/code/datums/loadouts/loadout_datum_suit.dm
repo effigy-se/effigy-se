@@ -611,7 +611,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/bio_suit/plaguedoctorsuit
 
 /datum/loadout_item/suit/snowman
-	name = "Snowman Costume
+	name = "Snowman Costume"
 	item_path = /obj/item/clothing/suit/costume/snowman
 
 /datum/loadout_item/suit/chicken
