@@ -553,9 +553,9 @@
 /obj/item/fish/mastodon
 	name = "unmarine mastodon"
 	desc = "A monster of exposed muscles and innards, wrapped in a fish-like skeleton. You don't remember ever seeing it on the catalog."
-	icon = 'icons/obj/structures/aquarium/wide.dmi'
+	icon = 'icons/obj/aquarium/wide.dmi'
 	icon_state = "mastodon"
-	dedicated_in_aquarium_icon = 'icons/obj/structures/aquarium/fish.dmi'
+	dedicated_in_aquarium_icon = 'icons/obj/aquarium/fish.dmi'
 	dedicated_in_aquarium_icon_state = "mastodon_small"
 	base_pixel_x = -16
 	pixel_x = -16
@@ -795,3 +795,53 @@
 	//anxiety naturally limits the amount of zipzaps per tank, so they are stronger alone
 	electrogenesis_power = 20 MEGA JOULES
 	beauty = FISH_BEAUTY_GOOD
+
+/obj/item/fish/bumpy
+	name = "bump-fish"
+	desc = "An misshapen fish-thing all covered in stubby little tendrils"
+	icon_state = "bumpy"
+	dedicated_in_aquarium_icon_state = "bumpy_small"
+	sprite_height = 4
+	sprite_width = 5
+	stable_population = 4
+	required_fluid_type = AQUARIUM_FLUID_ANY_WATER
+	required_temperature_min = MIN_AQUARIUM_TEMP+15
+	required_temperature_max = MIN_AQUARIUM_TEMP+40
+	beauty = FISH_BEAUTY_BAD
+	fish_traits = list(/datum/fish_trait/amphibious, /datum/fish_trait/vegan)
+	favorite_bait = list(
+		list(
+			"Type" = "Foodtype",
+			"Value" = VEGETABLES,
+		),
+	)
+
+/obj/item/fish/three_eyes/gill
+	name = "McGill"
+	desc = "A great rubber duck tool for Lawyers who can't get a grasp over their case. It looks kinda different today..."
+	compatible_types = list(/obj/item/fish/goldfish, /obj/item/fish/three_eyes)
+	beauty = FISH_BEAUTY_GREAT
+	show_in_catalog = FALSE
+	stable_population = 1
+	random_case_rarity = FISH_RARITY_NOPE
+
+/obj/item/fish/skin_crab
+	name = "skin crab"
+	desc = "<i>\"And on the eighth day, a demential mockery of both humanity and crabity was made.\"<i> Fascinating."
+	icon_state = "skin_crab"
+	dedicated_in_aquarium_icon_state = "skin_crab_small"
+	sprite_width = 7
+	sprite_height = 6
+	average_size = 40
+	average_weight = 750
+	stable_population = 5
+	show_in_catalog = FALSE
+	beauty = FISH_BEAUTY_GREAT
+	favorite_bait = list(
+		list(
+			"Type" = "Foodtype",
+			"Value" = FRIED
+		),
+	)
+	fillet_type = /obj/item/food/meat/slab/rawcrab
+	random_case_rarity = FISH_RARITY_NOPE

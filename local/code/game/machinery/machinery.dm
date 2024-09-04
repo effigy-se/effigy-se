@@ -1,3 +1,20 @@
+/obj/machinery/button
+	icon = 'local/icons/obj/buttons.dmi'
+
+/obj/machinery/status_display
+	icon = 'local/icons/obj/status_display.dmi'
+
+/obj/machinery/status_display/post_machine_initialize()
+	. = ..()
+	set_picture("ai_off")
+
+/obj/machinery/status_display/syndie
+	name = "syndicate status display"
+
+/obj/machinery/status_display/syndie/post_machine_initialize()
+	. = ..()
+	set_picture("synd")
+
 /obj/machinery/power/emitter
 	icon = 'local/icons/obj/engine/emitter.dmi'
 
@@ -28,9 +45,11 @@
 	area.power_change()
 
 /obj/machinery/door/poddoor
-	var/door_sound = 'local/icons/obj/doors/blast_door.ogg' //lolwut
+	icon = 'local/icons/obj/doors/blast_door.dmi'
+	var/door_sound = 'local/icons/obj/doors/blast_door.ogg'
 
 /obj/machinery/door/poddoor/shutters
+	icon = 'local/icons/obj/doors/shutters.dmi'
 	var/door_open_sound = 'local/icons/obj/doors/shutters_open.ogg'
 	var/door_close_sound = 'local/icons/obj/doors/shutters_close.ogg'
 

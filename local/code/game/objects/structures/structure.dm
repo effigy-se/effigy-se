@@ -1,3 +1,17 @@
+/obj/structure/window/fulltile
+	icon = 'local/icons/obj/smooth_structures/window.dmi'
+	canSmoothWith = SMOOTH_GROUP_WINDOW_FULLTILE
+
+/obj/structure/window/reinforced/fulltile
+	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
+	canSmoothWith = SMOOTH_GROUP_WINDOW_FULLTILE
+
+/obj/structure/window/reinforced/tinted/fulltile
+	icon = 'local/icons/obj/smooth_structures/reinforced_window.dmi'
+	icon_state = "reinforced_window-0"
+	base_icon_state = "reinforced_window"
+	canSmoothWith = SMOOTH_GROUP_WINDOW_FULLTILE
+
 /obj/structure/bodycontainer
 	icon = 'local/icons/obj/medical/morgue.dmi'
 

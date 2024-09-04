@@ -18,7 +18,9 @@
 /turf/open/floor/iron/diagonal,
 /area/centcom/interlink)
 "ai" = (
-/obj/structure/sign/painting/interlink/directional/north,
+/obj/structure/sign/painting/interlink{
+	pixel_y = 32
+	},
 /turf/open/floor/carpet/neon/simple/black,
 /area/centcom/interlink/venue)
 "aj" = (
@@ -256,7 +258,9 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/easel,
 /obj/item/canvas/twentyfour_twentyfour,
-/obj/structure/sign/painting/interlink/directional/north,
+/obj/structure/sign/painting/interlink{
+	pixel_y = 32
+	},
 /turf/open/floor/wood/tile,
 /area/centcom/interlink)
 "bp" = (
@@ -598,7 +602,9 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/obj/structure/sign/painting/interlink/directional/north,
+/obj/structure/sign/painting/interlink{
+	pixel_y = 32
+	},
 /obj/effect/turf_decal/trimline/dark/warning{
 	dir = 4
 	},
@@ -2020,8 +2026,8 @@
 	dir = 9
 	},
 /obj/structure/flora/rock/pile/style_2,
-/obj/structure/window/half/directional/north,
-/obj/structure/window/half/directional/west,
+/obj/structure/window/spawner/directional/north,
+/obj/structure/window/spawner/directional/west,
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
 "oj" = (
@@ -2124,15 +2130,6 @@
 	dir = 4
 	},
 /turf/open/floor/carpet/red,
-/area/centcom/interlink)
-"oL" = (
-/obj/effect/turf_decal/siding/wideplating_new{
-	dir = 5
-	},
-/obj/structure/flora/rock/pile/style_2,
-/obj/structure/window/half/directional/north,
-/obj/structure/window/half/directional/east,
-/turf/open/misc/asteroid,
 /area/centcom/interlink)
 "oQ" = (
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -2609,8 +2606,8 @@
 	dir = 5
 	},
 /obj/structure/flora/ocean/glowweed,
-/obj/structure/window/half/directional/north,
-/obj/structure/window/half/directional/east,
+/obj/structure/window/spawner/directional/north,
+/obj/structure/window/spawner/directional/east,
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
 "rV" = (
@@ -3738,8 +3735,8 @@
 /area/centcom/interlink)
 "Ay" = (
 /obj/structure/flora/ocean/longseaweed,
-/obj/structure/window/half/directional/north,
-/obj/structure/window/half/directional/west,
+/obj/structure/window/spawner/directional/north,
+/obj/structure/window/spawner/directional/west,
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
 "Az" = (
@@ -4429,7 +4426,7 @@
 /obj/effect/turf_decal/siding/wideplating_new/end{
 	dir = 8
 	},
-/obj/structure/window/half/directional/east,
+/obj/structure/window/spawner/directional/east,
 /turf/open/floor/iron/diagonal,
 /area/centcom/interlink)
 "GH" = (
@@ -4711,8 +4708,9 @@
 "IK" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/security/telescreen/entertainment/directional/south,
-/obj/machinery/button/curtain/directional/west{
-	id = "interlinkdorm2curtain"
+/obj/machinery/button/curtain{
+	id = "interlinkdorm2curtain";
+	pixel_x = -26
 	},
 /turf/open/floor/wood/large,
 /area/centcom/interlink)
@@ -5235,8 +5233,9 @@
 /area/centcom/interlink/venue)
 "MU" = (
 /obj/machinery/duct,
-/obj/machinery/button/curtain/directional/west{
-	id = "interlinkdorm3curtain"
+/obj/machinery/button/curtain{
+	id = "interlinkdorm3curtain";
+	pixel_x = -26
 	},
 /turf/open/floor/wood/parquet,
 /area/centcom/interlink)
@@ -5432,8 +5431,8 @@
 /area/centcom/interlink)
 "Ok" = (
 /obj/structure/flora/ocean/coral,
-/obj/structure/window/half/directional/north,
-/obj/structure/window/half/directional/west,
+/obj/structure/window/spawner/directional/north,
+/obj/structure/window/spawner/directional/west,
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
 "Om" = (
@@ -5536,7 +5535,7 @@
 /obj/effect/turf_decal/siding/wideplating_new/end{
 	dir = 4
 	},
-/obj/structure/window/half/directional/west,
+/obj/structure/window/spawner/directional/west,
 /turf/open/floor/iron/diagonal,
 /area/centcom/interlink)
 "OZ" = (
@@ -5744,8 +5743,9 @@
 "Ql" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/security/telescreen/entertainment/directional/south,
-/obj/machinery/button/curtain/directional/east{
-	id = "interlinkdorm4curtain"
+/obj/machinery/button/curtain{
+	id = "interlinkdorm4curtain";
+	pixel_x = 26
 	},
 /turf/open/floor/wood/large,
 /area/centcom/interlink)
@@ -6480,8 +6480,9 @@
 /area/centcom/interlink)
 "UC" = (
 /obj/machinery/duct,
-/obj/machinery/button/curtain/directional/east{
-	id = "interlinkdorm1curtain"
+/obj/machinery/button/curtain{
+	id = "interlinkdorm1curtain";
+	pixel_x = 26
 	},
 /turf/open/floor/wood/parquet,
 /area/centcom/interlink)
@@ -34408,7 +34409,7 @@ Rr
 mA
 BS
 nz
-oL
+qu
 mA
 mu
 ut
