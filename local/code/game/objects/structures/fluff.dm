@@ -9,8 +9,7 @@
 
 /obj/structure/fluff/fake_firedoor/Initialize(mapload)
 	. = ..()
-	icon_state = "door_open_top"
-	add_overlay("door_open_bottom")
+	icon_state = "door_open"
 
 /obj/structure/fluff/fake_transit_tube
 	name = /obj/structure/transit_tube::name
