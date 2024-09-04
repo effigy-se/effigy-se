@@ -516,7 +516,7 @@
 		if(AIRLOCK_DENY, AIRLOCK_OPENING, AIRLOCK_CLOSING, AIRLOCK_EMAG)
 			icon_state = "nonexistenticonstate" //MADNESS
 
-
+/* EffigyEdit Remove - Moved to local/code/game/machinery/doors/airlock.dm
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
 
@@ -595,6 +595,7 @@
 					floorlight.pixel_x = -32
 					floorlight.pixel_y = 0
 			. += floorlight
+*/
 
 /obj/machinery/door/airlock/run_animation(animation)
 	switch(animation)
