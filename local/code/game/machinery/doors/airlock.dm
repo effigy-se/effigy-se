@@ -415,11 +415,8 @@
 /obj/machinery/door/airlock/service
 	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
-	/* // EffigyEdit TODO
 	greyscale_config = /datum/greyscale_config/airlock_effigy/service
 	greyscale_colors = "#46c26d#4d4d4d#369655"
-	*/
-	greyscale_colors = "#4d4d4d#4d4d4d#3d3d3d#3d3d3d#369655#6d6565#2d2d2d"
 
 /obj/machinery/door/airlock/service/glass
 	opacity = FALSE
@@ -435,11 +432,8 @@
 /obj/machinery/door/airlock/service/studio
 	icon = 'local/icons/obj/doors/airlocks/effigy/effigy.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/effigy/overlays.dmi'
-	/* // EffigyEdit TODO
 	greyscale_config = /datum/greyscale_config/airlock_effigy/studio
 	greyscale_colors = "#4d4d4d#D1D0D2#ffd66e"
-	*/
-	greyscale_colors = "#4d4d4d#4d4d4d#3d3d3d#3d3d3d#d1d0d2#ffd66e#2d2d2d"
 
 /obj/machinery/door/airlock/service/studio/glass
 	opacity = FALSE
