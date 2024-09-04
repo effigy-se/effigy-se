@@ -672,7 +672,6 @@
 		hazards.pixel_x = light_xoffset
 		hazards.pixel_y = light_yoffset
 		. += hazards
-	*/// EffigyEdit Remove End
 
 /**
  * Corrects the current state of the door, based on its activity.
