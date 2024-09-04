@@ -6,7 +6,7 @@
 /obj/machinery/light
 	icon = 'local/icons/obj/lighting.dmi'
 	brightness = 7
-	fire_brightness = 8
+	//fire_brightness = 9
 	fire_colour = "#E85888"
 	bulb_colour = LIGHT_COLOR_DEFAULT
 	bulb_power = 1.15
