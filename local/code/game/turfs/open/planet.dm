@@ -2,7 +2,7 @@
 /// every time rimpoint has been picked on a populated round someone takes it upon themselves to KILL all the dirt tiles because of this,
 /// and IMO that ruins the aesthetic over something small and stupid. To keep their speed consistent with grass; we're overriding to
 /// match grass' slowdown directly, to futureproof just slightly.
-/// We're also setting the baseturfs to be self-referntial as a futureproofing thingamajig. Overrides what /tg/ made them in chasms.jungle
+/// We're also setting the baseturfs to be self-referential as a futureproofing thingamajig. Overrides what /tg/ made them in chasms.jungle
 
 /turf/open/misc/dirt
 	baseturfs = /turf/open/misc/dirt
