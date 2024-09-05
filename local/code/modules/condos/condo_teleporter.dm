@@ -52,7 +52,7 @@
 	if(!src.Adjacent(to_be_checked))
 		to_chat(to_be_checked, span_warning("You too far away from \the [src] to enter it!"))
 		return FALSE
-	if(to_be_checked.incapacitated())
+	if(to_be_checked.incapacitated)
 		to_chat(to_be_checked, span_warning("You aren't able to activate \the [src] anymore!"))
 		return FALSE
 	return TRUE

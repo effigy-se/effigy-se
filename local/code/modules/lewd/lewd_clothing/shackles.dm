@@ -48,7 +48,7 @@
 /obj/item/clothing/suit/straight_jacket/shackles/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return FALSE
 	return TRUE
 
