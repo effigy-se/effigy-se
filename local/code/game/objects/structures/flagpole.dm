@@ -7,6 +7,9 @@
 	anchored = TRUE
 	layer = FLY_LAYER
 	plane = ABOVE_GAME_PLANE
+	//Buckling
+	can_buckle = TRUE
+	buckle_requires_restraints = TRUE
 
 /obj/structure/flagpole/Initialize(mapload)
 	. = ..()
