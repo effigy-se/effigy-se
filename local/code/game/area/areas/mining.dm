@@ -57,6 +57,10 @@
 	name = "Arrivals Crossway"
 	icon_state = "entry"
 
+/area/taeloth/nearstation/public_mining_dock_roof
+	name = "Public Mining Dock - Roof"
+	icon_state = "mining_dock"
+
 /// CARGO
 /area/taeloth/nearstation/cargo_crossway
 	name = "Cargo Crossway"
@@ -66,7 +70,18 @@
 	name = "Cargo Department - Exterior"
 	icon_state = "cargo_lobby"
 
+/area/taeloth/nearstation/cargo_roof
+	name = "Cargo - Roof"
+	icon_state = "cargo_lobby"
+
 /// COMMAND
+/area/taeloth/nearstation/bridge_roof
+	name = "Bridge - Roof"
+	icon_state = "bridge"
+
+/area/taeloth/nearstation/bridge_roof/patio
+	name = "Bridge - Patio"
+
 /area/taeloth/nearstation/bridge_crossway
 	name = "Bridge Crossway"
 	icon_state = "bridge_hallway"
@@ -74,6 +89,10 @@
 /area/taeloth/nearstation/gateway
 	name = "Gateway Crossway"
 	icon_state = "gateway"
+
+/area/taeloth/nearstation/gateway/roof
+	name = "Gateway - Roof"
+
 
 /area/taeloth/nearstation/hop_line
 	name = "Head of Personnel's Line"
@@ -95,6 +114,9 @@
 	name = "Dormitory Concourse - Crew Facilities"
 	icon_state = "commons"
 
+/area/taeloth/nearstation/dormitory_concourse/crew_facilities/roof
+	name = "Crew Facilities - Roof"
+
 /// ENGINEERING
 /area/taeloth/nearstation/engsci_crossway
 	name = "Engineer-Science Crossway"
@@ -104,6 +126,13 @@
 /area/taeloth/nearstation/medsci_crossway
 	name = "Medical-Science Crossway"
 	icon_state = "science_lobby"
+
+/area/taeloth/nearstation/medical_roof
+	name = "Medical - Roof"
+	icon_state = "medbay"
+
+/area/taeloth/nearstation/medical_roof/garden
+	name = "Medical - Rooftop Garden"
 
 /area/taeloth/nearstation/virology_pen
 	name = "Virology - Monkey Pen"
@@ -118,9 +147,22 @@
 	name = "Restroom Crossway"
 	icon_state = "restrooms"
 
+/area/taeloth/nearstation/restroom_roof
+	name = "Restrooms - Roof"
+	icon_state = "restrooms"
+
+/// SCIENCE
+/area/taeloth/nearstation/science_roof
+	name = "Science - Roof"
+	icon_state = "science"
+
 /// SECURITY
 /area/taeloth/nearstation/medsec_crossway
 	name = "Medical-Security Crossway"
+	icon_state = "checkpoint_arr"
+
+/area/taeloth/nearstation/security_roof
+	name = "Security - Roof"
 	icon_state = "checkpoint_arr"
 
 /// SERVICE
@@ -137,6 +179,10 @@
 
 /area/taeloth/nearstation/service_crossway/public_garden
 	name = "Exterior - Public Garden"
+
+/area/taeloth/nearstation/service_roof
+	name = "Service - Roof"
+	icon_state = "hall_service"
 
 
 /*
