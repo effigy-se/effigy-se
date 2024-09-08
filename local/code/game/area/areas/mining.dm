@@ -33,6 +33,8 @@
 	ambientsounds = list('local/sound/ambience/ambihotspring.ogg')
 	mood_bonus = 10
 	mood_message = "I feel relaxed and refreshed!"
+	min_ambience_cooldown = 2 MINUTES
+	max_ambience_cooldown = 4 MINUTES
 
 /area/taeloth/ocean
 	name = "Taeloth - Ocean"
