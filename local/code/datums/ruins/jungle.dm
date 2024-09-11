@@ -69,3 +69,9 @@
 	suffix = "caves_trilogy_research.dmm"
 	name = "JungleCave-Ruin Trilogy (Research Department)"
 	description = "We tried making millions; didn't quite work out. Something else had better marketshare."
+
+/datum/map_template/ruin/jungle_cave/chillpad
+	id = "caves_chillpad"
+	suffix = "caves_chillpad.dmm"
+	name = "JungleCave-Ruin Chillpad"
+	description = "In the scuffle that was the discovery of bluespace in 2025, a curious critter slinked off amongst the chatter..."
