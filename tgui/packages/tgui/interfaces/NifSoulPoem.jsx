@@ -11,8 +11,8 @@ import {
 } from '../components';
 import { Window } from '../layouts';
 
-export const NifSoulPoem = (props, context) => {
-  const { act, data } = useBackend(context);
+export const NifSoulPoem = (props) => {
+  const { act, data } = useBackend();
   const {
     name_to_send,
     text_to_send,
@@ -40,7 +40,7 @@ export const NifSoulPoem = (props, context) => {
               <Divider />
               <Box>{message.message}</Box>
               <br />
-              <BlockQuote>Time Recieved: {message.timestamp}</BlockQuote>
+              <BlockQuote>Time Received: {message.timestamp}</BlockQuote>
             </Flex.Item>
           ))}
         </Section>

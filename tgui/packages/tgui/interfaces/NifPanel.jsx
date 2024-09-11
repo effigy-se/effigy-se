@@ -1,4 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import {
   BlockQuote,
   Box,
@@ -16,8 +18,8 @@ import {
 import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 
-export const NifPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+export const NifPanel = (props) => {
+  const { act, data } = useBackend();
   const {
     linked_mob_name,
     loaded_nifsofts,
@@ -25,11 +27,7 @@ export const NifPanel = (props, context) => {
     max_power,
     current_theme,
   } = data;
-  const [settingsOpen, setSettingsOpen] = useLocalState(
-    context,
-    'settingsOpen',
-    false,
-  );
+  const [settingsOpen, setSettingsOpen] = useState(0);
 
   return (
     <Window
@@ -191,8 +189,8 @@ export const NifPanel = (props, context) => {
   );
 };
 
-const NifSettings = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifSettings = (props) => {
+  const { act, data } = useBackend();
   const {
     nutrition_drain,
     ui_themes,
@@ -260,14 +258,14 @@ const NifSettings = (props, context) => {
   );
 };
 
-const NifProductNotes = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifProductNotes = (props) => {
+  const { act, data } = useBackend();
   const { product_notes } = data;
   return <BlockQuote>{product_notes}</BlockQuote>;
 };
 
-const NifStats = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifStats = (props) => {
+  const { act, data } = useBackend();
   const {
     max_power,
     power_level,
@@ -328,8 +326,8 @@ const NifStats = (props, context) => {
   );
 };
 
-const NifNutritionBar = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifNutritionBar = (props) => {
+  const { act, data } = useBackend();
   const { nutrition_level } = data;
   return (
     <ProgressBar
@@ -345,8 +343,8 @@ const NifNutritionBar = (props, context) => {
   );
 };
 
-const NifBloodBar = (props, context) => {
-  const { act, data } = useBackend(context);
+const NifBloodBar = (props) => {
+  const { act, data } = useBackend();
   const { blood_level, minimum_blood_level, max_blood_level } = data;
   return (
     <ProgressBar
