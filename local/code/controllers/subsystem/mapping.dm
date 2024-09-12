@@ -1,3 +1,9 @@
+/datum/controller/subsystem/mapping/setup_rivers()
+	var/list/jungle_caves_ruins = levels_by_trait(ZTRAIT_JUNGLE_CAVE_RUINS)
+	for (var/junglecaves_z in jungle_caves_ruins)
+		spawn_rivers(junglecaves_z, 4, /turf/open/water/jungle, /area/taeloth/underground/unexplored)
+	return ..()
+
 /datum/controller/subsystem/mapping/setup_ruins()
 	// Taeloth / Jungle Ruins, Rimpoint
 	var/list/jungle_ruins = levels_by_trait(ZTRAIT_JUNGLE_RUINS)
