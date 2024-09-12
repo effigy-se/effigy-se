@@ -1,3 +1,17 @@
+/// Dark Purple tiles
+
+/obj/effect/turf_decal/tile/dark_purple
+	name = "dark purple tile decal"
+	color = "#61466A"
+
+TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/dark_purple)
+
+/// Dark Purple trimlines
+/obj/effect/turf_decal/trimline/dark_purple
+	color = "#61466A"
+
+TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/dark_purple)
+
 /// Light Peach tiles
 
 /obj/effect/turf_decal/tile/light_peach
