@@ -1,6 +1,6 @@
 /datum/reagent
-	///Whether it will evaporate if left untouched on a liquids simulated puddle
-	var/evaporates = FALSE
+	///Whether it will evaporate if left untouched on a liquids simulated puddle. Enable only if you have a sane way to clean up the (or all) reagents.
+	var/evaporates = TRUE
 
 	///How much fire power does the liquid have, for burning on simulated liquids. Not enough fire power/unit of entire mixture may result in no fire
 	var/liquid_fire_power = 0
