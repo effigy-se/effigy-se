@@ -24,6 +24,8 @@
 	glow_overlay_icon = 'local/icons/effects/glow_weather.dmi'
 	weather_overlay_icon = 'local/icons/effects/weather_effects.dmi'
 
+	protected_areas = list(/area/taeloth/underground)
+
 /datum/weather/rain_storm/weather_act(mob/living/living)
 	living.extinguish_mob()
 	living.adjust_wet_stacks(2) // Gets out a lil faster than being in a lake or something.
