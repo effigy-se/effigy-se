@@ -1,5 +1,4 @@
 /obj/structure/chair/shibari_stand
-	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "shibari stand"
 	desc = "A stand for buckling people with ropes."
 	icon = 'local/icons/lewd/obj/lewd_structures/shibari_stand.dmi'

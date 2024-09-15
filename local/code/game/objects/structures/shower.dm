@@ -7,4 +7,4 @@
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CHANGE_DUCT_LAYER, new_layer = FOURTH_DUCT_LAYER)
 
-SHOWER_DIRECTIONAL_HELPERS(/obj/machinery/shower/supply_layer)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower/supply_layer, (-16))

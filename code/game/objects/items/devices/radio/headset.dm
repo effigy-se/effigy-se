@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	if(item_flags & IN_INVENTORY && loc == user)
 		// construction of frequency description
 		var/list/avail_chans = list("Use [RADIO_KEY_COMMON] for the currently tuned frequency")
-		if(translate_binary)
+		if(special_channels & RADIO_SPECIAL_BINARY)
 			avail_chans += "use [MODE_TOKEN_BINARY] for [MODE_BINARY]"
 		if(length(channels))
 			for(var/i in 1 to length(channels))
@@ -439,12 +439,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 			if(!(ch_name in src.channels))
 				LAZYSET(channels, ch_name, keyslot2.channels[ch_name])
 
-		if(keyslot2.translate_binary)
-			translate_binary = TRUE
-		if(keyslot2.syndie)
-			syndie = TRUE
-		if(keyslot2.independent)
-			independent = TRUE
+		special_channels |= keyslot2.special_channels
 
 		for(var/ch_name in channels)
 			secure_radio_connections[ch_name] = add_radio(src, GLOB.radiochannels[ch_name])
@@ -468,6 +463,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		grant_headset_languages(mob_loc)
 
 /obj/item/radio/headset/click_alt(mob/living/user)
+	if(!istype(user) || !Adjacent(user) || user.incapacitated)
+		return CLICK_ACTION_BLOCKING
 	if (!command)
 		return CLICK_ACTION_BLOCKING
 	use_command = !use_command

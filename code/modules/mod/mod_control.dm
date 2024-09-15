@@ -299,7 +299,7 @@
 			return
 	// EffigyEdit Add - Fix runtime
 	if(active)
-		if(!wearer.incapacitated())
+		if(!wearer.incapacitated)
 			balloon_alert(wearer, "deactivate first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 

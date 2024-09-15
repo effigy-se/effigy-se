@@ -28,9 +28,7 @@
 /turf/open/floor/wood/large,
 /area/misc/condo)
 "g" = (
-/obj/structure/window_frame/wood,
-/obj/structure/window/reinforced/fulltile/indestructible,
-/turf/open/floor/plating,
+/turf/closed/indestructible/fakeglass,
 /area/misc/condo)
 "h" = (
 /turf/open/misc/asteroid/snow/standard_air,
@@ -132,7 +130,9 @@
 /area/misc/condo)
 "y" = (
 /obj/structure/bed/pod,
-/obj/structure/sign/painting/dorm_private/directional/north,
+/obj/structure/sign/painting/dorm_private{
+	pixel_y = 32
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/misc/condo)
 "z" = (
@@ -160,7 +160,9 @@
 /turf/open/misc/asteroid/snow/standard_air,
 /area/misc/condo)
 "H" = (
-/obj/structure/sign/painting/interlink/directional/north,
+/obj/structure/sign/painting/dorm_private{
+	pixel_y = 32
+	},
 /turf/open/floor/carpet/red,
 /area/misc/condo)
 "I" = (
@@ -230,15 +232,13 @@
 /area/misc/condo)
 "X" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/effect/turf_decal/door_threshold,
-/obj/effect/turf_decal/siding/wood{
-	dir = 1;
-	pixel_y = -6
-	},
 /obj/machinery/door/airlock/public/glass{
 	name = "Lodge Exterior"
 	},
-/turf/open/misc/asteroid/snow/standard_air,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
 /area/misc/condo)
 "Y" = (
 /obj/effect/spawner/liquids_spawner,

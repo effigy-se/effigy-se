@@ -1,5 +1,4 @@
 /obj/structure/standing_sign
-	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "Standing Sign"
 	desc = "A rod, stuck into the ground, affixed with a piece of wood and paper to crute a crude sign. It doesn't read anything."
 	obj_flags = UNIQUE_RENAME
@@ -22,7 +21,7 @@
 /obj/structure/standing_sign/rimpoint/extended_warranty
 	name = "VERY IMPORTANT"
 	desc = "It's a sign. It reads; \"Thank you for approaching our conveinent signpost! We've been trying to reach you about your \
-	cloning bay's extended warranty. It's very important that cloning devices maintain high degrees of functionality at all time to prevent \
+	cloning bay's extended warranty. It's very important that cloning devices maintain high degrees of functionality at all times to prevent \
 	damage to patient health, morale, and / or office pet(s). With our warranty program, you can be safe in the knowledge that repair and continued \
 	uptime is only a single, conveinent call away. We make frequent trips to your sector and are available on call 24/7. Please consider promptly putting down \
 	payment for the rest of your warranty. If you cannot put down the funds promptly, please get in contact with our collections team as soon as possible. We look \

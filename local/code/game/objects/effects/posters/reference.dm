@@ -17,14 +17,14 @@
 	never_random = TRUE
 	random_basetype = /obj/structure/sign/poster/reference
 
-INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/random, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/random, 32)
 
 /obj/structure/sign/poster/reference/viscerator
 	name = "Flood"
 	desc = "A lot can be waxed on about these little things - but it won't take twenty to get rid of the curious maintenance dweller."
 	icon_state = "reference_viscerator"
 
-INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/viscerator, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/viscerator, 32)
 
 /obj/structure/sign/poster/reference/interdyne
 	name = "Interdyne Pharmaceuticals - Celebrating 2484 With Style!"
@@ -32,7 +32,7 @@ INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/viscerat
 		Clearly, graphic design isn't their passion."
 	icon_state = "reference_interdyne"
 
-INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/interdyne, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/interdyne, 32)
 
 /obj/structure/sign/poster/reference/broadcast
 	name = "Ass Time - (Comemorative Print)"
@@ -41,7 +41,7 @@ INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/interdyn
 	Nanotrasen-Owned Awards House: \"Corporate's Okayest Sexploitation Studio\"."
 	icon_state = "reference_broadcast"
 
-INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/broadcast, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/broadcast, 32)
 
 /obj/structure/sign/poster/reference/ministation
 	name = "MiniStation Blueprints"
@@ -53,7 +53,7 @@ INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/broadcas
 	have been so much as pitched since."
 	icon_state = "reference_mini"
 
-INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/ministation, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/ministation, 32)
 
 /obj/structure/sign/poster/reference/bubble
 	name = "Bubble Blueprints"
@@ -64,7 +64,7 @@ INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/ministat
 	official capacity. ...Perhaps a scene of bubble-modding enthusiasts may exist, somewhere."
 	icon_state = "reference_bubble"
 
-INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/bubble, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/bubble, 32)
 
 /obj/structure/sign/poster/reference/holestation
 	name = "Hole-Class Blueprints"
@@ -78,7 +78,7 @@ INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/bubble, 
 	of the Holemaker II into a tourist trap. These blueprints are effectively moot when it comes to navigating the new structure."
 	icon_state = "reference_hole"
 
-INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/holestation, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/holestation, 32)
 
 /obj/structure/sign/poster/reference/power_recovery
 	name = "Now Hiring: Power Recovery Technicians"
@@ -88,4 +88,4 @@ INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/holestat
 	departmental transfer. Benefits include minimum pay of 30 Credits per gig and on-site dental care.\""
 	icon_state = "reference_power_recovery"
 
-INVERT_MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/power_recovery, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/reference/power_recovery, 32)

@@ -62,7 +62,7 @@
 /obj/item/fancy_pillow/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return FALSE
 	return TRUE
 
@@ -245,7 +245,6 @@
 */
 
 /obj/structure/chair/pillow_small
-	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "small pillow pile"
 	desc = "A small pile of pillows. A comfortable seat, especially for taurs or nagas."
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
@@ -374,7 +373,6 @@
 */
 
 /obj/structure/bed/pillow_large
-	SET_BASE_VISUAL_PIXEL(0, DEPTH_OFFSET)
 	name = "large pillow pile"
 	desc = "A large pile of pillows. Jump on it!"
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
