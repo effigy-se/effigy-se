@@ -118,7 +118,7 @@
 			if(GLOB.donator_list[owner.ckey])
 				to_chat(owner, examine_block("<b><font color='#f566d6'>Thank you for donating, this item is for you <3!</font></b>"))
 			else
-				to_chat(owner, examine_block(span_boldnotice("This item is restricted to donators only, for more information, please check the discord(#server-info) for more information!")))
+				to_chat(owner, examine_block(span_boldnotice("This item is restricted to donators only, for more information, please check the discord(#donate) for more information!")))
 
 		if("ckey_explain")
 			to_chat(owner, examine_block(span_green("This item is restricted to your ckey only. Thank you!")))

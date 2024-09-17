@@ -720,6 +720,7 @@
 
 
 /// Head Accessories - Unless more get added, this is only able to be applied for one person, a donator only thing
+/// SHOG NOTE: LT3 I KNOW you'll scream at this like I have. skyrat did dono-only mutant parts. agony
 
 /datum/preference/toggle/mutant_toggle/head_acc
 	savefile_key = "head_acc_toggle"
