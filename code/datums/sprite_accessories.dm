@@ -80,7 +80,7 @@
 	var/natural_spawn = TRUE
 
 /datum/sprite_accessory/blank
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "None"
 
 //////////////////////
@@ -690,6 +690,10 @@
 	name = "Short Bangs"
 	icon_state = "hair_shortbangs"
 
+/datum/sprite_accessory/hair/shortbangs2
+	name = "Short Bangs 2"
+	icon_state = "hair_shortbangs2"
+
 /datum/sprite_accessory/hair/short
 	name = "Short Hair"
 	icon_state = "hair_a"
@@ -860,7 +864,7 @@
 	var/gradient_category = GRADIENT_APPLIES_TO_HAIR|GRADIENT_APPLIES_TO_FACIAL_HAIR
 
 /datum/sprite_accessory/gradient/none
-	name = "None"
+	name = SPRITE_ACCESSORY_NONE
 	icon_state = "none"
 
 /datum/sprite_accessory/gradient/full
@@ -1776,6 +1780,11 @@
 /datum/sprite_accessory/tails/lizard
 	icon = 'icons/mob/human/species/lizard/lizard_tails.dmi'
 
+/datum/sprite_accessory/tails/lizard/none
+	name = SPRITE_ACCESSORY_NONE
+	icon_state = "none"
+	natural_spawn = FALSE
+
 /datum/sprite_accessory/tails/lizard/smooth
 	name = "Smooth"
 	icon_state = "smooth"
@@ -1801,6 +1810,13 @@
 	icon = 'icons/mob/human/cat_features.dmi'
 	icon_state = "default"
 	color_src = HAIR_COLOR
+
+/datum/sprite_accessory/tails/monkey
+
+/datum/sprite_accessory/tails/monkey/none
+	name = SPRITE_ACCESSORY_NONE
+	icon_state = "none"
+	natural_spawn = FALSE
 
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"
@@ -1941,10 +1957,6 @@
 	hasinner = TRUE
 	color_src = HAIR_COLOR
 	locked = TRUE
-
-/datum/sprite_accessory/wings/none
-	name = "None"
-	icon_state = "none"
 
 /datum/sprite_accessory/wings
 	icon = 'icons/mob/human/species/wings.dmi'

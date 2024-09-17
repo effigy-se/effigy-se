@@ -131,6 +131,7 @@
 	COOLDOWN_START(src, use_cooldown, use_cooldown_duration)
 	for(var/item_to_make in spawned_items)
 		var/obj/item/made_item = new item_to_make(get_turf(src))
+		ADD_TRAIT(made_item, TRAIT_CONTRABAND, INNATE_TRAIT)
 		succcess_message(user, made_item)
 
 
@@ -200,7 +201,7 @@
  * Returns TRUE if the user is a living mob that is a cultist and is not incapacitated.
  */
 /obj/structure/destructible/cult/item_dispenser/proc/check_menu(mob/user)
-	return isliving(user) && is_cultist_check(user) && !user.incapacitated()
+	return isliving(user) && is_cultist_check(user) && !user.incapacitated
 
 // Spooky looking door used in gateways. Or something.
 /obj/effect/gateway

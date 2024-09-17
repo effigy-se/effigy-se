@@ -38,7 +38,7 @@
 		/datum/computer_file/program/messenger,
 		/datum/computer_file/program/nt_pay,
 		/datum/computer_file/program/notepad,
-		/datum/computer_file/program/crew_manifest, // EffigyEdit Add
+		/datum/computer_file/program/crew_manifest,
 	)
 	///List of items that can be stored in a PDA
 	var/static/list/contained_item = list(
@@ -140,6 +140,11 @@
 		. = CONTEXTUAL_SCREENTIP_SET
 
 	return . || NONE
+
+/obj/item/modular_computer/pda/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(iscash(interacting_with))
+		return money_act(user,interacting_with)
+	return NONE
 
 /obj/item/modular_computer/pda/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	. = ..()

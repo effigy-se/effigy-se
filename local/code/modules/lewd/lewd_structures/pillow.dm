@@ -62,7 +62,7 @@
 /obj/item/fancy_pillow/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return FALSE
 	return TRUE
 
@@ -163,6 +163,7 @@
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillow_pink_round"
 	base_icon_state = "pillow"
+	elevation = 0 // Realistically, it's just a pillow at the end of the tile
 	var/current_color = "pink"
 	var/current_form = "round"
 
@@ -249,7 +250,7 @@
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_small_pink"
 	base_icon_state = "pillowpile_small"
-	pseudo_z_axis = 4
+	var/elevation = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
 
@@ -269,6 +270,8 @@
 	buildstacktype = /obj/item/stack/sheet/cloth
 
 /obj/structure/chair/pillow_small/Initialize(mapload)
+	if(elevation)
+		AddElement(/datum/element/elevation, pixel_shift = elevation)
 	update_icon()
 	return ..()
 
@@ -375,7 +378,7 @@
 	icon = 'local/icons/lewd/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_large_pink"
 	base_icon_state = "pillowpile_large"
-	pseudo_z_axis = 4
+	elevation = 4
 	var/current_color = "pink"
 	var/mutable_appearance/armrest
 	//Containing pillows that we have here

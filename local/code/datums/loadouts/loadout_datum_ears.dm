@@ -25,6 +25,11 @@ GLOBAL_LIST_INIT(loadout_ears, generate_loadout_items(/datum/loadout_item/ears))
 	name = "Headphones"
 	item_path = /obj/item/instrument/piano_synth/headphones
 
+/datum/loadout_item/ears/headphones/useless
+	name = "Headphones, Nonfunctional"
+	item_path = /obj/item/clothing/ears/headphones
+	additional_tooltip_contents = list("May be used on a character's head, ears, or neck slot. Fashionable!")
+
 /datum/loadout_item/ears/earmuffs
 	name = "Earmuffs"
 	item_path = /obj/item/clothing/ears/earmuffs

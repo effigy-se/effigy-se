@@ -4,8 +4,8 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	category = LOADOUT_ITEM_TOYS
 
 /*
-*	PLUSHIES
-*/
+ *	PLUSHIES
+ */
 
 /datum/loadout_item/toys/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)  // these go in the backpack
 	return FALSE
@@ -18,55 +18,83 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Carp Plushie"
 	item_path = /obj/item/toy/plush/carpplushie
 
-/datum/loadout_item/toys/shark
-	name = "Shark Plushie"
-	item_path = /obj/item/toy/plush/shark
+/datum/loadout_item/toys/lizard/green
+	name = "Lizard Plushie"
+	item_path = /obj/item/toy/plush/lizard_plushie/green
 
-/datum/loadout_item/toys/lizard_greyscale
-	name = "Greyscale Lizard Plushie"
+/datum/loadout_item/toys/lizard
+	name = "Recolorable Lizard Plushie"
 	item_path = /obj/item/toy/plush/lizard_plushie
 
 /datum/loadout_item/toys/moth
 	name = "Moth Plushie"
 	item_path = /obj/item/toy/plush/moth
 
-/datum/loadout_item/toys/narsie
-	name = "Nar'sie Plushie"
-	item_path = /obj/item/toy/plush/narplush
-	restricted_roles = list(JOB_CHAPLAIN)
-
-/datum/loadout_item/toys/nukie
-	name = "Nukie Plushie"
-	item_path = /obj/item/toy/plush/nukeplushie
-
-/datum/loadout_item/toys/peacekeeper
-	name = "Peacekeeper Plushie"
-	item_path = /obj/item/toy/plush/pkplush
-
 /datum/loadout_item/toys/plasmaman
 	name = "Plasmaman Plushie"
 	item_path = /obj/item/toy/plush/plasmamanplushie
 
-/datum/loadout_item/toys/ratvar
-	name = "Ratvar Plushie"
-	item_path = /obj/item/toy/plush/ratplush
-	restricted_roles = list(JOB_CHAPLAIN)
+/datum/loadout_item/toys/abductor
+	name = "Abductor Plushie"
+	item_path = /obj/item/toy/plush/abductor
 
-/datum/loadout_item/toys/rouny
-	name = "Rouny Plushie"
-	item_path = /obj/item/toy/plush/rouny
+/datum/loadout_item/toys/abductor/agent
+	name = "Abductor Agent Plushie"
+	item_path = /obj/item/toy/plush/abductor/agent
+
+/datum/loadout_item/toys/shark
+	name = "Shark Plushie"
+	item_path = /obj/item/toy/plush/shark
 
 /datum/loadout_item/toys/snake
 	name = "Snake Plushie"
 	item_path = /obj/item/toy/plush/snakeplushie
 
+/datum/loadout_item/toys/rouny
+	name = "Rouny Plushie"
+	item_path = /obj/item/toy/plush/rouny
+
+/datum/loadout_item/toys/nukie
+	name = "Nukie Plushie"
+	item_path = /obj/item/toy/plush/nukeplushie
+
+/datum/loadout_item/toys/donk
+	name = "Donk Pocket Plushie"
+	item_path = /obj/item/toy/plush/donkpocket
+
+/datum/loadout_item/toys/peacekeeper
+	name = "Peacekeeper Plushie"
+	item_path = /obj/item/toy/plush/pkplush
+
 /datum/loadout_item/toys/slime
 	name = "Slime Plushie"
 	item_path = /obj/item/toy/plush/slimeplushie
 
+/datum/loadout_item/toys/ianbastardman
+	name = "Ian Plushie"
+	item_path = /obj/item/toy/plush/effigy/ian
+
+/datum/loadout_item/toys/corgiman
+	name = "Corgi Plushie"
+	item_path = /obj/item/toy/plush/effigy/ian/small
+
+/datum/loadout_item/toys/corgiwoman
+	name = "Girly Corgi Plushie"
+	item_path = /obj/item/toy/plush/effigy/ian/lisa
+
 /datum/loadout_item/toys/bubble
 	name = "Bubblegum Plushie"
 	item_path = /obj/item/toy/plush/bubbleplush
+
+/datum/loadout_item/toys/narsie
+	name = "Nar'sie Plushie"
+	item_path = /obj/item/toy/plush/narplush
+	restricted_roles = list(JOB_CHAPLAIN)
+
+/datum/loadout_item/toys/ratvar
+	name = "Ratvar Plushie"
+	item_path = /obj/item/toy/plush/ratplush
+	restricted_roles = list(JOB_CHAPLAIN)
 
 /datum/loadout_item/toys/goat
 	name = "Strange Goat Plushie"
@@ -92,10 +120,6 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Edgy Bird Plushie"
 	item_path = /obj/item/toy/plush/effigy/edgy_bird
 
-/datum/loadout_item/toys/tree_ferret
-	name = "Tree Ferret Plushie"
-	item_path = /obj/item/toy/plush/effigy/tree_ferret
-
 /datum/loadout_item/toys/mechanic_fox
 	name = "Mechanist Fox Plushie"
 	item_path = /obj/item/toy/plush/effigy/mechanic_fox
@@ -104,33 +128,9 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Tribal Salamander Plushie"
 	item_path = /obj/item/toy/plush/effigy/tribal_salamander
 
-/datum/loadout_item/toys/ianbastardman
-	name = "Ian Plushie"
-	item_path = /obj/item/toy/plush/effigy/ian
-
-/datum/loadout_item/toys/corgiman
-	name = "Corgi Plushie"
-	item_path = /obj/item/toy/plush/effigy/ian/small
-
-/datum/loadout_item/toys/corgiwoman
-	name = "Girly Corgi Plushie"
-	item_path = /obj/item/toy/plush/effigy/ian/lisa
-
-/datum/loadout_item/toys/commanding_teshari
-	name = "Commanding Teshari Plushy"
-	item_path = /obj/item/toy/plush/effigy/commanding_teshari
-
 /datum/loadout_item/toys/breakdancing_bird
 	name = "Breakdancing Bird Plushie"
 	item_path = /obj/item/toy/plush/effigy/breakdancing_bird
-
-/datum/loadout_item/toys/skreking_vox
-	name = "Skreking Vox Plushie"
-	item_path = /obj/item/toy/plush/effigy/skreking_vox
-
-/datum/loadout_item/toys/blue_dog
-	name = "Blue Dog Plushie"
-	item_path = /obj/item/toy/plush/effigy/blue_dog
 
 /datum/loadout_item/toys/engi_snek
 	name = "Engineering Snek Plushie"
@@ -140,17 +140,13 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Glitching Synthetic Plushie"
 	item_path = /obj/item/toy/plush/effigy/glitch_synth
 
-/datum/loadout_item/toys/boom_bird
-	name = "Boom Bird Plushie"
-	item_path = /obj/item/toy/plush/effigy/boom_bird
-
 /datum/loadout_item/toys/jecca
 	name = "Sexy Snoodle Plushie"
 	item_path = /obj/item/toy/plush/effigy/jecca
 
 /*
-*	CARDS
-*/
+ *	CARDS
+ */
 
 /datum/loadout_item/toys/card_binder
 	name = "Card Binder"
@@ -173,8 +169,8 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	item_path = /obj/item/toy/cards/deck/tarot
 
 /*
-*	DICE
-*/
+ *	DICE
+ */
 
 /datum/loadout_item/toys/d1
 	name = "D1"
@@ -233,8 +229,8 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	item_path = /obj/item/storage/dice
 
 /*
-*	TENNIS BALLS
-*/
+ *	TENNIS BALLS
+ */
 
 /datum/loadout_item/toys/tennis
 	name = "Tennis Ball (Classic)"
@@ -265,8 +261,8 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	item_path = /obj/item/toy/tennis/purple
 
 /*
-*	MISC
-*/
+ *	MISC
+ */
 
 /datum/loadout_item/toys/cat_toy
 	name = "Cat Toy"

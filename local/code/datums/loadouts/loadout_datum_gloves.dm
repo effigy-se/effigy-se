@@ -77,6 +77,10 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 	name = "Maid Arm Covers"
 	item_path = /obj/item/clothing/gloves/maid
 
+/datum/loadout_item/gloves/maid_arm_covers
+	name = "Colourable Maid Arm Covers"
+	item_path = /obj/item/clothing/gloves/maid_arm_covers
+
 /*
 *	RINGS
 */

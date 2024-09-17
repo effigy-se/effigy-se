@@ -41,7 +41,7 @@ ADMIN_VERB(secrets, R_NONE, "Secrets", "Abuse harder than you ever have before w
 
 #define THUNDERDOME_TEMPLATE_FILE "admin_thunderdome.dmm"
 #define HIGHLANDER_DELAY_TEXT "40 seconds (crush the hope of a normal shift)"
-/datum/secrets_menu/ui_act(action, params)
+/datum/secrets_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -257,6 +257,11 @@ ADMIN_VERB(secrets, R_NONE, "Secrets", "Abuse harder than you ever have before w
 				return
 			holder.anon_names()
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Anonymous Names"))
+		if("tripleAI")
+			if(!is_funmin)
+				return
+			holder.triple_ai()
+			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Triple AI"))
 		if("onlyone")
 			if(!is_funmin)
 				return

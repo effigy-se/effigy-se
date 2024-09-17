@@ -46,7 +46,7 @@
 /obj/item/debug/omnitool/proc/check_menu(mob/user)
 	if(!istype(user))
 		return FALSE
-	if(user.incapacitated() || !user.Adjacent(src))
+	if(user.incapacitated || !user.Adjacent(src))
 		return FALSE
 	return TRUE
 
@@ -142,6 +142,10 @@
 			tool_behaviour = TOOL_ROLLINGPIN
 		if("Wire Brush")
 			tool_behaviour = TOOL_RUSTSCRAPER
+
+/obj/item/debug/omnitool/item_spawner
+	name = "spawntool"
+	color = COLOR_ADMIN_PINK
 
 /obj/item/debug/omnitool/item_spawner/attack_self(mob/user)
 	if(!user || !user.client)

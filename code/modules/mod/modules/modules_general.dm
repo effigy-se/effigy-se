@@ -49,7 +49,7 @@
 
 /obj/item/mod/module/storage/large_capacity
 	name = "MOD expanded storage module"
-	desc = "Reverse engineered by Nakamura Engineering from Donk Corporation designs, this system of hidden compartments \
+	desc = "Reverse engineered by Nakamura Engineering from Donk Company designs, this system of hidden compartments \
 		is entirely within the suit, distributing items and weight evenly to ensure a comfortable experience for the user; \
 		whether smuggling, or simply hauling."
 	icon_state = "storage_large"
@@ -102,12 +102,12 @@
 	cooldown_time = 0.5 SECONDS
 	overlay_state_inactive = "module_jetpack"
 	overlay_state_active = "module_jetpack_on"
-	/// Do we give the wearer a speed buff.
-	var/full_speed = FALSE
 	/// Do we have stabilizers? If yes the user won't move from inertia.
 	var/stabilize = TRUE
 	/// Callback to see if we can thrust the user.
 	var/thrust_callback
+
+/obj/item/mod/module/jetpack/advanced
 
 /obj/item/mod/module/jetpack/Initialize(mapload)
 	. = ..()
@@ -137,18 +137,6 @@
 		/datum/effect_system/trail_follow/ion/grav_allowed \
 	)
 
-/obj/item/mod/module/jetpack/on_activation()
-	. = ..()
-	if(!.)
-		return
-	if(full_speed)
-		mod.wearer.add_movespeed_modifier(/datum/movespeed_modifier/jetpack/fullspeed)
-
-/obj/item/mod/module/jetpack/on_deactivation(display_message = TRUE, deleting = FALSE)
-	. = ..()
-	if(full_speed)
-		mod.wearer.remove_movespeed_modifier(/datum/movespeed_modifier/jetpack/fullspeed)
-
 /obj/item/mod/module/jetpack/get_configuration()
 	. = ..()
 	.["stabilizers"] = add_ui_configuration("Stabilizers", "bool", stabilize)
@@ -164,15 +152,6 @@
 	if(!drain_power(use_energy_cost))
 		return FALSE
 	return TRUE
-
-/obj/item/mod/module/jetpack/advanced
-	name = "MOD advanced ion jetpack module"
-	desc = "An improvement on the previous model of electric thrusters. This one achieves higher speeds through \
-		mounting of more jets and application of red paint."
-	icon_state = "jetpack_advanced"
-	overlay_state_inactive = "module_jetpackadv"
-	overlay_state_active = "module_jetpackadv_on"
-	full_speed = TRUE
 
 /// Cooldown to use if we didn't actually launch a jump jet
 #define FAILED_ACTIVATION_COOLDOWN 3 SECONDS
@@ -190,9 +169,6 @@
 	incompatible_modules = list(/obj/item/mod/module/jump_jet)
 
 /obj/item/mod/module/jump_jet/on_use()
-	. = ..()
-	if (!.)
-		return FALSE
 	if (DOING_INTERACTION(mod.wearer, mod.wearer))
 		balloon_alert(mod.wearer, "busy!")
 		return
@@ -454,7 +430,7 @@
 ///Dispenser - Dispenses an item after a time passes.
 /obj/item/mod/module/dispenser
 	name = "MOD burger dispenser module"
-	desc = "A rare piece of technology reverse-engineered from a prototype found in a Donk Corporation vessel. \
+	desc = "A rare piece of technology reverse-engineered from a prototype found in a Donk Company vessel. \
 		This can draw incredible amounts of power from the suit's charge to create edible organic matter in the \
 		palm of the wearer's glove; however, research seemed to have entirely stopped at burgers. \
 		Notably, all attempts to get it to dispense Earl Grey tea have failed."
@@ -851,16 +827,10 @@
 	return ..()
 
 /obj/item/mod/module/recycler/on_activation()
-	. = ..()
-	if(!.)
-		return
 	connector = AddComponent(/datum/component/connect_loc_behalf, mod.wearer, loc_connections)
 	RegisterSignal(mod.wearer, COMSIG_MOVABLE_MOVED, PROC_REF(on_wearer_moved))
 
 /obj/item/mod/module/recycler/on_deactivation(display_message, deleting = FALSE)
-	. = ..()
-	if(!.)
-		return
 	QDEL_NULL(connector)
 	UnregisterSignal(mod.wearer, COMSIG_MOVABLE_MOVED, PROC_REF(on_wearer_moved))
 

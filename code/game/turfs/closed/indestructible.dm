@@ -63,6 +63,7 @@
 /turf/closed/indestructible/splashscreen
 	name = "Space Station 13"
 	desc = null
+	baseturfs = /turf/cordon
 	icon = 'icons/blanks/blank_title.png'
 	icon_state = ""
 	pixel_x = -64
@@ -99,11 +100,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	desc = pick(strings(SPLASH_FILE, "splashes"))
 	return ..()
 */ // EffigyEdit Remove End
-
-/turf/closed/indestructible/start_area
-	name = null
-	desc = null
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /turf/closed/indestructible/reinforced
 	name = "reinforced wall"
@@ -181,6 +177,9 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	smoothing_groups = SMOOTH_GROUP_ABDUCTOR_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS
 	canSmoothWith = SMOOTH_GROUP_ABDUCTOR_WALLS
 
+/turf/closed/indestructible/alien/nodiagonal
+	icon_state = "abductor_wall-15"
+	smoothing_flags = SMOOTH_BITMASK
 
 /turf/closed/indestructible/cult
 	name = "runed metal wall"
@@ -213,7 +212,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 /turf/closed/indestructible/fakeglass/Initialize(mapload)
 	. = ..()
 	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01) //add a grille underlay
-	underlays += mutable_appearance(EFFIGY_TURFS_ICON_FILE, "plating", layer - 0.02) //add the plating underlay, below the grille // EffigyEdit Change - Floors
+	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", layer - 0.02) //add the plating underlay, below the grille
 
 /turf/closed/indestructible/opsglass
 	name = "window"
@@ -229,7 +228,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	. = ..()
 	icon_state = null
 	underlays += mutable_appearance('icons/obj/structures.dmi', "grille", layer - 0.01)
-	underlays += mutable_appearance(EFFIGY_TURFS_ICON_FILE, "plating", layer - 0.02) // EffigyEdit Change - Floors
+	underlays += mutable_appearance('icons/turf/floors.dmi', "plating", layer - 0.02)
 
 /turf/closed/indestructible/fakedoor
 	name = "airlock"

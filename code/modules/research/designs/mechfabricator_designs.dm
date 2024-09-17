@@ -1578,6 +1578,20 @@
 		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_JANITOR
 	)
 
+/datum/design/borg_upgrade_plunger
+	name = "Integrated Plunger"
+	id = "borg_upgrade_plunger"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/plunger
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT*1.125,
+		/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT*0.75,
+	)
+	construction_time = 4 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_JANITOR
+	)
+
 /datum/design/borg_upgrade_rolling_table
 	name = "Rolling Table Dock"
 	id = "borg_upgrade_rolling_table"
@@ -2606,6 +2620,18 @@
 		/datum/material/bluespace =HALF_SHEET_MATERIAL_AMOUNT,
 	)
 	build_path = /obj/item/mod/module/criminalcapture
+	category = list(
+		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_SECURITY
+	)
+
+/datum/design/module/mirage
+	name = "Mirage Grenade Dispenser Module"
+	id = "mod_mirage_grenade"
+	materials = list(
+		/datum/material/iron =HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/bluespace =HALF_SHEET_MATERIAL_AMOUNT,
+	)
+	build_path = /obj/item/mod/module/dispenser/mirage
 	category = list(
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_SECURITY
 	)

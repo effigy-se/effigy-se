@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	var/list/features = list("mcolor" = COLOR_WHITE)
 	///Stores the hashed values of the person's non-human features
 	var/unique_features
-	///Stores the real name of the person who originally got this dna datum. Used primarely for changelings,
+	///Stores the real name of the person who originally got this dna datum. Used primarily for changelings,
 	var/real_name
 	///All mutations are from now on here
 	var/list/mutations = list()
@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	///List of the default genes from this mutation to allow DNA Scanner highlighting
 	var/default_mutation_genes[DNA_MUTATION_BLOCKS]
 	var/stability = 100
-	///Did we take something like mutagen? In that case we cant get our genes scanned to instantly cheese all the powers.
+	///Did we take something like mutagen? In that case we can't get our genes scanned to instantly cheese all the powers.
 	var/scrambled = FALSE
 	/// Weighted list of nonlethal meltdowns
 	var/static/list/nonfatal_meltdowns = list()
@@ -258,8 +258,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		L[DNA_TAIL_BLOCK] = construct_block(GLOB.tails_list_human.Find(features["tail_cat"]), GLOB.tails_list_human.len)
 	if(features["tail_lizard"])
 		L[DNA_LIZARD_TAIL_BLOCK] = construct_block(GLOB.tails_list_lizard.Find(features["tail_lizard"]), GLOB.tails_list_lizard.len)
-	if(features["tail_monkey"])
-		L[DNA_MONKEY_TAIL_BLOCK] = construct_block(GLOB.tails_list_monkey.Find(features["tail_monkey"]), GLOB.tails_list_monkey.len)
 	if(features["snout"])
 		L[DNA_SNOUT_BLOCK] = construct_block(GLOB.snouts_list.Find(features["snout"]), GLOB.snouts_list.len)
 	if(features["horns"])
@@ -402,8 +400,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			set_uni_feature_block(blocknumber, construct_block(GLOB.tails_list_human.Find(features["tail_cat"]), GLOB.tails_list_human.len))
 		if(DNA_LIZARD_TAIL_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.tails_list_lizard.Find(features["tail_lizard"]), GLOB.tails_list_lizard.len))
-		if(DNA_MONKEY_TAIL_BLOCK)
-			set_uni_feature_block(blocknumber, construct_block(GLOB.tails_list_monkey.Find(features["tail_monkey"]), GLOB.tails_list_monkey.len))
 		if(DNA_SNOUT_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.snouts_list.Find(features["snout"]), GLOB.snouts_list.len))
 		if(DNA_HORNS_BLOCK)
@@ -442,8 +438,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(holder && (human_mutation in mutations))
 		set_se(0, human_mutation)
 		. = human_mutation.on_losing(holder)
-		qdel(human_mutation) // qdel mutations on removal
-		update_instability(FALSE)
+		if(!(human_mutation in mutations))
+			qdel(human_mutation) // qdel mutations on removal
+			update_instability(FALSE)
 		return
 
 /**
@@ -744,8 +741,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		dna.features["tail_cat"] = GLOB.tails_list_human[deconstruct_block(get_uni_feature_block(features, DNA_TAIL_BLOCK), GLOB.tails_list_human.len)]
 	if(dna.features["tail_lizard"])
 		dna.features["tail_lizard"] = GLOB.tails_list_lizard[deconstruct_block(get_uni_feature_block(features, DNA_LIZARD_TAIL_BLOCK), GLOB.tails_list_lizard.len)]
-	if(dna.features["tail_monkey"])
-		dna.features["tail_monkey"] = GLOB.tails_list_monkey[deconstruct_block(get_uni_feature_block(features, DNA_MONKEY_TAIL_BLOCK), GLOB.tails_list_monkey.len)]
 	if(dna.features["ears"])
 		dna.features["ears"] = GLOB.ears_list[deconstruct_block(get_uni_feature_block(features, DNA_EARS_BLOCK), GLOB.ears_list.len)]
 	if(dna.features["moth_wings"])
@@ -831,7 +826,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(istype(mutation, /datum/mutation/human))
 		var/datum/mutation/human/M = mutation
 		mutation_type = M.type
-	if(!mutation_in_sequence(mutation_type)) //cant activate what we dont have, use add_mutation
+	if(!mutation_in_sequence(mutation_type)) //can't activate what we don't have, use add_mutation
 		return FALSE
 	add_mutation(mutation, MUT_NORMAL)
 	return TRUE

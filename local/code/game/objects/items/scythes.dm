@@ -77,9 +77,9 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/techweb_node/scythe_t1
-	id = "t1scythe"
+	id = TECHWEB_NODE_T1_SCYTHE
 	display_name = "Scythe (Tier 1)"
-	description = "Culling tools"
+	description = "Basic tools for culling weeds and hacking grass."
 	prereq_ids = list(TECHWEB_NODE_EXP_TOOLS, TECHWEB_NODE_CHEM_SYNTHESIS, TECHWEB_NODE_BOTANY_EQUIP)
 	design_ids = list(
 		"scythet1",
@@ -88,10 +88,10 @@
 	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = 500)
 
 /datum/techweb_node/scythe_t2
-	id = "t2scythe"
+	id = TECHWEB_NODE_T2_SCYTHE
 	display_name = "Scythe (Tier 2)"
-	description = "Culling tools"
-	prereq_ids = list("t1scythe")
+	description = "Learning from the simple crook to design better Scythes."
+	prereq_ids = list(TECHWEB_NODE_T1_SCYTHE)
 	design_ids = list(
 		"scythet2",
 	)

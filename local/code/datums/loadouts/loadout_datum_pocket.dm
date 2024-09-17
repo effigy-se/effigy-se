@@ -1,6 +1,6 @@
 /*
-*	LOADOUT ITEM DATUMS FOR BACKPACK/POCKET SLOTS
-*/
+ *	LOADOUT ITEM DATUMS FOR BACKPACK/POCKET SLOTS
+ */
 
 /// Pocket items (Moved to backpack)
 GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_item/pocket_items))
@@ -47,44 +47,68 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 			wallet.forceMove(equipper.drop_location())
 
 /*
-*	GUM
-*/
+ *	GUM
+ */
 
 /datum/loadout_item/pocket_items/gum_pack
 	name = "Pack of Gum"
 	item_path = /obj/item/storage/box/gum
 
-/datum/loadout_item/pocket_items/gum_pack_nicotine
-	name = "Pack of Nicotine Gum"
-	item_path = /obj/item/storage/box/gum/nicotine
+/datum/loadout_item/pocket_items/gum_pack_bubblegum
+	name = "Pack of Bubblegum"
+	item_path = /obj/item/storage/box/gum/bubblegum
 
 /datum/loadout_item/pocket_items/gum_pack_hp
 	name = "Pack of HP+ Gum"
 	item_path = /obj/item/storage/box/gum/happiness
 
+/datum/loadout_item/pocket_items/gum_pack_nicotine
+	name = "Pack of Nicotine Gum"
+	item_path = /obj/item/storage/box/gum/nicotine
+
+/datum/loadout_item/pocket_items/gum_pack_wake_up
+	name = "Pack of Mothic Activin Gum"
+	item_path = /obj/item/storage/box/gum/wake_up
+
 /*
-*	LIPSTICK
-*/
-
-/datum/loadout_item/pocket_items/lipstick_black
-	name = "Black Lipstick"
-	item_path = /obj/item/lipstick/black
-
-/datum/loadout_item/pocket_items/lipstick_jade
-	name = "Jade Lipstick"
-	item_path = /obj/item/lipstick/jade
-
-/datum/loadout_item/pocket_items/lipstick_purple
-	name = "Purple Lipstick"
-	item_path = /obj/item/lipstick/purple
+ *	LIPSTICK
+ */
 
 /datum/loadout_item/pocket_items/lipstick_red
 	name = "Red Lipstick"
 	item_path = /obj/item/lipstick
 
+/datum/loadout_item/pocket_items/lipstick_green
+	name = "Green Lipstick"
+	item_path = /obj/item/lipstick/green
+
+/datum/loadout_item/pocket_items/lipstick_jade
+	name = "Jade Lipstick"
+	item_path = /obj/item/lipstick/jade
+
+/datum/loadout_item/pocket_items/lipstick_blue
+	name = "Blue Lipstick"
+	item_path = /obj/item/lipstick/blue
+
+/datum/loadout_item/pocket_items/lipstick_purple
+	name = "Purple Lipstick"
+	item_path = /obj/item/lipstick/purple
+
+/datum/loadout_item/pocket_items/lipstick_black
+	name = "Black Lipstick"
+	item_path = /obj/item/lipstick/black
+
+/datum/loadout_item/pocket_items/lipstick_white
+	name = "White Lipstick"
+	item_path = /obj/item/lipstick/white
+
+/datum/loadout_item/pocket_items/lipstick_random
+	name = "Random Lipstick"
+	item_path = /obj/item/lipstick/random
+
 /*
-*	MISC
-*/
+ *	MISCELLANEOUS
+ */
 
 /datum/loadout_item/pocket_items/rag
 	name = "Rag"
@@ -93,6 +117,15 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/razor
 	name = "Razor"
 	item_path = /obj/item/razor
+
+/datum/loadout_item/pocket_items/newspaper
+	name = "Newspaper"
+	item_path = /obj/item/newspaper
+
+/*
+ *	SMOKING & ALCOHOL
+ *	"smoking is bad mkay"
+ */
 
 /datum/loadout_item/pocket_items/matches
 	name = "Matchbox"
@@ -106,6 +139,31 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Zippo Lighter"
 	item_path = /obj/item/lighter
 
+/datum/loadout_item/pocket_items/cigarettes
+	name = "Cigarette Pack"
+	item_path = /obj/item/storage/fancy/cigarettes
+
+/datum/loadout_item/pocket_items/cigar
+	name = "Cigar"
+	item_path = /obj/item/cigarette/cigar
+
+/datum/loadout_item/pocket_items/flask
+	name = "Flask"
+	item_path = /obj/item/reagent_containers/cup/glass/flask
+
+/datum/loadout_item/pocket_items/hooch	// congrats, you can now start with an alcohol
+	name = "Hooch Bottle"				// bottle to more immersively be the town drunk
+	item_path = /obj/item/reagent_containers/cup/glass/bottle/hooch
+
+
+/*
+ *	ELECTRONICS
+ */
+
+/datum/loadout_item/pocket_items/modular_laptop
+	name = "Modular Laptop"
+	item_path = /obj/item/modular_computer/laptop/preset/civilian
+
 /datum/loadout_item/pocket_items/ttsdevice
 	name = "Text-to-Speech Device"
 	item_path = /obj/item/ttsdevice
@@ -114,29 +172,9 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Personal AI Device"
 	item_path = /obj/item/pai_card
 
-/datum/loadout_item/pocket_items/cigarettes
-	name = "Cigarette Pack"
-	item_path = /obj/item/storage/fancy/cigarettes
-
-/datum/loadout_item/pocket_items/cigar //smoking is bad mkay
-	name = "Cigar"
-	item_path = /obj/item/cigarette/cigar
-
-/datum/loadout_item/pocket_items/flask
-	name = "Flask"
-	item_path = /obj/item/reagent_containers/cup/glass/flask
-
-/datum/loadout_item/pocket_items/multipen
-	name = "Multicolored Pen"
-	item_path = /obj/item/pen/fourcolor
-
-/datum/loadout_item/pocket_items/fountainpen
-	name = "Fancy Pen"
-	item_path = /obj/item/pen/fountain
-
-/datum/loadout_item/pocket_items/modular_laptop
-	name = "Modular Laptop"
-	item_path = /obj/item/modular_computer/laptop/preset/civilian
+/*
+ *	BOXED RINGS
+ */
 
 /datum/loadout_item/pocket_items/ringbox_gold
 	name = "Gold Ring Box"
@@ -150,6 +188,22 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Diamond Ring Box"
 	item_path = /obj/item/storage/fancy/ringbox/diamond
 
+/*
+ *	PAPERWORK
+ */
+
+/datum/loadout_item/pocket_items/multipen
+	name = "Multicolored Pen"
+	item_path = /obj/item/pen/fourcolor
+
+/datum/loadout_item/pocket_items/fountainpen
+	name = "Fancy Pen"
+	item_path = /obj/item/pen/fountain
+
+/datum/loadout_item/pocket_items/clipboard
+	name = "Clipboard"
+	item_path = /obj/item/clipboard
+
 /datum/loadout_item/pocket_items/tapeplayer
 	name = "Universal Recorder"
 	item_path = /obj/item/taperecorder
@@ -158,14 +212,23 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Spare Cassette Tape"
 	item_path = /obj/item/tape/random
 
-/datum/loadout_item/pocket_items/newspaper
-	name = "Newspaper"
-	item_path = /obj/item/newspaper
-
-/datum/loadout_item/pocket_items/clipboard
-	name = "Clipboard"
-	item_path = /obj/item/clipboard
-
 /datum/loadout_item/pocket_items/folder
 	name = "Folder"
 	item_path = /obj/item/folder
+
+/datum/loadout_item/pocket_items/folder/blue
+	name = "Blue Folder"
+	item_path = /obj/item/folder/blue
+
+/datum/loadout_item/pocket_items/folder/red
+	name = "Red Folder"
+	item_path = /obj/item/folder/red
+
+/datum/loadout_item/pocket_items/folder/yellow
+	name = "Yellow Folder"
+	item_path = /obj/item/folder/yellow
+
+/datum/loadout_item/pocket_items/folder/white
+	name = "White Folder"
+	item_path = /obj/item/folder/white
+

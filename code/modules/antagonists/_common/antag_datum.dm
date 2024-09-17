@@ -128,7 +128,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 		ui = new(user, src, ui_name, name)
 		ui.open()
 
-/datum/antagonist/ui_act(action, params)
+/datum/antagonist/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -525,6 +525,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 		"antag_team_hud_[REF(src)]",
 		hud_image_on(target),
 		antag_to_check || type,
+		get_team() && WEAKREF(get_team()),
 	))
 
 	// Add HUDs that they couldn't see before

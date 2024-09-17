@@ -1,5 +1,5 @@
 /datum/id_trim/job/broadcast_team
-	assignment = "Broadcast Team"
+	assignment = JOB_BROADCAST_TEAM
 	trim_icon = 'local/icons/obj/card.dmi'
 	trim_state = "trim_broadcast_team"
 	department_color = COLOR_SERVICE_LIME

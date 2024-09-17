@@ -3,7 +3,13 @@
 	desc = /obj/machinery/door/firedoor::desc
 	icon = /obj/machinery/door/firedoor::icon
 	icon_state = /obj/machinery/door/firedoor::icon_state
-	layer = /obj/machinery/door/firedoor::layer
+	layer = ABOVE_MOB_LAYER
+	alpha = 64
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/fluff/fake_firedoor/Initialize(mapload)
+	. = ..()
+	icon_state = "door_open"
 
 /obj/structure/fluff/fake_transit_tube
 	name = /obj/structure/transit_tube::name
@@ -14,3 +20,9 @@
 	density = /obj/structure/transit_tube::density
 	pass_flags_self = /obj/structure/transit_tube::pass_flags_self
 
+/obj/structure/fluff/standalone_wooden_post
+	name = "wooden post"
+	desc = "A sturdy space-wood post; upright, on it's lonesome. Ominous."
+	icon = 'local/icons/obj/fluff/general.dmi'
+	icon_state = "wooden_post"
+	can_buckle = TRUE

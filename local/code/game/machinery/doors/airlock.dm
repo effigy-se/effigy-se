@@ -424,7 +424,7 @@
 
 /obj/structure/door_assembly/door_assembly_svc
 	name = "service airlock assembly"
-	icon = 'local/icons/obj/doors/airlocks/station/service.dmi'
+	icon =  /obj/machinery/door/airlock/service::icon
 	base_name = "service airlock"
 	glass_type = /obj/machinery/door/airlock/service/glass
 	airlock_type = /obj/machinery/door/airlock/service
@@ -441,7 +441,7 @@
 
 /obj/structure/door_assembly/door_assembly_sto
 	name = "studio airlock assembly"
-	icon = 'local/icons/obj/doors/airlocks/station/studio.dmi'
+	icon =  /obj/machinery/door/airlock/service/studio::icon
 	base_name = "service airlock"
 	glass_type = /obj/machinery/door/airlock/service/studio/glass
 	airlock_type = /obj/machinery/door/airlock/service/studio

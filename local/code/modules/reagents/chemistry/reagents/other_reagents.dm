@@ -12,7 +12,6 @@
 
 /datum/reagent/water
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
-	evaporates = TRUE
 
 /datum/reagent/hellwater
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC

@@ -1,3 +1,19 @@
+// Unlike drains which slowly delete liquids; water turfs INSTANTLY kill any liquids that come in contact with them
+// This creates some weird edgecases on /tg/ maps but I vastly prefer it behave like this
+/turf/open/water/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_TURF_LIQUIDS_CHANGE, PROC_REF(kill_liquid_kill))
+	RegisterSignal(src, COMSIG_TURF_LIQUIDS_CREATION, PROC_REF(kill_liquid_kill))
+
+/turf/open/water/ChangeTurf(path, list/new_baseturfs, flags)
+	UnregisterSignal(src, COMSIG_TURF_LIQUIDS_CHANGE)
+	UnregisterSignal(src, COMSIG_TURF_LIQUIDS_CREATION)
+	return ..()
+
+/turf/open/water/proc/kill_liquid_kill()
+	if(liquids)
+		liquids.liquid_simple_delete_flat(INFINITY)
+
 /turf/open/water/attackby(obj/item/W, mob/user, params)
 	. = ..()
 	if(.)
