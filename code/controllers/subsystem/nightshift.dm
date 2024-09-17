@@ -62,5 +62,11 @@ SUBSYSTEM_DEF(nightshift)
 		currentrun -= APC
 		if (APC.area && (APC.area.type in GLOB.the_station_areas))
 			APC.set_nightshift(nightshift_active)
+	/// EFFIGY EDIT ADD - SOLARLIGHTS ///
+	var/solarlight_run = SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/solarlight)
+	for(var/obj/machinery/solarlight/solarlight as anything in solarlight_run)
+		solarlight_run -= solarlight
+		solarlight.update_light_state()
+	/// EFFIGY EDIT END ///
 		if(MC_TICK_CHECK && !forced) // subsystem will be in state SS_IDLE if forced by an admin
 			return
