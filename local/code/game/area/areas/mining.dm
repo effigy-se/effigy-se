@@ -234,6 +234,8 @@
 	icon_state = "unexplored"
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | CAVES_ALLOWED | FLORA_ALLOWED | MOB_SPAWN_ALLOWED
 	map_generator = /datum/map_generator/jungle_generator
+	mood_bonus = -5
+	mood_message = "The trees themselves feel like walls; closing in..." // Makes it harder to stay out in the jungle over a prolonged period of time.
 
 /area/taeloth/unexplored/danger // Additional to said theory: megafauna.
 	icon_state = "danger"
@@ -245,6 +247,8 @@
 
 /area/taeloth/underground
 	name = "Taeloth Caves"
+	mood_bonus = -5
+	mood_message = "It doesn't feel safe, being down here..." // Makes it harder to stay in the caves over a prolonged period of time. Done for non-generated sections too; unlike the exteriors!
 
 /area/taeloth/underground/try_lighting()
 	return
