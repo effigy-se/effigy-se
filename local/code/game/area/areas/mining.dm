@@ -84,8 +84,15 @@
 /area/taeloth/nearstation/bridge_roof/patio
 	name = "Bridge - Patio"
 
+/area/taeloth/nearstation/bridge_roof/patio/under
+	name = "Bridge - Patio Underside"
+
 /area/taeloth/nearstation/bridge_crossway
 	name = "Bridge Crossway"
+	icon_state = "bridge_hallway"
+
+/area/taeloth/nearstation/bridge_crossway/deck
+	name = "Bridge - Deck"
 	icon_state = "bridge_hallway"
 
 /area/taeloth/nearstation/gateway

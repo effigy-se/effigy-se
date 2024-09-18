@@ -24,7 +24,11 @@
 	glow_overlay_icon = 'local/icons/effects/glow_weather.dmi'
 	weather_overlay_icon = 'local/icons/effects/weather_effects.dmi'
 
-	protected_areas = list(/area/taeloth/underground)
+	protected_areas = list(
+		/area/taeloth/underground, \
+		/area/taeloth/nearstation/bridge_roof/patio/under, \
+		/area/taeloth/nearstation/bridge_crossway/deck, \
+		)
 
 /datum/weather/rain_storm/weather_act(mob/living/living)
 	living.extinguish_mob()
