@@ -74,4 +74,10 @@
 	id = "caves_chillpad"
 	suffix = "caves_chillpad.dmm"
 	name = "JungleCave-Ruin Chillpad"
-	description = "In the scuffle that was the discovery of bluespace in 2025, a curious critter slinked off amongst the chatter..."
+	description = "In the scuffle that was the discovery of bluespace in 2026, a curious critter slinked off amongst the chatter..."
+
+/datum/map_template/ruin/jungle_cave/old_science
+	id = "caves_old_science"
+	suffix = "caves_old_science.dmm"
+	name = "JungleCave-Ruin Old Science"
+	description = "Things got a little rocky around 2562..."

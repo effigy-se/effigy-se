@@ -1,3 +1,18 @@
+/// Beige tiles
+
+/obj/effect/turf_decal/tile/beige
+	name = "beige tile decal"
+	color = COLOR_BEIGE
+
+TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/beige)
+
+/// Dark Purple trimlines
+/obj/effect/turf_decal/trimline/beige
+	color = COLOR_BEIGE
+
+TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/beige)
+
+
 /// Dark Purple tiles
 
 /obj/effect/turf_decal/tile/dark_purple
@@ -39,3 +54,17 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/magenta_red)
 	color = "#83254F"
 
 TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/magenta_red)
+
+/// Orange tiles
+
+/obj/effect/turf_decal/tile/orange
+	name = "orange tile decal"
+	color = COLOR_DARK_ORANGE
+
+TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/orange)
+
+/// Orange trimlines
+/obj/effect/turf_decal/trimline/orange
+	color = COLOR_DARK_ORANGE
+
+TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/orange)

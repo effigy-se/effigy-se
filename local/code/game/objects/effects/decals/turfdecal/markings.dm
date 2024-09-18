@@ -167,6 +167,15 @@
 /obj/effect/turf_decal/deep_space_three/right
 	icon_state = "ds3_right"
 
+/obj/effect/turf_decal/siding/beige
+	color = COLOR_BEIGE
+
+/obj/effect/turf_decal/siding/beige/corner
+	icon_state = "siding_plain_corner"
+
+/obj/effect/turf_decal/siding/beige/end
+	icon_state = "siding_plain_end"
+
 /obj/effect/turf_decal/siding/dark_purple
 	color = "#61466A"
 
@@ -193,4 +202,13 @@
 	icon_state = "siding_plain_corner"
 
 /obj/effect/turf_decal/siding/magenta_red/end
+	icon_state = "siding_plain_end"
+
+/obj/effect/turf_decal/siding/orange
+	color = COLOR_DARK_ORANGE
+
+/obj/effect/turf_decal/siding/orange/corner
+	icon_state = "siding_plain_corner"
+
+/obj/effect/turf_decal/siding/orange/end
 	icon_state = "siding_plain_end"
