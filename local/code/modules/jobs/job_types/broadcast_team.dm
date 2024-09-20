@@ -1,10 +1,10 @@
 /datum/job/broadcast_team
 	title = JOB_BROADCAST_TEAM
-	description = "Brainstorm TV shows with your coworkers. End up broadcasting the world's most intense game of Strip Kotahi."
-	department_head = list(JOB_HEAD_OF_PERSONNEL)
+	description = "Brainstorm TV shows with your coworkers. End up broadcasting the world's most intense game of Strip Kotahi to drum up supoprt for your boss' news show."
+	department_head = list(JOB_CURATOR, JOB_HEAD_OF_PERSONNEL)
 	faction = FACTION_STATION
-	total_positions = 6 // Essentially: Actors, Cameramen, and Sethands. This leaves the door open for them to get creative with larger productions.
-	spawn_positions = 5
+	total_positions = 5 // Essentially: Actors and Sethands. This leaves the door open for them to get creative with larger productions.
+	spawn_positions = 4
 	supervisors = SUPERVISOR_HOP
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
@@ -29,7 +29,7 @@
 	)
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
-	rpg_title = "Scribe"
+	rpg_title = "Orb's Fool" // for pondering during saturday morning
 
 /datum/outfit/job/broadcast_team
 	name = "Broadcast Team"
