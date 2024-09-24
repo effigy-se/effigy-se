@@ -6669,7 +6669,7 @@
 /turf/open/floor/wood/tile,
 /area/station/service/chapel)
 "byM" = (
-/obj/effect/turf_decal/tile/dark_blue{
+/obj/effect/turf_decal/tile/dark_purple{
 	dir = 4
 	},
 /obj/effect/turf_decal/plaque{
@@ -6684,7 +6684,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/turf/open/floor/iron/white/side{
+/turf/open/floor/iron/dark/side{
 	dir = 10
 	},
 /area/station/hallway/floor1)
@@ -9384,7 +9384,7 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/station/medical/medbay/central)
 "ceu" = (
-/obj/effect/turf_decal/tile/dark_blue/anticorner/contrasted{
+/obj/effect/turf_decal/tile/dark_purple/anticorner/contrasted{
 	dir = 8
 	},
 /obj/effect/turf_decal/plaque{
@@ -9401,7 +9401,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
-/turf/open/floor/iron/white/corner{
+/turf/open/floor/iron/dark/corner{
 	dir = 4
 	},
 /area/station/hallway/floor1)
@@ -12406,7 +12406,7 @@
 /turf/open/floor/iron/diagonal,
 /area/station/science/ordnance/office)
 "cPh" = (
-/obj/effect/turf_decal/tile/dark_blue/fourcorners,
+/obj/effect/turf_decal/tile/dark_purple/fourcorners,
 /obj/effect/turf_decal/plaque{
 	icon_state = "L3"
 	},
@@ -21492,6 +21492,10 @@
 /obj/machinery/duct/waste,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/security/warden)
+"ePN" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/station/science/lab)
 "eQa" = (
 /obj/machinery/plumbing/floor_pump/input/on/waste/directional/east,
 /turf/open/floor/iron/lowered,
@@ -24143,6 +24147,11 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/button/door/directional/east{
+	id = "roboticsprivacy";
+	name = "Robotics Privacy Control";
+	req_access = list("robotics")
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "fwg" = (
@@ -27078,6 +27087,15 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/commons/toilet/locker)
+"gft" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "roboticsprivacy";
+	name = "Robotics Shutters";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/science/robotics/lab)
 "gfu" = (
 /obj/effect/turf_decal/siding/thinplating_new/corner{
 	dir = 8
@@ -29669,7 +29687,7 @@
 /turf/open/floor/carpet/neon/simple/purple,
 /area/station/maintenance/department/bridge)
 "gGp" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/station/science/robotics/lab)
 "gGq" = (
@@ -32104,7 +32122,7 @@
 /turf/open/floor/iron/white/diagonal,
 /area/station/science/ordnance/testlab)
 "hkd" = (
-/obj/effect/turf_decal/tile/dark_blue/half/contrasted{
+/obj/effect/turf_decal/tile/dark_purple/half/contrasted{
 	dir = 4
 	},
 /obj/effect/turf_decal/plaque{
@@ -32117,7 +32135,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/turf/open/floor/iron/white/side{
+/turf/open/floor/iron/dark/side{
 	dir = 8
 	},
 /area/station/hallway/floor1)
@@ -50063,6 +50081,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
+"luA" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "rdrnd";
+	name = "Research and Development Shutters";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/science/lab)
 "luF" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/effect/turf_decal/siding/wood,
@@ -54011,6 +54038,11 @@
 "msj" = (
 /obj/machinery/door/firedoor/water_sensor,
 /obj/structure/table/reinforced/plastitaniumglass,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "roboticsprivacy";
+	name = "Robotics Shutters";
+	dir = 4
+	},
 /obj/machinery/door/window/left/directional/west{
 	name = "Robotics Desk";
 	req_access = list("robotics")
@@ -65052,6 +65084,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/maintenance/floor1/starboard/aft)
+"oWM" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "roboticsprivacy";
+	name = "Robotics Shutters"
+	},
+/turf/open/floor/plating,
+/area/station/science/robotics/lab)
 "oWQ" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -65540,11 +65580,11 @@
 /turf/open/floor/carpet,
 /area/station/maintenance/department/cargo)
 "pdL" = (
-/obj/effect/turf_decal/tile/dark_blue/half/contrasted{
+/obj/effect/turf_decal/tile/dark_purple/half/contrasted{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/turf/open/floor/iron/white/side{
+/turf/open/floor/iron/dark/side{
 	dir = 8
 	},
 /area/station/hallway/floor1)
@@ -74367,16 +74407,20 @@
 "rdR" = (
 /obj/machinery/door/firedoor/water_sensor,
 /obj/structure/table/reinforced,
-/obj/machinery/door/window/left/directional/north{
-	name = "Research Lab Desk";
-	req_access = list("science")
-	},
 /obj/item/assembly/voice{
 	pixel_x = 4;
 	pixel_y = 5
 	},
 /obj/structure/desk_bell{
 	pixel_x = -6
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "rdrnd";
+	name = "Research and Development Shutters"
+	},
+/obj/machinery/door/window/left/directional/north{
+	name = "Research Lab Desk";
+	req_access = list("science")
 	},
 /turf/open/floor/plating,
 /area/station/science/lab)
@@ -78613,6 +78657,10 @@
 /area/station/engineering/atmos)
 "sdw" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "rdrnd";
+	name = "Research and Development Shutters"
+	},
 /turf/open/floor/plating,
 /area/station/science/lab)
 "sdP" = (
@@ -79819,7 +79867,7 @@
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/engine)
 "ssR" = (
-/obj/effect/turf_decal/tile/dark_blue{
+/obj/effect/turf_decal/tile/dark_purple{
 	dir = 8
 	},
 /obj/structure/sign/directions/arrival/directional/north{
@@ -79836,7 +79884,7 @@
 	pixel_y = 25;
 	dir = 8
 	},
-/turf/open/floor/iron/white/side{
+/turf/open/floor/iron/dark/side{
 	dir = 5
 	},
 /area/station/hallway/floor1)
@@ -80342,7 +80390,12 @@
 /turf/open/floor/iron,
 /area/station/maintenance/department/engine/atmos)
 "szC" = (
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small/directional/west,
+/obj/machinery/button/door/directional/south{
+	id = "rdrnd";
+	name = "Primary Research Shutters Control";
+	req_access = list("science")
+	},
 /turf/open/floor/glass/reinforced,
 /area/station/science/lab)
 "szG" = (
@@ -88595,7 +88648,7 @@
 /turf/open/floor/iron/dark/textured_edge,
 /area/station/security/office)
 "uAR" = (
-/obj/effect/turf_decal/tile/dark_blue/half/contrasted{
+/obj/effect/turf_decal/tile/dark_purple/half/contrasted{
 	dir = 8
 	},
 /obj/effect/turf_decal/plaque{
@@ -88608,7 +88661,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
-/turf/open/floor/iron/white/side{
+/turf/open/floor/iron/dark/side{
 	dir = 4
 	},
 /area/station/hallway/floor1)
@@ -90639,13 +90692,13 @@
 /turf/open/floor/iron/diagonal,
 /area/station/service/theater)
 "vcq" = (
-/obj/effect/turf_decal/tile/dark_blue/anticorner/contrasted{
+/obj/effect/turf_decal/tile/dark_purple/anticorner/contrasted{
 	dir = 4
 	},
 /obj/machinery/duct/waste,
 /obj/machinery/duct/supply,
 /obj/structure/cable,
-/turf/open/floor/iron/white/corner{
+/turf/open/floor/iron/dark/corner{
 	dir = 8
 	},
 /area/station/hallway/floor1)
@@ -91584,7 +91637,7 @@
 /turf/open/floor/iron/diagonal,
 /area/station/engineering/atmos/upper)
 "vlK" = (
-/obj/effect/turf_decal/tile/dark_blue/fourcorners,
+/obj/effect/turf_decal/tile/dark_purple/fourcorners,
 /obj/machinery/status_display/evac/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/floor1)
@@ -92093,6 +92146,11 @@
 "vtb" = (
 /obj/machinery/drone_dispenser,
 /obj/machinery/door/firedoor/water_sensor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "roboticsprivacy";
+	name = "Robotics Shutters";
+	dir = 4
+	},
 /obj/machinery/door/window/right/directional/west{
 	name = "Drone Dispenser Access";
 	req_access = list("robotics")
@@ -93217,11 +93275,11 @@
 /turf/open/floor/iron/diagonal,
 /area/station/engineering/atmos/hfr_room)
 "vGJ" = (
-/obj/effect/turf_decal/tile/dark_blue/half/contrasted{
+/obj/effect/turf_decal/tile/dark_purple/half/contrasted{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/turf/open/floor/iron/white/side{
+/turf/open/floor/iron/dark/side{
 	dir = 4
 	},
 /area/station/hallway/floor1)
@@ -129096,7 +129154,7 @@ nai
 uEB
 hJi
 bdf
-gGp
+oWM
 uSt
 vnZ
 lLn
@@ -129351,7 +129409,7 @@ fAr
 pHq
 vtb
 msj
-gGp
+gft
 pHq
 pHq
 agI
@@ -134486,12 +134544,12 @@ orA
 aEi
 rpg
 fUn
-sdw
+ePN
 gYV
 bzM
 jqh
-sdw
-sdw
+luA
+luA
 jqh
 jqh
 wqR
@@ -135000,7 +135058,7 @@ fvx
 oWQ
 xmI
 fcd
-sdw
+ePN
 hrX
 aiA
 obV
