@@ -258,4 +258,4 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/link_scryer
 	name = "MODlink Scryer"
 	item_path = /obj/item/clothing/neck/link_scryer
-	additional_tooltip_contents = ("UNLINKED - Needs to be synced to the network by robotics.")
+	additional_tooltip_contents = list("UNLINKED - Needs to be synced to the network by robotics.")
