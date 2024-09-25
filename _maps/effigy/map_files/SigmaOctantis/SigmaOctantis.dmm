@@ -21280,6 +21280,10 @@
 /area/station/maintenance/department/engine/atmos)
 "eNs" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "geneticsprivacy";
+	name = "Genetics Shutters"
+	},
 /turf/open/floor/plating,
 /area/station/science/genetics)
 "eNF" = (
@@ -26614,6 +26618,11 @@
 	pixel_y = 4
 	},
 /obj/item/toy/figure/geneticist,
+/obj/machinery/button/door/directional/west{
+	id = "geneticsprivacy";
+	req_access = list("genetics");
+	name = "Genetics Shutters"
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/genetics)
 "fZw" = (
@@ -28464,6 +28473,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/floor1/aft)
+"gtV" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/station/maintenance/floor2/port/aft)
 "gtY" = (
 /obj/structure/cable/layer3,
 /obj/structure/cable,
@@ -32598,6 +32611,10 @@
 	},
 /turf/open/floor/iron/white/diagonal,
 /area/station/medical/medbay/central)
+"hqr" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/station/maintenance/floor2/port)
 "hqt" = (
 /obj/structure/table/wood,
 /obj/item/phone{
@@ -36320,7 +36337,7 @@
 	},
 /area/station/cargo/warehouse)
 "imE" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/station/medical/abandoned)
 "imI" = (
@@ -48825,6 +48842,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/white,
 /area/station/maintenance/floor2/port/aft)
+"leL" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/station/maintenance/port/greater)
 "leN" = (
 /turf/open/floor/glass/reinforced,
 /area/station/maintenance/department/cargo)
@@ -51927,6 +51948,10 @@
 "lSO" = (
 /turf/closed/wall,
 /area/station/cargo/lobby)
+"lSQ" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/station/maintenance/floor2/starboard/aft)
 "lST" = (
 /obj/effect/baseturf_helper/reinforced_plating/ceiling,
 /turf/closed/wall/r_wall,
@@ -68868,7 +68893,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/floor1)
 "pSd" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window,
 /obj/effect/mapping_helpers/damaged_window,
 /turf/open/floor/plating,
 /area/station/medical/abandoned)
@@ -81461,10 +81486,6 @@
 "sPb" = (
 /obj/machinery/door/firedoor/water_sensor,
 /obj/structure/table/reinforced,
-/obj/machinery/door/window/left/directional/north{
-	name = "Genetics Desk";
-	req_access = list("genetics")
-	},
 /obj/structure/desk_bell{
 	pixel_x = -6;
 	pixel_y = 7
@@ -81474,6 +81495,14 @@
 	},
 /obj/item/pen{
 	pixel_x = 3
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "geneticsprivacy";
+	name = "Genetics Shutters"
+	},
+/obj/machinery/door/window/left/directional/north{
+	name = "Genetics Desk";
+	req_access = list("genetics")
 	},
 /turf/open/floor/plating,
 /area/station/science/genetics)
@@ -181687,8 +181716,8 @@ ejW
 gSm
 mEO
 ejW
-cJs
-cJs
+lSQ
+lSQ
 ejW
 gkW
 glA
@@ -182670,7 +182699,7 @@ kOZ
 kOZ
 kOZ
 kOZ
-wYw
+gtV
 nDC
 vKW
 lpQ
@@ -182927,7 +182956,7 @@ wix
 bYU
 kOZ
 kOZ
-wYw
+gtV
 gYw
 qKV
 flz
@@ -194234,7 +194263,7 @@ cBP
 vOG
 emv
 tho
-chu
+leL
 wMU
 jrR
 eeA
@@ -194491,7 +194520,7 @@ dPt
 teE
 dHA
 lbR
-chu
+leL
 hCG
 jrR
 pUt
@@ -203745,8 +203774,8 @@ cnI
 vAa
 gDq
 lUy
-eHR
-eHR
+hqr
+hqr
 lUy
 anL
 lUy
