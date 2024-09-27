@@ -19,9 +19,10 @@
 	protect_indoors = TRUE
 	target_trait = ZTRAIT_RAINSTORM
 
+	use_glow = FALSE
+
 	barometer_predictable = TRUE
 
-	glow_overlay_icon = 'local/icons/effects/glow_weather.dmi'
 	weather_overlay_icon = 'local/icons/effects/weather_effects.dmi'
 
 	protected_areas = list(
