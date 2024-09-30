@@ -21,4 +21,8 @@
 // Service
 #define JOB_BROADCAST_TEAM "Broadcast Team"
 
+// Slashco 13
+#define JOB_POWER_RECOVERY "Power Recovery"
+#define JOB_SLASHER "Slasher"
+
 #define JOB_DISPLAY_ORDER_BROADCAST_TEAM 37 // Keep un-conflicting with any base jobs.dm display order defines!!
