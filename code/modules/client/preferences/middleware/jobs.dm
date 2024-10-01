@@ -15,7 +15,7 @@
 	if (isnull(job))
 		return FALSE
 
-	if (job.faction != FACTION_STATION)
+	if (job.faction != FACTION_SLASHCO) // SLASHCO 13 EDIT - changed to only allow slashco jobs
 		return FALSE
 
 	if (!preferences.set_job_preference_level(job, level))

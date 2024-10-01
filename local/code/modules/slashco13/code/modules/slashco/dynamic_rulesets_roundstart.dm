@@ -48,5 +48,9 @@
 	for(var/datum/mind/new_slasher in assigned)
 		var/datum/antagonist/slasher/new_antag_datum = new pick(subtypesof(antag_datum))
 		new_slasher.add_antag_datum(new_antag_datum)
+		var/potential_spawn = find_space_spawn()
+		if(!potential_spawn)
+			potential_spawn = get_safe_random_station_turf() /// No carpspawns? Fuggit; random safe tile
+		new_slasher.current.forceMove(potential_spawn)
 		GLOB.pre_setup_antags -= new_slasher
 	return TRUE

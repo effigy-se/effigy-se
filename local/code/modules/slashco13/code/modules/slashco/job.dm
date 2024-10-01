@@ -1,7 +1,7 @@
 /datum/job/power_recovery
 	title = JOB_POWER_RECOVERY
 	description = "Scour Ruins, Fuel Generators, and survive the machinations of whatever Slasher's present in your active zone."
-	faction = FACTION_STATION
+	faction = FACTION_SLASHCO
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "your corporate overlords"
