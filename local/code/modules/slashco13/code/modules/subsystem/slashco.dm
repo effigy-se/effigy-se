@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(slashco)
 	name = "SlashCo"
-	flags = SS_BACKGROUND
+	flags = SS_NO_FIRE
 	runlevels = RUNLEVEL_GAME
 	/// For testing purposes - if TRUE; the round can't end if all employees die. Config configurable
 	var/bypass_failstate = FALSE

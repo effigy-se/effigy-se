@@ -38,16 +38,22 @@
 
 /datum/antagonist/slasher/forge_objectives()
 	. = ..()
-	for(var/mob/potential_target in GLOB.player_list)
-		if(potential_target.mind.assigned_role == JOB_POWER_RECOVERY)
-			var/datum/objective/assassinate/new_objective = new /datum/objective/assassinate
-			new_objective.owner = owner
-			new_objective.target = potential_target
-			new_objective.explanation_text = "Kill [potential_target.name]."
-			objectives += new_objective
+	update_objectives()
 
-/datum/antagonist/slasher/proc/process_victory()
-	for(var/datum/objective/assassinate/objective in objectives)
-		if(!(objective.check_completion()))
-			return FALSE
-	return TRUE
+/// Long-term this would probably be best moved to team logic. Oh well
+/datum/antagonist/slasher/proc/update_objectives()
+	var/untracked_techs = list()
+	for(var/datum/mind/potential_target as anything in get_crewmember_minds())
+		if(potential_target.assigned_role == JOB_POWER_RECOVERY)
+			untracked_techs += potential_target
+
+	for(var/datum/objective/assassinate/kill_objective in objectives)
+		untracked_techs -= kill_objective.target
+
+	for(var/datum/mind/extra_kill_target in untracked_techs)
+		var/datum/objective/assassinate/new_target = new()
+		new_target.target = extra_kill_target
+		new_target.update_explanation_text()
+		objectives += new_target
+
+	addtimer(CALLBACK(src, PROC_REF(update_objectives)),HEAD_UPDATE_PERIOD,TIMER_UNIQUE)
