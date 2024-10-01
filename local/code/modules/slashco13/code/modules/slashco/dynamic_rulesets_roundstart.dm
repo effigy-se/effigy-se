@@ -45,8 +45,14 @@
 	return TRUE
 
 /datum/dynamic_ruleset/roundstart/slashers/execute()
+	var/list/possible_slashers = subtypesof(antag_datum)
 	for(var/datum/mind/new_slasher in assigned)
-		var/datum/antagonist/slasher/new_antag_datum = new pick(subtypesof(antag_datum))
+		var/our_slasher_type = pick(possible_slashers)
+		if(!our_slasher_type)
+			possible_slashers = subtypesof(antag_datum)
+			our_slasher_type = pick(possible_slashers)
+		our_slasher_type -= possible_slashers
+		var/datum/antagonist/slasher/new_antag_datum = new our_slasher_type
 		new_slasher.add_antag_datum(new_antag_datum)
 		var/potential_spawn = find_space_spawn()
 		if(!potential_spawn)
