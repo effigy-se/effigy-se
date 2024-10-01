@@ -5,11 +5,11 @@
 	var/datum/action/cooldown/fuel_disguise/fuel_shapeshift
 
 /datum/antagonist/slasher/imposter/give_slasher_abilities()
+	. = ..()
 	shapeshift_human = new
 	shapeshift_human.Grant(owner.current)
 	fuel_shapeshift = new
 	fuel_shapeshift.Grant(owner.current)
-	. = ..()
 
 /// Imposter Spells ///
 /datum/action/cooldown/spell/shapeshift/imposter
@@ -19,7 +19,6 @@
 	convert_damage = FALSE
 	die_with_shapeshifted_form = FALSE
 
-	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
 
 	possible_shapes = list(/mob/living/carbon/human)
