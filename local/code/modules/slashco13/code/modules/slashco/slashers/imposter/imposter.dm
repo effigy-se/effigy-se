@@ -40,11 +40,11 @@
 	var/list/traits_to_apply = list(
 		TRAIT_PACIFISM,
 		TRAIT_CHUNKYFINGERS,
-		TRAIT_MUTE,
 	)
 	for(var/a_trait in traits_to_apply)
 		ADD_TRAIT(our_disguise, a_trait, src)
 	our_disguise.equipOutfit(/datum/outfit/job/power_recovery)
+	our_disguise.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
 	playsound(get_turf(caster), 'local/code/modules/slashco13/sound/slasher/imposter/amogus.ogg', 75)
 	sound = 'local/code/modules/slashco13/sound/slasher/imposter/undisguise.ogg'
 
