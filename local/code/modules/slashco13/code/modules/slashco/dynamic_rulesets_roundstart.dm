@@ -4,7 +4,7 @@
 	antag_flag = ROLE_SLASHER
 	antag_datum = /datum/antagonist/slasher
 	weight = INFINITY // the name of GOD
-	delay = 7 MINUTES
+	delay = 1 MINUTES
 	requirements = list(0,0,0,0,0,0,0,0,0,0)
 	antag_cap = 1
 	scaling_cost = 20
@@ -43,6 +43,8 @@
 		M.mind.restricted_roles = restricted_roles
 		M.mind.special_role = ROLE_SLASHER
 		GLOB.pre_setup_antags += M.mind
+		to_chat(M, span_warning("You have been chosen to become a Slasher."))
+		to_chat(M, span_warning("You have 60 seconds to look busy before you respawn..."))
 		got_one = TRUE
 	return TRUE
 

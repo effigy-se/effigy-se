@@ -1,5 +1,5 @@
 /datum/antagonist/slasher/imposter
-	name = "The Imposter"
+	name = "Imposter"
 	mob_type = /mob/living/basic/slasher/imposter
 	var/datum/action/cooldown/spell/shapeshift/imposter/shapeshift_human
 	var/datum/action/cooldown/fuel_disguise/fuel_shapeshift
