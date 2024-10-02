@@ -22,8 +22,10 @@ SUBSYSTEM_DEF(slashco)
 	/// What's the maximum number of items on the map? Config configurable
 	var/maximum_items = 24
 
-/datum/controller/subsystem/slashco/Initialize()
+/datum/controller/subsystem/slashco/Initialize() // GOTTA MAKE IT HAPPEN.. BABY
 	setup_game()
+	GLOB.dynamic_forced_rulesets[/datum/dynamic_ruleset/roundstart/slashers] = RULESET_FORCE_ENABLED
+	GLOB.dynamic_forced_roundstart_ruleset += /datum/dynamic_ruleset/roundstart/slashers
 
 /datum/controller/subsystem/slashco/proc/setup_game()
 	/// Handle generators first; they have batteries as a dependant
