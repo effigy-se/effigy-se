@@ -87,7 +87,7 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
  */
 /datum/anonymous_theme/proc/anonymous_all_players()
 	for(var/mob/living/player in GLOB.player_list)
-		if(!player.mind || (!ishuman(player) && !issilicon(player)) || player.mind.assigned_role.faction != FACTION_SLASHCO) // SLASHCO 13 EDIT - bug
+		if(!player.mind || (!ishuman(player) && !issilicon(player)) || player.mind.assigned_role.faction != FACTION_STATION)
 			continue
 		if(issilicon(player))
 			player.fully_replace_character_name(player.real_name, anonymous_ai_name(isAI(player)))
@@ -108,7 +108,7 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 /datum/anonymous_theme/proc/restore_all_players()
 	priority_announce("Names and Identities have been restored.", "Identity Restoration", SSstation.announcer.get_rand_alert_sound())
 	for(var/mob/living/player in GLOB.player_list)
-		if(!player.mind || (!ishuman(player) && !issilicon(player)) || player.mind.assigned_role.faction != FACTION_SLASHCO) // SLASHCO 13 EDIT - bus
+		if(!player.mind || (!ishuman(player) && !issilicon(player)) || player.mind.assigned_role.faction != FACTION_STATION)
 			continue
 		var/old_name = player.real_name //before restoration
 		if(issilicon(player))
