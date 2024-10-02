@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(job)
 	var/list/prioritized_jobs = list()
 	var/list/latejoin_trackers = list()
 
-	var/overflow_role = /datum/job/assistant
+	var/overflow_role = /datum/job/power_recovery
 
 	var/list/level_order = list(JP_HIGH,JP_MEDIUM,JP_LOW)
 

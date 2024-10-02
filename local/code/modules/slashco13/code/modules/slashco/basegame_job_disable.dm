@@ -10,6 +10,9 @@
 /datum/job/bitrunner/config_check()
 	return CONFIG_GET(flag/allow_station_jobs)
 
+/datum/job/broadcast_team/config_check()
+	return CONFIG_GET(flag/allow_station_jobs)
+
 /datum/job/botanist/config_check()
 	return CONFIG_GET(flag/allow_station_jobs)
 
