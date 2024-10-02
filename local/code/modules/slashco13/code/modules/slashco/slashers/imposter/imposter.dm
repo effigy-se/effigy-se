@@ -47,6 +47,7 @@
 	our_disguise.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
 	our_disguise.blooper = null // prevents overlap with the imposter's custom speech sfx
 	our_disguise.blooper_list = null
+	our_disguise.blooper_id = null
 	playsound(get_turf(caster), 'local/code/modules/slashco13/sound/slasher/imposter/amogus.ogg', 75)
 	sound = 'local/code/modules/slashco13/sound/slasher/imposter/undisguise.ogg'
 
