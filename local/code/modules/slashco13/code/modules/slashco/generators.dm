@@ -49,7 +49,7 @@
 	/// Path to the fuel type for this generator. Generally not changed in gameplay.
 	var/fuel_path = /obj/item/stack/fuel
 	/// Path to the battery type for this generator. Generally not changed in gameplay.
-	var/battery_path = /obj/item/stock_parts/power_store/cell/lead
+	var/battery_path = /obj/item/stock_parts/power_store/cell/lead/double_pack
 	/// Soundloop for this generator
 	var/datum/looping_sound/generator/soundloop
 

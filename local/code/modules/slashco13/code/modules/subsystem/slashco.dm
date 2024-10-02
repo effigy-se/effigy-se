@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(slashco)
 				continue
 			for(var/obj/machinery/slashco_generator/found_generator in potential_spot.contents)
 				GLOB.batterystart -= workable_location
-				new /obj/item/stock_parts/power_store/cell/lead(workable_location)
+				new /obj/item/stock_parts/power_store/cell/lead/double_pack(workable_location)
 				continue
 	/// Handle Items Last
 	for(var/integer=1 to rand(minimum_items,maximum_items))

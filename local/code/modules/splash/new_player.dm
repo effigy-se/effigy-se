@@ -63,7 +63,7 @@
 		return
 
 	if(href_list["late_join"])
-		GLOB.latejoin_menu.ui_interact(usr)
+		to_chat(src, span_danger("You cannot join, the round is already ongoing! Observe and wait for the next one."))
 
 	if(href_list["title_is_ready"])
 		title_screen_is_ready = TRUE
