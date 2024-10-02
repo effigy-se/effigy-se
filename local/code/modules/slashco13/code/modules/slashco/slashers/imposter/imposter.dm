@@ -3,6 +3,7 @@
 	mob_type = /mob/living/basic/slasher/imposter
 	var/datum/action/cooldown/spell/shapeshift/imposter/shapeshift_human
 	var/datum/action/cooldown/fuel_disguise/fuel_shapeshift
+	var/datum/action/cooldown/mob_cooldown/jumpscare/disguised_jumpscare
 
 /datum/antagonist/slasher/imposter/give_slasher_abilities()
 	. = ..()
@@ -26,9 +27,10 @@
 
 /datum/action/cooldown/spell/shapeshift/imposter/do_unshapeshift(mob/living/caster)
 	. = ..()
-	if(!.)
-		return
 	sound = 'local/code/modules/slashco13/sound/slasher/imposter/disguise.ogg'
+	for(var/datum/antagonist/slasher/imposter/our_slasher in owner?.mind?.antag_datums)
+		QDEL_NULL(our_slasher.disguised_jumpscare)
+		our_slasher.jumpscare_sound = initial(our_slasher.jumpscare_sound)
 
 /datum/action/cooldown/spell/shapeshift/imposter/do_shapeshift(mob/living/caster)
 	. = ..()
@@ -48,6 +50,10 @@
 	our_disguise.blooper = null // prevents overlap with the imposter's custom speech sfx
 	our_disguise.blooper_list = null
 	our_disguise.blooper_id = null
+	for(var/datum/antagonist/slasher/imposter/our_slasher in owner?.mind?.antag_datums)
+		our_slasher.disguised_jumpscare = new
+		our_slasher.disguised_jumpscare.Grant(owner)
+		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/stealthkill.ogg'
 	playsound(get_turf(caster), 'local/code/modules/slashco13/sound/slasher/imposter/amogus.ogg', 75)
 	sound = 'local/code/modules/slashco13/sound/slasher/imposter/undisguise.ogg'
 

@@ -128,3 +128,46 @@
 	if(!potential_spawn)
 		potential_spawn = get_safe_random_station_turf() /// No carpspawns? Fuggit; random safe tile
 	cast_on.forceMove(potential_spawn)
+
+/*
+	JUMPSCARE SPELL
+*/
+
+/// This isn't universal but is close enough to be here; it's only meant to be given to mobs that aren't using the generic /mob/living/basic/slasher as a base. Humans and the like.
+
+/datum/action/cooldown/mob_cooldown/jumpscare
+	name = "Kill"
+	desc = "Attack and kill your target; if you're in proximity."
+	click_to_activate = TRUE
+	shared_cooldown = NONE
+	cooldown_time = /datum/antagonist/slasher::jumpscare_cooldown_length
+
+/datum/action/cooldown/mob_cooldown/jumpscare/Grant(mob/grant_to)
+	. = ..()
+	if(!owner)
+		return
+	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
+		cooldown_time = our_slasher.jumpscare_cooldown_length
+
+/datum/action/cooldown/mob_cooldown/jumpscare/set_click_ability(mob/on_who)
+	. = ..()
+	if(!.)
+		return
+
+	on_who.balloon_alert(on_who, "prepared to kill")
+
+/datum/action/cooldown/mob_cooldown/jumpscare/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
+	. = ..()
+	if(!.)
+		return
+
+	if(refund_cooldown)
+		on_who.balloon_alert(on_who, "kill cancelled")
+
+/datum/action/cooldown/mob_cooldown/jumpscare/Activate(atom/target)
+	if(!owner.Adjacent(target))
+		owner.balloon_alert(owner, "must be closer!")
+		return FALSE
+	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
+		our_slasher.jumpscare(target)
+		return TRUE
