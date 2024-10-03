@@ -178,6 +178,12 @@
 		if ("callShuttle")
 			if (!authenticated(user) || syndicate)
 				return
+			/// SLASHCO 13 EDIT ///
+			if(!SSslashco.can_call_early)
+				to_chat(user, span_warning("You need at least [(SSslashco.required_generators * 0.5)] active generators before you can try to escape early!"))
+				to_chat(user, span_warning("Alternatively; Nanotrasen will reluctantly come to your rescue if you're the last one alive..."))
+				return
+			/// SLASHCO 13 EDIT END
 			var/reason = trim(params["reason"], MAX_MESSAGE_LEN)
 			if (length(reason) < CALL_SHUTTLE_REASON_LENGTH)
 				return
