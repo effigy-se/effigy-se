@@ -63,6 +63,7 @@
 		our_chase_attack.Grant(owner.current)
 	carpspawn_spell = new
 	carpspawn_spell.Grant(owner.current)
+	our_chase_music = new
 
 /datum/antagonist/slasher/forge_objectives()
 	. = ..()
@@ -195,9 +196,9 @@
 /// CHASE STUFF
 /datum/looping_sound/slasher_chase
 	start_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
-	start_length = 4
+	start_length = 5
 	mid_sounds = list('local/code/modules/slashco13/sound/slasher/imposter/chase.ogg' = 1)
-	mid_length = 4
+	mid_length = 5
 	end_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
 
 /datum/movespeed_modifier/slasher_chase
@@ -229,14 +230,11 @@
 	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
 		cast_on.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/slasher_chase, multiplicative_slowdown = our_slasher.chase_movespeed_mod)
 		addtimer(CALLBACK(src, PROC_REF(end_chase), cast_on), our_slasher.chase_length)
-		if(!our_slasher.our_chase_music)
-			var/datum/looping_sound/slasher_chase/chasemus_to_be = our_slasher.our_chase_music
-			new chasemus_to_be
-			chasemus_to_be.start(cast_on)
+		our_slasher.our_chase_music.start(cast_on)
 	cast_on.set_light(l_range = 3.5, l_color = LIGHT_COLOR_INTENSE_RED)
 
 /datum/action/cooldown/spell/slasher_chase/proc/end_chase(mob/living/cast_on)
 	cast_on.set_light(l_range = initial(cast_on.light_range), l_color = initial(cast_on.light_color))
 	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
-		QDEL_NULL(our_slasher.our_chase_music)
+		our_slasher.our_chase_music.stop(TRUE) // parent mob can change; easier to just whiste innocently about it
 	cast_on.remove_movespeed_modifier(/datum/movespeed_modifier/slasher_chase)
