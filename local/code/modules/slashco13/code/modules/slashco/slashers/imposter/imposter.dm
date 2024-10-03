@@ -73,9 +73,9 @@
 	for(var/datum/antagonist/slasher/imposter/our_slasher in owner?.mind?.antag_datums)
 		QDEL_NULL(our_slasher.disguised_jumpscare)
 		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/kill.ogg'
+		our_slasher.fuel_shapeshift.Grant(caster)
+		our_slasher.carpspawn_spell.Grant(caster)
 	caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
-	fuel_shapeshift.Grant(caster)
-	carpspawn_spell.Grant(caster)
 
 /datum/action/cooldown/fuel_disguise
 	name = "Fuel Disguise"
