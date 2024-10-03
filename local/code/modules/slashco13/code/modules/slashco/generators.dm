@@ -63,6 +63,20 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
+/obj/machinery/slashco_generator/examine(mob/living/user)
+	. = ..()
+	if(fuel_count <= SSslashco.required_fuel)
+		. += span_warning("Looks like it needs more fuel...")
+	if(loaded_fuel)
+		. += span_notice("It has a piece of fuel attached; ready to be inserted.")
+		. += span_notice("Left-click on the generator to insert it.")
+	if(loaded_battery)
+		. += span_notice("It has a battery attached.")
+	else
+		. += span_warning("It's missing it's battery...")
+	if(active)
+		. += span_notice("This generator's active, and can be safely left be.")
+
 /obj/machinery/slashco_generator/attackby(obj/item/O, mob/user, params)
 	if(istype(O, fuel_path) && loaded_fuel == FALSE)
 		var/obj/item/stack/addstack = O
