@@ -102,6 +102,8 @@
 /datum/action/cooldown/fuel_disguise/Activate(atom/target_atom)
 	. = ..()
 	internal_projector.attack_self(owner)
+	if(internal_projector.active_dummy)
+		SET_PLANE(internal_projector.active_dummy, GAME_PLANE, owner)
 
 /obj/item/chameleon/imposter/Initialize(mapload)
 	. = ..()
