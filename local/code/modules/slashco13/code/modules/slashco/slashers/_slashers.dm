@@ -121,13 +121,13 @@
 
 /// JUMPSCARE ZONE ///
 
-/datum/antagonist/slasher/proc/jumpscare(mob/living/target)
+/datum/antagonist/slasher/proc/jumpscare(mob/living/target, mob/living/user)
 	if(!istype(target))
 		return
 	if(target.client && target.hud_used)
 		target.hud_used.show_hud(HUD_STYLE_NOHUD)
-		target.Paralyze(jumpscare_time)
-		owner.current.Paralyze(jumpscare_time)
+		target.Paralyze(jumpscare_time, TRUE)
+		user.Paralyze(jumpscare_time, TRUE)
 		var/image/jumpscare = image(icon = jumpscare_icon, loc = target, icon_state = jumpscare_icon_state, dir = SOUTH, pixel_x = -288, pixel_y = -224)
 		SET_PLANE(jumpscare, ABOVE_HUD_PLANE, target)
 		target.client.images += jumpscare
@@ -186,7 +186,7 @@
 		owner.balloon_alert(owner, "must be closer!")
 		return FALSE
 	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
-		our_slasher.jumpscare(target)
+		our_slasher.jumpscare(target, owner)
 		return TRUE
 
 /*

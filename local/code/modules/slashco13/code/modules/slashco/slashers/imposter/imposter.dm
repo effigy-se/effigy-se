@@ -55,7 +55,6 @@
 /// turn into human
 /datum/action/cooldown/spell/shapeshift/imposter/do_unshapeshift(mob/living/caster)
 	. = ..()
-	caster.Paralyze(3 SECONDS)
 	sound = 'local/code/modules/slashco13/sound/slasher/imposter/undisguise.ogg'
 	playsound(get_turf(caster), 'local/code/modules/slashco13/sound/slasher/imposter/amogus.ogg', 75) // This should be delayed by 5 seconds (but I can't get that to work)
 	for(var/datum/antagonist/slasher/imposter/our_slasher in owner?.mind?.antag_datums)
@@ -66,6 +65,7 @@
 		our_slasher.carpspawn_spell.Grant(owner)
 		our_slasher.our_chase_attack.Remove(owner)
 	caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
+	caster.Paralyze(3 SECONDS, TRUE)
 
 /// turn into basic mob
 /datum/action/cooldown/spell/shapeshift/imposter/do_shapeshift(mob/living/caster)
@@ -75,7 +75,7 @@
 	if(!isliving(owner))
 		return
 	var/mob/living/our_caster = owner // caster does NOT equal the shapeshifted mob. fuckery
-	our_caster.Paralyze(3 SECONDS)
+	our_caster.Paralyze(3 SECONDS, TRUE)
 	sound = 'local/code/modules/slashco13/sound/slasher/imposter/disguise.ogg'
 	for(var/datum/antagonist/slasher/imposter/our_slasher in owner?.mind?.antag_datums)
 		QDEL_NULL(our_slasher.disguised_jumpscare)
