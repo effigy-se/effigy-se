@@ -1,6 +1,7 @@
 /datum/antagonist/slasher/imposter
 	name = "Imposter"
 	slasher_outfit = /datum/outfit/job/power_recovery/imposter
+	start_with_chase = FALSE
 	var/datum/action/cooldown/spell/shapeshift/imposter/shapeshift_human
 	var/datum/action/cooldown/fuel_disguise/fuel_shapeshift
 	var/datum/action/cooldown/mob_cooldown/jumpscare/disguised_jumpscare
@@ -63,6 +64,7 @@
 		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/stealthkill.ogg'
 		our_slasher.fuel_shapeshift.Grant(owner)
 		our_slasher.carpspawn_spell.Grant(owner)
+		our_slasher.our_chase_attack.Remove(owner)
 	caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
 
 /// turn into basic mob
@@ -80,6 +82,9 @@
 		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/kill.ogg'
 		our_slasher.fuel_shapeshift.Grant(our_caster)
 		our_slasher.carpspawn_spell.Grant(our_caster)
+		if(!our_slasher.our_chase_attack)
+			new our_slasher.our_chase_attack
+		our_slasher.our_chase_attack.Grant(our_caster)
 	our_caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
 
 /datum/action/cooldown/fuel_disguise

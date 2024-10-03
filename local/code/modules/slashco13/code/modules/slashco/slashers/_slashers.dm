@@ -12,12 +12,23 @@
 	var/datum/action/cooldown/spell/get_carpspawned_idiot/carpspawn_spell
 
 	/// JUMPSCARE STUFF
-	/// How long is the mob's jumpscare animation/sfx?
+	// How long is the mob's jumpscare animation/sfx?
 	var/jumpscare_time = 3 SECONDS
 	var/jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares.dmi'
 	var/jumpscare_icon_state = "amogus"
 	var/jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/stealthkill.ogg'
 	var/jumpscare_cooldown_length = 10 SECONDS
+	/// CHASE STUFF
+	// How fast do we move while chasing? Modifier
+	var/chase_movespeed_mod = -0.2
+	// How long is our chase period?
+	var/chase_length = 30 SECONDS
+	var/datum/action/cooldown/spell/slasher_chase/our_chase_attack
+	// Do we start with the chase action button? Used mostly by the Imposter
+	var/start_with_chase = TRUE
+	var/datum/looping_sound/slasher_chase/our_chase_music = /datum/looping_sound/slasher_chase
+	// How long does it take to recharge from a chase?
+	var/chase_cooldown_length = 3 MINUTES
 
 	COOLDOWN_DECLARE(jumpscare_cooldown)
 
@@ -43,6 +54,16 @@
 	qdel(jumpscare)
 	if(target.hud_used && target.client)
 		target.hud_used.show_hud(HUD_STYLE_STANDARD)
+
+
+/// CHASE STUFF
+/datum/looping_sound/slasher_chase
+	start_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
+	start_length = 4
+	mid_sounds = list('local/code/modules/slashco13/sound/slasher/imposter/chase.ogg' = 1)
+	mid_length = 4
+	end_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
+
 
 /datum/antagonist/slasher/proc/prank_em_john(mob/living/target)
 	if(!istype(target))
@@ -76,6 +97,9 @@
 
 /// Exists for subtypes to add onto.
 /datum/antagonist/slasher/proc/give_slasher_abilities()
+	if(start_with_chase)
+		our_chase_attack = new
+		our_chase_attack.Grant(owner.current)
 	carpspawn_spell = new
 	carpspawn_spell.Grant(owner.current)
 
@@ -171,3 +195,48 @@
 	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
 		our_slasher.jumpscare(target)
 		return TRUE
+
+/*
+	CHASE SPELL
+*/
+
+/datum/movespeed_modifier/slasher_chase
+	variable = TRUE
+	flags = IGNORE_NOSLOW
+
+/datum/action/cooldown/spell/slasher_chase
+	name = "Chase"
+	desc = "Begin a chase with your prey."
+	button_icon_state = "blink"
+	spell_requirements = NONE
+	cooldown_time = 3 MINUTES
+
+/datum/action/cooldown/spell/slasher_chase/Grant(mob/grant_to)
+	. = ..()
+	if(!owner)
+		return
+	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
+		cooldown_time = our_slasher.chase_cooldown_length
+
+/datum/action/cooldown/spell/slasher_chase/can_cast_spell(feedback)
+	return TRUE
+
+/// this should probably be made toggleable rather than just a block of time you can chase but i can't be assed rn
+/datum/action/cooldown/spell/slasher_chase/cast(mob/living/cast_on)
+	. = ..()
+	if(!istype(cast_on))
+		return
+	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
+		cast_on.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/slasher_chase, multiplicative_slowdown = our_slasher.chase_movespeed_mod)
+		addtimer(CALLBACK(src, PROC_REF(end_chase), cast_on), our_slasher.chase_length)
+		if(!our_slasher.our_chase_music)
+			var/datum/looping_sound/slasher_chase/chasemus_to_be = our_slasher.our_chase_music
+			new chasemus_to_be
+			chasemus_to_be.start(cast_on)
+	cast_on.set_light(l_range = 3.5, l_color = LIGHT_COLOR_INTENSE_RED)
+
+/datum/action/cooldown/spell/slasher_chase/proc/end_chase(mob/living/cast_on)
+	cast_on.set_light(l_range = initial(cast_on.light_range), l_color = initial(cast_on.light_color))
+	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
+		QDEL_NULL(our_slasher.our_chase_music)
+	cast_on.remove_movespeed_modifier(/datum/movespeed_modifier/slasher_chase)
