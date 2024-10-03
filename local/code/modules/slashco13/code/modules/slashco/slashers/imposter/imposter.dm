@@ -61,6 +61,8 @@
 		our_slasher.disguised_jumpscare = new
 		our_slasher.disguised_jumpscare.Grant(owner)
 		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/stealthkill.ogg'
+		our_slasher.fuel_shapeshift.Grant(owner)
+		our_slasher.carpspawn_spell.Grant(owner)
 	caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
 
 /// turn into basic mob
@@ -68,14 +70,17 @@
 	. = ..()
 	if(!.)
 		return
-	caster.Paralyze(3 SECONDS)
+	if(!isliving(owner))
+		return
+	var/mob/living/our_caster = owner // caster does NOT equal the shapeshifted mob. fuckery
+	our_caster.Paralyze(3 SECONDS)
 	sound = 'local/code/modules/slashco13/sound/slasher/imposter/disguise.ogg'
 	for(var/datum/antagonist/slasher/imposter/our_slasher in owner?.mind?.antag_datums)
 		QDEL_NULL(our_slasher.disguised_jumpscare)
 		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/kill.ogg'
-		our_slasher.fuel_shapeshift.Grant(caster)
-		our_slasher.carpspawn_spell.Grant(caster)
-	caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
+		our_slasher.fuel_shapeshift.Grant(our_caster)
+		our_slasher.carpspawn_spell.Grant(our_caster)
+	our_caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
 
 /datum/action/cooldown/fuel_disguise
 	name = "Fuel Disguise"
