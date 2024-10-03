@@ -7,7 +7,7 @@
 	antagpanel_category = "Slashers"
 	show_to_ghosts = TRUE
 	var/mob_type = /mob/living/carbon/human
-	var/slasher_outfit = /datum/outfit/job/assistant
+	var/slasher_outfit = /datum/outfit/job/power_recovery
 
 	var/datum/action/cooldown/spell/get_carpspawned_idiot/carpspawn_spell
 
@@ -16,7 +16,7 @@
 	var/jumpscare_time = 3 SECONDS
 	var/jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares.dmi'
 	var/jumpscare_icon_state = "amogus"
-	var/jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/kill.ogg'
+	var/jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/stealthkill.ogg'
 	var/jumpscare_cooldown_length = 10 SECONDS
 
 	COOLDOWN_DECLARE(jumpscare_cooldown)

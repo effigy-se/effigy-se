@@ -1,6 +1,6 @@
 /datum/antagonist/slasher/imposter
 	name = "Imposter"
-	mob_type = /mob/living/basic/slasher/imposter
+	slasher_outfit = /datum/outfit/job/power_recovery/imposter
 	var/datum/action/cooldown/spell/shapeshift/imposter/shapeshift_human
 	var/datum/action/cooldown/fuel_disguise/fuel_shapeshift
 	var/datum/action/cooldown/mob_cooldown/jumpscare/disguised_jumpscare
@@ -12,50 +12,70 @@
 	fuel_shapeshift = new
 	fuel_shapeshift.Grant(owner.current)
 
+/// Outfit ///
+/datum/outfit/job/power_recovery/imposter
+	name = "Power Recovery Technician (Imposter)"
+
+/datum/outfit/job/power_recovery/imposter/post_equip(mob/living/carbon/human/equipped, visualsOnly)
+	. = ..()
+	var/list/traits_to_apply = list(
+		TRAIT_PACIFISM,
+		TRAIT_CHUNKYFINGERS,
+		TRAIT_NODEATH,
+		TRAIT_NOSOFTCRIT,
+		TRAIT_NOHARDCRIT,
+		TRAIT_NOLIMBDISABLE,
+		TRAIT_NEVER_WOUNDED,
+		TRAIT_NODISMEMBER,
+	)
+	for(var/a_trait in traits_to_apply)
+		ADD_TRAIT(equipped, a_trait, src)
+	equipped.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
+	equipped.blooper = null // prevents overlap with the imposter's custom speech sfx
+	equipped.blooper_list = null
+	equipped.blooper_id = null
+	for(var/datum/antagonist/slasher/imposter/our_slasher in equipped?.mind?.antag_datums)
+		our_slasher.disguised_jumpscare = new
+		our_slasher.disguised_jumpscare.Grant(equipped)
+
 /// Imposter Spells ///
 /datum/action/cooldown/spell/shapeshift/imposter
-	name = "Human Disguise"
-	desc = "Assume the form of a hapless human."
+	name = "Break Disguise"
+	desc = "Break your hapless human-adjacent disguise and assume your true form - or vice versa."
 	cooldown_time = 5 SECONDS
 	convert_damage = FALSE
 	die_with_shapeshifted_form = FALSE
 
 	spell_requirements = NONE
 
-	possible_shapes = list(/mob/living/carbon/human)
-	sound = 'local/code/modules/slashco13/sound/slasher/imposter/disguise.ogg'
+	possible_shapes = list(/mob/living/basic/slasher/imposter)
+	sound = 'local/code/modules/slashco13/sound/slasher/imposter/undisguise.ogg'
 
+/// turn into human
 /datum/action/cooldown/spell/shapeshift/imposter/do_unshapeshift(mob/living/caster)
 	. = ..()
-	sound = 'local/code/modules/slashco13/sound/slasher/imposter/disguise.ogg'
+	caster.Paralyze(3 SECONDS)
+	sound = 'local/code/modules/slashco13/sound/slasher/imposter/undisguise.ogg'
+	playsound(get_turf(caster), 'local/code/modules/slashco13/sound/slasher/imposter/amogus.ogg', 75) // This should be delayed by 5 seconds (but I can't get that to work)
 	for(var/datum/antagonist/slasher/imposter/our_slasher in owner?.mind?.antag_datums)
-		QDEL_NULL(our_slasher.disguised_jumpscare)
-		our_slasher.jumpscare_sound = initial(our_slasher.jumpscare_sound)
+		our_slasher.disguised_jumpscare = new
+		our_slasher.disguised_jumpscare.Grant(owner)
+		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/stealthkill.ogg'
+	caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
 
+/// turn into basic mob
 /datum/action/cooldown/spell/shapeshift/imposter/do_shapeshift(mob/living/caster)
 	. = ..()
 	if(!.)
 		return
 	caster.Paralyze(3 SECONDS)
-	playsound(get_turf(caster), 'local/code/modules/slashco13/sound/slasher/imposter/amogus.ogg', 75) // This should be delayed by 5 seconds (but I can't get that to work)
-	var/mob/living/carbon/human/our_disguise = .
-	var/list/traits_to_apply = list(
-		TRAIT_PACIFISM,
-		TRAIT_CHUNKYFINGERS,
-	)
-	for(var/a_trait in traits_to_apply)
-		ADD_TRAIT(our_disguise, a_trait, src)
-	our_disguise.equipOutfit(/datum/outfit/job/power_recovery)
-	our_disguise.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
-	our_disguise.blooper = null // prevents overlap with the imposter's custom speech sfx
-	our_disguise.blooper_list = null
-	our_disguise.blooper_id = null
+	sound = 'local/code/modules/slashco13/sound/slasher/imposter/disguise.ogg'
 	for(var/datum/antagonist/slasher/imposter/our_slasher in owner?.mind?.antag_datums)
-		our_slasher.disguised_jumpscare = new
-		our_slasher.disguised_jumpscare.Grant(owner)
-		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/stealthkill.ogg'
-	playsound(get_turf(caster), 'local/code/modules/slashco13/sound/slasher/imposter/amogus.ogg', 75)
-	sound = 'local/code/modules/slashco13/sound/slasher/imposter/undisguise.ogg'
+		QDEL_NULL(our_slasher.disguised_jumpscare)
+		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/kill.ogg'
+	caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
+	fuel_shapeshift.Grant(caster)
+	carpspawn_spell.Grant(caster)
 
 /datum/action/cooldown/fuel_disguise
 	name = "Fuel Disguise"
