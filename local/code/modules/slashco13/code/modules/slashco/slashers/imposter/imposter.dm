@@ -82,8 +82,6 @@
 		our_slasher.jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/kill.ogg'
 		our_slasher.fuel_shapeshift.Grant(our_caster)
 		our_slasher.carpspawn_spell.Grant(our_caster)
-		if(!our_slasher.our_chase_attack)
-			new our_slasher.our_chase_attack
 		our_slasher.our_chase_attack.Grant(our_caster)
 	our_caster.apply_status_effect(/datum/status_effect/speech/imposter, INFINITY)
 

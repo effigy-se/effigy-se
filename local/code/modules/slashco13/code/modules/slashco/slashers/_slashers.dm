@@ -20,7 +20,7 @@
 	var/jumpscare_cooldown_length = 10 SECONDS
 	/// CHASE STUFF
 	// How fast do we move while chasing? Modifier
-	var/chase_movespeed_mod = -0.2
+	var/chase_movespeed_mod = -1
 	// How long is our chase period?
 	var/chase_length = 30 SECONDS
 	var/datum/action/cooldown/spell/slasher_chase/our_chase_attack
@@ -97,8 +97,8 @@
 
 /// Exists for subtypes to add onto.
 /datum/antagonist/slasher/proc/give_slasher_abilities()
+	our_chase_attack = new
 	if(start_with_chase)
-		our_chase_attack = new
 		our_chase_attack.Grant(owner.current)
 	carpspawn_spell = new
 	carpspawn_spell.Grant(owner.current)
