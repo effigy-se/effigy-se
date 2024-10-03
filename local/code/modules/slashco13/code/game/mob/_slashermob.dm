@@ -7,6 +7,7 @@
 	lighting_cutoff_blue = 22
 	melee_damage_lower = 0
 	melee_damage_upper = 0
+	var/can_jumpscare = TRUE // would you beleive it? there's slashers that attack normally
 
 /mob/living/basic/slasher/Initialize(mapload)
 	. = ..()
@@ -14,7 +15,7 @@
 
 /mob/living/basic/slasher/melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
-	if(isliving(target))
+	if(isliving(target) && can_jumpscare)
 		var/mob/living/our_target = target
 		for(var/datum/antagonist/slasher/our_slasher in src.mind.antag_datums)
 			if(!COOLDOWN_FINISHED(our_slasher, jumpscare_cooldown))
