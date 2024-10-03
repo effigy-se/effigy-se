@@ -32,53 +32,6 @@
 
 	COOLDOWN_DECLARE(jumpscare_cooldown)
 
-/datum/antagonist/slasher/proc/jumpscare(mob/living/target)
-	if(!istype(target))
-		return
-	if(target.client && target.hud_used)
-		target.hud_used.show_hud(HUD_STYLE_NOHUD)
-		target.Paralyze(jumpscare_time)
-		owner.current.Paralyze(jumpscare_time)
-		var/image/jumpscare = image(icon = jumpscare_icon, loc = target, icon_state = jumpscare_icon_state, dir = SOUTH, pixel_x = -288, pixel_y = -224)
-		SET_PLANE(jumpscare, ABOVE_HUD_PLANE, target)
-		target.client.images += jumpscare
-		playsound(get_turf(target), jumpscare_sound, 75, FALSE)
-		addtimer(CALLBACK(src, PROC_REF(delete_jumpscare), target, jumpscare), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
-		addtimer(CALLBACK(src, PROC_REF(prank_em_john), target, jumpscare), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
-	else // Play pretend with it
-		playsound(get_turf(target), jumpscare_sound, 75, FALSE)
-		addtimer(CALLBACK(src, PROC_REF(prank_em_john), target), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
-
-/datum/antagonist/slasher/proc/delete_jumpscare(mob/living/target, image/jumpscare)
-	target?.client?.images -= jumpscare
-	qdel(jumpscare)
-	if(target.hud_used && target.client)
-		target.hud_used.show_hud(HUD_STYLE_STANDARD)
-
-
-/// CHASE STUFF
-/datum/looping_sound/slasher_chase
-	start_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
-	start_length = 4
-	mid_sounds = list('local/code/modules/slashco13/sound/slasher/imposter/chase.ogg' = 1)
-	mid_length = 4
-	end_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
-
-
-/datum/antagonist/slasher/proc/prank_em_john(mob/living/target)
-	if(!istype(target))
-		return
-	target.adjustBruteLoss(300)
-	ADD_TRAIT(target, TRAIT_DEFIB_BLACKLISTED, REF(src))
-
-/datum/antagonist/slasher/get_preview_icon()
-	var/icon/icon = icon('local/code/modules/slashco13/icons/mob/slashers.dmi', "amogus")
-	icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
-	return icon
-
-/datum/antagonist/slasher/roundend_report_header()
-	return "<span class='header'>Nanotrasen's Taken Note Of The Slasher's Activity:</span><br>"
-
 /datum/antagonist/slasher/on_gain()
 	. = ..()
 	forge_objectives()
@@ -94,6 +47,14 @@
 		var/mob/living/carbon/human/our_carbon = our_slasher
 		our_carbon.equipOutfit(slasher_outfit)
 	give_slasher_abilities(our_slasher)
+
+/datum/antagonist/slasher/get_preview_icon()
+	var/icon/icon = icon('local/code/modules/slashco13/icons/mob/slashers.dmi', "amogus")
+	icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
+	return icon
+
+/datum/antagonist/slasher/roundend_report_header()
+	return "<span class='header'>Nanotrasen's Taken Note Of The Slasher's Activity:</span><br>"
 
 /// Exists for subtypes to add onto.
 /datum/antagonist/slasher/proc/give_slasher_abilities()
@@ -157,6 +118,37 @@
 	JUMPSCARE SPELL
 */
 
+/// JUMPSCARE ZONE ///
+
+/datum/antagonist/slasher/proc/jumpscare(mob/living/target)
+	if(!istype(target))
+		return
+	if(target.client && target.hud_used)
+		target.hud_used.show_hud(HUD_STYLE_NOHUD)
+		target.Paralyze(jumpscare_time)
+		owner.current.Paralyze(jumpscare_time)
+		var/image/jumpscare = image(icon = jumpscare_icon, loc = target, icon_state = jumpscare_icon_state, dir = SOUTH, pixel_x = -288, pixel_y = -224)
+		SET_PLANE(jumpscare, ABOVE_HUD_PLANE, target)
+		target.client.images += jumpscare
+		playsound(get_turf(target), jumpscare_sound, 75, FALSE)
+		addtimer(CALLBACK(src, PROC_REF(delete_jumpscare), target, jumpscare), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
+		addtimer(CALLBACK(src, PROC_REF(prank_em_john), target, jumpscare), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
+	else // Play pretend with it
+		playsound(get_turf(target), jumpscare_sound, 75, FALSE)
+		addtimer(CALLBACK(src, PROC_REF(prank_em_john), target), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
+
+/datum/antagonist/slasher/proc/delete_jumpscare(mob/living/target, image/jumpscare)
+	target?.client?.images -= jumpscare
+	qdel(jumpscare)
+	if(target.hud_used && target.client)
+		target.hud_used.show_hud(HUD_STYLE_STANDARD)
+
+/datum/antagonist/slasher/proc/prank_em_john(mob/living/target)
+	if(!istype(target))
+		return
+	target.adjustBruteLoss(300)
+	ADD_TRAIT(target, TRAIT_DEFIB_BLACKLISTED, REF(src))
+
 /// This isn't universal but is close enough to be here; it's only meant to be given to mobs that aren't using the generic /mob/living/basic/slasher as a base. Humans and the like.
 
 /datum/action/cooldown/mob_cooldown/jumpscare
@@ -199,6 +191,14 @@
 /*
 	CHASE SPELL
 */
+
+/// CHASE STUFF
+/datum/looping_sound/slasher_chase
+	start_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
+	start_length = 4
+	mid_sounds = list('local/code/modules/slashco13/sound/slasher/imposter/chase.ogg' = 1)
+	mid_length = 4
+	end_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
 
 /datum/movespeed_modifier/slasher_chase
 	variable = TRUE
