@@ -52,7 +52,7 @@
 	var/list/possible_slashers = subtypesof(antag_datum)
 	for(var/datum/antagonist/slasher/checked_slasher in possible_slashers)
 		if(checked_slasher.unpickable) // WIP slashers - or other far; far worse things
-			checked_slasher -= possible_slashers
+			possible_slashers -= checked_slasher
 	var/a_bite = FALSE
 	for(var/datum/mind/new_slasher in assigned)
 		var/our_slasher_type = pick_n_take(possible_slashers)
