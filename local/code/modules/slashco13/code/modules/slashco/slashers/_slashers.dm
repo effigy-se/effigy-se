@@ -249,7 +249,7 @@
 
 /datum/action/cooldown/spell/aoe/knock/slasher
 	sound = null
-	cooldown_time = 1 SECOND
+	cooldown_time = 1 SECONDS
 	invocation = null
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
