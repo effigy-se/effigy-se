@@ -6,6 +6,10 @@
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "assistant"
 
+/obj/item/toy/faustian_doll/Initialize(mapload)
+	. = ..()
+	SSpoints_of_interest.make_point_of_interest(src)
+
 /obj/item/toy/faustian_doll/attack_self(mob/user as mob)
 	var/turf/T = find_safe_turf(zlevels=SSmapping.levels_by_trait(ZTRAIT_STATION))
 

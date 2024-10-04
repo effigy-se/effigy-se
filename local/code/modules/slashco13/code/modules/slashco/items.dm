@@ -17,6 +17,10 @@ B-GONE SODA
 	list_reagents = list(/datum/reagent/drug/saturnx = 30)
 	drink_type = SUGAR | JUNKFOOD | TOXIC
 
+/obj/item/reagent_containers/cup/soda_cans/b_gone/Initialize(mapload)
+	. = ..()
+	SSpoints_of_interest.make_point_of_interest(src)
+
 /*
 	LAB GROWN MEAT
 */
@@ -31,6 +35,10 @@ B-GONE SODA
 		/datum/reagent/drug/therma_vision = 15,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
+
+/obj/item/food/meat/lab_grown/Initialize(mapload)
+	. = ..()
+	SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/item/food/meat/lab_grown/examine()
 	. = ..()
@@ -63,3 +71,7 @@ MAYO
 
 /obj/item/reagent_containers/condiment/mayonnaise/slashco
 	list_reagents = list(/datum/reagent/medicine/adminordrazine = 5)
+
+/obj/item/reagent_containers/condiment/mayonnaise/slashco/Initialize(mapload)
+	. = ..()
+	SSpoints_of_interest.make_point_of_interest(src)
