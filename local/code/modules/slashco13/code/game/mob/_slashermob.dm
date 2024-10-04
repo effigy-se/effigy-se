@@ -10,6 +10,8 @@
 	var/can_jumpscare = TRUE // would you beleive it? there's slashers that attack normally
 
 /mob/living/basic/slasher/Initialize(mapload)
+	ADD_TRAIT(src, TRAIT_FREE_HYPERSPACE_MOVEMENT, INNATE_TRAIT) // Prevents cheese with the emergency shuttle. Also is terrifying.
+	ADD_TRAIT(src, TRAIT_FREE_FLOAT_MOVEMENT, INNATE_TRAIT) // Prevents cheese with space. Also is terrifying.
 	. = ..()
 	name = initial(name)
 
