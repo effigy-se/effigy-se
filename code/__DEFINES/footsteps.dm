@@ -29,6 +29,7 @@
 #define FOOTSTEP_OBJ_MACHINE "footstep_machine"
 #define FOOTSTEP_OBJ_ROBOT "footstep_robot"
 #define FOOTSTEP_IMPOSTER "footstep_imposter" // SLASHCO 13 AMOGUS
+#define FOOTSTEP_PRINCESS "footstep_princess" // SLASHCO 13 AMOGUS
 
 //priority defines for the footstep_override element
 #define STEP_SOUND_NO_PRIORITY 0

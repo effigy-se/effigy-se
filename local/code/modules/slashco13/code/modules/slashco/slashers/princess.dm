@@ -75,6 +75,10 @@
 	if(aggression > maximum_aggression)
 		aggression = maximum_aggression
 
+/datum/antagonist/slasher/princess/jumpscare(mob/living/target, mob/living/user)
+	. = ..()
+	playsound(src, 'local/code/modules/slashco13/sound/slasher/princess/bite.ogg', 75, FALSE)
+
 /datum/action/cooldown/spell/slasher_chase/princess/cast(mob/living/cast_on)
 	for(var/datum/antagonist/slasher/princess/our_slasher in owner?.mind?.antag_datums)
 		our_slasher.chase_movespeed_mod = initial(our_slasher.chase_movespeed_mod)

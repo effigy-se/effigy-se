@@ -52,12 +52,16 @@
 			footstep_sounds = 'sound/effects/tank_treads.ogg'
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
 			return
-		/// SLASHCO 13 AMOGUS ///
+		/// SLASHCO 13 ///
 		if(FOOTSTEP_IMPOSTER)
 			footstep_sounds = list('local/code/modules/slashco13/sound/slasher/imposter/step1.ogg', 'local/code/modules/slashco13/sound/slasher/imposter/step2.ogg', 'local/code/modules/slashco13/sound/slasher/imposter/step3.ogg')
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
 			return
-		/// SLASHCO 13 AMOGUS ///
+		if(FOOTSTEP_PRINCESS)
+			footstep_sounds = list('local/code/modules/slashco13/sound/slasher/princess/step1.ogg', 'local/code/modules/slashco13/sound/slasher/princess/step2.ogg', 'local/code/modules/slashco13/sound/slasher/princess/step3.ogg')
+			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
+			return
+		/// SLASHCO 13 ///
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep))
 	steps_for_living[target] = 0
 
