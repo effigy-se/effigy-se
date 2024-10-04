@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(slashco)
 			/obj/item/reagent_containers/cup/soda_cans/b_gone \
 		)
 		var/our_selection = pick(possibleslashcoitems)
-		new our_selection
+		new our_selection(OurItem)
 
 /datum/controller/subsystem/slashco/proc/can_call_early()
 	if(active_generators >= (required_generators * 0.5))
@@ -80,6 +80,6 @@ SUBSYSTEM_DEF(slashco)
 		if(potential_escapee.antag_datums.len)
 			continue
 		alive_nonantag_crew += 1
-	if(alive_nonantag_crew == 1) // EXACTLY one person left
+	if(alive_nonantag_crew <= 1) // EXACTLY one person left (or less; somehow)
 		return TRUE
 	return FALSE

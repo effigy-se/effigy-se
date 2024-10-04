@@ -9,6 +9,8 @@
 	var/mob_type = /mob/living/carbon/human
 	var/slasher_outfit = /datum/outfit/job/power_recovery
 
+	var/fluff = "You're a piece of shitcode; Harry; get out of my sight."
+
 	var/datum/action/cooldown/spell/get_carpspawned_idiot/carpspawn_spell
 	var/datum/action/cooldown/spell/aoe/knock/slasher/knock_spell
 
@@ -40,6 +42,14 @@
 	. = ..()
 	forge_objectives()
 	equip_slasher()
+	map_specific_setup()
+
+/datum/antagonist/slasher/ui_static_data(mob/user)
+	var/list/data = list()
+	data["fluff"] = fluff
+	data["objectives"] = get_objectives()
+	data["explain_attack"] = TRUE
+	return data
 
 /datum/antagonist/slasher/proc/equip_slasher()
 	if(mob_type != /mob/living/carbon/human)
@@ -49,6 +59,10 @@
 		var/mob/living/carbon/human/our_carbon = owner.current
 		our_carbon.equipOutfit(slasher_outfit)
 	give_slasher_abilities()
+
+// Exists for subtypes to override.
+/datum/antagonist/slasher/proc/map_specific_setup()
+	return
 
 /datum/antagonist/slasher/get_preview_icon()
 	var/icon/icon = icon('local/code/modules/slashco13/icons/mob/slashers.dmi', "amogus")

@@ -1,10 +1,12 @@
 /datum/antagonist/slasher/princess
-	name = "Princess"
+	name = "\improper Princess"
 	mob_type = /mob/living/basic/slasher/princess
 	chase_length = 10 SECONDS
 	jumpscare_icon = null
 	jumpscare_time = 1.5 SECONDS
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/princess/attack.ogg'
+	ui_name = "AntagInfoPrincess"
+	fluff = "You're a menace on four legs."
 	/// Our current aggression value. Increases by 1 each second.
 	var/aggression = 0
 	/// Our maximum aggression value. Clamps at 100; starts at 50.
@@ -14,6 +16,13 @@
 
 	var/datum/looping_sound/princess_grumbling_idle/our_grumbles
 	var/datum/looping_sound/princess_grumbling_angry/our_angry_grumbles
+
+// Princess needs some extra dolls to munch on; in case none spawned. Only 4 are needed to ascend; but we'll be generous and give them double.
+/datum/antagonist/slasher/princess/map_specific_setup()
+	for(var/integer=1 to 8)
+		var/OurItem = pick(GLOB.slashitemstart)
+		GLOB.slashitemstart -= OurItem
+		new /obj/item/toy/faustian_doll(OurItem)
 
 /datum/antagonist/slasher/princess/setup_chase_music()
 	our_chase_music.start_sound = 'local/code/modules/slashco13/sound/slasher/princess/chasemusic/01ChaseMusic.ogg'
