@@ -86,15 +86,11 @@ export const AntagInfoPrincess = (props) => {
 const DemonRunes = (props) => {
   return (
     <Section height="102%" mt="-6px" fill>
-      {/*
-      shoutout to my boy Yuktopus from Crash Bandicoot: Crash of the Titans.
-      Damn, that was such a good game.
-      */}
       <Box className="HellishRunes__demonrune">
-        Y<br />U<br />K<br />T<br />O<br />P<br />U<br />S<br />
-        Y<br />U<br />K<br />T<br />O<br />P<br />U<br />S<br />
-        Y<br />U<br />K<br />T<br />O<br />P<br />U<br />S<br />
-        Y<br />U<br />K<br />T<br />O<br />P<br />U<br />S
+        P<br />R<br />I<br />N<br />C<br />E<br />S<br />S<br />
+        P<br />R<br />I<br />N<br />C<br />E<br />S<br />S<br />
+        P<br />R<br />I<br />N<br />C<br />E<br />S<br />S<br />
+        P<br />R<br />I<br />N<br />C<br />E<br />S<br />S
       </Box>
     </Section>
   );

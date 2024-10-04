@@ -89,14 +89,13 @@ const DemonRunes = (props) => {
   return (
     <Section height="102%" mt="-6px" fill>
       {/*
-      shoutout to my boy Yuktopus from Crash Bandicoot: Crash of the Titans.
-      Damn, that was such a good game.
+      amog nus
       */}
       <Box className="HellishRunes__demonrune">
-        Y<br />U<br />K<br />T<br />O<br />P<br />U<br />S<br />
-        Y<br />U<br />K<br />T<br />O<br />P<br />U<br />S<br />
-        Y<br />U<br />K<br />T<br />O<br />P<br />U<br />S<br />
-        Y<br />U<br />K<br />T<br />O<br />P<br />U<br />S
+        ඞ<br />A<br />M<br />O<br />N<br />G<br />U<br />S<br />
+        ඞ<br />A<br />M<br />O<br />N<br />G<br />U<br />S<br />
+        ඞ<br />A<br />M<br />O<br />N<br />G<br />U<br />S<br />
+        ඞ<br />A<br />M<br />O<br />N<br />G<br />U<br />S
       </Box>
     </Section>
   );
