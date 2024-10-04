@@ -5,7 +5,6 @@
 	jumpscare_icon = null
 	jumpscare_time = 1.5 SECONDS
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/princess/attack.ogg'
-	clear_sounds_when_chase_over = TRUE
 	/// Our current aggression value. Increases by 1 each second.
 	var/aggression = 0
 	/// Our maximum aggression value. Clamps at 100; starts at 50.
@@ -17,10 +16,48 @@
 	var/datum/looping_sound/princess_grumbling_angry/our_angry_grumbles
 
 /datum/antagonist/slasher/princess/setup_chase_music()
-	our_chase_music.start_sound = 'local/code/modules/slashco13/sound/slasher/princess/chase.ogg'
-	our_chase_music.start_length = 240
-	our_chase_music.mid_sounds = list('local/code/modules/slashco13/sound/slasher/princess/chase.ogg' = 1)
-	our_chase_music.mid_length = 240
+	our_chase_music.start_sound = 'local/code/modules/slashco13/sound/slasher/princess/chasemusic/01ChaseMusic.ogg'
+	our_chase_music.start_length = 1 SECONDS
+	our_chase_music.mid_sounds = list(
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/02ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/03ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/04ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/05ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/06ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/07ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/08ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/09ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/10ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/11ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/12ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/13ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/14ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/15ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/16ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/17ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/18ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/19ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/20ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/21ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/22ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/23ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/24ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/25ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/26ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/27ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/28ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/29ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/30ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/31ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/32ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/33ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/34ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/35ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/36ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/37ChaseMusic.ogg' = 1, \
+		'local/code/modules/slashco13/sound/slasher/princess/chasemusic/38ChaseMusic.ogg' = 1, \
+		)
+	our_chase_music.mid_length = 1 SECONDS
 	our_chase_music.end_sound = null
 	return
 

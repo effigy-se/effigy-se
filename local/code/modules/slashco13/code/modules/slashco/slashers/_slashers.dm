@@ -28,8 +28,6 @@
 	// Do we start with the chase action button? Used mostly by the Imposter
 	var/start_with_chase = TRUE
 	var/datum/looping_sound/slasher_chase/our_chase_music = /datum/looping_sound/slasher_chase
-	/// SHITCODE - do we need to clear sounds when the chase ends?
-	var/clear_sounds_when_chase_over = FALSE
 	// How long does it take to recharge from a chase?
 	var/chase_cooldown_length = 18 SECONDS
 
@@ -208,6 +206,7 @@
 	mid_sounds = list('local/code/modules/slashco13/sound/slasher/imposter/chase.ogg' = 1)
 	mid_length = 5
 	end_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
+	in_order = TRUE // needs to be here; can't be hotloaded
 
 /datum/movespeed_modifier/slasher_chase
 	variable = TRUE
