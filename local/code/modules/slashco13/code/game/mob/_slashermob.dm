@@ -22,7 +22,7 @@
 				balloon_alert(src, "on cooldown!")
 				return TRUE
 			if(our_target.stat != DEAD)
-				our_slasher.jumpscare(our_target)
+				our_slasher.jumpscare(our_target, src)
 				COOLDOWN_START(our_slasher, jumpscare_cooldown, our_slasher.jumpscare_cooldown_length)
 				return TRUE
 		return FALSE
