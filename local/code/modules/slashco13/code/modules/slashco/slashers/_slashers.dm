@@ -92,8 +92,8 @@
 /// Long-term this would probably be best moved to team logic. Oh well
 /datum/antagonist/slasher/proc/update_objectives()
 	var/untracked_techs = list()
-	for(var/datum/mind/potential_target as anything in get_crewmember_minds())
-		if(potential_target.assigned_role == JOB_POWER_RECOVERY)
+	for(var/datum/mind/potential_target as anything in SSticker.minds)
+		if(potential_target.assigned_role == /datum/job/power_recovery && !potential_target.antag_datums.len) // Note the antag check also prevents you from targetting yourself
 			untracked_techs += potential_target
 
 	for(var/datum/objective/assassinate/kill_objective in objectives)
