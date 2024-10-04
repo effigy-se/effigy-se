@@ -22,13 +22,13 @@
 	// How fast do we move while chasing? Modifier
 	var/chase_movespeed_mod = -1
 	// How long is our chase period?
-	var/chase_length = 30 SECONDS
+	var/chase_length = 15 SECONDS
 	var/datum/action/cooldown/spell/slasher_chase/our_chase_attack
 	// Do we start with the chase action button? Used mostly by the Imposter
 	var/start_with_chase = TRUE
 	var/datum/looping_sound/slasher_chase/our_chase_music = /datum/looping_sound/slasher_chase
 	// How long does it take to recharge from a chase?
-	var/chase_cooldown_length = 3 MINUTES
+	var/chase_cooldown_length = 18 SECONDS
 
 	COOLDOWN_DECLARE(jumpscare_cooldown)
 
@@ -124,7 +124,7 @@
 /datum/antagonist/slasher/proc/jumpscare(mob/living/target, mob/living/user)
 	if(!istype(target))
 		return
-	if(target.client && target.hud_used)
+	if(target.client && target.hud_used && jumpscare_icon != null)
 		target.hud_used.show_hud(HUD_STYLE_NOHUD)
 		target.Paralyze(jumpscare_time, TRUE)
 		user.Paralyze(jumpscare_time, TRUE)
