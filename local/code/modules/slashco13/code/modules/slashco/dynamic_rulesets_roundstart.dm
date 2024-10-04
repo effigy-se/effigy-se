@@ -50,21 +50,22 @@
 
 /datum/dynamic_ruleset/roundstart/slashers/execute()
 	var/list/possible_slashers = subtypesof(antag_datum)
-	to_chat(world, "possible slasher: [possible_slashers]")
+	for(var/datum/antagonist/slasher/checked_slasher in possible_slashers)
+		if(checked_slasher.unpickable) // WIP slashers - or other far; far worse things
+			checked_slasher -= possible_slashers
 	var/a_bite = FALSE
 	for(var/datum/mind/new_slasher in assigned)
-		to_chat(world, "new slasher: [new_slasher]")
 		var/our_slasher_type = pick_n_take(possible_slashers)
-		to_chat(world, "our slasher type: [our_slasher_type]")
 		if(!our_slasher_type)
-			to_chat(world, "ran out of slashers. resetting")
 			possible_slashers = subtypesof(antag_datum)
+			for(var/datum/antagonist/slasher/checked_slasher in possible_slashers)
+				if(checked_slasher.unpickable) // WIP slashers - or other far; far worse things
+					checked_slasher -= possible_slashers
 			our_slasher_type = pick_n_take(possible_slashers)
 		var/datum/antagonist/slasher/new_antag_datum = new our_slasher_type
 		new_slasher.add_antag_datum(new_antag_datum)
 		var/potential_spawn = find_space_spawn()
 		if(!potential_spawn)
-			to_chat(world, "no potential safe spawns")
 			potential_spawn = get_safe_random_station_turf() /// No carpspawns? Fuggit; random safe tile
 		new_slasher.current.forceMove(potential_spawn)
 		GLOB.pre_setup_antags -= new_slasher
