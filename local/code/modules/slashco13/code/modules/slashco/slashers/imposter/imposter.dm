@@ -13,6 +13,10 @@
 	fuel_shapeshift = new
 	fuel_shapeshift.Grant(owner.current)
 
+/datum/antagonist/slasher/imposter/slasher_specific_jumpscare_effects(image/jumpscare, mob/living/target, mob/living/user)
+	animate(jumpscare, jumpscare_time, color = COLOR_RED)
+	return
+
 /// Outfit ///
 /datum/outfit/job/power_recovery/imposter
 	name = "Power Recovery Technician (Imposter)"

@@ -141,11 +141,16 @@
 		SET_PLANE(jumpscare, ABOVE_HUD_PLANE, target)
 		target.client.images += jumpscare
 		playsound(get_turf(target), jumpscare_sound, 75, FALSE)
+		slasher_specific_jumpscare_effects(jumpscare, target, user) // Used for animations; mostly
 		addtimer(CALLBACK(src, PROC_REF(delete_jumpscare), target, jumpscare), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
 		addtimer(CALLBACK(src, PROC_REF(prank_em_john), target, jumpscare), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
 	else // Play pretend with it
 		playsound(get_turf(target), jumpscare_sound, 75, FALSE)
 		addtimer(CALLBACK(src, PROC_REF(prank_em_john), target), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
+
+/// Exists for subtypes to override.
+/datum/antagonist/slasher/proc/slasher_specific_jumpscare_effects(image/jumpscare, mob/living/target, mob/living/user)
+	return
 
 /datum/antagonist/slasher/proc/delete_jumpscare(mob/living/target, image/jumpscare)
 	target?.client?.images -= jumpscare
