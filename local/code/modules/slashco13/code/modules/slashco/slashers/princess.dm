@@ -1,28 +1,28 @@
 /datum/antagonist/slasher/princess
 	name = "Princess"
 	mob_type = /mob/living/basic/slasher/princess
-	our_chase_music = /datum/looping_sound/slasher_chase/princess
 	chase_length = 10 SECONDS
 	jumpscare_icon = null
 	jumpscare_time = 1.5 SECONDS
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/princess/attack.ogg'
-	our_chase_attack = /datum/action/cooldown/spell/slasher_chase/princess
+	clear_sounds_when_chase_over = TRUE
 	/// Our current aggression value. Increases by 1 each second.
 	var/aggression = 0
 	/// Our maximum aggression value. Clamps at 100; starts at 50.
 	var/maximum_aggression = 50
 	/// Our aggression 'prestige'. Increases by when Princess eats a Faustian doll; and acts as a multiplier for aggression gain.
-	var/aggression_prestige = 1
+	var/aggression_prestige = 0.1
 
 	var/datum/looping_sound/princess_grumbling_idle/our_grumbles
 	var/datum/looping_sound/princess_grumbling_angry/our_angry_grumbles
 
-/datum/looping_sound/slasher_chase/princess
-	start_sound = 'local/code/modules/slashco13/sound/slasher/princess/chase.ogg'
-	start_length = 5 // needs in-game testing (needs to be cranked tf up)
-	mid_sounds = list('local/code/modules/slashco13/sound/slasher/princess/chase.ogg' = 1)
-	mid_length = 5 // ditto
-	end_sound = null
+/datum/antagonist/slasher/princess/setup_chase_music()
+	our_chase_music.start_sound = 'local/code/modules/slashco13/sound/slasher/princess/chase.ogg'
+	our_chase_music.start_length = 240
+	our_chase_music.mid_sounds = list('local/code/modules/slashco13/sound/slasher/princess/chase.ogg' = 1)
+	our_chase_music.mid_length = 240
+	our_chase_music.end_sound = null
+	return
 
 /datum/looping_sound/princess_grumbling_idle
 	start_sound = null
@@ -80,16 +80,15 @@
 	. = ..()
 	playsound(src, 'local/code/modules/slashco13/sound/slasher/princess/bite.ogg', 75, FALSE)
 
-/datum/action/cooldown/spell/slasher_chase/princess/cast(mob/living/cast_on)
-	for(var/datum/antagonist/slasher/princess/our_slasher in owner?.mind?.antag_datums)
-		our_slasher.chase_movespeed_mod = initial(our_slasher.chase_movespeed_mod)
-		our_slasher.chase_movespeed_mod -= (our_slasher.aggression * 0.005) // get speedy; get silly
-		our_slasher.our_grumbles.stop(TRUE)
-		our_slasher.our_angry_grumbles.start(owner)
-		addtimer(CALLBACK(src, PROC_REF(switch_grumbles_back), cast_on), our_slasher.chase_length)
-	. = ..()
+/datum/antagonist/slasher/princess/slasher_specific_chase_handling()
+	chase_movespeed_mod = initial(chase_movespeed_mod)
+	chase_movespeed_mod -= (aggression * 0.0025) // get speedy; get silly
+	our_grumbles.stop(TRUE)
+	our_angry_grumbles.start(owner.current)
+	aggression -= 10
+	addtimer(CALLBACK(src, PROC_REF(switch_grumbles_back)), chase_length)
+	return TRUE
 
-/datum/action/cooldown/spell/slasher_chase/princess/proc/switch_grumbles_back(mob/living/cast_on)
-	for(var/datum/antagonist/slasher/princess/our_slasher in owner?.mind?.antag_datums)
-		our_slasher.our_angry_grumbles.stop(TRUE)
-		our_slasher.our_grumbles.start(owner)
+/datum/antagonist/slasher/princess/proc/switch_grumbles_back()
+	our_angry_grumbles.stop(TRUE)
+	our_grumbles.start(owner.current)

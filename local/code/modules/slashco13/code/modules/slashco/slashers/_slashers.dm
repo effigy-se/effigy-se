@@ -28,6 +28,8 @@
 	// Do we start with the chase action button? Used mostly by the Imposter
 	var/start_with_chase = TRUE
 	var/datum/looping_sound/slasher_chase/our_chase_music = /datum/looping_sound/slasher_chase
+	/// SHITCODE - do we need to clear sounds when the chase ends?
+	var/clear_sounds_when_chase_over = FALSE
 	// How long does it take to recharge from a chase?
 	var/chase_cooldown_length = 18 SECONDS
 
@@ -65,6 +67,11 @@
 	knock_spell = new
 	knock_spell.Grant(owner.current)
 	our_chase_music = new
+	setup_chase_music()
+
+/// Exists for subtypes to override.
+/datum/antagonist/slasher/proc/setup_chase_music()
+	return
 
 /datum/antagonist/slasher/forge_objectives()
 	. = ..()
@@ -225,6 +232,9 @@
 
 /// this should probably be made toggleable rather than just a block of time you can chase but i can't be assed rn
 /datum/action/cooldown/spell/slasher_chase/cast(mob/living/cast_on)
+	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
+		if(!our_slasher.slasher_specific_chase_handling())
+			return
 	. = ..()
 	if(!istype(cast_on))
 		return
@@ -239,6 +249,10 @@
 	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
 		our_slasher.our_chase_music.stop(TRUE) // parent mob can change; easier to just whiste innocently about it
 	cast_on.remove_movespeed_modifier(/datum/movespeed_modifier/slasher_chase)
+
+/// Exists for other slashers to override since I TURBO fucked up
+/datum/antagonist/slasher/proc/slasher_specific_chase_handling()
+	return TRUE
 
 /*
 	KNOCK SPELL

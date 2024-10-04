@@ -12,7 +12,8 @@
 	. = ..()
 	if(istype(attack_target, /obj/item/toy/faustian_doll))
 		for(var/datum/antagonist/slasher/princess/our_slasher in mind?.antag_datums)
-			our_slasher.aggression_prestige += 1
+			our_slasher.aggression_prestige += 0.1
+			our_slasher.aggression = 0
 			our_slasher.maximum_aggression += rand(15,20)
 			if(our_slasher.maximum_aggression > 100)
 				our_slasher.maximum_aggression = 100
