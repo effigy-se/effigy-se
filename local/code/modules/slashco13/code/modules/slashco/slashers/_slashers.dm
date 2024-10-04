@@ -10,6 +10,7 @@
 	var/slasher_outfit = /datum/outfit/job/power_recovery
 
 	var/datum/action/cooldown/spell/get_carpspawned_idiot/carpspawn_spell
+	var/datum/action/cooldown/spell/aoe/knock/slasher/knock_spell
 
 	/// JUMPSCARE STUFF
 	// How long is the mob's jumpscare animation/sfx?
@@ -63,6 +64,8 @@
 		our_chase_attack.Grant(owner.current)
 	carpspawn_spell = new
 	carpspawn_spell.Grant(owner.current)
+	knock_spell = new
+	knock_spell.Grant(owner.current)
 	our_chase_music = new
 
 /datum/antagonist/slasher/forge_objectives()
@@ -238,3 +241,15 @@
 	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
 		our_slasher.our_chase_music.stop(TRUE) // parent mob can change; easier to just whiste innocently about it
 	cast_on.remove_movespeed_modifier(/datum/movespeed_modifier/slasher_chase)
+
+/*
+	KNOCK SPELL
+*/
+// gtfo the dorm idiot
+
+/datum/action/cooldown/spell/aoe/knock/slasher
+	sound = null
+	cooldown_time = 1 SECOND
+	invocation = null
+	invocation_type = INVOCATION_NONE
+	spell_requirements = NONE
