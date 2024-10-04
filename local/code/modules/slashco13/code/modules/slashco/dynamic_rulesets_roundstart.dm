@@ -55,9 +55,6 @@
 		var/our_slasher_type = pick_n_take(possible_slashers)
 		if(!our_slasher_type)
 			possible_slashers = subtypesof(antag_datum)
-			for(var/datum/antagonist/slasher/checked_slasher in possible_slashers)
-				if(checked_slasher.unpickable) // WIP slashers - or other far; far worse things
-					checked_slasher -= possible_slashers
 			our_slasher_type = pick_n_take(possible_slashers)
 		var/datum/antagonist/slasher/new_antag_datum = new our_slasher_type
 		new_slasher.add_antag_datum(new_antag_datum)
