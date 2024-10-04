@@ -38,16 +38,14 @@
 	forge_objectives()
 	equip_slasher()
 
-/datum/antagonist/slasher/proc/equip_slasher(mob/our_slasher = null)
-	if(isnull(our_slasher))
-		our_slasher = owner.current
+/datum/antagonist/slasher/proc/equip_slasher()
 	if(mob_type != /mob/living/carbon/human)
-		var/mob/SlasherToBe = our_slasher
+		var/mob/SlasherToBe = owner.current
 		SlasherToBe.change_mob_type(mob_type, null, src.name, TRUE)
 	else
-		var/mob/living/carbon/human/our_carbon = our_slasher
+		var/mob/living/carbon/human/our_carbon = owner.current
 		our_carbon.equipOutfit(slasher_outfit)
-	give_slasher_abilities(our_slasher)
+	give_slasher_abilities()
 
 /datum/antagonist/slasher/get_preview_icon()
 	var/icon/icon = icon('local/code/modules/slashco13/icons/mob/slashers.dmi', "amogus")

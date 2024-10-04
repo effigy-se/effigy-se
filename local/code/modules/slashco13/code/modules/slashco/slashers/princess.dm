@@ -65,6 +65,7 @@
 	end_sound = null
 
 /datum/antagonist/slasher/princess/give_slasher_abilities()
+	. = ..()
 	our_grumbles = new
 	our_grumbles.start(owner.current)
 	our_angry_grumbles = new
