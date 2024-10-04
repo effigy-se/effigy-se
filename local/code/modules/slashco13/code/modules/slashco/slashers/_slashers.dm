@@ -33,9 +33,6 @@
 	// How long does it take to recharge from a chase?
 	var/chase_cooldown_length = 18 SECONDS
 
-	/// Are we NOT possible to pick roundstart?
-	var/unpickable = FALSE
-
 	COOLDOWN_DECLARE(jumpscare_cooldown)
 
 /datum/antagonist/slasher/on_gain()
