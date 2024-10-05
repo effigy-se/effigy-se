@@ -23,7 +23,7 @@
 	var/jumpscare_cooldown_length = 10 SECONDS
 	/// CHASE STUFF
 	// How fast do we move while chasing? Modifier
-	var/chase_movespeed_mod = -1
+	var/chase_movespeed_mod = -1.1
 	// How long is our chase period?
 	var/chase_length = 15 SECONDS
 	var/datum/action/cooldown/spell/slasher_chase/our_chase_attack

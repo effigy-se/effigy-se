@@ -128,7 +128,7 @@
 
 /datum/antagonist/slasher/princess/slasher_specific_chase_handling()
 	chase_movespeed_mod = initial(chase_movespeed_mod)
-	chase_movespeed_mod -= (aggression * 0.0025) // get speedy; get silly
+	chase_movespeed_mod -= (aggression * 0.0023) // get speedy; get silly
 	our_grumbles.stop(TRUE)
 	our_angry_grumbles.start(owner.current)
 	aggression -= 10
