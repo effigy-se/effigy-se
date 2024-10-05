@@ -148,7 +148,7 @@
 /datum/antagonist/slasher/proc/jumpscare(mob/living/target, mob/living/user)
 	if(!istype(target))
 		return
-	if(target.client && target.hud_used && (jumpscare_icon != null))
+	if(target.client && target.hud_used && (jumpscare_icon != null) && target != user)
 		target.hud_used.show_hud(HUD_STYLE_NOHUD)
 		target.Paralyze(jumpscare_time, TRUE)
 		user.Paralyze(jumpscare_time, TRUE)
