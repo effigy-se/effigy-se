@@ -7,6 +7,7 @@
 	lighting_cutoff_blue = 22
 	melee_damage_lower = 0
 	melee_damage_upper = 0
+	obj_damage = 50 // do you know the motherfucking name of god.
 	var/can_jumpscare = TRUE // would you beleive it? there's slashers that attack normally
 
 /mob/living/basic/slasher/Initialize(mapload)

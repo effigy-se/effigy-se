@@ -16,4 +16,3 @@
 /obj/item/stack/fuel/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
-	AddComponent(/datum/component/stationloving, TRUE)

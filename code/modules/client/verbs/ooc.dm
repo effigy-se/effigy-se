@@ -17,9 +17,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 		to_chat(usr, span_warning("Failed to send your OOC message. You attempted to send the following message:\n[span_big(msg)]"))
 		return
-		
+
 	// EffigyEdit Add - Whitelist enforcement
-	if(!client_authenticated)
+	if(SSdbcore.IsConnected() && !client_authenticated)
 		to_chat(usr, span_danger("You are not authenticated on the server."))
 		return
 	// EffigyEdit Add End
