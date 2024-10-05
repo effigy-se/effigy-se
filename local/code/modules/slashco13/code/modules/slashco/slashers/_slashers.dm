@@ -88,12 +88,16 @@
 /datum/antagonist/slasher/forge_objectives()
 	. = ..()
 	update_objectives()
+	var/datum/action/antag_info/info_button = info_button_ref?.resolve()
+	if(info_button)
+		info_button.target.ui_close(owner)
+		info_button.Trigger()
 
 /// Long-term this would probably be best moved to team logic. Oh well
 /datum/antagonist/slasher/proc/update_objectives()
 	var/untracked_techs = list()
-	for(var/datum/mind/potential_target as anything in SSticker.minds)
-		if(potential_target.assigned_role == /datum/job/power_recovery && !potential_target.antag_datums.len) // Note the antag check also prevents you from targetting yourself
+	for(var/datum/mind/potential_target in SSticker.minds)
+		if(potential_target.antag_datums == null) // Note the antag check also prevents you from targetting yourself
 			untracked_techs += potential_target
 
 	for(var/datum/objective/assassinate/kill_objective in objectives)

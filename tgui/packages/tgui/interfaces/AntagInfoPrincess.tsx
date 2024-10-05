@@ -23,7 +23,7 @@ export const AntagInfoPrincess = (props) => {
   const { data } = useBackend<Info>();
   const { fluff, objectives, explain_attack } = data;
   return (
-    <Window width={718} height={356} theme="syndicate">
+    <Window width={725} height={356} theme="syndicate">
       <Window.Content style={{ backgroundImage: 'none' }}>
         <Stack fill>
           <Stack.Item>

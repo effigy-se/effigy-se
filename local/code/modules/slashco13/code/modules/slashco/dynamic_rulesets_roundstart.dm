@@ -9,8 +9,12 @@
 	antag_cap = 1
 	scaling_cost = 20
 	flags = ONLY_RULESET
+	var/first_run = TRUE // race condition fuckery
 
 /datum/dynamic_ruleset/roundstart/slashers/rule_process()
+	if(first_run)
+		sleep(1 MINUTES) // we LOVE Our race conditions; marge
+		first_run = FALSE
 	var/winner = process_victory()
 	if (isnull(winner))
 		return

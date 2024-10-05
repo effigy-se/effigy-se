@@ -77,7 +77,7 @@ SUBSYSTEM_DEF(slashco)
 		return TRUE
 	var/alive_nonantag_crew = 0
 	for(var/datum/mind/potential_escapee in SSticker.minds)
-		if(potential_escapee.antag_datums.len || potential_escapee.assigned_role != /datum/job/power_recovery)
+		if(potential_escapee.antag_datums != null)
 			continue
 		alive_nonantag_crew += 1
 	if(alive_nonantag_crew <= 1) // EXACTLY one person left (or less; somehow)
