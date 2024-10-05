@@ -76,8 +76,8 @@ SUBSYSTEM_DEF(slashco)
 	if(active_generators >= (required_generators * 0.5))
 		return TRUE
 	var/alive_nonantag_crew = 0
-	for(var/datum/mind/potential_escapee in get_crewmember_minds())
-		if(potential_escapee.antag_datums.len)
+	for(var/datum/mind/potential_escapee in SSticker.minds)
+		if(potential_escapee.antag_datums.len || potential_escapee.assigned_role != /datum/job/power_recovery)
 			continue
 		alive_nonantag_crew += 1
 	if(alive_nonantag_crew <= 1) // EXACTLY one person left (or less; somehow)
