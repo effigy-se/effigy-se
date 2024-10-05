@@ -148,10 +148,10 @@
 /datum/antagonist/slasher/proc/jumpscare(mob/living/target, mob/living/user)
 	if(!istype(target))
 		return
+	target.Paralyze(jumpscare_time, TRUE)
+	user.Paralyze(jumpscare_time, TRUE)
 	if(target.client && target.hud_used && (jumpscare_icon != null) && target != user)
 		target.hud_used.show_hud(HUD_STYLE_NOHUD)
-		target.Paralyze(jumpscare_time, TRUE)
-		user.Paralyze(jumpscare_time, TRUE)
 		var/image/jumpscare = image(icon = jumpscare_icon, loc = target, icon_state = jumpscare_icon_state, dir = SOUTH, pixel_x = -288, pixel_y = -224)
 		SET_PLANE(jumpscare, ABOVE_HUD_PLANE, target)
 		target.client.images += jumpscare
