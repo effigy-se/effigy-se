@@ -492,6 +492,11 @@
 					sender_override = "Emergency Shuttle Uplink Alert",
 					color_override = "orange",
 				)
+				/// SLASHCO 13 EDIT BEGIN
+				for(var/mob/target in GLOB.player_list)
+					if(!isnewplayer(target))
+						SEND_SOUND(target, 'local/code/modules/slashco13/sound/music/helicopter.ogg')
+				/// SLASHCO 13 EDIT END
 				ShuttleDBStuff()
 				addtimer(CALLBACK(src, PROC_REF(announce_shuttle_events)), 20 SECONDS)
 
