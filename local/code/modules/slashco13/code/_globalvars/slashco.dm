@@ -6,3 +6,5 @@ GLOBAL_LIST_EMPTY(fuelstart)
 GLOBAL_LIST_EMPTY(slashitemstart)
 /// Every possible battery spawn point. These are always nearby generator landmarks; and the spawning system ensures they're in the same room as the generators.
 GLOBAL_LIST_EMPTY(batterystart)
+/// Anywhere we'd want to spawn NPCs for a slashco round.
+GLOBAL_LIST_EMPTY(slash_npc_spawns)

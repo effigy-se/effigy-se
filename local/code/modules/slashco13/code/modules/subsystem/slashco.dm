@@ -83,3 +83,15 @@ SUBSYSTEM_DEF(slashco)
 	if(alive_nonantag_crew <= 1) // EXACTLY one person left (or less; somehow)
 		return TRUE
 	return FALSE
+
+/*
+	NPC SPAWNS
+*/
+
+/obj/effect/landmark/slashco_npc_spawn
+	icon_state = "tdome_admin"
+
+/obj/effect/landmark/slashco_npc_spawn/Initialize(mapload)
+	..()
+	GLOB.slash_npc_spawns += loc
+	return INITIALIZE_HINT_QDEL
