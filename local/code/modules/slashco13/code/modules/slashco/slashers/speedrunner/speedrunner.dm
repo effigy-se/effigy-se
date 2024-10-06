@@ -1,5 +1,5 @@
 /datum/antagonist/slasher/speedrunner
-	name = "Speedrunner"
+	name = "\improper Speedrunner"
 	mob_type = /mob/living/basic/slasher/speedrunner
 	start_with_chase = FALSE // Speedrunner can't chase at all. Manhunt or something. idk
 	fluff = "You're out for a manhunt..."
