@@ -84,6 +84,16 @@ SUBSYSTEM_DEF(slashco)
 		return TRUE
 	return FALSE
 
+/datum/controller/subsystem/slashco/proc/queue_preroundend_check(mob/living/to_check, timer = 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(preroundend_check), to_check), timer)
+
+/datum/controller/subsystem/slashco/proc/preroundend_check(mob/living/to_check)
+	var/station_levels = SSmapping.levels_by_trait(ZTRAIT_STATION)
+	for(var/mob/living/mob in GLOB.alive_player_list)
+		if(mob.z in station_levels)
+			to_chat(mob,span_cult("The walls close in; and it all goes dark..."))
+			mob.gib()
+
 /*
 	NPC SPAWNS
 */

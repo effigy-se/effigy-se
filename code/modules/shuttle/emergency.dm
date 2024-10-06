@@ -554,6 +554,14 @@
 					sender_override = "Emergency Shuttle Uplink Alert",
 					color_override = "orange",
 				)
+				/// SLASHCO 13 EDIT BEGIN - kill all humies left on the station z-level in a way they can avoid ///
+				var/list/station_levels = SSmapping.levels_by_trait(ZTRAIT_STATION)
+				var/time_until_check = (SSshuttle.emergency_escape_time * engine_coeff - 5 SECONDS)
+				for(var/mob/living/mob in GLOB.alive_player_list)
+					if(mob.z in station_levels)
+						to_chat(mob,span_warning("A chill runs down your spine... you'll likely never be found; if you stay here."))
+						SSslashco.queue_preroundend_check(mob, time_until_check)
+				/// SLASHCO 13 EDIT END ///
 				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
 

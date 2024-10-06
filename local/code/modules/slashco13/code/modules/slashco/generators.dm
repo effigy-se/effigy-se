@@ -65,7 +65,7 @@
 
 /obj/machinery/slashco_generator/examine(mob/living/user)
 	. = ..()
-	if(fuel_count <= SSslashco.required_fuel)
+	if(fuel_count < SSslashco.required_fuel)
 		. += span_warning("Looks like it needs more fuel...")
 	if(loaded_fuel)
 		. += span_notice("It has a piece of fuel attached; ready to be inserted.")
