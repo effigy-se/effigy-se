@@ -14,6 +14,8 @@
 	var/current_phase = 1
 	/// Can we perform an RNG Sacrifice and move up a rank?
 	var/can_sacrifice = FALSE
+	/// Have we alerted we can sac yet?
+	var/havent_sacrifice_alerted = TRUE
 
 	var/datum/action/cooldown/rng_sacrifice/prestige_funny
 
@@ -30,10 +32,11 @@
 	chase_movespeed_mod -= to_remove
 	if(chase_movespeed_mod < current_movespeed_limit)
 		chase_movespeed_mod = current_movespeed_limit
-		if(!can_sacrifice && current_phase != 3)
+		if(!can_sacrifice && current_phase != 3 && havent_sacrifice_alerted)
 			to_chat(owner.current, span_cult_bold_italic("You can feel your heart burning... your ascension incubates; and will be ready in one minute."))
 			playsound(owner.current, 'sound/hallucinations/im_here2.ogg', 75)
 			addtimer(CALLBACK(src, PROC_REF(set_ascend_ready)), 1 MINUTES)
+			havent_sacrifice_alerted = FALSE
 	owner.current.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/slasher_chase, multiplicative_slowdown = chase_movespeed_mod)
 	return
 
@@ -67,15 +70,17 @@
 			if(2)
 				our_slasher.our_chase_music.start_sound = list('local/code/modules/slashco13/sound/slasher/speedrunner/Phase2/01SpeedrunnerPhase2.ogg')
 				our_slasher.our_chase_music.mid_sounds = our_slasher.phase_two_mid_music
-				our_slasher.our_chase_music.volume = 75
+				our_slasher.our_chase_music.volume = 50
 				our_slasher.current_movespeed_limit = -1
 				playsound(owner, 'local/code/modules/slashco13/sound/slasher/speedrunner/rng1.ogg', 100)
 			if(3)
 				our_slasher.our_chase_music.start_sound = list('local/code/modules/slashco13/sound/slasher/speedrunner/Phase3/01SpeedrunnerPhase3.ogg')
 				our_slasher.our_chase_music.mid_sounds = our_slasher.phase_three_mid_music
+				our_slasher.our_chase_music.volume = 75
 				our_slasher.current_movespeed_limit = -2 // I want you to know that if there is a god he's weeping
 				playsound(owner, 'local/code/modules/slashco13/sound/slasher/speedrunner/rng2.ogg', 100)
 		our_slasher.chase_movespeed_mod = 7
 		our_slasher.our_chase_music.start(owner)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/slasher_chase, multiplicative_slowdown = our_slasher.chase_movespeed_mod)
 		to_chat(owner, span_cult_bold("You ascend to phase [our_slasher.current_phase]."))
+		our_slasher.havent_sacrifice_alerted = TRUE
