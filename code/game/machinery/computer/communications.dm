@@ -58,6 +58,9 @@
 	///when was emergency access last toggled
 	var/last_toggled
 
+	var/datum/looping_sound/comms_console/our_siren = /datum/looping_sound/comms_console /// SLASHCO 13 EDIT ADD
+	var/siren_active = FALSE /// SLASHCO 13 EDIT ADD
+
 /obj/machinery/computer/communications/syndicate
 	icon_screen = "commsyndie"
 	circuit = /obj/item/circuitboard/computer/communications/syndicate
@@ -189,6 +192,13 @@
 				return
 			SSshuttle.requestEvac(user, reason)
 			post_status("shuttle")
+			/// SLASHCO 13 EDIT BEGIN. AGAIN ///
+			if(!siren_active)
+				our_siren = new
+				our_siren.start(src)
+				siren_active = TRUE
+				set_light(l_range = 3.5, l_color = LIGHT_COLOR_INTENSE_RED)
+			/// SLASHCO 13 EDIT END ///
 		if ("changeSecurityLevel")
 			if (!authenticated_as_silicon_or_captain(user))
 				return
