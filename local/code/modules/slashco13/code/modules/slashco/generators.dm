@@ -74,7 +74,7 @@
 		. += span_notice("It has a battery attached.")
 	else
 		. += span_warning("It's missing it's battery...")
-	if(loaded_fuel && loaded_battery && !active) // Inserted the battery last
+	if(fuel_count >= SSslashco.required_fuel && loaded_battery && !active) // Inserted the battery last
 		. += span_warning("Someone needs to kickstart it... maybe there's something to pull?")
 	if(active)
 		. += span_notice("This generator's active, and can be safely left be.")
