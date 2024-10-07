@@ -212,3 +212,33 @@
 
 /obj/effect/turf_decal/siding/orange/end
 	icon_state = "siding_plain_end"
+
+/obj/effect/turf_decal/slashco
+	icon = 'local/icons/turf/decals.dmi'
+
+/obj/effect/turf_decal/slashco/bottom/left
+	icon_state = "slashco-11"
+
+/obj/effect/turf_decal/slashco/bottom
+	icon_state = "slashco-12"
+
+/obj/effect/turf_decal/slashco/bottom/right
+	icon_state = "slashco-13"
+
+/obj/effect/turf_decal/slashco/middle/left
+	icon_state = "slashco-21"
+
+/obj/effect/turf_decal/slashco/middle
+	icon_state = "slashco-22"
+
+/obj/effect/turf_decal/slashco/middle/right
+	icon_state = "slashco-23"
+
+/obj/effect/turf_decal/slashco/top/left
+	icon_state = "slashco-31"
+
+/obj/effect/turf_decal/slashco/top
+	icon_state = "slashco-32"
+
+/obj/effect/turf_decal/slashco/top/right
+	icon_state = "slashco-33"
