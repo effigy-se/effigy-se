@@ -32,9 +32,9 @@
 /obj/machinery/slashco_generator
 	name = "generator"
 	desc = "Generators like these give Nanotrasen's Power Recovery team control over more of their derelicts."
-	icon = 'icons/obj/machines/engine/other.dmi'
-	icon_state = "portgen0_0"
-	base_icon_state = "portgen0"
+	icon = 'local/code/modules/slashco13/icons/obj/machines/generator.dmi'
+	icon_state = "generator"
+	base_icon_state = "generator"
 	density = TRUE
 	use_power = NO_POWER_USE
 
@@ -87,6 +87,14 @@
 		qdel(O)
 		balloon_alert_to_viewers("Battery Attached")
 		loaded_battery = TRUE
+	update_appearance()
+
+/obj/machinery/slashco_generator/update_overlays()
+	. = ..()
+	if(loaded_fuel)
+		. += "sheet"
+	if(loaded_battery)
+		. += "battery"
 
 /obj/machinery/slashco_generator/attack_hand(mob/living/user, list/modifiers)
 	if(!user)
@@ -95,12 +103,13 @@
 	if(fuel_count >= SSslashco.required_fuel && loaded_battery)
 		active = 1
 		SSslashco.active_generators += 1
-		icon_state = "portgen0_1"
+		icon_state = "generator_on"
 		soundloop.start()
 	if(SSslashco.required_generators <= SSslashco.active_generators && SSshuttle.canEvac())
 		SSshuttle.emergency_no_recall = TRUE
 		SSshuttle.emergency.mode = SHUTTLE_IDLE
 		SSshuttle.emergency.request(set_coefficient=0.10)
+	update_appearance()
 
 /obj/machinery/slashco_generator/proc/insertfuel(mob/living/user)
 	if(loaded_fuel)

@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(slashco)
 		play_lobby_convo(our_target, our_convo = our_picked_convo)
 
 /datum/controller/subsystem/slashco/proc/play_lobby_convo(mob/our_target, var/phase = 1, datum/lobby_conversation/our_convo)
-	if(our_convo)
+	if(our_convo && our_target)
 		var/sound = /datum/lobby_conversation::sound_1
 		var/length = /datum/lobby_conversation::sound_1_length
 		switch(phase)
@@ -125,11 +125,12 @@ SUBSYSTEM_DEF(slashco)
 				length = our_convo.sound_2_length
 			if(3)
 				sound = our_convo.sound_3
-		our_target.playsound_local(get_turf(our_target), sound, 75, FALSE)
+		our_target?.playsound_local(get_turf(our_target), sound, 75, FALSE) // possible the game is early started
 		if(phase == 3)
 			return
 		phase++
-		addtimer(CALLBACK(src, PROC_REF(play_lobby_convo), our_target, phase, our_convo), length)
+		if(our_target) // are you still there?
+			addtimer(CALLBACK(src, PROC_REF(play_lobby_convo), our_target, phase, our_convo), length)
 
 /// DATUMS PAST HERE
 
