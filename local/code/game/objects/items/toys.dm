@@ -5,6 +5,8 @@
 	This one, however, does - and it's not quite clear how much life it thirsts for."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "assistant"
+	pickup_sound = 'local/code/modules/slashco13/sound/items/pickup.ogg'
+	drop_sound = 'local/code/modules/slashco13/sound/items/drop.ogg'
 
 /obj/item/toy/faustian_doll/Initialize(mapload)
 	. = ..()

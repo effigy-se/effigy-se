@@ -5,6 +5,8 @@
 	w_class = WEIGHT_CLASS_HUGE
 	grind_results = null // Let's not allow people to grind this fucker up considering it's important for the mode
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	pickup_sound = 'local/code/modules/slashco13/sound/items/pickup.ogg'
+	drop_sound = 'local/code/modules/slashco13/sound/items/drop.ogg'
 
 /obj/item/stock_parts/power_store/cell/lead/double_pack/Initialize(mapload)
 	. = ..()

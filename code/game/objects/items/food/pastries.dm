@@ -140,6 +140,11 @@
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+	/// SLASHCO 13 EDIT BEGIN ///
+	pickup_sound = 'local/code/modules/slashco13/sound/items/pickup.ogg'
+	drop_sound = 'local/code/modules/slashco13/sound/items/drop.ogg'
+	preserved_food = TRUE
+	/// SLASHCO 13 EDIT END ///
 
 /obj/item/food/cookie/Initialize(mapload)
 	. = ..()

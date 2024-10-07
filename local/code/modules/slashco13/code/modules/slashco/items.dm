@@ -16,6 +16,8 @@ B-GONE SODA
 	desc = "This highly illegal \"drink\" is merely repackaged SaturnX for the commerical market. How this got here is a mystery."
 	list_reagents = list(/datum/reagent/drug/saturnx = 30)
 	drink_type = SUGAR | JUNKFOOD | TOXIC
+	pickup_sound = 'local/code/modules/slashco13/sound/items/pickup.ogg'
+	drop_sound = 'local/code/modules/slashco13/sound/items/drop.ogg'
 
 /obj/item/reagent_containers/cup/soda_cans/b_gone/Initialize(mapload)
 	. = ..()
@@ -35,6 +37,9 @@ B-GONE SODA
 		/datum/reagent/drug/therma_vision = 15,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
+	pickup_sound = 'local/code/modules/slashco13/sound/items/pickup.ogg'
+	drop_sound = 'local/code/modules/slashco13/sound/items/drop.ogg'
+	preserved_food = TRUE
 
 /obj/item/food/meat/lab_grown/Initialize(mapload)
 	. = ..()
@@ -68,6 +73,9 @@ B-GONE SODA
 /*
 MAYO
 */
+/obj/item/reagent_containers/condiment/mayonnaise/slashco
+	pickup_sound = 'local/code/modules/slashco13/sound/items/pickup.ogg'
+	drop_sound = 'local/code/modules/slashco13/sound/items/drop.ogg'
 
 /obj/item/reagent_containers/condiment/mayonnaise/slashco
 	list_reagents = list(/datum/reagent/medicine/adminordrazine = 5)
