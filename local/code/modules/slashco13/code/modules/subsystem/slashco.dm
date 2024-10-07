@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(slashco)
 	runlevels = RUNLEVEL_GAME
 	/// For testing purposes - if TRUE; the round can't end if all employees die. Config configurable
 	var/bypass_failstate = FALSE
-	/// The amount of fuel needed for each generator. Defaults to 3; but has a config value
+	/// The amount of fuel needed for each generator. Defaults to 4; but has a config value
 	var/required_fuel = 4
 	/// The amount of fuel that spawns on the map. Config Configurable
 	var/maximum_present_fuel = 24
@@ -22,10 +22,17 @@ SUBSYSTEM_DEF(slashco)
 	/// What's the maximum number of items on the map? Config configurable
 	var/maximum_items = 24
 
-	/// What's the maximum amount of Slashers? Defaults to 1; but scales for every 8 players (Unimplemented yet; same with configs above. Saving those for later)
+	/// What's the maximum amount of Slashers? Defaults to 1; but scales +1 for every 8 players (Unimplemented yet)
 	var/maximum_slashers = 1
 
 /datum/controller/subsystem/slashco/Initialize() // GOTTA MAKE IT HAPPEN.. BABY
+	bypass_failstate = CONFIG_GET(flag/bypass_failstate)
+	required_fuel = CONFIG_GET(number/required_fuel)
+	maximum_present_fuel = CONFIG_GET(number/maximum_present_fuel)
+	required_generators = CONFIG_GET(number/required_generators)
+	maximum_present_generators = CONFIG_GET(number/maximum_present_generators)
+	minimum_items = CONFIG_GET(number/minimum_items)
+	maximum_items = CONFIG_GET(number/maximum_items)
 	setup_game()
 	GLOB.dynamic_forced_rulesets[/datum/dynamic_ruleset/roundstart/slashers] = RULESET_FORCE_ENABLED
 	var/roundstart_rules = list()
@@ -33,6 +40,7 @@ SUBSYSTEM_DEF(slashco)
 	roundstart_rules[slasherrule.name] = slasherrule
 	GLOB.dynamic_forced_roundstart_ruleset += roundstart_rules[slasherrule.name]
 	addtimer(CALLBACK(src, PROC_REF(find_valid_lobby_convo_targets)), 20 SECONDS)
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/slashco/proc/setup_game()
 	/// Handle generators first; they have batteries as a dependant

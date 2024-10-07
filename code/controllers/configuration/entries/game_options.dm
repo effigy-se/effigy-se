@@ -42,6 +42,35 @@
 
 /datum/config_entry/flag/allow_station_jobs // allow station jobs along with slashco 13's
 
+// SLASHCO 13 STUFF //
+/// subsystem config
+/datum/config_entry/flag/bypass_failstate
+
+/datum/config_entry/number/required_fuel
+	default = 4
+	min_val = 1
+
+/datum/config_entry/number/maximum_present_fuel
+	default = 24
+	min_val = 1
+
+/datum/config_entry/number/required_generators
+	default = 2
+	min_val = 1
+
+/datum/config_entry/number/maximum_present_generators
+	default = 3
+	min_val = 1
+
+/datum/config_entry/number/minimum_items
+	default = 6
+	min_val = 1
+
+/datum/config_entry/number/maximum_items
+	default = 24
+	min_val = 1
+// SLASHCO 13 END //
+
 /datum/config_entry/flag/allow_ai // allow ai job
 
 /datum/config_entry/flag/allow_ai_multicam // allow ai multicamera mode
