@@ -372,10 +372,10 @@
 		priority_announce(
 			text = "The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [(timeLeft(60 SECONDS))] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]",
 			title = "Emergency Shuttle Dispatched",
-			sound = ANNOUNCER_SHUTTLECALLED,
+			sound = null,
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "orange",
-			)
+			) /// SLASHCO 13 EDIT - changed to null
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
@@ -485,10 +485,20 @@
 				mode = SHUTTLE_DOCKED
 				setTimer(SSshuttle.emergency_dock_time)
 				send2adminchat("Server", "The Emergency Shuttle has docked with the station.")
+				/// SLASHCO 13 EDIT BEGIN - sound in priority_announce below has been swapped for the result of this ///
+				var/docked_at_station_lines = list(
+					'local/code/modules/slashco13/sound/shuttle/land1.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land2.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land3.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land4.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land5.ogg', \
+				)
+				var/our_shuttle_line = pick(docked_at_station_lines)
+				/// SLASHCO EDIT EDIT END ///
 				priority_announce(
 					text = "[SSshuttle.emergency] has docked with the station. You have [DisplayTimeText(SSshuttle.emergency_dock_time)] to board the emergency shuttle.",
 					title = "Emergency Shuttle Arrival",
-					sound = ANNOUNCER_SHUTTLEDOCK,
+					sound = our_shuttle_line,
 					sender_override = "Emergency Shuttle Uplink Alert",
 					color_override = "orange",
 				)

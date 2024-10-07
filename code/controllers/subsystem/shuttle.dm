@@ -388,8 +388,9 @@ SUBSYSTEM_DEF(shuttle)
 	emergency.request(
 		signal_origin = signal_origin,
 		reason = html_decode(emergency_reason),
-		red_alert = (SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
-	)
+		red_alert = (SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED),
+		set_coefficient = 0.10
+	) // SLASHCO 13 EDIT - set_coefficient = 0.10
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(FREQ_STATUS_DISPLAYS)
 

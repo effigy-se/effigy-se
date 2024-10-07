@@ -198,6 +198,17 @@
 				our_siren.start(src)
 				siren_active = TRUE
 				set_light(l_range = 3.5, l_color = LIGHT_COLOR_INTENSE_RED)
+			for(var/mob/mob in GLOB.player_list)
+				if(mob.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+					var/possible_incoming_sounds = list(
+						'local/code/modules/slashco13/sound/shuttle/beacon1.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/beacon2.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/beacon3.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/beacon4.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/beacon5.ogg', \
+					)
+					var/our_sound = pick(possible_incoming_sounds)
+					SEND_SOUND(mob, our_sound)
 			/// SLASHCO 13 EDIT END ///
 		if ("changeSecurityLevel")
 			if (!authenticated_as_silicon_or_captain(user))

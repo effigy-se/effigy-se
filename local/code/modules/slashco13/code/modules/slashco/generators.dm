@@ -109,6 +109,17 @@
 		SSshuttle.emergency_no_recall = TRUE
 		SSshuttle.emergency.mode = SHUTTLE_IDLE
 		SSshuttle.emergency.request(set_coefficient=0.10)
+		for(var/mob/mob in GLOB.player_list)
+			if(mob.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+				var/possible_incoming_sounds = list(
+					'local/code/modules/slashco13/sound/shuttle/approach1.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/approach2.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/approach3.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/approach4.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/approach5.ogg', \
+				)
+				var/our_sound = pick(possible_incoming_sounds)
+				SEND_SOUND(mob, our_sound)
 	update_appearance()
 
 /obj/machinery/slashco_generator/proc/insertfuel(mob/living/user)
