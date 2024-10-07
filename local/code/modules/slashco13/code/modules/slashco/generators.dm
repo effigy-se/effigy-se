@@ -128,11 +128,12 @@
 
 /obj/machinery/slashco_generator/proc/insertfuel(mob/living/user)
 	if(loaded_fuel)
+		playsound(src, 'local/code/modules/slashco13/sound/items/pickup.ogg', 100)
 		balloon_alert_to_viewers("Inserting Fuel...")
 		if(do_after(user, 10 SECONDS, src))
 			loaded_fuel = 0
 			balloon_alert_to_viewers("Fuel Inserted")
 			fuel_count += 1
-	if(fuel_count < SSslashco.required_fuel && loaded_battery) /// Loaded battery; but not enough fuel
-		playsound(src, 'local/code/modules/slashco13/sound/machines/generator_failstart.ogg', 100)
-
+			playsound(src, 'local/code/modules/slashco13/sound/items/drop.ogg', 100)
+		if(fuel_count < SSslashco.required_fuel && loaded_battery) /// Loaded battery; but not enough fuel
+			playsound(src, 'local/code/modules/slashco13/sound/machines/generator_failstart.ogg', 100)
