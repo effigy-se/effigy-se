@@ -13,6 +13,17 @@
 
 	department_for_prefs = /datum/job_department/assistant
 
+	departments_list = list(
+		/datum/job_department/silicon,
+		/datum/job_department/service,
+		/datum/job_department/cargo,
+		/datum/job_department/science,
+		/datum/job_department/medical,
+		/datum/job_department/engineering,
+		/datum/job_department/security,
+		/datum/job_department/command
+		) // Every department in order to make CI happy
+
 	family_heirlooms = list(/obj/item/bonesetter)
 
 	mail_goodies = list(
