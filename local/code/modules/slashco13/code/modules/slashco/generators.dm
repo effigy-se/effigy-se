@@ -45,7 +45,7 @@
 	/// Do we have batteries attached?
 	var/loaded_battery = FALSE
 	/// The amount of fuel in this generator.
-	var/fuel_count
+	var/fuel_count = 0
 	/// Path to the fuel type for this generator. Generally not changed in gameplay.
 	var/fuel_path = /obj/item/stack/fuel
 	/// Path to the battery type for this generator. Generally not changed in gameplay.
@@ -74,6 +74,8 @@
 		. += span_notice("It has a battery attached.")
 	else
 		. += span_warning("It's missing it's battery...")
+	if(loaded_fuel && loaded_battery && !active) // Inserted the battery last
+		. += span_warning("Someone needs to kickstart it... maybe there's something to pull?")
 	if(active)
 		. += span_notice("This generator's active, and can be safely left be.")
 
@@ -83,10 +85,12 @@
 		addstack.use(1)
 		balloon_alert_to_viewers("Fuel Attached")
 		loaded_fuel = TRUE
+		playsound(src, 'local/code/modules/slashco13/sound/items/drop.ogg', 75)
 	else if(istype(O, battery_path) && loaded_battery == FALSE)
 		qdel(O)
 		balloon_alert_to_viewers("Battery Attached")
 		loaded_battery = TRUE
+		playsound(src, 'local/code/modules/slashco13/sound/items/battery_insert.ogg', 75)
 	update_appearance()
 
 /obj/machinery/slashco_generator/update_overlays()
@@ -129,3 +133,6 @@
 			loaded_fuel = 0
 			balloon_alert_to_viewers("Fuel Inserted")
 			fuel_count += 1
+	if(fuel_count < SSslashco.required_fuel && loaded_battery) /// Loaded battery; but not enough fuel
+		playsound(src, 'local/code/modules/slashco13/sound/machines/generator_failstart.ogg', 100)
+
