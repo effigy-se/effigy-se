@@ -80,7 +80,7 @@
 		. += span_notice("This generator's active, and can be safely left be.")
 
 /obj/machinery/slashco_generator/attackby(obj/item/O, mob/user, params)
-	if(istype(O, fuel_path) && loaded_fuel == FALSE)
+	if(istype(O, fuel_path) && loaded_fuel == FALSE && fuel_count < SSslashco.required_fuel)
 		var/obj/item/stack/addstack = O
 		addstack.use(1)
 		balloon_alert_to_viewers("Fuel Attached")
