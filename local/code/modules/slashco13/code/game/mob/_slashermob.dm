@@ -14,6 +14,7 @@
 	ADD_TRAIT(src, TRAIT_FREE_HYPERSPACE_MOVEMENT, INNATE_TRAIT) // Prevents cheese with the emergency shuttle. Also is terrifying.
 	ADD_TRAIT(src, TRAIT_FREE_FLOAT_MOVEMENT, INNATE_TRAIT) // Prevents cheese with space. Also is terrifying.
 	. = ..()
+	AddElement(/datum/element/wall_tearer, allow_reinforced = FALSE, tear_time = 8 SECONDS)
 	name = initial(name)
 
 /mob/living/basic/slasher/melee_attack(atom/target, list/modifiers, ignore_cooldown)
