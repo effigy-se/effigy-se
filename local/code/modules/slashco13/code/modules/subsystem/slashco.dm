@@ -17,6 +17,9 @@ SUBSYSTEM_DEF(slashco)
 	/// How many generators are active?
 	var/active_generators = 0
 
+	/// Have we called the shuttle via generators yet?
+	var/generators_called_shuttle = FALSE
+
 	/// What's the minimum number of items on the map? Config configurable
 	var/minimum_items = 6
 	/// What's the maximum number of items on the map? Config configurable

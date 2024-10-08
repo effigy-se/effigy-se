@@ -109,10 +109,11 @@
 		SSslashco.active_generators += 1
 		icon_state = "generator_on"
 		soundloop.start()
-	if(SSslashco.required_generators <= SSslashco.active_generators && SSshuttle.canEvac())
+	if(SSslashco.required_generators <= SSslashco.active_generators && SSshuttle.canEvac() && !SSslashco.generators_called_shuttle)
 		SSshuttle.emergency_no_recall = TRUE
 		SSshuttle.emergency.mode = SHUTTLE_IDLE
 		SSshuttle.emergency.request(set_coefficient=0.10)
+		SSslashco.generators_called_shuttle = TRUE
 		for(var/mob/mob in GLOB.player_list)
 			if(mob.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 				var/possible_incoming_sounds = list(
