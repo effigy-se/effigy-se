@@ -58,6 +58,7 @@
 /obj/machinery/slashco_generator/Initialize(mapload)
 	. = ..()
 	soundloop = new(src, active)
+	set_light(1, 0.75, NONSENSICAL_VALUE)
 
 /obj/machinery/slashco_generator/Destroy()
 	QDEL_NULL(soundloop)
@@ -99,6 +100,8 @@
 		. += "sheet"
 	if(loaded_battery)
 		. += "battery"
+	if(active)
+		. += "light_overlay"
 
 /obj/machinery/slashco_generator/attack_hand(mob/living/user, list/modifiers)
 	if(!user)
@@ -109,22 +112,7 @@
 		SSslashco.active_generators += 1
 		icon_state = "generator_on"
 		soundloop.start()
-	if(SSslashco.required_generators <= SSslashco.active_generators && SSshuttle.canEvac() && !SSslashco.generators_called_shuttle)
-		SSshuttle.emergency_no_recall = TRUE
-		SSshuttle.emergency.mode = SHUTTLE_IDLE
-		SSshuttle.emergency.request(set_coefficient=0.10)
-		SSslashco.generators_called_shuttle = TRUE
-		for(var/mob/mob in GLOB.player_list)
-			if(mob.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
-				var/possible_incoming_sounds = list(
-					'local/code/modules/slashco13/sound/shuttle/approach1.ogg', \
-					'local/code/modules/slashco13/sound/shuttle/approach2.ogg', \
-					'local/code/modules/slashco13/sound/shuttle/approach3.ogg', \
-					'local/code/modules/slashco13/sound/shuttle/approach4.ogg', \
-					'local/code/modules/slashco13/sound/shuttle/approach5.ogg', \
-				)
-				var/our_sound = pick(possible_incoming_sounds)
-				SEND_SOUND(mob, our_sound)
+		set_light(4, 0.75, LIGHT_COLOR_INTENSE_RED)
 	update_appearance()
 
 /obj/machinery/slashco_generator/proc/insertfuel(mob/living/user)

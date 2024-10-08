@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(slashco)
 	name = "SlashCo"
-	flags = SS_NO_FIRE
+	flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME
 	/// For testing purposes - if TRUE; the round can't end if all employees die. Config configurable
 	var/bypass_failstate = FALSE
@@ -105,6 +105,24 @@ SUBSYSTEM_DEF(slashco)
 		if(mob.z in station_levels)
 			to_chat(mob,span_cult("The walls close in; and it all goes dark..."))
 			mob.gib()
+
+/datum/controller/subsystem/slashco/fire(resumed)
+	if(required_generators <= active_generators && SSshuttle.canEvac() && !generators_called_shuttle)
+		SSshuttle.emergency_no_recall = TRUE
+		SSshuttle.emergency.mode = SHUTTLE_IDLE
+		SSshuttle.emergency.request(set_coefficient=0.10)
+		generators_called_shuttle = TRUE
+		for(var/mob/mob in GLOB.player_list)
+			if(mob.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+				var/possible_incoming_sounds = list(
+					'local/code/modules/slashco13/sound/shuttle/approach1.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/approach2.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/approach3.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/approach4.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/approach5.ogg', \
+				)
+				var/our_sound = pick(possible_incoming_sounds)
+				SEND_SOUND(mob, our_sound)
 
 /*
 	LOBBY CONVOS
