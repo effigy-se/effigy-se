@@ -4,6 +4,8 @@
 	mob_type = /mob/living/basic/slasher/borgmire
 	fluff = "Your cold; metallic heart beats..."
 	ui_name = "AntagInfoBorgmire"
+	chase_cooldown_length = 30 SECONDS
+	chase_movespeed_mod = -1.2 // just a smidge faster than default
 
 	var/datum/looping_sound/borgmire_heartbeat/our_heartbeat
 	var/datum/looping_sound/borgmire_breathing/our_breathing
