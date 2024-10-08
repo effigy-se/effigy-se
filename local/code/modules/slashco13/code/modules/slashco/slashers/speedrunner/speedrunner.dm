@@ -7,7 +7,7 @@
 	jumpscare_icon_state = "speedrunner"
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/speedrunner/kill.ogg'
 	jumpscare_time = 1 SECONDS
-	chase_movespeed_mod = 7 // slowwww to start
+	chase_movespeed_mod = 0.75 // slowwww to start.
 	/// Movespeed works via negative numbers; so; uh. Awa?
 	var/current_movespeed_limit = 0
 	/// What's our current phase? Valid values are 1, 2, 3
@@ -28,7 +28,7 @@
 
 /datum/antagonist/slasher/speedrunner/proc/speed_maths()
 	SIGNAL_HANDLER
-	var/to_remove = 0.0125 * current_phase
+	var/to_remove = get_phase_speed_formula()
 	chase_movespeed_mod -= to_remove
 	if(chase_movespeed_mod < current_movespeed_limit)
 		chase_movespeed_mod = current_movespeed_limit
@@ -39,6 +39,17 @@
 			havent_sacrifice_alerted = FALSE
 	owner.current.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/slasher_chase, multiplicative_slowdown = chase_movespeed_mod)
 	return
+
+/datum/antagonist/slasher/speedrunner/proc/get_phase_speed_formula()
+	var/to_return
+	switch(current_phase)
+		if(1)
+			to_return = 0.0015
+		if(2)
+			to_return = 0.0025
+		if(3)
+			to_return = 0.003
+	return to_return
 
 /datum/antagonist/slasher/speedrunner/proc/set_ascend_ready()
 			can_sacrifice = TRUE
@@ -79,7 +90,8 @@
 				our_slasher.our_chase_music.volume = 75
 				our_slasher.current_movespeed_limit = -2 // I want you to know that if there is a god he's weeping
 				playsound(owner, 'local/code/modules/slashco13/sound/slasher/speedrunner/rng2.ogg', 100)
-		our_slasher.chase_movespeed_mod = 7
+		SSevents.spawnEvent() // a LITTLE SILLY
+		our_slasher.chase_movespeed_mod = initial(our_slasher.chase_movespeed_mod)
 		our_slasher.our_chase_music.start(owner)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/slasher_chase, multiplicative_slowdown = our_slasher.chase_movespeed_mod)
 		to_chat(owner, span_cult_bold("You ascend to phase [our_slasher.current_phase]."))
