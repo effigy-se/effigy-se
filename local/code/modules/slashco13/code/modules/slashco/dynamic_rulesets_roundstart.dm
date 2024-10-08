@@ -24,8 +24,9 @@
 		for(var/mob/target in GLOB.player_list)
 			if(!isnewplayer(target))
 				SEND_SOUND(target, 'local/code/modules/slashco13/sound/music/lost.ogg')
+		return RULESET_STOP_PROCESSING
 
-	return RULESET_STOP_PROCESSING
+	return
 
 /datum/dynamic_ruleset/roundstart/slashers/proc/process_victory()
 	for(var/datum/antagonist/slasher/antagge as anything in GLOB.antagonists)
