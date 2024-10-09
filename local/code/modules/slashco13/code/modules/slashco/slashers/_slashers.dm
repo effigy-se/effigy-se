@@ -182,7 +182,6 @@
 	ADD_TRAIT(target, TRAIT_DEFIB_BLACKLISTED, REF(src))
 
 /// This isn't universal but is close enough to be here; it's only meant to be given to mobs that aren't using the generic /mob/living/basic/slasher as a base. Humans and the like.
-
 /datum/action/cooldown/mob_cooldown/jumpscare
 	name = "Kill"
 	desc = "Attack and kill your target; if you're in proximity."
@@ -256,6 +255,7 @@
 	return TRUE
 
 /// this should probably be made toggleable rather than just a block of time you can chase but i can't be assed rn
+/// ^ this has since become load-bearing for a few slashers lol
 /datum/action/cooldown/spell/slasher_chase/cast(mob/living/cast_on)
 	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
 		if(!our_slasher.slasher_specific_chase_handling())
