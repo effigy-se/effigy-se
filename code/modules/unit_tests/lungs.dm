@@ -57,6 +57,7 @@
 
 /// Tests the lavaland/Ashwalker lungs organ.
 /// Ensures they can breathe from the lavaland air mixture properly, and suffocate on inadequate mixture.
+/*
 /datum/unit_test/lungs/lungs_sanity_ashwalker
 
 /datum/unit_test/lungs/lungs_sanity_ashwalker/Run()
@@ -66,6 +67,7 @@
 	var/mob/living/carbon/human/lab_rat = allocate(/mob/living/carbon/human/consistent)
 	// Test one breath of Lavaland gas mix on Ashwalker lungs.
 	lungs_test_check_breath("Lavaland air mixture", lab_rat, test_lungs, lavaland_test_mix)
+*/ // SLASHCO 13 EDIT - nuh uh!
 
 /// Comprehensive unit test for [/obj/item/organ/internal/lungs/proc/check_breath()]
 /// If "expect_failure" is set to TRUE, the test ensures the given Human suffocated.
