@@ -18,3 +18,16 @@
 	for(var/datum/antagonist/slasher/spaceman/our_slasher in mind?.antag_datums)
 		if(!our_slasher.active_phase)
 			throw_at(get_edge_target_turf(src, dir), range = rand(1, 2), speed = 7, thrower = user)
+
+/mob/living/basic/slasher/spaceman/proc/do_ascend()
+	for(var/datum/antagonist/slasher/spaceman/our_slasher in mind?.antag_datums)
+		var/datum/looping_sound/spaceman_music/playing_sound = pick(our_slasher.title_zero, our_slasher.title_two, our_slasher.title_three)
+		playing_sound.start(src)
+		if(!do_after(src, playing_sound.total_length, hidden = TRUE))
+			our_slasher.cancel_the_kill()
+			playing_sound.stop(TRUE)
+			our_slasher.playing_some_tunes = FALSE
+			return
+		our_slasher.tc_trade_for_antag()
+		playing_sound.stop(TRUE)
+		our_slasher.playing_some_tunes = FALSE

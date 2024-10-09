@@ -81,4 +81,5 @@
 		'local/code/modules/slashco13/sound/slasher/spaceman/ChaseMusic/78ChaseMusic.ogg' = 1, \
 		'local/code/modules/slashco13/sound/slasher/spaceman/ChaseMusic/79ChaseMusic.ogg' = 1, \
 		)
+	our_chase_music.mid_length = 2 SECONDS
 	our_chase_music.end_sound = null

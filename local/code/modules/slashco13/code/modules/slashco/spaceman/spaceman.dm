@@ -48,7 +48,7 @@
 /datum/antagonist/slasher/spaceman/proc/cancel_the_kill()
 	owner.current.invisibility = initial(owner.current.invisibility)
 	owner.current.pass_flags = initial(owner.current.pass_flags)
-	owner.current.anchored = FALSE
+	owner.current.set_anchored(FALSE)
 	animate(owner.current, 1 SECONDS, alpha = initial(owner.current.alpha))
 	to_chat(owner.current, span_cult("You're interuptted. You fade away; leaving behind fuel in the process..."))
 	playsound(get_turf(owner.current), 'local/code/modules/slashco13/sound/slasher/spaceman/create.ogg')
@@ -65,6 +65,7 @@
 		var/mob/living/basic/slasher/to_gamer = owner.current
 		to_gamer.can_jumpscare = TRUE
 	owner.current.set_light(l_range = 3.5, l_color = LIGHT_COLOR_INTENSE_RED)
+	owner.current.set_anchored(FALSE)
 
 /// Jumpscare landed! Reset for next go around
 /datum/antagonist/slasher/spaceman/prank_em_john(mob/living/target)
@@ -77,6 +78,9 @@
 			var/mob/living/basic/slasher/to_gamer = owner.current
 			to_gamer.can_jumpscare = FALSE
 		owner.current.set_light(l_range = initial(owner.current.light_range), l_color = NONSENSICAL_VALUE)
+		owner.current.invisibility = initial(owner.current.invisibility)
+		owner.current.pass_flags = initial(owner.current.pass_flags)
+		animate(owner.current, 1 SECONDS, alpha = initial(owner.current.alpha))
 
 /*
 	MANIFEST
@@ -94,17 +98,14 @@
 	for(var/datum/antagonist/slasher/spaceman/our_slasher in owner?.mind?.antag_datums)
 		if(our_slasher.active_phase || our_slasher.playing_some_tunes)
 			return // Nothing to be done here; go kill someone boss
-		if(src in owner.do_afters)
-			return //already trying to do this
+		if(!isopenturf(get_turf(owner)))
+			return // please fuck off for even trying this
+		our_slasher.playing_some_tunes = TRUE
 		owner.invisibility = INVISIBILITY_NONE
 		owner.pass_flags = NONE
 		animate(owner, 1 SECONDS, alpha = 255)
-		owner.anchored = TRUE
-		var/datum/looping_sound/spaceman_music/playing_sound = pick(our_slasher.title_zero, our_slasher.title_two, our_slasher.title_three)
-		playing_sound.start(owner)
-		if(do_after(owner, playing_sound.total_length, hidden = TRUE))
-			our_slasher.tc_trade_for_antag()
-			playing_sound.stop(TRUE)
-		else
-			our_slasher.cancel_the_kill()
-			playing_sound.stop(TRUE)
+		owner.set_anchored(TRUE)
+		owner.density = TRUE
+	if(istype(owner, /mob/living/basic/slasher/spaceman))
+		var/mob/living/basic/slasher/spaceman/our_mob = owner
+		our_mob.do_ascend()

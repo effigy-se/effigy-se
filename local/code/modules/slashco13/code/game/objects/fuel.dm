@@ -19,3 +19,4 @@
 /obj/item/stack/fuel/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
+	SSpoints_of_interest.make_point_of_interest(src)
