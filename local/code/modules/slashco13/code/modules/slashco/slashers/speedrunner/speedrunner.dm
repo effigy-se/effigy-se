@@ -70,6 +70,7 @@
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/rng_sacrifice/Activate(atom/target_atom)
+	. = ..()
 	for(var/datum/antagonist/slasher/speedrunner/our_slasher in owner?.mind?.antag_datums)
 		if(!our_slasher.can_sacrifice)
 			to_chat(owner, span_cult("You can't ascend; yet... you must walk these planes further."))

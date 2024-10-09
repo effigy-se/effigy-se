@@ -31,6 +31,10 @@
 		GLOB.slashitemstart -= OurItem
 		new /obj/item/food/cookie(OurItem)
 
+/datum/antagonist/slasher/sid/slasher_specific_jumpscare_effects(image/jumpscare, mob/living/target, mob/living/user)
+	animate(jumpscare, jumpscare_time, color = COLOR_BLACK)
+	return
+
 /datum/action/cooldown/toggle_sid_gun
 	name = "Toggle Gun"
 	desc = "Take out - or put away - your gun; if eligible."
@@ -39,6 +43,7 @@
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/toggle_sid_gun/Activate(atom/target_atom)
+	. = ..()
 	for(var/datum/antagonist/slasher/sid/our_slasher in owner?.mind?.antag_datums)
 		if(our_slasher.our_gun)
 			end_shooties(our_slasher)
