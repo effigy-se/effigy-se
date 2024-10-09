@@ -39,6 +39,7 @@
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/toggle_sid_gun/Activate(atom/target_atom)
+	. = ..()
 	for(var/datum/antagonist/slasher/sid/our_slasher in owner?.mind?.antag_datums)
 		if(our_slasher.our_gun)
 			end_shooties(our_slasher)
