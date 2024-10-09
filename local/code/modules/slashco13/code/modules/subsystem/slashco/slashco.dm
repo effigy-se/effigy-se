@@ -129,6 +129,11 @@ SUBSYSTEM_DEF(slashco)
 				sid_slasher.free_toggle = TRUE
 				to_chat(sid_slasher, span_cult("They'll tell everyone about your cookies. You can't have that - your full stash of bullets are available..."))
 				playsound(sid_slasher, 'sound/hallucinations/im_here2.ogg', 75)
+			/// Spaceman should be able to kill freely if he's in his kill phase
+			for(var/datum/antagonist/slasher/spaceman/spaceman_slasher in mob?.mind?.antag_datums)
+				spaceman_slasher.permanent_active_phase = TRUE
+				to_chat(sid_slasher, span_cult("You must ascend; quickly; if you haven't already - the bell tolls..."))
+				playsound(sid_slasher, 'sound/hallucinations/im_here2.ogg', 75)
 
 /*
 	NPC SPAWNS

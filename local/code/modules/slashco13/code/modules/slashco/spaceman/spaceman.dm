@@ -51,7 +51,7 @@
 	owner.current.set_anchored(FALSE)
 	animate(owner.current, 1 SECONDS, alpha = initial(owner.current.alpha))
 	to_chat(owner.current, span_cult("You're interuptted. You fade away; leaving behind fuel in the process..."))
-	playsound(get_turf(owner.current), 'local/code/modules/slashco13/sound/slasher/spaceman/create.ogg')
+	playsound(get_turf(owner.current), 'local/code/modules/slashco13/sound/slasher/spaceman/create.ogg', 100)
 	new /obj/item/stack/fuel(get_turf(owner.current))
 
 /// We succeeded the do after.. ascend
