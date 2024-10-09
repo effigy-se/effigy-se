@@ -133,7 +133,7 @@
 	name = "cookie"
 	desc = "COOKIE!!!"
 	icon_state = "COOKIE!!!"
-	bite_consumption = 1
+	bite_consumption = INFINITY // SLASHCO 13 EDIT - need this to be instant
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	tastes = list("cookie" = 1)
 	foodtypes = GRAIN | SUGAR

@@ -13,7 +13,7 @@
 	if(istype(attack_target, /obj/item/toy/faustian_doll))
 		for(var/datum/antagonist/slasher/princess/our_slasher in mind?.antag_datums)
 			visible_message(span_warning("[src] bites down on the [attack_target]; shaking it's head violently as it tears it to shreds!"), \
-				span_warning("Your bloodrist rises as you chomp down on the [attack_target]..."), \
+				span_warning("Your bloodlust rises as you chomp down on the [attack_target]..."), \
 				span_warning("You hear something chomping down on... plastic?")
 			)
 			our_slasher.aggression_prestige += 0.1

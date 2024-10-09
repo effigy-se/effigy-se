@@ -65,6 +65,10 @@
 			footstep_sounds = list('local/code/modules/slashco13/sound/slasher/borgmire/step1.ogg', 'local/code/modules/slashco13/sound/slasher/borgmire/step2.ogg', 'local/code/modules/slashco13/sound/slasher/borgmire/step3.ogg', 'local/code/modules/slashco13/sound/slasher/borgmire/step4.ogg')
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
 			return
+		if(FOOTSTEP_SID)
+			footstep_sounds = list('local/code/modules/slashco13/sound/slasher/sid/step1.ogg', 'local/code/modules/slashco13/sound/slasher/sid/step2.ogg')
+			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
+			return
 		/// SLASHCO 13 ///
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep))
 	steps_for_living[target] = 0
