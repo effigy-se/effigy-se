@@ -2,6 +2,7 @@ SUBSYSTEM_DEF(slashco)
 	name = "SlashCo"
 	flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME
+	wait = 4 SECONDS
 	/// For testing purposes - if TRUE; the round can't end if all employees die. Config configurable
 	var/bypass_failstate = FALSE
 	/// The amount of fuel needed for each generator. Defaults to 4; but has a config value
