@@ -1,0 +1,31 @@
+{
+	"version": 1,
+	"map_name": "FoxHoleStation",
+	"map_path": "effigy/map_files/FoxHoleStation",
+	"map_file": "foxholestation.dmm",
+    "shuttles": {
+		"cargo": "cargo_foxhole",
+		"ferry": "ferry_kilo",
+		"whiteship": "whiteship_birdshot",
+		"emergency": "emergency_foxhole"
+    },
+	"traits": [
+		{
+			"Up": true,
+			"Linkage": "Cross"
+		},
+		{
+			"Down": true,
+			"Baseturf": "/turf/open/openspace",
+			"Linkage": "Cross"
+		}
+	],
+	"job_changes": {
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/service/cafeteria"]
+		},
+		"Captain": {
+			"special_charter": "asteroid"
+		}
+	}
+}
