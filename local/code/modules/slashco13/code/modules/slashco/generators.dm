@@ -59,6 +59,7 @@
 	. = ..()
 	soundloop = new(src, active)
 	set_light(1, 0.75, NONSENSICAL_VALUE)
+	SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/machinery/slashco_generator/Destroy()
 	QDEL_NULL(soundloop)
