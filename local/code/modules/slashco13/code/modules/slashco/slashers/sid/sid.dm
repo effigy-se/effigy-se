@@ -31,6 +31,10 @@
 		GLOB.slashitemstart -= OurItem
 		new /obj/item/food/cookie(OurItem)
 
+/datum/antagonist/slasher/sid/slasher_specific_jumpscare_effects(image/jumpscare, mob/living/target, mob/living/user)
+	animate(jumpscare, jumpscare_time, color = COLOR_BLACK)
+	return
+
 /datum/action/cooldown/toggle_sid_gun
 	name = "Toggle Gun"
 	desc = "Take out - or put away - your gun; if eligible."

@@ -149,10 +149,11 @@
 	if(!istype(target))
 		return
 	target.Paralyze(jumpscare_time, TRUE)
+	target.anchored = TRUE // prevents breaking the illusion
 	user.Paralyze(jumpscare_time, TRUE)
 	if(target.client && target.hud_used && (jumpscare_icon != null) && target != user)
 		target.hud_used.show_hud(HUD_STYLE_NOHUD)
-		var/image/jumpscare = image(icon = jumpscare_icon, loc = target, icon_state = jumpscare_icon_state, dir = SOUTH, pixel_x = -288, pixel_y = -224)
+		var/image/jumpscare = image(icon = jumpscare_icon, loc = get_turf(target), icon_state = jumpscare_icon_state, dir = SOUTH, pixel_x = -288, pixel_y = -224)
 		SET_PLANE(jumpscare, ABOVE_HUD_PLANE, target)
 		target.client.images += jumpscare
 		playsound(get_turf(target), jumpscare_sound, 75, FALSE)
@@ -176,6 +177,7 @@
 /datum/antagonist/slasher/proc/prank_em_john(mob/living/target)
 	if(!istype(target))
 		return
+	target.anchored = FALSE // okay; if there was a jumpscare, it's over; you can be dragged now
 	target.adjustBruteLoss(300)
 	ADD_TRAIT(target, TRAIT_DEFIB_BLACKLISTED, REF(src))
 
