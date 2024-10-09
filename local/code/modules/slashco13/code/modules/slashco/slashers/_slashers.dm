@@ -231,7 +231,8 @@
 	mid_sounds = list('local/code/modules/slashco13/sound/slasher/imposter/chase.ogg' = 1)
 	mid_length = 5
 	end_sound = 'local/code/modules/slashco13/sound/slasher/imposter/chase.ogg'
-	in_order = TRUE // needs to be here; can't be hotloaded
+	each_once = TRUE
+	in_order = TRUE
 
 /datum/movespeed_modifier/slasher_chase
 	variable = TRUE

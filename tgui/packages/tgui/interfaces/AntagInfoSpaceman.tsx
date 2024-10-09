@@ -56,17 +56,17 @@ export const AntagInfoSpaceman = (props) => {
                   <Section fill title="Special Abilities:">
                     <Stack vertical>
                       <Stack.Item>
-                        <span style={jauntstyle}>Security Assistant</span> You
+                        <span style={jauntstyle}>Security Assistant:</span> You
                         start incorporeal; and cannot be so much as
                         conceptualized by the survivors. However; you must not
                         tally - find a spot to hide yourself and begin to harbor
                         your true power. Take heed that if a survivor finds you
-                        before you finish; you will not ascend and instead GIVE
-                        THEM FUEL.
+                        before you finish; or you move, you will not ascend and
+                        instead GIVE THEM FUEL.
                       </Stack.Item>
                       <Stack.Divider />
                       <Stack.Item>
-                        <span style={injurestyle}>The Traitor</span> After one
+                        <span style={injurestyle}>The Traitor:</span> After one
                         full song; you ascend, and may quickly kill any survivor
                         you find. But be fast - you have to do it all again
                         afterwards...
