@@ -285,6 +285,7 @@
 // gtfo the dorm idiot
 
 /datum/action/cooldown/spell/aoe/knock/slasher
+	name = "Slasher's Knock"
 	sound = null
 	cooldown_time = 1 SECONDS
 	invocation = null

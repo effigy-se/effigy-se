@@ -11,6 +11,8 @@
 	paycheck_department = ACCOUNT_CIV
 	display_order = JOB_DISPLAY_ORDER_ASSISTANT
 
+	config_tag = "POWER_RECOVERY_TECHNICIAN"
+
 	department_for_prefs = /datum/job_department/assistant
 
 	departments_list = list(

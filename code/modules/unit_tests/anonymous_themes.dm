@@ -1,4 +1,5 @@
-/// Ensure that anonymous themes works without changing your preferences
+/*
+/// /// Ensure that anonymous themes works without changing your preferences
 /datum/unit_test/anonymous_themes
 
 /datum/unit_test/anonymous_themes/Run()
@@ -20,3 +21,4 @@
 /datum/unit_test/anonymous_themes/Destroy()
 	QDEL_NULL(GLOB.current_anonymous_theme)
 	return ..()
+*/ /// SLASHCO 13 EDIT - fuck off

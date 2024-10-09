@@ -1,8 +1,10 @@
 /obj/item/stack/fuel
 	name = "plasilicate-wrapped plasma"
+	lefthand_file = 'icons/mob/inhands/items/sheets_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/sheets_righthand.dmi'
 	icon_state = "sheet-plasma"
 	inhand_icon_state = "sheet-plasma"
-	singular_name = "plasma sheet"
+	singular_name = "plasilicate-wrapped plasma sheet"
 	desc = "Specially prepared plasma sheets for use inside Nanotrasen's propreitary generators. \
 	What, did you expect to be able to use normal ones? Dream on."
 	color = "#949494"

@@ -215,6 +215,7 @@
 
 /obj/effect/turf_decal/slashco
 	icon = 'local/icons/turf/decals.dmi'
+	icon_state = null
 
 /obj/effect/turf_decal/slashco/bottom/left
 	icon_state = "slashco-11"

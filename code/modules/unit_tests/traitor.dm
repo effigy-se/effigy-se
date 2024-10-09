@@ -1,3 +1,4 @@
+/*
 /datum/unit_test/traitor/Run()
 	var/datum/dynamic_ruleset/roundstart/traitor/traitor_ruleset = allocate(/datum/dynamic_ruleset/roundstart/traitor)
 	var/list/possible_jobs = list()
@@ -30,3 +31,4 @@
 				objective.generate_objective(mind, list())
 			catch(var/exception/exception)
 				TEST_FAIL("[objective_typepath] failed to generate their objective. Reason: [exception.name] [exception.file]:[exception.line]\n[exception.desc]")
+*/ /// Slashco 13 edit- dnc

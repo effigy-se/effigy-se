@@ -8,6 +8,12 @@
 	. = ..()
 	AddElement(/datum/element/footstep, FOOTSTEP_SID)
 
+/mob/living/basic/slasher/sid/get_status_tab_items()
+	. = ..()
+	for(var/datum/antagonist/slasher/sid/our_slasher in mind?.antag_datums)
+		. += "Available Bullets: [our_slasher.free_toggle ? "Infinite" : "[our_slasher.available_bullets]"]"
+		. += "In Clip: [our_slasher.free_toggle ? "Infinite" : "[our_slasher.in_clip]"]"
+
 /mob/living/basic/slasher/sid/update_overlays()
 	. = ..()
 	for(var/datum/antagonist/slasher/sid/our_slasher in mind?.antag_datums)

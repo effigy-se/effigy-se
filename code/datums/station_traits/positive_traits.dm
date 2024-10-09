@@ -284,6 +284,7 @@
 		/datum/job/lawyer = /obj/item/organ/internal/heart/cybernetic/tier2,
 		/datum/job/mime = /obj/item/organ/internal/tongue/robot, //...
 		/datum/job/paramedic = /obj/item/organ/internal/cyberimp/eyes/hud/medical,
+		/datum/job/power_recovery = /obj/item/organ/internal/eyes/robotic/xray, // Slashco 13 Edit Add
 		/datum/job/prisoner = /obj/item/organ/internal/eyes/robotic/shield,
 		/datum/job/psychologist = /obj/item/organ/internal/ears/cybernetic/whisper,
 		/datum/job/quartermaster = /obj/item/organ/internal/stomach/cybernetic/tier3,
