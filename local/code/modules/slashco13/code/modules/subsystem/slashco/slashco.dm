@@ -132,8 +132,8 @@ SUBSYSTEM_DEF(slashco)
 			/// Spaceman should be able to kill freely if he's in his kill phase
 			for(var/datum/antagonist/slasher/spaceman/spaceman_slasher in mob?.mind?.antag_datums)
 				spaceman_slasher.permanent_active_phase = TRUE
-				to_chat(sid_slasher, span_cult("You must ascend; quickly; if you haven't already - the bell tolls..."))
-				playsound(sid_slasher, 'sound/hallucinations/im_here2.ogg', 75)
+				to_chat(spaceman_slasher, span_cult("You must ascend; quickly; if you haven't already - the bell tolls..."))
+				playsound(spaceman_slasher, 'sound/hallucinations/im_here2.ogg', 75)
 
 /*
 	NPC SPAWNS
