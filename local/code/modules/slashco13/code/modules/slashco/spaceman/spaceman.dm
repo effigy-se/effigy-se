@@ -102,12 +102,9 @@
 		owner.anchored = TRUE
 		var/datum/looping_sound/spaceman_music/playing_sound = pick(our_slasher.title_zero, our_slasher.title_two, our_slasher.title_three)
 		playing_sound.start(owner)
-		addtimer(CALLBACK(src, PROC_REF(hit_the_do_after), target, our_slasher, playing_sound), 1 SECONDS)
-
-/datum/action/cooldown/spaceman_manifest/proc/hit_the_do_after(mob/living/target, datum/antagonist/slasher/spaceman/our_slasher, datum/looping_sound/spaceman_music/playing_sound)
-	if(do_after(owner, playing_sound.total_length, hidden = TRUE))
-		our_slasher.tc_trade_for_antag()
-		playing_sound.stop(TRUE)
-	else
-		our_slasher.cancel_the_kill()
-		playing_sound.stop(TRUE)
+		if(do_after(owner, playing_sound.total_length, hidden = TRUE))
+			our_slasher.tc_trade_for_antag()
+			playing_sound.stop(TRUE)
+		else
+			our_slasher.cancel_the_kill()
+			playing_sound.stop(TRUE)
