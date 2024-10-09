@@ -9,6 +9,7 @@
 	melee_damage_upper = 0
 	combat_mode = TRUE
 	obj_damage = 50 // do you know the motherfucking name of god.
+	resistance_flags = parent_type::resistance_flags | SHUTTLE_CRUSH_PROOF
 	var/can_jumpscare = TRUE // would you beleive it? there's slashers that attack normally
 
 /mob/living/basic/slasher/Initialize(mapload)
