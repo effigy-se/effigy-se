@@ -28,6 +28,8 @@
 /// Used to punish trying to cheese the map
 /turf/open/misc/grass/jungle/out_of_bounds/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
+	if(arrived.anchored)
+		return // they must stay
 	if(isliving(arrived))
 		var/mob/living/to_beat_up = arrived
 		to_beat_up.apply_damage(50, BRUTE)

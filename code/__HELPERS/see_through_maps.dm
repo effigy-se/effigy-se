@@ -14,6 +14,9 @@
 #define SEE_THROUGH_MAP_SHIPPING_CONTAINER "shipping_container"
 ///Seethrough component for the ratvar wreck, in shape of the ratvar wreck
 #define SEE_THROUGH_MAP_RATVAR_WRECK "ratvar"
+/// SLASHCO 13 EDIT ///
+#define SEE_THROUGH_MAP_FIVE_X_NINE "5x9"
+/// SLASHCO 13 EDIT END ///
 
 
 /**global statics for the see_through_component coordinate maps
@@ -39,6 +42,30 @@ GLOBAL_LIST_INIT(see_through_maps, list(
 		list(-1, 2, 0), list(0, 2, 0), list(1, 2, 0),
 		list(-1, 1, 0), list(0, 1, 0), list(1, 1, 0)
 	),
+
+	/// SLASHCO 13 EDIT BEGIN ///
+	// XXXXX
+	// XXXXX
+	// XXXXX
+	// XXXXX
+	// XXXXX
+	// XXXXX
+	// XXXXX
+	// XXXXX
+	// XXXXX
+	// OOAOO
+	SEE_THROUGH_MAP_FIVE_X_NINE = list(
+		list(-2, 9, 0), list(-1, 9, 0), list(0, 9, 0), list(1, 9, 0), list(2, 9, 0),
+		list(-2, 8, 0), list(-1, 8, 0), list(0, 8, 0), list(1, 8, 0), list(2, 8, 0),
+		list(-2, 7, 0), list(-1, 7, 0), list(0, 7, 0), list(1, 7, 0), list(2, 7, 0),
+		list(-2, 6, 0), list(-1, 6, 0), list(0, 6, 0), list(1, 6, 0), list(2, 6, 0),
+		list(-2, 5, 0), list(-1, 5, 0), list(0, 5, 0), list(1, 5, 0), list(2, 5, 0),
+		list(-2, 4, 0), list(-1, 4, 0), list(0, 4, 0), list(1, 4, 0), list(2, 4, 0),
+		list(-2, 3, 0), list(-1, 3, 0), list(0, 3, 0), list(1, 3, 0), list(2, 3, 0),
+		list(-2, 2, 0), list(-1, 2, 0), list(0, 2, 0), list(1, 2, 0), list(2, 2, 0),
+		list(-2, 1, 0), list(-1, 1, 0), list(0, 1, 0), list(1, 1, 0), list(2, 1, 0)
+	),
+	/// SLASHCO 13 EDIT END ///
 
 	// X
 	// X
