@@ -33,6 +33,14 @@
 	// How long does it take to recharge from a chase?
 	var/chase_cooldown_length = 18 SECONDS
 
+	// Chase light range?
+	var/chase_light_range = 3.5
+	// Chase color?
+	var/chase_color = LIGHT_COLOR_INTENSE_RED
+
+	// Are we currently in chase mode?
+	var/is_chasing = FALSE
+
 	COOLDOWN_DECLARE(jumpscare_cooldown)
 
 /datum/antagonist/slasher/on_gain()
@@ -267,12 +275,14 @@
 		cast_on.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/slasher_chase, multiplicative_slowdown = our_slasher.chase_movespeed_mod)
 		addtimer(CALLBACK(src, PROC_REF(end_chase), cast_on), our_slasher.chase_length)
 		our_slasher.our_chase_music.start(cast_on)
-	cast_on.set_light(l_range = 3.5, l_color = LIGHT_COLOR_INTENSE_RED)
+		our_slasher.is_chasing = TRUE
+		cast_on.set_light(l_range = our_slasher.chase_light_range, l_color = our_slasher.chase_color)
 
 /datum/action/cooldown/spell/slasher_chase/proc/end_chase(mob/living/cast_on)
 	cast_on.set_light(l_range = initial(cast_on.light_range), l_color = initial(cast_on.light_color))
 	for(var/datum/antagonist/slasher/our_slasher in owner?.mind?.antag_datums)
 		our_slasher.our_chase_music.stop(TRUE) // parent mob can change; easier to just whiste innocently about it
+		our_slasher.is_chasing = FALSE
 	cast_on.remove_movespeed_modifier(/datum/movespeed_modifier/slasher_chase)
 
 /// Exists for other slashers to override since I TURBO fucked up

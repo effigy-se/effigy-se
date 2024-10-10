@@ -10,6 +10,8 @@
 	ui_name = "AntagInfoSpaceman"
 	fluff = "You're a relic from an era gone by."
 
+	chase_light_range = 14 // Pray he doesn't find you
+
 	/// Are we currently playing music?
 	var/playing_some_tunes = FALSE
 
@@ -64,7 +66,7 @@
 	if(istype(owner.current, /mob/living/basic/slasher))
 		var/mob/living/basic/slasher/to_gamer = owner.current
 		to_gamer.can_jumpscare = TRUE
-	owner.current.set_light(l_range = 3.5, l_color = LIGHT_COLOR_INTENSE_RED)
+	owner.current.set_light(l_range = chase_light_range, l_color = chase_color)
 	owner.current.set_anchored(FALSE)
 
 /// Jumpscare landed! Reset for next go around
