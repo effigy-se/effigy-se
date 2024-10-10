@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(job)
 	var/list/prioritized_jobs = list()
 	var/list/latejoin_trackers = list()
 
-	var/overflow_role = /datum/job/assistant
+	var/overflow_role = /datum/job/power_recovery
 
 	var/list/level_order = list(JP_HIGH,JP_MEDIUM,JP_LOW)
 
@@ -594,7 +594,7 @@ SUBSYSTEM_DEF(job)
 /datum/controller/subsystem/job/proc/setup_officer_positions()
 	var/datum/job/J = SSjob.GetJob(JOB_SECURITY_OFFICER)
 	if(!J)
-		CRASH("setup_officer_positions(): Security officer job is missing")
+		return
 
 	var/ssc = CONFIG_GET(number/security_scaling_coeff)
 	if(ssc > 0)

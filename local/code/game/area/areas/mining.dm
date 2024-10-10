@@ -13,7 +13,7 @@
 	flags_1 = NONE
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | FLORA_ALLOWED
 	sound_environment = SOUND_AREA_TAELOTH
-	ambience_index = AMBIENCE_HOLY
+	ambience_index = AMBIENCE_MINING
 	outdoors = TRUE
 
 /area/taeloth/Initialize(mapload)

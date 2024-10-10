@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			"}
 		else
 			splash_data += {"
-				<a class="menu_button" href='?src=[text_ref(src)];late_join=1'><span class='cta'>Join Game</span></a>
+				<a class="menu_button" href='?src=[text_ref(src)];late_join=1'><span class='cta'>Round Ongoing</span></a>
 			"}
 
 		splash_data += {"
