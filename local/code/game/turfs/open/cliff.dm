@@ -1,5 +1,7 @@
 /// Rocky cliff!
 /turf/open/cliff/rock_taeloth
+	name = "rock cliff"
+	desc = "Try not to fall."
 	icon_state = "rock_cliff-0"
 	icon = 'local/icons/turf/cliff/rock_cliff.dmi'
 	base_icon_state = "rock_cliff"
