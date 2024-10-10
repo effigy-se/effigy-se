@@ -28,3 +28,6 @@
 
 /turf/open/cliff/rock_taeloth/stone_underlay
 	underlay_tile = /turf/open/misc/rough_stone
+
+/turf/open/cliff/rock_taeloth/water_underlay
+	underlay_tile = /turf/open/water
