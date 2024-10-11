@@ -125,5 +125,5 @@
 			balloon_alert_to_viewers("Fuel Inserted")
 			fuel_count += 1
 			playsound(src, 'local/code/modules/slashco13/sound/items/drop.ogg', 100)
-		if(fuel_count < SSslashco.required_fuel && loaded_battery) /// Loaded battery; but not enough fuel
-			playsound(src, 'local/code/modules/slashco13/sound/machines/generator_failstart.ogg', 100)
+			if(fuel_count < SSslashco.required_fuel && loaded_battery) /// Loaded battery; but not enough fuel
+				playsound(src, 'local/code/modules/slashco13/sound/machines/generator_failstart.ogg', 100)
