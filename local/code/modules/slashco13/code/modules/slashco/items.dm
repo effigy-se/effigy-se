@@ -179,3 +179,25 @@ MAYO
 /datum/status_effect/lobster_rush/extended/slashco
 	duration = 45 SECONDS // RUN FORREST RUN
 
+/*
+	POCKET SAND NYEHEHEHEH
+*/
+
+/obj/item/pocket_sand
+	name = "pocket sand"
+	desc = "For blinding your enemies and running off mischeviously."
+	icon = 'icons/obj/toys/dice.dmi'
+	icon_state = "dicebag"
+	gender = PLURAL
+
+/obj/item/pocket_sand/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	. = ..()
+	var/datum/effect_system/fluid_spread/smoke/bad/smoke = new
+	smoke.set_up(4, holder = src, location = get_turf(src))
+	smoke.start()
+	qdel(smoke)
+	qdel(src)
+
+/obj/item/pocket_sand/Initialize(mapload)
+	. = ..()
+	SSpoints_of_interest.make_point_of_interest(src)

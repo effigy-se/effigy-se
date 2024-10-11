@@ -83,6 +83,7 @@ SUBSYSTEM_DEF(slashco)
 			/obj/item/reagent_containers/cup/soda_cans/b_gone, \
 			/obj/item/step_decoy, \
 			/obj/item/dice/d6/devil_die, \
+			/obj/item/pocket_sand, \
 		)
 		var/our_selection = pick(possibleslashcoitems)
 		new our_selection(OurItem)
