@@ -101,6 +101,7 @@ MAYO
 	. = ..()
 	our_fake_steps = new
 	our_fake_steps.start(src)
+	SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/item/step_decoy/Destroy(force)
 	. = ..()
@@ -108,9 +109,11 @@ MAYO
 
 /datum/looping_sound/decoy_footstep
 	mid_sounds = list(
-		'sound/effects/footstep/floor1.ogg', \
-		'sound/effects/footstep/floor2.ogg', \
-		'sound/effects/footstep/floor3.ogg', \
-		'sound/effects/footstep/floor4.ogg', \
-		'sound/effects/footstep/floor5.ogg', \
+		'sound/effects/footstep/floor1.ogg' = 1, \
+		'sound/effects/footstep/floor2.ogg' = 1, \
+		'sound/effects/footstep/floor3.ogg' = 1, \
+		'sound/effects/footstep/floor4.ogg' = 1, \
+		'sound/effects/footstep/floor5.ogg' = 1, \
 	)
+	mid_length = 0.5 SECONDS
+	extra_range = SOUND_RANGE // we want these to be actually... hearable; easily
