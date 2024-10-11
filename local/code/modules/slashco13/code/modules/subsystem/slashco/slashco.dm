@@ -82,6 +82,7 @@ SUBSYSTEM_DEF(slashco)
 			/obj/item/food/cookie, \
 			/obj/item/reagent_containers/cup/soda_cans/b_gone, \
 			/obj/item/step_decoy, \
+			/obj/item/dice/d6/devil_die, \
 		)
 		var/our_selection = pick(possibleslashcoitems)
 		new our_selection(OurItem)
@@ -147,3 +148,90 @@ SUBSYSTEM_DEF(slashco)
 	..()
 	GLOB.slash_npc_spawns += loc
 	return INITIALIZE_HINT_QDEL
+
+/*
+	Devil Dice Siren
+*/
+/datum/controller/subsystem/slashco/proc/devil_die_siren_setup(mob/living/carbon/to_fuck_over)
+	var/datum/looping_sound/new_siren_to_attach = new /datum/looping_sound/devildie_siren(to_fuck_over)
+	new_siren_to_attach.start(to_fuck_over)
+	addtimer(CALLBACK(PROC_REF(devil_die_end), new_siren_to_attach), 59 SECONDS)
+
+/// max_loops doesn't work.. lol. lmao
+/datum/controller/subsystem/slashco/proc/devil_die_end(datum/looping_sound/to_end)
+	to_end.stop()
+	qdel(to_end)
+
+// Less of a traditional looping sound and more of a punishment that we need to update the position of constantly
+/datum/looping_sound/devildie_siren
+	extra_range = 255 // can be heard everywhere; don't even try
+	each_once = TRUE
+	in_order = TRUE
+	start_sound = 'local/code/modules/slashco13/sound/items/devildie_siren/01Siren.ogg'
+	start_length = 1 SECONDS
+	mid_sounds = list(
+		'local/code/modules/slashco13/sound/items/devildie_siren/02Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/03Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/04Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/05Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/06Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/07Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/08Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/09Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/10Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/11Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/12Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/13Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/14Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/15Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/16Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/17Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/18Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/19Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/20Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/21Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/22Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/23Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/24Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/25Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/26Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/27Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/28Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/29Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/30Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/31Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/32Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/33Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/34Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/35Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/36Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/37Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/38Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/39Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/40Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/41Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/42Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/43Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/44Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/45Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/46Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/47Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/48Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/49Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/50Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/51Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/52Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/53Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/54Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/55Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/56Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/57Siren.ogg' = 1, \
+		'local/code/modules/slashco13/sound/items/devildie_siren/58Siren.ogg' = 1, \
+	)
+	mid_length = 1 SECONDS
+	end_sound =	'local/code/modules/slashco13/sound/items/devildie_siren/59Siren.ogg'
+
+// Clean up!
+/datum/looping_sound/devildie_siren/stop(null_parent)
+	. = ..()
+	qdel(src)

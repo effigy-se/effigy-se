@@ -1,6 +1,6 @@
 // don't produce a comment if the dice has less than this many sides
 // so you don't have d1's and d4's constantly producing comments
-#define MIN_SIDES_ALERT 5
+#define MIN_SIDES_ALERT 10 // SLASHCO 13 EDIT 5 -> 10
 
 ///holding bag for dice
 /obj/item/storage/dice
