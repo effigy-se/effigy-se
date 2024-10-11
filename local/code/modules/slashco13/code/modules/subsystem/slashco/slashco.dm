@@ -155,7 +155,7 @@ SUBSYSTEM_DEF(slashco)
 /datum/controller/subsystem/slashco/proc/devil_die_siren_setup(mob/living/carbon/to_fuck_over)
 	var/datum/looping_sound/new_siren_to_attach = new /datum/looping_sound/devildie_siren(to_fuck_over)
 	new_siren_to_attach.start(to_fuck_over)
-	addtimer(CALLBACK(PROC_REF(devil_die_end), new_siren_to_attach), 59 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(devil_die_end), new_siren_to_attach), 59 SECONDS)
 
 /// max_loops doesn't work.. lol. lmao
 /datum/controller/subsystem/slashco/proc/devil_die_end(datum/looping_sound/to_end)
