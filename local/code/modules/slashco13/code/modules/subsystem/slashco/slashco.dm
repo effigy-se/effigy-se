@@ -80,7 +80,8 @@ SUBSYSTEM_DEF(slashco)
 			/obj/item/food/meat/lab_grown, \
 			/obj/item/reagent_containers/condiment/mayonnaise/slashco, \
 			/obj/item/food/cookie, \
-			/obj/item/reagent_containers/cup/soda_cans/b_gone \
+			/obj/item/reagent_containers/cup/soda_cans/b_gone, \
+			/obj/item/step_decoy, \
 		)
 		var/our_selection = pick(possibleslashcoitems)
 		new our_selection(OurItem)

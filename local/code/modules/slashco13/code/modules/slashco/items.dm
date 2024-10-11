@@ -83,3 +83,34 @@ MAYO
 /obj/item/reagent_containers/condiment/mayonnaise/slashco/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
+
+/*
+	STEP DECOY
+*/
+/obj/item/step_decoy
+	name = "step decoy"
+	desc = "For sneaking out at night to make bad decisions."
+	icon = /obj/item/clothing/shoes/workboots::icon
+	icon_state = /obj/item/clothing/shoes/workboots::icon_state
+	righthand_file = /obj/item/clothing/shoes/workboots::righthand_file
+	lefthand_file = /obj/item/clothing/shoes/workboots::lefthand_file
+	inhand_icon_state = /obj/item/clothing/shoes/workboots::inhand_icon_state
+	var/datum/looping_sound/decoy_footstep/our_fake_steps
+
+/obj/item/step_decoy/Initialize(mapload)
+	. = ..()
+	our_fake_steps = new
+	our_fake_steps.start(src)
+
+/obj/item/step_decoy/Destroy(force)
+	. = ..()
+	QDEL_NULL(our_fake_steps)
+
+/datum/looping_sound/decoy_footstep
+	mid_sounds = list(
+		'sound/effects/footstep/floor1.ogg', \
+		'sound/effects/footstep/floor2.ogg', \
+		'sound/effects/footstep/floor3.ogg', \
+		'sound/effects/footstep/floor4.ogg', \
+		'sound/effects/footstep/floor5.ogg', \
+	)
