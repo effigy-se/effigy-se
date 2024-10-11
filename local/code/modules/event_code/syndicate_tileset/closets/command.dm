@@ -6,6 +6,7 @@
 	icon_door = "syndicate"
 	icon_state = "syndicate"
 	name = "\proper station admiral's locker"
+	req_access = list("syndicate_leader") // gonna have to try a bit harder than that for drip
 
 /obj/item/clothing/accessory/medal/gold/admiral
 	name = "medal of admiralty"
