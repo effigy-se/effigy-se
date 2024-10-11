@@ -108,7 +108,7 @@
 	if(!user)
 		return
 	insertfuel(user)
-	if(fuel_count >= SSslashco.required_fuel && loaded_battery)
+	if(fuel_count >= SSslashco.required_fuel && loaded_battery && !active) // kindly fuck off
 		active = 1
 		SSslashco.active_generators += 1
 		icon_state = "generator_on"
@@ -124,6 +124,18 @@
 			loaded_fuel = 0
 			balloon_alert_to_viewers("Fuel Inserted")
 			fuel_count += 1
+			do_slasher_fuel_alert()
 			playsound(src, 'local/code/modules/slashco13/sound/items/drop.ogg', 100)
-		if(fuel_count < SSslashco.required_fuel && loaded_battery) /// Loaded battery; but not enough fuel
-			playsound(src, 'local/code/modules/slashco13/sound/machines/generator_failstart.ogg', 100)
+			if(fuel_count < SSslashco.required_fuel && loaded_battery) /// Loaded battery; but not enough fuel
+				playsound(src, 'local/code/modules/slashco13/sound/machines/generator_failstart.ogg', 100)
+
+/// This behavior was unique to generators you were ACTIVELY LOOKING AT in the OG but I felt until we port the generator HUD having it function this way is clearer as a player
+/obj/machinery/slashco_generator/proc/do_slasher_fuel_alert()
+	for(var/mob/living/potential_slasher in GLOB.alive_player_list)
+		for(var/datum/antagonist/slasher/our_slasher_found in potential_slasher?.mind?.antag_datums) // We're a slasher; notify 'em
+			if(fuel_count == SSslashco.required_fuel) // Can't check 'active' as that isn't set yet
+				potential_slasher.playsound_local(get_turf(potential_slasher), 'local/code/modules/slashco13/sound/round/generator_progress_full.ogg', 100)
+				continue
+			// They're making progress.. find them.
+			potential_slasher.playsound_local(get_turf(potential_slasher), 'local/code/modules/slashco13/sound/round/generator_progress.ogg', 100)
+			continue

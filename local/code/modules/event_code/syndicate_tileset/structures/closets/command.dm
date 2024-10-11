@@ -6,6 +6,7 @@
 	icon_door = "syndicate"
 	icon_state = "syndicate"
 	name = "\proper station admiral's locker"
+	req_access = list("syndicate_leader") // gonna have to try a bit harder than that for drip
 
 /obj/item/clothing/accessory/medal/gold/admiral
 	name = "medal of admiralty"
@@ -32,8 +33,8 @@
 
 /// CORPORATE LIASION
 /obj/structure/closet/secure_closet/event_code_syndicate/cl_locker
-	icon_door = "hop"
-	icon_state = "hop"
+	icon_door = "sec"
+	icon_state = "sec"
 	name = "\proper corporate liaison's locker"
 	req_access = list("syndicate_leader")
 
@@ -60,4 +61,3 @@
 	new /obj/item/card/id/advanced/chameleon/black(src) // literal free AA in current year
 	new /obj/item/card/id/advanced/chameleon/black(src) // it's fine for this event but i'm curious
 	new /obj/item/storage/bag/garment/corprate_liaison(src)
-

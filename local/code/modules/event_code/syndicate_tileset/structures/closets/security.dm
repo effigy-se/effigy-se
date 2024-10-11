@@ -6,7 +6,7 @@
 	icon_door = "warden"
 	icon_state = "warden"
 	name = "master at arms' locker"
-	req_access = list("syndicate_leader")
+	req_access = list("syndicate")
 
 /obj/item/clothing/accessory/medal/silver/maa_medal
 	name = "military excellence medal"
