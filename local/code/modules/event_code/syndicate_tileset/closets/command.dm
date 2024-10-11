@@ -12,10 +12,6 @@
 	desc = "A golden medal awarded exclusively to those promoted to the rank of Admiral. \
 		It signifies the codified responsibilities of an Admiral to the Victus-Gyravi Syndicate, and their undisputable authority over their crew."
 
-/obj/item/clothing/accessory/medal/gold/admiral/examine(mob/user)
-	. = ..()
-	. += span_warning("Or, at least... it used to.")
-
 /obj/item/storage/bag/garment/station_admiral
 	name = "station admiral's garment bag"
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the station admiral. This is technically extra-corporate contraband; and you should \
@@ -44,10 +40,6 @@
 /obj/item/clothing/neck/chaplain/black/cl_cloak
 	name = "corporate liaison's cloak"
 	desc = "A \"unique\" cloak that shimmers with... hey; that's just a cross!"
-
-/obj/item/clothing/neck/chaplain/black/cl_cloak/examine(mob/user)
-	. = ..()
-	. += span_warning("There's likely a specific syndicate subfaction this confirms the involvement of - but that's a bit over your payrange.")
 
 /obj/item/storage/bag/garment/corprate_liaison
 	name = "corprate liaison's garment bag"
