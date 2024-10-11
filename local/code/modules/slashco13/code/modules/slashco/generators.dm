@@ -1,6 +1,7 @@
 /// LANDMARKS
 /obj/effect/landmark/generator_spawn
 	name = "generator spawn"
+	icon_state = "x"
 
 /obj/effect/landmark/generator_spawn/Initialize(mapload)
 	..()
