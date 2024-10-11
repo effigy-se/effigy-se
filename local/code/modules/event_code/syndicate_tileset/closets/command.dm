@@ -47,7 +47,7 @@
 
 /obj/item/clothing/neck/chaplain/black/cl_cloak/examine(mob/user)
 	. = ..()
-	span_warning("There's likely a specific syndicate subfaction this confirms the involvement of - but that's a bit over your payrange.")
+	. += span_warning("There's likely a specific syndicate subfaction this confirms the involvement of - but that's a bit over your payrange.")
 
 /obj/item/storage/bag/garment/corprate_liaison
 	name = "corprate liaison's garment bag"
