@@ -230,8 +230,3 @@ SUBSYSTEM_DEF(slashco)
 	)
 	mid_length = 1 SECONDS
 	end_sound =	'local/code/modules/slashco13/sound/items/devildie_siren/59Siren.ogg'
-
-// Clean up!
-/datum/looping_sound/devildie_siren/stop(null_parent)
-	. = ..()
-	qdel(src)
