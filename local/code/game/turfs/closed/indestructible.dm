@@ -21,3 +21,4 @@
 	layer = /turf/open/floor/fakespace::layer
 	plane = /turf/open/floor/fakespace::plane
 	opacity = FALSE
+	gender = PLURAL
