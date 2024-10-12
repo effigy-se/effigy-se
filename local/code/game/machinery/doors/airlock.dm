@@ -36,6 +36,28 @@
 	..()
 	update_icon()
 
+/obj/machinery/door/airlock/animation_length(animation)
+	switch(animation)
+		if(DOOR_OPENING_ANIMATION)
+			return 1.3 SECONDS
+		if(DOOR_CLOSING_ANIMATION)
+			return 1.6 SECONDS
+
+/obj/machinery/door/airlock/animation_segment_delay(animation)
+	switch(animation)
+		if(AIRLOCK_OPENING_TRANSPARENT)
+			return 0.7 SECONDS
+		if(AIRLOCK_OPENING_PASSABLE)
+			return 0.7 SECONDS
+		if(AIRLOCK_OPENING_FINISHED)
+			return 1.3 SECONDS
+		if(AIRLOCK_CLOSING_UNPASSABLE)
+			return 1.2 SECONDS
+		if(AIRLOCK_CLOSING_OPAQUE)
+			return 1.5 SECONDS
+		if(AIRLOCK_CLOSING_FINISHED)
+			return 1.6 SECONDS
+
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
 	var/frame_state
