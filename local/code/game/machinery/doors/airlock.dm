@@ -46,7 +46,7 @@
 		if(DOOR_OPENING_ANIMATION)
 			return 1.3 SECONDS
 		if(DOOR_CLOSING_ANIMATION)
-			return 1.7 SECONDS
+			return 2.1 SECONDS
 
 /obj/machinery/door/airlock/animation_segment_delay(animation)
 	if(use_legacy_animations)
@@ -64,14 +64,14 @@
 		if(AIRLOCK_CLOSING_OPAQUE)
 			return 1.5 SECONDS
 		if(AIRLOCK_CLOSING_FINISHED)
-			return 1.7 SECONDS
+			return 2.1 SECONDS
 
 /obj/machinery/door/airlock/proc/legacy_animation_length(animation)
 	switch(animation)
 		if(DOOR_OPENING_ANIMATION)
 			return 0.6 SECONDS
 		if(DOOR_CLOSING_ANIMATION)
-			return 1.7 SECONDS
+			return 2.1 SECONDS
 
 /obj/machinery/door/airlock/proc/legacy_animation_segment_delay(animation)
 	switch(animation)
@@ -86,7 +86,7 @@
 		if(AIRLOCK_CLOSING_OPAQUE)
 			return 0.6 SECONDS
 		if(AIRLOCK_CLOSING_FINISHED)
-			return 1.7 SECONDS
+			return 2.1 SECONDS
 
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
@@ -308,7 +308,7 @@
 		if(DOOR_OPENING_ANIMATION)
 			return 1.1 SECONDS
 		if(DOOR_CLOSING_ANIMATION)
-			return 1.8 SECONDS
+			return 2.1 SECONDS
 
 /obj/machinery/door/airlock/external/animation_segment_delay(animation)
 	switch(animation)
@@ -319,11 +319,11 @@
 		if(AIRLOCK_OPENING_FINISHED)
 			return 1.1 SECONDS
 		if(AIRLOCK_CLOSING_UNPASSABLE)
-			return 1.2 SECONDS
+			return 1.4 SECONDS
 		if(AIRLOCK_CLOSING_OPAQUE)
-			return 1.6 SECONDS
-		if(AIRLOCK_CLOSING_FINISHED)
 			return 1.8 SECONDS
+		if(AIRLOCK_CLOSING_FINISHED)
+			return 2.1 SECONDS
 
 /obj/machinery/door/airlock/vault
 	icon = 'icons/obj/doors/airlocks/vault/vault.dmi'
