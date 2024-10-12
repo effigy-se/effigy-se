@@ -9,6 +9,8 @@
 	boltUp = 'local/sound/machines/bolts_up.ogg'
 	boltDown = 'local/sound/machines/bolts_down.ogg'
 	light_dir = NONE
+	/// Use legacy airlock animation timings
+	var/use_legacy_animations = FALSE
 	/// Does this airlock emit a light?
 	var/has_environment_lights = TRUE
 	var/light_color_poweron = COLOR_STARLIGHT
@@ -37,6 +39,9 @@
 	update_icon()
 
 /obj/machinery/door/airlock/animation_length(animation)
+	if(use_legacy_animations)
+		return legacy_animation_length(animation)
+
 	switch(animation)
 		if(DOOR_OPENING_ANIMATION)
 			return 1.3 SECONDS
@@ -44,6 +49,9 @@
 			return 1.6 SECONDS
 
 /obj/machinery/door/airlock/animation_segment_delay(animation)
+	if(use_legacy_animations)
+		return legacy_animation_segment_delay(animation)
+
 	switch(animation)
 		if(AIRLOCK_OPENING_TRANSPARENT)
 			return 0.7 SECONDS
@@ -57,6 +65,28 @@
 			return 1.5 SECONDS
 		if(AIRLOCK_CLOSING_FINISHED)
 			return 1.6 SECONDS
+
+/obj/machinery/door/airlock/proc/legacy_animation_length(animation)
+	switch(animation)
+		if(DOOR_OPENING_ANIMATION)
+			return 0.6 SECONDS
+		if(DOOR_CLOSING_ANIMATION)
+			return 0.7 SECONDS
+
+/obj/machinery/door/airlock/proc/legacy_animation_segment_delay(animation)
+	switch(animation)
+		if(AIRLOCK_OPENING_TRANSPARENT)
+			return 0.1 SECONDS
+		if(AIRLOCK_OPENING_PASSABLE)
+			return 0.5 SECONDS
+		if(AIRLOCK_OPENING_FINISHED)
+			return 0.6 SECONDS
+		if(AIRLOCK_CLOSING_UNPASSABLE)
+			return 0.2 SECONDS
+		if(AIRLOCK_CLOSING_OPAQUE)
+			return 0.5 SECONDS
+		if(AIRLOCK_CLOSING_FINISHED)
+			return 0.7 SECONDS
 
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
@@ -273,17 +303,83 @@
 	greyscale_config = null
 	greyscale_colors = null
 
+/obj/machinery/door/airlock/external/animation_length(animation)
+	switch(animation)
+		if(DOOR_OPENING_ANIMATION)
+			return 1.1 SECONDS
+		if(DOOR_CLOSING_ANIMATION)
+			return 1.8 SECONDS
+
+/obj/machinery/door/airlock/external/animation_segment_delay(animation)
+	switch(animation)
+		if(AIRLOCK_OPENING_TRANSPARENT)
+			return 0.7 SECONDS
+		if(AIRLOCK_OPENING_PASSABLE)
+			return 0.8 SECONDS
+		if(AIRLOCK_OPENING_FINISHED)
+			return 1.1 SECONDS
+		if(AIRLOCK_CLOSING_UNPASSABLE)
+			return 1.2 SECONDS
+		if(AIRLOCK_CLOSING_OPAQUE)
+			return 1.6 SECONDS
+		if(AIRLOCK_CLOSING_FINISHED)
+			return 1.8 SECONDS
+
 /obj/machinery/door/airlock/vault
 	icon = 'icons/obj/doors/airlocks/vault/vault.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/vault/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
 
+/obj/machinery/door/airlock/vault/animation_length(animation)
+	switch(animation)
+		if(DOOR_OPENING_ANIMATION)
+			return 0.6 SECONDS
+		if(DOOR_CLOSING_ANIMATION)
+			return 1.7 SECONDS
+
+/obj/machinery/door/airlock/vault/animation_segment_delay(animation)
+	switch(animation)
+		if(AIRLOCK_OPENING_TRANSPARENT)
+			return 0.3 SECONDS
+		if(AIRLOCK_OPENING_PASSABLE)
+			return 0.4 SECONDS
+		if(AIRLOCK_OPENING_FINISHED)
+			return 0.6 SECONDS
+		if(AIRLOCK_CLOSING_UNPASSABLE)
+			return 0.2 SECONDS
+		if(AIRLOCK_CLOSING_OPAQUE)
+			return 0.6 SECONDS
+		if(AIRLOCK_CLOSING_FINISHED)
+			return 1.7 SECONDS
+
 /obj/machinery/door/airlock/survival_pod
 	icon = 'local/icons/obj/doors/airlocks/external/external.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/external/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+
+/obj/machinery/door/airlock/survival_pod/animation_length(animation)
+	switch(animation)
+		if(DOOR_OPENING_ANIMATION)
+			return 1.1 SECONDS
+		if(DOOR_CLOSING_ANIMATION)
+			return 1.8 SECONDS
+
+/obj/machinery/door/airlock/survival_pod/animation_segment_delay(animation)
+	switch(animation)
+		if(AIRLOCK_OPENING_TRANSPARENT)
+			return 0.7 SECONDS
+		if(AIRLOCK_OPENING_PASSABLE)
+			return 0.8 SECONDS
+		if(AIRLOCK_OPENING_FINISHED)
+			return 1.1 SECONDS
+		if(AIRLOCK_CLOSING_UNPASSABLE)
+			return 1.2 SECONDS
+		if(AIRLOCK_CLOSING_OPAQUE)
+			return 1.6 SECONDS
+		if(AIRLOCK_CLOSING_FINISHED)
+			return 1.8 SECONDS
 
 /**
  * Misc
@@ -295,12 +391,14 @@
 	note_overlay_file = 'icons/obj/doors/airlocks/hatch/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/maintenance_hatch
 	icon = 'icons/obj/doors/airlocks/hatch/maintenance.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/hatch/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/highsecurity
 	icon = 'icons/obj/doors/airlocks/highsec/highsec.dmi'
@@ -308,11 +406,55 @@
 	greyscale_config = null
 	greyscale_colors = null
 
+/obj/machinery/door/airlock/highsecurity/animation_length(animation)
+	switch(animation)
+		if(DOOR_OPENING_ANIMATION)
+			return 0.6 SECONDS
+		if(DOOR_CLOSING_ANIMATION)
+			return 1.7 SECONDS
+
+/obj/machinery/door/airlock/highsecurity/animation_segment_delay(animation)
+	switch(animation)
+		if(AIRLOCK_OPENING_TRANSPARENT)
+			return 0.3 SECONDS
+		if(AIRLOCK_OPENING_PASSABLE)
+			return 0.4 SECONDS
+		if(AIRLOCK_OPENING_FINISHED)
+			return 0.6 SECONDS
+		if(AIRLOCK_CLOSING_UNPASSABLE)
+			return 0.2 SECONDS
+		if(AIRLOCK_CLOSING_OPAQUE)
+			return 0.6 SECONDS
+		if(AIRLOCK_CLOSING_FINISHED)
+			return 1.7 SECONDS
+
 /obj/machinery/door/airlock/shuttle
 	icon = 'icons/obj/doors/airlocks/shuttle/shuttle.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/shuttle/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+
+/obj/machinery/door/airlock/shuttle/animation_length(animation)
+	switch(animation)
+		if(DOOR_OPENING_ANIMATION)
+			return 0.6 SECONDS
+		if(DOOR_CLOSING_ANIMATION)
+			return 1.7 SECONDS
+
+/obj/machinery/door/airlock/shuttle/animation_segment_delay(animation)
+	switch(animation)
+		if(AIRLOCK_OPENING_TRANSPARENT)
+			return 0.3 SECONDS
+		if(AIRLOCK_OPENING_PASSABLE)
+			return 0.4 SECONDS
+		if(AIRLOCK_OPENING_FINISHED)
+			return 0.6 SECONDS
+		if(AIRLOCK_CLOSING_UNPASSABLE)
+			return 0.2 SECONDS
+		if(AIRLOCK_CLOSING_OPAQUE)
+			return 0.6 SECONDS
+		if(AIRLOCK_CLOSING_FINISHED)
+			return 1.7 SECONDS
 
 /obj/machinery/door/airlock/abductor
 	icon = 'icons/obj/doors/airlocks/abductor/abductor_airlock.dmi'
@@ -320,6 +462,7 @@
 	note_overlay_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/cult
 	name = "cult airlock"
@@ -327,6 +470,7 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/cult/runed/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/cult/unruned
 	icon = 'icons/obj/doors/airlocks/cult/unruned/cult.dmi'
@@ -337,12 +481,14 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/centcom/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/grunge
 	icon = 'icons/obj/doors/airlocks/centcom/centcom.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/centcom/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /**
  * Multi-tile
@@ -352,6 +498,7 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/multi_tile/public/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /**
  * Tram
@@ -380,24 +527,28 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/diamond
 	icon = 'icons/obj/doors/airlocks/station/diamond.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/uranium
 	icon = 'icons/obj/doors/airlocks/station/uranium.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/plasma
 	icon = 'icons/obj/doors/airlocks/station/plasma.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/bananium
 	icon = 'icons/obj/doors/airlocks/station/bananium.dmi'
@@ -405,18 +556,21 @@
 	doorOpen = 'sound/items/bikehorn.ogg'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/sandstone
 	icon = 'icons/obj/doors/airlocks/station/sandstone.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/wood
 	icon = 'icons/obj/doors/airlocks/station/wood.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/station/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/titanium
 	icon = 'icons/obj/doors/airlocks/shuttle/shuttle.dmi'
@@ -424,11 +578,35 @@
 	greyscale_config = null
 	greyscale_colors = null
 
+/obj/machinery/door/airlock/titanium/animation_length(animation)
+	switch(animation)
+		if(DOOR_OPENING_ANIMATION)
+			return 0.6 SECONDS
+		if(DOOR_CLOSING_ANIMATION)
+			return 1.7 SECONDS
+
+/obj/machinery/door/airlock/titanium/animation_segment_delay(animation)
+	switch(animation)
+		if(AIRLOCK_OPENING_TRANSPARENT)
+			return 0.3 SECONDS
+		if(AIRLOCK_OPENING_PASSABLE)
+			return 0.4 SECONDS
+		if(AIRLOCK_OPENING_FINISHED)
+			return 0.6 SECONDS
+		if(AIRLOCK_CLOSING_UNPASSABLE)
+			return 0.2 SECONDS
+		if(AIRLOCK_CLOSING_OPAQUE)
+			return 0.6 SECONDS
+		if(AIRLOCK_CLOSING_FINISHED)
+			return 1.7 SECONDS
+
+
 /obj/machinery/door/airlock/bronze
 	icon = 'icons/obj/doors/airlocks/clockwork/pinion_airlock.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/clockwork/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
+	use_legacy_animations = TRUE
 
 /**
  * Effigy
