@@ -11,6 +11,7 @@
 /obj/item/stock_parts/power_store/cell/lead/double_pack/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
+	AddComponent(/datum/component/stationloving, TRUE, TRUE, TRUE)
 	SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/item/stock_parts/power_store/cell/lead/double_pack/can_be_pulled()
