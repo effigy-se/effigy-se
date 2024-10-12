@@ -46,7 +46,7 @@
 		if(DOOR_OPENING_ANIMATION)
 			return 1.3 SECONDS
 		if(DOOR_CLOSING_ANIMATION)
-			return 1.6 SECONDS
+			return 1.7 SECONDS
 
 /obj/machinery/door/airlock/animation_segment_delay(animation)
 	if(use_legacy_animations)
@@ -64,7 +64,7 @@
 		if(AIRLOCK_CLOSING_OPAQUE)
 			return 1.5 SECONDS
 		if(AIRLOCK_CLOSING_FINISHED)
-			return 1.6 SECONDS
+			return 1.7 SECONDS
 
 /obj/machinery/door/airlock/proc/legacy_animation_length(animation)
 	switch(animation)
