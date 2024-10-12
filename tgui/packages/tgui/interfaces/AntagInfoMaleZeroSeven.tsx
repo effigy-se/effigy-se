@@ -87,10 +87,10 @@ const DemonRunes = (props) => {
   return (
     <Section height="102%" mt="-6px" fill>
       <Box className="HellishRunes__demonrune">
-        C<br />O<br />O<br />K<br />I<br />E<br />S<br />!<br />
-        C<br />O<br />O<br />K<br />I<br />E<br />S<br />!<br />
-        C<br />O<br />O<br />K<br />I<br />E<br />S<br />!<br />
-        C<br />O<br />O<br />K<br />I<br />E<br />S<br />!
+        S<br />A<br />N<br />D<br />T<br />R<br />A<br />P<br />
+        S<br />A<br />N<br />D<br />T<br />R<br />A<br />P<br />
+        S<br />A<br />N<br />D<br />T<br />R<br />A<br />P<br />
+        S<br />A<br />N<br />D<br />T<br />R<br />A<br />P
       </Box>
     </Section>
   );
