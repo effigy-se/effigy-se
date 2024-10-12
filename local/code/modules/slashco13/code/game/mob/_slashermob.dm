@@ -20,6 +20,10 @@
 	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
 	name = initial(name)
 
+/mob/living/basic/slasher/death(gibbed)
+	if(!gibbed)
+		revive(ADMIN_HEAL_ALL)
+
 /mob/living/basic/slasher/melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
 	if(isliving(target) && can_jumpscare)

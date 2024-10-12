@@ -12,3 +12,13 @@
 	desc = /obj/machinery/door/poddoor::desc
 	icon = /obj/machinery/door/poddoor::icon
 	icon_state = /obj/machinery/door/poddoor::icon_state
+
+/turf/closed/indestructible/fakespace
+	name = "space"
+	desc = "You swear; you see a meteor..."
+	icon = /turf/open/floor/fakespace::icon
+	icon_state = /turf/open/floor/fakespace::icon_state
+	layer = /turf/open/floor/fakespace::layer
+	plane = /turf/open/floor/fakespace::plane
+	opacity = FALSE
+	gender = PLURAL
