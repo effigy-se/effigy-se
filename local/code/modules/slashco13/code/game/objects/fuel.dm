@@ -9,6 +9,7 @@
 	What, did you expect to be able to use normal ones? Dream on."
 	color = "#949494"
 	w_class = WEIGHT_CLASS_HUGE
+	full_w_class = WEIGHT_CLASS_HUGE
 	merge_type = /obj/item/stack/fuel
 	max_amount = 1 // Aware it's slightly weird to have these be sheets with this in the picture, but use() is too good to pass up
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
