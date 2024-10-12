@@ -71,22 +71,22 @@
 		if(DOOR_OPENING_ANIMATION)
 			return 0.6 SECONDS
 		if(DOOR_CLOSING_ANIMATION)
-			return 0.7 SECONDS
+			return 1.7 SECONDS
 
 /obj/machinery/door/airlock/proc/legacy_animation_segment_delay(animation)
 	switch(animation)
 		if(AIRLOCK_OPENING_TRANSPARENT)
 			return 0.1 SECONDS
 		if(AIRLOCK_OPENING_PASSABLE)
-			return 0.5 SECONDS
+			return 0.4 SECONDS
 		if(AIRLOCK_OPENING_FINISHED)
 			return 0.6 SECONDS
 		if(AIRLOCK_CLOSING_UNPASSABLE)
 			return 0.2 SECONDS
 		if(AIRLOCK_CLOSING_OPAQUE)
-			return 0.5 SECONDS
+			return 0.6 SECONDS
 		if(AIRLOCK_CLOSING_FINISHED)
-			return 0.7 SECONDS
+			return 1.7 SECONDS
 
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
@@ -330,28 +330,7 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/vault/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
-
-/obj/machinery/door/airlock/vault/animation_length(animation)
-	switch(animation)
-		if(DOOR_OPENING_ANIMATION)
-			return 0.6 SECONDS
-		if(DOOR_CLOSING_ANIMATION)
-			return 1.7 SECONDS
-
-/obj/machinery/door/airlock/vault/animation_segment_delay(animation)
-	switch(animation)
-		if(AIRLOCK_OPENING_TRANSPARENT)
-			return 0.3 SECONDS
-		if(AIRLOCK_OPENING_PASSABLE)
-			return 0.4 SECONDS
-		if(AIRLOCK_OPENING_FINISHED)
-			return 0.6 SECONDS
-		if(AIRLOCK_CLOSING_UNPASSABLE)
-			return 0.2 SECONDS
-		if(AIRLOCK_CLOSING_OPAQUE)
-			return 0.6 SECONDS
-		if(AIRLOCK_CLOSING_FINISHED)
-			return 1.7 SECONDS
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/survival_pod
 	icon = 'local/icons/obj/doors/airlocks/external/external.dmi'
@@ -405,56 +384,14 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/highsec/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
-
-/obj/machinery/door/airlock/highsecurity/animation_length(animation)
-	switch(animation)
-		if(DOOR_OPENING_ANIMATION)
-			return 0.6 SECONDS
-		if(DOOR_CLOSING_ANIMATION)
-			return 1.7 SECONDS
-
-/obj/machinery/door/airlock/highsecurity/animation_segment_delay(animation)
-	switch(animation)
-		if(AIRLOCK_OPENING_TRANSPARENT)
-			return 0.3 SECONDS
-		if(AIRLOCK_OPENING_PASSABLE)
-			return 0.4 SECONDS
-		if(AIRLOCK_OPENING_FINISHED)
-			return 0.6 SECONDS
-		if(AIRLOCK_CLOSING_UNPASSABLE)
-			return 0.2 SECONDS
-		if(AIRLOCK_CLOSING_OPAQUE)
-			return 0.6 SECONDS
-		if(AIRLOCK_CLOSING_FINISHED)
-			return 1.7 SECONDS
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/shuttle
 	icon = 'icons/obj/doors/airlocks/shuttle/shuttle.dmi'
 	overlays_file = 'local/icons/obj/doors/airlocks/shuttle/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
-
-/obj/machinery/door/airlock/shuttle/animation_length(animation)
-	switch(animation)
-		if(DOOR_OPENING_ANIMATION)
-			return 0.6 SECONDS
-		if(DOOR_CLOSING_ANIMATION)
-			return 1.7 SECONDS
-
-/obj/machinery/door/airlock/shuttle/animation_segment_delay(animation)
-	switch(animation)
-		if(AIRLOCK_OPENING_TRANSPARENT)
-			return 0.3 SECONDS
-		if(AIRLOCK_OPENING_PASSABLE)
-			return 0.4 SECONDS
-		if(AIRLOCK_OPENING_FINISHED)
-			return 0.6 SECONDS
-		if(AIRLOCK_CLOSING_UNPASSABLE)
-			return 0.2 SECONDS
-		if(AIRLOCK_CLOSING_OPAQUE)
-			return 0.6 SECONDS
-		if(AIRLOCK_CLOSING_FINISHED)
-			return 1.7 SECONDS
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/abductor
 	icon = 'icons/obj/doors/airlocks/abductor/abductor_airlock.dmi'
@@ -577,29 +514,7 @@
 	overlays_file = 'local/icons/obj/doors/airlocks/shuttle/overlays.dmi'
 	greyscale_config = null
 	greyscale_colors = null
-
-/obj/machinery/door/airlock/titanium/animation_length(animation)
-	switch(animation)
-		if(DOOR_OPENING_ANIMATION)
-			return 0.6 SECONDS
-		if(DOOR_CLOSING_ANIMATION)
-			return 1.7 SECONDS
-
-/obj/machinery/door/airlock/titanium/animation_segment_delay(animation)
-	switch(animation)
-		if(AIRLOCK_OPENING_TRANSPARENT)
-			return 0.3 SECONDS
-		if(AIRLOCK_OPENING_PASSABLE)
-			return 0.4 SECONDS
-		if(AIRLOCK_OPENING_FINISHED)
-			return 0.6 SECONDS
-		if(AIRLOCK_CLOSING_UNPASSABLE)
-			return 0.2 SECONDS
-		if(AIRLOCK_CLOSING_OPAQUE)
-			return 0.6 SECONDS
-		if(AIRLOCK_CLOSING_FINISHED)
-			return 1.7 SECONDS
-
+	use_legacy_animations = TRUE
 
 /obj/machinery/door/airlock/bronze
 	icon = 'icons/obj/doors/airlocks/clockwork/pinion_airlock.dmi'
