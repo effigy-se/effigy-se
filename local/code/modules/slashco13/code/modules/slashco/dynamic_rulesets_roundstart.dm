@@ -37,6 +37,10 @@
 
 /datum/dynamic_ruleset/roundstart/slashers/pre_execute(population)
 	. = ..()
+	var/slasher_scaled_number = round(GLOB.alive_player_list.len * 0.125)
+	if(slasher_scaled_number < 1)
+		slasher_scaled_number = 1
+	SSslashco.maximum_slashers = slasher_scaled_number
 	for (var/i in 1 to SSslashco.maximum_slashers)
 		var/got_one = FALSE // prevents game resets so long as there's at least ONE slasher
 		if(candidates.len <= 0 && !got_one) // This shouldn't happen; the round is bricked. Restart

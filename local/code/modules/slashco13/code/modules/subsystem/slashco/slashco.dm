@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(slashco)
 	/// What's the maximum number of items on the map? Config configurable
 	var/maximum_items = 24
 
-	/// What's the maximum amount of Slashers? Defaults to 1; but scales +1 for every 8 players (Unimplemented yet)
+	/// What's the maximum amount of Slashers? Defaults to 1; but scales +1 for every 8 players
 	var/maximum_slashers = 1
 
 /datum/controller/subsystem/slashco/Initialize() // GOTTA MAKE IT HAPPEN.. BABY
