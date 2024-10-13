@@ -4,7 +4,19 @@
 
 #ifndef LOWMEMORYMODE
 	#ifdef ALL_MAPS
-		#include "effigy\map_files\SlashPoint\Slashpoint.dmm"
+		#include "map_files\debug\multiz.dmm"
+		#include "map_files\debug\runtimestation.dmm"
+		#include "map_files\IceBoxStation\IceBoxStation.dmm"
+		#include "map_files\MetaStation\MetaStation.dmm"
+		#include "map_files\Mining\Lavaland.dmm"
+		#include "map_files\tramstation\tramstation.dmm"
+		// EffigyEdit Add - Maps
+		#include "effigy\map_files\FoxHoleStation\foxholestation.dmm"
+		#include "effigy\map_files\RimPoint\RimPoint.dmm"
+		#include "effigy\map_files\SigmaOctantis\SigmaOctantis.dmm"
+		#include "effigy\map_files\SlashPoint\SlashPoint.dmm"
+		#include "effigy\map_files\Slashnett\Slashnett.dmm"
+		// EffigyEdit Add End
 		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif
