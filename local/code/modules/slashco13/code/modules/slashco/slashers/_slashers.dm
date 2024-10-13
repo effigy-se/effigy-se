@@ -71,6 +71,15 @@
 
 /datum/antagonist/slasher/get_preview_icon()
 	var/icon/icon = icon('local/code/modules/slashco13/icons/mob/slashers.dmi', "amogus")
+
+	var/icon/princess = icon('local/code/modules/slashco13/icons/mob/slashers.dmi', "princess")
+	princess.Blend(rgb(128, 128, 128, 128), ICON_MULTIPLY)
+	icon.Blend(princess, ICON_UNDERLAY, -world.icon_size / 4, 0)
+
+	var/icon/sid = icon('local/code/modules/slashco13/icons/mob/slashers.dmi', "sid")
+	sid.Blend(rgb(128, 128, 128, 128), ICON_MULTIPLY)
+	icon.Blend(sid, ICON_UNDERLAY, world.icon_size / 4, 0)
+
 	icon.Scale(ANTAGONIST_PREVIEW_ICON_SIZE, ANTAGONIST_PREVIEW_ICON_SIZE)
 	return icon
 
