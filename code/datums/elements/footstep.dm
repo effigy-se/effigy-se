@@ -200,6 +200,6 @@
 	if(CHECK_MOVE_LOOP_FLAGS(source, MOVEMENT_LOOP_OUTSIDE_CONTROL))
 		return
 
-	playsound(source_loc, footstep_sounds, 50, falloff_distance = 1, vary = sound_vary)
+	playsound(source_loc, pick(footstep_sounds), 50, falloff_distance = 1, vary = sound_vary) /// SLASHCO 13 edit - added a pick() around footstep_sounds. upstream should've done this
 
 #undef SHOULD_DISABLE_FOOTSTEPS
