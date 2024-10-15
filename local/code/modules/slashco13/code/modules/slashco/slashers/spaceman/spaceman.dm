@@ -100,7 +100,7 @@
 	for(var/datum/antagonist/slasher/spaceman/our_slasher in owner?.mind?.antag_datums)
 		if(our_slasher.active_phase || our_slasher.playing_some_tunes)
 			return // Nothing to be done here; go kill someone boss
-		if(!isopenturf(get_turf(owner)))
+		if(!isopenturf(get_turf(owner)) || ischasm(get_turf(owner)) || islava(get_turf(owner)))
 			return // please fuck off for even trying this
 		our_slasher.playing_some_tunes = TRUE
 		owner.invisibility = INVISIBILITY_NONE
