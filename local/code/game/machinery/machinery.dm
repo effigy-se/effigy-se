@@ -15,6 +15,7 @@
 
 /obj/machinery/status_display/syndie/post_machine_initialize()
 	. = ..()
+	current_mode = SD_PICTURE
 	set_picture("synd")
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/syndie, 32)
