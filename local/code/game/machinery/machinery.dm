@@ -10,10 +10,14 @@
 
 /obj/machinery/status_display/syndie
 	name = "syndicate status display"
+	text_color = COLOR_DISPLAY_RED
+	header_text_color = COLOR_DISPLAY_RED
 
 /obj/machinery/status_display/syndie/post_machine_initialize()
 	. = ..()
 	set_picture("synd")
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/syndie, 32)
 
 /obj/machinery/power/emitter
 	icon = 'local/icons/obj/engine/emitter.dmi'
