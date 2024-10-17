@@ -99,6 +99,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/motivat
 		"IT'S OUTSIDE MY DOOR"="HELP HELP HELP", \
 		"RHIALS"="WHERE'S RHIALS", \
 		"I WAS JUST SUPPOSED"="TO PAINT THE WALLS", \
+		"I OPENED MY DOOR AND THEN"="THE CREATURE",\
 	)
 	. = ..()
 
