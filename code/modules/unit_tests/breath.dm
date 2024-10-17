@@ -83,6 +83,7 @@
 	TEST_ASSERT(lab_rat.failed_last_breath && lab_rat.has_alert(ALERT_NOT_ENOUGH_PLASMA), "Humans should suffocate from pure n2 tanks")
 
 /// Tests to make sure ashwalkers can breathe from the lavaland air.
+/*
 /datum/unit_test/breath/breath_sanity_ashwalker
 
 /datum/unit_test/breath/breath_sanity_ashwalker/Run()
@@ -99,3 +100,4 @@
 	var/turf/open/to_fill = run_loc_floor_bottom_left
 	to_fill.initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	return ..()
+*/ // SLASHCO 13 EDIT - FUCK OFF

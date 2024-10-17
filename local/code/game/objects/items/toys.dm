@@ -5,6 +5,12 @@
 	This one, however, does - and it's not quite clear how much life it thirsts for."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "assistant"
+	pickup_sound = 'local/code/modules/slashco13/sound/items/pickup.ogg'
+	drop_sound = 'local/code/modules/slashco13/sound/items/drop.ogg'
+
+/obj/item/toy/faustian_doll/Initialize(mapload)
+	. = ..()
+	SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/item/toy/faustian_doll/attack_self(mob/user as mob)
 	var/turf/T = find_safe_turf(zlevels=SSmapping.levels_by_trait(ZTRAIT_STATION))

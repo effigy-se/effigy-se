@@ -372,10 +372,10 @@
 		priority_announce(
 			text = "The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [(timeLeft(60 SECONDS))] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]",
 			title = "Emergency Shuttle Dispatched",
-			sound = ANNOUNCER_SHUTTLECALLED,
+			sound = null,
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "orange",
-			)
+			) /// SLASHCO 13 EDIT - changed to null
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
@@ -485,13 +485,28 @@
 				mode = SHUTTLE_DOCKED
 				setTimer(SSshuttle.emergency_dock_time)
 				send2adminchat("Server", "The Emergency Shuttle has docked with the station.")
+				/// SLASHCO 13 EDIT BEGIN - sound in priority_announce below has been swapped for the result of this ///
+				var/docked_at_station_lines = list(
+					'local/code/modules/slashco13/sound/shuttle/land1.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land2.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land3.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land4.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land5.ogg', \
+				)
+				var/our_shuttle_line = pick(docked_at_station_lines)
+				/// SLASHCO EDIT EDIT END ///
 				priority_announce(
 					text = "[SSshuttle.emergency] has docked with the station. You have [DisplayTimeText(SSshuttle.emergency_dock_time)] to board the emergency shuttle.",
 					title = "Emergency Shuttle Arrival",
-					sound = ANNOUNCER_SHUTTLEDOCK,
+					sound = our_shuttle_line,
 					sender_override = "Emergency Shuttle Uplink Alert",
 					color_override = "orange",
 				)
+				/// SLASHCO 13 EDIT BEGIN
+				for(var/mob/target in GLOB.player_list)
+					if(!isnewplayer(target))
+						SEND_SOUND(target, 'local/code/modules/slashco13/sound/music/helicopter.ogg')
+				/// SLASHCO 13 EDIT END
 				ShuttleDBStuff()
 				addtimer(CALLBACK(src, PROC_REF(announce_shuttle_events)), 20 SECONDS)
 
@@ -549,6 +564,14 @@
 					sender_override = "Emergency Shuttle Uplink Alert",
 					color_override = "orange",
 				)
+				/// SLASHCO 13 EDIT BEGIN - kill all humies left on the station z-level in a way they can avoid ///
+				var/list/station_levels = SSmapping.levels_by_trait(ZTRAIT_STATION)
+				var/time_until_check = (SSshuttle.emergency_escape_time * engine_coeff - 5 SECONDS)
+				for(var/mob/living/mob in GLOB.alive_player_list)
+					if(mob.z in station_levels)
+						to_chat(mob,span_warning("A chill runs down your spine... you'll likely never be found; if you stay here."))
+						SSslashco.queue_preroundend_check(mob, time_until_check)
+				/// SLASHCO 13 EDIT END ///
 				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
 

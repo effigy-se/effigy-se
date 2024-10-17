@@ -51,6 +51,15 @@
 	admin_notes = "Center room is as wide as Cere's shuttle and very, VERY comically easy for lasers to dominate in. Otherwise a standard fare shuttle as far as equipment's concerned."
 	occupancy_limit = "50"
 
+/datum/map_template/shuttle/emergency/slashpoint
+	prefix = "_maps/effigy/shuttles/"
+	suffix = "slashpoint"
+	name = "SlashPoint Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 10
+	description = "A middling-sized evacuation shuttle, converted for evacuation use by the Power Recovery team."
+	admin_notes = "SlashCo 13 variant of Rimpoint's emergency shuttle."
+	occupancy_limit = "8"
+
 /// SIGMA OCTANTIS ///
 
 /datum/map_template/shuttle/arrival/sigma_octantis
