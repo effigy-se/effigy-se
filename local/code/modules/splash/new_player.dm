@@ -69,6 +69,9 @@
 		title_screen_is_ready = TRUE
 		return
 
+	if(href_list["how_to_play_slashco"])
+		src << link("https://effigy.se/slashco/")
+		return
 
 /mob/dead/new_player/Login()
 	. = ..()
