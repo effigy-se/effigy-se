@@ -50,7 +50,7 @@
 	var/header = span_major_announcement_title("Shift Start Update")
 	header += span_subheader_announcement_text("Central Command Organic Resources")
 	announcement_strings += span_announcement_header(header)
-	announcement_strings += span_major_announcement_text("[command_name()] is currently finalizing [GLOB.round_hex ? "crew manifest ID [GLOB.round_hex]" : "the crew manifest"] for today's shift aboard [station_name()].<br/><br/>In [DisplayTimeText(announce_time)] the crew manifest will be locked and station onboarding at [SSmapping.config.map_name] will begin.<br/><br/>All crew are advised to verify their 'Ready' status in your personnel profile before this time. Once the manifest is locked, please consult your assigned Head of Personnel for any further organic resources requests.")
+	announcement_strings += span_major_announcement_text("[command_name()] is currently finalizing [GLOB.round_hex ? "crew manifest ID [GLOB.round_hex]" : "the crew manifest"] for today's excursion aboard [station_name()].<br/><br/>In [DisplayTimeText(announce_time)] the crew manifest will be locked and station onboarding at [SSmapping.config.map_name] will begin.<br/><br/>All crew are advised to verify their 'Ready' status in your personnel profile before this time. There will be no reinforcements.")
 	var/finalized_announcement = create_announcement_div(jointext(announcement_strings, ""), PURPLE)
 	to_chat(world, finalized_announcement)
 	for(var/mob/player in GLOB.player_list)

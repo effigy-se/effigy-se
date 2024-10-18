@@ -43,6 +43,11 @@
 	if(isarea(source))
 		CRASH("playsound(): source is an area")
 
+	// EffigyEdit Add TODO - testing tgstation 86934
+	if(islist(soundin))
+		CRASH("playsound(): soundin attempted to pass a list! Consider using pick()")
+	// EffigyEdit Add End
+
 	var/turf/turf_source = get_turf(source)
 
 	if (!turf_source || !soundin || !vol)

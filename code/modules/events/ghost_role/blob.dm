@@ -2,7 +2,7 @@
 	name = "Blob"
 	typepath = /datum/round_event/ghost_role/blob
 	weight = 10
-	max_occurrences = 1
+	max_occurrences = 0 // SLASHCO 13 EDIT ADD - while i'm alright with most midrounds; this isn't one of those because i want the shuttle to still be able to come
 
 	min_players = 20
 

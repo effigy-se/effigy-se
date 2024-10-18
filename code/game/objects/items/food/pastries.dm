@@ -133,17 +133,24 @@
 	name = "cookie"
 	desc = "COOKIE!!!"
 	icon_state = "COOKIE!!!"
-	bite_consumption = 1
+	bite_consumption = INFINITY // SLASHCO 13 EDIT - need this to be instant
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	tastes = list("cookie" = 1)
 	foodtypes = GRAIN | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+	/// SLASHCO 13 EDIT BEGIN ///
+	pickup_sound = 'local/code/modules/slashco13/sound/items/pickup.ogg'
+	drop_sound = 'local/code/modules/slashco13/sound/items/drop.ogg'
+	preserved_food = TRUE
+	/// SLASHCO 13 EDIT END ///
 
 /obj/item/food/cookie/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/dunkable, 10)
+	SSpoints_of_interest.make_point_of_interest(src) // SLASHCO 13 EDIT - no; seriously
+
 
 /obj/item/food/cookie/sleepy
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/toxin/chloralhydrate = 10)

@@ -3,7 +3,9 @@
 	if(SSticker.HasRoundStarted())
 		return
 	var/time_remaining = SSticker.GetTimeLeft()
-	if(time_remaining > 0)
+	if(SSticker.totalPlayersReady < 2)
+		. += "Status: Waiting for players to hit READY"
+	else if(time_remaining > 0)
 		. += "Game starting in [round(time_remaining/10)]s"
 	else if(time_remaining == -10)
 		. += "Game start delayed by an administrator"

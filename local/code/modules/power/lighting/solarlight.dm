@@ -38,7 +38,7 @@
 	var/light_color =  NONSENSICAL_VALUE
 	if(!isnull(color))
 		light_color = color
-	var/new_range = SSnightshift.nightshift_active ? 4 : 7
+	var/new_range = SSnightshift.nightshift_active ? 4 : 4 // i got lazy sue me
 	set_light(new_range, light_power, light_color) // Exact range of internal cameras
 
 /obj/machinery/solarlight/screwdriver_act(mob/living/user, obj/item/I)
