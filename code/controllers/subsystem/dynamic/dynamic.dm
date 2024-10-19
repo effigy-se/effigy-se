@@ -144,7 +144,7 @@ SUBSYSTEM_DEF(dynamic)
 	var/waittime_l = 600
 
 	/// What is the higher bound of when the roundstart announcement is sent out?
-	var/waittime_h = 1800
+	var/waittime_h = 900 // EffigyEdit Change - Original: 1800
 
 	/// A number between 0 and 100. The maximum amount of threat allowed to generate.
 	var/max_threat_level = 100
