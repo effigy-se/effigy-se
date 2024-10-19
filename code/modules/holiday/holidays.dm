@@ -590,6 +590,7 @@
 	end_day = 2
 	end_month = NOVEMBER
 	holiday_colors = list(COLOR_MOSTLY_PURE_ORANGE, COLOR_PRISONER_BLACK)
+	always_celebrate = TRUE // EffigyEdit Add - SlashCo 13
 
 /datum/holiday/halloween/greet()
 	return "Have a spooky Halloween!"
