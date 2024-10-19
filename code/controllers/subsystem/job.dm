@@ -259,10 +259,10 @@ SUBSYSTEM_DEF(job)
 		var/player_job_level = player.client?.prefs.job_preferences[job.title]
 		if(isnull(player_job_level))
 			JobDebug("FOC player job not enabled, Player: [player]")
-			continue
+			// continue // EffigyEdit Remove - SlashCo 13
 		else if(player_job_level != level)
 			JobDebug("FOC player job enabled at wrong level, Player: [player], TheirLevel: [job_priority_level_to_string(player_job_level)], ReqLevel: [job_priority_level_to_string(level)]")
-			continue
+			// continue // EffigyEdit Remove - SlashCo 13
 
 		// This check handles its own output to JobDebug.
 		if(check_job_eligibility(player, job, "FOC", add_job_to_log = FALSE) != JOB_AVAILABLE)
