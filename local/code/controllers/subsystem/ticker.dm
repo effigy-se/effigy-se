@@ -38,7 +38,7 @@
 	timeLeft = time_override
 	log_game("Game start queued in [DisplayTimeText(time_override)]")
 
-	if(time_override <= 94 SECONDS)
+	if(time_override <= 94 SECONDS && time_override > 0)
 		hr_announce_fired = TRUE
 		lobby_track_fired = FALSE
 
