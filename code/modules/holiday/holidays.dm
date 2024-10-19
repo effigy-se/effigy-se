@@ -589,7 +589,7 @@
 	begin_month = OCTOBER
 	end_day = 2
 	end_month = NOVEMBER
-	holiday_colors = list(COLOR_MOSTLY_PURE_ORANGE, COLOR_PRISONER_BLACK)
+	// holiday_colors = list(COLOR_MOSTLY_PURE_ORANGE, COLOR_PRISONER_BLACK) SLASHCO 13 EDIT - nuh uh
 	always_celebrate = TRUE // EffigyEdit Add - SlashCo 13
 
 /datum/holiday/halloween/greet()
