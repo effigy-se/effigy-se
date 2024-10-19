@@ -206,8 +206,15 @@ SUBSYSTEM_DEF(ticker)
 			// EffigyEdit Add - Wait for players
 			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && totalPlayersReady < 2) // SLASHCO EDIT - need two to play
 				if(!launch_queued)
-					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
-					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
+					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when enough players are ready.")]", confidential = TRUE)
+					var/announcement_sound = pick(
+						'local/code/modules/slashco13/sound/shuttle/land1.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/land2.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/land3.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/land4.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/land5.ogg', \
+					)
+					SEND_SOUND(world, sound(announcement_sound))
 					message_admins("Game setup delayed due to lack of players.")
 					log_game("Game setup delayed due to lack of players.")
 					launch_queued = TRUE

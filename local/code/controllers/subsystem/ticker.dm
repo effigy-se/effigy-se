@@ -47,12 +47,17 @@
 /datum/controller/subsystem/ticker/proc/queue_game_start_announcement()
 	var/announce_time = round(timeLeft, 10 SECONDS)
 	var/list/announcement_strings = list()
-	var/header = span_major_announcement_title("Shift Start Update")
-	header += span_subheader_announcement_text("Central Command Organic Resources")
+	var/announcement_sound = pick(
+					'local/code/modules/slashco13/sound/shuttle/land1.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land2.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land3.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land4.ogg', \
+					'local/code/modules/slashco13/sound/shuttle/land5.ogg', \
+				)
+	var/header = span_major_announcement_title("Crew Deployment Update")
+	header += span_subheader_announcement_text("Central Command Corporate Skirmish Division")
 	announcement_strings += span_announcement_header(header)
-	announcement_strings += span_major_announcement_text("[command_name()] is currently finalizing [GLOB.round_hex ? "crew manifest ID [GLOB.round_hex]" : "the crew manifest"] for today's excursion aboard [station_name()].<br/><br/>In [DisplayTimeText(announce_time)] the crew manifest will be locked and station onboarding at [SSmapping.config.map_name] will begin.<br/><br/>All crew are advised to verify their 'Ready' status in your personnel profile before this time. There will be no reinforcements.")
+	announcement_strings += span_major_announcement_text("[command_name()] is currently finalizing [GLOB.round_hex ? "crew manifest ID [GLOB.round_hex]" : "the crew manifest"] for today's excursion on mission codename [station_name()].<br/><br/>In [DisplayTimeText(announce_time)] the crew manifest will be locked and transport to the designated landing area of [SSmapping.config.map_name] will begin.<br/><br/>All crew are advised to verify their 'Ready' status in your personnel profile before this time. There will be no reinforcements.")
 	var/finalized_announcement = create_announcement_div(jointext(announcement_strings, ""), PURPLE)
 	to_chat(world, finalized_announcement)
-	for(var/mob/player in GLOB.player_list)
-		if(player.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
-			SEND_SOUND(player, sound('sound/ai/default/attention.ogg'))
+	SEND_SOUND(world, sound(announcement_sound))
