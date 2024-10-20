@@ -22,6 +22,7 @@
 	var/datum/action/cooldown/dolphinman_hide/our_hide_action
 
 /datum/antagonist/slasher/dolphinman/setup_chase_music()
+	our_chase_music.volume = 75
 	our_chase_music.start_sound = null
 	our_chase_music.start_length = 1
 	our_chase_music.mid_sounds = list(

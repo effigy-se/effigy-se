@@ -7,6 +7,7 @@
 	jumpscare_icon_state = "speedrunner"
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/speedrunner/kill.ogg'
 	jumpscare_time = 1 SECONDS
+	jumpscare_volume = 50
 	chase_movespeed_mod = 0.75 // slowwww to start.
 	/// Movespeed works via negative numbers; so; uh. Awa?
 	var/current_movespeed_limit = 0

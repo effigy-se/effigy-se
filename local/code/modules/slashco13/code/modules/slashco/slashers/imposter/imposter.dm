@@ -8,6 +8,9 @@
 	var/datum/action/cooldown/fuel_disguise/fuel_shapeshift
 	var/datum/action/cooldown/mob_cooldown/jumpscare/disguised_jumpscare
 
+/datum/antagonist/slasher/imposter/setup_chase_music()
+	our_chase_music.volume = 50 // I don't want this to be default; even if the rest of the chase music vars inherit from amogus
+
 /datum/antagonist/slasher/imposter/give_slasher_abilities()
 	. = ..()
 	shapeshift_human = new

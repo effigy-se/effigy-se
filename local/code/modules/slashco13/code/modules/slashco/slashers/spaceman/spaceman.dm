@@ -6,6 +6,7 @@
 	start_with_chase = FALSE
 	jumpscare_time = 1 SECONDS
 	jumpscare_sound = 'sound/effects/adminhelp.ogg'
+	jumpscare_volume = 100 // hey; got a minute?
 	jumpscare_icon_state = "spaceman"
 	ui_name = "AntagInfoSpaceman"
 	fluff = "You're a relic from an era gone by."

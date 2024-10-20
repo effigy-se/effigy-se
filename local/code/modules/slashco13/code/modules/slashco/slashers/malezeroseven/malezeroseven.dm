@@ -5,12 +5,13 @@
 	fluff = "One of many..."
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/malezeroseven/kill.ogg'
 	jumpscare_icon_state = "malezeroseven"
+	jumpscare_volume = 75
 
 /datum/antagonist/slasher/malezeroseven/give_slasher_abilities()
 	. = ..()
 	for(var/found_npc_spawn in GLOB.slash_npc_spawns)
 		for(var/integer=1 to 8)
-			if(prob(50))
+			if(prob(25))
 				new /mob/living/basic/slasher/malezeroseven(found_npc_spawn)
 
 /datum/antagonist/slasher/malezeroseven/setup_chase_music()

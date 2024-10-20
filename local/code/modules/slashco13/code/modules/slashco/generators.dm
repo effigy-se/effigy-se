@@ -135,8 +135,8 @@
 	for(var/mob/living/potential_slasher in GLOB.alive_player_list)
 		for(var/datum/antagonist/slasher/our_slasher_found in potential_slasher?.mind?.antag_datums) // We're a slasher; notify 'em
 			if(fuel_count == SSslashco.required_fuel) // Can't check 'active' as that isn't set yet
-				potential_slasher.playsound_local(get_turf(potential_slasher), 'local/code/modules/slashco13/sound/round/generator_progress_full.ogg', 100)
+				potential_slasher.playsound_local(get_turf(potential_slasher), 'local/code/modules/slashco13/sound/round/generator_progress_full.ogg', 75)
 				continue
 			// They're making progress.. find them.
-			potential_slasher.playsound_local(get_turf(potential_slasher), 'local/code/modules/slashco13/sound/round/generator_progress.ogg', 100)
+			potential_slasher.playsound_local(get_turf(potential_slasher), 'local/code/modules/slashco13/sound/round/generator_progress.ogg', 75)
 			continue

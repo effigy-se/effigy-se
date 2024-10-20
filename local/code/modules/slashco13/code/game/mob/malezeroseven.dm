@@ -28,7 +28,7 @@
 /datum/action/cooldown/malezeroseven_to_ghost/Activate(atom/target)
 	. = ..()
 	var/mob/dead/observer/spooky_mf = owner.ghostize(TRUE)
-	playsound(owner, pick('local/code/modules/slashco13/sound/slasher/malezeroseven/unpossess1.ogg', 'local/code/modules/slashco13/sound/slasher/malezeroseven/unpossess2.ogg'), 100)
+	playsound(owner, pick('local/code/modules/slashco13/sound/slasher/malezeroseven/unpossess1.ogg', 'local/code/modules/slashco13/sound/slasher/malezeroseven/unpossess2.ogg'), 75)
 	spooky_mf.name = "Dark Spirit of L'az-lo" // the finest mind of his generation.. come to such an end
 	spooky_mf.color = "red"
 	var/datum/action/cooldown/ghost_to_malezeroseven/become_real_again = new
@@ -59,5 +59,5 @@
 		if(istype(owner, /mob/dead/observer))
 			var/mob/dead/observer/ghostie = owner
 			ghostie.reenter_corpse()
-		playsound(our_found_malezeroseven, 'local/code/modules/slashco13/sound/slasher/malezeroseven/possess.ogg', 100)
+		playsound(our_found_malezeroseven, 'local/code/modules/slashco13/sound/slasher/malezeroseven/possess.ogg', 75)
 		return

@@ -17,9 +17,15 @@
 	/// JUMPSCARE STUFF
 	// How long is the mob's jumpscare animation/sfx?
 	var/jumpscare_time = 3 SECONDS
+	// Path to the icon file for this slasher's jumpscare
 	var/jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares.dmi'
+	// Our icon state?
 	var/jumpscare_icon_state = "amogus"
+	// Sound to play while jumpscaring; if any
 	var/jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/imposter/stealthkill.ogg'
+	// How loud is our jumpscare?
+	var/jumpscare_volume = 75
+	// How long does it take to wind up again?
 	var/jumpscare_cooldown_length = 10 SECONDS
 	/// CHASE STUFF
 	// How fast do we move while chasing? Modifier
@@ -173,12 +179,12 @@
 		var/image/jumpscare = image(icon = jumpscare_icon, loc = get_turf(target), icon_state = jumpscare_icon_state, dir = SOUTH, pixel_x = -288, pixel_y = -224)
 		SET_PLANE(jumpscare, ABOVE_HUD_PLANE, target)
 		target.client.images += jumpscare
-		playsound(get_turf(target), jumpscare_sound, 75, FALSE)
+		playsound(get_turf(target), jumpscare_sound, jumpscare_volume, FALSE)
 		slasher_specific_jumpscare_effects(jumpscare, target, user) // Used for animations; mostly
 		addtimer(CALLBACK(src, PROC_REF(delete_jumpscare), target, jumpscare), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
 		addtimer(CALLBACK(src, PROC_REF(prank_em_john), target, jumpscare), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
 	else // Play pretend with it
-		playsound(get_turf(target), jumpscare_sound, 75, FALSE)
+		playsound(get_turf(target), jumpscare_sound, jumpscare_volume, FALSE)
 		addtimer(CALLBACK(src, PROC_REF(prank_em_john), target), jumpscare_time, TIMER_DELETE_ME | TIMER_CLIENT_TIME)
 
 /// Exists for subtypes to override.
