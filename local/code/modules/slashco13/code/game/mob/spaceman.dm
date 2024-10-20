@@ -13,6 +13,10 @@
 	alpha = 127.5
 	density = FALSE
 
+/mob/living/basic/slasher/spaceman/examine(mob/user)
+	. = ..()
+	. += span_warning("You should probably stop his ascension; quickly - perhaps with your hand...?")
+
 /mob/living/basic/slasher/spaceman/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	. = ..()
 	for(var/datum/antagonist/slasher/spaceman/our_slasher in mind?.antag_datums)
