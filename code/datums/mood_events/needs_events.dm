@@ -1,7 +1,7 @@
 //nutrition
 /datum/mood_event/fat
 	description = "<B>I'm so fat...</B>" //muh fatshaming
-	mood_change = -6
+	// mood_change = -6 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/too_wellfed
 	description = "I think I've eaten too much."
@@ -17,20 +17,20 @@
 
 /datum/mood_event/hungry
 	description = "I'm getting a bit hungry."
-	mood_change = -6
+	// mood_change = -6 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/starving
 	description = "I'm starving!"
-	mood_change = -10
+	// mood_change = -10 // SLASHCO 13 edit - fuck off
 
 //charge
 /datum/mood_event/supercharged
 	description = "I can't possibly keep all this power inside, I need to release some quick!"
-	mood_change = -10
+	// mood_change = -10 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/overcharged
 	description = "I feel dangerously overcharged, perhaps I should release some power."
-	mood_change = -4
+	// mood_change = -4 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/charged
 	description = "I feel the power in my veins!"
@@ -38,36 +38,36 @@
 
 /datum/mood_event/lowpower
 	description = "My power is running low, I should go charge up somewhere."
-	mood_change = -6
+	// mood_change = -6 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/decharged
 	description = "I'm in desperate need of some electricity!"
-	mood_change = -10
+	// mood_change = -10 // SLASHCO 13 edit - fuck off
 
 //Disgust
 /datum/mood_event/gross
 	description = "I saw something gross."
-	mood_change = -4
+	// mood_change = -4 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/verygross
 	description = "I think I'm going to puke..."
-	mood_change = -6
+	// mood_change = -6 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/disgusted
 	description = "Oh god, that's disgusting..."
-	mood_change = -8
+	// mood_change = -8 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/disgust/bad_smell
 	description = "I can smell something horribly decayed inside this room."
-	mood_change = -6
+	// mood_change = -6 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/disgust/nauseating_stench
 	description = "The stench of rotting carcasses is unbearable!"
-	mood_change = -12
+	// mood_change = -12 // SLASHCO 13 edit - fuck off
 
 /datum/mood_event/disgust/dirty_food
 	description = "That was too dirty to eat..."
-	mood_change = -6
+	// mood_change = -6 // SLASHCO 13 edit - fuck off
 	timeout = 4 MINUTES
 
 //Generic needs events

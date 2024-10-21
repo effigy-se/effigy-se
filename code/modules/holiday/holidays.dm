@@ -256,7 +256,7 @@
 
 /datum/holiday/april_fools/celebrate()
 	. = ..()
-	SSjob.set_overflow_role(/datum/job/clown)
+	// SSjob.set_overflow_role(/datum/job/clown) /// SLASHCO 13 EDIT
 	SSticker.login_music = 'sound/ambience/clown.ogg'
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/P = i
@@ -589,7 +589,8 @@
 	begin_month = OCTOBER
 	end_day = 2
 	end_month = NOVEMBER
-	holiday_colors = list(COLOR_MOSTLY_PURE_ORANGE, COLOR_PRISONER_BLACK)
+	// holiday_colors = list(COLOR_MOSTLY_PURE_ORANGE, COLOR_PRISONER_BLACK) SLASHCO 13 EDIT - nuh uh
+	always_celebrate = TRUE // EffigyEdit Add - SlashCo 13
 
 /datum/holiday/halloween/greet()
 	return "Have a spooky Halloween!"
