@@ -37,7 +37,7 @@
 
 /datum/dynamic_ruleset/roundstart/slashers/pre_execute(population)
 	. = ..()
-	var/slasher_scaled_number = round(GLOB.alive_player_list.len * 0.1666)
+	var/slasher_scaled_number = round(GLOB.alive_player_list.len * 0.143)
 	if(slasher_scaled_number < 1)
 		slasher_scaled_number = 1
 	SSslashco.maximum_slashers = slasher_scaled_number
