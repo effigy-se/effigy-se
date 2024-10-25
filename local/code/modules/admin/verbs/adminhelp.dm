@@ -278,9 +278,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		return
 	if(response["errorCode"])
 		effigy_linked = LINK_FAIL
-		log_effigy_api("ERROR: [response["errorCode"]] received for ticket [id]")
-		message_admins(span_boldwarning("Effigy Services Error: [response["errorCode"]] received for ticket [id]"))
-		to_chat(usr, SPAN_BOX_ALERT(RED, "Effigy Services Error: [response["errorCode"]]    Please report to staff."), MESSAGE_TYPE_SYSTEM)
+		log_effigy_api("ERROR: Ticket [id] received API response [response["errorCode"]] [response["errorMessage"]]")
+		message_admins(span_boldwarning("Effigy Game Services: Ticket ID [id] received API response [response["errorCode"]] [response["errorMessage"]]."))
+		to_chat(usr, SPAN_BOX_ALERT(RED, "Effigy Game Services error: Ticket ID received API response [response["errorCode"]]."), MESSAGE_TYPE_SYSTEM)
 		return
 	effigy_linked = LINK_SUCCESS
 	effigy_ticket_id = response["id"]
