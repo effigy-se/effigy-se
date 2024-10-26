@@ -66,8 +66,12 @@
 /datum/action/cooldown/rng_sacrifice
 	name = "RNG Sacrifice"
 	desc = "Ascend to a higher phase; should you have walked for long enough."
-	button_icon = 'icons/mob/actions/actions_spells.dmi'
-	button_icon_state = "transformslime"
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "rng_sacrifice"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/rng_sacrifice/Activate(atom/target_atom)

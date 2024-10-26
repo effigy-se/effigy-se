@@ -92,8 +92,12 @@
 /datum/action/cooldown/spaceman_manifest
 	name = "Manifest"
 	desc = "Root yourself in place; and pray none of your prey find you."
-	button_icon = 'icons/mob/actions/actions_spells.dmi'
-	button_icon_state = "statue"
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "manifest"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/spaceman_manifest/Activate(atom/target)

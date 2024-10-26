@@ -55,8 +55,12 @@
 /datum/action/cooldown/dolphinman_hide
 	name = "Hide"
 	desc = "Either hide yourself or break your hiding early."
-	button_icon = 'icons/mob/actions/actions_spells.dmi'
-	button_icon_state = "jaunt"
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "hide"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/dolphinman_hide/Activate(atom/target)

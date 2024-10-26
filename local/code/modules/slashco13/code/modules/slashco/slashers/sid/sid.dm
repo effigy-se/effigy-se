@@ -38,8 +38,12 @@
 /datum/action/cooldown/toggle_sid_gun
 	name = "Toggle Gun"
 	desc = "Take out - or put away - your gun; if eligible."
-	button_icon = 'icons/mob/actions/actions_spells.dmi'
-	button_icon_state = "bolt_action"
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "toggle_gun"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/toggle_sid_gun/Activate(atom/target_atom)

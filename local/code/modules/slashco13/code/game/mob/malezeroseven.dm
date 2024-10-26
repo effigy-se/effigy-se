@@ -21,8 +21,12 @@
 /datum/action/cooldown/malezeroseven_to_ghost
 	name = "Unpossess"
 	desc = "Release this vessel."
-	button_icon = 'icons/mob/actions/actions_revenant.dmi'
-	button_icon_state = "r_nightvision"
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "unpossess"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	cooldown_time = 5 SECONDS
 
 /datum/action/cooldown/malezeroseven_to_ghost/Activate(atom/target)
@@ -41,8 +45,12 @@
 /datum/action/cooldown/ghost_to_malezeroseven
 	name = "Possess"
 	desc = "Take a selected vessel."
-	button_icon = 'icons/mob/actions/actions_revenant.dmi'
-	button_icon_state = "r_transmit"
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "possess"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	cooldown_time = 5 SECONDS
 	click_to_activate = TRUE
 

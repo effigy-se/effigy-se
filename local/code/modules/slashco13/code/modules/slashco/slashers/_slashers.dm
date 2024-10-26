@@ -142,7 +142,12 @@
 	name = "Shift"
 	desc = "Shifts you to just outside the station; ready to hunt anew..."
 	sound = 'sound/magic/Repulse.ogg'
-	button_icon_state = "lightning"
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "carpspawn"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	spell_requirements = NONE
 	cooldown_time = 2 MINUTES
 
@@ -208,6 +213,12 @@
 /datum/action/cooldown/mob_cooldown/jumpscare
 	name = "Kill"
 	desc = "Attack and kill your target; if you're in proximity."
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "kill"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	click_to_activate = TRUE
 	shared_cooldown = NONE
 	cooldown_time = /datum/antagonist/slasher::jumpscare_cooldown_length
@@ -263,7 +274,12 @@
 /datum/action/cooldown/spell/slasher_chase
 	name = "Chase"
 	desc = "Begin a chase with your prey."
-	button_icon_state = "blink"
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "chase"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	spell_requirements = NONE
 	cooldown_time = 3 MINUTES
 
@@ -312,6 +328,12 @@
 /datum/action/cooldown/spell/aoe/knock/slasher
 	name = "Slasher's Knock"
 	sound = null
+	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	background_icon_state = "bg_slasher"
+	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
+	button_icon_state = "knock"
+	overlay_icon = 'local/icons/mob/actions/backgrounds.dmi'
+	overlay_icon_state = "bg_slasher_border"
 	cooldown_time = 1 SECONDS
 	invocation = null
 	invocation_type = INVOCATION_NONE
