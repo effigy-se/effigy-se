@@ -44,7 +44,7 @@
 
 /datum/action/cooldown/ghost_to_malezeroseven
 	name = "Possess"
-	desc = "Take a selected vessel."
+	desc = "Select a vessel via clicking on them; and you shall possess them immediately."
 	background_icon = 'local/icons/mob/actions/backgrounds.dmi'
 	background_icon_state = "bg_slasher"
 	button_icon = 'local/icons/mob/actions/actions_slashers.dmi'
