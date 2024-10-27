@@ -4,6 +4,7 @@
 	start_with_chase = FALSE
 	ui_name = "AntagInfoImposter"
 	fluff = "You're the one amongst them."
+	jumpscare_volume = 50
 	var/datum/action/cooldown/spell/shapeshift/imposter/shapeshift_human
 	var/datum/action/cooldown/fuel_disguise/fuel_shapeshift
 	var/datum/action/cooldown/mob_cooldown/jumpscare/disguised_jumpscare
