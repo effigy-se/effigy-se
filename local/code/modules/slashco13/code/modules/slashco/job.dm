@@ -44,6 +44,7 @@
 	ears = null
 	shoes = /obj/item/clothing/shoes/workboots
 	l_pocket = /obj/item/flashlight
+	r_pocket = /obj/item/toy/crayon/spraycan
 
 /*
 	SLASHER
