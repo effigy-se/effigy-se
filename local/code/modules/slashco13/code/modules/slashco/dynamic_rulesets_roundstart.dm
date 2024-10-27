@@ -22,7 +22,7 @@
 	if (isnull(winner))
 		return
 
-	if(winner == TRUE)
+	if(winner == TRUE && !SSslashco.bypass_failstate)
 		GLOB.revolutionary_win = TRUE // we can just hijack the revolution victory lol
 		for(var/mob/target in GLOB.player_list)
 			if(!isnewplayer(target))
