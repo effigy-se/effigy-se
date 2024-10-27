@@ -10,6 +10,9 @@
 	scaling_cost = 20
 	flags = ONLY_RULESET
 	var/first_run = TRUE // race condition fuckery
+	/// SLASHER SCALING ///
+	/// What's the maximum amount of Slashers? Defaults to 1; but scales +1 for every 6 players
+	var/maximum_slashers = 1
 
 /datum/dynamic_ruleset/roundstart/slashers/rule_process()
 	if(first_run)
@@ -40,8 +43,8 @@
 	var/slasher_scaled_number = round(GLOB.alive_player_list.len * 0.143)
 	if(slasher_scaled_number < 1)
 		slasher_scaled_number = 1
-	SSslashco.maximum_slashers = slasher_scaled_number
-	for (var/i in 1 to SSslashco.maximum_slashers)
+	maximum_slashers = slasher_scaled_number
+	for (var/i in 1 to maximum_slashers)
 		var/got_one = FALSE // prevents game resets so long as there's at least ONE slasher
 		if(candidates.len <= 0 && !got_one) // This shouldn't happen; the round is bricked. Restart
 			to_chat(world,span_announce("Restarting the server - no valid Slashers!"))
