@@ -68,4 +68,11 @@
 			var/mob/dead/observer/ghostie = owner
 			ghostie.reenter_corpse()
 		playsound(our_found_malezeroseven, 'local/code/modules/slashco13/sound/slasher/malezeroseven/possess.ogg', 75)
+		our_found_malezeroseven.can_jumpscare = FALSE
+		addtimer(CALLBACK(src, PROC_REF(restore_jumpscare), our_found_malezeroseven), 1 SECONDS)
 		return
+
+/datum/action/cooldown/ghost_to_malezeroseven/proc/restore_jumpscare(mob/living/basic/slasher/malezeroseven/our_slasher)
+	if(!istype(our_slasher))
+		return
+	our_slasher.can_jumpscare = TRUE

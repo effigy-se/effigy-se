@@ -10,9 +10,11 @@
 /datum/antagonist/slasher/malezeroseven/give_slasher_abilities()
 	. = ..()
 	for(var/found_npc_spawn in GLOB.slash_npc_spawns)
-		for(var/integer=1 to 8)
-			if(prob(25))
+		if(prob(15))
+			for(var/integer=1 to 2)
 				new /mob/living/basic/slasher/malezeroseven(found_npc_spawn)
+		else
+			new /mob/living/basic/slasher/malezeroseven(found_npc_spawn)
 
 /datum/antagonist/slasher/malezeroseven/setup_chase_music()
 	our_chase_music.start_sound = 'local/code/modules/slashco13/sound/slasher/malezeroseven/chasemusic/01ChaseMusic.ogg'
