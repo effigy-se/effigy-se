@@ -141,10 +141,10 @@ SUBSYSTEM_DEF(dynamic)
 	var/random_event_hijack_maximum = 18 MINUTES
 
 	/// What is the lower bound of when the roundstart announcement is sent out?
-	var/waittime_l = 600
+	var/waittime_l = 120 // SLASHCO 13 EDIT - Original: 600
 
 	/// What is the higher bound of when the roundstart announcement is sent out?
-	var/waittime_h = 900 // EffigyEdit Change - Original: 1800
+	var/waittime_h = 120 // SLASHCO 13 EDIT - Original: 1800 (Effigy: 900)
 
 	/// A number between 0 and 100. The maximum amount of threat allowed to generate.
 	var/max_threat_level = 100
