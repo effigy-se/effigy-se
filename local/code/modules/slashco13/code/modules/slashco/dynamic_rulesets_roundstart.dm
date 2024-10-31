@@ -40,24 +40,26 @@
 
 /datum/dynamic_ruleset/roundstart/slashers/pre_execute(population)
 	. = ..()
-	var/slasher_scaled_number = round(GLOB.alive_player_list.len * 0.143)
+	var/slasher_scaled_number = floor(population * 0.143)
 	if(slasher_scaled_number < 1)
 		slasher_scaled_number = 1
 	maximum_slashers = slasher_scaled_number
+	var/got_one = FALSE // prevents game resets so long as there's at least ONE slasher
 	for (var/i in 1 to maximum_slashers)
-		var/got_one = FALSE // prevents game resets so long as there's at least ONE slasher
 		if(candidates.len <= 0 && !got_one) // This shouldn't happen; the round is bricked. Restart
 			to_chat(world,span_announce("Restarting the server - no valid Slashers!"))
 			GLOB.revolutionary_win = TRUE // it's just that easy chief
 			break
+		got_one = TRUE
 		var/mob/M = pick_n_take(candidates)
+		if(!M)
+			break
 		assigned += M.mind
 		M.mind.restricted_roles = restricted_roles
 		M.mind.special_role = ROLE_SLASHER
 		GLOB.pre_setup_antags += M.mind
 		to_chat(M, span_warning("You have been chosen to become a Slasher."))
 		to_chat(M, span_warning("You have 60 seconds to look busy before you respawn..."))
-		got_one = TRUE
 	return TRUE
 
 /datum/dynamic_ruleset/roundstart/slashers/execute()
