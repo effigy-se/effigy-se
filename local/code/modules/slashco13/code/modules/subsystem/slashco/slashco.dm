@@ -58,6 +58,9 @@ SUBSYSTEM_DEF(slashco)
 			CRASH("There are no possible fuel spawns!")
 		GLOB.fuelstart -= OurSheet
 		new /obj/item/stack/fuel(OurSheet)
+		for(var/obj/structure/closet/fuel_closet in get_turf(OurSheet))
+			if(!fuel_closet.opened)
+				fuel_closet.take_contents()
 	/// Handle Batteries third
 	for(var/integer=1 to maximum_present_generators)
 		for(var/workable_location in GLOB.batterystart) // yucky double for() but I couldn't think of a saner way to do this
@@ -68,6 +71,9 @@ SUBSYSTEM_DEF(slashco)
 				GLOB.batterystart -= workable_location
 				new /obj/item/stock_parts/power_store/cell/lead/double_pack(workable_location)
 				continue
+			for(var/obj/structure/closet/battery_closet in get_turf(workable_location))
+				if(!battery_closet.opened)
+					battery_closet.take_contents()
 	/// Handle Items Last
 	for(var/integer=1 to rand(minimum_items,maximum_items))
 		var/OurItem = pick(GLOB.slashitemstart)
@@ -84,6 +90,9 @@ SUBSYSTEM_DEF(slashco)
 		)
 		var/our_selection = pick(possibleslashcoitems)
 		new our_selection(OurItem)
+		for(var/obj/structure/closet/item_closet in get_turf(OurItem))
+			if(!item_closet.opened)
+				item_closet.take_contents()
 
 /datum/controller/subsystem/slashco/proc/can_call_early()
 	if(active_generators >= (required_generators * 0.5))
