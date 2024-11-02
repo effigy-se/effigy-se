@@ -28,7 +28,7 @@
 	can_jumpscare = FALSE
 	currently_cloaked = TRUE
 	density = FALSE
-	for(var/datum/antagonist/slasher/bababooey/gotcha in mind.antag_datums)
+	for(var/datum/antagonist/slasher/bababooey/gotcha in mind?.antag_datums)
 		gotcha.our_chase_attack.Remove(src)
 	RemoveElement(/datum/element/footstep, FOOTSTEP_BABABOOEY)
 	animate(src, 1 SECONDS, alpha = 127.5)
@@ -44,13 +44,13 @@
 	can_jumpscare = TRUE
 	currently_cloaked = FALSE
 	density = TRUE
-	for(var/datum/antagonist/slasher/bababooey/gotcha in mind.antag_datums)
+	for(var/datum/antagonist/slasher/bababooey/gotcha in mind?.antag_datums)
 		gotcha.our_chase_attack.Grant(src)
 	AddElement(/datum/element/footstep, FOOTSTEP_BABABOOEY)
 	animate(src, 1 SECONDS, alpha = 255)
 	playsound(get_turf(src), 'local/code/modules/slashco13/sound/slasher/bababooey/reveal.ogg', 100)
-	our_laughs.stop(FALSE)
-	our_breathing.stop(FALSE)
+	our_laughs?.stop(FALSE)
+	our_breathing?.stop(FALSE)
 
 /*
 	TOGGLE INVISIBILITY
