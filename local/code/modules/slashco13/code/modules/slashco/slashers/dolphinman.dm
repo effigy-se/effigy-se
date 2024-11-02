@@ -9,6 +9,7 @@
 
 	chase_light_range = DEFAULT_SIGHT_DISTANCE
 	chase_color = LIGHT_COLOR_BRIGHT_YELLOW
+	chase_cooldown_length = 28
 
 	/// How much banked time to do we have?
 	var/banked_time = 0
