@@ -12,7 +12,7 @@
 	/// Race Condition Workaround. Bodge. Get rid of this longterm
 	var/first_run = TRUE
 	/// SLASHER SCALING ///
-	/// What's the maximum amount of Slashers? Defaults to 1; but scales +1 for every 6 players
+	/// What's the maximum amount of Slashers? Defaults to 1; but scales +1 for every 6 players. Note that if this is VV'd it'll override the order!
 	var/maximum_slashers = 1
 	/// Have we spawned in the slashers yet?
 	var/spawned_slashers = FALSE
@@ -43,10 +43,8 @@
 
 /datum/dynamic_ruleset/roundstart/slashers/pre_execute(population)
 	. = ..()
-	var/slasher_scaled_number = floor(population * 0.143)
-	if(slasher_scaled_number < 1)
-		slasher_scaled_number = 1
-	maximum_slashers = slasher_scaled_number
+	if(maximum_slashers == initial(maximum_slashers)) // Only scale if we haven't varedited maximum_slashers.
+		maximum_slashers = handle_slasher_scaling(population)
 	var/got_one = FALSE // prevents game resets so long as there's at least ONE slasher
 	for (var/i in 1 to maximum_slashers)
 		if(candidates.len <= 0 && !got_one) // This shouldn't happen; the round is bricked. Restart
@@ -64,6 +62,13 @@
 		to_chat(M, span_warning("You have been chosen to become a Slasher."))
 		to_chat(M, span_warning("You have 60 seconds to look busy before you respawn..."))
 	return TRUE
+
+/// Offerings and Modifiers should override this proc.
+/datum/dynamic_ruleset/roundstart/slashers/proc/handle_slasher_scaling(population)
+	var/slasher_scaled_number = floor(population * 0.143)
+	if(slasher_scaled_number < 1)
+		slasher_scaled_number = 1
+	return slasher_scaled_number
 
 /datum/dynamic_ruleset/roundstart/slashers/execute()
 	if(spawned_slashers)
@@ -88,3 +93,22 @@
 		to_chat(world, span_announce("Failed to set up game - no eligible Slashers! Check your antagonist preferences - server rebooting shortly..."))
 		GLOB.revolutionary_win = TRUE
 		return FALSE
+
+/// OFFERING VARIANTS HERE ///
+// Tl;dr, in the original, offerings were lobby-voted variants on Slashco's roundflow. Modifiers. These have been made admin-only until I figure out voting lol
+
+// NIGHTMARE MODE: The scaling is inverted! Every 7th player becomes a survivor; while everyone else becomes a slasher... good luck!
+/datum/dynamic_ruleset/roundstart/slashers/nightmare
+	name = "Slashers - Nightmare Offering"
+	weight = 0 // Shouldn't roll naturally
+
+/datum/dynamic_ruleset/roundstart/slashers/nightmare/handle_slasher_scaling(population)
+	var/survivor_amount
+	if(population == 1)
+		return 1 // Shouldn't be possible without admin fuckery anyways.
+	if(population <= 7)
+		return (population - 1)
+	else
+		survivor_amount = floor((population - (round(population, 7) * 0.143)))
+	var/slasher_scaled_number = (population - survivor_amount)
+	return slasher_scaled_number
