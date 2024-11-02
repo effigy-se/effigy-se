@@ -9,10 +9,13 @@
 	antag_cap = 1
 	scaling_cost = 20
 	flags = ONLY_RULESET
-	var/first_run = TRUE // race condition fuckery
+	/// Race Condition Workaround. Bodge. Get rid of this longterm
+	var/first_run = TRUE
 	/// SLASHER SCALING ///
 	/// What's the maximum amount of Slashers? Defaults to 1; but scales +1 for every 6 players
 	var/maximum_slashers = 1
+	/// Have we spawned in the slashers yet?
+	var/spawned_slashers = FALSE
 
 /datum/dynamic_ruleset/roundstart/slashers/rule_process()
 	if(first_run)
@@ -63,8 +66,9 @@
 	return TRUE
 
 /datum/dynamic_ruleset/roundstart/slashers/execute()
+	if(spawned_slashers)
+		return TRUE // We already spawned them in earlier than anticipated thanks to someone messing with a generator; we don't need to give them a second antag datum.
 	var/list/possible_slashers = subtypesof(antag_datum)
-	var/a_bite = FALSE
 	for(var/datum/mind/new_slasher in assigned)
 		var/our_slasher_type = pick_n_take(possible_slashers)
 		if(!our_slasher_type)
@@ -77,8 +81,8 @@
 			potential_spawn = get_safe_random_station_turf() /// No carpspawns? Fuggit; random safe tile
 		new_slasher.current.forceMove(potential_spawn)
 		GLOB.pre_setup_antags -= new_slasher
-		a_bite = TRUE
-	if(a_bite)
+		spawned_slashers = TRUE // We got at least one!
+	if(spawned_slashers) // Have we found at least one slasher? Wrap up!
 		return TRUE
 	else
 		to_chat(world, span_announce("Failed to set up game - no eligible Slashers! Check your antagonist preferences - server rebooting shortly..."))

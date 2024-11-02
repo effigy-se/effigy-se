@@ -89,12 +89,21 @@
 		balloon_alert_to_viewers("Fuel Attached")
 		loaded_fuel = TRUE
 		playsound(src, 'local/code/modules/slashco13/sound/items/drop.ogg', 75)
+		do_slasher_earlyspawn_check()
 	else if(istype(O, battery_path) && loaded_battery == FALSE)
 		qdel(O)
 		balloon_alert_to_viewers("Battery Attached")
 		loaded_battery = TRUE
 		playsound(src, 'local/code/modules/slashco13/sound/items/battery_insert.ogg', 75)
+		do_slasher_earlyspawn_check()
 	update_appearance()
+
+/obj/machinery/slashco_generator/proc/do_slasher_earlyspawn_check()
+	for(var/datum/dynamic_ruleset/roundstart/slashers/found_ruleset in SSdynamic.executed_rules)
+		if(!found_ruleset.spawned_slashers)
+			found_ruleset.execute() // Early execute if someone touches the generator without slashers already in play!
+		return
+	message_admins("[ADMIN_LOOKUPFLW(src)] tried to check for slashers to earlyspawn; but the ruleset wasn't executed!")
 
 /obj/machinery/slashco_generator/update_overlays()
 	. = ..()
