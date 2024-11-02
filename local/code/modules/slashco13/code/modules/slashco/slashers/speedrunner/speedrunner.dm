@@ -99,7 +99,7 @@
 				our_slasher.our_chase_music.mid_sounds = our_slasher.phase_three_mid_music
 				our_slasher.our_chase_music.volume = 75
 				our_slasher.current_movespeed_limit = -2 // I want you to know that if there is a god he's weeping
-				owner.set_light(l_range = chase_light_range, l_color = chase_color)
+				owner.set_light(l_range = our_slasher.chase_light_range, l_color = our_slasher.chase_color)
 				owner.icon_state = "speedrunner_ascent"
 				playsound(owner, 'local/code/modules/slashco13/sound/slasher/speedrunner/rng2.ogg', 100)
 		SSevents.spawnEvent() // a LITTLE SILLY
