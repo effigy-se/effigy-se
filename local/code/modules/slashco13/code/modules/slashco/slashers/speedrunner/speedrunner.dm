@@ -9,6 +9,10 @@
 	jumpscare_time = 1 SECONDS
 	jumpscare_volume = 50
 	chase_movespeed_mod = 0.75 // slowwww to start.
+
+	chase_light_range = DEFAULT_SIGHT_DISTANCE
+	chase_color = LIGHT_COLOR_VIVID_GREEN
+
 	/// Movespeed works via negative numbers; so; uh. Awa?
 	var/current_movespeed_limit = 0
 	/// What's our current phase? Valid values are 1, 2, 3
@@ -95,6 +99,8 @@
 				our_slasher.our_chase_music.mid_sounds = our_slasher.phase_three_mid_music
 				our_slasher.our_chase_music.volume = 75
 				our_slasher.current_movespeed_limit = -2 // I want you to know that if there is a god he's weeping
+				owner.set_light(l_range = chase_light_range, l_color = chase_color)
+				owner.icon_state = "speedrunner_ascent"
 				playsound(owner, 'local/code/modules/slashco13/sound/slasher/speedrunner/rng2.ogg', 100)
 		SSevents.spawnEvent() // a LITTLE SILLY
 		our_slasher.chase_movespeed_mod = initial(our_slasher.chase_movespeed_mod)
