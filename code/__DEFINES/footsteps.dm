@@ -28,10 +28,11 @@
 #define FOOTSTEP_MOB_RUST "footstep_rust"
 #define FOOTSTEP_OBJ_MACHINE "footstep_machine"
 #define FOOTSTEP_OBJ_ROBOT "footstep_robot"
+#define FOOTSTEP_BABABOOEY "footstep_bababooey" // SLASHCO 13 BABABOOEY
+#define FOOTSTEP_BORGMIRE "footstep_borgmire" // SLASHCO 13 BORGMIRE
 #define FOOTSTEP_IMPOSTER "footstep_imposter" // SLASHCO 13 AMOGUS
-#define FOOTSTEP_PRINCESS "footstep_princess" // SLASHCO 13 AMOGUS
-#define FOOTSTEP_BORGMIRE "footstep_borgmire" // SLASHCO 13 AMOGUS
-#define FOOTSTEP_SID "footstep_sid" // SLASHCO 13 AMOGUS
+#define FOOTSTEP_PRINCESS "footstep_princess" // SLASHCO 13 PRINCESS
+#define FOOTSTEP_SID "footstep_sid" // SLASHCO 13 SID
 
 //priority defines for the footstep_override element
 #define STEP_SOUND_NO_PRIORITY 0

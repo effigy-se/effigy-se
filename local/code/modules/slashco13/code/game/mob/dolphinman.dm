@@ -2,7 +2,6 @@
 	name = "Dolphinman"
 	desc = "The Patient Slasher who waits for survivors to come to him."
 	icon_state = "dolphinman"
-	var/stupid_looping_sound_workaround_timer = 0
 
 /mob/living/basic/slasher/dolphinman/Initialize(mapload)
 	. = ..()

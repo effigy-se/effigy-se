@@ -53,16 +53,20 @@
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
 			return
 		/// SLASHCO 13 ///
+		if(FOOTSTEP_BABABOOEY)
+			footstep_sounds = list('local/code/modules/slashco13/sound/slasher/bababooey/step_01.ogg', 'local/code/modules/slashco13/sound/slasher/bababooey/step_02.ogg', 'local/code/modules/slashco13/sound/slasher/bababooey/step_03.ogg')
+			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
+			return
+		if(FOOTSTEP_BORGMIRE)
+			footstep_sounds = list('local/code/modules/slashco13/sound/slasher/borgmire/step1.ogg', 'local/code/modules/slashco13/sound/slasher/borgmire/step2.ogg', 'local/code/modules/slashco13/sound/slasher/borgmire/step3.ogg', 'local/code/modules/slashco13/sound/slasher/borgmire/step4.ogg')
+			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
+			return
 		if(FOOTSTEP_IMPOSTER)
 			footstep_sounds = list('local/code/modules/slashco13/sound/slasher/imposter/step1.ogg', 'local/code/modules/slashco13/sound/slasher/imposter/step2.ogg', 'local/code/modules/slashco13/sound/slasher/imposter/step3.ogg')
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
 			return
 		if(FOOTSTEP_PRINCESS)
 			footstep_sounds = list('local/code/modules/slashco13/sound/slasher/princess/step1.ogg', 'local/code/modules/slashco13/sound/slasher/princess/step2.ogg', 'local/code/modules/slashco13/sound/slasher/princess/step3.ogg')
-			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
-			return
-		if(FOOTSTEP_BORGMIRE)
-			footstep_sounds = list('local/code/modules/slashco13/sound/slasher/borgmire/step1.ogg', 'local/code/modules/slashco13/sound/slasher/borgmire/step2.ogg', 'local/code/modules/slashco13/sound/slasher/borgmire/step3.ogg', 'local/code/modules/slashco13/sound/slasher/borgmire/step4.ogg')
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(play_simplestep_machine))
 			return
 		if(FOOTSTEP_SID)
