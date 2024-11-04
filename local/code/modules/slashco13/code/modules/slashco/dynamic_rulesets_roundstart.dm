@@ -97,7 +97,7 @@
 /// OFFERING VARIANTS HERE ///
 // Tl;dr, in the original, offerings were lobby-voted variants on Slashco's roundflow. Modifiers. These have been made admin-only until I figure out voting lol
 
-// NIGHTMARE MODE: The scaling is inverted! Every 7th player becomes a survivor; while everyone else becomes a slasher... good luck!
+// NIGHTMARE MODE: The scaling is inverted! Every 7th player becomes a survivor; while everyone else becomes a slasher... only one generator is needed. good luck!
 /datum/dynamic_ruleset/roundstart/slashers/nightmare
 	name = "Slashers - Nightmare Offering"
 	weight = 0 // Shouldn't roll naturally
@@ -112,6 +112,11 @@
 		survivor_amount = floor((population - (round(population, 7) * 0.143)))
 	var/slasher_scaled_number = (population - survivor_amount)
 	return slasher_scaled_number
+
+/datum/dynamic_ruleset/roundstart/slashers/nightmare/pre_execute(population)
+	SSslashco.required_generators = 1
+	. = ..()
+
 
 // DUALITY MODE: Two times the slashers; double the fuel requirements for each generator. However; only one generator needs to be fuelled...
 /datum/dynamic_ruleset/roundstart/slashers/duality
