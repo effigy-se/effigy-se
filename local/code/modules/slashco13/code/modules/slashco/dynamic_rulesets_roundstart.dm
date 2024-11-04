@@ -59,6 +59,7 @@
 		M.mind.restricted_roles = restricted_roles
 		M.mind.special_role = ROLE_SLASHER
 		GLOB.pre_setup_antags += M.mind
+		M.balloon_alert(M, "check chat!")
 		to_chat(M, span_warning("You have been chosen to become a Slasher."))
 		to_chat(M, span_warning("You have 60 seconds to look busy before you respawn..."))
 	return TRUE
