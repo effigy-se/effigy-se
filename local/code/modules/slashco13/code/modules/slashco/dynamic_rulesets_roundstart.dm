@@ -112,3 +112,19 @@
 		survivor_amount = floor((population - (round(population, 7) * 0.143)))
 	var/slasher_scaled_number = (population - survivor_amount)
 	return slasher_scaled_number
+
+// DUALITY MODE: Two times the slashers; double the fuel requirements for each generator. However; only one generator needs to be fuelled...
+/datum/dynamic_ruleset/roundstart/slashers/duality
+	name = "Slashers - Duality Offering"
+	weight = 0 // Shouldn't roll naturally
+
+/datum/dynamic_ruleset/roundstart/slasher/duality/handle_slasher_scaling(population)
+	var/slasher_scaled_number = (floor(population * 0.143) * 2)
+	if(slasher_scaled_number < 2)
+		slasher_scaled_number = 2
+	return slasher_scaled_number
+
+/datum/dynamic_ruleset/roundstart/slashers/duality/pre_execute(population)
+	SSslashco.required_generators = 1
+	SSslashco.required_fuel = SSslashco.required_fuel * 2
+	. = ..()
