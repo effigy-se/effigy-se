@@ -124,7 +124,7 @@
 	name = "Slashers - Duality Offering"
 	weight = 0 // Shouldn't roll naturally
 
-/datum/dynamic_ruleset/roundstart/slasher/duality/handle_slasher_scaling(population)
+/datum/dynamic_ruleset/roundstart/slashers/duality/handle_slasher_scaling(population)
 	var/slasher_scaled_number = (floor(population * 0.143) * 2)
 	if(slasher_scaled_number < 2)
 		slasher_scaled_number = 2
