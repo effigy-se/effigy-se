@@ -2,7 +2,7 @@
 /datum/component/chasm/gas_giant/drop(atom/movable/dropped_thing)
 	. = ..()
 	if(isliving(dropped_thing))
-		for(var/area/station/medical/medbay/pod_collection/found_pod_collection_room)
+		for(var/area/station/medical/medbay/pod_collection/found_pod_collection_room in GLOB.areas)
 			var/our_pod = podspawn(list(
 				"target" = pick(get_area_turfs(found_pod_collection_room)), \
 			))
