@@ -214,8 +214,10 @@
 				continue
 			library_areas += path
 
+	/// EFFIGY EDIT ADD ///
 	if("parallax_to_use" in json)
 		parallax_to_use = json["parallax_to_use"]
+	/// EFFIGY EDIT ADD END ///
 
 #ifdef UNIT_TESTS
 	// Check for unit tests to skip, no reason to check these if we're not running tests
