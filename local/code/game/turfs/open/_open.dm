@@ -1,7 +1,6 @@
-#define GASGIANT_ATMOS_HELPER(path) \
-	##path/gas_giant {\
-		initial_gas_mix = GASGIANT_DEFAULT_ATMOS;
-	}
+#define GASGIANT_ATMOS_HELPER(path) ##path/gas_giant {\
+	initial_gas_mix = GASGIANT_DEFAULT_ATMOS; \
+}
 
 /turf/open/indestructible
 	icon = EFFIGY_TURFS_ICON_FILE
