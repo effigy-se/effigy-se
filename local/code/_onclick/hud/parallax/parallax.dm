@@ -2,14 +2,14 @@
 /datum/hud/proc/get_cached_parallax()
 	var/list/layers_to_cache = list()
 	switch(SSmapping.config.parallax_to_use)
-		if(USES_SPACE_PARALLAX) // MIMICS THE COMMENTED OUT PORTION IN THE FILE THIS IS A SATELLITE OF. Please keep it in lock-step :)
+		if("Space") // MIMICS THE COMMENTED OUT PORTION IN THE FILE THIS IS A SATELLITE OF. Please keep it in lock-step :)
 			layers_to_cache += new /atom/movable/screen/parallax_layer/layer_1(null, src)
 			layers_to_cache += new /atom/movable/screen/parallax_layer/layer_2(null, src)
 			layers_to_cache += new /atom/movable/screen/parallax_layer/planet(null, src)
 			if(SSparallax.random_layer)
 				layers_to_cache += new SSparallax.random_layer.type(null, src, FALSE, SSparallax.random_layer)
 			layers_to_cache += new /atom/movable/screen/parallax_layer/layer_3(null, src)
-		if(USES_GASGIANT_PARALLAX) // More basic behavior if we're using the gas giant parallax
+		if("Gas Giant") // More basic behavior if we're using the gas giant parallax
 			layers_to_cache += new /atom/movable/screen/parallax_layer/gas_giant_background(null, src)
 			layers_to_cache += new /atom/movable/screen/parallax_layer/gas_giant(null, src)
 			layers_to_cache += new /atom/movable/screen/parallax_layer/gas_giant/gas_layer(null, src)
