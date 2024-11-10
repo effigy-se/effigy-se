@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(macrogames)
 	var/should_perpetually_run = FALSE
 
 	/// Copy of SSjob's joinable_occupations list if a gamemode uses whitelisted_jobs.
-	var/joinable_occupations_copy = list()
+	var/list/joinable_occupations_copy = list()
 
 /datum/controller/subsystem/macrogames/Initialize()
 	if (fexists(QUEUED_GAMEMODES_FILE))
