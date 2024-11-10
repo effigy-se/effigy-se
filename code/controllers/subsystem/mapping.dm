@@ -548,6 +548,12 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		if (VM.config_max_users > 0 && players > VM.config_max_users)
 			mapvotes.Remove(map)
 			continue
+		/// EFFIGY EDIT ADD ///
+		for(var/datum/macrogame_gamemode/queued_gamemode in SSmacrogames.queued_gamemodes)
+			if(queued_gamemode.name in VM.gamemode_mapflags)
+				continue
+			mapvotes.Remove(map)
+		/// EFFIGY EDIT END ///
 
 		if(pmv)
 			mapvotes[map] = mapvotes[map]*VM.voteweight
