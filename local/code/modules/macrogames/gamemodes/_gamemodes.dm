@@ -20,8 +20,6 @@
 	var/main_menu_images = list()
 
 	// MAPPING STUFF//
-	// Does this require dedicated maps for this gamemode? If so; what mapflags does it need?
-	var/gamemode_mapflags = list()
 	// Do we ONLY run on maps with the apropriate mapflags? (IE: Not compatible with automapper tweaks?)
 	var/requires_mapflags = FALSE
 
@@ -37,7 +35,7 @@
 
 // Override to replace the checks needed to see if you can run any given gamemode this round.
 /datum/macrogame_gamemode/proc/do_can_run_checks()
-	if((!SSticker.HasRoundStarted() || can_be_run_midround) && (!requires_mapflags || SSmapping.config))
+	if((!SSticker.HasRoundStarted() || can_be_run_midround) && (!requires_mapflags || (name in SSmapping.config?.gamemode_mapflags)))
 		return TRUE
 	return FALSE
 

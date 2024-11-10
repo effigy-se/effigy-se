@@ -52,6 +52,7 @@
 	var/load_all_away_missions = FALSE
 
 	var/parallax_to_use = USES_SPACE_PARALLAX // EFFIGY EDIT ADD
+	var/gamemode_mapflags // EFFIGY EDIT ADD
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -217,6 +218,8 @@
 	/// EFFIGY EDIT ADD ///
 	if("parallax_to_use" in json)
 		parallax_to_use = json["parallax_to_use"]
+	if("gamemode_mapflags" in json)
+		gamemode_mapflags = json["gamemode_mapflags"]
 	/// EFFIGY EDIT ADD END ///
 
 #ifdef UNIT_TESTS
