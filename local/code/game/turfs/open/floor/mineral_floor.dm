@@ -4,3 +4,7 @@
 
 /turf/open/floor/mineral/titanium/blue/accessible/south
 	icon_state = "titanium_accessible_south"
+
+GASGIANT_ATMOS_HELPER(/turf/open/floor/mineral/plastitanium)
+
+GASGIANT_ATMOS_HELPER(/turf/open/floor/mineral/plastitanium/red)

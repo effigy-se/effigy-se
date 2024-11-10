@@ -1,3 +1,7 @@
+/// EFFIGY EDIT BEGIN ///
+#define USES_SPACE_PARALLAX "Space"
+#define USES_GASGIANT_PARALLAX "Gas Giant"
+/// EFFIGY EDIT END ///
 //This file is used to contain unique properties of every map, and how we wish to alter them on a per-map basis.
 //Use JSON files that match the datum layout and you should be set from there.
 //Right now, we default to MetaStation to ensure something does indeed load by default.
@@ -46,6 +50,8 @@
 
 	/// Boolean that tells SSmapping to load all away missions in the codebase.
 	var/load_all_away_missions = FALSE
+
+	var/parallax_to_use = USES_SPACE_PARALLAX // EFFIGY EDIT ADD
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -208,6 +214,11 @@
 				continue
 			library_areas += path
 
+	/// EFFIGY EDIT ADD ///
+	if("parallax_to_use" in json)
+		parallax_to_use = json["parallax_to_use"]
+	/// EFFIGY EDIT ADD END ///
+
 #ifdef UNIT_TESTS
 	// Check for unit tests to skip, no reason to check these if we're not running tests
 	for(var/path_as_text in json["ignored_unit_tests"])
@@ -231,3 +242,8 @@
 
 /datum/map_config/proc/MakeNextMap()
 	return config_filename == PATH_TO_NEXT_MAP_JSON || fcopy(config_filename, PATH_TO_NEXT_MAP_JSON)
+
+/// EFFIGY EDIT BEGIN ///
+#undef USES_SPACE_PARALLAX
+#undef USES_GASGIANT_PARALLAX
+/// EFFIGY EDIT END ///
