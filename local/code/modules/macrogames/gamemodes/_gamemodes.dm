@@ -37,7 +37,7 @@
 
 // Override to replace the checks needed to see if you can run any given gamemode this round.
 /datum/macrogame_gamemode/proc/do_can_run_checks()
-	if(!SSticker.HasRoundStarted() || can_be_run_midround)
+	if((!SSticker.HasRoundStarted() || can_be_run_midround) && (!requires_mapflags || SSmapping.config))
 		return TRUE
 	return FALSE
 
