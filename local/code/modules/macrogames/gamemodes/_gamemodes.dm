@@ -50,8 +50,6 @@
 		blacklist_events()
 	if(whitelisted_jobs)
 		whitelist_jobs()
-	if(rulesets_to_force)
-		force_rulesets()
 
 /// If main_menu_images is set; picks an image and changes the title screen to show it.
 /// If replacement_splash_html is set; changes the title screen HTML to the splash txt.
@@ -77,5 +75,3 @@
 		if(found_job in whitelisted_jobs)
 			continue
 		SSjob.joinable_occupations -= found_job
-
-/// FORCE THOSE RULESETS...
