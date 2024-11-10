@@ -380,6 +380,11 @@ GLOBAL_VAR(tracy_log)
 
 	game_state = (CONFIG_GET(number/extreme_popcap) && players >= CONFIG_GET(number/extreme_popcap)) //tells the hub if we are full
 
+	// EFFIGY EDIT BEGIN //
+	for(var/datum/macrogame_gamemode/found_gamemode in SSmacrogames.running_gamemodes)
+		features += found_gamemode.name
+	// EFFIGY EDIT END //
+
 	if (!host && hostedby)
 		features += "hosted by <b>[hostedby]</b>"
 

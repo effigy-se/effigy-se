@@ -1,5 +1,3 @@
-#define SHOG_TODO to_chat(world, span_bold("WIP PROC USED!!!"))
-
 /// We handle gameplay logic on the datum level rather than on SSMacrogames to allow for modularity
 /datum/macrogame_gamemode
 	var/name = "Untitled Gamemode"
@@ -16,6 +14,8 @@
 	// What events should we prevent from running?
 	var/blacklisted_events = list()
 
+	// The Splash HTML we want to use for this gamemode, if any. NULL Uses codebase default.
+	var/replacement_splash_html
 	// Possible main menu images for this gamemode.
 	var/main_menu_images = list()
 
@@ -33,13 +33,13 @@
 		SSmacrogames.running_gamemodes += src
 		do_gamemode_setup()
 	else
-		SSmacgrogames.queued_gamemodes += src
+		SSmacrogames.queued_gamemodes += src
 
 // Override to replace the checks needed to see if you can run any given gamemode this round.
 /datum/macrogame_gamemode/proc/do_can_run_checks()
 	if(!SSticker.HasRoundStarted() || can_be_run_midround)
 		return TRUE
-
+	return FALSE
 
 // The 'master' gamemode logic runthrough; to keep things relatively simple.
 /datum/macrogame_gamemode/proc/do_gamemode_setup()
@@ -47,6 +47,9 @@
 
 
 // If main_menu_images is set; picks an image and changes the title screen to show it. Override for more specific edits.
-// TODO: need to actually write this. This should also probably handle automatically changing the tagline; but that SHOULD NOT be enshrined in code and should be configurable
-/datum/macrogame/gamemode/proc/handle_main_menu()
-	SHOG_TODO
+/datum/macrogame_gamemode/proc/handle_main_menu()
+	if(replacement_splash_html)
+		if(fexists("[global.config.directory]/[replacement_splash_html].txt"))
+			SStitle.title_html = file2text("[global.config.directory]/[replacement_splash_html].txt")
+	if(main_menu_images)
+		SStitle.change_title_screen(pick(main_menu_images))
