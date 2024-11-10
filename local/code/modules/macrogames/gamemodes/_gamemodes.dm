@@ -46,8 +46,8 @@
 
 // If main_menu_images is set; picks an image and changes the title screen to show it. Override for more specific edits.
 /datum/macrogame_gamemode/proc/handle_main_menu()
-	if(replacement_splash_html)
-		if(fexists("[global.config.directory]/[replacement_splash_html].txt"))
-			SStitle.title_html = file2text("[global.config.directory]/[replacement_splash_html].txt")
+	if(initial(replacement_splash_html))
+		if(fexists("[global.config.directory]/[initial(replacement_splash_html)].txt"))
+			SStitle.title_html = file2text("[global.config.directory]/[initial(replacement_splash_html)].txt")
 	if(main_menu_images)
 		SStitle.change_title_screen(pick(main_menu_images))
