@@ -51,3 +51,7 @@
 			SStitle.title_html = file2text("[global.config.directory]/[initial(replacement_splash_html)].txt")
 	if(main_menu_images)
 		SStitle.change_title_screen(pick(main_menu_images))
+
+
+// TICKING //
+/datum/macrogame_gamemode/proc/subsystem_sent_tick()

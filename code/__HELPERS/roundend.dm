@@ -291,6 +291,11 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	//Collects persistence features
 	SSpersistence.collect_data()
 	SSpersistent_paintings.save_paintings()
+	/// EFFIGY EDIT BEGIN - MACROGAMES
+	if(SSmacrogames.should_perpetually_run && SSmacrogames.running_gamemodes)
+		SSmacrogames.queued_gamemodes = SSmacrogames.running_gamemodes.Copy()
+	rustg_file_write(json_encode(SSmacrogames.queued_gamemodes), QUEUED_GAMEMODES_FILE)
+	/// EFFIGY EDIT END - MACROGAMES
 
 	//stop collecting feedback during grifftime
 	SSblackbox.Seal()
