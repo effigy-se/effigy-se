@@ -385,11 +385,18 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/emergency_reason = "\n\nNature of emergency:\n[call_reason]"
 
+	/// EFFIGY EDIT BEGIN ///
+	var/desired_gamemode_shuttle_coefficient = null
+	for(var/datum/macrogame_gamemode/found_gamemode in SSmacrogames.running_gamemodes)
+		if(found_gamemode.desired_shuttle_coefficient)
+			desired_gamemode_shuttle_coefficient = found_gamemode.desired_shuttle_coefficient
+
 	emergency.request(
 		signal_origin = signal_origin,
 		reason = html_decode(emergency_reason),
-		red_alert = (SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED)
-	)
+		red_alert = (SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED),
+		set_coefficient = desired_gamemode_shuttle_coefficient
+	) // EFFIGY EDIT: set_coeffieint set to desired_gamemode_shuttle_coefficient
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(FREQ_STATUS_DISPLAYS)
 

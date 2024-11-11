@@ -62,6 +62,17 @@
 	/// Roundstart Command Report sounds.
 	var/list/roundstart_command_report_sounds = list()
 
+	/// EMERGENCY SHUTTLE ///
+
+	/// How long do we want the emergency shuttle to take to dock at the station?
+	var/desired_emergency_dock_time
+
+	/// How long do we want the emergency shuttle to take to leave the station?
+	var/desired_emergency_escape_time
+
+	/// The engine coefficient for the emergency shuttle; if we want to force it.
+	var/desired_shuttle_coefficient
+
 /datum/macrogame_gamemode/New()
 	if(do_can_run_checks())
 		SSmacrogames.running_gamemodes += src
