@@ -33,6 +33,23 @@
 	/// Do we ONLY run on maps with the apropriate mapflags?
 	var/requires_mapflags = FALSE
 
+	/// BASEGAME OVERRIDES ///
+	/// COMMAND REPORT ///
+	/// The minimum amount of time it takes before a roundstart command report appears. Overrides SSdynamic.waittime_l
+	var/roundstart_command_report_low_waittime
+
+	/// The minimum amount of time it takes before a roundstart command report appears. Overrides SSdynamic.waittime_h
+	var/roundstart_command_report_high_waittime
+
+	/// What we replace the roundstart command report to; if anything.
+	var/roundstart_command_report_text
+
+	/// What our roundstart command title is.
+	var/roundstart_command_report_title
+
+	/// Roundstart Command Report sounds.
+	var/list/roundstart_command_report_sounds = list()
+
 /datum/macrogame_gamemode/New()
 	if(do_can_run_checks())
 		SSmacrogames.running_gamemodes += src

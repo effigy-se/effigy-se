@@ -368,7 +368,22 @@ SUBSYSTEM_DEF(dynamic)
 	else
 		if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLUE)
 			SSsecurity_level.set_level(SEC_LEVEL_BLUE, announce = FALSE)
-		priority_announce("[SSsecurity_level.current_security_level.elevating_to_announcement]\n\nA summary has been copied and printed to all communications consoles.", "Security level elevated.", ANNOUNCER_INTERCEPT, color_override = SSsecurity_level.current_security_level.announcement_color)
+		/// EFFIGY EDIT BEGIN ///
+		var/using_macrogames_announcement = FALSE
+		for(var/datum/macrogame_gamemode/found_gamemode in SSmacrogames.running_gamemodes)
+			if(found_gamemode.roundstart_command_report_text)
+				using_macrogames_announcement = TRUE
+				var/working_sound = found_gamemode?.roundstart_command_report_sounds
+				if(!working_sound)
+					working_sound = ANNOUNCER_INTERCEPT
+				var/working_title = found_gamemode?.roundstart_command_report_title
+				if(!working_title)
+					working_title = "Security level elevated."
+				priority_announce(found_gamemode.roundstart_command_report_text, working_title, working_sound, color_override = SSsecurity_level.current_security_level.announcement_color)
+				break
+		if(!using_macrogames_announcement)
+		/// EFFIGY EDIT END /// - affects the line below's indentation too; easier to mark just this much as the new code
+			priority_announce("[SSsecurity_level.current_security_level.elevating_to_announcement]\n\nA summary has been copied and printed to all communications consoles.", "Security level elevated.", ANNOUNCER_INTERCEPT, color_override = SSsecurity_level.current_security_level.announcement_color)
 #endif
 
 	return .
