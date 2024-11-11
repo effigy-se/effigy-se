@@ -373,7 +373,7 @@ SUBSYSTEM_DEF(dynamic)
 		for(var/datum/macrogame_gamemode/found_gamemode in SSmacrogames.running_gamemodes)
 			if(found_gamemode.roundstart_command_report_text)
 				using_macrogames_announcement = TRUE
-				var/working_sound = found_gamemode?.roundstart_command_report_sounds
+				var/working_sound = pick(found_gamemode?.roundstart_command_report_sounds)
 				if(!working_sound)
 					working_sound = ANNOUNCER_INTERCEPT
 				var/working_title = found_gamemode?.roundstart_command_report_title

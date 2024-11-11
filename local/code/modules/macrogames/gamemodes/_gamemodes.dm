@@ -34,7 +34,19 @@
 	var/requires_mapflags = FALSE
 
 	/// BASEGAME OVERRIDES ///
+
+
+	/// LOBBY ///
+
+	/// Player requirement! The lobby won't start the game under this many people. Should be a minimum of 1.
+	var/required_players = 1
+
+	/// The sounds we play if the lobby's delayed.
+	var/list/lobby_delay_sounds = list()
+
+
 	/// COMMAND REPORT ///
+
 	/// The minimum amount of time it takes before a roundstart command report appears. Overrides SSdynamic.waittime_l
 	var/roundstart_command_report_low_waittime
 

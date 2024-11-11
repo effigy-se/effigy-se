@@ -202,10 +202,18 @@ SUBSYSTEM_DEF(ticker)
 				tipped = TRUE
 
 			// EffigyEdit Add - Wait for players
-			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && !totalPlayersReady)
+			var/datum/macrogame_gamemode/gamemode_we_pull_vars_from = null
+			for(var/datum/macrogame_gamemode/found_gamemode in SSmacrogames.running_gamemodes)
+				if(found_gamemode.required_players)
+					gamemode_we_pull_vars_from = found_gamemode
+					break
+			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && ((!totalPlayersReady && !gamemode_we_pull_vars_from) || (gamemode_we_pull_vars_from.required_players <= totalPlayersReady)))
 				if(!launch_queued)
 					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
-					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
+					var/working_sound = 'sound/ai/default/attention.ogg'
+					if(gamemode_we_pull_vars_from?.lobby_delay_sounds)
+						working_sound = pick(gamemode_we_pull_vars_from.lobby_delay_sounds)
+					SEND_SOUND(world, sound(working_sound))
 					message_admins("Game setup delayed due to lack of players.")
 					log_game("Game setup delayed due to lack of players.")
 					launch_queued = TRUE
