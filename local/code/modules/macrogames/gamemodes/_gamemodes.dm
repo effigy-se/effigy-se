@@ -124,3 +124,11 @@
 				GLOB.dynamic_forced_roundstart_ruleset += roundstart_rules[found_ruleset.name]
 			if(MIDROUND_RULESET)
 				SSdynamic.picking_specific_rule(found_ruleset, forced = TRUE, ignore_cost = TRUE)
+
+// Can we earlycall the emergency shuttle? Override to block based on gamemode conditions. Do NOT call parent; as it'll automatically return TRUE.
+/datum/macrogame_gamemode/proc/can_earlycall()
+	return TRUE
+
+// Any effects we want to do to the communications console when the shuttle is called? Override.
+/datum/macrogame_gamemode/proc/earlycall_effects(obj/machinery/computer/communications/our_console)
+	return

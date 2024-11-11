@@ -178,11 +178,20 @@
 		if ("callShuttle")
 			if (!authenticated(user) || syndicate)
 				return
+			/// EFFIGY EDIT START ///
+			for(var/datum/macrogame_gamemode/potential_blocking_gamemode in SSmacrogames.running_gamemodes)
+				if(!potential_blocking_gamemode.can_earlycall())
+					return
+			/// EFFIGY EDIT END ///
 			var/reason = trim(params["reason"], MAX_MESSAGE_LEN)
 			if (length(reason) < CALL_SHUTTLE_REASON_LENGTH)
 				return
 			SSshuttle.requestEvac(user, reason)
 			post_status("shuttle")
+			/// EFFIGY EDIT START ///
+			for(var/datum/macrogame_gamemode/gamemode_to_run_effects_with in SSmacrogames.running_gamemodes)
+				gamemode_to_run_effects_with.earlycall_effects(src)
+			/// EFFIGY EDIT END ///
 		if ("changeSecurityLevel")
 			if (!authenticated_as_silicon_or_captain(user))
 				return
