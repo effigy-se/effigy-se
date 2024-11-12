@@ -6,9 +6,6 @@
 	/// Can we run this gamemode midround?
 	var/can_be_run_midround = TRUE
 
-	/// Should we process this gamemode? Independent of forced rulesets.
-	var/should_process = FALSE
-
 	/// Should we force any dynamic rulesets?
 	var/list/rulesets_to_force = list()
 
