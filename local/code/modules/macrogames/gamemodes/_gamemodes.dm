@@ -20,7 +20,7 @@
 	var/prevent_latejoins = TRUE // SHOG TODO
 
 	/// TITLE STUFF ///
-	/// The Splash HTML we want to use for this gamemode, if any. NULL Uses codebase default.
+	/// The Splash HTML we want to use for this gamemode, if any. NULL Uses codebase default. COME AS A .TXT. THIS IS AN ATTACK VECTOR. VET WHO HAS CONFIG ACCESS.
 	var/replacement_splash_html
 	/// Possible main menu images for this gamemode.
 	var/main_menu_images = list()
@@ -56,11 +56,11 @@
 	/// The minimum amount of time it takes before a roundstart command report appears. Overrides SSdynamic.waittime_h
 	var/roundstart_command_report_high_waittime
 
+	/// What our roundstart command title is; if not default.
+	var/roundstart_command_report_title
+
 	/// What we replace the roundstart command report to; if anything.
 	var/roundstart_command_report_text
-
-	/// What our roundstart command title is.
-	var/roundstart_command_report_title
 
 	/// Roundstart Command Report sounds.
 	var/list/roundstart_command_report_sounds = list()
