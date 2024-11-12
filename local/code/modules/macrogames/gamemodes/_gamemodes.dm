@@ -36,6 +36,12 @@
 	/// BASEGAME OVERRIDES ///
 
 
+	/// MOBS ///
+
+	/// If TRUE; we set negative moodlets to have 0 effect.
+	var/anull_negative_moodles = FALSE
+
+
 	/// LOBBY ///
 
 	/// Player requirement! The lobby won't start the game under this many people. Should be a minimum of 1.
