@@ -122,6 +122,7 @@
 				/obj/item/clothing/shoes/jungleboots = 5,
 				/obj/item/clothing/shoes/jackboots/knee = 5,
 				/obj/item/clothing/shoes/jackboots/recolorable = 5,
+				/obj/item/clothing/shoes/jackboots/duckboots = 5,
 			),
 		),
 
