@@ -305,6 +305,10 @@
 
 		return
 	// EffigyEdit Add End
+	if(!wearer.incapacitated)
+		var/atom/movable/screen/inventory/hand/ui_hand = over
+		if(wearer.putItemFromInventoryInHandIfPossible(src, ui_hand.held_index))
+			add_fingerprint(usr)
 
 /obj/item/mod/control/wrench_act(mob/living/user, obj/item/wrench)
 	if(seconds_electrified && get_charge() && shock(user))
