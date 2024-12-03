@@ -298,6 +298,15 @@ const GASES = [
     label: 'Nitrium',
     color: 'brown',
   },
+  // EFFIGY CHANGE: ADDS GOBLIN GAS
+  {
+    id: 'goblin',
+    path: '/datum/gas/goblin',
+    name: 'G081N',
+    label: 'G-081-N',
+    color: 'green',
+  },
+  // EFFIGY CHANGE END: ADDS GOBLIN GAS
 ] as const;
 
 // Returns gas label based on gasId
