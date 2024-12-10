@@ -2,7 +2,7 @@
 	name = "guest entry transit tube"
 	icon = /obj/structure/transit_tube/station/dispenser/reverse::icon
 	icon_state = /obj/structure/transit_tube/station/dispenser/reverse::icon_state
-	desc = "Conveinent; all-in-one; guest dropoff, straight to the venue. The future is now; and stolen directly from your local bank."
+	desc = "A conveinent; all-in-one solution for guest dropoff, straight to the venue. The future is now; and stolen directly from your local bank."
 	prompt_name = "event venue guest"
 	uses = 0
 	deletes_on_zero_uses_left = FALSE
