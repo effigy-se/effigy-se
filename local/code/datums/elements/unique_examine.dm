@@ -244,7 +244,7 @@
 	if(ismachinery(thing))
 		return "machine"
 
-	// Strucures
+	// Structures
 	if(isstructure(thing))
 		return "structure"
 
@@ -262,26 +262,24 @@
 	switch(faction)
 		// Some role defined ones, usually granted by antag datums,
 		// so you could alternatively just use those, but anyways
-		if(ROLE_WIZARD)
-			faction_text = span_hypnophrase("the Wizard Federation")
-		if(ROLE_SYNDICATE)
-			faction_text = span_red("the Syndicate")
 		if(ROLE_ALIEN)
 			faction_text = span_alien("the alien hivemind")
+		if(FACTION_ASHWALKER)
+			faction_text = span_red("the tendril")
+		if(FACTION_CARP)
+			faction_text = span_green("space carp")
+		if(FACTION_CULT)
+			faction_text = span_cult("Nar'sie")
 		if(FACTION_HERETIC)
 			faction_text = span_hypnophrase("the Mansus")
-
-		// Some other generic factions which don't have defines and really should
-		if("cult")
-			faction_text = span_cult("Nar'sie")
-		if("pirate")
+		if(FACTION_PIRATE)
 			faction_text = span_red("the Jolly Roger")
-		if("plants")
+		if(FACTION_PLANTS)
 			faction_text = span_green("nature")
-		if("ashwalker")
-			faction_text = span_red("the tendril")
-		if("carp")
-			faction_text = span_green("space carp")
+		if(ROLE_SYNDICATE)
+			faction_text = span_red("the Syndicate")
+		if(ROLE_WIZARD)
+			faction_text = span_hypnophrase("the Wizard Federation")
 
 	return span_bold(faction_text)
 
