@@ -23,6 +23,14 @@
 	var/list/fragments = list()
 	var/can_bloodbeam = FALSE
 
+/obj/item/claymore/cutlass/luna/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/unique_examine, \
+	desc = "Corporate has this thing earmarked - someone pitched them that it's existence heralded an external dissident, and they've been quaking in their boots since. \
+	In contrast; local reaction is much more... muted - most involved with today's deployment already used to it being nearby.", \
+	desc_requirement = EXAMINE_CHECK_DEPARTMENT, \
+	requirements = DEPARTMENT_SECURITY)
+
 /obj/item/claymore/cutlass/luna/examine(mob/living/user)
 	. = ..()
 	. += span_notice("The design looks modular - it's possible you might be able to find additional pieces to attach.")

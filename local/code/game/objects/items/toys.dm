@@ -6,6 +6,15 @@
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "assistant"
 
+/obj/item/toy/faustian_doll/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/unique_examine, \
+	desc = "Corporate's put out a brief dossier on 'remnants' of the old wartime occupation Taeloth fell under, this doll \
+		being one of many the Power Recovery team ran into - and most likely, utilized. It has been determined, according to \
+		them, to have an exact 50% mortality rate.", \
+	desc_requirement = EXAMINE_CHECK_DEPARTMENT, \
+	requirements = DEPARTMENT_SECURITY)
+
 /obj/item/toy/faustian_doll/attack_self(mob/user as mob)
 	var/turf/T = find_safe_turf(zlevels=SSmapping.levels_by_trait(ZTRAIT_STATION))
 
