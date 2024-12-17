@@ -16,9 +16,6 @@
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
 #define TRAIT_MUTANT_IMMUNE "mutant_immune"
 
-/// This skillchip trait lets you see all special descriptions on items.
-#define TRAIT_SEE_ALL_DESCRIPTIONS "see_all_descriptions"
-
 //AdditionalEmotes *turf traits
 #define TRAIT_WATER_ASPECT "water_aspect"
 #define TRAIT_WEBBING_ASPECT "webbing_aspect"

@@ -1,10 +1,6 @@
-/obj/item/skillchip/job/detective_examine_knowledge
-	name = "N4H-Ledge skillchip"
-	desc = "Detective \"Excessive Database Access\" v2.03"
-	auto_traits = list(TRAIT_SEE_ALL_DESCRIPTIONS)
-	incompatibility_list = null // kinda a shitty solution but. i'm lazy
-	skill_name = "Detective Vision"
-	skill_description = "Encyclopedic knowledge of the world at large, so long as it's viewed up close."
-	skill_icon = "magnifying-glass"
-	activate_message = span_notice("You start picking up on the little cues around you...")
-	deactivate_message = span_notice("You stop paying as much attention to the world around you.")
+// Overrides a lot of the details of the satellite file since we've added additional functionality to TRAIT_DETECTIVES_TASTE
+/obj/item/skillchip/job/detectives_taste
+	desc = "Detective \"Encyclopedic Knowledge\" v1.22"
+	skill_name = "Detective's Insight"
+	skill_description = "Complete knowledge of most items; alongside the ability to deduce chemical composition via oral testing."
+

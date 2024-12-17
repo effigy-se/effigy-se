@@ -11,7 +11,7 @@
 	/// Everything we may want to check based on an examine check.
 	/// This can be a list of JOBS, FACTIONS, SKILL CHIPS, or TRAITS, or a bitflag
 	var/requirements
-	/// If TRUE, those with the detective's skillchip (TRAIT_SEE_ALL_DESCRIPTIONS) will be able to see the description regardless.
+	/// If TRUE, those with the detective's skillchip (TRAIT_DETECTIVES_TASTE) will be able to see the description regardless.
 	var/detective_sees_all = TRUE
 	/// A generic title for what we are, generated for things which hint.
 	var/what_are_we = "thing"
@@ -93,7 +93,7 @@
 	var/note_message = get_note_message(examiner)
 
 	// Check for detective skills at the very end
-	if(detective_sees_all && HAS_TRAIT(examiner, TRAIT_SEE_ALL_DESCRIPTIONS))
+	if(detective_sees_all && HAS_TRAIT(examiner, TRAIT_DETECTIVES_TASTE))
 		note_message ||= "Your [span_red("suite of innate detective skills")] has given you insight here:"
 
 	// Ghosts can see all too
