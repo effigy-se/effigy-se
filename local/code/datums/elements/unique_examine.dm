@@ -155,7 +155,7 @@
 
 			// What flag do they have that fulfills our requirements?
 			var/their_department = examiner.mind.assigned_role.departments_bitflags
-			if(!their_department in requirements)
+			if(!(their_department in requirements))
 				return
 
 			// "Your job in the cargo bay"
