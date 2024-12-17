@@ -2,6 +2,7 @@
 	name = "N4H-Ledge skillchip"
 	desc = "Detective \"Excessive Database Access\" v2.03"
 	auto_traits = list(TRAIT_SEE_ALL_DESCRIPTIONS)
+	incompatibility_list = null // kinda a shitty solution but. i'm lazy
 	skill_name = "Detective Vision"
 	skill_description = "Encyclopedic knowledge of the world at large, so long as it's viewed up close."
 	skill_icon = "magnifying-glass"
