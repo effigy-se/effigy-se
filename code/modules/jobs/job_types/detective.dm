@@ -73,7 +73,7 @@
 		)
 	implants = list(/obj/item/implant/mindshield)
 
-	skillchips = list(/obj/item/skillchip/job/detectives_taste)
+	skillchips = list(/obj/item/skillchip/job/detectives_taste, /obj/item/skillchip/job/detective_examine_knowledge) // EFFIGY EDIT - added ", /obj/item/skillchip/job/detective_examine_knowledge"
 
 /datum/outfit/job/detective/pre_equip(mob/living/carbon/human/human, visualsOnly = FALSE)
 	. = ..()
