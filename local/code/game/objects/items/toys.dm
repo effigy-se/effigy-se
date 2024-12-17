@@ -54,11 +54,25 @@
 	desc = "A tennis ball from another plane of existance. Really groovy."
 	icon_state = "tennis_rainbow"
 	inhand_icon_state = "tennis_rainbow"
-	actions_types = list(/datum/action/item_action/squeeze)		//Giving the masses easy access to unilimted honks would be annoying
+	actions_types = list(/datum/action/item_action/squeeze)		//Giving the masses easy access to unlimited honks would be annoying
 
 /obj/item/toy/tennis/rainbow/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak)
+	var/static/list/doggish_species = list(/datum/species/vulpkanin)
+
+	var/static/list/dog_trait = list(TRAIT_CANINE)
+
+	AddElement(/datum/element/unique_examine, \
+		desc = "To want the ball; or to not want the ball. That is the question.", \
+		desc_requirement = EXAMINE_CHECK_SPECIES, \
+		requirements = doggish_species)
+
+	AddElement(/datum/element/unique_examine, \
+		desc = "Holy SHIT. [span_bold("Holy. SHIT.")]", \
+		desc_requirement = EXAMINE_CHECK_TRAIT, \
+		requirements = dog_trait, \
+		hint = FALSE)
 
 /obj/item/toy/tennis/red	//da red wuns go fasta
 	name = "red tennis ball"
