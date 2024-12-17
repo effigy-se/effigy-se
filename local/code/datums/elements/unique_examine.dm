@@ -119,8 +119,8 @@
 			if(!HAS_TRAIT(examiner, TRAIT_MINDSHIELD))
 				return
 
-			// "Your innate loyalty to the North Star", not quite innate if they get implanted midround but y'know
-			return "Your [span_blue(span_bold("innate loyalty to the North Star"))] has given you insight here:"
+			// "Your innate loyalty to Nanotrasen", not quite innate if they get implanted midround but y'know
+			return "Your [span_blue(span_bold("innate loyalty to Nanotrasen"))] has given you insight here:"
 
 		// Antag datum checks
 		if(EXAMINE_CHECK_ANTAG)
@@ -154,8 +154,8 @@
 				return
 
 			// What flag do they have that fulfills our requirements?
-			var/their_department = examiner.mind.assigned_role.departments_bitflags & requirements
-			if(!their_department)
+			var/their_department = examiner.mind.assigned_role.departments_bitflags
+			if(!their_department in requirements)
 				return
 
 			// "Your job in the cargo bay"
