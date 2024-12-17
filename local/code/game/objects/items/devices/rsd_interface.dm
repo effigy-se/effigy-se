@@ -1,6 +1,6 @@
 /obj/item/rsd_interface
 	name = "RSD Phylactery"
-	desc = "A small device inserted, typically, into inert brains. As Resonance cannot persist in what's referred to as a 'vacuum', RSDs--much like the brains and CPUs they emulate--employ cerebral white noise as a foundation for Resonance to persist in otherwise dead-quiet containers.."
+	desc = "A small device inserted, typically, into inert brains. As Resonance cannot persist in what's referred to as a 'vacuum', RSDs--much like the brains and CPUs they emulate--employ cerebral white noise as a foundation for Resonance to persist in otherwise dead-quiet containers."
 	icon = 'icons/obj/medical/syringe.dmi'
 	icon_state = "implanter1"
 	inhand_icon_state = "syringe_0"

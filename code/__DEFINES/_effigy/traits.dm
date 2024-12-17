@@ -8,7 +8,6 @@
 #define TRAIT_DNR "do_not_revive" // Can't be revived without supernatural means or admin intervention
 #define TRAIT_HARD_SOLES "hard_soles" // No step on glass
 #define TRAIT_SENSITIVESNOUT "sensitive_snout" // Snout hurts when booped
-#define TRAIT_DETECTIVE "detective_ability" //Given to the detective, if they have this, they can see syndicate special descriptions.
 #define TRAIT_FREE_GHOST "free_ghost" // Can ghost and return freely with this trait
 #define GLOVES_TRAIT "gloves_trait" //Traits associated with wearing gloves
 #define QUIRK_LINGUIST "Linguist" // Extra language point.
@@ -16,6 +15,9 @@
 #define TRAIT_STICKY_FINGERS "sticky_fingers" //This is so a mob can strip items faster and picks them up after
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
 #define TRAIT_MUTANT_IMMUNE "mutant_immune"
+
+/// This skillchip trait lets you see all special descriptions on items.
+#define TRAIT_SEE_ALL_DESCRIPTIONS "see_all_descriptions"
 
 //AdditionalEmotes *turf traits
 #define TRAIT_WATER_ASPECT "water_aspect"

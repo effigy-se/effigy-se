@@ -18,6 +18,15 @@
 	name = "Sinner's Trail"
 	desc = "It's a sign. It reads; \"Sinner's Trail - Embark on a harrowing journey to the forbidden fourth cabin!\""
 
+/obj/structure/standing_sign/rimpoint/sinner_trail/Initialize(mapload)
+	. = ..()
+	var/static/list/woo_yeah_cult_yeah = list(FACTION_CULT)
+
+	AddElement(/datum/element/unique_examine, \
+		desc = "Sounds like your kind of party.", \
+		desc_requirement = EXAMINE_CHECK_FACTION, \
+		requirements = woo_yeah_cult_yeah)
+
 /obj/structure/standing_sign/rimpoint/extended_warranty
 	name = "VERY IMPORTANT"
 	desc = "It's a sign. It reads; \"Thank you for approaching our conveinent signpost! We've been trying to reach you about your \
@@ -26,6 +35,15 @@
 	uptime is only a single, conveinent call away. We make frequent trips to your sector and are available on call 24/7. Please consider promptly putting down \
 	payment for the rest of your warranty. If you cannot put down the funds promptly, please get in contact with our collections team as soon as possible. We look \
 	forward to working with you in future!\""
+
+/obj/structure/standing_sign/rimpoint/extended_warranty/Initialize(mapload)
+	. = ..()
+	var/static/list/gamers = list(/datum/species/lizard/ashwalker)
+
+	AddElement(/datum/element/unique_examine, \
+		desc = "...What the fuck is a warranty?", \
+		desc_requirement = EXAMINE_CHECK_SPECIES, \
+		requirements = gamers)
 
 /obj/structure/standing_sign/rimpoint/have_you_seen_them
 	name = "Have you seen them?"

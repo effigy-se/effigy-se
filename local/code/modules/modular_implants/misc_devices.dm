@@ -2,12 +2,19 @@
 /obj/item/nifsoft_remover
 	name = "Lopland 'Wrangler' NIF-Cutter"
 	desc = "A small device that lets the user remove NIFSofts from a NIF user"
-	special_desc = "Given the relatively recent and sudden proliferation of NIFs, their use in crime both petty and organized has skyrocketed in recent years. The existence of nanomachine-based real-time burst communication that cannot be effectively monitored or hacked into has given most PMCs cause enough for concern to invent their own devices. This one is a 'Wrangler' model NIF-Cutter, used for crudely wiping programs directly off a user's Framework.."
 	icon = 'local/icons/obj/devices.dmi'
 	icon_state = "nifsoft_remover"
 
 	///Is a disk with the corresponding NIFSoft created when said NIFSoft is removed?
 	var/create_disk = FALSE
+
+/obj/item/nifsoft_remover/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/unique_examine, \
+		desc = "Given the relatively recent and sudden proliferation of NIFs, their use in crime both petty and organized has skyrocketed in recent years. \
+		The existence of nanomachine-based real-time burst communication that cannot be effectively monitored or hacked into has given most PMCs cause enough for concern to invent their own devices. \
+		This one is a 'Wrangler' model NIF-Cutter, used for crudely wiping programs directly off a user's Framework.", \
+		desc_requirement = EXAMINE_CHECK_NONE)
 
 /obj/item/nifsoft_remover/attack(mob/living/carbon/human/target_mob, mob/living/user)
 	. = ..()
@@ -49,9 +56,18 @@
 /obj/item/nifsoft_remover/syndie
 	name = "Cybersun 'Scalpel' NIF-Cutter"
 	desc = "A modified version of a NIFSoft remover that allows the user to remove a NIFSoft and have a blank copy of the removed NIFSoft saved to a disk."
-	special_desc = "In the upper echelons of the corporate world, Nanite Implant Frameworks are everywhere. Valuable targets will almost always be in constant NIF communication with at least one or two points of contact in the event of an emergency. To bypass this unfortunate conundrum, Cybersun Industries invented the 'Scalpel' NIF-Cutter. A device no larger than a PDA, this gift to the field of neurological theft is capable of extracting specific programs from a target in five seconds or less. On top of that, high-grade programming allows for the tool to copy the specific 'soft to a disk for the wielder's own use."
 	icon_state = "nifsoft_remover_syndie"
 	create_disk = TRUE
+
+/obj/item/nifsoft_remover/syndie/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/unique_examine, \
+		desc = "In the upper echelons of the corporate world, Nanite Implant Frameworks are everywhere. \
+		Valuable targets will almost always be in constant NIF communication with at least one or two points of contact in the event of an emergency. \
+		To bypass this unfortunate conundrum, Cybersun Industries invented the 'Scalpel' NIF-Cutter. \
+		A device no larger than a PDA, this gift to the field of neurological theft is capable of extracting specific programs from a target in five seconds or less. \
+		On top of that, high-grade programming allows for the tool to copy the specific 'soft to a disk for the wielder's own use.", \
+		desc_requirement = EXAMINE_CHECK_NONE)
 
 /datum/uplink_item/device_tools/nifsoft_remover
 	name = "Cybersun 'Scalpel' NIF-Cutter"
@@ -63,7 +79,6 @@
 /obj/item/nif_repair_kit
 	name = "Cerulean NIF Regenerator"
 	desc = "A repair kit that allows for NIFs to be repaired without the use of surgery"
-	special_desc = "The effects of capitalism and industry run deep, and they run within the Nanite Implant Framework industry as well. Frameworks, complicated devices as they are, are normally locked at the firmware level to requiring specific 'approved' brands of repair paste or repair-docks. This hacked-kit has been developed by the Altspace Coven as a freeware alternative, spread far and wide throughout extra-Solarian space for quality of life for users located on the peripheries of society."
 	icon = 'local/icons/obj/devices.dmi'
 	icon_state = "repair_paste"
 	w_class = WEIGHT_CLASS_SMALL
@@ -71,6 +86,14 @@
 	var/repair_amount = 20
 	///How many times can this be used?
 	var/uses = 5
+
+/obj/item/nif_repair_kit/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/unique_examine, \
+		desc = "The effects of capitalism and industry run deep, and they run within the Nanite Implant Framework industry as well. \
+		Frameworks, complicated devices as they are, are normally locked at the firmware level to requiring specific 'approved' brands of repair paste or repair-docks. \
+		This hacked-kit has been developed by the Altspace Coven as a freeware alternative, spread far and wide throughout extra-Solarian space for quality of life for users located on the peripheries of society.", \
+		desc_requirement = EXAMINE_CHECK_NONE)
 
 /obj/item/nif_repair_kit/attack(mob/living/carbon/human/mob_to_repair, mob/living/user)
 	. = ..()
