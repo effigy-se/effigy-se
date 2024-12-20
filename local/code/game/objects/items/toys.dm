@@ -1,3 +1,17 @@
+/obj/item/toy/balloon/syndicate/Initialize(mapload)
+	. = ..()
+
+	AddElement(/datum/element/unique_examine, \
+		desc = "This MMI uploads a modified version of Asimov curated by The Syndicate. \
+			Caution should be taken while using this device - although effective, the resulting unit is loyal \
+			to The Syndicate as a whole rather than any specific cell, and may go against your directives.", \
+		desc_requirement = EXAMINE_CHECK_ANTAG, \
+		requirements = EXAMINE_SYNDICATE_ANTAGONISTS)
+
+/*
+	Effigy Content Below
+*/
+
 /// Come on, I gotta do SOME stupid reference or else it isn't funny. Plus I need to make it for later.
 /obj/item/toy/faustian_doll
 	name = "doll"
