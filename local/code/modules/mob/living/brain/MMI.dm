@@ -6,5 +6,5 @@
 			Caution should be taken while using this device - although effective, the resulting unit is loyal \
 			to The Syndicate as a whole rather than any specific cell, and may go against your directives.", \
 		desc_requirement = EXAMINE_CHECK_ANTAG, \
-		requirements = EXAMINE_SYNDICATE_ANTAGONISTS, \
+		requirements = GLOB.examine_syndicate_antag_list, \
 		hint = FALSE) // hint would give it away
