@@ -21,20 +21,3 @@
 #define EXAMINE_CHECK_TRAIT "trait"
 /// For displayind info to people of certain species. Pass a list of /datum/species typepaths.
 #define EXAMINE_CHECK_SPECIES "species"
-
-/// -- Examine group defines, used for ease of use. --
-
-/// ANTAGONISTS
-
-/// All Syndicate-Aligned Antagonists
-#define EXAMINE_SYNDICATE_ANTAGONISTS list(\
-	/datum/antagonist/battlecruiser, \
-	/datum/antagonist/brother, \
-	/datum/antagonist/malf_ai, \
-	/datum/antagonist/nukeop, \
-	/datum/antagonist/rev/head, \
-	/datum/antagonist/pirate, \
-	/datum/antagonist/spy, \
-	/datum/antagonist/syndicate_monkey, \
-	/datum/antagonist/traitor, \
-	)
