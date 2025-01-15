@@ -15,6 +15,7 @@
 	sound_environment = SOUND_AREA_TAELOTH
 	ambience_index = AMBIENCE_HOLY
 	outdoors = TRUE
+	ambient_buzz = 'local/sound/ambience/buzz/jungleloop.ogg'
 
 /area/taeloth/Initialize(mapload)
 	try_lighting()
@@ -38,6 +39,7 @@
 
 /area/taeloth/ocean
 	name = "Taeloth - Ocean"
+	ambientsounds = /area/awaymission/beach::ambientsounds
 
 /*
 	STATION CHUNKS
@@ -115,6 +117,7 @@
 
 /area/taeloth/nearstation/dormitory_concourse/interlink_dock_beach
 	name = "Interlink Dock - Beach"
+	ambientsounds = /area/awaymission/beach::ambientsounds
 
 /area/taeloth/nearstation/dormitory_concourse/sinners_trail
 	name = "Dormitory Concourse - Sinner's Trail"
@@ -256,6 +259,7 @@
 	name = "Taeloth Caves"
 	mood_bonus = -5
 	mood_message = "It doesn't feel safe, being down here..." // Makes it harder to stay in the caves over a prolonged period of time. Done for non-generated sections too; unlike the exteriors!
+	ambient_buzz = 'local/sound/ambience/buzz/caveloop.ogg'
 
 /area/taeloth/underground/try_lighting()
 	return
