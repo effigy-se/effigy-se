@@ -6,7 +6,7 @@
 		reward worth more than styling on the corporate drones is the embrace of victory. You also get on (the remains) of the \
 		wall of fame; so who's REALLY the tactical genius?", \
 		desc_requirement = EXAMINE_CHECK_ANTAG, \
-		requirements = EXAMINE_SYNDICATE_ANTAGONISTS)
+		requirements = GLOB.examine_syndicate_antag_list)
 
 /*
 	Effigy Content Below

@@ -22,12 +22,14 @@
 /// For displayind info to people of certain species. Pass a list of /datum/species typepaths.
 #define EXAMINE_CHECK_SPECIES "species"
 
-/// -- Examine group defines, used for ease of use. --
+/// -- Examine group lists, for ease of use. --
+/// If this was done upstream / nonmodularly ideally these lists would be generalized so they aren't JUST for this.
+/// It'd justify the use of GLOB more; at least
 
 /// ANTAGONISTS
 
 /// All Syndicate-Aligned Antagonists
-#define EXAMINE_SYNDICATE_ANTAGONISTS list(\
+GLOBAL_LIST_INIT(examine_syndicate_antag_list, list(
 	/datum/antagonist/battlecruiser, \
 	/datum/antagonist/brother, \
 	/datum/antagonist/malf_ai, \
@@ -37,4 +39,4 @@
 	/datum/antagonist/spy, \
 	/datum/antagonist/syndicate_monkey, \
 	/datum/antagonist/traitor, \
-	)
+	))
