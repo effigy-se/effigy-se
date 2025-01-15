@@ -15,6 +15,7 @@
 	sound_environment = SOUND_AREA_TAELOTH
 	ambience_index = AMBIENCE_HOLY
 	outdoors = TRUE
+	ambient_buzz = 'local/sound/ambience/buzz/jungleloop.ogg'
 
 /area/taeloth/Initialize(mapload)
 	try_lighting()
@@ -31,6 +32,7 @@
 /area/taeloth/hotspring
 	name = "Taeloth - Hotspring"
 	ambientsounds = list('local/sound/ambience/ambihotspring.ogg')
+	ambient_buzz = 'local/sound/ambience/buzz/watersideloop.ogg'
 	mood_bonus = 10
 	mood_message = "I feel relaxed and refreshed!"
 	min_ambience_cooldown = 2 MINUTES
@@ -38,6 +40,12 @@
 
 /area/taeloth/ocean
 	name = "Taeloth - Ocean"
+	ambient_buzz = 'local/sound/ambience/buzz/watersideloop.ogg'
+
+// Generic sections by the waterside
+/area/taeloth/waterside
+	name = "Taeloth - Waterside"
+	ambient_buzz = 'local/sound/ambience/buzz/watersideloop.ogg'
 
 /*
 	STATION CHUNKS
@@ -205,6 +213,7 @@
 /area/taeloth/nearstation/no_valids_to_hunt/ai_sat_lake
 	name = "AI Satellite - Lake"
 	icon_state = "ai"
+	ambient_buzz = 'local/sound/ambience/buzz/watersideloop.ogg'
 
 /// ARRIVALS
 /area/taeloth/nearstation/no_valids_to_hunt/arrivals_landing_zone
@@ -227,6 +236,7 @@
 /area/taeloth/nearstation/no_valids_to_hunt/bridge_lake
 	name = "Central Lake"
 	icon_state = "centralhall"
+	ambient_buzz = 'local/sound/ambience/buzz/watersideloop.ogg'
 
 /// PUBLIC
 /area/taeloth/nearstation/no_valids_to_hunt/departures_landing_zone
@@ -256,6 +266,7 @@
 	name = "Taeloth Caves"
 	mood_bonus = -5
 	mood_message = "It doesn't feel safe, being down here..." // Makes it harder to stay in the caves over a prolonged period of time. Done for non-generated sections too; unlike the exteriors!
+	ambient_buzz = 'local/sound/ambience/buzz/caveloop.ogg'
 
 /area/taeloth/underground/try_lighting()
 	return
