@@ -94,6 +94,9 @@
 /obj/structure/flora/rock/pile/jungle/large/style_3,
 /turf/open/misc/grass/jungle,
 /area/taeloth)
+"ada" = (
+/turf/open/misc/dirt/jungle/dark,
+/area/taeloth/nearstation/bridge_crossway)
 "add" = (
 /obj/structure/flora/tree/jungle/small/style_6,
 /turf/open/misc/grass/jungle,
@@ -1865,10 +1868,6 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron/white,
 /area/station/science/genetics)
-"aMF" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/catwalk_floor/iron,
-/area/station/construction/mining/aux_base)
 "aNb" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/passive_vent{
@@ -10533,8 +10532,8 @@
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
 "dOg" = (
-/obj/item/shears,
 /obj/structure/table,
+/obj/item/electropack,
 /turf/open/floor/iron/dark/small,
 /area/station/security/execution/education)
 "dOh" = (
@@ -25852,6 +25851,16 @@
 "jtj" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/table,
+/obj/item/reagent_containers/syringe/lethal/execution{
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/syringe/lethal/execution{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/syringe/lethal/execution,
+/obj/item/restraints/handcuffs{
+	pixel_y = -2
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "jtx" = (
@@ -32433,6 +32442,8 @@
 "lOU" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/west,
+/obj/structure/table,
+/obj/item/storage/backpack/duffelbag/sec/surgery,
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "lPd" = (
@@ -34307,6 +34318,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/main)
+"mxz" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/catwalk_floor/iron,
+/area/station/construction/mining/aux_base)
 "mxC" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -34515,9 +34530,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
 /area/station/security/office)
-"mAV" = (
-/turf/closed/wall/rust,
-/area/station/construction/mining/aux_base)
 "mAW" = (
 /obj/machinery/hydroponics/soil,
 /obj/machinery/light/directional/west,
@@ -35950,6 +35962,9 @@
 /obj/effect/light_emitter/podbay,
 /turf/open/water,
 /area/taeloth/nearstation/no_valids_to_hunt/bridge_lake)
+"ned" = (
+/turf/closed/wall/rust,
+/area/station/construction/mining/aux_base)
 "nef" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
@@ -36889,6 +36904,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"nww" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/open/floor/plating,
+/area/station/construction/mining/aux_base)
 "nwC" = (
 /obj/machinery/atmospherics/pipe/multiz/yellow/visible{
 	dir = 8
@@ -37012,6 +37032,7 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/closet/secure_closet/injection,
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "nyu" = (
@@ -39791,6 +39812,11 @@
 /area/station/command/heads_quarters/hop)
 "oCi" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/table,
+/obj/item/assembly/signaler{
+	pixel_x = -3;
+	pixel_y = 2
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "oCl" = (
@@ -40443,9 +40469,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat/service)
-"oNS" = (
-/turf/open/misc/dirt/jungle/dark,
-/area/taeloth/nearstation/bridge_crossway)
 "oNX" = (
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 6
@@ -59009,11 +59032,6 @@
 	},
 /turf/open/floor/iron/terracotta/herringbone,
 /area/taeloth/nearstation/gateway)
-"vqU" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/open/floor/plating,
-/area/station/construction/mining/aux_base)
 "vrz" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -103824,7 +103842,7 @@ blT
 uVj
 uVj
 tUe
-oNS
+ada
 wKe
 wKe
 wKe
@@ -111288,8 +111306,8 @@ uvx
 pRk
 tPW
 sTW
-mAV
-mAV
+ned
+ned
 sTW
 xrw
 xrw
@@ -111298,8 +111316,8 @@ sTW
 xrw
 xrw
 xrw
-mAV
-mAV
+ned
+ned
 rCE
 rCE
 rCE
@@ -111542,7 +111560,7 @@ wVL
 wVL
 dEu
 uvx
-mAV
+ned
 kNu
 gOH
 ygw
@@ -112317,7 +112335,7 @@ sTW
 xUA
 lhv
 oMY
-mAV
+ned
 dKP
 dKP
 dKP
@@ -112572,7 +112590,7 @@ uvx
 wVL
 xEn
 kDv
-aMF
+mxz
 kDv
 gPn
 rnc
@@ -112584,7 +112602,7 @@ dKP
 dKP
 dKP
 dKP
-mAV
+ned
 wKe
 wKe
 rCE
@@ -112829,7 +112847,7 @@ uvx
 wVL
 sTW
 dNW
-aMF
+mxz
 nek
 sTW
 dKP
@@ -113345,7 +113363,7 @@ gFE
 mAN
 kDv
 vDk
-vqU
+nww
 dKP
 dKP
 dKP
@@ -113598,7 +113616,7 @@ wVL
 uvx
 uvx
 uvx
-mAV
+ned
 kPg
 odM
 aJZ
@@ -113857,14 +113875,14 @@ uvx
 uvx
 sTW
 kAC
-mAV
-mAV
-mAV
+ned
+ned
+ned
 sTW
 xrw
 xrw
 xrw
-mAV
+ned
 xrw
 xrw
 xrw
@@ -176823,14 +176841,14 @@ kPv
 kPv
 wKe
 wKe
-mAV
+ned
 jFJ
 sTW
 sTW
 xrw
 xrw
 xrw
-mAV
+ned
 xrw
 xrw
 xrw
@@ -177080,7 +177098,7 @@ kPv
 kPv
 wKe
 wKe
-mAV
+ned
 jWf
 sTW
 etB
@@ -179138,7 +179156,7 @@ wKe
 wKe
 wKe
 wKe
-mAV
+ned
 etB
 etB
 etB
@@ -179148,7 +179166,7 @@ etB
 etB
 etB
 etB
-mAV
+ned
 wKe
 wKe
 wKe
@@ -179395,8 +179413,8 @@ wKe
 wKe
 wKe
 wKe
-mAV
-mAV
+ned
+ned
 xrw
 xrw
 xrw
@@ -179405,7 +179423,7 @@ xrw
 xrw
 xrw
 sTW
-mAV
+ned
 wKe
 wKe
 wKe
