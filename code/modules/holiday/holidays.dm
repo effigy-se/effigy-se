@@ -701,7 +701,7 @@
 
 /datum/holiday/xmas
 	name = CHRISTMAS
-	begin_day = 23
+	begin_day = 18
 	begin_month = DECEMBER
 	end_day = 27
 	holiday_hat = /obj/item/clothing/head/costume/santa
@@ -856,7 +856,7 @@
 		Ian.place_on_head(new /obj/item/clothing/head/helmet/space/santahat(Ian))
 
 
-// EASTER (this having it's own spot should be understandable)
+// EASTER (this having its own spot should be understandable)
 
 /datum/holiday/easter
 	name = EASTER

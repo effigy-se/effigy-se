@@ -3,17 +3,14 @@
 #define NIGHTSHIFT_RANGE_MODIFIER 0.25
 #define NIGHTSHIFT_COLOR_MODIFIER 0.15
 
-/atom
-	light_power = 1.25
-
 /obj/machinery/light
 	icon = 'local/icons/obj/lighting.dmi'
 	overlay_icon = 'local/icons/obj/lighting_overlay.dmi'
 	brightness = 7
-	fire_brightness = 9
+	//fire_brightness = 9
 	fire_colour = "#E85888"
 	bulb_colour = LIGHT_COLOR_DEFAULT
-	bulb_power = 1.2
+	bulb_power = 1.15
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
 	bulb_low_power_colour = COLOR_STRONG_BLUE
 	bulb_low_power_brightness_mul = 0.75

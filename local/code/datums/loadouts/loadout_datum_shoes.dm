@@ -66,6 +66,10 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Russian Boots"
 	item_path = /obj/item/clothing/shoes/russian
 
+/datum/loadout_item/shoes/duck_boots
+	name = "Northeastern Duck Boots"
+	item_path = /obj/item/clothing/shoes/jackboots/duckboots
+
 /*
 *	COWBOY
 */
@@ -110,6 +114,10 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Brown Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/brown
 
+/datum/loadout_item/shoes/crimson_sneakers
+	name = "Crimson Sneakers"
+	item_path = /obj/item/clothing/shoes/sneakers/crimson
+
 /datum/loadout_item/shoes/green_sneakers
 	name = "Green Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/green
@@ -129,6 +137,7 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/white_sneakers
 	name = "White Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/white
+
 
 /*
 *	LEG WRAPS

@@ -1,4 +1,4 @@
-/// EFFIGY TODO - Why do we have this when we don't actually even have temporary flavor text??
+/// EffigyEdit TODO - Why do we have this when we don't actually even have temporary flavor text??
 /mob/living/Topic(href, href_list)
 	. = ..()
 	if(href_list["temporary_flavor"])
@@ -16,7 +16,3 @@
 /mob/living/reset_pull_offsets(mob/living/pull_target, override)
 	. = ..()
 	SEND_SIGNAL(pull_target, COMSIG_LIVING_RESET_PULL_OFFSETS)
-
-
-/mob/living/add_pixel_shift_component()
-	AddComponent(/datum/component/pixel_shift)

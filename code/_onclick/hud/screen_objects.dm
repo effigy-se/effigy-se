@@ -45,8 +45,9 @@
 
 /atom/movable/screen/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
-	if(hud_owner && istype(hud_owner))
-		hud = hud_owner
+	if(isnull(hud_owner)) //some screens set their hud owners on /new, this prevents overriding them with null post atoms init
+		return
+	set_new_hud(hud_owner)
 
 /atom/movable/screen/Destroy()
 	master_ref = null
@@ -72,9 +73,24 @@
 /atom/movable/screen/proc/component_click(atom/movable/screen/component_button/component, params)
 	return
 
+///setter used to set our new hud
+/atom/movable/screen/proc/set_new_hud(datum/hud/hud_owner)
+	if(hud)
+		UnregisterSignal(hud, COMSIG_QDELETING)
+	if(isnull(hud_owner))
+		hud = null
+		return
+	hud = hud_owner
+	RegisterSignal(hud, COMSIG_QDELETING, PROC_REF(on_hud_delete))
+
 /// Returns the mob this is being displayed to, if any
 /atom/movable/screen/proc/get_mob()
 	return hud?.mymob
+
+/atom/movable/screen/proc/on_hud_delete(datum/source)
+	SIGNAL_HANDLER
+
+	set_new_hud(hud_owner = null)
 
 /atom/movable/screen/text
 	icon = null
@@ -94,7 +110,7 @@
 	if(world.time <= usr.next_move)
 		return 1
 
-	if(usr.incapacitated())
+	if(usr.incapacitated)
 		return 1
 
 	if(ismob(usr))
@@ -127,7 +143,7 @@
 	screen_loc = ui_building
 
 /atom/movable/screen/area_creator/Click()
-	if(usr.incapacitated() || (isobserver(usr) && !isAdminGhostAI(usr)))
+	if(usr.incapacitated || (isobserver(usr) && !isAdminGhostAI(usr)))
 		return TRUE
 	var/area/A = get_area(usr)
 	if(!A.outdoors)
@@ -188,7 +204,7 @@
 	if(world.time <= usr.next_move)
 		return TRUE
 
-	if(usr.incapacitated(IGNORE_STASIS))
+	if(INCAPACITATED_IGNORING(usr, INCAPABLE_STASIS))
 		return TRUE
 	if(ismecha(usr.loc)) // stops inventory actions in a mech
 		return TRUE
@@ -278,7 +294,7 @@
 		return TRUE
 	if(world.time <= user.next_move)
 		return TRUE
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return TRUE
 	if (ismecha(user.loc)) // stops inventory actions in a mech
 		return TRUE
@@ -455,7 +471,7 @@
 
 	if(world.time <= usr.next_move)
 		return TRUE
-	if(usr.incapacitated())
+	if(usr.incapacitated)
 		return TRUE
 	if(ismecha(usr.loc)) // stops inventory actions in a mech
 		return TRUE
@@ -466,8 +482,26 @@
 
 	return TRUE
 
+/atom/movable/screen/storage/cell
+
+/atom/movable/screen/storage/cell/mouse_drop_receive(atom/target, mob/living/user, params)
+	var/datum/storage/storage = master_ref?.resolve()
+
+	if (isnull(storage) || !istype(user) || storage != user.active_storage)
+		return
+
+	if (!user.can_perform_action(storage.parent, FORBID_TELEKINESIS_REACH))
+		return
+
+	if (target.loc != storage.real_location)
+		return
+
+	/// Due to items in storage ignoring transparency for click hitboxes, this only can happen if we drag onto a free cell - aka after all current contents
+	storage.real_location.contents -= target
+	storage.real_location.contents += target
+	storage.refresh_views()
+
 /atom/movable/screen/storage/corner
-	name = "storage"
 	icon_state = "storage_corner_topleft"
 
 /atom/movable/screen/storage/corner/top_right
@@ -856,9 +890,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 /atom/movable/screen/hunger/update_appearance(updates)
 	var/old_state = state
 	update_hunger_state() // Do this before we call all the other update procs
-	. = ..()
 	if(state == old_state) // Let's not be wasteful
 		return
+	. = ..()
 	if(state == HUNGER_STATE_FINE)
 		SetInvisibility(INVISIBILITY_ABSTRACT, name)
 		return
@@ -876,9 +910,10 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 		remove_filter("hunger_outline")
 
 	// Update color of the food
-	underlays -= food_image
-	food_image.color = state == HUNGER_STATE_FAT ? COLOR_DARK : null
-	underlays += food_image
+	if((state == HUNGER_STATE_FAT) != (old_state == HUNGER_STATE_FAT))
+		underlays -= food_image
+		food_image.color = state == HUNGER_STATE_FAT ? COLOR_DARK : null
+		underlays += food_image
 
 /atom/movable/screen/hunger/update_icon_state()
 	. = ..()

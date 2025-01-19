@@ -42,18 +42,18 @@
 #undef CHAT_COLOR_NORMAL
 #undef CHAT_COLOR_DARKENED
 
-#define CM_COLOR_HUE 1
-#define CM_COLOR_SATURATION 2
-#define CM_COLOR_LUMINANCE 3
+#define RUNECHAT_COLOR_HUE 1
+#define RUNECHAT_COLOR_SATURATION 2
+#define RUNECHAT_COLOR_LUMINANCE 3
 
-#define CM_COLOR_SAT_MAX 90 // 90% saturation is the default ceiling
-#define CM_COLOR_LUM_MIN 40 // 40% luminosity is the default floor
-#define CM_COLOR_LUM_MIN_GREY 35 // 35% luminosity for greys
-#define CM_COLOR_LUM_MAX_DARK_RANGE 45 // 45% luminosity for dark blues/reds/violets
+#define RUNECHAT_COLOR_SAT_MAX 90 // 90% saturation is the default ceiling
+#define RUNECHAT_COLOR_LUM_MIN 40 // 40% luminosity is the default floor
+#define RUNECHAT_COLOR_LUM_MIN_GREY 35 // 35% luminosity for greys
+#define RUNECHAT_COLOR_LUM_MAX_DARK_RANGE 45 // 45% luminosity for dark blues/reds/violets
 
-#define CM_COLOR_HUE_RANGE_LOWER 180
-#define CM_COLOR_HUE_RANGE_UPPER 350
-#define CM_COLOR_HUE_GREY 0
+#define RUNECHAT_COLOR_HUE_RANGE_LOWER 180
+#define RUNECHAT_COLOR_HUE_RANGE_UPPER 350
+#define RUNECHAT_COLOR_HUE_GREY 0
 
 /**
  * Converts a given color to comply within a smaller subset of colors to be used in runechat.
@@ -73,36 +73,36 @@
 	var/hsl_color = rgb2num(color, COLORSPACE_HSL)
 
 	// Hue / saturation / luminance
-	var/hue = hsl_color[CM_COLOR_HUE]
-	var/saturation = hsl_color[CM_COLOR_SATURATION]
-	var/luminance = hsl_color[CM_COLOR_LUMINANCE]
+	var/hue = hsl_color[RUNECHAT_COLOR_HUE]
+	var/saturation = hsl_color[RUNECHAT_COLOR_SATURATION]
+	var/luminance = hsl_color[RUNECHAT_COLOR_LUMINANCE]
 
 	// Cap the saturation at 90%
-	saturation = min(saturation, CM_COLOR_SAT_MAX)
+	saturation = min(saturation, RUNECHAT_COLOR_SAT_MAX)
 
 	// Now clamp the luminance according to the hue
 	var/processed_luminance
 
 	// There are special cases for greyscale and the red/blue/violet range
-	if(hue == CM_COLOR_HUE_GREY)
-		processed_luminance = max(luminance, CM_COLOR_LUM_MIN_GREY) // greys have a higher floor on the allowed luminance value
-	else if(CM_COLOR_HUE_RANGE_UPPER > hue > CM_COLOR_HUE_RANGE_LOWER)
-		processed_luminance = min(luminance, CM_COLOR_LUM_MAX_DARK_RANGE) // colors in the deep reds/blues/violets range will have a slightly higher luminance floor than the rest
+	if(hue == RUNECHAT_COLOR_HUE_GREY)
+		processed_luminance = max(luminance, RUNECHAT_COLOR_LUM_MIN_GREY) // greys have a higher floor on the allowed luminance value
+	else if(RUNECHAT_COLOR_HUE_RANGE_UPPER > hue > RUNECHAT_COLOR_HUE_RANGE_LOWER)
+		processed_luminance = min(luminance, RUNECHAT_COLOR_LUM_MAX_DARK_RANGE) // colors in the deep reds/blues/violets range will have a slightly higher luminance floor than the rest
 	else
-		processed_luminance = max(luminance, CM_COLOR_LUM_MIN) // everything else gets the default
+		processed_luminance = max(luminance, RUNECHAT_COLOR_LUM_MIN) // everything else gets the default
 
 	// Convert it back to a hex
 	return rgb(hue, saturation*sat_shift, processed_luminance*lum_shift, space = COLORSPACE_HSL)
 
-#undef CM_COLOR_HUE
-#undef CM_COLOR_SATURATION
-#undef CM_COLOR_LUMINANCE
+#undef RUNECHAT_COLOR_HUE
+#undef RUNECHAT_COLOR_SATURATION
+#undef RUNECHAT_COLOR_LUMINANCE
 
-#undef CM_COLOR_SAT_MAX
-#undef CM_COLOR_LUM_MIN
-#undef CM_COLOR_LUM_MIN_GREY
-#undef CM_COLOR_LUM_MAX_DARK_RANGE
+#undef RUNECHAT_COLOR_SAT_MAX
+#undef RUNECHAT_COLOR_LUM_MIN
+#undef RUNECHAT_COLOR_LUM_MIN_GREY
+#undef RUNECHAT_COLOR_LUM_MAX_DARK_RANGE
 
-#undef CM_COLOR_HUE_RANGE_LOWER
-#undef CM_COLOR_HUE_RANGE_UPPER
-#undef CM_COLOR_HUE_GREY
+#undef RUNECHAT_COLOR_HUE_RANGE_LOWER
+#undef RUNECHAT_COLOR_HUE_RANGE_UPPER
+#undef RUNECHAT_COLOR_HUE_GREY

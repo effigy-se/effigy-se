@@ -295,7 +295,7 @@
 	else
 		Knockdown(stun_duration)
 
-/mob/living/carbon/proc/help_shake_act(mob/living/carbon/helper)
+/mob/living/carbon/proc/help_shake_act(mob/living/carbon/helper, force_friendly)
 	var/nosound = FALSE // EffigyEdit Add
 	if(on_fire)
 		to_chat(helper, span_warning("You can't put [p_them()] out with just your bare hands!"))
@@ -410,7 +410,7 @@
 		else if(bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT)
 			to_chat(helper, span_warning("It feels like [src] is freezing as you hug [p_them()]."))
 
-		if(HAS_TRAIT(helper, TRAIT_FRIENDLY))
+		if(HAS_TRAIT(helper, TRAIT_FRIENDLY) || force_friendly)
 			if (helper.mob_mood.sanity >= SANITY_GREAT)
 				new /obj/effect/temp_visual/heart(loc)
 				add_mood_event("friendly_hug", /datum/mood_event/besthug, helper)
@@ -432,7 +432,10 @@
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 
 	// Shake animation
-	if (incapacitated())
+	if (incapacitated)
+		shake_up_animation()
+
+/mob/proc/shake_up_animation()
 		var/direction = prob(50) ? -1 : 1
 		animate(src, pixel_x = pixel_x + SHAKE_ANIMATION_OFFSET * direction, time = 1, easing = QUAD_EASING | EASE_OUT, flags = ANIMATION_PARALLEL)
 		animate(pixel_x = pixel_x - (SHAKE_ANIMATION_OFFSET * 2 * direction), time = 1)
@@ -452,7 +455,7 @@
 				// this way, we only visibly try to examine ourselves if we have something embedded, otherwise we'll still hug ourselves :)
 				visible_message(span_notice("[src] examines [p_them()]self."), \
 					span_notice("You check yourself for shrapnel."))
-			if(I.isEmbedHarmless())
+			if(I.is_embed_harmless())
 				to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>")
 			else
 				to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>")
@@ -582,10 +585,10 @@
 */
 /mob/living/carbon/proc/check_passout()
 	var/mob_oxyloss = getOxyLoss()
-	if(mob_oxyloss >= 50)
+	if(mob_oxyloss >= OXYLOSS_PASSOUT_THRESHOLD)
 		if(!HAS_TRAIT_FROM(src, TRAIT_KNOCKEDOUT, OXYLOSS_TRAIT))
 			ADD_TRAIT(src, TRAIT_KNOCKEDOUT, OXYLOSS_TRAIT)
-	else if(mob_oxyloss < 50)
+	else if(mob_oxyloss < OXYLOSS_PASSOUT_THRESHOLD)
 		REMOVE_TRAIT(src, TRAIT_KNOCKEDOUT, OXYLOSS_TRAIT)
 
 /mob/living/carbon/get_organic_health()
@@ -685,6 +688,12 @@
 
 /// Randomise a body part and organ of this mob
 /mob/living/carbon/proc/bioscramble(scramble_source)
+	if(!(mob_biotypes & MOB_ORGANIC))
+		return FALSE
+
+	if (HAS_TRAIT(src, TRAIT_GENELESS))
+		return FALSE
+
 	if (run_armor_check(attack_flag = BIO, absorb_text = "Your armor protects you from [scramble_source]!") >= 100)
 		return FALSE
 

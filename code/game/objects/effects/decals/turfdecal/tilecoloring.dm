@@ -162,7 +162,7 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/holiday/rainbow)
 
 TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/holiday/random)
 
-#undef TILE_DECAL_SUBTYPE_HELPER
+// #undef TILE_DECAL_SUBTYPE_HELPER // EFFIGY EDIT - Commenting out the #undefs for these so we can have modular tile decals
 
 /// Trimlines
 /obj/effect/turf_decal/trimline
@@ -335,5 +335,5 @@ TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/tram)
 
 TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/dark)
 
-#undef TRIMLINE_SUBTYPE_HELPER
-#undef DECAL_ALPHA
+// #undef TRIMLINE_SUBTYPE_HELPER // EFFIGY EDIT - Commenting out the #undefs for these so we can have modular tile decals
+// #undef DECAL_ALPHA // EFFIGY EDIT - Commenting out the #undefs for these so we can have modular tile decals

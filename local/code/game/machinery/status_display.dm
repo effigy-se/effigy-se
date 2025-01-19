@@ -72,8 +72,12 @@
 	"YOU CAN TRUST THE AI AND IT'S CYBORGS"="HONEST. WE PROMISE. 100%.", \
 	"SEEING BLUE?"="STEP OUT OF THE WATER!", \
 	"YOU CAN'T SPELL AIR"="WITHOUT I", \
-	"WE CARE ABOUT OUR EMPLOYEES"="TO A POINT"
+	"WE CARE ABOUT OUR EMPLOYEES"="TO A POINT", \
+	"MIND"="THE GAP", \
 	)
 	. = ..()
+	AddElement(/datum/element/unique_examine, \
+		desc = "These lines are set by... somebody; up in corporate. They sure are. Something.", \
+		desc_requirement = EXAMINE_CHECK_NONE)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/motivational, 32)

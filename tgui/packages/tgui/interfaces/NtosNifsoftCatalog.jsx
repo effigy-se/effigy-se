@@ -12,11 +12,10 @@ import {
 } from '../components';
 import { NtosWindow } from '../layouts';
 
-export const NtosNifsoftCatalog = (props, context) => {
-  const { act, data } = useBackend(context);
+export const NtosNifsoftCatalog = (props) => {
+  const { act, data } = useBackend();
   const { product_list = [], rewards_points, current_balance } = data;
   const [tab, setTab] = useSharedState(
-    context,
     'product_category',
     product_list[0].name,
   );
@@ -56,8 +55,8 @@ export const NtosNifsoftCatalog = (props, context) => {
   );
 };
 
-const ProductCategory = (props, context) => {
-  const { act, data } = useBackend(context);
+const ProductCategory = (props) => {
+  const { act, data } = useBackend();
   const { target_nif, paying_account, rewards_points, current_balance } = data;
   const { products } = props;
 

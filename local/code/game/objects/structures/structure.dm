@@ -12,9 +12,6 @@
 	base_icon_state = "reinforced_window"
 	canSmoothWith = SMOOTH_GROUP_WINDOW_FULLTILE
 
-/obj/structure/window
-	icon = 'local/icons/obj/directwindow.dmi'
-
 /obj/structure/bodycontainer
 	icon = 'local/icons/obj/medical/morgue.dmi'
 

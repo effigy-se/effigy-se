@@ -166,3 +166,49 @@
 
 /obj/effect/turf_decal/deep_space_three/right
 	icon_state = "ds3_right"
+
+/obj/effect/turf_decal/siding/beige
+	color = COLOR_BEIGE
+
+/obj/effect/turf_decal/siding/beige/corner
+	icon_state = "siding_plain_corner"
+
+/obj/effect/turf_decal/siding/beige/end
+	icon_state = "siding_plain_end"
+
+/obj/effect/turf_decal/siding/dark_purple
+	color = "#61466A"
+
+/obj/effect/turf_decal/siding/dark_purple/corner
+	icon_state = "siding_plain_corner"
+
+/obj/effect/turf_decal/siding/dark_purple/end
+	icon_state = "siding_plain_end"
+
+/obj/effect/turf_decal/siding/light_peach
+	color = "#FFD8A8"
+
+/obj/effect/turf_decal/siding/light_peach/corner
+	icon_state = "siding_plain_corner"
+
+/obj/effect/turf_decal/siding/light_peach/end
+	icon_state = "siding_plain_end"
+
+
+/obj/effect/turf_decal/siding/magenta_red
+	color = "#83254F"
+
+/obj/effect/turf_decal/siding/magenta_red/corner
+	icon_state = "siding_plain_corner"
+
+/obj/effect/turf_decal/siding/magenta_red/end
+	icon_state = "siding_plain_end"
+
+/obj/effect/turf_decal/siding/orange
+	color = COLOR_DARK_ORANGE
+
+/obj/effect/turf_decal/siding/orange/corner
+	icon_state = "siding_plain_corner"
+
+/obj/effect/turf_decal/siding/orange/end
+	icon_state = "siding_plain_end"

@@ -68,7 +68,17 @@
 	var/max_charge = 0
 	var/new_charge = 0
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
-		power_coefficient += capacitor.tier
+		// EffigyEdit Change - SMES throughput - Original: power_coefficient += capacitor.tier
+		switch(capacitor.tier)
+			if(1)
+				power_coefficient = 1
+			if(2)
+				power_coefficient = 2
+			if(3)
+				power_coefficient = 4
+			else
+				power_coefficient = 8
+		// EffigyEdit Change End
 	input_level_max = initial(input_level_max) * power_coefficient
 	output_level_max = initial(output_level_max) * power_coefficient
 	for(var/obj/item/stock_parts/power_store/power_cell in component_parts)
@@ -121,7 +131,7 @@
 			if(isnull(choice) \
 				|| !user.is_holding(item) \
 				|| !user.Adjacent(src) \
-				|| user.incapacitated() \
+				|| user.incapacitated \
 				|| !can_place_terminal(user, item, silent = TRUE) \
 			)
 				return
@@ -366,7 +376,7 @@
 	)
 	return data
 
-/obj/machinery/power/smes/ui_act(action, params)
+/obj/machinery/power/smes/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return

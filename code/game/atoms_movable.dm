@@ -66,7 +66,7 @@
 	/**
 	  * In case you have multiple types, you automatically use the most useful one.
 	  * IE: Skating on ice, flippers on water, flying over chasm/space, etc.
-	  * I reccomend you use the movetype_handler system and not modify this directly, especially for living mobs.
+	  * I recommend you use the movetype_handler system and not modify this directly, especially for living mobs.
 	  */
 	var/movement_type = GROUND
 
@@ -130,7 +130,7 @@
 
 /mutable_appearance/emissive_blocker/New()
 	. = ..()
-	// Need to do this here because it's overriden by the parent call
+	// Need to do this here because it's overridden by the parent call
 	color = EM_BLOCK_COLOR
 	appearance_flags = EMISSIVE_APPEARANCE_FLAGS
 
@@ -142,7 +142,7 @@
 #endif
 
 #if EMISSIVE_BLOCK_GENERIC != 0
-	#error EMISSIVE_BLOCK_GENERIC is expected to be 0 to faciliate a weird optimization hack where we rely on it being the most common.
+	#error EMISSIVE_BLOCK_GENERIC is expected to be 0 to facilitate a weird optimization hack where we rely on it being the most common.
 	#error Read the comment in code/game/atoms_movable.dm for details.
 #endif
 
@@ -230,6 +230,10 @@
 		SSspatial_grid.force_remove_from_grid(src)
 
 	LAZYNULL(client_mobs_in_contents)
+
+	// These lists cease existing when src does, so we need to clear any lua refs to them that exist.
+	DREAMLUAU_CLEAR_REF_USERDATA(vis_contents)
+	DREAMLUAU_CLEAR_REF_USERDATA(vis_locs)
 
 	. = ..()
 
@@ -633,7 +637,7 @@
 	if(!newloc || newloc == loc)
 		return
 
-	// A mid-movement... movement... occured, resolve that first.
+	// A mid-movement... movement... occurred, resolve that first.
 	RESOLVE_ACTIVE_MOVEMENT
 
 	if(!direction)
@@ -800,7 +804,7 @@
 			if (pulledby)
 				if (pulledby.currently_z_moving)
 					check_pulling(z_allowed = TRUE)
-				//dont call check_pulling() here at all if there is a pulledby that is not currently z moving
+				//don't call check_pulling() here at all if there is a pulledby that is not currently z moving
 				//because it breaks stair conga lines, for some fucking reason.
 				//it's fine because the pull will be checked when this whole proc is called by the mob doing the pulling anyways
 			else
@@ -884,9 +888,10 @@
 // Make sure you know what you're doing if you call this
 // You probably want CanPass()
 /atom/movable/Cross(atom/movable/crossed_atom)
-	. = TRUE
-	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSS, crossed_atom)
-	SEND_SIGNAL(crossed_atom, COMSIG_MOVABLE_CROSS_OVER, src)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CROSS, crossed_atom) & COMPONENT_BLOCK_CROSS)
+		return FALSE
+	if(SEND_SIGNAL(crossed_atom, COMSIG_MOVABLE_CROSS_OVER, src) & COMPONENT_BLOCK_CROSS)
+		return FALSE
 	return CanPass(crossed_atom, get_dir(src, crossed_atom))
 
 ///default byond proc that is deprecated for us in lieu of signals. do not call
@@ -931,7 +936,8 @@
 /atom/movable/Bump(atom/bumped_atom)
 	if(!bumped_atom)
 		CRASH("Bump was called with no argument.")
-	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, bumped_atom)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, bumped_atom) & COMPONENT_INTERCEPT_BUMPED)
+		return
 	. = ..()
 	if(!QDELETED(throwing))
 		throwing.finalize(hit = TRUE, target = bumped_atom)
@@ -1085,7 +1091,7 @@
 	for(var/atom/movable/location as anything in get_nested_locs(src) + src)
 		LAZYREMOVEASSOC(location.important_recursive_contents, RECURSIVE_CONTENTS_ACTIVE_STORAGE, src)
 
-///Sets the anchored var and returns if it was sucessfully changed or not.
+///Sets the anchored var and returns if it was successfully changed or not.
 /atom/movable/proc/set_anchored(anchorvalue)
 	SHOULD_CALL_PARENT(TRUE)
 	if(anchored == anchorvalue)
@@ -1428,7 +1434,15 @@
 /atom/movable/proc/CanPassThrough(atom/blocker, movement_dir, blocker_opinion)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_BE_PURE(TRUE)
-	return blocker_opinion
+
+	var/blocking_signal = SEND_SIGNAL(src, COMSIG_MOVABLE_CAN_PASS_THROUGH, blocker, movement_dir)
+	if(!blocking_signal)
+		return blocker_opinion
+
+	if(blocking_signal & COMSIG_COMPONENT_PERMIT_PASSAGE)
+		return TRUE
+	else //we have a COMSIG_COMPONENT_REFUSE_PASSAGE but like its either this or that, unlike someone wanna adds half-passing through but fuck you
+		return FALSE
 
 /// called when this atom is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /atom/movable/proc/on_exit_storage(datum/storage/master_storage)

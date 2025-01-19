@@ -11,6 +11,7 @@
 	max_integrity = 150
 	integrity_failure = 0.33
 	light_power = 1.75
+	var/current_range = 7
 	/// The camera installed into the light, if any
 	var/obj/machinery/camera/solar_camera
 
@@ -37,7 +38,8 @@
 	var/light_color =  NONSENSICAL_VALUE
 	if(!isnull(color))
 		light_color = color
-	set_light(7, light_power, light_color) // Exact range of internal cameras
+	var/new_range = SSnightshift.nightshift_active ? 4 : 7
+	set_light(new_range, light_power, light_color) // Exact range of internal cameras
 
 /obj/machinery/solarlight/screwdriver_act(mob/living/user, obj/item/I)
 	if(..())

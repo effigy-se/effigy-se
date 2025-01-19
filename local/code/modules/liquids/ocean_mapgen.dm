@@ -88,7 +88,7 @@
 	weighted_open_turf_types =  list(/turf/open/misc/ocean/rock/heavy = 1)
 	weighted_closed_turf_types =  list(/turf/closed/mineral/random/ocean = 1)
 
-	weighted_mob_spawn_list = list(/mob/living/basic/carp = 1)
+	weighted_mob_spawn_list = list(/mob/living/basic/carp/passive = 1) // Ideally we have dedicated ocean mobs longterm. As it turns out real carp were too strong now lmao
 	mob_spawn_chance = 1
 	///Note that this spawn list is also in the lavaland generator
 	weighted_feature_spawn_list = list(

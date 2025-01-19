@@ -71,6 +71,7 @@
 	. = ..()
 	if(currently_hooked)
 		context[SCREENTIP_CONTEXT_LMB] = "Reel in"
+		context[SCREENTIP_CONTEXT_RMB] = "Unhook"
 		return CONTEXTUAL_SCREENTIP_SET
 	return NONE
 
@@ -100,7 +101,7 @@
 
 /obj/item/fishing_rod/proc/consume_bait(atom/movable/reward)
 	// catching things that aren't fish or alive mobs doesn't consume baits.
-	if(isnull(reward) || isnull(bait))
+	if(isnull(reward) || isnull(bait) || HAS_TRAIT(bait, TRAIT_BAIT_UNCONSUMABLE))
 		return
 	if(isliving(reward))
 		var/mob/living/caught_mob = reward
@@ -126,9 +127,10 @@
 		return
 	//Try to move it 'till it's under the user's feet, then try to pick it up
 	if(isitem(currently_hooked))
-		step_towards(currently_hooked, get_turf(src))
-		if(currently_hooked.loc == user.loc)
-			user.put_in_inactive_hand(currently_hooked)
+		var/obj/item/item = currently_hooked
+		step_towards(item, get_turf(src))
+		if(item.loc == user.loc && (item.interaction_flags_item & INTERACT_ITEM_ATTACK_HAND_PICKUP))
+			user.put_in_inactive_hand(item)
 			QDEL_NULL(fishing_line)
 	//Not an item, so just delete the line if it's adjacent to the user.
 	else if(get_dist(currently_hooked,get_turf(src)) > 1)
@@ -212,15 +214,22 @@
 	cast_line(interacting_with, user)
 	return ITEM_INTERACT_SUCCESS
 
+/obj/item/fishing_rod/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+	return ranged_interact_with_atom_secondary(interacting_with, user, modifiers)
+
+/obj/item/fishing_rod/ranged_interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+	//Stop reeling, delete the fishing line
+	if(currently_hooked)
+		QDEL_NULL(fishing_line)
+		return ITEM_INTERACT_BLOCKING
+	return ..()
+
 /// If the line to whatever that is is clear and we're not already busy, try fishing in it
 /obj/item/fishing_rod/proc/cast_line(atom/target, mob/user)
 	if(casting || currently_hooked)
 		return
 	if(!hook)
 		balloon_alert(user, "install a hook first!")
-		return
-	if(!CheckToolReach(user, target, cast_range))
-		balloon_alert(user, "cannot reach there!")
 		return
 	if(!COOLDOWN_FINISHED(src, casting_cd))
 		return
@@ -357,7 +366,7 @@
 				return FALSE
 	return TRUE
 
-/obj/item/fishing_rod/ui_act(action, list/params)
+/obj/item/fishing_rod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return .
@@ -528,7 +537,7 @@
 	ui_description = "This rod has an infinite supply of synth-bait. Also doubles as an Experi-Scanner for fish."
 	icon_state = "fishing_rod_science"
 	reel_overlay = "reel_science"
-	bait = /obj/item/food/bait/doughball/synthetic
+	bait = /obj/item/food/bait/doughball/synthetic/unconsumable
 
 /obj/item/fishing_rod/tech/Initialize(mapload)
 	. = ..()
@@ -549,9 +558,6 @@
 /obj/item/fishing_rod/tech/examine(mob/user)
 	. = ..()
 	. += span_notice("<b>Alt-Click</b> to access the Experiment Configuration UI")
-
-/obj/item/fishing_rod/tech/consume_bait(atom/movable/reward)
-	return
 
 /obj/item/fishing_rod/tech/use_slot(slot, mob/user, obj/item/new_item)
 	if(slot == ROD_SLOT_BAIT)
@@ -578,23 +584,21 @@
 	if(owner.hook)
 		icon_state = owner.hook.icon_state
 		transform = transform.Scale(1, -1)
-	return ..()
-
-/obj/projectile/fishing_cast/Impact(atom/hit_atom)
 	. = ..()
-	owner.hook_hit(hit_atom)
-	qdel(src)
+	if(!QDELETED(src))
+		our_line = owner.create_fishing_line(src)
 
-/obj/projectile/fishing_cast/fire(angle, atom/direct_target)
+/obj/projectile/fishing_cast/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	our_line = owner.create_fishing_line(src)
+	if(blocked < 100)
+		QDEL_NULL(our_line) //we need to delete the old beam datum, otherwise it won't let you fish.
+		owner.hook_hit(target)
 
 /obj/projectile/fishing_cast/Destroy()
-	. = ..()
 	QDEL_NULL(our_line)
 	owner?.casting = FALSE
-
-
+	owner = null
+	return ..()
 
 /datum/beam/fishing_line
 	// Is the fishing rod held in left side hand

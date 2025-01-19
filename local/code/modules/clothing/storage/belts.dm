@@ -17,7 +17,7 @@
 		storage_type = /datum/storage/belt/crusader,
 		canhold = list(
 			/obj/item/storage/belt/storage_pouch,
-			// EFFIGY TODO
+			// EffigyEdit TODO
 			/*
 			/obj/item/forging/reagent_weapon/sword,
 			*/
@@ -160,5 +160,5 @@
 		/obj/item/hypospray/mkii,
 		/obj/item/reagent_containers/cup/hypovial,
 		/obj/item/storage/hypospraykit,
-		// EFFIGY TODO		/obj/item/weaponcell/medical
+		// EffigyEdit TODO		/obj/item/weaponcell/medical
 		))

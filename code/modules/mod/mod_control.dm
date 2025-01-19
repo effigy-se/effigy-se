@@ -179,7 +179,6 @@
 		qdel(deleting_atom)
 	if(core)
 		QDEL_NULL(core)
-	QDEL_NULL(wires)
 	QDEL_NULL(mod_link)
 	return ..()
 
@@ -300,12 +299,16 @@
 			return
 	// EffigyEdit Add - Fix runtime
 	if(active)
-		if(!wearer.incapacitated())
+		if(!wearer.incapacitated)
 			balloon_alert(wearer, "deactivate first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 
 		return
 	// EffigyEdit Add End
+	if(!wearer.incapacitated)
+		var/atom/movable/screen/inventory/hand/ui_hand = over
+		if(wearer.putItemFromInventoryInHandIfPossible(src, ui_hand.held_index))
+			add_fingerprint(usr)
 
 /obj/item/mod/control/wrench_act(mob/living/user, obj/item/wrench)
 	if(seconds_electrified && get_charge() && shock(user))
@@ -390,6 +393,26 @@
 			return ITEM_INTERACT_BLOCKING
 		insert_pai(user, tool)
 		return ITEM_INTERACT_SUCCESS
+	if(istype(tool, /obj/item/mod/paint))
+		var/obj/item/mod/paint/paint_kit = tool
+		if(active || activating)
+			balloon_alert(user, "suit is active!")
+			return ITEM_INTERACT_BLOCKING
+		if(LAZYACCESS(modifiers, RIGHT_CLICK)) // Right click
+			if(paint_kit.editing_mod == src)
+				return ITEM_INTERACT_BLOCKING
+			paint_kit.editing_mod = src
+			paint_kit.proxy_view = new()
+			paint_kit.proxy_view.generate_view("color_matrix_proxy_[REF(user.client)]")
+
+			paint_kit.proxy_view.appearance = paint_kit.editing_mod.appearance
+			paint_kit.proxy_view.color = null
+			paint_kit.proxy_view.display_to(user)
+			paint_kit.ui_interact(user)
+			return ITEM_INTERACT_SUCCESS
+		else // Left click
+			paint_kit.paint_skin(src, user)
+			return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/mod/module))
 		if(!open)
 			balloon_alert(user, "open the cover first!")

@@ -17,12 +17,15 @@
 
 	if(!length(C.parallax_layers_cached))
 		C.parallax_layers_cached = list()
+		/* // EFFIGY EDIT REMOVED - See new proc in /local/code/_onclick/hud/parallax/parallax.dm
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_1(null, src)
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_2(null, src)
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/planet(null, src)
 		if(SSparallax.random_layer)
 			C.parallax_layers_cached += new SSparallax.random_layer.type(null, src, FALSE, SSparallax.random_layer)
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_3(null, src)
+		*/ // EFFIGY EDIT REMOVAL END
+		C.parallax_layers_cached = get_cached_parallax() /// EFFIGYEDIT ADD - See new proc in /local/code/_onclick/hud/parallax/parallax.dm
 
 	C.parallax_layers = C.parallax_layers_cached.Copy()
 
@@ -273,9 +276,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_layer)
 
 /atom/movable/screen/parallax_layer/Initialize(mapload, datum/hud/hud_owner, template = FALSE)
 	. = ..()
-	// Parallax layers are independant of hud, they care about client
+	// Parallax layers are independent of hud, they care about client
 	// Not doing this will just create a bunch of hard deletes
-	hud = null
+	set_new_hud(hud_owner = null)
 
 	if(template)
 		return
@@ -335,7 +338,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_layer)
 /atom/movable/screen/parallax_layer/planet
 	icon_state = "planet"
 	blend_mode = BLEND_OVERLAY
-	absolute = TRUE //Status of seperation
+	absolute = TRUE //Status of separation
 	speed = 3
 	layer = 30
 

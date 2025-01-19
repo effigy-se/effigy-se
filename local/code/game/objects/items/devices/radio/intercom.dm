@@ -12,7 +12,7 @@
 
 /obj/item/radio/intercom/broadcast/Initialize(mapload, ndir, building)
 	. = ..()
-	set_frequency(FREQ_BROADCAST)
+	set_frequency(FREQ_ENTERTAINMENT)
 	set_broadcasting(TRUE)
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/broadcast, 26)
+MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/broadcast, 27)

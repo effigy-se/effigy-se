@@ -1,4 +1,4 @@
-#define SOLAR_GEN_RATE 1500
+#define SOLAR_GEN_RATE 2400 // EffigyEdit Change - Original 1500
 #define OCCLUSION_DISTANCE 20
 #define PANEL_Z_OFFSET 13
 #define PANEL_EDGE_Z_OFFSET (PANEL_Z_OFFSET - 2)
@@ -486,7 +486,7 @@
 	data["history"] = history
 	return data
 
-/obj/machinery/power/solar_control/ui_act(action, params)
+/obj/machinery/power/solar_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
