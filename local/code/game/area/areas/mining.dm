@@ -104,11 +104,6 @@
 /area/taeloth/nearstation/gateway/roof
 	name = "Gateway - Roof"
 
-
-/area/taeloth/nearstation/hop_line
-	name = "Head of Personnel's Line"
-	icon_state = "hop_office"
-
 /// DORMS
 
 /area/taeloth/nearstation/dormitory_concourse
