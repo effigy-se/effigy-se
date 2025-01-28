@@ -90,7 +90,6 @@
 
 		// Enclave //can we use this stuff in a bitrunner thing? shooting enclave soldiers could be fun
 		/obj/item/clothing/gloves/military, // GAMER GEAR GAMER GEAR
-		/obj/item/electropack/shockcollar/pacify, // i dont know where to put this so maybe it could get used as a prop in this hypothetical bitrunner map thing
 		/obj/item/clothing/head/soft/enclave, // cringe
 		/obj/item/clothing/head/soft/enclaveo, // ditto
 		/obj/item/clothing/under/syndicate/skyrat/enclaveo, // Cringe

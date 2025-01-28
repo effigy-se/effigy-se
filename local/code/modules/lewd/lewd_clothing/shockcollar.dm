@@ -80,17 +80,3 @@
 	if(freq_in_name)
 		name = initial(name) + " - freq: [frequency/10] code: [code]"
 	. = ..()
-
-/// Considering the propensity to avoid ERP mechanics weighing on the game, I'm not sure why this object exists. At all.
-/obj/item/electropack/shockcollar/pacify
-	name = "pacifying collar"
-	desc = "A reinforced metal collar that latches onto the wearer and prevents harmful thoughts."
-
-/obj/item/electropack/shockcollar/pacify/equipped(mob/living/carbon/human/user, slot)
-	. = ..()
-	if(slot & ITEM_SLOT_NECK)
-		ADD_TRAIT(user, TRAIT_PACIFISM, "pacifying-collar")
-
-/obj/item/electropack/shockcollar/pacify/dropped(mob/living/carbon/human/user)
-	. = ..()
-	REMOVE_TRAIT(user, TRAIT_PACIFISM, "pacifying-collar")
