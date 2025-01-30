@@ -7,32 +7,32 @@
 	icon = 'local/icons/lewd/obj/lewd_clothing/lewd_gloves.dmi'
 	worn_icon = 'local/icons/lewd/mob/lewd_clothing/lewd_gloves.dmi'
 	breakouttime = 1 SECONDS
+	resist_cooldown = CLICK_CD_SLOW
 
 //That part allows reinforcing this item with handcuffs
 /obj/item/clothing/gloves/ball_mittens/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
 	if(.)
 		return
-	if(!istype(attacking_item, /obj/item/restraints/handcuffs))
+	if(!istype(attacking_item, /obj/item/restraints/handcuffs) || !initial(breakouttime))
 		return
-	var/obj/item/clothing/gloves/ball_mittens_reinforced/reinforced_muffs = new
-	remove_item_from_storage(user)
-	user.put_in_hands(reinforced_muffs)
 	to_chat(user, span_notice("You reinforced the belts on [src] with [attacking_item]."))
-	qdel(attacking_item)
-	qdel(src)
-	return TRUE
-
-//ball_mittens reinforced
-/obj/item/clothing/gloves/ball_mittens_reinforced //We getting this item by using handcuffs on normal ball mittens
-	name = "reinforced ball mittens"
-	desc = "Do not put these on, it's REALLY hard to take them off! But they look so comfortable..."
-	icon_state = "ballmittens"
-	inhand_icon_state = null
-	icon = 'local/icons/lewd/obj/lewd_clothing/lewd_gloves.dmi'
-	worn_icon = 'local/icons/lewd/mob/lewd_clothing/lewd_gloves.dmi'
+	name = "reinforced [initial(name)]"
 	clothing_flags = DANGEROUS_OBJECT
 	breakouttime = 100 SECONDS //do not touch this, i beg you.
+	qdel(attacking_item)
+	return TRUE
+
+/obj/item/clothing/gloves/ball_mittens/examine(mob/user)
+	. = ..()
+	if(breakouttime == initial(breakouttime))
+		. += span_notice("You could probably reinforce it with a pair of [span_bold("handcuffs")]...")
+
+/// Paw mittens; which vary only in looks from ball mittens
+/obj/item/clothing/gloves/ball_mittens/paw_mittens
+	name = "paw mittens"
+	desc = "Mittens that compress the hand into a tight space, and restrict fine motor control."
+	icon_state = "pawmittens"
 
 //latex gloves
 /obj/item/clothing/gloves/latex_gloves
