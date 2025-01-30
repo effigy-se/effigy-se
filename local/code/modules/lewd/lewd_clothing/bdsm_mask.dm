@@ -92,7 +92,7 @@
 	play_lewd_sound(loc, pick('local/sound/effects/lewd/under_moan_f1.ogg',
 						'local/sound/effects/lewd/under_moan_f2.ogg',
 						'local/sound/effects/lewd/under_moan_f3.ogg',
-						'local/sound/effects/lewd/under_moan_f4.ogg'), 70, 1, -1)
+						'local/sound/effects/lewd/under_moan_f4.ogg'), 70, 1, -1, pref_to_check = /datum/preference/toggle/erp/moan_sounds)
 
 // Create radial menu
 /obj/item/clothing/mask/gas/bdsm_mask/proc/populate_mask_designs()
