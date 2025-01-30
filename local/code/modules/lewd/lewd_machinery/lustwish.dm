@@ -114,11 +114,13 @@
 				/obj/item/clothing/neck/human_petcollar/locked/spike = 8,
 
 				//torso clothing
+				/obj/item/clothing/suit/corset = 4,
 				/obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5,
 				/obj/item/clothing/suit/straight_jacket/shackles = 4,
 
 				//hands
 				/obj/item/clothing/gloves/ball_mittens = 8,
+				/obj/item/clothing/gloves/ball_mittens/paw_mittens = 8,
 			),
 		),
 			list(

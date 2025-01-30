@@ -53,6 +53,7 @@
 
 					//Hand Items
 					/obj/item/clothing/gloves/ball_mittens,
+					/obj/item/clothing/gloves/ball_mittens/paw_mittens,
 					/obj/item/clothing/gloves/latex_gloves,
 
 					//Feet items
