@@ -15,10 +15,11 @@
 	icon = 'local/icons/lewd/obj/lewd_clothing/lewd_masks.dmi'
 	icon_state = "mask_pink_off"
 	base_icon_state = "mask"
-	slot_flags = ITEM_SLOT_MASK
+	has_fov = FALSE
 	starting_filter_type = null
 	w_class = WEIGHT_CLASS_SMALL
 	flags_cover = MASKCOVERSMOUTH
+	flags_inv = HIDEFACIALHAIR|HIDESNOUT
 	var/mask_on = FALSE
 	var/current_mask_color = "pink"
 	var/breath_status = TRUE
