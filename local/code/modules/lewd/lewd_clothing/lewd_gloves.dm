@@ -23,6 +23,11 @@
 	qdel(attacking_item)
 	return TRUE
 
+/obj/item/clothing/gloves/ball_mittens/examine(mob/user)
+	. = ..()
+	if(breakouttime == initial(breakouttime))
+		. += span_notice("You could probably reinforce it with a pair of [span_bold("handcuffs")]...")
+
 /// Paw mittens; which vary only in looks from ball mittens
 /obj/item/clothing/gloves/ball_mittens/paw_mittens
 	name = "paw mittens"
