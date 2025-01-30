@@ -15,10 +15,11 @@
 	icon = 'local/icons/lewd/obj/lewd_clothing/lewd_masks.dmi'
 	icon_state = "mask_pink_off"
 	base_icon_state = "mask"
-	slot_flags = ITEM_SLOT_MASK
+	has_fov = FALSE
 	starting_filter_type = null
 	w_class = WEIGHT_CLASS_SMALL
 	flags_cover = MASKCOVERSMOUTH
+	flags_inv = HIDEFACIALHAIR|HIDESNOUT
 	var/mask_on = FALSE
 	var/current_mask_color = "pink"
 	var/breath_status = TRUE
@@ -91,7 +92,7 @@
 	play_lewd_sound(loc, pick('local/sound/effects/lewd/under_moan_f1.ogg',
 						'local/sound/effects/lewd/under_moan_f2.ogg',
 						'local/sound/effects/lewd/under_moan_f3.ogg',
-						'local/sound/effects/lewd/under_moan_f4.ogg'), 70, 1, -1)
+						'local/sound/effects/lewd/under_moan_f4.ogg'), 70, 1, -1, pref_to_check = /datum/preference/toggle/erp/moan_sounds)
 
 // Create radial menu
 /obj/item/clothing/mask/gas/bdsm_mask/proc/populate_mask_designs()

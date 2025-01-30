@@ -44,11 +44,11 @@
 		if(MALE)
 			play_lewd_sound(get_turf(src), pick('local/sound/effects/lewd/final_m1.ogg',
 										'local/sound/effects/lewd/final_m2.ogg',
-										'local/sound/effects/lewd/final_m3.ogg'), 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds)
+										'local/sound/effects/lewd/final_m3.ogg'), 50, TRUE, pref_to_check = /datum/preference/toggle/erp/moan_sounds)
 		if(FEMALE)
 			play_lewd_sound(get_turf(src), pick('local/sound/effects/lewd/final_f1.ogg',
 										'local/sound/effects/lewd/final_f2.ogg',
-										'local/sound/effects/lewd/final_f3.ogg'), 50, TRUE, pref_to_check = /datum/preference/toggle/erp/sounds)
+										'local/sound/effects/lewd/final_f3.ogg'), 50, TRUE, pref_to_check = /datum/preference/toggle/erp/moan_sounds)
 
 	var/self_orgasm = FALSE
 	var/self_their = p_their()
