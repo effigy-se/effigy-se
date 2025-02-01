@@ -31,11 +31,11 @@
 	fall_animation()
 
 /obj/structure/scrap/falls_when_spawned/proc/fall_animation()
-		pixel_x = rand(-150, 150)
-		pixel_y = 500
-		var/potential_seconds = rand(2, 4) SECONDS
-		animate(src, pixel_y = initial(pixel_y), pixel_x = initial(pixel_x), time = potential_seconds)
-		addtimer(CALLBACK(src, PROC_REF(end_fall)), potential_seconds)
+	pixel_x = rand(-150, 150)
+	pixel_y = 500
+	var/potential_seconds = rand(2, 4) SECONDS
+	animate(src, pixel_y = initial(pixel_y), pixel_x = initial(pixel_x), time = potential_seconds)
+	addtimer(CALLBACK(src, PROC_REF(end_fall)), potential_seconds)
 
 /obj/structure/scrap/falls_when_spawned/proc/end_fall()
 	for(var/atom/movable/potential_am in loc)
