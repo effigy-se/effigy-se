@@ -63,7 +63,7 @@
 		/obj/item/salvaging_brush/adv = 2, \
 		/obj/effect/spawner/random/contraband/plus = 1, \
 		/obj/effect/spawner/random/engineering/tool_advanced = 1, \
-		/obj/effect/spawner/random/maintenance/no_decals/eight = 1, \ // TONIGHT'S OKAYEST WINNER.
+		/obj/effect/spawner/random/maintenance/no_decals/eight = 1, \
 	)
 	/// Ultimate Rewards - ~1% Chance. Good items for whoever's hands; or otherwise worthy of being gatekept.
 	var/static/list/tier3_reward = list(
