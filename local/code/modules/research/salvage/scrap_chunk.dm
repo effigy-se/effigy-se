@@ -34,33 +34,38 @@
 	var/adv_scanned = FALSE
 	///The tier of the item that was chosen, 1-100 then 1-3
 	var/choose_tier
-	/// Low-Value Rewards - ~61% Chance
+	/// Low-Value Rewards - ~74% Chance. Generally garbage with the very rare chance of something mediocre or nichely situational to science.
 	var/static/list/tier1_reward = list(
 		/obj/item/stack/ore/iron/thirty = 20, \
-		/obj/item/electronics/airalarm = 5, \
-		/obj/item/electronics/airlock = 5, \
-		/obj/item/electronics/firealarm = 5, \
-		/obj/item/electronics/firelock = 5, \
-		/obj/item/electronics/tracker = 4, \
-		/obj/effect/spawner/random/bureaucracy/pen = 3, \
-		/obj/effect/spawner/random/maintenance/no_decals = 2, \
-		/obj/effect/spawner/random/contraband = 1, \
-		/obj/effect/spawner/random/engineering/tool = 1, \
-		/obj/effect/spawner/random/engineering/vending_restock = 1, \
+		/obj/item/electronics/airalarm = 10, \
+		/obj/item/electronics/airlock = 10, \
+		/obj/item/electronics/firealarm = 10, \
+		/obj/item/electronics/firelock = 10, \
+		/obj/item/electronics/tracker = 9, \
+		/obj/effect/spawner/random/maintenance/no_decals = 8, \
+		/obj/effect/spawner/random/bureaucracy/pen = 6, \
+		/obj/effect/spawner/random/bureaucracy/stamp = 6, \
+		/obj/effect/spawner/random/contraband = 2, \
+		/obj/effect/spawner/random/engineering/tool = 2, \
+		/obj/effect/spawner/random/engineering/vending_restock = 2, \
+		/obj/effect/spawner/random/aimodule/harmless = 1, \
+		/obj/effect/spawner/random/contraband/narcotics = 1, \
 	)
-	/// High-Value Rewards - ~34% Chance
+	/// High-Value Rewards - ~13% Chance. Generally boilerplate useful stuff that other departments will have an easier time procuring; or stuff directly for science.
 	var/static/list/tier2_reward = list(
 		/obj/item/stack/ore/silver/thirty = 30, \
 		/obj/item/stack/ore/titanium/thirty = 30, \
-		/obj/item/stack/ore/plasma/thirty = 20, \
+		/obj/item/stack/ore/plasma/thirty = 10, \
 		/obj/item/stack/ore/diamond/ten = 10, \
 		/obj/item/stack/ore/gold/twentyfive = 10, \
 		/obj/item/salvage_handheld_scanner/advanced = 2, \
 		/obj/item/salvaging_hammer/adv = 2, \
 		/obj/item/salvaging_brush/adv = 2, \
+		/obj/effect/spawner/random/contraband/plus = 1, \
 		/obj/effect/spawner/random/engineering/tool_advanced = 1, \
+		/obj/effect/spawner/random/maintenance/no_decals/eight = 1, \ // TONIGHT'S OKAYEST WINNER.
 	)
-	/// Ultimate Rewards - ~5% Chance
+	/// Ultimate Rewards - ~1% Chance. Good items for whoever's hands; or otherwise worthy of being gatekept.
 	var/static/list/tier3_reward = list(
 		/obj/item/stock_parts/capacitor/experimental = 10, \
 		/obj/item/stock_parts/matter_bin/anomic = 10, \
@@ -88,13 +93,13 @@
 /obj/item/scrap_chunk/proc/create_item()
 	choose_tier = rand(1,100)
 	switch(choose_tier)
-		if(1 to 60)
+		if(1 to 74)
 			hidden_item = pick_weight(tier1_reward)
 			choose_tier = REWARD_ONE
-		if(61 to 94)
+		if(85 to 98)
 			hidden_item = pick_weight(tier2_reward)
 			choose_tier = REWARD_TWO
-		if(95 to 100)
+		if(99 to 100)
 			hidden_item = pick_weight(tier3_reward)
 			choose_tier = REWARD_THREE
 
