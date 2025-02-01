@@ -151,3 +151,4 @@
 	new /obj/item/salvaging_tape_measure(src)
 	new /obj/item/salvage_handheld_scanner(src)
 	new /obj/item/storage/belt/utility/salvage(src)
+	new /obj/item/storage/bag/ore(src)
