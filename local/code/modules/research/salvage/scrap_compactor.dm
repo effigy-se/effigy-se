@@ -1,6 +1,6 @@
 /obj/machinery/scrap_compactor
 	name = "scrap compactor"
-	desc = "Compacts less useful scrap into more useful items at a roughly equivalent rate to it's market rate."
+	desc = "Compacts scrap into items more useful to research; at roughly equivalent rate to their market value."
 	icon = 'local/icons/obj/machines/scrap_compactor.dmi'
 	icon_state = "compactor"
 	anchored = TRUE
@@ -20,6 +20,7 @@
 	if(istype(tool, /obj/item/scrap))
 		var/obj/item/scrap/found_scrap = tool
 		found_scrap.moveToNullspace()
+		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 		balloon_alert(user, "scrap inserted!")
 		banked_value += found_scrap.credit_cost
 		if(banked_value > maximum_value)
@@ -35,13 +36,12 @@
 		return
 
 	switch(choice)
-		if("BEPIS TECH (100)")
+		if("BEPIS Tech (100)")
 			if(banked_value < 100)
 				balloon_alert(user, "not enough points")
 				return
 			banked_value -= 100
-			var/our_disk = /obj/item/disk/design_disk/bepis/remove_tech // this fucking rots. literally only way this works for whatever fucking reason
-			new our_disk(get_turf(src))
+			new /obj/item/disk/design_disk/bepis/remove_tech(get_turf(src))
 			playsound(loc, 'sound/machines/click.ogg', 15, TRUE, -3)
 		if("Tier 5 Part (250)")
 			if(banked_value < 250)
@@ -59,7 +59,7 @@
 	return attack_hand(user)
 
 /obj/machinery/scrap_compactor/screwdriver_act(mob/user, obj/item/tool)
-	return default_deconstruction_screwdriver(user, "compactor-open", "compactor", tool)
+	return default_deconstruction_screwdriver(user, "compactor_open", "compactor", tool)
 
 /obj/machinery/scrap_compactor/crowbar_act(mob/user, obj/item/tool)
 	return default_deconstruction_crowbar(tool)
