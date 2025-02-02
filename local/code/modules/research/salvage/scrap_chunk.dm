@@ -46,7 +46,6 @@
 		/obj/item/salvaging_hammer/adv = 2, \
 		/obj/item/salvaging_brush/adv = 2, \
 		/obj/item/mod/construction/broken_core = 2, \
-		/obj/item/disk/design_disk/bepis = 1, \
 		/obj/effect/spawner/random/engineering/tool_advanced = 1, \
 		/obj/effect/spawner/random/maintenance/no_decals/eight = 1, \
 		/obj/effect/spawner/random/exotic/tool = 1, \
