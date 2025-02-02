@@ -3,7 +3,7 @@
 	name = "gacha ball"
 	desc = "No refunds."
 
-// the lack of a custom value range is delibrate; i think it adds to the item's joke
+/// the lack of a custom value range is delibrate; i think it adds to the item's joke
 
 /obj/item/scrap/gacha_ball/attack_self(mob/user, modifiers)
 	. = ..()
