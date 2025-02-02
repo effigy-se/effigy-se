@@ -4,7 +4,7 @@
 	desc = "Straight from the office! This is worthless."
 	var/remaining_uses = 3
 
-/obj/item/scrap/whoopie_cushion/randomize_credit_cost()
+/obj/item/scrap/toilet_paper/randomize_credit_cost()
 	return rand(60, 80)
 
 
