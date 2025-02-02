@@ -9,7 +9,7 @@
 
 /obj/item/scrap/examine(mob/user)
 	. = ..()
-	if(HAS_TRAIT(user, TRAIT_RESEARCH_SCANNER))
+	if(HAS_TRAIT(user, TRAIT_RESEARCH_SCANNER) || isdead(user))
 		. += span_notice("It's worth [credit_cost] credits.")
 
 /obj/item/scrap/Initialize(mapload)

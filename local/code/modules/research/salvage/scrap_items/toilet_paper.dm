@@ -17,7 +17,7 @@
 		return CLEAN_BLOCKED|CLEAN_DONT_BLOCK_INTERACTION
 	if(loc == cleaner)
 		return CLEAN_ALLOWED
-	return CLEAN_ALLOWED|CLEAN_NO_XP
+	return CLEAN_BLOCKED|CLEAN_DONT_BLOCK_INTERACTION
 
 /obj/item/scrap/toilet_paper/proc/post_clean(datum/source, atom/target, mob/living/user, clean_succeeded)
 	if(!clean_succeeded)
