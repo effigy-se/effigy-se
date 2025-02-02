@@ -152,3 +152,4 @@
 	new /obj/item/salvage_handheld_scanner(src)
 	new /obj/item/storage/belt/utility/salvage(src)
 	new /obj/item/storage/bag/ore(src)
+	new /obj/item/clothing/glasses/science(src)

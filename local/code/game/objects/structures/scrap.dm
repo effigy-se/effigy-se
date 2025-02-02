@@ -1,6 +1,6 @@
 /obj/structure/scrap
 	name = "scrap pile"
-	desc = "A pile of debris, thrown in a loose pile. There may be valuables, ore, or just junk in it."
+	desc = "A pile of debris, thrown in a loose pile."
 	icon = 'local/icons/obj/scrap.dmi'
 	icon_state = "scrap"
 	anchored = TRUE
