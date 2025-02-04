@@ -2,6 +2,7 @@
 	icon_state = "apparatus"
 	name = "apparatus"
 	desc = "Perfectly safe to handle; though it looks like it was once hot." // I'm sorry; I had to shoehorn it
+	force = 5
 
 /obj/item/scrap/apparatus/randomize_credit_cost()
 	return 80 // Static value

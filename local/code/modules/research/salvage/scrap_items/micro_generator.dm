@@ -2,6 +2,7 @@
 	icon_state = "micro_generator"
 	name = "\improper NTHI generator replica"
 	desc = "A micro-sized replica of the generators the Power Recovery team work with. Nonfunctional."
+	force = 5
 
 /obj/item/scrap/micro_generator/randomize_credit_cost()
 	return rand(33, 99)
