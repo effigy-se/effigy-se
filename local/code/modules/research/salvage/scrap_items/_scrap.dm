@@ -4,7 +4,9 @@
 	icon = 'local/icons/obj/scrap.dmi'
 	lefthand_file = 'local/icons/mob/inhands/scrap_lefthand.dmi'
 	righthand_file = 'local/icons/mob/inhands/scrap_righthand.dmi'
-	// The amount of money this item'll be worth when sold. Randomized.
+	/// The amount of money this item'll be worth when sold. Randomized.
+	/// This could probably be componentized to allow for more variety of scrap items but it's not a priority
+	/// Unless you like; really want to make a shitty gun or something for this
 	var/credit_cost = CARGO_CRATE_VALUE * 0.25
 
 /obj/item/scrap/examine(mob/user)
