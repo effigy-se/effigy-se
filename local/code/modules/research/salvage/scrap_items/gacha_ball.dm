@@ -5,7 +5,8 @@
 	pickup_sound = 'sound/items/plastic_pick_up.ogg'
 	drop_sound = 'sound/items/plastic_drop.ogg'
 
-/// the lack of a custom value range is delibrate; i think it adds to the item's joke
+/obj/item/scrap/micro_generator/randomize_credit_cost()
+	return roll(12,14)
 
 /obj/item/scrap/gacha_ball/attack_self(mob/user, modifiers)
 	. = ..()
