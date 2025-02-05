@@ -9,6 +9,8 @@
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	attack_verb_continuous = list("attacks", "smacks", "whacks", "thwacks")
 	attack_verb_simple = list("attack", "smack", "whack", "thwack")
+	pickup_sound = 'sound/items/metal_pick_up.ogg'
+	drop_sound = 'sound/items/metal_drop.ogg'
 
 /obj/item/scrap/yield/randomize_credit_cost()
 	return rand(18, 36)

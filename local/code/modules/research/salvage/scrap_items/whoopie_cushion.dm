@@ -2,6 +2,8 @@
 	icon_state = "whoopie_cushion"
 	name = "whoopie cushion"
 	desc = "For an upstanding; gentlemanly humor."
+	pickup_sound = 'sound/items/cardboard_pick_up.ogg'
+	drop_sound = 'sound/items/duct_tape_snap.ogg'
 
 /obj/item/scrap/whoopie_cushion/randomize_credit_cost()
 	return rand(6, 36)
