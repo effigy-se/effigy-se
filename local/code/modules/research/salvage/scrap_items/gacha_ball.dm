@@ -6,7 +6,7 @@
 	drop_sound = 'sound/items/plastic_drop.ogg'
 
 /obj/item/scrap/micro_generator/randomize_credit_cost()
-	return roll(12,14)
+	return rand(1, 80)
 
 /obj/item/scrap/gacha_ball/attack_self(mob/user, modifiers)
 	. = ..()
