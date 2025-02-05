@@ -42,15 +42,16 @@
 	if(use_attempted)
 		balloon_alert(user, "used up!")
 		return ITEM_INTERACT_BLOCKING
-	if(prob(0.0001)) // 1 in a million; same odds as the arcade pulse rifle
+	/// 1% chance to actually emag something
+	if(prob(1))
 		log_combat(user, interacting_with, "managed to use bait emag")
 		if(interacting_with.emag_act(user, src))
 			SSblackbox.record_feedback("tally", "atom_emagged", 1, interacting_with.type)
-	else
+	// 99% chance to also alert security in the process
+	if(prob(99))
 		log_combat(user, interacting_with, "was caught by bait emag")
 		radio.set_frequency(FREQ_SECURITY)
 		radio.talk_into(src, "SECURITY ALERT: Crewmember [user] recorded attempting illict activity in [get_area(src)]. Please watch for seditious behavior.", FREQ_SECURITY)
 		remove_radio_all(radio) //so we dont keep transmitting sec comms
-		to_chat(user, span_userdanger("The card sparks - but nothing seemingly happens."))
 	use_attempted = TRUE
 	return ITEM_INTERACT_SUCCESS

@@ -6,6 +6,13 @@
 /obj/item/scrap/whoopie_cushion/randomize_credit_cost()
 	return rand(6, 36)
 
+/obj/item/scrap/whoopie_cushion/Initialize(mapload)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/item/scrap/whoopie_cushion/proc/on_entered(datum/source, AM as mob|obj)
 	SIGNAL_HANDLER
 	if(isliving(AM))

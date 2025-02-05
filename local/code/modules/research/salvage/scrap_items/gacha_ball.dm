@@ -13,5 +13,6 @@
 	user.visible_message(span_notice("[user] pops open \the [src], finding \a [thing] inside!"))
 	user.put_in_hands(thing)
 	thing.add_fingerprint(user)
+	playsound(thing, 'sound/items/plastic_drop.ogg', 50, TRUE)
 
 	qdel(src)
