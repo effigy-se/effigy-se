@@ -15,6 +15,8 @@
 	desc = "A chunk of scrap, ready to be picked apart for something salvageable."
 	icon = 'local/icons/obj/salvage.dmi'
 	icon_state = "scrap_chunk"
+	pickup_sound = 'sound/items/metal_pick_up.ogg'
+	drop_sound = 'sound/items/metal_drop.ogg'
 
 	///The max depth a scrap chunk can be
 	var/max_depth

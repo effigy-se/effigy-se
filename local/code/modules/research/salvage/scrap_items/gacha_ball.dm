@@ -2,8 +2,11 @@
 	icon_state = "gacha_ball"
 	name = "gacha ball"
 	desc = "No refunds."
+	pickup_sound = 'sound/items/plastic_pick_up.ogg'
+	drop_sound = 'sound/items/plastic_drop.ogg'
 
-/// the lack of a custom value range is delibrate; i think it adds to the item's joke
+/obj/item/scrap/micro_generator/randomize_credit_cost()
+	return rand(1, 80)
 
 /obj/item/scrap/gacha_ball/attack_self(mob/user, modifiers)
 	. = ..()
@@ -13,5 +16,6 @@
 	user.visible_message(span_notice("[user] pops open \the [src], finding \a [thing] inside!"))
 	user.put_in_hands(thing)
 	thing.add_fingerprint(user)
+	playsound(thing, 'sound/items/plastic_drop.ogg', 50, TRUE)
 
 	qdel(src)
