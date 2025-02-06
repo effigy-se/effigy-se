@@ -1,3 +1,5 @@
+#define DEFAULT_SCRAPCOMPACTOR_VALUE_CAP 500
+
 /obj/machinery/scrap_compactor
 	name = "scrap compactor"
 	desc = "Compacts scrap into items more useful to research; at roughly equivalent rate to their market value."
@@ -9,11 +11,17 @@
 	/// How much scrap value do we have banked?
 	var/banked_value = 0
 	/// Our maximum scrap value?
-	var/maximum_value = 500
+	var/maximum_value = DEFAULT_SCRAPCOMPACTOR_VALUE_CAP
 
 /obj/machinery/scrap_compactor/examine(mob/user)
 	. = ..()
 	. += span_notice("<br>[banked_value]/[maximum_value] points available.")
+
+/obj/machinery/scrap_compactor/RefreshParts()
+	. = ..()
+	maximum_value = DEFAULT_SCRAPCOMPACTOR_VALUE_CAP
+	for(var/datum/stock_part/matter_bin/matter_bin in component_parts)
+		maximum_value *= matter_bin.tier
 
 /obj/machinery/scrap_compactor/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	. = ..()
@@ -63,3 +71,5 @@
 
 /obj/machinery/scrap_compactor/crowbar_act(mob/user, obj/item/tool)
 	return default_deconstruction_crowbar(tool)
+
+#undef DEFAULT_SCRAPCOMPACTOR_VALUE_CAP
