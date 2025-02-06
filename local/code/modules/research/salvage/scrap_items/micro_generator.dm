@@ -105,7 +105,7 @@
 	possible_rewards |= /obj/item/scrap_chunk::tier3_reward
 	for(var/i in 1 to 3)
 		var/picked_reward = pick_n_take(possible_rewards)
-		var/obj/item/thing = new picked_reward(get_turf(src))
+		new picked_reward(get_turf(src))
 	visible_message(span_notice("The [src] swings open a compartment; releasing a reward!"))
 	playsound(src, pick(list('sound/machines/coindrop.ogg', 'sound/machines/coindrop2.ogg')), 40, TRUE)
 
