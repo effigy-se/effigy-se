@@ -90,7 +90,7 @@
 
 /obj/item/scrap/micro_generator/proc/insertfuel(mob/living/user)
 	if(attached_fuel)
-		playsound(src, 'sound/items/gas_tank_drop.ogg', 100)
+		playsound(src, 'sound/mecha/hydraulic.ogg', 25)
 		balloon_alert_to_viewers("Inserting Fuel...")
 		if(do_after(user, 10 SECONDS, src))
 			attached_fuel = 0
