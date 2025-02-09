@@ -145,7 +145,9 @@
 	can_jumpscare = FALSE
 	alpha = 127.5
 	currently_cloaked = TRUE
-	anchored = TRUE
+	move_force = MOVE_FORCE_OVERPOWERING
+	move_resist = MOVE_FORCE_OVERPOWERING
+	pull_force = MOVE_FORCE_OVERPOWERING
 	///Proximity monitor associated with this atom, needed for proximity checks.
 	var/datum/proximity_monitor/proximity_monitor
 	var/unfound = TRUE

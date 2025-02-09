@@ -95,6 +95,7 @@
 		GLOB.revolutionary_win = TRUE
 		return FALSE
 
+/* // SLASHCO REMOVAL - these didn't work. i'm preserving them in a comment because i'm not gonna use any of this code for the remake anyways
 /// OFFERING VARIANTS HERE ///
 // Tl;dr, in the original, offerings were lobby-voted variants on Slashco's roundflow. Modifiers. These have been made admin-only until I figure out voting lol
 
@@ -134,3 +135,4 @@
 	SSslashco.required_generators = 1
 	SSslashco.required_fuel = SSslashco.required_fuel * 2
 	. = ..()
+*/
