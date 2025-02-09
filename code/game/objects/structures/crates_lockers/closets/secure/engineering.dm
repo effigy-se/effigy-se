@@ -19,6 +19,7 @@
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
 	new /obj/item/storage/box/stickers/chief_engineer(src)
+	new /obj/item/storage/box/gas_miner_beacons(src) // EffigyEdit Addition - Gas miner beacons
 
 /obj/structure/closet/secure_closet/engineering_chief/populate_contents_immediate()
 	. = ..()

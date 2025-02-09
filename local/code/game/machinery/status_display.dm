@@ -76,6 +76,9 @@
 	"MIND"="THE GAP", \
 	)
 	. = ..()
+	AddElement(/datum/element/unique_examine, \
+		desc = "These lines are set by... somebody; up in corporate. They sure are. Something.", \
+		desc_requirement = EXAMINE_CHECK_NONE)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/motivational, 32)
 

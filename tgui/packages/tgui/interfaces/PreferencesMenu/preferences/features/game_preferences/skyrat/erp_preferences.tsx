@@ -38,6 +38,14 @@ export const aphro_pref: FeatureToggle = {
   component: CheckboxInput,
 };
 
+export const moan_sounds_pref: FeatureToggle = {
+  name: 'Moan sounds',
+  category: 'ERP',
+  description:
+    'Toggles if you will hear moaning from ERP interactions and items.',
+  component: CheckboxInput,
+};
+
 export const sextoy_pref: FeatureToggle = {
   name: 'Sex toy interaction',
   category: 'ERP',

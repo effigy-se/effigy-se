@@ -89,6 +89,9 @@
 /datum/preference/toggle/erp/sex_toy_sounds
 	savefile_key = "sextoy_sounds_pref"
 
+/datum/preference/toggle/erp/moan_sounds
+	savefile_key = "moan_sounds_pref"
+
 /datum/preference/toggle/erp/bimbofication
 	savefile_key = "bimbofication_pref"
 

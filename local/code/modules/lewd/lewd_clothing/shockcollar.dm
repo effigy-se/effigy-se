@@ -9,24 +9,33 @@
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
 	strip_delay = 60
+	obj_flags = parent_type::obj_flags | UNIQUE_RENAME
 	// equip_delay_other = 60
-	custom_materials = list(/datum/material/iron = 5000, /datum/material/glass = 2000)
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
 	var/random = TRUE
 	var/freq_in_name = TRUE
-	var/tagname = null
 
 /datum/design/electropack/shockcollar
 	name = "Shockcollar"
 	id = "shockcollar"
 	build_type = AUTOLATHE
 	build_path = /obj/item/electropack/shockcollar
-	materials = list(/datum/material/iron = 5000, /datum/material/glass =2000)
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC)
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
+	category = list(
+		RND_CATEGORY_HACKED,
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC,
+	)
 
-/obj/item/electropack/shockcollar/attack_hand(mob/user)
+/obj/item/electropack/shockcollar/allow_attack_hand_drop(mob/user)
 	if(user.get_item_by_slot(ITEM_SLOT_NECK) == src)
 		to_chat(user, span_warning("The collar is fastened tight! You'll need help if you want to take it off!"))
-		return
+		return FALSE
 	return ..()
 
 /obj/item/electropack/shockcollar/receive_signal(datum/signal/signal)
@@ -59,18 +68,6 @@
 		master.receive_signal()
 	return
 
-/obj/item/electropack/shockcollar/attackby(obj/item/used_item, mob/user, params) // Moves it here because on_click is being bad
-	if(istype(used_item, /obj/item/pen))
-		var/tag_input = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", tagname ? tagname : "Spot", MAX_NAME_LEN)
-		if(tag_input)
-			tagname = tag_input
-			name = "[initial(name)] - [tag_input]"
-		return
-	if(istype(used_item, /obj/item/clothing/head/helmet))
-		return
-	else
-		return ..()
-
 /obj/item/electropack/shockcollar/Initialize(mapload)
 	if(random)
 		code = rand(1, 100)
@@ -79,18 +76,8 @@
 			frequency++
 	if(freq_in_name)
 		name = initial(name) + " - freq: [frequency/10] code: [code]"
-	. = ..()
+	return ..()
 
-/// Considering the propensity to avoid ERP mechanics weighing on the game, I'm not sure why this object exists. At all.
-/obj/item/electropack/shockcollar/pacify
-	name = "pacifying collar"
-	desc = "A reinforced metal collar that latches onto the wearer and prevents harmful thoughts."
-
-/obj/item/electropack/shockcollar/pacify/equipped(mob/living/carbon/human/user, slot)
+/obj/item/electropack/shockcollar/ui_act(action, params)
 	. = ..()
-	if(slot & ITEM_SLOT_NECK)
-		ADD_TRAIT(user, TRAIT_PACIFISM, "pacifying-collar")
-
-/obj/item/electropack/shockcollar/pacify/dropped(mob/living/carbon/human/user)
-	. = ..()
-	REMOVE_TRAIT(user, TRAIT_PACIFISM, "pacifying-collar")
+	icon_state = src::icon_state

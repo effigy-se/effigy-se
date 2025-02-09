@@ -1,3 +1,17 @@
+/obj/item/toy/balloon/syndicate/Initialize(mapload)
+	. = ..()
+
+	AddElement(/datum/element/unique_examine, \
+		desc = "While some might advise running around with this is a faux pas for mission integrity; REAL agents know the only \
+		reward worth more than styling on the corporate drones is the embrace of victory. You also get on (the remains) of the \
+		wall of fame; so who's REALLY the tactical genius?", \
+		desc_requirement = EXAMINE_CHECK_ANTAG, \
+		requirements = GLOB.examine_syndicate_antag_list)
+
+/*
+	Effigy Content Below
+*/
+
 /// Come on, I gotta do SOME stupid reference or else it isn't funny. Plus I need to make it for later.
 /obj/item/toy/faustian_doll
 	name = "doll"
@@ -11,6 +25,15 @@
 /obj/item/toy/faustian_doll/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
+
+/obj/item/toy/faustian_doll/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/unique_examine, \
+	desc = "Corporate's put out a brief dossier on 'remnants' of the old wartime occupation Taeloth fell under, this doll \
+		being one of many the Power Recovery team ran into - and most likely, utilized. It has been determined, according to \
+		them, to have an exact 50% mortality rate.", \
+	desc_requirement = EXAMINE_CHECK_DEPARTMENT, \
+	requirements = DEPARTMENT_SECURITY)
 
 /obj/item/toy/faustian_doll/attack_self(mob/user as mob)
 	var/turf/T = find_safe_turf(zlevels=SSmapping.levels_by_trait(ZTRAIT_STATION))
@@ -51,11 +74,25 @@
 	desc = "A tennis ball from another plane of existance. Really groovy."
 	icon_state = "tennis_rainbow"
 	inhand_icon_state = "tennis_rainbow"
-	actions_types = list(/datum/action/item_action/squeeze)		//Giving the masses easy access to unilimted honks would be annoying
+	actions_types = list(/datum/action/item_action/squeeze)		//Giving the masses easy access to unlimited honks would be annoying
 
 /obj/item/toy/tennis/rainbow/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak)
+	var/static/list/doggish_species = list(/datum/species/vulpkanin)
+
+	var/static/list/dog_trait = list(TRAIT_CANINE)
+
+	AddElement(/datum/element/unique_examine, \
+		desc = "To want the ball; or to not want the ball. That is the question.", \
+		desc_requirement = EXAMINE_CHECK_SPECIES, \
+		requirements = doggish_species)
+
+	AddElement(/datum/element/unique_examine, \
+		desc = "Holy SHIT. [span_bold("Holy. SHIT.")]", \
+		desc_requirement = EXAMINE_CHECK_TRAIT, \
+		requirements = dog_trait, \
+		hint = FALSE)
 
 /obj/item/toy/tennis/red	//da red wuns go fasta
 	name = "red tennis ball"
