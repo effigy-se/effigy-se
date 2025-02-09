@@ -15,7 +15,7 @@
 	sound_environment = SOUND_AREA_TAELOTH
 	ambience_index = AMBIENCE_MINING
 	outdoors = TRUE
-	ambient_buzz = 'local/sound/ambience/buzz/jungleloop.ogg'
+	// ambient_buzz = 'local/sound/ambience/buzz/jungleloop.ogg' // SLASHCO 13 REMOVE
 
 /area/taeloth/Initialize(mapload)
 	try_lighting()
