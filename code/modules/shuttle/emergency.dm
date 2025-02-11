@@ -505,7 +505,16 @@
 				/// SLASHCO 13 EDIT BEGIN
 				for(var/mob/target in GLOB.player_list)
 					if(!isnewplayer(target))
-						SEND_SOUND(target, 'local/code/modules/slashco13/sound/music/helicopter.ogg')
+						var/our_soundtrack = null
+						switch(target?.client?.prefs?.read_preference(/datum/preference/choiced/slashco_soundtrack))
+							if(SLASHCO_SOUNDTRACK_REMIX)
+								our_soundtrack = 'local/code/modules/slashco13/sound/music/helicopter_redonealbum.ogg'
+							if(SLASHCO_SOUNDTRACK_CLASSIC)
+								our_soundtrack = 'local/code/modules/slashco13/sound/music/helicopter.ogg'
+						if(!our_soundtrack)
+							to_chat(target, "Your soundtrack pref is busted for some reason; yell at a coder!")
+							continue
+						SEND_SOUND(target, our_soundtrack)
 				/// SLASHCO 13 EDIT END
 				ShuttleDBStuff()
 				addtimer(CALLBACK(src, PROC_REF(announce_shuttle_events)), 20 SECONDS)

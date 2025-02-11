@@ -1,0 +1,2 @@
+#define SLASHCO_SOUNDTRACK_CLASSIC "SlashCo"
+#define SLASHCO_SOUNDTRACK_REMIX "RE: Power Recovery"
