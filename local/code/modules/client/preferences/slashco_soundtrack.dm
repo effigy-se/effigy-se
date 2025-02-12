@@ -7,4 +7,4 @@
 	return list(SLASHCO_SOUNDTRACK_REMIX, SLASHCO_SOUNDTRACK_CLASSIC)
 
 /datum/preference/choiced/slashco_soundtrack/create_default_value()
-	return SLASHCO_SOUNDTRACK_REMIX
+	return SLASHCO_SOUNDTRACK_CLASSIC
