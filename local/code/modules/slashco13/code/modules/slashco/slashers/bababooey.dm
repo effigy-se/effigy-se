@@ -3,6 +3,7 @@
 	mob_type = /mob/living/basic/slasher/bababooey
 	fluff = "Bababooey."
 	ui_name = "AntagInfoBababooey"
+	jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares/bababooey.dmi'
 	jumpscare_icon_state = "bababooey"
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/bababooey/kill.ogg'
 	jumpscare_volume = 25

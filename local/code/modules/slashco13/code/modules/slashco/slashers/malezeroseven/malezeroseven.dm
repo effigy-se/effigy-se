@@ -4,6 +4,7 @@
 	ui_name = "AntagInfoMaleZeroSeven"
 	fluff = "One of many..."
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/malezeroseven/kill.ogg'
+	jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares/malezeroseven.dmi'
 	jumpscare_icon_state = "malezeroseven"
 	jumpscare_volume = 75
 

@@ -18,7 +18,7 @@
 	// How long is the mob's jumpscare animation/sfx?
 	var/jumpscare_time = 3 SECONDS
 	// Path to the icon file for this slasher's jumpscare
-	var/jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares.dmi'
+	var/jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares/amogus.dmi'
 	// Our icon state?
 	var/jumpscare_icon_state = "amogus"
 	// Sound to play while jumpscaring; if any

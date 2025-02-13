@@ -3,6 +3,7 @@
 	mob_type = /mob/living/basic/slasher/dolphinman
 	fluff = "Yeah... you're man."
 	ui_name = "AntagInfoDolphinman"
+	jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares/dolphinman.dmi'
 	jumpscare_icon_state = "dolphinman"
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/dolphinman/kill.ogg'
 	jumpscare_time = 1 SECONDS

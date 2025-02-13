@@ -4,6 +4,7 @@
 	start_with_chase = FALSE // Speedrunner can't chase at all. Manhunt or something. idk
 	fluff = "You're out for a manhunt..."
 	ui_name = "AntagInfoSpeedrunner"
+	jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares/speedrunner.dmi'
 	jumpscare_icon_state = "speedrunner"
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/speedrunner/kill.ogg'
 	jumpscare_time = 1 SECONDS

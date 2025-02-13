@@ -7,6 +7,7 @@
 	jumpscare_time = 1 SECONDS
 	jumpscare_sound = 'sound/effects/adminhelp.ogg'
 	jumpscare_volume = 100 // hey; got a minute?
+	jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares/spaceman.dmi'
 	jumpscare_icon_state = "spaceman"
 	ui_name = "AntagInfoSpaceman"
 	fluff = "You're a relic from an era gone by."
