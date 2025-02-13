@@ -29,7 +29,7 @@ B-GONE SODA
 
 /obj/item/food/meat/lab_grown
 	name = "Lab-Grown Meat"
-	desc = "Now cleared for sale in the Spinward Sector! Is it worth it?"
+	desc = "Now cleared for sale in the Victus-Gyravi Sector! Is it worth it?"
 	icon_state = "meatproduct"
 	color = "#e5ff00"
 	food_reagents = list(
