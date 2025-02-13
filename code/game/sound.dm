@@ -201,7 +201,17 @@
 	UNTIL(SSticker.login_music) //wait for SSticker init to set the login music
 
 	if(prefs && (prefs.read_preference(/datum/preference/toggle/sound_lobby)) && !CONFIG_GET(flag/disallow_title_music))
-		SEND_SOUND(src, sound(SSticker.login_music, repeat = 0, wait = 0, volume = vol, channel = CHANNEL_LOBBYMUSIC)) // MAD JAMS
+		/// SLASHCO 13 EDIT BEGIN
+		var/our_soundtrack = null
+		switch(prefs.read_preference(/datum/preference/choiced/slashco_soundtrack))
+			if(SLASHCO_SOUNDTRACK_REMIX)
+				our_soundtrack = 'local/code/modules/slashco13/sound/music/lobby_redonealbum.ogg'
+			if(SLASHCO_SOUNDTRACK_CLASSIC)
+				our_soundtrack = 'local/code/modules/slashco13/sound/music/lobby.ogg'
+		if(!our_soundtrack) // weirdchamp. prefs probably not initiated? just default to the old lobby music; we'll get em next time
+			our_soundtrack = 'local/code/modules/slashco13/sound/music/lobby.ogg'
+		/// SLASHCO 13 EDIT END
+		SEND_SOUND(src, sound(our_soundtrack, repeat = 0, wait = 0, volume = vol, channel = CHANNEL_LOBBYMUSIC)) // MAD JAMS // SLASHCO 13 EDIT - replace SSticket.login_music with our_soundtrack
 
 /proc/get_rand_frequency()
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
