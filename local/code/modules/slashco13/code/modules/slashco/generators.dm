@@ -38,6 +38,7 @@
 	base_icon_state = "generator"
 	density = TRUE
 	use_power = NO_POWER_USE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF // nuh uh!!
 
 	/// Is this generator finished and activated?
 	var/active = FALSE
