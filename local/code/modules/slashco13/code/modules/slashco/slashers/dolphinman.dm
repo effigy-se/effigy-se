@@ -6,6 +6,7 @@
 	jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares/dolphinman.dmi'
 	jumpscare_icon_state = "dolphinman"
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/dolphinman/kill.ogg'
+	jumpscare_volume = 50
 	jumpscare_time = 1 SECONDS
 
 	chase_light_range = DEFAULT_SIGHT_DISTANCE

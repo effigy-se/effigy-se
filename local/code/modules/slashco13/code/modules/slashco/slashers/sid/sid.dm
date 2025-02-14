@@ -4,6 +4,7 @@
 	ui_name = "AntagInfoSid"
 	fluff = "You yearn for the gift of cookies..."
 	jumpscare_sound = 'local/code/modules/slashco13/sound/slasher/sid/kill.ogg'
+	jumpscare_volume = 50
 	jumpscare_icon = 'local/code/modules/slashco13/icons/ui/jumpscares/sid.dmi'
 	jumpscare_icon_state = "sid"
 
