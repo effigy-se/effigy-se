@@ -40,8 +40,9 @@
 	jobtype = /datum/job/power_recovery
 	id = /obj/item/card/id/advanced/black
 	id_trim = /datum/id_trim/job/power_recovery
-	uniform = /obj/item/clothing/under/color/black
+	uniform = /obj/item/clothing/under/color/darkblue
 	ears = null
+	belt = /obj/item/storage/belt/utility/full/engi
 	shoes = /obj/item/clothing/shoes/workboots
 	l_pocket = /obj/item/flashlight
 	r_pocket = /obj/item/toy/crayon/spraycan
