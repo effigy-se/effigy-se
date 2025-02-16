@@ -25,6 +25,7 @@
 /obj/item/toy/faustian_doll/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
+	add_filter("slashco_item", 2, outline_filter(1, COLOR_DARK_CYAN))
 
 /obj/item/toy/faustian_doll/Initialize(mapload)
 	. = ..()

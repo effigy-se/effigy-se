@@ -149,8 +149,11 @@
 /obj/item/food/cookie/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/dunkable, 10)
-	SSpoints_of_interest.make_point_of_interest(src) // SLASHCO 13 EDIT - no; seriously
-
+	/// SLASHCO 13 EDIT BEGIN /// - no; seriously
+	if(preserved_food)
+		SSpoints_of_interest.make_point_of_interest(src)
+		add_filter("slashco_item", 2, outline_filter(1, COLOR_DARK_CYAN))
+	/// SLASHCO 13 EDIT END ///
 
 /obj/item/food/cookie/sleepy
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/toxin/chloralhydrate = 10)

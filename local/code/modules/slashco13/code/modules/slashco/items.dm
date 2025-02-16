@@ -22,6 +22,7 @@ B-GONE SODA
 /obj/item/reagent_containers/cup/soda_cans/b_gone/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
+	add_filter("slashco_item", 2, outline_filter(1, COLOR_DARK_CYAN))
 
 /*
 	LAB GROWN MEAT
@@ -44,6 +45,7 @@ B-GONE SODA
 /obj/item/food/meat/lab_grown/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
+	add_filter("slashco_item", 2, outline_filter(1, COLOR_TANGERINE_YELLOW))
 
 /obj/item/food/meat/lab_grown/examine()
 	. = ..()
@@ -83,6 +85,7 @@ MAYO
 /obj/item/reagent_containers/condiment/mayonnaise/slashco/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
+	add_filter("slashco_item", 2, outline_filter(1, COLOR_DARK_CYAN))
 
 /*
 	STEP DECOY
@@ -102,6 +105,7 @@ MAYO
 	our_fake_steps = new
 	our_fake_steps.start(src)
 	SSpoints_of_interest.make_point_of_interest(src)
+	add_filter("slashco_item", 2, outline_filter(1, COLOR_DARK_CYAN))
 
 /obj/item/step_decoy/Destroy(force)
 	. = ..()
@@ -129,6 +133,7 @@ MAYO
 /obj/item/dice/d6/devil_die/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
+	add_filter("slashco_item", 2, outline_filter(1, COLOR_DARK_CYAN))
 
 /obj/item/dice/d6/devil_die/diceroll(mob/user, in_hand=FALSE)
 	. = ..()
@@ -201,3 +206,4 @@ MAYO
 /obj/item/pocket_sand/Initialize(mapload)
 	. = ..()
 	SSpoints_of_interest.make_point_of_interest(src)
+	add_filter("slashco_item", 2, outline_filter(1, COLOR_DARK_CYAN))
