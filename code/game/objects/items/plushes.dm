@@ -598,8 +598,8 @@
 	AddComponent(/datum/component/edit_complainer)
 
 /obj/item/toy/plush/whiny_plushie
-	name = "whiny plushie"
-	desc = "An ancient plushie that demands constant companionship, after being forgotten for too long."
+	name = "whiny protogen plushie" // EffigyEdit Change - Vitae
+	desc = "An ancient protogen that demands constant companionship and constantly finds itself getting into trouble." // EffigyEdit Change - Vitae
 	icon_state = "plushie_whiny"
 	inhand_icon_state = null
 	/// static list of cry messages it picks from to speak when it is insecure from no movement

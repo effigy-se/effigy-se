@@ -81,3 +81,29 @@
 		desc_requirement = EXAMINE_CHECK_NONE)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/motivational, 32)
+
+/obj/machinery/status_display/random_message/syndicate
+	name = "syndicate wartime display"
+	desc = "You don't need a leaflet if it's digital."
+	text_color = COLOR_DISPLAY_RED
+	header_text_color = COLOR_DISPLAY_RED
+
+/obj/machinery/status_display/random_message/syndicate/Initialize(mapload, ndir, building)
+	firstline_to_secondline = list(
+		"THIS OUTPOST NOW UNDER"="SYNDICATE COMMAND", \
+		"FRONT INTEGRITY:"="NaN PERCENT", \
+		"LATEST INSTRUCTION FROM HIGH COMMAND:"="ALL AVAILABLE TO ST. LILYBEN", \
+		"OUTPOST INTEGRITY:"="COMPROMISED", \
+		"SECURITY ADVISORY:"="UNKNOWN HOSTILES", \
+		"COMMAND REPORTS"="UNUSUAL INTERFERENCE", \
+		"STATION ADMIRAL"="REPORT IN", \
+		"REQUESTING IMMEDIATE"="CONTACT", \
+		"MISSION INTEGRITY"="COMPROMISED", \
+		"IT'S OUTSIDE MY DOOR"="HELP HELP HELP", \
+		"RHIALS"="WHERE'S RHIALS", \
+		"I WAS JUST SUPPOSED"="TO PAINT THE WALLS", \
+		"I OPENED MY DOOR AND THEN"="THE CREATURE",\
+	)
+	. = ..()
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/random_message/syndicate, 32)

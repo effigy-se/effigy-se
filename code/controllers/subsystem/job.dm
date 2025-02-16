@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(job)
 	var/list/prioritized_jobs = list()
 	var/list/latejoin_trackers = list()
 
-	var/overflow_role = /datum/job/assistant
+	var/overflow_role = /datum/job/power_recovery
 
 	var/list/level_order = list(JP_HIGH,JP_MEDIUM,JP_LOW)
 
@@ -259,10 +259,10 @@ SUBSYSTEM_DEF(job)
 		var/player_job_level = player.client?.prefs.job_preferences[job.title]
 		if(isnull(player_job_level))
 			JobDebug("FOC player job not enabled, Player: [player]")
-			continue
+			// continue // EffigyEdit Remove - SlashCo 13
 		else if(player_job_level != level)
 			JobDebug("FOC player job enabled at wrong level, Player: [player], TheirLevel: [job_priority_level_to_string(player_job_level)], ReqLevel: [job_priority_level_to_string(level)]")
-			continue
+			// continue // EffigyEdit Remove - SlashCo 13
 
 		// This check handles its own output to JobDebug.
 		if(check_job_eligibility(player, job, "FOC", add_job_to_log = FALSE) != JOB_AVAILABLE)
@@ -518,13 +518,28 @@ SUBSYSTEM_DEF(job)
 
 //We couldn't find a job from prefs for this guy.
 /datum/controller/subsystem/job/proc/HandleUnassigned(mob/dead/new_player/player, allow_all = FALSE)
-	var/jobless_role = player.client.prefs.read_preference(/datum/preference/choiced/jobless_role)
-
 	if(!allow_all)
 		if(PopcapReached())
 			RejectPlayer(player)
 			return
 
+	var/datum/job/overflow_role_datum = GetJobType(overflow_role)
+
+	if(check_job_eligibility(player, overflow_role_datum, debug_prefix = "HU", add_job_to_log = TRUE) != JOB_AVAILABLE)
+		RejectPlayer(player)
+		return
+
+	if(!AssignRole(player, overflow_role_datum, do_eligibility_checks = FALSE))
+		RejectPlayer(player)
+		return
+
+	var/message = "HU: [player] fell through handling unassigned"
+	JobDebug(message)
+	log_game(message)
+	message_admins(message)
+	RejectPlayer(player)
+
+	/* EffigyEdit Change - SlashCo 13
 	switch (jobless_role)
 		if (BEOVERFLOW)
 			var/datum/job/overflow_role_datum = GetJobType(overflow_role)
@@ -549,6 +564,7 @@ SUBSYSTEM_DEF(job)
 			log_game(message)
 			message_admins(message)
 			RejectPlayer(player)
+	*/// EffigyEdit Change End
 
 
 //Gives the player the stuff he should have with his rank
@@ -594,7 +610,7 @@ SUBSYSTEM_DEF(job)
 /datum/controller/subsystem/job/proc/setup_officer_positions()
 	var/datum/job/J = SSjob.GetJob(JOB_SECURITY_OFFICER)
 	if(!J)
-		CRASH("setup_officer_positions(): Security officer job is missing")
+		return
 
 	var/ssc = CONFIG_GET(number/security_scaling_coeff)
 	if(ssc > 0)

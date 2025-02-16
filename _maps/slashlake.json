@@ -1,0 +1,63 @@
+{
+	"version": 1,
+	"map_name": "Slashlake",
+	"map_path": "effigy/map_files/Slashlake",
+	"map_file": "Slashlake.dmm",
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"planetary": 1,
+	"shuttles": {
+		"cargo": "cargo_delta",
+		"ferry": "ferry_kilo",
+		"whiteship": "whiteship_birdshot",
+		"emergency": "emergency_slashpoint"
+	},
+	"ignored_unit_tests": [
+		"/datum/unit_test/required_map_items",
+		"/datum/unit_test/cargo_dep_order_locations",
+		"/datum/unit_test/atmospherics_sanity"
+	],
+	"traits": [
+		{
+			"Up": true,
+			"Mining": true,
+			"Linkage": null,
+			"Gravity": true,
+			"Baseturf": "/turf/open/water",
+			"Weather_Rainstorm": true,
+			"No Parallax": true
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Baseturf": "/turf/open/openspace",
+			"Linkage": null,
+			"Gravity": true,
+			"Weather_Rainstorm": true,
+			"No Parallax": true
+		},
+		{
+			"Up": true,
+			"Down": true,
+			"Baseturf": "/turf/open/openspace",
+			"Linkage": null,
+			"Gravity": true,
+			"Weather_Rainstorm": true,
+			"No Parallax": true
+		},
+		{
+			"Down": true,
+			"Baseturf": "/turf/open/openspace",
+			"Linkage": null,
+			"Gravity": true,
+			"Weather_Rainstorm": true,
+			"No Parallax": true
+		}
+	],
+	"minetype": "none",
+	"job_changes": {
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/service/cafeteria"]
+		}
+	}
+}
