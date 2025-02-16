@@ -296,6 +296,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	SSblackbox.Seal()
 
 	sleep(5 SECONDS)
+	SSmapping.mapvote() //If no map vote has been run yet, start one. // SLASHCO EDIT ADD
 	ready_for_reboot = TRUE
 	standard_reboot()
 

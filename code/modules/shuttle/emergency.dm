@@ -582,7 +582,7 @@
 						SSslashco.queue_preroundend_check(mob, time_until_check)
 				/// SLASHCO 13 EDIT END ///
 				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
-				SSmapping.mapvote() //If no map vote has been run yet, start one.
+				// SSmapping.mapvote() //If no map vote has been run yet, start one. // SLASHCO EDIT REMOVE
 
 				if(!is_reserved_level(z))
 					CRASH("Emergency shuttle did not move to transit z-level!")
