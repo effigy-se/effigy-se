@@ -378,9 +378,9 @@ SUBSYSTEM_DEF(dynamic)
 						'local/code/modules/slashco13/sound/shuttle/intro7.ogg', \
 						'local/code/modules/slashco13/sound/shuttle/intro8.ogg', \
 					)
-		priority_announce("Assigned AO: [SSmapping.config.map_name] \n \
-							Threat Class: Unknown \n \
-							Danger Level: [pick("Moderate", "Considerable", "Devastating")] \n \
+		priority_announce("Assigned AO: [SSmapping.config.map_name] \n\
+							Threat Class: Unknown \n\
+							Danger Level: [pick("Moderate", "Considerable", "Devastating")] \n\
 							Nanotrasen thanks you for your continued employment in times of war. Have a safe and productive shift.", "Threat Assessment Advisory", announcement_sound, color_override = "purple")
 
 #endif
