@@ -15,3 +15,9 @@
 
 /obj/item/stock_parts/power_store/cell/lead/double_pack/can_be_pulled()
 	return FALSE
+
+// For SlashCo Only
+/obj/item/stock_parts/power_store/cell/lead/Initialize(mapload)
+	. = ..()
+	if(!istype(src, /obj/item/stock_parts/power_store/cell/lead/double_pack))
+		qdel(src)
