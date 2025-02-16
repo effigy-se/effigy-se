@@ -114,6 +114,10 @@
 		. += "battery"
 	if(active)
 		. += "light_overlay"
+	if(!fuel_count)
+		return
+
+	. += "fuel_[fuel_count]" // replace this with a method that checks SSslashco.required_fuel and divides by 4 to pick the overlay
 
 /obj/machinery/slashco_generator/attack_hand(mob/living/user, list/modifiers)
 	if(!user)
