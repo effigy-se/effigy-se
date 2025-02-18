@@ -4,11 +4,11 @@
 		return
 	var/time_remaining = SSticker.GetTimeLeft()
 	if(time_remaining > 0)
-		. += "Game starting in [round(time_remaining/10)]s"
-	else if(time_remaining == -10)
-		. += "Game start delayed by an administrator"
-	else if(SSticker.launch_queued && !SSticker.totalPlayersReady)
-		. += "Game will start when players are ready"
+		. += "Status: Game starting in [round(time_remaining/10)]s"
+	else if(time_remaining == -10 || time_remaining == -1)
+		. += "Status: Game start delayed by an administrator"
+	else if(SSticker.launch_queued && SSticker.totalPlayersReady < 2)
+		. += "Status: Waiting for minimum number of players to hit READY"
 	else
 		. += get_fluff_message()
 	. += ""

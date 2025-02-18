@@ -141,10 +141,10 @@ SUBSYSTEM_DEF(dynamic)
 	var/random_event_hijack_maximum = 18 MINUTES
 
 	/// What is the lower bound of when the roundstart announcement is sent out?
-	var/waittime_l = 600
+	var/waittime_l = 120 // SLASHCO 13 EDIT - Original: 600
 
 	/// What is the higher bound of when the roundstart announcement is sent out?
-	var/waittime_h = 1800
+	var/waittime_h = 120 // SLASHCO 13 EDIT - Original: 1800 (Effigy: 900)
 
 	/// A number between 0 and 100. The maximum amount of threat allowed to generate.
 	var/max_threat_level = 100
@@ -368,7 +368,21 @@ SUBSYSTEM_DEF(dynamic)
 	else
 		if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLUE)
 			SSsecurity_level.set_level(SEC_LEVEL_BLUE, announce = FALSE)
-		priority_announce("[SSsecurity_level.current_security_level.elevating_to_announcement]\n\nA summary has been copied and printed to all communications consoles.", "Security level elevated.", ANNOUNCER_INTERCEPT, color_override = SSsecurity_level.current_security_level.announcement_color)
+		var/announcement_sound = pick(
+						'local/code/modules/slashco13/sound/shuttle/intro1.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/intro2.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/intro3.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/intro4.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/intro5.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/intro6.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/intro7.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/intro8.ogg', \
+					)
+		priority_announce("Assigned AO: [SSmapping.config.map_name] \n\
+							Threat Class: Unknown \n\
+							Danger Level: [pick("Moderate", "Considerable", "Devastating")] \n\
+							Nanotrasen thanks you for your continued employment in times of war. Have a safe and productive shift.", "Threat Assessment Advisory", announcement_sound, color_override = "purple")
+
 #endif
 
 	return .

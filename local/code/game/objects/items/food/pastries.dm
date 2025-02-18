@@ -5,6 +5,7 @@
 	icon_state = "bacon_strip"
 	tastes = list("bacon" = 1)
 	foodtypes = MEAT
+	preserved_food = FALSE // SLASHCO 13 EDIT
 
 /obj/item/food/cookie/cloth
 	name = "odd cookie"
@@ -13,3 +14,4 @@
 	icon_state = "cookie_cloth"
 	tastes = list("cloth" = 1)
 	foodtypes = CLOTH
+	preserved_food = FALSE // SLASHCO 13 EDIT
