@@ -17,7 +17,7 @@
 	send2chat(new /datum/tgs_message_content("[GLOB.station_name] shift starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/channel_social_new_game))
 
 /proc/discord_end_game_alert(message)
-	send2chat("<@&[CONFIG_GET(string/game_notify_role_id)]> [message]", CONFIG_GET(string/channel_announce_end_game))
+	send2chat(message, CONFIG_GET(string/channel_announce_end_game))
 	send2chat(message, CONFIG_GET(string/channel_social_end_game))
 
 /datum/controller/subsystem/ticker/proc/load_effigy_lobby_tracks()
