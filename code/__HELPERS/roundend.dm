@@ -295,8 +295,10 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	//stop collecting feedback during grifftime
 	SSblackbox.Seal()
 
-	sleep(5 SECONDS)
 	SSmapping.mapvote() //If no map vote has been run yet, start one. // SLASHCO EDIT ADD
+	world.TgsTriggerEvent("tg-Roundend", wait_for_completion = TRUE)
+
+	sleep(5 SECONDS)
 	ready_for_reboot = TRUE
 	standard_reboot()
 
