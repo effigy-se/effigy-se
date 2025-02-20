@@ -378,7 +378,20 @@ SUBSYSTEM_DEF(dynamic)
 						'local/code/modules/slashco13/sound/shuttle/intro7.ogg', \
 						'local/code/modules/slashco13/sound/shuttle/intro8.ogg', \
 					)
+		/// SLASHCO 13 BODGE ALERT ///
+		/// in a more polished; second version of this gamemode this'd ideally be a string value in the map json. this whole thing is visionary bodging anyways
+		var/map_evac_direction = "good luck lmao"
+		switch(SSmapping.config.map_name)
+			if("Slashpoint")
+				map_evac_direction = "eastwards, through the service department"
+			if("Slashma Octantis")
+				map_evac_direction = "on the center portside of the ship, passing through the cafeteria"
+			if("Slashnett")
+				map_evac_direction = "southernmost point of the AO, mostly centered"
+			if("Slashlake")
+				map_evac_direction = "simulated, at spawn for ease of access"
 		priority_announce("Assigned AO: [SSmapping.config.map_name] \n\
+							Exfiltration: [map_evac_direction].\n\
 							Threat Class: Unknown \n\
 							Danger Level: [pick("Moderate", "Considerable", "Devastating")] \n\
 							Nanotrasen thanks you for your continued employment in times of war. Have a safe and productive shift.", "Threat Assessment Advisory", announcement_sound, color_override = "purple")
