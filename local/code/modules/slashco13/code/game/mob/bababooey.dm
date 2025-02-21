@@ -133,6 +133,10 @@
 		owner.balloon_alert(owner, "already have one!")
 		return
 	created_clone = new(get_turf(owner))
+	RegisterSignal(created_clone, COMSIG_QDELETING, PROC_REF(unregister_clone))
+
+/datum/action/cooldown/bababooey_create_clone/proc/unregister_clone()
+	created_clone = null
 
 /datum/action/cooldown/bababooey_create_clone/Destroy()
 	QDEL_NULL(created_clone)
