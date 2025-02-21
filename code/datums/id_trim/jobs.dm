@@ -26,6 +26,10 @@
 	if(ispath(job))
 		job = SSjob.GetJobType(job)
 
+	if(isnull(job))
+		refresh_trim_access()
+		return
+
 	if(isnull(job_changes))
 		job_changes = SSmapping.config.job_changes
 
@@ -1073,6 +1077,10 @@
 	if(CONFIG_GET(number/depsec_access_level) == POPULATION_SCALED_ACCESS)
 		var/minimal_security_officers = 3 // We do not spawn in any more lockers if there are 5 or less security officers, so let's keep it lower than that number.
 		var/datum/job/J = SSjob.GetJob(JOB_SECURITY_OFFICER)
+		/// SLASHCO 13 EDIT BEGIN ///
+		if(J == null)
+			return
+		/// SLASHCO 13 EDIT END ///
 		if((J.spawn_positions - minimal_security_officers) <= 0)
 			access |= elevated_access
 

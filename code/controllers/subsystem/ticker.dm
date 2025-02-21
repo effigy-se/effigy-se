@@ -190,32 +190,41 @@ SUBSYSTEM_DEF(ticker)
 				return // 'DELAYED' delayed by an admin
 			timeLeft -= wait
 
+			/*
 			// EffigyEdit Add - Lobby Music
 			if(timeLeft <= lobby_track_duration && lobby_track_duration > 0 && !lobby_track_fired)
 				if(timeLeft >= lobby_track_duration - 4 SECONDS)
 					play_lobby_track(lobby_track_id)
 				lobby_track_fired = TRUE
 			// EffigyEdit Add End
+			*/
 
 			if(timeLeft <= 300 && !tipped)
 				send_tip_of_the_round(world, selected_tip)
 				tipped = TRUE
 
 			// EffigyEdit Add - Wait for players
-			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && !totalPlayersReady)
+			if(timeLeft <= 0 && !CONFIG_GET(flag/setup_bypass_player_check) && totalPlayersReady < 2) // SLASHCO EDIT - need two to play
 				if(!launch_queued)
-					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when players are ready.")]", confidential = TRUE)
-					SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
+					to_chat(world, "[SPAN_BOX_ALERT(ORANGE, "Game setup delayed! The game will start when enough players are ready.")]", confidential = TRUE)
+					var/announcement_sound = pick(
+						'local/code/modules/slashco13/sound/shuttle/land1.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/land2.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/land3.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/land4.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/land5.ogg', \
+					)
+					SEND_SOUND(world, sound(announcement_sound))
 					message_admins("Game setup delayed due to lack of players.")
 					log_game("Game setup delayed due to lack of players.")
 					launch_queued = TRUE
 				return // 'SOON' waiting for players
 
-			if(timeLeft <= 94 SECONDS && timeLeft > 0 && !hr_announce_fired && totalPlayersReady > 0 && !CONFIG_GET(flag/setup_bypass_player_check))
+			if(timeLeft <= 94 SECONDS && timeLeft > 0 && !hr_announce_fired && totalPlayersReady >= 2 && !CONFIG_GET(flag/setup_bypass_player_check)) // SLASHCO EDIT - need two to play
 				queue_game_start_announcement()
 				hr_announce_fired = TRUE
 
-			if(timeLeft <= 0 && launch_queued && totalPlayersReady > 0)
+			if(timeLeft <= 0 && launch_queued && totalPlayersReady >= 2) // SLASHCO EDIT - need two to play
 				SSticker.queue_game_start(94 SECONDS)
 				launch_queued = FALSE
 			// EffigyEdit Add End

@@ -166,7 +166,7 @@
 		set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(2), TEXT_SOUTH = list(-2), TEXT_EAST = list(0), TEXT_WEST = list(2)))
 
 /datum/component/riding/vehicle/scooter/skateboard
-	vehicle_move_delay = 1.5
+	vehicle_move_delay = 3
 	ride_check_flags = RIDER_NEEDS_LEGS | UNBUCKLE_DISABLED_RIDER
 	///If TRUE, the vehicle will be slower (but safer) to ride on walk intent.
 	var/can_slow_down = TRUE
@@ -209,11 +209,11 @@
 		vehicle_move_delay += 0.6
 
 /datum/component/riding/vehicle/scooter/skateboard/pro
-	vehicle_move_delay = 1
+	vehicle_move_delay = 2
 
 ///This one lets the rider ignore gravity, move in zero g and son on, but only on ground turfs or at most one z-level above them.
 /datum/component/riding/vehicle/scooter/skateboard/hover
-	vehicle_move_delay = 1
+	vehicle_move_delay = 2
 	override_allow_spacemove = TRUE
 
 /datum/component/riding/vehicle/scooter/skateboard/hover/RegisterWithParent()
@@ -299,10 +299,10 @@
 	set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0), TEXT_SOUTH = list(0), TEXT_EAST = list(0), TEXT_WEST = list(0)))
 
 /datum/component/riding/vehicle/scooter/skateboard/wheelys/rollerskates
-	vehicle_move_delay = 1.5
+	vehicle_move_delay = 2
 
 /datum/component/riding/vehicle/scooter/skateboard/wheelys/skishoes
-	vehicle_move_delay = 1
+	vehicle_move_delay = 2
 
 /datum/component/riding/vehicle/scooter/skateboard/wheelys/skishoes/handle_specials()
 	. = ..()
@@ -310,7 +310,7 @@
 
 /datum/component/riding/vehicle/secway
 	keytype = /obj/item/key/security
-	vehicle_move_delay = 1.75
+	vehicle_move_delay = 2
 	ride_check_flags = RIDER_NEEDS_LEGS | RIDER_NEEDS_ARMS | UNBUCKLE_DISABLED_RIDER
 
 /datum/component/riding/vehicle/secway/handle_specials()

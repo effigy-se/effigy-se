@@ -33,7 +33,8 @@
 		/obj/structure/lattice,
 		/obj/structure/stone_tile,
 		/obj/structure/ore_vent,
-	))
+		/mob/living/basic/slasher,
+	)) // SLASHCO 13 EDIT - slashers shouldn't be chasm'd. tbh
 
 /datum/component/chasm/Initialize(turf/target, mapload)
 	if(!isturf(parent))

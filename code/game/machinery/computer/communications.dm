@@ -58,6 +58,9 @@
 	///when was emergency access last toggled
 	var/last_toggled
 
+	var/datum/looping_sound/comms_console/our_siren = /datum/looping_sound/comms_console /// SLASHCO 13 EDIT ADD
+	var/siren_active = FALSE /// SLASHCO 13 EDIT ADD
+
 /obj/machinery/computer/communications/syndicate
 	icon_screen = "commsyndie"
 	circuit = /obj/item/circuitboard/computer/communications/syndicate
@@ -178,11 +181,35 @@
 		if ("callShuttle")
 			if (!authenticated(user) || syndicate)
 				return
+			/// SLASHCO 13 EDIT ///
+			if(!SSslashco.can_call_early())
+				to_chat(user, span_warning("You need at least [(SSslashco.required_generators * 0.5)] active generators before you can try to escape early!"))
+				to_chat(user, span_warning("Alternatively; Nanotrasen will reluctantly come to your rescue if you're the last one alive..."))
+				return
+			/// SLASHCO 13 EDIT END
 			var/reason = trim(params["reason"], MAX_MESSAGE_LEN)
 			if (length(reason) < CALL_SHUTTLE_REASON_LENGTH)
 				return
 			SSshuttle.requestEvac(user, reason)
 			post_status("shuttle")
+			/// SLASHCO 13 EDIT BEGIN. AGAIN ///
+			if(!siren_active)
+				our_siren = new
+				our_siren.start(src)
+				siren_active = TRUE
+				set_light(l_range = 3.5, l_color = LIGHT_COLOR_INTENSE_RED)
+			for(var/mob/mob in GLOB.player_list)
+				if(mob.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
+					var/possible_incoming_sounds = list(
+						'local/code/modules/slashco13/sound/shuttle/beacon1.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/beacon2.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/beacon3.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/beacon4.ogg', \
+						'local/code/modules/slashco13/sound/shuttle/beacon5.ogg', \
+					)
+					var/our_sound = pick(possible_incoming_sounds)
+					SEND_SOUND(mob, our_sound)
+			/// SLASHCO 13 EDIT END ///
 		if ("changeSecurityLevel")
 			if (!authenticated_as_silicon_or_captain(user))
 				return

@@ -14,6 +14,8 @@
 		#include "effigy\map_files\FoxHoleStation\foxholestation.dmm"
 		#include "effigy\map_files\RimPoint\RimPoint.dmm"
 		#include "effigy\map_files\SigmaOctantis\SigmaOctantis.dmm"
+		#include "effigy\map_files\SlashPoint\SlashPoint.dmm"
+		#include "effigy\map_files\Slashnett\Slashnett.dmm"
 		// EffigyEdit Add End
 		#ifdef CIBUILDING
 			#include "templates.dm"

@@ -103,11 +103,11 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			"}
 		else
 			splash_data += {"
-				<a class="menu_button" href='?src=[text_ref(src)];late_join=1'><span class='cta'>Join Game</span></a>
+				<a class="menu_button" href='?src=[text_ref(src)];late_join=1'><span class='cta'>Round Ongoing</span></a>
 			"}
 
 		splash_data += {"
-			<a id="be_antag" class="menu_button" href='?src=[text_ref(src)];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='antag_enabled'>Antag Enabled</span>" : "<span class='antag_disabled'>Antag Disabled</span>"]</a>
+			<a id="be_antag" class="menu_button" href='?src=[text_ref(src)];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='antag_enabled'>Slasher Enabled</span>" : "<span class='antag_disabled'>Slasher Disabled</span>"]</a>
 			<br/><br/>
 			<a class="menu_button" href='?src=[text_ref(src)];observe=1'>Observe</a>
 		"}
@@ -121,6 +121,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		splash_data += {"
 			<a class="menu_button" href='?src=[text_ref(src)];character_setup=1'>Character Setup (<span id="character_slot">[client.prefs.read_preference(/datum/preference/name/real_name)]</span>)</a>
 			<a class="menu_button" href='?src=[text_ref(src)];game_options=1'>Game Options</a>
+			<a class="menu_button" href='?src=[text_ref(src)];how_to_play_slashco=1'><span class='cta'>How To Play SlashCo 13</span></a>
 		"}
 
 		splash_data += "</div>"
@@ -143,7 +144,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			}
 			var antag_int = 0;
 			var antag_mark = document.getElementById("be_antag");
-			var antag_marks = \[ "<span class='antag_disabled'>Antag Disabled</span> ", "<span class='antag_enabled'>Antag Enabled</span>" \];
+			var antag_marks = \[ "<span class='antag_disabled'>Slasher Disabled</span> ", "<span class='antag_enabled'>Slasher Enabled</span>" \];
 			function toggle_antag(setAntag) {
 				if(setAntag) {
 					antag_int = setAntag;

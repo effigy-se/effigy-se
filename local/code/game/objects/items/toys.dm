@@ -19,6 +19,13 @@
 	This one, however, does - and it's not quite clear how much life it thirsts for."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "assistant"
+	pickup_sound = 'local/code/modules/slashco13/sound/items/pickup.ogg'
+	drop_sound = 'local/code/modules/slashco13/sound/items/drop.ogg'
+
+/obj/item/toy/faustian_doll/Initialize(mapload)
+	. = ..()
+	SSpoints_of_interest.make_point_of_interest(src)
+	add_filter("slashco_item", 2, outline_filter(1, COLOR_DARK_CYAN))
 
 /obj/item/toy/faustian_doll/Initialize(mapload)
 	. = ..()

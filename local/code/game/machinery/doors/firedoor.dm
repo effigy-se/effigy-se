@@ -2,8 +2,8 @@
 	name = "emergency shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
 	icon = 'local/icons/obj/doors/firedoor_glass.dmi'
-	light_power = 4
-	light_range = 2
+	light_power = 1
+	light_range = 1.7
 	var/light_color_idle = COLOR_STARLIGHT
 	var/light_color_hot = LIGHT_COLOR_FLARE
 	var/light_color_cold = LIGHT_COLOR_BLUE
